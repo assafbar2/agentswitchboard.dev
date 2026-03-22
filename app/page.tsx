@@ -27,7 +27,7 @@ export default async function HomePage() {
   return (
     <>
       {/* ── Hero ────────────────────────────────────────────────── */}
-      <section className="section relative overflow-hidden">
+      <section className="pt-16 pb-8 relative overflow-hidden">
         {/* Top gradient wash */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[var(--accent)] opacity-[0.04] blur-[120px] rounded-full pointer-events-none" />
 
@@ -65,7 +65,7 @@ export default async function HomePage() {
       </section>
 
       {/* ── Stats ───────────────────────────────────────────────── */}
-      <section className="pb-12">
+      <section className="pb-14">
         <div className="container-wide">
           <div className="flex justify-center gap-12 sm:gap-20">
             <StatCounter value={agentCount} label="Agents" delay={0} />
