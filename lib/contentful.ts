@@ -59,6 +59,7 @@ function mapAgent(entry: any): Agent {
     tier: f.tier ?? 'free',
     discoveredBy: f.discoveredBy ?? 'manual',
     workerSource: f.workerSource,
+    accessMethods: f.accessMethods ?? [],
   };
 }
 
@@ -231,6 +232,11 @@ export async function getAgentCount(): Promise<number> {
 export async function getTotalSkillsCount(): Promise<number> {
   const { agents } = await getAllAgents({ limit: 1000 });
   return agents.reduce((sum, a) => sum + a.skills.length, 0);
+}
+
+export async function getUniqueProviderCount(): Promise<number> {
+  const { agents } = await getAllAgents({ limit: 1000 });
+  return new Set(agents.map((a) => a.providerName)).size;
 }
 
 // ── Management API helpers ──────────────────────────────────────────

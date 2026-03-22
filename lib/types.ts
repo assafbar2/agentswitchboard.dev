@@ -32,6 +32,7 @@ export interface AgentFields {
   tier?: 'free' | 'premium';
   discoveredBy?: 'manual' | 'worker';
   workerSource?: string;
+  accessMethods?: ('api' | 'mcp' | 'cli' | 'browser-extension')[];
 }
 
 export interface CategoryFields {
@@ -109,6 +110,7 @@ export interface Agent {
   tier: 'free' | 'premium';
   discoveredBy: 'manual' | 'worker';
   workerSource?: string;
+  accessMethods: ('api' | 'mcp' | 'cli' | 'browser-extension')[];
 }
 
 export interface Category {

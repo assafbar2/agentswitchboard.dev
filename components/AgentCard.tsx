@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ExternalLink, Shield, Zap, Verified } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
+import { AccessMethodBadges } from '@/components/ui/AccessMethodBadges';
 import type { Agent } from '@/lib/types';
 import { authTypeLabel, truncate } from '@/lib/utils';
 
@@ -53,6 +54,13 @@ export function AgentCard({ agent }: { agent: Agent }) {
           <Badge variant="amber">Premium</Badge>
         )}
       </div>
+
+      {/* Access methods */}
+      {agent.accessMethods.length > 0 && (
+        <div className="mb-3">
+          <AccessMethodBadges methods={agent.accessMethods} />
+        </div>
+      )}
 
       {/* Bottom meta */}
       <div className="flex items-center justify-between text-xs text-[var(--text-muted)]">

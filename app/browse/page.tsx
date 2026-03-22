@@ -1,7 +1,9 @@
+import { Suspense } from 'react';
 import { getAllAgents } from '@/lib/contentful';
 import { searchAgents } from '@/lib/search';
 import { AgentCard } from '@/components/AgentCard';
 import { SearchBar } from '@/components/SearchBar';
+import { AccessMethodFilter } from '@/components/AccessMethodFilter';
 import type { Metadata } from 'next';
 
 export const revalidate = 60;
@@ -21,29 +23,37 @@ export async function generateMetadata({
 export default async function BrowsePage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string }>;
+  searchParams: Promise<{ q?: string; access?: string }>;
 }) {
-  const { q } = await searchParams;
+  const { q, access } = await searchParams;
   const query = q?.trim() ?? '';
+  const accessFilters = access?.split(',').filter(Boolean) ?? [];
 
   const { agents: allAgents } = await getAllAgents({ limit: 200 });
-  const agents = query ? searchAgents(allAgents, query) : allAgents;
+  const agents = searchAgents(allAgents, query, accessFilters.length > 0 ? accessFilters : undefined);
 
   return (
     <div className="container-wide section">
       {/* Search bar */}
-      <div className="max-w-xl mb-10">
+      <div className="max-w-xl mb-6">
         <h1 className="text-3xl font-bold tracking-tight mb-4">
           {query ? (
             <>
               Results for{' '}
-              <span className="text-[var(--accent)] mono">"{query}"</span>
+              <span className="text-[var(--accent)] mono">&ldquo;{query}&rdquo;</span>
             </>
           ) : (
             'Browse Agents'
           )}
         </h1>
         <SearchBar defaultValue={query} autoFocus={!!query} />
+      </div>
+
+      {/* Access method filters */}
+      <div className="mb-6">
+        <Suspense>
+          <AccessMethodFilter />
+        </Suspense>
       </div>
 
       {/* Count */}
@@ -63,10 +73,10 @@ export default async function BrowsePage({
       ) : (
         <div className="text-center py-20">
           <p className="text-[var(--text-secondary)] mb-2">
-            No agents matched <span className="mono">"{query}"</span>
+            No agents found{query && <> matching <span className="mono">&ldquo;{query}&rdquo;</span></>}
           </p>
           <p className="text-sm text-[var(--text-muted)]">
-            Try searching by skill, category, or provider name.
+            Try a different search or clear the filters.
           </p>
         </div>
       )}

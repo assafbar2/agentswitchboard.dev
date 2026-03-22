@@ -17,13 +17,20 @@ const footerLinks = [
       { href: 'https://google.github.io/A2A/', label: 'A2A Protocol', external: true },
     ],
   },
+  {
+    title: 'Company',
+    links: [
+      { href: '/disclaimer', label: 'Disclaimer' },
+      { href: 'mailto:hello@upgraide.co', label: 'Contact Us', external: true },
+    ],
+  },
 ];
 
 export function Footer() {
   return (
     <footer className="border-t border-[var(--border)] bg-[var(--bg-secondary)]">
       <div className="container-wide py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
             <Link href="/" className="flex items-center gap-2 mb-3">

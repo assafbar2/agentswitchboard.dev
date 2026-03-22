@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { Menu, X, Zap } from 'lucide-react';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const navLinks = [
   { href: '/browse', label: 'Browse' },
@@ -49,6 +50,8 @@ export function Header() {
             <Zap className="w-3.5 h-3.5" />
             Activate Pro
           </Link>
+
+          <ThemeToggle />
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}

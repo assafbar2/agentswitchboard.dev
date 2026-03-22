@@ -47,6 +47,50 @@
   --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
 }
 
+/* ── Light mode overrides ────────────────────────────────────────── */
+
+html.light {
+  --bg-primary: #f8f8fc;
+  --bg-secondary: #f0f0f6;
+  --bg-tertiary: #e8e8f0;
+  --bg-elevated: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f4f4fa;
+
+  --text-primary: #111118;
+  --text-secondary: #44445a;
+  --text-tertiary: #8888a0;
+  --text-muted: #aaaabc;
+
+  --accent: #00aa55;
+  --accent-dim: #008844;
+  --accent-glow: rgba(0, 170, 85, 0.12);
+  --accent-subtle: rgba(0, 170, 85, 0.06);
+
+  --blue: #2255dd;
+  --blue-glow: rgba(34, 85, 221, 0.08);
+  --amber: #cc7700;
+  --amber-glow: rgba(204, 119, 0, 0.08);
+  --rose: #cc1133;
+  --rose-glow: rgba(204, 17, 51, 0.08);
+
+  --border: rgba(0, 0, 0, 0.08);
+  --border-subtle: rgba(0, 0, 0, 0.04);
+  --border-accent: rgba(0, 170, 85, 0.2);
+}
+
+html.light body::before {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(0, 0, 0, 0.04) 1px,
+    transparent 0
+  );
+}
+
+html.light body::after {
+  display: none;
+}
+
 /* ── Tailwind theme bridge ───────────────────────────────────────── */
 
 @theme inline {

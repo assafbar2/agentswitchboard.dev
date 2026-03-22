@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Verified, ArrowRight, Zap } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
+import { AccessMethodBadges } from '@/components/ui/AccessMethodBadges';
 import type { Agent } from '@/lib/types';
 import { truncate } from '@/lib/utils';
 
@@ -70,6 +71,13 @@ export function FeaturedAgentCard({
           <Badge variant="outline">+{agent.skills.length - 3} more</Badge>
         )}
       </div>
+
+      {/* Access methods */}
+      {agent.accessMethods.length > 0 && (
+        <div className="mb-4">
+          <AccessMethodBadges methods={agent.accessMethods} />
+        </div>
+      )}
 
       {/* Footer */}
       <div className="flex items-center justify-between">
