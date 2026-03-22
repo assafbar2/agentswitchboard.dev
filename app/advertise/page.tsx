@@ -13,12 +13,15 @@ export default function AdvertisePage() {
         <Megaphone className="w-10 h-10 text-[var(--accent)] mx-auto mb-4" />
         <h1 className="text-3xl font-bold tracking-tight mb-3">Advertise with Us</h1>
         <p className="text-[var(--text-secondary)] mb-6">
-          Get your agent featured in front of developers building
-          on the A2A protocol. Sponsorship details coming soon.
+          Get your agent featured in front of developers building on the A2A protocol.
+          Reach out to discuss featured listings, sponsored slots, and partnership opportunities.
         </p>
-        <div className="mono text-xs text-[var(--text-muted)] px-4 py-2 rounded-lg bg-[var(--bg-card)] border border-[var(--border)] inline-block">
-          Phase 4 · Coming soon
-        </div>
+        <a
+          href="mailto:hello@agentswitchboard.dev?subject=Advertising Inquiry — Agent Switchboard"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--accent)] text-[var(--bg-primary)] font-medium text-sm hover:opacity-90 transition-opacity"
+        >
+          hello@agentswitchboard.dev
+        </a>
       </div>
     </div>
   );

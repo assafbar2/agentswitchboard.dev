@@ -5,7 +5,7 @@ import {
   getFeaturedAgents,
   getAllCategories,
   getAgentCount,
-  getTotalSkillsCount,
+  getUniqueProviderCount,
   getSiteSettings,
 } from '@/lib/contentful';
 import { FeaturedAgentCard } from '@/components/FeaturedAgentCard';
@@ -15,12 +15,12 @@ import { StatCounter } from '@/components/ui/StatCounter';
 export const revalidate = 60;
 
 export default async function HomePage() {
-  const [featured, categories, agentCount, skillsCount, settings] =
+  const [featured, categories, agentCount, providerCount, settings] =
     await Promise.all([
       getFeaturedAgents(),
       getAllCategories(),
       getAgentCount(),
-      getTotalSkillsCount(),
+      getUniqueProviderCount(),
       getSiteSettings(),
     ]);
 
@@ -69,7 +69,7 @@ export default async function HomePage() {
         <div className="container-wide">
           <div className="flex justify-center gap-12 sm:gap-20">
             <StatCounter value={agentCount} label="Agents" delay={0} />
-            <StatCounter value={skillsCount} label="Skills" delay={100} />
+            <StatCounter value={providerCount} label="Providers" delay={100} />
             <StatCounter
               value={categories.length}
               label="Categories"

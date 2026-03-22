@@ -45,6 +45,14 @@ export default function RootLayout({
       lang="en"
       className={`${jetbrainsMono.variable} ${inter.variable} h-full`}
     >
+      {/* Prevent flash: apply saved theme before paint */}
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='light')document.documentElement.classList.add('light');}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col antialiased">
         <Header />
         <main className="flex-1">{children}</main>

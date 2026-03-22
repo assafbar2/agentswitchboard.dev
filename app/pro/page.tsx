@@ -14,11 +14,15 @@ export default function ProPage() {
         <h1 className="text-3xl font-bold tracking-tight mb-3">Pro Access</h1>
         <p className="text-[var(--text-secondary)] mb-6">
           Unlock premium agent listings, advanced integration guides,
-          and priority support. Pricing details coming soon.
+          and priority support. Interested in early access?
         </p>
-        <div className="mono text-xs text-[var(--text-muted)] px-4 py-2 rounded-lg bg-[var(--bg-card)] border border-[var(--border)] inline-block">
-          Phase 4 · Coming soon
-        </div>
+        <a
+          href="mailto:hello@agentswitchboard.dev?subject=Pro Access Inquiry — Agent Switchboard"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--accent)] text-[var(--bg-primary)] font-medium text-sm hover:opacity-90 transition-opacity mb-4"
+        >
+          Get in touch
+        </a>
+        <p className="text-xs text-[var(--text-muted)]">hello@agentswitchboard.dev</p>
       </div>
     </div>
   );

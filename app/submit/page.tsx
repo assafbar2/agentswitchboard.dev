@@ -13,12 +13,18 @@ export default function SubmitPage() {
         <Terminal className="w-10 h-10 text-[var(--accent)] mx-auto mb-4" />
         <h1 className="text-3xl font-bold tracking-tight mb-3">Submit an Agent</h1>
         <p className="text-[var(--text-secondary)] mb-6">
-          Submission form coming soon. Got an A2A-compatible agent?
-          We&apos;ll have a way for you to list it here shortly.
+          Got an A2A-compatible agent? Drop us an email with your agent details
+          and we&apos;ll get it listed.
         </p>
-        <div className="mono text-xs text-[var(--text-muted)] px-4 py-2 rounded-lg bg-[var(--bg-card)] border border-[var(--border)] inline-block">
-          Phase 5 · Coming soon
-        </div>
+        <a
+          href="mailto:hello@agentswitchboard.dev?subject=Agent Submission — [Agent Name]"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--accent)] text-[var(--bg-primary)] font-medium text-sm hover:opacity-90 transition-opacity mb-4"
+        >
+          hello@agentswitchboard.dev
+        </a>
+        <p className="text-xs text-[var(--text-muted)]">
+          Please include: agent name, URL, description, and access methods (API/MCP/CLI/Extension).
+        </p>
       </div>
     </div>
   );
