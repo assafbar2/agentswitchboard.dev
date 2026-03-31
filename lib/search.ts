@@ -40,10 +40,10 @@ export function scoreAgent(agent: Agent, query: string): number {
   // Description
   if (description.includes(q)) score += 60;
 
-  // Skills — name and description
+  // Skills — name and description (guard against string-form skills)
   for (const skill of agent.skills) {
-    if (skill.name.toLowerCase().includes(q)) score += 40;
-    if (skill.description.toLowerCase().includes(q)) score += 20;
+    if (skill?.name?.toLowerCase().includes(q)) score += 40;
+    if (skill?.description?.toLowerCase().includes(q)) score += 20;
   }
 
   // Categories
