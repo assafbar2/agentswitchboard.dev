@@ -43,7 +43,13 @@ function mapAgent(entry: any): Agent {
       ? f.categories.filter((c: any) => c?.fields).map(mapCategory)
       : [],
     tags: f.tags ?? [],
-    skills: (f.skills as AgentSkill[]) ?? [],
+    skills: Array.isArray(f.skills)
+      ? (f.skills as any[]).map((s) =>
+          typeof s === 'string'
+            ? ({ id: s, name: s, description: s } as AgentSkill)
+            : (s as AgentSkill)
+        )
+      : [],
     authType: f.authType ?? 'none',
     authInstructions: f.authInstructions as Document | undefined,
     integrationGuide: f.integrationGuide as Document | undefined,
