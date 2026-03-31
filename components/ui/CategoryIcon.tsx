@@ -11,6 +11,7 @@ import {
   BookOpen,
   Calendar,
   Shield,
+  ShoppingCart,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -27,6 +28,7 @@ const iconMap: Record<string, LucideIcon> = {
   BookOpen,
   Calendar,
   Shield,
+  ShoppingCart,
 };
 
 export function CategoryIcon({

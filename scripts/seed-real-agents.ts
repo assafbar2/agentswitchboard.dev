@@ -58,6 +58,7 @@ const CAT: Record<string, string> = {
   research: '22Kd21qgJwkPaMhgYGUfTO',
   scheduling: '4UuA4GGBTNK9FENwYQSMxe',
   security: 'ZcI8XfUcXNjfAhGvki2zi',
+  'commerce-payments': '', // populated at runtime after createCategory()
 };
 
 function catLink(slug: string) {
@@ -158,6 +159,50 @@ async function updateAccessMethods(slug: string, methods: string[]) {
     });
     console.log(`  🔄 Updated ${slug} access methods: ${methods.join(', ')}`);
   }
+}
+
+async function createCategory(cat: {
+  name: string;
+  slug: string;
+  description: string;
+  icon: string;
+  sortOrder: number;
+}): Promise<string> {
+  await refreshTokenIfNeeded();
+  // Check if it already exists
+  const existing = await cma(`/entries?content_type=category&fields.slug=${cat.slug}&limit=1`);
+  if (existing.items?.[0]) {
+    const id = existing.items[0].sys.id;
+    console.log(`  ⏭  Category "${cat.name}" already exists (${id})`);
+    return id;
+  }
+  const entry = await cma('/entries', {
+    method: 'POST',
+    headers: { 'X-Contentful-Content-Type': 'category' } as any,
+    body: JSON.stringify({
+      fields: {
+        name: { 'en-US': cat.name },
+        slug: { 'en-US': cat.slug },
+        description: { 'en-US': cat.description },
+        icon: { 'en-US': cat.icon },
+        sortOrder: { 'en-US': cat.sortOrder },
+      },
+    }),
+  });
+  if (!entry.sys?.id || entry.sys?.type?.includes('Error')) {
+    console.log(`  ❌ Category "${cat.name}": ${JSON.stringify(entry).slice(0, 300)}`);
+    return '';
+  }
+  const pub = await cma(`/entries/${entry.sys.id}/published`, {
+    method: 'PUT',
+    headers: { 'X-Contentful-Version': String(entry.sys.version) } as any,
+  });
+  if (pub.sys?.publishedVersion) {
+    console.log(`  ✅ Category "${cat.name}" created (${entry.sys.id})`);
+  } else {
+    console.log(`  ⚠️  Category "${cat.name}" created but publish failed`);
+  }
+  return entry.sys.id;
 }
 
 // ── Agent data ──────────────────────────────────────────────────
@@ -963,14 +1008,238 @@ const agents = [
     accessMethods: ['api', 'mcp', 'cli'],
     verified: true,
   },
+
+  // ── Week of March 23–30, 2026 ─────────────────────────────────
+  {
+    name: 'Google Colab MCP Server',
+    slug: 'google-colab-mcp',
+    description:
+      'Official MCP server for Google Colab. Lets AI agents create, execute, and manage GPU-accelerated Jupyter notebooks via Model Context Protocol — no browser needed.',
+    providerName: 'Google',
+    providerUrl: 'https://developers.google.com',
+    agentUrl: 'https://github.com/googlecolab/colab-mcp',
+    categories: ['code-devtools'],
+    tags: [
+      'notebook-automation', 'cloud-compute', 'python-execution',
+      'data-analysis', 'jupyter', 'gpu-access', 'mcp-protocol', 'open-source',
+    ],
+    authType: 'oauth2',
+    accessMethods: ['mcp', 'api'],
+    supportsStreaming: true,
+    featured: true,
+    verified: true,
+    skills: [
+      'Create and manage Jupyter notebooks programmatically from any MCP-compatible AI agent or coding assistant',
+      'Execute Python code cells in Google\'s GPU/TPU-accelerated cloud runtime without browser interaction',
+      'Install and manage Python package dependencies dynamically within a running Colab session',
+      'Run end-to-end data analysis pipelines and return structured results back to the orchestrating agent',
+      'Automate multi-step ML experiments and chain notebook outputs into downstream workflow automation',
+    ],
+  },
+  {
+    name: 'NVIDIA NemoClaw',
+    slug: 'nvidia-nemoclaw',
+    description:
+      'Open-source security runtime for multi-agent AI. Enforces policy-based access control, sandboxes kernel interactions, and privacy-routes sensitive data for enterprise local inference.',
+    providerName: 'NVIDIA',
+    providerUrl: 'https://nvidia.com',
+    agentUrl: 'https://www.nvidia.com/en-us/ai/nemoclaw/',
+    categories: ['security'],
+    tags: [
+      'enterprise-security', 'agent-governance', 'privacy-first',
+      'policy-enforcement', 'local-inference', 'sandboxing', 'open-source', 'openclaw',
+    ],
+    authType: 'none',
+    accessMethods: ['cli'],
+    supportsStreaming: true,
+    featured: true,
+    verified: true,
+    skills: [
+      'Enforce policy-based access control at the agent boundary, restricting which tools and data each agent can reach',
+      'Sandbox kernel-level interactions to prevent privilege escalation and contain runaway agents',
+      'Route sensitive data through privacy-preserving channels so PII never reaches untrusted model endpoints',
+      'Orchestrate trust levels across multi-agent hierarchies with per-agent permission scopes and audit trails',
+      'Detect and alert on anomalous agent behavior patterns using real-time threat fingerprinting',
+    ],
+  },
+  {
+    name: 'Shopify Agentic Storefronts',
+    slug: 'shopify-agentic-storefronts',
+    description:
+      'Shopify\'s A2A-compatible layer for agentic commerce. AI agents browse catalogs, configure products, and initiate checkout. Full storefront exposed as an agent API with real-time inventory sync.',
+    providerName: 'Shopify',
+    providerUrl: 'https://shopify.com',
+    agentUrl: 'https://shopify.dev/docs/agents',
+    categories: ['commerce-payments'],
+    tags: [
+      'e-commerce', 'agentic-commerce', 'checkout-automation', 'a2a-protocol',
+      'multi-channel', 'inventory-sync', 'conversational-commerce', 'shopify',
+    ],
+    authType: 'oauth2',
+    accessMethods: ['api', 'mcp'],
+    supportsStreaming: true,
+    supportsPushNotifications: true,
+    featured: true,
+    verified: true,
+    skills: [
+      'Syndicate product catalogs across web, mobile, voice, and social channels through a single unified agent API',
+      'Generate dynamic checkout sessions with real-time pricing, discount codes, and upsell recommendations',
+      'Sync inventory levels in real-time so agents never surface out-of-stock products or stale pricing',
+      'Link shopper identities across sessions for personalized, context-aware purchasing experiences',
+      'Push real-time order status updates and delivery notifications to agents and end-users',
+    ],
+  },
+  {
+    name: 'Rox AI',
+    slug: 'rox-ai',
+    description:
+      'Autonomous revenue platform deploying swarms of AI sales agents across account mapping, outreach, and CRM hygiene to surface the right opportunity. Backed by a $50M Series B.',
+    providerName: 'Rox',
+    providerUrl: 'https://rox.com',
+    agentUrl: 'https://rox.com',
+    categories: ['sales-marketing'],
+    tags: [
+      'sales-automation', 'account-intelligence', 'agent-swarm', 'crm-automation',
+      'outbound', 'b2b-sales', 'intent-signals', 'revenue-intelligence',
+    ],
+    authType: 'apiKey',
+    accessMethods: ['api'],
+    supportsStreaming: true,
+    featured: true,
+    verified: true,
+    skills: [
+      'Deploy coordinated swarms of specialized sales agents that cover prospecting, research, outreach, and CRM update tasks simultaneously',
+      'Build deep account intelligence by aggregating news, job postings, funding events, and product signals into a unified account brief',
+      'Generate hyper-personalized outreach sequences tailored to each prospect\'s role, company context, and recent trigger events',
+      'Automate CRM data entry, contact enrichment, and pipeline hygiene so sales reps work only on active opportunities',
+      'Prepare AI-generated meeting briefings with talking points, objection handles, and competitive context before every call',
+    ],
+  },
+  {
+    name: 'Oracle AI Database 26ai',
+    slug: 'oracle-ai-database-26ai',
+    description:
+      'World\'s first AI-native database with agents running inside the kernel. Features no-code Agent Factory, unified vector search, multi-modal RAG, and identity-aware access control.',
+    providerName: 'Oracle',
+    providerUrl: 'https://oracle.com/database',
+    agentUrl: 'https://www.oracle.com/database/agent-factory/',
+    categories: ['infrastructure'],
+    tags: [
+      'in-database-ai', 'agent-factory', 'vector-search', 'enterprise-database',
+      'multi-modal-rag', 'oracle', 'no-code-agents', 'autonomous-database',
+    ],
+    authType: 'oauth2',
+    accessMethods: ['api', 'mcp', 'cli'],
+    supportsStreaming: true,
+    supportsPushNotifications: true,
+    featured: true,
+    verified: true,
+    skills: [
+      'Execute AI agents inside the database kernel, co-located with data for sub-millisecond decision latency',
+      'Build production-ready agents visually with no-code Agent Factory — drag-and-drop tools, prompts, and data connectors',
+      'Query structured and unstructured data with unified vector search for multi-modal Retrieval Augmented Generation',
+      'Run multi-modal RAG pipelines over text, images, and documents stored natively in the database',
+      'Enforce identity-aware access control so each agent only operates on explicitly authorized data sets',
+    ],
+  },
+  {
+    name: 'Wonderful',
+    slug: 'wonderful-ai',
+    description:
+      'Enterprise voice AI platform with pre-trained agents for phone, chat, and email. Covers 40+ languages, integrates with Salesforce, SAP, and ServiceNow, with seamless escalation to human agents.',
+    providerName: 'Wonderful AI',
+    providerUrl: 'https://wonderful.ai',
+    agentUrl: 'https://wonderful.ai/product',
+    categories: ['customer-support'],
+    tags: [
+      'voice-ai', 'conversational-ai', 'multilingual', 'enterprise-cx',
+      'chat-automation', 'email-automation', 'crm-integration', 'global-deployment',
+    ],
+    authType: 'oauth2',
+    accessMethods: ['api'],
+    supportsStreaming: true,
+    featured: true,
+    verified: true,
+    skills: [
+      'Deploy production-ready voice agents across inbound and outbound phone channels with natural, low-latency conversation',
+      'Unify chat and email support into a single agent layer that maintains full conversation context across channels',
+      'Serve customers in 40+ languages and regional dialects with automatic language detection and localization',
+      'Integrate natively with Salesforce, SAP, and ServiceNow to read and write CRM data during live interactions',
+      'Escalate complex cases to human agents with complete conversation history and intent summary handed off instantly',
+    ],
+  },
 ];
+
+async function updateDescriptionAndPublish(slug: string, newDescription: string) {
+  await refreshTokenIfNeeded();
+  const entry = await findEntry(slug);
+  if (!entry) { console.log(`  ⚠️  ${slug} not found`); return; }
+
+  // Update description field
+  entry.fields.description = { 'en-US': newDescription };
+  const updated = await cma(`/entries/${entry.sys.id}`, {
+    method: 'PUT',
+    headers: { 'X-Contentful-Version': String(entry.sys.version) } as any,
+    body: JSON.stringify({ fields: entry.fields }),
+  });
+  if (!updated.sys?.id) {
+    console.log(`  ❌ Update failed for ${slug}: ${JSON.stringify(updated).slice(0, 200)}`);
+    return;
+  }
+
+  // Publish
+  const pub = await cma(`/entries/${updated.sys.id}/published`, {
+    method: 'PUT',
+    headers: { 'X-Contentful-Version': String(updated.sys.version) } as any,
+  });
+  if (pub.sys?.publishedVersion) {
+    console.log(`  ✅ Updated & published: ${slug}`);
+  } else {
+    console.log(`  ❌ Publish failed for ${slug}: ${JSON.stringify(pub).slice(0, 200)}`);
+  }
+}
 
 // ── Main ─────────────────────────────────────────────────────────
 async function main() {
   console.log(`\n🚀 Seeding ${agents.length} real agents...\n`);
 
+  // ── Create new categories ────────────────────────────────────
+  console.log('── Creating new categories ──');
+  const commerceId = await createCategory({
+    name: 'Commerce & Payments',
+    slug: 'commerce-payments',
+    description:
+      'AI agents powering the next generation of e-commerce, checkout automation, and payment intelligence. From agentic storefronts that let AI shop on your behalf to payment orchestration layers that route transactions intelligently, this category covers the full commerce stack.',
+    icon: 'ShoppingCart',
+    sortOrder: 13,
+  });
+  if (commerceId) CAT['commerce-payments'] = commerceId;
+
+  // Fix drafts from previous runs: update descriptions + publish
+  console.log('\n── Fixing & publishing stuck drafts ──');
+  await updateDescriptionAndPublish(
+    'google-colab-mcp',
+    'Official MCP server for Google Colab. Lets AI agents create, execute, and manage GPU-accelerated Jupyter notebooks via Model Context Protocol — no browser needed.',
+  );
+  await updateDescriptionAndPublish(
+    'nvidia-nemoclaw',
+    'Open-source security runtime for multi-agent AI. Enforces policy-based access control, sandboxes kernel interactions, and privacy-routes sensitive data for enterprise local inference.',
+  );
+  await updateDescriptionAndPublish(
+    'shopify-agentic-storefronts',
+    "Shopify's A2A-compatible layer for agentic commerce. AI agents browse catalogs, configure products, and initiate checkout. Full storefront exposed as an agent API with real-time inventory sync.",
+  );
+  await updateDescriptionAndPublish(
+    'rox-ai',
+    'Autonomous revenue platform deploying swarms of AI sales agents across account mapping, outreach, and CRM hygiene to surface the right opportunity. Backed by a $50M Series B.',
+  );
+  await updateDescriptionAndPublish(
+    'oracle-ai-database-26ai',
+    "World's first AI-native database with agents running inside the kernel. Features no-code Agent Factory, unified vector search, multi-modal RAG, and identity-aware access control.",
+  );
+
   // Update existing entries with accessMethods
-  console.log('── Updating existing agents with accessMethods ──');
+  console.log('\n── Updating existing agents with accessMethods ──');
   await updateAccessMethods('agentmail', ['api', 'mcp', 'cli']);
   await updateAccessMethods('here-now', ['api']);
 
