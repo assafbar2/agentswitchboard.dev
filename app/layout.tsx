@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   description:
     'Discover, compare, and connect with AI agents that speak the A2A protocol. The curated directory for the agentic web.',
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
+    process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev'
   ),
   openGraph: {
     type: 'website',

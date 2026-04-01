@@ -42,8 +42,9 @@ export default async function HomePage() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6 animate-slide-up">
-              Discover agents that speak{' '}
-              <span className="gradient-text">A2A</span>
+              Every AI Agent{' '}
+              <span className="gradient-text">Worth Knowing</span>
+              {', '}in One Place
             </h1>
 
             <p
@@ -51,7 +52,7 @@ export default async function HomePage() {
               style={{ animationDelay: '100ms' }}
             >
               {settings?.heroSubtitle ||
-                'Browse, compare, and connect with AI agents built on the Agent-to-Agent protocol. The curated switchboard for the agentic web.'}
+                'Browse, compare, and integrate verified AI agents with real API, MCP, and CLI access. The curated switchboard for the agentic web.'}
             </p>
 
             <div
