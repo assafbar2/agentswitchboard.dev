@@ -44,13 +44,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${jetbrainsMono.variable} ${inter.variable} h-full`}
+      className={`${jetbrainsMono.variable} ${inter.variable} h-full light`}
+      suppressHydrationWarning
     >
-      {/* Prevent flash: apply saved theme before paint */}
+      {/* Prevent flash: SSR defaults to light; remove class only if user saved dark */}
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');if(t!=='dark')document.documentElement.classList.add('light');}catch(e){document.documentElement.classList.add('light');}})();`,
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.classList.remove('light');}catch(e){}})();`,
           }}
         />
       </head>
