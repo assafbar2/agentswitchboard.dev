@@ -58,7 +58,11 @@ const CAT: Record<string, string> = {
   research: '22Kd21qgJwkPaMhgYGUfTO',
   scheduling: '4UuA4GGBTNK9FENwYQSMxe',
   security: 'ZcI8XfUcXNjfAhGvki2zi',
-  'commerce-payments': '', // populated at runtime after createCategory()
+  'commerce-payments': '44nVoPNVZXunRtMumItZfO',
+  'memory-state':      'ydaYTlRXXas53G3kbr65i',
+  'browser-computer':  '6g6TPbURSB52Z2scsiUGxN',
+  'vector-databases':  '1rQCIuLKfXhq2efEUDtQ8C',
+  'voice-messaging':   '2pV8SRrEcdoS7Rjodj490d',
 };
 
 function catLink(slug: string) {
@@ -158,6 +162,34 @@ async function updateAccessMethods(slug: string, methods: string[]) {
       headers: { 'X-Contentful-Version': String(updated.sys.version) } as any,
     });
     console.log(`  🔄 Updated ${slug} access methods: ${methods.join(', ')}`);
+  }
+}
+
+async function updateCategory(slug: string, categorySlug: string) {
+  await refreshTokenIfNeeded();
+  const entry = await findEntry(slug);
+  if (!entry) { console.log(`  ⚠️  ${slug} not found`); return; }
+
+  const categoryId = CAT[categorySlug];
+  if (!categoryId) { console.log(`  ⚠️  Category ${categorySlug} not in CAT map yet`); return; }
+
+  const ver = entry.sys.version;
+  entry.fields.categories = { 'en-US': [{ sys: { type: 'Link', linkType: 'Entry', id: categoryId } }] };
+
+  const updated = await cma(`/entries/${entry.sys.id}`, {
+    method: 'PUT',
+    headers: { 'X-Contentful-Version': String(ver) } as any,
+    body: JSON.stringify({ fields: entry.fields }),
+  });
+
+  if (updated.sys?.id) {
+    await cma(`/entries/${updated.sys.id}/published`, {
+      method: 'PUT',
+      headers: { 'X-Contentful-Version': String(updated.sys.version) } as any,
+    });
+    console.log(`  🔄 Moved ${slug} → ${categorySlug}`);
+  } else {
+    console.log(`  ❌ Failed to update category for ${slug}: ${JSON.stringify(updated).slice(0, 200)}`);
   }
 }
 
@@ -1168,6 +1200,483 @@ const agents = [
       'Escalate complex cases to human agents with complete conversation history and intent summary handed off instantly',
     ],
   },
+
+  // ── Memory & State ──
+  {
+    name: 'Mem0',
+    slug: 'mem0',
+    description: 'Persistent memory layer for AI agents and LLMs. Stores, searches, and retrieves user and session memories across frameworks. SDKs for Python and JS, managed or self-hosted.',
+    providerName: 'Mem0',
+    providerUrl: 'https://mem0.ai',
+    agentUrl: 'https://docs.mem0.ai',
+    categories: ['memory-state'],
+    tags: ['memory', 'rag', 'personalization', 'stateful-agents', 'python', 'javascript', 'open-source'],
+    authType: 'apiKey',
+    accessMethods: ['api', 'mcp'],
+    supportsStreaming: false,
+    featured: true,
+    verified: true,
+    skills: [
+      'Store and retrieve persistent user and session memories across agent frameworks',
+      'Semantic memory search to surface relevant context from past interactions',
+      'Share memory across multi-agent pipelines with fine-grained access controls',
+      'Learn and update user preferences automatically from conversation history',
+      'Monitor memory usage and search analytics via built-in dashboard',
+    ],
+  },
+  {
+    name: 'Zep',
+    slug: 'zep',
+    description: 'Long-term memory store for AI assistants. Extracts and indexes facts, entities, and summaries from conversations. Fast hybrid search combines semantic and full-text retrieval.',
+    providerName: 'Zep',
+    providerUrl: 'https://getzep.com',
+    agentUrl: 'https://docs.getzep.com',
+    categories: ['memory-state'],
+    tags: ['memory', 'long-term-memory', 'llm', 'conversation-history', 'knowledge-graph'],
+    authType: 'apiKey',
+    accessMethods: ['api'],
+    supportsStreaming: false,
+    featured: true,
+    verified: true,
+    skills: [
+      'Auto-extract facts, entities, and summaries from raw conversation transcripts',
+      'Track entity relationships and state changes across long multi-session interactions',
+      'Temporal memory management that weights recency and relevance for retrieval',
+      'Hybrid search combining dense semantic vectors and full-text BM25 scoring',
+      'Retrieve cross-session context in a single API call for any user or thread',
+    ],
+  },
+  {
+    name: 'Letta',
+    slug: 'letta',
+    description: 'Stateful agent framework with built-in memory. Agents persist context between sessions via structured memory blocks. Formerly MemGPT. Self-hosted or managed cloud.',
+    providerName: 'Letta',
+    providerUrl: 'https://letta.ai',
+    agentUrl: 'https://docs.letta.ai',
+    categories: ['memory-state'],
+    tags: ['memory', 'stateful-agents', 'memgpt', 'open-source', 'self-hosted', 'python', 'orchestration'],
+    authType: 'apiKey',
+    accessMethods: ['api', 'cli'],
+    supportsStreaming: true,
+    featured: true,
+    verified: true,
+    skills: [
+      'Persist agent state between sessions using structured in-context memory blocks',
+      'Dynamically edit and archive memory to maintain coherent long-horizon agent behavior',
+      'Orchestrate multi-agent pipelines where agents pass typed memory between each other',
+      'Execute tool calls with full persistence of tool outputs across sessions',
+      'Deploy self-hosted or cloud agents with consistent stateful behavior at scale',
+    ],
+  },
+  {
+    name: 'Honcho',
+    slug: 'honcho',
+    description: 'User state management platform for AI apps. Stores user context, preferences, and interaction history to enable personalized multi-session AI experiences.',
+    providerName: 'Honcho',
+    providerUrl: 'https://honcho.dev',
+    agentUrl: 'https://docs.honcho.dev',
+    categories: ['memory-state'],
+    tags: ['memory', 'user-state', 'personalization', 'multi-session', 'python'],
+    authType: 'apiKey',
+    accessMethods: ['api'],
+    supportsStreaming: false,
+    featured: false,
+    verified: true,
+    skills: [
+      'Persist user session state and conversation context across app restarts',
+      'Track evolving user preferences learned from interaction history',
+      'Share user context across multiple AI applications from one platform',
+      'Link user identity across sessions and devices for unified personalization',
+      'Store arbitrary personalization metadata alongside structured session records',
+    ],
+  },
+  {
+    name: 'Supermemory',
+    slug: 'supermemory',
+    description: 'Memory API for AI applications. Store and retrieve user memories, bookmarks, and knowledge with semantic search. One unified API for personal and enterprise memory.',
+    providerName: 'Supermemory',
+    providerUrl: 'https://supermemory.ai',
+    agentUrl: 'https://docs.supermemory.ai',
+    categories: ['memory-state'],
+    tags: ['memory', 'knowledge-base', 'rag', 'semantic-search', 'open-source'],
+    authType: 'apiKey',
+    accessMethods: ['api', 'mcp'],
+    supportsStreaming: false,
+    featured: false,
+    verified: true,
+    skills: [
+      'Ingest memories from any source via a unified memory ingestion pipeline',
+      'Semantic retrieval of relevant memories ranked by context similarity',
+      'Build shared knowledge bases accessible across teams and agent instances',
+      'Store multiple content formats including text, URLs, and structured data',
+      'Collaborate on shared memory spaces with role-based access control',
+    ],
+  },
+
+  // ── Browser & Computer Use ──
+  {
+    name: 'Browserbase',
+    slug: 'browserbase',
+    description: 'Managed headless browser infrastructure for AI agents. Run Playwright or Puppeteer at scale with built-in proxies, CAPTCHA solving, and session management.',
+    providerName: 'Browserbase',
+    providerUrl: 'https://browserbase.com',
+    agentUrl: 'https://docs.browserbase.com',
+    categories: ['browser-computer'],
+    tags: ['browser-automation', 'headless-browser', 'playwright', 'puppeteer', 'web-scraping', 'ai-agents'],
+    authType: 'apiKey',
+    accessMethods: ['api'],
+    supportsStreaming: true,
+    featured: true,
+    verified: true,
+    skills: [
+      'Spin up managed headless browser sessions with Playwright or Puppeteer in seconds',
+      'Rotate residential proxies automatically to avoid blocks on target websites',
+      'Solve CAPTCHAs and handle bot-detection challenges on behalf of agents',
+      'Scrape and interact with web pages at scale with parallel session management',
+      'Maintain persistent browser state including cookies and local storage across runs',
+    ],
+  },
+  {
+    name: 'Steel',
+    slug: 'steel',
+    description: 'Open-source headless browser infrastructure for AI agents. Deploy managed browser sessions with built-in proxies and auth handling. Self-hosted or cloud.',
+    providerName: 'Steel',
+    providerUrl: 'https://steel.dev',
+    agentUrl: 'https://docs.steel.dev',
+    categories: ['browser-computer'],
+    tags: ['browser-automation', 'headless-browser', 'open-source', 'self-hosted', 'web-agents'],
+    authType: 'apiKey',
+    accessMethods: ['api'],
+    supportsStreaming: false,
+    featured: false,
+    verified: true,
+    skills: [
+      'Launch managed browser sessions for AI agents via a simple REST API',
+      'Route requests through rotating proxy pools to bypass geo and rate limits',
+      'Persist cookies and authentication tokens across browser sessions',
+      'Bypass browser fingerprinting with randomized session profiles',
+      'Orchestrate multiple concurrent browser sessions with unified session management',
+    ],
+  },
+  {
+    name: 'E2B',
+    slug: 'e2b',
+    description: 'Secure cloud sandboxes for AI agents to run code. Supports Python, JS, and shell. Persistent filesystem, network access, and sub-100ms cold starts.',
+    providerName: 'E2B',
+    providerUrl: 'https://e2b.dev',
+    agentUrl: 'https://e2b.dev/docs',
+    categories: ['browser-computer'],
+    tags: ['code-execution', 'sandbox', 'python', 'javascript', 'code-interpreter', 'cloud-compute'],
+    authType: 'apiKey',
+    accessMethods: ['api', 'cli'],
+    supportsStreaming: true,
+    featured: true,
+    verified: true,
+    skills: [
+      'Provision isolated cloud sandboxes for executing AI-generated code safely',
+      'Persist filesystem state across agent steps within a single sandbox session',
+      'Run Python, JavaScript, shell, and arbitrary language runtimes in each sandbox',
+      'Support long-running agent workloads with up to 24-hour sandbox lifetimes',
+      'Integrate as an OpenAI code interpreter drop-in or with any LLM framework',
+    ],
+  },
+  {
+    name: 'Daytona',
+    slug: 'daytona',
+    description: 'Secure compute platform for AI-generated code. Provisions isolated dev environments with git integration. Built for running untrusted agent-generated code safely.',
+    providerName: 'Daytona',
+    providerUrl: 'https://daytona.io',
+    agentUrl: 'https://www.daytona.io/docs',
+    categories: ['browser-computer'],
+    tags: ['sandbox', 'dev-environments', 'ai-agents', 'git', 'open-source', 'compute'],
+    authType: 'apiKey',
+    accessMethods: ['api', 'cli'],
+    supportsStreaming: false,
+    featured: false,
+    verified: true,
+    skills: [
+      'Provision isolated development workspaces for agent-generated code in seconds',
+      'Clone and manage git repositories inside secure sandboxed environments',
+      'Run multi-language runtimes including Python, Node.js, Go, and Rust safely',
+      'Execute untrusted AI code with network and filesystem isolation per workspace',
+      'Expose IDE server endpoints for agent-driven code editing and execution',
+    ],
+  },
+
+  // ── Vector Databases ──
+  {
+    name: 'Pinecone',
+    slug: 'pinecone',
+    description: 'Fully managed vector database for AI applications. Store and search billions of high-dimensional embeddings with low latency. Serverless and pod-based deployments.',
+    providerName: 'Pinecone',
+    providerUrl: 'https://pinecone.io',
+    agentUrl: 'https://docs.pinecone.io',
+    categories: ['vector-databases'],
+    tags: ['vector-database', 'embeddings', 'rag', 'semantic-search', 'serverless', 'managed'],
+    authType: 'apiKey',
+    accessMethods: ['api'],
+    supportsStreaming: false,
+    featured: true,
+    verified: true,
+    skills: [
+      'Store and index billions of high-dimensional embedding vectors with sub-second query latency',
+      'Perform approximate nearest-neighbor search with configurable recall and speed trade-offs',
+      'Upsert vectors in real-time with immediate consistency for live knowledge bases',
+      'Filter search results by structured metadata alongside vector similarity scoring',
+      'Combine dense and sparse vectors in a single query for hybrid retrieval pipelines',
+    ],
+  },
+  {
+    name: 'Qdrant',
+    slug: 'qdrant',
+    description: 'High-performance open-source vector database. Supports dense, sparse, and multi-vector search. On-premise or cloud. Rust-built for production-scale RAG pipelines.',
+    providerName: 'Qdrant',
+    providerUrl: 'https://qdrant.tech',
+    agentUrl: 'https://qdrant.tech/documentation',
+    categories: ['vector-databases'],
+    tags: ['vector-database', 'open-source', 'rag', 'embeddings', 'rust', 'self-hosted', 'semantic-search'],
+    authType: 'apiKey',
+    accessMethods: ['api', 'cli'],
+    supportsStreaming: false,
+    featured: true,
+    verified: true,
+    skills: [
+      'Index and query dense vectors with HNSW for high-recall approximate search',
+      'Support sparse vectors for keyword-style retrieval alongside semantic dense search',
+      'Apply complex payload filters to narrow search results without re-ranking overhead',
+      'Use named multi-vector collections for image, text, and code embedding co-search',
+      'Quantize vectors to reduce memory footprint by up to 32x with minimal recall loss',
+    ],
+  },
+  {
+    name: 'ChromaDB',
+    slug: 'chromadb',
+    description: 'Open-source embedding database for local and cloud AI apps. Simple API for storing, querying, and filtering embeddings. First choice for RAG prototyping.',
+    providerName: 'Chroma',
+    providerUrl: 'https://trychroma.com',
+    agentUrl: 'https://docs.trychroma.com',
+    categories: ['vector-databases'],
+    tags: ['vector-database', 'open-source', 'embeddings', 'rag', 'python', 'local-first'],
+    authType: 'none',
+    accessMethods: ['api', 'cli'],
+    supportsStreaming: false,
+    featured: true,
+    verified: true,
+    skills: [
+      'Store embedding vectors with associated documents and metadata in local collections',
+      'Query collections by embedding similarity with built-in distance function support',
+      'Filter results by metadata fields using a Pythonic where clause syntax',
+      'Embed documents automatically using built-in or custom embedding functions',
+      'Deploy locally for prototyping or switch to cloud-hosted Chroma for production',
+    ],
+  },
+
+  // ── Voice & Messaging ──
+  {
+    name: 'Vapi',
+    slug: 'vapi',
+    description: 'Voice AI platform for building production phone agents. Handles real-time STT, TTS, turn-taking, and LLM orchestration. Scalable to millions of concurrent calls.',
+    providerName: 'Vapi',
+    providerUrl: 'https://vapi.ai',
+    agentUrl: 'https://docs.vapi.ai',
+    categories: ['voice-messaging'],
+    tags: ['voice-ai', 'phone-agents', 'stt', 'tts', 'real-time', 'conversational-ai', 'telephony'],
+    authType: 'apiKey',
+    accessMethods: ['api'],
+    supportsStreaming: true,
+    supportsPushNotifications: true,
+    featured: true,
+    verified: true,
+    skills: [
+      'Build production voice agents for inbound and outbound phone calls with sub-500ms latency',
+      'Clone custom voices or choose from dozens of built-in TTS providers per call',
+      'Record, transcribe, and analyze every call with structured JSON summaries',
+      'Route calls to different LLMs and prompts based on caller intent and context',
+      'Launch outbound call campaigns targeting thousands of numbers with parallel dialing',
+    ],
+  },
+  {
+    name: 'Kapso',
+    slug: 'kapso',
+    description: 'WhatsApp AI agent platform. Build and deploy conversational agents on WhatsApp Business API with no-code flows, LLM integration, and CRM connectors.',
+    providerName: 'Kapso',
+    providerUrl: 'https://kapso.io',
+    agentUrl: 'https://kapso.io/docs',
+    categories: ['voice-messaging'],
+    tags: ['whatsapp', 'conversational-ai', 'messaging', 'no-code', 'crm', 'customer-engagement'],
+    authType: 'apiKey',
+    accessMethods: ['api'],
+    supportsStreaming: false,
+    featured: false,
+    verified: true,
+    skills: [
+      'Deploy AI agents on WhatsApp Business API with official Meta compliance',
+      'Build conversation flows visually without code using a drag-and-drop flow editor',
+      'Power agent responses with any LLM via configurable prompts and retrieval',
+      'Sync customer data bi-directionally with connected CRM platforms',
+      'Serve agents in multiple languages with automatic language detection',
+    ],
+  },
+
+  // ── Infrastructure: Observability & Tooling ──
+  {
+    name: 'AgentOps',
+    slug: 'agentops',
+    description: 'Observability platform purpose-built for AI agents. Track agent sessions, LLM calls, tool use, and costs. Integrates with LangChain, CrewAI, AutoGen, and OpenAI.',
+    providerName: 'AgentOps',
+    providerUrl: 'https://agentops.ai',
+    agentUrl: 'https://docs.agentops.ai',
+    categories: ['infrastructure'],
+    tags: ['observability', 'monitoring', 'llm-tracing', 'agent-debugging', 'langchain', 'crewai', 'python'],
+    authType: 'apiKey',
+    accessMethods: ['api'],
+    supportsStreaming: false,
+    featured: true,
+    verified: true,
+    skills: [
+      'Record full agent sessions including every LLM call, tool use, and state transition',
+      'Track token usage and costs per agent run across all major LLM providers',
+      'Monitor tool execution timing and failures to diagnose agent bottlenecks',
+      'Replay any agent session step-by-step for debugging and root cause analysis',
+      'Integrate with LangChain, CrewAI, AutoGen, and OpenAI SDK in two lines of code',
+    ],
+  },
+  {
+    name: 'Langfuse',
+    slug: 'langfuse',
+    description: 'Open-source LLM observability and analytics. Trace, evaluate, and debug LLM apps with prompt versioning, score tracking, and a full analytics dashboard.',
+    providerName: 'Langfuse',
+    providerUrl: 'https://langfuse.com',
+    agentUrl: 'https://langfuse.com/docs',
+    categories: ['infrastructure'],
+    tags: ['observability', 'open-source', 'llm-tracing', 'prompt-management', 'evaluation', 'self-hosted'],
+    authType: 'apiKey',
+    accessMethods: ['api', 'cli'],
+    supportsStreaming: false,
+    featured: true,
+    verified: true,
+    skills: [
+      'Trace every LLM call and chain step with full input/output capture and latency',
+      'Version and manage prompts with a/b testing and rollback across environments',
+      'Score traces with custom evaluation rubrics to track quality over time',
+      'Analyze user session funnels, latency distributions, and token cost trends',
+      'Self-host on any infrastructure or use Langfuse Cloud with zero configuration',
+    ],
+  },
+  {
+    name: 'Portkey',
+    slug: 'portkey',
+    description: 'AI gateway with unified API for 200+ LLMs, plus observability, caching, fallbacks, and cost management. Drop-in replacement for the OpenAI SDK.',
+    providerName: 'Portkey',
+    providerUrl: 'https://portkey.ai',
+    agentUrl: 'https://portkey.ai/docs',
+    categories: ['infrastructure'],
+    tags: ['ai-gateway', 'observability', 'llm-routing', 'cost-management', 'openai-compatible', 'caching'],
+    authType: 'apiKey',
+    accessMethods: ['api'],
+    supportsStreaming: true,
+    featured: true,
+    verified: true,
+    skills: [
+      'Route requests across 200+ LLMs with a single unified OpenAI-compatible API',
+      'Fail over to backup models automatically when primary providers return errors',
+      'Cache identical prompts semantically to cut costs and reduce latency',
+      'Track per-model costs, latency, and error rates in a real-time analytics dashboard',
+      'Manage prompts centrally with version control and per-environment overrides',
+    ],
+  },
+  {
+    name: 'Composio',
+    slug: 'composio',
+    description: 'Tool integration platform for AI agents. 250+ pre-built integrations with GitHub, Slack, Salesforce, and more. Handles OAuth, rate limits, and action execution.',
+    providerName: 'Composio',
+    providerUrl: 'https://composio.dev',
+    agentUrl: 'https://docs.composio.dev',
+    categories: ['infrastructure'],
+    tags: ['tool-integration', 'saas-tools', 'oauth', 'langchain', 'crewai', 'github', 'slack', 'automation'],
+    authType: 'apiKey',
+    accessMethods: ['api', 'mcp'],
+    supportsStreaming: false,
+    featured: true,
+    verified: true,
+    skills: [
+      'Connect AI agents to 250+ SaaS tools with pre-built action and trigger schemas',
+      'Manage OAuth 2.0 flows and token refresh for every connected integration automatically',
+      'Execute actions on third-party services on behalf of authenticated users securely',
+      'Generate tool schemas compatible with LangChain, CrewAI, and OpenAI function calling',
+      'Share tool connections across agents in a multi-agent pipeline with unified auth',
+    ],
+  },
+  {
+    name: 'Nango',
+    slug: 'nango',
+    description: 'Open-source OAuth and API integration platform. 300+ pre-built integrations. Handles token refresh, rate limits, and webhooks for any API your agents call.',
+    providerName: 'Nango',
+    providerUrl: 'https://nango.dev',
+    agentUrl: 'https://docs.nango.dev',
+    categories: ['infrastructure'],
+    tags: ['oauth', 'api-integrations', 'open-source', 'self-hosted', 'token-management', 'webhooks'],
+    authType: 'oauth2',
+    accessMethods: ['api'],
+    supportsStreaming: false,
+    featured: false,
+    verified: true,
+    skills: [
+      'Handle OAuth 2.0 and API key flows for 300+ providers without writing auth code',
+      'Refresh tokens automatically before expiry so agent calls never fail mid-run',
+      'Normalize webhooks from any provider into a consistent format for your pipeline',
+      'Store credentials securely with per-user and per-connection isolation',
+      'Monitor integration health with per-connection error logs and retry metrics',
+    ],
+  },
+
+  // ── Research / Knowledge ──
+  {
+    name: 'Ragie',
+    slug: 'ragie',
+    description: 'Retrieval API for AI applications. Ingest PDFs, web pages, and files, then query with semantic search. Built-in chunking, embedding, and reranking pipeline.',
+    providerName: 'Ragie',
+    providerUrl: 'https://ragie.ai',
+    agentUrl: 'https://docs.ragie.ai',
+    categories: ['research'],
+    tags: ['retrieval', 'rag', 'knowledge-base', 'semantic-search', 'document-ai', 'embeddings'],
+    authType: 'apiKey',
+    accessMethods: ['api'],
+    supportsStreaming: false,
+    featured: true,
+    verified: true,
+    skills: [
+      'Ingest PDFs, DOCX, web pages, and 20+ file types into a managed retrieval pipeline',
+      'Chunk and embed documents automatically with state-of-the-art embedding models',
+      'Rerank candidate passages by relevance before returning results to your agent',
+      'Support multi-format documents including images with vision-based extraction',
+      'Sync document sources in real-time so your knowledge base stays up to date',
+    ],
+  },
+
+  // ── Sales & Marketing ──
+  {
+    name: 'monid.ai',
+    slug: 'monid-ai',
+    description: 'AI agent platform for social media monitoring and engagement. Tracks brand mentions, analyzes sentiment, and drafts AI-powered responses across channels.',
+    providerName: 'monid.ai',
+    providerUrl: 'https://monid.ai',
+    agentUrl: 'https://monid.ai',
+    categories: ['sales-marketing'],
+    tags: ['social-media', 'monitoring', 'sentiment-analysis', 'brand-management', 'marketing-automation'],
+    authType: 'apiKey',
+    accessMethods: ['api'],
+    supportsStreaming: false,
+    featured: false,
+    verified: false,
+    skills: [
+      'Monitor brand mentions and keywords across major social media platforms in real time',
+      'Analyze sentiment and tone of social content with AI-powered classification',
+      'Draft contextual response suggestions for social media engagement',
+      'Track competitor activity and share-of-voice across platforms',
+      'Aggregate engagement analytics into a unified social performance dashboard',
+    ],
+  },
 ];
 
 async function updateDescriptionAndPublish(slug: string, newDescription: string) {
@@ -1214,6 +1723,46 @@ async function main() {
     sortOrder: 13,
   });
   if (commerceId) CAT['commerce-payments'] = commerceId;
+
+  const memoryId = await createCategory({
+    name: 'Memory & State',
+    slug: 'memory-state',
+    description: 'Persistent memory and state management layers for AI agents. Store, retrieve, and reason over long-term user context, preferences, and knowledge across sessions.',
+    icon: 'Brain',
+    sortOrder: 14,
+  });
+  if (memoryId) CAT['memory-state'] = memoryId;
+
+  const browserId = await createCategory({
+    name: 'Browser & Computer Use',
+    slug: 'browser-computer',
+    description: 'Headless browser infrastructure and secure code execution sandboxes for AI agents. Run agents that browse the web, interact with UIs, and execute code safely.',
+    icon: 'Monitor',
+    sortOrder: 15,
+  });
+  if (browserId) CAT['browser-computer'] = browserId;
+
+  const vectorId = await createCategory({
+    name: 'Vector Databases',
+    slug: 'vector-databases',
+    description: 'High-performance vector stores for AI-native search and retrieval. Store embeddings, power semantic search, and build production RAG pipelines at any scale.',
+    icon: 'Database',
+    sortOrder: 16,
+  });
+  if (vectorId) CAT['vector-databases'] = vectorId;
+
+  const voiceId = await createCategory({
+    name: 'Voice & Messaging',
+    slug: 'voice-messaging',
+    description: 'AI platforms for voice calls, phone agents, and conversational messaging across WhatsApp, SMS, and email. Build agents that talk, listen, and message at scale.',
+    icon: 'Phone',
+    sortOrder: 17,
+  });
+  if (voiceId) CAT['voice-messaging'] = voiceId;
+
+  // Move here.now to the Browser & Computer Use category
+  console.log('\n── Moving here.now → browser-computer ──');
+  await updateCategory('here-now', 'browser-computer');
 
   // Fix drafts from previous runs: update descriptions + publish
   console.log('\n── Fixing & publishing stuck drafts ──');

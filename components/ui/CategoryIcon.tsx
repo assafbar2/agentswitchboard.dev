@@ -12,6 +12,10 @@ import {
   Calendar,
   Shield,
   ShoppingCart,
+  Brain,
+  Monitor,
+  Database,
+  Phone,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -29,6 +33,10 @@ const iconMap: Record<string, LucideIcon> = {
   Calendar,
   Shield,
   ShoppingCart,
+  Brain,
+  Monitor,
+  Database,
+  Phone,
 };
 
 export function CategoryIcon({
