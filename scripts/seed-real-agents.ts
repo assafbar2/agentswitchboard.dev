@@ -1402,6 +1402,28 @@ const agents = [
       'Expose IDE server endpoints for agent-driven code editing and execution',
     ],
   },
+  {
+    name: 'Browser Use',
+    slug: 'browser-use',
+    description: 'Open-source Python library for AI browser automation. Control any website with natural language; cloud adds stealth browsers, proxies, and CAPTCHA solving.',
+    providerName: 'Browser Use',
+    providerUrl: 'https://browser-use.com',
+    agentUrl: 'https://browser-use.com',
+    categories: ['browser-computer'],
+    tags: ['browser-automation', 'web-scraping', 'open-source', 'python', 'stealth', 'captcha', 'playwright'],
+    authType: 'apiKey',
+    accessMethods: ['api', 'cli'],
+    supportsStreaming: false,
+    featured: true,
+    verified: true,
+    skills: [
+      { id: 'nl-control', name: 'Natural Language Control', description: 'Instruct AI agents to navigate and interact with any website using plain English commands' },
+      { id: 'stealth-browser', name: 'Stealth Browser', description: 'Anti-detection headless browsers with CAPTCHA solving and rotating proxies across 195+ countries' },
+      { id: 'web-to-api', name: 'Web-to-API', description: 'Convert any website into a reliable programmatic API endpoint for agent consumption' },
+      { id: 'vision-extraction', name: 'Vision & Extraction', description: 'Extract structured data from pages using computer vision and DOM analysis' },
+      { id: 'multi-tab', name: 'Multi-Tab Orchestration', description: 'Manage multiple browser tabs and sessions simultaneously for complex agent workflows' },
+    ],
+  },
 
   // ── Vector Databases ──
   {
@@ -1708,6 +1730,30 @@ async function updateDescriptionAndPublish(slug: string, newDescription: string)
   }
 }
 
+async function updateMultipleFields(slug: string, patch: Record<string, any>) {
+  await refreshTokenIfNeeded();
+  const entry = await findEntry(slug);
+  if (!entry) { console.log(`  ⚠️  ${slug} not found`); return; }
+  const ver = entry.sys.version;
+  for (const [key, val] of Object.entries(patch)) {
+    entry.fields[key] = { 'en-US': val };
+  }
+  const updated = await cma(`/entries/${entry.sys.id}`, {
+    method: 'PUT',
+    headers: { 'X-Contentful-Version': String(ver) } as any,
+    body: JSON.stringify({ fields: entry.fields }),
+  });
+  if (updated.sys?.id) {
+    await cma(`/entries/${updated.sys.id}/published`, {
+      method: 'PUT',
+      headers: { 'X-Contentful-Version': String(updated.sys.version) } as any,
+    });
+    console.log(`  🔄 Updated ${slug}: ${Object.keys(patch).join(', ')}`);
+  } else {
+    console.log(`  ❌ Update failed for ${slug}: ${JSON.stringify(updated).slice(0, 200)}`);
+  }
+}
+
 // ── Main ─────────────────────────────────────────────────────────
 async function main() {
   console.log(`\n🚀 Seeding ${agents.length} real agents...\n`);
@@ -1791,6 +1837,21 @@ async function main() {
   console.log('\n── Updating existing agents with accessMethods ──');
   await updateAccessMethods('agentmail', ['api', 'mcp', 'cli']);
   await updateAccessMethods('here-now', ['api']);
+
+  // Refresh Intercom Fin with CLI access method, updated skills and URL
+  console.log('\n── Refreshing Intercom Fin (CLI added) ──');
+  await updateMultipleFields('intercom-fin', {
+    description: 'AI customer service agent and CLI. Resolves 50%+ of support volume; Fin CLI lets AI agents configure, publish, and manage Intercom from the terminal.',
+    accessMethods: ['api', 'mcp', 'cli'],
+    agentUrl: 'https://fin.ai/cli',
+    skills: [
+      { id: 'cli-setup', name: 'CLI Setup & Config', description: 'Zero-config terminal setup for Intercom helpdesk via npm install -g @intercom/cli' },
+      { id: 'content-import', name: 'Content Import', description: 'Import articles and help content into Intercom from the terminal in one command' },
+      { id: 'auto-resolution', name: 'Auto Resolution', description: 'Resolves 50%+ of support tickets instantly using help center and conversation history' },
+      { id: 'multi-channel', name: 'Multi-Channel Support', description: 'Handles customer queries across live chat, email, phone, and social from one agent' },
+      { id: 'deploy-publish', name: 'Deploy & Publish', description: 'Deploys Fin live and publishes Intercom Messenger config changes via CLI commands' },
+    ],
+  });
 
   console.log('\n── Creating new agents ──');
   let created = 0;
