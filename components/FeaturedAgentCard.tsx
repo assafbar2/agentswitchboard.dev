@@ -15,6 +15,15 @@ const LABEL_CONFIG = {
     ),
     topLine: 'bg-gradient-to-r from-transparent via-amber-400/50 to-transparent',
   },
+  featured: {
+    badge: (
+      <Badge variant="blue">
+        <Zap className="w-3 h-3" />
+        Featured
+      </Badge>
+    ),
+    topLine: 'bg-gradient-to-r from-transparent via-blue-400/50 to-transparent',
+  },
   new: {
     badge: (
       <Badge variant="accent">

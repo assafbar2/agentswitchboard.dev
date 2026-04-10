@@ -218,45 +218,39 @@ export async function getFeaturedAgents(): Promise<Agent[]> {
 }
 
 export async function getHomepageAgents(): Promise<HomepageAgent[]> {
-  const SLOTS = 6;
+  // Pinned slots — always first, in this order
+  const PINNED: Array<{ slug: string; label: HomepageAgent['label'] }> = [
+    { slug: 'agentmail',      label: 'editors-pick' },
+    { slug: 'here-now',       label: 'featured' },
+    { slug: 'playwright-mcp', label: 'featured' },
+  ];
 
-  // Fetch featured agents (Editor's Pick)
-  const featuredEntries = await contentfulClient.getEntries({
-    content_type: 'agent',
-    'fields.featured': true,
-    'fields.status': 'published',
-    include: 2,
-    limit: SLOTS,
-    order: ['-sys.createdAt'],
-  });
+  const pinnedResults = await Promise.all(
+    PINNED.map(async ({ slug, label }) => {
+      const agent = await getAgentBySlug(slug);
+      return agent ? { agent, label } : null;
+    })
+  );
+  const pinned = pinnedResults.filter(Boolean) as HomepageAgent[];
+  const pinnedIds = new Set(pinned.map((p) => p.agent.id));
 
-  const now = new Date().toISOString();
-  const featured: HomepageAgent[] = featuredEntries.items
-    .map(mapAgent)
-    .filter((a) => !a.featuredUntil || a.featuredUntil >= now)
-    .slice(0, SLOTS)
-    .map((agent) => ({ agent, label: 'editors-pick' as const }));
-
-  if (featured.length >= SLOTS) return featured;
-
-  // Fill remaining slots with newest non-featured agents
-  const featuredIds = new Set(featured.map((f) => f.agent.id));
+  // Fetch newest agents to fill the remaining 4 slots
   const newEntries = await contentfulClient.getEntries({
     content_type: 'agent',
-    'fields.featured': false,
     'fields.status': 'published',
     include: 2,
-    limit: SLOTS * 2, // fetch extra to account for filtering
+    limit: 20, // fetch extra, we'll filter and trim
     order: ['-sys.createdAt'],
   });
 
   const newest: HomepageAgent[] = newEntries.items
     .map(mapAgent)
-    .filter((a) => !featuredIds.has(a.id))
-    .slice(0, SLOTS - featured.length)
+    .filter((a) => !pinnedIds.has(a.id))
+    .slice(0, 3)
+    .sort((a, b) => a.name.localeCompare(b.name))
     .map((agent) => ({ agent, label: 'new' as const }));
 
-  return [...featured, ...newest];
+  return [...pinned, ...newest];
 }
 
 export async function getSiteSettings(): Promise<SiteSettings | null> {
