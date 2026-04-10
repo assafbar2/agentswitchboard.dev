@@ -21,7 +21,7 @@ const footerLinks = [
     title: 'Company',
     links: [
       { href: '/disclaimer', label: 'Disclaimer' },
-      { href: 'mailto:hello@agentswitchboard.dev', label: 'Contact Us', external: true },
+      { href: 'mailto:barnir@agentmail.to?subject=Hey from Agent Switchboard', label: 'Contact Us', external: true },
     ],
   },
 ];
