@@ -80,7 +80,7 @@ export interface AgentSkill {
   outputSchema?: Record<string, unknown>;
 }
 
-export type AgentLabel = 'editors-pick' | 'new';
+export type AgentLabel = 'editors-pick' | 'featured' | 'new';
 
 export interface HomepageAgent {
   agent: Agent;
