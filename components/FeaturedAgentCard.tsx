@@ -1,25 +1,55 @@
 import Link from 'next/link';
-import { Verified, ArrowRight, Zap } from 'lucide-react';
+import { Verified, ArrowRight, Zap, Star, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
 import { AccessMethodBadges } from '@/components/ui/AccessMethodBadges';
-import type { Agent } from '@/lib/types';
+import type { Agent, AgentLabel } from '@/lib/types';
 import { truncate } from '@/lib/utils';
+
+const LABEL_CONFIG = {
+  'editors-pick': {
+    badge: (
+      <Badge variant="amber">
+        <Star className="w-3 h-3" />
+        Editor&apos;s Pick
+      </Badge>
+    ),
+    topLine: 'bg-gradient-to-r from-transparent via-amber-400/50 to-transparent',
+  },
+  new: {
+    badge: (
+      <Badge variant="accent">
+        <Sparkles className="w-3 h-3" />
+        New
+      </Badge>
+    ),
+    topLine: 'bg-gradient-to-r from-transparent via-[var(--accent)]/40 to-transparent',
+  },
+};
 
 export function FeaturedAgentCard({
   agent,
+  label,
   index = 0,
 }: {
   agent: Agent;
+  label?: AgentLabel;
   index?: number;
 }) {
+  const labelCfg = label ? LABEL_CONFIG[label] : null;
+
   return (
     <Link
       href={`/agents/${agent.slug}`}
       className="card relative overflow-hidden p-6 group animate-fade-in"
       style={{ animationDelay: `${index * 80}ms` }}
     >
-      {/* Accent glow top border */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[var(--accent)]/40 to-transparent" />
+      {/* Top accent line — amber for Editor's Pick, green for New */}
+      <div
+        className={`absolute top-0 inset-x-0 h-px ${
+          labelCfg?.topLine ??
+          'bg-gradient-to-r from-transparent via-[var(--accent)]/40 to-transparent'
+        }`}
+      />
 
       {/* Header */}
       <div className="flex items-start gap-3 mb-4">
@@ -49,9 +79,13 @@ export function FeaturedAgentCard({
             by {agent.providerName}
           </p>
         </div>
-        {agent.sponsorLabel && (
+
+        {/* Label or sponsor badge */}
+        {labelCfg ? (
+          labelCfg.badge
+        ) : agent.sponsorLabel ? (
           <Badge variant="amber">{agent.sponsorLabel}</Badge>
-        )}
+        ) : null}
       </div>
 
       {/* Description */}
@@ -83,10 +117,7 @@ export function FeaturedAgentCard({
       <div className="flex items-center justify-between">
         <div className="flex gap-1.5">
           {agent.categories.slice(0, 2).map((cat) => (
-            <span
-              key={cat.id}
-              className="text-xs text-[var(--text-muted)]"
-            >
+            <span key={cat.id} className="text-xs text-[var(--text-muted)]">
               {cat.name}
             </span>
           ))}

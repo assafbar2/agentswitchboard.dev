@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { ArrowRight, Terminal } from 'lucide-react';
 import { SearchBar } from '@/components/SearchBar';
 import {
-  getFeaturedAgents,
+  getHomepageAgents,
   getAllCategories,
   getAgentCount,
   getUniqueProviderCount,
@@ -26,9 +26,9 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const [featured, categories, agentCount, providerCount, settings] =
+  const [homepageAgents, categories, agentCount, providerCount, settings] =
     await Promise.all([
-      getFeaturedAgents(),
+      getHomepageAgents(),
       getAllCategories(),
       getAgentCount(),
       getUniqueProviderCount(),
@@ -118,20 +118,20 @@ export default async function HomePage() {
       </section>
 
       {/* ── Featured Agents ─────────────────────────────────────── */}
-      {featured.length > 0 && (
+      {homepageAgents.length > 0 && (
         <section className="section">
           <div className="container-wide">
             <div className="flex items-end justify-between mb-8">
               <div>
                 <h2 className="text-2xl font-bold tracking-tight">
-                  Featured Agents
+                  Top Agents
                 </h2>
                 <p className="text-sm text-[var(--text-secondary)] mt-1">
-                  Hand-picked agents leading the A2A ecosystem
+                  Editor&apos;s picks and the latest additions to the switchboard
                 </p>
               </div>
               <Link
-                href="/browse?featured=true"
+                href="/browse"
                 className="hidden sm:flex items-center gap-1 text-sm text-[var(--accent)] hover:underline"
               >
                 View all <ArrowRight className="w-3.5 h-3.5" />
@@ -139,8 +139,8 @@ export default async function HomePage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {featured.map((agent, i) => (
-                <FeaturedAgentCard key={agent.id} agent={agent} index={i} />
+              {homepageAgents.map(({ agent, label }, i) => (
+                <FeaturedAgentCard key={agent.id} agent={agent} label={label} index={i} />
               ))}
             </div>
           </div>

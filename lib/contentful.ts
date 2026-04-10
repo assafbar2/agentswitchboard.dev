@@ -1,6 +1,6 @@
 import { createClient } from 'contentful';
 import { createClient as createManagementClient } from 'contentful-management';
-import type { Agent, AgentQueryOptions, AgentSkill, Category, SiteSettings } from './types';
+import type { Agent, AgentQueryOptions, AgentSkill, Category, HomepageAgent, SiteSettings } from './types';
 import type { Document } from '@contentful/rich-text-types';
 
 // ── Clients ─────────────────────────────────────────────────────────
@@ -66,6 +66,7 @@ function mapAgent(entry: any): Agent {
     discoveredBy: f.discoveredBy ?? 'manual',
     workerSource: f.workerSource,
     accessMethods: f.accessMethods ?? [],
+    createdAt: entry.sys.createdAt,
   };
 }
 
@@ -214,6 +215,48 @@ export async function getFeaturedAgents(): Promise<Agent[]> {
   return entries.items
     .map(mapAgent)
     .filter((a) => !a.featuredUntil || a.featuredUntil >= now);
+}
+
+export async function getHomepageAgents(): Promise<HomepageAgent[]> {
+  const SLOTS = 6;
+
+  // Fetch featured agents (Editor's Pick)
+  const featuredEntries = await contentfulClient.getEntries({
+    content_type: 'agent',
+    'fields.featured': true,
+    'fields.status': 'published',
+    include: 2,
+    limit: SLOTS,
+    order: ['-sys.createdAt'],
+  });
+
+  const now = new Date().toISOString();
+  const featured: HomepageAgent[] = featuredEntries.items
+    .map(mapAgent)
+    .filter((a) => !a.featuredUntil || a.featuredUntil >= now)
+    .slice(0, SLOTS)
+    .map((agent) => ({ agent, label: 'editors-pick' as const }));
+
+  if (featured.length >= SLOTS) return featured;
+
+  // Fill remaining slots with newest non-featured agents
+  const featuredIds = new Set(featured.map((f) => f.agent.id));
+  const newEntries = await contentfulClient.getEntries({
+    content_type: 'agent',
+    'fields.featured': false,
+    'fields.status': 'published',
+    include: 2,
+    limit: SLOTS * 2, // fetch extra to account for filtering
+    order: ['-sys.createdAt'],
+  });
+
+  const newest: HomepageAgent[] = newEntries.items
+    .map(mapAgent)
+    .filter((a) => !featuredIds.has(a.id))
+    .slice(0, SLOTS - featured.length)
+    .map((agent) => ({ agent, label: 'new' as const }));
+
+  return [...featured, ...newest];
 }
 
 export async function getSiteSettings(): Promise<SiteSettings | null> {

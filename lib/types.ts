@@ -80,10 +80,18 @@ export interface AgentSkill {
   outputSchema?: Record<string, unknown>;
 }
 
+export type AgentLabel = 'editors-pick' | 'new';
+
+export interface HomepageAgent {
+  agent: Agent;
+  label: AgentLabel;
+}
+
 export interface Agent {
   id: string;
   name: string;
   slug: string;
+  createdAt?: string;
   description: string;
   longDescription?: Document;
   providerName: string;
