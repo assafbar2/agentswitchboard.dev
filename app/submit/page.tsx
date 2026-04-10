@@ -17,10 +17,10 @@ export default function SubmitPage() {
           and we&apos;ll get it listed.
         </p>
         <a
-          href="mailto:hello@upgraide.co?subject=Agent Submission — [Agent Name]"
+          href="mailto:barnir@agentmail.to?subject=Agent Submission — [Agent Name]"
           className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--accent)] text-[var(--bg-primary)] font-medium text-sm hover:opacity-90 transition-opacity mb-4"
         >
-          hello@upgraide.co
+          barnir@agentmail.to
         </a>
         <p className="text-xs text-[var(--text-muted)]">
           Please include: agent name, URL, description, and access methods (API/MCP/CLI/Extension).

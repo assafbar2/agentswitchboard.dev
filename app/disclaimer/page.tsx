@@ -79,10 +79,10 @@ export default function DisclaimerPage() {
             <p>
               Questions about this disclaimer?{' '}
               <a
-                href="mailto:hello@upgraide.co"
+                href="mailto:barnir@agentmail.to?subject=Question about Agent Switchboard"
                 className="text-[var(--accent)] hover:underline"
               >
-                hello@upgraide.co
+                barnir@agentmail.to
               </a>
             </p>
           </section>

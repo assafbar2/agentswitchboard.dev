@@ -17,10 +17,10 @@ export default function AdvertisePage() {
           Reach out to discuss featured listings, sponsored slots, and partnership opportunities.
         </p>
         <a
-          href="mailto:hello@upgraide.co?subject=Advertising Inquiry — Agent Switchboard"
+          href="mailto:barnir@agentmail.to?subject=Advertising Inquiry — Agent Switchboard"
           className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--accent)] text-[var(--bg-primary)] font-medium text-sm hover:opacity-90 transition-opacity"
         >
-          hello@upgraide.co
+          barnir@agentmail.to
         </a>
       </div>
     </div>

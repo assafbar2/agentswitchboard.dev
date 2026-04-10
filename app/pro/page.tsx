@@ -17,12 +17,12 @@ export default function ProPage() {
           and priority support. Interested in early access?
         </p>
         <a
-          href="mailto:hello@upgraide.co?subject=Pro Access Inquiry — Agent Switchboard"
+          href="mailto:barnir@agentmail.to?subject=Pro Access Inquiry — Agent Switchboard"
           className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--accent)] text-[var(--bg-primary)] font-medium text-sm hover:opacity-90 transition-opacity mb-4"
         >
           Get in touch
         </a>
-        <p className="text-xs text-[var(--text-muted)]">hello@upgraide.co</p>
+        <p className="text-xs text-[var(--text-muted)]">barnir@agentmail.to</p>
       </div>
     </div>
   );
