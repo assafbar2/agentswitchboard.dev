@@ -1,10 +1,13 @@
 import { getCategoryBySlug, getAllCategories } from '@/lib/contentful';
 import { AgentCard } from '@/components/AgentCard';
 import { CategoryIcon } from '@/components/ui/CategoryIcon';
+import { JsonLd } from '@/components/JsonLd';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
 export const revalidate = 60;
+
+const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev';
 
 export async function generateStaticParams() {
   const categories = await getAllCategories();
@@ -19,9 +22,30 @@ export async function generateMetadata({
   const { slug } = await params;
   const result = await getCategoryBySlug(slug);
   if (!result) return { title: 'Category Not Found' };
+
+  const { category } = result;
+  const url = `${BASE_URL}/categories/${slug}`;
+  const title = `${category.name} AI Agents`;
+  const description =
+    category.description ||
+    `Browse the best ${category.name} AI agents — compare features, access methods, and integrations.`;
+
   return {
-    title: result.category.name,
-    description: result.category.description || `A2A agents in ${result.category.name}`,
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: `${title} | Agent Switchboard`,
+      description,
+      url,
+      type: 'website',
+      siteName: 'Agent Switchboard',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${title} | Agent Switchboard`,
+      description,
+    },
   };
 }
 
@@ -35,9 +59,27 @@ export default async function CategoryPage({
   if (!result) notFound();
 
   const { category, agents } = result;
+  const url = `${BASE_URL}/categories/${slug}`;
+
+  const listSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: `${category.name} AI Agents`,
+    description: category.description,
+    url,
+    numberOfItems: agents.length,
+    itemListElement: agents.map((agent, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: agent.name,
+      url: `${BASE_URL}/agents/${agent.slug}`,
+      description: agent.description,
+    })),
+  };
 
   return (
     <div className="container-wide section">
+      <JsonLd schema={listSchema} />
       <div className="mb-10 flex items-center gap-3">
         <span className="text-[var(--text-secondary)]">
           <CategoryIcon name={category.icon} className="w-7 h-7" />

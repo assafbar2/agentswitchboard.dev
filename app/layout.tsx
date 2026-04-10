@@ -19,20 +19,29 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Agent Switchboard — The A2A Agent Directory',
+    default: 'Agent Switchboard — AI Agent Directory',
     template: '%s | Agent Switchboard',
   },
   description:
-    'Discover, compare, and connect with AI agents that speak the A2A protocol. The curated directory for the agentic web.',
+    'Browse, compare, and integrate AI agents with real API, MCP, and CLI access. The curated directory for developers building on the agentic web.',
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev'
   ),
+  alternates: {
+    canonical: process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev',
+  },
   openGraph: {
     type: 'website',
     siteName: 'Agent Switchboard',
-    title: 'Agent Switchboard — The A2A Agent Directory',
+    title: 'Agent Switchboard — AI Agent Directory',
     description:
-      'Discover, compare, and connect with AI agents that speak the A2A protocol.',
+      'Browse, compare, and integrate AI agents with real API, MCP, and CLI access. The curated directory for developers building on the agentic web.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Agent Switchboard — AI Agent Directory',
+    description:
+      'Browse, compare, and integrate AI agents with real API, MCP, and CLI access.',
   },
 };
 

@@ -11,8 +11,19 @@ import {
 import { FeaturedAgentCard } from '@/components/FeaturedAgentCard';
 import { CategoryCard } from '@/components/CategoryCard';
 import { StatCounter } from '@/components/ui/StatCounter';
+import { JsonLd } from '@/components/JsonLd';
+import type { Metadata } from 'next';
 
 export const revalidate = 60;
+
+const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev';
+
+export const metadata: Metadata = {
+  alternates: { canonical: BASE_URL },
+  openGraph: {
+    url: BASE_URL,
+  },
+};
 
 export default async function HomePage() {
   const [featured, categories, agentCount, providerCount, settings] =
@@ -24,8 +35,34 @@ export default async function HomePage() {
       getSiteSettings(),
     ]);
 
+  const homeSchema = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'Agent Switchboard',
+      url: BASE_URL,
+      description: 'Browse, compare, and integrate AI agents with real API, MCP, and CLI access.',
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: `${BASE_URL}/browse?q={search_term_string}`,
+        },
+        'query-input': 'required name=search_term_string',
+      },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'Agent Switchboard',
+      url: BASE_URL,
+      description: 'The curated AI agent directory for developers building on the agentic web.',
+    },
+  ];
+
   return (
     <>
+      <JsonLd schema={homeSchema as any} />
       {/* ── Hero ────────────────────────────────────────────────── */}
       <section className="pt-16 pb-8 relative overflow-hidden">
         {/* Top gradient wash */}

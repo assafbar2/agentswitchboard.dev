@@ -1,5 +1,8 @@
 import { getAgentBySlug, getAllAgents } from '@/lib/contentful';
 import { Badge } from '@/components/ui/Badge';
+import { AgentCard } from '@/components/AgentCard';
+import { JsonLd } from '@/components/JsonLd';
+import { getRelatedAgents } from '@/lib/related';
 import { notFound } from 'next/navigation';
 import { Verified, ExternalLink, Zap, Shield, Radio, Bell } from 'lucide-react';
 import { authTypeLabel } from '@/lib/utils';
@@ -8,8 +11,10 @@ import type { Metadata } from 'next';
 
 export const revalidate = 60;
 
+const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev';
+
 export async function generateStaticParams() {
-  const { agents } = await getAllAgents({ limit: 100 });
+  const { agents } = await getAllAgents({ limit: 500 });
   return agents.map((a) => ({ slug: a.slug }));
 }
 
@@ -21,9 +26,27 @@ export async function generateMetadata({
   const { slug } = await params;
   const agent = await getAgentBySlug(slug);
   if (!agent) return { title: 'Agent Not Found' };
+
+  const url = `${BASE_URL}/agents/${slug}`;
+  const categoryNames = agent.categories.map((c) => c.name).join(', ');
+  const ogTitle = `${agent.name} — ${categoryNames} AI Agent`;
+
   return {
     title: agent.name,
     description: agent.description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: ogTitle,
+      description: agent.description,
+      url,
+      type: 'website',
+      siteName: 'Agent Switchboard',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: ogTitle,
+      description: agent.description,
+    },
   };
 }
 
@@ -33,11 +56,35 @@ export default async function AgentPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const agent = await getAgentBySlug(slug);
+  const [agent, { agents: allAgents }] = await Promise.all([
+    getAgentBySlug(slug),
+    getAllAgents({ limit: 500 }),
+  ]);
   if (!agent) notFound();
+
+  const related = getRelatedAgents(agent, allAgents);
+
+  const agentSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: agent.name,
+    description: agent.description,
+    url: agent.agentUrl,
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Cloud',
+    provider: {
+      '@type': 'Organization',
+      name: agent.providerName,
+      url: agent.providerUrl,
+    },
+    ...(agent.authType === 'none'
+      ? { offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } }
+      : {}),
+  };
 
   return (
     <div className="container-wide section">
+      <JsonLd schema={agentSchema} />
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <div className="flex items-start gap-4 mb-8">
@@ -131,6 +178,18 @@ export default async function AgentPage({
         >
           Visit Agent <ExternalLink className="w-4 h-4" />
         </a>
+
+        {/* Related Agents */}
+        {related.length > 0 && (
+          <div className="mt-16 pt-8 border-t border-[var(--border)]">
+            <h2 className="text-lg font-semibold mb-4">Related Agents</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {related.map((r) => (
+                <AgentCard key={r.id} agent={r} />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
