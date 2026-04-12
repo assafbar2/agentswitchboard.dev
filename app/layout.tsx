@@ -36,12 +36,14 @@ export const metadata: Metadata = {
     title: 'Agent Switchboard — AI Agent Directory',
     description:
       'Browse, compare, and integrate AI agents with real API, MCP, and CLI access. The curated directory for developers building on the agentic web.',
+    images: [{ url: 'https://agentswitchboard.dev/opengraph-image', width: 1200, height: 630, alt: 'Agent Switchboard — AI Agent Directory' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Agent Switchboard — AI Agent Directory',
     description:
       'Browse, compare, and integrate AI agents with real API, MCP, and CLI access.',
+    images: ['https://agentswitchboard.dev/opengraph-image'],
   },
 };
 

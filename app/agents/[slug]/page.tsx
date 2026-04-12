@@ -41,11 +41,13 @@ export async function generateMetadata({
       url,
       type: 'website',
       siteName: 'Agent Switchboard',
+      images: [{ url: `${BASE_URL}/opengraph-image`, width: 1200, height: 630, alt: ogTitle }],
     },
     twitter: {
       card: 'summary_large_image',
       title: ogTitle,
       description: agent.description,
+      images: [`${BASE_URL}/opengraph-image`],
     },
   };
 }
