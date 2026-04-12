@@ -103,7 +103,7 @@ export default async function HomePage() {
       </section>
 
       {/* ── Stats ───────────────────────────────────────────────── */}
-      <section className="pb-14">
+      <section className="pb-6">
         <div className="container-wide">
           <div className="flex justify-center gap-12 sm:gap-20">
             <StatCounter value={agentCount} label="Agents" delay={0} />
@@ -119,7 +119,7 @@ export default async function HomePage() {
 
       {/* ── Featured Agents ─────────────────────────────────────── */}
       {homepageAgents.length > 0 && (
-        <section className="section">
+        <section className="pt-4 pb-14">
           <div className="container-wide">
             <div className="flex items-end justify-between mb-8">
               <div>
