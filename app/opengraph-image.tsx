@@ -17,21 +17,9 @@ export default function Image() {
           alignItems: 'flex-start',
           justifyContent: 'center',
           padding: '80px',
-          fontFamily: 'monospace',
           position: 'relative',
         }}
       >
-        {/* Grid lines background */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage:
-              'linear-gradient(rgba(0,255,136,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,136,0.04) 1px, transparent 1px)',
-            backgroundSize: '60px 60px',
-          }}
-        />
-
         {/* Top accent line */}
         <div
           style={{
@@ -41,6 +29,7 @@ export default function Image() {
             right: 0,
             height: '3px',
             background: 'linear-gradient(90deg, transparent, #00ff88, transparent)',
+            display: 'flex',
           }}
         />
 
@@ -59,7 +48,7 @@ export default function Image() {
               height: '18px',
               borderRadius: '50%',
               background: '#00ff88',
-              boxShadow: '0 0 20px rgba(0,255,136,0.6)',
+              display: 'flex',
             }}
           />
           <span
@@ -68,6 +57,7 @@ export default function Image() {
               fontSize: '28px',
               fontWeight: 700,
               letterSpacing: '0.05em',
+              fontFamily: 'monospace',
             }}
           >
             switchboard
@@ -77,23 +67,43 @@ export default function Image() {
         {/* Headline */}
         <div
           style={{
-            color: '#ffffff',
-            fontSize: '72px',
-            fontWeight: 800,
-            lineHeight: 1.1,
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'baseline',
+            gap: '18px',
             marginBottom: '28px',
-            letterSpacing: '-0.02em',
-            fontFamily: 'sans-serif',
-            maxWidth: '900px',
           }}
         >
-          The AI Agent{' '}
-          <span style={{ color: '#00ff88' }}>Directory</span>
+          <span
+            style={{
+              color: '#ffffff',
+              fontSize: '72px',
+              fontWeight: 800,
+              lineHeight: 1.1,
+              letterSpacing: '-0.02em',
+              fontFamily: 'sans-serif',
+            }}
+          >
+            The AI Agent
+          </span>
+          <span
+            style={{
+              color: '#00ff88',
+              fontSize: '72px',
+              fontWeight: 800,
+              lineHeight: 1.1,
+              letterSpacing: '-0.02em',
+              fontFamily: 'sans-serif',
+            }}
+          >
+            Directory
+          </span>
         </div>
 
         {/* Subtitle */}
         <div
           style={{
+            display: 'flex',
             color: '#888899',
             fontSize: '28px',
             lineHeight: 1.5,
@@ -104,7 +114,7 @@ export default function Image() {
           Browse, compare, and integrate AI agents with real API, MCP, and CLI access.
         </div>
 
-        {/* Bottom tag chips */}
+        {/* Tag chips */}
         <div
           style={{
             display: 'flex',
@@ -116,6 +126,7 @@ export default function Image() {
             <div
               key={tag}
               style={{
+                display: 'flex',
                 background: 'rgba(0,255,136,0.08)',
                 border: '1px solid rgba(0,255,136,0.2)',
                 borderRadius: '6px',
@@ -137,6 +148,7 @@ export default function Image() {
             position: 'absolute',
             bottom: '44px',
             right: '80px',
+            display: 'flex',
             color: '#444455',
             fontSize: '20px',
             fontFamily: 'monospace',
