@@ -65,6 +65,9 @@ export default function RootLayout({
             __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.classList.remove('light');}catch(e){}})();`,
           }}
         />
+        {/* Machine-readable agent context */}
+        <link rel="alternate" type="application/json" href="/agents.json" title="Agent Catalog — Agent Switchboard" />
+        <link rel="ai-index" href="/for-agents" />
         {/* Google Analytics */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-YF8BJ449WX" />
         <script
