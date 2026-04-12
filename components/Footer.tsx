@@ -15,6 +15,7 @@ const footerLinks = [
       { href: '/pro', label: 'Pro Access' },
       { href: '/advertise', label: 'Advertise' },
       { href: 'https://google.github.io/A2A/', label: 'A2A Protocol', external: true },
+      { href: '/for-agents', label: 'For AI Agents' },
     ],
   },
   {
