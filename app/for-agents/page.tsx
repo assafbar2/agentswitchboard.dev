@@ -39,8 +39,14 @@ export default async function ForAgentsPage() {
           <h1 className="text-2xl font-bold text-[var(--text-primary)] mb-1">
             Agent Switchboard
           </h1>
-          <p className="text-[var(--text-muted)] text-xs">
-            https://agentswitchboard.dev — for AI agents and the humans who build them
+          <a
+            href="https://agentswitchboard.dev"
+            className="text-[var(--accent)] hover:underline text-sm font-semibold"
+          >
+            → agentswitchboard.dev
+          </a>
+          <p className="text-[var(--text-muted)] text-xs mt-1">
+            The curated directory for AI agents — browse, compare, and integrate.
           </p>
         </div>
 
