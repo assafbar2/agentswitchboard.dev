@@ -1743,6 +1743,484 @@ const agents = [
       'Aggregate engagement analytics into a unified social performance dashboard',
     ],
   },
+
+  // ── Mode B Top-50 Audit — 2026-04-13 ──────────────────────────
+
+  // ── Research / Knowledge ──
+  {
+    name: 'Jina Reader',
+    slug: 'jina-reader',
+    description: 'Web reader and search API for AI pipelines. Converts any URL to clean markdown, runs grounded search, and powers RAG at scale — no browser automation needed.',
+    providerName: 'Jina AI',
+    providerUrl: 'https://jina.ai',
+    agentUrl: 'https://jina.ai/reader',
+    categories: ['research'],
+    tags: ['web-scraping', 'rag', 'markdown-conversion', 'search-grounding', 'reader-api', 'embeddings'],
+    authType: 'apiKey',
+    accessMethods: ['api', 'mcp'],
+    supportsStreaming: false,
+    featured: false,
+    verified: true,
+    skills: [
+      { id: 'url-reader', name: 'URL to Markdown', description: 'Convert any URL into clean, LLM-ready markdown in one API call, removing ads, nav, and boilerplate' },
+      { id: 'grounded-search', name: 'Grounded Search', description: 'Run search queries with real-time web grounding to reduce LLM hallucinations in answers' },
+      { id: 'batch-crawl', name: 'Batch Crawl', description: 'Crawl entire sites or URL lists in parallel and return structured markdown output for pipelines' },
+      { id: 'embed-rerank', name: 'Embed & Rerank', description: 'Generate embeddings and rerank passages with Jina Embeddings v3 and Reranker v2 APIs' },
+      { id: 'mcp-access', name: 'MCP Integration', description: 'Access Reader and Search via Model Context Protocol for Claude and MCP-compatible agents' },
+    ],
+  },
+  {
+    name: 'GPT Researcher',
+    slug: 'gpt-researcher',
+    description: 'Autonomous deep-research agent that plans queries, browses the web in parallel, and produces cited research reports in minutes. Supports API and MCP integration.',
+    providerName: 'Assaf Elovic',
+    providerUrl: 'https://gptr.dev',
+    agentUrl: 'https://docs.gptr.dev',
+    categories: ['research'],
+    tags: ['autonomous-research', 'web-search', 'report-generation', 'mcp', 'open-source', 'deep-research'],
+    authType: 'apiKey',
+    accessMethods: ['api', 'mcp'],
+    supportsStreaming: true,
+    featured: false,
+    verified: true,
+    skills: [
+      { id: 'research-plan', name: 'Research Planning', description: 'Decompose a research question into parallel sub-queries for comprehensive web coverage' },
+      { id: 'parallel-browse', name: 'Parallel Browsing', description: 'Browse multiple sources simultaneously and extract relevant content for synthesis' },
+      { id: 'report-gen', name: 'Report Generation', description: 'Produce structured, cited research reports in markdown with sources and inline references' },
+      { id: 'source-filter', name: 'Source Filtering', description: 'Filter and rank sources by relevance, recency, and credibility before including in report' },
+      { id: 'mcp-tool', name: 'MCP Tool', description: 'Expose the deep-research workflow as an MCP tool for use inside Claude and other agents' },
+    ],
+  },
+  {
+    name: 'LlamaIndex',
+    slug: 'llamaindex',
+    description: 'Data framework and cloud platform for LLM apps over private data. Offers parsing, indexing, retrieval, agent workflows, and evaluation across 160+ data sources.',
+    providerName: 'LlamaIndex',
+    providerUrl: 'https://llamaindex.ai',
+    agentUrl: 'https://docs.llamaindex.ai',
+    categories: ['research'],
+    tags: ['rag', 'data-connectors', 'llm-applications', 'retrieval', 'indexing', 'open-source'],
+    authType: 'apiKey',
+    accessMethods: ['api', 'cli'],
+    supportsStreaming: true,
+    featured: false,
+    verified: true,
+    skills: [
+      { id: 'data-ingestion', name: 'Data Ingestion', description: 'Load and parse 160+ data source types including PDFs, databases, APIs, and web pages' },
+      { id: 'vector-indexing', name: 'Vector Indexing', description: 'Index documents into vector stores with configurable chunking and embedding strategies' },
+      { id: 'query-engine', name: 'Query Engine', description: 'Run semantic search and sub-question decomposition over indexed data with one API call' },
+      { id: 'agent-tools', name: 'Agent Tools', description: 'Wrap retrieval pipelines as LLM tools for use in ReAct and function-calling agent loops' },
+      { id: 'rag-eval', name: 'RAG Evaluation', description: 'Evaluate faithfulness, relevancy, and correctness of retrieval-augmented generation pipelines' },
+    ],
+  },
+  {
+    name: 'Brave Search MCP',
+    slug: 'brave-search-mcp',
+    description: 'Brave Search MCP server. Gives AI agents privacy-preserving web and local search with an independent index — no Google dependency, no tracking, structured results.',
+    providerName: 'Brave',
+    providerUrl: 'https://brave.com',
+    agentUrl: 'https://brave.com/search/api/',
+    categories: ['research'],
+    tags: ['mcp', 'search', 'web-search', 'privacy', 'independent-index', 'local-search'],
+    authType: 'apiKey',
+    accessMethods: ['mcp', 'api'],
+    supportsStreaming: false,
+    featured: false,
+    verified: true,
+    skills: [
+      { id: 'web-search', name: 'Web Search', description: 'Run web searches against Brave\'s independent index and return ranked, structured results' },
+      { id: 'local-search', name: 'Local Search', description: 'Search for nearby businesses and places with location-aware results and business details' },
+      { id: 'news-search', name: 'News Search', description: 'Retrieve recent news articles filtered by topic with publication date and source metadata' },
+      { id: 'image-search', name: 'Image Search', description: 'Search for images with structured metadata including dimensions, source URL, and description' },
+      { id: 'mcp-native', name: 'MCP Native', description: 'Works out of the box with Claude Desktop and any MCP client via the official Brave MCP server' },
+    ],
+  },
+
+  // ── Infrastructure / Orchestration ──
+  {
+    name: 'Dify',
+    slug: 'dify',
+    description: 'Open-source LLM app and agent development platform. Build, test, and deploy RAG pipelines, chatbots, and multi-agent workflows via visual canvas and REST API.',
+    providerName: 'LF AI & Data Foundation',
+    providerUrl: 'https://dify.ai',
+    agentUrl: 'https://docs.dify.ai',
+    categories: ['infrastructure'],
+    tags: ['llm-orchestration', 'rag', 'open-source', 'multi-agent', 'visual-builder', 'self-hosted'],
+    authType: 'apiKey',
+    accessMethods: ['api', 'mcp'],
+    supportsStreaming: true,
+    featured: false,
+    verified: true,
+    skills: [
+      { id: 'visual-canvas', name: 'Visual Canvas', description: 'Build agent workflows visually with drag-and-drop canvas — no code required for basic flows' },
+      { id: 'rag-pipeline', name: 'RAG Pipeline', description: 'Ingest, chunk, and embed documents into a managed knowledge base with built-in retrieval' },
+      { id: 'rest-api', name: 'REST API', description: 'Deploy any workflow as a REST API endpoint callable from external agents and applications' },
+      { id: 'multi-model', name: 'Multi-Model Support', description: 'Switch between OpenAI, Claude, Llama, and 100+ models without changing app logic' },
+      { id: 'mcp-server', name: 'MCP Server', description: 'Expose Dify workflows as MCP tools for Claude Desktop and MCP-compatible clients' },
+    ],
+  },
+  {
+    name: 'MetaGPT',
+    slug: 'metagpt',
+    description: 'Multi-agent framework where AI agents role-play as engineers, PMs, and QA to collectively produce software from a single natural language prompt via structured workflows.',
+    providerName: 'DeepWisdom',
+    providerUrl: 'https://deepwisdom.ai',
+    agentUrl: 'https://docs.deepwisdom.ai',
+    categories: ['infrastructure'],
+    tags: ['multi-agent', 'software-engineering', 'role-playing', 'open-source', 'python', 'autonomous-coding'],
+    authType: 'apiKey',
+    accessMethods: ['api', 'cli'],
+    supportsStreaming: false,
+    featured: false,
+    verified: true,
+    skills: [
+      { id: 'role-assignment', name: 'Role Assignment', description: 'Assign specialized agent roles — engineer, PM, QA — collaborating via structured message passing' },
+      { id: 'code-generation', name: 'Code Generation', description: 'Generate full codebases from natural language including tests, docs, and CI configuration' },
+      { id: 'software-planning', name: 'Software Planning', description: 'Produce PRD, system design, and task breakdown automatically before writing any code' },
+      { id: 'incremental-dev', name: 'Incremental Dev', description: 'Iteratively add features to existing codebases with change-aware context management' },
+      { id: 'cli-runner', name: 'CLI Runner', description: 'Run multi-agent software development sessions from the terminal with a single command' },
+    ],
+  },
+  {
+    name: 'AutoGen',
+    slug: 'autogen',
+    description: "Microsoft's open-source multi-agent framework. Supports conversational, autonomous, and human-in-the-loop agent patterns in Python and TypeScript with event-driven orchestration.",
+    providerName: 'Microsoft',
+    providerUrl: 'https://microsoft.com',
+    agentUrl: 'https://microsoft.github.io/autogen/',
+    categories: ['infrastructure'],
+    tags: ['multi-agent', 'python', 'typescript', 'open-source', 'conversational-agents', 'human-in-the-loop'],
+    authType: 'apiKey',
+    accessMethods: ['api', 'cli'],
+    supportsStreaming: true,
+    featured: false,
+    verified: true,
+    skills: [
+      { id: 'conversable-agents', name: 'Conversable Agents', description: 'Define agents that converse, negotiate, and pass structured results between each other' },
+      { id: 'human-in-loop', name: 'Human-in-the-Loop', description: 'Inject human feedback at configurable checkpoints in multi-step agentic pipelines' },
+      { id: 'group-chat', name: 'Group Chat', description: 'Orchestrate multiple agents in a group chat with dynamic speaker selection strategies' },
+      { id: 'code-execution', name: 'Code Execution', description: 'Execute LLM-generated code in sandboxed environments with Docker or local Python runtime' },
+      { id: 'event-driven', name: 'Event-Driven Mode', description: 'Build async, event-driven agent systems with AutoGen\'s actor-model runtime' },
+    ],
+  },
+  {
+    name: 'Flowise',
+    slug: 'flowise',
+    description: 'Open-source drag-and-drop UI for building LLM flows and AI agents. Deploy as a self-hosted server with REST API for integrating chains and agent workflows into apps.',
+    providerName: 'FlowiseAI',
+    providerUrl: 'https://flowiseai.com',
+    agentUrl: 'https://docs.flowiseai.com',
+    categories: ['infrastructure'],
+    tags: ['visual-builder', 'open-source', 'llm-flows', 'self-hosted', 'no-code', 'agent-builder'],
+    authType: 'apiKey',
+    accessMethods: ['api'],
+    supportsStreaming: true,
+    featured: false,
+    verified: true,
+    skills: [
+      { id: 'drag-drop-build', name: 'Drag-Drop Builder', description: 'Assemble LLM chains and agent flows visually by connecting nodes in a browser canvas' },
+      { id: 'rest-export', name: 'REST Export', description: 'Expose any built flow as a REST API endpoint consumable by external apps and agents' },
+      { id: 'tool-agents', name: 'Tool Agents', description: 'Build ReAct agents with custom tools, retrievers, and external API calls in the UI' },
+      { id: 'self-host', name: 'Self-Hostable', description: 'Deploy on any server with Docker — full data control, no vendor lock-in, open-source license' },
+      { id: 'embeddings', name: 'Vector Stores & Embeddings', description: 'Connect to Pinecone, Chroma, Qdrant, and 10+ vector stores for RAG pipelines' },
+    ],
+  },
+  {
+    name: 'AWS MCP Suite',
+    slug: 'aws-mcp',
+    description: 'Official AWS Labs MCP servers — 15+ servers for S3, Lambda, DynamoDB, CDK, Bedrock, and more. Lets AI agents manage cloud infrastructure via Model Context Protocol.',
+    providerName: 'AWS Labs',
+    providerUrl: 'https://aws.amazon.com',
+    agentUrl: 'https://github.com/awslabs/mcp',
+    categories: ['infrastructure'],
+    tags: ['mcp', 'aws', 's3', 'lambda', 'bedrock', 'cloud-infrastructure'],
+    authType: 'apiKey',
+    accessMethods: ['mcp'],
+    supportsStreaming: false,
+    featured: false,
+    verified: true,
+    skills: [
+      { id: 's3-ops', name: 'S3 Operations', description: 'List, read, write, and delete S3 objects and buckets from any MCP-compatible AI agent' },
+      { id: 'lambda-invoke', name: 'Lambda Invoke', description: 'Invoke AWS Lambda functions with custom payloads and retrieve structured results' },
+      { id: 'bedrock-models', name: 'Bedrock Models', description: 'Call Amazon Bedrock foundation models including Claude, Titan, and Llama via MCP tools' },
+      { id: 'cdk-deploy', name: 'CDK Deploy', description: 'Synthesize and deploy AWS CDK stacks programmatically from an AI agent workflow' },
+      { id: 'dynamodb-query', name: 'DynamoDB Query', description: 'Read and write DynamoDB tables with query, scan, and put-item operations via MCP' },
+    ],
+  },
+  {
+    name: 'Cloudflare MCP',
+    slug: 'cloudflare-mcp',
+    description: 'Official Cloudflare MCP server suite. Lets AI agents manage Workers, KV storage, D1 databases, R2 buckets, and deploy edge functions programmatically.',
+    providerName: 'Cloudflare',
+    providerUrl: 'https://cloudflare.com',
+    agentUrl: 'https://developers.cloudflare.com/mcp-server/',
+    categories: ['infrastructure'],
+    tags: ['mcp', 'cloudflare-workers', 'edge-computing', 'kv-storage', 'd1-database', 'serverless'],
+    authType: 'apiKey',
+    accessMethods: ['mcp'],
+    supportsStreaming: false,
+    featured: false,
+    verified: true,
+    skills: [
+      { id: 'workers-deploy', name: 'Workers Deploy', description: 'Create, update, and deploy Cloudflare Workers scripts from an AI agent via MCP' },
+      { id: 'kv-store', name: 'KV Storage', description: 'Read and write key-value pairs in Cloudflare KV namespaces with TTL support' },
+      { id: 'd1-query', name: 'D1 Database', description: 'Execute SQL queries against Cloudflare D1 SQLite databases from any MCP-compatible agent' },
+      { id: 'r2-objects', name: 'R2 Object Storage', description: 'Upload, download, and list objects in Cloudflare R2 buckets via MCP tools' },
+      { id: 'pages-deploy', name: 'Pages Deployment', description: 'Trigger Cloudflare Pages deployments and manage project settings programmatically' },
+    ],
+  },
+
+  // ── Code & DevTools ──
+  {
+    name: 'Context7',
+    slug: 'context7',
+    description: 'MCP server that injects current, version-specific library docs and code examples into your LLM context — eliminating outdated training data from coding assistants.',
+    providerName: 'Upstash',
+    providerUrl: 'https://upstash.com',
+    agentUrl: 'https://context7.com',
+    categories: ['code-devtools'],
+    tags: ['mcp', 'documentation', 'library-docs', 'llm-context', 'coding-assistant', 'real-time-docs'],
+    authType: 'none',
+    accessMethods: ['mcp'],
+    supportsStreaming: false,
+    featured: false,
+    verified: true,
+    skills: [
+      { id: 'resolve-library', name: 'Library Resolution', description: 'Resolve a library name to its canonical documentation source ID automatically' },
+      { id: 'fetch-docs', name: 'Fetch Docs', description: 'Retrieve up-to-date library documentation filtered to a specific version string' },
+      { id: 'topic-search', name: 'Topic Search', description: 'Search within a library\'s docs for a specific function, class, or programming concept' },
+      { id: 'multi-library', name: 'Multi-Library Context', description: 'Inject docs from multiple libraries into a single LLM context for cross-library tasks' },
+      { id: 'mcp-native', name: 'MCP Native', description: 'Works out of the box with Claude Desktop, Cursor, Windsurf, and any MCP-compatible IDE' },
+    ],
+  },
+  {
+    name: 'GitHub MCP',
+    slug: 'github-mcp',
+    description: 'Official GitHub MCP server. Gives AI agents read/write access to repositories, issues, pull requests, code search, and GitHub Actions via Model Context Protocol.',
+    providerName: 'GitHub',
+    providerUrl: 'https://github.com',
+    agentUrl: 'https://github.com/github/github-mcp-server',
+    categories: ['code-devtools'],
+    tags: ['mcp', 'github', 'code-review', 'issues', 'pull-requests', 'repository-management'],
+    authType: 'oauth2',
+    accessMethods: ['mcp'],
+    supportsStreaming: false,
+    featured: false,
+    verified: true,
+    skills: [
+      { id: 'repo-ops', name: 'Repository Ops', description: 'Create, clone, search, and manage GitHub repositories including branch and commit operations' },
+      { id: 'issue-mgmt', name: 'Issue Management', description: 'Create, update, label, assign, and close GitHub issues with full metadata control' },
+      { id: 'pr-review', name: 'PR Review', description: 'Open pull requests, add review comments, request changes, and merge via MCP tools' },
+      { id: 'code-search', name: 'Code Search', description: 'Search across GitHub repositories with keyword, language, and path filters' },
+      { id: 'actions-trigger', name: 'Actions Trigger', description: 'Trigger GitHub Actions workflows and retrieve run logs from an AI agent' },
+    ],
+  },
+
+  // ── Data & Analytics ──
+  {
+    name: 'MindsDB',
+    slug: 'mindsdb',
+    description: 'AI-SQL layer that brings machine learning and AI agents into databases. Query predictions with SQL, build AI tables, and connect 200+ data sources via MCP and REST API.',
+    providerName: 'MindsDB',
+    providerUrl: 'https://mindsdb.com',
+    agentUrl: 'https://docs.mindsdb.com',
+    categories: ['data-analytics'],
+    tags: ['sql', 'machine-learning', 'data-integration', 'ai-tables', 'mcp', 'predictive-queries'],
+    authType: 'apiKey',
+    accessMethods: ['mcp', 'api'],
+    supportsStreaming: false,
+    featured: false,
+    verified: true,
+    skills: [
+      { id: 'ai-tables', name: 'AI Tables', description: 'Define AI models as SQL tables and query predictions with standard SELECT statements' },
+      { id: 'data-sources', name: '200+ Data Sources', description: 'Connect to databases, SaaS apps, and APIs as SQL data sources without ETL pipelines' },
+      { id: 'mcp-server', name: 'MCP Server', description: 'Expose your MindsDB instance as an MCP tool for Claude and other AI agents to query' },
+      { id: 'fine-tune', name: 'Fine-Tuning', description: 'Fine-tune foundation models on your own data using SQL FINETUNE commands' },
+      { id: 'knowledge-base', name: 'Knowledge Bases', description: 'Create semantic search knowledge bases from any connected data source via SQL' },
+    ],
+  },
+
+  // ── Vector Databases ──
+  {
+    name: 'Supabase MCP',
+    slug: 'supabase-mcp',
+    description: 'Official Supabase MCP server. Lets AI agents manage Postgres databases, run queries, handle migrations, store pgvector embeddings, and control Supabase projects end-to-end.',
+    providerName: 'Supabase',
+    providerUrl: 'https://supabase.com',
+    agentUrl: 'https://supabase.com/docs/guides/ai/mcp',
+    categories: ['vector-databases'],
+    tags: ['mcp', 'postgres', 'vector-store', 'pgvector', 'database-management', 'supabase'],
+    authType: 'apiKey',
+    accessMethods: ['mcp'],
+    supportsStreaming: false,
+    featured: false,
+    verified: true,
+    skills: [
+      { id: 'postgres-query', name: 'Postgres Query', description: 'Execute arbitrary SQL queries against Supabase Postgres from any MCP-compatible agent' },
+      { id: 'schema-mgmt', name: 'Schema Management', description: 'Create tables, run migrations, and inspect schema metadata via MCP tools' },
+      { id: 'pgvector-store', name: 'pgvector Store', description: 'Store and query vector embeddings in Postgres with pgvector similarity search' },
+      { id: 'storage-ops', name: 'Storage Operations', description: 'Upload, download, and manage files in Supabase Storage buckets from an AI agent' },
+      { id: 'edge-functions', name: 'Edge Functions', description: 'Deploy and invoke Supabase Edge Functions programmatically from agent workflows' },
+    ],
+  },
+
+  // ── Browser & Computer Use ──
+  {
+    name: 'Scrapling',
+    slug: 'scrapling',
+    description: 'High-performance Python web scraping library with anti-bot bypass, async support, and smart element auto-matching — faster than Playwright with no browser overhead.',
+    providerName: 'Scrapling OSS',
+    providerUrl: 'https://github.com/D4Vinci/Scrapling',
+    agentUrl: 'https://github.com/D4Vinci/Scrapling',
+    categories: ['browser-computer'],
+    tags: ['web-scraping', 'python', 'anti-bot', 'async', 'html-parsing', 'element-matching'],
+    authType: 'none',
+    accessMethods: ['api'],
+    supportsStreaming: false,
+    featured: false,
+    verified: true,
+    skills: [
+      { id: 'anti-bot', name: 'Anti-Bot Bypass', description: 'Bypass bot detection systems including Cloudflare, DataDome, and browser fingerprinting' },
+      { id: 'auto-match', name: 'Auto Element Matching', description: 'Automatically re-match CSS selectors after page structure changes without manual updates' },
+      { id: 'async-scrape', name: 'Async Scraping', description: 'Scrape multiple URLs concurrently with asyncio for high-throughput data collection' },
+      { id: 'no-browser', name: 'No Browser Overhead', description: 'Extract data without launching a browser — faster and lower memory than Playwright' },
+      { id: 'structured-parse', name: 'Structured Parsing', description: 'Parse HTML into typed Python objects with CSS and XPath selector support' },
+    ],
+  },
+  {
+    name: 'Desktop Commander MCP',
+    slug: 'desktop-commander-mcp',
+    description: 'MCP server for full desktop control. Lets AI agents execute shell commands, manage files, edit code with diff patches, and run long processes with live output streaming.',
+    providerName: 'wonderwhy-er',
+    providerUrl: 'https://github.com/wonderwhy-er/DesktopCommanderMCP',
+    agentUrl: 'https://github.com/wonderwhy-er/DesktopCommanderMCP',
+    categories: ['browser-computer'],
+    tags: ['mcp', 'shell-commands', 'file-management', 'desktop-control', 'terminal', 'diff-patching'],
+    authType: 'none',
+    accessMethods: ['mcp'],
+    supportsStreaming: true,
+    featured: false,
+    verified: true,
+    skills: [
+      { id: 'shell-exec', name: 'Shell Execution', description: 'Execute any shell command and stream live stdout/stderr output back to the AI agent' },
+      { id: 'file-ops', name: 'File Operations', description: 'Read, write, move, and delete files and directories on the local filesystem via MCP' },
+      { id: 'diff-edit', name: 'Diff Patching', description: 'Apply targeted code edits as diff patches without rewriting entire files' },
+      { id: 'process-mgmt', name: 'Process Management', description: 'Start long-running processes, monitor output, and terminate when complete' },
+      { id: 'search-files', name: 'File Search', description: 'Search file contents with ripgrep and list directory trees for codebase navigation' },
+    ],
+  },
+
+  // ── Scheduling / Automation ──
+  {
+    name: 'Notion MCP',
+    slug: 'notion-mcp',
+    description: 'Official Notion MCP server. Lets AI agents search, read, create, and update Notion pages, databases, and blocks via Model Context Protocol — full workspace access.',
+    providerName: 'Notion',
+    providerUrl: 'https://notion.so',
+    agentUrl: 'https://developers.notion.com/docs/mcp',
+    categories: ['scheduling'],
+    tags: ['mcp', 'notion', 'knowledge-management', 'pages', 'databases', 'workspace'],
+    authType: 'oauth2',
+    accessMethods: ['mcp'],
+    supportsStreaming: false,
+    featured: false,
+    verified: true,
+    skills: [
+      { id: 'page-search', name: 'Page Search', description: 'Search across Notion workspace pages and databases with keyword and filter queries' },
+      { id: 'page-create', name: 'Page Create', description: 'Create new Notion pages with rich content blocks including text, tables, and embeds' },
+      { id: 'db-query', name: 'Database Query', description: 'Query Notion databases with filters, sorts, and property projections via MCP' },
+      { id: 'block-edit', name: 'Block Editing', description: 'Append, update, and delete content blocks within any Notion page programmatically' },
+      { id: 'property-update', name: 'Property Update', description: 'Update database item properties including relations, selects, dates, and formulas' },
+    ],
+  },
+  {
+    name: 'Trigger.dev',
+    slug: 'trigger-dev',
+    description: 'Open-source background jobs and workflow engine for AI apps. Run long tasks, cron jobs, and multi-step agent pipelines with resilient retries and MCP integration.',
+    providerName: 'Trigger.dev',
+    providerUrl: 'https://trigger.dev',
+    agentUrl: 'https://trigger.dev/docs',
+    categories: ['scheduling'],
+    tags: ['background-jobs', 'cron', 'workflow-engine', 'open-source', 'mcp', 'long-running-tasks'],
+    authType: 'apiKey',
+    accessMethods: ['mcp', 'api', 'cli'],
+    supportsStreaming: true,
+    featured: false,
+    verified: true,
+    skills: [
+      { id: 'background-jobs', name: 'Background Jobs', description: 'Run long-running tasks in the background without timeout constraints or serverless cold starts' },
+      { id: 'cron-schedule', name: 'Cron Scheduling', description: 'Schedule recurring tasks with cron expressions and one-off delayed executions' },
+      { id: 'retry-recovery', name: 'Retry & Recovery', description: 'Automatically retry failed steps with configurable backoff and resume from checkpoint' },
+      { id: 'realtime-logs', name: 'Realtime Logs', description: 'Stream live task logs and status updates to the Trigger.dev dashboard or your app' },
+      { id: 'mcp-trigger', name: 'MCP Trigger', description: 'Trigger jobs and query run status from Claude and other MCP-compatible AI agents' },
+    ],
+  },
+  {
+    name: 'Pipedream MCP',
+    slug: 'pipedream-mcp',
+    description: "Pipedream's MCP server exposes 2,400+ app integrations as tools for AI agents — connect Slack, GitHub, databases, and APIs without writing integration code.",
+    providerName: 'Pipedream',
+    providerUrl: 'https://pipedream.com',
+    agentUrl: 'https://pipedream.com/docs/mcp',
+    categories: ['scheduling'],
+    tags: ['mcp', 'integrations', 'workflow-automation', 'api-connectors', 'multi-app', 'no-code'],
+    authType: 'apiKey',
+    accessMethods: ['mcp'],
+    supportsStreaming: false,
+    featured: false,
+    verified: true,
+    skills: [
+      { id: 'app-integrations', name: 'App Integrations', description: 'Access 2,400+ pre-built app integrations as MCP tools with managed OAuth credentials' },
+      { id: 'workflow-trigger', name: 'Workflow Trigger', description: 'Trigger Pipedream workflows from an AI agent and receive structured step results' },
+      { id: 'data-transform', name: 'Data Transform', description: 'Run data transformation steps between API calls without writing glue code' },
+      { id: 'event-sources', name: 'Event Sources', description: 'Subscribe to real-time event streams from apps like GitHub, Stripe, and Slack' },
+      { id: 'credential-mgmt', name: 'Credential Management', description: 'Reuse stored OAuth tokens and API keys across workflows without re-authenticating' },
+    ],
+  },
+  {
+    name: 'Activepieces',
+    slug: 'activepieces',
+    description: 'Open-source workflow automation platform with MCP server, 280+ connectors, and REST API. Self-hostable alternative to Zapier for building AI-triggered automations.',
+    providerName: 'Activepieces',
+    providerUrl: 'https://activepieces.com',
+    agentUrl: 'https://www.activepieces.com/docs/developers/mcp',
+    categories: ['scheduling'],
+    tags: ['workflow-automation', 'open-source', 'mcp', 'self-hosted', 'no-code', 'connectors'],
+    authType: 'apiKey',
+    accessMethods: ['mcp', 'api'],
+    supportsStreaming: false,
+    featured: false,
+    verified: true,
+    skills: [
+      { id: 'flow-builder', name: 'Flow Builder', description: 'Build multi-step automation flows visually with 280+ app connectors and conditional logic' },
+      { id: 'mcp-expose', name: 'MCP Expose', description: 'Expose any Activepieces flow as an MCP tool callable from Claude and AI agents' },
+      { id: 'rest-trigger', name: 'REST Trigger', description: 'Trigger flows via REST API and receive structured output from completed runs' },
+      { id: 'self-host', name: 'Self-Hostable', description: 'Deploy on your own infrastructure with Docker — full data ownership and open-source license' },
+      { id: 'webhook-events', name: 'Webhook Events', description: 'Receive webhooks from any app and route them into automation flows in real time' },
+    ],
+  },
+  {
+    name: 'Inbox Zero',
+    slug: 'inbox-zero',
+    description: 'Open-source AI email management tool with MCP server. Automates bulk unsubscribing, smart archiving, reply drafting, and rule-based inbox cleanup via AI.',
+    providerName: 'Elie Steinbock',
+    providerUrl: 'https://getinboxzero.com',
+    agentUrl: 'https://getinboxzero.com/mcp',
+    categories: ['scheduling'],
+    tags: ['mcp', 'email-management', 'inbox-cleanup', 'unsubscribe', 'gmail', 'ai-replies'],
+    authType: 'oauth2',
+    accessMethods: ['mcp', 'api'],
+    supportsStreaming: false,
+    featured: false,
+    verified: true,
+    skills: [
+      { id: 'bulk-unsubscribe', name: 'Bulk Unsubscribe', description: 'Identify and unsubscribe from newsletters and marketing emails in bulk with one action' },
+      { id: 'smart-archive', name: 'Smart Archive', description: 'Archive emails automatically based on AI-classified categories and user-defined rules' },
+      { id: 'reply-draft', name: 'Reply Drafting', description: 'Draft context-aware email replies using AI with your writing style and prior thread' },
+      { id: 'rule-engine', name: 'Rule Engine', description: 'Create natural language rules that automatically label, archive, or forward incoming mail' },
+      { id: 'mcp-control', name: 'MCP Control', description: 'Manage your inbox programmatically from Claude and MCP-compatible agents via Inbox Zero MCP' },
+    ],
+  },
 ];
 
 async function updateDescriptionAndPublish(slug: string, newDescription: string) {
@@ -1915,6 +2393,44 @@ async function main() {
     }
     // Small delay to avoid rate limits
     await new Promise((r) => setTimeout(r, 300));
+  }
+
+  // ── Mode B audit — add MCP to existing agents ────────────────
+  console.log('\n── Mode B: updating accessMethods for sentry-ai, linear, n8n ──');
+  const sentryEntry = await findEntry('sentry-ai');
+  if (sentryEntry) {
+    const sentryMethods: string[] = sentryEntry.fields.accessMethods?.['en-US'] ?? [];
+    if (!sentryMethods.includes('mcp')) {
+      await updateMultipleFields('sentry-ai', { accessMethods: [...sentryMethods, 'mcp'] });
+    } else {
+      console.log('  ⏭  sentry-ai already has mcp');
+    }
+  } else {
+    console.log('  ⚠️  sentry-ai not found');
+  }
+
+  const linearEntry = await findEntry('linear');
+  if (linearEntry) {
+    const linearMethods: string[] = linearEntry.fields.accessMethods?.['en-US'] ?? [];
+    if (!linearMethods.includes('mcp')) {
+      await updateMultipleFields('linear', { accessMethods: [...linearMethods, 'mcp'] });
+    } else {
+      console.log('  ⏭  linear already has mcp');
+    }
+  } else {
+    console.log('  ⚠️  linear not found');
+  }
+
+  const n8nEntry = await findEntry('n8n');
+  if (n8nEntry) {
+    const n8nMethods: string[] = n8nEntry.fields.accessMethods?.['en-US'] ?? [];
+    if (!n8nMethods.includes('mcp')) {
+      await updateMultipleFields('n8n', { accessMethods: [...n8nMethods, 'mcp'] });
+    } else {
+      console.log('  ⏭  n8n already has mcp');
+    }
+  } else {
+    console.log('  ⚠️  n8n not found');
   }
 
   console.log(`\n✅ Done! Created: ${created}, Skipped: ${skipped}`);
