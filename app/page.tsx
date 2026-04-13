@@ -10,7 +10,6 @@ import {
 } from '@/lib/contentful';
 import { FeaturedAgentCard } from '@/components/FeaturedAgentCard';
 import { CategoryCard } from '@/components/CategoryCard';
-import { StatCounter } from '@/components/ui/StatCounter';
 import { JsonLd } from '@/components/JsonLd';
 import type { Metadata } from 'next';
 
@@ -64,7 +63,7 @@ export default async function HomePage() {
     <>
       <JsonLd schema={homeSchema as any} />
       {/* ── Hero ────────────────────────────────────────────────── */}
-      <section className="pt-16 pb-8 relative overflow-hidden">
+      <section className="pt-14 pb-8 relative overflow-hidden">
         {/* Top gradient wash */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[var(--accent)] opacity-[0.04] blur-[120px] rounded-full pointer-events-none" />
 
@@ -85,7 +84,7 @@ export default async function HomePage() {
             </h1>
 
             <p
-              className="text-lg sm:text-xl text-[var(--text-secondary)] leading-relaxed max-w-2xl mx-auto mb-10 animate-slide-up"
+              className="text-lg sm:text-xl text-[var(--text-secondary)] leading-relaxed max-w-2xl mx-auto mb-8 animate-slide-up"
               style={{ animationDelay: '100ms' }}
             >
               {settings?.heroSubtitle ||
@@ -98,21 +97,26 @@ export default async function HomePage() {
             >
               <SearchBar />
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* ── Stats ───────────────────────────────────────────────── */}
-      <section className="pb-6">
-        <div className="container-wide">
-          <div className="flex justify-center gap-12 sm:gap-20">
-            <StatCounter value={agentCount} label="Agents" delay={0} />
-            <StatCounter value={providerCount} label="Providers" delay={100} />
-            <StatCounter
-              value={categories.length}
-              label="Categories"
-              delay={200}
-            />
+            {/* ── Stats pill ── */}
+            <div
+              className="inline-flex items-center gap-0 mt-6 rounded-full border border-[var(--border)] bg-[var(--bg-card)] overflow-hidden animate-fade-in"
+              style={{ animationDelay: '300ms' }}
+            >
+              {[
+                { value: agentCount, label: 'Agents' },
+                { value: providerCount, label: 'Providers' },
+                { value: categories.length, label: 'Categories' },
+              ].map(({ value, label }, i) => (
+                <div
+                  key={label}
+                  className={`flex items-center gap-1.5 px-5 py-2 ${i < 2 ? 'border-r border-[var(--border)]' : ''}`}
+                >
+                  <span className="mono text-sm font-bold text-[var(--text-primary)]">{value}</span>
+                  <span className="text-xs text-[var(--text-muted)] uppercase tracking-wider">{label}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
