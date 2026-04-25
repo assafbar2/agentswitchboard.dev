@@ -19,8 +19,8 @@ import * as fs from 'fs';
 
 // ─── AGENTS TO ADD — edit this array, run, commit, then clear ────────────────
 const AGENTS_TO_ADD: AgentInput[] = [
+  // Paste new agents here. Each run skips agents that already exist.
 
-  // ── Mode A Weekly Drop 2026-04-17 ──────────────────────────────────────────
 
   {
     name: 'Fastmail MCP',
