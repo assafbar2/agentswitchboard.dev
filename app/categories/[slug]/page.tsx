@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { getCategoryBySlug, getAllCategories } from '@/lib/contentful';
 import { AgentCard } from '@/components/AgentCard';
 import { CategoryIcon } from '@/components/ui/CategoryIcon';
@@ -78,31 +79,69 @@ export default async function CategoryPage({
   };
 
   return (
-    <div className="container-wide section">
-      <JsonLd schema={listSchema} />
-      <div className="mb-10 flex items-center gap-3">
-        <span className="text-[var(--text-secondary)]">
-          <CategoryIcon name={category.icon} className="w-7 h-7" />
-        </span>
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">{category.name}</h1>
-          {category.description && (
-            <p className="text-[var(--text-secondary)] mt-1">{category.description}</p>
+    <>
+      {/* ── Human view ─────────────────────────────────────────────── */}
+      <div className="human-only container-wide section">
+        <JsonLd schema={listSchema} />
+        <div className="mb-10 flex items-center gap-3">
+          <span className="text-[var(--text-secondary)]">
+            <CategoryIcon name={category.icon} className="w-7 h-7" />
+          </span>
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight">{category.name}</h1>
+            {category.description && (
+              <p className="text-[var(--text-secondary)] mt-1">{category.description}</p>
+            )}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {agents.map((agent) => (
+            <AgentCard key={agent.id} agent={agent} />
+          ))}
+        </div>
+
+        {agents.length === 0 && (
+          <p className="text-center text-[var(--text-muted)] py-20">
+            No agents in this category yet.
+          </p>
+        )}
+      </div>
+
+      {/* ── Agent view ─────────────────────────────────────────────── */}
+      <div className="agent-only">
+        <div className="container-wide py-10 max-w-4xl">
+
+          {/* Header */}
+          <div className="mb-6">
+            <div className="agent-accent text-base font-bold mb-1">{category.slug}</div>
+            <div className="agent-dim text-xs">
+              {category.name} · {agents.length} agent{agents.length !== 1 ? 's' : ''}
+              {category.description && ` · ${category.description}`}
+            </div>
+          </div>
+
+          {agents.length > 0 ? (
+            <div>
+              <div className="agent-section-title">agents</div>
+              {agents.map((agent) => (
+                <Link
+                  key={agent.id}
+                  href={`/agents/${agent.slug}`}
+                  className="agent-row hover:opacity-80 transition-opacity no-underline"
+                >
+                  <span className="agent-accent">{agent.slug}</span>
+                  <span className="agent-dim">{agent.providerName}</span>
+                  <span className="agent-dim">{agent.accessMethods.join('+') || '—'}</span>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className="agent-dim py-8 text-xs">no agents in this category yet</div>
           )}
+
         </div>
       </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {agents.map((agent) => (
-          <AgentCard key={agent.id} agent={agent} />
-        ))}
-      </div>
-
-      {agents.length === 0 && (
-        <p className="text-center text-[var(--text-muted)] py-20">
-          No agents in this category yet.
-        </p>
-      )}
-    </div>
+    </>
   );
 }
