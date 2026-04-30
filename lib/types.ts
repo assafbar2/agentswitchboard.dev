@@ -92,6 +92,7 @@ export interface Agent {
   name: string;
   slug: string;
   createdAt?: string;
+  updatedAt?: string;
   description: string;
   longDescription?: Document;
   providerName: string;

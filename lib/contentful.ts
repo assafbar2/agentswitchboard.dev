@@ -67,6 +67,7 @@ function mapAgent(entry: any): Agent {
     workerSource: f.workerSource,
     accessMethods: f.accessMethods ?? [],
     createdAt: entry.sys.createdAt,
+    updatedAt: entry.sys.updatedAt,
   };
 }
 
