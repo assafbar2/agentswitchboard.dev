@@ -298,3 +298,66 @@ body::after {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
+
+/* ── Agent Mode ───────────────────────────────────────────────── */
+
+/* Show/hide helpers */
+.human-only { display: block; }
+.agent-only { display: none; }
+
+[data-view="agent"] .human-only { display: none !important; }
+[data-view="agent"] .agent-only { display: block !important; }
+
+/* Global agent mode overrides */
+[data-view="agent"] body {
+  font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, monospace;
+}
+
+/* Strip decorative gradients and animations from hero */
+[data-view="agent"] .animate-fade-in {
+  animation: none;
+}
+
+/* Agent-mode terminal text colors */
+[data-view="agent"] .agent-only {
+  color: var(--text-secondary);
+  font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, monospace;
+}
+
+[data-view="agent"] .agent-accent {
+  color: var(--accent);
+}
+
+[data-view="agent"] .agent-dim {
+  color: var(--text-muted);
+}
+
+[data-view="agent"] .agent-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+[data-view="agent"] .agent-row:last-child {
+  border-bottom: none;
+}
+
+[data-view="agent"] .agent-section-title {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+  margin-top: 2rem;
+}
+
+[data-view="agent"] .agent-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}

@@ -84,115 +84,184 @@ export default async function AgentPage({
       : {}),
   };
 
+  const fields: [string, string][] = [
+    ['name', agent.name],
+    ['provider', agent.providerName],
+    ['url', agent.agentUrl],
+    ['categories', agent.categories.map((c) => c.slug).join(' · ') || '—'],
+    ['access', agent.accessMethods.join(' · ') || '—'],
+    ['auth', agent.authType],
+    ['streaming', agent.supportsStreaming ? 'true' : 'false'],
+    ['push', agent.supportsPushNotifications ? 'true' : 'false'],
+    ['verified', agent.verified ? 'true' : 'false'],
+    ['tags', agent.tags.join(', ') || '—'],
+  ];
+
   return (
-    <div className="container-wide section">
-      <JsonLd schema={agentSchema} />
-      <div className="max-w-3xl mx-auto">
-        {/* Header */}
-        <div className="flex items-start gap-4 mb-8">
-          {agent.iconUrl ? (
-            <img src={agent.iconUrl} alt="" className="w-14 h-14 rounded-xl bg-white/5" />
-          ) : (
-            <div className="w-14 h-14 rounded-xl bg-[var(--accent-subtle)] flex items-center justify-center">
-              <span className="mono text-2xl text-[var(--accent)] font-bold">{agent.name[0]}</span>
+    <>
+      {/* ── Human view ─────────────────────────────────────────────── */}
+      <div className="human-only container-wide section">
+        <JsonLd schema={agentSchema} />
+        <div className="max-w-3xl mx-auto">
+          {/* Header */}
+          <div className="flex items-start gap-4 mb-8">
+            {agent.iconUrl ? (
+              <img src={agent.iconUrl} alt="" className="w-14 h-14 rounded-xl bg-white/5" />
+            ) : (
+              <div className="w-14 h-14 rounded-xl bg-[var(--accent-subtle)] flex items-center justify-center">
+                <span className="mono text-2xl text-[var(--accent)] font-bold">{agent.name[0]}</span>
+              </div>
+            )}
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2 flex-wrap">
+                <h1 className="text-2xl font-bold tracking-tight">{agent.name}</h1>
+                {agent.verified && <Verified className="w-5 h-5 text-[var(--accent)]" />}
+                {agent.featured && <Badge variant="amber">Featured</Badge>}
+                {agent.tier === 'premium' && <Badge variant="amber">Premium</Badge>}
+              </div>
+              <p className="text-sm text-[var(--text-muted)] mt-1">
+                by{' '}
+                <a href={agent.providerUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--text-secondary)] transition-colors">
+                  {agent.providerName}
+                </a>
+                {agent.version && <span className="ml-2">v{agent.version}</span>}
+              </p>
+            </div>
+          </div>
+
+          {/* Description */}
+          <p className="text-[var(--text-secondary)] leading-relaxed mb-8">{agent.description}</p>
+
+          {/* Meta cards */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+            <div className="card p-3 text-center">
+              <Zap className="w-4 h-4 mx-auto mb-1 text-[var(--accent)]" />
+              <div className="mono text-lg font-bold">{agent.skills.length}</div>
+              <div className="text-xs text-[var(--text-muted)]">Skills</div>
+            </div>
+            <div className="card p-3 text-center">
+              <Shield className="w-4 h-4 mx-auto mb-1 text-[var(--blue)]" />
+              <div className="mono text-sm font-bold">{authTypeLabel(agent.authType)}</div>
+              <div className="text-xs text-[var(--text-muted)]">Auth</div>
+            </div>
+            <div className="card p-3 text-center">
+              <Radio className="w-4 h-4 mx-auto mb-1 text-[var(--amber)]" />
+              <div className="mono text-sm font-bold">{agent.supportsStreaming ? 'Yes' : 'No'}</div>
+              <div className="text-xs text-[var(--text-muted)]">Streaming</div>
+            </div>
+            <div className="card p-3 text-center">
+              <Bell className="w-4 h-4 mx-auto mb-1 text-[var(--rose)]" />
+              <div className="mono text-sm font-bold">{agent.supportsPushNotifications ? 'Yes' : 'No'}</div>
+              <div className="text-xs text-[var(--text-muted)]">Push</div>
+            </div>
+          </div>
+
+          {/* Skills */}
+          {agent.skills.length > 0 && (
+            <div className="mb-8">
+              <h2 className="text-lg font-semibold mb-4">Skills</h2>
+              <div className="space-y-3">
+                {agent.skills.map((skill) => (
+                  <div key={skill.id} className="card p-4">
+                    <div className="flex items-center gap-2 mb-1">
+                      <Zap className="w-3.5 h-3.5 text-[var(--accent)]" />
+                      <h3 className="mono text-sm font-semibold">{skill.name}</h3>
+                    </div>
+                    <p className="text-sm text-[var(--text-secondary)]">{skill.description}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2 flex-wrap">
-              <h1 className="text-2xl font-bold tracking-tight">{agent.name}</h1>
-              {agent.verified && <Verified className="w-5 h-5 text-[var(--accent)]" />}
-              {agent.featured && <Badge variant="amber">Featured</Badge>}
-              {agent.tier === 'premium' && <Badge variant="amber">Premium</Badge>}
+
+          {/* Categories & Tags */}
+          <div className="flex flex-wrap gap-2 mb-8">
+            {agent.categories.map((cat) => (
+              <Link key={cat.id} href={`/categories/${cat.slug}`}>
+                <Badge variant="default">{cat.name}</Badge>
+              </Link>
+            ))}
+            {agent.tags.map((tag) => (
+              <Badge key={tag} variant="outline">{tag}</Badge>
+            ))}
+          </div>
+
+          {/* Agent URL */}
+          <a
+            href={agent.agentUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--accent)] text-[var(--bg-primary)] font-medium text-sm hover:opacity-90 transition-opacity"
+          >
+            Visit Agent <ExternalLink className="w-4 h-4" />
+          </a>
+
+          {/* Related Agents */}
+          {related.length > 0 && (
+            <div className="mt-16 pt-8 border-t border-[var(--border)]">
+              <h2 className="text-lg font-semibold mb-4">Related Agents</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {related.map((r) => (
+                  <AgentCard key={r.id} agent={r} />
+                ))}
+              </div>
             </div>
-            <p className="text-sm text-[var(--text-muted)] mt-1">
-              by{' '}
-              <a href={agent.providerUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--text-secondary)] transition-colors">
-                {agent.providerName}
-              </a>
-              {agent.version && <span className="ml-2">v{agent.version}</span>}
-            </p>
-          </div>
+          )}
         </div>
+      </div>
 
-        {/* Description */}
-        <p className="text-[var(--text-secondary)] leading-relaxed mb-8">{agent.description}</p>
+      {/* ── Agent view ─────────────────────────────────────────────── */}
+      <div className="agent-only">
+        <div className="container-wide py-10 max-w-3xl">
 
-        {/* Meta cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
-          <div className="card p-3 text-center">
-            <Zap className="w-4 h-4 mx-auto mb-1 text-[var(--accent)]" />
-            <div className="mono text-lg font-bold">{agent.skills.length}</div>
-            <div className="text-xs text-[var(--text-muted)]">Skills</div>
+          {/* Header */}
+          <div className="mb-6">
+            <div className="agent-accent text-base font-bold mb-1">{agent.slug}</div>
+            <div className="agent-dim text-xs leading-relaxed mt-1">{agent.description}</div>
           </div>
-          <div className="card p-3 text-center">
-            <Shield className="w-4 h-4 mx-auto mb-1 text-[var(--blue)]" />
-            <div className="mono text-sm font-bold">{authTypeLabel(agent.authType)}</div>
-            <div className="text-xs text-[var(--text-muted)]">Auth</div>
-          </div>
-          <div className="card p-3 text-center">
-            <Radio className="w-4 h-4 mx-auto mb-1 text-[var(--amber)]" />
-            <div className="mono text-sm font-bold">{agent.supportsStreaming ? 'Yes' : 'No'}</div>
-            <div className="text-xs text-[var(--text-muted)]">Streaming</div>
-          </div>
-          <div className="card p-3 text-center">
-            <Bell className="w-4 h-4 mx-auto mb-1 text-[var(--rose)]" />
-            <div className="mono text-sm font-bold">{agent.supportsPushNotifications ? 'Yes' : 'No'}</div>
-            <div className="text-xs text-[var(--text-muted)]">Push</div>
-          </div>
-        </div>
 
-        {/* Skills */}
-        {agent.skills.length > 0 && (
-          <div className="mb-8">
-            <h2 className="text-lg font-semibold mb-4">Skills</h2>
-            <div className="space-y-3">
+          {/* Fields */}
+          <div className="agent-section-title">fields</div>
+          {fields.map(([key, value]) => (
+            <div key={key} className="agent-row">
+              <span className="agent-dim">{key}</span>
+              <span className="agent-accent">{value}</span>
+              <span />
+            </div>
+          ))}
+
+          {/* Skills */}
+          {agent.skills.length > 0 && (
+            <>
+              <div className="agent-section-title">skills</div>
               {agent.skills.map((skill) => (
-                <div key={skill.id} className="card p-4">
-                  <div className="flex items-center gap-2 mb-1">
-                    <Zap className="w-3.5 h-3.5 text-[var(--accent)]" />
-                    <h3 className="mono text-sm font-semibold">{skill.name}</h3>
-                  </div>
-                  <p className="text-sm text-[var(--text-secondary)]">{skill.description}</p>
+                <div key={skill.id} className="agent-row">
+                  <span className="agent-accent">{skill.id}</span>
+                  <span className="agent-dim">{skill.name}</span>
+                  <span className="agent-dim" style={{ fontSize: '0.75rem' }}>
+                    {skill.description.length > 55
+                      ? skill.description.slice(0, 55) + '…'
+                      : skill.description}
+                  </span>
                 </div>
               ))}
-            </div>
-          </div>
-        )}
+            </>
+          )}
 
-        {/* Categories & Tags */}
-        <div className="flex flex-wrap gap-2 mb-8">
-          {agent.categories.map((cat) => (
-            <Link key={cat.id} href={`/categories/${cat.slug}`}>
-              <Badge variant="default">{cat.name}</Badge>
-            </Link>
-          ))}
-          {agent.tags.map((tag) => (
-            <Badge key={tag} variant="outline">{tag}</Badge>
-          ))}
+          {/* External link */}
+          <div className="mt-8">
+            <a
+              href={agent.agentUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="agent-accent text-xs hover:opacity-80 transition-opacity"
+            >
+              → {agent.agentUrl}
+            </a>
+          </div>
+
         </div>
-
-        {/* Agent URL */}
-        <a
-          href={agent.agentUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--accent)] text-[var(--bg-primary)] font-medium text-sm hover:opacity-90 transition-opacity"
-        >
-          Visit Agent <ExternalLink className="w-4 h-4" />
-        </a>
-
-        {/* Related Agents */}
-        {related.length > 0 && (
-          <div className="mt-16 pt-8 border-t border-[var(--border)]">
-            <h2 className="text-lg font-semibold mb-4">Related Agents</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {related.map((r) => (
-                <AgentCard key={r.id} agent={r} />
-              ))}
-            </div>
-          </div>
-        )}
       </div>
-    </div>
+    </>
   );
 }
