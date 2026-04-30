@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Menu, X, Zap } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { ViewModeToggle } from '@/components/ViewModeToggle';
 
 const navLinks = [
   { href: '/browse', label: 'Browse' },
@@ -51,6 +52,7 @@ export function Header() {
             Activate Pro
           </Link>
 
+          <ViewModeToggle />
           <ThemeToggle />
 
           <button
