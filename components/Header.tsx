@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { Menu, X, Zap } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { ViewModeToggle } from '@/components/ViewModeToggle';
 
@@ -44,15 +44,9 @@ export function Header() {
 
         {/* CTA + mobile toggle */}
         <div className="flex items-center gap-3">
-          <Link
-            href="/pro"
-            className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/20 hover:bg-[var(--accent)]/20 hover:border-[var(--accent)]/30 transition-all"
-          >
-            <Zap className="w-3.5 h-3.5" />
-            Activate Pro
-          </Link>
+          {/* Segmented view toggle — replaces Activate Pro */}
+          <ViewModeToggle className="hidden sm:flex" />
 
-          <ViewModeToggle />
           <ThemeToggle />
 
           <button
@@ -79,14 +73,10 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/pro"
-              onClick={() => setMobileOpen(false)}
-              className="mt-2 flex items-center justify-center gap-1.5 px-4 py-2.5 text-sm font-medium rounded-lg bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/20"
-            >
-              <Zap className="w-3.5 h-3.5" />
-              Activate Pro
-            </Link>
+            {/* View toggle in mobile menu */}
+            <div className="mt-3 pt-3 border-t border-[var(--border)]">
+              <ViewModeToggle className="w-full justify-center" />
+            </div>
           </div>
         </nav>
       )}

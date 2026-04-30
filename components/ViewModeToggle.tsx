@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-export function ViewModeToggle() {
+export function ViewModeToggle({ className }: { className?: string }) {
   const [mode, setMode] = useState<'human' | 'agent'>('human');
   const [mounted, setMounted] = useState(false);
 
@@ -23,32 +23,43 @@ export function ViewModeToggle() {
     }
   }
 
-  function toggle() {
-    const next = mode === 'human' ? 'agent' : 'human';
+  function select(next: 'human' | 'agent') {
     setMode(next);
     applyMode(next);
     localStorage.setItem('viewMode', next);
   }
 
-  if (!mounted) return <div className="w-8 h-8" />;
-
-  const isAgent = mode === 'agent';
+  if (!mounted) return <div className={`h-9 w-40 rounded-lg bg-[var(--bg-card)] ${className ?? ''}`} />;
 
   return (
-    <button
-      onClick={toggle}
-      className={`
-        flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-xs font-mono font-medium transition-all
-        ${isAgent
-          ? 'border-[var(--accent)] bg-[var(--accent)]/10 text-[var(--accent)]'
-          : 'border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text-secondary)] hover:border-[var(--border-accent)]'
-        }
-      `}
-      aria-label={isAgent ? 'Switch to human view' : 'Switch to agent view'}
-      title={isAgent ? 'Agent view — click for human view' : 'Switch to agent view'}
+    <div
+      className={`flex items-center rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-0.5 text-xs font-medium ${className ?? ''}`}
     >
-      <span className={`w-1.5 h-1.5 rounded-full ${isAgent ? 'bg-[var(--accent)] animate-pulse' : 'bg-[var(--text-muted)]'}`} />
-      {isAgent ? 'agent' : 'human'}
-    </button>
+      <button
+        onClick={() => select('human')}
+        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all whitespace-nowrap ${
+          mode === 'human'
+            ? 'bg-[var(--bg-primary)] text-[var(--text-primary)] shadow-sm'
+            : 'text-[var(--text-muted)] hover:text-[var(--text-secondary)]'
+        }`}
+        aria-pressed={mode === 'human'}
+      >
+        <span className={`w-1.5 h-1.5 rounded-full ${mode === 'human' ? 'bg-[var(--text-secondary)]' : 'bg-[var(--border)]'}`} />
+        For Humans
+      </button>
+
+      <button
+        onClick={() => select('agent')}
+        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all whitespace-nowrap font-mono ${
+          mode === 'agent'
+            ? 'bg-[var(--accent)]/15 text-[var(--accent)] shadow-sm border border-[var(--accent)]/20'
+            : 'text-[var(--text-muted)] hover:text-[var(--text-secondary)]'
+        }`}
+        aria-pressed={mode === 'agent'}
+      >
+        <span className={`w-1.5 h-1.5 rounded-full ${mode === 'agent' ? 'bg-[var(--accent)] animate-pulse' : 'bg-[var(--border)]'}`} />
+        For Agents
+      </button>
+    </div>
   );
 }
