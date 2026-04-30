@@ -19,6 +19,8 @@ export async function GET() {
     tags: a.tags ?? [],
     verified: a.verified,
     tier: a.tier,
+    createdAt: a.createdAt ?? null,
+    updatedAt: a.updatedAt ?? null,
   }));
 
   return NextResponse.json(
