@@ -19,49 +19,7 @@ import * as fs from 'fs';
 
 // ─── AGENTS TO ADD — edit this array, run, commit, then clear ────────────────
 const AGENTS_TO_ADD: AgentInput[] = [
-  {
-    name: 'Agent Payment Safety Audit Desk',
-    slug: 'agent-payment-safety-audit-desk',
-    description: 'Human audit service for agent payment, x402, MCP, and wallet workflow safety. Reviews route discovery, 402 handling, settlement readiness, and webhook safety; returns a remediation report.',
-    providerName: 'Bortlesboat',
-    providerUrl: 'https://github.com/Bortlesboat',
-    agentUrl: 'https://x402.bitcoinsapi.com/x402/offers/agent-api-discovery-audit.json',
-    categories: ['security', 'commerce-payments'],
-    tags: ['x402', 'agent-payments', 'security-audit', 'mcp-security', 'payment-flows', 'wallet-safety', 'agent-infrastructure', 'usdc'],
-    authType: 'none',
-    accessMethods: ['api'],
-    supportsStreaming: false,
-    supportsPushNotifications: false,
-    featured: false,
-    verified: true,
-    skills: [
-      {
-        id: 'route-discovery',
-        name: 'Route Discovery',
-        description: 'Maps x402 discovery endpoints and validates agent API route registration to confirm payability and correct offer structure.',
-      },
-      {
-        id: 'payment-flow-audit',
-        name: 'Payment Flow Audit',
-        description: 'Reviews HTTP 402 handling, webhook safety, and buyer-readable metadata in agent payment flows for correctness.',
-      },
-      {
-        id: 'settlement-review',
-        name: 'Settlement Review',
-        description: 'Assesses wallet routing, USDC payout paths, and escrow logic for correctness and agent-side payment readiness.',
-      },
-      {
-        id: 'mcp-tool-safety',
-        name: 'MCP Tool Safety',
-        description: 'Checks MCP tool provenance and payment gating against shadow tool injection and stale settlement replay risks.',
-      },
-      {
-        id: 'remediation-report',
-        name: 'Remediation Report',
-        description: 'Returns a structured report of prioritized fixes for payment safety, API registration, and x402 compliance gaps.',
-      },
-    ],
-  },
+  // Paste new agents here. Each run skips agents that already exist.
 ];
 // ─────────────────────────────────────────────────────────────────────────────
 
