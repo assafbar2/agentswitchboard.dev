@@ -236,7 +236,10 @@ export async function getHomepageAgents(): Promise<HomepageAgent[]> {
   const pinned = pinnedResults.filter(Boolean) as HomepageAgent[];
   const pinnedIds = new Set(pinned.map((p) => p.agent.id));
 
-  // Fetch newest agents to fill the remaining 4 slots
+  // Slugs to suppress from the newest section (pinned elsewhere or manually hidden)
+  const SUPPRESS_FROM_NEWEST = new Set(['vennio']);
+
+  // Fetch newest agents to fill the remaining slots
   const newEntries = await contentfulClient.getEntries({
     content_type: 'agent',
     'fields.status': 'published',
@@ -247,7 +250,7 @@ export async function getHomepageAgents(): Promise<HomepageAgent[]> {
 
   const newest: HomepageAgent[] = newEntries.items
     .map(mapAgent)
-    .filter((a) => !pinnedIds.has(a.id))
+    .filter((a) => !pinnedIds.has(a.id) && !SUPPRESS_FROM_NEWEST.has(a.slug))
     .slice(0, 2)
     .sort((a, b) => a.name.localeCompare(b.name))
     .map((agent) => ({ agent, label: 'new' as const }));
