@@ -224,6 +224,7 @@ export async function getHomepageAgents(): Promise<HomepageAgent[]> {
     { slug: 'agentmail',      label: 'editors-pick' },
     { slug: 'here-now',       label: 'featured' },
     { slug: 'playwright-mcp', label: 'featured' },
+    { slug: 'clawvisor',      label: 'featured' },
   ];
 
   const pinnedResults = await Promise.all(
@@ -247,7 +248,7 @@ export async function getHomepageAgents(): Promise<HomepageAgent[]> {
   const newest: HomepageAgent[] = newEntries.items
     .map(mapAgent)
     .filter((a) => !pinnedIds.has(a.id))
-    .slice(0, 3)
+    .slice(0, 2)
     .sort((a, b) => a.name.localeCompare(b.name))
     .map((agent) => ({ agent, label: 'new' as const }));
 
