@@ -16,6 +16,8 @@ import {
   Monitor,
   Database,
   Phone,
+  MessageSquare,
+  Network,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -37,6 +39,8 @@ const iconMap: Record<string, LucideIcon> = {
   Monitor,
   Database,
   Phone,
+  MessageSquare,
+  Network,
 };
 
 export function CategoryIcon({
