@@ -18,6 +18,68 @@ import { execSync } from 'child_process';
 import * as fs from 'fs';
 
 // ─── AGENTS TO ADD — edit this array, run, commit, then clear ────────────────
+const _AGENTS_ADDED_2026_06_15: AgentInput[] = [
+  {
+    name: 'AgentRQ',
+    slug: 'agentrq',
+    description: 'Human-in-the-loop task manager for AI agents. Agents assign tasks to you; you assign back. Native Claude Code push notifications, MCP supervisor for multi-agent fleets. Apache-2.0.',
+    providerName: 'Contextual, Inc.',
+    providerUrl: 'https://agentrq.com',
+    agentUrl: 'https://agentrq.com',
+    categories: ['orchestration'],
+    tags: ['human-in-the-loop', 'task-management', 'mcp', 'multi-agent', 'claude-code', 'open-source', 'apache-2.0'],
+    authType: 'none',
+    accessMethods: ['mcp', 'cli'],
+    supportsStreaming: false,
+    supportsPushNotifications: true,
+    verified: true,
+    skills: [
+      { id: 'task-assignment', name: 'Task Assignment', description: 'Lets agents create tasks for the human operator and receive task assignments back in real time via MCP.' },
+      { id: 'push-notifications', name: 'Push Notifications', description: 'Delivers sub-second agent-to-human notifications natively inside Claude Code sessions with no polling.' },
+      { id: 'multi-agent-supervisor', name: 'Multi-Agent Supervisor', description: 'Orchestrates a fleet of agents from a single MCP supervisor endpoint, routing tasks across parallel workspaces.' },
+    ],
+  },
+  {
+    name: 'Temporal',
+    slug: 'temporal',
+    description: 'Durable workflow execution engine that survives crashes, retries automatically, and pauses for human input. Used by OpenAI, NVIDIA, and Salesforce. 20k+ GitHub stars. MIT-licensed.',
+    providerName: 'Temporal Technologies',
+    providerUrl: 'https://temporal.io',
+    agentUrl: 'https://temporal.io',
+    categories: ['orchestration'],
+    tags: ['durable-execution', 'workflow', 'fault-tolerant', 'open-source', 'mit-license', 'python', 'typescript', 'go'],
+    authType: 'apiKey',
+    accessMethods: ['api', 'cli'],
+    supportsStreaming: false,
+    supportsPushNotifications: false,
+    verified: true,
+    skills: [
+      { id: 'durable-workflows', name: 'Durable Workflows', description: 'Runs long-lived agent workflows that auto-resume from the last checkpoint after any crash or infrastructure failure.' },
+      { id: 'activity-retries', name: 'Activity Retries', description: 'Wraps API calls and tool executions with configurable retry policies, backoff, and timeout logic.' },
+      { id: 'human-in-the-loop', name: 'Human-in-the-Loop', description: 'Pauses workflow execution on a Signal and resumes the moment a human approves or provides input.' },
+    ],
+  },
+  {
+    name: 'Hatchet',
+    slug: 'hatchet',
+    description: 'Durable task orchestration engine for AI agents — parallel workloads, automatic retries, concurrency controls, and built-in OpenTelemetry tracing. MIT-licensed, self-hostable.',
+    providerName: 'Hatchet Technologies',
+    providerUrl: 'https://hatchet.run',
+    agentUrl: 'https://hatchet.run',
+    categories: ['orchestration'],
+    tags: ['durable-execution', 'task-queue', 'parallel-workloads', 'open-source', 'mit-license', 'opentelemetry', 'python', 'typescript', 'go'],
+    authType: 'apiKey',
+    accessMethods: ['api', 'cli'],
+    supportsStreaming: false,
+    supportsPushNotifications: false,
+    verified: true,
+    skills: [
+      { id: 'parallel-execution', name: 'Parallel Execution', description: 'Fans out tasks across workers with configurable concurrency limits and per-user fairness controls.' },
+      { id: 'durable-tasks', name: 'Durable Tasks', description: 'Persists every task state transition so failed steps replay exactly from where they stopped.' },
+      { id: 'workflow-observability', name: 'Workflow Observability', description: 'Emits OpenTelemetry traces and spans for every task and workflow, searchable with full-text log support.' },
+    ],
+  },
+];
 const AGENTS_TO_ADD: AgentInput[] = [
   // Paste agents here from either the Weekly Drop or Top 50 Audit prompt.
   // Each run skips agents that already exist. Clear after committing.
@@ -380,6 +442,7 @@ const CAT: Record<string, string> = {
   'vector-databases': '1rQCIuLKfXhq2efEUDtQ8C',
   'voice-messaging':  '2pV8SRrEcdoS7Rjodj490d',
   communication:      '7t5V37xtBu02l60r6cKK4d',
+  orchestration:      '5ODCjKvQK5N7Fkkt8zfbE0',
 };
 
 function catLink(slug: string) {
