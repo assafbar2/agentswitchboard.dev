@@ -61,7 +61,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <JsonLd schema={homeSchema as any} />
+      <JsonLd schema={homeSchema as Record<string, unknown>[]} />
 
       {/* ── Human view ─────────────────────────────────────────────── */}
       <div className="human-only">

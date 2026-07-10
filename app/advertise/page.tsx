@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Advertise',
   description: 'Promote your agent to developers building the agentic web.',
+  alternates: { canonical: '/advertise' },
 };
 
 export default function AdvertisePage() {

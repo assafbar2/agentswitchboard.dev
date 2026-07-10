@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Suspense } from 'react';
-import { getAllAgents } from '@/lib/contentful';
+import { getEveryAgent } from '@/lib/contentful';
 import { searchAgents } from '@/lib/search';
 import { AgentCard } from '@/components/AgentCard';
 import { SearchBar } from '@/components/SearchBar';
@@ -18,20 +18,27 @@ export async function generateMetadata({
   return {
     title: q ? `"${q}" — Search Results` : 'Browse Agents',
     description: 'Explore the full directory of A2A protocol agents.',
+    // Self-referencing canonical without query params — filtered/search
+    // views canonicalize to the clean browse URL.
+    alternates: { canonical: '/browse' },
   };
 }
 
 export default async function BrowsePage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string; access?: string }>;
+  searchParams: Promise<{ q?: string; access?: string; category?: string }>;
 }) {
-  const { q, access } = await searchParams;
+  const { q, access, category } = await searchParams;
   const query = q?.trim() ?? '';
   const accessFilters = access?.split(',').filter(Boolean) ?? [];
+  const categoryFilter = category?.trim() ?? '';
 
-  const { agents: allAgents } = await getAllAgents({ limit: 200 });
-  const agents = searchAgents(allAgents, query, accessFilters.length > 0 ? accessFilters : undefined);
+  const allAgents = await getEveryAgent();
+  const inCategory = categoryFilter
+    ? allAgents.filter((a) => a.categories.some((c) => c.slug === categoryFilter))
+    : allAgents;
+  const agents = searchAgents(inCategory, query, accessFilters.length > 0 ? accessFilters : undefined);
 
   return (
     <>
@@ -96,6 +103,7 @@ export default async function BrowsePage({
             </div>
             <div className="agent-dim text-xs">
               {agents.length} agent{agents.length !== 1 ? 's' : ''}{query ? ' matched' : ' indexed'}
+              {categoryFilter && ` · category: ${categoryFilter}`}
               {accessFilters.length > 0 && ` · access: ${accessFilters.join('+')}`}
             </div>
           </div>

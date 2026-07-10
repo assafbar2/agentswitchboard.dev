@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { getAllAgents, getAllCategories } from '@/lib/contentful';
+import { getEveryAgent, getAllCategories } from '@/lib/contentful';
 
 export const revalidate = 3600; // regenerate every hour
 
@@ -16,7 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   // Dynamic agent pages
-  const { agents } = await getAllAgents({ limit: 1000 });
+  const agents = await getEveryAgent();
   const agentPages: MetadataRoute.Sitemap = agents.map((agent) => ({
     url: `${base}/agents/${agent.slug}`,
     lastModified: new Date(),

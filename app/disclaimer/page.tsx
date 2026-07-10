@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Disclaimer',
   description: 'Legal disclaimer for Agent Switchboard.',
+  alternates: { canonical: '/disclaimer' },
 };
 
 export default function DisclaimerPage() {

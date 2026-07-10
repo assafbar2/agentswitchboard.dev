@@ -7,14 +7,6 @@ export function ThemeToggle() {
   const [theme, setTheme] = useState<'dark' | 'light'>('light');
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-    const saved = localStorage.getItem('theme') as 'dark' | 'light' | null;
-    const initial = saved ?? 'light';
-    setTheme(initial);
-    applyTheme(initial);
-  }, []);
-
   function applyTheme(t: 'dark' | 'light') {
     const html = document.documentElement;
     if (t === 'light') {
@@ -23,6 +15,18 @@ export function ThemeToggle() {
       html.classList.remove('light');
     }
   }
+
+  useEffect(() => {
+    // Intentional post-hydration sync from localStorage (SSR can't read it);
+    // runs once, so no cascading-render risk.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+    const saved = localStorage.getItem('theme') as 'dark' | 'light' | null;
+    const initial = saved ?? 'light';
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setTheme(initial);
+    applyTheme(initial);
+  }, []);
 
   function toggle() {
     const next = theme === 'dark' ? 'light' : 'dark';

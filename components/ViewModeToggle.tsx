@@ -6,14 +6,6 @@ export function ViewModeToggle({ className }: { className?: string }) {
   const [mode, setMode] = useState<'human' | 'agent'>('human');
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-    const saved = localStorage.getItem('viewMode') as 'human' | 'agent' | null;
-    const initial = saved ?? 'human';
-    setMode(initial);
-    applyMode(initial);
-  }, []);
-
   function applyMode(m: 'human' | 'agent') {
     const html = document.documentElement;
     if (m === 'agent') {
@@ -22,6 +14,18 @@ export function ViewModeToggle({ className }: { className?: string }) {
       html.removeAttribute('data-view');
     }
   }
+
+  useEffect(() => {
+    // Intentional post-hydration sync from localStorage (SSR can't read it);
+    // runs once, so no cascading-render risk.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+    const saved = localStorage.getItem('viewMode') as 'human' | 'agent' | null;
+    const initial = saved ?? 'human';
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMode(initial);
+    applyMode(initial);
+  }, []);
 
   function select(next: 'human' | 'agent') {
     setMode(next);

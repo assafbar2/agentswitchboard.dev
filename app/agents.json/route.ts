@@ -1,15 +1,16 @@
-import { getAllAgents } from '@/lib/contentful';
+import { getEveryAgent } from '@/lib/contentful';
+import { BASE_URL } from '@/lib/env';
 import { NextResponse } from 'next/server';
 
 export const revalidate = 300; // refresh every 5 minutes
 
 export async function GET() {
-  const { agents } = await getAllAgents({ limit: 500 });
+  const agents = await getEveryAgent();
 
   const catalog = agents.map((a) => ({
     name: a.name,
     slug: a.slug,
-    url: `https://agentswitchboard.dev/agents/${a.slug}`,
+    url: `${BASE_URL}/agents/${a.slug}`,
     homepage: a.agentUrl ?? null,
     provider: a.providerName ?? null,
     providerUrl: a.providerUrl ?? null,

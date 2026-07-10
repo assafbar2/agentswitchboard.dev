@@ -81,7 +81,7 @@ export function searchAgents(
   if (filterAccessMethods && filterAccessMethods.length > 0) {
     results = results.filter((agent) =>
       filterAccessMethods.every((method) =>
-        agent.accessMethods.includes(method as any)
+        (agent.accessMethods as string[]).includes(method)
       )
     );
   }

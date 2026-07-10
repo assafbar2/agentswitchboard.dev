@@ -27,9 +27,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev'
   ),
-  alternates: {
-    canonical: process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev',
-  },
+  // NOTE: no global `alternates.canonical` here — a root-level canonical is
+  // inherited by every page that doesn't override it, telling search engines
+  // all pages are duplicates of the homepage. Each page sets its own.
   openGraph: {
     type: 'website',
     siteName: 'Agent Switchboard',

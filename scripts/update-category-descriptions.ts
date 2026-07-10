@@ -20,7 +20,7 @@ try {
 }
 
 const SPACE = process.env.CONTENTFUL_SPACE_ID || '8e4hmp8gwcuv';
-let TOKEN = readTokenFromEnv();
+const TOKEN = readTokenFromEnv();
 const BASE = `https://api.contentful.com/spaces/${SPACE}/environments/master`;
 
 async function cma(path: string, opts: RequestInit = {}) {

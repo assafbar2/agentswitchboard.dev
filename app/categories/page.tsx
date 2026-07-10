@@ -8,6 +8,7 @@ export const revalidate = 60;
 export const metadata: Metadata = {
   title: 'Categories',
   description: 'Browse A2A agents by category.',
+  alternates: { canonical: '/categories' },
 };
 
 export default async function CategoriesPage() {

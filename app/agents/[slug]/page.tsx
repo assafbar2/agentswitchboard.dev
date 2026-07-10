@@ -1,4 +1,4 @@
-import { getAgentBySlug, getAllAgents } from '@/lib/contentful';
+import { getAgentBySlug, getEveryAgent } from '@/lib/contentful';
 import { Badge } from '@/components/ui/Badge';
 import { AgentCard } from '@/components/AgentCard';
 import { JsonLd } from '@/components/JsonLd';
@@ -14,7 +14,7 @@ export const revalidate = 60;
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev';
 
 export async function generateStaticParams() {
-  const { agents } = await getAllAgents({ limit: 500 });
+  const agents = await getEveryAgent();
   return agents.map((a) => ({ slug: a.slug }));
 }
 
@@ -58,9 +58,9 @@ export default async function AgentPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const [agent, { agents: allAgents }] = await Promise.all([
+  const [agent, allAgents] = await Promise.all([
     getAgentBySlug(slug),
-    getAllAgents({ limit: 500 }),
+    getEveryAgent(),
   ]);
   if (!agent) notFound();
 
