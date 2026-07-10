@@ -14,8 +14,7 @@
  */
 
 import 'dotenv/config';
-import { execSync } from 'child_process';
-import * as fs from 'fs';
+import { cma, findEntryBySlug } from './lib/cma';
 
 // ─── AGENTS TO ADD — edit this array, run, commit, then clear ────────────────
 const _AGENTS_ADDED_2026_06_15: AgentInput[] = [
@@ -110,43 +109,8 @@ interface AgentInput {
   skills?: AgentSkill[];
 }
 
-// ── Token management ─────────────────────────────────────────────
-
-function readTokenFromEnv(): string {
-  const envContent = fs.readFileSync('.env.local', 'utf-8');
-  const match = envContent.match(/CONTENTFUL_MANAGEMENT_TOKEN="([^"]+)"/);
-  return match?.[1] ?? process.env.CONTENTFUL_MANAGEMENT_TOKEN!;
-}
-
-try {
-  execSync('bash scripts/refresh-cma-token.sh', { stdio: 'inherit' });
-  process.env.CONTENTFUL_MANAGEMENT_TOKEN = readTokenFromEnv();
-} catch {
-  console.log('⚠️  Token refresh failed, using existing token');
-}
-
-const SPACE = process.env.CONTENTFUL_SPACE_ID || '8e4hmp8gwcuv';
-let TOKEN = process.env.CONTENTFUL_MANAGEMENT_TOKEN!;
-const BASE = `https://api.contentful.com/spaces/${SPACE}/environments/master`;
-console.log(`Using space: ${SPACE}, token starts: ${TOKEN?.slice(0, 15)}...`);
-
-let tokenCreatedAt = Date.now();
-
-async function refreshTokenIfNeeded() {
-  if (Date.now() - tokenCreatedAt > 7 * 60 * 1000) {
-    console.log('  🔄 Refreshing token...');
-    try {
-      execSync('bash scripts/refresh-cma-token.sh', { stdio: 'pipe' });
-      TOKEN = readTokenFromEnv();
-      tokenCreatedAt = Date.now();
-      console.log('  ✅ Token refreshed');
-    } catch {
-      console.log('  ⚠️  Token refresh failed mid-run');
-    }
-  }
-}
-
 // ── Category ID map ──────────────────────────────────────────────
+// NOTE: verify against the live CMS with `npx tsx scripts/cms.ts categories`.
 
 const CAT: Record<string, string> = {
   language:           '7inqvMgFf4dh13bC79cFhU',
@@ -174,35 +138,16 @@ function catLink(slug: string) {
   return { sys: { type: 'Link', linkType: 'Entry', id: CAT[slug] } };
 }
 
-// ── CMA helpers ──────────────────────────────────────────────────
-
-async function cma(path: string, opts: RequestInit = {}) {
-  const r = await fetch(`${BASE}${path}`, {
-    ...opts,
-    headers: {
-      Authorization: `Bearer ${TOKEN}`,
-      'Content-Type': 'application/vnd.contentful.management.v1+json',
-      ...(opts.headers || {}),
-    },
-  });
-  return r.json();
-}
-
-async function findEntry(slug: string): Promise<any> {
-  const res = await cma(`/entries?content_type=agent&fields.slug=${slug}&limit=1`);
-  return res.items?.[0] ?? null;
-}
+// ── CMA helpers (shared plumbing in scripts/lib/cma.ts) ──────────
 
 async function createAgent(agent: AgentInput): Promise<'created' | 'skipped' | 'error'> {
-  await refreshTokenIfNeeded();
-
   // Validate description length
   if (agent.description.length > 200) {
     console.log(`  ❌ ${agent.name}: description too long (${agent.description.length} chars > 200)`);
     return 'error';
   }
 
-  const existing = await findEntry(agent.slug);
+  const existing = await findEntryBySlug('agent', agent.slug);
   if (existing) {
     console.log(`  ⏭  ${agent.name} (${agent.slug}) already exists`);
     return 'skipped';

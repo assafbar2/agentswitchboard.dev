@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Verified, ArrowRight, Zap, Star, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
 import { AccessMethodBadges } from '@/components/ui/AccessMethodBadges';
@@ -63,9 +64,11 @@ export function FeaturedAgentCard({
       {/* Header */}
       <div className="flex items-start gap-3 mb-4">
         {agent.iconUrl ? (
-          <img
+          <Image
             src={agent.iconUrl}
             alt=""
+            width={40}
+            height={40}
             className="w-10 h-10 rounded-lg flex-shrink-0 bg-white/5"
           />
         ) : (

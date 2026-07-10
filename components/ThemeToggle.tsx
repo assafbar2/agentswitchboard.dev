@@ -23,7 +23,7 @@ export function ThemeToggle() {
     setMounted(true);
     const saved = localStorage.getItem('theme') as 'dark' | 'light' | null;
     const initial = saved ?? 'light';
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+     
     setTheme(initial);
     applyTheme(initial);
   }, []);

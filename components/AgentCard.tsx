@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ExternalLink, Shield, Zap, Verified } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
 import { AccessMethodBadges } from '@/components/ui/AccessMethodBadges';
@@ -12,9 +13,11 @@ export function AgentCard({ agent }: { agent: Agent }) {
       <div className="flex items-start justify-between gap-2 mb-3">
         <div className="flex items-center gap-2 min-w-0">
           {agent.iconUrl ? (
-            <img
+            <Image
               src={agent.iconUrl}
               alt=""
+              width={32}
+              height={32}
               className="w-8 h-8 rounded-md flex-shrink-0 bg-white/5"
             />
           ) : (

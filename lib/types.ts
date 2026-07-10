@@ -1,73 +1,69 @@
-import type { Entry, Asset, EntrySkeletonType } from 'contentful';
+import type { EntryFieldTypes } from 'contentful';
 import type { Document } from '@contentful/rich-text-types';
 
-// ── Contentful field types ──────────────────────────────────────────
-
-export interface AgentFields {
-  name: string;
-  slug: string;
-  description: string;
-  longDescription?: Document;
-  providerName: string;
-  providerUrl: string;
-  version?: string;
-  agentUrl: string;
-  wellKnownUrl?: string;
-  agentCardJson?: string;
-  categories: Entry<CategorySkeleton>[];
-  tags?: string[];
-  skills?: AgentSkill[];
-  authType?: 'apiKey' | 'oauth2' | 'bearer' | 'none';
-  authInstructions?: Document;
-  integrationGuide?: Document;
-  supportsStreaming?: boolean;
-  supportsPushNotifications?: boolean;
-  iconUrl?: string;
-  status: 'published' | 'draft' | 'archived';
-  featured?: boolean;
-  featuredUntil?: string;
-  verified?: boolean;
-  referralUrl?: string;
-  sponsorLabel?: string;
-  tier?: 'free' | 'premium';
-  discoveredBy?: 'manual' | 'worker';
-  workerSource?: string;
-  accessMethods?: ('api' | 'mcp' | 'cli' | 'browser-extension')[];
-}
-
-export interface CategoryFields {
-  name: string;
-  slug: string;
-  description?: string;
-  icon?: string;
-  sortOrder?: number;
-}
-
-export interface SiteSettingsFields {
-  siteName: string;
-  tagline: string;
-  heroSubtitle?: string;
-  footerText?: string;
-  advertiseUrl?: string;
-  premiumPriceMonthly?: number;
-  premiumCheckoutUrl?: string;
-}
-
 // ── Contentful skeletons ────────────────────────────────────────────
+// Declared with EntryFieldTypes so the SDK derives typed query keys
+// ('fields.slug'), order paths ('-fields.featured'), and resolved link
+// shapes. Enum-like Symbol fields are strings at the type level; mappers
+// narrow them to the app-level unions.
 
-export interface AgentSkeleton extends EntrySkeletonType {
+export interface AgentSkeleton {
   contentTypeId: 'agent';
-  fields: AgentFields;
+  fields: {
+    name: EntryFieldTypes.Symbol;
+    slug: EntryFieldTypes.Symbol;
+    description: EntryFieldTypes.Symbol;
+    longDescription?: EntryFieldTypes.RichText;
+    providerName: EntryFieldTypes.Symbol;
+    providerUrl: EntryFieldTypes.Symbol;
+    version?: EntryFieldTypes.Symbol;
+    agentUrl: EntryFieldTypes.Symbol;
+    wellKnownUrl?: EntryFieldTypes.Symbol;
+    agentCardJson?: EntryFieldTypes.Text;
+    categories: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<CategorySkeleton>>;
+    tags?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
+    skills?: EntryFieldTypes.Object;
+    authType?: EntryFieldTypes.Symbol;
+    authInstructions?: EntryFieldTypes.RichText;
+    integrationGuide?: EntryFieldTypes.RichText;
+    supportsStreaming?: EntryFieldTypes.Boolean;
+    supportsPushNotifications?: EntryFieldTypes.Boolean;
+    iconUrl?: EntryFieldTypes.Symbol;
+    status: EntryFieldTypes.Symbol;
+    featured?: EntryFieldTypes.Boolean;
+    featuredUntil?: EntryFieldTypes.Date;
+    verified?: EntryFieldTypes.Boolean;
+    referralUrl?: EntryFieldTypes.Symbol;
+    sponsorLabel?: EntryFieldTypes.Symbol;
+    tier?: EntryFieldTypes.Symbol;
+    discoveredBy?: EntryFieldTypes.Symbol;
+    workerSource?: EntryFieldTypes.Symbol;
+    accessMethods?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
+  };
 }
 
-export interface CategorySkeleton extends EntrySkeletonType {
+export interface CategorySkeleton {
   contentTypeId: 'category';
-  fields: CategoryFields;
+  fields: {
+    name: EntryFieldTypes.Symbol;
+    slug: EntryFieldTypes.Symbol;
+    description?: EntryFieldTypes.Symbol;
+    icon?: EntryFieldTypes.Symbol;
+    sortOrder?: EntryFieldTypes.Integer;
+  };
 }
 
-export interface SiteSettingsSkeleton extends EntrySkeletonType {
+export interface SiteSettingsSkeleton {
   contentTypeId: 'siteSettings';
-  fields: SiteSettingsFields;
+  fields: {
+    siteName: EntryFieldTypes.Symbol;
+    tagline: EntryFieldTypes.Symbol;
+    heroSubtitle?: EntryFieldTypes.Symbol;
+    footerText?: EntryFieldTypes.Symbol;
+    advertiseUrl?: EntryFieldTypes.Symbol;
+    premiumPriceMonthly?: EntryFieldTypes.Number;
+    premiumCheckoutUrl?: EntryFieldTypes.Symbol;
+  };
 }
 
 // ── App-level types ─────────────────────────────────────────────────
