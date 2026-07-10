@@ -22,7 +22,7 @@ export function ViewModeToggle({ className }: { className?: string }) {
     setMounted(true);
     const saved = localStorage.getItem('viewMode') as 'human' | 'agent' | null;
     const initial = saved ?? 'human';
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+     
     setMode(initial);
     applyMode(initial);
   }, []);

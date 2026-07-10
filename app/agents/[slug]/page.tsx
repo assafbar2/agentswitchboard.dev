@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation';
 import { Verified, ExternalLink, Zap, Shield, Radio, Bell } from 'lucide-react';
 import { authTypeLabel } from '@/lib/utils';
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 
 export const revalidate = 60;
@@ -106,7 +107,7 @@ export default async function AgentPage({
           {/* Header */}
           <div className="flex items-start gap-4 mb-8">
             {agent.iconUrl ? (
-              <img src={agent.iconUrl} alt="" className="w-14 h-14 rounded-xl bg-white/5" />
+              <Image src={agent.iconUrl} alt="" width={56} height={56} className="w-14 h-14 rounded-xl bg-white/5" />
             ) : (
               <div className="w-14 h-14 rounded-xl bg-[var(--accent-subtle)] flex items-center justify-center">
                 <span className="mono text-2xl text-[var(--accent)] font-bold">{agent.name[0]}</span>

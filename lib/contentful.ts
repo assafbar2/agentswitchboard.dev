@@ -1,9 +1,18 @@
-import { createClient, type ContentfulClientApi } from 'contentful';
+import { createClient, type ContentfulClientApi, type Entry, type UnresolvedLink } from 'contentful';
 import { createClient as createManagementClient } from 'contentful-management';
 import { cache } from 'react';
 import { requireEnv } from './env';
-import type { Agent, AgentQueryOptions, AgentSkill, Category, HomepageAgent, SiteSettings } from './types';
-import type { Document } from '@contentful/rich-text-types';
+import type {
+  Agent,
+  AgentQueryOptions,
+  AgentSkill,
+  AgentSkeleton,
+  Category,
+  CategorySkeleton,
+  HomepageAgent,
+  SiteSettings,
+  SiteSettingsSkeleton,
+} from './types';
 
 // ── Clients ─────────────────────────────────────────────────────────
 
@@ -33,15 +42,26 @@ export function getManagementClient() {
 
 // ── Mappers ─────────────────────────────────────────────────────────
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function mapAgent(entry: any): Agent {
+type AgentEntry = Entry<AgentSkeleton, undefined, string>;
+type CategoryEntry = Entry<CategorySkeleton, undefined, string>;
+type SiteSettingsEntry = Entry<SiteSettingsSkeleton, undefined, string>;
+
+/** Narrow a linked entry: with include-depth resolution, links either resolve
+ *  to full entries (with `fields`) or stay as unresolved sys links. */
+function isResolved(
+  link: CategoryEntry | UnresolvedLink<'Entry'>
+): link is CategoryEntry {
+  return 'fields' in link && !!link.fields;
+}
+
+function mapAgent(entry: AgentEntry): Agent {
   const f = entry.fields;
   return {
     id: entry.sys.id,
     name: f.name,
     slug: f.slug,
     description: f.description,
-    longDescription: f.longDescription as Document | undefined,
+    longDescription: f.longDescription,
     providerName: f.providerName,
     providerUrl: f.providerUrl,
     version: f.version,
@@ -49,41 +69,40 @@ function mapAgent(entry: any): Agent {
     wellKnownUrl: f.wellKnownUrl,
     agentCardJson: f.agentCardJson,
     categories: Array.isArray(f.categories)
-      ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        f.categories.filter((c: any) => c?.fields).map(mapCategory)
+      ? f.categories.filter(isResolved).map(mapCategory)
       : [],
     tags: f.tags ?? [],
     skills: Array.isArray(f.skills)
-      ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (f.skills as any[]).map((s) =>
+      ? (f.skills as (AgentSkill | string)[]).map((s) =>
           typeof s === 'string'
-            ? ({ id: s, name: s, description: s } as AgentSkill)
-            : (s as AgentSkill)
+            ? ({ id: s, name: s, description: s } satisfies AgentSkill)
+            : s
         )
       : [],
-    authType: f.authType ?? 'none',
-    authInstructions: f.authInstructions as Document | undefined,
-    integrationGuide: f.integrationGuide as Document | undefined,
+    // Enum-like Symbol fields: Contentful validates allowed values at write
+    // time, so narrowing casts at this boundary are safe.
+    authType: (f.authType ?? 'none') as Agent['authType'],
+    authInstructions: f.authInstructions,
+    integrationGuide: f.integrationGuide,
     supportsStreaming: f.supportsStreaming ?? false,
     supportsPushNotifications: f.supportsPushNotifications ?? false,
     iconUrl: f.iconUrl,
-    status: f.status ?? 'draft',
+    status: (f.status ?? 'draft') as Agent['status'],
     featured: f.featured ?? false,
     featuredUntil: f.featuredUntil,
     verified: f.verified ?? false,
     referralUrl: f.referralUrl,
     sponsorLabel: f.sponsorLabel,
-    tier: f.tier ?? 'free',
-    discoveredBy: f.discoveredBy ?? 'manual',
+    tier: (f.tier ?? 'free') as Agent['tier'],
+    discoveredBy: (f.discoveredBy ?? 'manual') as Agent['discoveredBy'],
     workerSource: f.workerSource,
-    accessMethods: f.accessMethods ?? [],
+    accessMethods: (f.accessMethods ?? []) as Agent['accessMethods'],
     createdAt: entry.sys.createdAt,
     updatedAt: entry.sys.updatedAt,
   };
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function mapCategory(entry: any): Category {
+function mapCategory(entry: CategoryEntry): Category {
   const f = entry.fields;
   return {
     id: entry.sys.id,
@@ -95,8 +114,7 @@ function mapCategory(entry: any): Category {
   };
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function mapSiteSettings(entry: any): SiteSettings {
+function mapSiteSettings(entry: SiteSettingsEntry): SiteSettings {
   const f = entry.fields;
   return {
     siteName: f.siteName,
@@ -136,7 +154,7 @@ export async function getAllAgents(
   };
 
   if (category) {
-    const catEntries = await contentfulClient.getEntries({
+    const catEntries = await contentfulClient.getEntries<CategorySkeleton>({
       content_type: 'category',
       'fields.slug': category,
       limit: 1,
@@ -155,7 +173,7 @@ export async function getAllAgents(
   if (tier) query['fields.tier'] = tier;
   if (search) query['query'] = search;
 
-  const entries = await contentfulClient.getEntries(query);
+  const entries = await contentfulClient.getEntries<AgentSkeleton>(query);
 
   return {
     agents: entries.items.map(mapAgent),
@@ -176,7 +194,7 @@ export const getEveryAgent = cache(async (): Promise<Agent[]> => {
   let total = Infinity;
 
   while (skip < total) {
-    const entries = await contentfulClient.getEntries({
+    const entries = await contentfulClient.getEntries<AgentSkeleton>({
       content_type: 'agent',
       'fields.status': 'published',
       include: 2,
@@ -193,7 +211,7 @@ export const getEveryAgent = cache(async (): Promise<Agent[]> => {
 });
 
 export async function getAgentBySlug(slug: string): Promise<Agent | null> {
-  const entries = await contentfulClient.getEntries({
+  const entries = await contentfulClient.getEntries<AgentSkeleton>({
     content_type: 'agent',
     'fields.slug': slug,
     'fields.status': 'published',
@@ -207,7 +225,7 @@ export async function getAgentBySlug(slug: string): Promise<Agent | null> {
 
 export async function getAllCategories(): Promise<Category[]> {
   const [entries, agents] = await Promise.all([
-    contentfulClient.getEntries({
+    contentfulClient.getEntries<CategorySkeleton>({
       content_type: 'category',
       order: ['fields.sortOrder'],
       limit: 100,
@@ -232,7 +250,7 @@ export async function getAllCategories(): Promise<Category[]> {
 export async function getCategoryBySlug(
   slug: string
 ): Promise<{ category: Category; agents: Agent[] } | null> {
-  const catEntries = await contentfulClient.getEntries({
+  const catEntries = await contentfulClient.getEntries<CategorySkeleton>({
     content_type: 'category',
     'fields.slug': slug,
     limit: 1,
@@ -241,7 +259,7 @@ export async function getCategoryBySlug(
   if (catEntries.items.length === 0) return null;
   const category = mapCategory(catEntries.items[0]);
 
-  const agentEntries = await contentfulClient.getEntries({
+  const agentEntries = await contentfulClient.getEntries<AgentSkeleton>({
     content_type: 'agent',
     'fields.status': 'published',
     'fields.categories.sys.id': category.id,
@@ -257,7 +275,7 @@ export async function getCategoryBySlug(
 }
 
 export async function getFeaturedAgents(): Promise<Agent[]> {
-  const entries = await contentfulClient.getEntries({
+  const entries = await contentfulClient.getEntries<AgentSkeleton>({
     content_type: 'agent',
     'fields.featured': true,
     'fields.status': 'published',
@@ -272,48 +290,40 @@ export async function getFeaturedAgents(): Promise<Agent[]> {
     .filter((a) => !a.featuredUntil || a.featuredUntil >= now);
 }
 
+/**
+ * Homepage slots are fully CMS-driven: agents with `featured: true` (and an
+ * unexpired `featuredUntil`, when set) fill up to SLOTS positions, ordered
+ * by name; the first is labeled Editor's Pick. Any remaining slots are
+ * filled with the newest additions. Curation happens in Contentful — no
+ * code deploy needed to change the homepage.
+ */
 export async function getHomepageAgents(): Promise<HomepageAgent[]> {
-  // Pinned slots — always first, in this order
-  const PINNED: Array<{ slug: string; label: HomepageAgent['label'] }> = [
-    { slug: 'agentmail',      label: 'editors-pick' },
-    { slug: 'here-now',       label: 'featured' },
-    { slug: 'playwright-mcp', label: 'featured' },
-    { slug: 'clawvisor',      label: 'featured' },
-  ];
+  const SLOTS = 6;
+  const now = new Date().toISOString();
+  const agents = await getEveryAgent();
 
-  const pinnedResults = await Promise.all(
-    PINNED.map(async ({ slug, label }) => {
-      const agent = await getAgentBySlug(slug);
-      return agent ? { agent, label } : null;
-    })
-  );
-  const pinned = pinnedResults.filter(Boolean) as HomepageAgent[];
-  const pinnedIds = new Set(pinned.map((p) => p.agent.id));
-
-  // Slugs to suppress from the newest section (pinned elsewhere or manually hidden)
-  const SUPPRESS_FROM_NEWEST = new Set(['vennio']);
-
-  // Fetch newest agents to fill the remaining slots
-  const newEntries = await contentfulClient.getEntries({
-    content_type: 'agent',
-    'fields.status': 'published',
-    include: 2,
-    limit: 20, // fetch extra, we'll filter and trim
-    order: ['-sys.createdAt'],
-  });
-
-  const newest: HomepageAgent[] = newEntries.items
-    .map(mapAgent)
-    .filter((a) => !pinnedIds.has(a.id) && !SUPPRESS_FROM_NEWEST.has(a.slug))
-    .slice(0, 2)
+  const featured: HomepageAgent[] = agents
+    .filter((a) => a.featured && (!a.featuredUntil || a.featuredUntil >= now))
     .sort((a, b) => a.name.localeCompare(b.name))
+    .slice(0, SLOTS)
+    .map((agent, i) => ({
+      agent,
+      label: i === 0 ? ('editors-pick' as const) : ('featured' as const),
+    }));
+
+  const featuredIds = new Set(featured.map((f) => f.agent.id));
+
+  const newest: HomepageAgent[] = agents
+    .filter((a) => !featuredIds.has(a.id) && a.createdAt)
+    .sort((a, b) => (b.createdAt ?? '').localeCompare(a.createdAt ?? ''))
+    .slice(0, Math.max(0, SLOTS - featured.length))
     .map((agent) => ({ agent, label: 'new' as const }));
 
-  return [...pinned, ...newest];
+  return [...featured, ...newest];
 }
 
 export async function getSiteSettings(): Promise<SiteSettings | null> {
-  const entries = await contentfulClient.getEntries({
+  const entries = await contentfulClient.getEntries<SiteSettingsSkeleton>({
     content_type: 'siteSettings',
     limit: 1,
   });
@@ -393,7 +403,7 @@ export async function createDraftAgent(data: {
 export async function isAgentAlreadyListed(
   agentUrl: string
 ): Promise<boolean> {
-  const entries = await contentfulClient.getEntries({
+  const entries = await contentfulClient.getEntries<AgentSkeleton>({
     content_type: 'agent',
     'fields.agentUrl': agentUrl,
     limit: 1,

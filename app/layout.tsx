@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { JetBrains_Mono, Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import { Header } from '@/components/Header';
@@ -68,19 +69,20 @@ export default function RootLayout({
         {/* Machine-readable agent context */}
         <link rel="alternate" type="application/json" href="/agents.json" title="Agent Catalog — Agent Switchboard" />
         <link rel="ai-index" href="/for-agents" />
-        {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-YF8BJ449WX" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-YF8BJ449WX');`,
-          }}
-        />
       </head>
       <body className="min-h-full flex flex-col antialiased">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
         <Analytics />
+        {/* Google Analytics — loaded after hydration to keep it off the critical path */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-YF8BJ449WX"
+          strategy="afterInteractive"
+        />
+        <Script id="ga-init" strategy="afterInteractive">
+          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-YF8BJ449WX');`}
+        </Script>
       </body>
     </html>
   );
