@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Submit an Agent',
   description: 'Submit your A2A-compatible agent to the directory.',
+  alternates: { canonical: '/submit' },
 };
 
 export default function SubmitPage() {

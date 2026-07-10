@@ -1,24 +1,33 @@
-import { createClient } from 'contentful';
+import { createClient, type ContentfulClientApi } from 'contentful';
 import { createClient as createManagementClient } from 'contentful-management';
+import { cache } from 'react';
+import { requireEnv } from './env';
 import type { Agent, AgentQueryOptions, AgentSkill, Category, HomepageAgent, SiteSettings } from './types';
 import type { Document } from '@contentful/rich-text-types';
 
 // ── Clients ─────────────────────────────────────────────────────────
 
 export const contentfulClient = createClient({
-  space: process.env.CONTENTFUL_SPACE_ID!,
-  accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN!,
+  space: requireEnv('CONTENTFUL_SPACE_ID'),
+  accessToken: requireEnv('CONTENTFUL_DELIVERY_TOKEN'),
 });
 
-export const previewClient = createClient({
-  space: process.env.CONTENTFUL_SPACE_ID!,
-  accessToken: process.env.CONTENTFUL_PREVIEW_TOKEN!,
-  host: 'preview.contentful.com',
-});
+// Lazy: only required when previewing drafts.
+let _previewClient: ContentfulClientApi<undefined> | null = null;
+export function getPreviewClient() {
+  if (!_previewClient) {
+    _previewClient = createClient({
+      space: requireEnv('CONTENTFUL_SPACE_ID'),
+      accessToken: requireEnv('CONTENTFUL_PREVIEW_TOKEN'),
+      host: 'preview.contentful.com',
+    });
+  }
+  return _previewClient;
+}
 
 export function getManagementClient() {
   return createManagementClient({
-    accessToken: process.env.CONTENTFUL_MANAGEMENT_TOKEN!,
+    accessToken: requireEnv('CONTENTFUL_MANAGEMENT_TOKEN'),
   });
 }
 
@@ -40,11 +49,13 @@ function mapAgent(entry: any): Agent {
     wellKnownUrl: f.wellKnownUrl,
     agentCardJson: f.agentCardJson,
     categories: Array.isArray(f.categories)
-      ? f.categories.filter((c: any) => c?.fields).map(mapCategory)
+      ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        f.categories.filter((c: any) => c?.fields).map(mapCategory)
       : [],
     tags: f.tags ?? [],
     skills: Array.isArray(f.skills)
-      ? (f.skills as any[]).map((s) =>
+      ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (f.skills as any[]).map((s) =>
           typeof s === 'string'
             ? ({ id: s, name: s, description: s } as AgentSkill)
             : (s as AgentSkill)
@@ -152,6 +163,35 @@ export async function getAllAgents(
   };
 }
 
+/**
+ * Fetch EVERY published agent, paginating past Contentful's 1000-per-request
+ * cap. Wrapped in React cache() so all call sites within one render share a
+ * single fetch. This is the canonical "full catalog" — use it instead of
+ * getAllAgents({ limit: N }) whenever the complete directory is needed.
+ */
+export const getEveryAgent = cache(async (): Promise<Agent[]> => {
+  const PAGE = 1000;
+  const all: Agent[] = [];
+  let skip = 0;
+  let total = Infinity;
+
+  while (skip < total) {
+    const entries = await contentfulClient.getEntries({
+      content_type: 'agent',
+      'fields.status': 'published',
+      include: 2,
+      limit: PAGE,
+      skip,
+      order: ['-fields.featured', 'fields.name'],
+    });
+    total = entries.total;
+    all.push(...entries.items.map(mapAgent));
+    skip += PAGE;
+  }
+
+  return all;
+});
+
 export async function getAgentBySlug(slug: string): Promise<Agent | null> {
   const entries = await contentfulClient.getEntries({
     content_type: 'agent',
@@ -166,13 +206,27 @@ export async function getAgentBySlug(slug: string): Promise<Agent | null> {
 }
 
 export async function getAllCategories(): Promise<Category[]> {
-  const entries = await contentfulClient.getEntries({
-    content_type: 'category',
-    order: ['fields.sortOrder'],
-    limit: 100,
-  });
+  const [entries, agents] = await Promise.all([
+    contentfulClient.getEntries({
+      content_type: 'category',
+      order: ['fields.sortOrder'],
+      limit: 100,
+    }),
+    getEveryAgent(),
+  ]);
 
-  return entries.items.map(mapCategory);
+  // Count published agents per category so agentCount is always populated
+  const counts = new Map<string, number>();
+  for (const agent of agents) {
+    for (const cat of agent.categories) {
+      counts.set(cat.slug, (counts.get(cat.slug) ?? 0) + 1);
+    }
+  }
+
+  return entries.items.map((entry) => {
+    const cat = mapCategory(entry);
+    return { ...cat, agentCount: counts.get(cat.slug) ?? 0 };
+  });
 }
 
 export async function getCategoryBySlug(
@@ -269,21 +323,16 @@ export async function getSiteSettings(): Promise<SiteSettings | null> {
 }
 
 export async function getAgentCount(): Promise<number> {
-  const entries = await contentfulClient.getEntries({
-    content_type: 'agent',
-    'fields.status': 'published',
-    limit: 0,
-  });
-  return entries.total;
+  return (await getEveryAgent()).length;
 }
 
 export async function getTotalSkillsCount(): Promise<number> {
-  const { agents } = await getAllAgents({ limit: 1000 });
+  const agents = await getEveryAgent();
   return agents.reduce((sum, a) => sum + a.skills.length, 0);
 }
 
 export async function getUniqueProviderCount(): Promise<number> {
-  const { agents } = await getAllAgents({ limit: 1000 });
+  const agents = await getEveryAgent();
   return new Set(agents.map((a) => a.providerName)).size;
 }
 

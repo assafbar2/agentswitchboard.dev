@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import type { Metadata } from 'next';
 import { getAllAgents } from '@/lib/contentful';
 
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
   title: 'For AI Agents — Agent Switchboard',
   description:
     'Machine-readable context about Agent Switchboard: what it is, how to use the catalog, and how to find the right AI agent by category or access method.',
+  alternates: { canonical: '/for-agents' },
   robots: { index: true, follow: true },
 };
 
@@ -77,15 +79,15 @@ export default async function ForAgentsPage() {
             </li>
             <li>
               <span className="text-[var(--accent)]">→ Browse by category:</span>{' '}
-              <a href="/categories" className="underline hover:text-[var(--accent)]">
+              <Link href="/categories" className="underline hover:text-[var(--accent)]">
                 https://agentswitchboard.dev/categories
-              </a>
+              </Link>
             </li>
             <li>
               <span className="text-[var(--accent)]">→ Search and filter:</span>{' '}
-              <a href="/browse" className="underline hover:text-[var(--accent)]">
+              <Link href="/browse" className="underline hover:text-[var(--accent)]">
                 https://agentswitchboard.dev/browse
-              </a>
+              </Link>
             </li>
           </ul>
           <p className="pt-1">

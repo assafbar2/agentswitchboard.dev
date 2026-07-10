@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Pro Access',
   description: 'Unlock premium agent listings and advanced features.',
+  alternates: { canonical: '/pro' },
 };
 
 export default function ProPage() {

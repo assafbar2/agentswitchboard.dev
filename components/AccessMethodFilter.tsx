@@ -16,12 +16,11 @@ export function AccessMethodFilter() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const activeFilters = searchParams.get('access')?.split(',').filter(Boolean) ?? [];
-  const currentQuery = searchParams.get('q') ?? '';
 
   const toggle = useCallback(
     (method: string) => {
       const params = new URLSearchParams(searchParams.toString());
-      let filters = activeFilters.includes(method)
+      const filters = activeFilters.includes(method)
         ? activeFilters.filter((m) => m !== method)
         : [...activeFilters, method];
 
