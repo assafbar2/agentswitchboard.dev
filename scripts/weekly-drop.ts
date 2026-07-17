@@ -80,26 +80,8 @@ const _AGENTS_ADDED_2026_06_15: AgentInput[] = [
   },
 ];
 const AGENTS_TO_ADD: AgentInput[] = [
-  {
-    name: 'Zero',
-    slug: 'zero-xyz',
-    description: 'Gives AI agents a search engine and payment layer for ~29,000 tools and services — agents discover the best service per task, call it, and pay per use from one wallet. No API keys to manage.',
-    providerName: 'ZeroClick',
-    providerUrl: 'https://www.zero.xyz',
-    agentUrl: 'https://www.zero.xyz',
-    categories: ['infrastructure', 'commerce-payments'],
-    tags: ['tool-discovery', 'pay-per-call', 'agent-wallet', 'service-marketplace', 'claude-code', 'zero-config', 'agent-commerce'],
-    authType: 'none',
-    accessMethods: ['cli', 'api'],
-    supportsStreaming: false,
-    supportsPushNotifications: false,
-    verified: true,
-    skills: [
-      { id: 'service-discovery', name: 'Service Discovery', description: 'Searches ~29,000 tools and services and picks the best match for the task using community ratings and fit.' },
-      { id: 'pay-per-call-wallet', name: 'Pay-Per-Call Wallet', description: 'Pays for tool calls per use from a single wallet, with costs ranging from free to about $0.50 per call.' },
-      { id: 'zero-config-access', name: 'Zero-Config Tool Access', description: 'Lets agents use new tools straight from the prompt with no API keys, accounts, or manual configuration.' },
-    ],
-  },
+  // Paste agents here from either the Weekly Drop or Top 50 Audit prompt.
+  // Each run skips agents that already exist. Clear after committing.
 ];
 // ─────────────────────────────────────────────────────────────────────────────
 
