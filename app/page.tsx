@@ -265,6 +265,11 @@ export default async function HomePage() {
               <span className="agent-dim">GET · no auth</span>
             </div>
             <div className="agent-row">
+              <span className="agent-accent">/api/mcp</span>
+              <span className="agent-dim">MCP server · search_agents, get_agent, list_categories</span>
+              <span className="agent-dim">streamable-http · no auth</span>
+            </div>
+            <div className="agent-row">
               <Link href="/browse" className="agent-accent hover:opacity-80">/browse</Link>
               <span className="agent-dim">filterable directory</span>
               <span className="agent-dim">?q= ?category= ?access=</span>
