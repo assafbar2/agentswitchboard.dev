@@ -17,8 +17,10 @@
 const CATALOG_URL = 'https://agentswitchboard.dev/agents.json';
 const TIMEOUT_MS = 10_000;
 const CONCURRENCY = 10;
+// Browser-like UA: some sites (e.g. wonderful.ai) 403 anything that
+// self-identifies as a bot, which would flood the report with warnings.
 const UA =
-  'Mozilla/5.0 (compatible; AgentSwitchboardLinkCheck/1.0; +https://agentswitchboard.dev)';
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36 AgentSwitchboardLinkCheck/1.0';
 
 type Verdict = 'ok' | 'warn' | 'dead';
 interface Result {
@@ -37,8 +39,10 @@ async function probe(url: string): Promise<{ status: number | string; verdict: V
         signal: AbortSignal.timeout(TIMEOUT_MS),
         headers: { 'User-Agent': UA, Accept: '*/*' },
       });
-      // Some servers reject HEAD (405/501) or lie with 403 — retry with GET
-      if (method === 'HEAD' && [403, 405, 501].includes(res.status)) continue;
+      // Some servers reject HEAD (405/501), lie with 403, or even 404 on
+      // HEAD while serving GET fine (azure.microsoft.com) — always confirm
+      // a suspicious HEAD result with a GET before classifying.
+      if (method === 'HEAD' && [403, 404, 405, 410, 501].includes(res.status)) continue;
       if (res.status === 404 || res.status === 410) return { status: res.status, verdict: 'dead' };
       if (res.ok || (res.status >= 300 && res.status < 400)) return { status: res.status, verdict: 'ok' };
       return { status: res.status, verdict: 'warn' };
