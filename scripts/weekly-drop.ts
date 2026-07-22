@@ -80,27 +80,8 @@ const _AGENTS_ADDED_2026_06_15: AgentInput[] = [
   },
 ];
 const AGENTS_TO_ADD: AgentInput[] = [
-  {
-    name: 'Hilt Pay Agent Gateway',
-    slug: 'hilt-pay',
-    description: 'Gives agents x402 V2 paid-request access on Solana USDC — settlement verification, receipts, entitlements, atomic metering, and webhooks. Zero-custody; ships A2A agent card, MCP, and API.',
-    providerName: 'Hilt',
-    providerUrl: 'https://www.hilt.so',
-    agentUrl: 'https://docs.hilt.so/developers/agent-micropayments',
-    categories: ['commerce-payments', 'infrastructure'],
-    tags: ['x402', 'a2a', 'solana-usdc', 'agent-payments', 'micropayments', 'zero-custody', 'entitlements'],
-    authType: 'apiKey',
-    accessMethods: ['api', 'mcp'],
-    supportsStreaming: false,
-    supportsPushNotifications: false,
-    verified: true,
-    skills: [
-      { id: 'paid-request-settlement', name: 'Paid Request Settlement', description: 'Executes x402 V2 paid requests with Solana USDC settlement and verifies payment signatures atomically.' },
-      { id: 'receipts-entitlements', name: 'Receipts & Entitlements', description: 'Issues receipts and durable entitlements for every settled payment so access outlives the transaction.' },
-      { id: 'atomic-metering', name: 'Atomic Metering', description: 'Meters API usage atomically against prepaid balances and entitlements for pay-per-call agent billing.' },
-      { id: 'sandbox-bootstrap', name: 'Sandbox Bootstrap', description: 'Bootstraps a sandbox workspace so agents can test the full payment-to-access flow without real funds.' },
-    ],
-  },
+  // Paste agents here from either the Weekly Drop or Top 50 Audit prompt.
+  // Each run skips agents that already exist. Clear after committing.
 ];
 // ─────────────────────────────────────────────────────────────────────────────
 
