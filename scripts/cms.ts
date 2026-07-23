@@ -19,6 +19,7 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+import { appendChangelog } from './lib/changelog';
 
 const CONTENT = path.resolve(process.cwd(), 'content');
 
@@ -84,6 +85,7 @@ function main() {
       if (untilIdx >= 0 && flags[untilIdx + 1]) a.featuredUntil = flags[untilIdx + 1];
       if (off) delete a.featuredUntil;
       writeAgent(slug, a);
+      appendChangelog({ action: 'updated', slug, name: a.name, note: off ? 'Unfeatured' : 'Featured' });
       console.log(`✅ ${slug}: featured=${!off}${a.featuredUntil ? ` until ${a.featuredUntil}` : ''} — commit to publish`);
       break;
     }
@@ -100,6 +102,7 @@ function main() {
         a[field] = raw;
       }
       writeAgent(slug, a);
+      appendChangelog({ action: 'updated', slug, name: a.name, note: `${field} updated` });
       console.log(`🔄 ${slug}.${field} updated — commit to publish`);
       break;
     }
@@ -111,6 +114,7 @@ function main() {
       if (!a) return console.log(`❌ ${slug}: not found`);
       a.status = 'archived';
       writeAgent(slug, a);
+      appendChangelog({ action: 'removed', slug, name: a.name });
       console.log(`🗑  ${slug}: status=archived — commit to remove from site`);
       break;
     }

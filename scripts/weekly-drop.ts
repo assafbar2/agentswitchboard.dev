@@ -20,6 +20,7 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+import { appendChangelog } from './lib/changelog';
 
 // ─── AGENTS TO ADD — edit this array, run, commit, then clear ────────────────
 const AGENTS_TO_ADD: AgentInput[] = [
@@ -104,6 +105,7 @@ function createAgent(agent: AgentInput, catSlugs: Set<string>): 'created' | 'ski
   };
 
   fs.writeFileSync(file, JSON.stringify(record, null, 2) + '\n');
+  appendChangelog({ action: 'added', slug: agent.slug, name: agent.name });
   console.log(`  ✅ ${agent.name}`);
   return 'created';
 }

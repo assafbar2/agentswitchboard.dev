@@ -56,7 +56,7 @@ const loadCategoriesRaw = cache(async (): Promise<Category[]> => {
   return JSON.parse(raw) as Category[];
 });
 
-// ── Public API (same shape as the former Contentful layer) ─────────
+// ── Public API ──────────────────────────────────────────────────────
 
 /** Every published agent, featured first then A→Z (the canonical order). */
 export const getEveryAgent = cache(async (): Promise<Agent[]> => {
