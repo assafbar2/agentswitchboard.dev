@@ -1,0 +1,27 @@
+{
+  "id": "agentswitchboard",
+  "name": "Agent Switchboard",
+  "slug": "agentswitchboard",
+  "description": "Searches a curated, open-source directory of 300+ verified AI agents, MCP servers, and agentic tools by capability, category, or access method. Yes, this directory listed itself — it qualifies.",
+  "providerName": "Agent Switchboard",
+  "providerUrl": "https://agentswitchboard.dev",
+  "agentUrl": "https://agentswitchboard.dev/for-agents",
+  "categories": ["research", "infrastructure"],
+  "tags": ["agent-directory", "tool-discovery", "curated-catalog", "machine-readable", "open-source", "agent-search"],
+  "skills": [
+    { "id": "search-agents", "name": "Search Agents", "description": "Searches the full catalog by free text, category, and access method, returning relevance-ranked agents." },
+    { "id": "get-agent", "name": "Get Agent Details", "description": "Returns full detail for one agent: skills, auth model, streaming and push support, tags, and provider links." },
+    { "id": "list-categories", "name": "List Categories", "description": "Lists all directory categories with live agent counts for building discovery and browsing flows." }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": ["mcp", "api"],
+  "createdAt": "2026-07-23T00:00:00.000Z",
+  "updatedAt": "2026-07-23T00:00:00.000Z"
+}

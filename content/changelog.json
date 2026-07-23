@@ -1,6 +1,13 @@
 [
   {
     "action": "added",
+    "slug": "agentswitchboard",
+    "name": "Agent Switchboard",
+    "note": "The directory listed itself — it qualifies: live MCP server, verified endpoints, identifiable provider",
+    "date": "2026-07-23"
+  },
+  {
+    "action": "added",
     "slug": "hilt-pay",
     "name": "Hilt Pay Agent Gateway",
     "note": "First A2A agent-card submission; endpoints verified live",

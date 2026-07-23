@@ -13,8 +13,8 @@ const REPO = 'https://github.com/assafbar2/agentswitchboard.dev';
 
 export default function SubmitPage() {
   return (
-    <div className="container-wide section">
-      <div className="max-w-2xl mx-auto py-10">
+    <div className="container-wide pt-8 pb-20">
+      <div className="max-w-2xl mx-auto">
         <div className="text-center mb-10">
           <Terminal className="w-10 h-10 text-[var(--accent)] mx-auto mb-4" />
           <h1 className="text-3xl font-bold tracking-tight mb-3">List Your Agent</h1>
