@@ -1,0 +1,56 @@
+{
+  "id": "43so988zDaInxOgCAtDf3Y",
+  "name": "Google Workspace CLI",
+  "slug": "google-workspace-cli",
+  "description": "Official Google CLI giving AI agents unified access to Drive, Gmail, Calendar, Sheets, Docs, Chat, and Admin — with built-in AI agent skill integration.",
+  "providerName": "Google",
+  "providerUrl": "https://workspace.google.com",
+  "agentUrl": "https://github.com/googleworkspace/cli",
+  "categories": [
+    "scheduling"
+  ],
+  "tags": [
+    "cli",
+    "google-workspace",
+    "gmail",
+    "google-drive",
+    "calendar",
+    "google-sheets",
+    "productivity"
+  ],
+  "skills": [
+    {
+      "id": "drive-ops",
+      "name": "Drive Operations",
+      "description": "List, upload, download, and manage files in Google Drive from an AI agent via CLI commands"
+    },
+    {
+      "id": "gmail-ops",
+      "name": "Gmail Operations",
+      "description": "Send, read, search, and manage Gmail messages and labels programmatically from agent workflows"
+    },
+    {
+      "id": "calendar-ops",
+      "name": "Calendar Operations",
+      "description": "Create, read, update, and delete Google Calendar events from AI agents via the Workspace CLI"
+    },
+    {
+      "id": "sheets-ops",
+      "name": "Sheets Operations",
+      "description": "Read and write Google Sheets data, manage formulas, and batch update cells from agent scripts"
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-04-25T19:07:20.238Z",
+  "updatedAt": "2026-04-25T19:07:20.238Z"
+}

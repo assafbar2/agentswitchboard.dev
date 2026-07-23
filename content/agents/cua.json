@@ -1,0 +1,52 @@
+{
+  "id": "OknoGFJcyD8F5R848jdJO",
+  "name": "Cua",
+  "slug": "cua",
+  "description": "Open-source infrastructure for computer-use agents — virtualized macOS, Linux, and Windows sandboxes, SDKs, and benchmarks for agents that control full desktop environments.",
+  "providerName": "trycua",
+  "providerUrl": "https://github.com/trycua/cua",
+  "agentUrl": "https://github.com/trycua/cua",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "computer-use",
+    "sandboxing",
+    "virtualization",
+    "macos",
+    "linux",
+    "open-source",
+    "benchmarks",
+    "desktop-agents"
+  ],
+  "skills": [
+    {
+      "id": "vm-sandbox",
+      "name": "VM Sandboxes",
+      "description": "Spin up virtualized macOS, Linux, or Windows environments for computer-use agent tasks safely"
+    },
+    {
+      "id": "desktop-control",
+      "name": "Desktop Control",
+      "description": "Give AI agents full GUI control over desktop apps, browsers, and system interfaces in sandboxes"
+    },
+    {
+      "id": "benchmark",
+      "name": "Agent Benchmarks",
+      "description": "Evaluate computer-use agents on standardized tasks across operating systems with repeatable test suites"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-04-25T19:07:18.424Z",
+  "updatedAt": "2026-04-25T19:07:18.424Z"
+}

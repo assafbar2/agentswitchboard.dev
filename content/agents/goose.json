@@ -1,0 +1,33 @@
+{
+  "id": "57Hs9tXAi5IZkN6p8EsfN0",
+  "name": "Goose",
+  "slug": "goose",
+  "description": "Runs autonomously on your machine to execute commands, debug errors, orchestrate multi-step workflows, and build projects from scratch.",
+  "providerName": "Block",
+  "providerUrl": "https://block.xyz/",
+  "agentUrl": "https://github.com/block/goose",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "open-source",
+    "coding-agent",
+    "cli",
+    "apache-2-0",
+    "local-agent"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-05-22T07:35:02.453Z",
+  "updatedAt": "2026-05-22T07:35:02.453Z"
+}

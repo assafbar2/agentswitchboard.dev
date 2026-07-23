@@ -1,0 +1,32 @@
+{
+  "id": "5KLvHjN8pOnaZ2zmcX7sQ5",
+  "name": "Google Cloud Translation",
+  "slug": "google-cloud-translation",
+  "description": "Google's translation API offering real-time translation across 100+ languages with AutoML custom model training.",
+  "providerName": "Google",
+  "providerUrl": "https://cloud.google.com",
+  "agentUrl": "https://cloud.google.com/translate",
+  "categories": [
+    "language"
+  ],
+  "tags": [
+    "translation",
+    "google-cloud",
+    "nlp"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-03-22T09:51:29.784Z",
+  "updatedAt": "2026-03-22T09:51:29.784Z"
+}

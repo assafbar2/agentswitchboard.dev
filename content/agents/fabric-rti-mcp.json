@@ -1,0 +1,34 @@
+{
+  "id": "7CR767nvz7B8lOOLcW7Dxa",
+  "name": "Fabric RTI MCP",
+  "slug": "fabric-rti-mcp",
+  "description": "Bridges AI agents to Microsoft Fabric Real-Time Intelligence for natural-language KQL queries against Eventhouse and Azure Data Explorer streams.",
+  "providerName": "Microsoft",
+  "providerUrl": "https://microsoft.com/",
+  "agentUrl": "https://github.com/microsoft/fabric-rti-mcp",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "microsoft",
+    "fabric",
+    "real-time-intelligence",
+    "kql",
+    "mcp-server",
+    "azure"
+  ],
+  "skills": [],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-05-22T07:35:26.307Z",
+  "updatedAt": "2026-05-22T07:35:26.307Z"
+}

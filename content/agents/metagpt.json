@@ -1,0 +1,61 @@
+{
+  "id": "6ScWJ0hkK4FrfZyPPLNI5T",
+  "name": "MetaGPT",
+  "slug": "metagpt",
+  "description": "Multi-agent framework where AI agents role-play as engineers, PMs, and QA to collectively produce software from a single natural language prompt via structured workflows.",
+  "providerName": "DeepWisdom",
+  "providerUrl": "https://deepwisdom.ai",
+  "agentUrl": "https://docs.deepwisdom.ai",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "multi-agent",
+    "software-engineering",
+    "role-playing",
+    "open-source",
+    "python",
+    "autonomous-coding"
+  ],
+  "skills": [
+    {
+      "id": "role-assignment",
+      "name": "Role Assignment",
+      "description": "Assign specialized agent roles — engineer, PM, QA — collaborating via structured message passing"
+    },
+    {
+      "id": "code-generation",
+      "name": "Code Generation",
+      "description": "Generate full codebases from natural language including tests, docs, and CI configuration"
+    },
+    {
+      "id": "software-planning",
+      "name": "Software Planning",
+      "description": "Produce PRD, system design, and task breakdown automatically before writing any code"
+    },
+    {
+      "id": "incremental-dev",
+      "name": "Incremental Dev",
+      "description": "Iteratively add features to existing codebases with change-aware context management"
+    },
+    {
+      "id": "cli-runner",
+      "name": "CLI Runner",
+      "description": "Run multi-agent software development sessions from the terminal with a single command"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-04-13T21:38:22.459Z",
+  "updatedAt": "2026-04-13T21:38:22.459Z"
+}

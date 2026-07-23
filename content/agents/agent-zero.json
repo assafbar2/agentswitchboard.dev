@@ -1,0 +1,52 @@
+{
+  "id": "6iYeBy1I2xB9nhCQiiTqkA",
+  "name": "Agent Zero",
+  "slug": "agent-zero",
+  "description": "Runs a general-purpose personal agentic framework with persistent memory, tool use, code execution, and multi-agent cooperation. Open-source and fully customizable.",
+  "providerName": "Agent Zero",
+  "providerUrl": "https://agent-zero.ai",
+  "agentUrl": "https://github.com/agent0ai/agent-zero",
+  "categories": [
+    "orchestration"
+  ],
+  "tags": [
+    "agentic-framework",
+    "personal-agent",
+    "persistent-memory",
+    "code-execution",
+    "multi-agent",
+    "open-source",
+    "customizable"
+  ],
+  "skills": [
+    {
+      "id": "general-purpose-agent",
+      "name": "General-Purpose Agent",
+      "description": "Runs a customizable agent that uses the operating system and tools to accomplish open-ended tasks."
+    },
+    {
+      "id": "persistent-memory",
+      "name": "Persistent Memory",
+      "description": "Remembers past solutions and facts across sessions to improve at recurring tasks over time."
+    },
+    {
+      "id": "agent-cooperation",
+      "name": "Agent Cooperation",
+      "description": "Spawns subordinate agents that cooperate on subtasks under a superior agent hierarchy."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-07-06T07:04:38.400Z",
+  "updatedAt": "2026-07-06T07:04:38.400Z"
+}

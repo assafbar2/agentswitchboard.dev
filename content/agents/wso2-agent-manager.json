@@ -1,0 +1,34 @@
+{
+  "id": "4THzboLdGwwMQ7NzQqrz9H",
+  "name": "WSO2 Agent Manager",
+  "slug": "wso2-agent-manager",
+  "description": "Governs, secures, and scales enterprise AI agents across frameworks with zero-trust runtime, OpenTelemetry observability, and policy enforcement.",
+  "providerName": "WSO2",
+  "providerUrl": "https://wso2.com/",
+  "agentUrl": "https://wso2.com/agent-platform/agent-manager/",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "governance",
+    "enterprise",
+    "agent-orchestration",
+    "open-source",
+    "kubernetes",
+    "mcp"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-05-22T07:35:25.145Z",
+  "updatedAt": "2026-07-17T19:37:52.789Z"
+}

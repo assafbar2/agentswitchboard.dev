@@ -1,0 +1,52 @@
+{
+  "id": "2dsSyHTjJvTxyAp7sxEwyF",
+  "name": "Spectrum",
+  "slug": "spectrum-photon",
+  "description": "npm SDK connecting AI agents to iMessage, WhatsApp, Telegram, Slack, Discord, and Instagram via a single unified API — no per-platform integration code required.",
+  "providerName": "Photon",
+  "providerUrl": "https://photon.codes",
+  "agentUrl": "https://photon.codes/spectrum",
+  "categories": [
+    "voice-messaging"
+  ],
+  "tags": [
+    "messaging",
+    "whatsapp",
+    "telegram",
+    "imessage",
+    "slack",
+    "discord",
+    "unified-api",
+    "npm"
+  ],
+  "skills": [
+    {
+      "id": "unified-messaging",
+      "name": "Unified Messaging API",
+      "description": "Send and receive messages across 6 platforms with one SDK and one consistent message format"
+    },
+    {
+      "id": "agent-deploy",
+      "name": "Agent Deployment",
+      "description": "Deploy any AI agent to WhatsApp, Telegram, iMessage, Slack, Discord, or Instagram in minutes"
+    },
+    {
+      "id": "webhook-events",
+      "name": "Webhook Events",
+      "description": "Receive incoming messages across all platforms as unified webhook events for agent processing"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-04-25T18:50:01.427Z",
+  "updatedAt": "2026-04-25T18:50:01.427Z"
+}

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Suspense } from 'react';
-import { getEveryAgent } from '@/lib/contentful';
+import { getEveryAgent } from '@/lib/catalog';
 import { searchAgents } from '@/lib/search';
 import { AgentCard } from '@/components/AgentCard';
 import { SearchBar } from '@/components/SearchBar';

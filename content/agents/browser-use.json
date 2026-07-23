@@ -1,0 +1,62 @@
+{
+  "id": "8mXHeIVtZamyff6Lv17hj",
+  "name": "Browser Use",
+  "slug": "browser-use",
+  "description": "Open-source Python library for AI browser automation. Control any website with natural language; cloud adds stealth browsers, proxies, and CAPTCHA solving.",
+  "providerName": "Browser Use",
+  "providerUrl": "https://browser-use.com",
+  "agentUrl": "https://browser-use.com",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "browser-automation",
+    "web-scraping",
+    "open-source",
+    "python",
+    "stealth",
+    "captcha",
+    "playwright"
+  ],
+  "skills": [
+    {
+      "id": "nl-control",
+      "name": "Natural Language Control",
+      "description": "Instruct AI agents to navigate and interact with any website using plain English commands"
+    },
+    {
+      "id": "stealth-browser",
+      "name": "Stealth Browser",
+      "description": "Anti-detection headless browsers with CAPTCHA solving and rotating proxies across 195+ countries"
+    },
+    {
+      "id": "web-to-api",
+      "name": "Web-to-API",
+      "description": "Convert any website into a reliable programmatic API endpoint for agent consumption"
+    },
+    {
+      "id": "vision-extraction",
+      "name": "Vision & Extraction",
+      "description": "Extract structured data from pages using computer vision and DOM analysis"
+    },
+    {
+      "id": "multi-tab",
+      "name": "Multi-Tab Orchestration",
+      "description": "Manage multiple browser tabs and sessions simultaneously for complex agent workflows"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-04-08T20:13:02.629Z",
+  "updatedAt": "2026-04-08T20:13:02.629Z"
+}

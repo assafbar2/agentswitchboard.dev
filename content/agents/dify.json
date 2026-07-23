@@ -1,0 +1,62 @@
+{
+  "id": "2XnOCFhJvzgtdC23My0zQu",
+  "name": "Dify",
+  "slug": "dify",
+  "description": "Open-source LLM app and agent development platform. Build, test, and deploy RAG pipelines, chatbots, and multi-agent workflows via visual canvas and REST API.",
+  "providerName": "LF AI & Data Foundation",
+  "providerUrl": "https://dify.ai",
+  "agentUrl": "https://docs.dify.ai",
+  "categories": [
+    "infrastructure",
+    "orchestration"
+  ],
+  "tags": [
+    "llm-orchestration",
+    "rag",
+    "open-source",
+    "multi-agent",
+    "visual-builder",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "visual-canvas",
+      "name": "Visual Canvas",
+      "description": "Build agent workflows visually with drag-and-drop canvas — no code required for basic flows"
+    },
+    {
+      "id": "rag-pipeline",
+      "name": "RAG Pipeline",
+      "description": "Ingest, chunk, and embed documents into a managed knowledge base with built-in retrieval"
+    },
+    {
+      "id": "rest-api",
+      "name": "REST API",
+      "description": "Deploy any workflow as a REST API endpoint callable from external agents and applications"
+    },
+    {
+      "id": "multi-model",
+      "name": "Multi-Model Support",
+      "description": "Switch between OpenAI, Claude, Llama, and 100+ models without changing app logic"
+    },
+    {
+      "id": "mcp-server",
+      "name": "MCP Server",
+      "description": "Expose Dify workflows as MCP tools for Claude Desktop and MCP-compatible clients"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-04-13T21:38:21.000Z",
+  "updatedAt": "2026-06-15T03:15:48.448Z"
+}

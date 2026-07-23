@@ -1,0 +1,31 @@
+{
+  "id": "2MuQZ9Y9QQLRM0YggTzvc4",
+  "name": "Hex",
+  "slug": "hex",
+  "description": "Collaborative analytics platform with AI-assisted SQL, Python notebooks, and Magic AI that writes queries from natural language.",
+  "providerName": "Hex",
+  "providerUrl": "https://hex.tech",
+  "agentUrl": "https://hex.tech/capability/ai/",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "analytics",
+    "notebooks",
+    "sql"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-03-22T09:51:36.334Z",
+  "updatedAt": "2026-03-22T16:47:07.551Z"
+}

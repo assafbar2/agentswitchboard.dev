@@ -1,0 +1,59 @@
+{
+  "id": "7BSvw7iIENrM6F1dL6SjU0",
+  "name": "Zep",
+  "slug": "zep",
+  "description": "Long-term memory store for AI assistants. Extracts and indexes facts, entities, and summaries from conversations. Fast hybrid search combines semantic and full-text retrieval.",
+  "providerName": "Zep",
+  "providerUrl": "https://getzep.com",
+  "agentUrl": "https://docs.getzep.com",
+  "categories": [
+    "memory-state"
+  ],
+  "tags": [
+    "memory",
+    "long-term-memory",
+    "llm",
+    "conversation-history",
+    "knowledge-graph"
+  ],
+  "skills": [
+    {
+      "id": "auto-extract-facts-entities-and-summaries-from-raw-conversation-transcripts",
+      "name": "Auto-extract facts, entities, and summaries from raw conversation transcripts",
+      "description": "Auto-extract facts, entities, and summaries from raw conversation transcripts"
+    },
+    {
+      "id": "track-entity-relationships-and-state-changes-across-long-multi-session-interactions",
+      "name": "Track entity relationships and state changes across long multi-session interactions",
+      "description": "Track entity relationships and state changes across long multi-session interactions"
+    },
+    {
+      "id": "temporal-memory-management-that-weights-recency-and-relevance-for-retrieval",
+      "name": "Temporal memory management that weights recency and relevance for retrieval",
+      "description": "Temporal memory management that weights recency and relevance for retrieval"
+    },
+    {
+      "id": "hybrid-search-combining-dense-semantic-vectors-and-full-text-bm25-scoring",
+      "name": "Hybrid search combining dense semantic vectors and full-text BM25 scoring",
+      "description": "Hybrid search combining dense semantic vectors and full-text BM25 scoring"
+    },
+    {
+      "id": "retrieve-cross-session-context-in-a-single-api-call-for-any-user-or-thread",
+      "name": "Retrieve cross-session context in a single API call for any user or thread",
+      "description": "Retrieve cross-session context in a single API call for any user or thread"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-04-08T07:17:02.759Z",
+  "updatedAt": "2026-07-10T21:07:29.122Z"
+}

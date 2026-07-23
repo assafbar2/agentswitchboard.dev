@@ -1,0 +1,62 @@
+{
+  "id": "2btfY4DbrzH3UN0lRIbXFq",
+  "name": "Mem0",
+  "slug": "mem0",
+  "description": "Persistent memory layer for AI agents and LLMs. Stores, searches, and retrieves user and session memories across frameworks. SDKs for Python and JS, managed or self-hosted.",
+  "providerName": "Mem0",
+  "providerUrl": "https://mem0.ai",
+  "agentUrl": "https://docs.mem0.ai",
+  "categories": [
+    "memory-state"
+  ],
+  "tags": [
+    "memory",
+    "rag",
+    "personalization",
+    "stateful-agents",
+    "python",
+    "javascript",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "store-and-retrieve-persistent-user-and-session-memories-across-agent-frameworks",
+      "name": "Store and retrieve persistent user and session memories across agent frameworks",
+      "description": "Store and retrieve persistent user and session memories across agent frameworks"
+    },
+    {
+      "id": "semantic-memory-search-to-surface-relevant-context-from-past-interactions",
+      "name": "Semantic memory search to surface relevant context from past interactions",
+      "description": "Semantic memory search to surface relevant context from past interactions"
+    },
+    {
+      "id": "share-memory-across-multi-agent-pipelines-with-fine-grained-access-controls",
+      "name": "Share memory across multi-agent pipelines with fine-grained access controls",
+      "description": "Share memory across multi-agent pipelines with fine-grained access controls"
+    },
+    {
+      "id": "learn-and-update-user-preferences-automatically-from-conversation-history",
+      "name": "Learn and update user preferences automatically from conversation history",
+      "description": "Learn and update user preferences automatically from conversation history"
+    },
+    {
+      "id": "monitor-memory-usage-and-search-analytics-via-built-in-dashboard",
+      "name": "Monitor memory usage and search analytics via built-in dashboard",
+      "description": "Monitor memory usage and search analytics via built-in dashboard"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-04-08T07:17:01.136Z",
+  "updatedAt": "2026-07-10T21:06:37.895Z"
+}

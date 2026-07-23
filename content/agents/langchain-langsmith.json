@@ -1,0 +1,33 @@
+{
+  "id": "1GGcKfJT0erNPKxPfqqW0L",
+  "name": "LangChain / LangSmith",
+  "slug": "langchain-langsmith",
+  "description": "Framework for building LLM applications with chains, agents, and tool use — plus LangSmith for tracing, evaluation, and monitoring.",
+  "providerName": "LangChain",
+  "providerUrl": "https://langchain.com",
+  "agentUrl": "https://www.langchain.com/",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "framework",
+    "llm"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-03-22T09:52:57.034Z",
+  "updatedAt": "2026-03-22T09:52:57.034Z"
+}

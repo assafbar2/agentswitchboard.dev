@@ -1,0 +1,33 @@
+{
+  "id": "dQhvIBM2HOWf43NkLflZw",
+  "name": "Cline",
+  "slug": "cline",
+  "description": "Runs autonomous coding tasks in VS Code — edits files, executes terminal commands, and browses the web with user approval at each step.",
+  "providerName": "Cline",
+  "providerUrl": "https://cline.bot/",
+  "agentUrl": "https://cline.bot/",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "vscode",
+    "coding-agent",
+    "open-source",
+    "autonomous",
+    "apache-2-0"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "browser-extension"
+  ],
+  "createdAt": "2026-05-22T07:34:59.739Z",
+  "updatedAt": "2026-05-22T07:34:59.739Z"
+}

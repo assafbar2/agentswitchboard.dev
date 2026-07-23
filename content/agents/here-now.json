@@ -1,0 +1,57 @@
+{
+  "id": "5GnoWKgMuSRfWAUjgj3FNt",
+  "name": "here.now",
+  "slug": "here-now",
+  "description": "Instant web hosting for AI agents. Publish static sites to a live URL in seconds via REST API. Powered by Cloudflare with custom domains and password protection.",
+  "providerName": "here.now",
+  "providerUrl": "http://here.now",
+  "agentUrl": "http://here.now",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "hosting",
+    "static-sites",
+    "deploy",
+    "cloudflare",
+    "free",
+    "api"
+  ],
+  "skills": [
+    {
+      "id": "publish-site",
+      "name": "Publish Site",
+      "description": "Deploy static files to a live URL in seconds with presigned uploads."
+    },
+    {
+      "id": "incremental-deploy",
+      "name": "Incremental Deploy",
+      "description": "SHA-256 hash-based change detection — only changed files re-uploaded."
+    },
+    {
+      "id": "custom-domains",
+      "name": "Custom Domains",
+      "description": "Connect custom domains with CNAME/ALIAS/TXT records."
+    },
+    {
+      "id": "password-protection",
+      "name": "Password Protection",
+      "description": "Server-side enforced password protection for published sites."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "featuredUntil": "2026-12-31",
+  "verified": true,
+  "sponsorLabel": "⭐ Editor's Pick",
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-03-22T06:44:08.446Z",
+  "updatedAt": "2026-04-13T21:37:26.305Z"
+}

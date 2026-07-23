@@ -1,0 +1,51 @@
+{
+  "id": "6NuHzVPv5vysBvNCVESFoM",
+  "name": "ClickHouse MCP",
+  "slug": "clickhouse-mcp",
+  "description": "Official ClickHouse Cloud MCP — run SQL queries, list databases and tables, explore services and backups, inspect usage, and manage ClickPipes.",
+  "providerName": "ClickHouse",
+  "providerUrl": "https://clickhouse.com",
+  "agentUrl": "https://smithery.ai/server/clickhouse",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "clickhouse",
+    "sql",
+    "olap",
+    "data-warehouse",
+    "cloud-database",
+    "analytics",
+    "mcp-official"
+  ],
+  "skills": [
+    {
+      "id": "sql-query",
+      "name": "SQL Query",
+      "description": "Executes read-only SELECT queries against a ClickHouse Cloud service with configurable timeout up to one hour."
+    },
+    {
+      "id": "schema-exploration",
+      "name": "Schema Exploration",
+      "description": "Lists databases and tables with full column metadata across ClickHouse Cloud services in an organization."
+    },
+    {
+      "id": "service-management",
+      "name": "Service Management",
+      "description": "Retrieves service details, backup configurations, cost reports, and ClickPipe status for ClickHouse Cloud orgs."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-06-07T17:51:29.066Z",
+  "updatedAt": "2026-06-07T17:51:29.066Z"
+}

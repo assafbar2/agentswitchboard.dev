@@ -1,0 +1,33 @@
+{
+  "id": "p5kGo3HO11W6Jdkn0T4nM",
+  "name": "Stripe Agent Toolkit",
+  "slug": "stripe-agent-toolkit",
+  "description": "Official Stripe toolkit for AI agents — enables LLMs to create charges, manage subscriptions, issue refunds, and read financial data via function calling.",
+  "providerName": "Stripe",
+  "providerUrl": "https://stripe.com",
+  "agentUrl": "https://docs.stripe.com/agents",
+  "categories": [
+    "code-devtools",
+    "finance"
+  ],
+  "tags": [
+    "payments",
+    "api",
+    "agent-toolkit"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-03-22T09:51:45.783Z",
+  "updatedAt": "2026-07-10T21:07:10.892Z"
+}

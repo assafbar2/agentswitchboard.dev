@@ -1,0 +1,50 @@
+{
+  "id": "1uLunVqSZ56AFCagw6Mnks",
+  "name": "Kampala",
+  "slug": "kampala",
+  "description": "YC W26. Watches one human workflow demo and converts any website, mobile, or desktop app into a stable REST API — no browser automation, no selectors, no LLM calls per action.",
+  "providerName": "Zatanna",
+  "providerUrl": "https://zatanna.ai",
+  "agentUrl": "https://zatanna.ai",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "website-to-api",
+    "workflow-capture",
+    "yc-w26",
+    "api-extraction",
+    "computer-use-alternative",
+    "deterministic"
+  ],
+  "skills": [
+    {
+      "id": "workflow-capture",
+      "name": "Workflow Capture",
+      "description": "Record one human demo of any website workflow to generate a stable, replayable API endpoint"
+    },
+    {
+      "id": "stable-api",
+      "name": "Stable API Generation",
+      "description": "Convert observed UI interactions into a deterministic REST API that survives website UI changes"
+    },
+    {
+      "id": "zero-llm-runtime",
+      "name": "Zero LLM at Runtime",
+      "description": "Execute captured workflows without LLM inference per step — zero token cost at runtime execution"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-04-25T18:49:56.464Z",
+  "updatedAt": "2026-04-25T18:49:56.464Z"
+}

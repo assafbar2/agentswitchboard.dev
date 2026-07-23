@@ -1,0 +1,61 @@
+{
+  "id": "3JzYYO3tOPm6nNiJ2BOzXs",
+  "name": "Langfuse",
+  "slug": "langfuse",
+  "description": "Open-source LLM observability and analytics. Trace, evaluate, and debug LLM apps with prompt versioning, score tracking, and a full analytics dashboard.",
+  "providerName": "Langfuse",
+  "providerUrl": "https://langfuse.com",
+  "agentUrl": "https://langfuse.com/docs",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "observability",
+    "open-source",
+    "llm-tracing",
+    "prompt-management",
+    "evaluation",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "trace-every-llm-call-and-chain-step-with-full-input-output-capture-and-latency",
+      "name": "Trace every LLM call and chain step with full input/output capture and latency",
+      "description": "Trace every LLM call and chain step with full input/output capture and latency"
+    },
+    {
+      "id": "version-and-manage-prompts-with-a-b-testing-and-rollback-across-environments",
+      "name": "Version and manage prompts with a/b testing and rollback across environments",
+      "description": "Version and manage prompts with a/b testing and rollback across environments"
+    },
+    {
+      "id": "score-traces-with-custom-evaluation-rubrics-to-track-quality-over-time",
+      "name": "Score traces with custom evaluation rubrics to track quality over time",
+      "description": "Score traces with custom evaluation rubrics to track quality over time"
+    },
+    {
+      "id": "analyze-user-session-funnels-latency-distributions-and-token-cost-trends",
+      "name": "Analyze user session funnels, latency distributions, and token cost trends",
+      "description": "Analyze user session funnels, latency distributions, and token cost trends"
+    },
+    {
+      "id": "self-host-on-any-infrastructure-or-use-langfuse-cloud-with-zero-configuration",
+      "name": "Self-host on any infrastructure or use Langfuse Cloud with zero configuration",
+      "description": "Self-host on any infrastructure or use Langfuse Cloud with zero configuration"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-04-08T07:17:22.657Z",
+  "updatedAt": "2026-07-10T21:06:26.835Z"
+}

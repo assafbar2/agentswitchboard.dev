@@ -1,0 +1,60 @@
+{
+  "id": "1k98mDgEFU1fCTg1596fZj",
+  "name": "Nango",
+  "slug": "nango",
+  "description": "Open-source OAuth and API integration platform. 300+ pre-built integrations. Handles token refresh, rate limits, and webhooks for any API your agents call.",
+  "providerName": "Nango",
+  "providerUrl": "https://nango.dev",
+  "agentUrl": "https://docs.nango.dev",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "oauth",
+    "api-integrations",
+    "open-source",
+    "self-hosted",
+    "token-management",
+    "webhooks"
+  ],
+  "skills": [
+    {
+      "id": "handle-oauth-2-0-and-api-key-flows-for-300-providers-without-writing-auth-code",
+      "name": "Handle OAuth 2.0 and API key flows for 300+ providers without writing auth code",
+      "description": "Handle OAuth 2.0 and API key flows for 300+ providers without writing auth code"
+    },
+    {
+      "id": "refresh-tokens-automatically-before-expiry-so-agent-calls-never-fail-mid-run",
+      "name": "Refresh tokens automatically before expiry so agent calls never fail mid-run",
+      "description": "Refresh tokens automatically before expiry so agent calls never fail mid-run"
+    },
+    {
+      "id": "normalize-webhooks-from-any-provider-into-a-consistent-format-for-your-pipeline",
+      "name": "Normalize webhooks from any provider into a consistent format for your pipeline",
+      "description": "Normalize webhooks from any provider into a consistent format for your pipeline"
+    },
+    {
+      "id": "store-credentials-securely-with-per-user-and-per-connection-isolation",
+      "name": "Store credentials securely with per-user and per-connection isolation",
+      "description": "Store credentials securely with per-user and per-connection isolation"
+    },
+    {
+      "id": "monitor-integration-health-with-per-connection-error-logs-and-retry-metrics",
+      "name": "Monitor integration health with per-connection error logs and retry metrics",
+      "description": "Monitor integration health with per-connection error logs and retry metrics"
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-04-08T07:17:27.018Z",
+  "updatedAt": "2026-04-08T07:17:27.018Z"
+}

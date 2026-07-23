@@ -1,0 +1,212 @@
+{
+  "id": "4gm3kq3yyJrCvxE66oaUQ6",
+  "name": "ComplianceGuard",
+  "slug": "complianceguard",
+  "description": "Regulatory compliance checking agent that reviews contracts and flags risks against GDPR, SOC2, and HIPAA.",
+  "longDescription": {
+    "data": {},
+    "content": [
+      {
+        "data": {},
+        "content": [
+          {
+            "data": {},
+            "marks": [],
+            "value": "ComplianceGuard is built for legal and compliance teams who need to review documents at scale. It understands regulatory frameworks (GDPR, SOC2, HIPAA, PCI-DSS) and can flag potential violations in contracts, policies, and technical documentation.",
+            "nodeType": "text"
+          }
+        ],
+        "nodeType": "paragraph"
+      },
+      {
+        "data": {},
+        "content": [
+          {
+            "data": {},
+            "marks": [],
+            "value": "The review_contract skill is the primary workhorse — feed it a contract and a target regulation, and it returns a detailed risk assessment with specific clause references and suggested remediation language. The flag_risks skill does a broader scan across multiple regulations simultaneously.",
+            "nodeType": "text"
+          }
+        ],
+        "nodeType": "paragraph"
+      },
+      {
+        "data": {},
+        "content": [
+          {
+            "data": {},
+            "marks": [],
+            "value": "Accuracy is good but not perfect — treat it as a first pass that catches 80% of issues, not a replacement for legal review. The agent is particularly strong on data protection clauses and access control requirements, but less reliable on jurisdiction-specific nuances.",
+            "nodeType": "text"
+          }
+        ],
+        "nodeType": "paragraph"
+      }
+    ],
+    "nodeType": "document"
+  },
+  "providerName": "ComplianceGuard Inc.",
+  "providerUrl": "https://complianceguard.tech/",
+  "version": "1.8.0",
+  "agentUrl": "https://complianceguard.tech/",
+  "wellKnownUrl": "https://complianceguard.tech/",
+  "agentCardJson": "{\n  \"name\": \"ComplianceGuard\",\n  \"description\": \"Regulatory compliance checking agent that reviews contracts and flags risks against GDPR, SOC2, and HIPAA.\",\n  \"url\": \"https://api.complianceguard.example.com/a2a\",\n  \"version\": \"1.0.0\",\n  \"capabilities\": {\n    \"streaming\": false,\n    \"pushNotifications\": false\n  },\n  \"authentication\": {\n    \"schemes\": [\n      \"apiKey\"\n    ]\n  },\n  \"skills\": [\n    {\n      \"id\": \"check_regulation\",\n      \"name\": \"Check Regulation\",\n      \"description\": \"Check text against a specific regulation\",\n      \"inputModes\": [\n        \"application/json\"\n      ],\n      \"outputModes\": [\n        \"application/json\"\n      ]\n    },\n    {\n      \"id\": \"review_contract\",\n      \"name\": \"Review Contract\",\n      \"description\": \"Review a contract for regulatory compliance\",\n      \"inputModes\": [\n        \"application/json\"\n      ],\n      \"outputModes\": [\n        \"application/json\"\n      ]\n    },\n    {\n      \"id\": \"flag_risks\",\n      \"name\": \"Flag Risks\",\n      \"description\": \"Scan text for potential compliance risks\",\n      \"inputModes\": [\n        \"application/json\"\n      ],\n      \"outputModes\": [\n        \"application/json\"\n      ]\n    }\n  ]\n}",
+  "categories": [
+    "legal"
+  ],
+  "tags": [
+    "compliance",
+    "legal",
+    "gdpr",
+    "contracts"
+  ],
+  "skills": [
+    {
+      "id": "check-regulation",
+      "name": "Check Regulation",
+      "description": "Check text against a specific regulation",
+      "inputSchema": {
+        "text": "string",
+        "regulation": "string (gdpr|soc2|hipaa|pci-dss)"
+      },
+      "outputSchema": {
+        "score": "number",
+        "issues": "array",
+        "compliant": "boolean"
+      }
+    },
+    {
+      "id": "review-contract",
+      "name": "Review Contract",
+      "description": "Review a contract for regulatory compliance",
+      "inputSchema": {
+        "documentUrl": "string",
+        "regulations": "string[]"
+      },
+      "outputSchema": {
+        "risks": "array",
+        "summary": "string",
+        "overallRisk": "string"
+      }
+    },
+    {
+      "id": "flag-risks",
+      "name": "Flag Risks",
+      "description": "Scan text for potential compliance risks",
+      "inputSchema": {
+        "text": "string"
+      },
+      "outputSchema": {
+        "flags": "array",
+        "riskLevel": "string"
+      }
+    }
+  ],
+  "authType": "apiKey",
+  "authInstructions": {
+    "data": {},
+    "content": [
+      {
+        "data": {},
+        "content": [
+          {
+            "data": {},
+            "marks": [],
+            "value": "1. Request access at complianceguard.example.com/access",
+            "nodeType": "text"
+          }
+        ],
+        "nodeType": "paragraph"
+      },
+      {
+        "data": {},
+        "content": [
+          {
+            "data": {},
+            "marks": [],
+            "value": "2. Once approved, go to Dashboard → API Keys",
+            "nodeType": "text"
+          }
+        ],
+        "nodeType": "paragraph"
+      },
+      {
+        "data": {},
+        "content": [
+          {
+            "data": {},
+            "marks": [],
+            "value": "3. Create a new key with appropriate scopes",
+            "nodeType": "text"
+          }
+        ],
+        "nodeType": "paragraph"
+      },
+      {
+        "data": {},
+        "content": [
+          {
+            "data": {},
+            "marks": [],
+            "value": "4. Pass it as x-api-key header",
+            "nodeType": "text"
+          }
+        ],
+        "nodeType": "paragraph"
+      }
+    ],
+    "nodeType": "document"
+  },
+  "integrationGuide": {
+    "data": {},
+    "content": [
+      {
+        "data": {},
+        "content": [
+          {
+            "data": {},
+            "marks": [],
+            "value": "cURL:\ncurl -X POST https://api.complianceguard.example.com/a2a \\\n  -H \"Content-Type: application/json\" \\\n  -H \"x-api-key: YOUR_API_KEY\" \\\n  -d '{\"jsonrpc\":\"2.0\",\"method\":\"tasks/send\",\"params\":{\"id\":\"task-1\",\"message\":{\"role\":\"user\",\"parts\":[{\"type\":\"text\",\"text\":\"Check this text for GDPR compliance: We store user emails indefinitely.\"}]},\"skillId\":\"check_regulation\"},\"id\":\"1\"}'",
+            "nodeType": "text"
+          }
+        ],
+        "nodeType": "paragraph"
+      },
+      {
+        "data": {},
+        "content": [
+          {
+            "data": {},
+            "marks": [],
+            "value": "Python:\nimport requests\n\nresponse = requests.post(\n    \"https://api.complianceguard.example.com/a2a\",\n    headers={\"x-api-key\": \"YOUR_API_KEY\"},\n    json={\n        \"jsonrpc\": \"2.0\",\n        \"method\": \"tasks/send\",\n        \"params\": {\n            \"id\": \"task-1\",\n            \"message\": {\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"text\": \"Check GDPR compliance: We store user emails indefinitely.\"}]},\n            \"skillId\": \"check_regulation\"\n        },\n        \"id\": \"1\"\n    }\n)\nprint(response.json())",
+            "nodeType": "text"
+          }
+        ],
+        "nodeType": "paragraph"
+      },
+      {
+        "data": {},
+        "content": [
+          {
+            "data": {},
+            "marks": [],
+            "value": "TypeScript:\nconst response = await fetch(\"https://api.complianceguard.example.com/a2a\", {\n  method: \"POST\",\n  headers: {\n    \"Content-Type\": \"application/json\",\n    \"x-api-key\": \"YOUR_API_KEY\",\n  },\n  body: JSON.stringify({\n    jsonrpc: \"2.0\",\n    method: \"tasks/send\",\n    params: {\n      id: \"task-1\",\n      message: { role: \"user\", parts: [{ type: \"text\", text: \"Check GDPR compliance: We store user emails indefinitely.\" }] },\n      skillId: \"check_regulation\",\n    },\n    id: \"1\",\n  }),\n});\nconsole.log(await response.json());",
+            "nodeType": "text"
+          }
+        ],
+        "nodeType": "paragraph"
+      }
+    ],
+    "nodeType": "document"
+  },
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [],
+  "createdAt": "2026-03-20T10:08:55.939Z",
+  "updatedAt": "2026-03-22T09:57:49.540Z"
+}

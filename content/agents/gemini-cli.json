@@ -1,0 +1,52 @@
+{
+  "id": "4SsTFMp1QU4HwI7wSQix8Y",
+  "name": "Gemini CLI",
+  "slug": "gemini-cli",
+  "description": "Google's open-source AI agent CLI that brings Gemini into your terminal with MCP client support, tool use, code execution, and multi-modal capabilities.",
+  "providerName": "Google",
+  "providerUrl": "https://google.com",
+  "agentUrl": "https://github.com/google-gemini/gemini-cli",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "cli",
+    "gemini",
+    "google",
+    "mcp-client",
+    "open-source",
+    "multi-modal",
+    "terminal-agent"
+  ],
+  "skills": [
+    {
+      "id": "terminal-agent",
+      "name": "Terminal Agent",
+      "description": "Run Gemini as a full AI agent in your terminal with tool use, file access, and command execution"
+    },
+    {
+      "id": "mcp-client",
+      "name": "MCP Client",
+      "description": "Connect to any MCP server and use its tools directly within the Gemini CLI agent session"
+    },
+    {
+      "id": "code-execution",
+      "name": "Code Execution",
+      "description": "Execute code in sandboxed environments and iterate on results within the same CLI session"
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-04-25T19:06:53.752Z",
+  "updatedAt": "2026-07-10T21:06:06.874Z"
+}

@@ -1,0 +1,50 @@
+{
+  "id": "9lF2HtU530ADasm0ZotF4",
+  "name": "CAMEL",
+  "slug": "camel-ai",
+  "description": "Pioneering multi-agent framework for role-playing collaboration, scaling-law research, and MCP server exports with 20+ toolkits and a native MCPAgent class.",
+  "providerName": "CAMEL-AI Community",
+  "providerUrl": "https://camel-ai.org/",
+  "agentUrl": "https://camel-ai.org/",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "multi-agent",
+    "role-playing",
+    "scaling-laws",
+    "toolkits",
+    "mcp",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "role-play-agent",
+      "name": "Role-Play Collaboration",
+      "description": "Pair a user agent and assistant agent in structured role-playing conversations to solve tasks through principled multi-agent debate."
+    },
+    {
+      "id": "mcp-agent",
+      "name": "MCP Agent Integration",
+      "description": "Instantiate an MCPAgent that reads tools from any MCP server and injects them into the CAMEL agent loop at runtime."
+    },
+    {
+      "id": "toolkit-export",
+      "name": "Export as MCP Server",
+      "description": "Publish any CAMEL toolkit as a callable MCP server via camel-toolkits-mcp for use with Claude, Cursor, or other MCP clients."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-05-22T08:28:03.860Z",
+  "updatedAt": "2026-05-22T08:28:03.860Z"
+}

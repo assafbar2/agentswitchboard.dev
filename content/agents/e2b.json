@@ -1,0 +1,61 @@
+{
+  "id": "3fJfXXL0Bc2m1KmWPzb2jT",
+  "name": "E2B",
+  "slug": "e2b",
+  "description": "Secure cloud sandboxes for AI agents to run code. Supports Python, JS, and shell. Persistent filesystem, network access, and sub-100ms cold starts.",
+  "providerName": "E2B",
+  "providerUrl": "https://e2b.dev",
+  "agentUrl": "https://e2b.dev/docs",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "code-execution",
+    "sandbox",
+    "python",
+    "javascript",
+    "code-interpreter",
+    "cloud-compute"
+  ],
+  "skills": [
+    {
+      "id": "provision-isolated-cloud-sandboxes-for-executing-ai-generated-code-safely",
+      "name": "Provision isolated cloud sandboxes for executing AI-generated code safely",
+      "description": "Provision isolated cloud sandboxes for executing AI-generated code safely"
+    },
+    {
+      "id": "persist-filesystem-state-across-agent-steps-within-a-single-sandbox-session",
+      "name": "Persist filesystem state across agent steps within a single sandbox session",
+      "description": "Persist filesystem state across agent steps within a single sandbox session"
+    },
+    {
+      "id": "run-python-javascript-shell-and-arbitrary-language-runtimes-in-each-sandbox",
+      "name": "Run Python, JavaScript, shell, and arbitrary language runtimes in each sandbox",
+      "description": "Run Python, JavaScript, shell, and arbitrary language runtimes in each sandbox"
+    },
+    {
+      "id": "support-long-running-agent-workloads-with-up-to-24-hour-sandbox-lifetimes",
+      "name": "Support long-running agent workloads with up to 24-hour sandbox lifetimes",
+      "description": "Support long-running agent workloads with up to 24-hour sandbox lifetimes"
+    },
+    {
+      "id": "integrate-as-an-openai-code-interpreter-drop-in-or-with-any-llm-framework",
+      "name": "Integrate as an OpenAI code interpreter drop-in or with any LLM framework",
+      "description": "Integrate as an OpenAI code interpreter drop-in or with any LLM framework"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-04-08T07:17:11.373Z",
+  "updatedAt": "2026-07-10T21:06:02.111Z"
+}

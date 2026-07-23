@@ -1,0 +1,33 @@
+{
+  "id": "6ZLzmKKlc5F042Ik68eG0O",
+  "name": "n8n",
+  "slug": "n8n",
+  "description": "Open-source workflow automation with AI agent capabilities — build complex multi-step automations with 400+ integrations.",
+  "providerName": "n8n",
+  "providerUrl": "https://n8n.io",
+  "agentUrl": "https://n8n.io/",
+  "categories": [
+    "scheduling",
+    "infrastructure"
+  ],
+  "tags": [
+    "workflow",
+    "open-source"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-03-22T09:53:11.353Z",
+  "updatedAt": "2026-03-22T09:53:11.353Z"
+}

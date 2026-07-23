@@ -1,0 +1,30 @@
+{
+  "id": "5qmQKh62q3TMMLzNJhLA02",
+  "name": "Ironclad AI",
+  "slug": "ironclad-ai",
+  "description": "AI-powered contract lifecycle management with smart redlining, clause extraction, and automated contract review workflows.",
+  "providerName": "Ironclad",
+  "providerUrl": "https://ironcladapp.com",
+  "agentUrl": "https://ironcladapp.com/platform/ai/",
+  "categories": [
+    "legal"
+  ],
+  "tags": [
+    "contracts",
+    "clm"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-03-22T09:52:39.685Z",
+  "updatedAt": "2026-03-22T16:47:09.046Z"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "3GJoukSfySoOCGLVZUGI48",
+  "name": "Guidance",
+  "slug": "guidance",
+  "description": "Programs LLM output with interleaved generation, control flow, and constraints — regex, grammars, and tool calls in one Python paradigm for faster, structured results. 21k+ GitHub stars, MIT-licensed.",
+  "providerName": "guidance-ai",
+  "providerUrl": "https://github.com/guidance-ai",
+  "agentUrl": "https://github.com/guidance-ai/guidance",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "constrained-generation",
+    "control-flow",
+    "grammar",
+    "regex",
+    "structured-output",
+    "python",
+    "mit-license"
+  ],
+  "skills": [
+    {
+      "id": "interleaved-generation",
+      "name": "Interleaved Generation",
+      "description": "Mixes prompting, generation, and program logic in one flow so you steer the model step by step."
+    },
+    {
+      "id": "constraint-enforcement",
+      "name": "Constraint Enforcement",
+      "description": "Restricts output with regex and context-free grammars to guarantee well-formed, structured results."
+    },
+    {
+      "id": "token-efficiency",
+      "name": "Token Efficiency",
+      "description": "Reuses key-value caches and avoids redundant tokens to cut latency and cost on structured prompts."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-07-17T20:41:35.285Z",
+  "updatedAt": "2026-07-17T20:41:35.285Z"
+}

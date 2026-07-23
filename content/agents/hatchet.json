@@ -1,0 +1,54 @@
+{
+  "id": "6A9gKAHkyiBLApnuk4w2ns",
+  "name": "Hatchet",
+  "slug": "hatchet",
+  "description": "Durable task orchestration engine for AI agents — parallel workloads, automatic retries, concurrency controls, and built-in OpenTelemetry tracing. MIT-licensed, self-hostable.",
+  "providerName": "Hatchet Technologies",
+  "providerUrl": "https://hatchet.run",
+  "agentUrl": "https://hatchet.run",
+  "categories": [
+    "orchestration"
+  ],
+  "tags": [
+    "durable-execution",
+    "task-queue",
+    "parallel-workloads",
+    "open-source",
+    "mit-license",
+    "opentelemetry",
+    "python",
+    "typescript",
+    "go"
+  ],
+  "skills": [
+    {
+      "id": "parallel-execution",
+      "name": "Parallel Execution",
+      "description": "Fans out tasks across workers with configurable concurrency limits and per-user fairness controls."
+    },
+    {
+      "id": "durable-tasks",
+      "name": "Durable Tasks",
+      "description": "Persists every task state transition so failed steps replay exactly from where they stopped."
+    },
+    {
+      "id": "workflow-observability",
+      "name": "Workflow Observability",
+      "description": "Emits OpenTelemetry traces and spans for every task and workflow, searchable with full-text log support."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-06-15T03:07:07.126Z",
+  "updatedAt": "2026-06-15T03:07:07.126Z"
+}

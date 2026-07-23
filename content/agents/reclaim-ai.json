@@ -1,0 +1,32 @@
+{
+  "id": "2HEJpIkwzJOaPYZIwrfQDZ",
+  "name": "Reclaim AI",
+  "slug": "reclaim-ai",
+  "description": "AI scheduling assistant that automatically finds optimal times for tasks, habits, and meetings across your team's calendars.",
+  "providerName": "Reclaim AI",
+  "providerUrl": "https://reclaim.ai",
+  "agentUrl": "https://reclaim.ai/",
+  "categories": [
+    "scheduling"
+  ],
+  "tags": [
+    "calendar",
+    "time-management"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "browser-extension"
+  ],
+  "createdAt": "2026-03-22T09:53:12.830Z",
+  "updatedAt": "2026-03-22T09:53:12.830Z"
+}

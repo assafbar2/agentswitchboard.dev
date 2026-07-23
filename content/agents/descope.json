@@ -1,0 +1,33 @@
+{
+  "id": "5DZl9Q3W7ZHT0uAquZOfWd",
+  "name": "Descope",
+  "slug": "descope",
+  "description": "Drag-and-drop authentication platform with visual workflow builder for auth flows, MFA, and user management.",
+  "providerName": "Descope",
+  "providerUrl": "https://descope.com",
+  "agentUrl": "https://www.descope.com/",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "auth",
+    "identity",
+    "no-code"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-03-22T09:53:18.492Z",
+  "updatedAt": "2026-03-22T09:53:18.492Z"
+}

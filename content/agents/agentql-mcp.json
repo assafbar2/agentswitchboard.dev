@@ -1,0 +1,53 @@
+{
+  "id": "2RZS31eTSrxQWkzL2zSzJh",
+  "name": "AgentQL MCP",
+  "slug": "agentql-mcp",
+  "description": "Extracts structured web data using natural language queries — no XPath or selectors needed. Works via Python/JS SDKs, MCP server, and REST API.",
+  "providerName": "TinyFish",
+  "providerUrl": "https://agentql.com",
+  "agentUrl": "https://agentql.com/integrations",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "web-scraping",
+    "data-extraction",
+    "natural-language",
+    "playwright",
+    "structured-data",
+    "browser-extension",
+    "rest-api"
+  ],
+  "skills": [
+    {
+      "id": "structured-extraction",
+      "name": "Structured Extraction",
+      "description": "Queries web page elements using natural language descriptions and returns clean structured JSON — no CSS selectors needed."
+    },
+    {
+      "id": "playwright-integration",
+      "name": "Playwright Integration",
+      "description": "Wraps AgentQL around Playwright browser sessions for Python and JavaScript, enabling AI-powered element interaction."
+    },
+    {
+      "id": "rest-api-extraction",
+      "name": "REST API Extraction",
+      "description": "Fetches and parses public-facing web data from any URL via REST API without a browser session running locally."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "browser-extension"
+  ],
+  "createdAt": "2026-06-07T17:51:16.119Z",
+  "updatedAt": "2026-06-07T17:51:16.119Z"
+}

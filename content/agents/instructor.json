@@ -1,0 +1,52 @@
+{
+  "id": "28op1e0nXQEDXs3Onmq1XI",
+  "name": "Instructor",
+  "slug": "instructor",
+  "description": "Gets structured, validated outputs from LLMs using Pydantic models — type-safe extraction with automatic retries across 15+ providers. 6M+ monthly downloads, 13k+ GitHub stars. MIT-licensed.",
+  "providerName": "567 Labs",
+  "providerUrl": "https://python.useinstructor.com",
+  "agentUrl": "https://github.com/567-labs/instructor",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "structured-output",
+    "pydantic",
+    "validation",
+    "type-safe",
+    "extraction",
+    "python",
+    "function-calling",
+    "mit-license"
+  ],
+  "skills": [
+    {
+      "id": "structured-extraction",
+      "name": "Structured Extraction",
+      "description": "Extracts data into typed Pydantic models from LLM responses, guaranteeing the shape your code expects."
+    },
+    {
+      "id": "automatic-retries",
+      "name": "Automatic Retries",
+      "description": "Re-prompts the model on validation failures until the output conforms to the requested schema."
+    },
+    {
+      "id": "multi-provider",
+      "name": "Multi-Provider Support",
+      "description": "Works across 15+ LLM providers with one consistent API for structured, validated responses."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-07-17T20:41:32.054Z",
+  "updatedAt": "2026-07-17T20:41:32.054Z"
+}

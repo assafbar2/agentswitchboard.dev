@@ -1,0 +1,32 @@
+{
+  "id": "2pfUxQgKQxOQQXA1cqducS",
+  "name": "Exa AI",
+  "slug": "exa-ai",
+  "description": "Neural search engine API that understands meaning — find similar pages, search by content type, and get clean extracted text.",
+  "providerName": "Exa",
+  "providerUrl": "https://exa.ai",
+  "agentUrl": "https://docs.exa.ai/",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "search",
+    "embeddings",
+    "web"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-03-22T09:52:59.975Z",
+  "updatedAt": "2026-03-22T09:52:59.975Z"
+}

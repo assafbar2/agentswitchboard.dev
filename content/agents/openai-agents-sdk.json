@@ -1,0 +1,33 @@
+{
+  "id": "2cBaOjxHQriqsKYD8Kog5D",
+  "name": "OpenAI Agents SDK",
+  "slug": "openai-agents-sdk",
+  "description": "Python framework for building multi-agent systems with handoffs, guardrails, and tool use — the official OpenAI agent orchestration toolkit.",
+  "providerName": "OpenAI",
+  "providerUrl": "https://openai.com",
+  "agentUrl": "https://github.com/openai/openai-agents-python",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "framework",
+    "openai"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-03-22T09:53:19.712Z",
+  "updatedAt": "2026-03-22T16:40:27.529Z"
+}

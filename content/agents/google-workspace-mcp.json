@@ -1,0 +1,58 @@
+{
+  "id": "75XzsmFIqS3EHQuSDP2nOW",
+  "name": "Google Workspace MCP",
+  "slug": "google-workspace-mcp",
+  "description": "MCP server giving AI agents full control over 12 Google services — Gmail, Drive, Calendar, Docs, Sheets, Slides, Forms, Chat, Tasks, Contacts, Apps Script, and Search.",
+  "providerName": "taylorwilsdon",
+  "providerUrl": "https://github.com/taylorwilsdon",
+  "agentUrl": "https://github.com/taylorwilsdon/google_workspace_mcp",
+  "categories": [
+    "scheduling",
+    "infrastructure"
+  ],
+  "tags": [
+    "google-workspace",
+    "gmail",
+    "google-drive",
+    "google-calendar",
+    "google-docs",
+    "google-sheets",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "gmail-management",
+      "name": "Gmail Management",
+      "description": "Send, draft, reply, forward, and bulk-modify Gmail messages and threads with full label and attachment support."
+    },
+    {
+      "id": "drive-operations",
+      "name": "Drive Operations",
+      "description": "Upload, organize, search, and share Google Drive files and folders with fine-grained permission control."
+    },
+    {
+      "id": "calendar-management",
+      "name": "Calendar Management",
+      "description": "Create, read, update, and delete Google Calendar events and manage availability across multiple calendars."
+    },
+    {
+      "id": "docs-sheets-slides",
+      "name": "Docs Sheets Slides",
+      "description": "Read and write Google Docs, Sheets, and Slides — including formulas, cell ranges, and slide content."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-05-06T23:49:20.434Z",
+  "updatedAt": "2026-05-06T23:49:20.434Z"
+}

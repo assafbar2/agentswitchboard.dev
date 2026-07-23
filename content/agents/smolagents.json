@@ -1,0 +1,33 @@
+{
+  "id": "3426GAlBUH4qSs38n7JKgL",
+  "name": "smolagents",
+  "slug": "smolagents",
+  "description": "Builds lightweight code-first AI agents in ~1,000 lines of Python, executing Python snippets for 30% fewer LLM calls than JSON-based alternatives.",
+  "providerName": "Hugging Face",
+  "providerUrl": "https://huggingface.co/",
+  "agentUrl": "https://github.com/huggingface/smolagents",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "open-source",
+    "python",
+    "code-agents",
+    "huggingface",
+    "apache-2-0"
+  ],
+  "skills": [],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-05-22T07:35:06.268Z",
+  "updatedAt": "2026-05-22T07:35:06.268Z"
+}

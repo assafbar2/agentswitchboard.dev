@@ -1,0 +1,54 @@
+{
+  "id": "6g37P6NSJJeU9TTAihrWa1",
+  "name": "LM Studio",
+  "slug": "lm-studio",
+  "description": "Runs open LLMs locally with an OpenAI- and Anthropic-compatible server, the lms CLI, a headless daemon, and MCP support. New Bionic app adds an agent for coding, research, and docs. By Element Labs.",
+  "providerName": "Element Labs",
+  "providerUrl": "https://lmstudio.ai",
+  "agentUrl": "https://lmstudio.ai",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "local-llm",
+    "on-device",
+    "openai-compatible",
+    "mcp",
+    "cli",
+    "model-runtime",
+    "bionic",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "local-inference-server",
+      "name": "Local Inference Server",
+      "description": "Serves open models on localhost with OpenAI- and Anthropic-compatible endpoints for drop-in agent integration."
+    },
+    {
+      "id": "lms-cli",
+      "name": "lms CLI",
+      "description": "Manages models, starts servers, and runs chat sessions entirely from the terminal via the lms command."
+    },
+    {
+      "id": "mcp-support",
+      "name": "MCP Support",
+      "description": "Connects local models to external tools through Model Context Protocol from LM Studio and the Bionic agent."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-07-17T20:41:17.183Z",
+  "updatedAt": "2026-07-17T20:41:17.183Z"
+}

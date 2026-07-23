@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getAllCategories } from '@/lib/contentful';
+import { getAllCategories } from '@/lib/catalog';
 import { CategoryCard } from '@/components/CategoryCard';
 import type { Metadata } from 'next';
 

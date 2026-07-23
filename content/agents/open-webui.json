@@ -1,0 +1,53 @@
+{
+  "id": "3OoPhgN7yYtNmgsQ7x0V5F",
+  "name": "Open WebUI",
+  "slug": "open-webui",
+  "description": "Self-hosted AI platform with OpenAI-compatible REST API, MCP support, and a pipelines SDK. Supports Ollama, OpenAI, Anthropic, vLLM. pip install open-webui.",
+  "providerName": "Open WebUI",
+  "providerUrl": "https://openwebui.com",
+  "agentUrl": "https://docs.openwebui.com",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "self-hosted",
+    "openai-compatible",
+    "ollama",
+    "mcp-client",
+    "rag",
+    "pipeline-sdk",
+    "multi-model"
+  ],
+  "skills": [
+    {
+      "id": "openai-api-proxy",
+      "name": "OpenAI-Compatible API",
+      "description": "Expose any local or cloud model through an OpenAI-compatible REST API for drop-in agent integration."
+    },
+    {
+      "id": "model-management",
+      "name": "Model Management",
+      "description": "Manage, switch, and configure multiple AI models from one platform with user-level access control."
+    },
+    {
+      "id": "pipeline-sdk",
+      "name": "Pipeline SDK",
+      "description": "Build custom processing pipelines — filters, actions, manifolds — deployed as OpenAI-compatible endpoints."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-05-13T16:56:27.159Z",
+  "updatedAt": "2026-05-13T16:56:27.159Z"
+}

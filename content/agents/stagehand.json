@@ -1,0 +1,33 @@
+{
+  "id": "6CprVTObh12StnHzHZroMU",
+  "name": "Stagehand",
+  "slug": "stagehand",
+  "description": "Provides an AI-native browser automation SDK combining atomic act/extract/observe primitives with an LLM for resilient, self-healing web workflows.",
+  "providerName": "Browserbase",
+  "providerUrl": "https://www.browserbase.com/",
+  "agentUrl": "https://github.com/browserbase/stagehand",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "browser-automation",
+    "open-source",
+    "typescript",
+    "playwright",
+    "sdk"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-05-22T07:35:15.771Z",
+  "updatedAt": "2026-05-22T07:35:15.771Z"
+}

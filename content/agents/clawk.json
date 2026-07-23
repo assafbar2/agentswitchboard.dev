@@ -1,0 +1,52 @@
+{
+  "id": "4mhqZfCbVhOhmXTMSfpSSw",
+  "name": "Clawk",
+  "slug": "clawk",
+  "description": "Gives coding agents a disposable, network-restricted Linux VM with root in the guest while your files and keychain stay out. cd into a repo, type clawk. Written in Go, Apache-2.0. HN 223 points.",
+  "providerName": "Clawkwork",
+  "providerUrl": "https://github.com/clawkwork",
+  "agentUrl": "https://github.com/clawkwork/clawk",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "sandbox",
+    "isolation",
+    "coding-agent",
+    "linux-vm",
+    "network-restricted",
+    "go",
+    "apache-2-0",
+    "security"
+  ],
+  "skills": [
+    {
+      "id": "disposable-sandbox",
+      "name": "Disposable Sandbox",
+      "description": "Spins up a throwaway Linux VM per session so agent commands run isolated from the host and vanish afterward."
+    },
+    {
+      "id": "network-restriction",
+      "name": "Network Restriction",
+      "description": "Locks down guest network access so an agent cannot exfiltrate data or reach unapproved endpoints."
+    },
+    {
+      "id": "credential-isolation",
+      "name": "Credential Isolation",
+      "description": "Keeps host files, SSH keys, and keychain outside the guest so secrets stay protected during agent runs."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-07-17T20:41:14.209Z",
+  "updatedAt": "2026-07-17T20:41:14.209Z"
+}

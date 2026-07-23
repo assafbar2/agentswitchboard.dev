@@ -1,0 +1,52 @@
+{
+  "id": "1u1hNGBxLTCwdQZYYr4ppx",
+  "name": "Safari MCP Server",
+  "slug": "safari-mcp",
+  "description": "Connects AI agents to a live Safari window for web debugging: DOM inspection, network monitoring, console logs, screenshots, and JS evaluation. Official Apple/WebKit MCP server.",
+  "providerName": "Apple",
+  "providerUrl": "https://webkit.org",
+  "agentUrl": "https://webkit.org/blog/18136/introducing-the-safari-mcp-server-for-web-developers/",
+  "categories": [
+    "browser-computer",
+    "code-devtools"
+  ],
+  "tags": [
+    "safari",
+    "webkit",
+    "web-debugging",
+    "dom-inspection",
+    "browser-automation",
+    "mcp-official",
+    "devtools"
+  ],
+  "skills": [
+    {
+      "id": "dom-inspection",
+      "name": "DOM Inspection",
+      "description": "Inspects the rendered DOM tree of a live Safari page so agents can read structure, styles, and accessibility state."
+    },
+    {
+      "id": "network-monitoring",
+      "name": "Network Monitoring",
+      "description": "Captures network requests, responses, and timings from a Safari session for debugging load and API behavior."
+    },
+    {
+      "id": "console-js-eval",
+      "name": "Console & JS Eval",
+      "description": "Reads console output and evaluates arbitrary JavaScript in the Safari page to verify user-facing state."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-07-06T07:04:00.503Z",
+  "updatedAt": "2026-07-06T07:04:00.503Z"
+}

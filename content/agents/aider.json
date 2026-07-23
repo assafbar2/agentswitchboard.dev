@@ -1,0 +1,51 @@
+{
+  "id": "1UFQXkWVwMdOBTefRspUq9",
+  "name": "Aider",
+  "slug": "aider",
+  "description": "AI pair programmer for your terminal — edit code across your entire codebase with Claude, GPT, or DeepSeek. 44k GitHub stars, 5M+ PyPI downloads.",
+  "providerName": "Aider AI",
+  "providerUrl": "https://aider.chat",
+  "agentUrl": "https://aider.chat/docs/install.html",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "ai-coding",
+    "pair-programming",
+    "terminal-coding",
+    "multi-model",
+    "git-integration",
+    "codebase-editing",
+    "cli-coding"
+  ],
+  "skills": [
+    {
+      "id": "multi-file-edit",
+      "name": "Multi-File Editing",
+      "description": "Edit multiple source files in one shot based on natural language instructions with automatic git commits."
+    },
+    {
+      "id": "architect-mode",
+      "name": "Architect Mode",
+      "description": "Use a powerful model to plan changes and a cheaper model to apply edits — optimizing cost and quality."
+    },
+    {
+      "id": "repo-map",
+      "name": "Repo Map",
+      "description": "Build a concise map of your codebase so the LLM understands full structure without loading every file."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-05-13T16:56:35.527Z",
+  "updatedAt": "2026-05-13T16:56:35.527Z"
+}

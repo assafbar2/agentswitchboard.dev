@@ -1,0 +1,52 @@
+{
+  "id": "2P0iLGFhZwBeDxxRslWHRc",
+  "name": "Amazon Bedrock AgentCore",
+  "slug": "bedrock-agentcore",
+  "description": "Production agent runtime on AWS with microVM isolation, 8-hour sessions, persistent memory, browser automation, MCP gateway, and USDC micropayment support.",
+  "providerName": "Amazon Web Services",
+  "providerUrl": "https://aws.amazon.com/",
+  "agentUrl": "https://aws.amazon.com/bedrock/agentcore/",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "agent-runtime",
+    "aws",
+    "microvm",
+    "memory",
+    "mcp-gateway",
+    "enterprise"
+  ],
+  "skills": [
+    {
+      "id": "agent-runtime",
+      "name": "Agent Runtime Hosting",
+      "description": "Deploy any agent framework to isolated Firecracker microVMs with auto-scaling, 8-hour session limits, and per-session billing."
+    },
+    {
+      "id": "agent-memory",
+      "name": "Persistent Agent Memory",
+      "description": "Store session events and extract long-term insights into managed memory resources accessible across multiple agent invocations."
+    },
+    {
+      "id": "agentcore-payments",
+      "name": "AgentCore Payments",
+      "description": "Enable agents to make USDC stablecoin micropayments in ~200ms to access paid APIs and MCP servers via the x402 protocol."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-05-22T08:28:09.641Z",
+  "updatedAt": "2026-05-22T08:28:09.641Z"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "1NOi4c6N8HgBPTjd8te53g",
+  "name": "Sequential Thinking MCP",
+  "slug": "sequential-thinking-mcp",
+  "description": "Enables structured step-by-step reasoning for complex problems, letting AI models break tasks into revisable thought sequences with branching.",
+  "providerName": "Anthropic",
+  "providerUrl": "https://anthropic.com",
+  "agentUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "sequential-reasoning",
+    "chain-of-thought",
+    "problem-solving",
+    "step-by-step",
+    "mcp-official",
+    "reasoning"
+  ],
+  "skills": [
+    {
+      "id": "sequential-reasoning",
+      "name": "Sequential Reasoning",
+      "description": "Breaks complex problems into numbered thought steps the model can revise, branch, or extend before arriving at an answer."
+    },
+    {
+      "id": "thought-branching",
+      "name": "Thought Branching",
+      "description": "Creates alternative reasoning paths from any prior thought step, letting models explore multiple approaches in parallel."
+    },
+    {
+      "id": "dynamic-step-count",
+      "name": "Dynamic Step Count",
+      "description": "Adjusts the total number of reasoning steps dynamically as the problem scope becomes clearer during the chain."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-06-07T17:51:12.579Z",
+  "updatedAt": "2026-06-07T17:51:12.579Z"
+}

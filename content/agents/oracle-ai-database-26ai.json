@@ -1,0 +1,64 @@
+{
+  "id": "D2VFK6V3tfpvoJo7k6Q9Y",
+  "name": "Oracle AI Database 26ai",
+  "slug": "oracle-ai-database-26ai",
+  "description": "World's first AI-native database with agents running inside the kernel. Features no-code Agent Factory, unified vector search, multi-modal RAG, and identity-aware access control.",
+  "providerName": "Oracle",
+  "providerUrl": "https://oracle.com/database",
+  "agentUrl": "https://www.oracle.com/database/agent-factory/",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "in-database-ai",
+    "agent-factory",
+    "vector-search",
+    "enterprise-database",
+    "multi-modal-rag",
+    "oracle",
+    "no-code-agents",
+    "autonomous-database"
+  ],
+  "skills": [
+    {
+      "id": "execute-ai-agents-inside-the-database-kernel-co-located-with-data-for-sub-millisecond-decision-latency",
+      "name": "Execute AI agents inside the database kernel, co-located with data for sub-millisecond decision latency",
+      "description": "Execute AI agents inside the database kernel, co-located with data for sub-millisecond decision latency"
+    },
+    {
+      "id": "build-production-ready-agents-visually-with-no-code-agent-factory-drag-and-drop-tools-prompts-and-data-connectors",
+      "name": "Build production-ready agents visually with no-code Agent Factory — drag-and-drop tools, prompts, and data connectors",
+      "description": "Build production-ready agents visually with no-code Agent Factory — drag-and-drop tools, prompts, and data connectors"
+    },
+    {
+      "id": "query-structured-and-unstructured-data-with-unified-vector-search-for-multi-modal-retrieval-augmented-generation",
+      "name": "Query structured and unstructured data with unified vector search for multi-modal Retrieval Augmented Generation",
+      "description": "Query structured and unstructured data with unified vector search for multi-modal Retrieval Augmented Generation"
+    },
+    {
+      "id": "run-multi-modal-rag-pipelines-over-text-images-and-documents-stored-natively-in-the-database",
+      "name": "Run multi-modal RAG pipelines over text, images, and documents stored natively in the database",
+      "description": "Run multi-modal RAG pipelines over text, images, and documents stored natively in the database"
+    },
+    {
+      "id": "enforce-identity-aware-access-control-so-each-agent-only-operates-on-explicitly-authorized-data-sets",
+      "name": "Enforce identity-aware access control so each agent only operates on explicitly authorized data sets",
+      "description": "Enforce identity-aware access control so each agent only operates on explicitly authorized data sets"
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-03-31T00:56:30.155Z",
+  "updatedAt": "2026-07-10T21:06:47.570Z"
+}

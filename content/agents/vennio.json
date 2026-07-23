@@ -1,0 +1,52 @@
+{
+  "id": "3HRJvxufgeGrWc0STJyo9t",
+  "name": "Vennio",
+  "slug": "vennio",
+  "description": "Scheduling infrastructure for developers and AI agents. Query real availability across multiple calendars, create bookings, and negotiate meeting times via REST API and MCP.",
+  "providerName": "Vennio",
+  "providerUrl": "https://vennio.app",
+  "agentUrl": "https://docs.vennio.app",
+  "categories": [
+    "scheduling"
+  ],
+  "tags": [
+    "scheduling-api",
+    "calendar-availability",
+    "booking-api",
+    "mcp-server",
+    "multi-calendar",
+    "stripe-payments"
+  ],
+  "skills": [
+    {
+      "id": "find-mutual-availability",
+      "name": "Find Mutual Availability",
+      "description": "Query open slots across multiple calendars simultaneously with consent-scoped access for multi-party scheduling."
+    },
+    {
+      "id": "create-booking",
+      "name": "Create Booking",
+      "description": "Create confirmed calendar bookings with event creation and confirmation emails in a single API call, including Stripe payment support."
+    },
+    {
+      "id": "manage-venn-links",
+      "name": "Manage Venn Links",
+      "description": "Create and manage shareable booking pages programmatically, enabling AI agents to generate scheduling links on behalf of users."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-05-07T00:58:31.061Z",
+  "updatedAt": "2026-05-07T00:58:31.061Z"
+}

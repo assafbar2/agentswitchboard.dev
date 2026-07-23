@@ -1,0 +1,62 @@
+{
+  "id": "5ssG8JqDITf0YuFNYqOVB8",
+  "name": "AutoGen",
+  "slug": "autogen",
+  "description": "Microsoft's open-source multi-agent framework. Supports conversational, autonomous, and human-in-the-loop agent patterns in Python and TypeScript with event-driven orchestration.",
+  "providerName": "Microsoft",
+  "providerUrl": "https://microsoft.com",
+  "agentUrl": "https://microsoft.github.io/autogen/",
+  "categories": [
+    "infrastructure",
+    "orchestration"
+  ],
+  "tags": [
+    "multi-agent",
+    "python",
+    "typescript",
+    "open-source",
+    "conversational-agents",
+    "human-in-the-loop"
+  ],
+  "skills": [
+    {
+      "id": "conversable-agents",
+      "name": "Conversable Agents",
+      "description": "Define agents that converse, negotiate, and pass structured results between each other"
+    },
+    {
+      "id": "human-in-loop",
+      "name": "Human-in-the-Loop",
+      "description": "Inject human feedback at configurable checkpoints in multi-step agentic pipelines"
+    },
+    {
+      "id": "group-chat",
+      "name": "Group Chat",
+      "description": "Orchestrate multiple agents in a group chat with dynamic speaker selection strategies"
+    },
+    {
+      "id": "code-execution",
+      "name": "Code Execution",
+      "description": "Execute LLM-generated code in sandboxed environments with Docker or local Python runtime"
+    },
+    {
+      "id": "event-driven",
+      "name": "Event-Driven Mode",
+      "description": "Build async, event-driven agent systems with AutoGen's actor-model runtime"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-04-13T21:38:23.692Z",
+  "updatedAt": "2026-06-15T03:15:46.923Z"
+}

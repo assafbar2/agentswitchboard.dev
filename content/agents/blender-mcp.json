@@ -1,0 +1,56 @@
+{
+  "id": "1ro61tR46fVdPjzcwhg3z2",
+  "name": "Blender MCP",
+  "slug": "blender-mcp",
+  "description": "Connects Claude and other LLMs to Blender via MCP. Create 3D scenes, generate materials, run Python scripts, and inspect viewports from an AI agent prompt.",
+  "providerName": "Ahujasid",
+  "providerUrl": "https://github.com/ahujasid/blender-mcp",
+  "agentUrl": "https://github.com/ahujasid/blender-mcp",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "mcp",
+    "blender",
+    "3d-modeling",
+    "scene-generation",
+    "python-scripting",
+    "creative-tools",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "scene-create",
+      "name": "3D Scene Creation",
+      "description": "Create and modify 3D scenes in Blender from natural language prompts via MCP tool calls"
+    },
+    {
+      "id": "material-gen",
+      "name": "Material Generation",
+      "description": "Generate and apply procedural materials to 3D objects using node setups controlled by MCP"
+    },
+    {
+      "id": "python-script",
+      "name": "Python Scripting",
+      "description": "Execute Python scripts inside Blender to automate complex modeling and rendering workflows"
+    },
+    {
+      "id": "viewport-inspect",
+      "name": "Viewport Inspection",
+      "description": "Capture viewport screenshots and inspect scene hierarchy for visual feedback to the AI agent"
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-04-25T19:07:01.021Z",
+  "updatedAt": "2026-04-25T19:07:01.021Z"
+}

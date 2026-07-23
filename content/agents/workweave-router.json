@@ -1,0 +1,52 @@
+{
+  "id": "6yYSKWBNMww7CsRmy1uAD4",
+  "name": "Workweave Router",
+  "slug": "workweave-router",
+  "description": "Routes each prompt to the optimal model (Anthropic, OpenAI, Gemini) in under 50ms via an on-box embedder. Drop-in proxy for Claude Code, Codex, and opencode; cuts costs 40-70%.",
+  "providerName": "Weave",
+  "providerUrl": "https://github.com/workweave/router",
+  "agentUrl": "https://github.com/workweave/router",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "model-routing",
+    "proxy",
+    "cost-optimization",
+    "claude-code",
+    "codex",
+    "open-source",
+    "llm-gateway"
+  ],
+  "skills": [
+    {
+      "id": "sub-50ms-routing",
+      "name": "Sub-50ms Routing",
+      "description": "Routes each prompt to the best model in under 50ms using an on-box embedder, no extra network hop."
+    },
+    {
+      "id": "drop-in-proxy",
+      "name": "Drop-In Proxy",
+      "description": "Acts as an Anthropic- and OpenAI-compatible proxy for Claude Code, Codex, and opencode."
+    },
+    {
+      "id": "cost-reduction",
+      "name": "Cost Reduction",
+      "description": "Cuts model spend 40-70% by sending simple prompts to cheaper models and hard ones to frontier models."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-07-06T07:04:28.013Z",
+  "updatedAt": "2026-07-06T07:04:28.013Z"
+}

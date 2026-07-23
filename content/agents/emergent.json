@@ -1,0 +1,51 @@
+{
+  "id": "5KUFGs0F28OuAIAxoYUP81",
+  "name": "Emergent",
+  "slug": "emergent",
+  "description": "Builds production-ready full-stack apps from natural language with a team of coordinated AI agents. Syncs code to GitHub; connects Stripe, Supabase, and external APIs. $1.5B-valued.",
+  "providerName": "Emergent",
+  "providerUrl": "https://emergent.sh",
+  "agentUrl": "https://help.emergent.sh",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "app-builder",
+    "full-stack",
+    "vibe-coding",
+    "multi-agent",
+    "no-code",
+    "github-sync",
+    "deployment"
+  ],
+  "skills": [
+    {
+      "id": "full-stack-generation",
+      "name": "Full-Stack Generation",
+      "description": "Generates frontend, backend, database, and auth as real production-grade code from a natural-language prompt."
+    },
+    {
+      "id": "multi-agent-build",
+      "name": "Multi-Agent Build",
+      "description": "Coordinates architect, designer, developer, integration, and PM agents to plan, build, and debug the app."
+    },
+    {
+      "id": "deploy-and-own",
+      "name": "Deploy & Own",
+      "description": "Ships apps to containerized cloud infrastructure and syncs the code to your GitHub repo for full ownership."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-07-17T20:41:36.820Z",
+  "updatedAt": "2026-07-17T20:41:36.820Z"
+}

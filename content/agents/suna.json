@@ -1,0 +1,51 @@
+{
+  "id": "1GhhDnVNoXNBmpCn7W9sCK",
+  "name": "Suna",
+  "slug": "suna",
+  "description": "Open-source generalist AI agent that browses the web, manages files, runs shell commands, and deploys apps from natural-language tasks. Self-hostable, by Kortix. 20k+ GitHub stars.",
+  "providerName": "Kortix",
+  "providerUrl": "https://kortix.ai",
+  "agentUrl": "https://github.com/kortix-ai/suna",
+  "categories": [
+    "orchestration"
+  ],
+  "tags": [
+    "generalist-agent",
+    "autonomous-agent",
+    "browser-automation",
+    "file-management",
+    "self-hosted",
+    "shell",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "web-browsing",
+      "name": "Web Browsing",
+      "description": "Navigates and extracts data from websites to complete research and data-gathering tasks autonomously."
+    },
+    {
+      "id": "file-management",
+      "name": "File Management",
+      "description": "Creates, edits, and organizes files in a workspace to produce documents, code, and structured outputs."
+    },
+    {
+      "id": "command-execution",
+      "name": "Command Execution",
+      "description": "Runs shell commands in a sandbox to install tools, process data, and build or deploy applications."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-07-17T20:41:26.391Z",
+  "updatedAt": "2026-07-17T20:41:26.391Z"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "6SiZ9bzAGWzCEVW2oYTJkb",
+  "name": "Firebolt",
+  "slug": "firebolt",
+  "description": "Cloud data warehouse engineered for sub-second analytics with AI-optimized indexing and query acceleration.",
+  "providerName": "Firebolt",
+  "providerUrl": "https://firebolt.io",
+  "agentUrl": "https://www.firebolt.io/",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "analytics",
+    "sql",
+    "data-warehouse"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-03-22T09:51:37.805Z",
+  "updatedAt": "2026-03-22T09:51:37.805Z"
+}

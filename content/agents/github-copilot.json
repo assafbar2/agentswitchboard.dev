@@ -1,0 +1,33 @@
+{
+  "id": "6cp6UWfSplQLvtI7gblOua",
+  "name": "GitHub Copilot",
+  "slug": "github-copilot",
+  "description": "AI pair programmer that suggests code completions, generates functions, writes tests, and now supports agentic coding via Copilot Agent mode.",
+  "providerName": "GitHub",
+  "providerUrl": "https://github.com",
+  "agentUrl": "https://github.com/features/copilot",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "code-completion",
+    "ai-assistant",
+    "ide"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "browser-extension"
+  ],
+  "createdAt": "2026-03-22T09:51:47.328Z",
+  "updatedAt": "2026-07-10T21:06:11.065Z"
+}

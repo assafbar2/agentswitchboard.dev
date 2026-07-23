@@ -1,0 +1,60 @@
+{
+  "id": "60KOYBprCIgAKxv2CDtRF4",
+  "name": "Desktop Commander MCP",
+  "slug": "desktop-commander-mcp",
+  "description": "MCP server for full desktop control. Lets AI agents execute shell commands, manage files, edit code with diff patches, and run long processes with live output streaming.",
+  "providerName": "wonderwhy-er",
+  "providerUrl": "https://github.com/wonderwhy-er/DesktopCommanderMCP",
+  "agentUrl": "https://github.com/wonderwhy-er/DesktopCommanderMCP",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "mcp",
+    "shell-commands",
+    "file-management",
+    "desktop-control",
+    "terminal",
+    "diff-patching"
+  ],
+  "skills": [
+    {
+      "id": "shell-exec",
+      "name": "Shell Execution",
+      "description": "Execute any shell command and stream live stdout/stderr output back to the AI agent"
+    },
+    {
+      "id": "file-ops",
+      "name": "File Operations",
+      "description": "Read, write, move, and delete files and directories on the local filesystem via MCP"
+    },
+    {
+      "id": "diff-edit",
+      "name": "Diff Patching",
+      "description": "Apply targeted code edits as diff patches without rewriting entire files"
+    },
+    {
+      "id": "process-mgmt",
+      "name": "Process Management",
+      "description": "Start long-running processes, monitor output, and terminate when complete"
+    },
+    {
+      "id": "search-files",
+      "name": "File Search",
+      "description": "Search file contents with ripgrep and list directory trees for codebase navigation"
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-04-13T21:38:36.521Z",
+  "updatedAt": "2026-04-13T21:38:36.521Z"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "2zVZc5u5F6qRD8Nv0obxoQ",
+  "name": "Azure AI Foundry",
+  "slug": "azure-ai-foundry",
+  "description": "Microsoft's unified platform for building, evaluating, and deploying AI agents with access to OpenAI and open-source models.",
+  "providerName": "Microsoft",
+  "providerUrl": "https://azure.microsoft.com",
+  "agentUrl": "https://ai.azure.com",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "azure",
+    "enterprise"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-03-22T09:53:23.610Z",
+  "updatedAt": "2026-03-22T09:53:23.610Z"
+}

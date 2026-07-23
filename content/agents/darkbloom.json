@@ -1,0 +1,51 @@
+{
+  "id": "7bwmjq09Ojl6H2lZKHb1hG",
+  "name": "Darkbloom",
+  "slug": "darkbloom",
+  "description": "Decentralized inference on idle Apple Silicon Macs. OpenAI-compatible API, end-to-end encrypted, hardware-attested privacy — up to 70% cheaper than centralized cloud inference.",
+  "providerName": "Darkbloom",
+  "providerUrl": "https://darkbloom.dev",
+  "agentUrl": "https://darkbloom.dev",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "inference",
+    "decentralized",
+    "apple-silicon",
+    "openai-compatible",
+    "privacy",
+    "end-to-end-encrypted",
+    "low-cost"
+  ],
+  "skills": [
+    {
+      "id": "openai-compat",
+      "name": "OpenAI-Compatible API",
+      "description": "Drop in Darkbloom as your base URL — works with any OpenAI SDK client without code changes"
+    },
+    {
+      "id": "e2e-encrypt",
+      "name": "E2E Encryption",
+      "description": "Route inference through end-to-end encrypted channels so no node sees plaintext prompts or responses"
+    },
+    {
+      "id": "hardware-attest",
+      "name": "Hardware Attestation",
+      "description": "Verify inference runs on real Apple Silicon with hardware-level attestation before sending data"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-04-25T18:49:59.940Z",
+  "updatedAt": "2026-04-25T18:49:59.940Z"
+}

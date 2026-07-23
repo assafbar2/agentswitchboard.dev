@@ -1,0 +1,33 @@
+{
+  "id": "3am2pxWmtgxGbkcbiNuYWq",
+  "name": "Jasper",
+  "slug": "jasper",
+  "description": "Enterprise AI marketing platform generating on-brand content, campaigns, and copy powered by company knowledge and style guides.",
+  "providerName": "Jasper",
+  "providerUrl": "https://jasper.ai",
+  "agentUrl": "https://www.jasper.ai/",
+  "categories": [
+    "sales-marketing",
+    "content-media"
+  ],
+  "tags": [
+    "content",
+    "copywriting",
+    "marketing"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "browser-extension"
+  ],
+  "createdAt": "2026-03-22T09:52:36.333Z",
+  "updatedAt": "2026-03-22T09:52:36.333Z"
+}

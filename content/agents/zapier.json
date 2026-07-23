@@ -1,0 +1,32 @@
+{
+  "id": "2Uu7drZhBA2VFNWi32Vfar",
+  "name": "Zapier",
+  "slug": "zapier",
+  "description": "Automation platform connecting 7,000+ apps with AI-powered workflow builder, natural language automation, and agent capabilities.",
+  "providerName": "Zapier",
+  "providerUrl": "https://zapier.com",
+  "agentUrl": "https://zapier.com/",
+  "categories": [
+    "scheduling"
+  ],
+  "tags": [
+    "integration",
+    "workflow"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "browser-extension"
+  ],
+  "createdAt": "2026-03-22T09:53:07.137Z",
+  "updatedAt": "2026-07-10T21:07:25.079Z"
+}

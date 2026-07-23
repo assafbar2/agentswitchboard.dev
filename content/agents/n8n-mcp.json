@@ -1,0 +1,51 @@
+{
+  "id": "2pSrJbB6huacCE2LDjyOi1",
+  "name": "n8n-MCP",
+  "slug": "n8n-mcp",
+  "description": "MCP bridge to n8n's 1,505 automation nodes, documentation, and 2,709 workflow templates — lets AI agents build, search, and understand n8n workflows with full context.",
+  "providerName": "czlonkowski",
+  "providerUrl": "https://github.com/czlonkowski/n8n-mcp",
+  "agentUrl": "https://github.com/czlonkowski/n8n-mcp",
+  "categories": [
+    "scheduling"
+  ],
+  "tags": [
+    "mcp",
+    "n8n",
+    "workflow-automation",
+    "nodes",
+    "templates",
+    "automation-bridge",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "node-search",
+      "name": "Node Search",
+      "description": "Search and retrieve documentation for any of n8n's 1,505 automation nodes via MCP tools"
+    },
+    {
+      "id": "workflow-templates",
+      "name": "Workflow Templates",
+      "description": "Access 2,709 workflow templates to bootstrap n8n automations from within an AI agent session"
+    },
+    {
+      "id": "workflow-build",
+      "name": "Workflow Building",
+      "description": "Help agents construct valid n8n workflow JSON with correct node configurations and connections"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-04-25T19:07:04.621Z",
+  "updatedAt": "2026-04-25T19:07:04.621Z"
+}

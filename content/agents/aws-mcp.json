@@ -1,0 +1,60 @@
+{
+  "id": "3Q6moKrsfwnk09AUUqxgfY",
+  "name": "AWS MCP Suite",
+  "slug": "aws-mcp",
+  "description": "Official AWS MCP servers (GA May 2026) — 15+ servers for S3, Lambda, DynamoDB, CDK, and Bedrock. Adds sandboxed Python execution, IAM context keys, and unauthenticated docs retrieval.",
+  "providerName": "AWS Labs",
+  "providerUrl": "https://aws.amazon.com",
+  "agentUrl": "https://github.com/awslabs/mcp",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "mcp",
+    "aws",
+    "s3",
+    "lambda",
+    "bedrock",
+    "cloud-infrastructure"
+  ],
+  "skills": [
+    {
+      "id": "s3-ops",
+      "name": "S3 Operations",
+      "description": "List, read, write, and delete S3 objects and buckets from any MCP-compatible AI agent"
+    },
+    {
+      "id": "lambda-invoke",
+      "name": "Lambda Invoke",
+      "description": "Invoke AWS Lambda functions with custom payloads and retrieve structured results"
+    },
+    {
+      "id": "bedrock-models",
+      "name": "Bedrock Models",
+      "description": "Call Amazon Bedrock foundation models including Claude, Titan, and Llama via MCP tools"
+    },
+    {
+      "id": "cdk-deploy",
+      "name": "CDK Deploy",
+      "description": "Synthesize and deploy AWS CDK stacks programmatically from an AI agent workflow"
+    },
+    {
+      "id": "dynamodb-query",
+      "name": "DynamoDB Query",
+      "description": "Read and write DynamoDB tables with query, scan, and put-item operations via MCP"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-04-13T21:38:26.414Z",
+  "updatedAt": "2026-05-13T16:22:39.867Z"
+}

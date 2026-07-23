@@ -1,0 +1,59 @@
+{
+  "id": "3zjk734Hck9n8Ed5qDX4zI",
+  "name": "monid.ai",
+  "slug": "monid-ai",
+  "description": "AI agent platform for social media monitoring and engagement. Tracks brand mentions, analyzes sentiment, and drafts AI-powered responses across channels.",
+  "providerName": "monid.ai",
+  "providerUrl": "https://monid.ai",
+  "agentUrl": "https://monid.ai",
+  "categories": [
+    "sales-marketing"
+  ],
+  "tags": [
+    "social-media",
+    "monitoring",
+    "sentiment-analysis",
+    "brand-management",
+    "marketing-automation"
+  ],
+  "skills": [
+    {
+      "id": "monitor-brand-mentions-and-keywords-across-major-social-media-platforms-in-real-time",
+      "name": "Monitor brand mentions and keywords across major social media platforms in real time",
+      "description": "Monitor brand mentions and keywords across major social media platforms in real time"
+    },
+    {
+      "id": "analyze-sentiment-and-tone-of-social-content-with-ai-powered-classification",
+      "name": "Analyze sentiment and tone of social content with AI-powered classification",
+      "description": "Analyze sentiment and tone of social content with AI-powered classification"
+    },
+    {
+      "id": "draft-contextual-response-suggestions-for-social-media-engagement",
+      "name": "Draft contextual response suggestions for social media engagement",
+      "description": "Draft contextual response suggestions for social media engagement"
+    },
+    {
+      "id": "track-competitor-activity-and-share-of-voice-across-platforms",
+      "name": "Track competitor activity and share-of-voice across platforms",
+      "description": "Track competitor activity and share-of-voice across platforms"
+    },
+    {
+      "id": "aggregate-engagement-analytics-into-a-unified-social-performance-dashboard",
+      "name": "Aggregate engagement analytics into a unified social performance dashboard",
+      "description": "Aggregate engagement analytics into a unified social performance dashboard"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-04-08T07:17:30.407Z",
+  "updatedAt": "2026-04-08T07:17:30.407Z"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "6TMJ3BYA1V8ZgBGqsEqTV0",
+  "name": "Polymarket MCP",
+  "slug": "polymarket-mcp",
+  "description": "Discovers and filters Polymarket prediction markets by tags, volume, and liquidity. Analyzes probabilities, market health, and tracks category trends.",
+  "providerName": "Community",
+  "providerUrl": "https://polymarket.com",
+  "agentUrl": "https://smithery.ai/server/@aryankeluskar/polymarket-mcp",
+  "categories": [
+    "finance"
+  ],
+  "tags": [
+    "polymarket",
+    "prediction-markets",
+    "betting-odds",
+    "probability",
+    "crypto",
+    "forecasting",
+    "defi"
+  ],
+  "skills": [
+    {
+      "id": "market-discovery",
+      "name": "Market Discovery",
+      "description": "Searches and filters Polymarket prediction markets by tags, category, volume, and liquidity in real time."
+    },
+    {
+      "id": "market-analysis",
+      "name": "Market Analysis",
+      "description": "Returns current probabilities, market health scores, and recent trade activity for individual Polymarket events."
+    },
+    {
+      "id": "trend-tracking",
+      "name": "Trend Tracking",
+      "description": "Scans Polymarket categories to identify trending markets and compare sentiment shifts across time windows."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-06-07T17:51:30.461Z",
+  "updatedAt": "2026-06-07T17:51:30.461Z"
+}

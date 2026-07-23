@@ -1,0 +1,57 @@
+{
+  "id": "4AgKHSi9yO7lAEGJVI0Dhl",
+  "name": "Endara",
+  "slug": "endara",
+  "description": "Desktop app + Rust relay that aggregates MCP servers behind one endpoint. Add GitHub, Notion, Slack, and custom servers — all clients connect to localhost:9400.",
+  "providerName": "Furinkazan Inc",
+  "providerUrl": "https://endara.ai",
+  "agentUrl": "https://endara.ai",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "mcp-aggregator",
+    "mcp-relay",
+    "mcp-server",
+    "desktop-app",
+    "oauth-management",
+    "tool-management",
+    "local-ai"
+  ],
+  "skills": [
+    {
+      "id": "mcp-relay",
+      "name": "MCP Relay",
+      "description": "Aggregate multiple MCP servers behind a single localhost endpoint — any AI client connects with one config entry."
+    },
+    {
+      "id": "oauth-management",
+      "name": "OAuth Management",
+      "description": "Sign in to cloud services like Linear, Slack, and Notion once — Endara manages token refresh and reconnection."
+    },
+    {
+      "id": "js-execution",
+      "name": "JS Execution Mode",
+      "description": "Collapse 50+ tools into 3 meta-tools; the model writes JavaScript to call any combination in a single round-trip."
+    },
+    {
+      "id": "server-marketplace",
+      "name": "Server Marketplace",
+      "description": "Browse and install curated MCP servers from a built-in catalog with health monitoring and live logs."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-05-13T16:21:02.497Z",
+  "updatedAt": "2026-05-13T16:21:02.497Z"
+}

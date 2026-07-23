@@ -1,0 +1,32 @@
+{
+  "id": "4gzS4CcX6Q2jRktyLIS6qE",
+  "name": "Apollo.io",
+  "slug": "apollo-io",
+  "description": "Sales intelligence and engagement platform with AI-powered prospecting, lead scoring, and automated outreach sequences.",
+  "providerName": "Apollo.io",
+  "providerUrl": "https://apollo.io",
+  "agentUrl": "https://www.apollo.io/",
+  "categories": [
+    "sales-marketing"
+  ],
+  "tags": [
+    "sales",
+    "prospecting",
+    "outreach"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "browser-extension"
+  ],
+  "createdAt": "2026-03-22T09:52:31.869Z",
+  "updatedAt": "2026-03-22T09:52:31.869Z"
+}

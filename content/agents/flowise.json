@@ -1,0 +1,61 @@
+{
+  "id": "ncvlQ0jiICX4bSlvQT8Fm",
+  "name": "Flowise",
+  "slug": "flowise",
+  "description": "Open-source drag-and-drop UI for building LLM flows and AI agents. Deploy as a self-hosted server with REST API for integrating chains and agent workflows into apps.",
+  "providerName": "FlowiseAI",
+  "providerUrl": "https://flowiseai.com",
+  "agentUrl": "https://docs.flowiseai.com",
+  "categories": [
+    "infrastructure",
+    "orchestration"
+  ],
+  "tags": [
+    "visual-builder",
+    "open-source",
+    "llm-flows",
+    "self-hosted",
+    "no-code",
+    "agent-builder"
+  ],
+  "skills": [
+    {
+      "id": "drag-drop-build",
+      "name": "Drag-Drop Builder",
+      "description": "Assemble LLM chains and agent flows visually by connecting nodes in a browser canvas"
+    },
+    {
+      "id": "rest-export",
+      "name": "REST Export",
+      "description": "Expose any built flow as a REST API endpoint consumable by external apps and agents"
+    },
+    {
+      "id": "tool-agents",
+      "name": "Tool Agents",
+      "description": "Build ReAct agents with custom tools, retrievers, and external API calls in the UI"
+    },
+    {
+      "id": "self-host",
+      "name": "Self-Hostable",
+      "description": "Deploy on any server with Docker — full data control, no vendor lock-in, open-source license"
+    },
+    {
+      "id": "embeddings",
+      "name": "Vector Stores & Embeddings",
+      "description": "Connect to Pinecone, Chroma, Qdrant, and 10+ vector stores for RAG pipelines"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-04-13T21:38:25.053Z",
+  "updatedAt": "2026-06-15T03:15:49.940Z"
+}

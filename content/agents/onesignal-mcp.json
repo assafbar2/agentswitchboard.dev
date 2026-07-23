@@ -1,0 +1,50 @@
+{
+  "id": "5Wx4VULcjiMQbI0x4twBk7",
+  "name": "OneSignal MCP",
+  "slug": "onesignal-mcp",
+  "description": "Official OneSignal MCP — send push notifications, email, and SMS, manage audience segments, check delivery stats, and update messaging templates.",
+  "providerName": "OneSignal",
+  "providerUrl": "https://onesignal.com",
+  "agentUrl": "https://smithery.ai/server/@onesignal/onesignal",
+  "categories": [
+    "communication"
+  ],
+  "tags": [
+    "push-notifications",
+    "email",
+    "sms",
+    "audience-segmentation",
+    "campaign-analytics",
+    "mcp-official"
+  ],
+  "skills": [
+    {
+      "id": "send-notifications",
+      "name": "Send Notifications",
+      "description": "Sends push notifications, email, and SMS messages to audience segments using OneSignal's delivery infrastructure."
+    },
+    {
+      "id": "audience-management",
+      "name": "Audience Management",
+      "description": "Creates, updates, and queries audience segments for targeted messaging based on user attributes and behaviors."
+    },
+    {
+      "id": "campaign-analytics",
+      "name": "Campaign Analytics",
+      "description": "Retrieves delivery stats, open rates, and notification outcomes for sent campaigns across all channels."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-06-07T17:51:17.452Z",
+  "updatedAt": "2026-06-07T17:51:17.452Z"
+}

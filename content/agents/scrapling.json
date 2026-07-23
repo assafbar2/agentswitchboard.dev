@@ -1,0 +1,60 @@
+{
+  "id": "1QWEz3AyiOFbkzMYydKLkn",
+  "name": "Scrapling",
+  "slug": "scrapling",
+  "description": "High-performance Python web scraping library with anti-bot bypass, async support, and smart element auto-matching — faster than Playwright with no browser overhead.",
+  "providerName": "Scrapling OSS",
+  "providerUrl": "https://github.com/D4Vinci/Scrapling",
+  "agentUrl": "https://github.com/D4Vinci/Scrapling",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "web-scraping",
+    "python",
+    "anti-bot",
+    "async",
+    "html-parsing",
+    "element-matching"
+  ],
+  "skills": [
+    {
+      "id": "anti-bot",
+      "name": "Anti-Bot Bypass",
+      "description": "Bypass bot detection systems including Cloudflare, DataDome, and browser fingerprinting"
+    },
+    {
+      "id": "auto-match",
+      "name": "Auto Element Matching",
+      "description": "Automatically re-match CSS selectors after page structure changes without manual updates"
+    },
+    {
+      "id": "async-scrape",
+      "name": "Async Scraping",
+      "description": "Scrape multiple URLs concurrently with asyncio for high-throughput data collection"
+    },
+    {
+      "id": "no-browser",
+      "name": "No Browser Overhead",
+      "description": "Extract data without launching a browser — faster and lower memory than Playwright"
+    },
+    {
+      "id": "structured-parse",
+      "name": "Structured Parsing",
+      "description": "Parse HTML into typed Python objects with CSS and XPath selector support"
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-04-13T21:38:34.867Z",
+  "updatedAt": "2026-04-13T21:38:34.867Z"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "3Hipt3QNNOY48ByJ33jPOw",
+  "name": "Tiingo MCP",
+  "slug": "tiingo-mcp",
+  "description": "Python MCP server exposing Tiingo financial data API — real-time and historical stock prices, company fundamentals, and financial news searchable by AI agents.",
+  "providerName": "Tiingo",
+  "providerUrl": "https://tiingo.com",
+  "agentUrl": "https://github.com/wshobson/tiingo-mcp",
+  "categories": [
+    "finance"
+  ],
+  "tags": [
+    "mcp",
+    "financial-data",
+    "stocks",
+    "fundamentals",
+    "financial-news",
+    "market-data",
+    "python"
+  ],
+  "skills": [
+    {
+      "id": "stock-prices",
+      "name": "Stock Prices",
+      "description": "Retrieve real-time and historical stock price data for any US-listed ticker symbol via MCP"
+    },
+    {
+      "id": "fundamentals",
+      "name": "Company Fundamentals",
+      "description": "Fetch financial fundamentals including revenue, EPS, P/E ratio, and balance sheet metrics per ticker"
+    },
+    {
+      "id": "financial-news",
+      "name": "Financial News",
+      "description": "Search and retrieve financial news articles filtered by ticker, date range, and keyword query"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-04-25T18:50:04.960Z",
+  "updatedAt": "2026-04-25T18:50:04.960Z"
+}

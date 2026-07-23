@@ -1,0 +1,60 @@
+{
+  "id": "71dEUIzp4XbeLgVmZ4stUt",
+  "name": "Portkey",
+  "slug": "portkey",
+  "description": "AI gateway with unified API for 200+ LLMs, plus observability, caching, fallbacks, and cost management. Drop-in replacement for the OpenAI SDK.",
+  "providerName": "Portkey",
+  "providerUrl": "https://portkey.ai",
+  "agentUrl": "https://portkey.ai/docs",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "ai-gateway",
+    "observability",
+    "llm-routing",
+    "cost-management",
+    "openai-compatible",
+    "caching"
+  ],
+  "skills": [
+    {
+      "id": "route-requests-across-200-llms-with-a-single-unified-openai-compatible-api",
+      "name": "Route requests across 200+ LLMs with a single unified OpenAI-compatible API",
+      "description": "Route requests across 200+ LLMs with a single unified OpenAI-compatible API"
+    },
+    {
+      "id": "fail-over-to-backup-models-automatically-when-primary-providers-return-errors",
+      "name": "Fail over to backup models automatically when primary providers return errors",
+      "description": "Fail over to backup models automatically when primary providers return errors"
+    },
+    {
+      "id": "cache-identical-prompts-semantically-to-cut-costs-and-reduce-latency",
+      "name": "Cache identical prompts semantically to cut costs and reduce latency",
+      "description": "Cache identical prompts semantically to cut costs and reduce latency"
+    },
+    {
+      "id": "track-per-model-costs-latency-and-error-rates-in-a-real-time-analytics-dashboard",
+      "name": "Track per-model costs, latency, and error rates in a real-time analytics dashboard",
+      "description": "Track per-model costs, latency, and error rates in a real-time analytics dashboard"
+    },
+    {
+      "id": "manage-prompts-centrally-with-version-control-and-per-environment-overrides",
+      "name": "Manage prompts centrally with version control and per-environment overrides",
+      "description": "Manage prompts centrally with version control and per-environment overrides"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-04-08T07:17:24.196Z",
+  "updatedAt": "2026-07-10T21:06:54.496Z"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "4wzkCIKm3YFSUCHP66eCDR",
+  "name": "Make",
+  "slug": "make",
+  "description": "Visual automation platform for building complex workflows with branching, error handling, and AI-powered scenario generation.",
+  "providerName": "Make",
+  "providerUrl": "https://make.com",
+  "agentUrl": "https://www.make.com/",
+  "categories": [
+    "scheduling"
+  ],
+  "tags": [
+    "integration",
+    "visual"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-03-22T09:53:08.493Z",
+  "updatedAt": "2026-03-22T09:53:08.493Z"
+}

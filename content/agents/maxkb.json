@@ -1,0 +1,58 @@
+{
+  "id": "4NCjEz9mea9OHMWXQ6qbuD",
+  "name": "MaxKB",
+  "slug": "maxkb",
+  "description": "Open-source enterprise RAG platform for building AI agents. Upload docs, auto-vectorize, and orchestrate multi-step workflows with MCP tool-use and a visual workflow engine.",
+  "providerName": "1Panel",
+  "providerUrl": "https://1panel.cn",
+  "agentUrl": "https://maxkb.cn",
+  "categories": [
+    "research",
+    "infrastructure"
+  ],
+  "tags": [
+    "rag",
+    "knowledge-base",
+    "vector-search",
+    "workflow-engine",
+    "mcp-tools",
+    "document-ingestion",
+    "enterprise-ai"
+  ],
+  "skills": [
+    {
+      "id": "document-ingestion",
+      "name": "Document Ingestion",
+      "description": "Upload documents or crawl web pages and automatically split, vectorize, and index content for retrieval."
+    },
+    {
+      "id": "rag-query",
+      "name": "RAG Query",
+      "description": "Query a knowledge base with natural language and receive grounded answers with cited source references."
+    },
+    {
+      "id": "workflow-orchestration",
+      "name": "Workflow Orchestration",
+      "description": "Build multi-step AI agent workflows with a visual engine, MCP tool-use, and custom function library nodes."
+    },
+    {
+      "id": "rest-api-access",
+      "name": "REST API Access",
+      "description": "Integrate MaxKB knowledge bases and agents into external applications via a documented REST API."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-05-06T23:49:24.242Z",
+  "updatedAt": "2026-05-06T23:49:24.242Z"
+}

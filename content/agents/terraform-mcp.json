@@ -1,0 +1,50 @@
+{
+  "id": "2sP3pxn2RhZVlLfSLwLKYi",
+  "name": "Terraform MCP",
+  "slug": "terraform-mcp",
+  "description": "Official HashiCorp MCP server connecting AI assistants to Terraform Registry APIs for live provider docs, module search, and HCP Terraform workspace management.",
+  "providerName": "HashiCorp",
+  "providerUrl": "https://hashicorp.com/",
+  "agentUrl": "https://developer.hashicorp.com/terraform/mcp-server",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "infrastructure-as-code",
+    "terraform",
+    "registry",
+    "workspace-management",
+    "providers",
+    "modules"
+  ],
+  "skills": [
+    {
+      "id": "registry-lookup",
+      "name": "Registry Provider Lookup",
+      "description": "Search Terraform Registry for providers, modules, and policies with real-time docs instead of stale training data."
+    },
+    {
+      "id": "workspace-manage",
+      "name": "Manage HCP Workspaces",
+      "description": "Create, update, and delete HCP Terraform or Terraform Enterprise workspaces, set variables, tags, and trigger runs."
+    },
+    {
+      "id": "iac-generate",
+      "name": "Generate IaC Configs",
+      "description": "Produce accurate Terraform configurations grounded in live provider schema and version metadata from the Registry."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-05-22T08:28:10.826Z",
+  "updatedAt": "2026-05-22T08:28:10.826Z"
+}

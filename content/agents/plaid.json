@@ -1,0 +1,31 @@
+{
+  "id": "4pSgX5Dzx0SU56BP7KArUZ",
+  "name": "Plaid",
+  "slug": "plaid",
+  "description": "Financial data connectivity platform enabling apps to connect with bank accounts, verify identity, and access transaction data.",
+  "providerName": "Plaid",
+  "providerUrl": "https://plaid.com",
+  "agentUrl": "https://plaid.com/docs/",
+  "categories": [
+    "finance"
+  ],
+  "tags": [
+    "banking",
+    "fintech",
+    "data"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-03-22T09:51:54.824Z",
+  "updatedAt": "2026-03-22T09:51:54.824Z"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "4Qf7THQJ6LpUXelzyfDM4S",
+  "name": "MongoDB MCP",
+  "slug": "mongodb-mcp",
+  "description": "Official MongoDB MCP server. AI agents query, analyze, and manage MongoDB databases with schema inspection, aggregation pipelines, and Atlas Vector Search support.",
+  "providerName": "MongoDB",
+  "providerUrl": "https://mongodb.com",
+  "agentUrl": "https://github.com/mongodb-js/mongodb-mcp-server",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "mcp",
+    "mongodb",
+    "nosql",
+    "schema-inspection",
+    "aggregation",
+    "atlas-vector-search",
+    "official"
+  ],
+  "skills": [
+    {
+      "id": "db-query",
+      "name": "Database Query",
+      "description": "Execute MongoDB find queries and aggregation pipelines against any collection via MCP tools"
+    },
+    {
+      "id": "schema-inspect",
+      "name": "Schema Inspection",
+      "description": "Inspect collection schemas and index configurations to understand data structure before querying"
+    },
+    {
+      "id": "vector-search",
+      "name": "Atlas Vector Search",
+      "description": "Run semantic similarity searches using MongoDB Atlas Vector Search for RAG pipeline integration"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-04-25T19:07:08.691Z",
+  "updatedAt": "2026-04-25T19:07:08.691Z"
+}

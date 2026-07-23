@@ -1,0 +1,51 @@
+{
+  "id": "16qUxE6jy7vbrPc1DrEw5V",
+  "name": "ChatDev",
+  "slug": "chatdev",
+  "description": "Multi-agent platform where LLM agents play software company roles (CEO, CTO, programmer) to collaboratively build runnable software from a single natural language prompt.",
+  "providerName": "OpenBMB / Tsinghua University",
+  "providerUrl": "https://github.com/OpenBMB",
+  "agentUrl": "https://github.com/OpenBMB/ChatDev",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "software-company",
+    "multi-agent",
+    "no-code",
+    "code-generation",
+    "yaml-workflow",
+    "role-playing"
+  ],
+  "skills": [
+    {
+      "id": "software-company",
+      "name": "Virtual Software Company",
+      "description": "Assign CEO, CTO, programmer, and tester agent roles that collaborate through a structured pipeline to produce a runnable codebase."
+    },
+    {
+      "id": "yaml-workflow",
+      "name": "YAML Workflow Builder",
+      "description": "Define multi-agent orchestration pipelines via YAML config files without writing Python; includes Blender and Deep Research templates."
+    },
+    {
+      "id": "macnet-orchestrate",
+      "name": "MacNet DAG Orchestration",
+      "description": "Orchestrate thousands of agents in DAG topologies, breaking linear agent-chain constraints for complex multi-agent task flows."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-05-22T08:27:59.970Z",
+  "updatedAt": "2026-05-22T08:27:59.970Z"
+}

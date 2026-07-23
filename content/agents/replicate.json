@@ -1,0 +1,33 @@
+{
+  "id": "552ZeJjWrYqONLBg8hNXQc",
+  "name": "Replicate",
+  "slug": "replicate",
+  "description": "Run open-source AI models in the cloud — image generation, language models, video, audio via simple API calls.",
+  "providerName": "Replicate",
+  "providerUrl": "https://replicate.com",
+  "agentUrl": "https://replicate.com/docs",
+  "categories": [
+    "content-media",
+    "infrastructure"
+  ],
+  "tags": [
+    "ml-models",
+    "inference",
+    "api"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-03-22T09:52:46.361Z",
+  "updatedAt": "2026-03-22T09:52:46.361Z"
+}

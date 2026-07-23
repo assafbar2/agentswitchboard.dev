@@ -1,0 +1,60 @@
+{
+  "id": "54GdFX0x3ynrbGUmaZcn9l",
+  "name": "Supabase MCP",
+  "slug": "supabase-mcp",
+  "description": "Official Supabase MCP server. Lets AI agents manage Postgres databases, run queries, handle migrations, store pgvector embeddings, and control Supabase projects end-to-end.",
+  "providerName": "Supabase",
+  "providerUrl": "https://supabase.com",
+  "agentUrl": "https://supabase.com/docs/guides/getting-started/mcp",
+  "categories": [
+    "vector-databases"
+  ],
+  "tags": [
+    "mcp",
+    "postgres",
+    "vector-store",
+    "pgvector",
+    "database-management",
+    "supabase"
+  ],
+  "skills": [
+    {
+      "id": "postgres-query",
+      "name": "Postgres Query",
+      "description": "Execute arbitrary SQL queries against Supabase Postgres from any MCP-compatible agent"
+    },
+    {
+      "id": "schema-mgmt",
+      "name": "Schema Management",
+      "description": "Create tables, run migrations, and inspect schema metadata via MCP tools"
+    },
+    {
+      "id": "pgvector-store",
+      "name": "pgvector Store",
+      "description": "Store and query vector embeddings in Postgres with pgvector similarity search"
+    },
+    {
+      "id": "storage-ops",
+      "name": "Storage Operations",
+      "description": "Upload, download, and manage files in Supabase Storage buckets from an AI agent"
+    },
+    {
+      "id": "edge-functions",
+      "name": "Edge Functions",
+      "description": "Deploy and invoke Supabase Edge Functions programmatically from agent workflows"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-04-13T21:38:33.621Z",
+  "updatedAt": "2026-07-17T19:37:49.872Z"
+}

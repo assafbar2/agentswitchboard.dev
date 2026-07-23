@@ -1,0 +1,61 @@
+{
+  "id": "4kLF5GkrP2ptdvNFnc2Q4G",
+  "name": "MindsDB",
+  "slug": "mindsdb",
+  "description": "AI-SQL layer that brings machine learning and AI agents into databases. Query predictions with SQL, build AI tables, and connect 200+ data sources via MCP and REST API.",
+  "providerName": "MindsDB",
+  "providerUrl": "https://mindsdb.com",
+  "agentUrl": "https://docs.mindsdb.com",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "sql",
+    "machine-learning",
+    "data-integration",
+    "ai-tables",
+    "mcp",
+    "predictive-queries"
+  ],
+  "skills": [
+    {
+      "id": "ai-tables",
+      "name": "AI Tables",
+      "description": "Define AI models as SQL tables and query predictions with standard SELECT statements"
+    },
+    {
+      "id": "data-sources",
+      "name": "200+ Data Sources",
+      "description": "Connect to databases, SaaS apps, and APIs as SQL data sources without ETL pipelines"
+    },
+    {
+      "id": "mcp-server",
+      "name": "MCP Server",
+      "description": "Expose your MindsDB instance as an MCP tool for Claude and other AI agents to query"
+    },
+    {
+      "id": "fine-tune",
+      "name": "Fine-Tuning",
+      "description": "Fine-tune foundation models on your own data using SQL FINETUNE commands"
+    },
+    {
+      "id": "knowledge-base",
+      "name": "Knowledge Bases",
+      "description": "Create semantic search knowledge bases from any connected data source via SQL"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-04-13T21:38:32.249Z",
+  "updatedAt": "2026-04-13T21:38:32.249Z"
+}

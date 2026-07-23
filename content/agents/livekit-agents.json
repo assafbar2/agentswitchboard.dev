@@ -1,0 +1,52 @@
+{
+  "id": "6RGaQwbstwaUw4CtHdBgBH",
+  "name": "LiveKit Agents",
+  "slug": "livekit-agents",
+  "description": "Builds production realtime voice and video AI agents with WebRTC transport, turn detection, and STT/LLM/TTS pipelines. Python and Node framework by LiveKit.",
+  "providerName": "LiveKit",
+  "providerUrl": "https://livekit.io",
+  "agentUrl": "https://github.com/livekit/agents",
+  "categories": [
+    "voice-messaging"
+  ],
+  "tags": [
+    "voice-ai",
+    "webrtc",
+    "realtime",
+    "turn-detection",
+    "video-agents",
+    "open-source",
+    "python"
+  ],
+  "skills": [
+    {
+      "id": "realtime-voice-agents",
+      "name": "Realtime Voice Agents",
+      "description": "Builds production voice and video agents that stream over WebRTC with low latency."
+    },
+    {
+      "id": "turn-detection",
+      "name": "Turn Detection",
+      "description": "Detects conversational turns and end-of-speech so agents respond at the right moment."
+    },
+    {
+      "id": "webrtc-transport",
+      "name": "WebRTC Transport",
+      "description": "Handles scalable WebRTC media transport for connecting agents to users across devices."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-07-06T07:04:24.418Z",
+  "updatedAt": "2026-07-06T07:04:24.418Z"
+}

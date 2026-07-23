@@ -1,0 +1,51 @@
+{
+  "id": "46L9aoWtYZ05y7TnJkTMA3",
+  "name": "Airtable MCP",
+  "slug": "airtable-mcp",
+  "description": "Manages Airtable as a database and operations layer for agents — create bases and schema, work with records, and share structured data across teams.",
+  "providerName": "Smithery",
+  "providerUrl": "https://smithery.ai",
+  "agentUrl": "https://smithery.ai/server/airtable",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "airtable",
+    "database",
+    "no-code",
+    "records",
+    "oauth2",
+    "project-management",
+    "collaboration"
+  ],
+  "skills": [
+    {
+      "id": "record-management",
+      "name": "Record Management",
+      "description": "Creates, reads, updates, and deletes Airtable records across bases and tables using natural language field access."
+    },
+    {
+      "id": "base-schema-ops",
+      "name": "Base & Schema Ops",
+      "description": "Creates new Airtable bases, tables, and fields, and retrieves schema definitions for existing workspace structures."
+    },
+    {
+      "id": "view-filtering",
+      "name": "View Filtering",
+      "description": "Queries Airtable views with filter formulas, sorting, and field visibility settings to retrieve targeted record subsets."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-06-07T17:51:27.702Z",
+  "updatedAt": "2026-06-07T17:51:27.702Z"
+}

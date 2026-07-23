@@ -1,0 +1,56 @@
+{
+  "id": "109HwkXVQXBCjQIEwF3kVL",
+  "name": "CopilotKit",
+  "slug": "copilotkit",
+  "description": "React and TypeScript SDK for building in-app AI copilots and agentic UIs. Includes real-time human-in-the-loop controls, streaming, and the AG-UI Protocol.",
+  "providerName": "CopilotKit",
+  "providerUrl": "https://copilotkit.ai",
+  "agentUrl": "https://docs.copilotkit.ai",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "sdk",
+    "react",
+    "typescript",
+    "agentic-ui",
+    "human-in-the-loop",
+    "ag-ui-protocol",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "copilot-ui",
+      "name": "Copilot UI Components",
+      "description": "Add AI chat sidebars, text areas, and popups to any React app with pre-built accessible components"
+    },
+    {
+      "id": "human-in-loop",
+      "name": "Human-in-the-Loop",
+      "description": "Pause agent actions for human approval with configurable trust boundaries and confirmation flows"
+    },
+    {
+      "id": "ag-ui-protocol",
+      "name": "AG-UI Protocol",
+      "description": "Implement real-time bidirectional state sync between agents and frontend UIs via the AG-UI standard"
+    },
+    {
+      "id": "streaming",
+      "name": "Streaming Responses",
+      "description": "Stream LLM responses token-by-token into React components with built-in loading and error states"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-04-25T19:06:59.138Z",
+  "updatedAt": "2026-04-25T19:06:59.138Z"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "4VWutPbTvnEGO236vihgNj",
+  "name": "OpenClaw",
+  "slug": "openclaw",
+  "description": "Runs a self-hosted, local-first personal AI assistant across WhatsApp, Telegram, Slack, and Discord. Ships a CLI gateway plus skills, webhooks, and cron for private automation.",
+  "providerName": "OpenClaw",
+  "providerUrl": "https://github.com/openclaw/openclaw",
+  "agentUrl": "https://github.com/openclaw/openclaw",
+  "categories": [
+    "orchestration",
+    "communication"
+  ],
+  "tags": [
+    "personal-assistant",
+    "self-hosted",
+    "local-first",
+    "messaging",
+    "open-source",
+    "mit-license"
+  ],
+  "skills": [
+    {
+      "id": "messaging-assistant",
+      "name": "Messaging-App Assistant",
+      "description": "Runs a personal AI assistant inside WhatsApp, Telegram, Slack, Discord, and other chat channels."
+    },
+    {
+      "id": "self-hosted-gateway",
+      "name": "Self-Hosted Gateway",
+      "description": "Runs a local-first gateway you own, keeping assistant data on your own devices for privacy."
+    },
+    {
+      "id": "skills-webhooks",
+      "name": "Skills & Webhooks",
+      "description": "Automates tasks with skills, webhooks, and cron jobs triggered from messages or schedules."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-07-06T07:04:11.493Z",
+  "updatedAt": "2026-07-06T07:04:11.493Z"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "hZOH24gMbqGn4KpoMmWwk",
+  "name": "ElevenLabs",
+  "slug": "elevenlabs",
+  "description": "AI voice synthesis platform generating realistic speech, voice cloning, and multilingual audio from text with emotional control.",
+  "providerName": "ElevenLabs",
+  "providerUrl": "https://elevenlabs.io",
+  "agentUrl": "https://elevenlabs.io/docs/api-reference",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "voice",
+    "tts",
+    "audio"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-03-22T09:52:43.006Z",
+  "updatedAt": "2026-03-22T09:52:43.006Z"
+}

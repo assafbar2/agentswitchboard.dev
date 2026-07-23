@@ -1,0 +1,33 @@
+{
+  "id": "5kz12uSFN8CtN4UV0HNvlf",
+  "name": "Datadog LLM Observability",
+  "slug": "datadog-llm-observability",
+  "description": "End-to-end monitoring for LLM applications — trace prompts, evaluate responses, track costs, and debug AI pipelines in production.",
+  "providerName": "Datadog",
+  "providerUrl": "https://datadoghq.com",
+  "agentUrl": "https://www.datadoghq.com/product/llm-observability/",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "monitoring",
+    "observability",
+    "llm"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-03-22T09:52:51.040Z",
+  "updatedAt": "2026-03-22T09:52:51.040Z"
+}

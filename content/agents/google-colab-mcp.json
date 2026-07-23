@@ -1,0 +1,63 @@
+{
+  "id": "18i6uiSLUq8slP6e38iFgo",
+  "name": "Google Colab MCP Server",
+  "slug": "google-colab-mcp",
+  "description": "Official MCP server for Google Colab. Lets AI agents create, execute, and manage GPU-accelerated Jupyter notebooks via Model Context Protocol — no browser needed.",
+  "providerName": "Google",
+  "providerUrl": "https://developers.google.com",
+  "agentUrl": "https://github.com/googlecolab/colab-mcp",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "notebook-automation",
+    "cloud-compute",
+    "python-execution",
+    "data-analysis",
+    "jupyter",
+    "gpu-access",
+    "mcp-protocol",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "create-and-manage-jupyter-notebooks-programmatically-from-any-mcp-compatible-ai-agent-or-coding-assistant",
+      "name": "Create and manage Jupyter notebooks programmatically from any MCP-compatible AI agent or coding assistant",
+      "description": "Create and manage Jupyter notebooks programmatically from any MCP-compatible AI agent or coding assistant"
+    },
+    {
+      "id": "execute-python-code-cells-in-google-s-gpu-tpu-accelerated-cloud-runtime-without-browser-interaction",
+      "name": "Execute Python code cells in Google's GPU/TPU-accelerated cloud runtime without browser interaction",
+      "description": "Execute Python code cells in Google's GPU/TPU-accelerated cloud runtime without browser interaction"
+    },
+    {
+      "id": "install-and-manage-python-package-dependencies-dynamically-within-a-running-colab-session",
+      "name": "Install and manage Python package dependencies dynamically within a running Colab session",
+      "description": "Install and manage Python package dependencies dynamically within a running Colab session"
+    },
+    {
+      "id": "run-end-to-end-data-analysis-pipelines-and-return-structured-results-back-to-the-orchestrating-agent",
+      "name": "Run end-to-end data analysis pipelines and return structured results back to the orchestrating agent",
+      "description": "Run end-to-end data analysis pipelines and return structured results back to the orchestrating agent"
+    },
+    {
+      "id": "automate-multi-step-ml-experiments-and-chain-notebook-outputs-into-downstream-workflow-automation",
+      "name": "Automate multi-step ML experiments and chain notebook outputs into downstream workflow automation",
+      "description": "Automate multi-step ML experiments and chain notebook outputs into downstream workflow automation"
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-03-31T00:56:23.944Z",
+  "updatedAt": "2026-07-10T21:06:15.814Z"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "WahG1o2MbQiLMiMAzDEtg",
+  "name": "Google Sheets MCP",
+  "slug": "google-sheets-mcp",
+  "description": "Reads, writes, and formats Google Sheets data via MCP — manage sheets, run formulas, and collaborate on structured spreadsheet data in real time.",
+  "providerName": "Smithery",
+  "providerUrl": "https://smithery.ai",
+  "agentUrl": "https://smithery.ai/server/googlesheets",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "google-sheets",
+    "spreadsheet",
+    "google",
+    "oauth2",
+    "formulas",
+    "data-collaboration",
+    "structured-data"
+  ],
+  "skills": [
+    {
+      "id": "spreadsheet-rw",
+      "name": "Spreadsheet Read/Write",
+      "description": "Reads and writes cell data, rows, and ranges in Google Sheets with support for formatting and formula execution."
+    },
+    {
+      "id": "sheet-management",
+      "name": "Sheet Management",
+      "description": "Creates, renames, and deletes sheets within a Google Sheets document and manages sharing permissions."
+    },
+    {
+      "id": "formula-execution",
+      "name": "Formula Execution",
+      "description": "Runs spreadsheet formulas and retrieves computed values across cells and named ranges in real time."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-06-07T17:51:21.436Z",
+  "updatedAt": "2026-06-07T17:51:21.436Z"
+}

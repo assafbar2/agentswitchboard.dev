@@ -1,0 +1,52 @@
+{
+  "id": "5lK0fCtJkR9Gohkysc61oO",
+  "name": "Google Agents CLI",
+  "slug": "google-agents-cli",
+  "description": "Turns any coding assistant into an expert at creating, evaluating, and deploying AI agents on Google Cloud. An open CLI plus skills that scaffold, run evals, and ship to Agent Engine or Cloud Run.",
+  "providerName": "Google",
+  "providerUrl": "https://cloud.google.com",
+  "agentUrl": "https://github.com/google/agents-cli",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "google-cloud",
+    "agent-development",
+    "scaffolding",
+    "evaluation",
+    "deployment",
+    "cli",
+    "vertex-ai",
+    "agent-engine"
+  ],
+  "skills": [
+    {
+      "id": "agent-scaffolding",
+      "name": "Agent Scaffolding",
+      "description": "Generates a production-ready agent project structure so a coding assistant can build on Google Cloud conventions."
+    },
+    {
+      "id": "eval-runs",
+      "name": "Evaluation Runs",
+      "description": "Runs evaluation suites against an agent and reports quality metrics before it is deployed to production."
+    },
+    {
+      "id": "cloud-deploy",
+      "name": "Cloud Deployment",
+      "description": "Deploys agents to Google Cloud Agent Runtime, Cloud Run, or GKE with a single command from the terminal."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-07-17T20:41:12.954Z",
+  "updatedAt": "2026-07-17T20:41:12.954Z"
+}

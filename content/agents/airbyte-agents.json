@@ -1,0 +1,53 @@
+{
+  "id": "5dUypNphFJwsDdy1djcAxj",
+  "name": "Airbyte Agents",
+  "slug": "airbyte-agents",
+  "description": "Context layer for AI agents: MCP server and Python SDK giving agents unified access to 50+ business data connectors with pre-assembled context, reducing tool calls by 40–80%.",
+  "providerName": "Airbyte",
+  "providerUrl": "https://airbyte.com",
+  "agentUrl": "https://airbyte.com/ai-developers",
+  "categories": [
+    "data-analytics",
+    "infrastructure"
+  ],
+  "tags": [
+    "data-connectors",
+    "context-layer",
+    "mcp-server",
+    "business-data",
+    "salesforce",
+    "hubspot",
+    "rag"
+  ],
+  "skills": [
+    {
+      "id": "context-store-search",
+      "name": "Context Store Search",
+      "description": "Search pre-assembled business context across Salesforce, HubSpot, Zendesk, Linear, Slack, and 45+ connectors before making live API calls."
+    },
+    {
+      "id": "live-connector-reads",
+      "name": "Live Connector Reads",
+      "description": "Fetch fresh data from source systems with write-back support to update records, tickets, and messages in the systems of record."
+    },
+    {
+      "id": "agent-sdk-integration",
+      "name": "Agent SDK Integration",
+      "description": "Integrate connectors into pydantic-ai, LangChain, OpenAI Agents, and FastMCP via typed Python decorators with built-in retry and error handling."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-05-07T00:58:28.715Z",
+  "updatedAt": "2026-07-17T19:37:39.211Z"
+}

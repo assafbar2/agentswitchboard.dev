@@ -1,0 +1,56 @@
+{
+  "id": "5xldxQ5tOC4gEMM0SDeMXJ",
+  "name": "Fastmail MCP",
+  "slug": "fastmail-mcp",
+  "description": "Official Fastmail MCP server. AI agents read, search, and write email, contacts, and calendar via OAuth — no scraping, no fragile third-party integration.",
+  "providerName": "Fastmail",
+  "providerUrl": "https://fastmail.com",
+  "agentUrl": "https://www.fastmail.com/blog/an-mcp-server-for-fastmail/",
+  "categories": [
+    "scheduling"
+  ],
+  "tags": [
+    "mcp",
+    "email",
+    "calendar",
+    "contacts",
+    "oauth",
+    "fastmail",
+    "productivity"
+  ],
+  "skills": [
+    {
+      "id": "email-read",
+      "name": "Email Read & Search",
+      "description": "Read and search Fastmail inbox, sent mail, and folders with full message content via MCP tools"
+    },
+    {
+      "id": "email-compose",
+      "name": "Email Compose",
+      "description": "Compose and send emails on behalf of the authenticated Fastmail user via MCP tool calls"
+    },
+    {
+      "id": "calendar-access",
+      "name": "Calendar Access",
+      "description": "Read and create calendar events in Fastmail calendar via OAuth-authenticated MCP connection"
+    },
+    {
+      "id": "contacts-mgmt",
+      "name": "Contacts Management",
+      "description": "Search and manage Fastmail contacts including create, update, and lookup operations"
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-04-25T18:49:49.339Z",
+  "updatedAt": "2026-04-25T18:49:49.339Z"
+}

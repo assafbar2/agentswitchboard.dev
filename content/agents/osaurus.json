@@ -1,0 +1,54 @@
+{
+  "id": "68aTOOtLJl8mmP61wlfGtb",
+  "name": "Osaurus",
+  "slug": "osaurus",
+  "description": "Runs AI agents entirely on your Mac — a native Apple Silicon runtime for local MLX models with shared memory, file access, and an OpenAI-compatible server. Ships CLI and MCP support. MIT, 7k+ stars.",
+  "providerName": "Osaurus, Inc.",
+  "providerUrl": "https://osaurus.ai",
+  "agentUrl": "https://osaurus.ai",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "local-first",
+    "macos",
+    "apple-silicon",
+    "mlx",
+    "on-device",
+    "mcp",
+    "openai-compatible",
+    "mit-license"
+  ],
+  "skills": [
+    {
+      "id": "local-model-runtime",
+      "name": "Local Model Runtime",
+      "description": "Runs open MLX models on Apple Silicon with no account or internet, keeping all data on the user's Mac."
+    },
+    {
+      "id": "openai-compatible-server",
+      "name": "OpenAI-Compatible Server",
+      "description": "Exposes a local OpenAI-compatible API so existing clients and agent frameworks connect without code changes."
+    },
+    {
+      "id": "mcp-tooling",
+      "name": "MCP Tooling",
+      "description": "Runs as an MCP server so agents can call local tools and files through the Model Context Protocol."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-07-17T20:41:11.606Z",
+  "updatedAt": "2026-07-17T20:41:11.606Z"
+}

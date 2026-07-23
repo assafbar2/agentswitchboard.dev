@@ -1,0 +1,33 @@
+{
+  "id": "1SYzNVvu0gMB0J3yKA0Kv6",
+  "name": "Stytch",
+  "slug": "stytch",
+  "description": "Authentication and identity platform with passwordless login, session management, and fraud detection APIs for modern applications.",
+  "providerName": "Stytch",
+  "providerUrl": "https://stytch.com",
+  "agentUrl": "https://stytch.com/docs",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "auth",
+    "identity",
+    "passwordless"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-03-22T09:53:17.219Z",
+  "updatedAt": "2026-03-22T09:53:17.219Z"
+}

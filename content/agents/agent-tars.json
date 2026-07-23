@@ -1,0 +1,57 @@
+{
+  "id": "7aON364cWTElp5fAwZF2qL",
+  "name": "Agent TARS",
+  "slug": "agent-tars",
+  "description": "ByteDance's multimodal AI agent for desktop and browser automation — controls GUIs, browsers, and shell via vision and MCP tools. Available as npm CLI and desktop app.",
+  "providerName": "ByteDance",
+  "providerUrl": "https://bytedance.com",
+  "agentUrl": "https://github.com/bytedance/UI-TARS-desktop",
+  "categories": [
+    "browser-computer",
+    "infrastructure"
+  ],
+  "tags": [
+    "computer-use",
+    "gui-agent",
+    "multimodal",
+    "desktop-automation",
+    "mcp-tools",
+    "browser-control",
+    "bytedance"
+  ],
+  "skills": [
+    {
+      "id": "gui-control",
+      "name": "GUI Control",
+      "description": "Control desktop application interfaces using vision-based element detection, clicking, and keyboard input."
+    },
+    {
+      "id": "browser-agent",
+      "name": "Browser Agent",
+      "description": "Navigate websites, fill forms, click elements, and extract data from web pages autonomously via the browser."
+    },
+    {
+      "id": "shell-execution",
+      "name": "Shell Execution",
+      "description": "Execute shell commands and scripts as part of multi-step agent workflows with streamed output support."
+    },
+    {
+      "id": "mcp-tool-integration",
+      "name": "MCP Tool Integration",
+      "description": "Connect to local or remote MCP servers and invoke their tools as steps in multi-tool agent pipelines."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-05-06T23:49:27.335Z",
+  "updatedAt": "2026-05-06T23:49:27.335Z"
+}

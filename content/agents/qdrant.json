@@ -1,0 +1,62 @@
+{
+  "id": "1t2QVgz85inJo72r9omQqt",
+  "name": "Qdrant",
+  "slug": "qdrant",
+  "description": "High-performance open-source vector database. Supports dense, sparse, and multi-vector search. On-premise or cloud. Rust-built for production-scale RAG pipelines.",
+  "providerName": "Qdrant",
+  "providerUrl": "https://qdrant.tech",
+  "agentUrl": "https://qdrant.tech/documentation",
+  "categories": [
+    "vector-databases"
+  ],
+  "tags": [
+    "vector-database",
+    "open-source",
+    "rag",
+    "embeddings",
+    "rust",
+    "self-hosted",
+    "semantic-search"
+  ],
+  "skills": [
+    {
+      "id": "index-and-query-dense-vectors-with-hnsw-for-high-recall-approximate-search",
+      "name": "Index and query dense vectors with HNSW for high-recall approximate search",
+      "description": "Index and query dense vectors with HNSW for high-recall approximate search"
+    },
+    {
+      "id": "support-sparse-vectors-for-keyword-style-retrieval-alongside-semantic-dense-search",
+      "name": "Support sparse vectors for keyword-style retrieval alongside semantic dense search",
+      "description": "Support sparse vectors for keyword-style retrieval alongside semantic dense search"
+    },
+    {
+      "id": "apply-complex-payload-filters-to-narrow-search-results-without-re-ranking-overhead",
+      "name": "Apply complex payload filters to narrow search results without re-ranking overhead",
+      "description": "Apply complex payload filters to narrow search results without re-ranking overhead"
+    },
+    {
+      "id": "use-named-multi-vector-collections-for-image-text-and-code-embedding-co-search",
+      "name": "Use named multi-vector collections for image, text, and code embedding co-search",
+      "description": "Use named multi-vector collections for image, text, and code embedding co-search"
+    },
+    {
+      "id": "quantize-vectors-to-reduce-memory-footprint-by-up-to-32x-with-minimal-recall-loss",
+      "name": "Quantize vectors to reduce memory footprint by up to 32x with minimal recall loss",
+      "description": "Quantize vectors to reduce memory footprint by up to 32x with minimal recall loss"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-04-08T07:17:15.486Z",
+  "updatedAt": "2026-07-10T21:06:57.812Z"
+}

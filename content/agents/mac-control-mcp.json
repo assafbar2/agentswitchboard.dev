@@ -1,0 +1,56 @@
+{
+  "id": "2rMvkDNvT6raL43oGoUmwo",
+  "name": "Mac Control MCP",
+  "slug": "mac-control-mcp",
+  "description": "Native Swift MCP server with 63 tools for full macOS automation — accessibility tree, Safari/Chrome control, screen capture, OCR, keyboard/mouse, Spotlight, and clipboard.",
+  "providerName": "AdelElo",
+  "providerUrl": "https://github.com/AdelElo13/mac-control-mcp",
+  "agentUrl": "https://github.com/AdelElo13/mac-control-mcp",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "mcp",
+    "macos",
+    "accessibility-tree",
+    "safari",
+    "chrome",
+    "ocr",
+    "screen-capture"
+  ],
+  "skills": [
+    {
+      "id": "accessibility-tree",
+      "name": "Accessibility Tree",
+      "description": "Read the full macOS accessibility tree to navigate and interact with any desktop application via MCP"
+    },
+    {
+      "id": "browser-control",
+      "name": "Browser Control",
+      "description": "Control Safari and Chrome natively — navigate, click, type, and extract content without Playwright"
+    },
+    {
+      "id": "screen-ocr",
+      "name": "Screen Capture & OCR",
+      "description": "Capture screenshots and extract text from any screen region using native macOS OCR engine"
+    },
+    {
+      "id": "system-automation",
+      "name": "System Automation",
+      "description": "Send keyboard shortcuts, mouse clicks, manage clipboard, and trigger Spotlight via MCP tools"
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-04-25T18:50:10.094Z",
+  "updatedAt": "2026-04-25T18:50:10.094Z"
+}

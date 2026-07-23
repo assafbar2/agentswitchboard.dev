@@ -1,0 +1,51 @@
+{
+  "id": "2ngKmFNCWeVSWWfUTzDejo",
+  "name": "Framelink",
+  "slug": "framelink",
+  "description": "MCP server giving Cursor, Claude Code, and other AI tools direct access to Figma design data — enabling accurate one-shot implementation of UI designs from prompts.",
+  "providerName": "GLips",
+  "providerUrl": "https://github.com/GLips/Figma-Context-MCP",
+  "agentUrl": "https://github.com/GLips/Figma-Context-MCP",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "mcp",
+    "figma",
+    "design-to-code",
+    "cursor",
+    "claude-code",
+    "frontend-development",
+    "design-handoff"
+  ],
+  "skills": [
+    {
+      "id": "figma-access",
+      "name": "Figma Design Access",
+      "description": "Fetch Figma frame data including layout, colors, typography, and component structure via MCP"
+    },
+    {
+      "id": "one-shot-impl",
+      "name": "One-Shot Implementation",
+      "description": "Implement pixel-accurate UI components from Figma designs in a single agent code generation pass"
+    },
+    {
+      "id": "asset-extract",
+      "name": "Asset Extraction",
+      "description": "Extract images, icons, and SVG assets from Figma frames for direct use in generated code output"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-04-25T19:07:03.084Z",
+  "updatedAt": "2026-04-25T19:07:03.084Z"
+}

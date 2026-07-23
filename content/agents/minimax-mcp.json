@@ -1,0 +1,56 @@
+{
+  "id": "75SAbUcgN8htOUPMFkIk4b",
+  "name": "MiniMax MCP",
+  "slug": "minimax-mcp",
+  "description": "Official MiniMax AI MCP server — generate speech from text, clone voices, create images and videos, and compose music via a single interface.",
+  "providerName": "MiniMax AI",
+  "providerUrl": "https://www.minimax.io",
+  "agentUrl": "https://github.com/MiniMax-AI/MiniMax-MCP",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "text-to-speech",
+    "voice-cloning",
+    "image-generation",
+    "video-generation",
+    "music-generation",
+    "mcp-official"
+  ],
+  "skills": [
+    {
+      "id": "text-to-speech",
+      "name": "Text to Speech",
+      "description": "Converts text to natural-sounding audio using a library of built-in voices or custom voice profiles."
+    },
+    {
+      "id": "voice-cloning",
+      "name": "Voice Cloning",
+      "description": "Clones a voice from provided audio files and uses it to synthesize new speech in the same vocal style."
+    },
+    {
+      "id": "video-generation",
+      "name": "Video Generation",
+      "description": "Generates short videos from text prompts using the MiniMax-Hailuo model with 6s or 10s duration and HD output."
+    },
+    {
+      "id": "music-generation",
+      "name": "Music Generation",
+      "description": "Composes original music tracks from a text prompt and lyrics using the music-1.5 model for high-quality audio."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-06-07T17:51:14.397Z",
+  "updatedAt": "2026-06-07T17:51:14.397Z"
+}

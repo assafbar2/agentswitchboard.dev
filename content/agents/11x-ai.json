@@ -1,0 +1,33 @@
+{
+  "id": "15uQakEMwqwqyUTQ6FEsEc",
+  "name": "11x AI",
+  "slug": "11x-ai",
+  "description": "Provides AI digital workers Alice (outbound SDR) and Julian (inbound) that run 24/7 to prospect, personalize outreach, and book meetings autonomously.",
+  "providerName": "11x",
+  "providerUrl": "https://www.11x.ai/",
+  "agentUrl": "https://www.11x.ai/",
+  "categories": [
+    "sales-marketing"
+  ],
+  "tags": [
+    "digital-workers",
+    "sdr",
+    "sales-automation",
+    "outbound",
+    "b2b"
+  ],
+  "skills": [],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-05-22T07:35:20.453Z",
+  "updatedAt": "2026-05-22T07:35:20.453Z"
+}

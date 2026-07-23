@@ -1,0 +1,51 @@
+{
+  "id": "1MoTrRCa42O9u6rtG0FxEL",
+  "name": "Resend MCP",
+  "slug": "resend-mcp",
+  "description": "Official Resend MCP server. AI agents send transactional and marketing emails, manage sending domains, and query delivery analytics via Model Context Protocol.",
+  "providerName": "Resend",
+  "providerUrl": "https://resend.com",
+  "agentUrl": "https://github.com/resend/resend-mcp",
+  "categories": [
+    "scheduling"
+  ],
+  "tags": [
+    "mcp",
+    "email",
+    "transactional-email",
+    "resend",
+    "developer-email",
+    "deliverability",
+    "official"
+  ],
+  "skills": [
+    {
+      "id": "send-email",
+      "name": "Send Email",
+      "description": "Send transactional and marketing emails with HTML or plain text content from any MCP agent"
+    },
+    {
+      "id": "domain-mgmt",
+      "name": "Domain Management",
+      "description": "Manage sending domains, verify DNS records, and check domain health status via MCP tools"
+    },
+    {
+      "id": "delivery-analytics",
+      "name": "Delivery Analytics",
+      "description": "Query email delivery metrics, open rates, and bounce data to monitor sending performance"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-04-25T19:07:13.605Z",
+  "updatedAt": "2026-04-25T19:07:13.605Z"
+}

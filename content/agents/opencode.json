@@ -1,0 +1,51 @@
+{
+  "id": "3q4ZOqErpPCaoBjGL9VpZf",
+  "name": "OpenCode",
+  "slug": "opencode",
+  "description": "Runs a terminal-first open-source coding agent connecting to 75+ model providers, with automatic LSP integration, MCP support, and parallel multi-session workflows.",
+  "providerName": "Anomaly",
+  "providerUrl": "https://opencode.ai",
+  "agentUrl": "https://opencode.ai",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "coding-agent",
+    "terminal",
+    "open-source",
+    "lsp",
+    "mcp",
+    "model-agnostic",
+    "tui"
+  ],
+  "skills": [
+    {
+      "id": "multi-provider-coding",
+      "name": "Multi-Provider Coding",
+      "description": "Writes and edits code from the terminal using any of 75+ model providers via Models.dev with BYOK."
+    },
+    {
+      "id": "lsp-integration",
+      "name": "LSP Integration",
+      "description": "Automatically wires up language servers so the agent gets accurate types, diagnostics, and symbol data."
+    },
+    {
+      "id": "parallel-sessions",
+      "name": "Parallel Sessions",
+      "description": "Runs multiple coding sessions in parallel over the same project without storing code or context data."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-07-06T07:04:10.294Z",
+  "updatedAt": "2026-07-06T07:04:10.294Z"
+}

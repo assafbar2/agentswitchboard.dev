@@ -1,0 +1,31 @@
+{
+  "id": "4hmaZJILmnmH56BJeLXKe8",
+  "name": "Cursor",
+  "slug": "cursor",
+  "description": "AI-native code editor built on VS Code with deep AI integration — multi-file edits, codebase-aware chat, and autonomous coding.",
+  "providerName": "Anysphere",
+  "providerUrl": "https://cursor.com",
+  "agentUrl": "https://cursor.com",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "ide",
+    "code-editor",
+    "ai-assistant"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-03-22T09:51:48.668Z",
+  "updatedAt": "2026-03-22T09:51:48.668Z"
+}

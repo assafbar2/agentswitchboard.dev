@@ -1,0 +1,60 @@
+{
+  "id": "1erZP5qi1s8wDGAapLeqSS",
+  "name": "Cloudflare MCP",
+  "slug": "cloudflare-mcp",
+  "description": "Official Cloudflare MCP server suite. Lets AI agents manage Workers, KV storage, D1 databases, R2 buckets, and deploy edge functions programmatically.",
+  "providerName": "Cloudflare",
+  "providerUrl": "https://cloudflare.com",
+  "agentUrl": "https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare/",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "mcp",
+    "cloudflare-workers",
+    "edge-computing",
+    "kv-storage",
+    "d1-database",
+    "serverless"
+  ],
+  "skills": [
+    {
+      "id": "workers-deploy",
+      "name": "Workers Deploy",
+      "description": "Create, update, and deploy Cloudflare Workers scripts from an AI agent via MCP"
+    },
+    {
+      "id": "kv-store",
+      "name": "KV Storage",
+      "description": "Read and write key-value pairs in Cloudflare KV namespaces with TTL support"
+    },
+    {
+      "id": "d1-query",
+      "name": "D1 Database",
+      "description": "Execute SQL queries against Cloudflare D1 SQLite databases from any MCP-compatible agent"
+    },
+    {
+      "id": "r2-objects",
+      "name": "R2 Object Storage",
+      "description": "Upload, download, and list objects in Cloudflare R2 buckets via MCP tools"
+    },
+    {
+      "id": "pages-deploy",
+      "name": "Pages Deployment",
+      "description": "Trigger Cloudflare Pages deployments and manage project settings programmatically"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-04-13T21:38:27.721Z",
+  "updatedAt": "2026-07-17T19:37:42.020Z"
+}

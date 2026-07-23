@@ -1,0 +1,33 @@
+{
+  "id": "ia2K5atxyuo1Ztj5TfIxC",
+  "name": "Semantic Kernel",
+  "slug": "semantic-kernel",
+  "description": "Orchestrates AI agents and multi-agent workflows in C#, Python, and Java with plugin-based architecture, built-in memory management, and process framework.",
+  "providerName": "Microsoft",
+  "providerUrl": "https://microsoft.com/",
+  "agentUrl": "https://learn.microsoft.com/en-us/semantic-kernel/overview/",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "microsoft",
+    "open-source",
+    "dotnet",
+    "python",
+    "multi-agent"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-05-22T07:35:08.606Z",
+  "updatedAt": "2026-05-22T07:35:08.606Z"
+}

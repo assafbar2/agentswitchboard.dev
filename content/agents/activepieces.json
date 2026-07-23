@@ -1,0 +1,61 @@
+{
+  "id": "1MLv3jQB2bziD33VahbL5k",
+  "name": "Activepieces",
+  "slug": "activepieces",
+  "description": "Open-source workflow automation platform with MCP server, 280+ connectors, and REST API. Self-hostable alternative to Zapier for building AI-triggered automations.",
+  "providerName": "Activepieces",
+  "providerUrl": "https://activepieces.com",
+  "agentUrl": "https://www.activepieces.com/docs/mcp/overview",
+  "categories": [
+    "scheduling"
+  ],
+  "tags": [
+    "workflow-automation",
+    "open-source",
+    "mcp",
+    "self-hosted",
+    "no-code",
+    "connectors"
+  ],
+  "skills": [
+    {
+      "id": "flow-builder",
+      "name": "Flow Builder",
+      "description": "Build multi-step automation flows visually with 280+ app connectors and conditional logic"
+    },
+    {
+      "id": "mcp-expose",
+      "name": "MCP Expose",
+      "description": "Expose any Activepieces flow as an MCP tool callable from Claude and AI agents"
+    },
+    {
+      "id": "rest-trigger",
+      "name": "REST Trigger",
+      "description": "Trigger flows via REST API and receive structured output from completed runs"
+    },
+    {
+      "id": "self-host",
+      "name": "Self-Hostable",
+      "description": "Deploy on your own infrastructure with Docker — full data ownership and open-source license"
+    },
+    {
+      "id": "webhook-events",
+      "name": "Webhook Events",
+      "description": "Receive webhooks from any app and route them into automation flows in real time"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-04-13T21:38:41.858Z",
+  "updatedAt": "2026-07-17T19:37:37.834Z"
+}

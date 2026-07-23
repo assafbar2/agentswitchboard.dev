@@ -1,0 +1,58 @@
+{
+  "id": "2pmxtQk7ZZppIicqhO7LNY",
+  "name": "E2a",
+  "slug": "e2a",
+  "description": "Authenticated email gateway for AI agents — receive emails as webhooks or WebSocket, send via HTTP API, and verify sender identity with HMAC-signed headers.",
+  "providerName": "Mnexa-AI",
+  "providerUrl": "https://e2a.dev",
+  "agentUrl": "https://github.com/Mnexa-AI/e2a",
+  "categories": [
+    "infrastructure",
+    "scheduling"
+  ],
+  "tags": [
+    "email-gateway",
+    "agent-email",
+    "webhook",
+    "websocket",
+    "hmac-auth",
+    "human-in-the-loop",
+    "a2a-communication"
+  ],
+  "skills": [
+    {
+      "id": "email-receive",
+      "name": "Email Receive",
+      "description": "Receive inbound emails as webhooks (cloud) or WebSocket streams (local), with SPF/DKIM verification on every message."
+    },
+    {
+      "id": "email-send",
+      "name": "Email Send",
+      "description": "Send outbound emails to agents or humans via HTTP API with optional human-in-the-loop approval gates."
+    },
+    {
+      "id": "sender-identity",
+      "name": "Sender Identity Verification",
+      "description": "Verify the identity of every sender — human or AI agent — using HMAC-signed X-E2A-Auth-* delivery headers."
+    },
+    {
+      "id": "approval-gate",
+      "name": "Approval Gate",
+      "description": "Hold outbound mail for human review via dashboard, magic-link email, or CLI before delivery is triggered."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-05-13T16:21:03.923Z",
+  "updatedAt": "2026-05-13T16:21:03.923Z"
+}

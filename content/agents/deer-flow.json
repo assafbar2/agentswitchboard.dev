@@ -1,0 +1,51 @@
+{
+  "id": "3NVfxAxcNwYlKkAMdcISZ4",
+  "name": "DeerFlow",
+  "slug": "deer-flow",
+  "description": "Open-source deep research super-agent from ByteDance that orchestrates sub-agents with memory, code sandboxes, and MCP-configurable tools for long-horizon tasks.",
+  "providerName": "ByteDance",
+  "providerUrl": "https://bytedance.com/",
+  "agentUrl": "https://github.com/bytedance/deer-flow",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "super-agent",
+    "deep-research",
+    "multi-agent",
+    "long-horizon",
+    "code-generation",
+    "bytedance"
+  ],
+  "skills": [
+    {
+      "id": "deep-research",
+      "name": "Deep Research Run",
+      "description": "Orchestrate a multi-step research plan across web search, code execution, and document synthesis into a structured report."
+    },
+    {
+      "id": "spawn-subagents",
+      "name": "Spawn Sub-Agents",
+      "description": "Dynamically create scoped sub-agents with independent tool sets to parallelise complex long-running tasks."
+    },
+    {
+      "id": "mcp-tool-use",
+      "name": "Configure MCP Tools",
+      "description": "Attach and call external MCP servers as tools via the mcp_settings API parameter during active chat sessions."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-05-22T08:27:57.485Z",
+  "updatedAt": "2026-05-22T08:27:57.485Z"
+}

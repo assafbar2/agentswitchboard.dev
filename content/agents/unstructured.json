@@ -1,0 +1,34 @@
+{
+  "id": "7F5PlxN20icXuk9Sed6r5U",
+  "name": "Unstructured",
+  "slug": "unstructured",
+  "description": "Transforms PDFs, spreadsheets, emails, and 65+ file types into structured, chunked data ready for RAG pipelines and LLM ingestion at scale.",
+  "providerName": "Unstructured.io",
+  "providerUrl": "https://unstructured.io/",
+  "agentUrl": "https://unstructured.io/",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "document-parsing",
+    "etl",
+    "rag",
+    "open-source",
+    "multimodal"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-05-22T07:35:12.301Z",
+  "updatedAt": "2026-05-22T07:35:12.301Z"
+}

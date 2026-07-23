@@ -1,0 +1,53 @@
+{
+  "id": "4PKXatLHK728HeXFODqw8d",
+  "name": "Task Master",
+  "slug": "task-master",
+  "description": "AI-powered task management for software projects — breaks PRDs into tasks, tracks dependencies, and provides per-task context. MCP server and CLI. 27k GitHub stars.",
+  "providerName": "eyaltoledano",
+  "providerUrl": "https://github.com/eyaltoledano/claude-task-master",
+  "agentUrl": "https://github.com/eyaltoledano/claude-task-master",
+  "categories": [
+    "code-devtools",
+    "scheduling"
+  ],
+  "tags": [
+    "task-management",
+    "prd-parsing",
+    "mcp-server",
+    "cursor-integration",
+    "project-planning",
+    "dependency-tracking",
+    "agent-workflow"
+  ],
+  "skills": [
+    {
+      "id": "prd-breakdown",
+      "name": "PRD Task Breakdown",
+      "description": "Parse product requirements documents into structured, dependency-ordered task lists using AI."
+    },
+    {
+      "id": "task-management",
+      "name": "Task Management",
+      "description": "Create, update, expand, and track task statuses across software projects via MCP or CLI commands."
+    },
+    {
+      "id": "context-generation",
+      "name": "Context Generation",
+      "description": "Generate implementation-ready context for each task including relevant files, dependencies, and acceptance criteria."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-05-13T16:56:41.084Z",
+  "updatedAt": "2026-05-13T16:56:41.084Z"
+}

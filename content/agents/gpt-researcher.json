@@ -1,0 +1,61 @@
+{
+  "id": "6r9iRqd8Tozbcnxe33lJZj",
+  "name": "GPT Researcher",
+  "slug": "gpt-researcher",
+  "description": "Autonomous deep-research agent that plans queries, browses the web in parallel, and produces cited research reports in minutes. Supports API and MCP integration.",
+  "providerName": "Assaf Elovic",
+  "providerUrl": "https://gptr.dev",
+  "agentUrl": "https://docs.gptr.dev",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "autonomous-research",
+    "web-search",
+    "report-generation",
+    "mcp",
+    "open-source",
+    "deep-research"
+  ],
+  "skills": [
+    {
+      "id": "research-plan",
+      "name": "Research Planning",
+      "description": "Decompose a research question into parallel sub-queries for comprehensive web coverage"
+    },
+    {
+      "id": "parallel-browse",
+      "name": "Parallel Browsing",
+      "description": "Browse multiple sources simultaneously and extract relevant content for synthesis"
+    },
+    {
+      "id": "report-gen",
+      "name": "Report Generation",
+      "description": "Produce structured, cited research reports in markdown with sources and inline references"
+    },
+    {
+      "id": "source-filter",
+      "name": "Source Filtering",
+      "description": "Filter and rank sources by relevance, recency, and credibility before including in report"
+    },
+    {
+      "id": "mcp-tool",
+      "name": "MCP Tool",
+      "description": "Expose the deep-research workflow as an MCP tool for use inside Claude and other agents"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-04-13T21:38:16.710Z",
+  "updatedAt": "2026-04-13T21:38:16.710Z"
+}

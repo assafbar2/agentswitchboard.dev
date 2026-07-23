@@ -1,0 +1,52 @@
+{
+  "id": "4OQ62a3FYQmY2is0Vn4tTX",
+  "name": "AgentRQ",
+  "slug": "agentrq",
+  "description": "Human-in-the-loop task manager for AI agents. Agents assign tasks to you; you assign back. Native Claude Code push notifications, MCP supervisor for multi-agent fleets. Apache-2.0.",
+  "providerName": "Contextual, Inc.",
+  "providerUrl": "https://agentrq.com",
+  "agentUrl": "https://agentrq.com",
+  "categories": [
+    "orchestration"
+  ],
+  "tags": [
+    "human-in-the-loop",
+    "task-management",
+    "mcp",
+    "multi-agent",
+    "claude-code",
+    "open-source",
+    "apache-2-0"
+  ],
+  "skills": [
+    {
+      "id": "task-assignment",
+      "name": "Task Assignment",
+      "description": "Lets agents create tasks for the human operator and receive task assignments back in real time via MCP."
+    },
+    {
+      "id": "push-notifications",
+      "name": "Push Notifications",
+      "description": "Delivers sub-second agent-to-human notifications natively inside Claude Code sessions with no polling."
+    },
+    {
+      "id": "multi-agent-supervisor",
+      "name": "Multi-Agent Supervisor",
+      "description": "Orchestrates a fleet of agents from a single MCP supervisor endpoint, routing tasks across parallel workspaces."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-06-15T03:07:04.380Z",
+  "updatedAt": "2026-06-15T03:07:04.380Z"
+}

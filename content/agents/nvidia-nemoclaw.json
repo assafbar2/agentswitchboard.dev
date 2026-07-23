@@ -1,0 +1,62 @@
+{
+  "id": "4B7JcGuaY2JCo1u6P4sWAY",
+  "name": "NVIDIA NemoClaw",
+  "slug": "nvidia-nemoclaw",
+  "description": "Open-source security runtime for multi-agent AI. Enforces policy-based access control, sandboxes kernel interactions, and privacy-routes sensitive data for enterprise local inference.",
+  "providerName": "NVIDIA",
+  "providerUrl": "https://nvidia.com",
+  "agentUrl": "https://www.nvidia.com/en-us/ai/nemoclaw/",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "enterprise-security",
+    "agent-governance",
+    "privacy-first",
+    "policy-enforcement",
+    "local-inference",
+    "sandboxing",
+    "open-source",
+    "openclaw"
+  ],
+  "skills": [
+    {
+      "id": "enforce-policy-based-access-control-at-the-agent-boundary-restricting-which-tools-and-data-each-agent-can-reach",
+      "name": "Enforce policy-based access control at the agent boundary, restricting which tools and data each agent can reach",
+      "description": "Enforce policy-based access control at the agent boundary, restricting which tools and data each agent can reach"
+    },
+    {
+      "id": "sandbox-kernel-level-interactions-to-prevent-privilege-escalation-and-contain-runaway-agents",
+      "name": "Sandbox kernel-level interactions to prevent privilege escalation and contain runaway agents",
+      "description": "Sandbox kernel-level interactions to prevent privilege escalation and contain runaway agents"
+    },
+    {
+      "id": "route-sensitive-data-through-privacy-preserving-channels-so-pii-never-reaches-untrusted-model-endpoints",
+      "name": "Route sensitive data through privacy-preserving channels so PII never reaches untrusted model endpoints",
+      "description": "Route sensitive data through privacy-preserving channels so PII never reaches untrusted model endpoints"
+    },
+    {
+      "id": "orchestrate-trust-levels-across-multi-agent-hierarchies-with-per-agent-permission-scopes-and-audit-trails",
+      "name": "Orchestrate trust levels across multi-agent hierarchies with per-agent permission scopes and audit trails",
+      "description": "Orchestrate trust levels across multi-agent hierarchies with per-agent permission scopes and audit trails"
+    },
+    {
+      "id": "detect-and-alert-on-anomalous-agent-behavior-patterns-using-real-time-threat-fingerprinting",
+      "name": "Detect and alert on anomalous agent behavior patterns using real-time threat fingerprinting",
+      "description": "Detect and alert on anomalous agent behavior patterns using real-time threat fingerprinting"
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-03-31T00:56:26.007Z",
+  "updatedAt": "2026-07-10T21:06:42.827Z"
+}

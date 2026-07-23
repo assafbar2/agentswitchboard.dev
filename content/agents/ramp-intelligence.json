@@ -1,0 +1,30 @@
+{
+  "id": "64Y0KTZzgDsvBMDvsTGNs7",
+  "name": "Ramp Intelligence",
+  "slug": "ramp-intelligence",
+  "description": "AI-powered corporate card and expense management with automated receipt matching, spend insights, and policy enforcement.",
+  "providerName": "Ramp",
+  "providerUrl": "https://ramp.com",
+  "agentUrl": "https://ramp.com/intelligence",
+  "categories": [
+    "finance"
+  ],
+  "tags": [
+    "expense-management",
+    "corporate-card"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-03-22T09:51:56.324Z",
+  "updatedAt": "2026-03-22T09:51:56.324Z"
+}

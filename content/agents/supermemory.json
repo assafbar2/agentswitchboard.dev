@@ -1,0 +1,60 @@
+{
+  "id": "4e8C922sTxBNed9GoJxRz1",
+  "name": "Supermemory",
+  "slug": "supermemory",
+  "description": "Memory API for AI applications. Store and retrieve user memories, bookmarks, and knowledge with semantic search. One unified API for personal and enterprise memory.",
+  "providerName": "Supermemory",
+  "providerUrl": "https://supermemory.ai",
+  "agentUrl": "https://docs.supermemory.ai",
+  "categories": [
+    "memory-state"
+  ],
+  "tags": [
+    "memory",
+    "knowledge-base",
+    "rag",
+    "semantic-search",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "ingest-memories-from-any-source-via-a-unified-memory-ingestion-pipeline",
+      "name": "Ingest memories from any source via a unified memory ingestion pipeline",
+      "description": "Ingest memories from any source via a unified memory ingestion pipeline"
+    },
+    {
+      "id": "semantic-retrieval-of-relevant-memories-ranked-by-context-similarity",
+      "name": "Semantic retrieval of relevant memories ranked by context similarity",
+      "description": "Semantic retrieval of relevant memories ranked by context similarity"
+    },
+    {
+      "id": "build-shared-knowledge-bases-accessible-across-teams-and-agent-instances",
+      "name": "Build shared knowledge bases accessible across teams and agent instances",
+      "description": "Build shared knowledge bases accessible across teams and agent instances"
+    },
+    {
+      "id": "store-multiple-content-formats-including-text-urls-and-structured-data",
+      "name": "Store multiple content formats including text, URLs, and structured data",
+      "description": "Store multiple content formats including text, URLs, and structured data"
+    },
+    {
+      "id": "collaborate-on-shared-memory-spaces-with-role-based-access-control",
+      "name": "Collaborate on shared memory spaces with role-based access control",
+      "description": "Collaborate on shared memory spaces with role-based access control"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-04-08T07:17:06.782Z",
+  "updatedAt": "2026-04-08T07:17:06.782Z"
+}

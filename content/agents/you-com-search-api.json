@@ -1,0 +1,32 @@
+{
+  "id": "5Dzbf4EEmfgu114SLSuN5j",
+  "name": "You.com Search API",
+  "slug": "you-com-search-api",
+  "description": "Programmable AI search with web, news, and RAG endpoints — grounded answers with citations for AI applications.",
+  "providerName": "You.com",
+  "providerUrl": "https://you.com",
+  "agentUrl": "https://documentation.you.com/",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "search",
+    "rag",
+    "web"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-03-22T09:53:02.835Z",
+  "updatedAt": "2026-03-22T09:53:02.835Z"
+}
