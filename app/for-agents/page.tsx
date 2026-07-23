@@ -67,10 +67,36 @@ export default async function ForAgentsPage() {
           </p>
         </section>
 
+        {/* MCP server */}
+        <section className="space-y-2" id="mcp">
+          <h2 className="text-[var(--text-primary)] font-semibold">## This directory IS an MCP server</h2>
+          <p>
+            Connect directly and query the catalog with native tools —{' '}
+            <code className="text-[var(--accent)]">search_agents</code>,{' '}
+            <code className="text-[var(--accent)]">get_agent</code>,{' '}
+            <code className="text-[var(--accent)]">list_categories</code>:
+          </p>
+          <pre className="rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-4 text-xs overflow-x-auto">
+{`{
+  "mcpServers": {
+    "agentswitchboard": { "url": "https://agentswitchboard.dev/api/mcp" }
+  }
+}`}
+          </pre>
+          <p>
+            Streamable HTTP, no auth. Stdio-only clients:{' '}
+            <code className="text-[var(--accent)]">npx -y mcp-remote https://agentswitchboard.dev/api/mcp</code>
+          </p>
+        </section>
+
         {/* How to use */}
         <section className="space-y-2">
           <h2 className="text-[var(--text-primary)] font-semibold">## How to use this directory</h2>
           <ul className="space-y-1 pl-4">
+            <li>
+              <span className="text-[var(--accent)]">→ MCP server (query the catalog with tools):</span>{' '}
+              <code className="text-[var(--accent)]">https://agentswitchboard.dev/api/mcp</code>
+            </li>
             <li>
               <span className="text-[var(--accent)]">→ Machine-readable catalog (JSON):</span>{' '}
               <a href="/agents.json" className="underline hover:text-[var(--accent)]">

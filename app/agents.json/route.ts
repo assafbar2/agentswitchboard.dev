@@ -1,10 +1,10 @@
 import { getEveryAgent } from '@/lib/catalog';
 import { BASE_URL } from '@/lib/env';
+import { logConsumer } from '@/lib/log';
 import { NextResponse } from 'next/server';
 
-export const revalidate = 300; // refresh every 5 minutes
-
-export async function GET() {
+export async function GET(req: Request) {
+  logConsumer('/agents.json', req);
   const agents = await getEveryAgent();
 
   const catalog = agents.map((a) => ({

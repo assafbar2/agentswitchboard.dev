@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Agent Switchboard
 
-## Getting Started
+**The curated directory for the agentic web** — 300+ verified AI agents, MCP
+servers, and agentic tools with real API, MCP, CLI, or browser-extension
+access. Live at **[agentswitchboard.dev](https://agentswitchboard.dev)**.
 
-First, run the development server:
+## 🔌 This directory is itself an MCP server
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Point any MCP client at it and query the catalog with native tools:
+
+```json
+{
+  "mcpServers": {
+    "agentswitchboard": { "url": "https://agentswitchboard.dev/api/mcp" }
+  }
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Tools: `search_agents` · `get_agent` · `list_categories`. Streamable HTTP, no
+auth. Stdio-only clients: `npx -y mcp-remote https://agentswitchboard.dev/api/mcp`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Also machine-readable: [`/agents.json`](https://agentswitchboard.dev/agents.json)
+(full catalog, CORS-open) and an agent-optimized view on every page
+(the "For Agents" toggle).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🗂 Git-as-CMS
 
-## Learn More
+The entire catalog lives in this repo:
 
-To learn more about Next.js, take a look at the following resources:
+```
+content/
+  agents/<slug>.json    one file per agent — the source of truth
+  categories.json       category definitions
+  changelog.json        public audit log (rendered at /changelog)
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+There is no database and no CMS. Editing content = editing files. Merging to
+`main` = publishing. Every entry is schema-validated in CI
+([`scripts/validate-content.ts`](scripts/validate-content.ts)) — a bad entry
+cannot merge. A weekly job link-checks all ~480 URLs in the catalog.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Want to add or fix a listing? See [CONTRIBUTING.md](CONTRIBUTING.md).**
+Non-developers: [agentswitchboard.dev/submit](https://agentswitchboard.dev/submit).
 
-## Deploy on Vercel
+## Development
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm install
+npm run dev          # no env vars needed — content is right here
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Command | |
+|---|---|
+| `npm run dev` | dev server |
+| `npm run build` | production build (SSG, all pages) |
+| `npm test` | unit tests |
+| `npm run lint` / `npm run typecheck` | quality gates |
+| `npx tsx scripts/validate-content.ts` | validate the catalog |
+| `npx tsx scripts/check-links.ts` | link-rot sweep |
+| `npx tsx scripts/cms.ts` | content ops: find / feature / update / unpublish |
+| `npx tsx scripts/weekly-drop.ts` | batch-add agents (see file header) |
+
+Stack: Next.js (App Router) · Tailwind · file-based catalog · deployed on Vercel.

@@ -6,21 +6,23 @@ const footerLinks = [
     links: [
       { href: '/browse', label: 'Browse Agents' },
       { href: '/categories', label: 'Categories' },
-      { href: '/submit', label: 'Submit Agent' },
+      { href: '/submit', label: 'List Your Agent' },
     ],
   },
   {
     title: 'Resources',
     links: [
+      { href: '/for-agents#mcp', label: 'MCP Server' },
+      { href: '/for-agents', label: 'For AI Agents' },
+      { href: '/changelog', label: 'Changelog' },
       { href: '/pro', label: 'Pro Access' },
       { href: '/advertise', label: 'Advertise' },
-      { href: 'https://google.github.io/A2A/', label: 'A2A Protocol', external: true },
-      { href: '/for-agents', label: 'For AI Agents' },
     ],
   },
   {
     title: 'Company',
     links: [
+      { href: 'https://github.com/assafbar2/agentswitchboard.dev', label: 'GitHub', external: true },
       { href: '/disclaimer', label: 'Disclaimer' },
       { href: 'mailto:barnir@agentmail.to?subject=Hey from Agent Switchboard', label: 'Contact Us', external: true },
     ],

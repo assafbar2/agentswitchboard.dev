@@ -13,6 +13,7 @@
 import { createMcpHandler } from 'mcp-handler';
 import { z } from 'zod';
 import { getEveryAgent, getAllCategories } from '@/lib/catalog';
+import { logConsumer } from '@/lib/log';
 import { searchAgents, ALL_ACCESS_METHODS } from '@/lib/search';
 import type { Agent } from '@/lib/types';
 
@@ -153,4 +154,22 @@ const handler = createMcpHandler(
   }
 );
 
-export { handler as GET, handler as POST };
+// Wrap the handler to log consumers: UA + JSON-RPC method + tool called.
+// Vercel log explorer: filter `asb_consumer` to see who uses the catalog.
+async function loggedHandler(req: Request): Promise<Response> {
+  let method: string | undefined;
+  let tool: string | undefined;
+  if (req.method === 'POST') {
+    try {
+      const body = await req.clone().json();
+      method = body?.method;
+      if (method === 'tools/call') tool = body?.params?.name;
+    } catch {
+      // non-JSON body — log without method detail
+    }
+  }
+  logConsumer('/api/mcp', req, { method, tool });
+  return handler(req);
+}
+
+export { loggedHandler as GET, loggedHandler as POST };

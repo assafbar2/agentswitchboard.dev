@@ -124,6 +124,22 @@ export default async function HomePage() {
           </div>
         </section>
 
+        {/* ── MCP callout ──────────────────────────────────────────── */}
+        <section className="pb-4">
+          <div className="container-wide">
+            <Link
+              href="/for-agents#mcp"
+              className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 rounded-xl border border-[var(--border-accent)] bg-[var(--bg-card)] px-5 py-3.5 hover:border-[var(--accent)] transition-colors group"
+            >
+              <span className="mono text-xs text-[var(--accent)]">$ this directory is an MCP server</span>
+              <span className="mono text-xs text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors">
+                connect your agent → agentswitchboard.dev/api/mcp
+              </span>
+              <span className="mono text-xs text-[var(--text-muted)]">search_agents · get_agent · list_categories</span>
+            </Link>
+          </div>
+        </section>
+
         {/* ── Featured Agents ──────────────────────────────────────── */}
         {homepageAgents.length > 0 && (
           <section className="pt-4 pb-14">
@@ -194,15 +210,16 @@ export default async function HomePage() {
                   List your agent on the switchboard
                 </h2>
                 <p className="text-[var(--text-secondary)] max-w-lg mx-auto mb-8">
-                  Got an A2A-compatible agent? Submit it for review and get
-                  discovered by developers building the agentic web.
+                  The catalog is open source — add your agent with a pull request
+                  or the listing form. Verified entries get discovered by
+                  developers and agents across the agentic web.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                   <Link
                     href="/submit"
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--accent)] text-[var(--bg-primary)] font-medium text-sm hover:opacity-90 transition-opacity"
                   >
-                    Submit an Agent
+                    List Your Agent
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                   <Link
@@ -276,8 +293,8 @@ export default async function HomePage() {
             </div>
             <div className="agent-row">
               <Link href="/submit" className="agent-accent hover:opacity-80">/submit</Link>
-              <span className="agent-dim">list your agent</span>
-              <span className="agent-dim">A2A-compatible</span>
+              <span className="agent-dim">list your agent · PR or form</span>
+              <span className="agent-dim">see CONTRIBUTING.md</span>
             </div>
           </div>
 

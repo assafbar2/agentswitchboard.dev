@@ -9,7 +9,7 @@ import { ViewModeToggle } from '@/components/ViewModeToggle';
 const navLinks = [
   { href: '/browse', label: 'Browse' },
   { href: '/categories', label: 'Categories' },
-  { href: '/submit', label: 'Submit Agent' },
+  { href: '/submit', label: 'List Your Agent' },
 ];
 
 export function Header() {
