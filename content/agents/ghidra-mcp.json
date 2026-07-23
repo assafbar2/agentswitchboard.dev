@@ -1,0 +1,50 @@
+{
+  "id": "5Qh8djG9iKeui4lRRYlG9w",
+  "name": "Ghidra MCP",
+  "slug": "ghidra-mcp",
+  "description": "Connects AI to Ghidra for AI-assisted reverse engineering — 110 tools for decompilation, function analysis, disassembly, and symbol management.",
+  "providerName": "Community",
+  "providerUrl": "https://github.com/bethington/ghidra-mcp",
+  "agentUrl": "https://github.com/bethington/ghidra-mcp",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "reverse-engineering",
+    "ghidra",
+    "decompilation",
+    "binary-analysis",
+    "security-research",
+    "disassembly"
+  ],
+  "skills": [
+    {
+      "id": "binary-decompilation",
+      "name": "Binary Decompilation",
+      "description": "Decompiles binary functions to C-like pseudocode using Ghidra's decompiler engine for AI-assisted analysis."
+    },
+    {
+      "id": "function-analysis",
+      "name": "Function Analysis",
+      "description": "Lists, renames, and annotates functions and their call graphs in a loaded Ghidra binary project."
+    },
+    {
+      "id": "symbol-management",
+      "name": "Symbol Management",
+      "description": "Reads and writes Ghidra symbols, labels, namespaces, and data types to structure reverse-engineered binaries."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-06-07T17:51:26.312Z",
+  "updatedAt": "2026-06-07T17:51:26.312Z"
+}

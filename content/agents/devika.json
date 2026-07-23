@@ -1,0 +1,50 @@
+{
+  "id": "58Zrr169k3kP1NZFPNT6HM",
+  "name": "Devika",
+  "slug": "devika",
+  "description": "Open-source agentic software engineer that plans multi-step tasks, browses the web for context, and writes coordinated multi-file code from high-level instructions.",
+  "providerName": "Stition AI",
+  "providerUrl": "https://github.com/stitionai",
+  "agentUrl": "https://github.com/stitionai/devika",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "software-engineering",
+    "web-browsing",
+    "code-generation",
+    "multi-llm",
+    "step-planner",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "task-planning",
+      "name": "Multi-Step Task Planning",
+      "description": "Decompose a high-level objective into ordered research and coding subtasks using the agent planning and reasoning pipeline."
+    },
+    {
+      "id": "web-research",
+      "name": "Autonomous Web Research",
+      "description": "Browse the web to gather documentation, examples, and context needed to complete the assigned coding objective."
+    },
+    {
+      "id": "multi-file-code",
+      "name": "Multi-File Code Generation",
+      "description": "Write and coordinate code across multiple files to produce a complete working implementation of the planned objective."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-05-22T08:28:02.538Z",
+  "updatedAt": "2026-05-22T08:28:02.538Z"
+}

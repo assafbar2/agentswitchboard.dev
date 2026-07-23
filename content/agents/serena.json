@@ -1,0 +1,56 @@
+{
+  "id": "aoaTeANRYrPw5HYMEdZTM",
+  "name": "Serena",
+  "slug": "serena",
+  "description": "IDE-like MCP toolkit for coding agents — semantic code retrieval, editing, refactoring, and debugging with language server integration. Works with Claude Code, Cursor, Codex.",
+  "providerName": "Oraios AI",
+  "providerUrl": "https://github.com/oraios/serena",
+  "agentUrl": "https://github.com/oraios/serena",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "mcp",
+    "code-editing",
+    "semantic-search",
+    "language-server",
+    "refactoring",
+    "coding-agent",
+    "ide"
+  ],
+  "skills": [
+    {
+      "id": "semantic-retrieval",
+      "name": "Semantic Code Retrieval",
+      "description": "Find relevant code across a codebase using semantic search and language server symbol resolution"
+    },
+    {
+      "id": "precise-edit",
+      "name": "Precise Code Editing",
+      "description": "Apply targeted edits at symbol level — functions, classes, methods — without full file rewrites"
+    },
+    {
+      "id": "lsp-integration",
+      "name": "Language Server Integration",
+      "description": "Use LSP diagnostics, hover info, and go-to-definition to give agents IDE-level code understanding"
+    },
+    {
+      "id": "multi-agent",
+      "name": "Multi-Agent Support",
+      "description": "Works with Claude Code, Codex, Cursor, and JetBrains coding agents from a single configuration"
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-04-25T19:06:57.660Z",
+  "updatedAt": "2026-04-25T19:06:57.660Z"
+}

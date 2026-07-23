@@ -1,0 +1,34 @@
+{
+  "id": "17heZcemScB0oU10HTWRRk",
+  "name": "Sentry AI",
+  "slug": "sentry-ai",
+  "description": "Error monitoring with AI-powered issue grouping, root cause analysis, and automated fix suggestions for production applications.",
+  "providerName": "Sentry",
+  "providerUrl": "https://sentry.io",
+  "agentUrl": "https://sentry.io/solutions/ai-observability/",
+  "categories": [
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "monitoring",
+    "debugging",
+    "error-tracking"
+  ],
+  "skills": [],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-03-22T09:51:51.746Z",
+  "updatedAt": "2026-03-22T16:47:10.902Z"
+}

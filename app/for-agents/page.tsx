@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { getAllAgents } from '@/lib/contentful';
+import { getEveryAgent } from '@/lib/catalog';
 
 export const revalidate = 300;
 
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default async function ForAgentsPage() {
-  const { agents } = await getAllAgents({ limit: 500 });
+  const agents = await getEveryAgent();
 
   const byCategory = agents.reduce<Record<string, number>>((acc, a) => {
     a.categories.forEach((c) => {

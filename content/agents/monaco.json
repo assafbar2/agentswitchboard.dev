@@ -1,0 +1,34 @@
+{
+  "id": "1cUe6KMfQOxLdZ9NPy2PT5",
+  "name": "Monaco",
+  "slug": "monaco",
+  "description": "AI-native revenue automation with autonomous agents that prospect, score accounts, capture interactions, and manage pipeline — replacing traditional CRM for early-stage startups.",
+  "providerName": "Monaco",
+  "providerUrl": "https://www.monaco.com",
+  "agentUrl": "https://www.monaco.com",
+  "categories": [
+    "sales-marketing"
+  ],
+  "tags": [
+    "sales",
+    "crm",
+    "autonomous",
+    "revenue",
+    "prospecting",
+    "outbound"
+  ],
+  "skills": [],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-04-12T17:40:29.262Z",
+  "updatedAt": "2026-04-12T17:40:29.262Z"
+}

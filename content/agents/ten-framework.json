@@ -1,0 +1,52 @@
+{
+  "id": "7wLgYdaU9haevqIbJftYc4",
+  "name": "TEN Framework",
+  "slug": "ten-framework",
+  "description": "Builds realtime conversational voice AI agents with a low-latency, multimodal framework in C, Go, and Python. Handles audio, video, and data streams. Open source.",
+  "providerName": "TEN",
+  "providerUrl": "https://theten.ai",
+  "agentUrl": "https://github.com/TEN-framework/ten-framework",
+  "categories": [
+    "voice-messaging"
+  ],
+  "tags": [
+    "voice-ai",
+    "realtime",
+    "multimodal",
+    "conversational",
+    "low-latency",
+    "open-source",
+    "framework"
+  ],
+  "skills": [
+    {
+      "id": "realtime-voice",
+      "name": "Realtime Voice",
+      "description": "Builds low-latency conversational voice agents that stream audio in and out in real time."
+    },
+    {
+      "id": "multimodal-streams",
+      "name": "Multimodal Streams",
+      "description": "Processes audio, video, image, and data streams together in a single agent graph."
+    },
+    {
+      "id": "extension-graph",
+      "name": "Extension Graph",
+      "description": "Composes reusable extensions in C, Go, or Python into an execution graph for voice pipelines."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-07-06T07:04:40.851Z",
+  "updatedAt": "2026-07-06T07:04:40.851Z"
+}

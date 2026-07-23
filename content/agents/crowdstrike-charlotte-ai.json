@@ -1,0 +1,31 @@
+{
+  "id": "3CWHPDzw2uphJys75sBv5p",
+  "name": "CrowdStrike Charlotte AI",
+  "slug": "crowdstrike-charlotte-ai",
+  "description": "Generative AI security analyst that investigates threats, provides attack summaries, and recommends remediation across the Falcon platform.",
+  "providerName": "CrowdStrike",
+  "providerUrl": "https://crowdstrike.com",
+  "agentUrl": "https://www.crowdstrike.com/platform/charlotte-ai/",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "cybersecurity",
+    "threat-detection"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-03-22T09:53:15.704Z",
+  "updatedAt": "2026-03-22T09:53:15.704Z"
+}

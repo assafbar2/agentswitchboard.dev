@@ -1,0 +1,32 @@
+{
+  "id": "1hj8GbKKNZ0ctTrU3kY2Ad",
+  "name": "Linear",
+  "slug": "linear",
+  "description": "Streamlined issue tracking with AI-powered auto-labeling, duplicate detection, and AI project assistant for software teams.",
+  "providerName": "Linear",
+  "providerUrl": "https://linear.app",
+  "agentUrl": "https://linear.app",
+  "categories": [
+    "code-devtools",
+    "scheduling"
+  ],
+  "tags": [
+    "project-management",
+    "issue-tracking"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-03-22T09:51:53.418Z",
+  "updatedAt": "2026-03-22T09:51:53.418Z"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "5mcvcaRXmOcTEKS18YVVxu",
+  "name": "Hugging Face MCP",
+  "slug": "hugging-face-mcp",
+  "description": "Discovers AI models, explores datasets, and accesses model documentation and capabilities on Hugging Face — the central hub for open-source ML.",
+  "providerName": "Smithery",
+  "providerUrl": "https://smithery.ai",
+  "agentUrl": "https://smithery.ai/server/hugging-face",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "hugging-face",
+    "ml-models",
+    "datasets",
+    "model-hub",
+    "open-source",
+    "machine-learning",
+    "documentation"
+  ],
+  "skills": [
+    {
+      "id": "model-discovery",
+      "name": "Model Discovery",
+      "description": "Searches and filters Hugging Face's catalog of hundreds of thousands of open-source ML models by task and framework."
+    },
+    {
+      "id": "dataset-exploration",
+      "name": "Dataset Exploration",
+      "description": "Explores Hugging Face datasets including previews, metadata, and download links for ML training pipelines."
+    },
+    {
+      "id": "model-documentation",
+      "name": "Model Documentation",
+      "description": "Fetches model cards, capabilities, limitations, and usage instructions from the Hugging Face model hub."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-06-07T17:51:31.896Z",
+  "updatedAt": "2026-06-07T17:51:31.896Z"
+}

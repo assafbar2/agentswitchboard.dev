@@ -1,0 +1,52 @@
+{
+  "id": "6CoUJgTWuqrFN8I1QtIm2W",
+  "name": "FastMCP",
+  "slug": "fastmcp",
+  "description": "Builds MCP servers and clients in Python the fast, Pythonic way — decorators for tools, resources, and prompts, with auth, testing, and deployment. Standard framework by Prefect.",
+  "providerName": "Prefect",
+  "providerUrl": "https://gofastmcp.com",
+  "agentUrl": "https://github.com/PrefectHQ/fastmcp",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "mcp",
+    "python",
+    "framework",
+    "server-sdk",
+    "client-sdk",
+    "open-source",
+    "prefect"
+  ],
+  "skills": [
+    {
+      "id": "pythonic-mcp-servers",
+      "name": "Pythonic MCP Servers",
+      "description": "Defines MCP tools, resources, and prompts with simple Python decorators on ordinary functions."
+    },
+    {
+      "id": "mcp-client-building",
+      "name": "MCP Client Building",
+      "description": "Builds MCP clients to call and compose remote MCP servers from Python code."
+    },
+    {
+      "id": "auth-and-deploy",
+      "name": "Auth & Deploy",
+      "description": "Adds authentication, testing utilities, and deployment helpers to ship MCP servers to production."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-07-06T07:04:20.872Z",
+  "updatedAt": "2026-07-06T07:04:20.872Z"
+}

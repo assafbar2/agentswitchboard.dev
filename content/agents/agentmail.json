@@ -1,0 +1,70 @@
+{
+  "id": "3niSCBdDWmrtDMYxvfzQBB",
+  "name": "AgentMail",
+  "slug": "agentmail",
+  "description": "Email inbox API built for AI agents. Create, send, receive, search, and manage email programmatically with SDKs for Python, TypeScript, and Go. Backed by Y Combinator.",
+  "providerName": "AgentMail",
+  "providerUrl": "https://agentmail.to",
+  "agentUrl": "https://agentmail.to",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "email",
+    "api",
+    "mcp",
+    "y-combinator",
+    "websocket",
+    "real-time"
+  ],
+  "skills": [
+    {
+      "id": "inbox-management",
+      "name": "Inbox Management",
+      "description": "Create, list, update, and delete email inboxes via API."
+    },
+    {
+      "id": "send-receive",
+      "name": "Send & Receive Email",
+      "description": "Send, receive, reply, reply-all, and forward emails programmatically."
+    },
+    {
+      "id": "semantic-search",
+      "name": "Semantic Search",
+      "description": "Search emails by meaning, not just keywords."
+    },
+    {
+      "id": "structured-extraction",
+      "name": "Structured Data Extraction",
+      "description": "Extract structured data from email content automatically."
+    },
+    {
+      "id": "thread-management",
+      "name": "Thread Management",
+      "description": "Group messages into conversation threads with labels and workflow tracking."
+    },
+    {
+      "id": "attachments",
+      "name": "Attachments",
+      "description": "Send and download file attachments on messages."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": true,
+  "featuredUntil": "2026-12-31",
+  "verified": true,
+  "sponsorLabel": "⭐ Editor's Pick",
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-03-21T00:30:02.863Z",
+  "updatedAt": "2026-04-13T21:37:25.534Z"
+}

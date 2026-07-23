@@ -1,0 +1,52 @@
+{
+  "id": "1S9liJPrgolx6PARrjtoIn",
+  "name": "LiteLLM",
+  "slug": "litellm",
+  "description": "AI gateway unifying 100+ LLM providers under one OpenAI-compatible API. Cost tracking, guardrails, load balancing. pip install litellm. 47k GitHub stars.",
+  "providerName": "BerriAI",
+  "providerUrl": "https://litellm.ai",
+  "agentUrl": "https://docs.litellm.ai",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "llm-gateway",
+    "openai-compatible",
+    "cost-tracking",
+    "load-balancing",
+    "ai-proxy",
+    "multi-provider",
+    "guardrails"
+  ],
+  "skills": [
+    {
+      "id": "provider-unification",
+      "name": "Provider Unification",
+      "description": "Call OpenAI, Anthropic, Azure, Bedrock, Vertex AI, and 95+ providers through one unified API format."
+    },
+    {
+      "id": "spend-tracking",
+      "name": "Spend Tracking",
+      "description": "Track and budget LLM spend per user, team, or API key with automatic cost attribution across all providers."
+    },
+    {
+      "id": "load-balancing",
+      "name": "Load Balancing",
+      "description": "Distribute requests across multiple model deployments with fallback routing and rate limit management."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-05-13T16:56:32.705Z",
+  "updatedAt": "2026-05-13T16:56:32.705Z"
+}

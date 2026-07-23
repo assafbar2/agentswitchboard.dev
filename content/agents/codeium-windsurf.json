@@ -1,0 +1,32 @@
+{
+  "id": "2wLsEerngQkX2FREBmlEaZ",
+  "name": "Codeium / Windsurf",
+  "slug": "codeium-windsurf",
+  "description": "AI code acceleration platform with Windsurf Editor, offering agentic flows, multi-file edits, and Cascade for autonomous coding.",
+  "providerName": "Codeium",
+  "providerUrl": "https://codeium.com",
+  "agentUrl": "https://codeium.com/windsurf",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "ide",
+    "code-completion",
+    "ai-assistant"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "browser-extension"
+  ],
+  "createdAt": "2026-03-22T09:51:50.205Z",
+  "updatedAt": "2026-03-22T09:51:50.205Z"
+}

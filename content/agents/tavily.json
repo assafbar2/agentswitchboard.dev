@@ -1,0 +1,32 @@
+{
+  "id": "6x4MybL6S5SGOAvJP4D1GV",
+  "name": "Tavily",
+  "slug": "tavily",
+  "description": "Search API built specifically for AI agents — optimized for LLM consumption with structured results, content extraction, and answer generation.",
+  "providerName": "Tavily",
+  "providerUrl": "https://tavily.com",
+  "agentUrl": "https://docs.tavily.com/",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "search",
+    "ai-agents",
+    "web"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-03-22T09:53:01.304Z",
+  "updatedAt": "2026-03-22T09:53:01.304Z"
+}

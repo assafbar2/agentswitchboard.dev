@@ -1,0 +1,60 @@
+{
+  "id": "Hl6CGv4eRVrSgvOMj519Q",
+  "name": "Pinecone",
+  "slug": "pinecone",
+  "description": "Fully managed vector database for AI applications. Store and search billions of high-dimensional embeddings with low latency. Serverless and pod-based deployments.",
+  "providerName": "Pinecone",
+  "providerUrl": "https://pinecone.io",
+  "agentUrl": "https://docs.pinecone.io",
+  "categories": [
+    "vector-databases"
+  ],
+  "tags": [
+    "vector-database",
+    "embeddings",
+    "rag",
+    "semantic-search",
+    "serverless",
+    "managed"
+  ],
+  "skills": [
+    {
+      "id": "store-and-index-billions-of-high-dimensional-embedding-vectors-with-sub-second-query-latency",
+      "name": "Store and index billions of high-dimensional embedding vectors with sub-second query latency",
+      "description": "Store and index billions of high-dimensional embedding vectors with sub-second query latency"
+    },
+    {
+      "id": "perform-approximate-nearest-neighbor-search-with-configurable-recall-and-speed-trade-offs",
+      "name": "Perform approximate nearest-neighbor search with configurable recall and speed trade-offs",
+      "description": "Perform approximate nearest-neighbor search with configurable recall and speed trade-offs"
+    },
+    {
+      "id": "upsert-vectors-in-real-time-with-immediate-consistency-for-live-knowledge-bases",
+      "name": "Upsert vectors in real-time with immediate consistency for live knowledge bases",
+      "description": "Upsert vectors in real-time with immediate consistency for live knowledge bases"
+    },
+    {
+      "id": "filter-search-results-by-structured-metadata-alongside-vector-similarity-scoring",
+      "name": "Filter search results by structured metadata alongside vector similarity scoring",
+      "description": "Filter search results by structured metadata alongside vector similarity scoring"
+    },
+    {
+      "id": "combine-dense-and-sparse-vectors-in-a-single-query-for-hybrid-retrieval-pipelines",
+      "name": "Combine dense and sparse vectors in a single query for hybrid retrieval pipelines",
+      "description": "Combine dense and sparse vectors in a single query for hybrid retrieval pipelines"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-04-08T07:17:14.286Z",
+  "updatedAt": "2026-07-10T21:06:50.931Z"
+}

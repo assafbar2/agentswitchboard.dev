@@ -1,0 +1,30 @@
+{
+  "id": "3m2xGYafGzPx1QamhkqEk8",
+  "name": "Ada",
+  "slug": "ada",
+  "description": "AI-powered customer service automation platform resolving complex inquiries across channels with reasoning-based AI agents.",
+  "providerName": "Ada",
+  "providerUrl": "https://ada.cx",
+  "agentUrl": "https://www.ada.cx/",
+  "categories": [
+    "customer-support"
+  ],
+  "tags": [
+    "support",
+    "ai-agent"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-03-22T09:51:42.397Z",
+  "updatedAt": "2026-03-22T09:51:42.397Z"
+}

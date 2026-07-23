@@ -1,0 +1,53 @@
+{
+  "id": "5l9NjVNsVTCbT18Xvplrlt",
+  "name": "RAGFlow",
+  "slug": "ragflow",
+  "description": "Open-source RAG engine with deep document parsing (tables, charts, images) and an official MCP server. Deploy via Docker, call via REST API. 80k GitHub stars.",
+  "providerName": "InfiniFlow",
+  "providerUrl": "https://ragflow.io",
+  "agentUrl": "https://ragflow.io/docs/dev",
+  "categories": [
+    "research",
+    "infrastructure"
+  ],
+  "tags": [
+    "rag",
+    "document-parsing",
+    "knowledge-base",
+    "mcp-server",
+    "agent-rag",
+    "self-hosted",
+    "deep-doc"
+  ],
+  "skills": [
+    {
+      "id": "deep-document-parse",
+      "name": "Deep Document Parse",
+      "description": "Parse complex documents — tables, charts, multi-column layouts — with layout-aware chunking for accurate retrieval."
+    },
+    {
+      "id": "knowledge-retrieval",
+      "name": "Knowledge Retrieval",
+      "description": "Query ingested knowledge bases via hybrid search (semantic + keyword) with source-cited answers."
+    },
+    {
+      "id": "agent-workflows",
+      "name": "Agent Workflows",
+      "description": "Build multi-step agentic workflows in a canvas UI that call RAG, APIs, and external tools in sequence."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-05-13T16:56:31.011Z",
+  "updatedAt": "2026-05-13T16:56:31.011Z"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "6w7NQ8p1uBiNiDNnG0MseZ",
+  "name": "Vertex AI Agent Builder",
+  "slug": "vertex-ai-agent-builder",
+  "description": "Google Cloud's platform for building AI agents with grounding, tool use, and multi-turn conversation — supports A2A protocol natively.",
+  "providerName": "Google Cloud",
+  "providerUrl": "https://cloud.google.com",
+  "agentUrl": "https://cloud.google.com/products/agent-builder",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "google-cloud",
+    "a2a"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-03-22T09:53:22.254Z",
+  "updatedAt": "2026-03-22T09:53:22.254Z"
+}

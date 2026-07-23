@@ -1,0 +1,51 @@
+{
+  "id": "44PAjwKTQJuTJoKvccYhUh",
+  "name": "Herdr",
+  "slug": "herdr",
+  "description": "Runs and manages multiple coding agents side by side in the terminal — an agent multiplexer to launch, monitor, and switch between parallel AI coding sessions. 17k+ GitHub stars.",
+  "providerName": "Oğulcan Çelik",
+  "providerUrl": "https://github.com/ogulcancelik",
+  "agentUrl": "https://github.com/ogulcancelik/herdr",
+  "categories": [
+    "orchestration"
+  ],
+  "tags": [
+    "coding-agent",
+    "agent-multiplexer",
+    "terminal",
+    "parallel-agents",
+    "tui",
+    "session-management",
+    "multi-agent"
+  ],
+  "skills": [
+    {
+      "id": "agent-multiplexing",
+      "name": "Agent Multiplexing",
+      "description": "Runs multiple coding agents concurrently in one terminal, each in its own pane, so you supervise them in parallel."
+    },
+    {
+      "id": "session-switching",
+      "name": "Session Switching",
+      "description": "Switches focus between running agent sessions and monitors their live output without leaving the terminal."
+    },
+    {
+      "id": "workspace-isolation",
+      "name": "Workspace Isolation",
+      "description": "Keeps each agent scoped to its own working directory so parallel tasks do not collide on shared files."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-07-17T20:41:08.583Z",
+  "updatedAt": "2026-07-17T20:41:08.583Z"
+}

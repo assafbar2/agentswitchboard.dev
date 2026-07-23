@@ -1,0 +1,51 @@
+{
+  "id": "3MunAUiO4ZoHqlU1UvJzrT",
+  "name": "Continue",
+  "slug": "continue-dev",
+  "description": "Open-source AI coding assistant for VS Code and JetBrains with chat, autocomplete, MCP support, and CI-enforceable AI review checks via GitHub status checks.",
+  "providerName": "Continue Dev",
+  "providerUrl": "https://continue.dev/",
+  "agentUrl": "https://continue.dev/",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "vs-code",
+    "jetbrains",
+    "autocomplete",
+    "code-review",
+    "local-llm",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "code-autocomplete",
+      "name": "In-Editor Autocomplete",
+      "description": "Provide context-aware code completions inside VS Code or JetBrains using any configured LLM provider including local Ollama models."
+    },
+    {
+      "id": "chat-context",
+      "name": "Codebase Chat",
+      "description": "Answer questions and generate edits using full codebase context, selected files, or terminal output scoped to the active project."
+    },
+    {
+      "id": "ci-checks",
+      "name": "CI AI Checks",
+      "description": "Run AI-powered code quality checks on every pull request as GitHub status checks, enforceable in CI pipelines without manual review."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-05-22T08:27:58.688Z",
+  "updatedAt": "2026-05-22T08:27:58.688Z"
+}

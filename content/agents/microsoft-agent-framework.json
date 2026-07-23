@@ -1,0 +1,52 @@
+{
+  "id": "7uuTvbOUdk05n2svl4gxm4",
+  "name": "Microsoft Agent Framework",
+  "slug": "microsoft-agent-framework",
+  "description": "Builds and orchestrates multi-agent apps with a .NET and Python SDK. The successor unifying Semantic Kernel and AutoGen for production agent systems. By Microsoft.",
+  "providerName": "Microsoft",
+  "providerUrl": "https://github.com/microsoft/agent-framework",
+  "agentUrl": "https://github.com/microsoft/agent-framework",
+  "categories": [
+    "orchestration"
+  ],
+  "tags": [
+    "multi-agent",
+    "agent-framework",
+    "dotnet",
+    "python",
+    "semantic-kernel",
+    "autogen",
+    "microsoft"
+  ],
+  "skills": [
+    {
+      "id": "agent-orchestration",
+      "name": "Agent Orchestration",
+      "description": "Orchestrates multi-agent workflows with handoffs and shared context across .NET and Python."
+    },
+    {
+      "id": "workflow-graphs",
+      "name": "Workflow Graphs",
+      "description": "Defines agent workflows as graphs with typed connections, checkpoints, and human-in-the-loop steps."
+    },
+    {
+      "id": "sk-autogen-unified",
+      "name": "Unified SK + AutoGen",
+      "description": "Combines Semantic Kernel enterprise features with AutoGen orchestration in one supported framework."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-07-06T07:04:36.084Z",
+  "updatedAt": "2026-07-06T07:04:36.084Z"
+}

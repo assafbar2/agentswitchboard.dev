@@ -1,0 +1,53 @@
+{
+  "id": "1qxnyOhu6svR7YWJD7LdI0",
+  "name": "Milvus",
+  "slug": "milvus",
+  "description": "High-performance open-source vector database with REST API, gRPC, and an official MCP server. Stores billions of vectors for semantic search, RAG, and agent memory.",
+  "providerName": "Zilliz",
+  "providerUrl": "https://milvus.io",
+  "agentUrl": "https://milvus.io/docs",
+  "categories": [
+    "vector-databases"
+  ],
+  "tags": [
+    "vector-database",
+    "semantic-search",
+    "rag",
+    "mcp-server",
+    "embeddings",
+    "billion-scale",
+    "agent-memory"
+  ],
+  "skills": [
+    {
+      "id": "vector-search",
+      "name": "Vector Similarity Search",
+      "description": "Search billions of vectors by cosine, inner product, or L2 distance with millisecond latency at scale."
+    },
+    {
+      "id": "hybrid-search",
+      "name": "Hybrid Search",
+      "description": "Combine dense vector search with sparse keyword retrieval for accurate RAG pipeline retrieval results."
+    },
+    {
+      "id": "mcp-integration",
+      "name": "MCP Integration",
+      "description": "Query and manage Milvus collections from any MCP client via the official zilliztech MCP server."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-05-13T16:56:34.109Z",
+  "updatedAt": "2026-05-13T16:56:34.109Z"
+}

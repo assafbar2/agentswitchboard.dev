@@ -1,0 +1,32 @@
+{
+  "id": "4NQrmLTmoeR8P4wJDIrjGk",
+  "name": "Databricks AI",
+  "slug": "databricks-ai",
+  "description": "Unified analytics platform with AI/ML capabilities, featuring Mosaic AI for building compound AI systems on your lakehouse data.",
+  "providerName": "Databricks",
+  "providerUrl": "https://databricks.com",
+  "agentUrl": "https://www.databricks.com/product/machine-learning",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "analytics",
+    "ml",
+    "lakehouse"
+  ],
+  "skills": [],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-03-22T09:51:34.586Z",
+  "updatedAt": "2026-03-22T09:51:34.586Z"
+}

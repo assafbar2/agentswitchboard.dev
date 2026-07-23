@@ -1,0 +1,52 @@
+{
+  "id": "2od1Xid7oMPRQJsKxGzmaL",
+  "name": "AgentScope",
+  "slug": "agentscope",
+  "description": "Builds multi-agent applications with a Python framework focused on transparency, observability, and tracing. Includes a runtime and studio for debugging. By Alibaba.",
+  "providerName": "Alibaba",
+  "providerUrl": "https://github.com/agentscope-ai/agentscope",
+  "agentUrl": "https://github.com/agentscope-ai/agentscope",
+  "categories": [
+    "orchestration"
+  ],
+  "tags": [
+    "multi-agent",
+    "agent-framework",
+    "observability",
+    "tracing",
+    "python",
+    "open-source",
+    "alibaba"
+  ],
+  "skills": [
+    {
+      "id": "multi-agent-apps",
+      "name": "Multi-Agent Apps",
+      "description": "Builds multi-agent applications with message passing, tools, and pluggable model backends in Python."
+    },
+    {
+      "id": "agent-observability",
+      "name": "Agent Observability",
+      "description": "Traces and visualizes agent execution to see, understand, and debug what each agent did and why."
+    },
+    {
+      "id": "agent-studio",
+      "name": "Agent Studio",
+      "description": "Provides a studio and runtime for developing, running, and monitoring agents interactively."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-07-06T07:04:32.686Z",
+  "updatedAt": "2026-07-06T07:04:32.686Z"
+}

@@ -1,0 +1,62 @@
+{
+  "id": "2KkdYFJIPUu63ovwRCXDZS",
+  "name": "Wonderful",
+  "slug": "wonderful-ai",
+  "description": "Enterprise voice AI platform with pre-trained agents for phone, chat, and email. Covers 40+ languages, integrates with Salesforce, SAP, and ServiceNow, with seamless escalation to human agents.",
+  "providerName": "Wonderful AI",
+  "providerUrl": "https://wonderful.ai",
+  "agentUrl": "https://www.wonderful.ai/platform",
+  "categories": [
+    "customer-support"
+  ],
+  "tags": [
+    "voice-ai",
+    "conversational-ai",
+    "multilingual",
+    "enterprise-cx",
+    "chat-automation",
+    "email-automation",
+    "crm-integration",
+    "global-deployment"
+  ],
+  "skills": [
+    {
+      "id": "deploy-production-ready-voice-agents-across-inbound-and-outbound-phone-channels-with-natural-low-latency-conversation",
+      "name": "Deploy production-ready voice agents across inbound and outbound phone channels with natural, low-latency conversation",
+      "description": "Deploy production-ready voice agents across inbound and outbound phone channels with natural, low-latency conversation"
+    },
+    {
+      "id": "unify-chat-and-email-support-into-a-single-agent-layer-that-maintains-full-conversation-context-across-channels",
+      "name": "Unify chat and email support into a single agent layer that maintains full conversation context across channels",
+      "description": "Unify chat and email support into a single agent layer that maintains full conversation context across channels"
+    },
+    {
+      "id": "serve-customers-in-40-languages-and-regional-dialects-with-automatic-language-detection-and-localization",
+      "name": "Serve customers in 40+ languages and regional dialects with automatic language detection and localization",
+      "description": "Serve customers in 40+ languages and regional dialects with automatic language detection and localization"
+    },
+    {
+      "id": "integrate-natively-with-salesforce-sap-and-servicenow-to-read-and-write-crm-data-during-live-interactions",
+      "name": "Integrate natively with Salesforce, SAP, and ServiceNow to read and write CRM data during live interactions",
+      "description": "Integrate natively with Salesforce, SAP, and ServiceNow to read and write CRM data during live interactions"
+    },
+    {
+      "id": "escalate-complex-cases-to-human-agents-with-complete-conversation-history-and-intent-summary-handed-off-instantly",
+      "name": "Escalate complex cases to human agents with complete conversation history and intent summary handed off instantly",
+      "description": "Escalate complex cases to human agents with complete conversation history and intent summary handed off instantly"
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-03-31T00:23:13.955Z",
+  "updatedAt": "2026-07-17T19:37:51.450Z"
+}

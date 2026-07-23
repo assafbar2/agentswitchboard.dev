@@ -1,0 +1,53 @@
+{
+  "id": "dyHzQidD0O8Qi0vsymoS8",
+  "name": "Temporal",
+  "slug": "temporal",
+  "description": "Durable workflow execution engine that survives crashes, retries automatically, and pauses for human input. Used by OpenAI, NVIDIA, and Salesforce. 20k+ GitHub stars. MIT-licensed.",
+  "providerName": "Temporal Technologies",
+  "providerUrl": "https://temporal.io",
+  "agentUrl": "https://temporal.io",
+  "categories": [
+    "orchestration"
+  ],
+  "tags": [
+    "durable-execution",
+    "workflow",
+    "fault-tolerant",
+    "open-source",
+    "mit-license",
+    "python",
+    "typescript",
+    "go"
+  ],
+  "skills": [
+    {
+      "id": "durable-workflows",
+      "name": "Durable Workflows",
+      "description": "Runs long-lived agent workflows that auto-resume from the last checkpoint after any crash or infrastructure failure."
+    },
+    {
+      "id": "activity-retries",
+      "name": "Activity Retries",
+      "description": "Wraps API calls and tool executions with configurable retry policies, backoff, and timeout logic."
+    },
+    {
+      "id": "human-in-the-loop",
+      "name": "Human-in-the-Loop",
+      "description": "Pauses workflow execution on a Signal and resumes the moment a human approves or provides input."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-06-15T03:07:05.775Z",
+  "updatedAt": "2026-06-15T03:07:05.775Z"
+}

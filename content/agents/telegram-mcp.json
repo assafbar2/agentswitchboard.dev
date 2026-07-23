@@ -1,0 +1,51 @@
+{
+  "id": "6w0oUu8YGHtgsgxkYHMJVA",
+  "name": "Telegram MCP",
+  "slug": "telegram-mcp",
+  "description": "MCP server giving AI agents programmatic access to Telegram — send messages, manage chats, interact with bots, and monitor channels via Model Context Protocol.",
+  "providerName": "chigwell",
+  "providerUrl": "https://github.com/chigwell/telegram-mcp",
+  "agentUrl": "https://github.com/chigwell/telegram-mcp",
+  "categories": [
+    "voice-messaging"
+  ],
+  "tags": [
+    "mcp",
+    "telegram",
+    "messaging",
+    "bots",
+    "channels",
+    "chat-management",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "send-message",
+      "name": "Send Messages",
+      "description": "Send text, media, and formatted messages to Telegram users, groups, and channels via MCP tools"
+    },
+    {
+      "id": "chat-manage",
+      "name": "Chat Management",
+      "description": "List, search, and manage Telegram chats, groups, and channels from any MCP-compatible agent"
+    },
+    {
+      "id": "bot-interact",
+      "name": "Bot Interaction",
+      "description": "Interact with Telegram bots programmatically — send commands, receive responses, manage inline menus"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-04-25T19:07:21.970Z",
+  "updatedAt": "2026-04-25T19:07:21.970Z"
+}

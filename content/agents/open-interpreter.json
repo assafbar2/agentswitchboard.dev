@@ -1,0 +1,51 @@
+{
+  "id": "7a07omcVHS46hs1g4geDGR",
+  "name": "Open Interpreter",
+  "slug": "open-interpreter",
+  "description": "Lets LLMs run Python, JavaScript, and shell commands locally to summarise PDFs, create charts, control files, and browse the web via a natural language interface.",
+  "providerName": "Open Interpreter",
+  "providerUrl": "https://openinterpreter.com/",
+  "agentUrl": "https://openinterpreter.com/",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "code-interpreter",
+    "local-execution",
+    "computer-use",
+    "file-management",
+    "web-browsing",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "code-run",
+      "name": "Execute Code Locally",
+      "description": "Run LLM-generated Python, JavaScript, or shell commands in the local environment and return output back to the conversation."
+    },
+    {
+      "id": "file-manage",
+      "name": "File and Data Operations",
+      "description": "Read, write, transform, and analyse local files including PDFs, spreadsheets, images, and code repositories via natural language."
+    },
+    {
+      "id": "computer-control",
+      "name": "Computer Control",
+      "description": "Control the local OS — open apps, navigate UIs, manipulate windows — using multimodal model instructions and keyboard/mouse input."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-05-22T08:27:55.026Z",
+  "updatedAt": "2026-05-22T08:27:55.026Z"
+}

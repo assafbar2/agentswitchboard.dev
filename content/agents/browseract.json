@@ -1,0 +1,51 @@
+{
+  "id": "3aOAhJ20AbBIM8Cy4xOS8D",
+  "name": "BrowserAct",
+  "slug": "browseract",
+  "description": "Automates real-Chrome browser sessions for AI agents — breaks through anti-bot walls, isolates multi-account sessions, runs parallel tasks, and hands off to humans when stuck.",
+  "providerName": "BrowserAct",
+  "providerUrl": "https://browseract.com",
+  "agentUrl": "https://github.com/browser-act/skills",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "browser-automation",
+    "anti-bot",
+    "multi-session",
+    "parallel-execution",
+    "human-handoff",
+    "chrome",
+    "web-agents"
+  ],
+  "skills": [
+    {
+      "id": "anti-bot-evasion",
+      "name": "Anti-Bot Evasion",
+      "description": "Drives real Chrome sessions that pass anti-bot and verification walls that block headless automation."
+    },
+    {
+      "id": "multi-session-isolation",
+      "name": "Multi-Session Isolation",
+      "description": "Runs isolated multi-account browser sessions in parallel so agents operate many logins without cross-contamination."
+    },
+    {
+      "id": "human-handoff",
+      "name": "Human Handoff",
+      "description": "Hands control to a human when a task gets stuck, then resumes automated execution afterward."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-07-06T07:04:09.043Z",
+  "updatedAt": "2026-07-06T07:04:09.043Z"
+}

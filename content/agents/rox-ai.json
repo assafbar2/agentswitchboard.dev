@@ -1,0 +1,62 @@
+{
+  "id": "4WocnpdumBb9StmjmSAWIJ",
+  "name": "Rox AI",
+  "slug": "rox-ai",
+  "description": "Autonomous revenue platform deploying swarms of AI sales agents across account mapping, outreach, and CRM hygiene to surface the right opportunity. Backed by a $50M Series B.",
+  "providerName": "Rox",
+  "providerUrl": "https://rox.com",
+  "agentUrl": "https://rox.com",
+  "categories": [
+    "sales-marketing"
+  ],
+  "tags": [
+    "sales-automation",
+    "account-intelligence",
+    "agent-swarm",
+    "crm-automation",
+    "outbound",
+    "b2b-sales",
+    "intent-signals",
+    "revenue-intelligence"
+  ],
+  "skills": [
+    {
+      "id": "deploy-coordinated-swarms-of-specialized-sales-agents-that-cover-prospecting-research-outreach-and-crm-update-tasks-simultaneously",
+      "name": "Deploy coordinated swarms of specialized sales agents that cover prospecting, research, outreach, and CRM update tasks simultaneously",
+      "description": "Deploy coordinated swarms of specialized sales agents that cover prospecting, research, outreach, and CRM update tasks simultaneously"
+    },
+    {
+      "id": "build-deep-account-intelligence-by-aggregating-news-job-postings-funding-events-and-product-signals-into-a-unified-account-brief",
+      "name": "Build deep account intelligence by aggregating news, job postings, funding events, and product signals into a unified account brief",
+      "description": "Build deep account intelligence by aggregating news, job postings, funding events, and product signals into a unified account brief"
+    },
+    {
+      "id": "generate-hyper-personalized-outreach-sequences-tailored-to-each-prospect-s-role-company-context-and-recent-trigger-events",
+      "name": "Generate hyper-personalized outreach sequences tailored to each prospect's role, company context, and recent trigger events",
+      "description": "Generate hyper-personalized outreach sequences tailored to each prospect's role, company context, and recent trigger events"
+    },
+    {
+      "id": "automate-crm-data-entry-contact-enrichment-and-pipeline-hygiene-so-sales-reps-work-only-on-active-opportunities",
+      "name": "Automate CRM data entry, contact enrichment, and pipeline hygiene so sales reps work only on active opportunities",
+      "description": "Automate CRM data entry, contact enrichment, and pipeline hygiene so sales reps work only on active opportunities"
+    },
+    {
+      "id": "prepare-ai-generated-meeting-briefings-with-talking-points-objection-handles-and-competitive-context-before-every-call",
+      "name": "Prepare AI-generated meeting briefings with talking points, objection handles, and competitive context before every call",
+      "description": "Prepare AI-generated meeting briefings with talking points, objection handles, and competitive context before every call"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-03-31T00:56:28.580Z",
+  "updatedAt": "2026-07-10T21:07:04.496Z"
+}

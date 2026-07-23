@@ -1,0 +1,52 @@
+{
+  "id": "459vAxIe5LuIzFVpt3SZnv",
+  "name": "Pydantic AI",
+  "slug": "pydantic-ai",
+  "description": "Type-safe Python agent framework from the Pydantic team. Built-in MCP client, ships a sandboxed Python execution MCP server. pip install pydantic-ai. 17k stars.",
+  "providerName": "Pydantic",
+  "providerUrl": "https://ai.pydantic.dev",
+  "agentUrl": "https://pydantic.dev/docs/ai/overview/",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "type-safe",
+    "agent-framework",
+    "mcp-client",
+    "python-sdk",
+    "structured-output",
+    "dependency-injection",
+    "pydantic"
+  ],
+  "skills": [
+    {
+      "id": "typed-agents",
+      "name": "Typed Agent Definitions",
+      "description": "Define agents with type-validated inputs, outputs, and dependency injection using familiar Pydantic models."
+    },
+    {
+      "id": "mcp-client",
+      "name": "MCP Client Integration",
+      "description": "Connect any MCP server as a tool provider for agents with automatic schema validation and type safety."
+    },
+    {
+      "id": "python-execution",
+      "name": "Sandboxed Python Execution",
+      "description": "Run Python code in a sandboxed MCP server (mcp-run-python) — an official server bundled with the SDK."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-05-13T16:56:45.234Z",
+  "updatedAt": "2026-07-17T19:37:48.614Z"
+}

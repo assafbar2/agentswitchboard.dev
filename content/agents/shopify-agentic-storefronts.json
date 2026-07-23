@@ -1,0 +1,63 @@
+{
+  "id": "4CJLnDRBpmkcHr9EjhvvK6",
+  "name": "Shopify Agentic Storefronts",
+  "slug": "shopify-agentic-storefronts",
+  "description": "Shopify's A2A-compatible layer for agentic commerce. AI agents browse catalogs, configure products, and initiate checkout. Full storefront exposed as an agent API with real-time inventory sync.",
+  "providerName": "Shopify",
+  "providerUrl": "https://shopify.com",
+  "agentUrl": "https://shopify.dev/docs/agents",
+  "categories": [
+    "commerce-payments"
+  ],
+  "tags": [
+    "e-commerce",
+    "agentic-commerce",
+    "checkout-automation",
+    "a2a-protocol",
+    "multi-channel",
+    "inventory-sync",
+    "conversational-commerce",
+    "shopify"
+  ],
+  "skills": [
+    {
+      "id": "syndicate-product-catalogs-across-web-mobile-voice-and-social-channels-through-a-single-unified-agent-api",
+      "name": "Syndicate product catalogs across web, mobile, voice, and social channels through a single unified agent API",
+      "description": "Syndicate product catalogs across web, mobile, voice, and social channels through a single unified agent API"
+    },
+    {
+      "id": "generate-dynamic-checkout-sessions-with-real-time-pricing-discount-codes-and-upsell-recommendations",
+      "name": "Generate dynamic checkout sessions with real-time pricing, discount codes, and upsell recommendations",
+      "description": "Generate dynamic checkout sessions with real-time pricing, discount codes, and upsell recommendations"
+    },
+    {
+      "id": "sync-inventory-levels-in-real-time-so-agents-never-surface-out-of-stock-products-or-stale-pricing",
+      "name": "Sync inventory levels in real-time so agents never surface out-of-stock products or stale pricing",
+      "description": "Sync inventory levels in real-time so agents never surface out-of-stock products or stale pricing"
+    },
+    {
+      "id": "link-shopper-identities-across-sessions-for-personalized-context-aware-purchasing-experiences",
+      "name": "Link shopper identities across sessions for personalized, context-aware purchasing experiences",
+      "description": "Link shopper identities across sessions for personalized, context-aware purchasing experiences"
+    },
+    {
+      "id": "push-real-time-order-status-updates-and-delivery-notifications-to-agents-and-end-users",
+      "name": "Push real-time order status updates and delivery notifications to agents and end-users",
+      "description": "Push real-time order status updates and delivery notifications to agents and end-users"
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-03-31T00:56:27.374Z",
+  "updatedAt": "2026-07-10T21:07:07.655Z"
+}

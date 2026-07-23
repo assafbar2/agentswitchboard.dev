@@ -1,0 +1,52 @@
+{
+  "id": "41h6RNPhg4J9R5HTDo1diK",
+  "name": "Claude Flow",
+  "slug": "claude-flow",
+  "description": "Orchestrates multi-agent swarms for Claude Code — 100+ specialized agents, shared memory, and consensus topologies via CLI and MCP. By ruvnet (formerly claude-flow, now ruflo).",
+  "providerName": "ruvnet",
+  "providerUrl": "https://github.com/ruvnet/ruflo",
+  "agentUrl": "https://github.com/ruvnet/ruflo",
+  "categories": [
+    "orchestration"
+  ],
+  "tags": [
+    "agent-swarm",
+    "claude-code",
+    "multi-agent",
+    "shared-memory",
+    "mcp",
+    "open-source",
+    "consensus"
+  ],
+  "skills": [
+    {
+      "id": "swarm-orchestration",
+      "name": "Agent Swarm Orchestration",
+      "description": "Spawns and coordinates 100+ specialized agents on top of Claude Code for parallel task execution."
+    },
+    {
+      "id": "shared-memory",
+      "name": "Shared Memory",
+      "description": "Maintains a shared memory layer so swarm agents pass context and results between each other."
+    },
+    {
+      "id": "consensus-topologies",
+      "name": "Consensus Topologies",
+      "description": "Arranges agents in configurable topologies with consensus mechanisms for reliable multi-agent decisions."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-07-06T07:04:18.560Z",
+  "updatedAt": "2026-07-06T07:04:18.560Z"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "2zdkSWX7xPqk9ge6lh8uG6",
+  "name": "Azure AI Translator",
+  "slug": "azure-ai-translator",
+  "description": "Microsoft's cloud translation service with real-time text translation, document translation, and custom terminology support.",
+  "providerName": "Microsoft",
+  "providerUrl": "https://azure.microsoft.com",
+  "agentUrl": "https://azure.microsoft.com/en-us/products/ai-services/ai-translator",
+  "categories": [
+    "language"
+  ],
+  "tags": [
+    "translation",
+    "azure",
+    "nlp"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-03-22T09:51:31.373Z",
+  "updatedAt": "2026-03-22T09:51:31.373Z"
+}

@@ -1,0 +1,33 @@
+{
+  "id": "39HhdLnB7P4BVVYwPSQc6i",
+  "name": "Bland AI",
+  "slug": "bland-ai",
+  "description": "Deploys enterprise AI phone agents that handle inbound and outbound calls in 40+ languages with SOC2, HIPAA, and PCI DSS compliance built in.",
+  "providerName": "Bland",
+  "providerUrl": "https://www.bland.ai/",
+  "agentUrl": "https://www.bland.ai/",
+  "categories": [
+    "voice-messaging"
+  ],
+  "tags": [
+    "voice-agent",
+    "phone-calls",
+    "enterprise",
+    "hipaa",
+    "soc2"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-05-22T07:35:16.947Z",
+  "updatedAt": "2026-05-22T07:35:16.947Z"
+}

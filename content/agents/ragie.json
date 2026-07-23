@@ -1,0 +1,60 @@
+{
+  "id": "5Z1VOKpW7JOak8KmDWktVT",
+  "name": "Ragie",
+  "slug": "ragie",
+  "description": "Retrieval API for AI applications. Ingest PDFs, web pages, and files, then query with semantic search. Built-in chunking, embedding, and reranking pipeline.",
+  "providerName": "Ragie",
+  "providerUrl": "https://ragie.ai",
+  "agentUrl": "https://docs.ragie.ai",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "retrieval",
+    "rag",
+    "knowledge-base",
+    "semantic-search",
+    "document-ai",
+    "embeddings"
+  ],
+  "skills": [
+    {
+      "id": "ingest-pdfs-docx-web-pages-and-20-file-types-into-a-managed-retrieval-pipeline",
+      "name": "Ingest PDFs, DOCX, web pages, and 20+ file types into a managed retrieval pipeline",
+      "description": "Ingest PDFs, DOCX, web pages, and 20+ file types into a managed retrieval pipeline"
+    },
+    {
+      "id": "chunk-and-embed-documents-automatically-with-state-of-the-art-embedding-models",
+      "name": "Chunk and embed documents automatically with state-of-the-art embedding models",
+      "description": "Chunk and embed documents automatically with state-of-the-art embedding models"
+    },
+    {
+      "id": "rerank-candidate-passages-by-relevance-before-returning-results-to-your-agent",
+      "name": "Rerank candidate passages by relevance before returning results to your agent",
+      "description": "Rerank candidate passages by relevance before returning results to your agent"
+    },
+    {
+      "id": "support-multi-format-documents-including-images-with-vision-based-extraction",
+      "name": "Support multi-format documents including images with vision-based extraction",
+      "description": "Support multi-format documents including images with vision-based extraction"
+    },
+    {
+      "id": "sync-document-sources-in-real-time-so-your-knowledge-base-stays-up-to-date",
+      "name": "Sync document sources in real-time so your knowledge base stays up to date",
+      "description": "Sync document sources in real-time so your knowledge base stays up to date"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-04-08T07:17:28.653Z",
+  "updatedAt": "2026-07-10T21:07:01.280Z"
+}

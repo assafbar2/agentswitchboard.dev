@@ -1,0 +1,33 @@
+{
+  "id": "40CLi6K2RGZQ9XsmCntP7m",
+  "name": "Rivet",
+  "slug": "rivet",
+  "description": "Designs, debugs, and deploys complex LLM workflows visually with a node-based graph editor, real-time data flow tracking, and nested graph reuse.",
+  "providerName": "Ironclad",
+  "providerUrl": "https://ironcladapp.com/",
+  "agentUrl": "https://rivet.ironcladapp.com/",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "visual-programming",
+    "open-source",
+    "workflow-builder",
+    "typescript",
+    "no-code"
+  ],
+  "skills": [],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-05-22T07:35:09.833Z",
+  "updatedAt": "2026-05-22T07:35:09.833Z"
+}

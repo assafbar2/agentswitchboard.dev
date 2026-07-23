@@ -1,0 +1,57 @@
+{
+  "id": "R36XKLYrIgzV51muVoIUr",
+  "name": "Reddit MCP Buddy",
+  "slug": "reddit-mcp-buddy",
+  "description": "MCP server for Reddit — search subreddits, retrieve posts and comment threads, analyze user activity, and post content. No API key required for read access.",
+  "providerName": "karanb192",
+  "providerUrl": "https://github.com/karanb192",
+  "agentUrl": "https://github.com/karanb192/reddit-mcp-buddy",
+  "categories": [
+    "research",
+    "data-analytics"
+  ],
+  "tags": [
+    "reddit",
+    "social-media",
+    "community-research",
+    "subreddit-search",
+    "mcp-server",
+    "content-retrieval",
+    "user-analysis"
+  ],
+  "skills": [
+    {
+      "id": "subreddit-search",
+      "name": "Subreddit Search",
+      "description": "Search across subreddits by keyword and return ranked posts with scores, comment counts, and metadata."
+    },
+    {
+      "id": "post-retrieval",
+      "name": "Post Retrieval",
+      "description": "Retrieve Reddit posts and full comment threads with nested replies, author info, and vote counts."
+    },
+    {
+      "id": "user-analysis",
+      "name": "User Analysis",
+      "description": "Analyze Reddit user profiles, post history, and activity patterns for research and monitoring use cases."
+    },
+    {
+      "id": "content-posting",
+      "name": "Content Posting",
+      "description": "Post new submissions and comments to subreddits using authenticated or rate-limited anonymous access tiers."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-05-06T23:49:25.672Z",
+  "updatedAt": "2026-05-06T23:49:25.672Z"
+}

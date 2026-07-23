@@ -1,0 +1,53 @@
+{
+  "id": "33RfrxIpWdpxyocMUOtpu9",
+  "name": "Manufact",
+  "slug": "manufact",
+  "description": "Builds, tests, and deploys MCP servers and apps to ChatGPT, Claude, and Gemini. Full-stack framework on the mcp-use SDK (TS/Python) plus cloud hosting with GitHub-based deploys.",
+  "providerName": "Manufact",
+  "providerUrl": "https://manufact.com",
+  "agentUrl": "https://manufact.com",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "mcp",
+    "mcp-use",
+    "agent-hosting",
+    "typescript",
+    "python",
+    "yc-s25",
+    "developer-tools"
+  ],
+  "skills": [
+    {
+      "id": "mcp-app-builder",
+      "name": "MCP App Builder",
+      "description": "Scaffolds MCP servers and apps in TypeScript or Python with the opinionated, spec-compliant mcp-use SDK."
+    },
+    {
+      "id": "one-click-deploy",
+      "name": "One-Click Deploy",
+      "description": "Deploys MCP apps to Manufact Cloud from a GitHub repo with automated builds and inspector-based testing."
+    },
+    {
+      "id": "cross-client-publish",
+      "name": "Cross-Client Publishing",
+      "description": "Publishes a single MCP app to ChatGPT, Claude, and Gemini so it runs across all major agent clients."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-07-06T07:04:01.764Z",
+  "updatedAt": "2026-07-06T07:04:01.764Z"
+}

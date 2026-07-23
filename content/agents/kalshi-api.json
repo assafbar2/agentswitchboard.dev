@@ -1,0 +1,33 @@
+{
+  "id": "5Bhya9skGPXCzBXqBwZDui",
+  "name": "Kalshi Trading API",
+  "slug": "kalshi-api",
+  "description": "REST API for the US-regulated event contracts exchange. Build trading bots, fetch live market prices, manage positions, and settle on real-world outcomes across finance, politics, and weather.",
+  "providerName": "Kalshi",
+  "providerUrl": "https://trading-api.kalshi.com/trade-api/v2",
+  "agentUrl": "https://trading-api.kalshi.com/trade-api/v2",
+  "categories": [
+    "prediction-markets"
+  ],
+  "tags": [
+    "prediction-markets",
+    "trading",
+    "event-contracts",
+    "regulated",
+    "rest"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-03-22T20:14:06.871Z",
+  "updatedAt": "2026-03-22T20:14:06.871Z"
+}

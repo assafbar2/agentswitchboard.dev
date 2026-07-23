@@ -1,0 +1,38 @@
+{
+  "id": "1W2WF1CaMhIfAAMXmiaiPf",
+  "name": "Postiz",
+  "slug": "postiz",
+  "description": "Open-source agentic social media scheduling tool with AI content generation, MCP server, CLI, Chrome Extension, and REST API across 25+ platforms including TikTok, LinkedIn, and Bluesky.",
+  "providerName": "Postiz",
+  "providerUrl": "https://postiz.com",
+  "agentUrl": "https://postiz.com",
+  "categories": [
+    "content-media",
+    "sales-marketing"
+  ],
+  "tags": [
+    "social-media",
+    "open-source",
+    "mcp",
+    "cli",
+    "scheduling",
+    "ai-content"
+  ],
+  "skills": [],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli",
+    "browser-extension"
+  ],
+  "createdAt": "2026-04-12T17:40:33.933Z",
+  "updatedAt": "2026-04-12T17:40:33.933Z"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "1ueBVB1w0yyCTreWvj7ZdO",
+  "name": "Gondola MCP",
+  "slug": "gondola-mcp",
+  "description": "Free remote MCP server for hotel search and booking. AI agents search, compare, and book hotels across cash and loyalty points rates via Model Context Protocol.",
+  "providerName": "Gondola",
+  "providerUrl": "https://gondola.ai",
+  "agentUrl": "https://www.gondola.ai/mcp",
+  "categories": [
+    "commerce-payments"
+  ],
+  "tags": [
+    "mcp",
+    "hotel-search",
+    "travel",
+    "points-rates",
+    "booking",
+    "free-tier",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "hotel-search",
+      "name": "Hotel Search",
+      "description": "Search hotels by location, dates, and guest count across both cash and loyalty points rate options"
+    },
+    {
+      "id": "rate-compare",
+      "name": "Rate Comparison",
+      "description": "Compare cash prices and points redemption rates side-by-side to identify the best value booking"
+    },
+    {
+      "id": "booking",
+      "name": "Hotel Booking",
+      "description": "Initiate hotel bookings for cash and points stays via MCP tool calls from any AI agent"
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-04-25T18:50:03.495Z",
+  "updatedAt": "2026-04-25T18:50:03.495Z"
+}

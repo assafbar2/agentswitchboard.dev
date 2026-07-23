@@ -1,0 +1,61 @@
+{
+  "id": "369nbYsAkYfWvGyUIfL6uJ",
+  "name": "Daytona",
+  "slug": "daytona",
+  "description": "Secure compute platform for AI-generated code. Provisions isolated dev environments with git integration. Built for running untrusted agent-generated code safely.",
+  "providerName": "Daytona",
+  "providerUrl": "https://daytona.io",
+  "agentUrl": "https://www.daytona.io/docs",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "sandbox",
+    "dev-environments",
+    "ai-agents",
+    "git",
+    "open-source",
+    "compute"
+  ],
+  "skills": [
+    {
+      "id": "provision-isolated-development-workspaces-for-agent-generated-code-in-seconds",
+      "name": "Provision isolated development workspaces for agent-generated code in seconds",
+      "description": "Provision isolated development workspaces for agent-generated code in seconds"
+    },
+    {
+      "id": "clone-and-manage-git-repositories-inside-secure-sandboxed-environments",
+      "name": "Clone and manage git repositories inside secure sandboxed environments",
+      "description": "Clone and manage git repositories inside secure sandboxed environments"
+    },
+    {
+      "id": "run-multi-language-runtimes-including-python-node-js-go-and-rust-safely",
+      "name": "Run multi-language runtimes including Python, Node.js, Go, and Rust safely",
+      "description": "Run multi-language runtimes including Python, Node.js, Go, and Rust safely"
+    },
+    {
+      "id": "execute-untrusted-ai-code-with-network-and-filesystem-isolation-per-workspace",
+      "name": "Execute untrusted AI code with network and filesystem isolation per workspace",
+      "description": "Execute untrusted AI code with network and filesystem isolation per workspace"
+    },
+    {
+      "id": "expose-ide-server-endpoints-for-agent-driven-code-editing-and-execution",
+      "name": "Expose IDE server endpoints for agent-driven code editing and execution",
+      "description": "Expose IDE server endpoints for agent-driven code editing and execution"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-04-08T07:17:12.803Z",
+  "updatedAt": "2026-04-08T07:17:12.803Z"
+}

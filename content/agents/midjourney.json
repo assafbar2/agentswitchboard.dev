@@ -1,0 +1,31 @@
+{
+  "id": "XuPB01xnUJ0triFfRnTrr",
+  "name": "Midjourney",
+  "slug": "midjourney",
+  "description": "AI image generation lab producing high-quality art and imagery from text prompts, known for exceptional aesthetic quality.",
+  "providerName": "Midjourney",
+  "providerUrl": "https://midjourney.com",
+  "agentUrl": "https://docs.midjourney.com/",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "image-generation",
+    "art",
+    "creative"
+  ],
+  "skills": [],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-03-22T09:52:47.899Z",
+  "updatedAt": "2026-03-22T16:47:12.396Z"
+}

@@ -1,0 +1,59 @@
+{
+  "id": "4M3zqeaPFrvqbrD6sh9H3G",
+  "name": "Intercom Fin",
+  "slug": "intercom-fin",
+  "description": "AI customer service agent and CLI. Resolves 50%+ of support volume; Fin CLI lets AI agents configure, publish, and manage Intercom from the terminal.",
+  "providerName": "Intercom",
+  "providerUrl": "https://intercom.com",
+  "agentUrl": "https://fin.ai/cli",
+  "categories": [
+    "customer-support"
+  ],
+  "tags": [
+    "support",
+    "chatbot",
+    "ai-agent"
+  ],
+  "skills": [
+    {
+      "id": "cli-setup",
+      "name": "CLI Setup & Config",
+      "description": "Zero-config terminal setup for Intercom helpdesk via npm install -g @intercom/cli"
+    },
+    {
+      "id": "content-import",
+      "name": "Content Import",
+      "description": "Import articles and help content into Intercom from the terminal in one command"
+    },
+    {
+      "id": "auto-resolution",
+      "name": "Auto Resolution",
+      "description": "Resolves 50%+ of support tickets instantly using help center and conversation history"
+    },
+    {
+      "id": "multi-channel",
+      "name": "Multi-Channel Support",
+      "description": "Handles customer queries across live chat, email, phone, and social from one agent"
+    },
+    {
+      "id": "deploy-publish",
+      "name": "Deploy & Publish",
+      "description": "Deploys Fin live and publishes Intercom Messenger config changes via CLI commands"
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-03-22T09:51:39.198Z",
+  "updatedAt": "2026-04-13T21:37:27.146Z"
+}

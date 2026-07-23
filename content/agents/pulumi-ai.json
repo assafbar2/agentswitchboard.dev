@@ -1,0 +1,33 @@
+{
+  "id": "4vrVf4ssWl2KnpnBfP9LGp",
+  "name": "Pulumi AI",
+  "slug": "pulumi-ai",
+  "description": "Infrastructure as code with AI — generate cloud infrastructure definitions from natural language using Pulumi's multi-language SDK.",
+  "providerName": "Pulumi",
+  "providerUrl": "https://pulumi.com",
+  "agentUrl": "https://www.pulumi.com/ai/",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "iac",
+    "cloud",
+    "devops"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-03-22T09:52:54.039Z",
+  "updatedAt": "2026-03-22T09:52:54.039Z"
+}

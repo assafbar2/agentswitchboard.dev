@@ -1,0 +1,50 @@
+{
+  "id": "WxvAFhKeWXpSRwRetHET7",
+  "name": "BabyAGI",
+  "slug": "babyagi",
+  "description": "Foundational autonomous task-management agent that launched the AI agent movement; uses GPT-4 and a vector store to create, prioritise, and execute tasks in a loop.",
+  "providerName": "Yohei Nakajima",
+  "providerUrl": "https://yoheinakajima.com/",
+  "agentUrl": "https://github.com/yoheinakajima/babyagi",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "task-management",
+    "autonomous-loop",
+    "foundational",
+    "gpt-4",
+    "vector-store",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "task-loop",
+      "name": "Autonomous Task Loop",
+      "description": "Continuously create, prioritise, and execute tasks using GPT-4 and a vector database to store and retrieve prior task results."
+    },
+    {
+      "id": "task-create",
+      "name": "Task Creation Agent",
+      "description": "Generate new sub-tasks based on the most recently completed task and the top-level objective, enriched by context from prior executions."
+    },
+    {
+      "id": "prioritize",
+      "name": "Task Prioritisation",
+      "description": "Re-rank the pending task list after each execution step to ensure the agent always tackles the highest-value next action first."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-05-22T08:28:07.387Z",
+  "updatedAt": "2026-05-22T08:28:07.387Z"
+}

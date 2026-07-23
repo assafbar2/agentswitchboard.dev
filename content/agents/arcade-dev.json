@@ -1,0 +1,53 @@
+{
+  "id": "2wWe2DKeRxm2HHP5QDocL5",
+  "name": "Arcade.dev",
+  "slug": "arcade-dev",
+  "description": "Handles agent authorization, tool calling, and governance so agents act on behalf of users. MCP runtime with Python/JS SDKs, OAuth flows, and 7,500+ pre-built tools.",
+  "providerName": "Arcade.dev",
+  "providerUrl": "https://arcade.dev",
+  "agentUrl": "https://arcade.dev",
+  "categories": [
+    "infrastructure",
+    "security"
+  ],
+  "tags": [
+    "mcp-runtime",
+    "agent-authorization",
+    "tool-calling",
+    "oauth",
+    "governance",
+    "enterprise",
+    "integrations"
+  ],
+  "skills": [
+    {
+      "id": "agent-authorization",
+      "name": "Agent Authorization",
+      "description": "Manages OAuth flows and per-user permissions so agents securely act on behalf of individual users."
+    },
+    {
+      "id": "tool-runtime",
+      "name": "Tool Runtime",
+      "description": "Runs 7,500+ pre-built tools across 81 MCP servers with reliable execution for any LLM framework."
+    },
+    {
+      "id": "governance-audit",
+      "name": "Governance & Audit",
+      "description": "Enforces policy and records complete audit trails for every action agents take in enterprise systems."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-07-06T07:04:22.119Z",
+  "updatedAt": "2026-07-06T07:04:22.119Z"
+}

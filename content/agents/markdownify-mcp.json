@@ -1,0 +1,56 @@
+{
+  "id": "6ovCQGtFJZhUaUfhH9VvrQ",
+  "name": "Markdownify MCP",
+  "slug": "markdownify-mcp",
+  "description": "MCP server that converts PDFs, images, audio files, and web pages into clean Markdown for efficient LLM ingestion and RAG pipeline construction.",
+  "providerName": "zcaceres",
+  "providerUrl": "https://github.com/zcaceres/markdownify-mcp",
+  "agentUrl": "https://github.com/zcaceres/markdownify-mcp",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "mcp",
+    "markdown-conversion",
+    "pdf-extraction",
+    "image-to-text",
+    "audio-transcription",
+    "rag",
+    "document-processing"
+  ],
+  "skills": [
+    {
+      "id": "pdf-convert",
+      "name": "PDF to Markdown",
+      "description": "Convert PDF documents to clean Markdown preserving headings, tables, and text formatting"
+    },
+    {
+      "id": "image-extract",
+      "name": "Image Text Extraction",
+      "description": "Extract and convert text from images to Markdown using OCR for LLM-ready document ingestion"
+    },
+    {
+      "id": "web-convert",
+      "name": "Web Page Convert",
+      "description": "Fetch any web page and convert its main content to clean Markdown stripping ads and navigation"
+    },
+    {
+      "id": "audio-transcribe",
+      "name": "Audio Transcription",
+      "description": "Transcribe audio files to Markdown text for inclusion in RAG pipelines or agent knowledge bases"
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-04-25T19:07:12.032Z",
+  "updatedAt": "2026-04-25T19:07:12.032Z"
+}

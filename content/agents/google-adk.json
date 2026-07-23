@@ -1,0 +1,52 @@
+{
+  "id": "5ryejRyCxTQPoAKI8kVKHx",
+  "name": "Google ADK",
+  "slug": "google-adk",
+  "description": "Builds and orchestrates multi-agent systems with a code-first Python and Java SDK plus CLI. Google's Agent Development Kit; powers Vertex AI Agent Engine deployments.",
+  "providerName": "Google",
+  "providerUrl": "https://google.github.io/adk-docs/",
+  "agentUrl": "https://github.com/google/adk-python",
+  "categories": [
+    "orchestration"
+  ],
+  "tags": [
+    "multi-agent",
+    "agent-framework",
+    "google",
+    "python",
+    "java",
+    "vertex-ai",
+    "code-first"
+  ],
+  "skills": [
+    {
+      "id": "multi-agent-orchestration",
+      "name": "Multi-Agent Orchestration",
+      "description": "Composes hierarchies of specialized agents with routing, delegation, and shared state in code."
+    },
+    {
+      "id": "code-first-sdk",
+      "name": "Code-First SDK",
+      "description": "Defines agents, tools, and workflows in Python or Java with a testable, code-first development model."
+    },
+    {
+      "id": "vertex-deployment",
+      "name": "Vertex Deployment",
+      "description": "Deploys ADK agents to Vertex AI Agent Engine for managed, scalable production hosting."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-07-06T07:04:17.444Z",
+  "updatedAt": "2026-07-06T07:04:17.444Z"
+}

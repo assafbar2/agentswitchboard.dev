@@ -1,0 +1,51 @@
+{
+  "id": "5fCug9PX32JUEkswMtr6MK",
+  "name": "Tabby",
+  "slug": "tabby",
+  "description": "Self-hosts an open-source AI coding assistant as a Copilot alternative — completion and chat that run on your own GPU, with extensions for 12+ IDEs and a REST API. 33k+ GitHub stars.",
+  "providerName": "TabbyML",
+  "providerUrl": "https://tabby.tabbyml.com",
+  "agentUrl": "https://github.com/TabbyML/tabby",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "coding-assistant",
+    "code-completion",
+    "self-hosted",
+    "copilot-alternative",
+    "ide",
+    "on-premise",
+    "rest-api"
+  ],
+  "skills": [
+    {
+      "id": "code-completion",
+      "name": "Code Completion",
+      "description": "Provides inline, context-aware code suggestions in the editor, served entirely from self-hosted models."
+    },
+    {
+      "id": "code-chat",
+      "name": "Code Chat",
+      "description": "Answers questions and explains or refactors code through an IDE chat panel backed by your own deployment."
+    },
+    {
+      "id": "repo-context",
+      "name": "Repository Context",
+      "description": "Indexes the codebase so completions and answers draw on the project's own files and symbols."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-07-17T20:41:23.198Z",
+  "updatedAt": "2026-07-17T20:41:23.198Z"
+}

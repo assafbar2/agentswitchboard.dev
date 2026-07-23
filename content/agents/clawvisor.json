@@ -1,0 +1,52 @@
+{
+  "id": "5GdYcVrskYlvFNdPvfNiWA",
+  "name": "Clawvisor",
+  "slug": "clawvisor",
+  "description": "Human-in-the-loop security gateway for AI agents. Approves, verifies, and audits every API call across Gmail, GitHub, Slack, and 11+ services — with credential vaulting and prompt injection detection.",
+  "providerName": "Clawvisor",
+  "providerUrl": "https://clawvisor.com",
+  "agentUrl": "https://clawvisor.com",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "agent-governance",
+    "human-in-the-loop",
+    "credential-vaulting",
+    "audit-trail",
+    "prompt-injection",
+    "api-gateway",
+    "access-control"
+  ],
+  "skills": [
+    {
+      "id": "approval-gateway",
+      "name": "Approval Gateway",
+      "description": "Route agent actions through human approval via Telegram, dashboard, or any device before any API call executes."
+    },
+    {
+      "id": "purpose-verification",
+      "name": "Purpose Verification",
+      "description": "Verify each agent API call matches its declared purpose, blocking scope creep and prompt injection attempts at the gateway level."
+    },
+    {
+      "id": "credential-vaulting",
+      "name": "Credential Vaulting",
+      "description": "Store API keys and OAuth tokens in an encrypted vault — agents never see credentials, injected server-side per verified request."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-05-08T02:56:42.218Z",
+  "updatedAt": "2026-07-10T21:05:48.458Z"
+}

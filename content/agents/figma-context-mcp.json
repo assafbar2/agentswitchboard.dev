@@ -1,0 +1,52 @@
+{
+  "id": "7Sp6secCjJJrn5bJe1uSC",
+  "name": "Figma Context MCP",
+  "slug": "figma-context-mcp",
+  "description": "MCP server exposing Figma designs to AI coding agents — read layout, styles, and component structure for one-shot design-to-code. 14k GitHub stars.",
+  "providerName": "GLips",
+  "providerUrl": "https://github.com/GLips/Figma-Context-MCP",
+  "agentUrl": "https://github.com/GLips/Figma-Context-MCP",
+  "categories": [
+    "code-devtools",
+    "content-media"
+  ],
+  "tags": [
+    "figma",
+    "design-to-code",
+    "ui-components",
+    "mcp-server",
+    "cursor-integration",
+    "design-tokens",
+    "figma-api"
+  ],
+  "skills": [
+    {
+      "id": "design-context",
+      "name": "Design Context Fetch",
+      "description": "Retrieve Figma frame layouts, component hierarchy, and style data for any node or selection in your file."
+    },
+    {
+      "id": "image-download",
+      "name": "Image Download",
+      "description": "Download Figma images and assets directly into your project directory for design-to-code workflows."
+    },
+    {
+      "id": "design-to-code",
+      "name": "Design-to-Code",
+      "description": "Feed exact Figma dimensions, colors, and component structure to AI for pixel-accurate UI generation."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-05-13T16:56:39.597Z",
+  "updatedAt": "2026-05-13T16:56:39.597Z"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "1uRvM3WkSmTHxQ3OVYJAdB",
+  "name": "Glean",
+  "slug": "glean",
+  "description": "Enterprise AI search and knowledge management — connects all your company apps and surfaces answers with AI-powered work assistant.",
+  "providerName": "Glean",
+  "providerUrl": "https://glean.com",
+  "agentUrl": "https://www.glean.com/",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "enterprise-search",
+    "knowledge"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "browser-extension"
+  ],
+  "createdAt": "2026-03-22T09:53:04.324Z",
+  "updatedAt": "2026-03-22T09:53:04.324Z"
+}

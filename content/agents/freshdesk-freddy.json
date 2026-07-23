@@ -1,0 +1,30 @@
+{
+  "id": "1Bt8KNv8qCvQxfWKyn7l7g",
+  "name": "Freshdesk Freddy AI",
+  "slug": "freshdesk-freddy",
+  "description": "AI assistant for Freshdesk that auto-triages tickets, suggests responses, and resolves common issues with self-service bots.",
+  "providerName": "Freshworks",
+  "providerUrl": "https://freshworks.com",
+  "agentUrl": "https://www.freshworks.com/freshdesk/",
+  "categories": [
+    "customer-support"
+  ],
+  "tags": [
+    "support",
+    "ticketing"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-03-22T09:51:44.131Z",
+  "updatedAt": "2026-03-22T09:51:44.131Z"
+}

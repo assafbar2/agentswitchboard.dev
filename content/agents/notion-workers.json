@@ -1,0 +1,34 @@
+{
+  "id": "5C6VDY0q5U64jwpIOETsah",
+  "name": "Notion Workers",
+  "slug": "notion-workers",
+  "description": "Hosts custom code Workers in a secure sandbox and connects external AI agents like Claude and Codex into Notion workspaces via a developer API.",
+  "providerName": "Notion",
+  "providerUrl": "https://notion.com/",
+  "agentUrl": "https://developers.notion.com/",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "workspace",
+    "workers",
+    "agent-api",
+    "serverless",
+    "notion",
+    "developer-platform"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-05-22T07:35:23.992Z",
+  "updatedAt": "2026-05-22T07:35:23.992Z"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "55JUw3lHPAh2isg3aWZJbI",
+  "name": "Khoj",
+  "slug": "khoj",
+  "description": "Self-hostable AI second brain that answers over your documents and the web, runs custom agents, and schedules automations. Offers an API plus Obsidian, Emacs, and desktop clients. 35k+ stars.",
+  "providerName": "Khoj AI",
+  "providerUrl": "https://khoj.dev",
+  "agentUrl": "https://github.com/khoj-ai/khoj",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "second-brain",
+    "personal-search",
+    "custom-agents",
+    "automations",
+    "self-hosted",
+    "obsidian",
+    "deep-research",
+    "agpl-3-0"
+  ],
+  "skills": [
+    {
+      "id": "document-qa",
+      "name": "Document Q&A",
+      "description": "Indexes personal documents and answers questions over them with citations across PDF, Markdown, and notes."
+    },
+    {
+      "id": "custom-agents",
+      "name": "Custom Agents",
+      "description": "Creates specialized agents with their own personas, tools, and knowledge bases for recurring workflows."
+    },
+    {
+      "id": "scheduled-automations",
+      "name": "Scheduled Automations",
+      "description": "Runs research or notification tasks on a schedule and delivers the results to the user automatically."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-07-17T20:41:21.684Z",
+  "updatedAt": "2026-07-17T20:41:21.684Z"
+}

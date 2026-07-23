@@ -29,12 +29,9 @@ jobs:
       - name: Test
         run: npm test
 
-      # `next build` needs CONTENTFUL_* secrets (SSG fetches the catalog).
-      # Vercel is the build gate today. To enable a CI build too, add
-      # CONTENTFUL_SPACE_ID + CONTENTFUL_DELIVERY_TOKEN as repo secrets and
-      # uncomment:
-      # - name: Build
-      #   run: npm run build
-      #   env:
-      #     CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
-      #     CONTENTFUL_DELIVERY_TOKEN: ${{ secrets.CONTENTFUL_DELIVERY_TOKEN }}
+      - name: Validate content
+        run: npx tsx scripts/validate-content.ts
+
+      # Content lives in the repo — full production build needs no secrets.
+      - name: Build
+        run: npm run build

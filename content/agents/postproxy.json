@@ -1,0 +1,35 @@
+{
+  "id": "5I1dQD5tuqThfTWcTF5CsU",
+  "name": "PostProxy",
+  "slug": "postproxy",
+  "description": "Unified REST API for publishing to 8 social networks via a single payload, with format conversion, rate limiting, retries, and MCP compatibility for agent-driven social workflows.",
+  "providerName": "PostProxy",
+  "providerUrl": "https://postproxy.dev",
+  "agentUrl": "https://postproxy.dev",
+  "categories": [
+    "content-media",
+    "sales-marketing"
+  ],
+  "tags": [
+    "social-media",
+    "api",
+    "mcp",
+    "multi-platform",
+    "publishing"
+  ],
+  "skills": [],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-04-12T17:40:31.674Z",
+  "updatedAt": "2026-04-12T17:40:31.674Z"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "6eLUInotaxjA70CfBQkhmW",
+  "name": "LobeChat",
+  "slug": "lobe-chat",
+  "description": "Deploys a self-hostable, multi-provider LLM chat framework with a plugin and MCP marketplace, artifacts, knowledge base, and branching. Extensible ChatGPT alternative by LobeHub.",
+  "providerName": "LobeHub",
+  "providerUrl": "https://lobehub.com",
+  "agentUrl": "https://github.com/lobehub/lobe-chat",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "chat-framework",
+    "multi-provider",
+    "plugins",
+    "mcp-marketplace",
+    "self-hosted",
+    "open-source",
+    "knowledge-base"
+  ],
+  "skills": [
+    {
+      "id": "multi-provider-chat",
+      "name": "Multi-Provider Chat",
+      "description": "Chats across many LLM providers in one self-hostable UI with artifacts and conversation branching."
+    },
+    {
+      "id": "plugin-marketplace",
+      "name": "Plugin Marketplace",
+      "description": "Extends the assistant with plugins and MCP servers from a built-in marketplace of integrations."
+    },
+    {
+      "id": "knowledge-base",
+      "name": "Knowledge Base",
+      "description": "Uploads files into a knowledge base and grounds chat responses on that private content."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-07-06T07:04:14.943Z",
+  "updatedAt": "2026-07-06T07:04:14.943Z"
+}

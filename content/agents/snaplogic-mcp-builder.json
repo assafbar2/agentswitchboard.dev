@@ -1,0 +1,51 @@
+{
+  "id": "HHYLClhNyCw8c24QGeIMW",
+  "name": "SnapLogic MCP Builder",
+  "slug": "snaplogic-mcp-builder",
+  "description": "Auto-generates governed MCP servers from existing integration pipelines, OpenAPI specs, and API-management services — no code required. Enterprise iPaaS by SnapLogic.",
+  "providerName": "SnapLogic",
+  "providerUrl": "https://www.snaplogic.com",
+  "agentUrl": "https://www.snaplogic.com",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "mcp",
+    "ipaas",
+    "integration",
+    "openapi",
+    "no-code",
+    "enterprise",
+    "api-management"
+  ],
+  "skills": [
+    {
+      "id": "mcp-generation",
+      "name": "MCP Generation",
+      "description": "Generates governed MCP servers automatically from existing integration pipelines and OpenAPI specs."
+    },
+    {
+      "id": "no-code-tooling",
+      "name": "No-Code Tooling",
+      "description": "Turns enterprise APIs and pipelines into agent-callable tools without writing custom server code."
+    },
+    {
+      "id": "mcp-governance",
+      "name": "MCP Governance",
+      "description": "Applies an AI gateway with policy and access controls to govern how agents call generated MCP servers."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-07-06T07:04:41.926Z",
+  "updatedAt": "2026-07-06T07:04:41.926Z"
+}

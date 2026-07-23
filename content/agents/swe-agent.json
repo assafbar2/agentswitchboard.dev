@@ -1,0 +1,53 @@
+{
+  "id": "2aF4CeeTRgoxULmQ2zlQ9W",
+  "name": "SWE-agent",
+  "slug": "swe-agent",
+  "description": "Takes a GitHub issue and autonomously fixes it with the language model of your choice. Also runs cybersecurity/CTF tasks. Open-source CLI from Princeton and Stanford NLP.",
+  "providerName": "Princeton NLP",
+  "providerUrl": "https://swe-agent.com",
+  "agentUrl": "https://github.com/SWE-agent/SWE-agent",
+  "categories": [
+    "code-devtools",
+    "security"
+  ],
+  "tags": [
+    "autonomous-coding",
+    "github-issues",
+    "swe-bench",
+    "ctf",
+    "open-source",
+    "research",
+    "model-agnostic"
+  ],
+  "skills": [
+    {
+      "id": "autonomous-issue-fixing",
+      "name": "Autonomous Issue Fixing",
+      "description": "Reads a GitHub issue and autonomously edits the codebase to resolve it using the LM of your choice."
+    },
+    {
+      "id": "swe-bench-solving",
+      "name": "SWE-bench Solving",
+      "description": "Runs the agent loop that scores high on SWE-bench, iterating on tests and edits until they pass."
+    },
+    {
+      "id": "ctf-security-mode",
+      "name": "CTF/Security Mode",
+      "description": "Operates in offensive-security and CTF modes to analyze and exploit target programs."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-07-06T07:04:19.726Z",
+  "updatedAt": "2026-07-06T07:04:19.726Z"
+}

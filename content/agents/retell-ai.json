@@ -1,0 +1,33 @@
+{
+  "id": "1TeOCaLMNmBehifRyC2Yts",
+  "name": "Retell AI",
+  "slug": "retell-ai",
+  "description": "Builds, tests, deploys, and monitors natural-sounding AI voice agents with ~600ms latency for scheduling, support, and administrative phone workflows.",
+  "providerName": "Retell AI",
+  "providerUrl": "https://www.retellai.com/",
+  "agentUrl": "https://www.retellai.com/",
+  "categories": [
+    "voice-messaging"
+  ],
+  "tags": [
+    "voice-agent",
+    "phone-calls",
+    "hipaa",
+    "soc2",
+    "real-time"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-05-22T07:35:18.109Z",
+  "updatedAt": "2026-05-22T07:35:18.109Z"
+}

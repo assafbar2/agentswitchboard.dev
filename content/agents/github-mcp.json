@@ -1,0 +1,60 @@
+{
+  "id": "1WybNSnCf1ZmIgn4pSvWVv",
+  "name": "GitHub MCP",
+  "slug": "github-mcp",
+  "description": "Official GitHub MCP server. Gives AI agents read/write access to repositories, issues, pull requests, code search, and GitHub Actions via Model Context Protocol.",
+  "providerName": "GitHub",
+  "providerUrl": "https://github.com",
+  "agentUrl": "https://github.com/github/github-mcp-server",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "mcp",
+    "github",
+    "code-review",
+    "issues",
+    "pull-requests",
+    "repository-management"
+  ],
+  "skills": [
+    {
+      "id": "repo-ops",
+      "name": "Repository Ops",
+      "description": "Create, clone, search, and manage GitHub repositories including branch and commit operations"
+    },
+    {
+      "id": "issue-mgmt",
+      "name": "Issue Management",
+      "description": "Create, update, label, assign, and close GitHub issues with full metadata control"
+    },
+    {
+      "id": "pr-review",
+      "name": "PR Review",
+      "description": "Open pull requests, add review comments, request changes, and merge via MCP tools"
+    },
+    {
+      "id": "code-search",
+      "name": "Code Search",
+      "description": "Search across GitHub repositories with keyword, language, and path filters"
+    },
+    {
+      "id": "actions-trigger",
+      "name": "Actions Trigger",
+      "description": "Trigger GitHub Actions workflows and retrieve run logs from an AI agent"
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-04-13T21:38:30.932Z",
+  "updatedAt": "2026-04-13T21:38:30.932Z"
+}

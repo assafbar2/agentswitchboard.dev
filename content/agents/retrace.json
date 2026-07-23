@@ -1,0 +1,52 @@
+{
+  "id": "rdsZQ2fFExwYUfuVnRgqf",
+  "name": "Retrace",
+  "slug": "retrace",
+  "description": "Records, replays, forks, and shares AI agent runs — forks re-issue only LLM calls while tool calls replay from tape, turning production failures into regression tests and PR eval gates.",
+  "providerName": "Retrace",
+  "providerUrl": "https://retraceai.tech",
+  "agentUrl": "https://retraceai.tech",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "agent-debugging",
+    "record-replay",
+    "observability",
+    "regression-testing",
+    "eval",
+    "sdk",
+    "ci"
+  ],
+  "skills": [
+    {
+      "id": "record-replay",
+      "name": "Record & Replay",
+      "description": "Records agent runs and replays them deterministically, re-issuing only LLM calls while tools play from tape."
+    },
+    {
+      "id": "fork-runs",
+      "name": "Fork Runs",
+      "description": "Forks a captured run to test prompt or code changes against the exact same production context."
+    },
+    {
+      "id": "eval-gates",
+      "name": "Eval Gates",
+      "description": "Turns captured failures into regression tests and PR eval gates that block regressions in CI."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-07-06T07:04:30.305Z",
+  "updatedAt": "2026-07-06T07:04:30.305Z"
+}

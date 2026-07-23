@@ -1,0 +1,52 @@
+{
+  "id": "3R2FZkaS38sAc5rmEFZUIs",
+  "name": "Polygraph",
+  "slug": "polygraph",
+  "description": "Gives AI coding agents cross-repository visibility and session-persistent memory by linking multiple repos into one synthetic monorepo. Integrates with Claude Code, GitHub, and CI. By Nx.",
+  "providerName": "Nx",
+  "providerUrl": "https://nx.dev",
+  "agentUrl": "https://trypolygraph.com",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "monorepo",
+    "cross-repo",
+    "coding-agents",
+    "session-memory",
+    "nx",
+    "claude-code",
+    "ci"
+  ],
+  "skills": [
+    {
+      "id": "cross-repo-indexing",
+      "name": "Cross-Repo Indexing",
+      "description": "Indexes multiple repositories into a synthetic monorepo graph so agents see dependencies across boundaries."
+    },
+    {
+      "id": "session-memory",
+      "name": "Session Memory",
+      "description": "Persists agent context and decisions across sessions so long-running coding work survives restarts."
+    },
+    {
+      "id": "pr-coordination",
+      "name": "PR Coordination",
+      "description": "Coordinates related pull requests across repos so agents land cross-cutting changes consistently."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-07-06T07:04:06.691Z",
+  "updatedAt": "2026-07-06T07:04:06.691Z"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "7dFSvFvd3UT3T0Yx4zOX3k",
+  "name": "HubSpot Breeze",
+  "slug": "hubspot-breeze",
+  "description": "AI companion across the HubSpot platform — Breeze Copilot for CRM tasks, Breeze Agents for autonomous work, and Breeze Intelligence for data enrichment.",
+  "providerName": "HubSpot",
+  "providerUrl": "https://hubspot.com",
+  "agentUrl": "https://www.hubspot.com/products/artificial-intelligence",
+  "categories": [
+    "sales-marketing",
+    "customer-support"
+  ],
+  "tags": [
+    "crm",
+    "marketing",
+    "ai-agent"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli",
+    "browser-extension"
+  ],
+  "createdAt": "2026-03-22T09:52:34.925Z",
+  "updatedAt": "2026-03-22T09:52:34.925Z"
+}

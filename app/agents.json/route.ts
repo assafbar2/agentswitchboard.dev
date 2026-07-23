@@ -1,4 +1,4 @@
-import { getEveryAgent } from '@/lib/contentful';
+import { getEveryAgent } from '@/lib/catalog';
 import { BASE_URL } from '@/lib/env';
 import { NextResponse } from 'next/server';
 

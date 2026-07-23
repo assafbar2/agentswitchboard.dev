@@ -1,0 +1,59 @@
+{
+  "id": "6daw0QXALvgWMYvOihjc4F",
+  "name": "GAIA by AMD",
+  "slug": "gaia-amd",
+  "description": "AMD's open-source Python/C++ framework for AI agents running fully locally on AMD NPU/GPU. Includes MCP integration, RAG pipeline, speech-to-speech voice, and multi-agent support.",
+  "providerName": "AMD",
+  "providerUrl": "https://amd.com",
+  "agentUrl": "https://amd-gaia.ai",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "amd",
+    "local-inference",
+    "open-source",
+    "python",
+    "mcp",
+    "voice-agent",
+    "rag",
+    "npu"
+  ],
+  "skills": [
+    {
+      "id": "local-inference",
+      "name": "Local Inference",
+      "description": "Run LLM inference entirely on AMD NPU, GPU, or CPU hardware with no cloud API calls required"
+    },
+    {
+      "id": "mcp-integration",
+      "name": "MCP Integration",
+      "description": "Connect GAIA agents to any MCP server for tool use without internet-dependent API calls"
+    },
+    {
+      "id": "rag-pipeline",
+      "name": "RAG Pipeline",
+      "description": "Build retrieval-augmented generation pipelines over local documents with embedded vector search"
+    },
+    {
+      "id": "voice-agent",
+      "name": "Voice Agent",
+      "description": "Deploy speech-to-speech voice agents running entirely on-device using AMD neural processing units"
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-04-25T18:49:57.941Z",
+  "updatedAt": "2026-04-25T18:49:57.941Z"
+}

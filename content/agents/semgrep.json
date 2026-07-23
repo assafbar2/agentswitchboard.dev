@@ -1,0 +1,34 @@
+{
+  "id": "3frXk5tmeymxqjSxtpePDQ",
+  "name": "Semgrep",
+  "slug": "semgrep",
+  "description": "Scans source code with AI-assisted SAST, SCA, and secrets detection, finding 8x more true positives with 50% less noise than standalone foundation models.",
+  "providerName": "Semgrep",
+  "providerUrl": "https://semgrep.dev/",
+  "agentUrl": "https://semgrep.dev/",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "sast",
+    "security",
+    "open-source",
+    "code-review",
+    "supply-chain"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-05-22T07:35:21.584Z",
+  "updatedAt": "2026-05-22T07:35:21.584Z"
+}

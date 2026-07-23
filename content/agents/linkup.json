@@ -1,0 +1,52 @@
+{
+  "id": "5YAUscKrJbllIDdBc1NDk6",
+  "name": "Linkup",
+  "slug": "linkup",
+  "description": "Production-grade web search API for AI — sourced, cited answers with full-text snippets from trusted sources. REST API, Python/Node SDKs, and MCP server for agent workflows.",
+  "providerName": "Linkup Platform",
+  "providerUrl": "https://linkup.so",
+  "agentUrl": "https://docs.linkup.so",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "web-search",
+    "search-api",
+    "real-time-search",
+    "citations",
+    "grounding",
+    "rag",
+    "llm-search"
+  ],
+  "skills": [
+    {
+      "id": "web-search",
+      "name": "Web Search",
+      "description": "Search the web and return sourced, cited results with full-text snippets tuned for LLM consumption."
+    },
+    {
+      "id": "deep-research",
+      "name": "Deep Research",
+      "description": "Run in-depth research queries that synthesize comprehensive answers from multiple trusted sources with citations."
+    },
+    {
+      "id": "url-fetch",
+      "name": "URL Fetch",
+      "description": "Retrieve and extract clean text content from any web page URL for ingestion into agent context windows."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-05-06T23:49:22.114Z",
+  "updatedAt": "2026-05-06T23:49:22.114Z"
+}

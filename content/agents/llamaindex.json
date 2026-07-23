@@ -1,0 +1,61 @@
+{
+  "id": "1PW7FxuUIlJgWn7GLeCHER",
+  "name": "LlamaIndex",
+  "slug": "llamaindex",
+  "description": "Data framework and cloud platform for LLM apps over private data. Offers parsing, indexing, retrieval, agent workflows, and evaluation across 160+ data sources.",
+  "providerName": "LlamaIndex",
+  "providerUrl": "https://llamaindex.ai",
+  "agentUrl": "https://docs.llamaindex.ai",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "rag",
+    "data-connectors",
+    "llm-applications",
+    "retrieval",
+    "indexing",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "data-ingestion",
+      "name": "Data Ingestion",
+      "description": "Load and parse 160+ data source types including PDFs, databases, APIs, and web pages"
+    },
+    {
+      "id": "vector-indexing",
+      "name": "Vector Indexing",
+      "description": "Index documents into vector stores with configurable chunking and embedding strategies"
+    },
+    {
+      "id": "query-engine",
+      "name": "Query Engine",
+      "description": "Run semantic search and sub-question decomposition over indexed data with one API call"
+    },
+    {
+      "id": "agent-tools",
+      "name": "Agent Tools",
+      "description": "Wrap retrieval pipelines as LLM tools for use in ReAct and function-calling agent loops"
+    },
+    {
+      "id": "rag-eval",
+      "name": "RAG Evaluation",
+      "description": "Evaluate faithfulness, relevancy, and correctness of retrieval-augmented generation pipelines"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-04-13T21:38:18.186Z",
+  "updatedAt": "2026-04-13T21:38:18.186Z"
+}

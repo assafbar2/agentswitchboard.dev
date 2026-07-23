@@ -1,0 +1,50 @@
+{
+  "id": "62uPVzyupp7sXcFbJwkSm7",
+  "name": "Slack MCP",
+  "slug": "slack-mcp",
+  "description": "Official Slack remote MCP server enabling AI agents to search messages, post to channels, read history, create Canvases, and retrieve user profiles via OAuth 2.0.",
+  "providerName": "Slack",
+  "providerUrl": "https://slack.com/",
+  "agentUrl": "https://docs.slack.dev/ai/slack-mcp-server/",
+  "categories": [
+    "communication"
+  ],
+  "tags": [
+    "slack",
+    "messaging",
+    "channels",
+    "canvas",
+    "workspace-search",
+    "enterprise"
+  ],
+  "skills": [
+    {
+      "id": "message-search",
+      "name": "Message Search",
+      "description": "Search Slack messages, files, users, and channels across the workspace using natural language queries via the official Slack API."
+    },
+    {
+      "id": "send-message",
+      "name": "Send Channel Messages",
+      "description": "Post messages to any approved Slack channel or DM on behalf of an authorised user or bot identity."
+    },
+    {
+      "id": "canvas-create",
+      "name": "Create Slack Canvases",
+      "description": "Generate and share formatted Slack Canvas documents containing structured content, summaries, or agent-produced reports."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-05-22T08:28:14.457Z",
+  "updatedAt": "2026-05-22T08:28:14.457Z"
+}

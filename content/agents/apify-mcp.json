@@ -1,0 +1,52 @@
+{
+  "id": "eT98cqh4SFZYvFWbRVaK4",
+  "name": "Apify MCP Server",
+  "slug": "apify-mcp",
+  "description": "Runs thousands of ready-made Apify Actors through an official MCP server — scrape social media, search engines, maps, and e-commerce, then access datasets and run results. MIT, 2k+ GitHub stars.",
+  "providerName": "Apify",
+  "providerUrl": "https://apify.com",
+  "agentUrl": "https://github.com/apify/apify-mcp-server",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "web-scraping",
+    "actors",
+    "data-extraction",
+    "crawling",
+    "mcp",
+    "datasets",
+    "official",
+    "mit-license"
+  ],
+  "skills": [
+    {
+      "id": "actor-execution",
+      "name": "Actor Execution",
+      "description": "Runs any of thousands of Apify Actors with automatic schema validation to scrape or automate a target site."
+    },
+    {
+      "id": "dataset-retrieval",
+      "name": "Dataset Retrieval",
+      "description": "Fetches stored datasets and key-value records from Actor runs so agents can consume the scraped results."
+    },
+    {
+      "id": "rag-web-browser",
+      "name": "RAG Web Browser",
+      "description": "Searches the web through the pre-configured RAG Web Browser and returns page content for grounding."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-07-17T20:41:39.943Z",
+  "updatedAt": "2026-07-17T20:41:39.943Z"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "4AZlhvNFgQBZ3UlgtusB9y",
+  "name": "Snowflake Cortex",
+  "slug": "snowflake-cortex",
+  "description": "AI-powered analytics layer on Snowflake enabling natural language queries, automated insights, and LLM-driven data transformations.",
+  "providerName": "Snowflake",
+  "providerUrl": "https://snowflake.com",
+  "agentUrl": "https://www.snowflake.com/en/data-cloud/cortex/",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "analytics",
+    "sql",
+    "data-warehouse"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-03-22T09:51:32.939Z",
+  "updatedAt": "2026-03-22T09:51:32.939Z"
+}

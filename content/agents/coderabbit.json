@@ -1,0 +1,53 @@
+{
+  "id": "4pNMg4MTm8diW56b2WzR0x",
+  "name": "CodeRabbit",
+  "slug": "coderabbit",
+  "description": "Reviews pull requests with AI across GitHub, GitLab, Azure DevOps, and Bitbucket — flagging bugs, security issues, and style, with fix suggestions and diagrams. Plus IDE plugins and a CLI.",
+  "providerName": "CodeRabbit",
+  "providerUrl": "https://coderabbit.ai",
+  "agentUrl": "https://coderabbit.ai",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "code-review",
+    "pull-requests",
+    "github",
+    "gitlab",
+    "static-analysis",
+    "ide-plugin",
+    "security"
+  ],
+  "skills": [
+    {
+      "id": "ai-pr-review",
+      "name": "AI PR Review",
+      "description": "Reviews pull requests across GitHub, GitLab, Azure DevOps, and Bitbucket, flagging bugs and style issues."
+    },
+    {
+      "id": "fix-suggestions",
+      "name": "Fix Suggestions",
+      "description": "Proposes concrete one-click code fixes and explanations inline on the diff during review."
+    },
+    {
+      "id": "architecture-diagrams",
+      "name": "Architecture Diagrams",
+      "description": "Generates diff summaries and architectural diagrams to explain the impact of a change under review."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "browser-extension"
+  ],
+  "createdAt": "2026-07-06T07:04:12.633Z",
+  "updatedAt": "2026-07-06T07:04:12.633Z"
+}

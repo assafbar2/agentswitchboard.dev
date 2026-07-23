@@ -1,0 +1,50 @@
+{
+  "id": "11NsKFojs6M7v1LRtuoPSY",
+  "name": "Stash",
+  "slug": "stash-memory",
+  "description": "Open-source self-hosted memory layer for AI agents. Gives any agent persistent, semantic memory across sessions — model-agnostic, deployable on your own infrastructure.",
+  "providerName": "Stash OSS",
+  "providerUrl": "https://alash3al.github.io/stash",
+  "agentUrl": "https://alash3al.github.io/stash",
+  "categories": [
+    "memory-state"
+  ],
+  "tags": [
+    "memory-layer",
+    "open-source",
+    "self-hosted",
+    "persistent-memory",
+    "semantic-recall",
+    "model-agnostic"
+  ],
+  "skills": [
+    {
+      "id": "persist-memory",
+      "name": "Persist Memory",
+      "description": "Store agent memories across sessions with automatic expiration controls and priority scoring"
+    },
+    {
+      "id": "semantic-recall",
+      "name": "Semantic Recall",
+      "description": "Retrieve relevant past memories by semantic similarity rather than exact keyword matching alone"
+    },
+    {
+      "id": "self-host",
+      "name": "Self-Hosted Deploy",
+      "description": "Deploy on your own infrastructure for full data ownership with no external memory service dependency"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-04-25T18:50:08.409Z",
+  "updatedAt": "2026-04-25T18:50:08.409Z"
+}

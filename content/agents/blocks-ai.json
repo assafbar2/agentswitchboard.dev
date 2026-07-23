@@ -1,0 +1,53 @@
+{
+  "id": "6kBnC1iLoIxjjZKeF58nHL",
+  "name": "Blocks",
+  "slug": "blocks-ai",
+  "description": "Agent networking platform — connect any agent (CrewAI, LangChain, bare Python) to a public catalog via one SDK call. Callers reach it via API or MCP. 85/15 revenue split.",
+  "providerName": "Blocks AI",
+  "providerUrl": "https://blocks.ai",
+  "agentUrl": "https://blocks.ai/docs",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "agent-network",
+    "agent-publishing",
+    "agent-monetization",
+    "mcp-gateway",
+    "streaming",
+    "crewai",
+    "langchain"
+  ],
+  "skills": [
+    {
+      "id": "agent-connect",
+      "name": "Agent Connect",
+      "description": "Publish any local agent to the Blocks Network with one SDK call — outbound-only, no ports or DNS config needed."
+    },
+    {
+      "id": "mcp-gateway",
+      "name": "MCP Gateway",
+      "description": "Call any Blocks Network agent from Claude Desktop, Cursor, or any MCP-compatible host without extra setup."
+    },
+    {
+      "id": "streaming",
+      "name": "Real-Time Streaming",
+      "description": "Fan out continuous agent output to multiple callers simultaneously with per-minute billing built in."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-05-16T20:07:25.714Z",
+  "updatedAt": "2026-05-16T20:07:25.714Z"
+}

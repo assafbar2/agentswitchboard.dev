@@ -1,0 +1,61 @@
+{
+  "id": "1KEqiMn9xEw5k5GYZg0jdt",
+  "name": "AgentOps",
+  "slug": "agentops",
+  "description": "Observability platform purpose-built for AI agents. Track agent sessions, LLM calls, tool use, and costs. Integrates with LangChain, CrewAI, AutoGen, and OpenAI.",
+  "providerName": "AgentOps",
+  "providerUrl": "https://agentops.ai",
+  "agentUrl": "https://docs.agentops.ai",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "observability",
+    "monitoring",
+    "llm-tracing",
+    "agent-debugging",
+    "langchain",
+    "crewai",
+    "python"
+  ],
+  "skills": [
+    {
+      "id": "record-full-agent-sessions-including-every-llm-call-tool-use-and-state-transition",
+      "name": "Record full agent sessions including every LLM call, tool use, and state transition",
+      "description": "Record full agent sessions including every LLM call, tool use, and state transition"
+    },
+    {
+      "id": "track-token-usage-and-costs-per-agent-run-across-all-major-llm-providers",
+      "name": "Track token usage and costs per agent run across all major LLM providers",
+      "description": "Track token usage and costs per agent run across all major LLM providers"
+    },
+    {
+      "id": "monitor-tool-execution-timing-and-failures-to-diagnose-agent-bottlenecks",
+      "name": "Monitor tool execution timing and failures to diagnose agent bottlenecks",
+      "description": "Monitor tool execution timing and failures to diagnose agent bottlenecks"
+    },
+    {
+      "id": "replay-any-agent-session-step-by-step-for-debugging-and-root-cause-analysis",
+      "name": "Replay any agent session step-by-step for debugging and root cause analysis",
+      "description": "Replay any agent session step-by-step for debugging and root cause analysis"
+    },
+    {
+      "id": "integrate-with-langchain-crewai-autogen-and-openai-sdk-in-two-lines-of-code",
+      "name": "Integrate with LangChain, CrewAI, AutoGen, and OpenAI SDK in two lines of code",
+      "description": "Integrate with LangChain, CrewAI, AutoGen, and OpenAI SDK in two lines of code"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-04-08T07:17:21.212Z",
+  "updatedAt": "2026-07-10T21:05:29.704Z"
+}

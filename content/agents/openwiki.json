@@ -1,0 +1,52 @@
+{
+  "id": "6c6fSLWd3ceEU366NGNfqo",
+  "name": "OpenWiki",
+  "slug": "openwiki",
+  "description": "Writes and maintains agent-readable documentation for your codebase from the command line. A LangChain CLI that generates structured wikis coding agents can consult for context. 12k+ stars, MIT.",
+  "providerName": "LangChain",
+  "providerUrl": "https://langchain.com",
+  "agentUrl": "https://github.com/langchain-ai/openwiki",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "documentation",
+    "codebase",
+    "coding-agent",
+    "cli",
+    "langchain",
+    "context",
+    "auto-docs",
+    "mit-license"
+  ],
+  "skills": [
+    {
+      "id": "doc-generation",
+      "name": "Documentation Generation",
+      "description": "Scans a repository and generates structured, agent-readable documentation describing modules, APIs, and architecture."
+    },
+    {
+      "id": "doc-maintenance",
+      "name": "Documentation Maintenance",
+      "description": "Detects code changes and updates the generated wiki so agent context stays in sync with the codebase."
+    },
+    {
+      "id": "context-retrieval",
+      "name": "Agent Context Retrieval",
+      "description": "Provides coding agents with concise, queryable docs to ground their edits in the project's real structure."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-07-17T20:41:10.138Z",
+  "updatedAt": "2026-07-17T20:41:10.138Z"
+}

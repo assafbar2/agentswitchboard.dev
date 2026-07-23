@@ -7,12 +7,12 @@
  * Stdio-only clients: npx -y mcp-remote https://agentswitchboard.dev/api/mcp
  *
  * Tools are read-only views over the same cached catalog that powers the
- * site (lib/contentful.ts), so MCP results always match the web directory.
+ * site (lib/catalog.ts), so MCP results always match the web directory.
  */
 
 import { createMcpHandler } from 'mcp-handler';
 import { z } from 'zod';
-import { getEveryAgent, getAllCategories } from '@/lib/contentful';
+import { getEveryAgent, getAllCategories } from '@/lib/catalog';
 import { searchAgents, ALL_ACCESS_METHODS } from '@/lib/search';
 import type { Agent } from '@/lib/types';
 

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { getEveryAgent, getAllCategories } from '@/lib/contentful';
+import { getEveryAgent, getAllCategories } from '@/lib/catalog';
 
 export const revalidate = 3600; // regenerate every hour
 

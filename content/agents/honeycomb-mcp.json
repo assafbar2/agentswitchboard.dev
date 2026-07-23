@@ -1,0 +1,50 @@
+{
+  "id": "ExHIRLiRdPaBVtUPiWjzW",
+  "name": "Honeycomb MCP",
+  "slug": "honeycomb-mcp",
+  "description": "Hosted MCP server letting AI assistants query Honeycomb observability data, analyse telemetry datasets, inspect alerts, and cross-reference production traces with code.",
+  "providerName": "Honeycomb",
+  "providerUrl": "https://honeycomb.io/",
+  "agentUrl": "https://docs.honeycomb.io/integrations/mcp",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "observability",
+    "telemetry",
+    "dashboards",
+    "alerts",
+    "production-debugging",
+    "tracing"
+  ],
+  "skills": [
+    {
+      "id": "dataset-query",
+      "name": "Query Observability Data",
+      "description": "Run natural language queries against Honeycomb datasets across multiple environments and return structured telemetry results."
+    },
+    {
+      "id": "alert-analysis",
+      "name": "Alert and Dashboard Analysis",
+      "description": "Retrieve and summarise active alerts, SLOs, and dashboards to help AI assistants diagnose production incidents in context."
+    },
+    {
+      "id": "code-cross-ref",
+      "name": "Code-Production Cross-Reference",
+      "description": "Correlate live production behaviour from Honeycomb traces with the codebase to surface likely root-cause code paths."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-05-22T08:28:12.067Z",
+  "updatedAt": "2026-07-17T19:37:44.649Z"
+}

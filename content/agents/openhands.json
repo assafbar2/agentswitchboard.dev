@@ -1,0 +1,53 @@
+{
+  "id": "74PDPAgcKCzD30uehkDD24",
+  "name": "OpenHands",
+  "slug": "openhands",
+  "description": "Software engineering agent platform — runs in sandboxed Docker containers, edits code, runs tests, fixes bugs, and opens PRs. REST API and WebSocket for remote access.",
+  "providerName": "All Hands AI",
+  "providerUrl": "https://www.all-hands.dev",
+  "agentUrl": "https://docs.all-hands.dev",
+  "categories": [
+    "code-devtools",
+    "browser-computer"
+  ],
+  "tags": [
+    "software-agent",
+    "code-execution",
+    "github-integration",
+    "sandboxed",
+    "docker",
+    "ai-developer",
+    "websocket-api"
+  ],
+  "skills": [
+    {
+      "id": "code-agent",
+      "name": "Code Agent",
+      "description": "Autonomously write, edit, run, and test code across entire codebases in an isolated Docker container."
+    },
+    {
+      "id": "github-integration",
+      "name": "GitHub Integration",
+      "description": "Resolve GitHub issues end-to-end: branch, commit, push, and open pull requests automatically."
+    },
+    {
+      "id": "remote-api",
+      "name": "Remote API Access",
+      "description": "Drive OpenHands agents programmatically via REST API and WebSocket for CI/CD and tooling integration."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-05-13T16:56:36.959Z",
+  "updatedAt": "2026-05-13T16:56:36.959Z"
+}

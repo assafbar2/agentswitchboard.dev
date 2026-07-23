@@ -1,0 +1,56 @@
+{
+  "id": "60ISz6GaUsPmrTws8zbCBj",
+  "name": "Neon MCP",
+  "slug": "neon-mcp",
+  "description": "Official Neon MCP server for creating and managing serverless Postgres databases from AI coding agents. Full SQL, branching, schema operations, and pgvector support.",
+  "providerName": "Neon",
+  "providerUrl": "https://neon.tech",
+  "agentUrl": "https://github.com/neondatabase/mcp-server-neon",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "mcp",
+    "postgres",
+    "serverless-database",
+    "neon",
+    "branching",
+    "schema-management",
+    "pgvector"
+  ],
+  "skills": [
+    {
+      "id": "db-create",
+      "name": "Database Creation",
+      "description": "Create new Neon serverless Postgres databases and branches directly from an AI agent via MCP"
+    },
+    {
+      "id": "sql-query",
+      "name": "SQL Query",
+      "description": "Execute SQL queries, DDL statements, and transactions against Neon Postgres via MCP tools"
+    },
+    {
+      "id": "db-branch",
+      "name": "Database Branching",
+      "description": "Create instant Neon database branches for dev and testing without copying data or extra cost"
+    },
+    {
+      "id": "schema-ops",
+      "name": "Schema Operations",
+      "description": "Inspect and modify table schemas, indexes, and constraints in Neon databases via MCP tools"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-04-25T19:07:17.190Z",
+  "updatedAt": "2026-04-25T19:07:17.190Z"
+}
