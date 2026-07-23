@@ -66,7 +66,7 @@ export default async function HomePage() {
       {/* ── Human view ─────────────────────────────────────────────── */}
       <div className="human-only">
         {/* ── Hero ──────────────────────────────────────────────────── */}
-        <section className="pt-14 pb-8 relative overflow-hidden">
+        <section className="pt-6 sm:pt-8 pb-8 relative overflow-hidden">
           {/* Top gradient wash */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[var(--accent)] opacity-[0.04] blur-[120px] rounded-full pointer-events-none" />
 
