@@ -1,0 +1,52 @@
+{
+  "id": "746vRgvdFuIOnCxobbwAdl",
+  "name": "Repomix",
+  "slug": "repomix",
+  "description": "Packs an entire repository into a single AI-friendly file for LLM ingestion, with token counting, filtering, and secret redaction. Optional MCP server. Open source.",
+  "providerName": "Repomix",
+  "providerUrl": "https://repomix.com",
+  "agentUrl": "https://github.com/yamadashy/repomix",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "repo-packing",
+    "llm-context",
+    "token-counting",
+    "secret-redaction",
+    "mcp",
+    "open-source",
+    "cli"
+  ],
+  "skills": [
+    {
+      "id": "repo-packing",
+      "name": "Repo Packing",
+      "description": "Packs an entire repository into a single structured file optimized for feeding into an LLM."
+    },
+    {
+      "id": "token-counting",
+      "name": "Token Counting",
+      "description": "Counts tokens per file and for the whole pack so you can fit context within model limits."
+    },
+    {
+      "id": "secret-redaction",
+      "name": "Secret Redaction",
+      "description": "Detects and redacts secrets and lets you filter files so sensitive data stays out of the output."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-07-06T07:04:25.534Z",
+  "updatedAt": "2026-07-06T07:04:25.534Z"
+}

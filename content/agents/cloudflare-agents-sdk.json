@@ -1,0 +1,63 @@
+{
+  "id": "179Bi5GmRVfMQdeZ3Rk63M",
+  "name": "Cloudflare Agents SDK",
+  "slug": "cloudflare-agents-sdk",
+  "description": "TypeScript SDK for building stateful AI agents on Cloudflare Durable Objects. Built-in SQL state, WebSocket, task scheduling, MCP client/server, and browser tools.",
+  "providerName": "Cloudflare",
+  "providerUrl": "https://cloudflare.com",
+  "agentUrl": "https://developers.cloudflare.com/agents/",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "sdk",
+    "cloudflare",
+    "durable-objects",
+    "stateful-agents",
+    "mcp",
+    "typescript",
+    "serverless"
+  ],
+  "skills": [
+    {
+      "id": "stateful-agents",
+      "name": "Stateful Agents",
+      "description": "Build agents with persistent SQL state in Durable Objects that survives restarts and scales globally"
+    },
+    {
+      "id": "mcp-built-in",
+      "name": "MCP Client & Server",
+      "description": "Ship MCP servers and connect to MCP tools from inside your agent with built-in protocol support"
+    },
+    {
+      "id": "task-scheduling",
+      "name": "Task Scheduling",
+      "description": "Schedule tasks and crons natively inside your Durable Object agent with zero external dependencies"
+    },
+    {
+      "id": "browser-tools",
+      "name": "Browser Tools",
+      "description": "Give your agent browser access for web scraping using Cloudflare Browser Rendering integration"
+    },
+    {
+      "id": "deploy-cli",
+      "name": "Deploy via CLI",
+      "description": "Deploy agents globally with npx create-cloudflare and wrangler deploy — no server configuration needed"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-04-25T18:49:51.317Z",
+  "updatedAt": "2026-07-10T21:05:53.017Z"
+}

@@ -1,0 +1,53 @@
+{
+  "id": "2HxHLKnBFqRezRg6y9Js3f",
+  "name": "AnythingLLM",
+  "slug": "anything-llm",
+  "description": "Runs an all-in-one, self-hosted RAG and agents app: chat with documents, build agents, and connect tools via MCP. Desktop and Docker with an API. By Mintplex Labs.",
+  "providerName": "Mintplex Labs",
+  "providerUrl": "https://anythingllm.com",
+  "agentUrl": "https://github.com/Mintplex-Labs/anything-llm",
+  "categories": [
+    "research",
+    "code-devtools"
+  ],
+  "tags": [
+    "rag",
+    "self-hosted",
+    "document-chat",
+    "mcp",
+    "open-source",
+    "desktop"
+  ],
+  "skills": [
+    {
+      "id": "document-rag",
+      "name": "Document RAG",
+      "description": "Ingests documents into a private workspace and answers questions over them with cited retrieval."
+    },
+    {
+      "id": "no-code-agents",
+      "name": "No-Code Agents",
+      "description": "Builds custom agents with tools and workflows through a no-code interface over your own data."
+    },
+    {
+      "id": "mcp-tool-access",
+      "name": "MCP Tool Access",
+      "description": "Connects external tools and data sources via MCP so agents can act beyond the knowledge base."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-07-06T07:04:13.825Z",
+  "updatedAt": "2026-07-06T07:04:13.825Z"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "1DwmkgwE9krrlS75iTVbSn",
+  "name": "TikTok Ads MCP",
+  "slug": "tiktok-ads-mcp",
+  "description": "Official TikTok MCP server letting AI agents create, manage, and optimise ad campaigns, bids, budgets, and creatives autonomously on the TikTok Ads platform.",
+  "providerName": "TikTok",
+  "providerUrl": "https://tiktok.com/",
+  "agentUrl": "https://ads.tiktok.com/marketing_api/docs",
+  "categories": [
+    "sales-marketing"
+  ],
+  "tags": [
+    "tiktok",
+    "ad-campaigns",
+    "creative-management",
+    "bid-optimization",
+    "social-advertising",
+    "campaign-automation"
+  ],
+  "skills": [
+    {
+      "id": "campaign-create",
+      "name": "Create Ad Campaigns",
+      "description": "Instantiate TikTok ad campaigns with targeting parameters, creative assets, budget, and bidding strategy through an AI agent interface."
+    },
+    {
+      "id": "bid-optimize",
+      "name": "Bid and Budget Optimisation",
+      "description": "Adjust bids, shift budgets between ad groups, and respond to performance signals without manual intervention from a media buyer."
+    },
+    {
+      "id": "analytics-report",
+      "name": "Campaign Analytics Report",
+      "description": "Retrieve campaign, ad group, and ad-level performance reports including reach, CPM, CTR, and conversion metrics for any date range."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-05-22T08:28:16.766Z",
+  "updatedAt": "2026-05-22T08:28:16.766Z"
+}

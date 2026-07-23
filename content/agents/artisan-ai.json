@@ -1,0 +1,33 @@
+{
+  "id": "1Rt2fudTWm99jNVJ6snsyT",
+  "name": "Artisan AI",
+  "slug": "artisan-ai",
+  "description": "Deploys Ava, an AI BDR that sources leads from 250M+ B2B contacts, sends personalized multi-channel sequences, handles replies, and books meetings.",
+  "providerName": "Artisan",
+  "providerUrl": "https://www.artisan.co/",
+  "agentUrl": "https://www.artisan.co/",
+  "categories": [
+    "sales-marketing"
+  ],
+  "tags": [
+    "sdr",
+    "outbound",
+    "lead-generation",
+    "b2b",
+    "sales-automation"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-05-22T07:35:19.306Z",
+  "updatedAt": "2026-05-22T07:35:19.306Z"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "8wO6DWiiRBciVonOrHYf0",
+  "name": "LibreChat",
+  "slug": "librechat",
+  "description": "Self-hosts an open ChatGPT-style platform with custom Agents, MCP tools, Code Interpreter, and multi-provider models. Exposes OpenAPI actions and an API for programmatic use. 40k+ stars, MIT.",
+  "providerName": "Danny Avila",
+  "providerUrl": "https://librechat.ai",
+  "agentUrl": "https://github.com/danny-avila/LibreChat",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "self-hosted",
+    "mcp",
+    "code-interpreter",
+    "multi-provider",
+    "openapi",
+    "chat-platform",
+    "mit-license"
+  ],
+  "skills": [
+    {
+      "id": "custom-agents",
+      "name": "Custom Agents",
+      "description": "Builds no-code agents that combine models, MCP tools, and OpenAPI actions for repeatable multi-step tasks."
+    },
+    {
+      "id": "mcp-tools",
+      "name": "MCP Tools",
+      "description": "Connects agents to external systems through Model Context Protocol servers configured per deployment."
+    },
+    {
+      "id": "code-interpreter",
+      "name": "Code Interpreter",
+      "description": "Runs generated code in a secure sandbox to analyze data, produce files, and return results in chat."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-07-17T20:41:20.001Z",
+  "updatedAt": "2026-07-17T20:41:20.001Z"
+}

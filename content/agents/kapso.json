@@ -1,0 +1,60 @@
+{
+  "id": "6uyv47LwfmAW5tc9b38gEI",
+  "name": "Kapso",
+  "slug": "kapso",
+  "description": "WhatsApp AI agent platform. Build and deploy conversational agents on WhatsApp Business API with no-code flows, LLM integration, and CRM connectors.",
+  "providerName": "Kapso",
+  "providerUrl": "https://kapso.io",
+  "agentUrl": "https://kapso.io/docs",
+  "categories": [
+    "voice-messaging"
+  ],
+  "tags": [
+    "whatsapp",
+    "conversational-ai",
+    "messaging",
+    "no-code",
+    "crm",
+    "customer-engagement"
+  ],
+  "skills": [
+    {
+      "id": "deploy-ai-agents-on-whatsapp-business-api-with-official-meta-compliance",
+      "name": "Deploy AI agents on WhatsApp Business API with official Meta compliance",
+      "description": "Deploy AI agents on WhatsApp Business API with official Meta compliance"
+    },
+    {
+      "id": "build-conversation-flows-visually-without-code-using-a-drag-and-drop-flow-editor",
+      "name": "Build conversation flows visually without code using a drag-and-drop flow editor",
+      "description": "Build conversation flows visually without code using a drag-and-drop flow editor"
+    },
+    {
+      "id": "power-agent-responses-with-any-llm-via-configurable-prompts-and-retrieval",
+      "name": "Power agent responses with any LLM via configurable prompts and retrieval",
+      "description": "Power agent responses with any LLM via configurable prompts and retrieval"
+    },
+    {
+      "id": "sync-customer-data-bi-directionally-with-connected-crm-platforms",
+      "name": "Sync customer data bi-directionally with connected CRM platforms",
+      "description": "Sync customer data bi-directionally with connected CRM platforms"
+    },
+    {
+      "id": "serve-agents-in-multiple-languages-with-automatic-language-detection",
+      "name": "Serve agents in multiple languages with automatic language detection",
+      "description": "Serve agents in multiple languages with automatic language detection"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-04-08T07:17:19.746Z",
+  "updatedAt": "2026-04-08T07:17:19.746Z"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "7HGEkffJCdxFOyai6fzHal",
+  "name": "GPT-Pilot",
+  "slug": "gpt-pilot",
+  "description": "AI software developer agent that builds full applications from scratch — specifies requirements, scaffolds architecture, writes code, runs tests, and requests human review.",
+  "providerName": "Pythagora",
+  "providerUrl": "https://pythagora.ai/",
+  "agentUrl": "https://github.com/Pythagora-io/gpt-pilot",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "software-development",
+    "vs-code-extension",
+    "code-generation",
+    "testing",
+    "full-stack",
+    "yc-backed"
+  ],
+  "skills": [
+    {
+      "id": "app-scaffold",
+      "name": "App Scaffolding",
+      "description": "Generate a full application skeleton from a natural language description, including file structure, dependencies, and initial implementation."
+    },
+    {
+      "id": "iterative-debug",
+      "name": "Iterative Debugging",
+      "description": "Run existing test suites, identify failures, implement fixes, and iterate until tests pass while requesting human review at each stage."
+    },
+    {
+      "id": "multi-llm",
+      "name": "Multi-LLM Support",
+      "description": "Configure OpenAI, Anthropic Claude, Groq, or Azure as the underlying model provider without changing any application code."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-05-22T08:28:01.212Z",
+  "updatedAt": "2026-05-22T08:28:01.212Z"
+}

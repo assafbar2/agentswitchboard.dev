@@ -1,0 +1,52 @@
+{
+  "id": "2ImiMtJZrv6lukk7MRb8A4",
+  "name": "OfficeCLI",
+  "slug": "office-cli",
+  "description": "Reads, edits, and creates Word, Excel, and PowerPoint files from the command line with no Office install — a single binary built for AI agents to automate documents. 18k+ GitHub stars, Apache-2.0.",
+  "providerName": "iOfficeAI",
+  "providerUrl": "https://github.com/iOfficeAI",
+  "agentUrl": "https://github.com/iOfficeAI/OfficeCLI",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "office",
+    "word",
+    "excel",
+    "powerpoint",
+    "document-automation",
+    "cli",
+    "single-binary",
+    "apache-2-0"
+  ],
+  "skills": [
+    {
+      "id": "edit-word",
+      "name": "Word Document Editing",
+      "description": "Reads and edits .docx files including text, styles, tables, and images programmatically without a Microsoft Office install."
+    },
+    {
+      "id": "excel-automation",
+      "name": "Excel Automation",
+      "description": "Creates and modifies .xlsx spreadsheets including cells, formulas, and sheets for agent-driven data workflows."
+    },
+    {
+      "id": "powerpoint-generation",
+      "name": "PowerPoint Generation",
+      "description": "Generates and updates .pptx slide decks so agents can assemble presentations from structured input data."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-07-17T20:40:52.179Z",
+  "updatedAt": "2026-07-17T20:40:52.179Z"
+}

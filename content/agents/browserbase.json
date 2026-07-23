@@ -1,0 +1,60 @@
+{
+  "id": "2UFT2fni1Sfsg7qpzMO3m5",
+  "name": "Browserbase",
+  "slug": "browserbase",
+  "description": "Managed headless browser infrastructure for AI agents. Run Playwright or Puppeteer at scale with built-in proxies, CAPTCHA solving, and session management.",
+  "providerName": "Browserbase",
+  "providerUrl": "https://browserbase.com",
+  "agentUrl": "https://docs.browserbase.com",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "browser-automation",
+    "headless-browser",
+    "playwright",
+    "puppeteer",
+    "web-scraping",
+    "ai-agents"
+  ],
+  "skills": [
+    {
+      "id": "spin-up-managed-headless-browser-sessions-with-playwright-or-puppeteer-in-seconds",
+      "name": "Spin up managed headless browser sessions with Playwright or Puppeteer in seconds",
+      "description": "Spin up managed headless browser sessions with Playwright or Puppeteer in seconds"
+    },
+    {
+      "id": "rotate-residential-proxies-automatically-to-avoid-blocks-on-target-websites",
+      "name": "Rotate residential proxies automatically to avoid blocks on target websites",
+      "description": "Rotate residential proxies automatically to avoid blocks on target websites"
+    },
+    {
+      "id": "solve-captchas-and-handle-bot-detection-challenges-on-behalf-of-agents",
+      "name": "Solve CAPTCHAs and handle bot-detection challenges on behalf of agents",
+      "description": "Solve CAPTCHAs and handle bot-detection challenges on behalf of agents"
+    },
+    {
+      "id": "scrape-and-interact-with-web-pages-at-scale-with-parallel-session-management",
+      "name": "Scrape and interact with web pages at scale with parallel session management",
+      "description": "Scrape and interact with web pages at scale with parallel session management"
+    },
+    {
+      "id": "maintain-persistent-browser-state-including-cookies-and-local-storage-across-runs",
+      "name": "Maintain persistent browser state including cookies and local storage across runs",
+      "description": "Maintain persistent browser state including cookies and local storage across runs"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-04-08T07:17:08.269Z",
+  "updatedAt": "2026-07-10T21:05:34.200Z"
+}

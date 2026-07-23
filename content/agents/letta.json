@@ -1,0 +1,62 @@
+{
+  "id": "5pKTqTJH3N7JiO6SP1XO6Y",
+  "name": "Letta",
+  "slug": "letta",
+  "description": "Stateful agent framework with built-in memory. Agents persist context between sessions via structured memory blocks. Formerly MemGPT. Self-hosted or managed cloud.",
+  "providerName": "Letta",
+  "providerUrl": "https://letta.ai",
+  "agentUrl": "https://docs.letta.com",
+  "categories": [
+    "memory-state"
+  ],
+  "tags": [
+    "memory",
+    "stateful-agents",
+    "memgpt",
+    "open-source",
+    "self-hosted",
+    "python",
+    "orchestration"
+  ],
+  "skills": [
+    {
+      "id": "persist-agent-state-between-sessions-using-structured-in-context-memory-blocks",
+      "name": "Persist agent state between sessions using structured in-context memory blocks",
+      "description": "Persist agent state between sessions using structured in-context memory blocks"
+    },
+    {
+      "id": "dynamically-edit-and-archive-memory-to-maintain-coherent-long-horizon-agent-behavior",
+      "name": "Dynamically edit and archive memory to maintain coherent long-horizon agent behavior",
+      "description": "Dynamically edit and archive memory to maintain coherent long-horizon agent behavior"
+    },
+    {
+      "id": "orchestrate-multi-agent-pipelines-where-agents-pass-typed-memory-between-each-other",
+      "name": "Orchestrate multi-agent pipelines where agents pass typed memory between each other",
+      "description": "Orchestrate multi-agent pipelines where agents pass typed memory between each other"
+    },
+    {
+      "id": "execute-tool-calls-with-full-persistence-of-tool-outputs-across-sessions",
+      "name": "Execute tool calls with full persistence of tool outputs across sessions",
+      "description": "Execute tool calls with full persistence of tool outputs across sessions"
+    },
+    {
+      "id": "deploy-self-hosted-or-cloud-agents-with-consistent-stateful-behavior-at-scale",
+      "name": "Deploy self-hosted or cloud agents with consistent stateful behavior at scale",
+      "description": "Deploy self-hosted or cloud agents with consistent stateful behavior at scale"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-04-08T07:17:04.076Z",
+  "updatedAt": "2026-07-17T19:37:47.404Z"
+}

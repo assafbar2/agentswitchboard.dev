@@ -1,0 +1,52 @@
+{
+  "id": "49du2ilhvdqdBCtv7nxPfj",
+  "name": "Skybridge",
+  "slug": "skybridge",
+  "description": "Builds interactive MCP Apps that render inside Claude and ChatGPT using a full-stack open-source React framework. Ships UI components, routing, and state for agent-facing apps.",
+  "providerName": "Skybridge",
+  "providerUrl": "https://skybridge.tech",
+  "agentUrl": "https://skybridge.tech",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "mcp-apps",
+    "react",
+    "framework",
+    "interactive-ui",
+    "open-source",
+    "claude",
+    "chatgpt"
+  ],
+  "skills": [
+    {
+      "id": "mcp-app-framework",
+      "name": "MCP App Framework",
+      "description": "Provides a full-stack React framework for building MCP Apps with routing, state, and server components."
+    },
+    {
+      "id": "interactive-ui",
+      "name": "Interactive UI Components",
+      "description": "Ships prebuilt interactive UI components that render inside Claude and ChatGPT agent surfaces."
+    },
+    {
+      "id": "in-chat-rendering",
+      "name": "In-Chat Rendering",
+      "description": "Renders live app views directly inside the chat client so users interact without leaving the conversation."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-07-06T07:04:05.442Z",
+  "updatedAt": "2026-07-06T07:04:05.442Z"
+}

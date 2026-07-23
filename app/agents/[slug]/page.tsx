@@ -1,4 +1,4 @@
-import { getAgentBySlug, getEveryAgent } from '@/lib/contentful';
+import { getAgentBySlug, getEveryAgent } from '@/lib/catalog';
 import { Badge } from '@/components/ui/Badge';
 import { AgentCard } from '@/components/AgentCard';
 import { JsonLd } from '@/components/JsonLd';

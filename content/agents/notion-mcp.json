@@ -1,0 +1,60 @@
+{
+  "id": "6AxKC9DqKhF91ffNaXhwyk",
+  "name": "Notion MCP",
+  "slug": "notion-mcp",
+  "description": "Official Notion MCP server. Lets AI agents search, read, create, and update Notion pages, databases, and blocks via Model Context Protocol — full workspace access.",
+  "providerName": "Notion",
+  "providerUrl": "https://notion.so",
+  "agentUrl": "https://developers.notion.com/docs/mcp",
+  "categories": [
+    "scheduling"
+  ],
+  "tags": [
+    "mcp",
+    "notion",
+    "knowledge-management",
+    "pages",
+    "databases",
+    "workspace"
+  ],
+  "skills": [
+    {
+      "id": "page-search",
+      "name": "Page Search",
+      "description": "Search across Notion workspace pages and databases with keyword and filter queries"
+    },
+    {
+      "id": "page-create",
+      "name": "Page Create",
+      "description": "Create new Notion pages with rich content blocks including text, tables, and embeds"
+    },
+    {
+      "id": "db-query",
+      "name": "Database Query",
+      "description": "Query Notion databases with filters, sorts, and property projections via MCP"
+    },
+    {
+      "id": "block-edit",
+      "name": "Block Editing",
+      "description": "Append, update, and delete content blocks within any Notion page programmatically"
+    },
+    {
+      "id": "property-update",
+      "name": "Property Update",
+      "description": "Update database item properties including relations, selects, dates, and formulas"
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-04-13T21:38:37.853Z",
+  "updatedAt": "2026-04-13T21:38:37.853Z"
+}

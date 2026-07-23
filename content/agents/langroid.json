@@ -1,0 +1,50 @@
+{
+  "id": "25sYV80TcdeIpvSBCetns0",
+  "name": "Langroid",
+  "slug": "langroid",
+  "description": "Lightweight Python multi-agent framework from CMU and UW-Madison where agents are first-class objects with task delegation, vector stores, tool use, and LLM flexibility.",
+  "providerName": "Langroid",
+  "providerUrl": "https://github.com/langroid/langroid",
+  "agentUrl": "https://langroid.github.io/langroid/",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "multi-agent",
+    "python",
+    "task-delegation",
+    "vector-store",
+    "llm-agnostic",
+    "research"
+  ],
+  "skills": [
+    {
+      "id": "task-delegate",
+      "name": "Agent Task Delegation",
+      "description": "Define agents that delegate sub-tasks to specialised child agents and aggregate results via a principled multi-agent task graph."
+    },
+    {
+      "id": "tool-use",
+      "name": "Agent Tool Use",
+      "description": "Equip agents with typed tools using Pydantic schemas so agents can call functions, APIs, or databases and handle responses in a structured loop."
+    },
+    {
+      "id": "vector-rag",
+      "name": "Vector Store RAG",
+      "description": "Connect agents to built-in vector store support for document retrieval-augmented generation across LanceDB, Chroma, Qdrant, and others."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-05-22T08:28:06.243Z",
+  "updatedAt": "2026-05-22T08:28:06.243Z"
+}

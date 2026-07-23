@@ -1,0 +1,52 @@
+{
+  "id": "1NfU918X7Y9lNQuEmb3SNz",
+  "name": "X MCP Server",
+  "slug": "x-mcp",
+  "description": "Connects AI assistants to the X (Twitter) API via an official hosted MCP server. Exposes 200+ read-only endpoints for post search, timeline reads, profile lookups, and trend analysis. No write access.",
+  "providerName": "X",
+  "providerUrl": "https://x.com",
+  "agentUrl": "https://devcommunity.x.com/t/announcing-the-hosted-x-mcp/269558",
+  "categories": [
+    "communication"
+  ],
+  "tags": [
+    "x",
+    "twitter",
+    "social-media",
+    "mcp",
+    "hosted",
+    "read-only",
+    "official",
+    "oauth"
+  ],
+  "skills": [
+    {
+      "id": "post-search",
+      "name": "Post Search",
+      "description": "Searches public X posts and returns matching results with author, engagement, and timestamp metadata for analysis."
+    },
+    {
+      "id": "timeline-reads",
+      "name": "Timeline Reads",
+      "description": "Reads a user's home and profile timelines using their own account permissions granted through OAuth authorization."
+    },
+    {
+      "id": "trend-analysis",
+      "name": "Trend Analysis",
+      "description": "Surfaces trending topics and conversation activity so agents can monitor real-time signals on the platform."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-07-17T20:40:50.963Z",
+  "updatedAt": "2026-07-17T20:40:50.963Z"
+}

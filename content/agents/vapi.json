@@ -1,0 +1,61 @@
+{
+  "id": "2XJZqS2zHjjteoW5P2fVuG",
+  "name": "Vapi",
+  "slug": "vapi",
+  "description": "Voice AI platform for building production phone agents. Handles real-time STT, TTS, turn-taking, and LLM orchestration. Scalable to millions of concurrent calls.",
+  "providerName": "Vapi",
+  "providerUrl": "https://vapi.ai",
+  "agentUrl": "https://docs.vapi.ai",
+  "categories": [
+    "voice-messaging"
+  ],
+  "tags": [
+    "voice-ai",
+    "phone-agents",
+    "stt",
+    "tts",
+    "real-time",
+    "conversational-ai",
+    "telephony"
+  ],
+  "skills": [
+    {
+      "id": "build-production-voice-agents-for-inbound-and-outbound-phone-calls-with-sub-500ms-latency",
+      "name": "Build production voice agents for inbound and outbound phone calls with sub-500ms latency",
+      "description": "Build production voice agents for inbound and outbound phone calls with sub-500ms latency"
+    },
+    {
+      "id": "clone-custom-voices-or-choose-from-dozens-of-built-in-tts-providers-per-call",
+      "name": "Clone custom voices or choose from dozens of built-in TTS providers per call",
+      "description": "Clone custom voices or choose from dozens of built-in TTS providers per call"
+    },
+    {
+      "id": "record-transcribe-and-analyze-every-call-with-structured-json-summaries",
+      "name": "Record, transcribe, and analyze every call with structured JSON summaries",
+      "description": "Record, transcribe, and analyze every call with structured JSON summaries"
+    },
+    {
+      "id": "route-calls-to-different-llms-and-prompts-based-on-caller-intent-and-context",
+      "name": "Route calls to different LLMs and prompts based on caller intent and context",
+      "description": "Route calls to different LLMs and prompts based on caller intent and context"
+    },
+    {
+      "id": "launch-outbound-call-campaigns-targeting-thousands-of-numbers-with-parallel-dialing",
+      "name": "Launch outbound call campaigns targeting thousands of numbers with parallel dialing",
+      "description": "Launch outbound call campaigns targeting thousands of numbers with parallel dialing"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-04-08T07:17:18.341Z",
+  "updatedAt": "2026-07-10T21:07:14.220Z"
+}

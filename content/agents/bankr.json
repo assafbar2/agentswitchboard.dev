@@ -1,0 +1,52 @@
+{
+  "id": "2A1MKQkzsfE4hZPMv1jeYe",
+  "name": "Bankr",
+  "slug": "bankr",
+  "description": "Executes onchain trading, wallet management, and automation from a natural-language terminal across 9 chains, including Hyperliquid. Works from external agent harnesses via Skills.",
+  "providerName": "Bankr",
+  "providerUrl": "https://bankr.bot",
+  "agentUrl": "https://bankr.bot",
+  "categories": [
+    "finance",
+    "commerce-payments"
+  ],
+  "tags": [
+    "onchain",
+    "crypto-trading",
+    "wallet",
+    "hyperliquid",
+    "defi",
+    "agent-skills"
+  ],
+  "skills": [
+    {
+      "id": "onchain-trading",
+      "name": "Onchain Trading",
+      "description": "Executes trades and swaps across 9 chains including full Hyperliquid support from natural language."
+    },
+    {
+      "id": "wallet-management",
+      "name": "Wallet Management",
+      "description": "Manages onchain wallets, balances, and transfers on behalf of the user or an agent."
+    },
+    {
+      "id": "trading-automation",
+      "name": "Trading Automation",
+      "description": "Automates recurring onchain actions and strategies callable from external agent harnesses."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-07-06T07:04:29.140Z",
+  "updatedAt": "2026-07-06T07:04:29.140Z"
+}

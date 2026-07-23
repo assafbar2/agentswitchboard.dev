@@ -1,0 +1,60 @@
+{
+  "id": "2whTYPSNYdea8gdG9D9bDw",
+  "name": "Pipedream MCP",
+  "slug": "pipedream-mcp",
+  "description": "Pipedream's MCP server exposes 2,400+ app integrations as tools for AI agents — connect Slack, GitHub, databases, and APIs without writing integration code.",
+  "providerName": "Pipedream",
+  "providerUrl": "https://pipedream.com",
+  "agentUrl": "https://pipedream.com/docs/mcp",
+  "categories": [
+    "scheduling"
+  ],
+  "tags": [
+    "mcp",
+    "integrations",
+    "workflow-automation",
+    "api-connectors",
+    "multi-app",
+    "no-code"
+  ],
+  "skills": [
+    {
+      "id": "app-integrations",
+      "name": "App Integrations",
+      "description": "Access 2,400+ pre-built app integrations as MCP tools with managed OAuth credentials"
+    },
+    {
+      "id": "workflow-trigger",
+      "name": "Workflow Trigger",
+      "description": "Trigger Pipedream workflows from an AI agent and receive structured step results"
+    },
+    {
+      "id": "data-transform",
+      "name": "Data Transform",
+      "description": "Run data transformation steps between API calls without writing glue code"
+    },
+    {
+      "id": "event-sources",
+      "name": "Event Sources",
+      "description": "Subscribe to real-time event streams from apps like GitHub, Stripe, and Slack"
+    },
+    {
+      "id": "credential-mgmt",
+      "name": "Credential Management",
+      "description": "Reuse stored OAuth tokens and API keys across workflows without re-authenticating"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-04-13T21:38:40.555Z",
+  "updatedAt": "2026-04-13T21:38:40.555Z"
+}

@@ -1,0 +1,53 @@
+{
+  "id": "VdtH6aopBzGXl3nVoYg4E",
+  "name": "OpenKnowledge",
+  "slug": "openknowledge",
+  "description": "Runs an AI-native Markdown editor and wiki with built-in MCP server, skills, and agentic search. Connects to Claude, Codex, and Cursor for knowledge-base editing. Open source by Inkeep.",
+  "providerName": "Inkeep",
+  "providerUrl": "https://inkeep.com",
+  "agentUrl": "https://github.com/inkeep/open-knowledge",
+  "categories": [
+    "content-media",
+    "research"
+  ],
+  "tags": [
+    "knowledge-base",
+    "markdown",
+    "wiki",
+    "agentic-search",
+    "mcp",
+    "open-source",
+    "documentation"
+  ],
+  "skills": [
+    {
+      "id": "agentic-search",
+      "name": "Agentic Search",
+      "description": "Runs agent-driven semantic search across a Markdown knowledge base to surface and cite relevant passages."
+    },
+    {
+      "id": "builtin-mcp-server",
+      "name": "Built-in MCP Server",
+      "description": "Exposes the knowledge base to Claude, Codex, and Cursor through a bundled MCP server with no extra setup."
+    },
+    {
+      "id": "markdown-wiki",
+      "name": "Markdown Wiki",
+      "description": "Edits and links Markdown documents as an AI-native wiki with skills that automate writing and organization."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-07-06T07:04:04.174Z",
+  "updatedAt": "2026-07-06T07:04:04.174Z"
+}

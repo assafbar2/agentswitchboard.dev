@@ -1,0 +1,52 @@
+{
+  "id": "21PzArJNaJsraOnVkewJY0",
+  "name": "vLLM",
+  "slug": "vllm",
+  "description": "High-throughput LLM inference server with OpenAI-compatible API. Serves Llama, Mistral, Qwen, and 30+ model families with PagedAttention. pip install vllm.",
+  "providerName": "vLLM Project",
+  "providerUrl": "https://docs.vllm.ai",
+  "agentUrl": "https://docs.vllm.ai",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "llm-serving",
+    "inference-server",
+    "openai-compatible",
+    "paged-attention",
+    "high-throughput",
+    "self-hosted",
+    "gpu-inference"
+  ],
+  "skills": [
+    {
+      "id": "openai-serving",
+      "name": "OpenAI-Compatible Serving",
+      "description": "Serve any HuggingFace model as an OpenAI-compatible API endpoint with full streaming and function calling."
+    },
+    {
+      "id": "paged-attention",
+      "name": "PagedAttention Engine",
+      "description": "Handle thousands of concurrent requests via PagedAttention KV cache — 24x throughput over naive HuggingFace inference."
+    },
+    {
+      "id": "multi-model",
+      "name": "Multi-Model Support",
+      "description": "Deploy 30+ model architectures including Llama, Mistral, Qwen, Falcon, Phi, and Mixtral from one server."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-05-13T16:56:29.059Z",
+  "updatedAt": "2026-05-13T16:56:29.059Z"
+}

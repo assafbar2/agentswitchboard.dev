@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getCategoryBySlug, getAllCategories } from '@/lib/contentful';
+import { getCategoryBySlug, getAllCategories } from '@/lib/catalog';
 import { AgentCard } from '@/components/AgentCard';
 import { CategoryIcon } from '@/components/ui/CategoryIcon';
 import { JsonLd } from '@/components/JsonLd';

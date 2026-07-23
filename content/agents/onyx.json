@@ -1,0 +1,52 @@
+{
+  "id": "1Hl0IpEzvO8lsGklo35k5q",
+  "name": "Onyx",
+  "slug": "onyx",
+  "description": "Open-source enterprise AI search and assistant platform — connects to Slack, GitHub, Confluence, Drive and 40+ sources for RAG-grounded answers and custom agents. Self-hostable. 30k+ stars.",
+  "providerName": "Onyx",
+  "providerUrl": "https://onyx.app",
+  "agentUrl": "https://github.com/onyx-dot-app/onyx",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "enterprise-search",
+    "rag",
+    "connectors",
+    "self-hosted",
+    "knowledge-base",
+    "custom-agents",
+    "slack",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "connector-sync",
+      "name": "Connector Sync",
+      "description": "Syncs content from 40+ sources like Slack, GitHub, and Confluence into a unified, permission-aware index."
+    },
+    {
+      "id": "grounded-search",
+      "name": "Grounded Search",
+      "description": "Answers questions with citations by retrieving from connected knowledge and passing it to the chosen LLM."
+    },
+    {
+      "id": "custom-assistants",
+      "name": "Custom Assistants",
+      "description": "Configures purpose-built assistants with scoped document sets, prompts, and tools for specific teams."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-07-17T20:41:24.756Z",
+  "updatedAt": "2026-07-17T20:41:24.756Z"
+}

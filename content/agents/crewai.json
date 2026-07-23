@@ -1,0 +1,35 @@
+{
+  "id": "7DEF9nJAFR24DAabAv2QET",
+  "name": "CrewAI",
+  "slug": "crewai",
+  "description": "Multi-agent orchestration framework for building teams of AI agents that collaborate, delegate, and solve complex tasks together.",
+  "providerName": "CrewAI",
+  "providerUrl": "https://crewai.com",
+  "agentUrl": "https://www.crewai.com/",
+  "categories": [
+    "infrastructure",
+    "code-devtools",
+    "orchestration"
+  ],
+  "tags": [
+    "multi-agent",
+    "orchestration",
+    "framework"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-03-22T09:52:55.455Z",
+  "updatedAt": "2026-06-15T03:15:45.177Z"
+}

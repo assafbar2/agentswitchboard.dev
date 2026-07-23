@@ -1,0 +1,33 @@
+{
+  "id": "7fE1zi93jFioSJ9jCB0i7z",
+  "name": "Copilot Studio",
+  "slug": "copilot-studio",
+  "description": "Microsoft's low-code platform for building custom AI copilots and agents with enterprise connectors, knowledge grounding, and MCP support.",
+  "providerName": "Microsoft",
+  "providerUrl": "https://microsoft.com",
+  "agentUrl": "https://www.microsoft.com/en-us/microsoft-copilot/microsoft-copilot-studio",
+  "categories": [
+    "infrastructure",
+    "scheduling"
+  ],
+  "tags": [
+    "copilot",
+    "low-code",
+    "enterprise"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-03-22T09:53:24.827Z",
+  "updatedAt": "2026-03-22T09:53:24.827Z"
+}

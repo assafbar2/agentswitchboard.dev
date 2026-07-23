@@ -1,0 +1,50 @@
+{
+  "id": "4RVhaNaxbrYG4O2IYIkxrv",
+  "name": "Google Ads MCP",
+  "slug": "google-ads-mcp",
+  "description": "Official open-source MCP server enabling AI agents to query Google Ads campaigns, keywords, and performance data via the Google Ads API using natural language.",
+  "providerName": "Google",
+  "providerUrl": "https://google.com/",
+  "agentUrl": "https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server",
+  "categories": [
+    "sales-marketing"
+  ],
+  "tags": [
+    "google-ads",
+    "campaigns",
+    "keywords",
+    "ppc",
+    "advertising",
+    "analytics"
+  ],
+  "skills": [
+    {
+      "id": "campaign-query",
+      "name": "Campaign Data Query",
+      "description": "Retrieve campaign performance, impression share, keyword metrics, and budget data from Google Ads accounts via natural language."
+    },
+    {
+      "id": "keyword-analysis",
+      "name": "Keyword Performance Analysis",
+      "description": "Analyse keyword-level performance including CTR, CPC, quality score, and search term reports across ad groups and campaigns."
+    },
+    {
+      "id": "account-audit",
+      "name": "Account Structure Audit",
+      "description": "Map and inspect the full account hierarchy — campaigns, ad groups, ads, and assets — to surface structural optimisation opportunities."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-05-22T08:28:15.578Z",
+  "updatedAt": "2026-05-22T08:28:15.578Z"
+}

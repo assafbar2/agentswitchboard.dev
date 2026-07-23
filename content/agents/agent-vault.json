@@ -1,0 +1,56 @@
+{
+  "id": "6fPJwCwA787GcBmL9HKyhg",
+  "name": "Agent Vault",
+  "slug": "agent-vault",
+  "description": "Open-source credential proxy for AI agents by Infisical. Agents call APIs without ever seeing secrets — credentials injected at the network layer via HTTPS_PROXY.",
+  "providerName": "Infisical",
+  "providerUrl": "https://infisical.com",
+  "agentUrl": "https://github.com/Infisical/agent-vault",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "credentials",
+    "secret-management",
+    "proxy",
+    "infisical",
+    "open-source",
+    "zero-trust",
+    "ai-agents"
+  ],
+  "skills": [
+    {
+      "id": "credential-injection",
+      "name": "Credential Injection",
+      "description": "Inject API keys and secrets at the network layer so agents never handle credentials directly"
+    },
+    {
+      "id": "proxy-setup",
+      "name": "Proxy Setup",
+      "description": "Configure as HTTPS_PROXY in minutes with a single Go binary — zero code changes to agents required"
+    },
+    {
+      "id": "secret-rotation",
+      "name": "Secret Rotation",
+      "description": "Rotate credentials centrally without updating or redeploying any agent or application config"
+    },
+    {
+      "id": "audit-trail",
+      "name": "Audit Trail",
+      "description": "Log every credential access with agent identity and timestamp for compliance and debugging"
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-04-25T18:49:53.129Z",
+  "updatedAt": "2026-04-25T18:49:53.129Z"
+}

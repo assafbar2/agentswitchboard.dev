@@ -1,0 +1,61 @@
+{
+  "id": "5h0yr4t57l0ibf1ggisSeM",
+  "name": "ChromaDB",
+  "slug": "chromadb",
+  "description": "Open-source embedding database for local and cloud AI apps. Simple API for storing, querying, and filtering embeddings. First choice for RAG prototyping.",
+  "providerName": "Chroma",
+  "providerUrl": "https://trychroma.com",
+  "agentUrl": "https://docs.trychroma.com",
+  "categories": [
+    "vector-databases"
+  ],
+  "tags": [
+    "vector-database",
+    "open-source",
+    "embeddings",
+    "rag",
+    "python",
+    "local-first"
+  ],
+  "skills": [
+    {
+      "id": "store-embedding-vectors-with-associated-documents-and-metadata-in-local-collections",
+      "name": "Store embedding vectors with associated documents and metadata in local collections",
+      "description": "Store embedding vectors with associated documents and metadata in local collections"
+    },
+    {
+      "id": "query-collections-by-embedding-similarity-with-built-in-distance-function-support",
+      "name": "Query collections by embedding similarity with built-in distance function support",
+      "description": "Query collections by embedding similarity with built-in distance function support"
+    },
+    {
+      "id": "filter-results-by-metadata-fields-using-a-pythonic-where-clause-syntax",
+      "name": "Filter results by metadata fields using a Pythonic where clause syntax",
+      "description": "Filter results by metadata fields using a Pythonic where clause syntax"
+    },
+    {
+      "id": "embed-documents-automatically-using-built-in-or-custom-embedding-functions",
+      "name": "Embed documents automatically using built-in or custom embedding functions",
+      "description": "Embed documents automatically using built-in or custom embedding functions"
+    },
+    {
+      "id": "deploy-locally-for-prototyping-or-switch-to-cloud-hosted-chroma-for-production",
+      "name": "Deploy locally for prototyping or switch to cloud-hosted Chroma for production",
+      "description": "Deploy locally for prototyping or switch to cloud-hosted Chroma for production"
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-04-08T07:17:17.002Z",
+  "updatedAt": "2026-07-10T21:05:38.470Z"
+}

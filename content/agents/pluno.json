@@ -1,0 +1,51 @@
+{
+  "id": "SDVDrAs9UYdvJgcEQePkS",
+  "name": "Pluno",
+  "slug": "pluno",
+  "description": "Automates web apps through their underlying APIs rather than clicking the UI, running as a browser extension. Claims ~10x speed and ~10x fewer tokens than click-based browser agents.",
+  "providerName": "Pluno",
+  "providerUrl": "https://pluno.ai",
+  "agentUrl": "https://www.producthunt.com/products/pluno",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "browser-agent",
+    "browser-extension",
+    "web-automation",
+    "api-driven",
+    "token-efficient",
+    "gdpr",
+    "productivity"
+  ],
+  "skills": [
+    {
+      "id": "api-driven-automation",
+      "name": "API-Driven Automation",
+      "description": "Drives web apps through their backing APIs instead of simulating clicks for faster, cheaper automation."
+    },
+    {
+      "id": "browser-extension-agent",
+      "name": "Browser-Extension Agent",
+      "description": "Runs as a browser extension that operates the apps you are already logged into in your tabs."
+    },
+    {
+      "id": "token-efficient-runs",
+      "name": "Token-Efficient Runs",
+      "description": "Completes multi-tool web tasks with roughly 10x fewer tokens than click-based browser agents."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "browser-extension"
+  ],
+  "createdAt": "2026-07-06T07:04:31.488Z",
+  "updatedAt": "2026-07-06T07:04:31.488Z"
+}

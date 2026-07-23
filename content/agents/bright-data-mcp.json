@@ -1,0 +1,56 @@
+{
+  "id": "2TkLnS3dzfb0hCaryqh0yR",
+  "name": "Bright Data MCP",
+  "slug": "bright-data-mcp",
+  "description": "Enterprise web scraping and browser automation MCP. Lets agents search, crawl, and extract any website without bot detection using Bright Data's proxy network.",
+  "providerName": "Bright Data",
+  "providerUrl": "https://brightdata.com",
+  "agentUrl": "https://github.com/brightdata/brightdata-mcp",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "mcp",
+    "web-scraping",
+    "proxy-network",
+    "browser-automation",
+    "anti-bot",
+    "data-extraction",
+    "enterprise"
+  ],
+  "skills": [
+    {
+      "id": "web-search",
+      "name": "Web Search",
+      "description": "Search the web and retrieve structured results without bot detection via Bright Data proxies"
+    },
+    {
+      "id": "page-scrape",
+      "name": "Page Scraping",
+      "description": "Scrape any website including JavaScript-rendered pages through Bright Data's managed proxy network"
+    },
+    {
+      "id": "browser-auto",
+      "name": "Browser Automation",
+      "description": "Navigate websites, click elements, and extract data using a managed cloud browser via MCP tools"
+    },
+    {
+      "id": "unblock",
+      "name": "Anti-Block Bypass",
+      "description": "Bypass bot detection, CAPTCHAs, and geo-restrictions via Bright Data's residential proxy network"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-04-25T19:07:07.049Z",
+  "updatedAt": "2026-04-25T19:07:07.049Z"
+}

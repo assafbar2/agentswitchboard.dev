@@ -1,0 +1,51 @@
+{
+  "id": "5jCYHlmuFtzWqexEjNbbDe",
+  "name": "Maki",
+  "slug": "maki",
+  "description": "Rust coding agent CLI with tree-sitter code indexing, sandboxed Python execution, and multi-tier subagents. Benchmarks show ~40% token reduction vs competing coding agents.",
+  "providerName": "Maki",
+  "providerUrl": "https://maki.sh",
+  "agentUrl": "https://maki.sh",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "coding-agent",
+    "rust",
+    "cli",
+    "tree-sitter",
+    "token-efficient",
+    "sandboxed-execution",
+    "subagents"
+  ],
+  "skills": [
+    {
+      "id": "tree-sitter-index",
+      "name": "Tree-Sitter Indexing",
+      "description": "Index codebases with tree-sitter for precise, token-efficient context selection before each edit"
+    },
+    {
+      "id": "sandboxed-exec",
+      "name": "Sandboxed Execution",
+      "description": "Run Python code in isolated sandboxes during agent tasks without exposing the host environment"
+    },
+    {
+      "id": "multi-tier",
+      "name": "Multi-Tier Subagents",
+      "description": "Delegate subtasks to specialized subagents that run in parallel and report structured results back"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-04-25T18:50:06.680Z",
+  "updatedAt": "2026-04-25T18:50:06.680Z"
+}

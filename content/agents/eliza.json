@@ -1,0 +1,52 @@
+{
+  "id": "NkiRDt06eyBc8dCvXLha8",
+  "name": "Eliza",
+  "slug": "eliza",
+  "description": "Builds autonomous agents with a TypeScript framework and large plugin ecosystem, spanning chat, social, and onchain actions. Open-source agent OS by elizaOS.",
+  "providerName": "elizaOS",
+  "providerUrl": "https://elizaos.ai",
+  "agentUrl": "https://github.com/elizaOS/eliza",
+  "categories": [
+    "orchestration"
+  ],
+  "tags": [
+    "agent-framework",
+    "typescript",
+    "plugins",
+    "autonomous-agents",
+    "onchain",
+    "open-source",
+    "multi-platform"
+  ],
+  "skills": [
+    {
+      "id": "autonomous-agents",
+      "name": "Autonomous Agents",
+      "description": "Defines persistent autonomous agents with memory, goals, and personalities in TypeScript."
+    },
+    {
+      "id": "plugin-ecosystem",
+      "name": "Plugin Ecosystem",
+      "description": "Extends agents with a large ecosystem of plugins for chat, social platforms, and onchain actions."
+    },
+    {
+      "id": "multi-platform-deploy",
+      "name": "Multi-Platform Deploy",
+      "description": "Connects one agent across Discord, Telegram, X, and web clients from a single codebase."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-07-06T07:04:34.919Z",
+  "updatedAt": "2026-07-06T07:04:34.919Z"
+}

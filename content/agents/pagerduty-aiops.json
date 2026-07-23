@@ -1,0 +1,33 @@
+{
+  "id": "4T9M5v4IQUFZPrvqH5hRxb",
+  "name": "PagerDuty AIOps",
+  "slug": "pagerduty-aiops",
+  "description": "Intelligent incident management with AI-powered event correlation, noise reduction, and automated incident response.",
+  "providerName": "PagerDuty",
+  "providerUrl": "https://pagerduty.com",
+  "agentUrl": "https://www.pagerduty.com/platform/aiops/",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "incident-management",
+    "aiops",
+    "monitoring"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-03-22T09:52:52.535Z",
+  "updatedAt": "2026-03-22T09:52:52.535Z"
+}

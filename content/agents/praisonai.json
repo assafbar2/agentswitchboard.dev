@@ -1,0 +1,52 @@
+{
+  "id": "6f7k2exETRq4k8GSKYeWAl",
+  "name": "PraisonAI",
+  "slug": "praisonai",
+  "description": "Builds production multi-agent systems with a Python framework and low-code layer — self-reflection, tool use, and 100+ LLM support. Also runs as a CLI. Open source.",
+  "providerName": "PraisonAI",
+  "providerUrl": "https://docs.praison.ai",
+  "agentUrl": "https://github.com/MervinPraison/PraisonAI",
+  "categories": [
+    "orchestration"
+  ],
+  "tags": [
+    "multi-agent",
+    "low-code",
+    "self-reflection",
+    "python",
+    "agent-framework",
+    "open-source",
+    "cli"
+  ],
+  "skills": [
+    {
+      "id": "multi-agent-systems",
+      "name": "Multi-Agent Systems",
+      "description": "Builds collaborating multi-agent systems with roles, tasks, and tools in Python or via low-code YAML."
+    },
+    {
+      "id": "self-reflection",
+      "name": "Self-Reflection",
+      "description": "Adds a self-reflection loop so agents critique and improve their own outputs before finishing."
+    },
+    {
+      "id": "broad-llm-support",
+      "name": "Broad LLM Support",
+      "description": "Runs agents against 100+ LLM providers with a consistent configuration across models."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-07-06T07:04:39.650Z",
+  "updatedAt": "2026-07-06T07:04:39.650Z"
+}

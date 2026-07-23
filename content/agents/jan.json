@@ -1,0 +1,52 @@
+{
+  "id": "7eXYRobY1PqkcyJBXHyeco",
+  "name": "Jan",
+  "slug": "jan",
+  "description": "Runs local LLMs 100% offline in a desktop app and connects cloud models, exposing a local OpenAI-compatible API. Privacy-first ChatGPT alternative by Menlo Research.",
+  "providerName": "Menlo Research",
+  "providerUrl": "https://jan.ai",
+  "agentUrl": "https://jan.ai",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "local-llm",
+    "offline",
+    "openai-compatible",
+    "desktop",
+    "privacy",
+    "open-source",
+    "model-runner"
+  ],
+  "skills": [
+    {
+      "id": "offline-llm-runtime",
+      "name": "Offline LLM Runtime",
+      "description": "Runs open-weight LLMs fully offline on your own machine with no data leaving the device."
+    },
+    {
+      "id": "openai-compatible-api",
+      "name": "OpenAI-Compatible API",
+      "description": "Serves a local OpenAI-compatible endpoint so existing apps and agents can call local models."
+    },
+    {
+      "id": "model-management",
+      "name": "Model Management",
+      "description": "Downloads, switches, and configures local and cloud models from a single desktop interface."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-07-06T07:04:16.176Z",
+  "updatedAt": "2026-07-06T07:04:16.176Z"
+}

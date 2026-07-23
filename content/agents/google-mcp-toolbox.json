@@ -1,0 +1,53 @@
+{
+  "id": "2rjZjgl2EoV1nQzxGK5Yq0",
+  "name": "Google MCP Toolbox",
+  "slug": "google-mcp-toolbox",
+  "description": "Official Google MCP server for 30+ databases — BigQuery, Postgres, AlloyDB, Spanner, MySQL, Redis, Neo4j. YAML-configured, enterprise-grade database access for agents.",
+  "providerName": "Google",
+  "providerUrl": "https://googleapis.github.io/genai-toolbox/",
+  "agentUrl": "https://mcp-toolbox.dev/",
+  "categories": [
+    "infrastructure",
+    "data-analytics"
+  ],
+  "tags": [
+    "google",
+    "bigquery",
+    "postgres",
+    "alloydb",
+    "spanner",
+    "mcp-server",
+    "database-agent"
+  ],
+  "skills": [
+    {
+      "id": "database-query",
+      "name": "Multi-Database Query",
+      "description": "Execute queries across BigQuery, Postgres, AlloyDB, Spanner, MySQL, Redis, and Neo4j from any MCP client."
+    },
+    {
+      "id": "tool-configuration",
+      "name": "Tool Configuration",
+      "description": "Define database tools via YAML — parameterized queries, connection pools, auth — without writing server code."
+    },
+    {
+      "id": "cloud-native-auth",
+      "name": "Cloud-Native Auth",
+      "description": "Authenticate to Google Cloud databases using Application Default Credentials with zero manual token management."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-05-13T16:56:42.425Z",
+  "updatedAt": "2026-07-17T19:37:43.384Z"
+}

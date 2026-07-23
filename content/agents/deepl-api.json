@@ -1,0 +1,32 @@
+{
+  "id": "721rhOYeFICmIZKlksOEep",
+  "name": "DeepL API",
+  "slug": "deepl-api",
+  "description": "Neural machine translation API supporting 30+ languages with document translation, glossary support, and formality controls.",
+  "providerName": "DeepL",
+  "providerUrl": "https://deepl.com",
+  "agentUrl": "https://developers.deepl.com/docs",
+  "categories": [
+    "language"
+  ],
+  "tags": [
+    "translation",
+    "nlp",
+    "localization"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-03-22T09:51:27.895Z",
+  "updatedAt": "2026-03-22T09:51:27.895Z"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "3FPK4OsXYaaiZ983oAOiZq",
+  "name": "STORM",
+  "slug": "storm",
+  "description": "Researches a topic and writes a cited, Wikipedia-length report by simulating multi-perspective question asking. Co-STORM adds human collaboration. Research system by Stanford OVAL.",
+  "providerName": "Stanford OVAL",
+  "providerUrl": "https://storm.genie.stanford.edu",
+  "agentUrl": "https://github.com/stanford-oval/storm",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "research-automation",
+    "report-writing",
+    "knowledge-curation",
+    "citations",
+    "open-source",
+    "stanford",
+    "literature-review"
+  ],
+  "skills": [
+    {
+      "id": "topic-research",
+      "name": "Topic Research",
+      "description": "Researches a topic from the internet and organizes findings into a structured outline with sources."
+    },
+    {
+      "id": "cited-report-writing",
+      "name": "Cited Report Writing",
+      "description": "Writes a long, Wikipedia-style article with inline citations grounded in retrieved sources."
+    },
+    {
+      "id": "multi-perspective-qa",
+      "name": "Multi-Perspective Q&A",
+      "description": "Simulates experts asking questions from multiple perspectives to broaden research coverage."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-07-06T07:04:37.176Z",
+  "updatedAt": "2026-07-06T07:04:37.176Z"
+}

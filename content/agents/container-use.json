@@ -1,0 +1,51 @@
+{
+  "id": "76WPqG86YfRjYYVyJh4uRT",
+  "name": "Container Use",
+  "slug": "container-use",
+  "description": "MCP server that gives coding agents isolated containerised environments in separate git branches, enabling multiple agents to work safely in parallel without conflicts.",
+  "providerName": "Dagger",
+  "providerUrl": "https://dagger.io/",
+  "agentUrl": "https://container-use.com/",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "containers",
+    "parallel-agents",
+    "git-branches",
+    "isolation",
+    "coding-agents",
+    "dagger"
+  ],
+  "skills": [
+    {
+      "id": "isolated-env",
+      "name": "Isolated Agent Environment",
+      "description": "Spin up a fresh container in a dedicated git branch so each coding agent operates independently without touching shared working state."
+    },
+    {
+      "id": "parallel-execution",
+      "name": "Parallel Agent Execution",
+      "description": "Run multiple coding agents simultaneously, each in its own container, then inspect command history and logs for each agent's work."
+    },
+    {
+      "id": "safe-discard",
+      "name": "Safe Environment Discard",
+      "description": "Instantly destroy a failed agent's container and branch without any impact on the main codebase or other running agents."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-05-22T08:28:08.532Z",
+  "updatedAt": "2026-05-22T08:28:08.532Z"
+}

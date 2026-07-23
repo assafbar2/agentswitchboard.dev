@@ -1,0 +1,62 @@
+{
+  "id": "1q2BjkhCVYHEqBvCNl1ASr",
+  "name": "Composio",
+  "slug": "composio",
+  "description": "Tool integration platform for AI agents. 250+ pre-built integrations with GitHub, Slack, Salesforce, and more. Handles OAuth, rate limits, and action execution.",
+  "providerName": "Composio",
+  "providerUrl": "https://composio.dev",
+  "agentUrl": "https://docs.composio.dev",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "tool-integration",
+    "saas-tools",
+    "oauth",
+    "langchain",
+    "crewai",
+    "github",
+    "slack"
+  ],
+  "skills": [
+    {
+      "id": "connect-ai-agents-to-250-saas-tools-with-pre-built-action-and-trigger-schemas",
+      "name": "Connect AI agents to 250+ SaaS tools with pre-built action and trigger schemas",
+      "description": "Connect AI agents to 250+ SaaS tools with pre-built action and trigger schemas"
+    },
+    {
+      "id": "manage-oauth-2-0-flows-and-token-refresh-for-every-connected-integration-automatically",
+      "name": "Manage OAuth 2.0 flows and token refresh for every connected integration automatically",
+      "description": "Manage OAuth 2.0 flows and token refresh for every connected integration automatically"
+    },
+    {
+      "id": "execute-actions-on-third-party-services-on-behalf-of-authenticated-users-securely",
+      "name": "Execute actions on third-party services on behalf of authenticated users securely",
+      "description": "Execute actions on third-party services on behalf of authenticated users securely"
+    },
+    {
+      "id": "generate-tool-schemas-compatible-with-langchain-crewai-and-openai-function-calling",
+      "name": "Generate tool schemas compatible with LangChain, CrewAI, and OpenAI function calling",
+      "description": "Generate tool schemas compatible with LangChain, CrewAI, and OpenAI function calling"
+    },
+    {
+      "id": "share-tool-connections-across-agents-in-a-multi-agent-pipeline-with-unified-auth",
+      "name": "Share tool connections across agents in a multi-agent pipeline with unified auth",
+      "description": "Share tool connections across agents in a multi-agent pipeline with unified auth"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-04-08T07:17:25.622Z",
+  "updatedAt": "2026-07-10T21:05:57.516Z"
+}

@@ -1,0 +1,54 @@
+{
+  "id": "4hD1sCo6CD9LjPopQIMi2o",
+  "name": "Grok Build",
+  "slug": "grok-build",
+  "description": "Runs xAI's terminal coding agent with plan-first execution, up to 8 parallel sub-agents in Git worktrees, and native MCP support. grok-build-0.1 scores 70.8% on SWE-Bench Verified.",
+  "providerName": "xAI",
+  "providerUrl": "https://x.ai",
+  "agentUrl": "https://docs.x.ai/build/overview",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "coding-agent",
+    "terminal",
+    "swe-bench",
+    "parallel-agents",
+    "git-worktrees",
+    "mcp",
+    "rust",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "plan-first-execution",
+      "name": "Plan-First Execution",
+      "description": "Generates an editable step-by-step plan you can approve, comment on, or rewrite before the agent writes any code."
+    },
+    {
+      "id": "parallel-sub-agents",
+      "name": "Parallel Sub-Agents",
+      "description": "Fans work out to up to eight sub-agents running concurrently in isolated Git worktrees for faster multi-file changes."
+    },
+    {
+      "id": "mcp-tools",
+      "name": "MCP Tool Access",
+      "description": "Connects to external data and tools through native Model Context Protocol support inside the terminal session."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-07-17T20:40:49.549Z",
+  "updatedAt": "2026-07-17T20:40:49.549Z"
+}

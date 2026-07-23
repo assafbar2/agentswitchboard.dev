@@ -1,0 +1,53 @@
+{
+  "id": "6X5xVEfpoctR8MJuKf6CMY",
+  "name": "LangGraph",
+  "slug": "langgraph",
+  "description": "Graph-based agent orchestration with stateful multi-actor workflows. Deploy agents as REST APIs via LangGraph Platform. 32k stars, 34M monthly PyPI downloads.",
+  "providerName": "LangChain AI",
+  "providerUrl": "https://www.langchain.com",
+  "agentUrl": "https://langchain-ai.github.io/langgraph",
+  "categories": [
+    "infrastructure",
+    "orchestration"
+  ],
+  "tags": [
+    "agent-orchestration",
+    "stateful-agents",
+    "graph-workflows",
+    "multi-agent",
+    "checkpointing",
+    "human-in-the-loop",
+    "langchain"
+  ],
+  "skills": [
+    {
+      "id": "stateful-graphs",
+      "name": "Stateful Agent Graphs",
+      "description": "Build agent workflows as typed state graphs with persistent checkpointing and resumable execution."
+    },
+    {
+      "id": "human-in-loop",
+      "name": "Human-in-the-Loop",
+      "description": "Pause agent execution at any graph node for human review, approval, or input before continuing."
+    },
+    {
+      "id": "platform-deploy",
+      "name": "Platform Deployment",
+      "description": "Deploy agent graphs as scalable REST APIs with built-in streaming, memory, and observability via LangGraph Platform."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-05-13T16:56:38.286Z",
+  "updatedAt": "2026-06-15T03:15:43.662Z"
+}

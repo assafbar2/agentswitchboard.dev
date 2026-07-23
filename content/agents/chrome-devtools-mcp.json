@@ -1,0 +1,56 @@
+{
+  "id": "24c4H8ymYeg0WQfWA0GFuv",
+  "name": "Chrome DevTools MCP",
+  "slug": "chrome-devtools-mcp",
+  "description": "Official Chrome DevTools MCP server. Gives AI coding agents browser debugging — inspect DOM, execute JS, capture screenshots, and trace network requests via CDP.",
+  "providerName": "Chrome DevTools",
+  "providerUrl": "https://developer.chrome.com/docs/devtools",
+  "agentUrl": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "mcp",
+    "chrome",
+    "devtools",
+    "debugging",
+    "puppeteer",
+    "cdp",
+    "browser-automation"
+  ],
+  "skills": [
+    {
+      "id": "dom-inspect",
+      "name": "DOM Inspection",
+      "description": "Inspect and query DOM elements, styles, and accessibility tree via Chrome DevTools Protocol"
+    },
+    {
+      "id": "js-execute",
+      "name": "JS Execution",
+      "description": "Execute JavaScript in the browser context and return structured results to the AI agent"
+    },
+    {
+      "id": "network-trace",
+      "name": "Network Tracing",
+      "description": "Capture and analyze network requests, responses, and performance timings during page interactions"
+    },
+    {
+      "id": "screenshot",
+      "name": "Screenshot Capture",
+      "description": "Take full-page or viewport screenshots and return them to the agent for visual inspection"
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-04-25T19:06:55.710Z",
+  "updatedAt": "2026-04-25T19:06:55.710Z"
+}

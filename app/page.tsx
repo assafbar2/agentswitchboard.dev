@@ -7,7 +7,7 @@ import {
   getAgentCount,
   getUniqueProviderCount,
   getSiteSettings,
-} from '@/lib/contentful';
+} from '@/lib/catalog';
 import { FeaturedAgentCard } from '@/components/FeaturedAgentCard';
 import { CategoryCard } from '@/components/CategoryCard';
 import { JsonLd } from '@/components/JsonLd';

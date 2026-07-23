@@ -1,0 +1,51 @@
+{
+  "id": "6PwbRql90wwO8OkXbOcGGq",
+  "name": "Gmail MCP",
+  "slug": "gmail-mcp",
+  "description": "Manages Gmail end-to-end via MCP — send, draft, reply, and search messages, organize with labels, retrieve contacts, and handle attachments.",
+  "providerName": "Smithery",
+  "providerUrl": "https://smithery.ai",
+  "agentUrl": "https://smithery.ai/server/gmail",
+  "categories": [
+    "communication"
+  ],
+  "tags": [
+    "gmail",
+    "email",
+    "google",
+    "oauth2",
+    "inbox-management",
+    "contacts",
+    "attachments"
+  ],
+  "skills": [
+    {
+      "id": "email-management",
+      "name": "Email Management",
+      "description": "Fetches, searches, sends, drafts, and deletes Gmail messages using natural language or Gmail query syntax filters."
+    },
+    {
+      "id": "label-organization",
+      "name": "Label Organization",
+      "description": "Creates, modifies, and applies Gmail labels to messages and threads for inbox organization and filtering."
+    },
+    {
+      "id": "contact-retrieval",
+      "name": "Contact Retrieval",
+      "description": "Looks up and retrieves Google Contacts to autofill email recipients and keep people data in sync with Gmail."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-06-07T17:51:18.750Z",
+  "updatedAt": "2026-06-07T17:51:18.750Z"
+}

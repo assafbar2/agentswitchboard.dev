@@ -1,0 +1,50 @@
+{
+  "id": "6kv7EVehAa2NSrqRf21C1i",
+  "name": "Redis MCP",
+  "slug": "redis-mcp",
+  "description": "Official Redis MCP server for agentic applications to read, write, and search Redis data structures including JSON, hash, set, sorted set, stream, and list types.",
+  "providerName": "Redis",
+  "providerUrl": "https://redis.io/",
+  "agentUrl": "https://redis.io/blog/introducing-model-context-protocol-mcp-for-redis/",
+  "categories": [
+    "memory-state"
+  ],
+  "tags": [
+    "redis",
+    "key-value",
+    "vector-search",
+    "data-structures",
+    "agent-state",
+    "streams"
+  ],
+  "skills": [
+    {
+      "id": "data-read-write",
+      "name": "Redis Read/Write",
+      "description": "Read and write Redis data types including strings, hashes, lists, sets, sorted sets, and JSON documents via natural language commands."
+    },
+    {
+      "id": "vector-search",
+      "name": "Vector Similarity Search",
+      "description": "Execute vector similarity searches over Redis vector sets to support semantic retrieval and agent memory lookup workflows."
+    },
+    {
+      "id": "stream-manage",
+      "name": "Stream Management",
+      "description": "Produce and consume from Redis Streams, enabling event-driven agent coordination and audit-log patterns."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-05-22T08:28:13.324Z",
+  "updatedAt": "2026-05-22T08:28:13.324Z"
+}

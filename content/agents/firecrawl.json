@@ -1,0 +1,34 @@
+{
+  "id": "3jCkyR94yJ4PsgFIuSB4ck",
+  "name": "Firecrawl",
+  "slug": "firecrawl",
+  "description": "Turn websites into LLM-ready data — crawl, scrape, and convert web pages to clean markdown for AI consumption.",
+  "providerName": "Firecrawl",
+  "providerUrl": "https://firecrawl.dev",
+  "agentUrl": "https://docs.firecrawl.dev/",
+  "categories": [
+    "research",
+    "data-analytics"
+  ],
+  "tags": [
+    "web-scraping",
+    "crawling",
+    "data-extraction"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-03-22T09:53:05.646Z",
+  "updatedAt": "2026-03-22T09:53:05.646Z"
+}

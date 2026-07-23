@@ -1,0 +1,59 @@
+{
+  "id": "3eQOCPlMI8k7XYQv1GaOc7",
+  "name": "Steel",
+  "slug": "steel",
+  "description": "Open-source headless browser infrastructure for AI agents. Deploy managed browser sessions with built-in proxies and auth handling. Self-hosted or cloud.",
+  "providerName": "Steel",
+  "providerUrl": "https://steel.dev",
+  "agentUrl": "https://docs.steel.dev",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "browser-automation",
+    "headless-browser",
+    "open-source",
+    "self-hosted",
+    "web-agents"
+  ],
+  "skills": [
+    {
+      "id": "launch-managed-browser-sessions-for-ai-agents-via-a-simple-rest-api",
+      "name": "Launch managed browser sessions for AI agents via a simple REST API",
+      "description": "Launch managed browser sessions for AI agents via a simple REST API"
+    },
+    {
+      "id": "route-requests-through-rotating-proxy-pools-to-bypass-geo-and-rate-limits",
+      "name": "Route requests through rotating proxy pools to bypass geo and rate limits",
+      "description": "Route requests through rotating proxy pools to bypass geo and rate limits"
+    },
+    {
+      "id": "persist-cookies-and-authentication-tokens-across-browser-sessions",
+      "name": "Persist cookies and authentication tokens across browser sessions",
+      "description": "Persist cookies and authentication tokens across browser sessions"
+    },
+    {
+      "id": "bypass-browser-fingerprinting-with-randomized-session-profiles",
+      "name": "Bypass browser fingerprinting with randomized session profiles",
+      "description": "Bypass browser fingerprinting with randomized session profiles"
+    },
+    {
+      "id": "orchestrate-multiple-concurrent-browser-sessions-with-unified-session-management",
+      "name": "Orchestrate multiple concurrent browser sessions with unified session management",
+      "description": "Orchestrate multiple concurrent browser sessions with unified session management"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-04-08T07:17:09.768Z",
+  "updatedAt": "2026-04-08T07:17:09.768Z"
+}

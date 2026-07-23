@@ -1,0 +1,30 @@
+{
+  "id": "5W22Qaqn5Xs3twL9xpCzco",
+  "name": "Brex AI",
+  "slug": "brex-ai",
+  "description": "AI-powered spend management platform with automated expense categorization, receipt matching, and financial controls.",
+  "providerName": "Brex",
+  "providerUrl": "https://brex.com",
+  "agentUrl": "https://www.brex.com/",
+  "categories": [
+    "finance"
+  ],
+  "tags": [
+    "expense-management",
+    "fintech"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-03-22T09:51:57.702Z",
+  "updatedAt": "2026-03-22T09:51:57.702Z"
+}

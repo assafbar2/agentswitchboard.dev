@@ -1,0 +1,52 @@
+{
+  "id": "HgY5YY5ooF3wnr4ADsd3K",
+  "name": "Sequence",
+  "slug": "sequence",
+  "description": "Lets AI agents send, split, and route real money across bank accounts, cards, and apps via one API — with scoped keys, server-side spend limits, and audit trails.",
+  "providerName": "Sequence",
+  "providerUrl": "https://getsequence.io",
+  "agentUrl": "https://home.getsequence.io/solutions/agentic",
+  "categories": [
+    "commerce-payments",
+    "finance"
+  ],
+  "tags": [
+    "payments",
+    "money-movement",
+    "agentic-finance",
+    "spend-limits",
+    "audit-trail",
+    "scoped-keys",
+    "fintech"
+  ],
+  "skills": [
+    {
+      "id": "agentic-money-movement",
+      "name": "Agentic Money Movement",
+      "description": "Lets agents send, split, and route real money across linked bank accounts, cards, and apps via one API."
+    },
+    {
+      "id": "scoped-spend-limits",
+      "name": "Scoped Spend Limits",
+      "description": "Enforces server-side spend limits and scoped API keys so agent-initiated payments stay within policy."
+    },
+    {
+      "id": "payment-audit-trails",
+      "name": "Payment Audit Trails",
+      "description": "Records every agent-initiated transaction with a full audit trail for compliance and reconciliation."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-07-06T07:04:07.926Z",
+  "updatedAt": "2026-07-06T07:04:07.926Z"
+}

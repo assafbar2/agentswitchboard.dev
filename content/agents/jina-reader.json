@@ -1,0 +1,61 @@
+{
+  "id": "2WYY5EhiI7UAu7wxwpQnVk",
+  "name": "Jina Reader",
+  "slug": "jina-reader",
+  "description": "Web reader and search API for AI pipelines. Converts any URL to clean markdown, runs grounded search, and powers RAG at scale — no browser automation needed.",
+  "providerName": "Jina AI",
+  "providerUrl": "https://jina.ai",
+  "agentUrl": "https://jina.ai/reader",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "web-scraping",
+    "rag",
+    "markdown-conversion",
+    "search-grounding",
+    "reader-api",
+    "embeddings"
+  ],
+  "skills": [
+    {
+      "id": "url-reader",
+      "name": "URL to Markdown",
+      "description": "Convert any URL into clean, LLM-ready markdown in one API call, removing ads, nav, and boilerplate"
+    },
+    {
+      "id": "grounded-search",
+      "name": "Grounded Search",
+      "description": "Run search queries with real-time web grounding to reduce LLM hallucinations in answers"
+    },
+    {
+      "id": "batch-crawl",
+      "name": "Batch Crawl",
+      "description": "Crawl entire sites or URL lists in parallel and return structured markdown output for pipelines"
+    },
+    {
+      "id": "embed-rerank",
+      "name": "Embed & Rerank",
+      "description": "Generate embeddings and rerank passages with Jina Embeddings v3 and Reranker v2 APIs"
+    },
+    {
+      "id": "mcp-access",
+      "name": "MCP Integration",
+      "description": "Access Reader and Search via Model Context Protocol for Claude and MCP-compatible agents"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-04-13T21:38:15.219Z",
+  "updatedAt": "2026-04-13T21:38:15.219Z"
+}

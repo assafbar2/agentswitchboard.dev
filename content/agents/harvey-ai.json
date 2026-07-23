@@ -1,0 +1,31 @@
+{
+  "id": "7s2QHGkFbH1nIPb86fGLVj",
+  "name": "Harvey AI",
+  "slug": "harvey-ai",
+  "description": "AI legal assistant for law firms — drafts contracts, analyzes legal documents, performs due diligence, and provides research assistance.",
+  "providerName": "Harvey",
+  "providerUrl": "https://harvey.ai",
+  "agentUrl": "https://www.harvey.ai/",
+  "categories": [
+    "legal"
+  ],
+  "tags": [
+    "legal",
+    "contracts",
+    "ai-assistant"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-03-22T09:52:37.847Z",
+  "updatedAt": "2026-03-22T09:52:37.847Z"
+}

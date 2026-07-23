@@ -1,0 +1,33 @@
+{
+  "id": "1JILDDXEAS1PPGH6v4j1wo",
+  "name": "Skyvern",
+  "slug": "skyvern",
+  "description": "Automates browser-based workflows using computer vision and LLMs — handles logins, form fills, CAPTCHA solving, and structured data extraction at scale.",
+  "providerName": "Skyvern AI",
+  "providerUrl": "https://www.skyvern.com/",
+  "agentUrl": "https://www.skyvern.com/",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "browser-automation",
+    "computer-vision",
+    "open-source",
+    "yc",
+    "soc2"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-05-22T07:35:14.665Z",
+  "updatedAt": "2026-05-22T07:35:14.665Z"
+}

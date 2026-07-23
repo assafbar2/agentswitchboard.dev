@@ -1,0 +1,53 @@
+{
+  "id": "3bLhbiyeadMmrFdrWXBeKm",
+  "name": "VirtualSMS",
+  "slug": "virtualsms",
+  "description": "SMS verification API with real SIM-backed numbers for AI agents. Buy numbers, fetch OTPs, check balance via REST or MCP. 145+ countries, 2,500+ services, x402 stablecoin payments.",
+  "providerName": "VirtualSMS",
+  "providerUrl": "https://virtualsms.io",
+  "agentUrl": "https://virtualsms.io/mcp",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "real-sim",
+    "sms-verification",
+    "otp-delivery",
+    "mcp-server",
+    "x402-payments",
+    "ai-agents",
+    "phone-verification",
+    "autonomous-agents"
+  ],
+  "skills": [
+    {
+      "id": "number-purchase",
+      "name": "Number Purchase",
+      "description": "Buy real SIM-backed phone numbers from 145+ countries for specific services — WhatsApp, Telegram, banking, or any of 2,500+ platforms."
+    },
+    {
+      "id": "otp-retrieval",
+      "name": "OTP Retrieval",
+      "description": "Fetch incoming SMS verification codes in real time; balance is auto-refunded if no code arrives within the delivery window."
+    },
+    {
+      "id": "x402-topup",
+      "name": "x402 Stablecoin Top-Up",
+      "description": "Top up agent balance via x402 stablecoin on Base, Polygon, Arbitrum, or Optimism — crypto-native payments, no credit card."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-05-16T21:12:36.998Z",
+  "updatedAt": "2026-05-16T21:12:36.998Z"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "3f78OOEPZXiw6xG1LgGCwP",
+  "name": "Sakana Fugu",
+  "slug": "sakana-fugu",
+  "description": "Routes and coordinates frontier models per task through one API and CLI. Multi-agent orchestration model from Sakana AI, grounded in the TRINITY and Conductor research papers.",
+  "providerName": "Sakana AI",
+  "providerUrl": "https://sakana.ai",
+  "agentUrl": "https://sakana.ai/fugu/",
+  "categories": [
+    "orchestration",
+    "language"
+  ],
+  "tags": [
+    "model-routing",
+    "multi-agent",
+    "sakana-ai",
+    "frontier-models",
+    "orchestration",
+    "research-backed"
+  ],
+  "skills": [
+    {
+      "id": "dynamic-model-routing",
+      "name": "Dynamic Model Routing",
+      "description": "Selects and routes each prompt to the best frontier model for the task behind a single API endpoint."
+    },
+    {
+      "id": "multi-model-coordination",
+      "name": "Multi-Model Coordination",
+      "description": "Coordinates multiple frontier models on one request, combining their outputs into a single coherent answer."
+    },
+    {
+      "id": "task-decomposition",
+      "name": "Task Decomposition",
+      "description": "Breaks complex requests into sub-tasks and assigns each to the most capable model for that step."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-07-06T07:04:02.980Z",
+  "updatedAt": "2026-07-06T07:04:02.980Z"
+}

@@ -1,0 +1,60 @@
+{
+  "id": "7FPSpzhmN1Uh8C90S88PLs",
+  "name": "Context7",
+  "slug": "context7",
+  "description": "MCP server that injects current, version-specific library docs and code examples into your LLM context — eliminating outdated training data from coding assistants.",
+  "providerName": "Upstash",
+  "providerUrl": "https://upstash.com",
+  "agentUrl": "https://context7.com",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "mcp",
+    "documentation",
+    "library-docs",
+    "llm-context",
+    "coding-assistant",
+    "real-time-docs"
+  ],
+  "skills": [
+    {
+      "id": "resolve-library",
+      "name": "Library Resolution",
+      "description": "Resolve a library name to its canonical documentation source ID automatically"
+    },
+    {
+      "id": "fetch-docs",
+      "name": "Fetch Docs",
+      "description": "Retrieve up-to-date library documentation filtered to a specific version string"
+    },
+    {
+      "id": "topic-search",
+      "name": "Topic Search",
+      "description": "Search within a library's docs for a specific function, class, or programming concept"
+    },
+    {
+      "id": "multi-library",
+      "name": "Multi-Library Context",
+      "description": "Inject docs from multiple libraries into a single LLM context for cross-library tasks"
+    },
+    {
+      "id": "mcp-native",
+      "name": "MCP Native",
+      "description": "Works out of the box with Claude Desktop, Cursor, Windsurf, and any MCP-compatible IDE"
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-04-13T21:38:29.348Z",
+  "updatedAt": "2026-04-13T21:38:29.348Z"
+}

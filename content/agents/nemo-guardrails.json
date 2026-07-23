@@ -1,0 +1,51 @@
+{
+  "id": "4DEi7YYmNarGy4K9gc6jxo",
+  "name": "NeMo Guardrails",
+  "slug": "nemo-guardrails",
+  "description": "Adds programmable guardrails to LLM apps — input/output moderation, jailbreak and prompt-injection detection, topic control, and fact-checking. Open-source Python toolkit by NVIDIA.",
+  "providerName": "NVIDIA",
+  "providerUrl": "https://github.com/NVIDIA-NeMo/Guardrails",
+  "agentUrl": "https://github.com/NVIDIA-NeMo/Guardrails",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "guardrails",
+    "llm-safety",
+    "jailbreak-detection",
+    "prompt-injection",
+    "moderation",
+    "open-source",
+    "nvidia"
+  ],
+  "skills": [
+    {
+      "id": "jailbreak-detection",
+      "name": "Jailbreak Detection",
+      "description": "Detects jailbreak and prompt-injection attempts before they reach the underlying LLM."
+    },
+    {
+      "id": "io-moderation",
+      "name": "Input/Output Moderation",
+      "description": "Screens user inputs and model outputs against safety and content policies in real time."
+    },
+    {
+      "id": "topic-rails",
+      "name": "Topic Rails",
+      "description": "Constrains conversations to allowed topics and adds fact-checking rails to reduce hallucination."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-07-06T07:04:26.668Z",
+  "updatedAt": "2026-07-06T07:04:26.668Z"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "4eH1TxG2pYKZEwPmDI0Rst",
+  "name": "Pipecat",
+  "slug": "pipecat",
+  "description": "Builds realtime voice and multimodal conversational agents in Python — orchestrates STT, LLM, and TTS pipelines with interruption handling. Open-source framework by Daily.",
+  "providerName": "Daily",
+  "providerUrl": "https://pipecat.ai",
+  "agentUrl": "https://github.com/pipecat-ai/pipecat",
+  "categories": [
+    "voice-messaging"
+  ],
+  "tags": [
+    "voice-ai",
+    "realtime",
+    "stt",
+    "tts",
+    "multimodal",
+    "open-source",
+    "python"
+  ],
+  "skills": [
+    {
+      "id": "voice-pipeline",
+      "name": "Voice Pipeline Orchestration",
+      "description": "Chains STT, LLM, and TTS services into a realtime voice pipeline for conversational agents."
+    },
+    {
+      "id": "interruption-handling",
+      "name": "Interruption Handling",
+      "description": "Detects user interruptions and barge-in to make voice conversations feel natural and responsive."
+    },
+    {
+      "id": "multimodal-io",
+      "name": "Multimodal I/O",
+      "description": "Handles audio, video, and text streams together for multimodal realtime agent experiences."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-07-06T07:04:23.296Z",
+  "updatedAt": "2026-07-06T07:04:23.296Z"
+}

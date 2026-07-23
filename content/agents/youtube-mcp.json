@@ -1,0 +1,51 @@
+{
+  "id": "5SvFyXUyOVRmFp2Ee8xxvz",
+  "name": "YouTube MCP",
+  "slug": "youtube-mcp",
+  "description": "Manages YouTube via MCP — search videos, retrieve statistics and captions, list channel content and playlists, upload videos, and update metadata.",
+  "providerName": "Smithery",
+  "providerUrl": "https://smithery.ai",
+  "agentUrl": "https://smithery.ai/server/youtube",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "youtube",
+    "video",
+    "google",
+    "oauth2",
+    "captions",
+    "channel-management",
+    "video-upload"
+  ],
+  "skills": [
+    {
+      "id": "video-search",
+      "name": "Video Search",
+      "description": "Searches YouTube for videos, channels, or playlists using a query and filters by type, publishing date, and results per page."
+    },
+    {
+      "id": "caption-extraction",
+      "name": "Caption Extraction",
+      "description": "Downloads caption tracks from YouTube videos in SRT, SBV, or VTT format for transcript analysis or translation."
+    },
+    {
+      "id": "channel-analytics",
+      "name": "Channel Analytics",
+      "description": "Retrieves subscriber counts, view counts, and video statistics for any YouTube channel by ID or handle."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-06-07T17:51:20.147Z",
+  "updatedAt": "2026-06-07T17:51:20.147Z"
+}

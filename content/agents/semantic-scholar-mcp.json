@@ -1,0 +1,51 @@
+{
+  "id": "2w1W1EEg70XBE3gDSKXomq",
+  "name": "Semantic Scholar MCP",
+  "slug": "semantic-scholar-mcp",
+  "description": "Searches millions of academic papers on Semantic Scholar and arXiv with citation analysis and full-text PDF extraction. No API key required.",
+  "providerName": "Community",
+  "providerUrl": "https://www.semanticscholar.org",
+  "agentUrl": "https://smithery.ai/server/@hamid-vakilzadeh/mcpsemanticscholar",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "academic-research",
+    "arxiv",
+    "pubmed",
+    "citation-analysis",
+    "pdf-extraction",
+    "semantic-scholar",
+    "literature-review"
+  ],
+  "skills": [
+    {
+      "id": "paper-search",
+      "name": "Paper Search",
+      "description": "Searches Semantic Scholar, arXiv, PubMed, bioRxiv, Google Scholar, and IACR for academic papers using natural language."
+    },
+    {
+      "id": "citation-analysis",
+      "name": "Citation Analysis",
+      "description": "Retrieves citation graphs, reference lists, and co-author networks for any academic paper from Semantic Scholar."
+    },
+    {
+      "id": "pdf-extraction",
+      "name": "PDF Extraction",
+      "description": "Downloads and extracts full text from arXiv and open-access PDFs for deep reading without leaving the agent context."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-06-07T17:51:24.021Z",
+  "updatedAt": "2026-06-07T17:51:24.021Z"
+}

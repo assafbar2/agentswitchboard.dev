@@ -1,0 +1,54 @@
+{
+  "id": "1WusQDdTFxgjCldaug4Oe",
+  "name": "Langflow",
+  "slug": "langflow",
+  "description": "Visual builder for AI agents and workflows — drag-and-drop graphs compiled to REST endpoints. Every flow becomes an MCP server. pip install langflow. 148k stars.",
+  "providerName": "DataStax",
+  "providerUrl": "https://langflow.org",
+  "agentUrl": "https://docs.langflow.org",
+  "categories": [
+    "infrastructure",
+    "orchestration"
+  ],
+  "tags": [
+    "visual-builder",
+    "workflow-builder",
+    "low-code",
+    "rest-api",
+    "mcp-server",
+    "agent-orchestration",
+    "langchain"
+  ],
+  "skills": [
+    {
+      "id": "visual-workflow",
+      "name": "Visual Workflow Builder",
+      "description": "Build AI pipelines with drag-and-drop components — models, tools, memory, and custom logic nodes."
+    },
+    {
+      "id": "flow-api",
+      "name": "Flow REST API",
+      "description": "Every flow auto-generates a REST API endpoint for integration into any application or agent pipeline."
+    },
+    {
+      "id": "mcp-export",
+      "name": "MCP Server Export",
+      "description": "Expose any Langflow flow as a streamable MCP server — connect to Cursor, Claude, or any MCP client."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-05-13T16:56:25.717Z",
+  "updatedAt": "2026-06-15T03:15:51.723Z"
+}

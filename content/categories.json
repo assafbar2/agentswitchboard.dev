@@ -1,0 +1,162 @@
+[
+  {
+    "id": "7inqvMgFf4dh13bC79cFhU",
+    "name": "Language & Translation",
+    "slug": "language",
+    "description": "AI translation and language processing agents for global applications. From enterprise-grade document translation to real-time multilingual chat, these agents break language barriers at scale. Essential for any app reaching non-English markets or processing multilingual data pipelines.",
+    "icon": "Languages",
+    "sortOrder": 1
+  },
+  {
+    "id": "3d0ys6UDI0FjTrgw4v5wv8",
+    "name": "Data & Analytics",
+    "slug": "data-analytics",
+    "description": "AI agents that query, transform, and reason over structured data — from SQL databases to cloud data warehouses. These tools let language models run analytics, generate reports, and surface insights without manual wrangling. Best for BI automation, data quality pipelines, and AI-driven dashboards.",
+    "icon": "BarChart3",
+    "sortOrder": 2
+  },
+  {
+    "id": "53qEOctvvj7B7iPGjkgLw0",
+    "name": "Customer Support",
+    "slug": "customer-support",
+    "description": "AI agents that handle customer inquiries, resolve tickets, and automate support workflows across chat, email, and phone. These tools integrate with your helpdesk to deflect repetitive queries and surface the right answers instantly. The best ones resolve 50%+ of support volume without human intervention.",
+    "icon": "Headphones",
+    "sortOrder": 3
+  },
+  {
+    "id": "Wx5Z0jaccw9a94lsbfKTX",
+    "name": "Code & DevTools",
+    "slug": "code-devtools",
+    "description": "AI-powered development tools that write, review, debug, and ship code faster. From in-IDE copilots to autonomous coding agents that open PRs, these tools plug directly into developer workflows. Increasingly capable of handling full features end-to-end given a specification.",
+    "icon": "Code2",
+    "sortOrder": 4
+  },
+  {
+    "id": "4l9ucrmQTUoipatNlXCqeP",
+    "name": "Finance & Accounting",
+    "slug": "finance",
+    "description": "AI agents for financial data access, payment automation, and expense management. These tools connect your agents to banking APIs, expense systems, and market data — enabling programmatic spend control, reconciliation, and financial reporting without human touchpoints.",
+    "icon": "DollarSign",
+    "sortOrder": 5
+  },
+  {
+    "id": "14ULrKtnQZyzO792Km8BnZ",
+    "name": "Sales & Marketing",
+    "slug": "sales-marketing",
+    "description": "AI agents that research prospects, draft outreach, manage pipelines, and generate marketing content at scale. These tools handle the repetitive parts of go-to-market — account mapping, personalized email sequences, CRM hygiene — so sales teams can focus on closing.",
+    "icon": "TrendingUp",
+    "sortOrder": 6
+  },
+  {
+    "id": "2EiPFKj4bl1l93XXc9pnny",
+    "name": "Legal & Compliance",
+    "slug": "legal",
+    "description": "AI agents purpose-built for legal research, contract analysis, and document review. Unlike general-purpose LLMs, these tools are trained on legal corpora and understand jurisdiction, precedent, and contract structure. Used by law firms and in-house teams to accelerate due diligence.",
+    "icon": "Scale",
+    "sortOrder": 7
+  },
+  {
+    "id": "2bHczM99CVsDHN44Y4NmX8",
+    "name": "Content & Media",
+    "slug": "content-media",
+    "description": "AI agents for generating, editing, and distributing media — text, image, video, audio, and voice. These tools power content pipelines, creative workflows, and media production at scale. From transcription and speaker diarization to video synthesis, they handle the full content lifecycle.",
+    "icon": "Image",
+    "sortOrder": 8
+  },
+  {
+    "id": "4DWCugnTmIRlLsaYa5WjZR",
+    "name": "Infrastructure & Ops",
+    "slug": "infrastructure",
+    "description": "Foundational AI infrastructure — agent frameworks, LLM gateways, observability platforms, and integration layers. These are the tools production AI applications depend on: rate limiting, cost tracking, tracing, fallbacks, and connecting agents to external APIs. The plumbing of the agentic stack.",
+    "icon": "Server",
+    "sortOrder": 9
+  },
+  {
+    "id": "22Kd21qgJwkPaMhgYGUfTO",
+    "name": "Research & Knowledge",
+    "slug": "research",
+    "description": "AI agents for web search, document retrieval, and knowledge synthesis. These tools give agents real-time access to the internet, specialized databases, and document stores — enabling grounded, citation-backed responses. Critical for any agent that needs current or domain-specific information.",
+    "icon": "BookOpen",
+    "sortOrder": 10
+  },
+  {
+    "id": "4UuA4GGBTNK9FENwYQSMxe",
+    "name": "Scheduling & Workflow",
+    "slug": "scheduling",
+    "description": "AI agents for calendar management, meeting scheduling, and workflow automation. These tools understand natural language scheduling requests and coordinate across calendars, time zones, and communication channels — handling the cognitive overhead of keeping complex schedules organized.",
+    "icon": "Calendar",
+    "sortOrder": 11
+  },
+  {
+    "id": "ZcI8XfUcXNjfAhGvki2zi",
+    "name": "Security",
+    "slug": "security",
+    "description": "AI agents for threat detection, access control, vulnerability scanning, and security policy enforcement. From SIEM integrations to agent-level sandboxing and governance layers, these tools protect AI systems and the applications they power. Increasingly essential as agentic workloads expand.",
+    "icon": "Shield",
+    "sortOrder": 12
+  },
+  {
+    "id": "44nVoPNVZXunRtMumItZfO",
+    "name": "Commerce & Payments",
+    "slug": "commerce-payments",
+    "description": "AI agents powering e-commerce automation, checkout optimization, and payment intelligence. These tools enable agentic shopping experiences, dynamic pricing, inventory sync, and payment routing — all programmatically. Built for AI-native storefronts and the next generation of financial flows.",
+    "icon": "ShoppingCart",
+    "sortOrder": 13
+  },
+  {
+    "id": "4Xpu20PQOWWIvwmT4IoASI",
+    "name": "Prediction Markets",
+    "slug": "prediction-markets",
+    "description": "APIs and agents for building on prediction market platforms.",
+    "icon": "TrendingUp",
+    "sortOrder": 13
+  },
+  {
+    "id": "ydaYTlRXXas53G3kbr65i",
+    "name": "Memory & State",
+    "slug": "memory-state",
+    "description": "Persistent memory and state management layers for AI agents. These tools store, retrieve, and reason over long-term user context, conversation history, and knowledge across sessions. Without memory, every interaction starts from scratch — these agents give your AI continuity and personalization.",
+    "icon": "Brain",
+    "sortOrder": 14
+  },
+  {
+    "id": "6g6TPbURSB52Z2scsiUGxN",
+    "name": "Browser & Computer Use",
+    "slug": "browser-computer",
+    "description": "AI agents that control browsers, execute code in sandboxed environments, and interact with websites and desktop apps. These tools extend AI beyond text into the real web — navigating UIs, filling forms, scraping data, and running code securely. The infrastructure layer for autonomous web agents.",
+    "icon": "Monitor",
+    "sortOrder": 15
+  },
+  {
+    "id": "1rQCIuLKfXhq2efEUDtQ8C",
+    "name": "Vector Databases",
+    "slug": "vector-databases",
+    "description": "Vector databases purpose-built for AI applications — store, index, and search high-dimensional embeddings at scale. These are the retrieval backbone of RAG pipelines, semantic search, and long-term agent memory. Available as managed cloud services or open-source self-hosted deployments.",
+    "icon": "Database",
+    "sortOrder": 16
+  },
+  {
+    "id": "2pV8SRrEcdoS7Rjodj490d",
+    "name": "Voice & Messaging",
+    "slug": "voice-messaging",
+    "description": "AI agents for voice calls, WhatsApp, SMS, and messaging channel automation. These tools handle real-time speech-to-text, turn-taking, TTS, and multi-channel routing — enabling phone agents that sound human and messaging bots that feel native. Critical for customer-facing voice and chat automation.",
+    "icon": "Phone",
+    "sortOrder": 17
+  },
+  {
+    "id": "7t5V37xtBu02l60r6cKK4d",
+    "name": "Communication & Messaging",
+    "slug": "communication",
+    "description": "MCP servers and agents that connect AI to messaging platforms — Slack, Teams, Discord, email, and SMS. These tools let agents search conversations, post updates, create documents, and coordinate with teams programmatically.",
+    "icon": "MessageSquare",
+    "sortOrder": 18
+  },
+  {
+    "id": "5ODCjKvQK5N7Fkkt8zfbE0",
+    "name": "Orchestration",
+    "slug": "orchestration",
+    "description": "Frameworks and engines for coordinating multi-agent workflows — task routing, durable execution, human-in-the-loop handoffs, and parallel agent management.",
+    "icon": "Network",
+    "sortOrder": 19
+  }
+]

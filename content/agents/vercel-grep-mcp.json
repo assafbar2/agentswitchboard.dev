@@ -1,0 +1,51 @@
+{
+  "id": "5JYVVaqM2bATCNMSIPAU0I",
+  "name": "Vercel Grep MCP",
+  "slug": "vercel-grep-mcp",
+  "description": "Searches millions of public GitHub repositories for real-world code patterns and API usage examples using literal or regex queries. No key needed.",
+  "providerName": "Vercel",
+  "providerUrl": "https://vercel.com",
+  "agentUrl": "https://smithery.ai/server/vercel/grep",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "code-search",
+    "github",
+    "regex",
+    "pattern-matching",
+    "api-examples",
+    "vercel",
+    "developer-tools"
+  ],
+  "skills": [
+    {
+      "id": "code-pattern-search",
+      "name": "Code Pattern Search",
+      "description": "Searches millions of public GitHub repositories for literal code strings or regex patterns across any language."
+    },
+    {
+      "id": "regex-code-search",
+      "name": "Regex Code Search",
+      "description": "Applies full regular expressions including multiline and dotall flags to find complex code patterns in production repos."
+    },
+    {
+      "id": "language-filtered-search",
+      "name": "Language-Filtered Search",
+      "description": "Narrows code searches by programming language, repository name, or file path to get targeted, relevant results."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-06-07T17:51:22.747Z",
+  "updatedAt": "2026-06-07T17:51:22.747Z"
+}

@@ -1,0 +1,56 @@
+{
+  "id": "6zIw3KcF33Z4AJximnXNdA",
+  "name": "SafeWeave",
+  "slug": "safeweave",
+  "description": "MCP server with 8 parallel security scanners — SAST, secrets, dependencies, IaC, container, DAST, license, and posture. Integrates into Cursor, Claude Code, VS Code in seconds.",
+  "providerName": "SafeWeave",
+  "providerUrl": "https://safeweave.dev",
+  "agentUrl": "https://safeweave.dev",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "mcp",
+    "sast",
+    "secrets-detection",
+    "dependency-audit",
+    "iac-security",
+    "container-security",
+    "devsecops"
+  ],
+  "skills": [
+    {
+      "id": "sast-scan",
+      "name": "SAST Scan",
+      "description": "Run static analysis security testing on source code and surface vulnerabilities by severity level"
+    },
+    {
+      "id": "secrets-detect",
+      "name": "Secrets Detection",
+      "description": "Detect leaked API keys, tokens, and credentials committed to code using pattern-based scanning"
+    },
+    {
+      "id": "dependency-audit",
+      "name": "Dependency Audit",
+      "description": "Audit package dependencies for known CVEs and license compliance issues across major ecosystems"
+    },
+    {
+      "id": "iac-scan",
+      "name": "IaC Security Scan",
+      "description": "Scan Terraform, CloudFormation, and Kubernetes configs for misconfigurations and security gaps"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-04-25T18:49:54.846Z",
+  "updatedAt": "2026-04-25T18:49:54.846Z"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "6BbW0lve773RolzwvkF2tK",
+  "name": "Juggler",
+  "slug": "juggler",
+  "description": "Presents coding-agent sessions as editable, branching documents instead of a chat log, using CRDT sync and a Miller-columns UI. Go + Wails; BYO key for Claude, OpenAI, Gemini, or Ollama. AGPL-3.0.",
+  "providerName": "Julian Storer",
+  "providerUrl": "https://juggler.studio",
+  "agentUrl": "https://juggler.studio",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "coding-agent",
+    "crdt",
+    "branching-sessions",
+    "byok",
+    "desktop",
+    "wails",
+    "open-source",
+    "agpl-3-0"
+  ],
+  "skills": [
+    {
+      "id": "branching-sessions",
+      "name": "Branching Sessions",
+      "description": "Structures each agent session as a tree of editable branches so you can fork, revise, and compare approaches."
+    },
+    {
+      "id": "editable-context",
+      "name": "Editable Context",
+      "description": "Lets you inspect and edit the exact context and tool calls sent to the model before continuing a run."
+    },
+    {
+      "id": "byok-models",
+      "name": "Bring-Your-Own-Key Models",
+      "description": "Connects to Claude, OpenAI, Gemini, or local Ollama models using your own API keys with no vendor lock-in."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-07-17T20:41:15.783Z",
+  "updatedAt": "2026-07-17T20:41:15.783Z"
+}

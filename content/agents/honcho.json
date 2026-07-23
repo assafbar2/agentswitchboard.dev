@@ -1,0 +1,59 @@
+{
+  "id": "70gSWylQ73FYSkJBCr5HZr",
+  "name": "Honcho",
+  "slug": "honcho",
+  "description": "User state management platform for AI apps. Stores user context, preferences, and interaction history to enable personalized multi-session AI experiences.",
+  "providerName": "Honcho",
+  "providerUrl": "https://honcho.dev",
+  "agentUrl": "https://docs.honcho.dev",
+  "categories": [
+    "memory-state"
+  ],
+  "tags": [
+    "memory",
+    "user-state",
+    "personalization",
+    "multi-session",
+    "python"
+  ],
+  "skills": [
+    {
+      "id": "persist-user-session-state-and-conversation-context-across-app-restarts",
+      "name": "Persist user session state and conversation context across app restarts",
+      "description": "Persist user session state and conversation context across app restarts"
+    },
+    {
+      "id": "track-evolving-user-preferences-learned-from-interaction-history",
+      "name": "Track evolving user preferences learned from interaction history",
+      "description": "Track evolving user preferences learned from interaction history"
+    },
+    {
+      "id": "share-user-context-across-multiple-ai-applications-from-one-platform",
+      "name": "Share user context across multiple AI applications from one platform",
+      "description": "Share user context across multiple AI applications from one platform"
+    },
+    {
+      "id": "link-user-identity-across-sessions-and-devices-for-unified-personalization",
+      "name": "Link user identity across sessions and devices for unified personalization",
+      "description": "Link user identity across sessions and devices for unified personalization"
+    },
+    {
+      "id": "store-arbitrary-personalization-metadata-alongside-structured-session-records",
+      "name": "Store arbitrary personalization metadata alongside structured session records",
+      "description": "Store arbitrary personalization metadata alongside structured session records"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-04-08T07:17:05.429Z",
+  "updatedAt": "2026-04-08T07:17:05.429Z"
+}

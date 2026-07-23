@@ -1,0 +1,31 @@
+{
+  "id": "4mp2gKQrWFdgvvmem0Y2Tx",
+  "name": "Clay",
+  "slug": "clay",
+  "description": "Data enrichment and outbound automation platform that combines 100+ data providers with AI for personalized outreach at scale.",
+  "providerName": "Clay",
+  "providerUrl": "https://clay.com",
+  "agentUrl": "https://www.clay.com/",
+  "categories": [
+    "sales-marketing",
+    "data-analytics"
+  ],
+  "tags": [
+    "enrichment",
+    "outbound"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-03-22T09:52:33.409Z",
+  "updatedAt": "2026-03-22T09:52:33.409Z"
+}

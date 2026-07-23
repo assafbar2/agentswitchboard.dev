@@ -1,0 +1,62 @@
+{
+  "id": "69yCuuSKJtXurTePt6IoQn",
+  "name": "Trigger.dev",
+  "slug": "trigger-dev",
+  "description": "Open-source background jobs and workflow engine for AI apps. Run long tasks, cron jobs, and multi-step agent pipelines with resilient retries and MCP integration.",
+  "providerName": "Trigger.dev",
+  "providerUrl": "https://trigger.dev",
+  "agentUrl": "https://trigger.dev/docs",
+  "categories": [
+    "scheduling"
+  ],
+  "tags": [
+    "background-jobs",
+    "cron",
+    "workflow-engine",
+    "open-source",
+    "mcp",
+    "long-running-tasks"
+  ],
+  "skills": [
+    {
+      "id": "background-jobs",
+      "name": "Background Jobs",
+      "description": "Run long-running tasks in the background without timeout constraints or serverless cold starts"
+    },
+    {
+      "id": "cron-schedule",
+      "name": "Cron Scheduling",
+      "description": "Schedule recurring tasks with cron expressions and one-off delayed executions"
+    },
+    {
+      "id": "retry-recovery",
+      "name": "Retry & Recovery",
+      "description": "Automatically retry failed steps with configurable backoff and resume from checkpoint"
+    },
+    {
+      "id": "realtime-logs",
+      "name": "Realtime Logs",
+      "description": "Stream live task logs and status updates to the Trigger.dev dashboard or your app"
+    },
+    {
+      "id": "mcp-trigger",
+      "name": "MCP Trigger",
+      "description": "Trigger jobs and query run status from Claude and other MCP-compatible AI agents"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-04-13T21:38:39.269Z",
+  "updatedAt": "2026-04-13T21:38:39.269Z"
+}

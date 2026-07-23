@@ -1,0 +1,35 @@
+{
+  "id": "5kg9rxuRJs8TwAH44URnXs",
+  "name": "Outstand",
+  "slug": "outstand",
+  "description": "Unified social media API with a native MCP server — post to 10+ platforms (X, LinkedIn, Instagram, TikTok, Threads, Bluesky, YouTube, Pinterest) via plain English through Claude, Cursor, or Windsurf.",
+  "providerName": "Outstand",
+  "providerUrl": "https://www.outstand.so",
+  "agentUrl": "https://www.outstand.so",
+  "categories": [
+    "sales-marketing",
+    "content-media"
+  ],
+  "tags": [
+    "social-media",
+    "mcp",
+    "api",
+    "multi-platform",
+    "scheduling"
+  ],
+  "skills": [],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-04-12T17:39:08.588Z",
+  "updatedAt": "2026-04-12T17:39:08.588Z"
+}

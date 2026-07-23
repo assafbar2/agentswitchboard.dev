@@ -1,0 +1,52 @@
+{
+  "id": "4sBpCKLcrqXjhPFHFvtm6o",
+  "name": "Warden",
+  "slug": "warden-sentry",
+  "description": "AI code review agent from Sentry — define review skills in Markdown, run locally before pushing or auto-trigger on every PR via GitHub Action. Built-in security-review and code-review skills included.",
+  "providerName": "Sentry",
+  "providerUrl": "https://sentry.io",
+  "agentUrl": "https://warden.sentry.dev",
+  "categories": [
+    "code-devtools",
+    "security"
+  ],
+  "tags": [
+    "code-review",
+    "security-review",
+    "pull-request",
+    "github-action",
+    "sentry",
+    "ai-code-review",
+    "markdown-skills"
+  ],
+  "skills": [
+    {
+      "id": "pr-security-review",
+      "name": "PR Security Review",
+      "description": "Scan pull request diffs for exploitable vulnerabilities — SQL injection, hardcoded secrets, auth flaws — with suggested code fixes."
+    },
+    {
+      "id": "custom-skill-authoring",
+      "name": "Custom Skill Authoring",
+      "description": "Define any review concern as a Markdown skill file; Warden runs all skills in parallel on each changed file chunk."
+    },
+    {
+      "id": "local-pre-push",
+      "name": "Local Pre-Push Check",
+      "description": "Run all configured skills against your local diff before pushing — catches issues before CI triggers on the PR."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-05-20T23:46:18.819Z",
+  "updatedAt": "2026-05-20T23:46:18.819Z"
+}

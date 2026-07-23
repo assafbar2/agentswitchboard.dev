@@ -1,0 +1,34 @@
+{
+  "id": "kAaSNPKUkgslrWNY1DaNz",
+  "name": "Atlassian Rovo",
+  "slug": "atlassian-rovo",
+  "description": "AI teammate for Atlassian products — searches across Jira, Confluence, and connected apps to find answers and automate tasks.",
+  "providerName": "Atlassian",
+  "providerUrl": "https://atlassian.com",
+  "agentUrl": "https://www.atlassian.com/software/rovo",
+  "categories": [
+    "scheduling",
+    "research"
+  ],
+  "tags": [
+    "productivity",
+    "search",
+    "enterprise"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-03-22T09:53:29.215Z",
+  "updatedAt": "2026-03-22T09:53:29.215Z"
+}

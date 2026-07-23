@@ -1,0 +1,52 @@
+{
+  "id": "3565ZERAxbt61zuj0hiMgh",
+  "name": "OpenManus",
+  "slug": "openmanus",
+  "description": "Builds general-purpose autonomous agents that plan, browse the web, run code, and use tools — an open, no-invite-code alternative to Manus from the MetaGPT team. 57k+ GitHub stars, MIT-licensed.",
+  "providerName": "FoundationAgents",
+  "providerUrl": "https://github.com/FoundationAgents",
+  "agentUrl": "https://github.com/FoundationAgents/OpenManus",
+  "categories": [
+    "orchestration"
+  ],
+  "tags": [
+    "autonomous-agent",
+    "general-purpose",
+    "browser-automation",
+    "tool-use",
+    "metagpt",
+    "open-source",
+    "mit-license"
+  ],
+  "skills": [
+    {
+      "id": "task-planning",
+      "name": "Task Planning",
+      "description": "Decomposes a natural-language goal into an ordered plan of steps and executes them with the available tools."
+    },
+    {
+      "id": "browser-automation",
+      "name": "Browser Automation",
+      "description": "Controls a browser to search, navigate, and extract information as part of an autonomous task run."
+    },
+    {
+      "id": "code-execution",
+      "name": "Code Execution",
+      "description": "Writes and runs code in a sandbox to compute results, transform data, or complete programming subtasks."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-07-17T20:41:18.400Z",
+  "updatedAt": "2026-07-17T20:41:18.400Z"
+}

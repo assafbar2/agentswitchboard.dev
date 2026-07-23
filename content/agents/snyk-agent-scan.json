@@ -1,0 +1,50 @@
+{
+  "id": "1IXztrrOQpPWOhtVR3NV6c",
+  "name": "Snyk Agent Scan",
+  "slug": "snyk-agent-scan",
+  "description": "Security scanner for MCP servers and agent skills. Detects prompt injections, tool poisoning, and sensitive data risks across Claude, Cursor, Windsurf, and 10+ other agents.",
+  "providerName": "Snyk",
+  "providerUrl": "https://snyk.io",
+  "agentUrl": "https://github.com/snyk/agent-scan",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "security-scanner",
+    "mcp-security",
+    "prompt-injection",
+    "agent-security",
+    "supply-chain",
+    "vulnerability-detection"
+  ],
+  "skills": [
+    {
+      "id": "scan-mcp-servers",
+      "name": "Scan MCP Servers",
+      "description": "Auto-discover and scan installed MCP server configurations for prompt injections, tool poisoning, and tool shadowing attacks."
+    },
+    {
+      "id": "scan-agent-skills",
+      "name": "Scan Agent Skills",
+      "description": "Inventory and analyze agent skills across Claude Code, Codex, and Cursor for malware payloads hidden in natural language."
+    },
+    {
+      "id": "security-report",
+      "name": "Security Report",
+      "description": "Generate detailed security reports with severity ratings across 15+ distinct risk categories for all installed agent components."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-05-07T00:58:32.917Z",
+  "updatedAt": "2026-05-07T00:58:32.917Z"
+}

@@ -1,0 +1,53 @@
+{
+  "id": "5x4wGLpWf4fJk8vOyUFGBC",
+  "name": "Rasa",
+  "slug": "rasa",
+  "description": "Open-source framework for building text and voice conversational agents — combines NLU, dialogue management, and its CALM LLM-native approach. 21k+ GitHub stars, Apache-2.0. Python framework and CLI.",
+  "providerName": "Rasa",
+  "providerUrl": "https://rasa.com",
+  "agentUrl": "https://github.com/RasaHQ/rasa",
+  "categories": [
+    "customer-support"
+  ],
+  "tags": [
+    "conversational-ai",
+    "nlu",
+    "dialogue-management",
+    "chatbot",
+    "voice",
+    "python",
+    "calm",
+    "apache-2-0"
+  ],
+  "skills": [
+    {
+      "id": "nlu",
+      "name": "Intent & Entity Recognition",
+      "description": "Classifies user intents and extracts entities from messages to drive structured conversational logic."
+    },
+    {
+      "id": "dialogue-management",
+      "name": "Dialogue Management",
+      "description": "Tracks conversation state and decides the next action or response across multi-turn dialogues."
+    },
+    {
+      "id": "calm-agents",
+      "name": "CALM Agents",
+      "description": "Builds LLM-native assistants that follow business logic reliably using Conversational AI with Language Models."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-07-17T20:41:30.806Z",
+  "updatedAt": "2026-07-17T20:41:30.806Z"
+}

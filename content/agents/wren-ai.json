@@ -1,0 +1,52 @@
+{
+  "id": "TNpUZjKFLYSsBqO21Pb76",
+  "name": "Wren AI",
+  "slug": "wren-ai",
+  "description": "Open-source text-to-SQL agent for governed GenBI — ask questions in natural language across 20+ data sources and get accurate SQL, charts, and answers. Ships an MCP server and API. 15k+ GitHub stars.",
+  "providerName": "Canner",
+  "providerUrl": "https://getwren.ai",
+  "agentUrl": "https://github.com/Canner/WrenAI",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "text-to-sql",
+    "genbi",
+    "business-intelligence",
+    "semantic-layer",
+    "mcp",
+    "data-sources",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "text-to-sql",
+      "name": "Text-to-SQL",
+      "description": "Translates natural-language questions into accurate SQL using a semantic layer over connected databases."
+    },
+    {
+      "id": "genbi-answers",
+      "name": "GenBI Answers",
+      "description": "Returns summaries, charts, and explanations alongside query results for self-service business intelligence."
+    },
+    {
+      "id": "semantic-modeling",
+      "name": "Semantic Modeling",
+      "description": "Defines a governed semantic model so metrics and relationships stay consistent across every query."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-07-17T20:41:27.921Z",
+  "updatedAt": "2026-07-17T20:41:27.921Z"
+}

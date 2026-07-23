@@ -1,0 +1,32 @@
+{
+  "id": "5LNw6yyW1Rv74ip5W5y6oJ",
+  "name": "Zendesk AI",
+  "slug": "zendesk-ai",
+  "description": "AI-powered customer service with autonomous agents, intelligent triage, and agent copilot built into the Zendesk platform.",
+  "providerName": "Zendesk",
+  "providerUrl": "https://zendesk.com",
+  "agentUrl": "https://www.zendesk.com/service/ai/",
+  "categories": [
+    "customer-support"
+  ],
+  "tags": [
+    "support",
+    "ticketing",
+    "ai-agent"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-03-22T09:51:40.877Z",
+  "updatedAt": "2026-03-22T09:51:40.877Z"
+}

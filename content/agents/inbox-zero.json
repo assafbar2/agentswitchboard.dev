@@ -1,0 +1,61 @@
+{
+  "id": "6QlriIxBlsnUfqhtrtKmQd",
+  "name": "Inbox Zero",
+  "slug": "inbox-zero",
+  "description": "Open-source AI email management tool with MCP server. Automates bulk unsubscribing, smart archiving, reply drafting, and rule-based inbox cleanup via AI.",
+  "providerName": "Elie Steinbock",
+  "providerUrl": "https://getinboxzero.com",
+  "agentUrl": "https://docs.getinboxzero.com/introduction",
+  "categories": [
+    "scheduling"
+  ],
+  "tags": [
+    "mcp",
+    "email-management",
+    "inbox-cleanup",
+    "unsubscribe",
+    "gmail",
+    "ai-replies"
+  ],
+  "skills": [
+    {
+      "id": "bulk-unsubscribe",
+      "name": "Bulk Unsubscribe",
+      "description": "Identify and unsubscribe from newsletters and marketing emails in bulk with one action"
+    },
+    {
+      "id": "smart-archive",
+      "name": "Smart Archive",
+      "description": "Archive emails automatically based on AI-classified categories and user-defined rules"
+    },
+    {
+      "id": "reply-draft",
+      "name": "Reply Drafting",
+      "description": "Draft context-aware email replies using AI with your writing style and prior thread"
+    },
+    {
+      "id": "rule-engine",
+      "name": "Rule Engine",
+      "description": "Create natural language rules that automatically label, archive, or forward incoming mail"
+    },
+    {
+      "id": "mcp-control",
+      "name": "MCP Control",
+      "description": "Manage your inbox programmatically from Claude and MCP-compatible agents via Inbox Zero MCP"
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-04-13T21:38:43.232Z",
+  "updatedAt": "2026-07-17T19:37:45.968Z"
+}

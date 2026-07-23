@@ -1,0 +1,52 @@
+{
+  "id": "4c832Q8CKRCdmAheDkKNG0",
+  "name": "Grafana MCP Server",
+  "slug": "grafana-mcp",
+  "description": "Connects AI agents to Grafana via an official MCP server — query dashboards, datasources, Prometheus and Loki, and manage alerts and incidents. By Grafana Labs, Apache-2.0. 3k+ GitHub stars.",
+  "providerName": "Grafana Labs",
+  "providerUrl": "https://grafana.com",
+  "agentUrl": "https://github.com/grafana/mcp-grafana",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "observability",
+    "grafana",
+    "dashboards",
+    "prometheus",
+    "loki",
+    "alerting",
+    "mcp",
+    "official"
+  ],
+  "skills": [
+    {
+      "id": "dashboard-search",
+      "name": "Dashboard Search",
+      "description": "Finds and reads Grafana dashboards and panels so agents can reference existing visualizations and queries."
+    },
+    {
+      "id": "datasource-query",
+      "name": "Datasource Query",
+      "description": "Runs queries against Prometheus, Loki, and other datasources to pull metrics and logs into an agent."
+    },
+    {
+      "id": "incident-management",
+      "name": "Incident Management",
+      "description": "Lists and updates alerts and incidents so agents can triage and act on observability events."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-07-17T20:41:29.404Z",
+  "updatedAt": "2026-07-17T20:41:29.404Z"
+}

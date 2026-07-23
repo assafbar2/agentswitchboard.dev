@@ -1,0 +1,50 @@
+{
+  "id": "7nnrR8v6TNZgALJEjZ2XTg",
+  "name": "PrivateGPT",
+  "slug": "private-gpt",
+  "description": "Self-hosted document QA platform with OpenAI-compatible REST API, local LLM support via Ollama, a full RAG pipeline, and zero data exfiltration for private environments.",
+  "providerName": "Zylon AI",
+  "providerUrl": "https://zylon.ai/",
+  "agentUrl": "https://privategpt.io/",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "document-qa",
+    "local-llm",
+    "rag",
+    "privacy",
+    "self-hosted",
+    "openai-compatible"
+  ],
+  "skills": [
+    {
+      "id": "private-doc-qa",
+      "name": "Private Document QA",
+      "description": "Answer natural language questions over ingested documents entirely offline with no data leaving the execution environment at any point."
+    },
+    {
+      "id": "document-ingest",
+      "name": "Document Ingest",
+      "description": "Ingest PDFs, text, and other files into the local vector store for retrieval-augmented generation against any configured local LLM."
+    },
+    {
+      "id": "openai-compat-api",
+      "name": "OpenAI-Compatible API",
+      "description": "Expose a drop-in OpenAI API endpoint so existing tools and integrations can switch to local inference without changing code."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-05-22T08:27:56.269Z",
+  "updatedAt": "2026-05-22T08:27:56.269Z"
+}

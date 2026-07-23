@@ -1,0 +1,51 @@
+{
+  "id": "7aByoWEEPKxPM5uHw0bFx9",
+  "name": "Obsidian MCP",
+  "slug": "obsidian-mcp",
+  "description": "MCP server connecting AI agents to Obsidian vaults via the Local REST API plugin. Read, search, and write notes to ground agent workflows in a personal knowledge base.",
+  "providerName": "Markus Pfundstein",
+  "providerUrl": "https://github.com/MarkusPfundstein/mcp-obsidian",
+  "agentUrl": "https://github.com/MarkusPfundstein/mcp-obsidian",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "mcp",
+    "obsidian",
+    "notes",
+    "knowledge-management",
+    "local-rest-api",
+    "vault",
+    "markdown"
+  ],
+  "skills": [
+    {
+      "id": "note-search",
+      "name": "Note Search",
+      "description": "Search across your Obsidian vault by content, tags, or title using the Local REST API plugin"
+    },
+    {
+      "id": "note-read",
+      "name": "Note Read",
+      "description": "Read full note content and frontmatter from any file in the Obsidian vault via MCP tools"
+    },
+    {
+      "id": "note-write",
+      "name": "Note Write",
+      "description": "Create and update Obsidian notes from agent outputs to build a persistent knowledge base"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-04-25T19:07:10.335Z",
+  "updatedAt": "2026-04-25T19:07:10.335Z"
+}

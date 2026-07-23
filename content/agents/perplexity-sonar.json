@@ -1,0 +1,31 @@
+{
+  "id": "2kuHIPMM4cwSIS6vFXAV0o",
+  "name": "Perplexity Sonar",
+  "slug": "perplexity-sonar",
+  "description": "AI search API delivering grounded, cited answers with real-time web access — power your apps with Perplexity's search intelligence.",
+  "providerName": "Perplexity",
+  "providerUrl": "https://perplexity.ai",
+  "agentUrl": "https://docs.perplexity.ai/",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "search",
+    "web"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-03-22T09:52:58.489Z",
+  "updatedAt": "2026-03-22T16:40:29.060Z"
+}

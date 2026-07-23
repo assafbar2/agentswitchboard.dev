@@ -1,0 +1,52 @@
+{
+  "id": "mizBOaKELUAArWegXnVYO",
+  "name": "assistant-ui",
+  "slug": "assistant-ui",
+  "description": "Provides a TypeScript and React component library for building AI chat and agent UIs — ChatGPT-style threads, generative UI, streaming, and tool-call rendering. YC-backed.",
+  "providerName": "assistant-ui",
+  "providerUrl": "https://www.assistant-ui.com",
+  "agentUrl": "https://github.com/assistant-ui/assistant-ui",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "react",
+    "typescript",
+    "chat-ui",
+    "generative-ui",
+    "component-library",
+    "open-source",
+    "yc"
+  ],
+  "skills": [
+    {
+      "id": "chat-ui-components",
+      "name": "Chat UI Components",
+      "description": "Ships React primitives for ChatGPT-style threads, composer, and message rendering out of the box."
+    },
+    {
+      "id": "generative-ui",
+      "name": "Generative UI",
+      "description": "Renders tool calls and structured model output as interactive React components in the conversation."
+    },
+    {
+      "id": "streaming-messages",
+      "name": "Streaming Messages",
+      "description": "Streams assistant responses token by token with built-in state management and auto-scroll."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-07-06T07:04:33.821Z",
+  "updatedAt": "2026-07-06T07:04:33.821Z"
+}

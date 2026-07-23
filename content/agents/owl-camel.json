@@ -1,0 +1,50 @@
+{
+  "id": "OGxC2bssHWTfuahDWk8ZC",
+  "name": "OWL",
+  "slug": "owl-camel",
+  "description": "Optimised Workforce Learning multi-agent system ranked #1 open-source on the GAIA benchmark, orchestrating specialised sub-agents with 20+ real-world toolkits.",
+  "providerName": "CAMEL-AI Community",
+  "providerUrl": "https://camel-ai.org/",
+  "agentUrl": "https://github.com/camel-ai/owl",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "multi-agent",
+    "gaia-benchmark",
+    "workforce",
+    "web-browsing",
+    "code-execution",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "web-research",
+      "name": "Web Research Agent",
+      "description": "Deploy a browser-equipped sub-agent to search, navigate, and extract information from the web as part of a larger multi-agent workflow."
+    },
+    {
+      "id": "code-execute",
+      "name": "Sandboxed Code Execution",
+      "description": "Run AI-generated Python code in an isolated execution environment and feed results back into the orchestrating agent loop."
+    },
+    {
+      "id": "workforce-dispatch",
+      "name": "Workforce Dispatch",
+      "description": "Break complex tasks into specialised sub-tasks and assign each to a dedicated agent role with scoped tools and termination conditions."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-05-22T08:28:05.117Z",
+  "updatedAt": "2026-05-22T08:28:05.117Z"
+}

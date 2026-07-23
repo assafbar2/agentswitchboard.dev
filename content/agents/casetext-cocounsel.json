@@ -1,0 +1,32 @@
+{
+  "id": "2I784GU6g6Mi9Z71nr8iA5",
+  "name": "Casetext / CoCounsel",
+  "slug": "casetext-cocounsel",
+  "description": "AI legal research assistant by Thomson Reuters that reviews documents, drafts memos, analyzes contracts, and finds relevant case law.",
+  "providerName": "Thomson Reuters",
+  "providerUrl": "https://thomsonreuters.com",
+  "agentUrl": "https://legal.thomsonreuters.com/en/products/cocounsel-legal",
+  "categories": [
+    "legal",
+    "research"
+  ],
+  "tags": [
+    "legal-research",
+    "ai-assistant",
+    "documents"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-03-22T09:52:41.340Z",
+  "updatedAt": "2026-07-17T19:37:40.457Z"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "21kurU4z8MtRhfMEPLZbfg",
+  "name": "Ollama",
+  "slug": "ollama",
+  "description": "Run LLMs locally — Llama, Mistral, Gemma, DeepSeek, and 100+ models via CLI and REST API. OpenAI-compatible endpoint at localhost:11434 for direct agent integration.",
+  "providerName": "Ollama",
+  "providerUrl": "https://ollama.com",
+  "agentUrl": "https://github.com/ollama/ollama",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "local-llm",
+    "llm-runtime",
+    "openai-compatible",
+    "model-serving",
+    "self-hosted",
+    "llama",
+    "mistral"
+  ],
+  "skills": [
+    {
+      "id": "local-model-serve",
+      "name": "Local Model Serving",
+      "description": "Serve 100+ open-source LLMs locally with one command; auto-downloads models on first request."
+    },
+    {
+      "id": "openai-api",
+      "name": "OpenAI-Compatible API",
+      "description": "Call local models via the same endpoints as OpenAI — drop-in replacement for any OpenAI SDK integration."
+    },
+    {
+      "id": "model-management",
+      "name": "Model Management",
+      "description": "Pull, list, copy, delete, and inspect GGUF quantized models from the Ollama model registry."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-05-13T16:56:24.028Z",
+  "updatedAt": "2026-05-13T16:56:24.028Z"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "5244vHIbHMWlQRMRVmaXIt",
+  "name": "Outlines",
+  "slug": "outlines",
+  "description": "Guarantees LLM outputs conform to a schema, regex, or grammar through structured generation — reliable JSON, function calls, and constrained decoding. By .txt (dottxt-ai). 14k+ stars, Apache-2.0.",
+  "providerName": ".txt",
+  "providerUrl": "https://dottxt.co",
+  "agentUrl": "https://github.com/dottxt-ai/outlines",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "structured-generation",
+    "constrained-decoding",
+    "json-schema",
+    "regex",
+    "grammar",
+    "python",
+    "apache-2-0"
+  ],
+  "skills": [
+    {
+      "id": "constrained-decoding",
+      "name": "Constrained Decoding",
+      "description": "Forces token generation to follow a regex, JSON schema, or context-free grammar so output is always valid."
+    },
+    {
+      "id": "json-generation",
+      "name": "Schema-Bound JSON",
+      "description": "Generates JSON that provably matches a Pydantic or JSON Schema definition without any post-hoc parsing."
+    },
+    {
+      "id": "grammar-guidance",
+      "name": "Grammar-Guided Output",
+      "description": "Constrains model output to a formal grammar for structured formats like SQL or custom domain languages."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-07-17T20:41:33.652Z",
+  "updatedAt": "2026-07-17T20:41:33.652Z"
+}

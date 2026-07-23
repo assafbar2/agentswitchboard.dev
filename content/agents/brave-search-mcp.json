@@ -1,0 +1,61 @@
+{
+  "id": "2e72KiOHJ6mIcht7RkDR6H",
+  "name": "Brave Search MCP",
+  "slug": "brave-search-mcp",
+  "description": "Brave Search MCP server. Gives AI agents privacy-preserving web and local search with an independent index — no Google dependency, no tracking, structured results.",
+  "providerName": "Brave",
+  "providerUrl": "https://brave.com",
+  "agentUrl": "https://brave.com/search/api/",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "mcp",
+    "search",
+    "web-search",
+    "privacy",
+    "independent-index",
+    "local-search"
+  ],
+  "skills": [
+    {
+      "id": "web-search",
+      "name": "Web Search",
+      "description": "Run web searches against Brave's independent index and return ranked, structured results"
+    },
+    {
+      "id": "local-search",
+      "name": "Local Search",
+      "description": "Search for nearby businesses and places with location-aware results and business details"
+    },
+    {
+      "id": "news-search",
+      "name": "News Search",
+      "description": "Retrieve recent news articles filtered by topic with publication date and source metadata"
+    },
+    {
+      "id": "image-search",
+      "name": "Image Search",
+      "description": "Search for images with structured metadata including dimensions, source URL, and description"
+    },
+    {
+      "id": "mcp-native",
+      "name": "MCP Native",
+      "description": "Works out of the box with Claude Desktop and any MCP client via the official Brave MCP server"
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-04-13T21:38:19.598Z",
+  "updatedAt": "2026-04-13T21:38:19.598Z"
+}
