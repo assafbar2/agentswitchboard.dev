@@ -61,3 +61,8 @@ npm run dev          # no env vars needed — content is right here
 | `npx tsx scripts/weekly-drop.ts` | batch-add agents (see file header) |
 
 Stack: Next.js (App Router) · Tailwind · file-based catalog · deployed on Vercel.
+
+## License
+
+- **Code** (`app/`, `components/`, `lib/`, `scripts/`, config) — [MIT](LICENSE)
+- **Catalog data** (`content/`) — [CC-BY-4.0](content/LICENSE.md): reuse freely with attribution to Agent Switchboard.
