@@ -1,0 +1,52 @@
+{
+  "id": "rowboat",
+  "name": "Rowboat",
+  "slug": "rowboat",
+  "description": "Builds a backlinked knowledge graph from your email, meetings and Slack in a local desktop app, then lets agents query it as a persistent work memory.",
+  "providerName": "Rowboat Labs",
+  "providerUrl": "https://www.rowboatlabs.com",
+  "agentUrl": "https://github.com/rowboatlabs/rowboat",
+  "categories": [
+    "memory-state",
+    "research"
+  ],
+  "tags": [
+    "knowledge-graph",
+    "backlinked-notes",
+    "meeting-capture",
+    "desktop-app",
+    "self-hosted",
+    "yc-s24"
+  ],
+  "skills": [
+    {
+      "id": "knowledge-graph",
+      "name": "Backlinked Knowledge Graph",
+      "description": "Links people, projects and documents across sources into a graph agents traverse to answer questions with context."
+    },
+    {
+      "id": "source-sync",
+      "name": "Work Source Sync",
+      "description": "Ingests email, calendar, meetings and Slack into local storage so the graph reflects current work automatically."
+    },
+    {
+      "id": "mcp-extension",
+      "name": "MCP Extensibility",
+      "description": "Connects MCP servers to extend the coworker with new tools and data sources beyond the built-in integrations."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-07-25T16:22:45.423Z",
+  "updatedAt": "2026-07-25T16:22:45.423Z"
+}

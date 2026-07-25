@@ -1,0 +1,52 @@
+{
+  "id": "genkit",
+  "name": "Genkit",
+  "slug": "genkit",
+  "description": "Builds AI features and agent flows in JavaScript, Go or Python with typed flows, tool calling and a local dev UI for tracing, from Google.",
+  "providerName": "Google",
+  "providerUrl": "https://genkit.dev",
+  "agentUrl": "https://github.com/firebase/genkit",
+  "categories": [
+    "orchestration",
+    "code-devtools"
+  ],
+  "tags": [
+    "typed-flows",
+    "tool-calling",
+    "multi-language-sdk",
+    "dev-ui-tracing",
+    "model-agnostic",
+    "google-framework"
+  ],
+  "skills": [
+    {
+      "id": "typed-flows",
+      "name": "Typed Flows",
+      "description": "Defines AI workflows as typed, streamable functions that deploy to servers or serverless runtimes unchanged."
+    },
+    {
+      "id": "tool-calling",
+      "name": "Tool Calling",
+      "description": "Registers tools and retrievers that models invoke during a flow, with schema validation on inputs and outputs."
+    },
+    {
+      "id": "dev-ui",
+      "name": "Local Developer UI",
+      "description": "Inspects flow traces, prompts and model calls in a local UI to debug behavior before deploying to production."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-07-25T16:22:45.430Z",
+  "updatedAt": "2026-07-25T16:22:45.430Z"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "localai",
+  "name": "LocalAI",
+  "slug": "localai",
+  "description": "Serves local LLM, vision, image and voice inference behind an OpenAI-compatible API, letting agents run on consumer hardware with no GPU required.",
+  "providerName": "LocalAI",
+  "providerUrl": "https://localai.io",
+  "agentUrl": "https://github.com/mudler/LocalAI",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "local-inference",
+    "openai-compatible",
+    "self-hosted",
+    "cpu-inference",
+    "model-gallery",
+    "multimodal-serving"
+  ],
+  "skills": [
+    {
+      "id": "openai-compatible-api",
+      "name": "OpenAI-Compatible API",
+      "description": "Exposes chat, embedding and audio endpoints matching the OpenAI schema so existing SDKs work unchanged."
+    },
+    {
+      "id": "model-management",
+      "name": "Model Gallery",
+      "description": "Downloads and manages models from a built-in gallery across multiple backends and quantization formats."
+    },
+    {
+      "id": "multimodal-inference",
+      "name": "Multimodal Inference",
+      "description": "Runs text, image generation, speech-to-text and text-to-speech workloads from one self-hosted service."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-07-25T16:22:45.428Z",
+  "updatedAt": "2026-07-25T16:22:45.428Z"
+}

@@ -1,0 +1,53 @@
+{
+  "id": "openviking",
+  "name": "OpenViking",
+  "slug": "openviking",
+  "description": "Serves agent memories, resources and skills as a virtual filesystem under viking:// URIs, loading context on demand across tiers instead of stuffing the prompt.",
+  "providerName": "Volcengine",
+  "providerUrl": "https://openviking.ai",
+  "agentUrl": "https://github.com/volcengine/OpenViking",
+  "categories": [
+    "memory-state",
+    "infrastructure"
+  ],
+  "tags": [
+    "context-database",
+    "virtual-filesystem",
+    "tiered-loading",
+    "agent-skills",
+    "claude-code",
+    "byte-dance"
+  ],
+  "skills": [
+    {
+      "id": "context-filesystem",
+      "name": "Context Filesystem",
+      "description": "Exposes memories, files and skills as paths under a viking:// scheme that agents browse and read like a filesystem."
+    },
+    {
+      "id": "on-demand-loading",
+      "name": "On-Demand Loading",
+      "description": "Loads only the context slices an agent requests, keeping token usage flat as the stored corpus grows."
+    },
+    {
+      "id": "harness-plugins",
+      "name": "Harness Plugins",
+      "description": "Plugs into Claude Code, Cursor and Codex so existing agent setups gain persistent context without rewrites."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-07-25T16:22:45.422Z",
+  "updatedAt": "2026-07-25T16:22:45.422Z"
+}

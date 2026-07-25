@@ -1,0 +1,52 @@
+{
+  "id": "buzz",
+  "name": "Buzz",
+  "slug": "buzz",
+  "description": "Combines team chat, a Git forge and AI agents on the Nostr protocol, giving each agent a cryptographic identity and scoped permissions inside a self-hostable workspace.",
+  "providerName": "Block",
+  "providerUrl": "https://block.xyz",
+  "agentUrl": "https://github.com/block/buzz",
+  "categories": [
+    "communication",
+    "orchestration"
+  ],
+  "tags": [
+    "nostr-protocol",
+    "git-forge",
+    "team-chat",
+    "agent-identity",
+    "cryptographic-permissions",
+    "self-hostable"
+  ],
+  "skills": [
+    {
+      "id": "agent-identity",
+      "name": "Cryptographic Agent Identity",
+      "description": "Issues each agent a Nostr keypair so its actions in chat and code review are attributable and permission-scoped."
+    },
+    {
+      "id": "git-forge",
+      "name": "Integrated Git Forge",
+      "description": "Hosts repositories, patches and reviews alongside chat so agents can open and discuss changes in one workspace."
+    },
+    {
+      "id": "agent-harnesses",
+      "name": "Coding Agent Harnesses",
+      "description": "Runs Goose, Codex and Claude Code as workspace participants that respond to messages and work on repositories."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-07-25T16:22:45.420Z",
+  "updatedAt": "2026-07-25T16:22:45.420Z"
+}

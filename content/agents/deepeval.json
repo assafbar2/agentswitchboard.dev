@@ -1,0 +1,52 @@
+{
+  "id": "deepeval",
+  "name": "DeepEval",
+  "slug": "deepeval",
+  "description": "Unit-tests LLM and agent outputs in a pytest-style workflow, scoring answer relevancy, faithfulness, hallucination and tool correctness in CI.",
+  "providerName": "Confident AI",
+  "providerUrl": "https://deepeval.com",
+  "agentUrl": "https://github.com/confident-ai/deepeval",
+  "categories": [
+    "code-devtools",
+    "data-analytics"
+  ],
+  "tags": [
+    "llm-evaluation",
+    "pytest-integration",
+    "hallucination-metrics",
+    "rag-metrics",
+    "regression-testing",
+    "tool-correctness"
+  ],
+  "skills": [
+    {
+      "id": "metric-suite",
+      "name": "Evaluation Metric Suite",
+      "description": "Scores outputs on faithfulness, relevancy, hallucination and bias using research-backed metric implementations."
+    },
+    {
+      "id": "pytest-testing",
+      "name": "Pytest-Style Assertions",
+      "description": "Wraps evaluations as familiar unit tests so quality checks run in existing CI pipelines and fail loudly."
+    },
+    {
+      "id": "agent-tracing",
+      "name": "Agent Trace Evaluation",
+      "description": "Evaluates multi-step agent traces including tool selection and task completion, not just the final answer."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-07-25T16:22:45.429Z",
+  "updatedAt": "2026-07-25T16:22:45.429Z"
+}

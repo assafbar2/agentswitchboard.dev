@@ -1,0 +1,52 @@
+{
+  "id": "cartai",
+  "name": "CartAI",
+  "slug": "cartai",
+  "description": "Completes checkout on live merchant sites on an agent behalf, exposing catalog, checkout and payment APIs plus an open-source MCP server for Claude and Cursor.",
+  "providerName": "CartAI",
+  "providerUrl": "https://www.cartai.ai",
+  "agentUrl": "https://docs.cartai.ai",
+  "categories": [
+    "commerce-payments",
+    "browser-computer"
+  ],
+  "tags": [
+    "agentic-checkout",
+    "merchant-catalog",
+    "card-rails",
+    "product-search",
+    "order-placement",
+    "product-hunt"
+  ],
+  "skills": [
+    {
+      "id": "catalog-search",
+      "name": "Merchant Catalog Search",
+      "description": "Searches product catalogs across merchants and returns structured items with price and availability for agents."
+    },
+    {
+      "id": "agent-checkout",
+      "name": "Automated Checkout",
+      "description": "Drives the checkout flow on a live merchant surface, filling details and placing the order programmatically."
+    },
+    {
+      "id": "payment-execution",
+      "name": "Payment Execution",
+      "description": "Settles purchases over Visa and Mastercard agent rails and returns confirmation and order state to the caller."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-07-25T16:22:45.424Z",
+  "updatedAt": "2026-07-25T16:22:45.424Z"
+}

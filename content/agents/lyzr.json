@@ -1,0 +1,51 @@
+{
+  "id": "lyzr",
+  "name": "Lyzr",
+  "slug": "lyzr",
+  "description": "Builds and runs enterprise agents entirely inside private cloud or on-prem infrastructure, keeping data and model calls within the customer security perimeter.",
+  "providerName": "Lyzr AI",
+  "providerUrl": "https://www.lyzr.ai",
+  "agentUrl": "https://www.lyzr.ai",
+  "categories": [
+    "orchestration",
+    "infrastructure"
+  ],
+  "tags": [
+    "enterprise-agents",
+    "on-premise",
+    "private-cloud",
+    "data-residency",
+    "agent-sdk",
+    "series-b"
+  ],
+  "skills": [
+    {
+      "id": "sovereign-deploy",
+      "name": "Sovereign Deployment",
+      "description": "Deploys the full agent stack into a customer VPC or data center so no prompt or document leaves the perimeter."
+    },
+    {
+      "id": "agent-builder",
+      "name": "Agent Builder SDK",
+      "description": "Composes agents with tools, memory and guardrails through an SDK aimed at regulated enterprise workflows."
+    },
+    {
+      "id": "workflow-automation",
+      "name": "Enterprise Workflow Automation",
+      "description": "Runs multi-step business processes across internal systems with approvals and audit trails at each step."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-07-25T16:22:45.427Z",
+  "updatedAt": "2026-07-25T16:22:45.427Z"
+}

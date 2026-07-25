@@ -1,0 +1,53 @@
+{
+  "id": "screenpipe",
+  "name": "Screenpipe",
+  "slug": "screenpipe",
+  "description": "Records your screen and audio 24/7 locally, then serves that history as searchable context to Claude, Codex and other coding agents so they know what you have seen and done.",
+  "providerName": "Screenpipe",
+  "providerUrl": "https://screenpipe.com",
+  "agentUrl": "https://github.com/screenpipe/screenpipe",
+  "categories": [
+    "memory-state",
+    "browser-computer"
+  ],
+  "tags": [
+    "screen-recording",
+    "local-first",
+    "personal-context",
+    "audio-transcription",
+    "session-history",
+    "privacy-preserving",
+    "yc-s26"
+  ],
+  "skills": [
+    {
+      "id": "continuous-capture",
+      "name": "Continuous Screen Capture",
+      "description": "Records screen and microphone continuously on-device, storing frames and transcripts locally without sending data to a server."
+    },
+    {
+      "id": "context-search",
+      "name": "Searchable History",
+      "description": "Queries months of captured screen and audio history by text, app or time window to retrieve the moment you need."
+    },
+    {
+      "id": "agent-context-feed",
+      "name": "Agent Context Feed",
+      "description": "Feeds recorded activity into Claude, Codex and other agents as grounding context so they can act on what you actually did."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-07-25T16:22:45.416Z",
+  "updatedAt": "2026-07-25T16:22:45.416Z"
+}

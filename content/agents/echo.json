@@ -1,0 +1,50 @@
+{
+  "id": "echo",
+  "name": "Echo",
+  "slug": "echo",
+  "description": "Routes each request across specialist open-weight models behind a single endpoint, allocating compute per task to cut inference cost while holding output quality.",
+  "providerName": "Tracer",
+  "providerUrl": "https://tracerml.ai",
+  "agentUrl": "https://echo.tracerml.ai",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "model-routing",
+    "open-weight-models",
+    "inference-cost",
+    "compute-allocation",
+    "single-endpoint",
+    "specialist-models"
+  ],
+  "skills": [
+    {
+      "id": "request-routing",
+      "name": "Per-Request Routing",
+      "description": "Selects the best specialist open-weight model for each request based on task type and quality targets."
+    },
+    {
+      "id": "compute-allocation",
+      "name": "Compute Allocation",
+      "description": "Spends more inference compute on hard prompts and less on easy ones to balance cost against answer quality."
+    },
+    {
+      "id": "unified-endpoint",
+      "name": "Unified Endpoint",
+      "description": "Exposes the whole model pool through one API surface so callers switch routing strategy without code changes."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-07-25T16:22:45.426Z",
+  "updatedAt": "2026-07-25T16:22:45.426Z"
+}

@@ -1,0 +1,53 @@
+{
+  "id": "onecli",
+  "name": "OneCLI",
+  "slug": "onecli",
+  "description": "Stores API keys in a central gateway and injects them into outbound requests at call time, so AI agents can use credentials they never actually see.",
+  "providerName": "OneCLI",
+  "providerUrl": "https://onecli.sh",
+  "agentUrl": "https://github.com/onecli/onecli",
+  "categories": [
+    "security",
+    "infrastructure"
+  ],
+  "tags": [
+    "credential-gateway",
+    "secret-injection",
+    "api-key-vault",
+    "request-proxy",
+    "least-privilege",
+    "audit-log"
+  ],
+  "skills": [
+    {
+      "id": "secret-injection",
+      "name": "Runtime Secret Injection",
+      "description": "Injects stored API keys into proxied requests at send time so agent processes and prompts never contain plaintext secrets."
+    },
+    {
+      "id": "central-vault",
+      "name": "Central Credential Vault",
+      "description": "Keeps credentials for every provider in one gateway with per-agent scoping instead of scattered environment files."
+    },
+    {
+      "id": "call-audit",
+      "name": "Call Auditing",
+      "description": "Logs which agent used which credential against which endpoint, giving a reviewable trail of authenticated calls."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-07-25T16:22:45.422Z",
+  "updatedAt": "2026-07-25T16:22:45.422Z"
+}

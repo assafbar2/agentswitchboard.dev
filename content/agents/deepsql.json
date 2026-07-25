@@ -1,0 +1,52 @@
+{
+  "id": "deepsql",
+  "name": "DeepSQL",
+  "slug": "deepsql",
+  "description": "Runs a self-hostable DBA agent for Postgres and MySQL that monitors workloads, rewrites slow queries and proposes indexes, reachable over MCP, CLI or Slack.",
+  "providerName": "DeepSQL",
+  "providerUrl": "https://deepsql.ai",
+  "agentUrl": "https://deepsql.ai",
+  "categories": [
+    "data-analytics",
+    "infrastructure"
+  ],
+  "tags": [
+    "database-tuning",
+    "query-optimization",
+    "index-advisor",
+    "postgres-mysql",
+    "self-hostable",
+    "workload-monitoring"
+  ],
+  "skills": [
+    {
+      "id": "query-optimization",
+      "name": "Query Optimization",
+      "description": "Analyzes slow queries with execution plans and returns rewritten SQL plus the reasoning behind each change."
+    },
+    {
+      "id": "index-advice",
+      "name": "Index Recommendations",
+      "description": "Recommends and validates indexes against real workload patterns, estimating the gain before you apply them."
+    },
+    {
+      "id": "health-monitoring",
+      "name": "Workload Monitoring",
+      "description": "Watches database health continuously and raises issues such as lock contention, bloat and regressions."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-07-25T16:22:45.425Z",
+  "updatedAt": "2026-07-25T16:22:45.425Z"
+}

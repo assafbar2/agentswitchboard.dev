@@ -1,0 +1,53 @@
+{
+  "id": "cognee",
+  "name": "Cognee",
+  "slug": "cognee",
+  "description": "Builds queryable memory for agents by turning documents and conversations into a knowledge graph plus vector store, self-hosted or via API and MCP.",
+  "providerName": "Topoteretes",
+  "providerUrl": "https://www.cognee.ai",
+  "agentUrl": "https://github.com/topoteretes/cognee",
+  "categories": [
+    "memory-state",
+    "vector-databases"
+  ],
+  "tags": [
+    "agent-memory",
+    "knowledge-graph",
+    "graph-rag",
+    "document-ingestion",
+    "self-hosted",
+    "semantic-retrieval"
+  ],
+  "skills": [
+    {
+      "id": "memory-ingestion",
+      "name": "Memory Ingestion",
+      "description": "Ingests documents, code and chat history into a combined graph and vector representation for later recall."
+    },
+    {
+      "id": "graph-search",
+      "name": "Graph-Aware Search",
+      "description": "Answers queries by traversing entity relationships alongside vector similarity for grounded multi-hop recall."
+    },
+    {
+      "id": "memory-mcp",
+      "name": "Memory MCP Server",
+      "description": "Serves stored memory to Claude and other MCP clients so agents read and write long-term memory as a tool."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-07-25T16:22:45.429Z",
+  "updatedAt": "2026-07-25T16:22:45.429Z"
+}

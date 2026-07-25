@@ -1,0 +1,51 @@
+{
+  "id": "mcp-agent",
+  "name": "mcp-agent",
+  "slug": "mcp-agent",
+  "description": "Builds agents from MCP servers using composable workflow patterns from the Building Effective Agents playbook, handling server lifecycle and tool routing.",
+  "providerName": "LastMile AI",
+  "providerUrl": "https://lastmileai.dev",
+  "agentUrl": "https://github.com/lastmile-ai/mcp-agent",
+  "categories": [
+    "orchestration"
+  ],
+  "tags": [
+    "mcp-native",
+    "workflow-patterns",
+    "server-lifecycle",
+    "agent-composition",
+    "orchestrator-workers",
+    "python-framework"
+  ],
+  "skills": [
+    {
+      "id": "server-lifecycle",
+      "name": "MCP Server Lifecycle",
+      "description": "Starts, connects and tears down MCP server connections so agent code never manages transports directly."
+    },
+    {
+      "id": "workflow-patterns",
+      "name": "Composable Workflow Patterns",
+      "description": "Implements routing, parallel fan-out, evaluator-optimizer and orchestrator-worker patterns as reusable classes."
+    },
+    {
+      "id": "tool-routing",
+      "name": "Tool Routing",
+      "description": "Routes a request to the right server and tool across many connected MCP servers based on intent."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-07-25T16:22:45.432Z",
+  "updatedAt": "2026-07-25T16:22:45.432Z"
+}

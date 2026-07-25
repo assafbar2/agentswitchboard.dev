@@ -1,0 +1,51 @@
+{
+  "id": "helicone",
+  "name": "Helicone",
+  "slug": "helicone",
+  "description": "Monitors LLM and agent traffic through a one-line proxy integration, logging requests, costs and latency with caching, rate limits and evaluations built in.",
+  "providerName": "Helicone",
+  "providerUrl": "https://helicone.ai",
+  "agentUrl": "https://github.com/Helicone/helicone",
+  "categories": [
+    "data-analytics",
+    "infrastructure"
+  ],
+  "tags": [
+    "llm-observability",
+    "proxy-logging",
+    "cost-tracking",
+    "response-caching",
+    "rate-limiting",
+    "yc-w23"
+  ],
+  "skills": [
+    {
+      "id": "request-logging",
+      "name": "Request Logging",
+      "description": "Logs every prompt, completion, cost and latency figure through a proxy or async API with a one-line change."
+    },
+    {
+      "id": "caching-limits",
+      "name": "Caching And Rate Limits",
+      "description": "Caches repeated completions and enforces per-user rate limits at the gateway to cut spend and abuse."
+    },
+    {
+      "id": "session-tracing",
+      "name": "Session Tracing",
+      "description": "Groups multi-step agent calls into sessions so a whole run can be replayed and debugged as one unit."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-07-25T16:22:45.430Z",
+  "updatedAt": "2026-07-25T16:22:45.430Z"
+}
