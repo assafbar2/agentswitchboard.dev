@@ -1,6 +1,33 @@
 [
   {
     "action": "updated",
+    "slug": "figma-context-mcp",
+    "name": "Figma Context MCP",
+    "note": "providerName updated",
+    "date": "2026-08-02"
+  },
+  {
+    "action": "updated",
+    "slug": "figma-context-mcp",
+    "name": "Figma Context MCP",
+    "note": "providerUrl updated",
+    "date": "2026-08-02"
+  },
+  {
+    "action": "updated",
+    "slug": "figma-context-mcp",
+    "name": "Figma Context MCP",
+    "note": "description updated",
+    "date": "2026-08-02"
+  },
+  {
+    "action": "removed",
+    "slug": "framelink",
+    "name": "Framelink",
+    "date": "2026-08-02"
+  },
+  {
+    "action": "updated",
     "slug": "roo-code",
     "name": "Roo Code",
     "note": "description updated",

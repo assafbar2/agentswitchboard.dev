@@ -38,7 +38,7 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
-  "status": "published",
+  "status": "archived",
   "featured": false,
   "verified": true,
   "tier": "free",
@@ -47,5 +47,5 @@
     "mcp"
   ],
   "createdAt": "2026-04-25T19:07:03.084Z",
-  "updatedAt": "2026-04-25T19:07:03.084Z"
+  "updatedAt": "2026-08-02T05:28:10.516Z"
 }
