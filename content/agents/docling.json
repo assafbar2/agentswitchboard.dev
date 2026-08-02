@@ -1,0 +1,66 @@
+{
+  "id": "docling",
+  "name": "Docling",
+  "slug": "docling",
+  "description": "Parses PDF, DOCX, PPTX, XLSX, HTML, audio, and image files into a unified DoclingDocument and exports Markdown, HTML, DocTags, or lossless JSON for gen-AI pipelines.",
+  "providerName": "IBM Research / LF AI & Data",
+  "providerUrl": "https://docling-project.github.io/docling",
+  "agentUrl": "https://docling-project.github.io/docling",
+  "categories": [
+    "content-media",
+    "data-analytics",
+    "research"
+  ],
+  "tags": [
+    "pdf-understanding",
+    "table-structure-recognition",
+    "ocr",
+    "docling-document",
+    "granite-docling",
+    "vision-language-models",
+    "asr-transcription",
+    "langchain-integration"
+  ],
+  "skills": [
+    {
+      "id": "pdf-layout-understanding",
+      "name": "PDF Layout Understanding",
+      "description": "Resolves page layout, reading order, table structure, code blocks, and formulas in PDFs, with OCR for scanned pages and images."
+    },
+    {
+      "id": "multi-format-parsing",
+      "name": "Multi Format Parsing",
+      "description": "Parses DOCX, PPTX, XLSX, HTML, EPUB, email, LaTeX, XBRL, and image files into one unified DoclingDocument representation."
+    },
+    {
+      "id": "structured-export",
+      "name": "Structured Document Export",
+      "description": "Exports parsed documents to Markdown, HTML, WebVTT, DocTags, or lossless JSON for chunking, indexing, and retrieval workflows."
+    },
+    {
+      "id": "vlm-asr-pipelines",
+      "name": "VLM And ASR Pipelines",
+      "description": "Runs vision-language models such as GraniteDocling and speech recognition models to interpret images, charts, and audio tracks."
+    },
+    {
+      "id": "mcp-and-api-serving",
+      "name": "MCP And API Serving",
+      "description": "Serves conversions to agents through the docling-mcp server or the docling-serve HTTP API, running locally or against a remote endpoint."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-08-01T04:31:32.800Z",
+  "updatedAt": "2026-08-01T04:31:32.800Z"
+}

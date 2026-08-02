@@ -1,0 +1,65 @@
+{
+  "id": "opik",
+  "name": "Opik",
+  "slug": "opik",
+  "description": "Traces LLM and agent runs, scores them with LLM-as-a-judge and heuristic metrics, and monitors production quality via Python and TypeScript SDKs and 60+ integrations.",
+  "providerName": "Comet ML",
+  "providerUrl": "https://www.comet.com",
+  "agentUrl": "https://www.comet.com/docs/opik/",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "llm-tracing",
+    "llm-as-a-judge",
+    "prompt-playground",
+    "opentelemetry",
+    "pytest-integration",
+    "online-evaluation",
+    "guardrails",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "agent-tracing",
+      "name": "Agent Trace Logging",
+      "description": "Captures trace trees of LLM calls, tool executions, and retrieval steps via a track decorator or framework integrations."
+    },
+    {
+      "id": "judge-metrics",
+      "name": "LLM As Judge Metrics",
+      "description": "Scores outputs for hallucination, moderation, answer relevance, and context precision with built-in or custom judge metrics."
+    },
+    {
+      "id": "datasets-experiments",
+      "name": "Datasets And Experiments",
+      "description": "Evaluates applications against versioned datasets as experiments and compares the results in the Opik dashboard."
+    },
+    {
+      "id": "production-monitoring",
+      "name": "Production Monitoring Rules",
+      "description": "Applies online evaluation rules to live traces and charts feedback scores, trace counts, and token usage over time."
+    },
+    {
+      "id": "pytest-ci-evaluation",
+      "name": "PyTest CI Evaluation",
+      "description": "Tests LLM pipelines on every commit through the PyTest integration so evaluation results are recorded per CI run."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-08-01T04:31:32.805Z",
+  "updatedAt": "2026-08-01T04:31:32.805Z"
+}

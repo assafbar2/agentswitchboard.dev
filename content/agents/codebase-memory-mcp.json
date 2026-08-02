@@ -1,0 +1,65 @@
+{
+  "id": "codebase-memory-mcp",
+  "name": "Codebase Memory MCP",
+  "slug": "codebase-memory-mcp",
+  "description": "Indexes repositories into a persistent tree-sitter knowledge graph of functions, classes, call chains, and HTTP routes, queried through 15 MCP tools with no API keys.",
+  "providerName": "DeusData",
+  "providerUrl": "https://deusdata.github.io/codebase-memory-mcp/",
+  "agentUrl": "https://deusdata.github.io/codebase-memory-mcp/",
+  "categories": [
+    "code-devtools",
+    "memory-state",
+    "vector-databases"
+  ],
+  "tags": [
+    "tree-sitter",
+    "knowledge-graph",
+    "call-graph",
+    "static-analysis",
+    "dead-code-detection",
+    "cypher-queries",
+    "semantic-code-search",
+    "local-first"
+  ],
+  "skills": [
+    {
+      "id": "repository-indexing",
+      "name": "Repository Indexing",
+      "description": "Indexes 158 languages into a persistent graph with vendored tree-sitter grammars, covering the 28M-LOC Linux kernel in 3 minutes."
+    },
+    {
+      "id": "call-path-tracing",
+      "name": "Call Path Tracing",
+      "description": "Traces inbound and outbound call chains across files and packages using import-aware, type-inferred Hybrid LSP resolution."
+    },
+    {
+      "id": "architecture-overview",
+      "name": "Architecture Overview",
+      "description": "Returns languages, packages, entry points, routes, hotspots, boundaries, layers, and Louvain-detected clusters in one call."
+    },
+    {
+      "id": "graph-search",
+      "name": "Graph And Semantic Search",
+      "description": "Searches the graph with bundled nomic-embed-code vectors, BM25 full-text queries, regex structural filters, and Cypher-like queries."
+    },
+    {
+      "id": "change-impact",
+      "name": "Change Impact Analysis",
+      "description": "Maps uncommitted git changes to affected symbols with risk classification and flags functions that have zero callers."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-08-01T04:31:32.806Z",
+  "updatedAt": "2026-08-01T04:31:32.806Z"
+}

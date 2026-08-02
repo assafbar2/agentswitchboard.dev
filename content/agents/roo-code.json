@@ -2,10 +2,10 @@
   "id": "2l2lS8MdFQw8iUwC03cIHE",
   "name": "Roo Code",
   "slug": "roo-code",
-  "description": "Gives VS Code a full AI dev team via structured modes (Code, Architect, Ask, Debug) with file system access, terminal control, and multi-step workflows.",
+  "description": "Gives VS Code an AI dev team via structured modes (Code, Architect, Ask, Debug) with file system and terminal access. Now Roomote: the OSS repo is archived and roocode.com redirects there.",
   "providerName": "Roo Code",
-  "providerUrl": "https://www.roocode.com/",
-  "agentUrl": "https://www.roocode.com/",
+  "providerUrl": "https://roomote.dev/",
+  "agentUrl": "https://roomote.dev/",
   "categories": [
     "code-devtools"
   ],
@@ -29,5 +29,5 @@
     "browser-extension"
   ],
   "createdAt": "2026-05-22T07:35:01.120Z",
-  "updatedAt": "2026-05-22T07:35:01.120Z"
+  "updatedAt": "2026-08-02T05:08:15.459Z"
 }

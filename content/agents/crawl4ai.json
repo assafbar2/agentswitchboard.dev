@@ -1,0 +1,66 @@
+{
+  "id": "crawl4ai",
+  "name": "Crawl4AI",
+  "slug": "crawl4ai",
+  "description": "Crawls and scrapes web pages into clean Markdown for RAG pipelines, with CSS, XPath, and LLM-driven structured extraction, deep crawling, and full browser session control.",
+  "providerName": "UncleCode",
+  "providerUrl": "https://crawl4ai.com",
+  "agentUrl": "https://crawl4ai.com",
+  "categories": [
+    "browser-computer",
+    "research",
+    "data-analytics"
+  ],
+  "tags": [
+    "web-crawler",
+    "markdown-extraction",
+    "playwright",
+    "deep-crawl",
+    "css-selector-extraction",
+    "stealth-browsing",
+    "proxy-support",
+    "fastapi-docker"
+  ],
+  "skills": [
+    {
+      "id": "markdown-generation",
+      "name": "LLM Ready Markdown",
+      "description": "Generates clean Markdown with heuristic and BM25 noise filtering, numbered citation references for links, and pluggable strategies."
+    },
+    {
+      "id": "structured-extraction",
+      "name": "Structured Data Extraction",
+      "description": "Extracts JSON matching a user-defined schema using CSS or XPath selectors, or delegates to an LLM for semantic field extraction."
+    },
+    {
+      "id": "deep-crawling",
+      "name": "Deep Site Crawling",
+      "description": "Traverses whole sites with BFS and best-first strategies under page limits, using prefetch URL discovery and resumable crash recovery."
+    },
+    {
+      "id": "browser-session-control",
+      "name": "Browser Session Control",
+      "description": "Drives Chromium, Firefox, or WebKit with persistent profiles, proxies, stealth mode, hooks, and reusable sessions for multi-step crawls."
+    },
+    {
+      "id": "docker-api-server",
+      "name": "Docker API Server",
+      "description": "Exposes a FastAPI /crawl endpoint with JWT authentication plus MCP integration so agent clients can crawl over HTTP."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-08-01T04:31:32.799Z",
+  "updatedAt": "2026-08-01T04:31:32.799Z"
+}

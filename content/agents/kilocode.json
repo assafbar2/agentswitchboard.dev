@@ -1,0 +1,62 @@
+{
+  "id": "kilocode",
+  "name": "Kilo Code",
+  "slug": "kilocode",
+  "description": "Writes, edits, and debugs code from natural language in VS Code, JetBrains, or the terminal, switching among 500+ models mid-task and running unattended in CI with --auto.",
+  "providerName": "Kilo Org",
+  "providerUrl": "https://kilo.ai/",
+  "agentUrl": "https://kilo.ai/",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "vscode-extension",
+    "jetbrains-plugin",
+    "mcp-client",
+    "model-switching",
+    "inline-autocomplete",
+    "terminal-control",
+    "code-review",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "multi-file-code-generation",
+      "name": "Multi File Code Generation",
+      "description": "Generates and edits code across multiple files from natural-language instructions, then self-checks and corrects its own work."
+    },
+    {
+      "id": "agent-modes",
+      "name": "Built In Agent Modes",
+      "description": "Switches between Code, Plan, Ask, Debug, and Review modes, or runs custom agents you define for your own tasks."
+    },
+    {
+      "id": "inline-autocomplete",
+      "name": "Inline Autocomplete",
+      "description": "Suggests ghost-text completions inline as you type in the editor, accepted with the tab key, across supported languages."
+    },
+    {
+      "id": "mcp-marketplace",
+      "name": "MCP Server Marketplace",
+      "description": "Finds and wires up MCP servers from a built-in marketplace to extend what the coding agent can reach."
+    },
+    {
+      "id": "autonomous-ci-runs",
+      "name": "Autonomous CI Runs",
+      "description": "Runs tasks unattended through kilo run --auto, executing terminal commands and browser steps without permission prompts."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-08-01T04:31:32.804Z",
+  "updatedAt": "2026-08-01T04:31:32.804Z"
+}

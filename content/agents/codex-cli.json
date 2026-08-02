@@ -1,0 +1,64 @@
+{
+  "id": "codex-cli",
+  "name": "Codex CLI",
+  "slug": "codex-cli",
+  "description": "Runs a coding agent locally in the terminal, editing files and executing commands inside an OS sandbox with configurable approvals, plus headless `codex exec` for pipelines.",
+  "providerName": "OpenAI",
+  "providerUrl": "https://openai.com",
+  "agentUrl": "https://developers.openai.com/codex/cli",
+  "categories": [
+    "code-devtools",
+    "orchestration"
+  ],
+  "tags": [
+    "terminal-coding-agent",
+    "rust",
+    "sandboxed-execution",
+    "codex-exec",
+    "mcp-server",
+    "agents-md",
+    "approval-modes",
+    "session-resume"
+  ],
+  "skills": [
+    {
+      "id": "sandboxed-code-execution",
+      "name": "Sandboxed Code Execution",
+      "description": "Edits files and runs shell commands inside an OS-level sandbox, escalating to the user for approval per the configured permission mode."
+    },
+    {
+      "id": "headless-exec-runs",
+      "name": "Headless Exec Runs",
+      "description": "Executes prompts non-interactively through `codex exec` so coding tasks run inside CI jobs, scripts, and other repeatable workflows."
+    },
+    {
+      "id": "mcp-server-integration",
+      "name": "MCP Server Integration",
+      "description": "Attaches local or remote MCP servers via `codex mcp` and exposes Codex itself as an MCP server for other agent clients."
+    },
+    {
+      "id": "session-resume",
+      "name": "Session Resume",
+      "description": "Reopens a recent conversation from the current repository with `codex resume` and searches across stored local sessions."
+    },
+    {
+      "id": "agents-md-config",
+      "name": "AGENTS.md Project Config",
+      "description": "Generates and reads AGENTS.md instructions through `/init` so repository-specific conventions steer the agent on every run."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-08-01T04:31:32.791Z",
+  "updatedAt": "2026-08-01T04:31:32.791Z"
+}

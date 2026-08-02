@@ -1,0 +1,65 @@
+{
+  "id": "claude-mem",
+  "name": "claude-mem",
+  "slug": "claude-mem",
+  "description": "Captures Claude Code tool usage as searchable observations and replays summarized context into new sessions, giving coding agents memory that survives restarts.",
+  "providerName": "thedotmack",
+  "providerUrl": "https://github.com/thedotmack",
+  "agentUrl": "https://cmem.ai",
+  "categories": [
+    "memory-state",
+    "code-devtools"
+  ],
+  "tags": [
+    "session-memory",
+    "claude-code-plugin",
+    "sqlite-fts5",
+    "chroma-vector-search",
+    "context-injection",
+    "lifecycle-hooks",
+    "progressive-disclosure",
+    "observation-log"
+  ],
+  "skills": [
+    {
+      "id": "search-memory-index",
+      "name": "Search Memory Index",
+      "description": "Returns a compact index of past observations from full-text queries, filtered by type, date, or project, at 50-100 tokens each."
+    },
+    {
+      "id": "fetch-observations",
+      "name": "Fetch Full Observations",
+      "description": "Retrieves complete observation details for a batch of filtered IDs, deferring token cost until results are confirmed relevant."
+    },
+    {
+      "id": "observation-timeline",
+      "name": "Browse Observation Timeline",
+      "description": "Shows chronological context around a specific observation or query so agents see what happened immediately before and after."
+    },
+    {
+      "id": "session-context-injection",
+      "name": "Inject Session Context",
+      "description": "Captures tool usage through five lifecycle hooks, generates semantic summaries, and injects prior-session context at startup."
+    },
+    {
+      "id": "cloud-sync",
+      "name": "Sync Memory To Cloud",
+      "description": "Backs up observations to cmem.ai as the worker writes them, with no daemon, making memory reachable from any connected MCP client."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-08-01T04:31:32.799Z",
+  "updatedAt": "2026-08-01T04:31:32.799Z"
+}

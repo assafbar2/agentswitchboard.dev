@@ -1,0 +1,64 @@
+{
+  "id": "page-agent",
+  "name": "Page Agent",
+  "slug": "page-agent",
+  "description": "Embeds a GUI agent in any web page with one script tag, driving the existing DOM from natural-language instructions without screenshots or a headless browser.",
+  "providerName": "Alibaba",
+  "providerUrl": "https://github.com/alibaba",
+  "agentUrl": "https://alibaba.github.io/page-agent/",
+  "categories": [
+    "browser-computer",
+    "code-devtools"
+  ],
+  "tags": [
+    "dom-automation",
+    "in-page-agent",
+    "javascript-library",
+    "natural-language-ui",
+    "form-filling",
+    "chrome-extension",
+    "typescript",
+    "web-accessibility"
+  ],
+  "skills": [
+    {
+      "id": "page-task-execution",
+      "name": "In-Page Task Execution",
+      "description": "Executes natural-language instructions on the current page by reading a text-based DOM tree, then clicking, typing and scrolling."
+    },
+    {
+      "id": "smart-form-filling",
+      "name": "Smart Form Filling",
+      "description": "Collapses long click-through workflows in ERP, CRM and admin systems into a single sentence that fills and submits page forms."
+    },
+    {
+      "id": "bring-your-own-model",
+      "name": "Bring Your Own Model",
+      "description": "Connects to mainstream or locally deployed models through an OpenAI-compatible baseURL and API key set at agent construction."
+    },
+    {
+      "id": "multi-page-tasks",
+      "name": "Multi-Page Tasks",
+      "description": "Extends a task across browser tabs using the optional Chrome extension, coordinating steps that span more than one page."
+    },
+    {
+      "id": "mcp-remote-control",
+      "name": "MCP Remote Control",
+      "description": "Exposes the in-page agent through a beta MCP server so external agent clients can drive the user own browser session."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "browser-extension"
+  ],
+  "createdAt": "2026-08-01T04:31:32.802Z",
+  "updatedAt": "2026-08-01T04:31:32.802Z"
+}

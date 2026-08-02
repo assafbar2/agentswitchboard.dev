@@ -1,0 +1,64 @@
+{
+  "id": "bifrost",
+  "name": "Bifrost",
+  "slug": "bifrost",
+  "description": "Routes LLM requests across 23+ providers through one OpenAI-compatible API, with automatic failover, load balancing, semantic caching, MCP tool access, and budget governance.",
+  "providerName": "Maxim AI",
+  "providerUrl": "https://www.getmaxim.ai",
+  "agentUrl": "https://www.getmaxim.ai/bifrost",
+  "categories": [
+    "infrastructure",
+    "orchestration"
+  ],
+  "tags": [
+    "ai-gateway",
+    "openai-compatible",
+    "load-balancing",
+    "semantic-caching",
+    "provider-failover",
+    "virtual-keys",
+    "prometheus-metrics",
+    "go-sdk"
+  ],
+  "skills": [
+    {
+      "id": "unified-provider-routing",
+      "name": "Route Across Providers",
+      "description": "Routes chat completion and embedding requests to 23+ model providers through a single OpenAI-compatible HTTP endpoint."
+    },
+    {
+      "id": "automatic-failover",
+      "name": "Fail Over Automatically",
+      "description": "Falls back to backup providers, models, and API keys automatically when a request errors, with load balancing across keys."
+    },
+    {
+      "id": "semantic-caching",
+      "name": "Cache Responses Semantically",
+      "description": "Serves cached responses when an incoming prompt is semantically similar to an earlier one, cutting token spend and latency."
+    },
+    {
+      "id": "mcp-tool-gateway",
+      "name": "Gateway MCP Tools",
+      "description": "Connects models to external MCP tools such as filesystem, web search, and databases through the gateway MCP layer."
+    },
+    {
+      "id": "governance-budgets",
+      "name": "Enforce Budgets And Limits",
+      "description": "Tracks usage and enforces hierarchical budgets, rate limits, and access control using virtual keys scoped to teams and customers."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-08-01T04:31:32.808Z",
+  "updatedAt": "2026-08-01T04:31:32.808Z"
+}

@@ -1,0 +1,63 @@
+{
+  "id": "cherry-studio",
+  "name": "Cherry Studio",
+  "slug": "cherry-studio",
+  "description": "Runs a Windows, Mac, and Linux desktop client for OpenAI, Gemini, Anthropic, Ollama, and LM Studio models, with 300+ preset assistants and MCP server support.",
+  "providerName": "CherryHQ",
+  "providerUrl": "https://cherryai.com",
+  "agentUrl": "https://cherryai.com",
+  "categories": [
+    "research",
+    "orchestration"
+  ],
+  "tags": [
+    "desktop-client",
+    "multi-provider-llm",
+    "mcp-client",
+    "ollama",
+    "knowledge-base",
+    "cross-platform",
+    "webdav-backup",
+    "prompt-library"
+  ],
+  "skills": [
+    {
+      "id": "multi-provider-chat",
+      "name": "Multi-Provider Chat",
+      "description": "Routes conversations to OpenAI, Gemini, Anthropic, Perplexity, Poe, or local Ollama and LM Studio models from one client."
+    },
+    {
+      "id": "preset-assistants",
+      "name": "Preset Assistants",
+      "description": "Applies any of 300+ pre-configured AI assistants or custom ones, and queries several models simultaneously in one conversation."
+    },
+    {
+      "id": "mcp-servers",
+      "name": "MCP Server Integration",
+      "description": "Connects Model Context Protocol servers to the desktop client so conversations can call external tools and data sources."
+    },
+    {
+      "id": "document-processing",
+      "name": "Document Processing",
+      "description": "Ingests text, image, Office, and PDF files for chat, and backs the library up over WebDAV for cross-device access."
+    },
+    {
+      "id": "knowledge-base",
+      "name": "Team Knowledge Base",
+      "description": "Builds and shares team-wide knowledge bases with role-based access control over models and features via an admin backend."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-08-01T04:31:32.800Z",
+  "updatedAt": "2026-08-01T04:31:32.800Z"
+}

@@ -1,0 +1,64 @@
+{
+  "id": "fastgpt",
+  "name": "FastGPT",
+  "slug": "fastgpt",
+  "description": "Builds AI agents on a visual Flow canvas backed by hybrid-retrieval knowledge bases, workflow and RPA nodes, bidirectional MCP, and an OpenAPI REST API.",
+  "providerName": "labring",
+  "providerUrl": "https://github.com/labring",
+  "agentUrl": "https://fastgpt.io",
+  "categories": [
+    "orchestration",
+    "research"
+  ],
+  "tags": [
+    "knowledge-base",
+    "workflow-orchestration",
+    "rag",
+    "hybrid-retrieval",
+    "visual-flow-editor",
+    "self-hosted",
+    "mcp-server",
+    "openapi"
+  ],
+  "skills": [
+    {
+      "id": "knowledge-base-ingestion",
+      "name": "Knowledge Base Ingestion",
+      "description": "Imports txt, md, html, pdf, docx, pptx, csv and xlsx files or URLs, then chunks them with manual, direct or QA-split segmentation."
+    },
+    {
+      "id": "hybrid-retrieval",
+      "name": "Hybrid Retrieval Search",
+      "description": "Searches multiple reusable knowledge bases with hybrid retrieval and reranking, and tests recall from a single-point search panel."
+    },
+    {
+      "id": "workflow-orchestration",
+      "name": "Visual Workflow Orchestration",
+      "description": "Composes dialogue and plugin workflows on a visual Flow canvas, chaining agent skills, RPA nodes and user-interaction steps."
+    },
+    {
+      "id": "bidirectional-mcp",
+      "name": "Bidirectional MCP",
+      "description": "Publishes apps as MCP tools and consumes external MCP servers, so FastGPT acts as both an MCP client and an MCP server."
+    },
+    {
+      "id": "call-chain-logging",
+      "name": "Call Chain Logging",
+      "description": "Records complete call-chain logs and conversation history for annotation, citation editing and application evaluation runs."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-08-01T04:31:32.801Z",
+  "updatedAt": "2026-08-01T04:31:32.801Z"
+}

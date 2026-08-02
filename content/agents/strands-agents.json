@@ -1,0 +1,65 @@
+{
+  "id": "strands-agents",
+  "name": "Strands Agents",
+  "slug": "strands-agents",
+  "description": "Builds production agent harnesses in Python or TypeScript with a model-driven agent loop, pluggable model providers, MCP tools, hooks, guardrails, and multi-agent patterns.",
+  "providerName": "AWS",
+  "providerUrl": "https://aws.amazon.com",
+  "agentUrl": "https://strandsagents.com/",
+  "categories": [
+    "orchestration",
+    "code-devtools"
+  ],
+  "tags": [
+    "agent-loop",
+    "python-sdk",
+    "typescript-sdk",
+    "amazon-bedrock",
+    "model-agnostic",
+    "mcp-client",
+    "structured-output",
+    "agent-hooks"
+  ],
+  "skills": [
+    {
+      "id": "run-agent-loop",
+      "name": "Run Agent Loops",
+      "description": "Runs a model-driven agent loop that plans, calls tools, and iterates until the task completes, in Python or TypeScript."
+    },
+    {
+      "id": "swap-model-providers",
+      "name": "Swap Model Providers",
+      "description": "Points the same agent code at Amazon Bedrock, Anthropic, OpenAI, Gemini, Ollama, or a custom provider without rewriting logic."
+    },
+    {
+      "id": "connect-mcp-tools",
+      "name": "Connect MCP Tools",
+      "description": "Loads tools from MCP servers or from plain Python and TypeScript functions, and lets the agent invoke them during a run."
+    },
+    {
+      "id": "intercept-with-hooks",
+      "name": "Intercept Steps With Hooks",
+      "description": "Hooks into any step of the agent loop to log, validate, or redirect decisions, and applies guardrails before actions run."
+    },
+    {
+      "id": "compose-multi-agent",
+      "name": "Compose Multi-Agent Patterns",
+      "description": "Coordinates multiple agents with built-in multi-agent patterns, structured output, and bidirectional streaming support."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-08-01T04:31:32.808Z",
+  "updatedAt": "2026-08-01T04:31:32.808Z"
+}

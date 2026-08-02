@@ -1,0 +1,63 @@
+{
+  "id": "browser-harness",
+  "name": "Browser Harness",
+  "slug": "browser-harness",
+  "description": "Connects an LLM directly to a real Chrome browser over a single CDP websocket, letting the agent write the helper code and site skills it is missing mid-task.",
+  "providerName": "Browser Use",
+  "providerUrl": "https://browser-use.com",
+  "agentUrl": "https://browser-harness.com",
+  "categories": [
+    "browser-computer",
+    "code-devtools"
+  ],
+  "tags": [
+    "browser-use",
+    "chrome-devtools-protocol",
+    "browser-automation",
+    "self-improving-harness",
+    "domain-skills",
+    "accessibility-tree",
+    "headless-chrome",
+    "python"
+  ],
+  "skills": [
+    {
+      "id": "cdp-browser-control",
+      "name": "CDP Browser Control",
+      "description": "Drives the user running Chrome over a raw CDP websocket to open tabs, click by coordinates, type, and read page state."
+    },
+    {
+      "id": "self-writing-helpers",
+      "name": "Self-Writing Helpers",
+      "description": "Writes missing helper functions into agent_helpers.py during execution, so the harness gains new capabilities each run."
+    },
+    {
+      "id": "domain-skill-capture",
+      "name": "Domain Skill Capture",
+      "description": "Files site-specific selectors, flows, and edge cases as reusable domain skills in the agent workspace when enabled."
+    },
+    {
+      "id": "cloud-browser-sessions",
+      "name": "Cloud Browser Sessions",
+      "description": "Starts isolated Browser Use Cloud browsers with stealth settings, proxies, and captcha solving for parallel or headless runs."
+    },
+    {
+      "id": "session-recordings",
+      "name": "Session Recordings",
+      "description": "Captures local video traces of a browser task between start_recording and stop_recording once recordings are enabled."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-08-01T04:31:32.805Z",
+  "updatedAt": "2026-08-01T04:31:32.805Z"
+}

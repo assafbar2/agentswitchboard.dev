@@ -1,0 +1,65 @@
+{
+  "id": "klavis",
+  "name": "Klavis AI",
+  "slug": "klavis",
+  "description": "Connects agents to 100+ third-party MCP integrations with managed OAuth, hosted or self-hosted servers, and Strata progressive tool discovery for very large tool sets.",
+  "providerName": "Klavis AI",
+  "providerUrl": "https://www.klavis.ai",
+  "agentUrl": "https://www.klavis.ai/",
+  "categories": [
+    "orchestration",
+    "infrastructure"
+  ],
+  "tags": [
+    "mcp-servers",
+    "oauth-handling",
+    "strata",
+    "progressive-tool-discovery",
+    "context-optimization",
+    "self-hosted-docker",
+    "mcp-sandbox",
+    "hosted-mcp"
+  ],
+  "skills": [
+    {
+      "id": "create-mcp-instances",
+      "name": "Create MCP Instances",
+      "description": "Spins up hosted MCP server instances for Gmail, Slack, GitHub, and 100+ other services from the Python, TypeScript, or REST API."
+    },
+    {
+      "id": "handle-oauth",
+      "name": "Handle OAuth Flows",
+      "description": "Authenticates end users to third-party services with built-in OAuth, and recovers from credential errors via handle_auth_failure."
+    },
+    {
+      "id": "strata-tool-discovery",
+      "name": "Discover Tools Progressively",
+      "description": "Routes agents through staged discovery of categories, then actions, then parameters, so thousands of tools fit in the context."
+    },
+    {
+      "id": "self-host-servers",
+      "name": "Self-Host MCP Servers",
+      "description": "Runs any Klavis MCP integration locally from prebuilt Docker images, or installs the open-source Strata server with pipx."
+    },
+    {
+      "id": "run-mcp-sandbox",
+      "name": "Run MCP Sandboxes",
+      "description": "Provisions scalable MCP environments for LLM training and reinforcement learning experiment workloads."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-08-01T04:31:32.810Z",
+  "updatedAt": "2026-08-01T04:31:32.810Z"
+}

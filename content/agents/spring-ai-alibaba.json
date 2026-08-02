@@ -1,0 +1,64 @@
+{
+  "id": "spring-ai-alibaba",
+  "name": "Spring AI Alibaba",
+  "slug": "spring-ai-alibaba",
+  "description": "Builds agentic, workflow and multi-agent applications in Java and Spring Boot on a graph runtime for stateful agents, with A2A communication, tool calling and MCP support.",
+  "providerName": "Alibaba",
+  "providerUrl": "https://github.com/alibaba",
+  "agentUrl": "https://java2ai.com",
+  "categories": [
+    "orchestration",
+    "code-devtools"
+  ],
+  "tags": [
+    "java",
+    "spring-boot",
+    "multi-agent-patterns",
+    "graph-workflow",
+    "a2a-protocol",
+    "dashscope",
+    "human-in-the-loop",
+    "context-engineering"
+  ],
+  "skills": [
+    {
+      "id": "multi-agent-patterns",
+      "name": "Multi-Agent Patterns",
+      "description": "Composes agents with SequentialAgent, ParallelAgent, RoutingAgent and LoopAgent patterns to run complex tasks across collaborators."
+    },
+    {
+      "id": "graph-workflows",
+      "name": "Graph-Based Workflows",
+      "description": "Defines workflows with conditional routing, nested graphs, parallel execution and state persistence, exported to PlantUML or Mermaid."
+    },
+    {
+      "id": "context-engineering",
+      "name": "Context Engineering Hooks",
+      "description": "Applies built-in policies for human-in-the-loop, context compaction and editing, tool retry, planning and dynamic tool selection."
+    },
+    {
+      "id": "a2a-coordination",
+      "name": "A2A Coordination",
+      "description": "Connects agents across services with Agent-to-Agent communication and Nacos integration for distributed discovery and coordination."
+    },
+    {
+      "id": "voice-agent",
+      "name": "Realtime Voice Agent",
+      "description": "Streams audio or text over WebSocket to a voice agent that replies with generated audio, alongside multimodal image understanding."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-08-01T04:31:32.807Z",
+  "updatedAt": "2026-08-01T04:31:32.807Z"
+}

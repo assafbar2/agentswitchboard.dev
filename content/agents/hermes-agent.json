@@ -1,0 +1,64 @@
+{
+  "id": "hermes-agent",
+  "name": "Hermes Agent",
+  "slug": "hermes-agent",
+  "description": "Runs a self-improving personal agent from a terminal TUI or a Telegram/Discord/Slack gateway, creating its own skills, searching past sessions, and scheduling unattended tasks.",
+  "providerName": "Nous Research",
+  "providerUrl": "https://nousresearch.com",
+  "agentUrl": "https://hermes-agent.nousresearch.com",
+  "categories": [
+    "orchestration",
+    "communication",
+    "memory-state"
+  ],
+  "tags": [
+    "skill-autogeneration",
+    "messaging-gateway",
+    "telegram-bot",
+    "cron-scheduling",
+    "task-delegation",
+    "terminal-tui",
+    "model-routing",
+    "persistent-memory"
+  ],
+  "skills": [
+    {
+      "id": "skill-autocreation",
+      "name": "Autonomous Skill Creation",
+      "description": "Generates reusable skills from completed complex tasks and refines them during later use, following the agentskills.io open standard."
+    },
+    {
+      "id": "messaging-gateway",
+      "name": "Multi-Platform Messaging Gateway",
+      "description": "Runs one gateway process serving Telegram, Discord, Slack, WhatsApp, Signal, and email with cross-platform conversation continuity."
+    },
+    {
+      "id": "cron-scheduling",
+      "name": "Scheduled Automation Runs",
+      "description": "Schedules recurring natural-language tasks with a built-in cron scheduler and delivers results to any connected messaging platform."
+    },
+    {
+      "id": "subagent-delegation",
+      "name": "Parallel Subagent Delegation",
+      "description": "Spawns isolated subagents with their own conversations and terminals, plus Python RPC scripts that collapse multi-step pipelines."
+    },
+    {
+      "id": "session-search",
+      "name": "Cross-Session Memory Search",
+      "description": "Searches past conversations using SQLite FTS5 with LLM summarization and curates persistent memory through periodic self-nudges."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-08-01T04:31:32.797Z",
+  "updatedAt": "2026-08-01T04:31:32.797Z"
+}

@@ -1,0 +1,64 @@
+{
+  "id": "qwen-code",
+  "name": "Qwen Code",
+  "slug": "qwen-code",
+  "description": "Runs an open-source coding agent in the terminal with subagents, agent teams, hooks, skills, plan mode and MCP, switchable across OpenAI, Anthropic, Gemini and local models.",
+  "providerName": "Alibaba Qwen",
+  "providerUrl": "https://github.com/QwenLM",
+  "agentUrl": "https://qwenlm.github.io/qwen-code-docs/en/users/overview",
+  "categories": [
+    "code-devtools",
+    "orchestration"
+  ],
+  "tags": [
+    "terminal-agent",
+    "coding-agent",
+    "subagents",
+    "mcp-client",
+    "headless-mode",
+    "ide-plugins",
+    "multi-provider",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "agentic-coding",
+      "name": "Agentic Coding Session",
+      "description": "Edits code and runs multi-step repository tasks from a terminal UI with @file references, slash commands and git worktrees."
+    },
+    {
+      "id": "subagents-and-teams",
+      "name": "Subagents And Teams",
+      "description": "Delegates work to subagents and agent teams running dynamic workflows, backed by auto-memory, auto-skills and lifecycle hooks."
+    },
+    {
+      "id": "headless-runs",
+      "name": "Headless Batch Runs",
+      "description": "Executes one-shot prompts without a UI for scripts, CI/CD and batch processing, with session management and sandboxed execution."
+    },
+    {
+      "id": "multi-protocol-models",
+      "name": "Multi-Protocol Model Switching",
+      "description": "Switches between OpenAI, Anthropic, Gemini and Qwen protocols at runtime, including third-party providers and local Ollama or vLLM."
+    },
+    {
+      "id": "daemon-mode",
+      "name": "Shared Daemon Sessions",
+      "description": "Serves one agent session over HTTP and SSE via qwen serve, so IDE plugins, the desktop app and IM bots share a single agent."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-08-01T04:31:32.802Z",
+  "updatedAt": "2026-08-01T04:31:32.802Z"
+}

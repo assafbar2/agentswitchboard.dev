@@ -1,0 +1,65 @@
+{
+  "id": "graphify",
+  "name": "Graphify",
+  "slug": "graphify",
+  "description": "Maps a codebase, docs, PDFs, and media into a queryable knowledge graph so AI coding assistants trace and cite paths instead of grepping through files.",
+  "providerName": "Graphify Labs",
+  "providerUrl": "https://graphify.com",
+  "agentUrl": "https://graphify.com",
+  "categories": [
+    "code-devtools",
+    "research",
+    "memory-state"
+  ],
+  "tags": [
+    "knowledge-graph",
+    "tree-sitter",
+    "code-navigation",
+    "ast-parsing",
+    "leiden-communities",
+    "graph-query",
+    "local-first",
+    "repo-mapping"
+  ],
+  "skills": [
+    {
+      "id": "build-graph",
+      "name": "Build Knowledge Graph",
+      "description": "Parses roughly 40 languages locally with tree-sitter AST to build a graph of calls, imports, and inheritance edges, with no LLM."
+    },
+    {
+      "id": "query-graph",
+      "name": "Query Graph Naturally",
+      "description": "Answers plain-language questions by returning a scoped subgraph from the built graph.json without re-reading any source files."
+    },
+    {
+      "id": "trace-path",
+      "name": "Trace Node Paths",
+      "description": "Traces the shortest path between two concepts and explains one node connections, tagging each edge EXTRACTED or INFERRED."
+    },
+    {
+      "id": "detect-communities",
+      "name": "Detect Graph Communities",
+      "description": "Splits the graph into subsystems with Leiden community detection and surfaces god nodes, the most-connected concepts in a project."
+    },
+    {
+      "id": "mcp-graph-server",
+      "name": "Serve Graph Over MCP",
+      "description": "Exposes query_graph, get_node, get_neighbors, and shortest_path to assistants over MCP stdio or Streamable HTTP transport."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-08-01T04:31:32.798Z",
+  "updatedAt": "2026-08-01T04:31:32.798Z"
+}

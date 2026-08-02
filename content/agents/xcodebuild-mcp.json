@@ -1,0 +1,63 @@
+{
+  "id": "xcodebuild-mcp",
+  "name": "XcodeBuildMCP",
+  "slug": "xcodebuild-mcp",
+  "description": "Gives coding agents control of Xcode builds, tests, simulators, and physical devices for iOS and macOS, through an MCP server or a matching command-line interface.",
+  "providerName": "Sentry",
+  "providerUrl": "https://sentry.io",
+  "agentUrl": "https://www.xcodebuildmcp.com",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "xcode",
+    "ios-development",
+    "xcodebuild",
+    "ios-simulator",
+    "swift-package",
+    "ui-automation",
+    "macos-builds",
+    "device-deployment"
+  ],
+  "skills": [
+    {
+      "id": "build-xcode-projects",
+      "name": "Build Xcode Projects",
+      "description": "Builds .xcodeproj and .xcworkspace schemes for iOS simulators, macOS, and physical devices by driving xcodebuild commands."
+    },
+    {
+      "id": "run-xcode-tests",
+      "name": "Run And Prepare Tests",
+      "description": "Runs test suites on simulators or devices, and prepares portable .xctestproducts bundles with build-for-testing for later runs."
+    },
+    {
+      "id": "control-simulators",
+      "name": "Control iOS Simulators",
+      "description": "Boots simulators, installs and launches apps, captures runtime logs, and drives UI automation such as taps, swipes, and typing."
+    },
+    {
+      "id": "deploy-to-devices",
+      "name": "Deploy To Physical Devices",
+      "description": "Installs and launches apps on connected iOS devices, which requires code signing to be configured in Xcode for the project."
+    },
+    {
+      "id": "discover-and-scaffold",
+      "name": "Discover And Scaffold Projects",
+      "description": "Lists schemes, targets, and build settings for a project, and scaffolds new iOS and macOS projects from built-in templates."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-08-01T04:31:32.810Z",
+  "updatedAt": "2026-08-01T04:31:32.810Z"
+}
