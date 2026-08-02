@@ -1,0 +1,52 @@
+{
+  "id": "arize-phoenix",
+  "name": "Arize Phoenix",
+  "slug": "arize-phoenix",
+  "description": "Traces, evaluates and debugs LLM and agent applications from an open-source observability platform built on OpenTelemetry, runnable locally or self-hosted.",
+  "providerName": "Arize AI",
+  "providerUrl": "https://phoenix.arize.com",
+  "agentUrl": "https://github.com/Arize-ai/phoenix",
+  "categories": [
+    "data-analytics",
+    "infrastructure"
+  ],
+  "tags": [
+    "llm-tracing",
+    "opentelemetry",
+    "span-inspection",
+    "prompt-experiments",
+    "self-hosted",
+    "eval-runner"
+  ],
+  "skills": [
+    {
+      "id": "otel-tracing",
+      "name": "OpenTelemetry Tracing",
+      "description": "Captures spans for every LLM, retriever and tool call through OpenInference instrumentation for major frameworks."
+    },
+    {
+      "id": "eval-runs",
+      "name": "Evaluation Runs",
+      "description": "Runs LLM-as-judge evaluations over captured traces and datasets to quantify quality regressions across versions."
+    },
+    {
+      "id": "prompt-experiments",
+      "name": "Prompt Experiments",
+      "description": "Compares prompt and model variants over a fixed dataset, tracking results as versioned experiments."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-07-25T16:22:45.430Z",
+  "updatedAt": "2026-07-25T16:22:45.430Z"
+}

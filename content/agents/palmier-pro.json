@@ -1,0 +1,50 @@
+{
+  "id": "palmier-pro",
+  "name": "Palmier Pro",
+  "slug": "palmier-pro",
+  "description": "Exposes a macOS video editor timeline over MCP so agents can cut, arrange and render video programmatically from Claude, Cursor or Codex.",
+  "providerName": "Palmier",
+  "providerUrl": "https://palmier.io",
+  "agentUrl": "https://github.com/palmier-io/palmier-pro",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "video-editing",
+    "timeline-control",
+    "macos-native",
+    "render-pipeline",
+    "creative-workflow",
+    "yc-s24"
+  ],
+  "skills": [
+    {
+      "id": "timeline-edit",
+      "name": "Timeline Editing",
+      "description": "Adds, trims and reorders clips on the editor timeline through MCP calls so an agent can assemble a cut end to end."
+    },
+    {
+      "id": "media-import",
+      "name": "Media Import",
+      "description": "Imports local footage, audio and images into the project and reports duration and metadata back to the agent."
+    },
+    {
+      "id": "export-render",
+      "name": "Export And Render",
+      "description": "Renders the current timeline to a video file at a chosen resolution and codec, returning the output path."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-07-25T16:22:45.421Z",
+  "updatedAt": "2026-07-25T16:22:45.421Z"
+}

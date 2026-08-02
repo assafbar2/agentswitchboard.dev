@@ -1,6 +1,174 @@
 [
   {
     "action": "added",
+    "slug": "mcp-agent",
+    "name": "mcp-agent",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "magic-mcp",
+    "name": "Magic MCP",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "postgres-mcp-pro",
+    "name": "Postgres MCP Pro",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "helicone",
+    "name": "Helicone",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "genkit",
+    "name": "Genkit",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "arize-phoenix",
+    "name": "Arize Phoenix",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "deepeval",
+    "name": "DeepEval",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "graphiti",
+    "name": "Graphiti",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "cognee",
+    "name": "Cognee",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "promptfoo",
+    "name": "promptfoo",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "localai",
+    "name": "LocalAI",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "autogpt",
+    "name": "AutoGPT",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "lyzr",
+    "name": "Lyzr",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "codealmanac",
+    "name": "CodeAlmanac",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "echo",
+    "name": "Echo",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "nobie",
+    "name": "Nobie",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "deepsql",
+    "name": "DeepSQL",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "concho",
+    "name": "Concho",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "crunchbase-mcp",
+    "name": "Crunchbase MCP",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "cartai",
+    "name": "CartAI",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "natural",
+    "name": "Natural",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "rowboat",
+    "name": "Rowboat",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "openviking",
+    "name": "OpenViking",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "orca",
+    "name": "Orca",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "onecli",
+    "name": "OneCLI",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "palmier-pro",
+    "name": "Palmier Pro",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "buzz",
+    "name": "Buzz",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
+    "slug": "screenpipe",
+    "name": "Screenpipe",
+    "date": "2026-07-25"
+  },
+  {
+    "action": "added",
     "slug": "agentswitchboard",
     "name": "Agent Switchboard",
     "note": "The directory listed itself — it qualifies: live MCP server, verified endpoints, identifiable provider",

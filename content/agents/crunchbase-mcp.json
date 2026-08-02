@@ -1,0 +1,52 @@
+{
+  "id": "crunchbase-mcp",
+  "name": "Crunchbase MCP",
+  "slug": "crunchbase-mcp",
+  "description": "Brings Crunchbase private-market intelligence into Claude, ChatGPT and Cursor over MCP, covering company profiles, funding events and predictive signals.",
+  "providerName": "Crunchbase",
+  "providerUrl": "https://about.crunchbase.com",
+  "agentUrl": "https://about.crunchbase.com",
+  "categories": [
+    "research",
+    "finance"
+  ],
+  "tags": [
+    "private-markets",
+    "funding-data",
+    "company-profiles",
+    "investor-research",
+    "predictive-signals",
+    "first-party-mcp"
+  ],
+  "skills": [
+    {
+      "id": "company-lookup",
+      "name": "Company Intelligence",
+      "description": "Returns structured company profiles with hundreds of data fields covering financials, headcount and sector."
+    },
+    {
+      "id": "funding-events",
+      "name": "Funding Event Search",
+      "description": "Queries rounds, investors and valuations across the private-market dataset to trace a company funding history."
+    },
+    {
+      "id": "growth-signals",
+      "name": "Predictive Signals",
+      "description": "Surfaces predictive indicators that flag companies likely to raise or grow, ranked by signal strength."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-07-25T16:22:45.424Z",
+  "updatedAt": "2026-07-25T16:22:45.424Z"
+}

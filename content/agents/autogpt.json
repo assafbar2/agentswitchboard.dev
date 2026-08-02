@@ -1,0 +1,52 @@
+{
+  "id": "autogpt",
+  "name": "AutoGPT",
+  "slug": "autogpt",
+  "description": "Builds, deploys and runs continuous autonomous agents through a low-code block-based builder, the project that popularized the autonomous-agent loop.",
+  "providerName": "Significant Gravitas",
+  "providerUrl": "https://agpt.co",
+  "agentUrl": "https://github.com/Significant-Gravitas/AutoGPT",
+  "categories": [
+    "orchestration",
+    "infrastructure"
+  ],
+  "tags": [
+    "autonomous-loop",
+    "low-code-builder",
+    "agent-blocks",
+    "self-hosted",
+    "continuous-agents",
+    "goal-decomposition"
+  ],
+  "skills": [
+    {
+      "id": "agent-builder",
+      "name": "Block Agent Builder",
+      "description": "Assembles agents from composable blocks in a visual builder, wiring inputs, tools and outputs without code."
+    },
+    {
+      "id": "continuous-execution",
+      "name": "Continuous Execution",
+      "description": "Runs agents on triggers and schedules so they keep working against a goal instead of one-shot prompting."
+    },
+    {
+      "id": "goal-decomposition",
+      "name": "Goal Decomposition",
+      "description": "Breaks a high-level objective into ordered subtasks and executes them, revising the plan as results arrive."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-07-25T16:22:45.427Z",
+  "updatedAt": "2026-07-25T16:22:45.427Z"
+}

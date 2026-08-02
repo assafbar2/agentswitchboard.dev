@@ -1,0 +1,52 @@
+{
+  "id": "natural",
+  "name": "Natural",
+  "slug": "natural",
+  "description": "Provides payment rails purpose-built for AI agents, letting them hold funds in wallets and vaults, transfer money, and transact with humans or other agents under policy limits.",
+  "providerName": "Natural",
+  "providerUrl": "https://www.natural.com",
+  "agentUrl": "https://www.natural.com",
+  "categories": [
+    "commerce-payments",
+    "finance"
+  ],
+  "tags": [
+    "agent-wallet",
+    "payment-rails",
+    "agent-vaults",
+    "fund-transfers",
+    "spend-policy",
+    "series-a"
+  ],
+  "skills": [
+    {
+      "id": "agent-wallets",
+      "name": "Agent Wallets",
+      "description": "Issues wallets an agent controls programmatically, holding balances it can spend within configured limits."
+    },
+    {
+      "id": "vault-custody",
+      "name": "Vault Custody",
+      "description": "Holds reserve funds in vaults separate from spending wallets so agent access is bounded by design."
+    },
+    {
+      "id": "agent-transfers",
+      "name": "Agent-To-Agent Transfers",
+      "description": "Moves money between agents and humans over the API, settling autonomous transactions without a checkout flow."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-07-25T16:22:45.424Z",
+  "updatedAt": "2026-07-25T16:22:45.424Z"
+}

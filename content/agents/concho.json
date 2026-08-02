@@ -1,0 +1,51 @@
+{
+  "id": "concho",
+  "name": "Concho",
+  "slug": "concho",
+  "description": "Models an entire enterprise codebase into a queryable knowledge layer, then serves sourced architectural and business-logic facts to agents over MCP.",
+  "providerName": "Concho AI",
+  "providerUrl": "https://www.concho.ai",
+  "agentUrl": "https://www.concho.ai",
+  "categories": [
+    "code-devtools",
+    "research"
+  ],
+  "tags": [
+    "codebase-knowledge",
+    "architecture-mapping",
+    "legacy-modernization",
+    "business-logic",
+    "sourced-answers",
+    "enterprise-scale"
+  ],
+  "skills": [
+    {
+      "id": "architecture-map",
+      "name": "Architecture Mapping",
+      "description": "Builds a model of components, dependencies and data flow across a large codebase for agents to query."
+    },
+    {
+      "id": "sourced-facts",
+      "name": "Sourced Fact Retrieval",
+      "description": "Answers questions about the application with citations back to the specific code that supports each claim."
+    },
+    {
+      "id": "logic-extraction",
+      "name": "Business Logic Extraction",
+      "description": "Extracts encoded business rules and compliance constraints from legacy code to support modernization work."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-07-25T16:22:45.425Z",
+  "updatedAt": "2026-07-25T16:22:45.425Z"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "orca",
+  "name": "Orca",
+  "slug": "orca",
+  "description": "Runs fleets of coding agents in parallel git worktrees, letting you launch Claude Code, Codex, OpenCode and others side by side from desktop, mobile or CLI.",
+  "providerName": "Stably",
+  "providerUrl": "https://onorca.dev",
+  "agentUrl": "https://github.com/stablyai/orca",
+  "categories": [
+    "orchestration",
+    "code-devtools"
+  ],
+  "tags": [
+    "parallel-agents",
+    "git-worktrees",
+    "agent-fleet",
+    "claude-code",
+    "linear-integration",
+    "mobile-client"
+  ],
+  "skills": [
+    {
+      "id": "parallel-worktrees",
+      "name": "Parallel Worktrees",
+      "description": "Spawns each agent in its own git worktree so many coding agents work on the same repo without colliding."
+    },
+    {
+      "id": "multi-harness",
+      "name": "Multi-Harness Support",
+      "description": "Drives Claude Code, Codex, OpenCode and dozens of other agent harnesses behind one consistent interface."
+    },
+    {
+      "id": "issue-integration",
+      "name": "Issue Tracker Integration",
+      "description": "Picks up GitHub and Linear issues, assigns them to agents in the fleet and reports progress back to the tracker."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-07-25T16:22:45.422Z",
+  "updatedAt": "2026-07-25T16:22:45.422Z"
+}

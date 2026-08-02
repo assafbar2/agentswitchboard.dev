@@ -1,0 +1,51 @@
+{
+  "id": "graphiti",
+  "name": "Graphiti",
+  "slug": "graphiti",
+  "description": "Builds temporally aware knowledge graphs for agents in real time, tracking when each fact became true so memory reflects change instead of overwriting it.",
+  "providerName": "Zep AI",
+  "providerUrl": "https://www.getzep.com",
+  "agentUrl": "https://github.com/getzep/graphiti",
+  "categories": [
+    "memory-state"
+  ],
+  "tags": [
+    "temporal-graph",
+    "bi-temporal-model",
+    "incremental-updates",
+    "fact-invalidation",
+    "hybrid-retrieval",
+    "agent-memory"
+  ],
+  "skills": [
+    {
+      "id": "temporal-graph",
+      "name": "Temporal Knowledge Graph",
+      "description": "Records validity intervals on every edge so queries can ask what was true at a particular point in time."
+    },
+    {
+      "id": "incremental-ingest",
+      "name": "Incremental Ingestion",
+      "description": "Adds new episodes without rebuilding the graph, invalidating superseded facts as fresh information arrives."
+    },
+    {
+      "id": "hybrid-search",
+      "name": "Hybrid Retrieval",
+      "description": "Combines semantic, keyword and graph traversal search to retrieve context with low query latency."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-07-25T16:22:45.429Z",
+  "updatedAt": "2026-07-25T16:22:45.429Z"
+}

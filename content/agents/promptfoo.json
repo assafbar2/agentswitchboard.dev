@@ -1,0 +1,52 @@
+{
+  "id": "promptfoo",
+  "name": "promptfoo",
+  "slug": "promptfoo",
+  "description": "Tests and red-teams LLM apps, agents and RAG pipelines from declarative config, scanning for prompt injection, jailbreaks and other vulnerabilities in CI.",
+  "providerName": "promptfoo",
+  "providerUrl": "https://promptfoo.dev",
+  "agentUrl": "https://github.com/promptfoo/promptfoo",
+  "categories": [
+    "security",
+    "code-devtools"
+  ],
+  "tags": [
+    "llm-evaluation",
+    "red-teaming",
+    "prompt-injection",
+    "regression-testing",
+    "ci-integration",
+    "jailbreak-scanning"
+  ],
+  "skills": [
+    {
+      "id": "eval-suites",
+      "name": "Declarative Eval Suites",
+      "description": "Runs prompt and agent test cases from a config file, scoring outputs with assertions and model graders."
+    },
+    {
+      "id": "red-teaming",
+      "name": "Automated Red Teaming",
+      "description": "Generates adversarial attacks against an application to find prompt injection, jailbreaks and data leakage."
+    },
+    {
+      "id": "model-comparison",
+      "name": "Model Comparison",
+      "description": "Compares providers and prompt variants side by side on the same dataset to justify a model choice with data."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-07-25T16:22:45.428Z",
+  "updatedAt": "2026-07-25T16:22:45.428Z"
+}

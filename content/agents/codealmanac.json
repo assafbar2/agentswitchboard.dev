@@ -1,0 +1,51 @@
+{
+  "id": "codealmanac",
+  "name": "CodeAlmanac",
+  "slug": "codealmanac",
+  "description": "Turns your coding-agent conversations into a local-first codebase wiki, capturing architectural decisions and institutional knowledge that the source alone does not record.",
+  "providerName": "AlmanacCode",
+  "providerUrl": "https://codealmanac.com",
+  "agentUrl": "https://github.com/AlmanacCode/codealmanac",
+  "categories": [
+    "code-devtools",
+    "memory-state"
+  ],
+  "tags": [
+    "codebase-wiki",
+    "decision-records",
+    "local-first",
+    "institutional-knowledge",
+    "conversation-mining",
+    "yc-s26"
+  ],
+  "skills": [
+    {
+      "id": "wiki-generation",
+      "name": "Wiki Generation",
+      "description": "Builds a browsable wiki of a codebase from agent transcripts, organizing explanations by subsystem."
+    },
+    {
+      "id": "decision-capture",
+      "name": "Decision Capture",
+      "description": "Records why a change was made, including rejected alternatives, so later agents inherit the reasoning."
+    },
+    {
+      "id": "local-viewer",
+      "name": "Local Web Viewer",
+      "description": "Serves the generated wiki from a local viewer, keeping proprietary code discussion entirely on your machine."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-07-25T16:22:45.427Z",
+  "updatedAt": "2026-07-25T16:22:45.427Z"
+}

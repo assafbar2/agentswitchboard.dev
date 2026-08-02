@@ -1,0 +1,50 @@
+{
+  "id": "nobie",
+  "name": "Nobie",
+  "slug": "nobie",
+  "description": "Provides an Excel-compatible spreadsheet runtime built for agents and humans to share, so agents can read, compute and write real workbooks from the command line.",
+  "providerName": "Nobie",
+  "providerUrl": "https://nobie.com",
+  "agentUrl": "https://nobie.com",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "spreadsheet-runtime",
+    "excel-compatible",
+    "formula-engine",
+    "macos-native",
+    "agent-interface",
+    "financial-modeling"
+  ],
+  "skills": [
+    {
+      "id": "workbook-compute",
+      "name": "Workbook Computation",
+      "description": "Evaluates Excel-compatible formulas and recalculates dependent cells so agent edits produce correct results."
+    },
+    {
+      "id": "cell-editing",
+      "name": "Programmatic Cell Editing",
+      "description": "Reads and writes ranges in existing workbooks from the CLI without breaking formatting or formula references."
+    },
+    {
+      "id": "shared-editing",
+      "name": "Human-Agent Handoff",
+      "description": "Keeps one file editable by both a person in the GUI and an agent at the command line on the same model."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-07-25T16:22:45.426Z",
+  "updatedAt": "2026-07-25T16:22:45.426Z"
+}

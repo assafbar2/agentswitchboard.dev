@@ -1,0 +1,51 @@
+{
+  "id": "postgres-mcp-pro",
+  "name": "Postgres MCP Pro",
+  "slug": "postgres-mcp-pro",
+  "description": "Connects agents to Postgres over MCP with configurable read or write access plus index tuning, EXPLAIN plan analysis and database health checks.",
+  "providerName": "Crystal DBA",
+  "providerUrl": "https://www.crystaldba.ai",
+  "agentUrl": "https://github.com/crystaldba/postgres-mcp",
+  "categories": [
+    "data-analytics",
+    "infrastructure"
+  ],
+  "tags": [
+    "postgres-access",
+    "index-tuning",
+    "explain-analysis",
+    "database-health",
+    "sql-execution",
+    "read-only-mode"
+  ],
+  "skills": [
+    {
+      "id": "sql-execution",
+      "name": "SQL Execution",
+      "description": "Runs queries against Postgres in restricted or unrestricted mode, returning typed result sets to the agent."
+    },
+    {
+      "id": "index-tuning",
+      "name": "Index Tuning",
+      "description": "Analyzes workloads and recommends indexes with estimated benefit, using industrial tuning algorithms."
+    },
+    {
+      "id": "health-checks",
+      "name": "Database Health Checks",
+      "description": "Inspects buffer cache, vacuum state, connection load and bloat to report actionable health problems."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-07-25T16:22:45.431Z",
+  "updatedAt": "2026-07-25T16:22:45.431Z"
+}

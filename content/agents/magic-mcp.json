@@ -1,0 +1,50 @@
+{
+  "id": "magic-mcp",
+  "name": "Magic MCP",
+  "slug": "magic-mcp",
+  "description": "Generates React and Tailwind UI components inside Cursor, Claude Code and Windsurf over MCP, drawing on a library of thousands of production components.",
+  "providerName": "21st.dev",
+  "providerUrl": "https://21st.dev",
+  "agentUrl": "https://github.com/21st-dev/magic-mcp",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "ui-generation",
+    "react-components",
+    "tailwind-css",
+    "component-search",
+    "ide-integration",
+    "logo-search"
+  ],
+  "skills": [
+    {
+      "id": "component-generation",
+      "name": "Component Generation",
+      "description": "Builds a React and Tailwind component from a natural-language description and inserts it into the project."
+    },
+    {
+      "id": "component-search",
+      "name": "Component Library Search",
+      "description": "Searches thousands of curated production components to ground generated UI in proven patterns."
+    },
+    {
+      "id": "logo-fetch",
+      "name": "Logo Retrieval",
+      "description": "Fetches company logos as JSX, TSX or SVG components ready to drop into an interface."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-07-25T16:22:45.431Z",
+  "updatedAt": "2026-07-25T16:22:45.431Z"
+}
