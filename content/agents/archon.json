@@ -1,0 +1,64 @@
+{
+  "id": "archon",
+  "name": "Archon",
+  "slug": "archon",
+  "description": "Runs coding agents through YAML-defined workflows (plan, implement, validate, review, open a PR), each in its own git worktree, driven from CLI, web UI, Slack, or GitHub.",
+  "providerName": "Cole Medin",
+  "providerUrl": "https://github.com/coleam00",
+  "agentUrl": "https://archon.diy",
+  "categories": [
+    "code-devtools",
+    "orchestration"
+  ],
+  "tags": [
+    "yaml-workflows",
+    "git-worktree-isolation",
+    "claude-code",
+    "dag-workflows",
+    "pull-request-automation",
+    "self-hosted",
+    "github-webhooks",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "yaml-workflow-execution",
+      "name": "YAML Workflow Execution",
+      "description": "Executes DAG workflows defined in .archon/workflows, mixing AI prompt nodes with deterministic bash, script, and git nodes."
+    },
+    {
+      "id": "worktree-isolation",
+      "name": "Worktree Run Isolation",
+      "description": "Gives every workflow run its own git worktree and branch so several runs proceed in parallel without conflicts."
+    },
+    {
+      "id": "issue-to-pr",
+      "name": "Issue To PR Pipeline",
+      "description": "Ships workflows that classify a GitHub issue, plan, implement, validate, open a pull request, and self-fix review findings."
+    },
+    {
+      "id": "workflow-builder",
+      "name": "Visual Workflow Builder",
+      "description": "Creates and edits DAG workflows with loop and human-approval nodes in a drag-and-drop web editor backed by YAML."
+    },
+    {
+      "id": "platform-adapters",
+      "name": "Multi Platform Adapters",
+      "description": "Starts and monitors runs from CLI, web UI, Slack, Telegram, Discord, or GitHub webhooks in one shared activity view."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-08-01T04:31:32.804Z",
+  "updatedAt": "2026-08-01T04:31:32.804Z"
+}

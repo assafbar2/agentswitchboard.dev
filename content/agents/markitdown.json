@@ -1,0 +1,64 @@
+{
+  "id": "markitdown",
+  "name": "MarkItDown",
+  "slug": "markitdown",
+  "description": "Converts PDF, Office, HTML, image, audio, and ZIP files into structured Markdown for LLM pipelines, preserving headings, lists, tables, and links.",
+  "providerName": "Microsoft",
+  "providerUrl": "https://microsoft.com",
+  "agentUrl": "https://github.com/microsoft/markitdown",
+  "categories": [
+    "content-media",
+    "data-analytics"
+  ],
+  "tags": [
+    "markdown-conversion",
+    "pdf-extraction",
+    "docx-parsing",
+    "ocr",
+    "speech-transcription",
+    "azure-document-intelligence",
+    "converter-plugins",
+    "python-library"
+  ],
+  "skills": [
+    {
+      "id": "office-document-conversion",
+      "name": "Office Document Conversion",
+      "description": "Converts PDF, Word, PowerPoint, Excel, EPUB, and HTML files to Markdown while preserving headings, lists, tables, and links."
+    },
+    {
+      "id": "media-metadata-extraction",
+      "name": "Image And Audio Extraction",
+      "description": "Reads EXIF metadata from images, runs OCR on them, and transcribes speech from WAV and MP3 audio files into Markdown."
+    },
+    {
+      "id": "mcp-uri-conversion",
+      "name": "MCP URI Conversion",
+      "description": "Serves a convert_to_markdown tool over STDIO, Streamable HTTP, or SSE that accepts http, https, file, and data URIs."
+    },
+    {
+      "id": "azure-enrichment",
+      "name": "Azure Cloud Extraction",
+      "description": "Routes conversion through Azure Document Intelligence or Content Understanding for cloud OCR, layout analysis, and field extraction."
+    },
+    {
+      "id": "converter-plugins",
+      "name": "Third Party Plugins",
+      "description": "Loads third-party converter plugins with --use-plugins and lists installed ones, including LLM-vision OCR from markitdown-ocr."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-08-01T04:31:32.798Z",
+  "updatedAt": "2026-08-01T04:31:32.798Z"
+}

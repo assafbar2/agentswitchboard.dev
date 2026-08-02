@@ -1,0 +1,65 @@
+{
+  "id": "nanobot",
+  "name": "nanobot",
+  "slug": "nanobot",
+  "description": "Runs a self-hosted personal AI agent from a WebUI, terminal, or chat apps, combining tools, long-term memory, MCP servers, model routing, and scheduled automations.",
+  "providerName": "HKUDS",
+  "providerUrl": "https://github.com/HKUDS",
+  "agentUrl": "https://nanobot.wiki",
+  "categories": [
+    "orchestration",
+    "communication",
+    "memory-state"
+  ],
+  "tags": [
+    "self-hosted-runtime",
+    "webui-workbench",
+    "chat-app-channels",
+    "model-fallback",
+    "long-term-memory",
+    "openai-compatible-api",
+    "python-sdk",
+    "cron-scheduling"
+  ],
+  "skills": [
+    {
+      "id": "chat-app-channels",
+      "name": "Connect Chat Channels",
+      "description": "Connects the agent to Telegram, Discord, Slack, WeChat, Feishu, Email, and Mattermost from a single long-running gateway process."
+    },
+    {
+      "id": "dream-memory",
+      "name": "Retain Long-Term Memory",
+      "description": "Keeps session history and long-term memory through Dream so goals, tools, and chat context survive multi-session work."
+    },
+    {
+      "id": "subagent-delegation",
+      "name": "Delegate To Subagents",
+      "description": "Consults inline subagents without leaving the current task and switches model presets per session directly from the composer."
+    },
+    {
+      "id": "scheduled-automations",
+      "name": "Schedule Agent Automations",
+      "description": "Runs cron-scheduled automations and long-horizon goals unattended through the gateway, configured from the WebUI Automations panel."
+    },
+    {
+      "id": "openai-compatible-api",
+      "name": "Expose OpenAI-Compatible API",
+      "description": "Serves an OpenAI-compatible HTTP endpoint plus a Python SDK with sessions, events, and hooks for integrating nanobot locally."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-08-01T04:31:32.801Z",
+  "updatedAt": "2026-08-01T04:31:32.801Z"
+}

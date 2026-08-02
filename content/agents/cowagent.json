@@ -1,0 +1,65 @@
+{
+  "id": "cowagent",
+  "name": "CowAgent",
+  "slug": "cowagent",
+  "description": "Runs a self-hosted personal agent that plans multi-step tasks, calls built-in and MCP tools, installs skills, and answers on Web, Telegram, Slack, WeChat, and Feishu.",
+  "providerName": "zhayujie",
+  "providerUrl": "https://cowagent.ai",
+  "agentUrl": "https://cowagent.ai",
+  "categories": [
+    "orchestration",
+    "memory-state",
+    "communication"
+  ],
+  "tags": [
+    "agent-harness",
+    "skill-hub",
+    "long-term-memory",
+    "knowledge-graph",
+    "mcp-tools",
+    "im-channels",
+    "self-evolution",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "task-planning",
+      "name": "Task Planning",
+      "description": "Decomposes a complex request into steps and loops over tools until the goal is reached, reasoning over memory and knowledge."
+    },
+    {
+      "id": "tiered-memory",
+      "name": "Tiered Long-Term Memory",
+      "description": "Distills conversation context into daily and core memory with a nightly Deep Dream pass, retrieved by keyword and vector search."
+    },
+    {
+      "id": "knowledge-base",
+      "name": "Personal Knowledge Base",
+      "description": "Curates conversations into a topic-organized Markdown wiki with cross-references and a browsable knowledge graph view."
+    },
+    {
+      "id": "skill-management",
+      "name": "Skill Management",
+      "description": "Installs skills from Skill Hub, GitHub, ClawHub, or a URL, and authors new ones conversationally through skill-creator."
+    },
+    {
+      "id": "channel-messaging",
+      "name": "Multi-Channel Messaging",
+      "description": "Serves one agent across Web, Telegram, Slack, Discord, WeChat, Feishu, DingTalk, and QQ with text, image, file, and voice."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-08-01T04:31:32.800Z",
+  "updatedAt": "2026-08-01T04:31:32.800Z"
+}

@@ -1,0 +1,66 @@
+{
+  "id": "opensandbox",
+  "name": "OpenSandbox",
+  "slug": "opensandbox",
+  "description": "Runs AI-agent workloads in isolated Docker or Kubernetes sandboxes, exposing sandbox lifecycle, command, filesystem, and code-interpreter APIs across five language SDKs.",
+  "providerName": "OpenSandbox Group",
+  "providerUrl": "https://open-sandbox.ai",
+  "agentUrl": "https://open-sandbox.ai",
+  "categories": [
+    "infrastructure",
+    "code-devtools",
+    "security"
+  ],
+  "tags": [
+    "sandbox-runtime",
+    "code-interpreter",
+    "kubernetes",
+    "docker",
+    "gvisor",
+    "firecracker",
+    "egress-policy",
+    "multi-language-sdk"
+  ],
+  "skills": [
+    {
+      "id": "sandbox-lifecycle",
+      "name": "Sandbox Lifecycle Management",
+      "description": "Creates, times out, and kills container sandboxes from a chosen image through one lifecycle API on Docker or Kubernetes."
+    },
+    {
+      "id": "code-interpreter",
+      "name": "Code Interpreter",
+      "description": "Executes Python and other supported languages inside a sandbox and returns the result value, stdout logs, and exit state."
+    },
+    {
+      "id": "command-file-operations",
+      "name": "Command And File Operations",
+      "description": "Runs shell commands and reads or writes sandbox files from the SDKs, the osb CLI, or the MCP server used by coding agents."
+    },
+    {
+      "id": "network-policy",
+      "name": "Network Policy Control",
+      "description": "Routes inbound sandbox traffic through a unified ingress gateway and applies per-sandbox egress rules to restrict outbound calls."
+    },
+    {
+      "id": "credential-vault",
+      "name": "Credential Vault Injection",
+      "description": "Injects credentials into sandbox outbound requests at the proxy layer so workloads never see the real secret values."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-08-01T04:31:32.806Z",
+  "updatedAt": "2026-08-01T04:31:32.806Z"
+}

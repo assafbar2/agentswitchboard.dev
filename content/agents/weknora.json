@@ -1,0 +1,67 @@
+{
+  "id": "weknora",
+  "name": "WeKnora",
+  "slug": "weknora",
+  "description": "Turns documents into a queryable knowledge base with RAG question answering, a ReAct agent orchestrating retrieval, MCP tools and web search, and an auto-generated wiki.",
+  "providerName": "Tencent",
+  "providerUrl": "https://github.com/Tencent",
+  "agentUrl": "https://weknora.weixin.qq.com",
+  "categories": [
+    "research",
+    "customer-support",
+    "communication"
+  ],
+  "tags": [
+    "rag",
+    "react-agent",
+    "document-parsing",
+    "knowledge-graph",
+    "hybrid-retrieval",
+    "wiki-generation",
+    "im-channels",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "document-ingestion",
+      "name": "Document Ingestion",
+      "description": "Parses PDF, Word, Excel, PPT, EPUB, images and more, with per-upload parser, chunking, OCR and VLM settings plus batch reparse."
+    },
+    {
+      "id": "hybrid-retrieval",
+      "name": "Hybrid Retrieval",
+      "description": "Retrieves passages via BM25, dense vectors, GraphRAG and parent-child chunking across pgvector, Elasticsearch, Milvus and Qdrant."
+    },
+    {
+      "id": "react-agent",
+      "name": "ReAct Reasoning Agent",
+      "description": "Runs progressive multi-step ReAct reasoning that autonomously chains knowledge retrieval, MCP tools and web search to reach an answer."
+    },
+    {
+      "id": "wiki-mode",
+      "name": "Auto Wiki Generation",
+      "description": "Distills raw documents into structured interlinked Markdown wiki pages with an interactive knowledge graph browser in the UI."
+    },
+    {
+      "id": "source-sync",
+      "name": "Data Source Sync",
+      "description": "Auto-syncs knowledge from Feishu, Notion, Yuque and RSS with incremental or full sync, and serves answers through IM and widgets."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli",
+    "browser-extension"
+  ],
+  "createdAt": "2026-08-01T04:31:32.803Z",
+  "updatedAt": "2026-08-01T04:31:32.803Z"
+}

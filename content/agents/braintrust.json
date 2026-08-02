@@ -1,0 +1,65 @@
+{
+  "id": "braintrust",
+  "name": "Braintrust",
+  "slug": "braintrust",
+  "description": "Evaluates and observes LLM applications end to end: capture traces, score them with evals, iterate in a prompt playground, and gate deploys on eval results run from CI.",
+  "providerName": "Braintrust Data",
+  "providerUrl": "https://braintrust.dev",
+  "agentUrl": "https://braintrust.dev",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "eval-driven-development",
+    "prompt-playground",
+    "trace-logging",
+    "human-review",
+    "llm-proxy",
+    "scorers",
+    "dataset-management",
+    "ci-eval-gates"
+  ],
+  "skills": [
+    {
+      "id": "experiment-evals",
+      "name": "Experiment Based Evals",
+      "description": "Runs eval suites over datasets with code and LLM-judge scorers, comparing scores across experiments and model versions."
+    },
+    {
+      "id": "trace-logging",
+      "name": "Production Trace Logging",
+      "description": "Captures traces and logs from production AI applications, then queries them to identify recurring failure patterns."
+    },
+    {
+      "id": "prompt-playground",
+      "name": "Prompt Playground",
+      "description": "Iterates on prompts and models side by side, running them against dataset rows before the change ships to production."
+    },
+    {
+      "id": "human-review",
+      "name": "Human Review And Datasets",
+      "description": "Collects human feedback on logged spans and promotes interesting production examples into evaluation datasets."
+    },
+    {
+      "id": "bt-cli",
+      "name": "Braintrust CLI",
+      "description": "Runs evals, instruments code, queries logs, syncs data, and manages functions from the bt command line."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-08-01T04:31:32.805Z",
+  "updatedAt": "2026-08-01T04:31:32.805Z"
+}

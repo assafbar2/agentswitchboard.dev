@@ -1,0 +1,64 @@
+{
+  "id": "sim",
+  "name": "Sim",
+  "slug": "sim",
+  "description": "Builds agent workflows on a visual canvas and ships each one as a versioned REST endpoint or MCP tool, connecting 1,000+ integrations and every major LLM.",
+  "providerName": "Sim Studio",
+  "providerUrl": "https://sim.ai",
+  "agentUrl": "https://sim.ai",
+  "categories": [
+    "orchestration",
+    "infrastructure"
+  ],
+  "tags": [
+    "visual-workflow-builder",
+    "drag-and-drop-canvas",
+    "mcp-deployment",
+    "self-hosted",
+    "knowledge-base",
+    "scheduled-tasks",
+    "rest-endpoint",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "visual-workflow-builder",
+      "name": "Visual Workflow Builder",
+      "description": "Builds agent workflows on a drag-and-drop canvas, or conversationally and in code, wiring LLM blocks to tools and integrations."
+    },
+    {
+      "id": "api-deployment",
+      "name": "API Workflow Deployment",
+      "description": "Deploys a workflow as a versioned REST endpoint supporting synchronous, streaming, and asynchronous execution modes."
+    },
+    {
+      "id": "mcp-tool-deployment",
+      "name": "MCP Tool Deployment",
+      "description": "Exposes deployed workflows as MCP tools for Claude Desktop, Cursor, and other clients, gated by API key or left public."
+    },
+    {
+      "id": "knowledge-ingestion",
+      "name": "Knowledge Base Ingestion",
+      "description": "Ingests files, documents, and structured tables into workspace knowledge bases that agents search at run time."
+    },
+    {
+      "id": "run-monitoring",
+      "name": "Run Monitoring And Logs",
+      "description": "Tracks workflow runs, logs, schedules, and activity in one workspace so you can debug executions after they finish."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-08-01T04:31:32.803Z",
+  "updatedAt": "2026-08-01T04:31:32.803Z"
+}

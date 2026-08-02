@@ -1,0 +1,63 @@
+{
+  "id": "ag2",
+  "name": "AG2",
+  "slug": "ag2",
+  "description": "Builds multi-agent systems in Python with async agents, @tool functions, human-in-the-loop pauses, and a hub-and-channel Network for orchestrating agents across providers.",
+  "providerName": "AG2 AI",
+  "providerUrl": "https://ag2.ai",
+  "agentUrl": "https://ag2.ai",
+  "categories": [
+    "orchestration",
+    "code-devtools"
+  ],
+  "tags": [
+    "multi-agent",
+    "autogen-fork",
+    "python-framework",
+    "human-in-the-loop",
+    "agent-network",
+    "tool-calling",
+    "context-compaction",
+    "structured-outputs"
+  ],
+  "skills": [
+    {
+      "id": "define-async-agents",
+      "name": "Define Async Agents",
+      "description": "Creates Agent objects bound to a prompt and a model provider config, then runs a turn with ask() that returns an AgentReply."
+    },
+    {
+      "id": "register-python-tools",
+      "name": "Register Python Tools",
+      "description": "Exposes plain Python functions to an agent with the @tool decorator so the model can invoke them during a conversation turn."
+    },
+    {
+      "id": "orchestrate-network",
+      "name": "Orchestrate Agent Networks",
+      "description": "Coordinates several agents over a hub with typed channels using the Network, the v1.0 replacement for classic GroupChat."
+    },
+    {
+      "id": "human-in-the-loop",
+      "name": "Pause For Human Input",
+      "description": "Pauses a running agent to collect confirmation or missing information from a person before the workflow continues."
+    },
+    {
+      "id": "agent-harness",
+      "name": "Compact Context And Knowledge",
+      "description": "Layers persistent knowledge, context assembly, and history compaction onto an agent using opt-in harness primitives."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-01T04:31:32.811Z",
+  "updatedAt": "2026-08-01T04:31:32.811Z"
+}

@@ -1,5 +1,213 @@
 [
   {
+    "action": "updated",
+    "slug": "roo-code",
+    "name": "Roo Code",
+    "note": "description updated",
+    "date": "2026-08-02"
+  },
+  {
+    "action": "updated",
+    "slug": "roo-code",
+    "name": "Roo Code",
+    "note": "description updated",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "updated",
+    "slug": "roo-code",
+    "name": "Roo Code",
+    "note": "agentUrl updated",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "updated",
+    "slug": "roo-code",
+    "name": "Roo Code",
+    "note": "providerUrl updated",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "ag2",
+    "name": "AG2",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "klavis",
+    "name": "Klavis AI",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "xcodebuild-mcp",
+    "name": "XcodeBuildMCP",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "strands-agents",
+    "name": "Strands Agents",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "bifrost",
+    "name": "Bifrost",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "spring-ai-alibaba",
+    "name": "Spring AI Alibaba",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "ida-pro-mcp",
+    "name": "IDA Pro MCP",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "codebase-memory-mcp",
+    "name": "Codebase Memory MCP",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "opensandbox",
+    "name": "OpenSandbox",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "browser-harness",
+    "name": "Browser Harness",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "braintrust",
+    "name": "Braintrust",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "opik",
+    "name": "Opik",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "archon",
+    "name": "Archon",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "kilocode",
+    "name": "Kilo Code",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "crush",
+    "name": "Crush",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "sim",
+    "name": "Sim",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "weknora",
+    "name": "WeKnora",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "qwen-code",
+    "name": "Qwen Code",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "page-agent",
+    "name": "Page Agent",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "fastgpt",
+    "name": "FastGPT",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "nanobot",
+    "name": "nanobot",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "cowagent",
+    "name": "CowAgent",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "cherry-studio",
+    "name": "Cherry Studio",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "docling",
+    "name": "Docling",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "crawl4ai",
+    "name": "Crawl4AI",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "claude-mem",
+    "name": "claude-mem",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "graphify",
+    "name": "Graphify",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "markitdown",
+    "name": "MarkItDown",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "hermes-agent",
+    "name": "Hermes Agent",
+    "date": "2026-08-01"
+  },
+  {
+    "action": "added",
+    "slug": "codex-cli",
+    "name": "Codex CLI",
+    "date": "2026-08-01"
+  },
+  {
     "action": "added",
     "slug": "mcp-agent",
     "name": "mcp-agent",

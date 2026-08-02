@@ -1,0 +1,57 @@
+{
+  "id": "crush",
+  "name": "Crush",
+  "slug": "crush",
+  "description": "Runs a terminal-native coding agent that switches LLM providers mid-session, keeps per-project sessions, and pulls extra context from language servers and MCP servers.",
+  "providerName": "Charm",
+  "providerUrl": "https://charm.sh",
+  "agentUrl": "https://github.com/charmbracelet/crush",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "terminal-ui",
+    "golang",
+    "multi-model",
+    "lsp-integration",
+    "mcp-client",
+    "session-management",
+    "openai-compatible",
+    "anthropic-compatible"
+  ],
+  "skills": [
+    {
+      "id": "multi-model-switching",
+      "name": "Multi Model Switching",
+      "description": "Switches between LLMs mid-session while preserving context, including any OpenAI- or Anthropic-compatible endpoint you configure."
+    },
+    {
+      "id": "project-sessions",
+      "name": "Per Project Sessions",
+      "description": "Maintains multiple work sessions and their separate contexts per project, stored in a local database so conversations resume."
+    },
+    {
+      "id": "lsp-context",
+      "name": "LSP Enhanced Context",
+      "description": "Queries configured language servers such as gopls and nil to feed diagnostics and symbol context to the model while editing code."
+    },
+    {
+      "id": "mcp-extensions",
+      "name": "MCP Tool Extensions",
+      "description": "Adds external capabilities through MCP servers over http, stdio, and sse transports declared in the Crush settings file."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-08-01T04:31:32.804Z",
+  "updatedAt": "2026-08-01T04:31:32.804Z"
+}

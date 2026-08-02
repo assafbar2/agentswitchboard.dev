@@ -1,0 +1,64 @@
+{
+  "id": "ida-pro-mcp",
+  "name": "IDA Pro MCP",
+  "slug": "ida-pro-mcp",
+  "description": "Bridges IDA Pro to LLM clients over MCP, exposing decompilation, disassembly, cross-references, type and stack edits, memory reads and patching as callable tools.",
+  "providerName": "mrexodia",
+  "providerUrl": "https://github.com/mrexodia",
+  "agentUrl": "https://plugins.hex-rays.com/mrexodia/ida-pro-mcp",
+  "categories": [
+    "security",
+    "code-devtools"
+  ],
+  "tags": [
+    "reverse-engineering",
+    "ida-pro",
+    "decompilation",
+    "binary-analysis",
+    "malware-analysis",
+    "hex-rays",
+    "idalib",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "decompile-function",
+      "name": "Decompile And Disassemble",
+      "description": "Returns Hex-Rays decompilation or full disassembly of a function, including arguments and stack frame layout, from a database."
+    },
+    {
+      "id": "annotate-database",
+      "name": "Annotate IDB",
+      "description": "Writes comments to disassembly and decompiler views, declares C types, defines functions, patches instructions and adds bookmarks."
+    },
+    {
+      "id": "cross-reference-analysis",
+      "name": "Cross-Reference Analysis",
+      "description": "Lists xrefs to addresses and struct fields, enumerates callees, imports, exports and globals to map control and data flow."
+    },
+    {
+      "id": "memory-inspection",
+      "name": "Memory And Struct Reads",
+      "description": "Reads raw bytes, typed integers, strings and struct field values at addresses, and converts number bases with int_convert."
+    },
+    {
+      "id": "headless-sessions",
+      "name": "Headless idalib Sessions",
+      "description": "Opens binaries in detached idalib workers over stdio, SSE or HTTP, managing several named database sessions side by side."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-08-01T04:31:32.807Z",
+  "updatedAt": "2026-08-01T04:31:32.807Z"
+}
