@@ -1,0 +1,69 @@
+{
+  "id": "outreachagent",
+  "name": "OutreachAgent",
+  "slug": "outreachagent",
+  "description": "Runs reply-aware cold outbound email for AI agents with managed inboxes, durable sequences, signed webhooks, sender pacing, approvals, and delivery observability.",
+  "providerName": "OutreachAgent",
+  "providerUrl": "https://outreachagent.dev",
+  "agentUrl": "https://api.outreachagent.dev/v1/openapi.json",
+  "categories": [
+    "sales-marketing",
+    "communication",
+    "infrastructure"
+  ],
+  "tags": [
+    "cold-email",
+    "reply-aware-workflows",
+    "email-infrastructure",
+    "webhooks",
+    "sender-pacing",
+    "deliverability",
+    "outbound",
+    "human-approval"
+  ],
+  "skills": [
+    {
+      "id": "manage-inboxes",
+      "name": "Manage Inboxes",
+      "description": "Provision and manage sending inboxes programmatically so agent runtimes can operate dedicated email identities without manual mailbox setup."
+    },
+    {
+      "id": "run-reply-aware-sequences",
+      "name": "Run Reply-Aware Sequences",
+      "description": "Run durable multi-step sequences with waits, retries, branching, reply exit criteria, simulations, previews, and test sends."
+    },
+    {
+      "id": "route-reply-events",
+      "name": "Route Reply Events",
+      "description": "Route inbound replies and delivery events to agent runtimes through signed webhooks with retries and replayable delivery logs."
+    },
+    {
+      "id": "enforce-sending-guardrails",
+      "name": "Enforce Sending Guardrails",
+      "description": "Enforce per-inbox send limits, approval policies, suppression rules, and automatic pauses when bounce or complaint thresholds rise."
+    },
+    {
+      "id": "observe-outbound-execution",
+      "name": "Observe Outbound Execution",
+      "description": "Inspect thread history, workflow execution logs, delivery metrics, and audit logs before the runtime chooses the next action."
+    },
+    {
+      "id": "manage-outreach-resources",
+      "name": "Manage Outreach Resources",
+      "description": "Manage contacts, templates, domains, and bulk enrollments through the REST API or the published TypeScript SDK."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-03T15:00:00Z",
+  "updatedAt": "2026-08-03T15:00:00Z"
+}

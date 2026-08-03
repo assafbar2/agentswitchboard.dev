@@ -1,5 +1,11 @@
 [
   {
+    "action": "added",
+    "slug": "outreachagent",
+    "name": "OutreachAgent",
+    "date": "2026-08-03"
+  },
+  {
     "action": "updated",
     "slug": "figma-context-mcp",
     "name": "Figma Context MCP",
