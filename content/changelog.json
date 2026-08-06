@@ -1,6 +1,9 @@
 [
   {
     "action": "added",
+    "slug": "outreachagent",
+    "name": "OutreachAgent",
+    "date": "2026-08-03"
     "slug": "sentry-mcp",
     "name": "Sentry MCP",
     "date": "2026-08-06"
