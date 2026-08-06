@@ -1,5 +1,11 @@
 [
   {
+    "action": "added",
+    "slug": "sentry-mcp",
+    "name": "Sentry MCP",
+    "date": "2026-08-06"
+  },
+  {
     "action": "updated",
     "slug": "figma-context-mcp",
     "name": "Figma Context MCP",
