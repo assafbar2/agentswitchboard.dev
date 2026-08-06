@@ -23,6 +23,28 @@ import * as path from 'path';
 import { appendChangelog } from './lib/changelog';
 
 // ─── AGENTS TO ADD — edit this array, run, commit, then clear ────────────────
+const _AGENTS_ADDED_2026_06_15_SENTRY: AgentInput[] = [
+  {
+    name: 'Sentry MCP',
+    slug: 'sentry-mcp',
+    description: 'Official Sentry remote MCP server — pull issues, traces, and AI root-cause analysis into any coding agent. Works with Claude Code, Cursor, VS Code, Codex, Gemini CLI, and more.',
+    providerName: 'Sentry',
+    providerUrl: 'https://sentry.io',
+    agentUrl: 'https://mcp.sentry.dev',
+    categories: ['code-devtools', 'infrastructure'],
+    tags: ['error-monitoring', 'debugging', 'traces', 'root-cause-analysis', 'sentry', 'oauth2', 'remote-mcp'],
+    authType: 'oauth2',
+    accessMethods: ['mcp'],
+    supportsStreaming: false,
+    supportsPushNotifications: false,
+    verified: true,
+    skills: [
+      { id: 'issue-lookup', name: 'Issue Lookup', description: 'Fetches Sentry issues by URL, ID, or query, returning full error details, stack traces, and event context.' },
+      { id: 'trace-analysis', name: 'Trace Analysis', description: 'Retrieves distributed traces and span data to identify performance bottlenecks and error propagation paths.' },
+      { id: 'root-cause-analysis', name: 'Root Cause Analysis', description: "Runs Sentry's Seer AI engine on an issue to pinpoint the root cause and surface suggested fixes." },
+    ],
+  },
+];
 const AGENTS_TO_ADD: AgentInput[] = [
   // Paste agents here from the Weekly Drop prompt.
   // Each run skips agents whose content/agents/<slug>.json already exists.
