@@ -1,0 +1,52 @@
+{
+  "id": "sentry-mcp",
+  "name": "Sentry MCP",
+  "slug": "sentry-mcp",
+  "description": "Official Sentry remote MCP server — pull issues, traces, and AI root-cause analysis into any coding agent. Works with Claude Code, Cursor, VS Code, Codex, Gemini CLI, and more.",
+  "providerName": "Sentry",
+  "providerUrl": "https://sentry.io",
+  "agentUrl": "https://mcp.sentry.dev",
+  "categories": [
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "error-monitoring",
+    "debugging",
+    "traces",
+    "root-cause-analysis",
+    "sentry",
+    "oauth2",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "issue-lookup",
+      "name": "Issue Lookup",
+      "description": "Fetches Sentry issues by URL, ID, or query, returning full error details, stack traces, and event context."
+    },
+    {
+      "id": "trace-analysis",
+      "name": "Trace Analysis",
+      "description": "Retrieves distributed traces and span data to identify performance bottlenecks and error propagation paths."
+    },
+    {
+      "id": "root-cause-analysis",
+      "name": "Root Cause Analysis",
+      "description": "Runs Sentry's Seer AI engine on an issue to pinpoint the root cause and surface suggested fixes."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-08-06T16:18:17.843Z",
+  "updatedAt": "2026-08-06T16:18:17.843Z"
+}
