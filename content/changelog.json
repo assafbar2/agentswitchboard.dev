@@ -4,6 +4,9 @@
     "slug": "outreachagent",
     "name": "OutreachAgent",
     "date": "2026-08-03"
+  },
+  {
+    "action": "added",
     "slug": "sentry-mcp",
     "name": "Sentry MCP",
     "date": "2026-08-06"

@@ -79,6 +79,20 @@ function main() {
   let errors = 0;
   const slugs = new Set<string>();
 
+  // Auxiliary content files aren't schema-validated, but they ARE parsed at
+  // build time (e.g. /changelog does JSON.parse on changelog.json). A syntax
+  // error here used to pass CI and only fail `next build` on Vercel — guard it.
+  for (const aux of ['changelog.json', 'categories.json', 'site.json']) {
+    const p = path.join(CONTENT, aux);
+    if (!fs.existsSync(p)) continue;
+    try {
+      JSON.parse(fs.readFileSync(p, 'utf8'));
+    } catch (e) {
+      console.log(`❌ content/${aux}: invalid JSON — ${(e as Error).message}`);
+      errors++;
+    }
+  }
+
   for (const file of files) {
     const raw = fs.readFileSync(path.join(dir, file), 'utf8');
     let data: unknown;
