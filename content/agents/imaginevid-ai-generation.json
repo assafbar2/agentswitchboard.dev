@@ -1,0 +1,57 @@
+{
+  "id": "imaginevid-ai-generation",
+  "name": "ImagineVid AI Generation",
+  "slug": "imaginevid-ai-generation",
+  "description": "Generate images, videos, and music through an OAuth-protected MCP and CLI gateway with live quotes and explicit credit approval.",
+  "providerName": "ImagineVid",
+  "providerUrl": "https://imaginevid.io/",
+  "agentUrl": "https://imaginevid.io/api/mcp",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "image-generation",
+    "video-generation",
+    "music-generation",
+    "multi-model",
+    "oauth-mcp",
+    "credit-quotes",
+    "owned-assets"
+  ],
+  "skills": [
+    {
+      "id": "model-discovery",
+      "name": "Model Discovery",
+      "description": "Lists current ImagineVid image, video, and music capabilities with stable IDs, fields, constraints, and estimates."
+    },
+    {
+      "id": "credit-quote",
+      "name": "Credit Quote",
+      "description": "Validates capability values and returns an authoritative server quote before any generation can spend credits."
+    },
+    {
+      "id": "approved-generation",
+      "name": "Approved Generation",
+      "description": "Starts one idempotent generation only after the human confirms the exact quote and request details."
+    },
+    {
+      "id": "result-polling",
+      "name": "Result Polling",
+      "description": "Polls an owned generation and returns safe status, progress, and result metadata without exposing provider internals."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-08-07T00:00:00Z",
+  "updatedAt": "2026-08-07T00:00:00Z"
+}
