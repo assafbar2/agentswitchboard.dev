@@ -1,0 +1,33 @@
+{
+  "id": "capital-com-mcp",
+  "name": "Capital.com MCP",
+  "slug": "capital-com-mcp",
+  "description": "Official MCP server from regulated broker Capital.com exposing market data, instrument search, and account information to AI agents.",
+  "providerName": "Capital.com",
+  "providerUrl": "https://capital.com",
+  "agentUrl": "https://open-api.capital.com",
+  "categories": [
+    "finance"
+  ],
+  "tags": [
+    "market-data",
+    "brokerage",
+    "trading-data",
+    "official-mcp"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-08-11T00:40:13.024Z",
+  "updatedAt": "2026-08-11T00:40:13.024Z"
+}

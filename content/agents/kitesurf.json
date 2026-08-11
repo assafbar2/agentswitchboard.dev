@@ -1,0 +1,32 @@
+{
+  "id": "kitesurf",
+  "name": "Kitesurf",
+  "slug": "kitesurf",
+  "description": "Agent-first browser from Cloudflare that runs pages inside V8 isolates, giving agents fast, cheap, sandboxed web browsing at the edge.",
+  "providerName": "Cloudflare",
+  "providerUrl": "https://www.cloudflare.com",
+  "agentUrl": "https://blog.cloudflare.com/kitesurf/",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "headless-browser",
+    "v8-isolates",
+    "cloudflare",
+    "web-browsing"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-11T00:40:13.014Z",
+  "updatedAt": "2026-08-11T00:40:13.014Z"
+}

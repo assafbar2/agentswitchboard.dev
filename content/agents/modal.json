@@ -1,0 +1,33 @@
+{
+  "id": "modal",
+  "name": "Modal",
+  "slug": "modal",
+  "description": "Serverless cloud for running Python functions, GPU workloads, and sandboxed agent code, defined in code and deployed without managing infrastructure.",
+  "providerName": "Modal",
+  "providerUrl": "https://modal.com",
+  "agentUrl": "https://modal.com/docs",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "serverless",
+    "gpu-compute",
+    "sandboxed-execution",
+    "python"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-08-11T00:40:13.004Z",
+  "updatedAt": "2026-08-11T00:40:13.004Z"
+}

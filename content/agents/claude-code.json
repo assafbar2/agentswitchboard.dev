@@ -1,0 +1,35 @@
+{
+  "id": "claude-code",
+  "name": "Claude Code",
+  "slug": "claude-code",
+  "description": "Anthropic's agentic coding tool that runs in the terminal, reads and edits codebases, executes commands, and connects to MCP servers.",
+  "providerName": "Anthropic",
+  "providerUrl": "https://www.anthropic.com",
+  "agentUrl": "https://claude.com/product/claude-code",
+  "categories": [
+    "code-devtools",
+    "orchestration"
+  ],
+  "tags": [
+    "coding-assistant",
+    "terminal",
+    "mcp-client",
+    "anthropic",
+    "claude"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-08-11T00:40:12.994Z",
+  "updatedAt": "2026-08-11T00:40:12.994Z"
+}

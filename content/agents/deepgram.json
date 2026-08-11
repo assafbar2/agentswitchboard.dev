@@ -1,0 +1,33 @@
+{
+  "id": "deepgram",
+  "name": "Deepgram",
+  "slug": "deepgram",
+  "description": "Speech-to-text and voice AI API with real-time streaming transcription, speaker diarization, and text-to-speech for voice agents.",
+  "providerName": "Deepgram",
+  "providerUrl": "https://deepgram.com",
+  "agentUrl": "https://developers.deepgram.com",
+  "categories": [
+    "voice-messaging"
+  ],
+  "tags": [
+    "speech-to-text",
+    "transcription",
+    "real-time-audio",
+    "diarization"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-08-11T00:40:13.005Z",
+  "updatedAt": "2026-08-11T00:40:13.005Z"
+}

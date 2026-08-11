@@ -1,0 +1,34 @@
+{
+  "id": "channels-sdk",
+  "name": "Channels SDK",
+  "slug": "channels-sdk",
+  "description": "SDK from CopilotKit for exposing any agent through chat surfaces like Slack and Microsoft Teams without rewriting the agent per channel.",
+  "providerName": "CopilotKit",
+  "providerUrl": "https://www.copilotkit.ai",
+  "agentUrl": "https://github.com/CopilotKit/channels-sdk",
+  "categories": [
+    "communication",
+    "orchestration"
+  ],
+  "tags": [
+    "slack",
+    "microsoft-teams",
+    "chat-integration",
+    "copilotkit"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-08-11T00:40:13.018Z",
+  "updatedAt": "2026-08-11T00:40:13.018Z"
+}

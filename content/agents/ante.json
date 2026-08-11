@@ -1,0 +1,32 @@
+{
+  "id": "ante",
+  "name": "Ante",
+  "slug": "ante",
+  "description": "Coding agent shipped as a single binary that runs fully offline against local models, with no runtime or package manager required.",
+  "providerName": "Antigma Labs",
+  "providerUrl": "https://github.com/AntigmaLabs",
+  "agentUrl": "https://github.com/AntigmaLabs/ante",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "coding-assistant",
+    "offline",
+    "single-binary",
+    "local-models"
+  ],
+  "skills": [],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-08-11T00:40:13.016Z",
+  "updatedAt": "2026-08-11T00:40:13.016Z"
+}

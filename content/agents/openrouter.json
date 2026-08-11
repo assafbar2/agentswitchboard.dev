@@ -1,0 +1,33 @@
+{
+  "id": "openrouter",
+  "name": "OpenRouter",
+  "slug": "openrouter",
+  "description": "Unified API gateway routing requests across hundreds of language models from many providers, with automatic fallback, cost routing, and one OpenAI-compatible interface.",
+  "providerName": "OpenRouter",
+  "providerUrl": "https://openrouter.ai",
+  "agentUrl": "https://openrouter.ai/docs",
+  "categories": [
+    "language",
+    "infrastructure"
+  ],
+  "tags": [
+    "model-routing",
+    "llm-gateway",
+    "unified-api",
+    "fallback-routing"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-11T00:40:13.001Z",
+  "updatedAt": "2026-08-11T00:40:13.001Z"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "needle2",
+  "name": "Needle2",
+  "slug": "needle2",
+  "description": "Compact 14MB agentic language model from Cactus Compute built to run on phones, wearables, and smart home hardware without a network round trip.",
+  "providerName": "Cactus Compute",
+  "providerUrl": "https://cactuscompute.com",
+  "agentUrl": "https://cactuscompute.com/needle",
+  "categories": [
+    "language"
+  ],
+  "tags": [
+    "on-device",
+    "edge-inference",
+    "small-model",
+    "wearables"
+  ],
+  "skills": [],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-11T00:40:13.019Z",
+  "updatedAt": "2026-08-11T00:40:13.019Z"
+}

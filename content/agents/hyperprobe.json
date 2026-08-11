@@ -1,0 +1,33 @@
+{
+  "id": "hyperprobe",
+  "name": "HyperProbe",
+  "slug": "hyperprobe",
+  "description": "Agents that perform read-only production debugging, tracing failures across services without mutating state. Y Combinator S26.",
+  "providerName": "HyperProbe",
+  "providerUrl": "https://www.hyperprobe.co",
+  "agentUrl": "https://www.hyperprobe.co",
+  "categories": [
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "debugging",
+    "read-only",
+    "observability",
+    "incident-response"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-11T00:40:13.020Z",
+  "updatedAt": "2026-08-11T00:40:13.020Z"
+}

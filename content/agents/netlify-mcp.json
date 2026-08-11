@@ -1,0 +1,35 @@
+{
+  "id": "netlify-mcp",
+  "name": "Netlify MCP Server",
+  "slug": "netlify-mcp",
+  "description": "Official Netlify MCP server that lets agents create sites, trigger deploys, manage environment variables, and inspect build logs.",
+  "providerName": "Netlify",
+  "providerUrl": "https://www.netlify.com",
+  "agentUrl": "https://docs.netlify.com/build/build-with-ai/netlify-mcp-server/",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "netlify",
+    "deployment",
+    "hosting",
+    "official-mcp"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-08-11T00:40:13.011Z",
+  "updatedAt": "2026-08-11T00:40:13.011Z"
+}

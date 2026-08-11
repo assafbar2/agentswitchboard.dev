@@ -1,0 +1,33 @@
+{
+  "id": "fireworks-ai",
+  "name": "Fireworks AI",
+  "slug": "fireworks-ai",
+  "description": "Production inference platform for open models with fast function calling, structured output, and fine-tuning behind an OpenAI-compatible API.",
+  "providerName": "Fireworks AI",
+  "providerUrl": "https://fireworks.ai",
+  "agentUrl": "https://docs.fireworks.ai",
+  "categories": [
+    "language",
+    "infrastructure"
+  ],
+  "tags": [
+    "inference",
+    "function-calling",
+    "structured-output",
+    "open-models"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-11T00:40:13.003Z",
+  "updatedAt": "2026-08-11T00:40:13.003Z"
+}

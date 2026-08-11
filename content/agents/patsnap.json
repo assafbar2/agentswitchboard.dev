@@ -1,0 +1,34 @@
+{
+  "id": "patsnap",
+  "name": "Patsnap",
+  "slug": "patsnap",
+  "description": "Patent and scientific literature search across global databases using natural language, semantic, or keyword queries with structured bibliographic output.",
+  "providerName": "Patsnap",
+  "providerUrl": "https://www.patsnap.com",
+  "agentUrl": "https://www.patsnap.com",
+  "categories": [
+    "research",
+    "legal"
+  ],
+  "tags": [
+    "patent-search",
+    "ip-intelligence",
+    "literature-search",
+    "semantic-search"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-08-11T00:40:13.026Z",
+  "updatedAt": "2026-08-11T00:40:13.026Z"
+}

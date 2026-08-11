@@ -1,0 +1,32 @@
+{
+  "id": "nightcrawler",
+  "name": "Nightcrawler",
+  "slug": "nightcrawler",
+  "description": "Local AI pentesting agent that runs reconnaissance and vulnerability probing from your own hardware without sending scope data to a cloud service.",
+  "providerName": "Garage HQ",
+  "providerUrl": "https://github.com/garagehq",
+  "agentUrl": "https://github.com/garagehq/nightcrawler",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "penetration-testing",
+    "offensive-security",
+    "local-first",
+    "reconnaissance"
+  ],
+  "skills": [],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-08-11T00:40:13.017Z",
+  "updatedAt": "2026-08-11T00:40:13.017Z"
+}

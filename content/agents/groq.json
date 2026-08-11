@@ -1,0 +1,33 @@
+{
+  "id": "groq",
+  "name": "Groq",
+  "slug": "groq",
+  "description": "Low-latency inference API running open models on custom LPU hardware, with an OpenAI-compatible interface and tool-calling support.",
+  "providerName": "Groq",
+  "providerUrl": "https://groq.com",
+  "agentUrl": "https://console.groq.com/docs",
+  "categories": [
+    "language",
+    "infrastructure"
+  ],
+  "tags": [
+    "fast-inference",
+    "lpu",
+    "low-latency",
+    "openai-compatible"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-11T00:40:13.002Z",
+  "updatedAt": "2026-08-11T00:40:13.002Z"
+}

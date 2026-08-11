@@ -1,0 +1,34 @@
+{
+  "id": "mu-tools",
+  "name": "Mu",
+  "slug": "mu-tools",
+  "description": "Lightweight toolkit giving agents a standard set of callable tools and a small server to host them, written in Go.",
+  "providerName": "Micro",
+  "providerUrl": "https://github.com/micro",
+  "agentUrl": "https://github.com/micro/mu",
+  "categories": [
+    "orchestration",
+    "code-devtools"
+  ],
+  "tags": [
+    "agent-tooling",
+    "golang",
+    "tool-server",
+    "open-source"
+  ],
+  "skills": [],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-08-11T00:40:13.018Z",
+  "updatedAt": "2026-08-11T00:40:13.018Z"
+}

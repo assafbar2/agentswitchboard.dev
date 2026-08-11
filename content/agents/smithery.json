@@ -1,0 +1,36 @@
+{
+  "id": "smithery",
+  "name": "Smithery",
+  "slug": "smithery",
+  "description": "MCP registry and hosted gateway with 14,000+ servers, handling OAuth flows, credential injection, and session reuse across agent runtimes.",
+  "providerName": "Arcade.dev",
+  "providerUrl": "https://smithery.ai",
+  "agentUrl": "https://smithery.ai/docs",
+  "categories": [
+    "orchestration",
+    "infrastructure"
+  ],
+  "tags": [
+    "mcp-registry",
+    "hosted-mcp",
+    "credential-management",
+    "oauth",
+    "arcade"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-08-11T00:40:12.997Z",
+  "updatedAt": "2026-08-11T00:40:12.997Z"
+}

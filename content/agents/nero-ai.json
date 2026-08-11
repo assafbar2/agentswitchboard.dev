@@ -1,0 +1,33 @@
+{
+  "id": "nero-ai",
+  "name": "Nero AI",
+  "slug": "nero-ai",
+  "description": "Image processing API for upscaling, background removal, photo restoration, colorization, denoising, and compression.",
+  "providerName": "Nero",
+  "providerUrl": "https://nero.com",
+  "agentUrl": "https://ai.nero.com/developer",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "image-processing",
+    "upscaling",
+    "background-removal",
+    "photo-restoration"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-08-11T00:40:13.026Z",
+  "updatedAt": "2026-08-11T00:40:13.026Z"
+}

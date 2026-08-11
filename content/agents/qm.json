@@ -1,0 +1,33 @@
+{
+  "id": "qm",
+  "name": "qm",
+  "slug": "qm",
+  "description": "Multiplayer agent harness for coordinating several coding agents on shared work, with run isolation and a common queue.",
+  "providerName": "YC Software",
+  "providerUrl": "https://github.com/yc-software",
+  "agentUrl": "https://github.com/yc-software/qm",
+  "categories": [
+    "orchestration",
+    "code-devtools"
+  ],
+  "tags": [
+    "agent-harness",
+    "multiplayer",
+    "coordination",
+    "open-source"
+  ],
+  "skills": [],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-08-11T00:40:13.014Z",
+  "updatedAt": "2026-08-11T00:40:13.014Z"
+}

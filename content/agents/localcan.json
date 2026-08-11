@@ -1,0 +1,35 @@
+{
+  "id": "localcan",
+  "name": "LocalCan",
+  "slug": "localcan",
+  "description": "Gives agents public tunnel URLs for localhost with live HTTP traffic inspection, snapshot publishing, and access control on Mac, Windows, and Linux.",
+  "providerName": "LocalCan",
+  "providerUrl": "https://localcan.com",
+  "agentUrl": "https://localcan.com/docs",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "tunneling",
+    "localhost",
+    "traffic-inspection",
+    "webhooks"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-08-11T00:40:13.022Z",
+  "updatedAt": "2026-08-11T00:40:13.022Z"
+}

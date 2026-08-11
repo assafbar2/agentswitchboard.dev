@@ -1,0 +1,33 @@
+{
+  "id": "prime-agent",
+  "name": "Prime Agent",
+  "slug": "prime-agent",
+  "description": "Self-improving reinforcement-learned agent from Prime Intellect that refines its own policy across long-horizon tasks.",
+  "providerName": "Prime Intellect",
+  "providerUrl": "https://www.primeintellect.ai",
+  "agentUrl": "https://www.primeintellect.ai/blog/prime-agent",
+  "categories": [
+    "research",
+    "orchestration"
+  ],
+  "tags": [
+    "self-improving",
+    "reinforcement-learning",
+    "long-horizon",
+    "prime-intellect"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-11T00:40:13.022Z",
+  "updatedAt": "2026-08-11T00:40:13.022Z"
+}

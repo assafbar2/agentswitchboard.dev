@@ -1,5 +1,246 @@
 [
   {
+    "action": "removed",
+    "slug": "blender-mcp",
+    "name": "Blender MCP",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "updated",
+    "slug": "google-mcp-toolbox",
+    "name": "Google MCP Toolbox",
+    "note": "providerUrl updated",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "nero-ai",
+    "name": "Nero AI",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "patsnap",
+    "name": "Patsnap",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "muumuu-domain-mcp",
+    "name": "Muumuu Domain MCP",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "capital-com-mcp",
+    "name": "Capital.com MCP",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "tako",
+    "name": "Tako",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "localcan",
+    "name": "LocalCan",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "prime-agent",
+    "name": "Prime Agent",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "armature",
+    "name": "Armature",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "hyperprobe",
+    "name": "HyperProbe",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "needle2",
+    "name": "Needle2",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "mu-tools",
+    "name": "Mu",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "channels-sdk",
+    "name": "Channels SDK",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "nightcrawler",
+    "name": "Nightcrawler",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "ante",
+    "name": "Ante",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "openchamber",
+    "name": "OpenChamber",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "qm",
+    "name": "qm",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "kitesurf",
+    "name": "Kitesurf",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "cloudflare-os",
+    "name": "Cloudflare OS",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "medplum",
+    "name": "Medplum",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "netlify-mcp",
+    "name": "Netlify MCP Server",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "webflow-mcp",
+    "name": "Webflow MCP Server",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "elasticsearch-mcp",
+    "name": "Elasticsearch MCP Server",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "inngest",
+    "name": "Inngest",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "serper",
+    "name": "Serper",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "assemblyai",
+    "name": "AssemblyAI",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "deepgram",
+    "name": "Deepgram",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "modal",
+    "name": "Modal",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "fireworks-ai",
+    "name": "Fireworks AI",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "together-ai",
+    "name": "Together AI",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "groq",
+    "name": "Groq",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "openrouter",
+    "name": "OpenRouter",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "ui-tars-desktop",
+    "name": "UI-TARS Desktop",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "openbb",
+    "name": "OpenBB",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "glama",
+    "name": "Glama",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "smithery",
+    "name": "Smithery",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "docker-sandboxes",
+    "name": "Docker Sandboxes",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "claude-code",
+    "name": "Claude Code",
+    "date": "2026-08-11"
+  },
+  {
+    "action": "added",
+    "slug": "langchain",
+    "name": "LangChain",
+    "date": "2026-08-11"
+  },
+  {
     "action": "added",
     "slug": "outreachagent",
     "name": "OutreachAgent",

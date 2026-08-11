@@ -1,0 +1,33 @@
+{
+  "id": "together-ai",
+  "name": "Together AI",
+  "slug": "together-ai",
+  "description": "Inference and fine-tuning platform for open models, offering serverless endpoints, dedicated GPU clusters, and an OpenAI-compatible API.",
+  "providerName": "Together AI",
+  "providerUrl": "https://www.together.ai",
+  "agentUrl": "https://docs.together.ai",
+  "categories": [
+    "language",
+    "infrastructure"
+  ],
+  "tags": [
+    "inference",
+    "fine-tuning",
+    "open-models",
+    "gpu-cloud"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-11T00:40:13.002Z",
+  "updatedAt": "2026-08-11T00:40:13.002Z"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "openchamber",
+  "name": "OpenChamber",
+  "slug": "openchamber",
+  "description": "Agentic development environment that gives coding agents a persistent workspace, tool access, and review surfaces around their runs.",
+  "providerName": "OpenChamber",
+  "providerUrl": "https://openchamber.dev",
+  "agentUrl": "https://openchamber.dev",
+  "categories": [
+    "code-devtools",
+    "orchestration"
+  ],
+  "tags": [
+    "development-environment",
+    "agentic-ide",
+    "workspace"
+  ],
+  "skills": [],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-08-11T00:40:13.015Z",
+  "updatedAt": "2026-08-11T00:40:13.015Z"
+}

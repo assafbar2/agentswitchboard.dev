@@ -1,0 +1,32 @@
+{
+  "id": "serper",
+  "name": "Serper",
+  "slug": "serper",
+  "description": "Fast Google search API returning structured SERP results, widely used to give agents fresh web results without scraping.",
+  "providerName": "Serper",
+  "providerUrl": "https://serper.dev",
+  "agentUrl": "https://serper.dev/playground",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "search-api",
+    "google-search",
+    "serp",
+    "web-results"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-11T00:40:13.007Z",
+  "updatedAt": "2026-08-11T00:40:13.007Z"
+}

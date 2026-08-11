@@ -1,0 +1,34 @@
+{
+  "id": "cloudflare-os",
+  "name": "Cloudflare OS",
+  "slug": "cloudflare-os",
+  "description": "Cloudflare platform for running agents, apps, and background work on the edge network, with integrated compute, storage, and identity primitives.",
+  "providerName": "Cloudflare",
+  "providerUrl": "https://www.cloudflare.com",
+  "agentUrl": "https://blog.cloudflare.com/cloudflare-os/",
+  "categories": [
+    "infrastructure",
+    "orchestration"
+  ],
+  "tags": [
+    "edge-compute",
+    "cloudflare",
+    "agent-platform",
+    "serverless"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-08-11T00:40:13.013Z",
+  "updatedAt": "2026-08-11T00:40:13.013Z"
+}

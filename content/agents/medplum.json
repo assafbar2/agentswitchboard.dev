@@ -1,0 +1,36 @@
+{
+  "id": "medplum",
+  "name": "Medplum",
+  "slug": "medplum",
+  "description": "Open-source healthcare developer platform providing a FHIR-native backend, API, and SDK for building compliant clinical applications and agents.",
+  "providerName": "Medplum",
+  "providerUrl": "https://www.medplum.com",
+  "agentUrl": "https://www.medplum.com/docs",
+  "categories": [
+    "infrastructure",
+    "data-analytics"
+  ],
+  "tags": [
+    "healthcare",
+    "fhir",
+    "ehr",
+    "compliance",
+    "open-source"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-08-11T00:40:13.012Z",
+  "updatedAt": "2026-08-11T00:40:13.012Z"
+}
