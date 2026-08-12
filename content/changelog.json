@@ -1,5 +1,11 @@
 [
   {
+    "action": "added",
+    "slug": "bitfun",
+    "name": "BitFun",
+    "date": "2026-08-12"
+  },
+  {
     "action": "removed",
     "slug": "blender-mcp",
     "name": "Blender MCP",

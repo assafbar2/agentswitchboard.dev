@@ -1,0 +1,52 @@
+{
+  "id": "bitfun",
+  "name": "BitFun",
+  "slug": "bitfun",
+  "description": "Runs an open-source desktop and terminal coding agent that plans, edits, tests, and reviews changes inside real Git repositories.",
+  "providerName": "GCWing",
+  "providerUrl": "https://github.com/GCWing",
+  "agentUrl": "https://github.com/GCWing/BitFun",
+  "categories": [
+    "code-devtools",
+    "browser-computer"
+  ],
+  "tags": [
+    "coding-agent",
+    "open-source",
+    "rust",
+    "desktop",
+    "terminal-ui",
+    "git-workflow",
+    "computer-use"
+  ],
+  "skills": [
+    {
+      "id": "repository-delivery",
+      "name": "Repository Delivery",
+      "description": "Plans, edits, tests, and commits changes inside real Git repositories using desktop or terminal interfaces."
+    },
+    {
+      "id": "deep-review",
+      "name": "Deep Review",
+      "description": "Reviews repository changes with evidence-focused checks before the result is considered ready to merge."
+    },
+    {
+      "id": "workspace-execution",
+      "name": "Workspace Execution",
+      "description": "Works across filesystems, terminals, browsers, desktop applications, and remote workspaces from one agent runtime."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-08-12T00:00:00Z",
+  "updatedAt": "2026-08-12T00:00:00Z"
+}
