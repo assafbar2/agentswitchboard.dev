@@ -1,5 +1,11 @@
 [
   {
+    "action": "added",
+    "slug": "lians",
+    "name": "Lians",
+    "date": "2026-08-13"
+  },
+  {
     "action": "removed",
     "slug": "blender-mcp",
     "name": "Blender MCP",

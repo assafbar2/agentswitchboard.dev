@@ -1,0 +1,62 @@
+{
+  "id": "lians",
+  "name": "Lians",
+  "slug": "lians",
+  "description": "Gives any AI agent durable memory across chats, sessions, tools, and models through a local-first MCP server, SDKs, and an optional hosted API.",
+  "providerName": "Lians",
+  "providerUrl": "https://github.com/Lians-ai",
+  "agentUrl": "https://github.com/Lians-ai/Lians",
+  "categories": [
+    "memory-state",
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "agent-memory",
+    "local-first",
+    "model-context-protocol",
+    "semantic-recall",
+    "cross-session-memory",
+    "memory-inspection",
+    "memory-correction",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "remember-durable-facts",
+      "name": "Remember Durable Facts",
+      "description": "Stores facts and decisions under a stable agent identity so they remain available across later chats, tools, and model providers."
+    },
+    {
+      "id": "recall-relevant-context",
+      "name": "Recall Relevant Context",
+      "description": "Uses semantic search to retrieve relevant memories for the current task instead of replaying an agent's full conversation history."
+    },
+    {
+      "id": "inspect-and-correct-memory",
+      "name": "Inspect And Correct Memory",
+      "description": "Lets people list, inspect, correct, and explicitly delete stored memories rather than leaving agent context as an opaque black box."
+    },
+    {
+      "id": "query-memory-over-time",
+      "name": "Query Memory Over Time",
+      "description": "Supports point-in-time queries over bitemporal records so agents can distinguish what was true from when the system learned it."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "iconUrl": "https://raw.githubusercontent.com/Lians-ai/Lians/master/plugins/lians-memory/assets/icon.png",
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-08-13T23:30:46Z",
+  "updatedAt": "2026-08-13T23:30:46Z"
+}
