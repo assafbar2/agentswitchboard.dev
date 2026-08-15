@@ -1,0 +1,52 @@
+{
+  "id": "a2a-protocol",
+  "name": "A2A Protocol",
+  "slug": "a2a-protocol",
+  "description": "Defines the Agent2Agent interoperability protocol and SDKs so agents built on different frameworks discover each other, negotiate capabilities, and exchange tasks.",
+  "providerName": "A2A Project (Linux Foundation)",
+  "providerUrl": "https://a2a-protocol.org",
+  "agentUrl": "https://a2a-protocol.org",
+  "categories": [
+    "orchestration",
+    "infrastructure"
+  ],
+  "tags": [
+    "agent-interoperability",
+    "protocol",
+    "agent-cards",
+    "task-delegation",
+    "linux-foundation",
+    "multi-agent",
+    "open-standard"
+  ],
+  "skills": [
+    {
+      "id": "agent-discovery",
+      "name": "Agent Discovery",
+      "description": "Publishes and reads Agent Cards so a client can find a remote agent and learn what capabilities it offers."
+    },
+    {
+      "id": "task-exchange",
+      "name": "Task Exchange",
+      "description": "Sends long-running tasks between agents with a shared lifecycle covering submitted, working, and completed states."
+    },
+    {
+      "id": "streaming-updates",
+      "name": "Streaming and Push Updates",
+      "description": "Streams incremental task progress over SSE and delivers push notifications for tasks that outlive the connection."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-15T07:16:38.573Z",
+  "updatedAt": "2026-08-15T07:16:38.573Z"
+}

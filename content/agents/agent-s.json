@@ -1,0 +1,53 @@
+{
+  "id": "agent-s",
+  "name": "Agent S",
+  "slug": "agent-s",
+  "description": "Operates desktop graphical interfaces like a person, combining hierarchical planning with visual grounding to click through applications and finish multi-step tasks.",
+  "providerName": "Simular AI",
+  "providerUrl": "https://www.simular.ai",
+  "agentUrl": "https://github.com/simular-ai/Agent-S",
+  "categories": [
+    "browser-computer",
+    "orchestration"
+  ],
+  "tags": [
+    "computer-use",
+    "gui-agent",
+    "visual-grounding",
+    "hierarchical-planning",
+    "osworld",
+    "desktop-automation",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "gui-grounding",
+      "name": "GUI Grounding",
+      "description": "Locates on-screen interface elements from a screenshot and maps them to precise click and type coordinates."
+    },
+    {
+      "id": "hierarchical-planning",
+      "name": "Hierarchical Planning",
+      "description": "Decomposes a computer task into subgoals and replans when an action produces an unexpected screen state."
+    },
+    {
+      "id": "experience-reuse",
+      "name": "Experience Reuse",
+      "description": "Stores successful interaction traces as reusable experience so repeated desktop workflows execute more reliably."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-08-15T07:16:38.656Z",
+  "updatedAt": "2026-08-15T07:16:38.656Z"
+}

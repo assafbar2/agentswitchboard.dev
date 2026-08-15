@@ -1,0 +1,53 @@
+{
+  "id": "mineru",
+  "name": "MinerU",
+  "slug": "mineru",
+  "description": "Converts PDFs, Office documents, and scanned pages into LLM-ready Markdown or JSON, preserving tables, formulas, and reading order for agent pipelines.",
+  "providerName": "OpenDataLab",
+  "providerUrl": "https://mineru.net",
+  "agentUrl": "https://opendatalab.github.io/MinerU/",
+  "categories": [
+    "data-analytics",
+    "research"
+  ],
+  "tags": [
+    "document-parsing",
+    "pdf-extraction",
+    "ocr",
+    "markdown-conversion",
+    "rag-ingestion",
+    "table-extraction",
+    "formula-recognition"
+  ],
+  "skills": [
+    {
+      "id": "layout-parsing",
+      "name": "Layout Parsing",
+      "description": "Detects columns, headers, and figures to reconstruct correct reading order from complex multi-column documents."
+    },
+    {
+      "id": "table-formula-extraction",
+      "name": "Table and Formula Extraction",
+      "description": "Recovers tables as structured markup and mathematical formulas as LaTeX rather than flattening them into text."
+    },
+    {
+      "id": "batch-conversion",
+      "name": "Batch Conversion",
+      "description": "Processes large document sets into Markdown or JSON through the CLI or hosted API for retrieval pipelines."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-08-15T07:16:38.492Z",
+  "updatedAt": "2026-08-15T07:16:38.492Z"
+}

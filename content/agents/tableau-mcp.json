@@ -1,0 +1,51 @@
+{
+  "id": "tableau-mcp",
+  "name": "Tableau MCP",
+  "slug": "tableau-mcp",
+  "description": "Queries published Tableau data sources through VizQL over MCP and lets agents browse workbooks, dashboards, and metadata.",
+  "providerName": "Tableau (Salesforce)",
+  "providerUrl": "https://www.tableau.com",
+  "agentUrl": "https://tableau.github.io/tableau-mcp/",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "business-intelligence",
+    "tableau",
+    "vizql",
+    "dashboards",
+    "metadata-api",
+    "salesforce",
+    "official-mcp"
+  ],
+  "skills": [
+    {
+      "id": "datasource-query",
+      "name": "Data Source Query",
+      "description": "Queries published data sources through the VizQL Data Service and returns results as structured rows."
+    },
+    {
+      "id": "content-browsing",
+      "name": "Content Browsing",
+      "description": "Lists and searches workbooks, views, and dashboards on a Tableau site so agents find the right asset."
+    },
+    {
+      "id": "metadata-inspection",
+      "name": "Metadata Inspection",
+      "description": "Reads field names, descriptions, and data types from the Metadata API to ground queries in real schema."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-08-15T07:16:38.726Z",
+  "updatedAt": "2026-08-15T07:16:38.726Z"
+}

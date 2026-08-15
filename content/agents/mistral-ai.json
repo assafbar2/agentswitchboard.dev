@@ -1,0 +1,52 @@
+{
+  "id": "mistral-ai",
+  "name": "Mistral AI",
+  "slug": "mistral-ai",
+  "description": "Serves open-weight and frontier models through La Plateforme, with an Agents API adding persistent agents, built-in connectors, and MCP client support.",
+  "providerName": "Mistral AI",
+  "providerUrl": "https://mistral.ai",
+  "agentUrl": "https://docs.mistral.ai/capabilities/agents/",
+  "categories": [
+    "language",
+    "orchestration"
+  ],
+  "tags": [
+    "frontier-models",
+    "agents-api",
+    "mcp-client",
+    "connectors",
+    "function-calling",
+    "open-weights",
+    "la-plateforme"
+  ],
+  "skills": [
+    {
+      "id": "persistent-agents",
+      "name": "Persistent Agents",
+      "description": "Creates server-side agents that keep instructions, tools, and conversation state across separate API calls."
+    },
+    {
+      "id": "builtin-connectors",
+      "name": "Built-In Connectors",
+      "description": "Attaches hosted code execution, web search, image generation, and document library tools without custom plumbing."
+    },
+    {
+      "id": "mcp-connectivity",
+      "name": "MCP Connectivity",
+      "description": "Connects agents to external MCP servers so they call your own tools alongside the hosted connectors."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-15T07:16:38.661Z",
+  "updatedAt": "2026-08-15T07:16:38.661Z"
+}

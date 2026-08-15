@@ -1,0 +1,53 @@
+{
+  "id": "muse-code",
+  "name": "Muse Code",
+  "slug": "muse-code",
+  "description": "Handles long-horizon, multi-file coding work across large repositories from the terminal, spawning persistent async sub-agents that keep working in the background.",
+  "providerName": "Meta Superintelligence Labs",
+  "providerUrl": "https://research.meta.ai",
+  "agentUrl": "https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2",
+  "categories": [
+    "code-devtools",
+    "orchestration"
+  ],
+  "tags": [
+    "coding-agent",
+    "terminal",
+    "meta",
+    "long-horizon",
+    "sub-agents",
+    "muse-spark",
+    "background-tasks"
+  ],
+  "skills": [
+    {
+      "id": "long-horizon-editing",
+      "name": "Long-Horizon Editing",
+      "description": "Sustains multi-file changes across large repositories over long sessions without losing track of earlier edits."
+    },
+    {
+      "id": "background-subagents",
+      "name": "Background Sub-Agents",
+      "description": "Spawns persistent asynchronous sub-agents that continue working on delegated subtasks while the main session proceeds."
+    },
+    {
+      "id": "repo-comprehension",
+      "name": "Repository Comprehension",
+      "description": "Reads and navigates large codebases to locate relevant modules before proposing cross-cutting changes."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-08-15T07:16:38.325Z",
+  "updatedAt": "2026-08-15T07:16:38.325Z"
+}

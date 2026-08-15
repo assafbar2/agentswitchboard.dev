@@ -1,0 +1,53 @@
+{
+  "id": "factory-ai",
+  "name": "Factory",
+  "slug": "factory-ai",
+  "description": "Runs enterprise coding Droids from the terminal with MCP tools, reusable Missions and Skills, plus a headless exec mode for CI pipelines.",
+  "providerName": "Factory",
+  "providerUrl": "https://factory.ai",
+  "agentUrl": "https://docs.factory.ai/cli/getting-started/overview",
+  "categories": [
+    "code-devtools",
+    "orchestration"
+  ],
+  "tags": [
+    "coding-agent",
+    "droids",
+    "headless-ci",
+    "mcp-client",
+    "enterprise",
+    "missions",
+    "terminal"
+  ],
+  "skills": [
+    {
+      "id": "droid-cli",
+      "name": "Droid CLI",
+      "description": "Runs the Factory agent runtime interactively in the terminal with repository context and connected tools."
+    },
+    {
+      "id": "headless-exec",
+      "name": "Headless Execution",
+      "description": "Executes agent tasks non-interactively through droid exec so they slot into CI pipelines and scripts."
+    },
+    {
+      "id": "custom-droids",
+      "name": "Custom Droids and Missions",
+      "description": "Packages recurring engineering workflows as reusable Droids, Missions, and Skills shared across a team."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-08-15T07:16:38.703Z",
+  "updatedAt": "2026-08-15T07:16:38.703Z"
+}

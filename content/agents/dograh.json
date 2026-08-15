@@ -1,0 +1,53 @@
+{
+  "id": "dograh",
+  "name": "Dograh",
+  "slug": "dograh",
+  "description": "Builds and self-hosts voice AI agents with a visual workflow builder, telephony, and bring-your-own-key speech-to-speech or LLM, STT, and TTS pipelines.",
+  "providerName": "Dograh HQ",
+  "providerUrl": "https://www.dograh.com",
+  "agentUrl": "https://www.dograh.com",
+  "categories": [
+    "voice-messaging",
+    "orchestration"
+  ],
+  "tags": [
+    "voice-agents",
+    "telephony",
+    "self-hosted",
+    "workflow-builder",
+    "byok",
+    "speech-to-speech",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "voice-pipeline",
+      "name": "Voice Pipeline",
+      "description": "Assembles STT, LLM, and TTS stages or a single speech-to-speech model into a low-latency conversational voice loop."
+    },
+    {
+      "id": "telephony-routing",
+      "name": "Telephony Routing",
+      "description": "Places and receives phone calls through connected telephony providers, routing them into agent workflows."
+    },
+    {
+      "id": "workflow-builder",
+      "name": "Visual Workflow Builder",
+      "description": "Defines call flows, branching logic, and tool calls on a visual canvas that runs as the live agent."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-08-15T07:16:38.420Z",
+  "updatedAt": "2026-08-15T07:16:38.420Z"
+}

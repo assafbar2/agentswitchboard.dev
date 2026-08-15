@@ -1,0 +1,53 @@
+{
+  "id": "voltagent",
+  "name": "VoltAgent",
+  "slug": "voltagent",
+  "description": "Builds TypeScript AI agents with tools, memory, and sub-agent supervision, paired with a local observability console that traces every step of a run.",
+  "providerName": "VoltAgent",
+  "providerUrl": "https://voltagent.dev",
+  "agentUrl": "https://voltagent.dev",
+  "categories": [
+    "orchestration",
+    "code-devtools"
+  ],
+  "tags": [
+    "typescript",
+    "agent-framework",
+    "observability",
+    "sub-agents",
+    "tracing",
+    "agent-memory",
+    "workflows"
+  ],
+  "skills": [
+    {
+      "id": "agent-definition",
+      "name": "Agent Definition",
+      "description": "Declares agents in TypeScript with typed tools, instructions, and a chosen model provider in a few lines."
+    },
+    {
+      "id": "supervisor-agents",
+      "name": "Supervisor Agents",
+      "description": "Composes a supervisor agent that delegates to specialized sub-agents and aggregates their results."
+    },
+    {
+      "id": "run-tracing",
+      "name": "Run Tracing",
+      "description": "Streams every tool call, message, and state change into a local console for step-by-step debugging of agent runs."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-08-15T07:16:38.638Z",
+  "updatedAt": "2026-08-15T07:16:38.638Z"
+}

@@ -1,0 +1,53 @@
+{
+  "id": "trading-agents",
+  "name": "TradingAgents",
+  "slug": "trading-agents",
+  "description": "Simulates a trading firm with LLM agents in analyst, researcher, trader, and risk-manager roles that debate positions and converge on financial decisions.",
+  "providerName": "Tauric Research",
+  "providerUrl": "https://tauric.ai",
+  "agentUrl": "https://github.com/TauricResearch/TradingAgents",
+  "categories": [
+    "finance",
+    "orchestration"
+  ],
+  "tags": [
+    "multi-agent",
+    "trading",
+    "financial-analysis",
+    "role-based-agents",
+    "backtesting",
+    "market-research",
+    "python"
+  ],
+  "skills": [
+    {
+      "id": "role-debate",
+      "name": "Role-Based Debate",
+      "description": "Runs bull and bear researcher agents against each other so a trade thesis is argued before any decision is made."
+    },
+    {
+      "id": "market-analysis",
+      "name": "Market Analysis",
+      "description": "Gathers fundamentals, sentiment, news, and technical indicators through dedicated analyst agents per data source."
+    },
+    {
+      "id": "risk-review",
+      "name": "Risk Review",
+      "description": "Passes proposed trades through a risk-management agent that adjusts or vetoes positions before execution."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-08-15T07:16:38.476Z",
+  "updatedAt": "2026-08-15T07:16:38.476Z"
+}
