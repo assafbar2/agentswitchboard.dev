@@ -1,0 +1,52 @@
+{
+  "id": "pentagi",
+  "name": "PentAGI",
+  "slug": "pentagi",
+  "description": "Executes penetration-testing workflows with autonomous agent teams that chain reconnaissance, exploitation, and reporting across established security tooling.",
+  "providerName": "VXControl",
+  "providerUrl": "https://pentagi.com",
+  "agentUrl": "https://pentagi.com",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "penetration-testing",
+    "offensive-security",
+    "multi-agent",
+    "reconnaissance",
+    "vulnerability-research",
+    "self-hosted",
+    "docker"
+  ],
+  "skills": [
+    {
+      "id": "recon-automation",
+      "name": "Reconnaissance Automation",
+      "description": "Enumerates hosts, services, and attack surface using standard scanning tools driven by a planning agent."
+    },
+    {
+      "id": "exploit-workflow",
+      "name": "Exploitation Workflow",
+      "description": "Chains discovered findings into multi-step exploitation attempts inside an isolated containerized environment."
+    },
+    {
+      "id": "pentest-reporting",
+      "name": "Pentest Reporting",
+      "description": "Compiles findings, evidence, and remediation guidance into a structured report at the end of an engagement."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-08-15T07:16:38.580Z",
+  "updatedAt": "2026-08-15T07:16:38.580Z"
+}

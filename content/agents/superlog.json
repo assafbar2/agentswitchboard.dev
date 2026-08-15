@@ -1,0 +1,53 @@
+{
+  "id": "superlog",
+  "name": "Superlog",
+  "slug": "superlog",
+  "description": "Reads Sentry and Datadog errors, reproduces them, and opens pull requests with fixes, using a memory system trained on prior PR review feedback.",
+  "providerName": "Pulsent Labs",
+  "providerUrl": "https://superlog.sh",
+  "agentUrl": "https://superlog.sh",
+  "categories": [
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "bug-fixing",
+    "error-monitoring",
+    "pull-requests",
+    "sentry",
+    "datadog",
+    "github-app",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "error-triage",
+      "name": "Error Triage",
+      "description": "Pulls logs, traces, metrics, and dashboards from observability providers to identify which errors are worth fixing."
+    },
+    {
+      "id": "repro-and-fix",
+      "name": "Reproduce and Fix",
+      "description": "Reproduces a reported error locally, writes a candidate fix, and opens a pull request with the change."
+    },
+    {
+      "id": "review-memory",
+      "name": "Review Memory",
+      "description": "Learns from past pull request review comments so later fixes match the team conventions reviewers enforce."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-08-15T07:16:38.440Z",
+  "updatedAt": "2026-08-15T07:16:38.440Z"
+}

@@ -1,0 +1,53 @@
+{
+  "id": "pageindex",
+  "name": "PageIndex",
+  "slug": "pageindex",
+  "description": "Indexes long documents as a reasoning-based hierarchical tree so agents retrieve by navigating structure instead of embedding similarity.",
+  "providerName": "Vectify AI",
+  "providerUrl": "https://pageindex.ai",
+  "agentUrl": "https://pageindex.ai",
+  "categories": [
+    "research",
+    "vector-databases"
+  ],
+  "tags": [
+    "document-retrieval",
+    "vectorless-rag",
+    "tree-search",
+    "reasoning-retrieval",
+    "long-documents",
+    "hierarchical-index",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "tree-index",
+      "name": "Tree Index Generation",
+      "description": "Builds a hierarchical table-of-contents index over long documents that mirrors their actual section structure."
+    },
+    {
+      "id": "reasoning-retrieval",
+      "name": "Reasoning Retrieval",
+      "description": "Navigates the document tree by reasoning about which sections answer a query, with no embedding database required."
+    },
+    {
+      "id": "citation-tracing",
+      "name": "Citation Tracing",
+      "description": "Returns the exact node and page a retrieved passage came from so answers stay traceable to the source document."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-08-15T07:16:38.552Z",
+  "updatedAt": "2026-08-15T07:16:38.552Z"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "decagon",
+  "name": "Decagon",
+  "slug": "decagon",
+  "description": "Resolves customer support conversations with AI agents that take real backend actions such as refunds and cancellations rather than only answering questions.",
+  "providerName": "Decagon",
+  "providerUrl": "https://decagon.ai",
+  "agentUrl": "https://decagon.ai",
+  "categories": [
+    "customer-support"
+  ],
+  "tags": [
+    "support-automation",
+    "agent-actions",
+    "zendesk",
+    "salesforce",
+    "intercom",
+    "enterprise",
+    "concierge"
+  ],
+  "skills": [
+    {
+      "id": "action-execution",
+      "name": "Action Execution",
+      "description": "Calls into backend systems to issue refunds, cancel orders, and update accounts as part of resolving a ticket."
+    },
+    {
+      "id": "helpdesk-integration",
+      "name": "Helpdesk Integration",
+      "description": "Plugs into Zendesk, Salesforce, and Intercom so agent-handled conversations stay inside existing support tooling."
+    },
+    {
+      "id": "escalation-handoff",
+      "name": "Escalation Handoff",
+      "description": "Routes conversations to human agents with full context when a request falls outside what the agent may resolve."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-15T07:16:38.688Z",
+  "updatedAt": "2026-08-15T07:16:38.688Z"
+}

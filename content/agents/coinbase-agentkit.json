@@ -1,0 +1,53 @@
+{
+  "id": "coinbase-agentkit",
+  "name": "Coinbase AgentKit",
+  "slug": "coinbase-agentkit",
+  "description": "Gives AI agents onchain wallets and the ability to transact, with action providers for payments, swaps, and smart contract calls across major agent frameworks.",
+  "providerName": "Coinbase Developer Platform",
+  "providerUrl": "https://www.coinbase.com/developer-platform",
+  "agentUrl": "https://docs.cdp.coinbase.com/agent-kit/welcome",
+  "categories": [
+    "commerce-payments",
+    "infrastructure"
+  ],
+  "tags": [
+    "onchain-wallets",
+    "agent-payments",
+    "x402",
+    "smart-contracts",
+    "coinbase",
+    "token-swaps",
+    "framework-adapters"
+  ],
+  "skills": [
+    {
+      "id": "wallet-provisioning",
+      "name": "Wallet Provisioning",
+      "description": "Creates and manages a server-side wallet for an agent so it holds funds and signs its own transactions."
+    },
+    {
+      "id": "onchain-actions",
+      "name": "Onchain Actions",
+      "description": "Executes transfers, token swaps, and smart contract calls through composable action providers."
+    },
+    {
+      "id": "framework-adapters",
+      "name": "Framework Adapters",
+      "description": "Plugs the same onchain toolset into LangChain, the OpenAI Agents SDK, the Vercel AI SDK, and Eliza."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-08-15T07:16:38.720Z",
+  "updatedAt": "2026-08-15T07:16:38.720Z"
+}

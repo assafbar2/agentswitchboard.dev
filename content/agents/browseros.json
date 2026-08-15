@@ -1,0 +1,53 @@
+{
+  "id": "browseros",
+  "name": "BrowserOS",
+  "slug": "browseros",
+  "description": "Drives a local open-source Chromium using your existing logged-in sessions, feeding external agents compact page snapshots and batched actions instead of raw HTML.",
+  "providerName": "BrowserOS",
+  "providerUrl": "https://browseros.com",
+  "agentUrl": "https://www.browseros.com/neo/",
+  "categories": [
+    "browser-computer",
+    "infrastructure"
+  ],
+  "tags": [
+    "agentic-browser",
+    "chromium",
+    "local-first",
+    "page-snapshots",
+    "session-reuse",
+    "open-source",
+    "agpl"
+  ],
+  "skills": [
+    {
+      "id": "page-snapshot",
+      "name": "Page Snapshot",
+      "description": "Returns a compact structured snapshot of the current page so agents reason over elements rather than raw HTML."
+    },
+    {
+      "id": "batched-actions",
+      "name": "Batched Actions",
+      "description": "Executes several clicks, inputs, and navigations in one round trip to cut latency on multi-step browser flows."
+    },
+    {
+      "id": "session-reuse",
+      "name": "Logged-In Session Reuse",
+      "description": "Operates inside your already-authenticated browser profile so agents reach gated pages without handling credentials."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "browser-extension",
+    "cli"
+  ],
+  "createdAt": "2026-08-15T07:16:38.407Z",
+  "updatedAt": "2026-08-15T07:16:38.407Z"
+}

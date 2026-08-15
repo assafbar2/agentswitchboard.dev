@@ -1,0 +1,51 @@
+{
+  "id": "canva-mcp",
+  "name": "Canva MCP",
+  "slug": "canva-mcp",
+  "description": "Creates and edits Canva designs from an agent over MCP, covering asset and brand management, library search, export, and commenting.",
+  "providerName": "Canva",
+  "providerUrl": "https://www.canva.com",
+  "agentUrl": "https://www.canva.dev/docs/mcp/",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "design-automation",
+    "canva",
+    "brand-assets",
+    "design-export",
+    "official-mcp",
+    "remote-mcp",
+    "asset-library"
+  ],
+  "skills": [
+    {
+      "id": "design-creation",
+      "name": "Design Creation",
+      "description": "Creates and edits Canva designs from an agent prompt, applying brand templates and layouts automatically."
+    },
+    {
+      "id": "asset-management",
+      "name": "Asset Management",
+      "description": "Searches the connected asset library and brand kit, then places approved assets into a design."
+    },
+    {
+      "id": "export-and-comment",
+      "name": "Export and Comment",
+      "description": "Exports finished designs to standard formats and leaves comments for human reviewers on specific elements."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-08-15T07:16:38.723Z",
+  "updatedAt": "2026-08-15T07:16:38.723Z"
+}

@@ -1,0 +1,53 @@
+{
+  "id": "beads",
+  "name": "Beads",
+  "slug": "beads",
+  "description": "Stores issues and agent memory as a dependency graph so coding agents keep durable working context and track outstanding work across sessions.",
+  "providerName": "Gastown Hall",
+  "providerUrl": "https://beads.gascity.com",
+  "agentUrl": "https://beads.gascity.com",
+  "categories": [
+    "memory-state",
+    "code-devtools"
+  ],
+  "tags": [
+    "issue-tracking",
+    "dependency-graph",
+    "agent-memory",
+    "session-persistence",
+    "work-queue",
+    "git-native",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "graph-issues",
+      "name": "Graph Issue Store",
+      "description": "Records work items and their blocking relationships as a graph so agents see what is ready versus blocked."
+    },
+    {
+      "id": "durable-memory",
+      "name": "Durable Working Memory",
+      "description": "Persists agent findings and open threads outside the context window so long projects survive session boundaries."
+    },
+    {
+      "id": "ready-work-query",
+      "name": "Ready Work Query",
+      "description": "Surfaces the next unblocked task from the dependency graph so an agent always has a well-defined next action."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-08-15T07:16:38.569Z",
+  "updatedAt": "2026-08-15T07:16:38.569Z"
+}

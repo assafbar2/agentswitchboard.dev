@@ -1,0 +1,53 @@
+{
+  "id": "mcp-python-sdk",
+  "name": "MCP Python SDK",
+  "slug": "mcp-python-sdk",
+  "description": "Builds MCP servers and clients in Python with typed tool, resource, and prompt primitives plus stdio and streamable HTTP transports.",
+  "providerName": "Model Context Protocol",
+  "providerUrl": "https://modelcontextprotocol.io",
+  "agentUrl": "https://py.sdk.modelcontextprotocol.io",
+  "categories": [
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "mcp-sdk",
+    "python",
+    "tool-definitions",
+    "stdio-transport",
+    "streamable-http",
+    "official-sdk",
+    "server-framework"
+  ],
+  "skills": [
+    {
+      "id": "server-authoring",
+      "name": "Server Authoring",
+      "description": "Declares MCP tools, resources, and prompts as typed Python functions that the SDK exposes to any MCP client."
+    },
+    {
+      "id": "transport-support",
+      "name": "Transport Support",
+      "description": "Serves an MCP server over stdio for local use or streamable HTTP for remote deployment behind authentication."
+    },
+    {
+      "id": "client-integration",
+      "name": "Client Integration",
+      "description": "Connects a Python application to MCP servers to list and invoke their tools inside an agent loop."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-08-15T07:16:38.576Z",
+  "updatedAt": "2026-08-15T07:16:38.576Z"
+}

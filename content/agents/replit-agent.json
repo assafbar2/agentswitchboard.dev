@@ -1,0 +1,53 @@
+{
+  "id": "replit-agent",
+  "name": "Replit Agent",
+  "slug": "replit-agent",
+  "description": "Builds and deploys full applications autonomously in the cloud, provisioning databases, writing authentication, running tests, and shipping without local setup.",
+  "providerName": "Replit",
+  "providerUrl": "https://replit.com",
+  "agentUrl": "https://docs.replit.com/replitai/agent",
+  "categories": [
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "cloud-agent",
+    "app-generation",
+    "autonomous-deployment",
+    "database-provisioning",
+    "replit",
+    "hosting",
+    "long-running-tasks"
+  ],
+  "skills": [
+    {
+      "id": "app-scaffolding",
+      "name": "App Scaffolding",
+      "description": "Generates a working full-stack application from a prompt, choosing the stack and wiring the pieces together."
+    },
+    {
+      "id": "infra-provisioning",
+      "name": "Infrastructure Provisioning",
+      "description": "Creates databases, secrets, and authentication for the app it is building without manual configuration."
+    },
+    {
+      "id": "autonomous-deploy",
+      "name": "Autonomous Deployment",
+      "description": "Tests the generated application and deploys it to a live Replit-hosted URL at the end of a build run."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-08-15T07:16:38.695Z",
+  "updatedAt": "2026-08-15T07:16:38.695Z"
+}

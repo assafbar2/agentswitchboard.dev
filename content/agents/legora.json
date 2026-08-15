@@ -1,0 +1,52 @@
+{
+  "id": "legora",
+  "name": "Legora",
+  "slug": "legora",
+  "description": "Runs collaborative legal AI workflows on an agent layer that connects to customer-built MCP servers, pulling documents from DMS and CRM systems and writing results back.",
+  "providerName": "Legora",
+  "providerUrl": "https://legora.com",
+  "agentUrl": "https://legora.com/product/aos",
+  "categories": [
+    "legal"
+  ],
+  "tags": [
+    "legal-ai",
+    "document-review",
+    "mcp-client",
+    "dms-integration",
+    "contract-analysis",
+    "enterprise",
+    "due-diligence"
+  ],
+  "skills": [
+    {
+      "id": "document-review",
+      "name": "Document Review",
+      "description": "Reviews contracts and filings at scale, extracting clauses and flagging deviations from a firm playbook."
+    },
+    {
+      "id": "mcp-stack-connection",
+      "name": "Legal Stack Connection",
+      "description": "Reaches document management, e-signature, and CRM systems through customer-built MCP servers and writes results back."
+    },
+    {
+      "id": "collaborative-tabular",
+      "name": "Collaborative Review Grid",
+      "description": "Runs the same set of legal questions across many documents in a shared grid that a team reviews together."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-08-15T07:16:38.692Z",
+  "updatedAt": "2026-08-15T07:16:38.692Z"
+}

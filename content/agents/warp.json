@@ -1,0 +1,53 @@
+{
+  "id": "warp",
+  "name": "Warp",
+  "slug": "warp",
+  "description": "Combines a Rust terminal with an Oz orchestration layer that dispatches concurrent cloud coding agents triggered by Slack, GitHub events, or cron.",
+  "providerName": "Warp",
+  "providerUrl": "https://www.warp.dev",
+  "agentUrl": "https://www.warp.dev/agents",
+  "categories": [
+    "code-devtools",
+    "orchestration"
+  ],
+  "tags": [
+    "terminal",
+    "agentic-development",
+    "cloud-agents",
+    "oz-orchestration",
+    "mcp-client",
+    "slack-triggers",
+    "rust"
+  ],
+  "skills": [
+    {
+      "id": "agent-mode",
+      "name": "Terminal Agent Mode",
+      "description": "Drives shell work from natural language inside the terminal, reading command output to decide the next step."
+    },
+    {
+      "id": "oz-orchestration",
+      "name": "Oz Orchestration",
+      "description": "Dispatches many cloud coding agents in parallel and tracks their progress from a single control surface."
+    },
+    {
+      "id": "event-triggers",
+      "name": "Event Triggers",
+      "description": "Starts agent runs from Slack messages, GitHub events, or cron schedules without a human at the keyboard."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-08-15T07:16:38.706Z",
+  "updatedAt": "2026-08-15T07:16:38.706Z"
+}

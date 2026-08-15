@@ -1,0 +1,52 @@
+{
+  "id": "sierra-ai",
+  "name": "Sierra",
+  "slug": "sierra-ai",
+  "description": "Builds customer-facing conversational agents with a declarative Agent SDK, guardrails, and an Agent OS runtime spanning voice, chat, email, and SMS.",
+  "providerName": "Sierra",
+  "providerUrl": "https://sierra.ai",
+  "agentUrl": "https://sierra.ai/product/agent-sdk",
+  "categories": [
+    "customer-support",
+    "orchestration"
+  ],
+  "tags": [
+    "conversational-agents",
+    "agent-sdk",
+    "guardrails",
+    "voice-agents",
+    "enterprise",
+    "omnichannel",
+    "agent-os"
+  ],
+  "skills": [
+    {
+      "id": "declarative-agents",
+      "name": "Declarative Agent Definition",
+      "description": "Describes agent behavior, tools, and escalation paths in a declarative language rather than hand-written prompts."
+    },
+    {
+      "id": "guardrails",
+      "name": "Guardrails",
+      "description": "Constrains what an agent may say and do so customer-facing conversations stay inside policy boundaries."
+    },
+    {
+      "id": "omnichannel-delivery",
+      "name": "Omnichannel Delivery",
+      "description": "Runs the same agent across voice, chat, email, and SMS with channel-appropriate behavior on each surface."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-15T07:16:38.677Z",
+  "updatedAt": "2026-08-15T07:16:38.677Z"
+}

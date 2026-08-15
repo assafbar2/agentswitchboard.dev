@@ -1,0 +1,53 @@
+{
+  "id": "eigent",
+  "name": "Eigent",
+  "slug": "eigent",
+  "description": "Runs a local multi-agent desktop workforce that splits tasks across specialized workers with browser, terminal, and file access on your own machine.",
+  "providerName": "Eigent AI",
+  "providerUrl": "https://www.eigent.ai",
+  "agentUrl": "https://www.eigent.ai",
+  "categories": [
+    "orchestration",
+    "browser-computer"
+  ],
+  "tags": [
+    "multi-agent",
+    "desktop-app",
+    "local-first",
+    "agent-workforce",
+    "camel-ai",
+    "task-decomposition",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "task-decomposition",
+      "name": "Task Decomposition",
+      "description": "Splits a high-level request into parallel subtasks and assigns each to a specialized worker agent."
+    },
+    {
+      "id": "local-execution",
+      "name": "Local Execution",
+      "description": "Grants workers browser, terminal, and filesystem access on the local machine so work happens without a cloud runtime."
+    },
+    {
+      "id": "mcp-tooling",
+      "name": "MCP Tooling",
+      "description": "Attaches MCP servers as shared tools so every worker in the workforce can reach the same external systems."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-08-15T07:16:38.634Z",
+  "updatedAt": "2026-08-15T07:16:38.634Z"
+}

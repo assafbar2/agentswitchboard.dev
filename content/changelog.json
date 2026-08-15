@@ -1,5 +1,185 @@
 [
   {
+    "action": "added",
+    "slug": "tableau-mcp",
+    "name": "Tableau MCP",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "canva-mcp",
+    "name": "Canva MCP",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "coinbase-agentkit",
+    "name": "Coinbase AgentKit",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "dbt-mcp",
+    "name": "dbt MCP",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "baseten",
+    "name": "Baseten",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "warp",
+    "name": "Warp",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "factory-ai",
+    "name": "Factory",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "replit-agent",
+    "name": "Replit Agent",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "legora",
+    "name": "Legora",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "decagon",
+    "name": "Decagon",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "sierra-ai",
+    "name": "Sierra",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "mistral-ai",
+    "name": "Mistral AI",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "agent-s",
+    "name": "Agent S",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "voltagent",
+    "name": "VoltAgent",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "eigent",
+    "name": "Eigent",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "pentagi",
+    "name": "PentAGI",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "mcp-python-sdk",
+    "name": "MCP Python SDK",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "a2a-protocol",
+    "name": "A2A Protocol",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "beads",
+    "name": "Beads",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "zeroclaw",
+    "name": "ZeroClaw",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "pageindex",
+    "name": "PageIndex",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "mineru",
+    "name": "MinerU",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "trading-agents",
+    "name": "TradingAgents",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "superlog",
+    "name": "Superlog",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "kiro-crew",
+    "name": "Kiro Crew",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "dograh",
+    "name": "Dograh",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "browseros",
+    "name": "BrowserOS",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "xirp",
+    "name": "Xirp",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "muse-code",
+    "name": "Muse Code",
+    "date": "2026-08-15"
+  },
+  {
+    "action": "added",
+    "slug": "deepseek-harness",
+    "name": "DeepSeek Harness",
+    "date": "2026-08-15"
+  },
+  {
     "action": "removed",
     "slug": "blender-mcp",
     "name": "Blender MCP",

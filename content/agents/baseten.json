@@ -1,0 +1,52 @@
+{
+  "id": "baseten",
+  "name": "Baseten",
+  "slug": "baseten",
+  "description": "Deploys models as production inference APIs with dedicated GPU deployments, Truss packaging, and OpenAI-compatible endpoints for agent workloads.",
+  "providerName": "Baseten",
+  "providerUrl": "https://www.baseten.co",
+  "agentUrl": "https://docs.baseten.co",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "inference",
+    "model-serving",
+    "truss",
+    "gpu-deployment",
+    "openai-compatible",
+    "chains",
+    "autoscaling"
+  ],
+  "skills": [
+    {
+      "id": "model-deployment",
+      "name": "Model Deployment",
+      "description": "Packages a model with Truss and deploys it as an autoscaling production endpoint on dedicated GPU hardware."
+    },
+    {
+      "id": "openai-compatible-inference",
+      "name": "OpenAI-Compatible Inference",
+      "description": "Serves open models behind an OpenAI-compatible API so existing agent clients switch backends by changing a base URL."
+    },
+    {
+      "id": "chains",
+      "name": "Chains",
+      "description": "Composes multi-step inference pipelines where each stage scales independently on its own hardware profile."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-08-15T07:16:38.709Z",
+  "updatedAt": "2026-08-15T07:16:38.709Z"
+}

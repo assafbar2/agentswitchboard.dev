@@ -1,0 +1,52 @@
+{
+  "id": "xirp",
+  "name": "Xirp",
+  "slug": "xirp",
+  "description": "Manages concurrent Claude Code, Codex, and Gemini CLI sessions, each isolated in its own git worktree, with context that survives switching between harnesses.",
+  "providerName": "Spotify",
+  "providerUrl": "https://www.spotify.com",
+  "agentUrl": "https://xirp.spotify.com/",
+  "categories": [
+    "code-devtools",
+    "orchestration"
+  ],
+  "tags": [
+    "agent-orchestration",
+    "git-worktrees",
+    "spotify",
+    "multi-agent",
+    "claude-code",
+    "codex",
+    "backstage"
+  ],
+  "skills": [
+    {
+      "id": "worktree-isolation",
+      "name": "Worktree Isolation",
+      "description": "Runs each concurrent agent session in its own git worktree so parallel work never collides on a shared checkout."
+    },
+    {
+      "id": "harness-switching",
+      "name": "Harness Switching",
+      "description": "Carries task context across Claude Code, Codex, and Gemini CLI so a session can change harness without restarting."
+    },
+    {
+      "id": "session-dashboard",
+      "name": "Session Dashboard",
+      "description": "Tracks every running agent session in one view with status, diffs, and the ability to intervene mid-run."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-08-15T07:16:38.373Z",
+  "updatedAt": "2026-08-15T07:16:38.373Z"
+}

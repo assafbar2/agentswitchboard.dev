@@ -1,0 +1,53 @@
+{
+  "id": "zeroclaw",
+  "name": "ZeroClaw",
+  "slug": "zeroclaw",
+  "description": "Runs a small, fast, fully autonomous personal assistant agent as a self-contained runtime deployable across operating systems and platforms.",
+  "providerName": "ZeroClaw Labs",
+  "providerUrl": "https://www.zeroclawlabs.ai",
+  "agentUrl": "https://www.zeroclawlabs.ai",
+  "categories": [
+    "orchestration",
+    "code-devtools"
+  ],
+  "tags": [
+    "autonomous-agent",
+    "personal-assistant",
+    "lightweight-runtime",
+    "cross-platform",
+    "self-hosted",
+    "byok",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "autonomous-loop",
+      "name": "Autonomous Loop",
+      "description": "Plans and executes multi-step tasks end to end without per-step prompting, stopping only when the goal is met."
+    },
+    {
+      "id": "portable-runtime",
+      "name": "Portable Runtime",
+      "description": "Ships as a single small runtime that deploys unchanged across desktop, server, and constrained environments."
+    },
+    {
+      "id": "tool-integration",
+      "name": "Tool Integration",
+      "description": "Connects external tools and model providers so the same agent runs against whichever backend you configure."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-08-15T07:16:38.560Z",
+  "updatedAt": "2026-08-15T07:16:38.560Z"
+}

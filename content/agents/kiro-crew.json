@@ -1,0 +1,53 @@
+{
+  "id": "kiro-crew",
+  "name": "Kiro Crew",
+  "slug": "kiro-crew",
+  "description": "Carries development context across sessions in a persistent workspace and coordinates agents over CLI, chat platforms, and remote SSH boxes.",
+  "providerName": "Kiro (AWS)",
+  "providerUrl": "https://kiro.dev",
+  "agentUrl": "https://kiro.dev/crew/",
+  "categories": [
+    "code-devtools",
+    "orchestration"
+  ],
+  "tags": [
+    "persistent-workspace",
+    "aws",
+    "kiro",
+    "agent-coordination",
+    "ssh-execution",
+    "cron-triggers",
+    "chat-ops"
+  ],
+  "skills": [
+    {
+      "id": "persistent-context",
+      "name": "Persistent Context",
+      "description": "Retains project knowledge between sessions so returning work does not start from an empty context window."
+    },
+    {
+      "id": "remote-execution",
+      "name": "Remote Execution",
+      "description": "Spawns and supervises agent runs on remote SSH hosts, streaming results back to the local workspace."
+    },
+    {
+      "id": "scheduled-runs",
+      "name": "Scheduled Runs",
+      "description": "Triggers recurring agent tasks on a cron schedule and reports outcomes into connected chat platforms."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-08-15T07:16:38.429Z",
+  "updatedAt": "2026-08-15T07:16:38.429Z"
+}

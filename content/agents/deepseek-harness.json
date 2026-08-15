@@ -1,0 +1,53 @@
+{
+  "id": "deepseek-harness",
+  "name": "DeepSeek Harness",
+  "slug": "deepseek-harness",
+  "description": "Runs coding agents on a plugin-composed harness where models, tools, skills, sessions, sandboxes, storage, and the UI are all swappable plugins.",
+  "providerName": "DeepSeek",
+  "providerUrl": "https://deepseek.com",
+  "agentUrl": "https://deepseek.com/harness",
+  "categories": [
+    "orchestration",
+    "code-devtools"
+  ],
+  "tags": [
+    "agent-harness",
+    "plugin-architecture",
+    "deepseek",
+    "coding-agent",
+    "sandbox",
+    "byok",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "plugin-composition",
+      "name": "Plugin Composition",
+      "description": "Swaps models, tools, skills, sandboxes, and storage backends through one uniform plugin interface without forking the harness."
+    },
+    {
+      "id": "session-persistence",
+      "name": "Session Persistence",
+      "description": "Checkpoints agent session state so long-running tasks resume across restarts and survive switching the underlying model."
+    },
+    {
+      "id": "sandboxed-execution",
+      "name": "Sandboxed Execution",
+      "description": "Executes agent-generated commands and code inside pluggable sandbox backends isolated from the host filesystem."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-08-15T07:16:38.171Z",
+  "updatedAt": "2026-08-15T07:16:38.171Z"
+}

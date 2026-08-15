@@ -1,0 +1,53 @@
+{
+  "id": "dbt-mcp",
+  "name": "dbt MCP",
+  "slug": "dbt-mcp",
+  "description": "Exposes the dbt Semantic Layer, Discovery API, and dbt CLI over MCP so agents query governed metrics and inspect model lineage.",
+  "providerName": "dbt Labs",
+  "providerUrl": "https://www.getdbt.com",
+  "agentUrl": "https://docs.getdbt.com/docs/dbt-ai/about-mcp",
+  "categories": [
+    "data-analytics",
+    "code-devtools"
+  ],
+  "tags": [
+    "dbt",
+    "semantic-layer",
+    "governed-metrics",
+    "data-lineage",
+    "discovery-api",
+    "official-mcp",
+    "analytics-engineering"
+  ],
+  "skills": [
+    {
+      "id": "semantic-layer-query",
+      "name": "Semantic Layer Query",
+      "description": "Queries governed metrics and dimensions through the dbt Semantic Layer so agent answers match approved definitions."
+    },
+    {
+      "id": "lineage-discovery",
+      "name": "Lineage Discovery",
+      "description": "Reads model metadata and lineage from the Discovery API to trace where a column or metric originates."
+    },
+    {
+      "id": "dbt-commands",
+      "name": "dbt Commands",
+      "description": "Runs dbt CLI commands such as build, test, and compile from an agent session against a configured project."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-08-15T07:16:38.711Z",
+  "updatedAt": "2026-08-15T07:16:38.711Z"
+}
