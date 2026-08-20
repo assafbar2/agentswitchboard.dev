@@ -1,6 +1,12 @@
 [
   {
     "action": "added",
+    "slug": "admapix-mcp",
+    "name": "AdMapix MCP",
+    "date": "2026-08-21"
+  },
+  {
+    "action": "added",
     "slug": "tableau-mcp",
     "name": "Tableau MCP",
     "date": "2026-08-15"
