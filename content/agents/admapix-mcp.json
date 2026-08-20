@@ -1,0 +1,53 @@
+{
+  "id": "admapix-mcp",
+  "name": "AdMapix MCP",
+  "slug": "admapix-mcp",
+  "description": "Searches competitor ads, app rankings, download and revenue trends, and market data for growth, user-acquisition, and creative teams through an MCP server.",
+  "providerName": "AdMapix",
+  "providerUrl": "https://www.admapix.com",
+  "agentUrl": "https://github.com/fly0pants/admapix",
+  "categories": [
+    "sales-marketing",
+    "data-analytics"
+  ],
+  "tags": [
+    "ad-intelligence",
+    "creative-research",
+    "competitor-analysis",
+    "app-analytics",
+    "market-research",
+    "mcp",
+    "advertising"
+  ],
+  "skills": [
+    {
+      "id": "creative-ad-search",
+      "name": "Creative Ad Search",
+      "description": "Searches competitor image, video, playable, landing-page, and document ads across channels and markets."
+    },
+    {
+      "id": "market-trend-analysis",
+      "name": "Market Trend Analysis",
+      "description": "Retrieves app rankings, downloads, revenue, and market data to compare products and identify growth signals."
+    },
+    {
+      "id": "research-reporting",
+      "name": "Research Reporting",
+      "description": "Connects ad evidence and market data to AI-assisted research workflows for campaign and user-acquisition planning."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-08-21T00:00:00Z",
+  "updatedAt": "2026-08-21T00:00:00Z"
+}
