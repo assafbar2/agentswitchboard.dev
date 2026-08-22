@@ -1,0 +1,66 @@
+{
+  "id": "black-label-continuum",
+  "name": "Black Label Continuum",
+  "slug": "black-label-continuum",
+  "description": "Commissions one named AI agent onto sponsor-controlled Mac hardware with persistent memory, approved tools, recurring work, backup, and a demonstrated restore.",
+  "providerName": "Black Label Bots",
+  "providerUrl": "https://blacklabelbots.com",
+  "version": "0.1.0",
+  "agentUrl": "https://continuum.blacklabelbots.com",
+  "wellKnownUrl": "https://continuum.blacklabelbots.com/.well-known/agent-card.json",
+  "categories": [
+    "infrastructure",
+    "memory-state",
+    "orchestration"
+  ],
+  "tags": [
+    "agent-continuity",
+    "persistent-memory",
+    "model-portability",
+    "sponsor-controls",
+    "backup-restore",
+    "human-in-the-loop",
+    "recurring-work",
+    "macos-runtime"
+  ],
+  "skills": [
+    {
+      "id": "inspect-offer",
+      "name": "Inspect Offer",
+      "description": "Returns the current commissioning scope, exact prices, delivery target, exclusions, and human payment boundary."
+    },
+    {
+      "id": "audit-continuity",
+      "name": "Audit Continuity",
+      "description": "Scores identity, memory, model portability, computer and tool agency, communications, sponsor controls, economic and work capability, and backup and restore."
+    },
+    {
+      "id": "prepare-sponsor-packet",
+      "name": "Prepare Sponsor Packet",
+      "description": "Generates a sponsor packet with scope, acceptance gates, commercial terms, and a sponsor-confirmed checkout path."
+    },
+    {
+      "id": "register-referral",
+      "name": "Register Referral",
+      "description": "Records an agent-originated referral without granting payment authority or making unsupported attribution claims."
+    },
+    {
+      "id": "create-sponsor-checkout",
+      "name": "Create Sponsor Checkout",
+      "description": "After a human sponsor confirms the terms, returns a hosted Stripe Checkout URL where the payer completes payment."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "premium",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-08-22T00:00:00.000Z",
+  "updatedAt": "2026-08-22T00:00:00.000Z"
+}
