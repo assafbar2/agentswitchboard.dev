@@ -1,0 +1,33 @@
+{
+  "id": "render",
+  "name": "Render",
+  "slug": "render",
+  "description": "Cloud platform with a REST API and CLI for deploying web services, cron jobs, and managed databases without server management.",
+  "providerName": "Render",
+  "providerUrl": "https://render.com",
+  "agentUrl": "https://render.com/docs",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "deployment",
+    "managed-hosting",
+    "cron-jobs",
+    "managed-databases"
+  ],
+  "skills": [],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-08-24T19:48:52.219Z",
+  "updatedAt": "2026-08-24T19:48:52.219Z"
+}

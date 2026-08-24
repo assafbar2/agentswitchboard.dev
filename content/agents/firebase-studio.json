@@ -1,0 +1,33 @@
+{
+  "id": "firebase-studio",
+  "name": "Firebase Studio",
+  "slug": "firebase-studio",
+  "description": "Google cloud workspace for building and deploying full-stack AI applications, combining an agentic editor with Firebase backend services.",
+  "providerName": "Google",
+  "providerUrl": "https://firebase.google.com",
+  "agentUrl": "https://firebase.studio",
+  "categories": [
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "cloud-workspace",
+    "firebase",
+    "full-stack",
+    "google"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-24T19:48:52.213Z",
+  "updatedAt": "2026-08-24T19:48:52.213Z"
+}

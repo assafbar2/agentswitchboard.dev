@@ -1,0 +1,33 @@
+{
+  "id": "railway",
+  "name": "Railway",
+  "slug": "railway",
+  "description": "Deployment platform with a GraphQL API and CLI for provisioning services, databases, and environments from code.",
+  "providerName": "Railway",
+  "providerUrl": "https://railway.com",
+  "agentUrl": "https://docs.railway.com",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "deployment",
+    "hosting",
+    "graphql-api",
+    "environments"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-08-24T19:48:52.218Z",
+  "updatedAt": "2026-08-24T19:48:52.218Z"
+}

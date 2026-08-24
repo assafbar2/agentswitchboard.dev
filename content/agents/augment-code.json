@@ -1,0 +1,32 @@
+{
+  "id": "augment-code",
+  "name": "Augment Code",
+  "slug": "augment-code",
+  "description": "Coding assistant that indexes large proprietary codebases to provide context-aware completions, chat, and multi-file agent edits.",
+  "providerName": "Augment",
+  "providerUrl": "https://www.augmentcode.com",
+  "agentUrl": "https://docs.augmentcode.com",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "codebase-indexing",
+    "context-retrieval",
+    "multi-file-edits",
+    "enterprise"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-24T19:48:52.211Z",
+  "updatedAt": "2026-08-24T19:48:52.211Z"
+}

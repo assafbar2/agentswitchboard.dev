@@ -1,0 +1,34 @@
+{
+  "id": "amp",
+  "name": "Amp",
+  "slug": "amp",
+  "description": "Sourcegraph's autonomous coding agent that works across large codebases using code search and indexing to ground its edits.",
+  "providerName": "Sourcegraph",
+  "providerUrl": "https://sourcegraph.com",
+  "agentUrl": "https://ampcode.com",
+  "categories": [
+    "code-devtools",
+    "orchestration"
+  ],
+  "tags": [
+    "code-search",
+    "large-codebase",
+    "sourcegraph",
+    "autonomous-editing"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-08-24T19:48:52.210Z",
+  "updatedAt": "2026-08-24T19:48:52.210Z"
+}

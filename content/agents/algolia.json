@@ -1,0 +1,33 @@
+{
+  "id": "algolia",
+  "name": "Algolia",
+  "slug": "algolia",
+  "description": "Hosted search and discovery API with typo tolerance, faceting, and vector search, callable directly for agent retrieval workloads.",
+  "providerName": "Algolia",
+  "providerUrl": "https://www.algolia.com",
+  "agentUrl": "https://www.algolia.com/doc",
+  "categories": [
+    "research",
+    "vector-databases"
+  ],
+  "tags": [
+    "hosted-search",
+    "faceted-search",
+    "vector-search",
+    "retrieval"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-24T19:48:52.217Z",
+  "updatedAt": "2026-08-24T19:48:52.217Z"
+}

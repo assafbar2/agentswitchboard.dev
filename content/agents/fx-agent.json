@@ -1,0 +1,32 @@
+{
+  "id": "fx-agent",
+  "name": "fx",
+  "slug": "fx-agent",
+  "description": "Tiny native coding agent with no runtime dependency, designed to stay small and fast while driving edits and shell commands locally.",
+  "providerName": "fx",
+  "providerUrl": "https://fx.sh",
+  "agentUrl": "https://fx.sh",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "coding-assistant",
+    "native-binary",
+    "lightweight",
+    "local-first"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-08-24T19:48:52.199Z",
+  "updatedAt": "2026-08-24T19:48:52.199Z"
+}

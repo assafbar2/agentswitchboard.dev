@@ -1,0 +1,33 @@
+{
+  "id": "speko",
+  "name": "Speko",
+  "slug": "speko",
+  "description": "Unified routing API for voice models across providers, giving voice agents one interface for speech-to-text, text-to-speech, and fallback. Y Combinator S26.",
+  "providerName": "Speko",
+  "providerUrl": "https://speko.ai",
+  "agentUrl": "https://speko.ai",
+  "categories": [
+    "voice-messaging",
+    "infrastructure"
+  ],
+  "tags": [
+    "voice-routing",
+    "speech-models",
+    "unified-api",
+    "fallback-routing"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-24T19:48:52.201Z",
+  "updatedAt": "2026-08-24T19:48:52.201Z"
+}

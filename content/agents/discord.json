@@ -1,0 +1,32 @@
+{
+  "id": "discord",
+  "name": "Discord",
+  "slug": "discord",
+  "description": "Chat platform with a documented REST API, gateway, and bot framework for agents that read channels, post messages, and respond to events.",
+  "providerName": "Discord",
+  "providerUrl": "https://discord.com",
+  "agentUrl": "https://discord.com/developers/docs",
+  "categories": [
+    "communication"
+  ],
+  "tags": [
+    "chat-platform",
+    "bot-api",
+    "gateway-events",
+    "community"
+  ],
+  "skills": [],
+  "authType": "bearer",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-24T19:48:52.221Z",
+  "updatedAt": "2026-08-24T19:48:52.221Z"
+}

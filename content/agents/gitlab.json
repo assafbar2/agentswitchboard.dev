@@ -1,0 +1,34 @@
+{
+  "id": "gitlab",
+  "name": "GitLab",
+  "slug": "gitlab",
+  "description": "DevOps platform with a documented REST and GraphQL API for repositories, merge requests, CI pipelines, and issues.",
+  "providerName": "GitLab",
+  "providerUrl": "https://gitlab.com",
+  "agentUrl": "https://docs.gitlab.com/api/rest/",
+  "categories": [
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "version-control",
+    "merge-requests",
+    "ci-pipelines",
+    "devops"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-08-24T19:48:52.215Z",
+  "updatedAt": "2026-08-24T19:48:52.215Z"
+}

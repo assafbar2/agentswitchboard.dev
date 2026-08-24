@@ -1,0 +1,34 @@
+{
+  "id": "ozbrain",
+  "name": "OzBrain",
+  "slug": "ozbrain",
+  "description": "Shared knowledge layer that lets multiple agents read and write to a common memory, so context learned by one agent is available to the others.",
+  "providerName": "OzBrain",
+  "providerUrl": "https://ozbrain.com",
+  "agentUrl": "https://ozbrain.com",
+  "categories": [
+    "memory-state",
+    "orchestration"
+  ],
+  "tags": [
+    "shared-memory",
+    "knowledge-base",
+    "cross-agent-context",
+    "persistence"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-08-24T19:48:52.204Z",
+  "updatedAt": "2026-08-24T19:48:52.204Z"
+}

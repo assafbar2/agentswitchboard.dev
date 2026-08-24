@@ -1,0 +1,33 @@
+{
+  "id": "zoom",
+  "name": "Zoom",
+  "slug": "zoom",
+  "description": "Meetings platform with APIs for scheduling, recordings, transcripts, and webhooks that agents can use to run and summarize calls.",
+  "providerName": "Zoom",
+  "providerUrl": "https://zoom.us",
+  "agentUrl": "https://developers.zoom.us/docs",
+  "categories": [
+    "communication",
+    "scheduling"
+  ],
+  "tags": [
+    "video-meetings",
+    "transcripts",
+    "recordings",
+    "webhooks"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-24T19:48:52.216Z",
+  "updatedAt": "2026-08-24T19:48:52.216Z"
+}

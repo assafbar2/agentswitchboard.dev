@@ -1,0 +1,34 @@
+{
+  "id": "vendo",
+  "name": "Vendo",
+  "slug": "vendo",
+  "description": "Open-source layer that lets end users build features on top of your product using agents, with scoped execution and review. Y Combinator S26.",
+  "providerName": "Vendo",
+  "providerUrl": "https://github.com/runvendo",
+  "agentUrl": "https://github.com/runvendo/vendo",
+  "categories": [
+    "code-devtools",
+    "orchestration"
+  ],
+  "tags": [
+    "user-extensibility",
+    "scoped-execution",
+    "open-source",
+    "embedded-agents"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-08-24T19:48:52.206Z",
+  "updatedAt": "2026-08-24T19:48:52.206Z"
+}

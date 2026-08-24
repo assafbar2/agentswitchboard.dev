@@ -1,0 +1,32 @@
+{
+  "id": "jules",
+  "name": "Jules",
+  "slug": "jules",
+  "description": "Google's asynchronous coding agent that clones a repository, plans a change, and opens a pull request without holding an interactive session.",
+  "providerName": "Google",
+  "providerUrl": "https://google.com",
+  "agentUrl": "https://jules.google",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "asynchronous-coding",
+    "pull-requests",
+    "google",
+    "repository-tasks"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-24T19:48:52.208Z",
+  "updatedAt": "2026-08-24T19:48:52.208Z"
+}

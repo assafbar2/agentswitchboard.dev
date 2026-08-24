@@ -1,0 +1,33 @@
+{
+  "id": "contentful",
+  "name": "Contentful",
+  "slug": "contentful",
+  "description": "Headless CMS with content delivery and management APIs, letting agents read and publish structured content programmatically.",
+  "providerName": "Contentful",
+  "providerUrl": "https://www.contentful.com",
+  "agentUrl": "https://www.contentful.com/developers/docs/",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "headless-cms",
+    "content-delivery",
+    "structured-content",
+    "publishing"
+  ],
+  "skills": [],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-08-24T19:48:52.217Z",
+  "updatedAt": "2026-08-24T19:48:52.217Z"
+}

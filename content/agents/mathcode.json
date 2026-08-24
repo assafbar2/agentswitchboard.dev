@@ -1,0 +1,33 @@
+{
+  "id": "mathcode",
+  "name": "MathCode",
+  "slug": "mathcode",
+  "description": "Mathematical coding agent that formalizes and verifies mathematical reasoning by generating and checking executable code alongside proofs.",
+  "providerName": "Math-AI",
+  "providerUrl": "https://math-ai-org.github.io",
+  "agentUrl": "https://math-ai-org.github.io/mathcode/",
+  "categories": [
+    "research",
+    "code-devtools"
+  ],
+  "tags": [
+    "mathematical-reasoning",
+    "formal-verification",
+    "proof-checking",
+    "research"
+  ],
+  "skills": [],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-08-24T19:48:52.203Z",
+  "updatedAt": "2026-08-24T19:48:52.203Z"
+}

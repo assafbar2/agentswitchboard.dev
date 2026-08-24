@@ -1,0 +1,33 @@
+{
+  "id": "tabnine",
+  "name": "Tabnine",
+  "slug": "tabnine",
+  "description": "Code completion and chat assistant with self-hosted and air-gapped deployment options for teams with strict code-privacy requirements.",
+  "providerName": "Tabnine",
+  "providerUrl": "https://www.tabnine.com",
+  "agentUrl": "https://docs.tabnine.com",
+  "categories": [
+    "code-devtools",
+    "security"
+  ],
+  "tags": [
+    "code-completion",
+    "self-hosted",
+    "air-gapped",
+    "code-privacy"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-24T19:48:52.212Z",
+  "updatedAt": "2026-08-24T19:48:52.212Z"
+}

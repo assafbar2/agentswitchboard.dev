@@ -1,0 +1,32 @@
+{
+  "id": "zed",
+  "name": "Zed",
+  "slug": "zed",
+  "description": "High-performance collaborative code editor written in Rust with a built-in agent panel, edit prediction, and MCP client support.",
+  "providerName": "Zed Industries",
+  "providerUrl": "https://zed.dev",
+  "agentUrl": "https://zed.dev/docs",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "code-editor",
+    "rust",
+    "collaborative-editing",
+    "mcp-client"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-08-24T19:48:52.209Z",
+  "updatedAt": "2026-08-24T19:48:52.209Z"
+}

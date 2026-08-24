@@ -1,0 +1,34 @@
+{
+  "id": "proliferate",
+  "name": "Proliferate",
+  "slug": "proliferate",
+  "description": "Open-source, self-hostable coding agent platform for running cloud coding sessions on your own infrastructure.",
+  "providerName": "Proliferate AI",
+  "providerUrl": "https://github.com/proliferate-ai",
+  "agentUrl": "https://github.com/proliferate-ai/proliferate",
+  "categories": [
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "self-hosted",
+    "cloud-coding",
+    "open-source",
+    "session-management"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-08-24T19:48:52.206Z",
+  "updatedAt": "2026-08-24T19:48:52.206Z"
+}

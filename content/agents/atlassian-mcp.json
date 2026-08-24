@@ -1,0 +1,34 @@
+{
+  "id": "atlassian-mcp",
+  "name": "Atlassian MCP Server",
+  "slug": "atlassian-mcp",
+  "description": "Official Atlassian MCP server giving agents access to Jira issues and Confluence pages for search, creation, and updates.",
+  "providerName": "Atlassian",
+  "providerUrl": "https://www.atlassian.com",
+  "agentUrl": "https://github.com/atlassian/atlassian-mcp-server",
+  "categories": [
+    "orchestration",
+    "communication"
+  ],
+  "tags": [
+    "jira",
+    "confluence",
+    "issue-tracking",
+    "official-mcp",
+    "atlassian"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-08-24T19:48:52.214Z",
+  "updatedAt": "2026-08-24T19:48:52.214Z"
+}

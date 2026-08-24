@@ -1,0 +1,35 @@
+{
+  "id": "cursor-origin",
+  "name": "Cursor Origin",
+  "slug": "cursor-origin",
+  "description": "Git code hosting from Cursor built for agent-driven development, with repository storage, review surfaces, and native integration into the Cursor editor.",
+  "providerName": "Cursor",
+  "providerUrl": "https://cursor.com",
+  "agentUrl": "https://cursor.com/docs/origin",
+  "categories": [
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "code-hosting",
+    "git",
+    "version-control",
+    "cursor",
+    "code-review"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-08-24T19:48:52.194Z",
+  "updatedAt": "2026-08-24T19:48:52.194Z"
+}

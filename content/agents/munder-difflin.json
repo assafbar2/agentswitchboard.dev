@@ -1,0 +1,32 @@
+{
+  "id": "munder-difflin",
+  "name": "Munder Difflin",
+  "slug": "munder-difflin",
+  "description": "Agent harness that runs a simulated office of collaborating agents, assigning roles and routing work between them on shared tasks.",
+  "providerName": "Munder Difflin",
+  "providerUrl": "https://munderdiffl.in",
+  "agentUrl": "https://munderdiffl.in",
+  "categories": [
+    "orchestration"
+  ],
+  "tags": [
+    "multi-agent",
+    "role-assignment",
+    "task-routing",
+    "harness"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-24T19:48:52.200Z",
+  "updatedAt": "2026-08-24T19:48:52.200Z"
+}

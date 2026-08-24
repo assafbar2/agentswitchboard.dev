@@ -1,5 +1,180 @@
 [
   {
+    "action": "updated",
+    "slug": "nero-ai",
+    "name": "Nero AI",
+    "note": "agentUrl updated",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "discord",
+    "name": "Discord",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "bigquery",
+    "name": "BigQuery",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "render",
+    "name": "Render",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "railway",
+    "name": "Railway",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "contentful",
+    "name": "Contentful",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "algolia",
+    "name": "Algolia",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "zoom",
+    "name": "Zoom",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "gitlab",
+    "name": "GitLab",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "atlassian-mcp",
+    "name": "Atlassian MCP Server",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "firebase-studio",
+    "name": "Firebase Studio",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "tabnine",
+    "name": "Tabnine",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "augment-code",
+    "name": "Augment Code",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "lovable",
+    "name": "Lovable",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "amp",
+    "name": "Amp",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "zed",
+    "name": "Zed",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "jules",
+    "name": "Jules",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "v0",
+    "name": "v0",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "proliferate",
+    "name": "Proliferate",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "vendo",
+    "name": "Vendo",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "machine0",
+    "name": "machine0",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "ozbrain",
+    "name": "OzBrain",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "mathcode",
+    "name": "MathCode",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "speko",
+    "name": "Speko",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "autolith",
+    "name": "Autolith",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "munder-difflin",
+    "name": "Munder Difflin",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "fx-agent",
+    "name": "fx",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "huzzah",
+    "name": "Huzzah",
+    "date": "2026-08-24"
+  },
+  {
+    "action": "added",
+    "slug": "cursor-origin",
+    "name": "Cursor Origin",
+    "date": "2026-08-24"
+  },
+  {
     "action": "added",
     "slug": "tableau-mcp",
     "name": "Tableau MCP",

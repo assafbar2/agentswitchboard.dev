@@ -1,0 +1,33 @@
+{
+  "id": "machine0",
+  "name": "machine0",
+  "slug": "machine0",
+  "description": "Persistent CPU and GPU virtual machines for agents that need long-running state, letting a session keep its filesystem and processes between runs. Y Combinator S26.",
+  "providerName": "machine0",
+  "providerUrl": "https://machine0.io",
+  "agentUrl": "https://machine0.io",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "persistent-vm",
+    "gpu-compute",
+    "sandboxed-execution",
+    "long-running"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-08-24T19:48:52.205Z",
+  "updatedAt": "2026-08-24T19:48:52.205Z"
+}

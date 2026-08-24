@@ -1,0 +1,32 @@
+{
+  "id": "lovable",
+  "name": "Lovable",
+  "slug": "lovable",
+  "description": "Prompt-to-app builder that generates full-stack web applications with database, auth, and deploy wired up from a natural-language brief.",
+  "providerName": "Lovable",
+  "providerUrl": "https://lovable.dev",
+  "agentUrl": "https://docs.lovable.dev",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "app-builder",
+    "full-stack",
+    "prompt-to-app",
+    "prototyping"
+  ],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-24T19:48:52.210Z",
+  "updatedAt": "2026-08-24T19:48:52.210Z"
+}

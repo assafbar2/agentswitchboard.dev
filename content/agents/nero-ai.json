@@ -5,7 +5,7 @@
   "description": "Image processing API for upscaling, background removal, photo restoration, colorization, denoising, and compression.",
   "providerName": "Nero",
   "providerUrl": "https://nero.com",
-  "agentUrl": "https://ai.nero.com/developer",
+  "agentUrl": "https://ai.nero.com",
   "categories": [
     "content-media"
   ],
@@ -29,5 +29,5 @@
     "mcp"
   ],
   "createdAt": "2026-08-11T00:40:13.026Z",
-  "updatedAt": "2026-08-11T00:40:13.026Z"
+  "updatedAt": "2026-08-24T19:48:52.997Z"
 }

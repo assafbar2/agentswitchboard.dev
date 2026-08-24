@@ -1,0 +1,32 @@
+{
+  "id": "huzzah",
+  "name": "Huzzah",
+  "slug": "huzzah",
+  "description": "Coding agent built around a structured edit protocol rather than freeform file rewriting, aiming for smaller and more reviewable diffs.",
+  "providerName": "Daniel Vaughn",
+  "providerUrl": "https://www.danielvaughn.dev",
+  "agentUrl": "https://github.com/danielvaughn/hz",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "coding-assistant",
+    "structured-edits",
+    "diff-review",
+    "open-source"
+  ],
+  "skills": [],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-08-24T19:48:52.198Z",
+  "updatedAt": "2026-08-24T19:48:52.198Z"
+}
