@@ -1,0 +1,53 @@
+{
+  "id": "webmcp",
+  "name": "WebMCP",
+  "slug": "webmcp",
+  "description": "Exposes a website's own functions as callable tools for browser AI agents via the W3C WebMCP API (navigator/document.modelContext). Ships a polyfill, TypeScript SDK, and React hooks.",
+  "providerName": "WebMCP-org",
+  "providerUrl": "https://github.com/WebMCP-org",
+  "agentUrl": "https://github.com/WebMCP-org/npm-packages",
+  "categories": [
+    "browser-computer",
+    "code-devtools"
+  ],
+  "tags": [
+    "webmcp",
+    "browser-tools",
+    "navigator-modelcontext",
+    "mcp",
+    "polyfill",
+    "typescript",
+    "react-hooks"
+  ],
+  "skills": [
+    {
+      "id": "tool-registration",
+      "name": "Tool Registration",
+      "description": "Registers a website's functions as typed, callable tools via registerTool so browser AI agents can invoke them directly."
+    },
+    {
+      "id": "browser-mcp-transport",
+      "name": "Browser MCP Transport",
+      "description": "Bridges in-page tools to MCP clients over an in-browser transport, with no backend MCP server to rebuild."
+    },
+    {
+      "id": "framework-hooks",
+      "name": "Framework Hooks",
+      "description": "Provides React hooks and a TypeScript SDK to expose app functionality as WebMCP tools, SSR- and Strict-Mode-safe."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-08-27T07:52:42.668Z",
+  "updatedAt": "2026-08-27T07:52:42.668Z"
+}

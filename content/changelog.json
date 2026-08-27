@@ -176,6 +176,12 @@
   },
   {
     "action": "added",
+    "slug": "webmcp",
+    "name": "WebMCP",
+    "date": "2026-08-27"
+  },
+  {
+    "action": "added",
     "slug": "tableau-mcp",
     "name": "Tableau MCP",
     "date": "2026-08-15"
