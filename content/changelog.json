@@ -1,5 +1,11 @@
 [
   {
+    "action": "added",
+    "slug": "sprint-ops",
+    "name": "Sprint Ops",
+    "date": "2026-08-28"
+  },
+  {
     "action": "updated",
     "slug": "nero-ai",
     "name": "Nero AI",
