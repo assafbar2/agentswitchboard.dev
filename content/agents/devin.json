@@ -7,7 +7,8 @@
   "providerUrl": "https://cognition.ai/",
   "agentUrl": "https://devin.ai/",
   "categories": [
-    "code-devtools"
+    "code-devtools",
+    "autonomous-agents"
   ],
   "tags": [
     "coding-agent",
@@ -29,5 +30,5 @@
     "browser-extension"
   ],
   "createdAt": "2026-05-22T07:35:03.666Z",
-  "updatedAt": "2026-05-22T07:35:03.666Z"
+  "updatedAt": "2026-08-29T07:45:15.127Z"
 }

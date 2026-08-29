@@ -8,7 +8,8 @@
   "agentUrl": "https://docs.all-hands.dev",
   "categories": [
     "code-devtools",
-    "browser-computer"
+    "browser-computer",
+    "autonomous-agents"
   ],
   "tags": [
     "software-agent",
@@ -49,5 +50,5 @@
     "cli"
   ],
   "createdAt": "2026-05-13T16:56:36.959Z",
-  "updatedAt": "2026-05-13T16:56:36.959Z"
+  "updatedAt": "2026-08-29T07:45:15.127Z"
 }

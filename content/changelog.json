@@ -1,5 +1,54 @@
 [
   {
+    "action": "updated",
+    "slug": "openhands",
+    "name": "OpenHands",
+    "note": "Categorized as Autonomous Agents",
+    "date": "2026-08-29"
+  },
+  {
+    "action": "updated",
+    "slug": "devin",
+    "name": "Devin",
+    "note": "Categorized as Autonomous Agents",
+    "date": "2026-08-29"
+  },
+  {
+    "action": "updated",
+    "slug": "cowagent",
+    "name": "CowAgent",
+    "note": "Categorized as Autonomous Agents",
+    "date": "2026-08-29"
+  },
+  {
+    "action": "updated",
+    "slug": "nanobot",
+    "name": "nanobot",
+    "note": "Categorized as Autonomous Agents",
+    "date": "2026-08-29"
+  },
+  {
+    "action": "updated",
+    "slug": "agent-zero",
+    "name": "Agent Zero",
+    "note": "Categorized as Autonomous Agents",
+    "date": "2026-08-29"
+  },
+  {
+    "action": "updated",
+    "slug": "openmanus",
+    "name": "OpenManus",
+    "note": "Categorized as Autonomous Agents",
+    "date": "2026-08-29"
+  },
+  {
+    "action": "updated",
+    "slug": "suna",
+    "name": "Suna",
+    "note": "Categorized as Autonomous Agents",
+    "date": "2026-08-29"
+  },
+  {
     "action": "added",
     "slug": "claude-cowork",
     "name": "Claude Cowork",

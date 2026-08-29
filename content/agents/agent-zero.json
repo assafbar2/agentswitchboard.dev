@@ -7,7 +7,8 @@
   "providerUrl": "https://agent-zero.ai",
   "agentUrl": "https://github.com/agent0ai/agent-zero",
   "categories": [
-    "orchestration"
+    "orchestration",
+    "autonomous-agents"
   ],
   "tags": [
     "agentic-framework",
@@ -48,5 +49,5 @@
     "api"
   ],
   "createdAt": "2026-07-06T07:04:38.400Z",
-  "updatedAt": "2026-07-06T07:04:38.400Z"
+  "updatedAt": "2026-08-29T07:45:15.124Z"
 }
