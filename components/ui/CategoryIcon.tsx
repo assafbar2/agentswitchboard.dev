@@ -18,6 +18,7 @@ import {
   Phone,
   MessageSquare,
   Network,
+  Bot,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -41,6 +42,7 @@ const iconMap: Record<string, LucideIcon> = {
   Phone,
   MessageSquare,
   Network,
+  Bot,
 };
 
 export function CategoryIcon({

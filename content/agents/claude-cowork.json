@@ -1,0 +1,52 @@
+{
+  "id": "claude-cowork",
+  "name": "Claude Cowork",
+  "slug": "claude-cowork",
+  "description": "Works as an AI coworker in Claude that reads your files, runs scheduled tasks across your apps, and ships finished deliverables back to you. On desktop, web, and mobile. By Anthropic.",
+  "providerName": "Anthropic",
+  "providerUrl": "https://www.anthropic.com",
+  "agentUrl": "https://claude.com/cowork",
+  "categories": [
+    "autonomous-agents",
+    "browser-computer"
+  ],
+  "tags": [
+    "ai-coworker",
+    "always-on-agents",
+    "scheduled-tasks",
+    "computer-use",
+    "anthropic",
+    "claude",
+    "file-access"
+  ],
+  "skills": [
+    {
+      "id": "file-system-coworker",
+      "name": "File-System Coworker",
+      "description": "Reads your local files, folders, and apps to complete multi-step knowledge work and hand back a finished deliverable."
+    },
+    {
+      "id": "scheduled-tasks",
+      "name": "Scheduled Tasks",
+      "description": "Runs recurring tasks on a schedule from global and per-folder instructions, working even while you are away."
+    },
+    {
+      "id": "computer-use-dispatch",
+      "name": "Computer Use (Dispatch)",
+      "description": "Operates applications directly via Dispatch computer use to carry out tasks that need real UI interaction."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-29T07:32:33.888Z",
+  "updatedAt": "2026-08-29T07:32:33.888Z"
+}

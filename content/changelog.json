@@ -1,6 +1,18 @@
 [
   {
     "action": "added",
+    "slug": "claude-cowork",
+    "name": "Claude Cowork",
+    "date": "2026-08-29"
+  },
+  {
+    "action": "added",
+    "slug": "grok-bot",
+    "name": "Grok Bot",
+    "date": "2026-08-29"
+  },
+  {
+    "action": "added",
     "slug": "stripe-link",
     "name": "Stripe Link",
     "date": "2026-08-29"

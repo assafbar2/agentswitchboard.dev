@@ -158,5 +158,13 @@
     "description": "Frameworks and engines for coordinating multi-agent workflows — task routing, durable execution, human-in-the-loop handoffs, and parallel agent management.",
     "icon": "Network",
     "sortOrder": 19
+  },
+  {
+    "id": "autonomous-agents",
+    "name": "Autonomous Agents",
+    "slug": "autonomous-agents",
+    "description": "Always-on AI teammates and coworkers that take a goal and run multi-step work end to end — across your files, apps, and inboxes — returning only when a human call is needed. This is the fast-moving frontier of general-purpose agents like Grok Bot and Claude Cowork. For anyone who wants to delegate real knowledge work, not just get answers.",
+    "icon": "Bot",
+    "sortOrder": 20
   }
 ]

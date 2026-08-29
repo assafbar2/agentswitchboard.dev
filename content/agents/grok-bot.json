@@ -1,0 +1,52 @@
+{
+  "id": "grok-bot",
+  "name": "Grok Bot",
+  "slug": "grok-bot",
+  "description": "Runs always-on AI teammates with their own cloud computer that sign into your apps and finish multi-step jobs end to end, checking back for approval when needed. By xAI, from the Cursor merger.",
+  "providerName": "xAI",
+  "providerUrl": "https://x.ai",
+  "agentUrl": "https://grok.com",
+  "categories": [
+    "autonomous-agents",
+    "code-devtools"
+  ],
+  "tags": [
+    "ai-teammates",
+    "always-on-agents",
+    "autonomous-agent",
+    "xai",
+    "cloud-computer",
+    "coworker",
+    "cursor"
+  ],
+  "skills": [
+    {
+      "id": "always-on-teammates",
+      "name": "Always-On Teammates",
+      "description": "Runs autonomous AI teammates you message like colleagues; each keeps working across apps and inboxes without constant prompting."
+    },
+    {
+      "id": "cloud-computer",
+      "name": "Cloud Computer",
+      "description": "Gives every bot its own cloud computer to sign into your tools and execute multi-step jobs end to end."
+    },
+    {
+      "id": "approval-checkpoints",
+      "name": "Approval Checkpoints",
+      "description": "Pauses and returns a task for human sign-off whenever a decision needs a person, then resumes on approval."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-29T07:32:33.886Z",
+  "updatedAt": "2026-08-29T07:32:33.886Z"
+}
