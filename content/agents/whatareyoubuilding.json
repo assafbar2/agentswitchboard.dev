@@ -1,0 +1,51 @@
+{
+  "id": "whatareyoubuilding",
+  "name": "What Are You Building",
+  "slug": "whatareyoubuilding",
+  "description": "Catalogs indie builders and their AI/SaaS products worldwide by category and country. Exposes a public JSON API and MCP server for agent discovery; free community listings, human-reviewed.",
+  "providerName": "What Are You Building",
+  "providerUrl": "https://whatareyoubuilding.ai",
+  "agentUrl": "https://whatareyoubuilding.ai/#directory",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "product-directory",
+    "indie-makers",
+    "product-discovery",
+    "json-api",
+    "mcp",
+    "curated-listings"
+  ],
+  "skills": [
+    {
+      "id": "product-discovery",
+      "name": "Product Discovery",
+      "description": "Searches and filters a global directory of indie AI and SaaS products by category, country, and keyword via a JSON API."
+    },
+    {
+      "id": "mcp-access",
+      "name": "MCP Access",
+      "description": "Exposes the product catalog to AI agents over an MCP server for programmatic browse and lookup."
+    },
+    {
+      "id": "free-listings",
+      "name": "Free Listings",
+      "description": "Lets makers submit products for free; each listing is human-reviewed before it appears in the public directory."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-08-29T07:00:14.832Z",
+  "updatedAt": "2026-08-29T07:00:14.832Z"
+}

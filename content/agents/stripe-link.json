@@ -1,0 +1,50 @@
+{
+  "id": "stripe-link",
+  "name": "Stripe Link",
+  "slug": "stripe-link",
+  "description": "Lets shoppers and AI agents pay in one click using saved cards, bank accounts, and BNPL across 1M+ merchants. Stripe's payment wallet with an approval-gated agent checkout flow.",
+  "providerName": "Stripe",
+  "providerUrl": "https://stripe.com",
+  "agentUrl": "https://link.com",
+  "categories": [
+    "commerce-payments"
+  ],
+  "tags": [
+    "payments",
+    "digital-wallet",
+    "agent-checkout",
+    "one-click-pay",
+    "stripe",
+    "bnpl"
+  ],
+  "skills": [
+    {
+      "id": "one-click-checkout",
+      "name": "One-Click Checkout",
+      "description": "Pays across 1M+ merchant sites using saved cards, bank accounts, or BNPL without re-entering payment details."
+    },
+    {
+      "id": "agent-payments",
+      "name": "Agent Payments",
+      "description": "Lets AI agents pay on a user's behalf while the user retains approval authority over each transaction."
+    },
+    {
+      "id": "multi-method-wallet",
+      "name": "Multi-Method Wallet",
+      "description": "Stores cards, bank accounts, crypto wallets, and buy-now-pay-later options behind a single secure wallet."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-08-29T07:00:14.836Z",
+  "updatedAt": "2026-08-29T07:00:14.836Z"
+}
