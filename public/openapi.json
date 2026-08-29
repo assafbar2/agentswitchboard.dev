@@ -1,0 +1,107 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Agent Switchboard Directory API",
+    "version": "1.0.0",
+    "summary": "Read-only catalog of vetted AI agents, MCP servers, and agentic developer tools.",
+    "description": "Agent Switchboard publishes its whole directory as machine-readable data. There is no authentication and no rate limit beyond ordinary fair use. Use this API to answer questions like 'is there an agent that does X?' or 'which agents expose an MCP server?'. For interactive, tool-shaped access, use the MCP server described at /.well-known/mcp.json instead.",
+    "contact": {
+      "name": "Agent Switchboard",
+      "email": "barnir@agentmail.to",
+      "url": "https://agentswitchboard.dev/contact"
+    },
+    "license": { "name": "MIT", "identifier": "MIT" }
+  },
+  "servers": [{ "url": "https://agentswitchboard.dev", "description": "Production" }],
+  "externalDocs": {
+    "description": "Human and agent documentation",
+    "url": "https://agentswitchboard.dev/for-agents"
+  },
+  "paths": {
+    "/agents.json": {
+      "get": {
+        "operationId": "listAgents",
+        "summary": "Fetch the full agent catalog",
+        "description": "Returns every published agent in one document. Filter client-side on `categories` or `accessMethods`. The payload is cached for five minutes at the edge.",
+        "tags": ["catalog"],
+        "responses": {
+          "200": {
+            "description": "The full catalog.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Catalog" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/mcp": {
+      "post": {
+        "operationId": "mcpTransport",
+        "summary": "Model Context Protocol endpoint (streamable HTTP)",
+        "description": "Speaks MCP over streamable HTTP. Exposes three tools: `search_agents`, `get_agent`, and `list_categories`. This is a JSON-RPC transport, not a REST resource; use an MCP client rather than calling it by hand.",
+        "tags": ["mcp"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "A JSON-RPC 2.0 request as defined by the Model Context Protocol.",
+                "required": ["jsonrpc", "method"],
+                "properties": {
+                  "jsonrpc": { "type": "string", "const": "2.0" },
+                  "id": { "type": ["string", "number"] },
+                  "method": { "type": "string", "examples": ["tools/list", "tools/call"] },
+                  "params": { "type": "object" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "A JSON-RPC response or an SSE stream, depending on the negotiated transport.",
+            "content": { "application/json": { "schema": { "type": "object" } } }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Catalog": {
+        "type": "object",
+        "required": ["source", "total", "agents"],
+        "properties": {
+          "source": { "type": "string" },
+          "description": { "type": "string" },
+          "generated": { "type": "string", "format": "date-time" },
+          "total": { "type": "integer" },
+          "agents": { "type": "array", "items": { "$ref": "#/components/schemas/Agent" } }
+        }
+      },
+      "Agent": {
+        "type": "object",
+        "required": ["name", "slug", "url", "description", "categories"],
+        "properties": {
+          "name": { "type": "string" },
+          "slug": { "type": "string", "description": "Stable identifier, also the `slug` argument to the MCP `get_agent` tool." },
+          "url": { "type": "string", "format": "uri", "description": "Listing page on Agent Switchboard." },
+          "homepage": { "type": ["string", "null"], "format": "uri" },
+          "provider": { "type": ["string", "null"] },
+          "providerUrl": { "type": ["string", "null"], "format": "uri" },
+          "description": { "type": "string" },
+          "categories": { "type": "array", "items": { "type": "string" } },
+          "accessMethods": { "type": "array", "items": { "type": "string" }, "description": "How the agent can be reached, e.g. api, mcp, cli." },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "verified": { "type": "boolean" },
+          "tier": { "type": ["string", "null"] },
+          "createdAt": { "type": ["string", "null"], "format": "date-time" },
+          "updatedAt": { "type": ["string", "null"], "format": "date-time" }
+        }
+      }
+    }
+  }
+}

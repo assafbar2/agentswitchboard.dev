@@ -20,6 +20,10 @@ const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.de
 export const metadata: Metadata = {
   alternates: { canonical: BASE_URL },
   openGraph: {
+    // `type` is repeated here on purpose: a page-level openGraph block replaces
+    // the layout's rather than merging into it, so leaving it out drops og:type
+    // from the homepage only.
+    type: 'website',
     url: BASE_URL,
   },
 };
@@ -55,7 +59,21 @@ export default async function HomePage() {
       '@type': 'Organization',
       name: 'Agent Switchboard',
       url: BASE_URL,
+      logo: `${BASE_URL}/icon.svg`,
       description: 'The curated AI agent directory for developers building on the agentic web.',
+      sameAs: [
+        'https://github.com/assafbar2/agentswitchboard.dev',
+        'https://www.barnir.co',
+      ],
+      contactPoint: [
+        {
+          '@type': 'ContactPoint',
+          contactType: 'customer support',
+          email: 'barnir@agentmail.to',
+          url: `${BASE_URL}/contact`,
+          availableLanguage: ['English'],
+        },
+      ],
     },
   ];
 

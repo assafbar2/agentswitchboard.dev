@@ -22,9 +22,11 @@ const footerLinks = [
   {
     title: 'Company',
     links: [
+      { href: '/about', label: 'About' },
+      { href: '/contact', label: 'Contact' },
       { href: 'https://github.com/assafbar2/agentswitchboard.dev', label: 'GitHub', external: true },
+      { href: '/privacy', label: 'Privacy' },
       { href: '/disclaimer', label: 'Disclaimer' },
-      { href: 'mailto:barnir@agentmail.to?subject=Hey from Agent Switchboard', label: 'Contact Us', external: true },
     ],
   },
 ];

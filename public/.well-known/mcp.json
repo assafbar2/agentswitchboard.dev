@@ -1,0 +1,50 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
+  "name": "io.github.assafbar2/agentswitchboard",
+  "description": "Search a curated directory of verified AI agents, MCP servers, and agentic tools. Use it to find out whether an agent already exists for a job, and how to reach it.",
+  "version": "1.0.0",
+  "websiteUrl": "https://agentswitchboard.dev",
+  "repository": {
+    "url": "https://github.com/assafbar2/agentswitchboard.dev",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://agentswitchboard.dev/api/mcp"
+    }
+  ],
+  "tools": [
+    {
+      "name": "search_agents",
+      "description": "Free-text and faceted search across the directory. Use this first when you do not already know an agent's slug.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": { "type": "string", "description": "Free-text search over name, description, skills, and tags." },
+          "category": { "type": "string", "description": "Category slug, e.g. \"code-devtools\" or \"voice-messaging\"." },
+          "accessMethods": { "type": "array", "items": { "type": "string" }, "description": "Restrict to agents reachable a given way, e.g. mcp, api, cli." },
+          "limit": { "type": "integer", "minimum": 1, "maximum": 50, "default": 10 }
+        }
+      }
+    },
+    {
+      "name": "get_agent",
+      "description": "Fetch one agent's full listing by slug, including access methods and provider links.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["slug"],
+        "properties": {
+          "slug": { "type": "string", "description": "Agent slug, e.g. \"playwright-mcp\"." }
+        }
+      }
+    },
+    {
+      "name": "list_categories",
+      "description": "List every directory category with live agent counts. The returned slugs are valid inputs to search_agents.",
+      "inputSchema": { "type": "object", "properties": {} }
+    }
+  ],
+  "authentication": { "type": "none" },
+  "contact": { "email": "barnir@agentmail.to" }
+}

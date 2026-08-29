@@ -33,6 +33,38 @@ export default function NotFound() {
             Back to home
           </Link>
         </div>
+
+        {/* Machine-readable entry points, so an agent that lands on a dead URL
+            can recover instead of concluding the site is a wall. */}
+        <div className="mt-10 pt-6 border-t border-[var(--border)] text-sm text-[var(--text-secondary)]">
+          <p className="mb-2">Looking for structured data? Start here:</p>
+          <ul className="space-y-1 mono text-xs">
+            <li>
+              <a href="/llms.txt" className="text-[var(--accent)] hover:underline">
+                /llms.txt
+              </a>{' '}
+              — what this site is and when to use it
+            </li>
+            <li>
+              <a href="/sitemap.xml" className="text-[var(--accent)] hover:underline">
+                /sitemap.xml
+              </a>{' '}
+              — every valid URL
+            </li>
+            <li>
+              <a href="/agents.json" className="text-[var(--accent)] hover:underline">
+                /agents.json
+              </a>{' '}
+              — the full catalog as JSON
+            </li>
+            <li>
+              <a href="/openapi.json" className="text-[var(--accent)] hover:underline">
+                /openapi.json
+              </a>{' '}
+              — the HTTP surface
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );

@@ -70,6 +70,7 @@ export default function RootLayout({
         />
         {/* Machine-readable agent context */}
         <link rel="alternate" type="application/json" href="/agents.json" title="Agent Catalog — Agent Switchboard" />
+        <link rel="alternate" type="text/markdown" href="/index.md" title="Agent Switchboard — Markdown" />
         <link rel="ai-index" href="/for-agents" />
       </head>
       <body className="min-h-full flex flex-col antialiased">
