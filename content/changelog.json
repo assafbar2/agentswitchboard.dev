@@ -1,5 +1,11 @@
 [
   {
+    "action": "added",
+    "slug": "artifactories",
+    "name": "Artifactories",
+    "date": "2026-08-30"
+  },
+  {
     "action": "updated",
     "slug": "openhands",
     "name": "OpenHands",
