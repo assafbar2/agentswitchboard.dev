@@ -1,5 +1,11 @@
 [
   {
+    "action": "added",
+    "slug": "sandbase-harness",
+    "name": "SandBase Harness",
+    "date": "2026-08-31"
+  },
+  {
     "action": "updated",
     "slug": "openhands",
     "name": "OpenHands",
