@@ -1,4 +1,8 @@
-[
+[{
+    "action": "added",
+    "slug": "sandbase-harness",
+    "name": "SandBase Harness"
+  },
   {
     "action": "updated",
     "slug": "openhands",

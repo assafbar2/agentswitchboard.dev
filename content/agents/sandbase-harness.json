@@ -1,0 +1,56 @@
+{
+  "id": "sandbase-harness",
+  "name": "SandBase Harness",
+  "slug": "sandbase-harness",
+  "description": "Connects DeepSeek Harness clients to a self-hosted agent runtime with sandboxed sessions, MCP tools, approvals, audit trails, and replay.",
+  "providerName": "SandBase",
+  "providerUrl": "https://github.com/sandbaseai",
+  "agentUrl": "https://github.com/sandbaseai/sandbase-harness",
+  "version": "0.3.8",
+  "categories": [
+    "infrastructure",
+    "security",
+    "code-devtools"
+  ],
+  "tags": [
+    "deepseek-harness",
+    "mcp",
+    "sandboxed-execution",
+    "agent-runtime",
+    "audit-replay",
+    "approvals",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "sandboxed-agent-sessions",
+      "name": "Sandboxed Agent Sessions",
+      "description": "Runs resumable agent sessions in local, Docker, Kubernetes, or self-hosted worker sandboxes with durable event streams and artifacts."
+    },
+    {
+      "id": "mcp-tool-bridge",
+      "name": "MCP Tool Bridge",
+      "description": "Exposes runtime agent, session, turn, artifact, and cancellation operations through a stdio MCP bridge for compatible clients."
+    },
+    {
+      "id": "audit-and-replay",
+      "name": "Audit and Replay",
+      "description": "Records execution events and artifacts so operators can inspect tool activity, replay sessions, and investigate failures."
+    }
+  ],
+  "authType": "none",
+  "authInstructions": "The MCP bridge runs locally over stdio. A connected Harness runtime may optionally require MANAGED_AGENTS_API_KEY.",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-08-30T00:00:00Z",
+  "updatedAt": "2026-08-30T00:00:00Z"
+}
