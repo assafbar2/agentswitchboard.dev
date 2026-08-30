@@ -676,6 +676,12 @@
   },
   {
     "action": "added",
+    "slug": "imaginevid-ai-generation",
+    "name": "ImagineVid AI Generation",
+    "date": "2026-08-07"
+  },
+  {
+    "action": "added",
     "slug": "outreachagent",
     "name": "OutreachAgent",
     "date": "2026-08-03"
