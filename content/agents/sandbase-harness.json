@@ -1,0 +1,55 @@
+{
+  "id": "sandbase-harness",
+  "name": "SandBase Harness",
+  "slug": "sandbase-harness",
+  "description": "Runs local-first, self-hosted AI agents with persistent sessions, sandboxed tools, memory, credentials, audit trails, replay, and a built-in Console.",
+  "providerName": "SandBaseAI",
+  "providerUrl": "https://github.com/sandbaseai",
+  "agentUrl": "https://github.com/sandbaseai/sandbase-harness",
+  "categories": [
+    "orchestration",
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "agent-harness",
+    "self-hosted",
+    "plugin-architecture",
+    "sandboxed-execution",
+    "session-persistence",
+    "mcp",
+    "audit-replay",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "plugin-composition",
+      "name": "Plugin Composition",
+      "description": "Composes models, tools, skills, sandboxes, storage, and UI components through replaceable plugin interfaces."
+    },
+    {
+      "id": "persistent-sessions",
+      "name": "Persistent Sessions",
+      "description": "Persists and resumes agent sessions while exposing event streams, audit records, and replayable execution history."
+    },
+    {
+      "id": "sandboxed-tools",
+      "name": "Sandboxed Tools",
+      "description": "Runs agent-generated commands and code through local, Docker, Kubernetes, or self-hosted worker sandbox backends."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-08-31T00:00:00Z",
+  "updatedAt": "2026-08-31T00:00:00Z"
+}
