@@ -4,6 +4,7 @@ import { JetBrains_Mono, Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { WebMcp } from '@/components/WebMcp';
 import './globals.css';
 
 const jetbrainsMono = JetBrains_Mono({
@@ -77,6 +78,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <WebMcp />
         <Analytics />
         {/* Google Analytics — loaded after hydration to keep it off the critical path */}
         <Script
