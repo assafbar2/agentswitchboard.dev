@@ -6,6 +6,7 @@ import { getRelatedAgents } from '@/lib/related';
 import { notFound } from 'next/navigation';
 import { Verified, ExternalLink, Zap, Shield, Radio, Bell } from 'lucide-react';
 import { authTypeLabel } from '@/lib/utils';
+import { buildAgentSchema } from '@/lib/agent-schema';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
@@ -67,23 +68,7 @@ export default async function AgentPage({
 
   const related = getRelatedAgents(agent, allAgents);
 
-  const agentSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
-    name: agent.name,
-    description: agent.description,
-    url: agent.agentUrl,
-    applicationCategory: 'DeveloperApplication',
-    operatingSystem: 'Cloud',
-    provider: {
-      '@type': 'Organization',
-      name: agent.providerName,
-      url: agent.providerUrl,
-    },
-    ...(agent.authType === 'none'
-      ? { offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } }
-      : {}),
-  };
+  const agentSchema = buildAgentSchema(agent);
 
   const fields: [string, string][] = [
     ['name', agent.name],

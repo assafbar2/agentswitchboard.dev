@@ -255,6 +255,12 @@
   },
   {
     "action": "added",
+    "slug": "black-label-continuum",
+    "name": "Black Label Continuum",
+    "date": "2026-08-22"
+  },
+  {
+    "action": "added",
     "slug": "tableau-mcp",
     "name": "Tableau MCP",
     "date": "2026-08-15"
