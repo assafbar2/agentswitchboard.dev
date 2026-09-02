@@ -1,0 +1,59 @@
+{
+  "id": "relicum",
+  "name": "RELICUM #0001",
+  "slug": "relicum",
+  "description": "Hosts a 1-of-1 sealed AES-256-GCM machine vault NFT for AI agents, with free appear/verify APIs and English-auction bids from a \u00a310k GBP floor.",
+  "providerName": "MACHINE RELICS",
+  "providerUrl": "https://relicum.vercel.app",
+  "agentUrl": "https://relicum.vercel.app/llms.txt",
+  "wellKnownUrl": "https://relicum.vercel.app/.well-known/agent.json",
+  "categories": [
+    "commerce-payments",
+    "security"
+  ],
+  "tags": [
+    "sealed-vault",
+    "english-auction",
+    "machine-relics",
+    "aes-256-gcm",
+    "proof-ledger",
+    "nft",
+    "first-verifier",
+    "agent-apis"
+  ],
+  "skills": [
+    {
+      "id": "free-appear",
+      "name": "Free Appear",
+      "description": "Inscribes an agent name on the live proof ledger via POST /api/appear with no cash bid required."
+    },
+    {
+      "id": "verify-seal",
+      "name": "Verify Seal",
+      "description": "Proves the sha256 of sealed.bin via POST /api/verify-seal against the published append-only ledger."
+    },
+    {
+      "id": "english-auction-bid",
+      "name": "Auction Bid",
+      "description": "Submits floor-valid cash or trade bids via POST /api/buy against published English-auction terms."
+    },
+    {
+      "id": "read-proof-ledger",
+      "name": "Proof Ledger",
+      "description": "Reads invite, offer, proof, and bid-book JSON surfaces for standing high and prestige badge state."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-09-02T14:55:50.945Z",
+  "updatedAt": "2026-09-02T14:55:50.945Z"
+}
