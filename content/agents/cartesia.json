@@ -1,0 +1,50 @@
+{
+  "id": "cartesia",
+  "name": "Cartesia",
+  "slug": "cartesia",
+  "description": "Delivers ultra-low-latency text-to-speech and speech-to-text through the Sonic model family, with a voice-agent framework and streaming WebSocket API.",
+  "providerName": "Cartesia",
+  "providerUrl": "https://www.cartesia.ai",
+  "agentUrl": "https://docs.cartesia.ai",
+  "categories": [
+    "voice-messaging"
+  ],
+  "tags": [
+    "text-to-speech",
+    "speech-to-text",
+    "low-latency-voice",
+    "voice-cloning",
+    "sonic-model",
+    "websocket-streaming"
+  ],
+  "skills": [
+    {
+      "id": "speech-synthesis",
+      "name": "Speech Synthesis",
+      "description": "Generates natural speech from text with latency low enough for real-time conversational voice agents."
+    },
+    {
+      "id": "voice-cloning",
+      "name": "Voice Cloning",
+      "description": "Creates a reusable custom voice from a short reference sample for consistent agent identity across calls."
+    },
+    {
+      "id": "speech-recognition",
+      "name": "Speech Recognition",
+      "description": "Transcribes streaming audio to text, feeding live user speech into an agent loop as it is spoken."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-09-02T07:21:11.736Z",
+  "updatedAt": "2026-09-02T07:21:11.736Z"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "agent-lightning",
+  "name": "Agent Lightning",
+  "slug": "agent-lightning",
+  "description": "Optimizes any AI agent with reinforcement learning without rewriting it, decoupling training from execution so existing agents plug into the trainer unchanged.",
+  "providerName": "Microsoft",
+  "providerUrl": "https://www.microsoft.com",
+  "agentUrl": "https://github.com/microsoft/agent-lightning",
+  "categories": [
+    "orchestration",
+    "research"
+  ],
+  "tags": [
+    "reinforcement-learning",
+    "agent-training",
+    "framework-agnostic",
+    "microsoft",
+    "prompt-optimization",
+    "reward-modeling"
+  ],
+  "skills": [
+    {
+      "id": "rl-training",
+      "name": "RL Training",
+      "description": "Trains agent policies with reinforcement learning against task rewards, improving behaviour without changing agent code."
+    },
+    {
+      "id": "framework-bridge",
+      "name": "Framework Bridge",
+      "description": "Connects agents built in LangChain, AutoGen, OpenAI Agents SDK, or plain Python into a single training loop."
+    },
+    {
+      "id": "trace-collection",
+      "name": "Trace Collection",
+      "description": "Captures agent execution traces and turns them into training data for reward modeling and policy optimization."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-09-02T07:21:11.720Z",
+  "updatedAt": "2026-09-02T07:21:11.720Z"
+}

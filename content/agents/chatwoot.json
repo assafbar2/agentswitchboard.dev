@@ -1,0 +1,51 @@
+{
+  "id": "chatwoot",
+  "name": "Chatwoot",
+  "slug": "chatwoot",
+  "description": "Runs an open-source omnichannel customer support desk with the Captain AI agent, exposing conversations, contacts, and automation through a full REST API.",
+  "providerName": "Chatwoot",
+  "providerUrl": "https://www.chatwoot.com",
+  "agentUrl": "https://developers.chatwoot.com",
+  "categories": [
+    "customer-support",
+    "communication"
+  ],
+  "tags": [
+    "helpdesk",
+    "omnichannel-inbox",
+    "captain-ai",
+    "live-chat",
+    "open-source-support",
+    "webhooks"
+  ],
+  "skills": [
+    {
+      "id": "conversation-api",
+      "name": "Conversation API",
+      "description": "Reads and writes support conversations, messages, and assignments across every connected channel programmatically."
+    },
+    {
+      "id": "captain-agent",
+      "name": "Captain AI Agent",
+      "description": "Answers customer questions from a knowledge base and hands off to a human agent when confidence drops."
+    },
+    {
+      "id": "contact-management",
+      "name": "Contact Management",
+      "description": "Creates and updates contacts with custom attributes and labels to give agents durable customer context."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-09-02T07:21:11.739Z",
+  "updatedAt": "2026-09-02T07:21:11.739Z"
+}

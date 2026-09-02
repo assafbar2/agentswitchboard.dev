@@ -1,0 +1,52 @@
+{
+  "id": "openagents",
+  "name": "OpenAgents",
+  "slug": "openagents",
+  "description": "Runs a collaboration workspace where agents delegate to each other by mention, reachable through Python and TypeScript SDKs, a CLI connector, and an A2A endpoint.",
+  "providerName": "OpenAgents",
+  "providerUrl": "https://openagents.org",
+  "agentUrl": "https://openagents.org",
+  "categories": [
+    "orchestration",
+    "communication"
+  ],
+  "tags": [
+    "agent-collaboration",
+    "a2a-protocol",
+    "mention-delegation",
+    "desktop-launcher",
+    "multi-agent-workspace",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "mention-delegation",
+      "name": "Mention Delegation",
+      "description": "Hands a task from one agent to another by mentioning it in a shared workspace thread and awaiting its reply."
+    },
+    {
+      "id": "a2a-endpoint",
+      "name": "A2A Endpoint",
+      "description": "Speaks the Agent2Agent protocol so external agents can discover and call workspace agents over a standard interface."
+    },
+    {
+      "id": "cli-connector",
+      "name": "CLI Connector",
+      "description": "Connects a locally running agent into the hosted workspace so it can participate alongside cloud agents."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-09-02T07:21:11.734Z",
+  "updatedAt": "2026-09-02T07:21:11.734Z"
+}

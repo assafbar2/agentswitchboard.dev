@@ -1,0 +1,51 @@
+{
+  "id": "manus",
+  "name": "Manus",
+  "slug": "manus",
+  "description": "Runs general-purpose autonomous agents inside a cloud VM that browse, write and execute code, and handle files across long multi-step tasks. Public REST API.",
+  "providerName": "Butterfly Effect",
+  "providerUrl": "https://manus.im",
+  "agentUrl": "https://open.manus.im/docs/v2/introduction",
+  "categories": [
+    "autonomous-agents",
+    "browser-computer"
+  ],
+  "tags": [
+    "general-purpose-agent",
+    "cloud-vm",
+    "multi-step-tasks",
+    "agent-sandbox",
+    "task-delegation",
+    "file-handling"
+  ],
+  "skills": [
+    {
+      "id": "task-execution",
+      "name": "Task Execution",
+      "description": "Takes a high-level goal and works it end to end inside a cloud VM, planning and running the steps autonomously."
+    },
+    {
+      "id": "web-browsing",
+      "name": "Web Browsing",
+      "description": "Navigates and reads live websites from inside the sandbox to gather information the task depends on."
+    },
+    {
+      "id": "artifact-delivery",
+      "name": "Artifact Delivery",
+      "description": "Produces files, reports, and running code as task outputs and returns them as downloadable artifacts."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-09-02T07:21:11.735Z",
+  "updatedAt": "2026-09-02T07:21:11.735Z"
+}

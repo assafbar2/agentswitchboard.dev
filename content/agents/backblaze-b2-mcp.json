@@ -1,0 +1,50 @@
+{
+  "id": "backblaze-b2-mcp",
+  "name": "Backblaze B2 MCP",
+  "slug": "backblaze-b2-mcp",
+  "description": "Exposes Backblaze B2 cloud storage to agents through 40 tools spanning native B2 operations, S3-compatible data plane calls, and bucket analytics.",
+  "providerName": "Backblaze",
+  "providerUrl": "https://www.backblaze.com",
+  "agentUrl": "https://github.com/backblaze-labs/b2-mcp",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "object-storage",
+    "backblaze-b2",
+    "s3-compatible",
+    "bucket-analytics",
+    "cloud-storage",
+    "file-operations"
+  ],
+  "skills": [
+    {
+      "id": "bucket-operations",
+      "name": "Bucket Operations",
+      "description": "Creates, lists, and configures B2 buckets and their lifecycle rules through native Backblaze API calls."
+    },
+    {
+      "id": "s3-data-plane",
+      "name": "S3 Data Plane",
+      "description": "Uploads, downloads, copies, and deletes objects using S3-compatible operations against B2 storage."
+    },
+    {
+      "id": "storage-analytics",
+      "name": "Storage Analytics",
+      "description": "Reports bucket size, object counts, and usage breakdowns so agents can reason about storage cost and growth."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-09-02T07:21:11.733Z",
+  "updatedAt": "2026-09-02T07:21:11.733Z"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "vercel-fx",
+  "name": "fx",
+  "slug": "vercel-fx",
+  "description": "Embeds a tiny native coding agent written in Zig into larger systems, installable with one command. Open source and designed as a harness other tools can build on.",
+  "providerName": "Vercel",
+  "providerUrl": "https://vercel.com",
+  "agentUrl": "https://fx.sh",
+  "categories": [
+    "code-devtools",
+    "orchestration"
+  ],
+  "tags": [
+    "coding-agent",
+    "zig",
+    "embeddable",
+    "agent-harness",
+    "vercel",
+    "single-binary"
+  ],
+  "skills": [
+    {
+      "id": "embedded-agent",
+      "name": "Embedded Agent",
+      "description": "Runs a coding agent as a library inside a host application rather than as a standalone terminal session."
+    },
+    {
+      "id": "native-harness",
+      "name": "Native Harness",
+      "description": "Provides a minimal single-binary agent harness with no runtime dependencies, installable through a one-line script."
+    },
+    {
+      "id": "code-editing",
+      "name": "Code Editing",
+      "description": "Reads, edits, and runs code in a working directory, applying model-generated changes directly to files on disk."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-09-02T07:21:11.715Z",
+  "updatedAt": "2026-09-02T07:21:11.715Z"
+}

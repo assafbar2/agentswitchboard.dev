@@ -1,0 +1,51 @@
+{
+  "id": "lancedb",
+  "name": "LanceDB",
+  "slug": "lancedb",
+  "description": "Stores and searches multimodal vectors in an embedded database built on the Lance columnar format, running in-process or against LanceDB Cloud.",
+  "providerName": "LanceDB",
+  "providerUrl": "https://www.lancedb.com",
+  "agentUrl": "https://lancedb.github.io/lancedb",
+  "categories": [
+    "vector-databases",
+    "memory-state"
+  ],
+  "tags": [
+    "vector-search",
+    "embedded-database",
+    "lance-format",
+    "multimodal-retrieval",
+    "columnar-storage",
+    "hybrid-search"
+  ],
+  "skills": [
+    {
+      "id": "vector-search",
+      "name": "Vector Search",
+      "description": "Runs approximate nearest-neighbour search over embeddings stored in an embedded, zero-server database process."
+    },
+    {
+      "id": "multimodal-storage",
+      "name": "Multimodal Storage",
+      "description": "Stores text, image, and video embeddings alongside their source data in a single Lance-format table."
+    },
+    {
+      "id": "hybrid-retrieval",
+      "name": "Hybrid Retrieval",
+      "description": "Combines vector similarity with structured filters and full-text matching in one query for grounded agent recall."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-09-02T07:21:11.737Z",
+  "updatedAt": "2026-09-02T07:21:11.737Z"
+}

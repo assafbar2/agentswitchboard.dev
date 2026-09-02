@@ -1,0 +1,51 @@
+{
+  "id": "paypal-agent-toolkit",
+  "name": "PayPal Agent Toolkit",
+  "slug": "paypal-agent-toolkit",
+  "description": "Wires PayPal payments, invoices, disputes, subscriptions, and shipment tracking into agents through an MCP server and packages for the major agent frameworks.",
+  "providerName": "PayPal",
+  "providerUrl": "https://www.paypal.com",
+  "agentUrl": "https://developer.paypal.com/ai-tools/mcp-server",
+  "categories": [
+    "commerce-payments"
+  ],
+  "tags": [
+    "paypal",
+    "invoicing",
+    "dispute-management",
+    "subscription-billing",
+    "shipment-tracking",
+    "framework-adapters"
+  ],
+  "skills": [
+    {
+      "id": "invoice-management",
+      "name": "Invoice Management",
+      "description": "Creates, sends, and tracks PayPal invoices, including reminders and payment status for each outstanding item."
+    },
+    {
+      "id": "dispute-handling",
+      "name": "Dispute Handling",
+      "description": "Lists open disputes and submits evidence or responses against them from inside an agent workflow."
+    },
+    {
+      "id": "subscription-billing",
+      "name": "Subscription Billing",
+      "description": "Manages subscription plans and active subscriptions, covering creation, updates, and cancellation."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-09-02T07:21:11.746Z",
+  "updatedAt": "2026-09-02T07:21:11.746Z"
+}

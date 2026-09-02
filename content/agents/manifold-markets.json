@@ -1,0 +1,50 @@
+{
+  "id": "manifold-markets",
+  "name": "Manifold Markets",
+  "slug": "manifold-markets",
+  "description": "Reads and trades on play-money prediction markets through an open REST and WebSocket API, with bot accounts explicitly permitted and tagged.",
+  "providerName": "Manifold Markets",
+  "providerUrl": "https://manifold.markets",
+  "agentUrl": "https://docs.manifold.markets/api",
+  "categories": [
+    "prediction-markets"
+  ],
+  "tags": [
+    "prediction-markets",
+    "forecasting",
+    "bot-friendly-api",
+    "play-money",
+    "market-creation",
+    "websocket-feed"
+  ],
+  "skills": [
+    {
+      "id": "market-data",
+      "name": "Market Data",
+      "description": "Reads open markets, current probabilities, and full bet history without authentication for forecasting agents."
+    },
+    {
+      "id": "place-bets",
+      "name": "Place Bets",
+      "description": "Places and cancels bets on prediction markets from an authenticated bot account within published rate limits."
+    },
+    {
+      "id": "market-creation",
+      "name": "Market Creation",
+      "description": "Creates new binary, multiple-choice, or numeric markets programmatically and resolves them when outcomes land."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-09-02T07:21:11.749Z",
+  "updatedAt": "2026-09-02T07:21:11.749Z"
+}

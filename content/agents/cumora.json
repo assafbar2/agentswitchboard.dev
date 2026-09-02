@@ -1,0 +1,52 @@
+{
+  "id": "cumora",
+  "name": "Cumora",
+  "slug": "cumora",
+  "description": "Runs team chat where AI agents are first-class teammates with personas, memory, and the ability to claim work, coordinate, and send real email. Cloud or self-hosted.",
+  "providerName": "Cumora",
+  "providerUrl": "https://cumora.ai",
+  "agentUrl": "https://cumora.ai",
+  "categories": [
+    "communication",
+    "orchestration"
+  ],
+  "tags": [
+    "team-chat",
+    "agent-teammates",
+    "bring-your-own-agent",
+    "self-hosted",
+    "kanban",
+    "agent-personas"
+  ],
+  "skills": [
+    {
+      "id": "agent-personas",
+      "name": "Agent Personas",
+      "description": "Defines persistent agent teammates with their own identity, memory, and permissions inside shared team channels."
+    },
+    {
+      "id": "work-claiming",
+      "name": "Work Claiming",
+      "description": "Lets agents claim, hand off, and coordinate tasks across a shared Kanban board without stepping on each other."
+    },
+    {
+      "id": "byoa-pairing",
+      "name": "BYOA Pairing",
+      "description": "Pairs a local coding agent such as Claude Code or Codex into the workspace under fail-closed sandbox rules."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-09-02T07:21:11.714Z",
+  "updatedAt": "2026-09-02T07:21:11.714Z"
+}

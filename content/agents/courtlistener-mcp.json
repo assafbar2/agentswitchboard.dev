@@ -1,0 +1,52 @@
+{
+  "id": "courtlistener-mcp",
+  "name": "CourtListener MCP",
+  "slug": "courtlistener-mcp",
+  "description": "Searches US case law, PACER dockets, judges, citations, and oral arguments through a hosted MCP server over the Free Law Project CourtListener database.",
+  "providerName": "Free Law Project",
+  "providerUrl": "https://free.law",
+  "agentUrl": "https://mcp.courtlistener.com",
+  "categories": [
+    "legal",
+    "research"
+  ],
+  "tags": [
+    "case-law",
+    "pacer-dockets",
+    "citation-lookup",
+    "oral-arguments",
+    "judge-records",
+    "public-domain-law"
+  ],
+  "skills": [
+    {
+      "id": "case-search",
+      "name": "Case Law Search",
+      "description": "Searches millions of US court opinions by query, court, and date, returning full text with citation metadata."
+    },
+    {
+      "id": "docket-lookup",
+      "name": "Docket Lookup",
+      "description": "Retrieves PACER docket entries and filings for federal cases so agents can trace litigation history."
+    },
+    {
+      "id": "citation-resolution",
+      "name": "Citation Resolution",
+      "description": "Resolves legal citations to the underlying opinion and reports which later cases cite it."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-09-02T07:21:11.748Z",
+  "updatedAt": "2026-09-02T07:21:11.748Z"
+}

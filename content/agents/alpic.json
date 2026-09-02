@@ -1,0 +1,52 @@
+{
+  "id": "alpic",
+  "name": "Alpic",
+  "slug": "alpic",
+  "description": "Deploys, hosts, monitors, and debugs MCP servers on an MCP-native cloud, with its own MCP server for managing projects, deployments, and analytics.",
+  "providerName": "Alpic",
+  "providerUrl": "https://alpic.ai",
+  "agentUrl": "https://alpic.ai",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "mcp-hosting",
+    "mcp-deployment",
+    "server-monitoring",
+    "mcp-native-cloud",
+    "deployment-analytics",
+    "managed-runtime"
+  ],
+  "skills": [
+    {
+      "id": "mcp-deploy",
+      "name": "MCP Deployment",
+      "description": "Deploys an MCP server from source to a managed runtime with transport, scaling, and TLS handled by the platform."
+    },
+    {
+      "id": "server-monitoring",
+      "name": "Server Monitoring",
+      "description": "Tracks tool call volume, latency, and errors across hosted MCP servers to surface failures in production."
+    },
+    {
+      "id": "project-management",
+      "name": "Project Management",
+      "description": "Manages projects, environments, and deployments through Alpic own MCP server from inside an agent session."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-09-02T07:21:11.731Z",
+  "updatedAt": "2026-09-02T07:21:11.731Z"
+}

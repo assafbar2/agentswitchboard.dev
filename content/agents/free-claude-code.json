@@ -1,0 +1,51 @@
+{
+  "id": "free-claude-code",
+  "name": "free-claude-code",
+  "slug": "free-claude-code",
+  "description": "Routes Claude Code, Codex, and OpenCode through 48 model providers from a local gateway, letting terminal, IDE, and mobile clients share one configurable backend.",
+  "providerName": "Ali Shahryar",
+  "providerUrl": "https://github.com/Alishahryar1",
+  "agentUrl": "https://github.com/Alishahryar1/free-claude-code",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "model-gateway",
+    "provider-routing",
+    "coding-agent-backend",
+    "local-proxy",
+    "multi-provider",
+    "terminal-agents"
+  ],
+  "skills": [
+    {
+      "id": "provider-routing",
+      "name": "Provider Routing",
+      "description": "Points coding agents at any of 48 supported model providers through one local gateway with per-provider configuration."
+    },
+    {
+      "id": "client-bridging",
+      "name": "Client Bridging",
+      "description": "Serves the same backend to terminal, IDE, and mobile clients so one setup covers every place you run an agent."
+    },
+    {
+      "id": "voice-input",
+      "name": "Voice Input",
+      "description": "Accepts spoken prompts as an input mode for supported clients, transcribing them into agent instructions."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-09-02T07:21:11.728Z",
+  "updatedAt": "2026-09-02T07:21:11.728Z"
+}

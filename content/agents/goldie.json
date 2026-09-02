@@ -1,0 +1,51 @@
+{
+  "id": "goldie",
+  "name": "Goldie",
+  "slug": "goldie",
+  "description": "Generates App Store and Google Play screenshots and preview videos by replaying app flows on a simulator, framing the captures, and validating them against store upload rules.",
+  "providerName": "Kacper Kapuściak",
+  "providerUrl": "https://goldie.dev",
+  "agentUrl": "https://github.com/kacperkapusciak/goldie",
+  "categories": [
+    "code-devtools",
+    "content-media"
+  ],
+  "tags": [
+    "app-store-assets",
+    "mobile-screenshots",
+    "simulator-automation",
+    "preview-video",
+    "claude-code-plugin",
+    "store-validation"
+  ],
+  "skills": [
+    {
+      "id": "flow-replay",
+      "name": "Flow Replay",
+      "description": "Drives an app through scripted flows on an iOS simulator or Android emulator and captures each screen along the way."
+    },
+    {
+      "id": "screenshot-framing",
+      "name": "Screenshot Framing",
+      "description": "Frames raw captures into store-ready marketing screenshots at the exact dimensions each app store requires."
+    },
+    {
+      "id": "preview-video",
+      "name": "Preview Video",
+      "description": "Joins recorded flow clips into an App Store or Play Store preview video and checks it against upload constraints."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-09-02T07:21:11.718Z",
+  "updatedAt": "2026-09-02T07:21:11.718Z"
+}

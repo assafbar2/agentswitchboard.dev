@@ -1,0 +1,50 @@
+{
+  "id": "powerbi-modeling-mcp",
+  "name": "Power BI Modeling MCP",
+  "slug": "powerbi-modeling-mcp",
+  "description": "Brings Power BI semantic modeling to agents — read and edit TMDL definitions, create measures, and modify tabular models directly from an AI coding assistant.",
+  "providerName": "Microsoft",
+  "providerUrl": "https://www.microsoft.com",
+  "agentUrl": "https://github.com/microsoft/powerbi-modeling-mcp",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "power-bi",
+    "semantic-model",
+    "tmdl",
+    "dax-measures",
+    "microsoft",
+    "tabular-model"
+  ],
+  "skills": [
+    {
+      "id": "tmdl-editing",
+      "name": "TMDL Editing",
+      "description": "Reads and writes Tabular Model Definition Language files so agents can modify a semantic model as structured code."
+    },
+    {
+      "id": "measure-authoring",
+      "name": "Measure Authoring",
+      "description": "Creates and updates DAX measures, columns, and hierarchies inside a Power BI semantic model."
+    },
+    {
+      "id": "model-inspection",
+      "name": "Model Inspection",
+      "description": "Inspects tables, relationships, and existing measures in a connected model to ground agent edits in real structure."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-09-02T07:21:11.725Z",
+  "updatedAt": "2026-09-02T07:21:11.725Z"
+}

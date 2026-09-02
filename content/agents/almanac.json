@@ -1,0 +1,51 @@
+{
+  "id": "almanac",
+  "name": "Almanac",
+  "slug": "almanac",
+  "description": "Compiles a company-wide wiki from Slack, files, wikis, and repos, then gives agents its own computer plus MCP search over that shared brain.",
+  "providerName": "Almanac",
+  "providerUrl": "https://usealmanac.com",
+  "agentUrl": "https://usealmanac.com",
+  "categories": [
+    "memory-state",
+    "research"
+  ],
+  "tags": [
+    "company-knowledge",
+    "shared-wiki",
+    "slack-ingest",
+    "yc-backed",
+    "agent-computer",
+    "knowledge-search"
+  ],
+  "skills": [
+    {
+      "id": "brain-search",
+      "name": "Brain Search",
+      "description": "Searches a compiled company wiki built from Slack, files, wikis, and repositories to answer questions with sources."
+    },
+    {
+      "id": "wiki-compilation",
+      "name": "Wiki Compilation",
+      "description": "Continuously assembles scattered internal sources into a single structured wiki that stays current as inputs change."
+    },
+    {
+      "id": "page-scraping",
+      "name": "Page Scraping",
+      "description": "Fetches and extracts external web pages on demand so agents can pull outside context into the shared brain."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-09-02T07:21:11.729Z",
+  "updatedAt": "2026-09-02T07:21:11.729Z"
+}

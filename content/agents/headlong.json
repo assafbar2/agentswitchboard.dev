@@ -1,0 +1,51 @@
+{
+  "id": "headlong",
+  "name": "Headlong",
+  "slug": "headlong",
+  "description": "Gives agents persistent agency through a self-guided think loop that keeps running between user interactions. Open-source microharness whose core is under 10K lines of Bash.",
+  "providerName": "Laude Institute",
+  "providerUrl": "https://www.laude.org",
+  "agentUrl": "https://headlong.ai",
+  "categories": [
+    "autonomous-agents",
+    "orchestration"
+  ],
+  "tags": [
+    "persistent-agency",
+    "agent-harness",
+    "self-directed-loop",
+    "bash",
+    "research-project",
+    "long-running-agents"
+  ],
+  "skills": [
+    {
+      "id": "think-loop",
+      "name": "Continuous Think Loop",
+      "description": "Keeps an agent reasoning and acting on its own between user turns instead of idling until the next prompt arrives."
+    },
+    {
+      "id": "microharness",
+      "name": "Minimal Harness",
+      "description": "Runs the whole agent loop from a compact Bash core that is small enough to read end to end and modify directly."
+    },
+    {
+      "id": "interaction-handoff",
+      "name": "Interaction Handoff",
+      "description": "Interleaves self-directed work with user interactions, carrying context forward across both modes of operation."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-09-02T07:21:11.720Z",
+  "updatedAt": "2026-09-02T07:21:11.720Z"
+}

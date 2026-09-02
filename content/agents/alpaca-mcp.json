@@ -1,0 +1,51 @@
+{
+  "id": "alpaca-mcp",
+  "name": "Alpaca MCP",
+  "slug": "alpaca-mcp",
+  "description": "Trades stocks, ETFs, crypto, and options through a regulated broker from an agent, covering positions, orders, and market data with a paper-trading sandbox.",
+  "providerName": "Alpaca",
+  "providerUrl": "https://alpaca.markets",
+  "agentUrl": "https://github.com/alpacahq/alpaca-mcp-server",
+  "categories": [
+    "finance"
+  ],
+  "tags": [
+    "brokerage-api",
+    "order-execution",
+    "paper-trading",
+    "options-trading",
+    "portfolio-positions",
+    "market-data"
+  ],
+  "skills": [
+    {
+      "id": "order-placement",
+      "name": "Order Placement",
+      "description": "Places, modifies, and cancels equity, crypto, and options orders against a live or paper brokerage account."
+    },
+    {
+      "id": "position-tracking",
+      "name": "Position Tracking",
+      "description": "Reports open positions, account balances, and realised profit and loss for portfolio-aware agent decisions."
+    },
+    {
+      "id": "market-data",
+      "name": "Market Data",
+      "description": "Fetches quotes, bars, and historical price data for supported instruments to inform trading logic."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-09-02T07:21:11.747Z",
+  "updatedAt": "2026-09-02T07:21:11.747Z"
+}

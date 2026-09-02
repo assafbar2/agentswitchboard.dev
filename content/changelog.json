@@ -1,5 +1,233 @@
 [
   {
+    "action": "added",
+    "slug": "manifold-markets",
+    "name": "Manifold Markets",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "courtlistener-mcp",
+    "name": "CourtListener MCP",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "massive-mcp",
+    "name": "Massive MCP",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "alpaca-mcp",
+    "name": "Alpaca MCP",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "paypal-agent-toolkit",
+    "name": "PayPal Agent Toolkit",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "square-mcp",
+    "name": "Square MCP",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "gong-mcp",
+    "name": "Gong MCP",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "attio-mcp",
+    "name": "Attio MCP",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "lingo-dev",
+    "name": "Lingo.dev",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "mcp-typescript-sdk",
+    "name": "MCP TypeScript SDK",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "chatwoot",
+    "name": "Chatwoot",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "typesense",
+    "name": "Typesense",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "lancedb",
+    "name": "LanceDB",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "cartesia",
+    "name": "Cartesia",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "manus",
+    "name": "Manus",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "terminal-bench-science",
+    "name": "Terminal-Bench-Science",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "openagents",
+    "name": "OpenAgents",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "backblaze-b2-mcp",
+    "name": "Backblaze B2 MCP",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "opencomputer",
+    "name": "OpenComputer",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "alpic",
+    "name": "Alpic",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "akta-pro",
+    "name": "akta.pro",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "checksum-ai",
+    "name": "Checksum AI",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "almanac",
+    "name": "Almanac",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "frontieragent",
+    "name": "FrontierAgent",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "free-claude-code",
+    "name": "free-claude-code",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "openexecutive",
+    "name": "OpenExecutive",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "powerbi-modeling-mcp",
+    "name": "Power BI Modeling MCP",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "xpander-omni",
+    "name": "Omni by xpander",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "skydive",
+    "name": "Skydive",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "experiential",
+    "name": "Experiential",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "agent-lightning",
+    "name": "Agent Lightning",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "headlong",
+    "name": "Headlong",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "goldie",
+    "name": "Goldie",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "x64dbg-mcp",
+    "name": "x64dbg MCP Server",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "vercel-fx",
+    "name": "fx",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "cumora",
+    "name": "Cumora",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "openbot",
+    "name": "OpenBot",
+    "date": "2026-09-02"
+  },
+  {
+    "action": "added",
+    "slug": "clipto-mcp",
+    "name": "Clipto MCP",
+    "date": "2026-09-02"
+  },
+  {
     "action": "updated",
     "slug": "openhands",
     "name": "OpenHands",
