@@ -1,0 +1,52 @@
+{
+  "id": "xpander-omni",
+  "name": "Omni by xpander",
+  "slug": "xpander-omni",
+  "description": "Takes a locally built agent to production cloud — wires up its tools and skills, tests it against mock data, then returns it as a scheduled long-running cloud agent.",
+  "providerName": "xpander.ai",
+  "providerUrl": "https://xpander.ai",
+  "agentUrl": "https://xpander.ai/omni",
+  "categories": [
+    "orchestration",
+    "infrastructure"
+  ],
+  "tags": [
+    "agent-deployment",
+    "long-running-agents",
+    "mock-data-testing",
+    "scheduled-agents",
+    "tool-wiring",
+    "agent-hosting"
+  ],
+  "skills": [
+    {
+      "id": "tool-wiring",
+      "name": "Tool Wiring",
+      "description": "Connects an agent to the tools and skills it needs in production, resolving credentials and integration wiring."
+    },
+    {
+      "id": "mock-testing",
+      "name": "Mock Data Testing",
+      "description": "Exercises an agent against generated mock data before deployment to surface failures ahead of real traffic."
+    },
+    {
+      "id": "scheduled-runs",
+      "name": "Scheduled Runs",
+      "description": "Runs deployed agents on a schedule as long-lived cloud workers with managed state and restart handling."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-09-02T07:21:11.723Z",
+  "updatedAt": "2026-09-02T07:21:11.723Z"
+}

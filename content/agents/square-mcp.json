@@ -1,0 +1,51 @@
+{
+  "id": "square-mcp",
+  "name": "Square MCP",
+  "slug": "square-mcp",
+  "description": "Gives agents the Square commerce API over a hosted OAuth MCP server — payments, orders, catalog, invoices, and bookings with granular permission scopes.",
+  "providerName": "Block",
+  "providerUrl": "https://squareup.com",
+  "agentUrl": "https://developer.squareup.com/docs/mcp",
+  "categories": [
+    "commerce-payments"
+  ],
+  "tags": [
+    "payments-api",
+    "order-management",
+    "product-catalog",
+    "invoicing",
+    "remote-mcp",
+    "oauth-scoped"
+  ],
+  "skills": [
+    {
+      "id": "payment-operations",
+      "name": "Payment Operations",
+      "description": "Creates and inspects payments and refunds against a Square merchant account through scoped OAuth access."
+    },
+    {
+      "id": "catalog-management",
+      "name": "Catalog Management",
+      "description": "Reads and edits the product catalog, including items, variations, and inventory counts across locations."
+    },
+    {
+      "id": "order-lifecycle",
+      "name": "Order Lifecycle",
+      "description": "Creates, updates, and queries orders and invoices so agents can drive a transaction from cart to settlement."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-09-02T07:21:11.745Z",
+  "updatedAt": "2026-09-02T07:21:11.745Z"
+}

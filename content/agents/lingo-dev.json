@@ -1,0 +1,53 @@
+{
+  "id": "lingo-dev",
+  "name": "Lingo.dev",
+  "slug": "lingo-dev",
+  "description": "Automates AI localization across a codebase through a CLI, CI/CD action, build-time compiler, SDK, and MCP server, keeping translations in sync with source strings.",
+  "providerName": "Lingo.dev",
+  "providerUrl": "https://lingo.dev",
+  "agentUrl": "https://lingo.dev/en/cli",
+  "categories": [
+    "language",
+    "code-devtools"
+  ],
+  "tags": [
+    "localization",
+    "i18n-automation",
+    "translation-pipeline",
+    "ci-cd-action",
+    "react-compiler",
+    "string-sync"
+  ],
+  "skills": [
+    {
+      "id": "translation-sync",
+      "name": "Translation Sync",
+      "description": "Detects changed source strings and regenerates only the affected translations across every configured locale."
+    },
+    {
+      "id": "build-compiler",
+      "name": "Build Compiler",
+      "description": "Localizes a React application at build time without requiring developers to extract strings by hand first."
+    },
+    {
+      "id": "ci-localization",
+      "name": "CI Localization",
+      "description": "Runs localization as a CI step that opens pull requests with updated translation files on every source change."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-09-02T07:21:11.743Z",
+  "updatedAt": "2026-09-02T07:21:11.743Z"
+}

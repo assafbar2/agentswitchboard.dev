@@ -1,0 +1,51 @@
+{
+  "id": "mcp-typescript-sdk",
+  "name": "MCP TypeScript SDK",
+  "slug": "mcp-typescript-sdk",
+  "description": "Builds MCP servers and clients in TypeScript with typed tool, resource, and prompt primitives plus stdio and streamable HTTP transports.",
+  "providerName": "Model Context Protocol",
+  "providerUrl": "https://modelcontextprotocol.io",
+  "agentUrl": "https://ts.sdk.modelcontextprotocol.io",
+  "categories": [
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "mcp-sdk",
+    "typescript",
+    "server-authoring",
+    "streamable-http",
+    "stdio-transport",
+    "protocol-reference"
+  ],
+  "skills": [
+    {
+      "id": "server-authoring",
+      "name": "Server Authoring",
+      "description": "Defines MCP tools, resources, and prompts in TypeScript with schema validation and typed handler signatures."
+    },
+    {
+      "id": "client-implementation",
+      "name": "Client Implementation",
+      "description": "Connects to MCP servers as a client, discovering their capabilities and invoking tools from host applications."
+    },
+    {
+      "id": "transport-handling",
+      "name": "Transport Handling",
+      "description": "Runs a server over stdio or streamable HTTP, including session management and server-sent event streaming."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-09-02T07:21:11.742Z",
+  "updatedAt": "2026-09-02T07:21:11.742Z"
+}

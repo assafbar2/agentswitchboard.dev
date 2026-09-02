@@ -1,0 +1,51 @@
+{
+  "id": "gong-mcp",
+  "name": "Gong MCP",
+  "slug": "gong-mcp",
+  "description": "Opens Gong revenue intelligence to agents — query recorded calls, transcripts, and deal signals, and act on them across the surrounding sales stack.",
+  "providerName": "Gong",
+  "providerUrl": "https://www.gong.io",
+  "agentUrl": "https://www.gong.io/blog/connect-agents-across-tech-stack-mcp",
+  "categories": [
+    "sales-marketing"
+  ],
+  "tags": [
+    "revenue-intelligence",
+    "call-transcripts",
+    "deal-signals",
+    "conversation-analytics",
+    "enterprise-sales",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "call-retrieval",
+      "name": "Call Retrieval",
+      "description": "Fetches recorded sales calls and their transcripts filtered by account, rep, date range, or deal stage."
+    },
+    {
+      "id": "deal-signals",
+      "name": "Deal Signals",
+      "description": "Surfaces risk and momentum signals Gong derives from conversation data across an active pipeline."
+    },
+    {
+      "id": "stack-actions",
+      "name": "Stack Actions",
+      "description": "Acts as an MCP client against other connected systems so agents can follow up on what a call revealed."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-09-02T07:21:11.745Z",
+  "updatedAt": "2026-09-02T07:21:11.745Z"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "x64dbg-mcp",
+  "name": "x64dbg MCP Server",
+  "slug": "x64dbg-mcp",
+  "description": "Exposes full x64dbg debugger control to agents over HTTP as a native plugin — breakpoints, stepping, memory reads, and register dumps for agentic reverse engineering.",
+  "providerName": "duty1g",
+  "providerUrl": "https://duty1g.online",
+  "agentUrl": "https://github.com/duty1g/x64dbg-mcp-server",
+  "categories": [
+    "security",
+    "code-devtools"
+  ],
+  "tags": [
+    "reverse-engineering",
+    "x64dbg",
+    "debugger-control",
+    "binary-analysis",
+    "zig",
+    "malware-analysis"
+  ],
+  "skills": [
+    {
+      "id": "breakpoint-control",
+      "name": "Breakpoint Control",
+      "description": "Sets, clears, and inspects breakpoints in a live debugging session so agents can drive execution to a point of interest."
+    },
+    {
+      "id": "memory-inspection",
+      "name": "Memory Inspection",
+      "description": "Reads process memory and dumps CPU registers at any paused point in the debugged binary for agent analysis."
+    },
+    {
+      "id": "execution-stepping",
+      "name": "Execution Stepping",
+      "description": "Steps into, over, and out of instructions under agent control, reporting the resulting debugger state each time."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-09-02T07:21:11.717Z",
+  "updatedAt": "2026-09-02T07:21:11.717Z"
+}

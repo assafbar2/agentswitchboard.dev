@@ -1,0 +1,52 @@
+{
+  "id": "skydive",
+  "name": "Skydive",
+  "slug": "skydive",
+  "description": "Gives cloud agents their own computer with a browser, filesystem, and terminal, then makes them reachable over Slack, email, and iMessage. Supports 170+ models.",
+  "providerName": "Anything",
+  "providerUrl": "https://www.skydive.com",
+  "agentUrl": "https://www.skydive.com/docs/get-started/welcome",
+  "categories": [
+    "autonomous-agents",
+    "browser-computer"
+  ],
+  "tags": [
+    "cloud-agents",
+    "agent-computer",
+    "slack-native",
+    "email-interface",
+    "multi-model",
+    "remote-execution"
+  ],
+  "skills": [
+    {
+      "id": "agent-workstation",
+      "name": "Agent Workstation",
+      "description": "Provisions each cloud agent a persistent computer with browser, filesystem, and terminal access it keeps between runs."
+    },
+    {
+      "id": "messaging-surface",
+      "name": "Messaging Surface",
+      "description": "Exposes agents through Slack, email, and iMessage so people delegate work from tools they already use."
+    },
+    {
+      "id": "model-selection",
+      "name": "Model Selection",
+      "description": "Runs the same agent against any of 170+ supported models, switching providers without rewriting the agent."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-09-02T07:21:11.722Z",
+  "updatedAt": "2026-09-02T07:21:11.722Z"
+}

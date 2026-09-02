@@ -1,0 +1,51 @@
+{
+  "id": "attio-mcp",
+  "name": "Attio MCP",
+  "slug": "attio-mcp",
+  "description": "Connects agents to the Attio CRM over a hosted OAuth MCP server — search and update people, companies, deals, lists, and notes, with writes gated behind confirmation.",
+  "providerName": "Attio",
+  "providerUrl": "https://attio.com",
+  "agentUrl": "https://docs.attio.com/mcp/overview",
+  "categories": [
+    "sales-marketing"
+  ],
+  "tags": [
+    "crm",
+    "remote-mcp",
+    "deal-pipeline",
+    "contact-records",
+    "oauth-scoped",
+    "write-confirmation"
+  ],
+  "skills": [
+    {
+      "id": "record-search",
+      "name": "Record Search",
+      "description": "Searches people, companies, and deals across the CRM and returns matching records with their attributes."
+    },
+    {
+      "id": "record-updates",
+      "name": "Record Updates",
+      "description": "Creates and updates CRM records and list entries, prompting for explicit confirmation before any write lands."
+    },
+    {
+      "id": "note-management",
+      "name": "Note Management",
+      "description": "Reads and appends notes on records so agents can log context and meeting outcomes back into the CRM."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-09-02T07:21:11.744Z",
+  "updatedAt": "2026-09-02T07:21:11.744Z"
+}

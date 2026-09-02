@@ -1,0 +1,52 @@
+{
+  "id": "massive-mcp",
+  "name": "Massive MCP",
+  "slug": "massive-mcp",
+  "description": "Serves stocks, options, forex, crypto, and futures market data to agents through four composable tools, with built-in Black-Scholes and Sharpe calculations.",
+  "providerName": "Massive",
+  "providerUrl": "https://massive.com",
+  "agentUrl": "https://github.com/massive-com/mcp_massive",
+  "categories": [
+    "finance",
+    "data-analytics"
+  ],
+  "tags": [
+    "market-data",
+    "options-pricing",
+    "historical-bars",
+    "black-scholes",
+    "composable-tools",
+    "polygon-successor"
+  ],
+  "skills": [
+    {
+      "id": "market-aggregates",
+      "name": "Market Aggregates",
+      "description": "Retrieves historical and intraday price bars across stocks, options, forex, crypto, and futures markets."
+    },
+    {
+      "id": "options-analytics",
+      "name": "Options Analytics",
+      "description": "Computes option pricing and Greeks with built-in Black-Scholes support rather than returning raw chains alone."
+    },
+    {
+      "id": "risk-metrics",
+      "name": "Risk Metrics",
+      "description": "Calculates portfolio risk measures such as Sharpe ratio directly from retrieved price series."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-09-02T07:21:11.747Z",
+  "updatedAt": "2026-09-02T07:21:11.747Z"
+}

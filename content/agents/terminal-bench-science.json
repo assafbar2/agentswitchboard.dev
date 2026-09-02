@@ -1,0 +1,50 @@
+{
+  "id": "terminal-bench-science",
+  "name": "Terminal-Bench-Science",
+  "slug": "terminal-bench-science",
+  "description": "Evaluates agents on 70 expert-curated real scientific research workflows, run and graded through the Harbor benchmark harness.",
+  "providerName": "Stanford University",
+  "providerUrl": "https://www.terminal-bench-science.ai",
+  "agentUrl": "https://github.com/harbor-framework/terminal-bench-science",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "agent-benchmark",
+    "scientific-workflows",
+    "harbor-framework",
+    "agent-evaluation",
+    "stanford",
+    "reproducible-grading"
+  ],
+  "skills": [
+    {
+      "id": "benchmark-run",
+      "name": "Benchmark Run",
+      "description": "Runs an agent against 70 curated scientific research tasks in reproducible containers through the Harbor CLI."
+    },
+    {
+      "id": "task-grading",
+      "name": "Task Grading",
+      "description": "Grades agent transcripts against per-task rubrics and re-grades stored runs without re-executing the agent."
+    },
+    {
+      "id": "result-comparison",
+      "name": "Result Comparison",
+      "description": "Compares scores across models and harnesses on the same task set to track capability on real research workflows."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-09-02T07:21:11.735Z",
+  "updatedAt": "2026-09-02T07:21:11.735Z"
+}

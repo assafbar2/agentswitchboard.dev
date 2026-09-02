@@ -1,0 +1,51 @@
+{
+  "id": "clipto-mcp",
+  "name": "Clipto MCP",
+  "slug": "clipto-mcp",
+  "description": "Indexes terabytes of local video, audio, and images so agents can search them in natural language and pull back timestamped clips. Runs on-device; files never upload.",
+  "providerName": "Clipto",
+  "providerUrl": "https://www.clipto.com",
+  "agentUrl": "https://www.clipto.com/mcp",
+  "categories": [
+    "content-media",
+    "research"
+  ],
+  "tags": [
+    "local-first",
+    "video-search",
+    "semantic-search",
+    "timestamped-clips",
+    "desktop-app",
+    "on-device-indexing"
+  ],
+  "skills": [
+    {
+      "id": "clip-search",
+      "name": "Clip Search",
+      "description": "Searches indexed local video and audio in natural language, returning matching segments with start and end timestamps."
+    },
+    {
+      "id": "media-index",
+      "name": "Media Indexing",
+      "description": "Builds an on-device semantic index across local video, photo, and audio libraries without uploading source files."
+    },
+    {
+      "id": "rough-cut",
+      "name": "Rough Cut Assembly",
+      "description": "Assembles selected clips into a rough cut sequence that editors can open directly in a video editing timeline."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-09-02T07:21:11.709Z",
+  "updatedAt": "2026-09-02T07:21:11.709Z"
+}

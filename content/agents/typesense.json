@@ -1,0 +1,51 @@
+{
+  "id": "typesense",
+  "name": "Typesense",
+  "slug": "typesense",
+  "description": "Runs typo-tolerant search with built-in vector, hybrid, and semantic modes over a REST API, self-hosted or on Typesense Cloud.",
+  "providerName": "Typesense",
+  "providerUrl": "https://typesense.org",
+  "agentUrl": "https://typesense.org/docs",
+  "categories": [
+    "vector-databases",
+    "data-analytics"
+  ],
+  "tags": [
+    "search-engine",
+    "hybrid-search",
+    "semantic-search",
+    "typo-tolerance",
+    "faceted-search",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "hybrid-search",
+      "name": "Hybrid Search",
+      "description": "Blends keyword and vector scoring in one query so agents retrieve on both exact terms and semantic similarity."
+    },
+    {
+      "id": "vector-indexing",
+      "name": "Vector Indexing",
+      "description": "Indexes embeddings alongside structured document fields, with automatic embedding generation for supported models."
+    },
+    {
+      "id": "faceted-filtering",
+      "name": "Faceted Filtering",
+      "description": "Filters and facets results by structured attributes to narrow agent retrieval to a relevant document subset."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-09-02T07:21:11.738Z",
+  "updatedAt": "2026-09-02T07:21:11.738Z"
+}

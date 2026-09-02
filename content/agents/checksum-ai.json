@@ -1,0 +1,51 @@
+{
+  "id": "checksum-ai",
+  "name": "Checksum AI",
+  "slug": "checksum-ai",
+  "description": "Generates, runs, and heals end-to-end tests for AI-written code, plugging into coding agents through slash commands and into CI through GitHub checks.",
+  "providerName": "Checksum",
+  "providerUrl": "https://checksum.ai",
+  "agentUrl": "https://checksum.ai",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "test-generation",
+    "self-healing-tests",
+    "end-to-end-testing",
+    "ci-integration",
+    "continuous-quality",
+    "slash-commands"
+  ],
+  "skills": [
+    {
+      "id": "test-generation",
+      "name": "Test Generation",
+      "description": "Generates end-to-end test suites from application behaviour and recent code changes without hand-written scripts."
+    },
+    {
+      "id": "test-healing",
+      "name": "Test Healing",
+      "description": "Repairs tests that break from UI or flow changes, keeping suites green as agent-written code keeps shifting."
+    },
+    {
+      "id": "agent-integration",
+      "name": "Agent Integration",
+      "description": "Exposes test runs to coding agents through slash commands so quality checks happen inside the editing loop."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-09-02T07:21:11.730Z",
+  "updatedAt": "2026-09-02T07:21:11.730Z"
+}

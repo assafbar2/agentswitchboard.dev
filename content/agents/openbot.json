@@ -1,0 +1,53 @@
+{
+  "id": "openbot",
+  "name": "OpenBot",
+  "slug": "openbot",
+  "description": "Runs open-source AI coworkers that each get a sandboxed computer with their own browser logins, files, and granted tools. Every action is pre-approved and recorded.",
+  "providerName": "CopilotKit",
+  "providerUrl": "https://www.copilotkit.ai",
+  "agentUrl": "https://www.copilotkit.ai/openbot",
+  "categories": [
+    "autonomous-agents",
+    "orchestration"
+  ],
+  "tags": [
+    "ag-ui",
+    "sandboxed-compute",
+    "human-in-the-loop",
+    "copilotkit",
+    "audit-trail",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "agent-computer",
+      "name": "Agent Computer",
+      "description": "Provisions each AI coworker an isolated computer with a persistent browser profile, filesystem, and scoped tool access."
+    },
+    {
+      "id": "action-approval",
+      "name": "Action Approval",
+      "description": "Gates every agent action behind human pre-approval and writes an immutable record of what the agent did."
+    },
+    {
+      "id": "agui-bridge",
+      "name": "AG-UI Bridge",
+      "description": "Connects framework-agnostic agent backends over AG-UI, including LangGraph, Mastra, CrewAI, Pydantic AI, and Google ADK."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-09-02T07:21:11.713Z",
+  "updatedAt": "2026-09-02T07:21:11.713Z"
+}

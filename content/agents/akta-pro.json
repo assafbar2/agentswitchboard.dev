@@ -1,0 +1,53 @@
+{
+  "id": "akta-pro",
+  "name": "akta.pro",
+  "slug": "akta-pro",
+  "description": "Serves private-company data to agents — 20M+ companies across 70+ fields with entity-resolved news, available over REST, MCP, CLI, and bulk export.",
+  "providerName": "akta.pro",
+  "providerUrl": "https://akta.pro",
+  "agentUrl": "https://docs.akta.pro/getting-started/overview",
+  "categories": [
+    "research",
+    "sales-marketing"
+  ],
+  "tags": [
+    "company-data",
+    "entity-resolution",
+    "private-companies",
+    "firmographics",
+    "news-signals",
+    "bulk-export"
+  ],
+  "skills": [
+    {
+      "id": "company-lookup",
+      "name": "Company Lookup",
+      "description": "Retrieves structured profiles for private companies across more than 70 firmographic and operational fields."
+    },
+    {
+      "id": "entity-resolution",
+      "name": "Entity Resolution",
+      "description": "Resolves company names, domains, and news mentions to a single canonical entity so agents avoid duplicate records."
+    },
+    {
+      "id": "signal-feed",
+      "name": "Signal Feed",
+      "description": "Surfaces entity-resolved news and change signals for tracked companies to trigger downstream agent workflows."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-09-02T07:21:11.730Z",
+  "updatedAt": "2026-09-02T07:21:11.730Z"
+}

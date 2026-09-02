@@ -1,0 +1,52 @@
+{
+  "id": "frontieragent",
+  "name": "FrontierAgent",
+  "slug": "frontieragent",
+  "description": "Runs an open-source agent runtime and terminal TUI with ReAct and coordinator-plus-subagent team modes, installable in one command on macOS and Linux.",
+  "providerName": "Apodex AI",
+  "providerUrl": "https://www.apodex.ai",
+  "agentUrl": "https://github.com/ApodexAI/FrontierAgent",
+  "categories": [
+    "autonomous-agents",
+    "orchestration"
+  ],
+  "tags": [
+    "agent-runtime",
+    "terminal-ui",
+    "react-loop",
+    "subagent-teams",
+    "open-weights",
+    "apodex"
+  ],
+  "skills": [
+    {
+      "id": "react-mode",
+      "name": "ReAct Mode",
+      "description": "Runs a single agent through interleaved reasoning and tool-calling steps against a task in the terminal."
+    },
+    {
+      "id": "agent-team",
+      "name": "Agent Team Mode",
+      "description": "Splits work across a coordinator and parallel subagents, merging their results back into one task outcome."
+    },
+    {
+      "id": "terminal-tui",
+      "name": "Terminal TUI",
+      "description": "Presents agent runs, tool calls, and intermediate state in an interactive terminal interface for live inspection."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-09-02T07:21:11.728Z",
+  "updatedAt": "2026-09-02T07:21:11.728Z"
+}

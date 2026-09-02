@@ -1,0 +1,52 @@
+{
+  "id": "opencomputer",
+  "name": "OpenComputer",
+  "slug": "opencomputer",
+  "description": "Deploys TypeScript agents onto real Linux machines with durable sessions and tool support, hosted or self-run. Positioned as a Firebase-style backend for agents.",
+  "providerName": "Digger",
+  "providerUrl": "https://digger.dev",
+  "agentUrl": "https://opencomputer.dev",
+  "categories": [
+    "infrastructure",
+    "orchestration"
+  ],
+  "tags": [
+    "agent-hosting",
+    "durable-sessions",
+    "typescript-sdk",
+    "linux-sandbox",
+    "agent-backend",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "agent-deploy",
+      "name": "Agent Deployment",
+      "description": "Deploys a TypeScript agent onto a real Linux machine with its filesystem and processes managed by the platform."
+    },
+    {
+      "id": "durable-sessions",
+      "name": "Durable Sessions",
+      "description": "Keeps agent sessions alive across restarts and long-running tasks so state survives beyond a single request."
+    },
+    {
+      "id": "tool-runtime",
+      "name": "Tool Runtime",
+      "description": "Runs agent tool calls inside the hosted machine, giving agents shell and filesystem access within a sandbox."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-09-02T07:21:11.732Z",
+  "updatedAt": "2026-09-02T07:21:11.732Z"
+}

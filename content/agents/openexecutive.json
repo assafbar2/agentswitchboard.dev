@@ -1,0 +1,51 @@
+{
+  "id": "openexecutive",
+  "name": "OpenExecutive",
+  "slug": "openexecutive",
+  "description": "Runs a virtual executive team as a single coherent persona backed by eight specialist agents, built on FastAPI and Next.js with retrieval over your own documents.",
+  "providerName": "Sente Labs",
+  "providerUrl": "https://sentelabs.ai",
+  "agentUrl": "https://github.com/SenteLabsAI/OpenExecutive",
+  "categories": [
+    "autonomous-agents",
+    "orchestration"
+  ],
+  "tags": [
+    "multi-agent",
+    "executive-persona",
+    "fastapi",
+    "retrieval-augmented",
+    "specialist-agents",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "executive-persona",
+      "name": "Executive Persona",
+      "description": "Presents eight specialist agents behind one consistent executive voice so answers stay coherent across domains."
+    },
+    {
+      "id": "specialist-routing",
+      "name": "Specialist Routing",
+      "description": "Routes each question to the specialist agent best suited to it, then reconciles the responses into one answer."
+    },
+    {
+      "id": "document-grounding",
+      "name": "Document Grounding",
+      "description": "Grounds agent responses in your own uploaded documents through a retrieval layer bundled with the deployment."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-09-02T07:21:11.727Z",
+  "updatedAt": "2026-09-02T07:21:11.727Z"
+}

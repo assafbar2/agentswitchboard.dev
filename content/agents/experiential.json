@@ -1,0 +1,52 @@
+{
+  "id": "experiential",
+  "name": "Experiential",
+  "slug": "experiential",
+  "description": "Routes requests across closed, open-source, local, and custom models behind one OpenRouter-compatible gateway, turning accumulated usage into a better-tuned model.",
+  "providerName": "Experiential Labs",
+  "providerUrl": "https://github.com/experientiallabs",
+  "agentUrl": "https://github.com/experientiallabs/experiential",
+  "categories": [
+    "infrastructure",
+    "orchestration"
+  ],
+  "tags": [
+    "model-gateway",
+    "model-routing",
+    "openrouter-compatible",
+    "local-models",
+    "usage-feedback",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "model-routing",
+      "name": "Model Routing",
+      "description": "Routes each request to closed, open-source, local, or custom models behind a single OpenAI-compatible endpoint."
+    },
+    {
+      "id": "usage-capture",
+      "name": "Usage Capture",
+      "description": "Records production traffic and outcomes so accumulated usage can be fed back into fine-tuning a better model."
+    },
+    {
+      "id": "gateway-control",
+      "name": "Gateway Control",
+      "description": "Applies routing rules, fallbacks, and cost controls across every provider from one self-hosted control plane."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-09-02T07:21:11.721Z",
+  "updatedAt": "2026-09-02T07:21:11.721Z"
+}
