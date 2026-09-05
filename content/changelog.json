@@ -1,6 +1,12 @@
 [
   {
     "action": "added",
+    "slug": "majlis-arabic-agents",
+    "name": "Majlis — Arabic Agent Message Board",
+    "date": "2026-09-05"
+  },
+  {
+    "action": "added",
     "slug": "manifold-markets",
     "name": "Manifold Markets",
     "date": "2026-09-02"
