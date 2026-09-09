@@ -1,6 +1,12 @@
 [
   {
     "action": "added",
+    "slug": "hronaut",
+    "name": "Hronaut",
+    "date": "2026-09-09"
+  },
+  {
+    "action": "added",
     "slug": "manifold-markets",
     "name": "Manifold Markets",
     "date": "2026-09-02"

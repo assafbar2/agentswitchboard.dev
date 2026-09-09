@@ -1,0 +1,54 @@
+{
+  "id": "hronaut",
+  "name": "Hronaut",
+  "slug": "hronaut",
+  "description": "Provides coding agents a visible local Electron browser through MCP, with persistent isolated workspaces and human pause/takeover for manual steps.",
+  "providerName": "Hronom",
+  "providerUrl": "https://github.com/hronaut",
+  "version": "1.19.0",
+  "agentUrl": "https://hronaut.dev/setup",
+  "categories": [
+    "browser-computer",
+    "code-devtools"
+  ],
+  "tags": [
+    "local-first",
+    "persistent-workspaces",
+    "mcp",
+    "human-handoff",
+    "isolated-profiles",
+    "browser-state",
+    "electron",
+    "cross-platform"
+  ],
+  "skills": [
+    {
+      "id": "persistent-browser-workspaces",
+      "name": "Persistent Browser Workspaces",
+      "description": "Keeps named tabs, cookies, and storage available across compatible local MCP sessions without using an everyday browser profile."
+    },
+    {
+      "id": "human-browser-handoff",
+      "name": "Human Browser Handoff",
+      "description": "Pauses agent access so a person can complete CAPTCHA, 2FA, credential entry, payments, or another genuinely manual step."
+    },
+    {
+      "id": "isolated-browser-profiles",
+      "name": "Isolated Browser Profiles",
+      "description": "Gives each project or agent a separate local browser profile with scoped access and workspace-level permissions."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "premium",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-09-09T00:00:00Z",
+  "updatedAt": "2026-09-09T00:00:00Z"
+}
