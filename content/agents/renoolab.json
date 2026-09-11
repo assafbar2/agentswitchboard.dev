@@ -1,0 +1,45 @@
+{
+  "id": "renoolab",
+  "name": "RenooLab",
+  "slug": "renoolab",
+  "description": "Find building tradespeople in France, plan multi-trade searches and request moderated contact. Free read-only A2A access; OAuth MCP also supports confirmed artisan signup.",
+  "providerName": "RenooLab",
+  "providerUrl": "https://renoolab.fr/",
+  "agentUrl": "https://renoolab.fr/mcp/",
+  "wellKnownUrl": "https://a2a.renoolab.fr/.well-known/agent-card.json",
+  "categories": ["research"],
+  "tags": ["france", "building-trades", "renovation", "plumber", "electrician", "multi-trade", "a2a", "mcp"],
+  "skills": [
+    {
+      "id": "find-local-tradespeople",
+      "name": "Find Local Tradespeople",
+      "description": "Find up to five building professionals in France by trade and city, including plumbers (plombiers), electricians and roofers."
+    },
+    {
+      "id": "search-multi-trade-projects",
+      "name": "Search Multi-Trade Projects",
+      "description": "Find professionals for confirmed trades in one French renovation project, prioritizing a shared profile before a small team."
+    },
+    {
+      "id": "request-moderated-contact",
+      "name": "Request Moderated Contact",
+      "description": "Create a private contact request via MCP after explicit confirmation; human moderation is required before transmission."
+    },
+    {
+      "id": "create-artisan-profile",
+      "name": "Create Artisan Profile",
+      "description": "Create an inactive artisan profile via MCP with the professional's confirmation; only email activation makes it public."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": ["api", "mcp"],
+  "createdAt": "2026-09-11T09:53:50Z",
+  "updatedAt": "2026-09-11T09:53:50Z"
+}
