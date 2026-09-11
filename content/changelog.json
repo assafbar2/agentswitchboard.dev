@@ -1,6 +1,12 @@
 [
   {
     "action": "added",
+    "slug": "renoolab",
+    "name": "RenooLab",
+    "date": "2026-09-11"
+  },
+  {
+    "action": "added",
     "slug": "manifold-markets",
     "name": "Manifold Markets",
     "date": "2026-09-02"
