@@ -1,0 +1,57 @@
+{
+  "id": "tencentdb-agent-memory",
+  "name": "TencentDB Agent Memory",
+  "slug": "tencentdb-agent-memory",
+  "description": "Give a team of agents shared long-term memory — turns conversations, docs, and code into governed Chat Memory, Skill, LLM-Wiki, and Code-Graph assets reusable across frameworks.",
+  "providerName": "Tencent Cloud",
+  "providerUrl": "https://www.tencentcloud.com",
+  "agentUrl": "https://github.com/TencentCloud/TencentDB-Agent-Memory",
+  "categories": [
+    "memory-state"
+  ],
+  "tags": [
+    "long-term-memory",
+    "team-memory",
+    "code-graph",
+    "vector-search",
+    "knowledge-wiki",
+    "local-first",
+    "memory-governance"
+  ],
+  "skills": [
+    {
+      "id": "chat-memory",
+      "name": "Chat Memory",
+      "description": "Distills past agent conversations into retrievable memory entries scoped to a user, project, or whole team."
+    },
+    {
+      "id": "code-graph-memory",
+      "name": "Code Graph Memory",
+      "description": "Builds a structural graph of a codebase that agents query for architecture and dependency context."
+    },
+    {
+      "id": "wiki-extraction",
+      "name": "Wiki Extraction",
+      "description": "Converts documents and threads into an LLM-readable wiki so knowledge is shared rather than re-derived per agent."
+    },
+    {
+      "id": "memory-governance",
+      "name": "Memory Governance",
+      "description": "Applies access scoping and lifecycle rules to memory assets so teams control what each agent can recall."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-09-13T20:13:54.423Z",
+  "updatedAt": "2026-09-13T20:13:54.423Z"
+}

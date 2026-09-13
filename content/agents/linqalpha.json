@@ -1,0 +1,53 @@
+{
+  "id": "linqalpha",
+  "name": "LinqAlpha",
+  "slug": "linqalpha",
+  "description": "Run research agents over filings, transcripts, and news for buy-side investing — encodes an analyst research framework into agents, with an API and a 22-tool MCP interface.",
+  "providerName": "LinqAlpha",
+  "providerUrl": "https://linqalpha.com",
+  "agentUrl": "https://docs.linqalpha.com/quickstart",
+  "categories": [
+    "finance",
+    "research"
+  ],
+  "tags": [
+    "investment-research",
+    "sec-filings",
+    "earnings-transcripts",
+    "market-signals",
+    "buy-side",
+    "financial-data",
+    "streaming-responses"
+  ],
+  "skills": [
+    {
+      "id": "filing-analysis",
+      "name": "Filing Analysis",
+      "description": "Extracts and compares disclosures across SEC filings to surface changes a manual read would likely miss."
+    },
+    {
+      "id": "transcript-search",
+      "name": "Transcript Search",
+      "description": "Queries earnings call transcripts for management commentary on specific topics across companies and quarters."
+    },
+    {
+      "id": "signal-monitoring",
+      "name": "Signal Monitoring",
+      "description": "Watches news and disclosure flow against a defined research thesis and reports material developments."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-09-13T20:13:54.428Z",
+  "updatedAt": "2026-09-13T20:13:54.428Z"
+}

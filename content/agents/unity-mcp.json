@@ -1,0 +1,52 @@
+{
+  "id": "unity-mcp",
+  "name": "Unity-MCP",
+  "slug": "unity-mcp",
+  "description": "Let AI agents drive the Unity editor over MCP — inspect and modify scenes, GameObjects, components, assets, and scripts, then run the project and read back console output.",
+  "providerName": "Ivan Murzak",
+  "providerUrl": "https://ai-game.dev",
+  "agentUrl": "https://github.com/IvanMurzak/Unity-MCP",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "unity",
+    "game-development",
+    "editor-automation",
+    "scene-graph",
+    "asset-pipeline",
+    "csharp",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "scene-manipulation",
+      "name": "Scene Manipulation",
+      "description": "Reads and edits the scene hierarchy, creating GameObjects and setting component properties directly from agent calls."
+    },
+    {
+      "id": "asset-management",
+      "name": "Asset Management",
+      "description": "Browses, imports, and modifies project assets including prefabs, materials, and scriptable objects."
+    },
+    {
+      "id": "script-execution",
+      "name": "Script Execution",
+      "description": "Compiles and runs C# in the editor context, returning console logs and compilation errors to the agent."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-09-13T20:13:54.418Z",
+  "updatedAt": "2026-09-13T20:13:54.418Z"
+}

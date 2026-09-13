@@ -1,0 +1,51 @@
+{
+  "id": "zoominfo-mcp",
+  "name": "ZoomInfo MCP",
+  "slug": "zoominfo-mcp",
+  "description": "Query ZoomInfo's go-to-market graph from an AI agent — company and contact enrichment, intent signals, and account research over an official hosted MCP server.",
+  "providerName": "ZoomInfo",
+  "providerUrl": "https://www.zoominfo.com",
+  "agentUrl": "https://mcp.zoominfo.com/mcp",
+  "categories": [
+    "sales-marketing"
+  ],
+  "tags": [
+    "gtm-data",
+    "contact-enrichment",
+    "company-firmographics",
+    "intent-signals",
+    "account-research",
+    "sales-intelligence",
+    "hosted-mcp"
+  ],
+  "skills": [
+    {
+      "id": "contact-enrichment",
+      "name": "Contact Enrichment",
+      "description": "Resolves people to verified titles, emails, and phone numbers from the ZoomInfo contact graph."
+    },
+    {
+      "id": "company-firmographics",
+      "name": "Company Firmographics",
+      "description": "Returns company size, industry, technology stack, and hierarchy details for account qualification."
+    },
+    {
+      "id": "intent-signals",
+      "name": "Intent Signals",
+      "description": "Surfaces buying-intent and research-activity signals to prioritize which accounts an agent works next."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-09-13T20:13:54.429Z",
+  "updatedAt": "2026-09-13T20:13:54.429Z"
+}

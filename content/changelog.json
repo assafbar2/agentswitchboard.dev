@@ -1,6 +1,192 @@
 [
   {
     "action": "added",
+    "slug": "watsonx-orchestrate",
+    "name": "IBM watsonx Orchestrate",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "zoominfo-mcp",
+    "name": "ZoomInfo MCP",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "linqalpha",
+    "name": "LinqAlpha",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "viktor",
+    "name": "Viktor",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "act-security",
+    "name": "Act Security",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "onyx-security",
+    "name": "Onyx Security",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "okf-agent-memory",
+    "name": "OKF Agent Memory",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "funes",
+    "name": "Funes",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "relaticle",
+    "name": "Relaticle",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "future-agi",
+    "name": "Future AGI",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "laminar",
+    "name": "Laminar",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "holaos",
+    "name": "holaOS",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "tencentdb-agent-memory",
+    "name": "TencentDB Agent Memory",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "nvidia-skillspector",
+    "name": "NVIDIA SkillSpector",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "pi-agent-toolkit",
+    "name": "Pi",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "openai-agents-api",
+    "name": "OpenAI Agents API",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "griptape",
+    "name": "Griptape",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "code-graph-rag",
+    "name": "code-graph-rag",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "semble",
+    "name": "semble",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "fast-agent",
+    "name": "fast-agent",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "archestra",
+    "name": "Archestra",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "antv-mcp-chart",
+    "name": "AntV MCP Server Chart",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "unity-mcp",
+    "name": "Unity-MCP",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "mcp-java-sdk",
+    "name": "MCP Java SDK",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "mcp-rust-sdk",
+    "name": "MCP Rust SDK",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "mcp-csharp-sdk",
+    "name": "MCP C# SDK",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "promptflow",
+    "name": "Microsoft PromptFlow",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "mcp-use",
+    "name": "mcp-use",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "fastapi-mcp",
+    "name": "FastAPI-MCP",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "hexstrike-ai",
+    "name": "HexStrike AI",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
+    "slug": "botpress",
+    "name": "Botpress",
+    "date": "2026-09-13"
+  },
+  {
+    "action": "added",
     "slug": "manifold-markets",
     "name": "Manifold Markets",
     "date": "2026-09-02"

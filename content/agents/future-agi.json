@@ -1,0 +1,52 @@
+{
+  "id": "future-agi",
+  "name": "Future AGI",
+  "slug": "future-agi",
+  "description": "Evaluate, observe, and improve LLM and agent applications from one self-hostable platform — tracing, evals, simulations, datasets, guardrails, and a model gateway under Apache 2.0.",
+  "providerName": "Future AGI",
+  "providerUrl": "https://futureagi.com",
+  "agentUrl": "https://futureagi.com",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "llm-evaluation",
+    "agent-observability",
+    "guardrails",
+    "simulations",
+    "hallucination-detection",
+    "opentelemetry",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "evaluation-suite",
+      "name": "Evaluation Suite",
+      "description": "Scores outputs for hallucination, relevance, and task success using configurable evaluators across datasets."
+    },
+    {
+      "id": "agent-simulations",
+      "name": "Agent Simulations",
+      "description": "Runs simulated multi-turn conversations against an agent to surface failure paths before real users hit them."
+    },
+    {
+      "id": "runtime-guardrails",
+      "name": "Runtime Guardrails",
+      "description": "Applies input and output checks in production to block unsafe or off-policy responses as they are generated."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-09-13T20:13:54.425Z",
+  "updatedAt": "2026-09-13T20:13:54.425Z"
+}

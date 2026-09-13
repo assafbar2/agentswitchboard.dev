@@ -1,0 +1,53 @@
+{
+  "id": "promptflow",
+  "name": "Microsoft PromptFlow",
+  "slug": "promptflow",
+  "description": "Build, evaluate, and deploy LLM applications as visual DAG flows — chain prompts, Python, and tools, then run batch evaluations with built-in quality and safety metrics.",
+  "providerName": "Microsoft",
+  "providerUrl": "https://www.microsoft.com",
+  "agentUrl": "https://microsoft.github.io/promptflow/",
+  "categories": [
+    "orchestration",
+    "code-devtools"
+  ],
+  "tags": [
+    "prompt-engineering",
+    "llm-evaluation",
+    "dag-flows",
+    "batch-testing",
+    "vscode-extension",
+    "azure-deployment",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "flow-execution",
+      "name": "Flow Execution",
+      "description": "Runs prompt and Python nodes as a directed graph with per-node tracing, so each intermediate output is inspectable."
+    },
+    {
+      "id": "batch-evaluation",
+      "name": "Batch Evaluation",
+      "description": "Executes a flow across a dataset and scores results with groundedness, relevance, and safety evaluators."
+    },
+    {
+      "id": "deployment-packaging",
+      "name": "Deployment Packaging",
+      "description": "Packages a flow as a Docker image or Azure managed endpoint with its dependencies and connection config."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-09-13T20:13:54.415Z",
+  "updatedAt": "2026-09-13T20:13:54.415Z"
+}

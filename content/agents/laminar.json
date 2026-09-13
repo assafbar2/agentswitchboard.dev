@@ -1,0 +1,54 @@
+{
+  "id": "laminar",
+  "name": "Laminar",
+  "slug": "laminar",
+  "description": "Trace, evaluate, and debug AI agents with open-source observability — captures LLM calls, tool calls, and sub-agent spans, then clusters recurring failure modes into eval datasets.",
+  "providerName": "Laminar",
+  "providerUrl": "https://www.laminar.sh",
+  "agentUrl": "https://www.laminar.sh",
+  "categories": [
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "agent-observability",
+    "tracing",
+    "evaluations",
+    "failure-analysis",
+    "opentelemetry",
+    "self-hosted",
+    "span-inspection"
+  ],
+  "skills": [
+    {
+      "id": "agent-tracing",
+      "name": "Agent Tracing",
+      "description": "Records nested spans for LLM calls, tool invocations, and sub-agent runs so a full trajectory is reconstructable."
+    },
+    {
+      "id": "failure-clustering",
+      "name": "Failure Clustering",
+      "description": "Groups similar failed runs into recurring failure modes instead of leaving them as unrelated one-off errors."
+    },
+    {
+      "id": "eval-datasets",
+      "name": "Eval Datasets",
+      "description": "Promotes traced production runs into labelled datasets used to score changes before they ship."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-09-13T20:13:54.424Z",
+  "updatedAt": "2026-09-13T20:13:54.424Z"
+}

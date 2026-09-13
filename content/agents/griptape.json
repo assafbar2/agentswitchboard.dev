@@ -1,0 +1,52 @@
+{
+  "id": "griptape",
+  "name": "Griptape",
+  "slug": "griptape",
+  "description": "Build agents, pipelines, and workflows in Python with explicit control over prompts, memory, and tool access — off-prompt data handling keeps large payloads out of the context window.",
+  "providerName": "Griptape",
+  "providerUrl": "https://www.griptape.ai",
+  "agentUrl": "https://www.griptape.ai",
+  "categories": [
+    "orchestration"
+  ],
+  "tags": [
+    "agent-framework",
+    "python",
+    "off-prompt-data",
+    "structured-workflows",
+    "conversation-memory",
+    "rag-pipelines",
+    "tool-activities"
+  ],
+  "skills": [
+    {
+      "id": "structure-composition",
+      "name": "Structure Composition",
+      "description": "Composes agents, sequential pipelines, and DAG workflows from tasks that share memory and tool configuration."
+    },
+    {
+      "id": "off-prompt-processing",
+      "name": "Off Prompt Processing",
+      "description": "Routes large tool outputs through task memory so data is referenced rather than pasted into the prompt."
+    },
+    {
+      "id": "rag-engine",
+      "name": "RAG Engine",
+      "description": "Runs modular retrieval stages over configured vector stores, with rerankers and query rewriting as swappable modules."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-09-13T20:13:54.421Z",
+  "updatedAt": "2026-09-13T20:13:54.421Z"
+}

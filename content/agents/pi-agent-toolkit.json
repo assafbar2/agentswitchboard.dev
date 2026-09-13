@@ -1,0 +1,54 @@
+{
+  "id": "pi-agent-toolkit",
+  "name": "Pi",
+  "slug": "pi-agent-toolkit",
+  "description": "Build coding agents on a minimal harness — a unified LLM API across providers, a compact agent loop, a terminal UI, and MCP support, from Armin Ronacher and Mario Zechner.",
+  "providerName": "Earendil Works",
+  "providerUrl": "https://github.com/earendil-works",
+  "agentUrl": "https://github.com/earendil-works/pi",
+  "categories": [
+    "code-devtools",
+    "orchestration"
+  ],
+  "tags": [
+    "coding-agent",
+    "agent-harness",
+    "terminal-ui",
+    "unified-llm-api",
+    "typescript",
+    "mcp-client",
+    "minimal-runtime"
+  ],
+  "skills": [
+    {
+      "id": "unified-llm-api",
+      "name": "Unified LLM API",
+      "description": "Presents one interface across model providers so an agent loop swaps models without changing its calling code."
+    },
+    {
+      "id": "agent-loop",
+      "name": "Agent Loop",
+      "description": "Supplies a compact, low-overhead reasoning and tool-calling loop intended to be read and modified rather than configured."
+    },
+    {
+      "id": "terminal-interface",
+      "name": "Terminal Interface",
+      "description": "Ships a TUI and coding-agent CLI for running the harness interactively against a local codebase."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-09-13T20:13:54.422Z",
+  "updatedAt": "2026-09-13T20:13:54.422Z"
+}

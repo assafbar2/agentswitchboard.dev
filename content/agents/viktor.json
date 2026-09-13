@@ -1,0 +1,53 @@
+{
+  "id": "viktor",
+  "name": "Viktor",
+  "slug": "viktor",
+  "description": "Put an AI coworker in Slack or Microsoft Teams that analyzes data, builds internal tools, and coordinates cross-system workflows, with a public REST API and MCP server for developers.",
+  "providerName": "Viktor",
+  "providerUrl": "https://viktor.com",
+  "agentUrl": "https://viktor.com/docs/public-api",
+  "categories": [
+    "communication",
+    "orchestration"
+  ],
+  "tags": [
+    "slack-agent",
+    "microsoft-teams",
+    "internal-tools",
+    "workflow-coordination",
+    "data-analysis",
+    "enterprise-integrations",
+    "async-runs"
+  ],
+  "skills": [
+    {
+      "id": "thread-runs",
+      "name": "Thread Runs",
+      "description": "Starts and polls asynchronous agent runs against a thread, so long tasks continue past a single request."
+    },
+    {
+      "id": "chat-native-tasks",
+      "name": "Chat Native Tasks",
+      "description": "Accepts work directly in Slack or Teams threads and reports results back into the same conversation."
+    },
+    {
+      "id": "cross-system-workflows",
+      "name": "Cross System Workflows",
+      "description": "Coordinates actions across connected business systems so one request spans several tools end to end."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-09-13T20:13:54.428Z",
+  "updatedAt": "2026-09-13T20:13:54.428Z"
+}

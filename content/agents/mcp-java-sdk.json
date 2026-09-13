@@ -1,0 +1,51 @@
+{
+  "id": "mcp-java-sdk",
+  "name": "MCP Java SDK",
+  "slug": "mcp-java-sdk",
+  "description": "Build MCP servers and clients in Java with the official SDK — co-maintained with the Spring AI team, offering sync and async APIs plus Spring Boot starters.",
+  "providerName": "Model Context Protocol",
+  "providerUrl": "https://modelcontextprotocol.io",
+  "agentUrl": "https://github.com/modelcontextprotocol/java-sdk",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "java",
+    "mcp-sdk",
+    "spring-ai",
+    "spring-boot",
+    "sync-and-async",
+    "official-sdk",
+    "server-and-client"
+  ],
+  "skills": [
+    {
+      "id": "spring-integration",
+      "name": "Spring Integration",
+      "description": "Wires MCP servers into Spring Boot through starters so tools become managed beans with standard configuration."
+    },
+    {
+      "id": "dual-api",
+      "name": "Dual API",
+      "description": "Offers blocking and Reactor-based async client and server APIs so callers pick the concurrency model they already use."
+    },
+    {
+      "id": "transport-options",
+      "name": "Transport Options",
+      "description": "Supports stdio and HTTP server-sent-event transports, including servlet and WebFlux server implementations."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-09-13T20:13:54.417Z",
+  "updatedAt": "2026-09-13T20:13:54.417Z"
+}

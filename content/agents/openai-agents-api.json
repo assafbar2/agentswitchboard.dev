@@ -1,0 +1,58 @@
+{
+  "id": "openai-agents-api",
+  "name": "OpenAI Agents API",
+  "slug": "openai-agents-api",
+  "description": "Run OpenAI's Codex harness as a managed service — durable sessions that survive restarts, hosted or self-hosted sandboxes, MCP connections, vaults, and multi-agent delegation.",
+  "providerName": "OpenAI",
+  "providerUrl": "https://openai.com",
+  "agentUrl": "https://developers.openai.com/api/docs/guides/agents-api/overview",
+  "categories": [
+    "orchestration",
+    "infrastructure"
+  ],
+  "tags": [
+    "durable-sessions",
+    "hosted-sandboxes",
+    "codex-harness",
+    "mcp-connections",
+    "multi-agent",
+    "openai",
+    "managed-runtime"
+  ],
+  "skills": [
+    {
+      "id": "durable-sessions",
+      "name": "Durable Sessions",
+      "description": "Runs long-lived agent sessions that persist across requests, so work can be paused, resumed, and continued later."
+    },
+    {
+      "id": "sandbox-execution",
+      "name": "Sandbox Execution",
+      "description": "Executes agent code in OpenAI-hosted or self-hosted sandboxes, with lifecycle and security controls per environment."
+    },
+    {
+      "id": "mcp-connections",
+      "name": "MCP Connections",
+      "description": "Connects a session to external MCP servers and plugins so the agent calls your tools alongside built-in ones."
+    },
+    {
+      "id": "session-webhooks",
+      "name": "Session Webhooks",
+      "description": "Emits webhook events for session progress and completion so long-running runs report back without polling."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-09-13T20:13:54.422Z",
+  "updatedAt": "2026-09-13T20:13:54.422Z"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "okf-agent-memory",
+  "name": "OKF Agent Memory",
+  "slug": "okf-agent-memory",
+  "description": "Store coding-agent memory in git — an embedded MCP server with sub-millisecond BM25 search, written in pure Go with no external dependencies, so memory versions with the repository.",
+  "providerName": "OKF Memory",
+  "providerUrl": "https://github.com/okf-memory",
+  "agentUrl": "https://github.com/okf-memory/okf-agent-memory",
+  "categories": [
+    "memory-state"
+  ],
+  "tags": [
+    "git-native-memory",
+    "bm25-search",
+    "embedded-server",
+    "golang",
+    "zero-dependency",
+    "version-controlled",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "git-native-storage",
+      "name": "Git Native Storage",
+      "description": "Persists agent memory as files in the repository so it branches, diffs, and reviews like any other source."
+    },
+    {
+      "id": "bm25-retrieval",
+      "name": "BM25 Retrieval",
+      "description": "Serves keyword-ranked memory lookups in well under a millisecond without a separate database process."
+    },
+    {
+      "id": "embedded-mcp",
+      "name": "Embedded MCP",
+      "description": "Runs the MCP server in-process as a single Go binary, avoiding external services or runtime dependencies."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-09-13T20:13:54.426Z",
+  "updatedAt": "2026-09-13T20:13:54.426Z"
+}

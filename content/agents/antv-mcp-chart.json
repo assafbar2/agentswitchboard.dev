@@ -1,0 +1,51 @@
+{
+  "id": "antv-mcp-chart",
+  "name": "AntV MCP Server Chart",
+  "slug": "antv-mcp-chart",
+  "description": "Generate 25+ chart types as images or interactive specs over MCP — line, bar, pie, sankey, network, mind map, and geographic charts from the AntV visualization team.",
+  "providerName": "Ant Group",
+  "providerUrl": "https://antv.antgroup.com",
+  "agentUrl": "https://github.com/antvis/mcp-server-chart",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "data-visualization",
+    "chart-generation",
+    "antv",
+    "sankey-diagram",
+    "mind-map",
+    "geographic-charts",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "statistical-charts",
+      "name": "Statistical Charts",
+      "description": "Renders line, bar, column, scatter, area, and pie charts from structured data supplied in the tool call."
+    },
+    {
+      "id": "relationship-diagrams",
+      "name": "Relationship Diagrams",
+      "description": "Produces sankey, network, flow, fishbone, and mind map diagrams for relationships that tabular charts cannot show."
+    },
+    {
+      "id": "geographic-mapping",
+      "name": "Geographic Mapping",
+      "description": "Draws district, pin, and path maps over real geographic data for location-based analysis output."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-09-13T20:13:54.418Z",
+  "updatedAt": "2026-09-13T20:13:54.418Z"
+}

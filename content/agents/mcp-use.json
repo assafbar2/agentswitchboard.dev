@@ -1,0 +1,54 @@
+{
+  "id": "mcp-use",
+  "name": "mcp-use",
+  "slug": "mcp-use",
+  "description": "Build MCP servers and MCP-powered apps from one fullstack framework — connect any LLM to any MCP server, or ship agent-facing apps for Claude and ChatGPT.",
+  "providerName": "mcp-use",
+  "providerUrl": "https://mcp-use.com",
+  "agentUrl": "https://mcp-use.com",
+  "categories": [
+    "orchestration",
+    "code-devtools"
+  ],
+  "tags": [
+    "mcp-client",
+    "mcp-server",
+    "agent-framework",
+    "python",
+    "typescript",
+    "multi-server",
+    "tool-routing"
+  ],
+  "skills": [
+    {
+      "id": "multi-server-client",
+      "name": "Multi Server Client",
+      "description": "Connects one agent to several MCP servers at once and routes each tool call to the server that owns it."
+    },
+    {
+      "id": "server-scaffolding",
+      "name": "Server Scaffolding",
+      "description": "Generates a typed MCP server project with tool, resource, and prompt handlers wired up and ready to run."
+    },
+    {
+      "id": "llm-agnostic-binding",
+      "name": "LLM Agnostic Binding",
+      "description": "Binds MCP toolsets to any LangChain-compatible model so the same server works across providers unchanged."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-09-13T20:13:54.415Z",
+  "updatedAt": "2026-09-13T20:13:54.415Z"
+}

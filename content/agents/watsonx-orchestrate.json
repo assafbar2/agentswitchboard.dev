@@ -1,0 +1,51 @@
+{
+  "id": "watsonx-orchestrate",
+  "name": "IBM watsonx Orchestrate",
+  "slug": "watsonx-orchestrate",
+  "description": "Build and govern enterprise AI agents on IBM infrastructure — an agent builder, prebuilt agent catalog, multi-agent orchestration, and governance controls across business systems.",
+  "providerName": "IBM",
+  "providerUrl": "https://www.ibm.com",
+  "agentUrl": "https://www.ibm.com/products/watsonx-orchestrate",
+  "categories": [
+    "orchestration"
+  ],
+  "tags": [
+    "enterprise-orchestration",
+    "agent-builder",
+    "agent-catalog",
+    "multi-agent-governance",
+    "ibm-watsonx",
+    "business-workflows",
+    "compliance-controls"
+  ],
+  "skills": [
+    {
+      "id": "agent-builder",
+      "name": "Agent Builder",
+      "description": "Assembles enterprise agents from skills, tools, and knowledge sources with low-code and code-first paths."
+    },
+    {
+      "id": "agent-catalog",
+      "name": "Agent Catalog",
+      "description": "Provides prebuilt domain agents for HR, procurement, and sales that teams adopt instead of building from scratch."
+    },
+    {
+      "id": "multi-agent-routing",
+      "name": "Multi Agent Routing",
+      "description": "Routes a request across several specialized agents and supervises their handoffs under governance policy."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-09-13T20:13:54.429Z",
+  "updatedAt": "2026-09-13T20:13:54.429Z"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "hexstrike-ai",
+  "name": "HexStrike AI",
+  "slug": "hexstrike-ai",
+  "description": "Drive 150+ offensive security tools from an AI agent through one MCP server — reconnaissance, vulnerability scanning, exploitation workflows, and bug bounty automation.",
+  "providerName": "HexStrike",
+  "providerUrl": "https://www.hexstrike.com",
+  "agentUrl": "https://github.com/0x4m4/hexstrike-ai",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "offensive-security",
+    "penetration-testing",
+    "bug-bounty",
+    "vulnerability-scanning",
+    "reconnaissance",
+    "red-team",
+    "security-tooling"
+  ],
+  "skills": [
+    {
+      "id": "recon-automation",
+      "name": "Recon Automation",
+      "description": "Chains subdomain enumeration, port scanning, and service fingerprinting tools into a single agent-driven reconnaissance pass."
+    },
+    {
+      "id": "vulnerability-scanning",
+      "name": "Vulnerability Scanning",
+      "description": "Runs web, network, and binary scanners against a scoped target and normalizes findings into structured results."
+    },
+    {
+      "id": "exploit-workflows",
+      "name": "Exploit Workflows",
+      "description": "Coordinates exploitation and post-exploitation tooling for authorized engagements, with tool selection driven by scan output."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-09-13T20:13:54.414Z",
+  "updatedAt": "2026-09-13T20:13:54.414Z"
+}

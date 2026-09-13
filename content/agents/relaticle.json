@@ -1,0 +1,52 @@
+{
+  "id": "relaticle",
+  "name": "Relaticle",
+  "slug": "relaticle",
+  "description": "Run an open-source CRM that agents can operate directly — 37 MCP tools plus a REST API over an agent-native schema, with approval gating on writes and self-hosted deployment.",
+  "providerName": "Relaticle",
+  "providerUrl": "https://relaticle.com",
+  "agentUrl": "https://relaticle.com",
+  "categories": [
+    "sales-marketing"
+  ],
+  "tags": [
+    "open-source-crm",
+    "agent-native-schema",
+    "approval-gating",
+    "pipeline-management",
+    "self-hosted",
+    "mcp-server",
+    "laravel"
+  ],
+  "skills": [
+    {
+      "id": "record-management",
+      "name": "Record Management",
+      "description": "Creates and updates companies, people, opportunities, and notes through MCP tools mapped to CRM objects."
+    },
+    {
+      "id": "approval-gated-writes",
+      "name": "Approval Gated Writes",
+      "description": "Routes agent-initiated changes through a human approval step before they commit to the CRM record."
+    },
+    {
+      "id": "pipeline-queries",
+      "name": "Pipeline Queries",
+      "description": "Answers questions about deal stages, owners, and activity by querying the CRM rather than a stale export."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-09-13T20:13:54.425Z",
+  "updatedAt": "2026-09-13T20:13:54.425Z"
+}

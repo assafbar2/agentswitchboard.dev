@@ -1,0 +1,57 @@
+{
+  "id": "nvidia-skillspector",
+  "name": "NVIDIA SkillSpector",
+  "slug": "nvidia-skillspector",
+  "description": "Scan agent skills, plugins, and MCP servers before installing them — detects prompt injection, data exfiltration, malicious patterns, and supply-chain risk in Claude Code and Codex skills.",
+  "providerName": "NVIDIA",
+  "providerUrl": "https://www.nvidia.com",
+  "agentUrl": "https://docs.nvidia.com/skills/scanning-agent-skills",
+  "categories": [
+    "security",
+    "code-devtools"
+  ],
+  "tags": [
+    "agent-security",
+    "skill-scanning",
+    "prompt-injection",
+    "supply-chain-security",
+    "static-analysis",
+    "claude-code",
+    "mcp-security"
+  ],
+  "skills": [
+    {
+      "id": "skill-scanning",
+      "name": "Skill Scanning",
+      "description": "Analyzes an agent skill or plugin package for malicious instructions and risky capabilities before installation."
+    },
+    {
+      "id": "injection-detection",
+      "name": "Injection Detection",
+      "description": "Flags prompt-injection and instruction-override patterns embedded in skill files, docs, and tool descriptions."
+    },
+    {
+      "id": "exfiltration-checks",
+      "name": "Exfiltration Checks",
+      "description": "Identifies network calls and file access paths that could move credentials or source code off the machine."
+    },
+    {
+      "id": "supply-chain-audit",
+      "name": "Supply Chain Audit",
+      "description": "Inspects declared dependencies and install hooks for tampering and untrusted sources in the skill supply chain."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-09-13T20:13:54.423Z",
+  "updatedAt": "2026-09-13T20:13:54.423Z"
+}

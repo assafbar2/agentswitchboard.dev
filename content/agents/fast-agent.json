@@ -1,0 +1,53 @@
+{
+  "id": "fast-agent",
+  "name": "fast-agent",
+  "slug": "fast-agent",
+  "description": "Define and run multi-agent workflows in Python with first-class MCP support — chains, routers, parallel fan-out, evaluator-optimizer loops, and A2A interoperability.",
+  "providerName": "evalstate",
+  "providerUrl": "https://fast-agent.ai",
+  "agentUrl": "https://fast-agent.ai",
+  "categories": [
+    "orchestration"
+  ],
+  "tags": [
+    "agent-framework",
+    "mcp-client",
+    "a2a-protocol",
+    "workflow-patterns",
+    "python",
+    "multi-agent",
+    "evaluator-optimizer"
+  ],
+  "skills": [
+    {
+      "id": "workflow-patterns",
+      "name": "Workflow Patterns",
+      "description": "Composes chain, router, parallel, and orchestrator patterns as decorators over plain Python agent definitions."
+    },
+    {
+      "id": "mcp-integration",
+      "name": "MCP Integration",
+      "description": "Attaches MCP servers to individual agents, including sampling, roots, and elicitation beyond basic tool calling."
+    },
+    {
+      "id": "evaluator-loops",
+      "name": "Evaluator Loops",
+      "description": "Runs generator and evaluator agents in a refinement loop until output reaches a defined quality rating."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-09-13T20:13:54.419Z",
+  "updatedAt": "2026-09-13T20:13:54.419Z"
+}

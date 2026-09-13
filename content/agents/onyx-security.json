@@ -1,0 +1,51 @@
+{
+  "id": "onyx-security",
+  "name": "Onyx Security",
+  "slug": "onyx-security",
+  "description": "Inspect and block agent activity inline — a control plane that inspects prompts, tool calls, and model responses across browser AI, coding agents, and MCP servers.",
+  "providerName": "Onyx Security",
+  "providerUrl": "https://www.onyx.security",
+  "agentUrl": "https://www.onyx.security",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "agent-guardrails",
+    "runtime-inspection",
+    "tool-call-blocking",
+    "shadow-ai-discovery",
+    "mcp-security",
+    "enterprise-policy",
+    "ai-control-plane"
+  ],
+  "skills": [
+    {
+      "id": "inline-guardrails",
+      "name": "Inline Guardrails",
+      "description": "Evaluates prompts and responses at call time through pre-call, post-call, and during-call hooks that can block traffic."
+    },
+    {
+      "id": "tool-call-inspection",
+      "name": "Tool Call Inspection",
+      "description": "Reviews agent tool invocations against policy before execution, stopping unsafe actions on connected systems."
+    },
+    {
+      "id": "shadow-agent-discovery",
+      "name": "Shadow Agent Discovery",
+      "description": "Surfaces unsanctioned AI agents, browser extensions, and MCP servers running across an organization."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-09-13T20:13:54.427Z",
+  "updatedAt": "2026-09-13T20:13:54.427Z"
+}

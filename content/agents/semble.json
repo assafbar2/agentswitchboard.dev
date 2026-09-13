@@ -1,0 +1,52 @@
+{
+  "id": "semble",
+  "name": "semble",
+  "slug": "semble",
+  "description": "Search a codebase the way an agent needs to — semantic and structural queries that return the relevant spans directly, cutting token use sharply versus grep-then-read loops.",
+  "providerName": "MinishLab",
+  "providerUrl": "https://minish.ai",
+  "agentUrl": "https://minish.ai/packages/semble/introduction/",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "code-search",
+    "semantic-search",
+    "token-efficiency",
+    "codebase-indexing",
+    "agent-retrieval",
+    "python",
+    "local-first"
+  ],
+  "skills": [
+    {
+      "id": "semantic-code-search",
+      "name": "Semantic Code Search",
+      "description": "Finds code by meaning rather than exact string match, returning ranked spans instead of whole files."
+    },
+    {
+      "id": "local-indexing",
+      "name": "Local Indexing",
+      "description": "Builds and refreshes an on-disk index of a repository so searches run locally without sending code to a service."
+    },
+    {
+      "id": "token-efficient-output",
+      "name": "Token Efficient Output",
+      "description": "Returns trimmed, relevance-scoped results designed to keep agent context small on large repositories."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-09-13T20:13:54.420Z",
+  "updatedAt": "2026-09-13T20:13:54.420Z"
+}

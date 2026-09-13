@@ -1,0 +1,53 @@
+{
+  "id": "botpress",
+  "name": "Botpress",
+  "slug": "botpress",
+  "description": "Build and deploy LLM-powered chat agents with a visual flow editor, 100+ channel and service integrations, autonomous nodes, and a hosted or self-managed runtime.",
+  "providerName": "Botpress",
+  "providerUrl": "https://botpress.com",
+  "agentUrl": "https://botpress.com",
+  "categories": [
+    "orchestration",
+    "communication"
+  ],
+  "tags": [
+    "chat-agents",
+    "visual-flow-builder",
+    "conversation-design",
+    "knowledge-base",
+    "self-hosted",
+    "channel-integrations",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "flow-authoring",
+      "name": "Flow Authoring",
+      "description": "Builds conversational flows from visual nodes, branching logic, and autonomous LLM steps that call tools mid-conversation."
+    },
+    {
+      "id": "channel-deployment",
+      "name": "Channel Deployment",
+      "description": "Publishes a single agent to WhatsApp, Slack, Messenger, Telegram, and web chat without rewriting the conversation logic."
+    },
+    {
+      "id": "knowledge-base-sync",
+      "name": "Knowledge Base Sync",
+      "description": "Indexes documents, websites, and tables into a retrieval layer the agent queries to ground its answers."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-09-13T20:13:54.411Z",
+  "updatedAt": "2026-09-13T20:13:54.411Z"
+}

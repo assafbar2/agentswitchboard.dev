@@ -1,0 +1,53 @@
+{
+  "id": "archestra",
+  "name": "Archestra",
+  "slug": "archestra",
+  "description": "Run MCP servers for an enterprise behind one gateway — a curated registry, dynamic tool loading, prompt-injection guardrails, and per-agent access policy.",
+  "providerName": "Archestra",
+  "providerUrl": "https://archestra.ai",
+  "agentUrl": "https://archestra.ai",
+  "categories": [
+    "infrastructure",
+    "security"
+  ],
+  "tags": [
+    "mcp-gateway",
+    "mcp-registry",
+    "guardrails",
+    "prompt-injection-defense",
+    "access-policy",
+    "enterprise-deployment",
+    "tool-governance"
+  ],
+  "skills": [
+    {
+      "id": "gateway-routing",
+      "name": "Gateway Routing",
+      "description": "Fronts many MCP servers behind a single endpoint, routing tool calls and centralizing credentials and audit logging."
+    },
+    {
+      "id": "injection-guardrails",
+      "name": "Injection Guardrails",
+      "description": "Inspects tool results for prompt-injection patterns and blocks or quarantines responses before they reach the model."
+    },
+    {
+      "id": "dynamic-tool-loading",
+      "name": "Dynamic Tool Loading",
+      "description": "Exposes only the tools relevant to the current task, keeping large catalogs from flooding the model context window."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-09-13T20:13:54.419Z",
+  "updatedAt": "2026-09-13T20:13:54.419Z"
+}

@@ -1,0 +1,53 @@
+{
+  "id": "code-graph-rag",
+  "name": "code-graph-rag",
+  "slug": "code-graph-rag",
+  "description": "Query a multi-language codebase as a knowledge graph — parse repositories into function, class, and dependency relationships, then answer structural questions over that graph.",
+  "providerName": "code-graph-rag",
+  "providerUrl": "https://code-graph-rag.com",
+  "agentUrl": "https://github.com/vitali87/code-graph-rag",
+  "categories": [
+    "code-devtools",
+    "memory-state"
+  ],
+  "tags": [
+    "knowledge-graph",
+    "codebase-rag",
+    "tree-sitter",
+    "dependency-analysis",
+    "multi-language",
+    "graph-database",
+    "code-comprehension"
+  ],
+  "skills": [
+    {
+      "id": "repository-parsing",
+      "name": "Repository Parsing",
+      "description": "Parses source across many languages with tree-sitter and stores functions, classes, and imports as graph nodes."
+    },
+    {
+      "id": "graph-querying",
+      "name": "Graph Querying",
+      "description": "Answers natural-language questions by translating them into graph queries over code structure and call relationships."
+    },
+    {
+      "id": "dependency-tracing",
+      "name": "Dependency Tracing",
+      "description": "Traces callers, callees, and cross-module dependencies to show blast radius before a change is made."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-09-13T20:13:54.420Z",
+  "updatedAt": "2026-09-13T20:13:54.420Z"
+}

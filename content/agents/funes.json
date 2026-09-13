@@ -1,0 +1,52 @@
+{
+  "id": "funes",
+  "name": "Funes",
+  "slug": "funes",
+  "description": "Give coding agents durable memory of past sessions — a local-first layer combining vector and BM25 search over prior conversations, usable from Claude Code, Codex, and other harnesses.",
+  "providerName": "Hugging Face",
+  "providerUrl": "https://huggingface.co",
+  "agentUrl": "https://github.com/huggingface/funes",
+  "categories": [
+    "memory-state"
+  ],
+  "tags": [
+    "session-memory",
+    "hybrid-search",
+    "local-first",
+    "cross-agent-memory",
+    "bm25",
+    "vector-search",
+    "hugging-face"
+  ],
+  "skills": [
+    {
+      "id": "session-recall",
+      "name": "Session Recall",
+      "description": "Searches past agent sessions so a new run starts from what was already tried instead of repeating the work."
+    },
+    {
+      "id": "hybrid-search",
+      "name": "Hybrid Search",
+      "description": "Combines dense vector similarity with BM25 keyword matching to retrieve both semantic and exact-term hits."
+    },
+    {
+      "id": "cross-harness-memory",
+      "name": "Cross Harness Memory",
+      "description": "Shares one memory store across different agent CLIs so context carries between tools on the same machine."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-09-13T20:13:54.426Z",
+  "updatedAt": "2026-09-13T20:13:54.426Z"
+}

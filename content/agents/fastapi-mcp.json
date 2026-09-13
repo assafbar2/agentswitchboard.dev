@@ -1,0 +1,53 @@
+{
+  "id": "fastapi-mcp",
+  "name": "FastAPI-MCP",
+  "slug": "fastapi-mcp",
+  "description": "Expose any FastAPI application as an MCP server in a few lines — endpoints become tools automatically, preserving schemas, dependencies, and existing authentication.",
+  "providerName": "Tadata",
+  "providerUrl": "https://tadata.com",
+  "agentUrl": "https://fastapi-mcp.tadata.com",
+  "categories": [
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "fastapi",
+    "mcp-server",
+    "python",
+    "openapi",
+    "endpoint-conversion",
+    "auth-passthrough",
+    "zero-config"
+  ],
+  "skills": [
+    {
+      "id": "endpoint-conversion",
+      "name": "Endpoint Conversion",
+      "description": "Turns existing FastAPI routes into MCP tools automatically, carrying over request and response models as tool schemas."
+    },
+    {
+      "id": "auth-passthrough",
+      "name": "Auth Passthrough",
+      "description": "Reuses the FastAPI dependency system so existing authentication and authorization guards apply to MCP tool calls."
+    },
+    {
+      "id": "selective-exposure",
+      "name": "Selective Exposure",
+      "description": "Filters which routes become tools by operation ID or tag, keeping internal endpoints out of the agent surface."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-09-13T20:13:54.414Z",
+  "updatedAt": "2026-09-13T20:13:54.414Z"
+}

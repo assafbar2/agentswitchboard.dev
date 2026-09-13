@@ -1,0 +1,52 @@
+{
+  "id": "act-security",
+  "name": "Act Security",
+  "slug": "act-security",
+  "description": "Enforce least-privilege access for humans, workloads, and AI agents in cloud environments — analyze effective IAM permissions and close the gap agents inherit from stale human roles.",
+  "providerName": "Act Security",
+  "providerUrl": "https://act.security",
+  "agentUrl": "https://act.security",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "iam-analysis",
+    "least-privilege",
+    "agent-permissions",
+    "cloud-security",
+    "policy-simulation",
+    "access-sprawl",
+    "aws-iam"
+  ],
+  "skills": [
+    {
+      "id": "permission-analysis",
+      "name": "Permission Analysis",
+      "description": "Resolves effective IAM permissions across policies and boundaries to show what an identity can actually do."
+    },
+    {
+      "id": "policy-simulation",
+      "name": "Policy Simulation",
+      "description": "Simulates whether a given principal would be allowed an action before a policy change is applied in production."
+    },
+    {
+      "id": "agent-scoping",
+      "name": "Agent Scoping",
+      "description": "Narrows the permissions granted to AI agents and workloads so they stop inheriting broad human access."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-09-13T20:13:54.427Z",
+  "updatedAt": "2026-09-13T20:13:54.427Z"
+}

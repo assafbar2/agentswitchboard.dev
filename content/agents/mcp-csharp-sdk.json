@@ -1,0 +1,51 @@
+{
+  "id": "mcp-csharp-sdk",
+  "name": "MCP C# SDK",
+  "slug": "mcp-csharp-sdk",
+  "description": "Build MCP servers and clients in C# with the official SDK — co-maintained with Microsoft, with dependency injection, hosting, and ASP.NET Core transport support.",
+  "providerName": "Model Context Protocol",
+  "providerUrl": "https://modelcontextprotocol.io",
+  "agentUrl": "https://github.com/modelcontextprotocol/csharp-sdk",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "csharp",
+    "dotnet",
+    "mcp-sdk",
+    "aspnet-core",
+    "dependency-injection",
+    "official-sdk",
+    "server-and-client"
+  ],
+  "skills": [
+    {
+      "id": "server-hosting",
+      "name": "Server Hosting",
+      "description": "Registers MCP servers through the .NET generic host so tools resolve from dependency injection like any other service."
+    },
+    {
+      "id": "attribute-tools",
+      "name": "Attribute Tools",
+      "description": "Declares tools with attributes on plain C# methods, generating MCP schemas from parameter types automatically."
+    },
+    {
+      "id": "transport-support",
+      "name": "Transport Support",
+      "description": "Serves MCP over stdio or streamable HTTP, with ASP.NET Core integration for remote server deployments."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-09-13T20:13:54.416Z",
+  "updatedAt": "2026-09-13T20:13:54.416Z"
+}
