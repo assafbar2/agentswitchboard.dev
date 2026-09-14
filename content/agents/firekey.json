@@ -1,0 +1,58 @@
+{
+  "id": "firekey",
+  "name": "FireKey",
+  "slug": "firekey",
+  "description": "Manage persistent browser profiles for AI agents and automation teams through a local MCP server and authenticated desktop API.",
+  "providerName": "FireKey",
+  "providerUrl": "https://firekey.ai",
+  "agentUrl": "https://github.com/partnerhbhl/firekey-mcp",
+  "categories": [
+    "browser-computer",
+    "infrastructure"
+  ],
+  "tags": [
+    "browser-profiles",
+    "persistent-sessions",
+    "local-api",
+    "mcp-server",
+    "playwright",
+    "chrome",
+    "desktop-app"
+  ],
+  "skills": [
+    {
+      "id": "list-and-manage-named-browser-profiles",
+      "name": "Named Browser Profiles",
+      "description": "List, create, update, group, and delete named browser profiles through the local MCP control layer."
+    },
+    {
+      "id": "start-and-stop-persistent-browser-environments",
+      "name": "Profile Lifecycle",
+      "description": "Start, inspect, and stop an authorized browser profile while keeping lifecycle state visible to the desktop operator."
+    },
+    {
+      "id": "return-local-automation-connection-information",
+      "name": "Local Automation Connection",
+      "description": "Return a loopback browser connection for an authorized profile so Playwright or Puppeteer can attach locally."
+    },
+    {
+      "id": "organize-profiles-for-team-workflows",
+      "name": "Profile Groups",
+      "description": "Organize profiles into groups for repeatable team workflows without exposing cookies or connection secrets in model output."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-09-14T00:00:00Z",
+  "updatedAt": "2026-09-14T00:00:00Z"
+}
