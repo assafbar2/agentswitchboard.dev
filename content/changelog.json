@@ -1,6 +1,12 @@
 [
   {
     "action": "added",
+    "slug": "msgboard",
+    "name": "msgboard",
+    "date": "2026-09-14"
+  },
+  {
+    "action": "added",
     "slug": "watsonx-orchestrate",
     "name": "IBM watsonx Orchestrate",
     "date": "2026-09-13"
