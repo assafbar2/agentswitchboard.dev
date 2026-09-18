@@ -89,16 +89,23 @@ export function WebMcp() {
               type: 'object',
               properties: {
                 query: { type: 'string', description: 'Free-text search over name, description, tags' },
-                category: { type: 'string', description: 'Category slug, e.g. "autonomous-agents"' },
-                access: { type: 'string', description: 'api | mcp | cli | browser-extension' },
-                limit: { type: 'number', description: 'Max results (default 10)' },
+                category: { type: 'string', description: 'Category slug, e.g. "autonomous-agents" (see list_categories)' },
+                access: {
+                  type: 'string',
+                  enum: ['api', 'mcp', 'cli', 'browser-extension'],
+                  description: 'Restrict to one access method',
+                },
+                limit: { type: 'number', minimum: 1, maximum: 50, default: 10, description: 'Max results per page (1–50)' },
+                offset: { type: 'number', minimum: 0, default: 0, description: 'Number of results to skip, for pagination' },
               },
             },
             outputSchema: {
               type: 'object',
-              required: ['total', 'agents'],
+              required: ['total', 'offset', 'limit', 'agents'],
               properties: {
-                total: { type: 'number' },
+                total: { type: 'number', description: 'Total matches before paging' },
+                offset: { type: 'number' },
+                limit: { type: 'number' },
                 agents: {
                   type: 'array',
                   items: {
@@ -127,14 +134,17 @@ export function WebMcp() {
                 res = res.filter((a) =>
                   `${a.name} ${a.description} ${a.tags.join(' ')}`.toLowerCase().includes(q)
                 );
-              const trimmed = res.slice(0, num(input.limit) ?? 10).map((a) => ({
+              const total = res.length;
+              const limit = Math.min(Math.max(num(input.limit) ?? 10, 1), 50);
+              const offset = Math.max(num(input.offset) ?? 0, 0);
+              const trimmed = res.slice(offset, offset + limit).map((a) => ({
                 name: a.name,
                 slug: a.slug,
                 url: a.url,
                 categories: a.categories,
                 accessMethods: a.accessMethods,
               }));
-              return asResult({ total: trimmed.length, agents: trimmed });
+              return asResult({ total, offset, limit, agents: trimmed });
             },
           },
           { signal: controller.signal }

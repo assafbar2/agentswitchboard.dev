@@ -16,9 +16,11 @@
       "annotations": { "readOnlyHint": true },
       "outputSchema": {
         "type": "object",
-        "required": ["total", "agents"],
+        "required": ["total", "offset", "limit", "agents"],
         "properties": {
           "total": { "type": "number" },
+          "offset": { "type": "number" },
+          "limit": { "type": "number" },
           "agents": {
             "type": "array",
             "items": {

@@ -63,20 +63,31 @@ const handler = createMcpHandler(
             .array(z.enum(ALL_ACCESS_METHODS as [string, ...string[]]))
             .describe('Require ALL of these access methods (api, mcp, cli, browser-extension)')
             .optional(),
-          limit: z.number().int().min(1).max(50).default(10).optional(),
+          limit: z.number().int().min(1).max(50).default(10).describe('Max results per page (1–50)').optional(),
+          offset: z.number().int().min(0).default(0).describe('Number of results to skip, for pagination').optional(),
         },
         outputSchema: {
-          total: z.number().int(),
+          total: z.number().int().describe('Total matches before paging'),
+          offset: z.number().int(),
+          limit: z.number().int(),
           agents: z.array(z.object(agentSummaryShape)),
         },
       },
-      async ({ query, category, access, limit }) => {
+      async ({ query, category, access, limit, offset }) => {
         let agents = await getEveryAgent();
         if (category) {
           agents = agents.filter((a) => a.categories.some((c) => c.slug === category));
         }
-        const results = searchAgents(agents, query ?? '', access).slice(0, limit ?? 10);
-        const structured = { total: results.length, agents: results.map(agentSummary) };
+        const matches = searchAgents(agents, query ?? '', access);
+        const start = offset ?? 0;
+        const size = limit ?? 10;
+        const page = matches.slice(start, start + size);
+        const structured = {
+          total: matches.length,
+          offset: start,
+          limit: size,
+          agents: page.map(agentSummary),
+        };
         return {
           content: [{ type: 'text', text: JSON.stringify(structured, null, 2) }],
           structuredContent: structured,
