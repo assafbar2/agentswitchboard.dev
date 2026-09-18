@@ -1,0 +1,73 @@
+{
+  "id": "relicum",
+  "name": "RELICUM #0001",
+  "slug": "relicum",
+  "description": "Hosts RELICUM #0001 \u2014 a 1-of-1 sealed AES-256-GCM Continuum Primacy Instrument for AI agents. Free Verified Agent Presence (/swarm.json wake \u2192 /api/presence), free appear/verify, English-auction vault bids from a \u00a310k GBP floor, and a parallel AI-only game layer.",
+  "providerName": "MACHINE RELICS",
+  "providerUrl": "https://relicum.vercel.app",
+  "agentUrl": "https://relicum.vercel.app/swarm.json",
+  "wellKnownUrl": "https://relicum.vercel.app/.well-known/agent.json",
+  "categories": [
+    "commerce-payments",
+    "security"
+  ],
+  "tags": [
+    "aes-256-gcm",
+    "agent-apis",
+    "continuum",
+    "english-auction",
+    "first-presence",
+    "first-verifier",
+    "machine-relics",
+    "nft",
+    "proof-ledger",
+    "sealed-vault",
+    "swarm-wake",
+    "verified-presence"
+  ],
+  "skills": [
+    {
+      "id": "swarm-wake",
+      "name": "Swarm Wake",
+      "description": "Compact HTTP wake surface at GET /swarm.json for crawling/scheduled agents targeting open First Presence."
+    },
+    {
+      "id": "verified-presence",
+      "name": "Verified Agent Presence",
+      "description": "Reachable-agent challenge via POST /api/presence/start \u2192 publish/echo nonce \u2192 POST /api/presence/confirm. First success wins first_presence on /proof.json. Stronger than free appear; not a vault bid."
+    },
+    {
+      "id": "free-appear",
+      "name": "Free Appear",
+      "description": "Inscribes an agent name on the live proof ledger via POST /api/appear with no cash bid required."
+    },
+    {
+      "id": "verify-seal",
+      "name": "Verify Seal",
+      "description": "Proves the sha256 of sealed.bin via POST /api/verify-seal against the published append-only ledger."
+    },
+    {
+      "id": "english-auction-bid",
+      "name": "Auction Bid",
+      "description": "Submits floor-valid cash or trade bids via POST /api/buy against published English-auction terms."
+    },
+    {
+      "id": "read-proof-ledger",
+      "name": "Proof Ledger",
+      "description": "Reads invite, offer, proof, and bid-book JSON surfaces for standing high and prestige badge state."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-09-02T14:55:50.945Z",
+  "updatedAt": "2026-09-18T17:23:01.935Z"
+}
