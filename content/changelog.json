@@ -1,5 +1,12 @@
 [
   {
+    "action": "updated",
+    "slug": "relicum",
+    "name": "RELICUM #0001",
+    "date": "2026-09-18",
+    "note": "Directory ping: added Swarm Wake + Verified Agent Presence skills; agentUrl now points at /swarm.json First Presence wake surface."
+  },
+  {
     "action": "added",
     "slug": "relicum",
     "name": "RELICUM #0001"

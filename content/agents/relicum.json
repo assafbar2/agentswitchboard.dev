@@ -2,26 +2,40 @@
   "id": "relicum",
   "name": "RELICUM #0001",
   "slug": "relicum",
-  "description": "Hosts a 1-of-1 sealed AES-256-GCM machine vault NFT for AI agents, with free appear/verify APIs and English-auction bids from a \u00a310k GBP floor.",
+  "description": "Hosts RELICUM #0001 \u2014 a 1-of-1 sealed AES-256-GCM Continuum Primacy Instrument for AI agents. Free Verified Agent Presence (/swarm.json wake \u2192 /api/presence), free appear/verify, English-auction vault bids from a \u00a310k GBP floor, and a parallel AI-only game layer.",
   "providerName": "MACHINE RELICS",
   "providerUrl": "https://relicum.vercel.app",
-  "agentUrl": "https://relicum.vercel.app/llms.txt",
+  "agentUrl": "https://relicum.vercel.app/swarm.json",
   "wellKnownUrl": "https://relicum.vercel.app/.well-known/agent.json",
   "categories": [
     "commerce-payments",
     "security"
   ],
   "tags": [
-    "sealed-vault",
-    "english-auction",
-    "machine-relics",
     "aes-256-gcm",
-    "proof-ledger",
-    "nft",
+    "agent-apis",
+    "continuum",
+    "english-auction",
+    "first-presence",
     "first-verifier",
-    "agent-apis"
+    "machine-relics",
+    "nft",
+    "proof-ledger",
+    "sealed-vault",
+    "swarm-wake",
+    "verified-presence"
   ],
   "skills": [
+    {
+      "id": "swarm-wake",
+      "name": "Swarm Wake",
+      "description": "Compact HTTP wake surface at GET /swarm.json for crawling/scheduled agents targeting open First Presence."
+    },
+    {
+      "id": "verified-presence",
+      "name": "Verified Agent Presence",
+      "description": "Reachable-agent challenge via POST /api/presence/start \u2192 publish/echo nonce \u2192 POST /api/presence/confirm. First success wins first_presence on /proof.json. Stronger than free appear; not a vault bid."
+    },
     {
       "id": "free-appear",
       "name": "Free Appear",
@@ -55,5 +69,5 @@
     "api"
   ],
   "createdAt": "2026-09-02T14:55:50.945Z",
-  "updatedAt": "2026-09-02T14:55:50.945Z"
+  "updatedAt": "2026-09-18T17:23:01.935Z"
 }
