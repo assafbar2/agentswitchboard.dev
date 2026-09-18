@@ -1,0 +1,54 @@
+{
+  "id": "agent-native",
+  "name": "Agent Native",
+  "slug": "agent-native",
+  "description": "Provides a framework and thirteen MCP servers for building agentic apps, covering mail, calendar, chat, content, design, slides, forms, and analytics surfaces.",
+  "providerName": "Builder.io",
+  "providerUrl": "https://www.builder.io",
+  "agentUrl": "https://www.agent-native.com",
+  "categories": [
+    "orchestration",
+    "autonomous-agents",
+    "code-devtools"
+  ],
+  "tags": [
+    "agentic-framework",
+    "mcp-suite",
+    "react",
+    "typescript",
+    "app-scaffolding",
+    "multi-server",
+    "builder-io"
+  ],
+  "skills": [
+    {
+      "id": "mcp-suite",
+      "name": "MCP Suite",
+      "description": "Exposes thirteen purpose-built MCP servers covering mail, calendar, content, design, and analytics."
+    },
+    {
+      "id": "agent-brain",
+      "name": "Agent Brain",
+      "description": "Coordinates state and memory across the suite so one agent can span multiple app surfaces."
+    },
+    {
+      "id": "app-framework",
+      "name": "App Framework",
+      "description": "Provides React and TypeScript primitives for building interfaces that agents operate directly."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-09-18T22:02:13.783Z",
+  "updatedAt": "2026-09-18T22:02:13.783Z"
+}

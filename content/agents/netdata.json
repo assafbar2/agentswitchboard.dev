@@ -1,0 +1,59 @@
+{
+  "id": "netdata",
+  "name": "Netdata",
+  "slug": "netdata",
+  "description": "Monitors infrastructure in real time at per-second granularity and exposes live metrics, logs, and alerts to agents through an official MCP server.",
+  "providerName": "Netdata",
+  "providerUrl": "https://www.netdata.cloud",
+  "agentUrl": "https://github.com/netdata/netdata",
+  "categories": [
+    "infrastructure",
+    "data-analytics"
+  ],
+  "tags": [
+    "observability",
+    "monitoring",
+    "metrics",
+    "real-time",
+    "alerting",
+    "time-series",
+    "devops"
+  ],
+  "skills": [
+    {
+      "id": "metric-query",
+      "name": "Metric Query",
+      "description": "Queries live per-second infrastructure metrics across servers, containers, and services from one endpoint."
+    },
+    {
+      "id": "anomaly-detection",
+      "name": "Anomaly Detection",
+      "description": "Surfaces statistically anomalous behaviour using built-in machine learning trained per metric."
+    },
+    {
+      "id": "log-search",
+      "name": "Log Search",
+      "description": "Searches systemd and application logs alongside metrics to correlate incidents with system events."
+    },
+    {
+      "id": "alert-inspection",
+      "name": "Alert Inspection",
+      "description": "Lists active and past alerts with thresholds so agents can triage what is currently firing."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-09-18T22:02:13.774Z",
+  "updatedAt": "2026-09-18T22:02:13.774Z"
+}

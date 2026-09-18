@@ -1,0 +1,53 @@
+{
+  "id": "artemis",
+  "name": "ARTEMIS",
+  "slug": "artemis",
+  "description": "Converts natural-language instructions into reliable Android device automation for coding agents, capturing logs and screenshots from each run.",
+  "providerName": "Google",
+  "providerUrl": "https://github.com/google",
+  "agentUrl": "https://github.com/google/artemis",
+  "categories": [
+    "browser-computer",
+    "code-devtools",
+    "autonomous-agents"
+  ],
+  "tags": [
+    "android-automation",
+    "device-testing",
+    "mobile-qa",
+    "ui-automation",
+    "screenshot-capture",
+    "agent-integration",
+    "google"
+  ],
+  "skills": [
+    {
+      "id": "instruction-execution",
+      "name": "Instruction Execution",
+      "description": "Executes a natural-language instruction against a connected Android device or emulator."
+    },
+    {
+      "id": "ui-inspection",
+      "name": "UI Inspection",
+      "description": "Reads the on-screen view hierarchy so an agent can decide what to tap or type next."
+    },
+    {
+      "id": "run-capture",
+      "name": "Run Capture",
+      "description": "Captures logs, screenshots, and step traces from an automation run for later debugging."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-09-18T22:02:13.781Z",
+  "updatedAt": "2026-09-18T22:02:13.781Z"
+}

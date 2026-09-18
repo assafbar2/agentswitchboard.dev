@@ -1,0 +1,53 @@
+{
+  "id": "open-code-review",
+  "name": "OpenCodeReview",
+  "slug": "open-code-review",
+  "description": "Reviews pull requests with deterministic static analysis plus an LLM agent, posting line-level comments backed by rulesets for null-pointer, thread-safety, XSS, and SQL injection defects.",
+  "providerName": "Alibaba",
+  "providerUrl": "https://github.com/alibaba",
+  "agentUrl": "https://github.com/alibaba/open-code-review",
+  "categories": [
+    "code-devtools",
+    "security"
+  ],
+  "tags": [
+    "code-review",
+    "static-analysis",
+    "pull-requests",
+    "security-scanning",
+    "line-comments",
+    "ci-integration",
+    "alibaba"
+  ],
+  "skills": [
+    {
+      "id": "pr-review",
+      "name": "Pull Request Review",
+      "description": "Analyses a pull request diff and posts line-level review comments with suggested fixes."
+    },
+    {
+      "id": "security-rules",
+      "name": "Security Rulesets",
+      "description": "Applies built-in rulesets for SQL injection, XSS, null-pointer, and thread-safety defects."
+    },
+    {
+      "id": "hybrid-pipeline",
+      "name": "Hybrid Pipeline",
+      "description": "Combines deterministic analysers with an LLM pass so findings stay reproducible across runs."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-09-18T22:02:13.776Z",
+  "updatedAt": "2026-09-18T22:02:13.776Z"
+}

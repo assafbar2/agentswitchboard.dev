@@ -1,5 +1,206 @@
 [
   {
+    "action": "updated",
+    "slug": "workweave-router",
+    "name": "Workweave Router",
+    "note": "description updated",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "updated",
+    "slug": "needle2",
+    "name": "Needle2",
+    "note": "accessMethods updated",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "updated",
+    "slug": "needle2",
+    "name": "Needle2",
+    "note": "description updated",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "tiun",
+    "name": "tiun",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "notion-skills-api",
+    "name": "Notion Skills API",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "google-home-mcp",
+    "name": "Google Home MCP",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "orthogonal",
+    "name": "Orthogonal",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "keenable",
+    "name": "Keenable",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "catena-labs",
+    "name": "Catena Labs",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "profound",
+    "name": "Profound",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "tooluniverse",
+    "name": "ToolUniverse",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "agent-substrate",
+    "name": "Agent Substrate",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "sol-pi",
+    "name": "SoL-Pi",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "tau",
+    "name": "Tau",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "omnara",
+    "name": "Omnara",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "agent-device",
+    "name": "Agent Device",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "agent-native",
+    "name": "Agent Native",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "jev-ultrafast",
+    "name": "Jev Ultrafast",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "openllmetry",
+    "name": "OpenLLMetry",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "artemis",
+    "name": "ARTEMIS",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "k8sgpt",
+    "name": "K8sGPT",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "humanlayer",
+    "name": "HumanLayer",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "superset-sh",
+    "name": "Superset",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "openmetadata",
+    "name": "OpenMetadata",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "windmill",
+    "name": "Windmill",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "db-gpt",
+    "name": "DB-GPT",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "kestra",
+    "name": "Kestra",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "scrapegraphai",
+    "name": "ScrapeGraphAI",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "open-code-review",
+    "name": "OpenCodeReview",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "lightrag",
+    "name": "LightRAG",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "kong",
+    "name": "Kong AI Gateway",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "netdata",
+    "name": "Netdata",
+    "date": "2026-09-18"
+  },
+  {
+    "action": "added",
+    "slug": "paddleocr",
+    "name": "PaddleOCR",
+    "date": "2026-09-18"
+  },
+  {
     "action": "added",
     "slug": "imaginevid-ai-generation",
     "name": "ImagineVid AI Generation",

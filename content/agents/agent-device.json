@@ -1,0 +1,54 @@
+{
+  "id": "agent-device",
+  "name": "Agent Device",
+  "slug": "agent-device",
+  "description": "Automates iOS, Android, HarmonyOS, TV, macOS, and Linux devices from AI coding agents through a CLI, MCP server, and typed Node.js API.",
+  "providerName": "Callstack",
+  "providerUrl": "https://www.callstack.com",
+  "agentUrl": "https://agent-device.dev",
+  "categories": [
+    "code-devtools",
+    "browser-computer"
+  ],
+  "tags": [
+    "device-automation",
+    "ios",
+    "android",
+    "harmonyos",
+    "cross-platform",
+    "typed-api",
+    "callstack"
+  ],
+  "skills": [
+    {
+      "id": "device-control",
+      "name": "Device Control",
+      "description": "Launches apps and drives taps, swipes, and text entry on physical devices and simulators."
+    },
+    {
+      "id": "screen-inspection",
+      "name": "Screen Inspection",
+      "description": "Reads the accessibility tree and screenshots so agents can locate elements before acting."
+    },
+    {
+      "id": "multi-platform",
+      "name": "Multi Platform",
+      "description": "Targets iOS, Android, HarmonyOS, TV, macOS, and Linux through one consistent interface."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-09-18T22:02:13.784Z",
+  "updatedAt": "2026-09-18T22:02:13.784Z"
+}

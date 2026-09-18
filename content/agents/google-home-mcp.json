@@ -1,0 +1,52 @@
+{
+  "id": "google-home-mcp",
+  "name": "Google Home MCP",
+  "slug": "google-home-mcp",
+  "description": "Lets agents query smart-home telemetry, issue device commands, and read event history across a Google Home structure through an official OAuth-protected MCP server.",
+  "providerName": "Google",
+  "providerUrl": "https://developers.home.google.com",
+  "agentUrl": "https://developers.home.google.com/mcp/home",
+  "categories": [
+    "infrastructure",
+    "orchestration"
+  ],
+  "tags": [
+    "smart-home",
+    "home-automation",
+    "device-control",
+    "google-home",
+    "oauth2",
+    "remote-mcp",
+    "event-history"
+  ],
+  "skills": [
+    {
+      "id": "list-home-resources",
+      "name": "List Home Resources",
+      "description": "Enumerates the structures, rooms, and devices available within a connected Google Home."
+    },
+    {
+      "id": "run-home-actions",
+      "name": "Run Home Actions",
+      "description": "Issues commands to lights, thermostats, and other devices in a home structure."
+    },
+    {
+      "id": "list-home-history",
+      "name": "List Home History",
+      "description": "Reads past home events so agents can reason about what changed in the home and when."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-09-18T22:02:13.792Z",
+  "updatedAt": "2026-09-18T22:02:13.792Z"
+}

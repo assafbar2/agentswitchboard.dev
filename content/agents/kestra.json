@@ -1,0 +1,55 @@
+{
+  "id": "kestra",
+  "name": "Kestra",
+  "slug": "kestra",
+  "description": "Orchestrates event-driven workflows declared in YAML, with a REST API and MCP server so agents can trigger, monitor, and inspect pipeline executions.",
+  "providerName": "Kestra Technologies",
+  "providerUrl": "https://kestra.io",
+  "agentUrl": "https://github.com/kestra-io/kestra",
+  "categories": [
+    "orchestration",
+    "scheduling",
+    "infrastructure"
+  ],
+  "tags": [
+    "workflow-orchestration",
+    "event-driven",
+    "declarative-yaml",
+    "data-pipelines",
+    "execution-monitoring",
+    "plugins",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "flow-execution",
+      "name": "Flow Execution",
+      "description": "Triggers a declarative workflow and returns its execution identifier for downstream polling."
+    },
+    {
+      "id": "execution-monitor",
+      "name": "Execution Monitor",
+      "description": "Inspects running and completed executions including task-level state, logs, and durations."
+    },
+    {
+      "id": "schedule-management",
+      "name": "Schedule Management",
+      "description": "Creates and inspects cron and event triggers that start workflows without manual invocation."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-09-18T22:02:13.777Z",
+  "updatedAt": "2026-09-18T22:02:13.777Z"
+}
