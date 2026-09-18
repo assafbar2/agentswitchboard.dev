@@ -1,0 +1,54 @@
+{
+  "id": "notion-skills-api",
+  "name": "Notion Skills API",
+  "slug": "notion-skills-api",
+  "description": "Turns a Notion workspace into an agent-neutral skills library, serving spec-compliant skill files over an API with an open-source GitHub sync kit.",
+  "providerName": "Notion",
+  "providerUrl": "https://www.notion.so",
+  "agentUrl": "https://developers.notion.com/guides/agent-skills/overview",
+  "categories": [
+    "orchestration",
+    "memory-state",
+    "code-devtools"
+  ],
+  "tags": [
+    "agent-skills",
+    "skills-library",
+    "workspace-sync",
+    "github-sync",
+    "portable-skills",
+    "rest-api",
+    "notion"
+  ],
+  "skills": [
+    {
+      "id": "skill-serving",
+      "name": "Skill Serving",
+      "description": "Serves spec-compliant skill files from Notion pages so any agent harness can load them."
+    },
+    {
+      "id": "github-sync",
+      "name": "GitHub Sync",
+      "description": "Synchronises skills between a Notion workspace and a Git repository in both directions."
+    },
+    {
+      "id": "skill-authoring",
+      "name": "Skill Authoring",
+      "description": "Lets non-engineers author and version agent skills using familiar Notion documents."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-09-18T22:02:13.793Z",
+  "updatedAt": "2026-09-18T22:02:13.793Z"
+}

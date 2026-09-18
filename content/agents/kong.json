@@ -1,0 +1,60 @@
+{
+  "id": "kong",
+  "name": "Kong AI Gateway",
+  "slug": "kong",
+  "description": "Governs and meters LLM and agent traffic through a high-performance API gateway, with an MCP gateway that turns existing REST APIs into agent-callable tools.",
+  "providerName": "Kong Inc.",
+  "providerUrl": "https://konghq.com",
+  "agentUrl": "https://github.com/Kong/kong",
+  "categories": [
+    "infrastructure",
+    "orchestration",
+    "security"
+  ],
+  "tags": [
+    "api-gateway",
+    "llm-gateway",
+    "rate-limiting",
+    "traffic-governance",
+    "plugins",
+    "mcp-gateway",
+    "kubernetes-ingress"
+  ],
+  "skills": [
+    {
+      "id": "ai-proxy",
+      "name": "AI Proxy",
+      "description": "Routes requests to multiple LLM providers behind one endpoint with credential management and failover."
+    },
+    {
+      "id": "token-metering",
+      "name": "Token Metering",
+      "description": "Tracks token consumption and cost per consumer so agent traffic can be budgeted and billed."
+    },
+    {
+      "id": "mcp-gateway",
+      "name": "MCP Gateway",
+      "description": "Exposes existing REST APIs as MCP tools without rewriting the upstream service implementation."
+    },
+    {
+      "id": "traffic-policy",
+      "name": "Traffic Policy",
+      "description": "Applies rate limits, authentication, and guardrail plugins to agent-originated requests."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-09-18T22:02:13.775Z",
+  "updatedAt": "2026-09-18T22:02:13.775Z"
+}

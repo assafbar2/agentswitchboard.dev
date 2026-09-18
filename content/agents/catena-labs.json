@@ -1,0 +1,55 @@
+{
+  "id": "catena-labs",
+  "name": "Catena Labs",
+  "slug": "catena-labs",
+  "description": "Gives AI agents regulated financial identity, custody, and payment rails across fiat and stablecoins, built on the open Agent Commerce Kit standard.",
+  "providerName": "Catena Labs",
+  "providerUrl": "https://catena.com",
+  "agentUrl": "https://app.catena.com/docs",
+  "categories": [
+    "finance",
+    "commerce-payments",
+    "security"
+  ],
+  "tags": [
+    "agent-payments",
+    "regulated-banking",
+    "stablecoins",
+    "agent-identity",
+    "custody",
+    "agent-commerce-kit",
+    "fintech"
+  ],
+  "skills": [
+    {
+      "id": "agent-identity",
+      "name": "Agent Identity",
+      "description": "Issues verifiable credentials so counterparties can authenticate an agent before transacting."
+    },
+    {
+      "id": "payment-rails",
+      "name": "Payment Rails",
+      "description": "Moves value between agents and businesses across fiat and stablecoin settlement paths."
+    },
+    {
+      "id": "custody-controls",
+      "name": "Custody Controls",
+      "description": "Applies spending limits and approval policies to funds an agent is authorised to move."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-09-18T22:02:13.790Z",
+  "updatedAt": "2026-09-18T22:02:13.790Z"
+}

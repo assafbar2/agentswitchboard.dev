@@ -1,0 +1,55 @@
+{
+  "id": "orthogonal",
+  "name": "Orthogonal",
+  "slug": "orthogonal",
+  "description": "Lets agents discover, pay for, and call third-party APIs per use through a capability marketplace spanning more than thirty-five integrated services.",
+  "providerName": "Orthogonal",
+  "providerUrl": "https://www.orthogonal.com",
+  "agentUrl": "https://docs.orthogonal.com",
+  "categories": [
+    "infrastructure",
+    "orchestration",
+    "commerce-payments"
+  ],
+  "tags": [
+    "api-marketplace",
+    "agent-payments",
+    "service-discovery",
+    "x402",
+    "per-use-billing",
+    "capability-routing",
+    "yc-backed"
+  ],
+  "skills": [
+    {
+      "id": "service-discovery",
+      "name": "Service Discovery",
+      "description": "Searches a marketplace of callable APIs and returns the schema needed to invoke one."
+    },
+    {
+      "id": "metered-payments",
+      "name": "Metered Payments",
+      "description": "Settles per-call payments to third-party API providers on behalf of the calling agent."
+    },
+    {
+      "id": "unified-invocation",
+      "name": "Unified Invocation",
+      "description": "Calls any marketplace service through one endpoint without per-vendor credential setup."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-09-18T22:02:13.791Z",
+  "updatedAt": "2026-09-18T22:02:13.791Z"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "superset-sh",
+  "name": "Superset",
+  "slug": "superset-sh",
+  "description": "Runs hundreds of coding agents in parallel from a terminal-first IDE, isolating each in its own git worktree so concurrent work never collides.",
+  "providerName": "Superset Inc.",
+  "providerUrl": "https://superset.sh",
+  "agentUrl": "https://github.com/superset-sh/superset",
+  "categories": [
+    "code-devtools",
+    "orchestration"
+  ],
+  "tags": [
+    "coding-agents",
+    "git-worktrees",
+    "parallel-execution",
+    "terminal-ide",
+    "agent-orchestration",
+    "remote-workspaces",
+    "yc-backed"
+  ],
+  "skills": [
+    {
+      "id": "parallel-agents",
+      "name": "Parallel Agents",
+      "description": "Launches many coding agents at once, each confined to an isolated git worktree."
+    },
+    {
+      "id": "worktree-isolation",
+      "name": "Worktree Isolation",
+      "description": "Creates and tears down per-agent git worktrees so concurrent edits never conflict."
+    },
+    {
+      "id": "session-review",
+      "name": "Session Review",
+      "description": "Reviews and merges diffs produced by each agent session before they reach the main branch."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-09-18T22:02:13.779Z",
+  "updatedAt": "2026-09-18T22:02:13.779Z"
+}

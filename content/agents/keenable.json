@@ -1,0 +1,54 @@
+{
+  "id": "keenable",
+  "name": "Keenable",
+  "slug": "keenable",
+  "description": "Serves a hundred-billion-document web index built for agents rather than human search pages, returning dense structured results over an API and MCP endpoint.",
+  "providerName": "Keenable",
+  "providerUrl": "https://keenable.ai",
+  "agentUrl": "https://docs.keenable.ai",
+  "categories": [
+    "research",
+    "infrastructure",
+    "data-analytics"
+  ],
+  "tags": [
+    "web-index",
+    "agent-search",
+    "retrieval-api",
+    "structured-results",
+    "large-scale-crawl",
+    "hosted-mcp",
+    "research-backend"
+  ],
+  "skills": [
+    {
+      "id": "web-search",
+      "name": "Web Search",
+      "description": "Queries a purpose-built agent index and returns structured results rather than ranked page links."
+    },
+    {
+      "id": "content-retrieval",
+      "name": "Content Retrieval",
+      "description": "Fetches full document content directly from the index without a separate crawl step."
+    },
+    {
+      "id": "bulk-research",
+      "name": "Bulk Research",
+      "description": "Runs high-volume programmatic research queries under predictable per-request pricing."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-09-18T22:02:13.791Z",
+  "updatedAt": "2026-09-18T22:02:13.791Z"
+}

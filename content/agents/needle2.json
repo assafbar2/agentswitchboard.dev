@@ -2,7 +2,7 @@
   "id": "needle2",
   "name": "Needle2",
   "slug": "needle2",
-  "description": "Compact 14MB agentic language model from Cactus Compute built to run on phones, wearables, and smart home hardware without a network round trip.",
+  "description": "Runs a compact 8-29MB 2-bit agentic model on phones, wearables, and smart home hardware without a network round trip, via a Python SDK, CLI, and C and JS-WASM bindings.",
   "providerName": "Cactus Compute",
   "providerUrl": "https://cactuscompute.com",
   "agentUrl": "https://cactuscompute.com/needle",
@@ -25,8 +25,9 @@
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
-    "api"
+    "api",
+    "cli"
   ],
   "createdAt": "2026-08-11T00:40:13.019Z",
-  "updatedAt": "2026-08-11T00:40:13.019Z"
+  "updatedAt": "2026-09-18T22:02:22.669Z"
 }

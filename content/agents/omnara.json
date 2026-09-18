@@ -1,0 +1,55 @@
+{
+  "id": "omnara",
+  "name": "Omnara",
+  "slug": "omnara",
+  "description": "Supervises managed coding agents from a single control plane across terminal, web, and mobile, letting you monitor and steer long-running runs remotely.",
+  "providerName": "Omnara",
+  "providerUrl": "https://www.omnara.com",
+  "agentUrl": "https://github.com/omnara-ai/omnara",
+  "categories": [
+    "orchestration",
+    "autonomous-agents",
+    "code-devtools"
+  ],
+  "tags": [
+    "agent-control-plane",
+    "coding-agents",
+    "remote-monitoring",
+    "mobile-access",
+    "session-steering",
+    "self-hosted",
+    "yc-backed"
+  ],
+  "skills": [
+    {
+      "id": "agent-monitoring",
+      "name": "Agent Monitoring",
+      "description": "Streams the live state of running coding agents including current step and pending questions."
+    },
+    {
+      "id": "remote-steering",
+      "name": "Remote Steering",
+      "description": "Sends instructions or answers to a running agent from web or mobile without a terminal."
+    },
+    {
+      "id": "session-history",
+      "name": "Session History",
+      "description": "Stores past agent sessions with their prompts, tool calls, and outcomes for later review."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-09-18T22:02:13.786Z",
+  "updatedAt": "2026-09-18T22:02:13.786Z"
+}

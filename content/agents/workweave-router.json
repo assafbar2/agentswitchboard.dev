@@ -2,7 +2,7 @@
   "id": "6yYSKWBNMww7CsRmy1uAD4",
   "name": "Workweave Router",
   "slug": "workweave-router",
-  "description": "Routes each prompt to the optimal model (Anthropic, OpenAI, Gemini) in under 50ms via an on-box embedder. Drop-in proxy for Claude Code, Codex, and opencode; cuts costs 40-70%.",
+  "description": "Routes each prompt to the optimal model (Anthropic, OpenAI, Gemini) in under 50ms via an on-box embedder. Router 2.0 adds subscription-aware routing for Claude Code, Codex, and opencode.",
   "providerName": "Weave",
   "providerUrl": "https://github.com/workweave/router",
   "agentUrl": "https://github.com/workweave/router",
@@ -48,5 +48,5 @@
     "api"
   ],
   "createdAt": "2026-07-06T07:04:28.013Z",
-  "updatedAt": "2026-07-06T07:04:28.013Z"
+  "updatedAt": "2026-09-18T22:02:23.159Z"
 }

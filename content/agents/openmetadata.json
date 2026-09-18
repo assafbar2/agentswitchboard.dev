@@ -1,0 +1,53 @@
+{
+  "id": "openmetadata",
+  "name": "OpenMetadata",
+  "slug": "openmetadata",
+  "description": "Centralises data catalog, lineage, and quality metadata so agents can discover which tables exist, where they came from, and whether they can be trusted.",
+  "providerName": "Collate",
+  "providerUrl": "https://open-metadata.org",
+  "agentUrl": "https://github.com/open-metadata/OpenMetadata",
+  "categories": [
+    "data-analytics",
+    "infrastructure"
+  ],
+  "tags": [
+    "data-catalog",
+    "lineage",
+    "metadata",
+    "data-governance",
+    "data-quality",
+    "discovery",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "asset-discovery",
+      "name": "Asset Discovery",
+      "description": "Searches tables, dashboards, and pipelines across connected sources with ownership and tags."
+    },
+    {
+      "id": "lineage-trace",
+      "name": "Lineage Trace",
+      "description": "Traces column-level lineage upstream and downstream to assess the blast radius of a change."
+    },
+    {
+      "id": "quality-status",
+      "name": "Quality Status",
+      "description": "Reports data-quality test results and freshness so agents can judge whether an asset is reliable."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-09-18T22:02:13.778Z",
+  "updatedAt": "2026-09-18T22:02:13.778Z"
+}

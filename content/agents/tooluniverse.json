@@ -1,0 +1,54 @@
+{
+  "id": "tooluniverse",
+  "name": "ToolUniverse",
+  "slug": "tooluniverse",
+  "description": "Curates a large collection of scientific tools and MCP servers for AI scientists, exposing biomedical and research APIs through one Python SDK.",
+  "providerName": "Harvard MIMS Lab",
+  "providerUrl": "https://zitniklab.hms.harvard.edu",
+  "agentUrl": "https://aiscientist.tools",
+  "categories": [
+    "research",
+    "orchestration",
+    "autonomous-agents"
+  ],
+  "tags": [
+    "scientific-tools",
+    "biomedical",
+    "research-apis",
+    "tool-collection",
+    "python-sdk",
+    "mcp-servers",
+    "harvard"
+  ],
+  "skills": [
+    {
+      "id": "tool-discovery",
+      "name": "Tool Discovery",
+      "description": "Searches a curated catalogue of scientific tools and returns callable specifications."
+    },
+    {
+      "id": "biomedical-apis",
+      "name": "Biomedical APIs",
+      "description": "Calls curated biomedical and chemistry data sources through one consistent interface."
+    },
+    {
+      "id": "agent-integration",
+      "name": "Agent Integration",
+      "description": "Serves the catalogue over MCP so any agent harness can load scientific tools at runtime."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-09-18T22:02:13.789Z",
+  "updatedAt": "2026-09-18T22:02:13.789Z"
+}

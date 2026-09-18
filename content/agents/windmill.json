@@ -1,0 +1,55 @@
+{
+  "id": "windmill",
+  "name": "Windmill",
+  "slug": "windmill",
+  "description": "Turns scripts in Python, TypeScript, Go, and Bash into versioned APIs, workflows, and UIs, acting as an execution backend for agent tool calls.",
+  "providerName": "Windmill Labs",
+  "providerUrl": "https://www.windmill.dev",
+  "agentUrl": "https://github.com/windmill-labs/windmill",
+  "categories": [
+    "orchestration",
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "script-execution",
+    "workflow-engine",
+    "internal-tools",
+    "job-queue",
+    "self-hosted",
+    "typescript",
+    "python"
+  ],
+  "skills": [
+    {
+      "id": "script-to-api",
+      "name": "Script To API",
+      "description": "Publishes a script as an authenticated HTTP endpoint that agents can call as a tool."
+    },
+    {
+      "id": "flow-composition",
+      "name": "Flow Composition",
+      "description": "Chains scripts into retryable multi-step flows with branching and error handling."
+    },
+    {
+      "id": "job-inspection",
+      "name": "Job Inspection",
+      "description": "Inspects queued, running, and completed jobs including arguments, logs, and results."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-09-18T22:02:13.778Z",
+  "updatedAt": "2026-09-18T22:02:13.778Z"
+}

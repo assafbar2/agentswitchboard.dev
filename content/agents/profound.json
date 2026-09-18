@@ -1,0 +1,54 @@
+{
+  "id": "profound",
+  "name": "Profound",
+  "slug": "profound",
+  "description": "Tracks and shapes how brands appear inside AI search and answer engines, exposing visibility analytics to agents through a REST API and hosted MCP server.",
+  "providerName": "Profound",
+  "providerUrl": "https://www.tryprofound.com",
+  "agentUrl": "https://docs.tryprofound.com",
+  "categories": [
+    "sales-marketing",
+    "data-analytics",
+    "research"
+  ],
+  "tags": [
+    "answer-engine-optimization",
+    "brand-visibility",
+    "ai-search",
+    "analytics",
+    "hosted-mcp",
+    "enterprise",
+    "reporting"
+  ],
+  "skills": [
+    {
+      "id": "visibility-tracking",
+      "name": "Visibility Tracking",
+      "description": "Measures how often and how favourably a brand appears in AI-generated answers."
+    },
+    {
+      "id": "prompt-analytics",
+      "name": "Prompt Analytics",
+      "description": "Breaks down which user prompts surface a brand and which competitors appear alongside it."
+    },
+    {
+      "id": "citation-analysis",
+      "name": "Citation Analysis",
+      "description": "Identifies which sources answer engines cite so content gaps can be prioritised."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-09-18T22:02:13.790Z",
+  "updatedAt": "2026-09-18T22:02:13.790Z"
+}

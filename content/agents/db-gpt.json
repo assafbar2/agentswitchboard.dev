@@ -1,0 +1,53 @@
+{
+  "id": "db-gpt",
+  "name": "DB-GPT",
+  "slug": "db-gpt",
+  "description": "Answers questions over your own databases with text-to-SQL data agents and an AWEL workflow runtime, connecting multiple engines behind one agentic interface.",
+  "providerName": "Eosphoros AI",
+  "providerUrl": "https://github.com/eosphoros-ai",
+  "agentUrl": "https://github.com/eosphoros-ai/DB-GPT",
+  "categories": [
+    "data-analytics",
+    "autonomous-agents"
+  ],
+  "tags": [
+    "text-to-sql",
+    "data-agents",
+    "database-query",
+    "awel-workflow",
+    "retrieval",
+    "multi-model",
+    "python-sdk"
+  ],
+  "skills": [
+    {
+      "id": "text-to-sql",
+      "name": "Text To SQL",
+      "description": "Translates natural-language questions into SQL against a connected database schema."
+    },
+    {
+      "id": "data-agent",
+      "name": "Data Agent",
+      "description": "Runs multi-step analysis agents that chain queries, charts, and summaries over warehouse data."
+    },
+    {
+      "id": "awel-workflow",
+      "name": "AWEL Workflow",
+      "description": "Composes agentic data pipelines using the AWEL declarative workflow language."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-09-18T22:02:13.777Z",
+  "updatedAt": "2026-09-18T22:02:13.777Z"
+}

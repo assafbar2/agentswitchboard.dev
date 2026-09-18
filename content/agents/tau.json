@@ -1,0 +1,53 @@
+{
+  "id": "tau",
+  "name": "Tau",
+  "slug": "tau",
+  "description": "Provides a small, readable terminal coding agent from Hugging Face that doubles as a reference harness for understanding how coding agents are built.",
+  "providerName": "Hugging Face",
+  "providerUrl": "https://huggingface.co",
+  "agentUrl": "https://github.com/huggingface/tau",
+  "categories": [
+    "code-devtools",
+    "autonomous-agents"
+  ],
+  "tags": [
+    "coding-agent",
+    "terminal",
+    "reference-implementation",
+    "python-library",
+    "pypi",
+    "model-agnostic",
+    "hugging-face"
+  ],
+  "skills": [
+    {
+      "id": "terminal-coding",
+      "name": "Terminal Coding",
+      "description": "Reads, edits, and runs code in a repository from an interactive terminal session."
+    },
+    {
+      "id": "model-agnostic",
+      "name": "Model Agnostic",
+      "description": "Runs against hosted or local models so the same harness works with open weights."
+    },
+    {
+      "id": "library-embedding",
+      "name": "Library Embedding",
+      "description": "Embeds as a Python library so the agent loop can be reused inside other tools."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-09-18T22:02:13.787Z",
+  "updatedAt": "2026-09-18T22:02:13.787Z"
+}

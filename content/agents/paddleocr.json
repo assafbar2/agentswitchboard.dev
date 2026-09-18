@@ -1,0 +1,59 @@
+{
+  "id": "paddleocr",
+  "name": "PaddleOCR",
+  "slug": "paddleocr",
+  "description": "Converts documents, receipts, and images into structured data with OCR, layout analysis, and table recognition, exposed to agents via a Python API, CLI, and MCP server.",
+  "providerName": "PaddlePaddle",
+  "providerUrl": "https://www.paddlepaddle.org.cn/en",
+  "agentUrl": "https://paddleocr.com",
+  "categories": [
+    "content-media",
+    "data-analytics"
+  ],
+  "tags": [
+    "ocr",
+    "document-parsing",
+    "table-recognition",
+    "layout-analysis",
+    "pdf-extraction",
+    "computer-vision",
+    "baidu"
+  ],
+  "skills": [
+    {
+      "id": "text-recognition",
+      "name": "Text Recognition",
+      "description": "Extracts printed and handwritten text from images and scanned PDFs across more than 80 languages."
+    },
+    {
+      "id": "layout-analysis",
+      "name": "Layout Analysis",
+      "description": "Detects document structure including headings, paragraphs, figures, and reading order before extraction."
+    },
+    {
+      "id": "table-recognition",
+      "name": "Table Recognition",
+      "description": "Parses tables from scans into structured HTML or Markdown while preserving row and column spans."
+    },
+    {
+      "id": "doc-pipeline",
+      "name": "Document Pipeline",
+      "description": "Runs end-to-end pipelines chaining detection, recognition, and structure parsing into JSON output."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-09-18T22:02:13.772Z",
+  "updatedAt": "2026-09-18T22:02:13.772Z"
+}

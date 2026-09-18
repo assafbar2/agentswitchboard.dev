@@ -1,0 +1,59 @@
+{
+  "id": "lightrag",
+  "name": "LightRAG",
+  "slug": "lightrag",
+  "description": "Builds a graph-based retrieval index over documents so agents can answer questions spanning many sources, served through a standalone API server.",
+  "providerName": "HKU Data Science Lab",
+  "providerUrl": "https://github.com/HKUDS",
+  "agentUrl": "https://github.com/HKUDS/LightRAG",
+  "categories": [
+    "memory-state",
+    "research",
+    "vector-databases"
+  ],
+  "tags": [
+    "graph-rag",
+    "retrieval",
+    "knowledge-graph",
+    "embeddings",
+    "document-indexing",
+    "question-answering",
+    "memory-backend"
+  ],
+  "skills": [
+    {
+      "id": "graph-index",
+      "name": "Graph Index",
+      "description": "Builds an entity and relationship graph from raw documents to support multi-hop retrieval."
+    },
+    {
+      "id": "hybrid-query",
+      "name": "Hybrid Query",
+      "description": "Combines vector similarity with graph traversal to retrieve context pure embedding search misses."
+    },
+    {
+      "id": "incremental-update",
+      "name": "Incremental Update",
+      "description": "Adds new documents to an existing index without rebuilding the whole knowledge graph."
+    },
+    {
+      "id": "api-serving",
+      "name": "API Serving",
+      "description": "Serves retrieval over HTTP through a standalone server that agent harnesses can call directly."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-09-18T22:02:13.775Z",
+  "updatedAt": "2026-09-18T22:02:13.775Z"
+}

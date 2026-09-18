@@ -1,0 +1,54 @@
+{
+  "id": "tiun",
+  "name": "tiun",
+  "slug": "tiun",
+  "description": "Handles auth, billing, payments, and merchant-of-record obligations for AI products, installable directly into an agent through MCP and packaged skills.",
+  "providerName": "tiun",
+  "providerUrl": "https://tiun.io",
+  "agentUrl": "https://tiun.io",
+  "categories": [
+    "commerce-payments",
+    "infrastructure"
+  ],
+  "tags": [
+    "merchant-of-record",
+    "billing",
+    "subscriptions",
+    "agent-monetization",
+    "payments",
+    "tax-compliance",
+    "authentication"
+  ],
+  "skills": [
+    {
+      "id": "billing-setup",
+      "name": "Billing Setup",
+      "description": "Creates products, prices, and subscription plans that an AI product can charge against."
+    },
+    {
+      "id": "payment-processing",
+      "name": "Payment Processing",
+      "description": "Processes customer payments while acting as merchant of record for tax and compliance."
+    },
+    {
+      "id": "auth-management",
+      "name": "Auth Management",
+      "description": "Issues and validates user authentication without separate identity infrastructure."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-09-18T22:02:13.794Z",
+  "updatedAt": "2026-09-18T22:02:13.794Z"
+}

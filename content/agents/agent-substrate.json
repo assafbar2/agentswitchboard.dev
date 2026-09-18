@@ -1,0 +1,54 @@
+{
+  "id": "agent-substrate",
+  "name": "Agent Substrate",
+  "slug": "agent-substrate",
+  "description": "Runs agents in secure-by-default microVM sandboxes on GKE, delivering high sandbox density and sub-second resume through Cloud Hypervisor and gVisor isolation.",
+  "providerName": "Google Cloud",
+  "providerUrl": "https://cloud.google.com",
+  "agentUrl": "https://github.com/agent-substrate/substrate",
+  "categories": [
+    "infrastructure",
+    "orchestration",
+    "security"
+  ],
+  "tags": [
+    "agent-sandbox",
+    "microvm",
+    "gke",
+    "gvisor",
+    "cloud-hypervisor",
+    "secure-execution",
+    "google-cloud"
+  ],
+  "skills": [
+    {
+      "id": "sandbox-execution",
+      "name": "Sandbox Execution",
+      "description": "Runs untrusted agent-generated code inside an isolated microVM with a strict syscall boundary."
+    },
+    {
+      "id": "fast-resume",
+      "name": "Fast Resume",
+      "description": "Snapshots and resumes sandboxes in under a second so idle agents cost nothing to keep alive."
+    },
+    {
+      "id": "framework-agnostic",
+      "name": "Framework Agnostic",
+      "description": "Hosts agents from any framework without requiring changes to the agent implementation."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-09-18T22:02:13.789Z",
+  "updatedAt": "2026-09-18T22:02:13.789Z"
+}

@@ -1,0 +1,53 @@
+{
+  "id": "jev-ultrafast",
+  "name": "Jev Ultrafast",
+  "slug": "jev-ultrafast",
+  "description": "Drives a browser through a dynamic indexed action space, cutting agent web-task latency to seconds, with a Google Flights search completing in about seven.",
+  "providerName": "Browser Use",
+  "providerUrl": "https://browser-use.com",
+  "agentUrl": "https://github.com/browser-use/jev-ultrafast",
+  "categories": [
+    "browser-computer",
+    "autonomous-agents"
+  ],
+  "tags": [
+    "browser-agent",
+    "web-automation",
+    "low-latency",
+    "action-indexing",
+    "python-library",
+    "local-server",
+    "browser-use"
+  ],
+  "skills": [
+    {
+      "id": "fast-navigation",
+      "name": "Fast Navigation",
+      "description": "Navigates and acts on web pages using an indexed action space that avoids full-page reasoning."
+    },
+    {
+      "id": "task-execution",
+      "name": "Task Execution",
+      "description": "Completes a described web task end to end and returns the extracted structured result."
+    },
+    {
+      "id": "local-server",
+      "name": "Local Server",
+      "description": "Runs a local server so external agent harnesses can drive the browser over HTTP."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-09-18T22:02:13.782Z",
+  "updatedAt": "2026-09-18T22:02:13.782Z"
+}

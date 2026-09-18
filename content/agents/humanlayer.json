@@ -1,0 +1,54 @@
+{
+  "id": "humanlayer",
+  "name": "HumanLayer",
+  "slug": "humanlayer",
+  "description": "Gates autonomous agent tool calls behind human approval in Slack or email, so high-risk actions require a person to sign off before they execute.",
+  "providerName": "HumanLayer",
+  "providerUrl": "https://www.humanlayer.dev",
+  "agentUrl": "https://github.com/humanlayer/humanlayer",
+  "categories": [
+    "orchestration",
+    "autonomous-agents",
+    "communication"
+  ],
+  "tags": [
+    "human-in-the-loop",
+    "approval-workflow",
+    "agent-safety",
+    "slack-approvals",
+    "guardrails",
+    "function-gating",
+    "python-sdk"
+  ],
+  "skills": [
+    {
+      "id": "require-approval",
+      "name": "Require Approval",
+      "description": "Wraps a tool call so it blocks until a designated human approves or rejects the action."
+    },
+    {
+      "id": "contact-human",
+      "name": "Contact Human",
+      "description": "Escalates a question from an agent to a person over Slack, email, or SMS and returns the reply."
+    },
+    {
+      "id": "approval-audit",
+      "name": "Approval Audit",
+      "description": "Records who approved which agent action and when, producing an auditable decision trail."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-09-18T22:02:13.780Z",
+  "updatedAt": "2026-09-18T22:02:13.780Z"
+}

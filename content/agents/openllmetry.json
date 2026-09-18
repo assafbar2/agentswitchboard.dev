@@ -1,0 +1,52 @@
+{
+  "id": "openllmetry",
+  "name": "OpenLLMetry",
+  "slug": "openllmetry",
+  "description": "Instruments LLM and agent applications with OpenTelemetry-native tracing, exporting spans for prompts, tool calls, and chains to any OTel-compatible backend.",
+  "providerName": "Traceloop",
+  "providerUrl": "https://www.traceloop.com",
+  "agentUrl": "https://github.com/traceloop/openllmetry",
+  "categories": [
+    "infrastructure",
+    "research"
+  ],
+  "tags": [
+    "opentelemetry",
+    "llm-tracing",
+    "observability",
+    "span-export",
+    "prompt-monitoring",
+    "vendor-neutral",
+    "sdk-instrumentation"
+  ],
+  "skills": [
+    {
+      "id": "auto-instrumentation",
+      "name": "Auto Instrumentation",
+      "description": "Instruments popular LLM SDKs and agent frameworks with a single initialisation call."
+    },
+    {
+      "id": "span-export",
+      "name": "Span Export",
+      "description": "Exports prompt, completion, and tool-call spans to any OpenTelemetry-compatible collector."
+    },
+    {
+      "id": "workflow-tracing",
+      "name": "Workflow Tracing",
+      "description": "Groups multi-step agent runs into one trace so latency and cost attribute per step."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-09-18T22:02:13.781Z",
+  "updatedAt": "2026-09-18T22:02:13.781Z"
+}

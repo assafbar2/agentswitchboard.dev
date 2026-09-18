@@ -1,0 +1,53 @@
+{
+  "id": "sol-pi",
+  "name": "SoL-Pi",
+  "slug": "sol-pi",
+  "description": "Extends the Pi agent harness with AutoResearch loops from NVIDIA, improving efficiency on long-running autonomous research and coding tasks.",
+  "providerName": "NVIDIA",
+  "providerUrl": "https://www.nvidia.com",
+  "agentUrl": "https://github.com/NVlabs/SoL-Pi",
+  "categories": [
+    "orchestration",
+    "research"
+  ],
+  "tags": [
+    "agent-harness",
+    "autoresearch",
+    "research-loops",
+    "efficiency",
+    "harness-extension",
+    "open-source",
+    "nvidia"
+  ],
+  "skills": [
+    {
+      "id": "research-loop",
+      "name": "Research Loop",
+      "description": "Runs iterative AutoResearch cycles that refine an approach across repeated attempts."
+    },
+    {
+      "id": "harness-extension",
+      "name": "Harness Extension",
+      "description": "Plugs into the Pi agent harness without replacing the existing agent loop."
+    },
+    {
+      "id": "efficiency-tuning",
+      "name": "Efficiency Tuning",
+      "description": "Reduces token and step cost on long-horizon tasks through structured iteration."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-09-18T22:02:13.788Z",
+  "updatedAt": "2026-09-18T22:02:13.788Z"
+}

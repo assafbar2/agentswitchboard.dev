@@ -1,0 +1,55 @@
+{
+  "id": "scrapegraphai",
+  "name": "ScrapeGraphAI",
+  "slug": "scrapegraphai",
+  "description": "Scrapes websites from a natural-language description of the data you want, building the extraction graph automatically and serving results via a hosted API and MCP server.",
+  "providerName": "ScrapeGraphAI",
+  "providerUrl": "https://scrapegraphai.com",
+  "agentUrl": "https://github.com/ScrapeGraphAI/Scrapegraph-ai",
+  "categories": [
+    "research",
+    "browser-computer",
+    "data-analytics"
+  ],
+  "tags": [
+    "web-scraping",
+    "data-extraction",
+    "llm-scraping",
+    "structured-output",
+    "crawling",
+    "python-sdk",
+    "hosted-api"
+  ],
+  "skills": [
+    {
+      "id": "smart-scraper",
+      "name": "Smart Scraper",
+      "description": "Extracts structured data from a page given only a prompt describing the desired fields."
+    },
+    {
+      "id": "search-scraper",
+      "name": "Search Scraper",
+      "description": "Runs a web search and scrapes the top results into one consolidated structured answer."
+    },
+    {
+      "id": "markdownify",
+      "name": "Markdownify",
+      "description": "Converts an arbitrary web page into clean Markdown suitable for feeding into an agent context."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-09-18T22:02:13.776Z",
+  "updatedAt": "2026-09-18T22:02:13.776Z"
+}

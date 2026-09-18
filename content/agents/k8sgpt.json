@@ -1,0 +1,54 @@
+{
+  "id": "k8sgpt",
+  "name": "K8sGPT",
+  "slug": "k8sgpt",
+  "description": "Diagnoses Kubernetes and OpenShift clusters in plain language, explaining why workloads are failing through a CLI, in-cluster operator, and MCP server.",
+  "providerName": "K8sGPT",
+  "providerUrl": "https://k8sgpt.ai",
+  "agentUrl": "https://github.com/k8sgpt-ai/k8sgpt",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "kubernetes",
+    "cluster-diagnostics",
+    "sre",
+    "incident-triage",
+    "openshift",
+    "cncf",
+    "in-cluster-operator"
+  ],
+  "skills": [
+    {
+      "id": "cluster-analyze",
+      "name": "Cluster Analyze",
+      "description": "Scans a cluster for failing pods, services, and ingresses and explains each root cause in plain language."
+    },
+    {
+      "id": "custom-analyzer",
+      "name": "Custom Analyzer",
+      "description": "Runs targeted analysers against specific resource kinds to narrow an ongoing investigation."
+    },
+    {
+      "id": "operator-mode",
+      "name": "Operator Mode",
+      "description": "Runs continuously in-cluster and publishes findings as custom resources for other tooling."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-09-18T22:02:13.780Z",
+  "updatedAt": "2026-09-18T22:02:13.780Z"
+}
