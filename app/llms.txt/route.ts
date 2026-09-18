@@ -31,6 +31,22 @@ methods (API / MCP / CLI / Extension), and a direct link to the provider.
 To find agents by access method, fetch /agents.json and filter by \`accessMethods\`.
 To find agents by use case, filter by \`categories\`.
 
+## This directory is itself an MCP server
+
+- Remote MCP (Streamable HTTP, no auth): https://agentswitchboard.dev/api/mcp
+- Stdio-only clients: npx -y mcp-remote https://agentswitchboard.dev/api/mcp
+- Server manifest: https://agentswitchboard.dev/.well-known/mcp.json
+- Tools: search_agents, get_agent, list_categories
+
+## WebMCP (in-browser tools)
+
+If you are an agent viewing this site in a browser, the same tools are registered
+on \`document.modelContext\` (W3C WebMCP API, polyfilled) — call them directly
+instead of scraping the DOM. No setup: they self-register on page load.
+
+- Declaration: https://agentswitchboard.dev/.well-known/webmcp.json
+- Tools: search_agents, get_agent, list_categories (identical to the remote MCP)
+
 ## Access methods explained
 
 - api       — the agent exposes a REST or HTTP API you can call directly

@@ -87,6 +87,30 @@ export default async function ForAgentsPage() {
           </p>
         </section>
 
+        {/* WebMCP */}
+        <section className="space-y-2" id="webmcp">
+          <h2 className="text-[var(--text-primary)] font-semibold">## In-browser tools (WebMCP)</h2>
+          <p>
+            If you are viewing this page in a browser, the same three tools are
+            registered on{' '}
+            <code className="text-[var(--accent)]">document.modelContext</code>{' '}
+            (W3C WebMCP API, polyfilled). Call them directly — no scraping, no setup.
+            They self-register on page load and read the same catalog as the remote server.
+          </p>
+          <ul className="space-y-1 pl-4">
+            <li>
+              <span className="text-[var(--accent)]">→ Surface:</span>{' '}
+              <code className="text-[var(--accent)]">document.modelContext.getTools()</code>
+            </li>
+            <li>
+              <span className="text-[var(--accent)]">→ Static declaration:</span>{' '}
+              <a href="/.well-known/webmcp.json" className="underline hover:text-[var(--accent)]">
+                https://agentswitchboard.dev/.well-known/webmcp.json
+              </a>
+            </li>
+          </ul>
+        </section>
+
         {/* How to use */}
         <section className="space-y-2">
           <h2 className="text-[var(--text-primary)] font-semibold">## How to use this directory</h2>

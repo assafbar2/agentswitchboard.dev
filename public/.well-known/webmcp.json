@@ -1,0 +1,29 @@
+{
+  "name": "io.github.assafbar2/agentswitchboard",
+  "description": "In-browser WebMCP tools for Agent Switchboard, registered on document.modelContext when the page loads. Same catalog and tools as the remote MCP server at /api/mcp.",
+  "version": "1.0.0",
+  "websiteUrl": "https://agentswitchboard.dev",
+  "surface": "document.modelContext",
+  "polyfill": "@mcp-b/webmcp-polyfill",
+  "remote": {
+    "type": "streamable-http",
+    "url": "https://agentswitchboard.dev/api/mcp"
+  },
+  "tools": [
+    {
+      "name": "search_agents",
+      "description": "Search Agent Switchboard's directory of vetted AI agents, MCP servers, and agentic tools. Filter by free-text query, category slug, and/or access method (api, mcp, cli, browser-extension).",
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "get_agent",
+      "description": "Get full detail for one agent by slug: description, provider, categories, access methods, tags, and links.",
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "list_categories",
+      "description": "List all directory categories with their agent counts. Slugs are valid inputs for search_agents.",
+      "annotations": { "readOnlyHint": true }
+    }
+  ]
+}
