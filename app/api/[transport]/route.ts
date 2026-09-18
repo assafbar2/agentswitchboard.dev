@@ -33,6 +33,20 @@ function agentSummary(a: Agent) {
   };
 }
 
+// Shared output shape for a single agent summary — reused by the search and
+// get_agent output schemas so declared output always matches agentSummary().
+const agentSummaryShape = {
+  name: z.string(),
+  slug: z.string(),
+  description: z.string(),
+  provider: z.string(),
+  categories: z.array(z.string()),
+  accessMethods: z.array(z.string()),
+  authType: z.string(),
+  verified: z.boolean(),
+  url: z.string(),
+};
+
 const handler = createMcpHandler(
   (server) => {
     server.registerTool(
@@ -51,6 +65,10 @@ const handler = createMcpHandler(
             .optional(),
           limit: z.number().int().min(1).max(50).default(10).optional(),
         },
+        outputSchema: {
+          total: z.number().int(),
+          agents: z.array(z.object(agentSummaryShape)),
+        },
       },
       async ({ query, category, access, limit }) => {
         let agents = await getEveryAgent();
@@ -58,17 +76,10 @@ const handler = createMcpHandler(
           agents = agents.filter((a) => a.categories.some((c) => c.slug === category));
         }
         const results = searchAgents(agents, query ?? '', access).slice(0, limit ?? 10);
+        const structured = { total: results.length, agents: results.map(agentSummary) };
         return {
-          content: [
-            {
-              type: 'text',
-              text: JSON.stringify(
-                { total: results.length, agents: results.map(agentSummary) },
-                null,
-                2
-              ),
-            },
-          ],
+          content: [{ type: 'text', text: JSON.stringify(structured, null, 2) }],
+          structuredContent: structured,
         };
       }
     );
@@ -82,6 +93,17 @@ const handler = createMcpHandler(
         inputSchema: {
           slug: z.string().describe('Agent slug, e.g. "playwright-mcp"'),
         },
+        outputSchema: {
+          ...agentSummaryShape,
+          agentUrl: z.string(),
+          providerUrl: z.string(),
+          skills: z
+            .array(z.object({ id: z.string(), name: z.string(), description: z.string() }).passthrough()),
+          tags: z.array(z.string()),
+          supportsStreaming: z.boolean(),
+          supportsPushNotifications: z.boolean(),
+          addedAt: z.string().optional(),
+        },
       },
       async ({ slug }) => {
         const agents = await getEveryAgent();
@@ -92,26 +114,19 @@ const handler = createMcpHandler(
             isError: true,
           };
         }
+        const structured = {
+          ...agentSummary(agent),
+          agentUrl: agent.agentUrl,
+          providerUrl: agent.providerUrl,
+          skills: agent.skills,
+          tags: agent.tags,
+          supportsStreaming: agent.supportsStreaming,
+          supportsPushNotifications: agent.supportsPushNotifications,
+          addedAt: agent.createdAt,
+        };
         return {
-          content: [
-            {
-              type: 'text',
-              text: JSON.stringify(
-                {
-                  ...agentSummary(agent),
-                  agentUrl: agent.agentUrl,
-                  providerUrl: agent.providerUrl,
-                  skills: agent.skills,
-                  tags: agent.tags,
-                  supportsStreaming: agent.supportsStreaming,
-                  supportsPushNotifications: agent.supportsPushNotifications,
-                  addedAt: agent.createdAt,
-                },
-                null,
-                2
-              ),
-            },
-          ],
+          content: [{ type: 'text', text: JSON.stringify(structured, null, 2) }],
+          structuredContent: structured,
         };
       }
     );
@@ -122,25 +137,30 @@ const handler = createMcpHandler(
         title: 'List Categories',
         description: 'All directory categories with live agent counts. Slugs are valid inputs for search_agents.',
         inputSchema: {},
+        outputSchema: {
+          categories: z.array(
+            z.object({
+              slug: z.string(),
+              name: z.string(),
+              description: z.string().optional(),
+              agentCount: z.number().optional(),
+            })
+          ),
+        },
       },
       async () => {
         const categories = await getAllCategories();
+        const structured = {
+          categories: categories.map((c) => ({
+            slug: c.slug,
+            name: c.name,
+            description: c.description,
+            agentCount: c.agentCount,
+          })),
+        };
         return {
-          content: [
-            {
-              type: 'text',
-              text: JSON.stringify(
-                categories.map((c) => ({
-                  slug: c.slug,
-                  name: c.name,
-                  description: c.description,
-                  agentCount: c.agentCount,
-                })),
-                null,
-                2
-              ),
-            },
-          ],
+          content: [{ type: 'text', text: JSON.stringify(structured, null, 2) }],
+          structuredContent: structured,
         };
       }
     );

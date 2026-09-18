@@ -13,17 +13,71 @@
     {
       "name": "search_agents",
       "description": "Search Agent Switchboard's directory of vetted AI agents, MCP servers, and agentic tools. Filter by free-text query, category slug, and/or access method (api, mcp, cli, browser-extension).",
-      "annotations": { "readOnlyHint": true }
+      "annotations": { "readOnlyHint": true },
+      "outputSchema": {
+        "type": "object",
+        "required": ["total", "agents"],
+        "properties": {
+          "total": { "type": "number" },
+          "agents": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": { "type": "string" },
+                "slug": { "type": "string" },
+                "url": { "type": "string" },
+                "categories": { "type": "array", "items": { "type": "string" } },
+                "accessMethods": { "type": "array", "items": { "type": "string" } }
+              }
+            }
+          }
+        }
+      }
     },
     {
       "name": "get_agent",
       "description": "Get full detail for one agent by slug: description, provider, categories, access methods, tags, and links.",
-      "annotations": { "readOnlyHint": true }
+      "annotations": { "readOnlyHint": true },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "slug": { "type": "string" },
+          "url": { "type": "string" },
+          "homepage": { "type": ["string", "null"] },
+          "provider": { "type": ["string", "null"] },
+          "description": { "type": "string" },
+          "categories": { "type": "array", "items": { "type": "string" } },
+          "accessMethods": { "type": "array", "items": { "type": "string" } },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "verified": { "type": "boolean" },
+          "tier": { "type": "string" },
+          "error": { "type": "string" }
+        }
+      }
     },
     {
       "name": "list_categories",
       "description": "List all directory categories with their agent counts. Slugs are valid inputs for search_agents.",
-      "annotations": { "readOnlyHint": true }
+      "annotations": { "readOnlyHint": true },
+      "outputSchema": {
+        "type": "object",
+        "required": ["categories"],
+        "properties": {
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["slug", "count"],
+              "properties": {
+                "slug": { "type": "string" },
+                "count": { "type": "number" }
+              }
+            }
+          }
+        }
+      }
     }
   ]
 }

@@ -29,7 +29,10 @@ interface CatalogAgent {
   tier: string;
 }
 
-type ToolResult = { content: { type: 'text'; text: string }[] };
+type ToolResult = {
+  content: { type: 'text'; text: string }[];
+  structuredContent?: Record<string, unknown>;
+};
 
 interface WebMcpRegistrar {
   registerTool(
@@ -37,6 +40,7 @@ interface WebMcpRegistrar {
       name: string;
       description: string;
       inputSchema?: Record<string, unknown>;
+      outputSchema?: Record<string, unknown>;
       annotations?: { readOnlyHint?: boolean };
       execute: (input: Record<string, unknown>) => Promise<ToolResult>;
     },
@@ -44,8 +48,11 @@ interface WebMcpRegistrar {
   ): Promise<void>;
 }
 
-const asText = (o: unknown): ToolResult => ({
+// Every tool returns the same object as text (human/legacy fallback) and as
+// structuredContent (matches the declared outputSchema).
+const asResult = (o: Record<string, unknown>): ToolResult => ({
   content: [{ type: 'text', text: JSON.stringify(o, null, 2) }],
+  structuredContent: o,
 });
 const str = (v: unknown): string => (typeof v === 'string' ? v : '');
 const num = (v: unknown): number | undefined => (typeof v === 'number' ? v : undefined);
@@ -87,6 +94,26 @@ export function WebMcp() {
                 limit: { type: 'number', description: 'Max results (default 10)' },
               },
             },
+            outputSchema: {
+              type: 'object',
+              required: ['total', 'agents'],
+              properties: {
+                total: { type: 'number' },
+                agents: {
+                  type: 'array',
+                  items: {
+                    type: 'object',
+                    properties: {
+                      name: { type: 'string' },
+                      slug: { type: 'string' },
+                      url: { type: 'string' },
+                      categories: { type: 'array', items: { type: 'string' } },
+                      accessMethods: { type: 'array', items: { type: 'string' } },
+                    },
+                  },
+                },
+              },
+            },
             annotations: { readOnlyHint: true },
             async execute(input) {
               const all = await load();
@@ -107,7 +134,7 @@ export function WebMcp() {
                 categories: a.categories,
                 accessMethods: a.accessMethods,
               }));
-              return asText({ total: trimmed.length, agents: trimmed });
+              return asResult({ total: trimmed.length, agents: trimmed });
             },
           },
           { signal: controller.signal }
@@ -122,13 +149,30 @@ export function WebMcp() {
               properties: { slug: { type: 'string' } },
               required: ['slug'],
             },
+            outputSchema: {
+              type: 'object',
+              properties: {
+                name: { type: 'string' },
+                slug: { type: 'string' },
+                url: { type: 'string' },
+                homepage: { type: ['string', 'null'] },
+                provider: { type: ['string', 'null'] },
+                description: { type: 'string' },
+                categories: { type: 'array', items: { type: 'string' } },
+                accessMethods: { type: 'array', items: { type: 'string' } },
+                tags: { type: 'array', items: { type: 'string' } },
+                verified: { type: 'boolean' },
+                tier: { type: 'string' },
+                error: { type: 'string' },
+              },
+            },
             annotations: { readOnlyHint: true },
             async execute(input) {
               const all = await load();
               const agent = all.find((a) => a.slug === str(input.slug));
               return agent
-                ? asText(agent)
-                : asText({ error: `No agent with slug "${str(input.slug)}". Try search_agents first.` });
+                ? asResult(agent as unknown as Record<string, unknown>)
+                : asResult({ error: `No agent with slug "${str(input.slug)}". Try search_agents first.` });
             },
           },
           { signal: controller.signal }
@@ -139,14 +183,29 @@ export function WebMcp() {
             name: 'list_categories',
             description: 'List all directory categories with their agent counts. Slugs are valid inputs for search_agents.',
             inputSchema: { type: 'object', properties: {} },
+            outputSchema: {
+              type: 'object',
+              required: ['categories'],
+              properties: {
+                categories: {
+                  type: 'array',
+                  items: {
+                    type: 'object',
+                    required: ['slug', 'count'],
+                    properties: { slug: { type: 'string' }, count: { type: 'number' } },
+                  },
+                },
+              },
+            },
             annotations: { readOnlyHint: true },
             async execute() {
               const all = await load();
               const counts = new Map<string, number>();
               for (const a of all) for (const c of a.categories) counts.set(c, (counts.get(c) ?? 0) + 1);
-              return asText(
-                [...counts.entries()].sort((x, y) => y[1] - x[1]).map(([slug, count]) => ({ slug, count }))
-              );
+              const categories = [...counts.entries()]
+                .sort((x, y) => y[1] - x[1])
+                .map(([slug, count]) => ({ slug, count }));
+              return asResult({ categories });
             },
           },
           { signal: controller.signal }
