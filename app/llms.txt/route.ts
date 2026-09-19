@@ -38,6 +38,10 @@ To find agents by use case, filter by \`categories\`.
 - Server manifest: https://agentswitchboard.dev/.well-known/mcp.json
 - Tools: search_agents, get_agent, list_categories
 - Plain REST search (no MCP handshake needed): GET /api/agents?q=&category=&access=&limit=&offset=
+- REST detail: GET /api/agents/{slug}
+- REST categories: GET /api/categories
+- OpenAPI: https://agentswitchboard.dev/openapi.json
+- Connector skill: https://agentswitchboard.dev/skill.md
 
 ## WebMCP (in-browser tools)
 

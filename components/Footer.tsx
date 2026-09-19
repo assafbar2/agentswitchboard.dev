@@ -26,6 +26,7 @@ const footerLinks = [
       { href: '/contact', label: 'Contact' },
       { href: 'https://github.com/assafbar2/agentswitchboard.dev', label: 'GitHub', external: true },
       { href: '/privacy', label: 'Privacy' },
+      { href: '/terms', label: 'Terms' },
       { href: '/disclaimer', label: 'Disclaimer' },
     ],
   },

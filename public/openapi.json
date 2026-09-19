@@ -2,27 +2,163 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Agent Switchboard Directory API",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "summary": "Read-only catalog of vetted AI agents, MCP servers, and agentic developer tools.",
-    "description": "Agent Switchboard publishes its whole directory as machine-readable data. There is no authentication and no rate limit beyond ordinary fair use. Use this API to answer questions like 'is there an agent that does X?' or 'which agents expose an MCP server?'. For interactive, tool-shaped access, use the MCP server described at /.well-known/mcp.json instead.",
+    "description": "Agent Switchboard is a public discovery directory. Use this API to answer questions like 'is there an agent that does X?' or 'which listed products expose an MCP server?'. There is no authentication, no user account, and no write access. This API does not proxy the underlying products — it only returns Switchboard listings. For interactive tool-shaped access, an MCP server is also available at /api/mcp.",
     "contact": {
-      "name": "Agent Switchboard",
+      "name": "Barnir",
       "email": "barnir@agentmail.to",
       "url": "https://agentswitchboard.dev/contact"
     },
     "license": { "name": "MIT", "identifier": "MIT" }
   },
-  "servers": [{ "url": "https://agentswitchboard.dev", "description": "Production" }],
+  "servers": [
+    { "url": "https://agentswitchboard.dev", "description": "Production" }
+  ],
   "externalDocs": {
-    "description": "Human and agent documentation",
+    "description": "Human and agent documentation, including REST examples",
     "url": "https://agentswitchboard.dev/for-agents"
   },
+  "tags": [
+    { "name": "catalog", "description": "Search and fetch directory listings." },
+    { "name": "mcp", "description": "Optional Model Context Protocol transport. Not required for REST clients." }
+  ],
+  "security": [],
   "paths": {
+    "/api/agents": {
+      "get": {
+        "operationId": "searchAgents",
+        "summary": "Search published agents",
+        "description": "Relevance-ranked search over name, description, skills, categories, tags, and provider. Empty `q` lists published agents in catalog order. Filter by category slug and/or access methods. Paginate with `total` + `offset` + `limit`.",
+        "tags": ["catalog"],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "description": "Free-text query. Empty string or omitted = no text filter.",
+            "schema": { "type": "string", "examples": ["email", "browser automation"] }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "description": "Category slug from GET /api/categories, e.g. `code-devtools`.",
+            "schema": { "type": "string", "examples": ["code-devtools"] }
+          },
+          {
+            "name": "access",
+            "in": "query",
+            "required": false,
+            "description": "One or more of `api`, `mcp`, `cli`, `browser-extension`. Comma-separate to require all (`access=api,mcp`). Unknown values are ignored.",
+            "schema": { "type": "string", "examples": ["mcp", "api,mcp"] }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Page size. Clamped to 1–50. Default 10.",
+            "schema": { "type": "integer", "minimum": 1, "maximum": 50, "default": 10 }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Number of matches to skip. Default 0.",
+            "schema": { "type": "integer", "minimum": 0, "default": 0 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A page of matching agents.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SearchResult" },
+                "examples": {
+                  "email": {
+                    "value": {
+                      "total": 1,
+                      "offset": 0,
+                      "limit": 10,
+                      "agents": [
+                        {
+                          "name": "AgentMail",
+                          "slug": "agentmail",
+                          "url": "https://agentswitchboard.dev/agents/agentmail",
+                          "description": "Email inbox API built for AI agents.",
+                          "provider": "AgentMail",
+                          "categories": ["infrastructure", "code-devtools"],
+                          "accessMethods": ["api", "mcp", "cli"],
+                          "verified": true
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/agents/{slug}": {
+      "get": {
+        "operationId": "getAgent",
+        "summary": "Get one agent by slug",
+        "description": "Full listing for a published agent: skills, auth type, provider homepage, tags, streaming and push flags. Use a `slug` returned by searchAgents. Unpublished or unknown slugs return 404.",
+        "tags": ["catalog"],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "description": "Stable listing identifier, e.g. `agentmail`.",
+            "schema": { "type": "string", "examples": ["agentmail"] }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The listing.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AgentDetail" }
+              }
+            }
+          },
+          "404": {
+            "description": "No published agent with that slug.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/categories": {
+      "get": {
+        "operationId": "listCategories",
+        "summary": "List directory categories",
+        "description": "Every category with a live count of published agents. Use `slug` as the `category` query parameter on searchAgents.",
+        "tags": ["catalog"],
+        "responses": {
+          "200": {
+            "description": "Categories in display order.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CategoryList" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/agents.json": {
       "get": {
         "operationId": "listAgents",
         "summary": "Fetch the full agent catalog",
-        "description": "Returns every published agent in one document. Filter client-side on `categories` or `accessMethods`. The payload is cached for five minutes at the edge.",
+        "description": "Returns every published agent in one document. Filter client-side on `categories` or `accessMethods`. Prefer GET /api/agents for targeted search. The payload is cached for five minutes at the edge.",
         "tags": ["catalog"],
         "responses": {
           "200": {
@@ -40,7 +176,7 @@
       "post": {
         "operationId": "mcpTransport",
         "summary": "Model Context Protocol endpoint (streamable HTTP)",
-        "description": "Speaks MCP over streamable HTTP. Exposes three tools: `search_agents`, `get_agent`, and `list_categories`. This is a JSON-RPC transport, not a REST resource; use an MCP client rather than calling it by hand.",
+        "description": "Speaks MCP over streamable HTTP. Exposes three tools: `search_agents`, `get_agent`, and `list_categories`. This is a JSON-RPC transport, not a REST resource. REST clients should call /api/agents instead.",
         "tags": ["mcp"],
         "requestBody": {
           "required": true,
@@ -71,6 +207,112 @@
   },
   "components": {
     "schemas": {
+      "SearchResult": {
+        "type": "object",
+        "required": ["total", "offset", "limit", "agents"],
+        "properties": {
+          "total": { "type": "integer", "description": "Full match count before paging." },
+          "offset": { "type": "integer" },
+          "limit": { "type": "integer" },
+          "agents": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/AgentSummary" }
+          }
+        }
+      },
+      "AgentSummary": {
+        "type": "object",
+        "required": [
+          "name",
+          "slug",
+          "url",
+          "description",
+          "provider",
+          "categories",
+          "accessMethods",
+          "verified"
+        ],
+        "properties": {
+          "name": { "type": "string" },
+          "slug": {
+            "type": "string",
+            "description": "Stable identifier. Pass to GET /api/agents/{slug}."
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Human listing page on Agent Switchboard."
+          },
+          "description": { "type": "string" },
+          "provider": { "type": ["string", "null"] },
+          "categories": { "type": "array", "items": { "type": "string" } },
+          "accessMethods": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["api", "mcp", "cli", "browser-extension"]
+            },
+            "description": "How the listed product can be reached."
+          },
+          "verified": { "type": "boolean" }
+        }
+      },
+      "AgentDetail": {
+        "allOf": [
+          { "$ref": "#/components/schemas/AgentSummary" },
+          {
+            "type": "object",
+            "properties": {
+              "homepage": { "type": ["string", "null"], "format": "uri" },
+              "providerUrl": { "type": ["string", "null"], "format": "uri" },
+              "authType": {
+                "type": "string",
+                "enum": ["apiKey", "oauth2", "bearer", "none"],
+                "description": "How the listed product authenticates. Not used by this API."
+              },
+              "tags": { "type": "array", "items": { "type": "string" } },
+              "skills": {
+                "type": "array",
+                "items": { "$ref": "#/components/schemas/AgentSkill" }
+              },
+              "supportsStreaming": { "type": "boolean" },
+              "supportsPushNotifications": { "type": "boolean" },
+              "tier": { "type": ["string", "null"] },
+              "createdAt": { "type": ["string", "null"], "format": "date-time" },
+              "updatedAt": { "type": ["string", "null"], "format": "date-time" }
+            }
+          }
+        ]
+      },
+      "AgentSkill": {
+        "type": "object",
+        "required": ["id", "name", "description"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      },
+      "CategoryList": {
+        "type": "object",
+        "required": ["categories"],
+        "properties": {
+          "categories": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Category" }
+          }
+        }
+      },
+      "Category": {
+        "type": "object",
+        "required": ["slug", "name", "description", "agentCount"],
+        "properties": {
+          "slug": { "type": "string" },
+          "name": { "type": "string" },
+          "description": { "type": ["string", "null"] },
+          "agentCount": { "type": "integer" }
+        }
+      },
       "Catalog": {
         "type": "object",
         "required": ["source", "total", "agents"],
@@ -79,27 +321,35 @@
           "description": { "type": "string" },
           "generated": { "type": "string", "format": "date-time" },
           "total": { "type": "integer" },
-          "agents": { "type": "array", "items": { "$ref": "#/components/schemas/Agent" } }
+          "agents": { "type": "array", "items": { "$ref": "#/components/schemas/CatalogAgent" } }
         }
       },
-      "Agent": {
+      "CatalogAgent": {
         "type": "object",
         "required": ["name", "slug", "url", "description", "categories"],
         "properties": {
           "name": { "type": "string" },
-          "slug": { "type": "string", "description": "Stable identifier, also the `slug` argument to the MCP `get_agent` tool." },
-          "url": { "type": "string", "format": "uri", "description": "Listing page on Agent Switchboard." },
+          "slug": { "type": "string" },
+          "url": { "type": "string", "format": "uri" },
           "homepage": { "type": ["string", "null"], "format": "uri" },
           "provider": { "type": ["string", "null"] },
           "providerUrl": { "type": ["string", "null"], "format": "uri" },
           "description": { "type": "string" },
           "categories": { "type": "array", "items": { "type": "string" } },
-          "accessMethods": { "type": "array", "items": { "type": "string" }, "description": "How the agent can be reached, e.g. api, mcp, cli." },
+          "accessMethods": { "type": "array", "items": { "type": "string" } },
           "tags": { "type": "array", "items": { "type": "string" } },
           "verified": { "type": "boolean" },
           "tier": { "type": ["string", "null"] },
           "createdAt": { "type": ["string", "null"], "format": "date-time" },
           "updatedAt": { "type": ["string", "null"], "format": "date-time" }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": ["error", "message"],
+        "properties": {
+          "error": { "type": "string", "examples": ["not_found"] },
+          "message": { "type": "string" }
         }
       }
     }

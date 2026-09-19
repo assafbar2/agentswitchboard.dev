@@ -7,6 +7,8 @@ need no authentication, are CORS-open, and read the same cached catalog**
 | Surface | Best for | Endpoint |
 |---|---|---|
 | **REST search** | plain HTTP clients, connector platforms | `GET /api/agents` |
+| **REST detail** | one listing by slug | `GET /api/agents/{slug}` |
+| **REST categories** | valid `category` slugs + counts | `GET /api/categories` |
 | **MCP server** | MCP clients (Claude, Cursor, …) | `POST /api/mcp` |
 | **WebMCP** | agents viewing the page in a browser | `document.modelContext` |
 | **Catalog dump** | bulk / offline indexing | `GET /agents.json` |
@@ -56,6 +58,9 @@ handshake (e.g. wiring into a connector platform).
 Paginate with `total` + `offset` + `limit`. `Cache-Control` is
 `s-maxage=300, stale-while-revalidate=600`.
 
+OpenAPI: [`/openapi.json`](https://agentswitchboard.dev/openapi.json).
+Connector skill: [`/skill.md`](https://agentswitchboard.dev/skill.md).
+
 ### Examples
 
 ```bash
@@ -65,6 +70,31 @@ curl "https://agentswitchboard.dev/api/agents?q=video&limit=5"
 # MCP-accessible agents in a category, second page
 curl "https://agentswitchboard.dev/api/agents?access=mcp&category=code-devtools&limit=20&offset=20"
 ```
+
+---
+
+## REST detail — `GET /api/agents/{slug}`
+
+Full listing for one published agent: skills, `authType` (of the listed
+product, not of Switchboard), homepage, tags, streaming/push flags.
+
+```bash
+curl "https://agentswitchboard.dev/api/agents/agentmail"
+```
+
+Unknown or unpublished slugs return `404` with
+`{ "error": "not_found", "message": "…" }`.
+
+---
+
+## REST categories — `GET /api/categories`
+
+```bash
+curl "https://agentswitchboard.dev/api/categories"
+```
+
+Response: `{ "categories": [ { slug, name, description, agentCount } ] }`.
+Use `slug` as the `category` query parameter on `GET /api/agents`.
 
 ---
 

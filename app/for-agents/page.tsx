@@ -120,8 +120,10 @@ export default async function ForAgentsPage() {
           </p>
           <pre className="rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-4 text-xs overflow-x-auto">
 {`GET /api/agents?q=<text>&category=<slug>&access=<method>&limit=<n>&offset=<n>
+GET /api/agents/<slug>
+GET /api/categories
 
-→ { total, offset, limit, agents: [
+→ search: { total, offset, limit, agents: [
      { name, slug, url, description, provider, categories, accessMethods, verified }
    ] }`}
           </pre>
@@ -142,12 +144,25 @@ export default async function ForAgentsPage() {
           </ul>
           <p>
             Example:{' '}
-            <a
-              href="/api/agents?q=video&limit=5"
-              className="underline hover:text-[var(--accent)]"
-            >
+            <Link href="/api/agents?q=video&limit=5" className="underline hover:text-[var(--accent)]">
               /api/agents?q=video&amp;limit=5
-            </a>
+            </Link>
+            {' · '}
+            <Link href="/api/agents/agentmail" className="underline hover:text-[var(--accent)]">
+              /api/agents/agentmail
+            </Link>
+            {' · '}
+            <Link href="/api/categories" className="underline hover:text-[var(--accent)]">
+              /api/categories
+            </Link>
+            {' · '}
+            <Link href="/openapi.json" className="underline hover:text-[var(--accent)]">
+              /openapi.json
+            </Link>
+            {' · '}
+            <Link href="/skill.md" className="underline hover:text-[var(--accent)]">
+              /skill.md
+            </Link>
           </p>
         </section>
 

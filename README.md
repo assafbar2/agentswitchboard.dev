@@ -23,13 +23,18 @@ Prefer plain HTTP? There's a REST search too:
 
 ```bash
 curl "https://agentswitchboard.dev/api/agents?q=video&access=mcp&limit=5"
+curl "https://agentswitchboard.dev/api/agents/agentmail"
+curl "https://agentswitchboard.dev/api/categories"
 ```
+
+OpenAPI: [`/openapi.json`](https://agentswitchboard.dev/openapi.json).
+Connector skill: [`/skill.md`](https://agentswitchboard.dev/skill.md).
 
 Also machine-readable: [`/agents.json`](https://agentswitchboard.dev/agents.json)
 (full catalog, CORS-open), in-browser tools via WebMCP (`document.modelContext`),
 and an agent-optimized view on every page (the "For Agents" toggle).
 
-**Full API reference: [docs/API.md](docs/API.md)** — REST, MCP, WebMCP, and the catalog dump.
+**Full API reference: [docs/API.md](docs/API.md)** — REST search/detail/categories, MCP, WebMCP, and the catalog dump.
 
 ## 🗂 Git-as-CMS
 

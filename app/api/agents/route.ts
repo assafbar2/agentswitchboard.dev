@@ -15,38 +15,16 @@
 import { getEveryAgent } from '@/lib/catalog';
 import { searchAgents, ALL_ACCESS_METHODS } from '@/lib/search';
 import { logConsumer } from '@/lib/log';
-import type { Agent } from '@/lib/types';
+import {
+  corsPreflight,
+  jsonResponse,
+  summarizeAgent,
+  clampInt,
+  DEFAULT_LIMIT,
+  MAX_LIMIT,
+} from '@/lib/public-api';
 
 export const dynamic = 'force-dynamic';
-
-const SITE = 'https://agentswitchboard.dev';
-const MAX_LIMIT = 50;
-const DEFAULT_LIMIT = 10;
-
-const CORS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type',
-};
-
-function summarize(a: Agent) {
-  return {
-    name: a.name,
-    slug: a.slug,
-    url: `${SITE}/agents/${a.slug}`,
-    description: a.description,
-    provider: a.providerName,
-    categories: a.categories.map((c) => c.slug),
-    accessMethods: a.accessMethods,
-    verified: a.verified,
-  };
-}
-
-function clampInt(raw: string | null, fallback: number, min: number, max: number): number {
-  const n = Number.parseInt(raw ?? '', 10);
-  if (!Number.isFinite(n)) return fallback;
-  return Math.min(Math.max(n, min), max);
-}
 
 export async function GET(req: Request): Promise<Response> {
   const { searchParams } = new URL(req.url);
@@ -69,22 +47,14 @@ export async function GET(req: Request): Promise<Response> {
   const matches = searchAgents(agents, q, access.length > 0 ? access : undefined);
   const page = matches.slice(offset, offset + limit);
 
-  const body = {
+  return jsonResponse({
     total: matches.length,
     offset,
     limit,
-    agents: page.map(summarize),
-  };
-
-  return new Response(JSON.stringify(body, null, 2), {
-    headers: {
-      'Content-Type': 'application/json; charset=utf-8',
-      'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600',
-      ...CORS,
-    },
+    agents: page.map(summarizeAgent),
   });
 }
 
 export async function OPTIONS(): Promise<Response> {
-  return new Response(null, { status: 204, headers: CORS });
+  return corsPreflight();
 }
