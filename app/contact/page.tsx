@@ -65,6 +65,19 @@ export default function ContactPage() {
           </section>
 
           <section>
+            <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2">Legal</h2>
+            <p>
+              <Link href="/privacy" className="text-[var(--accent)] hover:underline">
+                Privacy
+              </Link>
+              {' · '}
+              <Link href="/terms" className="text-[var(--accent)] hover:underline">
+                Terms of Use
+              </Link>
+            </p>
+          </section>
+
+          <section>
             <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2">
               For agents and automated clients
             </h2>
