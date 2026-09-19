@@ -63,6 +63,11 @@ instead of scraping the DOM. No setup: they self-register on page load.
 
 ${categoryLines}
 
+## Legal
+
+- Privacy: https://agentswitchboard.dev/privacy
+- Terms of Use: https://agentswitchboard.dev/terms
+
 ## Maintained by
 
 Barnir — barnir@agentmail.to

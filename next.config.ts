@@ -16,6 +16,12 @@ const nextConfig: NextConfig = {
   // Middleware sets Vary too, but the renderer overwrites it on the HTML
   // branch, so declare it here as well — otherwise a CDN can cache the HTML
   // variant and hand it to an agent that asked for Markdown.
+  async redirects() {
+    return [
+      { source: "/tos", destination: "/terms", permanent: true },
+      { source: "/TOS", destination: "/terms", permanent: true },
+    ];
+  },
   async rewrites() {
     return [{ source: "/SKILL.md", destination: "/skill.md" }];
   },

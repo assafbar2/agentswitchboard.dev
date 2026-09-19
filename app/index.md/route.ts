@@ -40,7 +40,7 @@ ${categories.map((c) => `- ${c.name} (\`${c.slug}\`)`).join('\n')}
 ## Pages
 
 - [Browse](${BASE_URL}/browse) · [Categories](${BASE_URL}/categories) · [Submit an agent](${BASE_URL}/submit)
-- [About](${BASE_URL}/about) · [Contact](${BASE_URL}/contact) · [Privacy](${BASE_URL}/privacy) · [Disclaimer](${BASE_URL}/disclaimer)
+- [About](${BASE_URL}/about) · [Contact](${BASE_URL}/contact) · [Privacy](${BASE_URL}/privacy) · [Terms of Use](${BASE_URL}/terms) · [Disclaimer](${BASE_URL}/disclaimer)
 
 Contact: barnir@agentmail.to
 `;

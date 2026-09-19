@@ -104,6 +104,21 @@ export default async function AboutPage() {
               explains how to use each of them.
             </p>
           </section>
+
+          <section>
+            <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2">Legal</h2>
+            <p>
+              How the directory handles data is on the{' '}
+              <Link href="/privacy" className="text-[var(--accent)] hover:underline">
+                privacy page
+              </Link>
+              . Use of the site and the public catalog API is covered by the{' '}
+              <Link href="/terms" className="text-[var(--accent)] hover:underline">
+                terms of use
+              </Link>
+              .
+            </p>
+          </section>
         </div>
       </div>
     </div>

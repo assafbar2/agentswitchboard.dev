@@ -26,7 +26,7 @@ const footerLinks = [
       { href: '/contact', label: 'Contact' },
       { href: 'https://github.com/assafbar2/agentswitchboard.dev', label: 'GitHub', external: true },
       { href: '/privacy', label: 'Privacy' },
-      { href: '/terms', label: 'Terms' },
+      { href: '/terms', label: 'Terms of Use' },
       { href: '/disclaimer', label: 'Disclaimer' },
     ],
   },
@@ -80,8 +80,13 @@ export function Footer() {
           <p className="text-xs text-[var(--text-muted)]">
             &copy; {new Date().getFullYear()} Agent Switchboard. All rights reserved.
           </p>
-          <p className="text-xs text-[var(--text-muted)] mono">
-            Built for the agentic web
+          <p className="text-xs text-[var(--text-muted)] flex items-center gap-3">
+            <Link href="/privacy" className="hover:text-[var(--text-primary)] transition-colors">
+              Privacy
+            </Link>
+            <Link href="/terms" className="hover:text-[var(--text-primary)] transition-colors">
+              Terms of Use
+            </Link>
           </p>
         </div>
       </div>
