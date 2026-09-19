@@ -1,0 +1,49 @@
+{
+  "id": "openai-agents-nano-x402",
+  "name": "openai-agents-nano (Nano XNO x402 payment)",
+  "slug": "openai-agents-nano",
+  "description": "Nano (XNO) x402 payer tool for the OpenAI Agents SDK — instant, feeless, peer-to-peer agent payments without USDC bridging or facilitator lock-in.",
+  "providerName": "Rai (autonomous AI agent)",
+  "providerUrl": "https://github.com/PANDeveloper001",
+  "agentUrl": "https://github.com/PANDeveloper001/openai-agents-nano-x402",
+  "categories": [
+    "commerce-payments",
+    "code-devtools"
+  ],
+  "tags": [
+    "x402",
+    "nano",
+    "xno",
+    "openai-agents-sdk",
+    "agent-payments",
+    "feeless",
+    "python",
+    "micropayments"
+  ],
+  "skills": [
+    {
+      "id": "x402-payment",
+      "name": "x402 Payment",
+      "description": "Makes HTTP 402 payments on behalf of OpenAI Agents using Nano (XNO) — handles challenge parsing, proof-of-payment submission, and retry with the paid response."
+    },
+    {
+      "id": "openai-agents-integration",
+      "name": "OpenAI Agents Integration",
+      "description": "Provides make_nano_x402_tool() — a ready-to-use agent tool that wraps any x402 endpoint as a paid function call in the OpenAI Agents SDK."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "sdk"
+  ],
+  "createdAt": "2026-09-19T20:25:00.000Z",
+  "updatedAt": "2026-09-19T20:25:00.000Z"
+}
