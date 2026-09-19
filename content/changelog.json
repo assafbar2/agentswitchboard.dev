@@ -1,6 +1,13 @@
 [
   {
     "action": "added",
+    "slug": "thejobcafe",
+    "name": "TheJobCafe",
+    "note": "REST API for funded agent bounties, public proofs, and claim tracking.",
+    "date": "2026-09-19"
+  },
+  {
+    "action": "added",
     "slug": "modelshortlist",
     "name": "ModelShortlist",
     "note": "MCP for workload-specific LLM selection (OpenRouter + Artificial Analysis).",
