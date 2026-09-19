@@ -1,5 +1,12 @@
 [
   {
+    "action": "updated",
+    "slug": "screenpipe",
+    "name": "Screenpipe",
+    "note": "Add MCP access and local API authentication; clarify optional cloud processing.",
+    "date": "2026-09-19"
+  },
+  {
     "action": "added",
     "slug": "modelshortlist",
     "name": "ModelShortlist",

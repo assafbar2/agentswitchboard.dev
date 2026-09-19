@@ -2,10 +2,10 @@
   "id": "screenpipe",
   "name": "Screenpipe",
   "slug": "screenpipe",
-  "description": "Records your screen and audio 24/7 locally, then serves that history as searchable context to Claude, Codex and other coding agents so they know what you have seen and done.",
+  "description": "Search locally captured screen and audio history through MCP, CLI or API for recall and work summaries. Configured cloud services can transmit context.",
   "providerName": "Screenpipe",
   "providerUrl": "https://screenpipe.com",
-  "agentUrl": "https://github.com/screenpipe/screenpipe",
+  "agentUrl": "https://github.com/screenpipe/screenpipe/blob/main/packages/screenpipe-mcp/README.md",
   "categories": [
     "memory-state",
     "browser-computer"
@@ -16,38 +16,75 @@
     "personal-context",
     "audio-transcription",
     "session-history",
-    "privacy-preserving",
-    "yc-s26"
+    "mcp-context",
+    "work-summaries"
   ],
   "skills": [
     {
       "id": "continuous-capture",
       "name": "Continuous Screen Capture",
-      "description": "Records screen and microphone continuously on-device, storing frames and transcripts locally without sending data to a server."
+      "description": "Capture screen text and audio history locally by default; optional cloud transcription can send audio to a provider."
     },
     {
       "id": "context-search",
       "name": "Searchable History",
-      "description": "Queries months of captured screen and audio history by text, app or time window to retrieve the moment you need."
+      "description": "Search captured screen text and audio transcripts by text, app or time window to find past conversations and work."
     },
     {
       "id": "agent-context-feed",
       "name": "Agent Context Feed",
-      "description": "Feeds recorded activity into Claude, Codex and other agents as grounding context so they can act on what you actually did."
+      "description": "Provide recorded work context to Claude, Codex and other connected agents through MCP or the local API."
     }
   ],
-  "authType": "none",
+  "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
   "status": "published",
   "featured": true,
-  "verified": true,
+  "verified": false,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "cli",
-    "api"
+    "api",
+    "mcp"
   ],
   "createdAt": "2026-07-25T16:22:45.416Z",
-  "updatedAt": "2026-07-25T16:22:45.416Z"
+  "updatedAt": "2026-09-19T11:57:59.684Z",
+  "authInstructions": {
+    "nodeType": "document",
+    "data": {},
+    "content": [
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "data": {},
+            "marks": [],
+            "value": "Run the Screenpipe recorder locally. Connect through Settings > Connections in the desktop app, which supplies SCREENPIPE_LOCAL_API_KEY. For manual MCP setup, use your own key from screenpipe auth token. See the official MCP documentation linked above."
+          }
+        ]
+      }
+    ]
+  },
+  "longDescription": {
+    "nodeType": "document",
+    "data": {},
+    "content": [
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "data": {},
+            "marks": [],
+            "value": "Screenpipe captures searchable screen text and audio history locally by default for recall, meeting notes and work summaries. Configured cloud AI, transcription, sync and integrations can transmit context off-device. The source is available under the Screenpipe Commercial License, not an OSI open-source license. Current plans: https://screenpipe.com/pricing."
+          }
+        ]
+      }
+    ]
+  }
 }
