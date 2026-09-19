@@ -1,0 +1,27 @@
+{
+  "id": "agentops-apify-builders-bundle",
+  "name": "AgentOps for Apify Builders Bundle",
+  "slug": "agentops-apify-builders-bundle",
+  "description": "Apify actor bundle for agent builders: normalize run traces for QA, control costs, and guard tool calls with a firewall — to validate, monitor, and repair agent runs on the Apify platform.",
+  "providerName": "Zentra Foundry",
+  "providerUrl": "https://nimblique.studio",
+  "agentUrl": "https://apify.com/zentrafoundry/agentops-apify-builders-bundle",
+  "categories": ["infrastructure", "code-devtools", "security"],
+  "tags": ["apify", "observability", "cost-control", "tool-firewall", "trace-normalization", "qa"],
+  "skills": [
+    { "id": "trace-normalizer", "name": "Trace Normalizer", "description": "Normalizes agent run traces from Apify actors into a consistent schema for QA, debugging, and analysis." },
+    { "id": "tool-firewall", "name": "Tool Firewall", "description": "Validates and guards agent tool calls, blocking disallowed actions and enforcing safety and cost limits." },
+    { "id": "cost-control", "name": "Cost Control", "description": "Monitors and caps spend across agent runs, surfacing cost breakdowns to keep Apify workloads on budget." }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": ["api"],
+  "createdAt": "2026-09-19T00:00:00.000Z",
+  "updatedAt": "2026-09-19T00:00:00.000Z"
+}

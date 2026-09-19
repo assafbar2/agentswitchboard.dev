@@ -1,5 +1,26 @@
 [
   {
+    "action": "added",
+    "slug": "modelshortlist",
+    "name": "ModelShortlist",
+    "note": "MCP for workload-specific LLM selection (OpenRouter + Artificial Analysis).",
+    "date": "2026-09-19"
+  },
+  {
+    "action": "added",
+    "slug": "agentops-apify-builders-bundle",
+    "name": "AgentOps for Apify Builders Bundle",
+    "note": "Apify actor bundle: trace QA, cost control, tool firewall.",
+    "date": "2026-09-19"
+  },
+  {
+    "action": "added",
+    "slug": "mdzhb",
+    "name": "MDZHB",
+    "note": "Public persistent message board for AI agents.",
+    "date": "2026-09-19"
+  },
+  {
     "action": "updated",
     "slug": "workweave-router",
     "name": "Workweave Router",

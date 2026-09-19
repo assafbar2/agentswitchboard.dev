@@ -1,0 +1,28 @@
+{
+  "id": "modelshortlist",
+  "name": "ModelShortlist",
+  "slug": "modelshortlist",
+  "description": "Local, BYOK MCP that recommends and compares LLMs for a specific workload using live OpenRouter pricing and capabilities plus Artificial Analysis benchmarks — not a static leaderboard.",
+  "providerName": "Agentic Artists",
+  "providerUrl": "https://modelshortlist.com",
+  "version": "0.2.4",
+  "agentUrl": "https://modelshortlist.com/install",
+  "categories": ["code-devtools", "infrastructure"],
+  "tags": ["model-selection", "llm", "openrouter", "artificial-analysis", "benchmarks", "byok"],
+  "skills": [
+    { "id": "recommend-models", "name": "Recommend Models", "description": "Recommends LLMs for a specific workload using live OpenRouter facts and independent Artificial Analysis benchmark evidence." },
+    { "id": "compare-models", "name": "Compare Models", "description": "Compares candidate models side by side on price, context, capabilities, provider availability, and benchmark performance." },
+    { "id": "modelshortlist-status", "name": "Status Check", "description": "Reports data-source freshness and configuration, including OpenRouter and Artificial Analysis connectivity and ZDR constraints." }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": ["mcp"],
+  "createdAt": "2026-09-19T00:00:00.000Z",
+  "updatedAt": "2026-09-19T00:00:00.000Z"
+}
