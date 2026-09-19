@@ -1,6 +1,13 @@
 [
   {
     "action": "added",
+    "slug": "capital-flow-desk-unlockflow-mcp",
+    "name": "Capital Flow Desk UnlockFlow MCP",
+    "note": "UnlockFlowEvent v1 MCP tools (list/get/schema) for unlock \u00d7 capital-flow agents. NFA.",
+    "date": "2026-09-20"
+  },
+  {
+    "action": "added",
     "slug": "modelshortlist",
     "name": "ModelShortlist",
     "note": "MCP for workload-specific LLM selection (OpenRouter + Artificial Analysis).",
@@ -1771,7 +1778,7 @@
     "action": "added",
     "slug": "agentswitchboard",
     "name": "Agent Switchboard",
-    "note": "The directory listed itself — it qualifies: live MCP server, verified endpoints, identifiable provider",
+    "note": "The directory listed itself \u2014 it qualifies: live MCP server, verified endpoints, identifiable provider",
     "date": "2026-07-23"
   },
   {
@@ -1785,7 +1792,7 @@
     "action": "removed",
     "slug": "sangria",
     "name": "Sangria",
-    "note": "Product discontinued — repo deleted",
+    "note": "Product discontinued \u2014 repo deleted",
     "date": "2026-07-17"
   },
   {
