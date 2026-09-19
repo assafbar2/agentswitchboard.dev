@@ -2,10 +2,10 @@
   "id": "hronaut",
   "name": "Hronaut",
   "slug": "hronaut",
-  "description": "Provides coding agents a visible local Electron browser through MCP, with persistent isolated workspaces and human pause/takeover for manual steps.",
+  "description": "Provides coding agents a visible local browser through MCP, with persistent isolated workspaces and human handoff. Source-available; 10-day trial, then $4/month or $24/year per named user.",
   "providerName": "Hronom",
   "providerUrl": "https://github.com/hronaut",
-  "version": "2.4.1",
+  "version": "2.4.21",
   "agentUrl": "https://hronaut.dev/setup",
   "iconUrl": "https://hronaut.dev/hronaut-icon.png",
   "categories": [
@@ -51,5 +51,5 @@
     "mcp"
   ],
   "createdAt": "2026-09-09T00:00:00Z",
-  "updatedAt": "2026-09-14T00:00:00Z"
+  "updatedAt": "2026-09-17T00:00:00Z"
 }
