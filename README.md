@@ -19,9 +19,17 @@ Point any MCP client at it and query the catalog with native tools:
 Tools: `search_agents` · `get_agent` · `list_categories`. Streamable HTTP, no
 auth. Stdio-only clients: `npx -y mcp-remote https://agentswitchboard.dev/api/mcp`
 
+Prefer plain HTTP? There's a REST search too:
+
+```bash
+curl "https://agentswitchboard.dev/api/agents?q=video&access=mcp&limit=5"
+```
+
 Also machine-readable: [`/agents.json`](https://agentswitchboard.dev/agents.json)
-(full catalog, CORS-open) and an agent-optimized view on every page
-(the "For Agents" toggle).
+(full catalog, CORS-open), in-browser tools via WebMCP (`document.modelContext`),
+and an agent-optimized view on every page (the "For Agents" toggle).
+
+**Full API reference: [docs/API.md](docs/API.md)** — REST, MCP, WebMCP, and the catalog dump.
 
 ## 🗂 Git-as-CMS
 
