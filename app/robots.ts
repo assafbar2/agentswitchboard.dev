@@ -6,7 +6,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/api/', '/_next/'],
+      // Public catalog APIs must stay crawlable (Muse review fetches them).
+      disallow: ['/_next/'],
     },
     sitemap: `${base}/sitemap.xml`,
   };

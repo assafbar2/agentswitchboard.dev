@@ -16,12 +16,28 @@ const nextConfig: NextConfig = {
   // Middleware sets Vary too, but the renderer overwrites it on the HTML
   // branch, so declare it here as well — otherwise a CDN can cache the HTML
   // variant and hand it to an agent that asked for Markdown.
+  async rewrites() {
+    return [{ source: "/SKILL.md", destination: "/skill.md" }];
+  },
   async headers() {
+    const cors = [
+      { key: "Access-Control-Allow-Origin", value: "*" },
+      { key: "Access-Control-Allow-Methods", value: "GET, OPTIONS" },
+    ];
     return [
       {
         source: "/",
         headers: [{ key: "Vary", value: "Accept, Accept-Encoding" }],
       },
+      { source: "/openapi.json", headers: cors },
+      {
+        source: "/skill.md",
+        headers: [
+          ...cors,
+          { key: "Content-Type", value: "text/markdown; charset=utf-8" },
+        ],
+      },
+      { source: "/connector-icon.png", headers: cors },
     ];
   },
 };

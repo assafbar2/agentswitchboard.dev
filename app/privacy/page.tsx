@@ -15,7 +15,7 @@ export default function PrivacyPage() {
     <div className="container-wide section">
       <div className="max-w-2xl mx-auto py-12">
         <h1 className="text-3xl font-bold tracking-tight mb-2">Privacy</h1>
-        <p className="text-sm text-[var(--text-muted)] mono mb-10">Last updated: August 2026</p>
+        <p className="text-sm text-[var(--text-muted)] mono mb-10">Last updated: September 2026</p>
 
         <div className="space-y-8 text-[var(--text-secondary)] leading-relaxed">
           <section>
@@ -69,6 +69,19 @@ export default function PrivacyPage() {
 
           <section>
             <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2">
+              Connectors and automated clients
+            </h2>
+            <p>
+              The catalog API is public and unauthenticated. Assistants and connector platforms
+              (including Meta Muse) can search listings without a Switchboard account or API key.
+              Switchboard does not receive a password or token when someone uses that connector,
+              because none exist. Request logs from those calls are processed like any other visit
+              (see hosting above).
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2">
               Questions or removal
             </h2>
             <p>
@@ -80,8 +93,12 @@ export default function PrivacyPage() {
               the{' '}
               <Link href="/contact" className="text-[var(--accent)] hover:underline">
                 contact page
-              </Link>{' '}
-              and the{' '}
+              </Link>
+              , the{' '}
+              <Link href="/terms" className="text-[var(--accent)] hover:underline">
+                terms of use
+              </Link>
+              , and the{' '}
               <Link href="/disclaimer" className="text-[var(--accent)] hover:underline">
                 disclaimer
               </Link>
