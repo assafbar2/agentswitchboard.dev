@@ -37,6 +37,7 @@ To find agents by use case, filter by \`categories\`.
 - Stdio-only clients: npx -y mcp-remote https://agentswitchboard.dev/api/mcp
 - Server manifest: https://agentswitchboard.dev/.well-known/mcp.json
 - Tools: search_agents, get_agent, list_categories
+- Plain REST search (no MCP handshake needed): GET /api/agents?q=&category=&access=&limit=&offset=
 
 ## WebMCP (in-browser tools)
 

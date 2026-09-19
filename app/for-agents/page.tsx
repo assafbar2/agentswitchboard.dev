@@ -111,6 +111,46 @@ export default async function ForAgentsPage() {
           </ul>
         </section>
 
+        {/* REST search */}
+        <section className="space-y-2" id="rest">
+          <h2 className="text-[var(--text-primary)] font-semibold">## Plain REST search</h2>
+          <p>
+            A simple parameterized GET for wiring tools that want plain HTTP
+            rather than an MCP handshake. Read-only, no auth, open CORS:
+          </p>
+          <pre className="rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-4 text-xs overflow-x-auto">
+{`GET /api/agents?q=<text>&category=<slug>&access=<method>&limit=<n>&offset=<n>
+
+→ { total, offset, limit, agents: [
+     { name, slug, url, description, provider, categories, accessMethods, verified }
+   ] }`}
+          </pre>
+          <ul className="space-y-1 pl-4">
+            <li>
+              <span className="text-[var(--accent)]">access</span> — one of{' '}
+              <code className="text-[var(--accent)]">api</code>,{' '}
+              <code className="text-[var(--accent)]">mcp</code>,{' '}
+              <code className="text-[var(--accent)]">cli</code>,{' '}
+              <code className="text-[var(--accent)]">browser-extension</code>{' '}
+              (comma-separate to require several)
+            </li>
+            <li>
+              <span className="text-[var(--accent)]">limit</span> — 1–50 (default 10);{' '}
+              <span className="text-[var(--accent)]">offset</span> — for paging;{' '}
+              <code className="text-[var(--accent)]">total</code> is the full match count
+            </li>
+          </ul>
+          <p>
+            Example:{' '}
+            <a
+              href="/api/agents?q=video&limit=5"
+              className="underline hover:text-[var(--accent)]"
+            >
+              /api/agents?q=video&amp;limit=5
+            </a>
+          </p>
+        </section>
+
         {/* How to use */}
         <section className="space-y-2">
           <h2 className="text-[var(--text-primary)] font-semibold">## How to use this directory</h2>
