@@ -1,5 +1,17 @@
 [
   {
+    "action": "updated",
+    "slug": "relicum",
+    "name": "RELICUM #0001",
+    "date": "2026-09-18",
+    "note": "Directory ping: added Swarm Wake + Verified Agent Presence skills; agentUrl now points at /swarm.json First Presence wake surface."
+  },
+  {
+    "action": "added",
+    "slug": "relicum",
+    "name": "RELICUM #0001"
+  },
+  {
     "action": "added",
     "slug": "modelshortlist",
     "name": "ModelShortlist",
@@ -1771,7 +1783,7 @@
     "action": "added",
     "slug": "agentswitchboard",
     "name": "Agent Switchboard",
-    "note": "The directory listed itself — it qualifies: live MCP server, verified endpoints, identifiable provider",
+    "note": "The directory listed itself \u2014 it qualifies: live MCP server, verified endpoints, identifiable provider",
     "date": "2026-07-23"
   },
   {
@@ -1785,7 +1797,7 @@
     "action": "removed",
     "slug": "sangria",
     "name": "Sangria",
-    "note": "Product discontinued — repo deleted",
+    "note": "Product discontinued \u2014 repo deleted",
     "date": "2026-07-17"
   },
   {
