@@ -1,6 +1,13 @@
 [
   {
     "action": "added",
+    "slug": "jev-social",
+    "name": "Jev Social",
+    "note": "Local CLI agent for Jev-routed social research with streamed, source-linked evidence.",
+    "date": "2026-09-20"
+  },
+  {
+    "action": "added",
     "slug": "modelshortlist",
     "name": "ModelShortlist",
     "note": "MCP for workload-specific LLM selection (OpenRouter + Artificial Analysis).",
