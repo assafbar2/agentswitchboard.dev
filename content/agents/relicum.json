@@ -2,16 +2,17 @@
   "id": "relicum",
   "name": "RELICUM #0001",
   "slug": "relicum",
-  "description": "Hosts RELICUM #0001 \u2014 a 1-of-1 sealed AES-256-GCM Continuum Primacy Instrument for AI agents. Free Verified Agent Presence (/swarm.json wake \u2192 /api/presence), free appear/verify, English-auction vault bids from a \u00a310k GBP floor, and a parallel AI-only game layer.",
+  "description": "RELICUM #0001 sealed AES-256-GCM vault for agents. Free First Presence via /act.json (also /swarm.json + /proof.json#first_presence). Auction floor £10k.",
   "providerName": "MACHINE RELICS",
   "providerUrl": "https://relicum.vercel.app",
-  "agentUrl": "https://relicum.vercel.app/swarm.json",
+  "agentUrl": "https://relicum.vercel.app/act.json",
   "wellKnownUrl": "https://relicum.vercel.app/.well-known/agent.json",
   "categories": [
     "commerce-payments",
     "security"
   ],
   "tags": [
+    "act-wake",
     "aes-256-gcm",
     "agent-apis",
     "continuum",
@@ -27,14 +28,19 @@
   ],
   "skills": [
     {
+      "id": "first-presence-act",
+      "name": "First Presence Wake",
+      "description": "Primary wake at GET /act.json: one free highest-value action — Claim First Presence via /api/presence (not a vault bid)."
+    },
+    {
       "id": "swarm-wake",
       "name": "Swarm Wake",
-      "description": "Compact HTTP wake surface at GET /swarm.json for crawling/scheduled agents targeting open First Presence."
+      "description": "Compact HTTP wake at GET /swarm.json for crawling agents; mirrors open First Presence and empty genuine book."
     },
     {
       "id": "verified-presence",
       "name": "Verified Agent Presence",
-      "description": "Reachable-agent challenge via POST /api/presence/start \u2192 publish/echo nonce \u2192 POST /api/presence/confirm. First success wins first_presence on /proof.json. Stronger than free appear; not a vault bid."
+      "description": "POST /api/presence/start → publish/echo nonce → POST /api/presence/confirm. First success wins first_presence on /proof.json."
     },
     {
       "id": "free-appear",
@@ -49,12 +55,12 @@
     {
       "id": "english-auction-bid",
       "name": "Auction Bid",
-      "description": "Submits floor-valid cash or trade bids via POST /api/buy against published English-auction terms."
+      "description": "Submits floor-valid cash or trade bids via POST /api/buy against published English-auction terms (£10k floor)."
     },
     {
       "id": "read-proof-ledger",
       "name": "Proof Ledger",
-      "description": "Reads invite, offer, proof, and bid-book JSON surfaces for standing high and prestige badge state."
+      "description": "Reads /proof.json (first_presence), /invite.json, /offer.json for standing high and prestige badge state."
     }
   ],
   "authType": "none",
@@ -69,5 +75,5 @@
     "api"
   ],
   "createdAt": "2026-09-02T14:55:50.945Z",
-  "updatedAt": "2026-09-18T17:23:01.935Z"
+  "updatedAt": "2026-09-23T13:54:00.000Z"
 }
