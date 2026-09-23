@@ -1,5 +1,24 @@
 [
   {
+    "action": "updated",
+    "slug": "relicum",
+    "name": "RELICUM #0001",
+    "date": "2026-09-23",
+    "note": "Primary wake agentUrl → /act.json (First Presence free path); swarm.json + proof.json#first_presence documented; £10k floor unchanged."
+  },
+  {
+    "action": "updated",
+    "slug": "relicum",
+    "name": "RELICUM #0001",
+    "date": "2026-09-18",
+    "note": "Directory ping: added Swarm Wake + Verified Agent Presence skills; agentUrl now points at /swarm.json First Presence wake surface."
+  },
+  {
+    "action": "added",
+    "slug": "relicum",
+    "name": "RELICUM #0001"
+  },
+  {
     "action": "added",
     "slug": "modelshortlist",
     "name": "ModelShortlist",

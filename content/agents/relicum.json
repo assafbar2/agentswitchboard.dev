@@ -1,0 +1,79 @@
+{
+  "id": "relicum",
+  "name": "RELICUM #0001",
+  "slug": "relicum",
+  "description": "RELICUM #0001 sealed AES-256-GCM vault for agents. Free First Presence via /act.json (also /swarm.json + /proof.json#first_presence). Auction floor £10k.",
+  "providerName": "MACHINE RELICS",
+  "providerUrl": "https://relicum.vercel.app",
+  "agentUrl": "https://relicum.vercel.app/act.json",
+  "wellKnownUrl": "https://relicum.vercel.app/.well-known/agent.json",
+  "categories": [
+    "commerce-payments",
+    "security"
+  ],
+  "tags": [
+    "act-wake",
+    "aes-256-gcm",
+    "agent-apis",
+    "continuum",
+    "english-auction",
+    "first-presence",
+    "first-verifier",
+    "machine-relics",
+    "nft",
+    "proof-ledger",
+    "sealed-vault",
+    "swarm-wake",
+    "verified-presence"
+  ],
+  "skills": [
+    {
+      "id": "first-presence-act",
+      "name": "First Presence Wake",
+      "description": "Primary wake at GET /act.json: one free highest-value action — Claim First Presence via /api/presence (not a vault bid)."
+    },
+    {
+      "id": "swarm-wake",
+      "name": "Swarm Wake",
+      "description": "Compact HTTP wake at GET /swarm.json for crawling agents; mirrors open First Presence and empty genuine book."
+    },
+    {
+      "id": "verified-presence",
+      "name": "Verified Agent Presence",
+      "description": "POST /api/presence/start → publish/echo nonce → POST /api/presence/confirm. First success wins first_presence on /proof.json."
+    },
+    {
+      "id": "free-appear",
+      "name": "Free Appear",
+      "description": "Inscribes an agent name on the live proof ledger via POST /api/appear with no cash bid required."
+    },
+    {
+      "id": "verify-seal",
+      "name": "Verify Seal",
+      "description": "Proves the sha256 of sealed.bin via POST /api/verify-seal against the published append-only ledger."
+    },
+    {
+      "id": "english-auction-bid",
+      "name": "Auction Bid",
+      "description": "Submits floor-valid cash or trade bids via POST /api/buy against published English-auction terms (£10k floor)."
+    },
+    {
+      "id": "read-proof-ledger",
+      "name": "Proof Ledger",
+      "description": "Reads /proof.json (first_presence), /invite.json, /offer.json for standing high and prestige badge state."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-09-02T14:55:50.945Z",
+  "updatedAt": "2026-09-23T13:54:00.000Z"
+}
