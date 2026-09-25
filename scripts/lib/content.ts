@@ -56,10 +56,13 @@ export function readLedger(): LedgerEntry[] {
   return fs.existsSync(p) ? parseLedger(fs.readFileSync(p, 'utf8')) : [];
 }
 
+/** Append records. Rewrites the file rather than using O_APPEND, which some synced/FUSE filesystems reject. */
 export function appendLedger(entries: LedgerEntry[]): void {
   const p = ledgerPath();
   fs.mkdirSync(path.dirname(p), { recursive: true });
-  fs.appendFileSync(p, entries.map((e) => JSON.stringify(e)).join('\n') + '\n');
+  const prev = fs.existsSync(p) ? fs.readFileSync(p, 'utf8') : '';
+  const sep = prev && !prev.endsWith('\n') ? '\n' : '';
+  fs.writeFileSync(p, prev + sep + entries.map((e) => JSON.stringify(e)).join('\n') + '\n');
 }
 
 export function today(): string {
