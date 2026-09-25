@@ -127,7 +127,7 @@ imply coverage you don't have.
 |---|---|---|
 | Hacker News | `npx tsx scripts/discover.ts hn` | Keywords + all Show/Launch HN ≥50 points in the window. Best signal per minute. |
 | GitHub new repos | `npx tsx scripts/discover.ts github-new` | Created in the window, ≥100★. Noisy (forks, skill packs); cheap. |
-| GitHub rising repos | `npx tsx scripts/discover.ts github-rising` | Created in the last 365 days, ≥5k★, **no keyword filter**. Catches GBrain-type misses. Ledger the non-products once and the list shrinks. |
+| GitHub rising repos | `npx tsx scripts/discover.ts github-rising` | Created in the last 365 days, ≥5k★, **no keyword filter**. Catches GBrain-type misses. The first run returns ~270 leads, mostly skill packs: ledger them once (`NOT-A-PRODUCT`, no recheck) and later runs show only new arrivals. |
 | Official MCP registry | `npx tsx scripts/discover.ts mcp-registry` | Domain-namespaced servers updated in the window (`--include-community` adds `io.github.*`). Confirm launch dates (trap 9). |
 | Product Hunt | hunted.space daily JSON: `https://hunted.space/all-products/<YYYY>/<Month>/<d>` | PH itself blocks bots. A lead source, not a signal: a PH rank never qualifies an entry alone. |
 | mcphq.ai | weekly "new registry servers" roundup | Substitute for mcp.so, with install counts. |
@@ -167,7 +167,8 @@ official MCP or agent surface, not merely by having a REST API.
 **Reject with one code** (the ledger codes, §3): NO-URL · NO-PROGRAMMATIC (web UI only; read
 trap 8) · NOT-USABLE (waitlist, unshipped, broken) · NO-PROVIDER · DUPLICATE · WRAPPER
 (undifferentiated reseller or GPT wrapper) · NOT-A-PRODUCT (skill/config packs, lists, courses,
-bare models) · TOS-RISK (automates third-party platforms against their terms) · STALE (open
+bare models; a repo that ships its own CLI, MCP server, or daemon is a product even when framed as
+"someone's opinionated setup") · TOS-RISK (automates third-party platforms against their terms) · STALE (open
 source, no push in 12 months) · BELOW-BAR · OUT-OF-SCOPE.
 
 **Signal.** Open source needs at least one strong signal; closed or commercial products need at least two independent ones.
