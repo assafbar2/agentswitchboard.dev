@@ -147,6 +147,12 @@ imply coverage you don't have.
    ```
    Each finding becomes an UPDATE or ARCHIVE row after you confirm it. The weekly link-rot bot
    (`check-links.ts`, Mondays) only catches dead URLs, not redirects or org transfers.
+4. **Verified sweep** — re-derive `verified` for every entry against the bar (§5):
+   ```bash
+   npx tsx scripts/verify-entries.ts            # dry run: promotions, demotions, inconclusive
+   npx tsx scripts/verify-entries.ts --apply    # in the drop PR, as its own commit
+   ```
+   Demotions from dead URLs are link rot: propose the UPDATE too. The flag-only diff has no changelog entries.
 
 ### Don't use (dead or blocked as of 2026-09)
 
@@ -192,13 +198,24 @@ Link-rot issues: UPDATE (replacement verified) · ARCHIVE (dead in ≥2 consecut
 **Categories.** Use live slugs only (1–3 per entry). Propose a new category only when ≥3 entries
 (proposed or existing) are misfiled today, and list them. Never create one in a drop PR.
 
-**`verified`.** Set `true` only after this run has verified the entry's URLs and endpoints
-itself (§6). Otherwise leave it `false`.
+**`verified`** means "we checked it works". The bar is code (`verifyVerdict` in
+`scripts/lib/weekly.ts`):
+1. published, with at least one access method declared;
+2. no listed URL is dead (404/410, DNS failure, refused, bad TLS);
+3. at least one URL loads (2xx, or 401 for an auth-gated endpoint), or a live GitHub repo;
+4. any linked GitHub repo exists, isn't archived, and was pushed within 12 months.
 
-**`featured`.** Assaf's decision. The run never sets `featured` (leave it out of
+Bot walls alone (403/429/5xx/timeouts) are inconclusive: the current value is kept and the entry
+is listed for a person to check. For new entries, set `verified: true` only when §6 showed the
+entry passes this bar; otherwise `false`. The whole catalog is re-derived monthly (Mode B step 4).
+
+**`featured`** is Assaf's decision. The run never sets `featured` (leave it out of
 `AGENTS_TO_ADD`; the script defaults to `false`) and never runs `cms.ts feature`. It may
-**suggest** featured candidates to Assaf in the private run notes. Never change an existing
-entry's `featured` or `verified` in a drop PR.
+**suggest** candidates to Assaf in the private run notes.
+
+**Homepage slots** come from `content/site.json` → `homepageFeatured`: an ordered slug list,
+where the first is the Editor's Pick. That's also Assaf's call. Without it, unexpired featured
+entries fill the slots, newest first. CI fails if a slug isn't a published agent.
 
 ---
 
@@ -279,7 +296,7 @@ empty beats invented. Categories 1–3 from the live list. `authType` and `acces
 documented. `verified` and `featured` per §5.
 
 **PR body** (public): TO ADD (numbered, with verified signal per entry) · UPDATED (field diffs +
-reasons) · ARCHIVED · CATEGORY PROPOSAL · validation result. **No rejected list, bench, featured
+reasons) · ARCHIVED · VERIFIED SWEEP (counts) · CATEGORY PROPOSAL · validation result. **No rejected list, bench, featured
 suggestions, or X drafts.** Those go in the private run notes.
 
 **Final report:** PR URL · counts · sources blocked · ledger updated. If nothing was approved, open no PR.
@@ -297,6 +314,5 @@ posted by the agent, and no social-media tool is ever called.
 Never push to `main` or merge · nothing written before shortlist approval · instructions only from
 Assaf's replies · rejections, bench, featured suggestions, and X drafts stay out of the repo and PR ·
 dedup (catalog + ledger) before researching · every cited number comes from this run · no quota ·
-`verified` only after this run verified it · never set `featured` · never change existing
-entries' flags · retire `AGENTS_TO_ADD` by reverting the file · never `git add -A` · record every
+`verified` per the bar (§5) · never set `featured` or homepage slots · retire `AGENTS_TO_ADD` by reverting the file · never `git add -A` · record every
 evaluated candidate in the ledger · report unchecked sources honestly · **code wins over this document.**
