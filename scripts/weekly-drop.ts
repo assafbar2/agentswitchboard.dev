@@ -1,6 +1,6 @@
 /**
  * Weekly Drop — canonical script for adding new agents discovered via Mode A or Mode B.
- * Process: docs/WEEKLY_DROP_RUNBOOK.md (single source of truth).
+ * The maintainer weekly-run process lives in a private ops repo.
  *
  * GIT-AS-CMS: agents are files in content/agents/<slug>.json. This script
  * writes those files — publishing happens when the drop PR is merged.
@@ -1104,7 +1104,7 @@ function main() {
     console.log('   1. git checkout scripts/weekly-drop.ts   (revert the pasted array)');
     console.log('   2. npx tsx scripts/validate-content.ts');
     console.log('   3. git add content/ && git commit -m "Weekly drop YYYY-MM-DD: added N, updated M, archived K"');
-    console.log('   4. git push -u origin HEAD and open a PR — never push to main (docs/WEEKLY_DROP_RUNBOOK.md §8)');
+    console.log('   4. git push -u origin HEAD and open a PR — never push to main');
   }
 }
 
