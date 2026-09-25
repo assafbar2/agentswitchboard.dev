@@ -1,0 +1,59 @@
+{
+  "id": "appwrite",
+  "name": "Appwrite",
+  "slug": "appwrite",
+  "description": "Provides an open-source backend with auth, databases, storage, functions, hosting, and messaging for app developers, via REST APIs, SDKs, a CLI, and a hosted MCP server.",
+  "providerName": "Appwrite",
+  "providerUrl": "https://appwrite.io",
+  "agentUrl": "https://appwrite.io/docs",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "backend-as-a-service",
+    "authentication",
+    "database",
+    "serverless-functions",
+    "remote-mcp",
+    "realtime",
+    "open-source",
+    "appwrite"
+  ],
+  "skills": [
+    {
+      "id": "mcp-project-tools",
+      "name": "MCP Project Tools",
+      "description": "Searches and calls the Appwrite tool catalog at runtime through appwrite_search_tools and appwrite_call_tool to manage project resources."
+    },
+    {
+      "id": "docs-search",
+      "name": "Documentation Search",
+      "description": "Semantically searches Appwrite documentation through the appwrite_search_docs MCP tool for current SDK, API, and CLI guidance."
+    },
+    {
+      "id": "realtime-subscriptions",
+      "name": "Realtime Subscriptions",
+      "description": "Subscribes to channels over a WebSocket and receives database, storage, and account events within milliseconds as they change."
+    },
+    {
+      "id": "event-webhooks",
+      "name": "Event Webhooks",
+      "description": "Sends signed HTTP POST payloads to a configured URL when selected project events fire, managed from the Console or a Server SDK."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-09-25T22:20:34.445Z",
+  "updatedAt": "2026-09-25T22:20:34.445Z"
+}

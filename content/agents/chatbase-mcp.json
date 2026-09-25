@@ -1,0 +1,59 @@
+{
+  "id": "chatbase-mcp",
+  "name": "Chatbase MCP",
+  "slug": "chatbase-mcp",
+  "description": "Connects MCP clients to a Chatbase workspace over OAuth to manage AI support agents, their training sources, conversations, and help desk tickets.",
+  "providerName": "Chatbase",
+  "providerUrl": "https://www.chatbase.co",
+  "agentUrl": "https://www.chatbase.co/docs/developer-guides/mcp",
+  "categories": [
+    "customer-support"
+  ],
+  "tags": [
+    "remote-mcp",
+    "official-mcp",
+    "customer-support",
+    "help-desk",
+    "support-chatbot",
+    "knowledge-base",
+    "oauth",
+    "chatbase"
+  ],
+  "skills": [
+    {
+      "id": "agent-management",
+      "name": "Agent Management",
+      "description": "Lists, creates, clones, updates, and deletes Chatbase AI agents, toggles auto-retrain, and sends a chat message to an agent."
+    },
+    {
+      "id": "source-management",
+      "name": "Source Management",
+      "description": "Adds, edits, and removes the knowledge sources an AI agent is trained on, with each change taking effect without a separate training step."
+    },
+    {
+      "id": "conversation-export",
+      "name": "Conversation Export",
+      "description": "Exports an agent's conversations for analysis and updates conversation metadata through chatbase_export_conversations and related tools."
+    },
+    {
+      "id": "help-desk-tickets",
+      "name": "Help Desk Tickets",
+      "description": "Searches, reads, creates, and updates help desk tickets, posts ticket replies, and lists ticket statuses and help desk teams."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-09-25T22:20:34.453Z",
+  "updatedAt": "2026-09-25T22:20:34.453Z"
+}

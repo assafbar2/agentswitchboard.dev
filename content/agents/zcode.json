@@ -1,0 +1,56 @@
+{
+  "id": "zcode",
+  "name": "ZCode",
+  "slug": "zcode",
+  "description": "Provides an Apache-2.0 AI coding workspace from Z.ai with a desktop app, browser UI, and terminal agent CLI that edits files, runs commands, and loads plugins, skills, and MCP servers.",
+  "providerName": "Z.ai",
+  "providerUrl": "https://z.ai",
+  "agentUrl": "https://zcode.z.ai/",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "coding-agent",
+    "terminal-agent",
+    "desktop-app",
+    "glm",
+    "zai",
+    "open-source",
+    "mcp-client"
+  ],
+  "skills": [
+    {
+      "id": "zcode-tui",
+      "name": "Terminal Agent",
+      "description": "Starts an interactive terminal UI with the `zcode` command for running coding tasks against a local project workspace."
+    },
+    {
+      "id": "zcode-web",
+      "name": "Browser Web Mode",
+      "description": "Serves the ZCode web client and agent locally with `zcode --web`, with optional token auth for LAN access to a workspace."
+    },
+    {
+      "id": "prompt-mode",
+      "name": "Non-Interactive Prompts",
+      "description": "Runs a single task non-interactively with the CLI `--prompt` flag, choosing a permission mode such as build or yolo."
+    },
+    {
+      "id": "plugins-mcp",
+      "name": "Plugins and MCP",
+      "description": "Loads plugins that add skills, commands, and MCP servers, and manages MCP connections with `/mcp` commands in the CLI."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-09-25T22:20:34.465Z",
+  "updatedAt": "2026-09-25T22:20:34.465Z"
+}

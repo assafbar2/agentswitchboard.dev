@@ -3,9 +3,9 @@
   "name": "mcp-use",
   "slug": "mcp-use",
   "description": "Build MCP servers and MCP-powered apps from one fullstack framework — connect any LLM to any MCP server, or ship agent-facing apps for Claude and ChatGPT.",
-  "providerName": "mcp-use",
-  "providerUrl": "https://mcp-use.com",
-  "agentUrl": "https://mcp-use.com",
+  "providerName": "Manufact",
+  "providerUrl": "https://manufact.com/",
+  "agentUrl": "https://manufact.com/",
   "categories": [
     "orchestration",
     "code-devtools"
@@ -50,5 +50,5 @@
     "mcp"
   ],
   "createdAt": "2026-09-13T20:13:54.415Z",
-  "updatedAt": "2026-09-13T20:13:54.415Z"
+  "updatedAt": "2026-09-25T22:13:41.711Z"
 }

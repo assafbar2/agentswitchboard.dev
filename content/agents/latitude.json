@@ -1,0 +1,60 @@
+{
+  "id": "latitude",
+  "name": "Latitude",
+  "slug": "latitude",
+  "description": "Traces, scores, and evaluates production AI agents via OpenTelemetry and SDKs, groups failures into signals, and dispatches coding agents over MCP to fix them.",
+  "providerName": "Latitude",
+  "providerUrl": "https://latitude.so",
+  "agentUrl": "https://docs.latitude.so",
+  "categories": [
+    "code-devtools",
+    "data-analytics"
+  ],
+  "tags": [
+    "llm-observability",
+    "evals",
+    "opentelemetry",
+    "tracing",
+    "remote-mcp",
+    "agent-score",
+    "open-source",
+    "latitude"
+  ],
+  "skills": [
+    {
+      "id": "trace-ingestion",
+      "name": "Trace Ingestion",
+      "description": "Captures multi-turn sessions, tool calls, and execution paths through TypeScript and Python SDKs or any OpenTelemetry exporter."
+    },
+    {
+      "id": "agent-score",
+      "name": "Agent Score",
+      "description": "Computes a daily 0 to 100 project score across outcome, reliability, cost, speed, and safety from real production sessions."
+    },
+    {
+      "id": "evaluations",
+      "name": "Automated Evaluations",
+      "description": "Scores sessions with condition sets, LLM judges, or custom JavaScript scripts, and replays regression datasets against fixed failures."
+    },
+    {
+      "id": "agent-dispatch",
+      "name": "Agent Dispatch",
+      "description": "Wakes a coding agent with sample traces when a signal needs follow-up, via MCP, Linear, or webhooks, so it can investigate and open a PR."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-09-25T22:20:34.449Z",
+  "updatedAt": "2026-09-25T22:20:34.449Z"
+}

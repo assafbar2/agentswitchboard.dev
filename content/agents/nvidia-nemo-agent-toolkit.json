@@ -1,0 +1,59 @@
+{
+  "id": "nvidia-nemo-agent-toolkit",
+  "name": "NVIDIA NeMo Agent Toolkit",
+  "slug": "nvidia-nemo-agent-toolkit",
+  "description": "Connects, profiles, evaluates, and optimizes agent workflows across frameworks like LangChain, LlamaIndex, and CrewAI, with MCP and A2A support and a `nat` CLI for Python developers.",
+  "providerName": "NVIDIA",
+  "providerUrl": "https://www.nvidia.com",
+  "agentUrl": "https://github.com/NVIDIA/NeMo-Agent-Toolkit",
+  "categories": [
+    "orchestration"
+  ],
+  "tags": [
+    "nvidia",
+    "agent-framework",
+    "framework-agnostic",
+    "agent-evaluation",
+    "profiling",
+    "observability",
+    "a2a",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "nat-run-serve",
+      "name": "Run and Serve Workflows",
+      "description": "Runs YAML-defined agent workflows with `nat run` or serves them over a FastAPI server with streaming endpoints via `nat serve`."
+    },
+    {
+      "id": "nat-eval",
+      "name": "Workflow Evaluation",
+      "description": "Scores the accuracy of agent workflows against datasets with `nat eval` and records performance characteristics per run."
+    },
+    {
+      "id": "nat-optimize",
+      "name": "Parameter and Prompt Optimizer",
+      "description": "Searches hyperparameters with Optuna and evolves prompts with a genetic algorithm via `nat optimize` to hit chosen metrics."
+    },
+    {
+      "id": "nat-mcp",
+      "name": "MCP Client and Server",
+      "description": "Consumes remote MCP tools inside workflows and publishes workflow functions as MCP tools with the `nat mcp serve` command."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-09-25T22:20:34.461Z",
+  "updatedAt": "2026-09-25T22:20:34.461Z"
+}

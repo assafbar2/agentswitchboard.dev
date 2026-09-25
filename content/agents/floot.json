@@ -1,0 +1,57 @@
+{
+  "id": "floot",
+  "name": "Floot",
+  "slug": "floot",
+  "description": "Builds, edits, and publishes full-stack web apps with Postgres, auth, storage, and email from Claude, ChatGPT, Codex, or any MCP client via Floot's remote MCP server.",
+  "providerName": "Floot",
+  "providerUrl": "https://floot.com",
+  "agentUrl": "https://floot.com/integrations/mcp",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "remote-mcp",
+    "official-mcp",
+    "app-builder",
+    "full-stack",
+    "hosting",
+    "postgres",
+    "oauth",
+    "floot"
+  ],
+  "skills": [
+    {
+      "id": "project-code-editing",
+      "name": "Project Code Editing",
+      "description": "Creates Floot projects and reads, writes, patches, and searches their React and TypeScript files with create_project, edit_file, and apply_patch."
+    },
+    {
+      "id": "resource-provisioning",
+      "name": "Resource Provisioning",
+      "description": "Adds a managed database, authentication, or login provider to a project with provision_resource, seeding the code without pasting any keys."
+    },
+    {
+      "id": "database-sql",
+      "name": "Database SQL",
+      "description": "Reads the project's Postgres data with query_database, runs writes and migrations with execute_sql, and regenerates typed schema helpers."
+    },
+    {
+      "id": "publish-and-debug",
+      "name": "Publish And Debug",
+      "description": "Publishes or unpublishes the app with publish_app, reads runtime logs with get_logs, and captures the live preview with screenshot_preview."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-09-25T22:20:34.451Z",
+  "updatedAt": "2026-09-25T22:20:34.451Z"
+}

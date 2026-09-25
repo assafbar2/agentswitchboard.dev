@@ -1,0 +1,57 @@
+{
+  "id": "kubernetes-mcp-server",
+  "name": "Kubernetes MCP Server",
+  "slug": "kubernetes-mcp-server",
+  "description": "Lets agents manage Kubernetes and OpenShift clusters through a native Go MCP server that talks to the API directly: pods, any resource, events, Helm, and optional toolsets.",
+  "providerName": "Containers",
+  "providerUrl": "https://github.com/containers",
+  "agentUrl": "https://github.com/containers/kubernetes-mcp-server",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "kubernetes",
+    "openshift",
+    "helm",
+    "local-mcp",
+    "cluster-management",
+    "open-source",
+    "go"
+  ],
+  "skills": [
+    {
+      "id": "pods",
+      "name": "Pod Operations",
+      "description": "Lists, gets, deletes, and execs into pods, shows pod logs and resource usage, and runs container images as new pods."
+    },
+    {
+      "id": "generic-resources",
+      "name": "Generic Resource CRUD",
+      "description": "Creates, updates, gets, lists, and deletes any Kubernetes or OpenShift resource, including custom resources, via the API."
+    },
+    {
+      "id": "helm",
+      "name": "Helm Releases",
+      "description": "Installs Helm charts, lists releases across namespaces, and uninstalls releases in the current or a chosen namespace."
+    },
+    {
+      "id": "events-namespaces",
+      "name": "Events and Namespaces",
+      "description": "Lists cluster events for troubleshooting, plus Kubernetes namespaces and OpenShift projects, with field selector filters."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-09-25T22:20:34.462Z",
+  "updatedAt": "2026-09-25T22:20:34.462Z"
+}
