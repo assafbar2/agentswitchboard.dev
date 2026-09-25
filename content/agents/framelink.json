@@ -40,7 +40,7 @@
   "supportsPushNotifications": false,
   "status": "archived",
   "featured": false,
-  "verified": true,
+  "verified": false,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
