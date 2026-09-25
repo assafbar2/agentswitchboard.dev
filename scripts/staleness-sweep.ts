@@ -78,13 +78,14 @@ async function main() {
     probes.forEach((p, i) => {
       const from = urls[i];
       if (typeof p.status !== 'number' || p.status >= 400 || !hostChanged(from, p.finalUrl)) return;
-      for (const slug of urlSlugs.get(from) ?? []) {
-        const field = agents.find((a) => a.slug === slug)?.agentUrl === from ? 'agentUrl' : 'providerUrl';
+      for (const slug of new Set(urlSlugs.get(from) ?? [])) {
+        const a = agents.find((x) => x.slug === slug);
+        const fields = (['agentUrl', 'providerUrl'] as const).filter((f) => a?.[f] === from);
         findings.push({
           slug,
           kind: 'MOVED',
-          detail: `${field} ${from} → ${p.finalUrl}`,
-          suggest: `npx tsx scripts/cms.ts update ${slug} ${field} '"${p.finalUrl}"'`,
+          detail: `${fields.join('+')} ${from} → ${p.finalUrl}`,
+          suggest: fields.map((f) => `npx tsx scripts/cms.ts update ${slug} ${f} '"${p.finalUrl}"'`).join(' && '),
         });
       }
     });
