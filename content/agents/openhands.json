@@ -4,8 +4,8 @@
   "slug": "openhands",
   "description": "Software engineering agent platform — runs in sandboxed Docker containers, edits code, runs tests, fixes bugs, and opens PRs. REST API and WebSocket for remote access.",
   "providerName": "All Hands AI",
-  "providerUrl": "https://www.all-hands.dev",
-  "agentUrl": "https://docs.all-hands.dev",
+  "providerUrl": "https://www.openhands.dev/",
+  "agentUrl": "https://docs.openhands.dev/overview/introduction",
   "categories": [
     "code-devtools",
     "browser-computer",
@@ -50,5 +50,5 @@
     "cli"
   ],
   "createdAt": "2026-05-13T16:56:36.959Z",
-  "updatedAt": "2026-08-29T07:45:15.127Z"
+  "updatedAt": "2026-09-25T23:53:40.469Z"
 }

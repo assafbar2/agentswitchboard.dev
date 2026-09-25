@@ -5,7 +5,7 @@
   "description": "Programming agent that keeps a live runtime alongside the code, letting it evaluate and inspect program state while editing rather than only reading text.",
   "providerName": "Lambda Symbolics",
   "providerUrl": "https://www.lambda-symbolics.com",
-  "agentUrl": "https://www.lambda-symbolics.com/autolith",
+  "agentUrl": "https://autolith.rocks/",
   "categories": [
     "code-devtools",
     "orchestration"
@@ -30,5 +30,5 @@
     "cli"
   ],
   "createdAt": "2026-08-24T19:48:52.201Z",
-  "updatedAt": "2026-08-24T19:48:52.201Z"
+  "updatedAt": "2026-09-25T23:53:31.536Z"
 }

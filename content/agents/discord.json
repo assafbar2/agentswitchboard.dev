@@ -5,7 +5,7 @@
   "description": "Chat platform with a documented REST API, gateway, and bot framework for agents that read channels, post messages, and respond to events.",
   "providerName": "Discord",
   "providerUrl": "https://discord.com",
-  "agentUrl": "https://discord.com/developers/docs",
+  "agentUrl": "https://docs.discord.com/developers/intro",
   "categories": [
     "communication"
   ],
@@ -28,5 +28,5 @@
     "api"
   ],
   "createdAt": "2026-08-24T19:48:52.221Z",
-  "updatedAt": "2026-08-24T19:48:52.221Z"
+  "updatedAt": "2026-09-25T23:53:33.704Z"
 }

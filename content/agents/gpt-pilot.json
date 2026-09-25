@@ -4,7 +4,7 @@
   "slug": "gpt-pilot",
   "description": "AI software developer agent that builds full applications from scratch — specifies requirements, scaffolds architecture, writes code, runs tests, and requests human review.",
   "providerName": "Pythagora",
-  "providerUrl": "https://pythagora.ai/",
+  "providerUrl": "https://pazi.ai/",
   "agentUrl": "https://github.com/Pythagora-io/gpt-pilot",
   "categories": [
     "code-devtools"
@@ -47,5 +47,5 @@
     "cli"
   ],
   "createdAt": "2026-05-22T08:28:01.212Z",
-  "updatedAt": "2026-05-22T08:28:01.212Z"
+  "updatedAt": "2026-09-25T23:53:35.551Z"
 }

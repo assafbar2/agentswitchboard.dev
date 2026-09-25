@@ -5,7 +5,7 @@
   "description": "Self-hosts an open ChatGPT-style platform with custom Agents, MCP tools, Code Interpreter, and multi-provider models. Exposes OpenAPI actions and an API for programmatic use. 40k+ stars, MIT.",
   "providerName": "Danny Avila",
   "providerUrl": "https://librechat.ai",
-  "agentUrl": "https://github.com/danny-avila/LibreChat",
+  "agentUrl": "https://github.com/LibreChat-AI/LibreChat",
   "categories": [
     "infrastructure"
   ],
@@ -48,5 +48,5 @@
     "mcp"
   ],
   "createdAt": "2026-07-17T20:41:20.001Z",
-  "updatedAt": "2026-07-17T20:41:20.001Z"
+  "updatedAt": "2026-09-25T23:53:29.964Z"
 }

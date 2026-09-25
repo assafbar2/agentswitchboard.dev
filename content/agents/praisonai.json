@@ -4,7 +4,7 @@
   "slug": "praisonai",
   "description": "Builds production multi-agent systems with a Python framework and low-code layer — self-reflection, tool use, and 100+ LLM support. Also runs as a CLI. Open source.",
   "providerName": "PraisonAI",
-  "providerUrl": "https://docs.praison.ai",
+  "providerUrl": "https://praison.ai/docs",
   "agentUrl": "https://github.com/MervinPraison/PraisonAI",
   "categories": [
     "orchestration"
@@ -48,5 +48,5 @@
     "api"
   ],
   "createdAt": "2026-07-06T07:04:39.650Z",
-  "updatedAt": "2026-07-06T07:04:39.650Z"
+  "updatedAt": "2026-09-25T23:53:41.079Z"
 }

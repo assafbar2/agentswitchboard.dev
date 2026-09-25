@@ -5,7 +5,7 @@
   "description": "Deploys a self-hostable, multi-provider LLM chat framework with a plugin and MCP marketplace, artifacts, knowledge base, and branching. Extensible ChatGPT alternative by LobeHub.",
   "providerName": "LobeHub",
   "providerUrl": "https://lobehub.com",
-  "agentUrl": "https://github.com/lobehub/lobe-chat",
+  "agentUrl": "https://github.com/lobehub/lobehub",
   "categories": [
     "content-media"
   ],
@@ -47,5 +47,5 @@
     "api"
   ],
   "createdAt": "2026-07-06T07:04:14.943Z",
-  "updatedAt": "2026-07-06T07:04:14.943Z"
+  "updatedAt": "2026-09-25T23:53:30.278Z"
 }

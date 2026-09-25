@@ -5,7 +5,7 @@
   "description": "Runs an open-source desktop and terminal coding agent that plans, edits, tests, and reviews changes inside real Git repositories.",
   "providerName": "GCWing",
   "providerUrl": "https://github.com/GCWing",
-  "agentUrl": "https://github.com/GCWing/BitFun",
+  "agentUrl": "https://github.com/GCWing/OpenBitFun",
   "categories": [
     "code-devtools",
     "browser-computer"
@@ -48,5 +48,5 @@
     "cli"
   ],
   "createdAt": "2026-08-12T00:00:00Z",
-  "updatedAt": "2026-08-12T00:00:00Z"
+  "updatedAt": "2026-09-25T23:53:28.714Z"
 }

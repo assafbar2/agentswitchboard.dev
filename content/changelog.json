@@ -1,6 +1,398 @@
 [
   {
     "action": "updated",
+    "slug": "zoom",
+    "name": "Zoom",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "xcodebuild-mcp",
+    "name": "XcodeBuildMCP",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "coinbase-agentkit",
+    "name": "Coinbase AgentKit",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "zep",
+    "name": "Zep",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "you-com-search-api",
+    "name": "You.com Search API",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "vercel-ai-sdk",
+    "name": "Vercel AI SDK",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "tiktok-ads-mcp",
+    "name": "TikTok Ads MCP",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "tako",
+    "name": "Tako",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "tako",
+    "name": "Tako",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "tabby",
+    "name": "Tabby",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "supermemory",
+    "name": "Supermemory",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "suna",
+    "name": "Suna",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "runway-ml",
+    "name": "Runway ML",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "runway-ml",
+    "name": "Runway ML",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "pydantic-ai",
+    "name": "Pydantic AI",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "praisonai",
+    "name": "PraisonAI",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "outlines",
+    "name": "Outlines",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "openhands",
+    "name": "OpenHands",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "openhands",
+    "name": "OpenHands",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "notion-skills-api",
+    "name": "Notion Skills API",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "notion-mcp",
+    "name": "Notion MCP",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "nango",
+    "name": "Nango",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "mindsdb",
+    "name": "MindsDB",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "mindsdb",
+    "name": "MindsDB",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "metagpt",
+    "name": "MetaGPT",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "llamaindex",
+    "name": "LlamaIndex",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "livekit-agents",
+    "name": "LiveKit Agents",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "letta",
+    "name": "Letta",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "langchain",
+    "name": "LangChain",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "honcho",
+    "name": "Honcho",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "holaos",
+    "name": "holaOS",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "holaos",
+    "name": "holaOS",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "hexstrike-ai",
+    "name": "HexStrike AI",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "gpt-pilot",
+    "name": "GPT-Pilot",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "google-adk",
+    "name": "Google ADK",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "factory-ai",
+    "name": "Factory",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "exa-ai",
+    "name": "Exa AI",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "eliza",
+    "name": "Eliza",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "e2b",
+    "name": "E2B",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "discord",
+    "name": "Discord",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "devin",
+    "name": "Devin",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "darkbloom",
+    "name": "Darkbloom",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "darkbloom",
+    "name": "Darkbloom",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "crush",
+    "name": "Crush",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "codex-cli",
+    "name": "Codex CLI",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "bigquery",
+    "name": "BigQuery",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "autolith",
+    "name": "Autolith",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "arize-phoenix",
+    "name": "Arize Phoenix",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "workweave-router",
+    "name": "Workweave Router",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "tiingo-mcp",
+    "name": "Tiingo MCP",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "lobe-chat",
+    "name": "LobeChat",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "librechat",
+    "name": "LibreChat",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "google-mcp-toolbox",
+    "name": "Google MCP Toolbox",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "genkit",
+    "name": "Genkit",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "e2a",
+    "name": "E2a",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "bitfun",
+    "name": "BitFun",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
     "slug": "gbrain",
     "name": "GBrain",
     "note": "Featured",
