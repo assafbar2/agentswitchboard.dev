@@ -1,20 +1,26 @@
 /**
  * Weekly Drop — canonical script for adding new agents discovered via Mode A or Mode B.
+ * Process: docs/WEEKLY_DROP_RUNBOOK.md (single source of truth).
  *
  * GIT-AS-CMS: agents are files in content/agents/<slug>.json. This script
- * writes those files — publishing happens when the commit deploys.
+ * writes those files — publishing happens when the drop PR is merged.
+ * Never push to main; the deliverable is a PR from a weekly-drop-<date> branch.
  *
- * Usage:
- *   1. Paste agents into AGENTS_TO_ADD below
- *   2. npx tsx scripts/weekly-drop.ts        (writes content/agents/*.json)
- *   3. npx tsx scripts/validate-content.ts   (CI runs this too)
- *   4. Commit content/ + this file: "Weekly drop [DATE]: added [x] agents"
- *   5. Clear AGENTS_TO_ADD, commit: "chore: clear weekly-drop after [DATE] run"
+ * Usage (only after the shortlist is approved):
+ *   1. Paste the approved agents into AGENTS_TO_ADD below
+ *   2. npx tsx scripts/weekly-drop.ts        (writes content/agents/*.json + changelog)
+ *   3. git checkout scripts/weekly-drop.ts   (revert — this file never enters the drop diff)
+ *   4. npx tsx scripts/validate-content.ts   (CI runs this too)
+ *   5. git add content/ && commit "Weekly drop YYYY-MM-DD: added N, updated M, archived K",
+ *      push the branch, open the PR
  *
- * Skills format: { id, name (2-4 words), description (80-150 chars, verb-first) }
+ * Skills: optional, 0-5, only documented capabilities — empty beats invented.
+ *   { id, name (2-4 words), description (80-150 chars, verb-first) }
  * Description hard limit: 200 chars
  * Access methods: 'api' | 'mcp' | 'cli' | 'browser-extension'
  * Auth types: 'apiKey' | 'oauth2' | 'bearer' | 'none'
+ * verified: true only after the run itself verified the URLs/endpoints.
+ * featured: leave unset — Assaf's decision, never set by the weekly run.
  * Valid category slugs: content/categories.json (or `npx tsx scripts/cms.ts categories`)
  */
 
@@ -1095,10 +1101,10 @@ function main() {
   console.log(`\n✅ Done! Created: ${created}, Skipped: ${skipped}, Errors: ${errors}`);
   if (created > 0) {
     console.log('\n📌 Next steps:');
-    console.log('   1. npx tsx scripts/validate-content.ts');
-    console.log('   2. git add content/ scripts/weekly-drop.ts');
-    console.log('   3. git commit -m "Weekly drop [DATE]: added X agents" && git push');
-    console.log('   4. Clear AGENTS_TO_ADD and commit "chore: clear weekly-drop after [DATE] run"');
+    console.log('   1. git checkout scripts/weekly-drop.ts   (revert the pasted array)');
+    console.log('   2. npx tsx scripts/validate-content.ts');
+    console.log('   3. git add content/ && git commit -m "Weekly drop YYYY-MM-DD: added N, updated M, archived K"');
+    console.log('   4. git push -u origin HEAD and open a PR — never push to main (docs/WEEKLY_DROP_RUNBOOK.md §8)');
   }
 }
 
