@@ -5,7 +5,8 @@ that points here. Where this document and code disagree, **code wins** (`scripts
 fix this document in the same PR.
 
 **Mode A** — launched, opened up, or materially changed inside the window (every run).
-**Mode B** — established products still missing (first run of each calendar month, or on request).
+**Mode B** — established products still missing (every run; the ledger keeps it cheap).
+**Maintenance** — staleness and verified sweeps over existing entries (first run of each calendar month).
 
 **The gates.**
 1. **Shortlist approval** — nothing is written to the repo (no branch, file, or commit) until
@@ -28,7 +29,7 @@ Project store's `docs/` on Cursor runs).
 ```bash
 cd "$ASB_REPO"                     # your checkout; nothing below assumes a machine-specific path
 git checkout main && git fetch origin && git pull --ff-only origin main
-npx tsx scripts/weekly-prep.ts     # sync · window · counts · Mode B due? · ledger rechecks · platform gaps
+npx tsx scripts/weekly-prep.ts     # sync · window · counts · maintenance due? · ledger rechecks · platform gaps
 npx tsx scripts/validate-content.ts
 npx tsx scripts/cms.ts categories
 gh issue list --label link-rot --state open --json number,title
@@ -40,7 +41,7 @@ gh issue list --label link-rot --state open --json number,title
 - **WINDOW** — days since the last `Weekly drop YYYY-MM-DD` commit *subject*, capped at 14.
   It takes the max subject date, so it works for squash and merge-commit PRs alike. Override
   with `--today`. There is no separate gap sweep: the ledger resurfaces late bloomers (§3).
-- **MODE B** — due when no drop has run yet this calendar month.
+- **MAINTENANCE** — due when no drop has run yet this calendar month (Mode A and Mode B run every week).
 - **CATALOG** — published count. The validator prints the *file* count including archived;
   never quote that as published.
 - **INDEX** — writes `/tmp/asb-index.tsv` (slug · name · hosts · repo · status), archived included.
@@ -127,27 +128,36 @@ imply coverage you don't have.
 |---|---|---|
 | Hacker News | `npx tsx scripts/discover.ts hn` | Keywords + all Show/Launch HN ≥50 points in the window. Best signal per minute. |
 | GitHub new repos | `npx tsx scripts/discover.ts github-new` | Created in the window, ≥100★. Noisy (forks, skill packs); cheap. |
-| GitHub rising repos | `npx tsx scripts/discover.ts github-rising` | Created in the last 365 days, ≥5k★, **no keyword filter**. Catches GBrain-type misses. The first run returns ~270 leads, mostly skill packs: ledger them once (`NOT-A-PRODUCT`, no recheck) and later runs show only new arrivals. |
 | Official MCP registry | `npx tsx scripts/discover.ts mcp-registry` | Domain-namespaced servers updated in the window (`--include-community` adds `io.github.*`). Confirm launch dates (trap 9). |
 | Product Hunt | hunted.space daily JSON: `https://hunted.space/all-products/<YYYY>/<Month>/<d>` | PH itself blocks bots. A lead source, not a signal: a PH rank never qualifies an entry alone. |
 | mcphq.ai | weekly "new registry servers" roundup | Substitute for mcp.so, with install counts. |
 | Newsletters | TLDR AI · The Batch · AI/TLDR | Launches only. A funding round alone is not a candidate. |
 
-### Mode B — first run of the month
+### Mode B — every run
 
-1. **Platform audit** (highest yield). Work the `PLATFORMS` line from `weekly-prep.ts`
+Established products still missing. Every lead goes through the ledger, so each week only looks at
+new arrivals and due rechecks.
+
+1. **GitHub rising repos** — `npx tsx scripts/discover.ts github-rising`: created in the last 365 days,
+   ≥5k★, **no keyword filter**. Catches GBrain-type misses. The first run returned ~270 leads, mostly skill
+   packs; they're in the ledger now, so later runs show only new arrivals.
+2. **Platform audit** (highest yield). Work the `PLATFORMS` line from `weekly-prep.ts`
    top-down: find each platform's official API / MCP / CLI, then add it or ledger it as `platform:<name>`.
    The match is a substring over slugs, names, and hosts, so a platform can look covered because
    of one tangential entry (e.g. `gemini-cli` for Gemini). Eyeball the major model and cloud vendors.
    Extend `docs/platform-audit.txt` when you find a missing class.
-2. **GitHub topics** `mcp-server`, `ai-agent`, `agentic`, `llm-tools`, top 50 by stars, through `dedup.ts`.
-3. **Staleness sweep** — existing entries whose facts drifted:
+3. **GitHub topics** `mcp-server`, `ai-agent`, `agentic`, `llm-tools`, top 50 by stars, through `dedup.ts`.
+### Maintenance — first run of the month
+
+These touch existing entries and probe ~800 URLs, so they run monthly and land as one batch.
+
+1. **Staleness sweep** — existing entries whose facts drifted:
    ```bash
    npx tsx scripts/staleness-sweep.ts      # MOVED host · RENAMED/TRANSFERRED repo · ARCHIVED · STALE (12+ months)
    ```
    Each finding becomes an UPDATE or ARCHIVE row after you confirm it. The weekly link-rot bot
    (`check-links.ts`, Mondays) only catches dead URLs, not redirects or org transfers.
-4. **Verified sweep** — re-derive `verified` for every entry against the bar (§5):
+2. **Verified sweep** — re-derive `verified` for every entry against the bar (§5):
    ```bash
    npx tsx scripts/verify-entries.ts            # dry run: promotions, demotions, inconclusive
    npx tsx scripts/verify-entries.ts --apply    # in the drop PR, as its own commit
@@ -207,7 +217,7 @@ Link-rot issues: UPDATE (replacement verified) · ARCHIVE (dead in ≥2 consecut
 
 Bot walls alone (403/429/5xx/timeouts) are inconclusive: the current value is kept and the entry
 is listed for a person to check. For new entries, set `verified: true` only when §6 showed the
-entry passes this bar; otherwise `false`. The whole catalog is re-derived monthly (Mode B step 4).
+entry passes this bar; otherwise `false`. The whole catalog is re-derived monthly (Maintenance step 2).
 
 **`featured`** is Assaf's decision. The run never sets `featured` (leave it out of
 `AGENTS_TO_ADD`; the script defaults to `false`) and never runs `cms.ts feature`. It may

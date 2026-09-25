@@ -2,7 +2,7 @@
  * weekly-prep.ts — Step 0 of the weekly content run, as one read-only command.
  *
  * Prints: git sync state · last drop + lookback window · published/archived
- * counts · Mode B due? · ledger rechecks due · platform-audit names with no
+ * counts · maintenance due? · ledger rechecks due · platform-audit names with no
  * catalog match. Writes the dedup index (slug, name, hosts, repo, status) as TSV.
  *
  * Usage:
@@ -57,8 +57,11 @@ function main() {
   console.log(
     `WINDOW    last drop ${last ?? 'none'} → ${days}d (cap ${WINDOW_CAP_DAYS}) · research ${start} → ${today}`,
   );
-  const modeB = !last || last.slice(0, 7) !== today.slice(0, 7);
-  console.log(`MODE B    ${modeB ? 'due (first run this month)' : 'not due (already ran this month) — Mode A only unless asked'}`);
+  const maintenance = !last || last.slice(0, 7) !== today.slice(0, 7);
+  console.log('MODES     A (launches) + B (established gaps) — both every run');
+  console.log(
+    `MAINT     ${maintenance ? 'due (first run this month): staleness-sweep + verify-entries' : 'not due (already ran this month)'}`,
+  );
 
   // 3. Counts + index
   const agents = loadAgents();
@@ -78,7 +81,7 @@ function main() {
   console.log(`LEDGER    ${ledgerPath()} · ${latest.size} candidates on file · ${due.length} due for recheck`);
   for (const e of due) console.log(`          ↻ ${e.name} (${e.key}) — ${e.status} ${e.reason ?? ''} since ${e.date}`);
 
-  // 5. Platform audit (Mode B): names from docs/platform-audit.txt with no catalog match
+  // 5. Platform audit (Mode B, every run): names from docs/platform-audit.txt with no catalog match
   const auditFile = path.resolve(process.cwd(), 'docs', 'platform-audit.txt');
   if (fs.existsSync(auditFile)) {
     const hay = index.map((a) => `${normalizeName(a.slug)} ${normalizeName(a.name)} ${a.hosts.join(' ')}`).join('\n');

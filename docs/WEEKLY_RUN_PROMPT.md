@@ -31,10 +31,14 @@ STEPS (details in the runbook)
 0. git checkout main && git fetch origin && git pull --ff-only origin main
    npx tsx scripts/weekly-prep.ts && npx tsx scripts/validate-content.ts && npx tsx scripts/cms.ts categories
    gh issue list --label link-rot --state open
-1. Discover. Mode A: npx tsx scripts/discover.ts hn | github-new | github-rising | mcp-registry,
-   then hunted.space daily JSON (Product Hunt), the mcphq.ai weekly roundup, and TLDR AI /
-   The Batch (launches only). Mode B, when weekly-prep says it's due: PLATFORMS gaps, GitHub
-   topics, scripts/staleness-sweep.ts, scripts/verify-entries.ts (dry run).
+1. Discover, every run:
+   Mode A (launches): npx tsx scripts/discover.ts hn | github-new | mcp-registry, then
+   hunted.space daily JSON (Product Hunt), the mcphq.ai weekly roundup, and TLDR AI / The Batch
+   (launches only).
+   Mode B (established gaps): npx tsx scripts/discover.ts github-rising, the PLATFORMS gaps from
+   weekly-prep, and GitHub topics.
+   Maintenance, only when weekly-prep says it's due (monthly): scripts/staleness-sweep.ts and
+   scripts/verify-entries.ts (dry run; apply in the drop PR).
 2. Dedup every lead: npx tsx scripts/dedup.ts "Name|url-or-owner/repo" ...
 3. Judge against runbook §5, and reject with one code.
 4. Verify finalists: npx tsx scripts/enrich.ts <url> <owner/repo> npm:<pkg> pypi:<pkg>
