@@ -5,7 +5,7 @@
   "description": "Long-term memory store for AI assistants. Extracts and indexes facts, entities, and summaries from conversations. Fast hybrid search combines semantic and full-text retrieval.",
   "providerName": "Zep",
   "providerUrl": "https://getzep.com",
-  "agentUrl": "https://docs.getzep.com",
+  "agentUrl": "https://help.getzep.com/overview",
   "categories": [
     "memory-state"
   ],
@@ -55,5 +55,5 @@
     "api"
   ],
   "createdAt": "2026-04-08T07:17:02.759Z",
-  "updatedAt": "2026-07-10T21:07:29.122Z"
+  "updatedAt": "2026-09-25T23:53:44.767Z"
 }

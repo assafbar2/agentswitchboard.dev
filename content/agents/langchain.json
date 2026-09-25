@@ -5,7 +5,7 @@
   "description": "Framework for building LLM applications and agents, with composable chains, tool calling, retrieval, and a large integration ecosystem across Python and JavaScript.",
   "providerName": "LangChain",
   "providerUrl": "https://www.langchain.com",
-  "agentUrl": "https://python.langchain.com",
+  "agentUrl": "https://docs.langchain.com/oss/python/langchain/overview",
   "categories": [
     "orchestration",
     "code-devtools"
@@ -32,5 +32,5 @@
     "cli"
   ],
   "createdAt": "2026-08-11T00:40:12.990Z",
-  "updatedAt": "2026-08-11T00:40:12.990Z"
+  "updatedAt": "2026-09-25T23:53:37.089Z"
 }

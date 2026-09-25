@@ -5,7 +5,7 @@
   "description": "Builds AI features and agent flows in JavaScript, Go or Python with typed flows, tool calling and a local dev UI for tracing, from Google.",
   "providerName": "Google",
   "providerUrl": "https://genkit.dev",
-  "agentUrl": "https://github.com/firebase/genkit",
+  "agentUrl": "https://github.com/genkit-ai/genkit",
   "categories": [
     "orchestration",
     "code-devtools"
@@ -48,5 +48,5 @@
     "cli"
   ],
   "createdAt": "2026-07-25T16:22:45.430Z",
-  "updatedAt": "2026-07-25T16:22:45.430Z"
+  "updatedAt": "2026-09-25T23:53:29.340Z"
 }

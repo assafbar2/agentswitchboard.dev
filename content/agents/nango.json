@@ -5,7 +5,7 @@
   "description": "Open-source OAuth and API integration platform. 300+ pre-built integrations. Handles token refresh, rate limits, and webhooks for any API your agents call.",
   "providerName": "Nango",
   "providerUrl": "https://nango.dev",
-  "agentUrl": "https://docs.nango.dev",
+  "agentUrl": "https://nango.dev/docs/getting-started/intro-to-nango",
   "categories": [
     "infrastructure"
   ],
@@ -56,5 +56,5 @@
     "api"
   ],
   "createdAt": "2026-04-08T07:17:27.018Z",
-  "updatedAt": "2026-04-08T07:17:27.018Z"
+  "updatedAt": "2026-09-25T23:53:39.246Z"
 }

@@ -4,8 +4,8 @@
   "slug": "holaos",
   "description": "Run an agentic workspace on your own infrastructure — 100+ integrations, MCP, browser and local file access, and shared memory across Claude Code, Codex, or a bring-your-own model.",
   "providerName": "holaboss",
-  "providerUrl": "https://holaos.ai",
-  "agentUrl": "https://holaos.ai",
+  "providerUrl": "https://www.holaboss.ai/",
+  "agentUrl": "https://www.holaboss.ai/",
   "categories": [
     "orchestration",
     "infrastructure"
@@ -49,5 +49,5 @@
     "api"
   ],
   "createdAt": "2026-09-13T20:13:54.424Z",
-  "updatedAt": "2026-09-13T20:13:54.424Z"
+  "updatedAt": "2026-09-25T23:53:36.472Z"
 }

@@ -5,7 +5,7 @@
   "description": "Data framework and cloud platform for LLM apps over private data. Offers parsing, indexing, retrieval, agent workflows, and evaluation across 160+ data sources.",
   "providerName": "LlamaIndex",
   "providerUrl": "https://llamaindex.ai",
-  "agentUrl": "https://docs.llamaindex.ai",
+  "agentUrl": "https://developers.llamaindex.ai/python/framework/",
   "categories": [
     "research"
   ],
@@ -57,5 +57,5 @@
     "cli"
   ],
   "createdAt": "2026-04-13T21:38:18.186Z",
-  "updatedAt": "2026-04-13T21:38:18.186Z"
+  "updatedAt": "2026-09-25T23:53:38.014Z"
 }
