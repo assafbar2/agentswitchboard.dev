@@ -4,8 +4,8 @@
   "slug": "zeroclaw",
   "description": "Runs a small, fast, fully autonomous personal assistant agent as a self-contained runtime deployable across operating systems and platforms.",
   "providerName": "ZeroClaw Labs",
-  "providerUrl": "https://www.zeroclawlabs.ai",
-  "agentUrl": "https://www.zeroclawlabs.ai",
+  "providerUrl": "https://www.zeroclaw.com/",
+  "agentUrl": "https://www.zeroclaw.com/",
   "categories": [
     "orchestration",
     "code-devtools"
@@ -49,5 +49,5 @@
     "api"
   ],
   "createdAt": "2026-08-15T07:16:38.560Z",
-  "updatedAt": "2026-08-15T07:16:38.560Z"
+  "updatedAt": "2026-09-25T22:13:40.776Z"
 }

@@ -1,6 +1,6 @@
 {
   "id": "needle2",
-  "name": "Needle2",
+  "name": "Needle 3",
   "slug": "needle2",
   "description": "Runs a compact 8-29MB 2-bit agentic model on phones, wearables, and smart home hardware without a network round trip, via a Python SDK, CLI, and C and JS-WASM bindings.",
   "providerName": "Cactus Compute",
@@ -29,5 +29,5 @@
     "cli"
   ],
   "createdAt": "2026-08-11T00:40:13.019Z",
-  "updatedAt": "2026-09-18T22:02:22.669Z"
+  "updatedAt": "2026-09-25T22:13:39.233Z"
 }

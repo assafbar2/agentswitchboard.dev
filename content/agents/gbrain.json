@@ -1,0 +1,58 @@
+{
+  "id": "gbrain",
+  "name": "GBrain",
+  "slug": "gbrain",
+  "description": "Gives existing agent harnesses a self-hosted memory and skills layer with sourced facts, hybrid search, and cited synthesis, served over a CLI or local and remote MCP.",
+  "providerName": "Garry Tan",
+  "providerUrl": "https://github.com/garrytan",
+  "agentUrl": "https://github.com/garrytan/gbrain",
+  "categories": [
+    "memory-state"
+  ],
+  "tags": [
+    "agent-memory",
+    "knowledge-graph",
+    "hybrid-search",
+    "remote-mcp",
+    "self-hosted",
+    "postgres",
+    "claude-code",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "memory-verbs",
+      "name": "Memory Verbs Protocol",
+      "description": "Exposes recall, remember, entity, synthesize, forget, context_pack, and delta as a versioned seven-verb MCP memory surface for agents."
+    },
+    {
+      "id": "search-and-think",
+      "name": "Search And Synthesis",
+      "description": "Runs hybrid keyword and vector retrieval with gbrain search, or composes a cited answer with gap analysis using gbrain think."
+    },
+    {
+      "id": "mcp-expose",
+      "name": "Remote MCP Publishing",
+      "description": "Publishes the brain as an OAuth 2.1 HTTP MCP server on a Tailscale tailnet, or publicly with --funnel, using gbrain mcp expose."
+    },
+    {
+      "id": "schema-packs",
+      "name": "Schema Packs",
+      "description": "Detects, suggests, reviews, and activates page-type schema packs that fit your notes with the gbrain schema command family."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-09-25T22:20:34.443Z",
+  "updatedAt": "2026-09-25T22:20:34.443Z"
+}
