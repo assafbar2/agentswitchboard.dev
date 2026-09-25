@@ -264,3 +264,62 @@ export function hostChanged(fromUrl: string, finalUrl: string): boolean {
   const b = hostOf(finalUrl);
   return !!a && !!b && a !== b;
 }
+
+// ─── Verified bar ────────────────────────────────────────────────────────────
+
+/**
+ * The bar for `verified: true` — "we checked it works", re-derived on every sweep
+ * (scripts/verify-entries.ts):
+ *   1. the entry is published and declares at least one access method
+ *   2. no listed URL is dead (404/410, DNS failure, refused, bad TLS)
+ *   3. at least one listed URL loads (2xx; 401 counts — an auth-gated endpoint is live)
+ *   4. a linked GitHub repo exists, isn't archived, and was pushed within 12 months
+ * Bot walls (403/429/5xx/timeouts) prove nothing either way: if they're all we
+ * got, the verdict is null and the current flag is kept.
+ */
+export interface VerifyInput {
+  status: string;
+  accessMethods: string[];
+  urls: { field: string; status: number | string }[];
+  repo?: { found: boolean; archived: boolean | null; pushedAt: string | null } | null;
+}
+
+export interface VerifyVerdict {
+  verified: boolean | null;
+  reasons: string[];
+}
+
+const DEAD_CODES = new Set([
+  'ENOTFOUND', 'ECONNREFUSED', 'CERT_HAS_EXPIRED', 'ERR_TLS_CERT_ALTNAME_INVALID',
+  'DEPTH_ZERO_SELF_SIGNED_CERT', 'UNABLE_TO_VERIFY_LEAF_SIGNATURE', 'SELF_SIGNED_CERT_IN_CHAIN',
+]);
+
+export function urlOutcome(status: number | string): 'ok' | 'dead' | 'inconclusive' {
+  if (typeof status === 'number') {
+    if ((status >= 200 && status < 300) || status === 401) return 'ok';
+    if (status === 404 || status === 410) return 'dead';
+    return 'inconclusive';
+  }
+  return DEAD_CODES.has(status) ? 'dead' : 'inconclusive';
+}
+
+export function verifyVerdict(input: VerifyInput, today: string): VerifyVerdict {
+  const fails: string[] = [];
+  if (input.status !== 'published') fails.push(`status ${input.status}`);
+  if (!input.accessMethods.length) fails.push('no access method');
+  const outcomes = input.urls.map((u) => ({ ...u, outcome: urlOutcome(u.status) }));
+  for (const u of outcomes) if (u.outcome === 'dead') fails.push(`${u.field} dead (${u.status})`);
+  if (input.repo) {
+    if (!input.repo.found) fails.push('repo not found');
+    else {
+      if (input.repo.archived) fails.push('repo archived');
+      if (input.repo.pushedAt && monthsSince(input.repo.pushedAt, today) >= 12) fails.push(`repo stale (last push ${input.repo.pushedAt})`);
+    }
+  }
+  if (fails.length) return { verified: false, reasons: fails };
+  if (outcomes.some((u) => u.outcome === 'ok') || input.repo?.found) return { verified: true, reasons: [] };
+  return {
+    verified: null,
+    reasons: outcomes.map((u) => `${u.field} ${u.status}`),
+  };
+}
