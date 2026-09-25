@@ -14,6 +14,7 @@ import {
   normalizeName,
   parseCandidate,
   parseLedger,
+  verifyVerdict,
   type LedgerEntry,
 } from './weekly';
 
@@ -156,5 +157,49 @@ describe('ledger', () => {
     expect(ledgerVerdict(e({ recheckAfter: '2026-10-23' }), '2026-10-23')).toBe('recheck');
     expect(ledgerVerdict(e({}), '2027-01-01')).toBe('skip');
     expect(ledgerVerdict(e({ status: 'added', recheckAfter: '2026-01-01' }), '2027-01-01')).toBe('skip');
+  });
+});
+
+describe('verifyVerdict', () => {
+  const base = { status: 'published', accessMethods: ['api'], urls: [{ field: 'agentUrl', status: 200 }] };
+  const today = '2026-09-25';
+
+  it('passes a live, published entry with an access method', () => {
+    expect(verifyVerdict(base, today)).toEqual({ verified: true, reasons: [] });
+  });
+  it('treats 401 as live (auth-gated endpoint)', () => {
+    expect(verifyVerdict({ ...base, urls: [{ field: 'agentUrl', status: 401 }] }, today).verified).toBe(true);
+  });
+  it('fails dead URLs, DNS failures, and bad TLS', () => {
+    for (const s of [404, 410, 'ENOTFOUND', 'CERT_HAS_EXPIRED'] as const) {
+      expect(verifyVerdict({ ...base, urls: [{ field: 'agentUrl', status: 200 }, { field: 'providerUrl', status: s }] }, today).verified).toBe(false);
+    }
+  });
+  it('fails archived entries and entries without an access method', () => {
+    expect(verifyVerdict({ ...base, status: 'archived' }, today).verified).toBe(false);
+    expect(verifyVerdict({ ...base, accessMethods: [] }, today).verified).toBe(false);
+  });
+  it('fails archived, missing, or 12-month-stale repos', () => {
+    expect(verifyVerdict({ ...base, repo: { found: true, archived: true, pushedAt: '2026-09-01' } }, today).verified).toBe(false);
+    expect(verifyVerdict({ ...base, repo: { found: false, archived: null, pushedAt: null } }, today).verified).toBe(false);
+    expect(verifyVerdict({ ...base, repo: { found: true, archived: false, pushedAt: '2025-09-01' } }, today).verified).toBe(false);
+    expect(verifyVerdict({ ...base, repo: { found: true, archived: false, pushedAt: '2026-03-01' } }, today).verified).toBe(true);
+  });
+  it('is inconclusive (null) when bot walls are all we got', () => {
+    const v = verifyVerdict({ ...base, urls: [{ field: 'agentUrl', status: 403 }, { field: 'providerUrl', status: 'TimeoutError' }] }, today);
+    expect(v.verified).toBeNull();
+  });
+  it('one loading URL is enough when the other is bot-walled', () => {
+    expect(verifyVerdict({ ...base, urls: [{ field: 'agentUrl', status: 403 }, { field: 'providerUrl', status: 200 }] }, today).verified).toBe(true);
+  });
+});
+
+describe('verifyVerdict with a repo-only entry', () => {
+  it('a live repo is enough evidence when no page URL was probed', () => {
+    const v = verifyVerdict(
+      { status: 'published', accessMethods: ['cli'], urls: [], repo: { found: true, archived: false, pushedAt: '2026-09-01' } },
+      '2026-09-25',
+    );
+    expect(v.verified).toBe(true);
   });
 });

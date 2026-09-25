@@ -44,7 +44,7 @@
   "supportsPushNotifications": false,
   "status": "published",
   "featured": false,
-  "verified": false,
+  "verified": true,
   "tier": "premium",
   "discoveredBy": "manual",
   "accessMethods": [

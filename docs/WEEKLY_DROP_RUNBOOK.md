@@ -5,7 +5,8 @@ that points here. Where this document and code disagree, **code wins** (`scripts
 fix this document in the same PR.
 
 **Mode A** — launched, opened up, or materially changed inside the window (every run).
-**Mode B** — established products still missing (first run of each calendar month, or on request).
+**Mode B** — established products still missing (every run; the ledger keeps it cheap).
+**Maintenance** — staleness and verified sweeps over existing entries (first run of each calendar month).
 
 **The gates.**
 1. **Shortlist approval** — nothing is written to the repo (no branch, file, or commit) until
@@ -28,7 +29,7 @@ Project store's `docs/` on Cursor runs).
 ```bash
 cd "$ASB_REPO"                     # your checkout; nothing below assumes a machine-specific path
 git checkout main && git fetch origin && git pull --ff-only origin main
-npx tsx scripts/weekly-prep.ts     # sync · window · counts · Mode B due? · ledger rechecks · platform gaps
+npx tsx scripts/weekly-prep.ts     # sync · window · counts · maintenance due? · ledger rechecks · platform gaps
 npx tsx scripts/validate-content.ts
 npx tsx scripts/cms.ts categories
 gh issue list --label link-rot --state open --json number,title
@@ -40,7 +41,7 @@ gh issue list --label link-rot --state open --json number,title
 - **WINDOW** — days since the last `Weekly drop YYYY-MM-DD` commit *subject*, capped at 14.
   It takes the max subject date, so it works for squash and merge-commit PRs alike. Override
   with `--today`. There is no separate gap sweep: the ledger resurfaces late bloomers (§3).
-- **MODE B** — due when no drop has run yet this calendar month.
+- **MAINTENANCE** — due when no drop has run yet this calendar month (Mode A and Mode B run every week).
 - **CATALOG** — published count. The validator prints the *file* count including archived;
   never quote that as published.
 - **INDEX** — writes `/tmp/asb-index.tsv` (slug · name · hosts · repo · status), archived included.
@@ -127,26 +128,41 @@ imply coverage you don't have.
 |---|---|---|
 | Hacker News | `npx tsx scripts/discover.ts hn` | Keywords + all Show/Launch HN ≥50 points in the window. Best signal per minute. |
 | GitHub new repos | `npx tsx scripts/discover.ts github-new` | Created in the window, ≥100★. Noisy (forks, skill packs); cheap. |
-| GitHub rising repos | `npx tsx scripts/discover.ts github-rising` | Created in the last 365 days, ≥5k★, **no keyword filter**. Catches GBrain-type misses. The first run returns ~270 leads, mostly skill packs: ledger them once (`NOT-A-PRODUCT`, no recheck) and later runs show only new arrivals. |
 | Official MCP registry | `npx tsx scripts/discover.ts mcp-registry` | Domain-namespaced servers updated in the window (`--include-community` adds `io.github.*`). Confirm launch dates (trap 9). |
 | Product Hunt | hunted.space daily JSON: `https://hunted.space/all-products/<YYYY>/<Month>/<d>` | PH itself blocks bots. A lead source, not a signal: a PH rank never qualifies an entry alone. |
 | mcphq.ai | weekly "new registry servers" roundup | Substitute for mcp.so, with install counts. |
 | Newsletters | TLDR AI · The Batch · AI/TLDR | Launches only. A funding round alone is not a candidate. |
 
-### Mode B — first run of the month
+### Mode B — every run
 
-1. **Platform audit** (highest yield). Work the `PLATFORMS` line from `weekly-prep.ts`
+Established products still missing. Every lead goes through the ledger, so each week only looks at
+new arrivals and due rechecks.
+
+1. **GitHub rising repos** — `npx tsx scripts/discover.ts github-rising`: created in the last 365 days,
+   ≥5k★, **no keyword filter**. Catches GBrain-type misses. The first run returned ~270 leads, mostly skill
+   packs; they're in the ledger now, so later runs show only new arrivals.
+2. **Platform audit** (highest yield). Work the `PLATFORMS` line from `weekly-prep.ts`
    top-down: find each platform's official API / MCP / CLI, then add it or ledger it as `platform:<name>`.
    The match is a substring over slugs, names, and hosts, so a platform can look covered because
    of one tangential entry (e.g. `gemini-cli` for Gemini). Eyeball the major model and cloud vendors.
    Extend `docs/platform-audit.txt` when you find a missing class.
-2. **GitHub topics** `mcp-server`, `ai-agent`, `agentic`, `llm-tools`, top 50 by stars, through `dedup.ts`.
-3. **Staleness sweep** — existing entries whose facts drifted:
+3. **GitHub topics** `mcp-server`, `ai-agent`, `agentic`, `llm-tools`, top 50 by stars, through `dedup.ts`.
+### Maintenance — first run of the month
+
+These touch existing entries and probe ~800 URLs, so they run monthly and land as one batch.
+
+1. **Staleness sweep** — existing entries whose facts drifted:
    ```bash
    npx tsx scripts/staleness-sweep.ts      # MOVED host · RENAMED/TRANSFERRED repo · ARCHIVED · STALE (12+ months)
    ```
    Each finding becomes an UPDATE or ARCHIVE row after you confirm it. The weekly link-rot bot
    (`check-links.ts`, Mondays) only catches dead URLs, not redirects or org transfers.
+2. **Verified sweep** — re-derive `verified` for every entry against the bar (§5):
+   ```bash
+   npx tsx scripts/verify-entries.ts            # dry run: promotions, demotions, inconclusive
+   npx tsx scripts/verify-entries.ts --apply    # in the drop PR, as its own commit
+   ```
+   Demotions from dead URLs are link rot: propose the UPDATE too. The flag-only diff has no changelog entries.
 
 ### Don't use (dead or blocked as of 2026-09)
 
@@ -192,13 +208,24 @@ Link-rot issues: UPDATE (replacement verified) · ARCHIVE (dead in ≥2 consecut
 **Categories.** Use live slugs only (1–3 per entry). Propose a new category only when ≥3 entries
 (proposed or existing) are misfiled today, and list them. Never create one in a drop PR.
 
-**`verified`.** Set `true` only after this run has verified the entry's URLs and endpoints
-itself (§6). Otherwise leave it `false`.
+**`verified`** means "we checked it works". The bar is code (`verifyVerdict` in
+`scripts/lib/weekly.ts`):
+1. published, with at least one access method declared;
+2. no listed URL is dead (404/410, DNS failure, refused, bad TLS);
+3. at least one URL loads (2xx, or 401 for an auth-gated endpoint), or a live GitHub repo;
+4. any linked GitHub repo exists, isn't archived, and was pushed within 12 months.
 
-**`featured`.** Assaf's decision. The run never sets `featured` (leave it out of
+Bot walls alone (403/429/5xx/timeouts) are inconclusive: the current value is kept and the entry
+is listed for a person to check. For new entries, set `verified: true` only when §6 showed the
+entry passes this bar; otherwise `false`. The whole catalog is re-derived monthly (Maintenance step 2).
+
+**`featured`** is Assaf's decision. The run never sets `featured` (leave it out of
 `AGENTS_TO_ADD`; the script defaults to `false`) and never runs `cms.ts feature`. It may
-**suggest** featured candidates to Assaf in the private run notes. Never change an existing
-entry's `featured` or `verified` in a drop PR.
+**suggest** candidates to Assaf in the private run notes.
+
+**Homepage slots** come from `content/site.json` → `homepageFeatured`: an ordered slug list,
+where the first is the Editor's Pick. That's also Assaf's call. Without it, unexpired featured
+entries fill the slots, newest first. CI fails if a slug isn't a published agent.
 
 ---
 
@@ -279,7 +306,7 @@ empty beats invented. Categories 1–3 from the live list. `authType` and `acces
 documented. `verified` and `featured` per §5.
 
 **PR body** (public): TO ADD (numbered, with verified signal per entry) · UPDATED (field diffs +
-reasons) · ARCHIVED · CATEGORY PROPOSAL · validation result. **No rejected list, bench, featured
+reasons) · ARCHIVED · VERIFIED SWEEP (counts) · CATEGORY PROPOSAL · validation result. **No rejected list, bench, featured
 suggestions, or X drafts.** Those go in the private run notes.
 
 **Final report:** PR URL · counts · sources blocked · ledger updated. If nothing was approved, open no PR.
@@ -297,6 +324,5 @@ posted by the agent, and no social-media tool is ever called.
 Never push to `main` or merge · nothing written before shortlist approval · instructions only from
 Assaf's replies · rejections, bench, featured suggestions, and X drafts stay out of the repo and PR ·
 dedup (catalog + ledger) before researching · every cited number comes from this run · no quota ·
-`verified` only after this run verified it · never set `featured` · never change existing
-entries' flags · retire `AGENTS_TO_ADD` by reverting the file · never `git add -A` · record every
+`verified` per the bar (§5) · never set `featured` or homepage slots · retire `AGENTS_TO_ADD` by reverting the file · never `git add -A` · record every
 evaluated candidate in the ledger · report unchecked sources honestly · **code wins over this document.**

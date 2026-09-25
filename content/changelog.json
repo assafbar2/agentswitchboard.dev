@@ -1,5 +1,33 @@
 [
   {
+    "action": "updated",
+    "slug": "gbrain",
+    "name": "GBrain",
+    "note": "Featured",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "google-ax",
+    "name": "Google AX",
+    "note": "Featured",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "claude-code",
+    "name": "Claude Code",
+    "note": "Featured",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "buzz",
+    "name": "Buzz",
+    "note": "Unfeatured",
+    "date": "2026-09-25"
+  },
+  {
     "action": "added",
     "slug": "monday-mcp",
     "name": "monday.com MCP",
