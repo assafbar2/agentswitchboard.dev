@@ -1,0 +1,59 @@
+{
+  "id": "google-ax",
+  "name": "Google AX",
+  "slug": "google-ax",
+  "description": "Runs sandboxed agentic tasks at cluster scale from declarative YAML Task, Workspace, and Model manifests on Agent Substrate, with a kubectl-style CLI for platform teams.",
+  "providerName": "Google",
+  "providerUrl": "https://github.com/google",
+  "agentUrl": "https://agentexecutor.io",
+  "categories": [
+    "orchestration",
+    "infrastructure"
+  ],
+  "tags": [
+    "google",
+    "kubernetes",
+    "sandboxing",
+    "declarative-yaml",
+    "agent-substrate",
+    "grpc",
+    "cluster-scale",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "task-lifecycle",
+      "name": "Task Lifecycle Management",
+      "description": "Applies, lists, describes, watches, suspends, resumes, and deletes sandboxed agent tasks with ax commands or the AX gRPC service."
+    },
+    {
+      "id": "workspace-provisioning",
+      "name": "Workspace Provisioning",
+      "description": "Pre-wires Git repositories, MCP servers, and skill packages into every sandbox so each agent task starts with its workspace ready."
+    },
+    {
+      "id": "model-configuration",
+      "name": "Model Configuration",
+      "description": "Declares which LLM provider and model the platform uses, with credentials pulled from a Kubernetes secret, via Model manifests."
+    },
+    {
+      "id": "sandbox-shell",
+      "name": "Sandbox Shell Access",
+      "description": "Opens an interactive shell or runs one-off commands inside a running debug-enabled task sandbox with the ax ssh command."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-09-25T22:20:34.442Z",
+  "updatedAt": "2026-09-25T22:20:34.442Z"
+}

@@ -1,0 +1,60 @@
+{
+  "id": "posthog-mcp",
+  "name": "PostHog MCP",
+  "slug": "posthog-mcp",
+  "description": "Gives coding agents hosted MCP access to PostHog analytics queries, SQL, feature flags, experiments, and error tracking, with OAuth or a personal API key.",
+  "providerName": "PostHog",
+  "providerUrl": "https://posthog.com",
+  "agentUrl": "https://posthog.com/docs/model-context-protocol",
+  "categories": [
+    "data-analytics",
+    "code-devtools"
+  ],
+  "tags": [
+    "remote-mcp",
+    "official-mcp",
+    "product-analytics",
+    "feature-flags",
+    "ab-testing",
+    "error-tracking",
+    "hogql",
+    "posthog"
+  ],
+  "skills": [
+    {
+      "id": "feature-flags",
+      "name": "Feature Flag Management",
+      "description": "Creates, updates, and rolls out PostHog feature flags from a prompt using the 29 tools in the MCP server's feature flags category."
+    },
+    {
+      "id": "experiments",
+      "name": "Experiment Management",
+      "description": "Sets up, inspects, and analyzes A/B tests and their results through the experiments category of PostHog MCP tools."
+    },
+    {
+      "id": "error-tracking",
+      "name": "Error Tracking Triage",
+      "description": "Ranks top error groups, pulls full stack traces for crashes, resolves issues, and creates assignment rules for future errors."
+    },
+    {
+      "id": "sql-insights",
+      "name": "SQL And Insights",
+      "description": "Runs HogQL queries with execute-sql and creates, reads, or deletes product analytics insights and dashboards in a PostHog project."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-09-25T22:20:34.455Z",
+  "updatedAt": "2026-09-25T22:20:34.455Z"
+}

@@ -1,0 +1,59 @@
+{
+  "id": "unreal-agent",
+  "name": "Unreal Agent",
+  "slug": "unreal-agent",
+  "description": "Runs coding agents on an async-first Go harness with persisted, forkable sessions, as a library or the unreal-agent-runner CLI, for developers building or benchmarking agents.",
+  "providerName": "Unreal Labs",
+  "providerUrl": "https://unreallabs.ai",
+  "agentUrl": "https://github.com/unreallabsai/unreal-agent",
+  "categories": [
+    "code-devtools",
+    "autonomous-agents"
+  ],
+  "tags": [
+    "agent-harness",
+    "golang",
+    "async",
+    "coding-agent",
+    "harbor-benchmarks",
+    "openrouter",
+    "ollama",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "runner-cli",
+      "name": "Agent Runner CLI",
+      "description": "Runs an agent from a prompt or JSON request in a chosen workspace, writing events to stdout as JSONL and exiting when the task finishes."
+    },
+    {
+      "id": "multi-provider",
+      "name": "Multi-Provider LLM Support",
+      "description": "Switches the LLM backend between openai, openai-codex, openrouter, fireworks, and ollama with environment variables for provider and model."
+    },
+    {
+      "id": "forkable-sessions",
+      "name": "Forkable Sessions",
+      "description": "Persists append-only session history to disk so runs can be resumed or forked, with versioned, serializable session items."
+    },
+    {
+      "id": "harbor-benchmarks",
+      "name": "Harbor Benchmark Adapter",
+      "description": "Evaluates unreal-agent-runner with Harbor on tasks such as Terminal-Bench on Docker or Modal, producing ATIF trajectories and logs."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-09-25T22:20:34.446Z",
+  "updatedAt": "2026-09-25T22:20:34.446Z"
+}

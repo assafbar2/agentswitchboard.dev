@@ -1,0 +1,59 @@
+{
+  "id": "azure-mcp-server",
+  "name": "Azure MCP Server",
+  "slug": "azure-mcp-server",
+  "description": "Gives AI agents MCP tools to query and manage Azure services such as Storage, Cosmos DB, Key Vault, AKS, and Azure Monitor using your Azure identity.",
+  "providerName": "Microsoft",
+  "providerUrl": "https://azure.microsoft.com",
+  "agentUrl": "https://github.com/microsoft/mcp",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "mcp-server",
+    "official-mcp",
+    "azure",
+    "cloud-management",
+    "kubernetes",
+    "entra-id",
+    "open-source",
+    "microsoft"
+  ],
+  "skills": [
+    {
+      "id": "azure-storage",
+      "name": "Azure Storage",
+      "description": "Lists and creates storage accounts, inspects blob containers, and uploads files to blob storage from natural-language prompts."
+    },
+    {
+      "id": "cosmos-db",
+      "name": "Cosmos DB Queries",
+      "description": "Lists Cosmos DB databases and containers, infers container schemas, and searches documents by field value or vector similarity."
+    },
+    {
+      "id": "key-vault",
+      "name": "Key Vault Management",
+      "description": "Lists and creates Key Vault secrets and keys, and lists or imports certificates in a named vault using your Azure credentials."
+    },
+    {
+      "id": "aks-monitor",
+      "name": "AKS And Monitor",
+      "description": "Lists AKS clusters and node pools, and queries Log Analytics tables and Azure Monitor health models for operational insight."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-09-25T22:20:34.459Z",
+  "updatedAt": "2026-09-25T22:20:34.459Z"
+}

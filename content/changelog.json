@@ -1,6 +1,274 @@
 [
   {
     "action": "added",
+    "slug": "monday-mcp",
+    "name": "monday.com MCP",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "postman-mcp",
+    "name": "Postman MCP Server",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "docker-mcp-gateway",
+    "name": "Docker MCP Gateway",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "zcode",
+    "name": "ZCode",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "parallel-web",
+    "name": "Parallel",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "fal-ai",
+    "name": "fal",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "cohere",
+    "name": "Cohere",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "kubernetes-mcp-server",
+    "name": "Kubernetes MCP Server",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "toolhive",
+    "name": "ToolHive",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "nvidia-nemo-agent-toolkit",
+    "name": "NVIDIA NeMo Agent Toolkit",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "figma-mcp-server",
+    "name": "Figma MCP Server",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "azure-mcp-server",
+    "name": "Azure MCP Server",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "ibm-contextforge",
+    "name": "IBM ContextForge",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "mobile-mcp",
+    "name": "Mobile MCP",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "microsoft-ufo",
+    "name": "Microsoft UFO",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "nvidia-openshell",
+    "name": "NVIDIA OpenShell",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "browserless",
+    "name": "Browserless",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "posthog-mcp",
+    "name": "PostHog MCP",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "firefox-devtools-mcp",
+    "name": "Firefox DevTools MCP",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "chatbase-mcp",
+    "name": "Chatbase MCP",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "openalex-mcp",
+    "name": "OpenAlex AI Agent Connector",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "floot",
+    "name": "Floot",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "clueso-mcp",
+    "name": "Clueso MCP",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "mcpjam",
+    "name": "MCPJam",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "latitude",
+    "name": "Latitude",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "whiteboard",
+    "name": "Whiteboard",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "digitalocean-managed-agents",
+    "name": "DigitalOcean Managed Agents",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "unreal-agent",
+    "name": "Unreal Agent",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "appwrite",
+    "name": "Appwrite",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "plane",
+    "name": "Plane",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "gbrain",
+    "name": "GBrain",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "google-ax",
+    "name": "Google AX",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "typesafe-jev",
+    "name": "Jev",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "neon-mcp",
+    "name": "Neon MCP",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "mcp-use",
+    "name": "mcp-use",
+    "note": "providerName updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "mcp-use",
+    "name": "mcp-use",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "mcp-use",
+    "name": "mcp-use",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "zeroclaw",
+    "name": "ZeroClaw",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "zeroclaw",
+    "name": "ZeroClaw",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "goose",
+    "name": "Goose",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "herdr",
+    "name": "Herdr",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "herdr",
+    "name": "Herdr",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "needle2",
+    "name": "Needle 3",
+    "note": "name updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
     "slug": "modelshortlist",
     "name": "ModelShortlist",
     "note": "MCP for workload-specific LLM selection (OpenRouter + Artificial Analysis).",
