@@ -1,5 +1,11 @@
 [
   {
+    "action": "removed",
+    "slug": "headlong",
+    "name": "Headlong",
+    "date": "2026-09-26"
+  },
+  {
     "action": "updated",
     "slug": "zoom",
     "name": "Zoom",

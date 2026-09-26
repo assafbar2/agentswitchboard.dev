@@ -4,7 +4,7 @@
     "title": "Agent Switchboard Directory API",
     "version": "1.1.0",
     "summary": "Read-only catalog of vetted AI agents, MCP servers, and agentic developer tools.",
-    "description": "Agent Switchboard is a public discovery directory. Use this API to answer questions like 'is there an agent that does X?' or 'which listed products expose an MCP server?'. There is no authentication, no user account, and no write access. This API does not proxy the underlying products — it only returns Switchboard listings. For interactive tool-shaped access, an MCP server is also available at /api/mcp.",
+    "description": "Agent Switchboard is a public discovery directory. Use this API to answer questions like 'is there an agent that does X?' or 'which listed products expose an MCP server?'. There is no authentication, no user account, and no write access. This API does not proxy the underlying products — it only returns Switchboard listings. For interactive tool-shaped access, an MCP server is also available at /api/mcp. Listing data returned by this API is licensed CC BY-NC 4.0 (attribution required; commercial reuse needs a license: https://agentswitchboard.dev/contact). The API definition itself is MIT.",
     "contact": {
       "name": "Barnir",
       "email": "barnir@agentmail.to",
