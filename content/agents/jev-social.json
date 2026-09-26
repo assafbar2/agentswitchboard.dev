@@ -3,8 +3,8 @@
   "name": "Jev Social",
   "slug": "jev-social",
   "description": "Routes bounded Jev decisions through the local socai CLI to research Instagram, TikTok, and LinkedIn, stream evidence cards, and compile source-linked reports.",
-  "providerName": "socai",
-  "providerUrl": "https://socai.io/",
+  "providerName": "Jev Social",
+  "providerUrl": "https://socai-io.github.io/jev-social/",
   "agentUrl": "https://github.com/socai-io/jev-social",
   "categories": [
     "research",
@@ -38,10 +38,10 @@
     {
       "id": "video-capture",
       "name": "Video Capture",
-      "description": "Downloads selected TikTok media through socai while retaining the originating post as inspectable evidence."
+      "description": "Downloads selected TikTok media only when explicitly requested and available, while retaining the source post as inspectable evidence."
     }
   ],
-  "authType": "apiKey",
+  "authType": "none",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
   "status": "published",
@@ -53,5 +53,5 @@
     "cli"
   ],
   "createdAt": "2026-09-20T19:25:02Z",
-  "updatedAt": "2026-09-20T19:25:02Z"
+  "updatedAt": "2026-09-26T12:48:00Z"
 }
