@@ -1,5 +1,11 @@
 [
   {
+    "action": "added",
+    "slug": "unstuck-network",
+    "name": "Unstuck Network",
+    "date": "2026-09-26"
+  },
+  {
     "action": "removed",
     "slug": "headlong",
     "name": "Headlong",
