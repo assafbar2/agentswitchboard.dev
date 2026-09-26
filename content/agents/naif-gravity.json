@@ -1,0 +1,63 @@
+{
+  "id": "naif-gravity",
+  "name": "NAIF Gravity",
+  "slug": "naif-gravity",
+  "description": "Diagnose MCP, x402, API authentication, webhook, and agent compatibility failures for developers and AI agents; start with free diagnostics and request bounded repair.",
+  "providerName": "NAIF Gravity",
+  "providerUrl": "https://naifgravity.com/?utm_source=agentswitchboard&utm_medium=directory&utm_campaign=agent_discovery",
+  "agentUrl": "https://naifgravity.com/mcp",
+  "categories": [
+    "code-devtools",
+    "infrastructure",
+    "commerce-payments"
+  ],
+  "tags": [
+    "mcp-diagnostics",
+    "x402-payments",
+    "api-authentication",
+    "webhook-debugging",
+    "agent-compatibility",
+    "bounded-repair"
+  ],
+  "skills": [
+    {
+      "id": "check-mcp-health",
+      "name": "Check MCP Health",
+      "description": "Diagnose MCP connection and tool discovery failures, returning structured evidence and repair guidance before a bounded fix."
+    },
+    {
+      "id": "diagnose-x402-payments",
+      "name": "Diagnose x402 Payments",
+      "description": "Inspect an x402 payment challenge and protocol readiness for developers without requiring a real payment during the free check."
+    },
+    {
+      "id": "rescue-api-authentication",
+      "name": "Rescue API Authentication",
+      "description": "Identify API authentication and authorization failures and return safe next steps with sensitive details excluded."
+    },
+    {
+      "id": "debug-webhook-delivery",
+      "name": "Debug Webhook Delivery",
+      "description": "Analyze webhook validation and delivery symptoms and suggest bounded corrective steps from sanitized inputs."
+    },
+    {
+      "id": "check-agent-compatibility",
+      "name": "Check Agent Compatibility",
+      "description": "Check whether an AI agent can discover and call the available protocol tools, and explain compatibility gaps."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-09-26T21:36:55Z",
+  "updatedAt": "2026-09-26T21:36:55Z"
+}

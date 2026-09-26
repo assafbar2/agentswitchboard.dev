@@ -1,5 +1,11 @@
 [
   {
+    "action": "added",
+    "slug": "naif-gravity",
+    "name": "NAIF Gravity",
+    "date": "2026-09-26"
+  },
+  {
     "action": "removed",
     "slug": "headlong",
     "name": "Headlong",
