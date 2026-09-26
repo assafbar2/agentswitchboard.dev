@@ -4,8 +4,8 @@
   "slug": "herdr",
   "description": "Runs and manages multiple coding agents side by side in the terminal — an agent multiplexer to launch, monitor, and switch between parallel AI coding sessions. 17k+ GitHub stars.",
   "providerName": "Oğulcan Çelik",
-  "providerUrl": "https://github.com/ogulcancelik",
-  "agentUrl": "https://github.com/ogulcancelik/herdr",
+  "providerUrl": "https://herdr.dev",
+  "agentUrl": "https://github.com/herdrdev/herdr",
   "categories": [
     "orchestration"
   ],
@@ -47,5 +47,5 @@
     "cli"
   ],
   "createdAt": "2026-07-17T20:41:08.583Z",
-  "updatedAt": "2026-07-17T20:41:08.583Z"
+  "updatedAt": "2026-09-25T22:13:39.851Z"
 }

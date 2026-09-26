@@ -22,8 +22,8 @@
   "supportsStreaming": true,
   "supportsPushNotifications": false,
   "status": "published",
-  "featured": false,
-  "verified": false,
+  "featured": true,
+  "verified": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -31,5 +31,5 @@
     "api"
   ],
   "createdAt": "2026-08-11T00:40:12.994Z",
-  "updatedAt": "2026-08-11T00:40:12.994Z"
+  "updatedAt": "2026-09-25T22:54:00.180Z"
 }

@@ -4,8 +4,8 @@
   "slug": "runway-ml",
   "description": "AI-powered creative tools for video generation, image editing, and motion design — includes Gen-3 Alpha for text-to-video.",
   "providerName": "Runway",
-  "providerUrl": "https://runwayml.com",
-  "agentUrl": "https://runwayml.com/",
+  "providerUrl": "https://runway.com/",
+  "agentUrl": "https://runway.com/",
   "categories": [
     "content-media"
   ],
@@ -27,5 +27,5 @@
     "api"
   ],
   "createdAt": "2026-03-22T09:52:44.755Z",
-  "updatedAt": "2026-03-22T09:52:44.755Z"
+  "updatedAt": "2026-09-25T23:53:42.004Z"
 }

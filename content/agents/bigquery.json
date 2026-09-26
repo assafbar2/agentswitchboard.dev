@@ -5,7 +5,7 @@
   "description": "Google Cloud serverless data warehouse queryable over SQL through a REST API, commonly used as an analytics backend for agents.",
   "providerName": "Google",
   "providerUrl": "https://cloud.google.com",
-  "agentUrl": "https://cloud.google.com/bigquery/docs",
+  "agentUrl": "https://docs.cloud.google.com/bigquery/docs",
   "categories": [
     "data-analytics"
   ],
@@ -21,7 +21,7 @@
   "supportsPushNotifications": false,
   "status": "published",
   "featured": false,
-  "verified": false,
+  "verified": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -29,5 +29,5 @@
     "cli"
   ],
   "createdAt": "2026-08-24T19:48:52.220Z",
-  "updatedAt": "2026-08-24T19:48:52.220Z"
+  "updatedAt": "2026-09-25T23:53:31.851Z"
 }

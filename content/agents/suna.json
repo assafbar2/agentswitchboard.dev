@@ -4,7 +4,7 @@
   "slug": "suna",
   "description": "Open-source generalist AI agent that browses the web, manages files, runs shell commands, and deploys apps from natural-language tasks. Self-hostable, by Kortix. 20k+ GitHub stars.",
   "providerName": "Kortix",
-  "providerUrl": "https://kortix.ai",
+  "providerUrl": "https://kortix.com/",
   "agentUrl": "https://github.com/kortix-ai/suna",
   "categories": [
     "orchestration",
@@ -48,5 +48,5 @@
     "api"
   ],
   "createdAt": "2026-07-17T20:41:26.391Z",
-  "updatedAt": "2026-08-29T07:45:15.117Z"
+  "updatedAt": "2026-09-25T23:53:42.312Z"
 }

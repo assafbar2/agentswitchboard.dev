@@ -1,0 +1,58 @@
+{
+  "id": "microsoft-ufo",
+  "name": "Microsoft UFO",
+  "slug": "microsoft-ufo",
+  "description": "Automates Windows desktop apps through natural-language tasks with the UFO2 Desktop AgentOS, and orchestrates agents across Windows, Linux, and Android devices with UFO3 Galaxy.",
+  "providerName": "Microsoft",
+  "providerUrl": "https://www.microsoft.com",
+  "agentUrl": "https://github.com/microsoft/UFO",
+  "categories": [
+    "browser-computer",
+    "autonomous-agents"
+  ],
+  "tags": [
+    "computer-use",
+    "windows-automation",
+    "desktop-automation",
+    "gui-automation",
+    "multi-device",
+    "open-source",
+    "microsoft-research",
+    "microsoft"
+  ],
+  "skills": [
+    {
+      "id": "windows-desktop-automation",
+      "name": "Windows Desktop Automation",
+      "description": "Completes multi-app Windows tasks from a natural-language request using a HostAgent and AppAgents, launched with python -m ufo."
+    },
+    {
+      "id": "hybrid-actions",
+      "name": "Hybrid GUI Actions",
+      "description": "Combines GUI clicks with native API calls through Windows UIA, Win32, and WinCOM, using visual plus UIA detection to find controls."
+    },
+    {
+      "id": "speculative-multi-action",
+      "name": "Speculative Multi-Action",
+      "description": "Batches predicted actions into a single step to cut the number of LLM calls needed to finish a desktop automation task."
+    },
+    {
+      "id": "galaxy-orchestration",
+      "name": "Galaxy Orchestration",
+      "description": "Decomposes a request into a task DAG and assigns steps to Windows, Linux, and Android device agents that run in parallel."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-09-25T22:20:34.457Z",
+  "updatedAt": "2026-09-25T22:20:34.457Z"
+}

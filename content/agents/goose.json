@@ -5,7 +5,7 @@
   "description": "Runs autonomously on your machine to execute commands, debug errors, orchestrate multi-step workflows, and build projects from scratch.",
   "providerName": "Block",
   "providerUrl": "https://block.xyz/",
-  "agentUrl": "https://github.com/block/goose",
+  "agentUrl": "https://github.com/aaif-goose/goose",
   "categories": [
     "code-devtools"
   ],
@@ -22,12 +22,12 @@
   "supportsPushNotifications": false,
   "status": "published",
   "featured": false,
-  "verified": false,
+  "verified": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "cli"
   ],
   "createdAt": "2026-05-22T07:35:02.453Z",
-  "updatedAt": "2026-05-22T07:35:02.453Z"
+  "updatedAt": "2026-09-25T22:13:40.155Z"
 }

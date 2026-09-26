@@ -58,7 +58,10 @@ We are curators, not collectors. Listings need:
 - ❌ No vaporware, GPT wrappers, dead links, or pure self-promo
 
 Vendors submitting their own product: set `"verified": false` — maintainers
-verify endpoints before merge and flip it. `featured` is maintainer-only.
+verify before merge and flip it. **Verified** means we checked it works: your URLs
+load, you declare an access method, and any linked GitHub repo is live (not
+archived, pushed within 12 months). It's re-checked monthly and drops if the
+product stops meeting that bar. `featured` is maintainer-only.
 
 ## Fix an existing entry
 

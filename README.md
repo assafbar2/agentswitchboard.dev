@@ -78,4 +78,4 @@ Stack: Next.js (App Router) · Tailwind · file-based catalog · deployed on Ver
 ## License
 
 - **Code** (`app/`, `components/`, `lib/`, `scripts/`, config) — [MIT](LICENSE)
-- **Catalog data** (`content/`) — [CC-BY-4.0](content/LICENSE.md): reuse freely with attribution to Agent Switchboard.
+- **Catalog data** (`content/`) — [CC BY-NC 4.0](content/LICENSE.md): reuse for non-commercial purposes with attribution to Agent Switchboard; contact us for commercial use. (Versions up to 2026-09-25 remain CC-BY-4.0.)

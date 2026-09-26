@@ -4,7 +4,7 @@
   "slug": "google-adk",
   "description": "Builds and orchestrates multi-agent systems with a code-first Python and Java SDK plus CLI. Google's Agent Development Kit; powers Vertex AI Agent Engine deployments.",
   "providerName": "Google",
-  "providerUrl": "https://google.github.io/adk-docs/",
+  "providerUrl": "https://adk.dev/",
   "agentUrl": "https://github.com/google/adk-python",
   "categories": [
     "orchestration"
@@ -48,5 +48,5 @@
     "api"
   ],
   "createdAt": "2026-07-06T07:04:17.444Z",
-  "updatedAt": "2026-07-06T07:04:17.444Z"
+  "updatedAt": "2026-09-25T23:53:35.242Z"
 }

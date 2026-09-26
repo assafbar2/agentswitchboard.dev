@@ -4,7 +4,7 @@
   "slug": "tabby",
   "description": "Self-hosts an open-source AI coding assistant as a Copilot alternative — completion and chat that run on your own GPU, with extensions for 12+ IDEs and a REST API. 33k+ GitHub stars.",
   "providerName": "TabbyML",
-  "providerUrl": "https://tabby.tabbyml.com",
+  "providerUrl": "https://www.tabbyml.com/",
   "agentUrl": "https://github.com/TabbyML/tabby",
   "categories": [
     "code-devtools"
@@ -47,5 +47,5 @@
     "api"
   ],
   "createdAt": "2026-07-17T20:41:23.198Z",
-  "updatedAt": "2026-07-17T20:41:23.198Z"
+  "updatedAt": "2026-09-25T23:53:42.926Z"
 }

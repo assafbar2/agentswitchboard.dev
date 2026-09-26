@@ -1,5 +1,699 @@
 [
   {
+    "action": "removed",
+    "slug": "headlong",
+    "name": "Headlong",
+    "date": "2026-09-26"
+  },
+  {
+    "action": "updated",
+    "slug": "zoom",
+    "name": "Zoom",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "xcodebuild-mcp",
+    "name": "XcodeBuildMCP",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "coinbase-agentkit",
+    "name": "Coinbase AgentKit",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "zep",
+    "name": "Zep",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "you-com-search-api",
+    "name": "You.com Search API",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "vercel-ai-sdk",
+    "name": "Vercel AI SDK",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "tiktok-ads-mcp",
+    "name": "TikTok Ads MCP",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "tako",
+    "name": "Tako",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "tako",
+    "name": "Tako",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "tabby",
+    "name": "Tabby",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "supermemory",
+    "name": "Supermemory",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "suna",
+    "name": "Suna",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "runway-ml",
+    "name": "Runway ML",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "runway-ml",
+    "name": "Runway ML",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "pydantic-ai",
+    "name": "Pydantic AI",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "praisonai",
+    "name": "PraisonAI",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "outlines",
+    "name": "Outlines",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "openhands",
+    "name": "OpenHands",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "openhands",
+    "name": "OpenHands",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "notion-skills-api",
+    "name": "Notion Skills API",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "notion-mcp",
+    "name": "Notion MCP",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "nango",
+    "name": "Nango",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "mindsdb",
+    "name": "MindsDB",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "mindsdb",
+    "name": "MindsDB",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "metagpt",
+    "name": "MetaGPT",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "llamaindex",
+    "name": "LlamaIndex",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "livekit-agents",
+    "name": "LiveKit Agents",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "letta",
+    "name": "Letta",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "langchain",
+    "name": "LangChain",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "honcho",
+    "name": "Honcho",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "holaos",
+    "name": "holaOS",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "holaos",
+    "name": "holaOS",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "hexstrike-ai",
+    "name": "HexStrike AI",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "gpt-pilot",
+    "name": "GPT-Pilot",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "google-adk",
+    "name": "Google ADK",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "factory-ai",
+    "name": "Factory",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "exa-ai",
+    "name": "Exa AI",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "eliza",
+    "name": "Eliza",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "e2b",
+    "name": "E2B",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "discord",
+    "name": "Discord",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "devin",
+    "name": "Devin",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "darkbloom",
+    "name": "Darkbloom",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "darkbloom",
+    "name": "Darkbloom",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "crush",
+    "name": "Crush",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "codex-cli",
+    "name": "Codex CLI",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "bigquery",
+    "name": "BigQuery",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "autolith",
+    "name": "Autolith",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "arize-phoenix",
+    "name": "Arize Phoenix",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "workweave-router",
+    "name": "Workweave Router",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "tiingo-mcp",
+    "name": "Tiingo MCP",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "lobe-chat",
+    "name": "LobeChat",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "librechat",
+    "name": "LibreChat",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "google-mcp-toolbox",
+    "name": "Google MCP Toolbox",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "genkit",
+    "name": "Genkit",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "e2a",
+    "name": "E2a",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "bitfun",
+    "name": "BitFun",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "gbrain",
+    "name": "GBrain",
+    "note": "Featured",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "google-ax",
+    "name": "Google AX",
+    "note": "Featured",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "claude-code",
+    "name": "Claude Code",
+    "note": "Featured",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "buzz",
+    "name": "Buzz",
+    "note": "Unfeatured",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "monday-mcp",
+    "name": "monday.com MCP",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "postman-mcp",
+    "name": "Postman MCP Server",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "docker-mcp-gateway",
+    "name": "Docker MCP Gateway",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "zcode",
+    "name": "ZCode",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "parallel-web",
+    "name": "Parallel",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "fal-ai",
+    "name": "fal",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "cohere",
+    "name": "Cohere",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "kubernetes-mcp-server",
+    "name": "Kubernetes MCP Server",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "toolhive",
+    "name": "ToolHive",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "nvidia-nemo-agent-toolkit",
+    "name": "NVIDIA NeMo Agent Toolkit",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "figma-mcp-server",
+    "name": "Figma MCP Server",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "azure-mcp-server",
+    "name": "Azure MCP Server",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "ibm-contextforge",
+    "name": "IBM ContextForge",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "mobile-mcp",
+    "name": "Mobile MCP",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "microsoft-ufo",
+    "name": "Microsoft UFO",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "nvidia-openshell",
+    "name": "NVIDIA OpenShell",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "browserless",
+    "name": "Browserless",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "posthog-mcp",
+    "name": "PostHog MCP",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "firefox-devtools-mcp",
+    "name": "Firefox DevTools MCP",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "chatbase-mcp",
+    "name": "Chatbase MCP",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "openalex-mcp",
+    "name": "OpenAlex AI Agent Connector",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "floot",
+    "name": "Floot",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "clueso-mcp",
+    "name": "Clueso MCP",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "mcpjam",
+    "name": "MCPJam",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "latitude",
+    "name": "Latitude",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "whiteboard",
+    "name": "Whiteboard",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "digitalocean-managed-agents",
+    "name": "DigitalOcean Managed Agents",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "unreal-agent",
+    "name": "Unreal Agent",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "appwrite",
+    "name": "Appwrite",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "plane",
+    "name": "Plane",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "gbrain",
+    "name": "GBrain",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "google-ax",
+    "name": "Google AX",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "added",
+    "slug": "typesafe-jev",
+    "name": "Jev",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "neon-mcp",
+    "name": "Neon MCP",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "mcp-use",
+    "name": "mcp-use",
+    "note": "providerName updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "mcp-use",
+    "name": "mcp-use",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "mcp-use",
+    "name": "mcp-use",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "zeroclaw",
+    "name": "ZeroClaw",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "zeroclaw",
+    "name": "ZeroClaw",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "goose",
+    "name": "Goose",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "herdr",
+    "name": "Herdr",
+    "note": "providerUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "herdr",
+    "name": "Herdr",
+    "note": "agentUrl updated",
+    "date": "2026-09-25"
+  },
+  {
+    "action": "updated",
+    "slug": "needle2",
+    "name": "Needle 3",
+    "note": "name updated",
+    "date": "2026-09-25"
+  },
+  {
     "action": "added",
     "slug": "jev-social",
     "name": "Jev Social",

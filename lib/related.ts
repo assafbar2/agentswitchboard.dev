@@ -23,6 +23,7 @@ const CATEGORY_AFFINITY: Record<string, string[]> = {
   'finance':           ['data-analytics', 'security', 'commerce-payments'],
   'scheduling':        ['customer-support', 'infrastructure', 'sales-marketing'],
   'commerce-payments': ['finance', 'sales-marketing', 'customer-support'],
+  'productivity':      ['scheduling', 'communication', 'orchestration'],
 };
 
 /**
