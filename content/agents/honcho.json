@@ -5,7 +5,7 @@
   "description": "User state management platform for AI apps. Stores user context, preferences, and interaction history to enable personalized multi-session AI experiences.",
   "providerName": "Honcho",
   "providerUrl": "https://honcho.dev",
-  "agentUrl": "https://docs.honcho.dev",
+  "agentUrl": "https://honcho.dev/docs/v3/documentation/introduction/overview",
   "categories": [
     "memory-state"
   ],
@@ -55,5 +55,5 @@
     "api"
   ],
   "createdAt": "2026-04-08T07:17:05.429Z",
-  "updatedAt": "2026-04-08T07:17:05.429Z"
+  "updatedAt": "2026-09-25T23:53:36.781Z"
 }

@@ -166,5 +166,13 @@
     "description": "Always-on AI teammates and coworkers that take a goal and run multi-step work end to end — across your files, apps, and inboxes — returning only when a human call is needed. This is the fast-moving frontier of general-purpose agents like Grok Bot and Claude Cowork. For anyone who wants to delegate real knowledge work, not just get answers.",
     "icon": "Bot",
     "sortOrder": 20
+  },
+  {
+    "id": "productivity",
+    "name": "Productivity & Work Management",
+    "slug": "productivity",
+    "description": "Official MCP servers and APIs for project management, work tracking, and team workspaces. These tools let agents create and update tasks, move work across boards, read project context, and report status without anyone copying data between apps.",
+    "icon": "SquareKanban",
+    "sortOrder": 21
   }
 ]

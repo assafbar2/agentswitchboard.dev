@@ -5,7 +5,7 @@
   "description": "Gives AI agents onchain wallets and the ability to transact, with action providers for payments, swaps, and smart contract calls across major agent frameworks.",
   "providerName": "Coinbase Developer Platform",
   "providerUrl": "https://www.coinbase.com/developer-platform",
-  "agentUrl": "https://docs.cdp.coinbase.com/agent-kit/welcome",
+  "agentUrl": "https://github.com/coinbase/agentkit",
   "categories": [
     "commerce-payments",
     "infrastructure"
@@ -49,5 +49,5 @@
     "mcp"
   ],
   "createdAt": "2026-08-15T07:16:38.720Z",
-  "updatedAt": "2026-08-15T07:16:38.720Z"
+  "updatedAt": "2026-09-25T23:53:45.072Z"
 }

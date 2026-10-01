@@ -1,0 +1,58 @@
+{
+  "id": "docker-mcp-gateway",
+  "name": "Docker MCP Gateway",
+  "slug": "docker-mcp-gateway",
+  "description": "Runs containerized MCP servers from the Docker MCP Catalog behind one gateway, managed with the `docker mcp` CLI plugin or Docker Desktop's MCP Toolkit, with secrets and OAuth.",
+  "providerName": "Docker",
+  "providerUrl": "https://www.docker.com",
+  "agentUrl": "https://docs.docker.com/ai/mcp-catalog-and-toolkit/",
+  "categories": [
+    "infrastructure",
+    "orchestration"
+  ],
+  "tags": [
+    "docker",
+    "mcp-gateway",
+    "mcp-catalog",
+    "containers",
+    "secrets-management",
+    "docker-desktop",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "gateway-run",
+      "name": "Run MCP Gateway",
+      "description": "Starts a single MCP gateway with `docker mcp gateway run` that fronts many containerized servers over stdio or HTTP."
+    },
+    {
+      "id": "profiles",
+      "name": "Server Profiles",
+      "description": "Groups MCP servers into profiles with per-tool allowlists and config, then exports or shares them via OCI registries."
+    },
+    {
+      "id": "catalog",
+      "name": "Catalog Management",
+      "description": "Creates, pulls, and pushes OCI-based MCP catalogs, including the default Docker MCP Catalog and community registries."
+    },
+    {
+      "id": "client-connect",
+      "name": "Client Connection",
+      "description": "Connects a profile to MCP clients such as Claude Code or Cursor with `docker mcp client connect` for shared tool config."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-09-25T22:20:34.466Z",
+  "updatedAt": "2026-09-25T22:20:34.466Z"
+}

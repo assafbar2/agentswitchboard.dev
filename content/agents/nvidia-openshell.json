@@ -1,0 +1,59 @@
+{
+  "id": "nvidia-openshell",
+  "name": "NVIDIA OpenShell",
+  "slug": "nvidia-openshell",
+  "description": "Runs autonomous agents in isolated sandboxes with kernel-level policy enforcement over files, syscalls, and network, injecting credentials only for approved endpoints.",
+  "providerName": "NVIDIA",
+  "providerUrl": "https://www.nvidia.com",
+  "agentUrl": "https://github.com/NVIDIA/OpenShell",
+  "categories": [
+    "security",
+    "infrastructure"
+  ],
+  "tags": [
+    "agent-sandbox",
+    "sandboxing",
+    "policy-enforcement",
+    "credential-isolation",
+    "kubernetes",
+    "open-source",
+    "self-hosted",
+    "nvidia"
+  ],
+  "skills": [
+    {
+      "id": "sandboxes",
+      "name": "Agent Sandboxes",
+      "description": "Creates and manages isolated agent sandboxes from the openshell CLI, with configurable images, runtimes, GPU access, and lifecycle."
+    },
+    {
+      "id": "policies",
+      "name": "Sandbox Policies",
+      "description": "Enforces declared filesystem, network, and process rules at the kernel level so every file access and connection is checked at runtime."
+    },
+    {
+      "id": "policy-prover",
+      "name": "Policy Change Review",
+      "description": "Uses the policy advisor and formal-verification prover to flag risky new access in a policy change and hold it for human review."
+    },
+    {
+      "id": "providers",
+      "name": "Credential Providers",
+      "description": "Keeps real credentials out of the sandbox and attaches them only to requests bound for approved endpoints, including inference routes."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-09-25T22:20:34.456Z",
+  "updatedAt": "2026-09-25T22:20:34.456Z"
+}

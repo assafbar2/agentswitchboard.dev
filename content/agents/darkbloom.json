@@ -4,8 +4,8 @@
   "slug": "darkbloom",
   "description": "Decentralized inference on idle Apple Silicon Macs. OpenAI-compatible API, end-to-end encrypted, hardware-attested privacy — up to 70% cheaper than centralized cloud inference.",
   "providerName": "Darkbloom",
-  "providerUrl": "https://darkbloom.dev",
-  "agentUrl": "https://darkbloom.dev",
+  "providerUrl": "https://www.darkbloom.ai/",
+  "agentUrl": "https://www.darkbloom.ai/",
   "categories": [
     "infrastructure"
   ],
@@ -47,5 +47,5 @@
     "api"
   ],
   "createdAt": "2026-04-25T18:49:59.940Z",
-  "updatedAt": "2026-04-25T18:49:59.940Z"
+  "updatedAt": "2026-09-25T23:53:33.091Z"
 }

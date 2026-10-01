@@ -1,0 +1,58 @@
+{
+  "id": "whiteboard",
+  "name": "Whiteboard",
+  "slug": "whiteboard",
+  "description": "Gives coding agents like Claude Code and Codex a desktop canvas to draw code reviews, diagrams, and decision logs linked to the code, via a local CLI and MCP server.",
+  "providerName": "/dev/fast",
+  "providerUrl": "https://dev.fast",
+  "agentUrl": "https://github.com/devdotfast/whiteboard",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "code-review",
+    "diagrams",
+    "desktop-app",
+    "local-mcp",
+    "claude-code",
+    "codex",
+    "agent-traces",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "review-authoring",
+      "name": "Review Authoring",
+      "description": "Authors RFC-style Whiteboards for branches, commits, and pull requests with what/why, design, and implementation sections and diagrams."
+    },
+    {
+      "id": "scratchpad",
+      "name": "Scratchpad Diagrams",
+      "description": "Draws sequence diagrams, flow diagrams, call trees, and code peeks on a persistent scratchpad to explain code visually during a chat."
+    },
+    {
+      "id": "trace-archaeology",
+      "name": "Trace Archaeology",
+      "description": "Resolves Agent-Session commit trailers and pulls past agent sessions with the whiteboard trace CLI to explain why code exists."
+    },
+    {
+      "id": "semantic-diff",
+      "name": "Semantic Diff Viewer",
+      "description": "Shows AST-aware diffs that summarize large added functions as pseudocode and collapse tests and docs, customizable with WASM plugins."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-09-25T22:20:34.448Z",
+  "updatedAt": "2026-09-25T22:20:34.448Z"
+}

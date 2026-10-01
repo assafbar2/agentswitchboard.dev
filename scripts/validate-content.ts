@@ -78,6 +78,7 @@ function main() {
   const files = fs.readdirSync(dir).filter((f) => f.endsWith('.json'));
   let errors = 0;
   const slugs = new Set<string>();
+  const published = new Set<string>();
 
   // Auxiliary content files aren't schema-validated, but they ARE parsed at
   // build time (e.g. /changelog does JSON.parse on changelog.json). A syntax
@@ -124,11 +125,34 @@ function main() {
       errors++;
     }
     slugs.add(slug);
+    if (result.data.status === 'published') published.add(slug);
   }
 
-  const published = files.length;
+  // Homepage placements must point at published agents, or the slot silently disappears.
+  const sitePath = path.join(CONTENT, 'site.json');
+  if (fs.existsSync(sitePath)) {
+    try {
+      const placements: unknown = JSON.parse(fs.readFileSync(sitePath, 'utf8')).homepageFeatured;
+      if (placements !== undefined) {
+        if (!Array.isArray(placements) || placements.some((p) => typeof p !== 'string')) {
+          console.log('❌ content/site.json: homepageFeatured must be an array of slugs');
+          errors++;
+        } else {
+          for (const p of placements as string[]) {
+            if (!published.has(p)) {
+              console.log(`❌ content/site.json: homepageFeatured "${p}" is not a published agent`);
+              errors++;
+            }
+          }
+        }
+      }
+    } catch {
+      // invalid JSON is already reported above
+    }
+  }
+
   if (errors === 0) {
-    console.log(`✅ content valid: ${published} agents, ${validCategorySlugs.size} categories, 0 violations`);
+    console.log(`✅ content valid: ${files.length} agents, ${validCategorySlugs.size} categories, 0 violations`);
   } else {
     console.log(`\n❌ ${errors} violation(s) across content/ — fix before merging.`);
     process.exit(1);

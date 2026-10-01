@@ -5,7 +5,7 @@
   "description": "TypeScript toolkit for building AI applications with React Server Components, streaming, tool calling, and multi-provider LLM support.",
   "providerName": "Vercel",
   "providerUrl": "https://vercel.com",
-  "agentUrl": "https://sdk.vercel.ai",
+  "agentUrl": "https://ai-sdk.dev/",
   "categories": [
     "infrastructure",
     "code-devtools"
@@ -29,5 +29,5 @@
     "mcp"
   ],
   "createdAt": "2026-03-22T09:52:49.412Z",
-  "updatedAt": "2026-07-10T21:07:17.443Z"
+  "updatedAt": "2026-09-25T23:53:44.151Z"
 }

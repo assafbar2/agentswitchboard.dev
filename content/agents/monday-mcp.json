@@ -1,0 +1,58 @@
+{
+  "id": "monday-mcp",
+  "name": "monday.com MCP",
+  "slug": "monday-mcp",
+  "description": "Lets AI agents read and update monday.com boards, items, columns, updates, and forms through a hosted OAuth MCP server or local npm package, with optional GraphQL API access.",
+  "providerName": "monday.com",
+  "providerUrl": "https://monday.com",
+  "agentUrl": "https://developer.monday.com/apps/docs/mondaycom-mcp-integration",
+  "categories": [
+    "productivity",
+    "orchestration"
+  ],
+  "tags": [
+    "monday-com",
+    "official-mcp",
+    "remote-mcp",
+    "project-management",
+    "work-management",
+    "graphql"
+  ],
+  "skills": [
+    {
+      "id": "item-operations",
+      "name": "Item Operations",
+      "description": "Creates, searches, and deletes items, changes column values, moves items between groups, and posts updates on items."
+    },
+    {
+      "id": "board-operations",
+      "name": "Board Operations",
+      "description": "Creates boards, groups, and columns, removes columns, and reads a board's schema of columns and groups before edits."
+    },
+    {
+      "id": "dynamic-api-tools",
+      "name": "Dynamic GraphQL Tools",
+      "description": "Fetches the monday.com GraphQL schema and runs any generated query or mutation via all_monday_api (beta, opt-in)."
+    },
+    {
+      "id": "workforms",
+      "name": "WorkForms Management",
+      "description": "Creates monday.com forms and retrieves existing forms by token so agents can set up intake flows for boards."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-09-25T22:20:34.468Z",
+  "updatedAt": "2026-09-25T22:20:34.468Z"
+}

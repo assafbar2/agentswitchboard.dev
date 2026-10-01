@@ -1,0 +1,59 @@
+{
+  "id": "mcpjam",
+  "name": "MCPJam",
+  "slug": "mcpjam",
+  "description": "Tests and evaluates MCP servers and MCP apps for developers, with a playground, OAuth debugger, cross-client evals, and CI checks, via web app, npx inspector, CLI, and SDK.",
+  "providerName": "MCPJam",
+  "providerUrl": "https://mcpjam.com",
+  "agentUrl": "https://github.com/MCPJam/inspector",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "mcp-testing",
+    "mcp-inspector",
+    "evals",
+    "oauth-debugging",
+    "ci-cd",
+    "conformance-testing",
+    "mcp-apps",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "server-inspection",
+      "name": "Server Inspection",
+      "description": "Probes, diagnoses, and exports MCP server connectivity and capabilities, and lists or calls tools, resources, and prompts from the CLI."
+    },
+    {
+      "id": "oauth-conformance",
+      "name": "OAuth Conformance",
+      "description": "Tests an MCP server's OAuth across protocol versions with Dynamic Client Registration, pre-registration, and Client ID Metadata Documents."
+    },
+    {
+      "id": "cross-model-evals",
+      "name": "Cross-Model Evals",
+      "description": "Runs test cases with expected tool calls across multiple LLMs and tracks accuracy over time to catch MCP server regressions."
+    },
+    {
+      "id": "ci-checks",
+      "name": "CI Pipeline Checks",
+      "description": "Runs MCP health checks, conformance suites, and evals on every pull request in GitHub Actions, GitLab CI, and other CI systems."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-09-25T22:20:34.450Z",
+  "updatedAt": "2026-09-25T22:20:34.450Z"
+}

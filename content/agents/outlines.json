@@ -4,7 +4,7 @@
   "slug": "outlines",
   "description": "Guarantees LLM outputs conform to a schema, regex, or grammar through structured generation — reliable JSON, function calls, and constrained decoding. By .txt (dottxt-ai). 14k+ stars, Apache-2.0.",
   "providerName": ".txt",
-  "providerUrl": "https://dottxt.co",
+  "providerUrl": "https://dottxt.ai/",
   "agentUrl": "https://github.com/dottxt-ai/outlines",
   "categories": [
     "code-devtools"
@@ -47,5 +47,5 @@
     "api"
   ],
   "createdAt": "2026-07-17T20:41:33.652Z",
-  "updatedAt": "2026-07-17T20:41:33.652Z"
+  "updatedAt": "2026-09-25T23:53:40.776Z"
 }

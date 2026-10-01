@@ -1,0 +1,59 @@
+{
+  "id": "openalex-mcp",
+  "name": "OpenAlex AI Agent Connector",
+  "slug": "openalex-mcp",
+  "description": "Lets AI assistants search and analyze OpenAlex scholarly works, authors, institutions, and citations over a remote MCP server with OAuth, returning the exact OQL query behind each answer.",
+  "providerName": "OpenAlex",
+  "providerUrl": "https://openalex.org",
+  "agentUrl": "https://help.openalex.org/access/connector/",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "remote-mcp",
+    "official-mcp",
+    "scholarly-literature",
+    "citations",
+    "bibliometrics",
+    "open-data",
+    "academic-search",
+    "openalex"
+  ],
+  "skills": [
+    {
+      "id": "search-works",
+      "name": "Search Works",
+      "description": "Finds papers by keyword, semantic meaning, or raw OQL with filters for year, open access, citations, and author, institution, or funder IDs."
+    },
+    {
+      "id": "resolve-references",
+      "name": "Resolve References",
+      "description": "Checks up to 25 citations, DOIs, or free-text references per call, reporting whether each exists and filling in missing DOIs."
+    },
+    {
+      "id": "citation-graph",
+      "name": "Citation Graph",
+      "description": "Lists the works that cite a paper, the works it references, or related works, so agents can trace follow-up research on a topic."
+    },
+    {
+      "id": "analyze-works",
+      "name": "Analyze Works",
+      "description": "Profiles any set of works with totals, open-access share, top-cited share, yearly trends, and top fields, institutions, and countries."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-09-25T22:20:34.452Z",
+  "updatedAt": "2026-09-25T22:20:34.452Z"
+}

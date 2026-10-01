@@ -5,7 +5,7 @@
   "description": "Python MCP server exposing Tiingo financial data API — real-time and historical stock prices, company fundamentals, and financial news searchable by AI agents.",
   "providerName": "Tiingo",
   "providerUrl": "https://tiingo.com",
-  "agentUrl": "https://github.com/wshobson/tiingo-mcp",
+  "agentUrl": "https://github.com/major7apps/tiingo-mcp",
   "categories": [
     "finance"
   ],
@@ -47,5 +47,5 @@
     "mcp"
   ],
   "createdAt": "2026-04-25T18:50:04.960Z",
-  "updatedAt": "2026-04-25T18:50:04.960Z"
+  "updatedAt": "2026-09-25T23:53:30.593Z"
 }

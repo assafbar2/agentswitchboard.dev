@@ -1,0 +1,57 @@
+{
+  "id": "figma-mcp-server",
+  "name": "Figma MCP Server",
+  "slug": "figma-mcp-server",
+  "description": "Gives coding agents Figma design context, variables, screenshots, and generated code from frames, and lets them write frames and components back to the canvas via remote or desktop MCP.",
+  "providerName": "Figma",
+  "providerUrl": "https://www.figma.com",
+  "agentUrl": "https://developers.figma.com/docs/figma-mcp-server/",
+  "categories": [
+    "code-devtools",
+    "content-media"
+  ],
+  "tags": [
+    "figma",
+    "official-mcp",
+    "remote-mcp",
+    "design-to-code",
+    "design-systems",
+    "code-connect",
+    "dev-mode"
+  ],
+  "skills": [
+    {
+      "id": "get-design-context",
+      "name": "Get Design Context",
+      "description": "Returns a structured React and Tailwind representation of a Figma frame or layer that agents adapt to any framework."
+    },
+    {
+      "id": "get-variable-defs",
+      "name": "Extract Design Variables",
+      "description": "Pulls the color, spacing, and typography variables and styles used in a selection so generated code references tokens."
+    },
+    {
+      "id": "get-screenshot",
+      "name": "Frame Screenshots",
+      "description": "Captures a screenshot of the selected node so agents can compare their implementation against the original design."
+    },
+    {
+      "id": "use-figma",
+      "name": "Write to Canvas",
+      "description": "Creates and edits native Figma frames, components, variables, and auto layout from an MCP client (remote server only)."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-09-25T22:20:34.460Z",
+  "updatedAt": "2026-09-25T22:20:34.460Z"
+}

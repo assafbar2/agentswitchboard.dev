@@ -1,0 +1,60 @@
+{
+  "id": "digitalocean-managed-agents",
+  "name": "DigitalOcean Managed Agents",
+  "slug": "digitalocean-managed-agents",
+  "description": "Runs agent harnesses like Claude Code, Codex CLI, and LangGraph in isolated cloud microVM sessions, with governed access to 16,000+ tools through a managed MCP endpoint.",
+  "providerName": "DigitalOcean",
+  "providerUrl": "https://www.digitalocean.com",
+  "agentUrl": "https://www.digitalocean.com/products/managed-agents",
+  "categories": [
+    "infrastructure",
+    "orchestration"
+  ],
+  "tags": [
+    "digitalocean",
+    "managed-mcp",
+    "microvm",
+    "sandboxing",
+    "session-persistence",
+    "tool-gateway",
+    "doctl",
+    "agent-hosting"
+  ],
+  "skills": [
+    {
+      "id": "session-lifecycle",
+      "name": "Session Lifecycle",
+      "description": "Launches, attaches, pauses, resumes, and removes isolated microVM agent sessions with doctl harness-runtime, keeping state across devices."
+    },
+    {
+      "id": "coding-adapters",
+      "name": "Coding Agent Adapters",
+      "description": "Runs Codex CLI, Claude Code, or OpenCode in a sandbox from a YAML environment spec, pausing for approval before consequential actions."
+    },
+    {
+      "id": "run-triggers",
+      "name": "Scheduled And Webhook Triggers",
+      "description": "Starts Harness Runtime sessions unattended from cron or webhook triggers and delivers the results to email or Slack."
+    },
+    {
+      "id": "action-gateway",
+      "name": "Action Gateway Tools",
+      "description": "Connects agents to 16,000+ tools through one managed MCP endpoint or SDK, with brokered credentials, toolbelts, and approvals."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-09-25T22:20:34.447Z",
+  "updatedAt": "2026-09-25T22:20:34.447Z"
+}

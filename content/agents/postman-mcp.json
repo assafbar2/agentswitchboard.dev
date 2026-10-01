@@ -1,0 +1,57 @@
+{
+  "id": "postman-mcp",
+  "name": "Postman MCP Server",
+  "slug": "postman-mcp",
+  "description": "Connects AI agents to Postman workspaces, collections, environments, specs, and mocks via a remote or local MCP server, including running collections and generating client code.",
+  "providerName": "Postman",
+  "providerUrl": "https://www.postman.com",
+  "agentUrl": "https://www.postman.com/product/mcp-server/",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "postman",
+    "official-mcp",
+    "remote-mcp",
+    "api-testing",
+    "api-collections",
+    "openapi",
+    "api-development"
+  ],
+  "skills": [
+    {
+      "id": "collection-management",
+      "name": "Collection Management",
+      "description": "Creates, updates, forks, tags, and comments on Postman collections, folders, requests, and responses from an MCP client."
+    },
+    {
+      "id": "workspace-environments",
+      "name": "Workspaces and Environments",
+      "description": "Creates workspaces and environments and manages environment variables so agents can configure API testing setups."
+    },
+    {
+      "id": "run-collection",
+      "name": "Run Collections",
+      "description": "Runs Postman collections and monitors to test APIs, using the local server when target APIs live on your workstation."
+    },
+    {
+      "id": "spec-sync",
+      "name": "Spec and Code Sync",
+      "description": "Generates specs from collections, keeps specs and collections in sync, and produces client code from API definitions."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-09-25T22:20:34.467Z",
+  "updatedAt": "2026-09-25T22:20:34.467Z"
+}

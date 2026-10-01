@@ -1,0 +1,58 @@
+{
+  "id": "fal-ai",
+  "name": "fal",
+  "slug": "fal-ai",
+  "description": "Runs generative image, video, and audio models through a queue-based inference API, Python and JS clients, a CLI, and a hosted MCP server, with webhooks and streaming output.",
+  "providerName": "fal",
+  "providerUrl": "https://fal.ai",
+  "agentUrl": "https://fal.ai/docs",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "generative-media",
+    "image-generation",
+    "video-generation",
+    "inference-api",
+    "remote-mcp",
+    "serverless-gpu",
+    "fal"
+  ],
+  "skills": [
+    {
+      "id": "queue-inference",
+      "name": "Asynchronous Inference",
+      "description": "Submits model requests to the fal queue, then polls status or fetches results when long-running generations complete."
+    },
+    {
+      "id": "webhooks",
+      "name": "Webhook Callbacks",
+      "description": "Notifies a developer endpoint when a queued request finishes so applications avoid polling for generation results."
+    },
+    {
+      "id": "streaming-inference",
+      "name": "Streaming Inference",
+      "description": "Returns progressive model output as it is generated, with WebSocket and realtime endpoints for interactive use cases."
+    },
+    {
+      "id": "fal-mcp",
+      "name": "Hosted MCP Server",
+      "description": "Lets AI assistants search models, check schemas and pricing, run inference, and upload files via mcp.fal.ai."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-09-25T22:20:34.464Z",
+  "updatedAt": "2026-09-25T22:20:34.464Z"
+}

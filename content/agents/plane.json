@@ -1,0 +1,59 @@
+{
+  "id": "plane",
+  "name": "Plane",
+  "slug": "plane",
+  "description": "Manages projects, work items, cycles, and wiki pages for software teams via REST API, webhooks, and an official MCP server, with Plane Agents that run assigned recurring work.",
+  "providerName": "Plane",
+  "providerUrl": "https://plane.so",
+  "agentUrl": "https://plane.so/agents",
+  "categories": [
+    "productivity",
+    "orchestration"
+  ],
+  "tags": [
+    "project-management",
+    "issue-tracking",
+    "official-mcp",
+    "remote-mcp",
+    "webhooks",
+    "open-source",
+    "self-hosted",
+    "plane"
+  ],
+  "skills": [
+    {
+      "id": "work-items",
+      "name": "Work Item Management",
+      "description": "Creates, lists, searches, updates, and deletes work items, and filters or counts them with Plane Query Language through the API or MCP."
+    },
+    {
+      "id": "cycles-modules",
+      "name": "Cycles And Modules",
+      "description": "Plans and tracks work in cycles and modules, including creating, archiving, and adding work items, through the MCP resource tools."
+    },
+    {
+      "id": "workspace-webhooks",
+      "name": "Workspace Webhooks",
+      "description": "Pushes v2 workspace events such as workitem.created to a registered URL with structured payloads for deduplication and diffing."
+    },
+    {
+      "id": "plane-agents",
+      "name": "Plane Agents",
+      "description": "Runs agents that start from assignments, mentions, work-item changes, or schedules and act across Plane projects and connected tools."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-09-25T22:20:34.444Z",
+  "updatedAt": "2026-09-25T22:20:34.444Z"
+}

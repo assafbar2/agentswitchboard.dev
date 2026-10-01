@@ -4,7 +4,7 @@
   "slug": "notion-skills-api",
   "description": "Turns a Notion workspace into an agent-neutral skills library, serving spec-compliant skill files over an API with an open-source GitHub sync kit.",
   "providerName": "Notion",
-  "providerUrl": "https://www.notion.so",
+  "providerUrl": "https://www.notion.com/",
   "agentUrl": "https://developers.notion.com/guides/agent-skills/overview",
   "categories": [
     "orchestration",
@@ -50,5 +50,5 @@
     "cli"
   ],
   "createdAt": "2026-09-18T22:02:13.793Z",
-  "updatedAt": "2026-09-18T22:02:13.793Z"
+  "updatedAt": "2026-09-25T23:53:39.858Z"
 }

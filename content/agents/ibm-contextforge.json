@@ -1,0 +1,61 @@
+{
+  "id": "ibm-contextforge",
+  "name": "IBM ContextForge",
+  "slug": "ibm-contextforge",
+  "description": "Runs a self-hosted gateway and registry that federates MCP servers, A2A agents, and REST/gRPC APIs behind one endpoint with auth, rate limits, and observability.",
+  "providerName": "IBM",
+  "providerUrl": "https://www.ibm.com",
+  "agentUrl": "https://ibm.github.io/mcp-context-forge/",
+  "categories": [
+    "orchestration",
+    "infrastructure",
+    "security"
+  ],
+  "tags": [
+    "mcp-gateway",
+    "mcp-registry",
+    "a2a",
+    "api-gateway",
+    "opentelemetry",
+    "self-hosted",
+    "open-source",
+    "ibm"
+  ],
+  "skills": [
+    {
+      "id": "mcp-federation",
+      "name": "MCP Server Federation",
+      "description": "Registers and federates many MCP servers and bundles their tools into virtual servers exposed over one Streamable HTTP or SSE endpoint."
+    },
+    {
+      "id": "rest-grpc-to-mcp",
+      "name": "REST And gRPC Adapters",
+      "description": "Wraps REST APIs and gRPC services as MCP tools with automatic JSON Schema extraction and reflection-based service discovery."
+    },
+    {
+      "id": "a2a-agent-gateway",
+      "name": "A2A Agent Gateway",
+      "description": "Routes calls to external A2A, OpenAI-compatible, and Anthropic agents through the gateway alongside registered MCP tools."
+    },
+    {
+      "id": "governance-observability",
+      "name": "Governance And Observability",
+      "description": "Applies JWT auth, retries, and rate limits, and exports OpenTelemetry traces to Phoenix, Jaeger, Zipkin, or other OTLP backends."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-09-25T22:20:34.458Z",
+  "updatedAt": "2026-09-25T22:20:34.458Z"
+}

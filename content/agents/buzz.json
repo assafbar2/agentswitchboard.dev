@@ -39,7 +39,7 @@
   "supportsStreaming": false,
   "supportsPushNotifications": false,
   "status": "published",
-  "featured": true,
+  "featured": false,
   "verified": true,
   "tier": "free",
   "discoveredBy": "manual",
@@ -48,5 +48,5 @@
     "api"
   ],
   "createdAt": "2026-07-25T16:22:45.420Z",
-  "updatedAt": "2026-07-25T16:22:45.420Z"
+  "updatedAt": "2026-09-25T22:53:59.868Z"
 }

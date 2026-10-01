@@ -19,6 +19,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { cache } from 'react';
+import { pickHomepageAgents } from './homepage';
 import type { Agent, Category, HomepageAgent, SiteSettings } from './types';
 
 const CONTENT_DIR = path.join(process.cwd(), 'content');
@@ -106,34 +107,12 @@ export async function getCategoryBySlug(
 }
 
 /**
- * Homepage slots, fully content-driven: agents with `featured: true` (and
- * an unexpired `featuredUntil`, when set) fill up to SLOTS positions,
- * ordered by name; the first is labeled Editor's Pick. Remaining slots are
- * filled with the newest additions.
+ * Homepage slots. Ordered placements come from site.json `homepageFeatured`;
+ * without it, unexpired featured agents (newest first). See lib/homepage.ts.
  */
 export async function getHomepageAgents(): Promise<HomepageAgent[]> {
-  const SLOTS = 6;
-  const now = new Date().toISOString();
-  const agents = await getEveryAgent();
-
-  const featured: HomepageAgent[] = agents
-    .filter((a) => a.featured && (!a.featuredUntil || a.featuredUntil >= now))
-    .sort((a, b) => a.name.localeCompare(b.name))
-    .slice(0, SLOTS)
-    .map((agent, i) => ({
-      agent,
-      label: i === 0 ? ('editors-pick' as const) : ('featured' as const),
-    }));
-
-  const featuredIds = new Set(featured.map((f) => f.agent.id));
-
-  const newest: HomepageAgent[] = agents
-    .filter((a) => !featuredIds.has(a.id) && a.createdAt)
-    .sort((a, b) => (b.createdAt ?? '').localeCompare(a.createdAt ?? ''))
-    .slice(0, Math.max(0, SLOTS - featured.length))
-    .map((agent) => ({ agent, label: 'new' as const }));
-
-  return [...featured, ...newest];
+  const [agents, settings] = await Promise.all([getEveryAgent(), getSiteSettings()]);
+  return pickHomepageAgents(agents, settings?.homepageFeatured, new Date().toISOString());
 }
 
 export async function getSiteSettings(): Promise<SiteSettings | null> {

@@ -1,0 +1,57 @@
+{
+  "id": "clueso-mcp",
+  "name": "Clueso MCP",
+  "slug": "clueso-mcp",
+  "description": "Lets AI agents create and edit product videos, motion graphics, and step-by-step docs in a Clueso workspace through a remote OAuth MCP server, with outputs that stay editable.",
+  "providerName": "Clueso",
+  "providerUrl": "https://www.clueso.io",
+  "agentUrl": "https://www.clueso.io/mcp",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "video-creation",
+    "video-editing",
+    "remote-mcp",
+    "official-mcp",
+    "oauth",
+    "voiceover",
+    "product-demos",
+    "clueso"
+  ],
+  "skills": [
+    {
+      "id": "video-projects",
+      "name": "Video Project Editing",
+      "description": "Creates, duplicates, and exports video projects, and adds, splits, and updates clips and elements with tools like create_project and add_clips."
+    },
+    {
+      "id": "voiceover-audio",
+      "name": "Voiceover And Audio",
+      "description": "Generates narration with voiceover_batch and set_voice, adds background audio, and syncs visuals to speech with auto_sync."
+    },
+    {
+      "id": "clueprint-templates",
+      "name": "Clueprint Templates",
+      "description": "Finds, reads, and creates reusable clueprint templates with pre-designed clip layouts and voiceover patterns to build videos from."
+    },
+    {
+      "id": "article-editing",
+      "name": "Help Article Editing",
+      "description": "Reads and updates step-by-step documentation articles and their media with get_article, update_article, and add_article_media."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-09-25T22:20:34.451Z",
+  "updatedAt": "2026-09-25T22:20:34.451Z"
+}

@@ -1,0 +1,59 @@
+{
+  "id": "toolhive",
+  "name": "ToolHive",
+  "slug": "toolhive",
+  "description": "Runs MCP servers in isolated containers locally or on Kubernetes, with a CLI, desktop UI, operator, registry, and gateway that apply secrets, auth policy, and telemetry for teams.",
+  "providerName": "Stacklok",
+  "providerUrl": "https://stacklok.com",
+  "agentUrl": "https://docs.stacklok.com/toolhive",
+  "categories": [
+    "infrastructure",
+    "security"
+  ],
+  "tags": [
+    "mcp-gateway",
+    "mcp-registry",
+    "container-isolation",
+    "kubernetes-operator",
+    "secrets-management",
+    "stacklok",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "thv-run",
+      "name": "Run MCP Servers",
+      "description": "Starts MCP servers from container images, registry entries, or package managers inside isolated containers with `thv run`."
+    },
+    {
+      "id": "thv-secret",
+      "name": "Secrets Management",
+      "description": "Stores encrypted secrets with `thv secret` and injects them into MCP server containers without exposing local credentials."
+    },
+    {
+      "id": "thv-client",
+      "name": "Client Configuration",
+      "description": "Registers managed MCP servers with AI clients such as Claude Code, Cursor, and VS Code automatically through `thv client`."
+    },
+    {
+      "id": "kubernetes-operator",
+      "name": "Kubernetes Operator",
+      "description": "Deploys MCP servers and registries on Kubernetes through CRDs with OIDC SSO, audit logging, and OpenTelemetry metrics."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-09-25T22:20:34.462Z",
+  "updatedAt": "2026-09-25T22:20:34.462Z"
+}

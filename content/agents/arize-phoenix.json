@@ -4,7 +4,7 @@
   "slug": "arize-phoenix",
   "description": "Traces, evaluates and debugs LLM and agent applications from an open-source observability platform built on OpenTelemetry, runnable locally or self-hosted.",
   "providerName": "Arize AI",
-  "providerUrl": "https://phoenix.arize.com",
+  "providerUrl": "https://arize.com/phoenix/",
   "agentUrl": "https://github.com/Arize-ai/phoenix",
   "categories": [
     "data-analytics",
@@ -48,5 +48,5 @@
     "cli"
   ],
   "createdAt": "2026-07-25T16:22:45.430Z",
-  "updatedAt": "2026-07-25T16:22:45.430Z"
+  "updatedAt": "2026-09-25T23:53:31.223Z"
 }

@@ -4,7 +4,7 @@
   "slug": "notion-mcp",
   "description": "Official Notion MCP server. Lets AI agents search, read, create, and update Notion pages, databases, and blocks via Model Context Protocol — full workspace access.",
   "providerName": "Notion",
-  "providerUrl": "https://notion.so",
+  "providerUrl": "https://www.notion.com/",
   "agentUrl": "https://developers.notion.com/docs/mcp",
   "categories": [
     "scheduling"
@@ -56,5 +56,5 @@
     "mcp"
   ],
   "createdAt": "2026-04-13T21:38:37.853Z",
-  "updatedAt": "2026-04-13T21:38:37.853Z"
+  "updatedAt": "2026-09-25T23:53:39.552Z"
 }

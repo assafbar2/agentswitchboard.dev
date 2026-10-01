@@ -78,6 +78,8 @@ export interface SiteSettings {
   advertiseUrl?: string;
   premiumPriceMonthly?: number;
   premiumCheckoutUrl?: string;
+  /** Ordered homepage slots (agent slugs); the first is the Editor's Pick. */
+  homepageFeatured?: string[];
 }
 
 // ── Query options ───────────────────────────────────────────────────

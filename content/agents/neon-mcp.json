@@ -4,7 +4,7 @@
   "slug": "neon-mcp",
   "description": "Official Neon MCP server for creating and managing serverless Postgres databases from AI coding agents. Full SQL, branching, schema operations, and pgvector support.",
   "providerName": "Neon",
-  "providerUrl": "https://neon.tech",
+  "providerUrl": "https://neon.com",
   "agentUrl": "https://github.com/neondatabase/mcp-server-neon",
   "categories": [
     "data-analytics"
@@ -52,5 +52,5 @@
     "mcp"
   ],
   "createdAt": "2026-04-25T19:07:17.190Z",
-  "updatedAt": "2026-04-25T19:07:17.190Z"
+  "updatedAt": "2026-09-25T22:13:42.021Z"
 }

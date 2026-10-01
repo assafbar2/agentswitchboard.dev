@@ -5,7 +5,7 @@
   "description": "Runs a coding agent locally in the terminal, editing files and executing commands inside an OS sandbox with configurable approvals, plus headless `codex exec` for pipelines.",
   "providerName": "OpenAI",
   "providerUrl": "https://openai.com",
-  "agentUrl": "https://developers.openai.com/codex/cli",
+  "agentUrl": "https://learn.chatgpt.com/docs/codex/cli",
   "categories": [
     "code-devtools",
     "orchestration"
@@ -60,5 +60,5 @@
     "mcp"
   ],
   "createdAt": "2026-08-01T04:31:32.791Z",
-  "updatedAt": "2026-08-01T04:31:32.791Z"
+  "updatedAt": "2026-09-25T23:53:32.165Z"
 }

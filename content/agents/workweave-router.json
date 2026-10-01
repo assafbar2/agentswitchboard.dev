@@ -5,7 +5,7 @@
   "description": "Routes each prompt to the optimal model (Anthropic, OpenAI, Gemini) in under 50ms via an on-box embedder. Router 2.0 adds subscription-aware routing for Claude Code, Codex, and opencode.",
   "providerName": "Weave",
   "providerUrl": "https://github.com/workweave/router",
-  "agentUrl": "https://github.com/workweave/router",
+  "agentUrl": "https://github.com/weave-os/router",
   "categories": [
     "infrastructure"
   ],
@@ -48,5 +48,5 @@
     "api"
   ],
   "createdAt": "2026-07-06T07:04:28.013Z",
-  "updatedAt": "2026-09-18T22:02:23.159Z"
+  "updatedAt": "2026-09-25T23:53:30.908Z"
 }

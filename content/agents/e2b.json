@@ -5,7 +5,7 @@
   "description": "Secure cloud sandboxes for AI agents to run code. Supports Python, JS, and shell. Persistent filesystem, network access, and sub-100ms cold starts.",
   "providerName": "E2B",
   "providerUrl": "https://e2b.dev",
-  "agentUrl": "https://e2b.dev/docs",
+  "agentUrl": "https://docs.e2b.dev/",
   "categories": [
     "browser-computer"
   ],
@@ -57,5 +57,5 @@
     "cli"
   ],
   "createdAt": "2026-04-08T07:17:11.373Z",
-  "updatedAt": "2026-07-10T21:06:02.111Z"
+  "updatedAt": "2026-09-25T23:53:34.011Z"
 }

@@ -5,7 +5,7 @@
   "description": "Authenticated email gateway for AI agents — receive emails as webhooks or WebSocket, send via HTTP API, and verify sender identity with HMAC-signed headers.",
   "providerName": "Mnexa-AI",
   "providerUrl": "https://e2a.dev",
-  "agentUrl": "https://github.com/Mnexa-AI/e2a",
+  "agentUrl": "https://github.com/tokencanopy/e2a",
   "categories": [
     "infrastructure",
     "scheduling"
@@ -54,5 +54,5 @@
     "cli"
   ],
   "createdAt": "2026-05-13T16:21:03.923Z",
-  "updatedAt": "2026-05-13T16:21:03.923Z"
+  "updatedAt": "2026-09-25T23:53:29.026Z"
 }

@@ -5,7 +5,7 @@
   "description": "Memory API for AI applications. Store and retrieve user memories, bookmarks, and knowledge with semantic search. One unified API for personal and enterprise memory.",
   "providerName": "Supermemory",
   "providerUrl": "https://supermemory.ai",
-  "agentUrl": "https://docs.supermemory.ai",
+  "agentUrl": "https://supermemory.ai/docs",
   "categories": [
     "memory-state"
   ],
@@ -56,5 +56,5 @@
     "mcp"
   ],
   "createdAt": "2026-04-08T07:17:06.782Z",
-  "updatedAt": "2026-04-08T07:17:06.782Z"
+  "updatedAt": "2026-09-25T23:53:42.620Z"
 }

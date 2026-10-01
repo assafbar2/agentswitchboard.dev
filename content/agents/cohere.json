@@ -1,0 +1,56 @@
+{
+  "id": "cohere",
+  "name": "Cohere",
+  "slug": "cohere",
+  "description": "Provides Command models for chat, RAG, and tool use, plus Embed and Rerank models for search, via a REST API and Python, TypeScript, Java, and Go SDKs for enterprise developers.",
+  "providerName": "Cohere",
+  "providerUrl": "https://cohere.com",
+  "agentUrl": "https://docs.cohere.com",
+  "categories": [
+    "language"
+  ],
+  "tags": [
+    "cohere",
+    "llm-api",
+    "embeddings",
+    "reranking",
+    "rag",
+    "tool-use",
+    "semantic-search"
+  ],
+  "skills": [
+    {
+      "id": "chat",
+      "name": "Chat and Generation",
+      "description": "Generates text and multi-turn chat replies with Command models through the Chat API, including streamed event output."
+    },
+    {
+      "id": "tool-use",
+      "name": "Tool Use",
+      "description": "Lets Command models call developer-defined tools and return structured tool calls for building agents and workflows."
+    },
+    {
+      "id": "embed",
+      "name": "Text Embeddings",
+      "description": "Converts text and images into vector embeddings with Embed models for semantic search, clustering, and classification."
+    },
+    {
+      "id": "rerank",
+      "name": "Document Reranking",
+      "description": "Reorders a list of documents by relevance to a query with Rerank models to improve search and RAG retrieval quality."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-09-25T22:20:34.463Z",
+  "updatedAt": "2026-09-25T22:20:34.463Z"
+}

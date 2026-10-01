@@ -1,0 +1,58 @@
+{
+  "id": "parallel-web",
+  "name": "Parallel",
+  "slug": "parallel-web",
+  "description": "Gives AI agents web search, URL extraction, and deep research APIs that return cited, structured results, with Python and TypeScript SDKs, a CLI, and hosted MCP servers.",
+  "providerName": "Parallel Web Systems",
+  "providerUrl": "https://parallel.ai",
+  "agentUrl": "https://docs.parallel.ai",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "web-search",
+    "deep-research",
+    "web-extraction",
+    "data-enrichment",
+    "remote-mcp",
+    "web-monitoring",
+    "citations"
+  ],
+  "skills": [
+    {
+      "id": "search-api",
+      "name": "Search API",
+      "description": "Runs natural-language web searches and returns ranked results with LLM-optimized excerpts sized for agent context windows."
+    },
+    {
+      "id": "extract-api",
+      "name": "Extract API",
+      "description": "Converts public URLs into clean markdown, with objective-focused excerpts or full page content for downstream use."
+    },
+    {
+      "id": "task-api",
+      "name": "Task Deep Research",
+      "description": "Runs deep research and enrichment tasks with custom output schemas, citations, SSE progress events, and webhooks."
+    },
+    {
+      "id": "monitor-api",
+      "name": "Web Monitoring",
+      "description": "Tracks web changes on a schedule with the Monitor API and sends webhook notifications when new events are detected."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-09-25T22:20:34.465Z",
+  "updatedAt": "2026-09-25T22:20:34.465Z"
+}

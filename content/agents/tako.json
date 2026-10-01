@@ -4,8 +4,8 @@
   "slug": "tako",
   "description": "Live web search plus licensed datasets for agents, covering company financials, macroeconomic indicators, web traffic, and government spending.",
   "providerName": "TakoData",
-  "providerUrl": "https://trytako.com",
-  "agentUrl": "https://trytako.com",
+  "providerUrl": "https://tako.com/",
+  "agentUrl": "https://tako.com/",
   "categories": [
     "research",
     "data-analytics"
@@ -22,7 +22,7 @@
   "supportsPushNotifications": false,
   "status": "published",
   "featured": false,
-  "verified": false,
+  "verified": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -30,5 +30,5 @@
     "mcp"
   ],
   "createdAt": "2026-08-11T00:40:13.023Z",
-  "updatedAt": "2026-08-11T00:40:13.023Z"
+  "updatedAt": "2026-09-25T23:53:43.538Z"
 }

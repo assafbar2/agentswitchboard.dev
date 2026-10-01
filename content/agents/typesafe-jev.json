@@ -1,0 +1,58 @@
+{
+  "id": "typesafe-jev",
+  "name": "Jev",
+  "slug": "typesafe-jev",
+  "description": "Answers typed Choice, Score, and yes/no (Noul) questions about your app state with calibrated probabilities and confidence, for developers building structured AI decisions.",
+  "providerName": "TypeSafe AI",
+  "providerUrl": "https://typesafe.ai",
+  "agentUrl": "https://docs.typesafe.ai",
+  "categories": [
+    "language",
+    "infrastructure"
+  ],
+  "tags": [
+    "typesafe",
+    "system-one",
+    "classification",
+    "calibrated-probabilities",
+    "structured-output",
+    "decision-model",
+    "vercel-ai-gateway",
+    "agent-skill"
+  ],
+  "skills": [
+    {
+      "id": "choice-questions",
+      "name": "Choice Questions",
+      "description": "Selects one option from a set you define and returns the chosen option, a probability for each option, and a confidence score."
+    },
+    {
+      "id": "score-questions",
+      "name": "Score Questions",
+      "description": "Rates content against ordered, descriptive levels and returns a score, a probability for each level, and a confidence score."
+    },
+    {
+      "id": "noul-questions",
+      "name": "Noul Yes/No Questions",
+      "description": "Evaluates a yes/no question against the supplied state and returns the probability that the answer is yes, with optional criteria."
+    },
+    {
+      "id": "batched-questions",
+      "name": "Batched Question Fan-Out",
+      "description": "Sends many named questions against one state in a single POST /v1/systemone call and returns each typed answer under its key."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-09-25T22:20:34.441Z",
+  "updatedAt": "2026-09-25T22:20:34.441Z"
+}

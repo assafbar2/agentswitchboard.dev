@@ -1,0 +1,59 @@
+{
+  "id": "browserless",
+  "name": "Browserless",
+  "slug": "browserless",
+  "description": "Runs hosted or self-hosted headless browsers for agents and scripts, with REST APIs for screenshots, PDFs, and scraping, Puppeteer/Playwright over WebSocket, and an MCP server.",
+  "providerName": "Browserless",
+  "providerUrl": "https://www.browserless.io",
+  "agentUrl": "https://docs.browserless.io",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "headless-browser",
+    "web-scraping",
+    "puppeteer",
+    "playwright",
+    "pdf-generation",
+    "official-mcp",
+    "self-hosted",
+    "browserless"
+  ],
+  "skills": [
+    {
+      "id": "rest-apis",
+      "name": "Browser REST APIs",
+      "description": "Returns screenshots, PDFs, rendered HTML, or structured scrape results from one-shot HTTP calls to /screenshot, /pdf, /content, and /scrape."
+    },
+    {
+      "id": "browser-as-a-service",
+      "name": "Browsers As A Service",
+      "description": "Connects existing Puppeteer, Playwright, or other CDP scripts to managed Chromium sessions over WebSocket, with stealth and proxy options."
+    },
+    {
+      "id": "browserql",
+      "name": "BrowserQL Automation",
+      "description": "Runs GraphQL-style BrowserQL queries against stealth browser sessions to navigate, extract data, and solve CAPTCHAs on bot-protected sites."
+    },
+    {
+      "id": "mcp-browser-agent",
+      "name": "MCP Browser Agent",
+      "description": "Gives AI assistants a stateful browser agent plus smart scraping, page export, crawling, and Lighthouse audits through the Browserless MCP server."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-09-25T22:20:34.456Z",
+  "updatedAt": "2026-09-25T22:20:34.456Z"
+}

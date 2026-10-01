@@ -4,8 +4,8 @@
   "slug": "mindsdb",
   "description": "AI-SQL layer that brings machine learning and AI agents into databases. Query predictions with SQL, build AI tables, and connect 200+ data sources via MCP and REST API.",
   "providerName": "MindsDB",
-  "providerUrl": "https://mindsdb.com",
-  "agentUrl": "https://docs.mindsdb.com",
+  "providerUrl": "https://mindshub.ai/",
+  "agentUrl": "https://mindsdb.github.io/engine/",
   "categories": [
     "data-analytics"
   ],
@@ -57,5 +57,5 @@
     "api"
   ],
   "createdAt": "2026-04-13T21:38:32.249Z",
-  "updatedAt": "2026-04-13T21:38:32.249Z"
+  "updatedAt": "2026-09-25T23:53:38.940Z"
 }

@@ -65,9 +65,10 @@ export default function TermsPage() {
                 href="https://github.com/assafbar2/agentswitchboard.dev/blob/main/content/LICENSE.md"
                 className="text-[var(--accent)] hover:underline"
               >
-                CC-BY-4.0
+                CC BY-NC 4.0
               </a>{' '}
-              with attribution to Agent Switchboard; site code is MIT.
+              for non-commercial use with attribution to Agent Switchboard; commercial reuse
+              requires a license (contact us). Site code is MIT.
             </p>
           </section>
 

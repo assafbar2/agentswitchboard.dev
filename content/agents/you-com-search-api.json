@@ -5,7 +5,7 @@
   "description": "Programmable AI search with web, news, and RAG endpoints — grounded answers with citations for AI applications.",
   "providerName": "You.com",
   "providerUrl": "https://you.com",
-  "agentUrl": "https://documentation.you.com/",
+  "agentUrl": "https://you.com/docs/welcome",
   "categories": [
     "research"
   ],
@@ -20,7 +20,7 @@
   "supportsPushNotifications": false,
   "status": "published",
   "featured": false,
-  "verified": false,
+  "verified": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -28,5 +28,5 @@
     "mcp"
   ],
   "createdAt": "2026-03-22T09:53:02.835Z",
-  "updatedAt": "2026-03-22T09:53:02.835Z"
+  "updatedAt": "2026-09-25T23:53:44.460Z"
 }

@@ -4,7 +4,7 @@
   "slug": "crush",
   "description": "Runs a terminal-native coding agent that switches LLM providers mid-session, keeps per-project sessions, and pulls extra context from language servers and MCP servers.",
   "providerName": "Charm",
-  "providerUrl": "https://charm.sh",
+  "providerUrl": "https://charm.land/",
   "agentUrl": "https://github.com/charmbracelet/crush",
   "categories": [
     "code-devtools"
@@ -53,5 +53,5 @@
     "cli"
   ],
   "createdAt": "2026-08-01T04:31:32.804Z",
-  "updatedAt": "2026-08-01T04:31:32.804Z"
+  "updatedAt": "2026-09-25T23:53:32.474Z"
 }

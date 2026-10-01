@@ -4,7 +4,7 @@
   "slug": "metagpt",
   "description": "Multi-agent framework where AI agents role-play as engineers, PMs, and QA to collectively produce software from a single natural language prompt via structured workflows.",
   "providerName": "DeepWisdom",
-  "providerUrl": "https://deepwisdom.ai",
+  "providerUrl": "https://atoms.dev/metagpt",
   "agentUrl": "https://docs.deepwisdom.ai",
   "categories": [
     "infrastructure"
@@ -57,5 +57,5 @@
     "cli"
   ],
   "createdAt": "2026-04-13T21:38:22.459Z",
-  "updatedAt": "2026-04-13T21:38:22.459Z"
+  "updatedAt": "2026-09-25T23:53:38.321Z"
 }

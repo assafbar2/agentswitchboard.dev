@@ -1,0 +1,59 @@
+{
+  "id": "mobile-mcp",
+  "name": "Mobile MCP",
+  "slug": "mobile-mcp",
+  "description": "Lets agents automate native iOS and Android apps on simulators, emulators, and real devices through one MCP server, using accessibility trees or screenshots.",
+  "providerName": "Mobile Next",
+  "providerUrl": "https://mobilenext.ai",
+  "agentUrl": "https://github.com/mobile-next/mobile-mcp",
+  "categories": [
+    "browser-computer",
+    "code-devtools"
+  ],
+  "tags": [
+    "mcp-server",
+    "mobile-automation",
+    "ios",
+    "android",
+    "mobile-testing",
+    "emulators",
+    "open-source",
+    "mobile-next"
+  ],
+  "skills": [
+    {
+      "id": "device-management",
+      "name": "Device Management",
+      "description": "Lists available simulators, emulators, and real devices, and reads or sets screen size, orientation, GPS location, and clipboard."
+    },
+    {
+      "id": "app-management",
+      "name": "App Management",
+      "description": "Lists, installs, launches, terminates, and uninstalls apps from .apk, .ipa, or .app files using bundle IDs or package names."
+    },
+    {
+      "id": "screen-interaction",
+      "name": "Screen Interaction",
+      "description": "Lists on-screen UI elements, taps, long-presses, swipes, types text, and presses hardware buttons to drive native app flows."
+    },
+    {
+      "id": "logs-crashes",
+      "name": "Logs And Crashes",
+      "description": "Collects live device logs from logcat or the iOS unified log and lists or reads crash reports stored on the device."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-09-25T22:20:34.458Z",
+  "updatedAt": "2026-09-25T22:20:34.458Z"
+}

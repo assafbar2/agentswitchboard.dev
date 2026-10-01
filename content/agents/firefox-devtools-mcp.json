@@ -1,0 +1,59 @@
+{
+  "id": "firefox-devtools-mcp",
+  "name": "Firefox DevTools MCP",
+  "slug": "firefox-devtools-mcp",
+  "description": "Lets MCP clients automate and debug a local Firefox via WebDriver BiDi: navigate pages, fill forms, inspect network and console, and take screenshots.",
+  "providerName": "Mozilla",
+  "providerUrl": "https://www.mozilla.org",
+  "agentUrl": "https://github.com/mozilla/firefox-devtools-mcp",
+  "categories": [
+    "browser-computer",
+    "code-devtools"
+  ],
+  "tags": [
+    "mcp-server",
+    "official-mcp",
+    "firefox",
+    "webdriver-bidi",
+    "browser-automation",
+    "web-debugging",
+    "open-source",
+    "mozilla"
+  ],
+  "skills": [
+    {
+      "id": "page-management",
+      "name": "Page Management",
+      "description": "Lists, selects, and navigates Firefox tabs with list_pages, select_page, and navigate_page, including headless runs and Firefox for Android."
+    },
+    {
+      "id": "snapshot-input",
+      "name": "Snapshot And Input",
+      "description": "Takes a DOM snapshot with element UIDs, then clicks or fills elements by UID with click_by_uid and fill_by_uid to drive forms."
+    },
+    {
+      "id": "network-console",
+      "name": "Network And Console",
+      "description": "Captures network requests and console messages for inspection with list_network_requests, get_network_request, and list_console_messages."
+    },
+    {
+      "id": "screenshots-downloads",
+      "name": "Screenshots And Downloads",
+      "description": "Captures page screenshots with screenshot_page and tracks or configures file downloads with list_downloads and set_download_behavior."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-09-25T22:20:34.454Z",
+  "updatedAt": "2026-09-25T22:20:34.454Z"
+}

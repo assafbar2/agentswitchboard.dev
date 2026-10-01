@@ -4,7 +4,7 @@
   "slug": "hexstrike-ai",
   "description": "Drive 150+ offensive security tools from an AI agent through one MCP server — reconnaissance, vulnerability scanning, exploitation workflows, and bug bounty automation.",
   "providerName": "HexStrike",
-  "providerUrl": "https://www.hexstrike.com",
+  "providerUrl": "https://github.com/0x4m4",
   "agentUrl": "https://github.com/0x4m4/hexstrike-ai",
   "categories": [
     "security"
@@ -48,5 +48,5 @@
     "cli"
   ],
   "createdAt": "2026-09-13T20:13:54.414Z",
-  "updatedAt": "2026-09-13T20:13:54.414Z"
+  "updatedAt": "2026-09-25T23:53:35.857Z"
 }

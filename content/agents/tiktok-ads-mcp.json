@@ -5,7 +5,7 @@
   "description": "Official TikTok MCP server letting AI agents create, manage, and optimise ad campaigns, bids, budgets, and creatives autonomously on the TikTok Ads platform.",
   "providerName": "TikTok",
   "providerUrl": "https://tiktok.com/",
-  "agentUrl": "https://ads.tiktok.com/marketing_api/docs",
+  "agentUrl": "https://business-api.tiktok.com/portal/docs",
   "categories": [
     "sales-marketing"
   ],
@@ -39,7 +39,7 @@
   "supportsPushNotifications": false,
   "status": "published",
   "featured": false,
-  "verified": false,
+  "verified": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -47,5 +47,5 @@
     "api"
   ],
   "createdAt": "2026-05-22T08:28:16.766Z",
-  "updatedAt": "2026-05-22T08:28:16.766Z"
+  "updatedAt": "2026-09-25T23:53:43.842Z"
 }
