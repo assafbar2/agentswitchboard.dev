@@ -1,0 +1,39 @@
+{
+  "id": "tale",
+  "name": "Tale",
+  "slug": "tale",
+  "description": "Coordinate people and AI agents in shared projects, delegate tasks to persistent sandboxes, and review results. Operate tasks, automations, and knowledge through REST and MCP.",
+  "providerName": "Tale Project",
+  "providerUrl": "https://github.com/tale-project",
+  "agentUrl": "https://docs.tale.dev/develop/mcp-endpoint",
+  "categories": ["orchestration", "productivity"],
+  "tags": ["project-management", "task-delegation", "human-in-the-loop", "persistent-sandboxes", "mcp-server", "rest-api", "self-hosted"],
+  "skills": [
+    {
+      "id": "delegate-project-tasks",
+      "name": "Delegate Project Tasks",
+      "description": "Assign project tasks to configured agents, run work in persistent sandboxes, and return deliverables for human review."
+    },
+    {
+      "id": "operate-automations",
+      "name": "Operate Automations",
+      "description": "Discover automation tools over MCP, validate and test workflows, deploy versions, and inspect or cancel durable runs."
+    },
+    {
+      "id": "retrieve-workspace-knowledge",
+      "name": "Retrieve Workspace Knowledge",
+      "description": "Retrieve passages from organization documents and crawled pages through the MCP get_knowledge tool, respecting access rules."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": ["api", "mcp"],
+  "createdAt": "2026-10-03T00:00:00Z",
+  "updatedAt": "2026-10-03T00:00:00Z"
+}

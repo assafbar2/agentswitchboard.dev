@@ -1,5 +1,11 @@
 [
   {
+    "action": "added",
+    "slug": "tale",
+    "name": "Tale",
+    "date": "2026-10-03"
+  },
+  {
     "action": "removed",
     "slug": "headlong",
     "name": "Headlong",
