@@ -1,5 +1,10 @@
 [
   {
+    "action": "added",
+    "slug": "bureau-of-lost-context",
+    "name": "The Bureau of Lost Context"
+  },
+  {
     "action": "removed",
     "slug": "headlong",
     "name": "Headlong",
