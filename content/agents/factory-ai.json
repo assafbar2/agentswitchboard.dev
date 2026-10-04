@@ -5,7 +5,7 @@
   "description": "Runs enterprise coding Droids from the terminal with MCP tools, reusable Missions and Skills, plus a headless exec mode for CI pipelines.",
   "providerName": "Factory",
   "providerUrl": "https://factory.com/",
-  "agentUrl": "https://docs.factory.ai/cli/getting-started/overview",
+  "agentUrl": "https://docs.factory.com/droid-cli/overview",
   "categories": [
     "code-devtools",
     "orchestration"
@@ -49,5 +49,5 @@
     "mcp"
   ],
   "createdAt": "2026-08-15T07:16:38.703Z",
-  "updatedAt": "2026-09-25T23:53:34.935Z"
+  "updatedAt": "2026-10-04T17:52:58.682Z"
 }

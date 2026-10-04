@@ -1,5 +1,54 @@
 [
   {
+    "action": "updated",
+    "slug": "codeium-windsurf",
+    "name": "Codeium / Windsurf",
+    "note": "providerUrl updated",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "updated",
+    "slug": "codeium-windsurf",
+    "name": "Codeium / Windsurf",
+    "note": "agentUrl updated",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "updated",
+    "slug": "azure-ai-translator",
+    "name": "Azure AI Translator",
+    "note": "agentUrl updated",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "updated",
+    "slug": "kapso",
+    "name": "Kapso",
+    "note": "providerUrl updated",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "updated",
+    "slug": "kapso",
+    "name": "Kapso",
+    "note": "agentUrl updated",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "updated",
+    "slug": "factory-ai",
+    "name": "Factory",
+    "note": "agentUrl updated",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "updated",
+    "slug": "goldie",
+    "name": "Goldie",
+    "note": "agentUrl updated",
+    "date": "2026-10-04"
+  },
+  {
     "action": "removed",
     "slug": "headlong",
     "name": "Headlong",
