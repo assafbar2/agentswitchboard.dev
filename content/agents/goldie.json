@@ -5,7 +5,7 @@
   "description": "Generates App Store and Google Play screenshots and preview videos by replaying app flows on a simulator, framing the captures, and validating them against store upload rules.",
   "providerName": "Kacper Kapuściak",
   "providerUrl": "https://goldie.dev",
-  "agentUrl": "https://github.com/kacperkapusciak/goldie",
+  "agentUrl": "https://github.com/software-mansion-labs/goldie",
   "categories": [
     "code-devtools",
     "content-media"
@@ -47,5 +47,5 @@
     "cli"
   ],
   "createdAt": "2026-09-02T07:21:11.718Z",
-  "updatedAt": "2026-09-02T07:21:11.718Z"
+  "updatedAt": "2026-10-04T17:52:58.356Z"
 }

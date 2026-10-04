@@ -4,8 +4,8 @@
   "slug": "codeium-windsurf",
   "description": "AI code acceleration platform with Windsurf Editor, offering agentic flows, multi-file edits, and Cascade for autonomous coding.",
   "providerName": "Codeium",
-  "providerUrl": "https://codeium.com",
-  "agentUrl": "https://codeium.com/windsurf",
+  "providerUrl": "https://devin.ai/desktop",
+  "agentUrl": "https://devin.ai/desktop",
   "categories": [
     "code-devtools"
   ],
@@ -28,5 +28,5 @@
     "browser-extension"
   ],
   "createdAt": "2026-03-22T09:51:50.205Z",
-  "updatedAt": "2026-03-22T09:51:50.205Z"
+  "updatedAt": "2026-10-04T17:53:00.468Z"
 }

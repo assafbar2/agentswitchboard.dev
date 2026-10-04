@@ -4,8 +4,8 @@
   "slug": "kapso",
   "description": "WhatsApp AI agent platform. Build and deploy conversational agents on WhatsApp Business API with no-code flows, LLM integration, and CRM connectors.",
   "providerName": "Kapso",
-  "providerUrl": "https://kapso.io",
-  "agentUrl": "https://kapso.io/docs",
+  "providerUrl": "https://kapso.com",
+  "agentUrl": "https://docs.kapso.ai/docs/introduction",
   "categories": [
     "voice-messaging"
   ],
@@ -56,5 +56,5 @@
     "api"
   ],
   "createdAt": "2026-04-08T07:17:19.746Z",
-  "updatedAt": "2026-04-08T07:17:19.746Z"
+  "updatedAt": "2026-10-04T17:52:59.324Z"
 }
