@@ -1,0 +1,54 @@
+{
+  "id": "stalkchain-data",
+  "name": "StalkChain Data",
+  "slug": "stalkchain-data",
+  "description": "Connects AI assistants to live on-chain trader, wallet and token research through StalkChain's hosted MCP server and REST API.",
+  "providerName": "StalkChain",
+  "providerUrl": "https://stalkchain.com/",
+  "agentUrl": "https://stalkchain.com/mcp",
+  "categories": [
+    "data-analytics",
+    "research",
+    "finance"
+  ],
+  "tags": [
+    "onchain-research",
+    "crypto-data",
+    "wallet-analysis",
+    "trader-positions",
+    "token-due-diligence",
+    "solana",
+    "hosted-mcp"
+  ],
+  "skills": [
+    {
+      "id": "trader-research",
+      "name": "Research Tracked Traders",
+      "description": "Queries tracked-trader positions, trade history and performance so an assistant can investigate a trader's on-chain activity."
+    },
+    {
+      "id": "wallet-analysis",
+      "name": "Analyze Wallet Activity",
+      "description": "Looks up wallet balances, transfers and historical activity to support evidence-based research across supported chains."
+    },
+    {
+      "id": "token-due-diligence",
+      "name": "Investigate Token Risk",
+      "description": "Checks token holders, developer activity and available on-chain safety signals before a user acts on a trade idea."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-10-04T12:51:15Z",
+  "updatedAt": "2026-10-04T12:51:15Z"
+}
