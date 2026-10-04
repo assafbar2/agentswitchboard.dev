@@ -1,5 +1,11 @@
 [
   {
+    "action": "added",
+    "slug": "stalkchain-data",
+    "name": "StalkChain Data",
+    "date": "2026-10-04"
+  },
+  {
     "action": "removed",
     "slug": "headlong",
     "name": "Headlong",
