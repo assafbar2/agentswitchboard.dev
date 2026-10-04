@@ -1,0 +1,63 @@
+{
+  "id": "impeccable",
+  "name": "Impeccable",
+  "slug": "impeccable",
+  "description": "Gives coding agents a frontend design skill with 24 /impeccable commands, plus a CLI and Chrome extension that flag common AI-generated design patterns using 61 deterministic rules.",
+  "providerName": "Paul Bakaus",
+  "providerUrl": "https://impeccable.style",
+  "agentUrl": "https://github.com/pbakaus/impeccable",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "frontend-design",
+    "agent-skills",
+    "design-review",
+    "ui-audit",
+    "claude-code",
+    "cursor",
+    "chrome-extension",
+    "impeccable"
+  ],
+  "skills": [
+    {
+      "id": "design-commands",
+      "name": "Design Commands",
+      "description": "Adds 24 /impeccable commands such as craft, shape, audit, critique, polish and harden for planning, reviewing and refining frontend UI."
+    },
+    {
+      "id": "anti-pattern-detector",
+      "name": "Anti-Pattern Detector",
+      "description": "Scans files, folders or live URLs with npx impeccable detect, running 61 deterministic rules with no LLM or API key, with JSON output for CI."
+    },
+    {
+      "id": "live-variants",
+      "name": "Live Variant Mode",
+      "description": "Iterates on page elements in the browser with /impeccable live and generate, producing design variants of a named element."
+    },
+    {
+      "id": "product-context",
+      "name": "Product Context Setup",
+      "description": "Runs /impeccable init to inspect the project, ask only about material gaps, and record audience, purpose and constraints in PRODUCT.md."
+    },
+    {
+      "id": "chrome-devtools-panel",
+      "name": "Chrome DevTools Panel",
+      "description": "Finds design issues on a rendered page from an Impeccable panel in Chrome DevTools, using the same deterministic detector rules."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "browser-extension"
+  ],
+  "createdAt": "2026-10-04T17:55:56.201Z",
+  "updatedAt": "2026-10-04T17:55:56.201Z"
+}

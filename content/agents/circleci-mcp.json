@@ -1,0 +1,62 @@
+{
+  "id": "circleci-mcp",
+  "name": "CircleCI MCP",
+  "slug": "circleci-mcp",
+  "description": "Lets coding agents diagnose CircleCI pipelines over a hosted MCP server, reading runs, job logs, and failing tests, and rerunning or cancelling workflows.",
+  "providerName": "CircleCI",
+  "providerUrl": "https://circleci.com",
+  "agentUrl": "https://circleci.com/docs/guides/toolkit/connecting-to-the-circleci-mcp-server/",
+  "categories": [
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "ci-cd",
+    "build-failures",
+    "test-results",
+    "remote-mcp",
+    "official-mcp",
+    "circleci"
+  ],
+  "skills": [
+    {
+      "id": "failure-diagnosis",
+      "name": "Failed Run Diagnosis",
+      "description": "Chains list_runs, get_run, list_workflows, and get_job_logs to find a failed job and read its failed step output."
+    },
+    {
+      "id": "workflow-control",
+      "name": "Workflow Rerun And Cancel",
+      "description": "Reruns a workflow from the start or only from failed jobs with from_failed, or cancels a running workflow by UUID."
+    },
+    {
+      "id": "failing-tests",
+      "name": "Failing Test Lookup",
+      "description": "Lists a job's test results with list_job_tests, returning failing tests by default along with their failure messages."
+    },
+    {
+      "id": "usage-export",
+      "name": "Usage Data Export",
+      "description": "Exports an organization's CircleCI usage data as downloadable CSV files for a date range of up to 31 days."
+    },
+    {
+      "id": "cli-mcp",
+      "name": "CLI MCP",
+      "description": "Runs the CircleCI CLI's built-in MCP locally for config authoring, orb management, and other administrative commands."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-04T17:55:56.167Z",
+  "updatedAt": "2026-10-04T17:55:56.167Z"
+}

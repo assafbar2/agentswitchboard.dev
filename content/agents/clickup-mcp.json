@@ -1,0 +1,55 @@
+{
+  "id": "clickup-mcp",
+  "name": "ClickUp MCP",
+  "slug": "clickup-mcp",
+  "description": "Lets agents manage ClickUp tasks, docs, comments, and time entries over a hosted OAuth MCP server in public beta, with no deletion tools.",
+  "providerName": "ClickUp",
+  "providerUrl": "https://clickup.com",
+  "agentUrl": "https://developer.clickup.com/docs/connect-an-ai-assistant-to-clickups-mcp-server",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "project-management",
+    "task-management",
+    "time-tracking",
+    "remote-mcp",
+    "official-mcp",
+    "clickup"
+  ],
+  "skills": [
+    {
+      "id": "task-workflows",
+      "name": "Task Workflows",
+      "description": "Manages tasks with assignees, priorities, and due dates across ClickUp lists and spaces from natural-language prompts."
+    },
+    {
+      "id": "executive-reports",
+      "name": "Executive Reports",
+      "description": "Creates release notes, status updates, and portfolio summaries from the tasks and docs in a ClickUp Workspace."
+    },
+    {
+      "id": "time-tracking",
+      "name": "Time Tracking",
+      "description": "Logs time entries and manages timers in a ClickUp Workspace through the hosted MCP server."
+    },
+    {
+      "id": "workspace-search",
+      "name": "Workspace Search",
+      "description": "Searches tasks, docs, and comments to answer work questions, and summarizes comment threads into action items."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-04T17:55:56.177Z",
+  "updatedAt": "2026-10-04T17:55:56.177Z"
+}

@@ -1,0 +1,58 @@
+{
+  "id": "everos",
+  "name": "EverOS",
+  "slug": "everos",
+  "description": "Gives agents a local-first memory layer that stores conversations, files and trajectories as Markdown, indexes them in SQLite and LanceDB, and serves recall over a local REST API.",
+  "providerName": "EverMind",
+  "providerUrl": "https://evermind.ai/everos",
+  "agentUrl": "https://github.com/EverMind-AI/EverOS",
+  "categories": [
+    "memory-state"
+  ],
+  "tags": [
+    "agent-memory",
+    "markdown",
+    "local-first",
+    "sqlite",
+    "lancedb",
+    "python",
+    "knowledge-wiki",
+    "evermind"
+  ],
+  "skills": [
+    {
+      "id": "memory-api",
+      "name": "Memory REST API",
+      "description": "Adds, flushes and searches memories over the local /api/v2 HTTP server started with everos server start, using keyword or hybrid search."
+    },
+    {
+      "id": "markdown-memory",
+      "name": "Markdown Source of Truth",
+      "description": "Stores memory as editable, Git-versionable Markdown files, and a cascade watcher syncs edits into the SQLite and LanceDB indexes."
+    },
+    {
+      "id": "knowledge-wiki",
+      "name": "Knowledge Wiki",
+      "description": "Maintains editable, source-backed Markdown knowledge pages with a taxonomy, CRUD APIs and topic search alongside episodic memory."
+    },
+    {
+      "id": "reflection",
+      "name": "Offline Reflection",
+      "description": "Merges episode clusters and refines user profiles and agent skills between sessions so stored memory improves over time."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-10-04T17:55:56.209Z",
+  "updatedAt": "2026-10-04T17:55:56.209Z"
+}

@@ -1,0 +1,58 @@
+{
+  "id": "hyperframes",
+  "name": "HyperFrames",
+  "slug": "hyperframes",
+  "description": "Renders HTML, CSS, media, and seekable animations into deterministic MP4 videos, with a CLI and on-demand skills that let coding agents write, preview, and render compositions.",
+  "providerName": "HeyGen",
+  "providerUrl": "https://www.heygen.com",
+  "agentUrl": "https://github.com/heygen-com/hyperframes",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "video-rendering",
+    "html-to-video",
+    "motion-graphics",
+    "heygen",
+    "ffmpeg",
+    "gsap",
+    "agent-skills",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "html-video-render",
+      "name": "HTML To MP4 Rendering",
+      "description": "Seeks each frame of an HTML composition in headless Chrome and encodes it with FFmpeg, so the same input always renders the same MP4."
+    },
+    {
+      "id": "creation-workflows",
+      "name": "Creation Workflow Skills",
+      "description": "Routes requests through /hyperframes to workflows such as product launch videos, PR-to-video, captions, motion graphics, and slideshows."
+    },
+    {
+      "id": "cli-dev-loop",
+      "name": "CLI Dev Loop",
+      "description": "Initializes, lints, previews with live reload, and renders compositions with the hyperframes CLI, plus HeyGen cloud and AWS Lambda renders."
+    },
+    {
+      "id": "registry-blocks",
+      "name": "Registry Blocks",
+      "description": "Searches and installs reusable blocks and components into a composition with hyperframes catalog and hyperframes add before hand-building."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.129Z",
+  "updatedAt": "2026-10-04T17:55:56.129Z"
+}

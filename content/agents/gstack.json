@@ -1,0 +1,62 @@
+{
+  "id": "gstack",
+  "name": "gstack",
+  "slug": "gstack",
+  "description": "Adds sprint-style slash-command skills to Claude Code and other agents for planning, review, QA, and shipping, plus a bundled headless Chromium browse daemon.",
+  "providerName": "Garry Tan",
+  "providerUrl": "https://github.com/garrytan",
+  "agentUrl": "https://github.com/garrytan/gstack",
+  "categories": [
+    "code-devtools",
+    "browser-computer"
+  ],
+  "tags": [
+    "claude-code",
+    "agent-skills",
+    "code-review",
+    "browser-testing",
+    "headless-chromium",
+    "release-workflow",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "browse",
+      "name": "Browser Driving",
+      "description": "Drives the Aside browser or gstack's bundled headless Chromium with /browse for real sessions, clicks, and screenshots."
+    },
+    {
+      "id": "qa",
+      "name": "QA Testing",
+      "description": "Explores browser, API, CLI, and webhook behavior with /qa, writes failing regressions, fixes the cause, and re-verifies."
+    },
+    {
+      "id": "code-review",
+      "name": "Code Review",
+      "description": "Finds bugs that pass CI but break in production with /review, auto-fixing the obvious ones and flagging gaps."
+    },
+    {
+      "id": "ship-deploy",
+      "name": "Ship And Deploy",
+      "description": "Runs tests, audits coverage, and opens a PR with /ship, then merges and verifies production with /land-and-deploy."
+    },
+    {
+      "id": "pair-agent",
+      "name": "Shared Browser Pairing",
+      "description": "Shares gstack's browser with another agent such as Codex or Cursor via /pair-agent, giving each agent its own tab."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-04T17:55:56.193Z",
+  "updatedAt": "2026-10-04T17:55:56.193Z"
+}

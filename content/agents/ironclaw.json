@@ -1,0 +1,63 @@
+{
+  "id": "ironclaw",
+  "name": "IronClaw",
+  "slug": "ironclaw",
+  "description": "Runs a self-hosted, security-focused personal assistant in Rust with WASM-sandboxed tools, routines, persistent memory, and REPL, webhook, chat, and web channels.",
+  "providerName": "NEAR AI",
+  "providerUrl": "https://www.ironclaw.com",
+  "agentUrl": "https://github.com/nearai/ironclaw",
+  "categories": [
+    "autonomous-agents",
+    "security"
+  ],
+  "tags": [
+    "personal-assistant",
+    "wasm-sandbox",
+    "self-hosted",
+    "rust",
+    "open-source",
+    "near-ai",
+    "openclaw-inspired"
+  ],
+  "skills": [
+    {
+      "id": "wasm-sandbox",
+      "name": "WASM Tool Sandbox",
+      "description": "Runs untrusted tools in isolated WebAssembly containers with capability-based permissions and an allowlist of approved HTTP hosts."
+    },
+    {
+      "id": "credential-protection",
+      "name": "Credential Protection",
+      "description": "Injects secrets at the host boundary so tools never see them, with leak detection and prompt-injection pattern filtering."
+    },
+    {
+      "id": "dynamic-tool-building",
+      "name": "Dynamic Tool Building",
+      "description": "Builds a new WASM tool from a plain-language description and loads tools, channels, and MCP servers without a restart."
+    },
+    {
+      "id": "routines",
+      "name": "Routines And Heartbeats",
+      "description": "Runs background work on cron schedules, event triggers, and webhook handlers, plus a heartbeat for proactive monitoring tasks."
+    },
+    {
+      "id": "hybrid-memory",
+      "name": "Hybrid Memory Search",
+      "description": "Stores notes, logs, and identity files in a workspace filesystem and retrieves them with full-text plus vector search fused by RRF."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.152Z",
+  "updatedAt": "2026-10-04T17:55:56.152Z"
+}

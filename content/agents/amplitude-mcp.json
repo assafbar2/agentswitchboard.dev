@@ -1,0 +1,61 @@
+{
+  "id": "amplitude-mcp",
+  "name": "Amplitude MCP",
+  "slug": "amplitude-mcp",
+  "description": "Lets agents query Amplitude analytics and read or edit charts, dashboards, experiments, cohorts, and tracking-plan events over a hosted OAuth MCP server.",
+  "providerName": "Amplitude",
+  "providerUrl": "https://amplitude.com",
+  "agentUrl": "https://amplitude.com/docs/amplitude-ai/amplitude-mcp",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "product-analytics",
+    "experimentation",
+    "tracking-plan",
+    "cohorts",
+    "remote-mcp",
+    "official-mcp",
+    "amplitude"
+  ],
+  "skills": [
+    {
+      "id": "analytics-queries",
+      "name": "Analytics Queries",
+      "description": "Runs ad-hoc segmentation, funnel, and retention queries, and analyzes experiment results from natural-language prompts."
+    },
+    {
+      "id": "content-creation",
+      "name": "Content Creation",
+      "description": "Creates and edits charts, dashboards, notebooks, experiments, cohorts, feature flags, and metrics in Amplitude."
+    },
+    {
+      "id": "tracking-plan",
+      "name": "Tracking Plan Edits",
+      "description": "Reads and writes tracking-plan events and properties, with two-step confirmed deletes and restores for cleanups."
+    },
+    {
+      "id": "project-context",
+      "name": "Project AI Context",
+      "description": "Returns org and project AI Context text with get_amplitude_context so the client applies your metric definitions."
+    },
+    {
+      "id": "progressive-discovery",
+      "name": "Progressive Tool Discovery",
+      "description": "Starts with a small tool list and discovers tools by category on demand when ?discovery=progressive is on the URL."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-04T17:55:56.185Z",
+  "updatedAt": "2026-10-04T17:55:56.185Z"
+}

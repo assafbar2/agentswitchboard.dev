@@ -1,0 +1,62 @@
+{
+  "id": "sanity-mcp",
+  "name": "Sanity MCP",
+  "slug": "sanity-mcp",
+  "description": "Lets agents run GROQ queries, patch and publish documents, manage releases, and deploy schemas in Sanity projects over a hosted OAuth MCP server.",
+  "providerName": "Sanity",
+  "providerUrl": "https://www.sanity.io",
+  "agentUrl": "https://www.sanity.io/docs/ai/mcp-server",
+  "categories": [
+    "content-media",
+    "code-devtools"
+  ],
+  "tags": [
+    "headless-cms",
+    "groq",
+    "content-lake",
+    "structured-content",
+    "remote-mcp",
+    "official-mcp",
+    "sanity"
+  ],
+  "skills": [
+    {
+      "id": "groq-queries",
+      "name": "GROQ Queries",
+      "description": "Runs GROQ queries against a dataset with query_documents and fetches single documents with get_document."
+    },
+    {
+      "id": "document-editing",
+      "name": "Document Editing",
+      "description": "Creates, patches, publishes, and unpublishes documents, and discards drafts, with awareness of the deployed schema."
+    },
+    {
+      "id": "schema-deployment",
+      "name": "Schema Deployment",
+      "description": "Fetches and lists deployed schemas, deploys schema types to the cloud, and deploys a managed Sanity Studio."
+    },
+    {
+      "id": "releases",
+      "name": "Release Management",
+      "description": "Creates and lists content releases and creates document versions that belong to a release."
+    },
+    {
+      "id": "asset-uploads",
+      "name": "Asset Uploads",
+      "description": "Uploads images and files from a public URL or a prepared one-use upload URL into a dataset or a Media Library."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-04T17:55:56.187Z",
+  "updatedAt": "2026-10-04T17:55:56.187Z"
+}

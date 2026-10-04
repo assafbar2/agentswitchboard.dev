@@ -1,0 +1,62 @@
+{
+  "id": "auth0-mcp",
+  "name": "Auth0 MCP",
+  "slug": "auth0-mcp",
+  "description": "Lets agents manage an Auth0 tenant over a local MCP server, creating applications, APIs, and Actions, reading logs, and onboarding projects, with device-flow sign-in.",
+  "providerName": "Auth0 (Okta)",
+  "providerUrl": "https://auth0.com",
+  "agentUrl": "https://auth0.com/docs/get-started/auth0-mcp-server",
+  "categories": [
+    "security",
+    "code-devtools"
+  ],
+  "tags": [
+    "identity",
+    "authentication",
+    "iam",
+    "auth0-actions",
+    "official-mcp",
+    "okta",
+    "auth0"
+  ],
+  "skills": [
+    {
+      "id": "applications",
+      "name": "Application Management",
+      "description": "Lists, creates, and updates Auth0 applications, and saves an application's credentials to a project's .env file."
+    },
+    {
+      "id": "project-onboarding",
+      "name": "Project Onboarding",
+      "description": "Creates an Auth0 application configured for a given framework, saves its credentials, and returns SDK integration code."
+    },
+    {
+      "id": "actions",
+      "name": "Actions Deployment",
+      "description": "Lists, creates, updates, and deploys Auth0 Actions in the connected tenant from natural-language prompts."
+    },
+    {
+      "id": "apis-and-grants",
+      "name": "APIs And Grants",
+      "description": "Creates and updates resource servers (APIs) and client grants that authorize an application to call an API with scopes."
+    },
+    {
+      "id": "tenant-logs",
+      "name": "Tenant Logs",
+      "description": "Lists tenant logs and fetches a log entry by ID, with tool access narrowed by the --read-only and --tools flags."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-04T17:55:56.169Z",
+  "updatedAt": "2026-10-04T17:55:56.169Z"
+}

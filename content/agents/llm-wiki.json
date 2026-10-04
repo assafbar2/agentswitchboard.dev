@@ -1,0 +1,65 @@
+{
+  "id": "llm-wiki",
+  "name": "LLM Wiki",
+  "slug": "llm-wiki",
+  "description": "Builds and maintains an interlinked wiki from your documents in a desktop app, and exposes hybrid search, graph and file reads to agents through a local HTTP API and MCP server.",
+  "providerName": "nashsu",
+  "providerUrl": "https://github.com/nashsu",
+  "agentUrl": "https://github.com/nashsu/llm_wiki",
+  "categories": [
+    "memory-state",
+    "research"
+  ],
+  "tags": [
+    "knowledge-base",
+    "llm-wiki",
+    "knowledge-graph",
+    "desktop-app",
+    "hybrid-search",
+    "mcp-server",
+    "deep-research",
+    "web-clipper"
+  ],
+  "skills": [
+    {
+      "id": "local-http-api",
+      "name": "Local HTTP API",
+      "description": "Serves a token-protected JSON API on 127.0.0.1:19828 for hybrid search, file reads, graph traversal, rescans and SSE-streamed agent chat."
+    },
+    {
+      "id": "mcp-server",
+      "name": "MCP Server",
+      "description": "Bundles a local MCP server that calls the same API, with a copyable client config shown in Settings, API + MCP."
+    },
+    {
+      "id": "deep-research",
+      "name": "Deep Research",
+      "description": "Generates research topics from the wiki, runs multi-query web search via Tavily, SerpApi or SearXNG, and ingests the results."
+    },
+    {
+      "id": "graph-insights",
+      "name": "Graph Insights",
+      "description": "Detects communities in the wikilink graph with Louvain clustering and surfaces surprising connections and knowledge gaps."
+    },
+    {
+      "id": "web-clipper",
+      "name": "Web Clipper",
+      "description": "Clips the current browser page into a chosen wiki project as Markdown through an unpacked Chrome extension and a local API."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "browser-extension"
+  ],
+  "createdAt": "2026-10-04T17:55:56.214Z",
+  "updatedAt": "2026-10-04T17:55:56.214Z"
+}

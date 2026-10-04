@@ -1,0 +1,56 @@
+{
+  "id": "mixpanel-mcp",
+  "name": "Mixpanel MCP",
+  "slug": "mixpanel-mcp",
+  "description": "Lets agents run Mixpanel insights, funnels, flows, and retention queries over a hosted OAuth MCP server, and build dashboards, with US and EU endpoints.",
+  "providerName": "Mixpanel",
+  "providerUrl": "https://mixpanel.com",
+  "agentUrl": "https://docs.mixpanel.com/docs/mcp",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "product-analytics",
+    "funnels",
+    "retention",
+    "dashboards",
+    "remote-mcp",
+    "official-mcp",
+    "mixpanel"
+  ],
+  "skills": [
+    {
+      "id": "analytics-queries",
+      "name": "Analytics Queries",
+      "description": "Runs insights, funnels, flows, and retention queries with Run-Query and displays results as interactive chart widgets."
+    },
+    {
+      "id": "dashboards",
+      "name": "Dashboard Management",
+      "description": "Creates, lists, updates, duplicates, and deletes Mixpanel dashboards built from text cards and reports."
+    },
+    {
+      "id": "data-discovery",
+      "name": "Data Discovery",
+      "description": "Gets business context and query instructions, and searches dashboards, reports, experiments, and feature flags."
+    },
+    {
+      "id": "experiments-flags",
+      "name": "Experiments And Flags",
+      "description": "Lists and searches experiments and feature flags in a Mixpanel project, a tool group in open beta for all users."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-04T17:55:56.184Z",
+  "updatedAt": "2026-10-04T17:55:56.184Z"
+}

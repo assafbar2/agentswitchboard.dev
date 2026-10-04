@@ -1,0 +1,61 @@
+{
+  "id": "xero-mcp",
+  "name": "Xero MCP",
+  "slug": "xero-mcp",
+  "description": "Connects agents to Xero accounting through a local npm MCP server to list and create invoices, contacts, payments, and journals, and to pull financial reports.",
+  "providerName": "Xero",
+  "providerUrl": "https://developer.xero.com",
+  "agentUrl": "https://github.com/XeroAPI/xero-mcp-server",
+  "categories": [
+    "finance"
+  ],
+  "tags": [
+    "accounting",
+    "invoicing",
+    "bookkeeping",
+    "payroll",
+    "financial-reports",
+    "official-mcp",
+    "xero"
+  ],
+  "skills": [
+    {
+      "id": "invoices",
+      "name": "Invoice Management",
+      "description": "Lists, creates, and updates draft invoices, quotes, and credit notes in a Xero organisation through MCP commands."
+    },
+    {
+      "id": "contacts",
+      "name": "Contact Management",
+      "description": "Lists, creates, and updates Xero contacts and contact groups, and pulls aged receivables and payables per contact."
+    },
+    {
+      "id": "financial-reports",
+      "name": "Financial Reports",
+      "description": "Retrieves profit and loss, balance sheet, and trial balance reports from Xero for the connected organisation."
+    },
+    {
+      "id": "payroll-timesheets",
+      "name": "Payroll Timesheets",
+      "description": "Lists payroll employees and leave, and creates, updates, approves, or reverts payroll timesheets for NZ and UK orgs."
+    },
+    {
+      "id": "bank-transactions",
+      "name": "Bank Transactions",
+      "description": "Lists, creates, and updates bank transactions and payments, and records manual journals in a Xero organisation."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-04T17:55:56.168Z",
+  "updatedAt": "2026-10-04T17:55:56.168Z"
+}

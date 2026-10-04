@@ -1,0 +1,58 @@
+{
+  "id": "jcode",
+  "name": "jcode",
+  "slug": "jcode",
+  "description": "Runs a Rust coding-agent harness in the terminal with swarms of collaborating agents, semantic memory, logins for major model subscriptions, and a TypeScript SDK for driving sessions.",
+  "providerName": "Jeremy Huang",
+  "providerUrl": "https://jcode.sh",
+  "agentUrl": "https://github.com/1jehuang/jcode",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "coding-agent-harness",
+    "rust",
+    "terminal",
+    "multi-agent",
+    "agent-memory",
+    "typescript-sdk",
+    "openai-compatible",
+    "jcode"
+  ],
+  "skills": [
+    {
+      "id": "swarm",
+      "name": "Agent Swarms",
+      "description": "Coordinates two or more agents in the same repo through a shared server, and lets an agent spawn its own teammates with the swarm tool."
+    },
+    {
+      "id": "semantic-memory",
+      "name": "Semantic Memory",
+      "description": "Embeds each turn, retrieves related entries from a memory graph by cosine similarity, and gives agents explicit memory and session search tools."
+    },
+    {
+      "id": "typescript-sdk",
+      "name": "TypeScript SDK",
+      "description": "Drives jcode sessions from your program with @1jehuang/jcode-sdk, streaming replies and tool calls and handling permission prompts."
+    },
+    {
+      "id": "provider-logins",
+      "name": "Provider Logins",
+      "description": "Signs in to Claude, OpenAI, Gemini, GitHub Copilot and other providers with jcode login, or adds any OpenAI-compatible endpoint."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.213Z",
+  "updatedAt": "2026-10-04T17:55:56.213Z"
+}

@@ -1,0 +1,63 @@
+{
+  "id": "heroku-mcp",
+  "name": "Heroku MCP",
+  "slug": "heroku-mcp",
+  "description": "Lets agents deploy and manage Heroku apps through a remote OAuth MCP server or the Heroku CLI, covering dynos, add-ons, pipelines, logs, and Postgres.",
+  "providerName": "Heroku (Salesforce)",
+  "providerUrl": "https://www.heroku.com",
+  "agentUrl": "https://devcenter.heroku.com/articles/heroku-remote-mcp-server",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "paas",
+    "app-deployment",
+    "heroku-postgres",
+    "dyno-scaling",
+    "remote-mcp",
+    "official-mcp",
+    "heroku"
+  ],
+  "skills": [
+    {
+      "id": "app-deployment",
+      "name": "App Deployment",
+      "description": "Creates, renames, and transfers apps, and deploys projects to Heroku with an app.json configuration."
+    },
+    {
+      "id": "dyno-management",
+      "name": "Dyno Management",
+      "description": "Lists, scales, resizes, and restarts dynos, and runs code or commands on a sandboxed one-off dyno."
+    },
+    {
+      "id": "pipelines",
+      "name": "Pipeline Promotion",
+      "description": "Creates, lists, and inspects pipelines, and promotes apps to the next stage in a Heroku pipeline."
+    },
+    {
+      "id": "postgres-ops",
+      "name": "Postgres Operations",
+      "description": "Runs SQL with pg_psql, inspects active queries, locks, and outliers, and manages Heroku Postgres backups and upgrades."
+    },
+    {
+      "id": "logs-maintenance",
+      "name": "Logs And Maintenance",
+      "description": "Views application logs, turns maintenance mode on or off, and lists or provisions add-ons for an app."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-04T17:55:56.170Z",
+  "updatedAt": "2026-10-04T17:55:56.170Z"
+}

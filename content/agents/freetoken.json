@@ -1,0 +1,53 @@
+{
+  "id": "freetoken",
+  "name": "FreeToken",
+  "slug": "freetoken",
+  "description": "Serves large Mixture-of-Experts models such as DeepSeek-V4-Flash and GLM-5.2 on consumer NVIDIA GPUs, sharing work across GPU and CPU behind OpenAI- and Anthropic-compatible APIs.",
+  "providerName": "FlashML",
+  "providerUrl": "https://flashml.ai",
+  "agentUrl": "https://github.com/FlashML-org/FreeToken",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "moe-inference",
+    "local-inference",
+    "consumer-gpu",
+    "nvidia-rtx",
+    "expert-offload",
+    "openai-compatible",
+    "anthropic-compatible",
+    "model-serving"
+  ],
+  "skills": [
+    {
+      "id": "api-server",
+      "name": "Compatible API Server",
+      "description": "Starts a local server with ft serve that exposes OpenAI /v1 endpoints, the Anthropic Messages API and the Responses API for a chosen model."
+    },
+    {
+      "id": "agent-launcher",
+      "name": "Coding Agent Launcher",
+      "description": "Discovers the served model with ft launch, writes the coding agent's provider config, installs its CLI if missing and launches it."
+    },
+    {
+      "id": "moe-offload",
+      "name": "MoE Expert Offload",
+      "description": "Runs MoE layers with bandwidth-adaptive CPU-GPU co-execution and LRU expert caching, reallocating VRAM between experts and KV at runtime."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.207Z",
+  "updatedAt": "2026-10-04T17:55:56.207Z"
+}
