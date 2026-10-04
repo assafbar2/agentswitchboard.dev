@@ -1,0 +1,62 @@
+{
+  "id": "picoclaw",
+  "name": "PicoClaw",
+  "slug": "picoclaw",
+  "description": "Runs a lightweight Go personal assistant on low-cost Linux boards, Android phones, and desktops, with chat-app channels, MCP tools, skills, and cron reminders.",
+  "providerName": "Sipeed",
+  "providerUrl": "https://picoclaw.io",
+  "agentUrl": "https://github.com/sipeed/picoclaw",
+  "categories": [
+    "autonomous-agents"
+  ],
+  "tags": [
+    "personal-assistant",
+    "edge-devices",
+    "risc-v",
+    "golang",
+    "chat-channels",
+    "mcp-client",
+    "self-hosted",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "chat-channels",
+      "name": "Chat App Channels",
+      "description": "Connects the assistant to Telegram, Discord, Matrix, WeChat, and other messaging platforms through one shared gateway server."
+    },
+    {
+      "id": "mcp-servers",
+      "name": "MCP Server Management",
+      "description": "Adds, lists, tests, and edits MCP servers with the picoclaw mcp commands so the agent can call external tools and data."
+    },
+    {
+      "id": "scheduled-tasks",
+      "name": "Scheduled Reminders",
+      "description": "Sets one-time reminders, recurring tasks, and cron-expression jobs from natural language through the built-in cron tool."
+    },
+    {
+      "id": "skill-install",
+      "name": "Skill Installation",
+      "description": "Searches and installs SKILL.md capability packs from ClawHub or GitHub registries with picoclaw skills search and install."
+    },
+    {
+      "id": "model-routing",
+      "name": "Model Routing",
+      "description": "Routes simple queries to lightweight models with rule-based routing across 30+ providers, including local Ollama and vLLM."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-04T17:55:56.162Z",
+  "updatedAt": "2026-10-04T17:55:56.162Z"
+}

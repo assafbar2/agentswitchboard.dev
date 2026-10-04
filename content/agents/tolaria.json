@@ -1,0 +1,53 @@
+{
+  "id": "tolaria",
+  "name": "Tolaria",
+  "slug": "tolaria",
+  "description": "Manages Markdown knowledge bases as Git-backed vaults in a desktop app, and lets coding agents search, read and edit notes through a built-in MCP server or an in-app agent panel.",
+  "providerName": "Refactoring",
+  "providerUrl": "https://tolaria.md",
+  "agentUrl": "https://github.com/refactoringhq/tolaria",
+  "categories": [
+    "memory-state",
+    "productivity"
+  ],
+  "tags": [
+    "markdown",
+    "knowledge-base",
+    "second-brain",
+    "git-backed",
+    "desktop-app",
+    "mcp-server",
+    "claude-code",
+    "local-first"
+  ],
+  "skills": [
+    {
+      "id": "vault-mcp-server",
+      "name": "Vault MCP Server",
+      "description": "Lets external agents search and read vault content, create notes, and update or append to notes, with an optional modification-time guard."
+    },
+    {
+      "id": "agent-panel",
+      "name": "Coding Agent Panel",
+      "description": "Streams local CLI agents such as Claude Code, Codex, Copilot and OpenCode inside the app, in Vault Safe or Power User mode."
+    },
+    {
+      "id": "git-vaults",
+      "name": "Git-Backed Vaults",
+      "description": "Treats every vault as a Git repository, so AI-made edits show up as diffs with full history, rollback and any Git remote."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-04T17:55:56.215Z",
+  "updatedAt": "2026-10-04T17:55:56.215Z"
+}

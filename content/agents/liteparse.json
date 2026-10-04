@@ -1,0 +1,64 @@
+{
+  "id": "liteparse",
+  "name": "LiteParse",
+  "slug": "liteparse",
+  "description": "Parses PDFs, Office files, and images locally into markdown, JSON with bounding boxes, or plain text for agents and RAG pipelines, from a CLI or Rust, Node.js, Python, and WASM libraries.",
+  "providerName": "LlamaIndex",
+  "providerUrl": "https://developers.llamaindex.ai/liteparse/",
+  "agentUrl": "https://github.com/run-llama/liteparse",
+  "categories": [
+    "data-analytics",
+    "code-devtools"
+  ],
+  "tags": [
+    "pdf-parsing",
+    "document-parsing",
+    "ocr",
+    "markdown-conversion",
+    "bounding-boxes",
+    "llamaindex",
+    "rag",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "markdown-output",
+      "name": "Markdown Output",
+      "description": "Renders documents to structured Markdown with headings, tables, lists, images, and links, ready to pass to an LLM or RAG pipeline."
+    },
+    {
+      "id": "selective-ocr",
+      "name": "Selective OCR",
+      "description": "Runs bundled Tesseract OCR only where native text is missing, or sends pages to an HTTP OCR server such as EasyOCR or PaddleOCR."
+    },
+    {
+      "id": "complexity-check",
+      "name": "Complexity Check",
+      "description": "Checks cheaply whether a document needs OCR or heavier parsing, so a pipeline can route, reject, or estimate cost before a full parse."
+    },
+    {
+      "id": "page-screenshots",
+      "name": "Page Screenshots",
+      "description": "Generates PNG screenshots of all or selected pages at a custom DPI so vision-capable agents can look at the rendered page itself."
+    },
+    {
+      "id": "batch-parsing",
+      "name": "Batch And Worker Parsing",
+      "description": "Parses whole directories with lit batch-parse, or many files in Python or Node.js worker pools with hard per-parse timeouts."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.133Z",
+  "updatedAt": "2026-10-04T17:55:56.133Z"
+}

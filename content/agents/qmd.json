@@ -1,0 +1,60 @@
+{
+  "id": "qmd",
+  "name": "QMD",
+  "slug": "qmd",
+  "description": "Indexes local markdown notes, meeting transcripts, and docs for on-device BM25, vector, and LLM-reranked hybrid search, exposed to agents through a CLI, an MCP server, and a Node SDK.",
+  "providerName": "Tobi Lütke",
+  "providerUrl": "https://github.com/tobi",
+  "agentUrl": "https://github.com/tobi/qmd",
+  "categories": [
+    "research",
+    "productivity"
+  ],
+  "tags": [
+    "local-search",
+    "hybrid-search",
+    "markdown",
+    "personal-knowledge",
+    "local-mcp",
+    "gguf",
+    "on-device",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "hybrid-query",
+      "name": "Hybrid Query",
+      "description": "Searches with typed lex, vec, and HyDE sub-queries, fuses BM25 and vector results with reciprocal rank fusion, then reranks with an LLM."
+    },
+    {
+      "id": "collections-context",
+      "name": "Collections And Context",
+      "description": "Groups folders into named collections and attaches a tree of context descriptions that come back with matching documents in results."
+    },
+    {
+      "id": "document-retrieval",
+      "name": "Document Retrieval",
+      "description": "Fetches a document by path or docid with fuzzy suggestions, or batches retrieval by glob pattern, list, or docids with multi-get."
+    },
+    {
+      "id": "http-mcp-daemon",
+      "name": "HTTP MCP Daemon",
+      "description": "Serves the query, get, multi_get, status, and metadata tools over stdio or as a long-lived HTTP daemon that avoids reloading models."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.146Z",
+  "updatedAt": "2026-10-04T17:55:56.146Z"
+}

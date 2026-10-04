@@ -1,0 +1,61 @@
+{
+  "id": "jotform-mcp",
+  "name": "Jotform MCP",
+  "slug": "jotform-mcp",
+  "description": "Lets agents search, create, and edit Jotform forms, read and analyze submissions, and send Jotform Sign documents over a hosted OAuth MCP server.",
+  "providerName": "Jotform",
+  "providerUrl": "https://www.jotform.com",
+  "agentUrl": "https://www.jotform.com/developers/mcp/",
+  "categories": [
+    "productivity",
+    "legal"
+  ],
+  "tags": [
+    "forms",
+    "form-submissions",
+    "e-signature",
+    "remote-mcp",
+    "official-mcp",
+    "jotform"
+  ],
+  "skills": [
+    {
+      "id": "form-creation",
+      "name": "Form Creation",
+      "description": "Creates a new form from a description and edits an existing form from instructions through the Jotform MCP server."
+    },
+    {
+      "id": "submission-retrieval",
+      "name": "Submission Retrieval",
+      "description": "Retrieves a form's responses with date filters, sorting, and pagination, or fetches a single submission's details."
+    },
+    {
+      "id": "submission-analysis",
+      "name": "Submission Analysis",
+      "description": "Summarizes form responses with statistics, trends, and insights using the analyze_submissions tool."
+    },
+    {
+      "id": "jotform-sign",
+      "name": "Jotform Sign Documents",
+      "description": "Creates and edits signable documents, manages signers, sends signature requests, and tracks signing progress."
+    },
+    {
+      "id": "form-assignment",
+      "name": "Form Assignment",
+      "description": "Assigns a form to an email recipient, user, or group with a personalized message from inside the AI client."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-04T17:55:56.190Z",
+  "updatedAt": "2026-10-04T17:55:56.190Z"
+}

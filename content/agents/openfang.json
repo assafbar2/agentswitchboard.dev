@@ -1,0 +1,60 @@
+{
+  "id": "openfang",
+  "name": "OpenFang",
+  "slug": "openfang",
+  "description": "Runs scheduled autonomous agents from a single Rust binary, with seven bundled Hands, 40 channel adapters, an OpenAI-compatible API and an MCP server mode.",
+  "providerName": "RightNow AI",
+  "providerUrl": "https://www.openfang.sh/",
+  "agentUrl": "https://github.com/RightNow-AI/openfang",
+  "categories": [
+    "autonomous-agents",
+    "orchestration"
+  ],
+  "tags": [
+    "agent-os",
+    "rust",
+    "scheduled-agents",
+    "self-hosted",
+    "openai-compatible",
+    "channel-adapters",
+    "a2a",
+    "openclaw-migration"
+  ],
+  "skills": [
+    {
+      "id": "hands",
+      "name": "Autonomous Hands",
+      "description": "Activates bundled Hands such as Researcher, Lead, Collector and Browser that run on schedules, with approval gates for sensitive actions."
+    },
+    {
+      "id": "openai-compatible-api",
+      "name": "OpenAI-Compatible API",
+      "description": "Serves agents at /v1/chat/completions with streaming, alongside 140+ REST, WebSocket and SSE endpoints on the local daemon."
+    },
+    {
+      "id": "mcp-server-mode",
+      "name": "MCP Server Mode",
+      "description": "Starts a stdio MCP server with openfang mcp that exposes each OpenFang agent as an MCP tool to external clients."
+    },
+    {
+      "id": "openclaw-migration",
+      "name": "OpenClaw Migration",
+      "description": "Moves agents, memory, skills and configs from an OpenClaw install with openfang migrate --from openclaw, including a dry-run mode."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-10-04T17:55:56.216Z",
+  "updatedAt": "2026-10-04T17:55:56.216Z"
+}

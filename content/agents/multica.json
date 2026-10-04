@@ -1,0 +1,62 @@
+{
+  "id": "multica",
+  "name": "Multica",
+  "slug": "multica",
+  "description": "Gives teams a shared issue board where coding agents such as Claude Code, Codex, and Cursor take assigned issues, run on your own machines, and hand work back for review.",
+  "providerName": "Multica",
+  "providerUrl": "https://multica.ai",
+  "agentUrl": "https://github.com/multica-ai/multica",
+  "categories": [
+    "orchestration",
+    "productivity"
+  ],
+  "tags": [
+    "agent-management",
+    "issue-tracking",
+    "coding-agent",
+    "self-hosted",
+    "source-available",
+    "multica"
+  ],
+  "skills": [
+    {
+      "id": "assign-issues",
+      "name": "Assign Issues To Agents",
+      "description": "Assigns an issue to an agent like a teammate; the agent picks it up, comments on progress, raises blockers, and moves it to review."
+    },
+    {
+      "id": "local-runtimes",
+      "name": "Local Daemon Runtimes",
+      "description": "Runs agents through a daemon on your laptop or cloud box using the agent CLIs installed there, so code stays on your machine."
+    },
+    {
+      "id": "autopilots",
+      "name": "Scheduled Autopilots",
+      "description": "Runs recurring standups, audits, and reports on a cron schedule without anyone having to trigger the agent by hand."
+    },
+    {
+      "id": "squads",
+      "name": "Agent Squads",
+      "description": "Groups agents and people into one team whose leader routes incoming work to the right member of the squad."
+    },
+    {
+      "id": "reusable-skills",
+      "name": "Reusable Skills",
+      "description": "Turns a solved problem into a skill playbook that every agent in the workspace can reuse on later issues."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.153Z",
+  "updatedAt": "2026-10-04T17:55:56.153Z"
+}

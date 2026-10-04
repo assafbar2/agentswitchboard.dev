@@ -1,0 +1,63 @@
+{
+  "id": "oh-my-pi",
+  "name": "oh-my-pi",
+  "slug": "oh-my-pi",
+  "description": "Runs a terminal coding agent forked from Pi with language servers, debuggers, subagents, and code review built in, usable as a TUI, one-shot command, Node SDK, RPC, or ACP server.",
+  "providerName": "Stencil Labs",
+  "providerUrl": "https://omp.sh",
+  "agentUrl": "https://github.com/can1357/oh-my-pi",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "coding-agent",
+    "terminal-agent",
+    "pi-fork",
+    "lsp",
+    "debugger",
+    "subagents",
+    "agent-client-protocol",
+    "multi-provider"
+  ],
+  "skills": [
+    {
+      "id": "lsp-edits",
+      "name": "LSP-Aware Edits",
+      "description": "Routes renames and writes through language servers, so re-exports, barrel files, and aliased imports update before a file moves."
+    },
+    {
+      "id": "debugger",
+      "name": "Debugger Sessions",
+      "description": "Attaches real debuggers such as lldb, dlv, and debugpy to step through a crash or hang, read frames, and inspect variables."
+    },
+    {
+      "id": "subagents",
+      "name": "Typed Subagents",
+      "description": "Fans a task out to subagents in isolated worktrees, each with its own tools, and returns a schema-validated object to the parent."
+    },
+    {
+      "id": "code-review",
+      "name": "Prioritized Code Review",
+      "description": "Spawns reviewer subagents with /review over a branch, commit, or uncommitted work, ranking issues P0 to P3 with a ship verdict."
+    },
+    {
+      "id": "embedding",
+      "name": "SDK, RPC, And ACP",
+      "description": "Embeds the agent in Node through its SDK, drives it over NDJSON RPC on stdio, or connects it to editors with the Agent Client Protocol."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.134Z",
+  "updatedAt": "2026-10-04T17:55:56.134Z"
+}

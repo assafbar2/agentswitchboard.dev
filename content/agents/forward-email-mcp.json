@@ -1,0 +1,63 @@
+{
+  "id": "forward-email-mcp",
+  "name": "Forward Email MCP",
+  "slug": "forward-email-mcp",
+  "description": "Gives MCP clients 68 tools over the Forward Email API to manage domains, aliases, outbound email, IMAP mailboxes, contacts, and calendars, running locally over stdio.",
+  "providerName": "Forward Email",
+  "providerUrl": "https://forwardemail.net",
+  "agentUrl": "https://forwardemail.net/en/blog/docs/mcp",
+  "categories": [
+    "communication"
+  ],
+  "tags": [
+    "forward-email",
+    "email",
+    "official-mcp",
+    "local-mcp",
+    "imap",
+    "caldav",
+    "carddav",
+    "email-aliases"
+  ],
+  "skills": [
+    {
+      "id": "domain-alias-management",
+      "name": "Domain And Alias Management",
+      "description": "Adds domains, verifies their DNS and SMTP records, and creates, updates, or deletes aliases and their generated passwords with an API key."
+    },
+    {
+      "id": "mailbox-access",
+      "name": "Mailbox Access",
+      "description": "Lists, reads, creates, updates, and deletes messages and folders in an alias mailbox over IMAP, using the alias address and a generated password."
+    },
+    {
+      "id": "contacts-calendars",
+      "name": "Contacts And Calendars",
+      "description": "Manages an alias's CardDAV contacts and CalDAV calendars and events, so an assistant can clean up contacts or schedule meetings."
+    },
+    {
+      "id": "outbound-email",
+      "name": "Outbound Email",
+      "description": "Sends email over Forward Email's outbound SMTP and lists, inspects, or deletes sent messages and checks the account's sending limit."
+    },
+    {
+      "id": "sieve-scripts",
+      "name": "Sieve Filter Scripts",
+      "description": "Creates, updates, and deletes Sieve filtering scripts at domain scope with an API key, or per alias with that alias's credentials."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.123Z",
+  "updatedAt": "2026-10-04T17:55:56.123Z"
+}

@@ -1,0 +1,58 @@
+{
+  "id": "t3-code",
+  "name": "T3 Code",
+  "slug": "t3-code",
+  "description": "Controls the coding agents already on your machine, such as Claude Code, Codex, Cursor and OpenCode, from a desktop, web or mobile app backed by a local server started with the t3 CLI.",
+  "providerName": "Ping Labs",
+  "providerUrl": "https://t3.codes",
+  "agentUrl": "https://github.com/pingdotgg/t3code",
+  "categories": [
+    "code-devtools",
+    "orchestration"
+  ],
+  "tags": [
+    "coding-agents",
+    "agent-harness",
+    "claude-code",
+    "codex",
+    "remote-access",
+    "desktop-app",
+    "mobile-app",
+    "t3-code"
+  ],
+  "skills": [
+    {
+      "id": "remote-access",
+      "name": "Remote Access",
+      "description": "Connects a phone, browser or another desktop to a T3 Code host through T3 Connect or the t3 connect command, without router forwarding."
+    },
+    {
+      "id": "permission-modes",
+      "name": "Permission Modes",
+      "description": "Sets per-thread approval rules, from Supervised to Auto-accept edits, Auto or Full access, with project and environment defaults."
+    },
+    {
+      "id": "source-control",
+      "name": "Source Control Integrations",
+      "description": "Clones and publishes repositories, creates pull requests and reviews changes on GitHub, GitLab, Forgejo, Gitea, Bitbucket and Azure DevOps."
+    },
+    {
+      "id": "background-service",
+      "name": "Background Service",
+      "description": "Installs T3 Code as a per-user service on Linux and macOS with t3 service install, so agents stay reachable without an open terminal."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-04T17:55:56.199Z",
+  "updatedAt": "2026-10-04T17:55:56.199Z"
+}

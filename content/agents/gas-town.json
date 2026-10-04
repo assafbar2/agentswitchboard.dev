@@ -1,0 +1,62 @@
+{
+  "id": "gas-town",
+  "name": "Gas Town",
+  "slug": "gas-town",
+  "description": "Coordinates 20 to 30 coding agents such as Claude Code, Codex, and Copilot across git repos, keeping work state in git-backed hooks and a Beads issue ledger.",
+  "providerName": "Gas Town Hall",
+  "providerUrl": "https://gascity.com",
+  "agentUrl": "https://github.com/gastownhall/gastown",
+  "categories": [
+    "orchestration",
+    "code-devtools"
+  ],
+  "tags": [
+    "multi-agent",
+    "coding-agent",
+    "work-tracking",
+    "git-worktrees",
+    "beads",
+    "open-source",
+    "gastown"
+  ],
+  "skills": [
+    {
+      "id": "mayor-coordinator",
+      "name": "Mayor Coordinator",
+      "description": "Runs a Mayor agent with full workspace context that turns your request into convoys of beads and slings them to worker agents."
+    },
+    {
+      "id": "persistent-hooks",
+      "name": "Persistent Work Hooks",
+      "description": "Stores each agent's work in git worktree hooks and a Beads ledger, so work survives crashes, restarts, and ended sessions."
+    },
+    {
+      "id": "watchdog-recovery",
+      "name": "Watchdog Recovery",
+      "description": "Monitors agents with per-rig Witnesses and a patrolling Deacon that detect stuck work, trigger recovery, and escalate blockers."
+    },
+    {
+      "id": "refinery-merge-queue",
+      "name": "Refinery Merge Queue",
+      "description": "Batches finished work into a Bors-style bisecting merge queue that runs verification gates and isolates failing merge requests."
+    },
+    {
+      "id": "formula-workflows",
+      "name": "Formula Workflows",
+      "description": "Defines repeatable multi-step processes as TOML formulas and runs them as tracked molecules with checkpointed steps."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-04T17:55:56.159Z",
+  "updatedAt": "2026-10-04T17:55:56.159Z"
+}

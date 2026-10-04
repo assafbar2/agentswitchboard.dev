@@ -1,0 +1,56 @@
+{
+  "id": "gocardless-mcp",
+  "name": "GoCardless MCP",
+  "slug": "gocardless-mcp",
+  "description": "Lets agents look up GoCardless payments, mandates, and payouts, create payments or refunds with confirmation, and get API integration guidance over a hosted MCP.",
+  "providerName": "GoCardless",
+  "providerUrl": "https://gocardless.com",
+  "agentUrl": "https://docs.gocardless.com/docs/developer-resources/mcp",
+  "categories": [
+    "commerce-payments",
+    "finance"
+  ],
+  "tags": [
+    "direct-debit",
+    "bank-payments",
+    "recurring-payments",
+    "remote-mcp",
+    "official-mcp",
+    "gocardless"
+  ],
+  "skills": [
+    {
+      "id": "integration-guidance",
+      "name": "Integration Guidance",
+      "description": "Answers GoCardless API questions and writes integration code, such as billing requests and hosted payment page redirects."
+    },
+    {
+      "id": "payment-lookup",
+      "name": "Payment Lookup",
+      "description": "Looks up payments, customers, mandates, subscriptions, payouts, refunds, and events to check statuses or debug failures."
+    },
+    {
+      "id": "payment-actions",
+      "name": "Payment Actions",
+      "description": "Creates one-off payments, issues refunds, and cancels mandates, with a confirmation preview before money moves."
+    },
+    {
+      "id": "sandbox-live",
+      "name": "Sandbox And Live",
+      "description": "Switches the MCP connection between the Sandbox and Live environments so write actions can be tested first."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-04T17:55:56.188Z",
+  "updatedAt": "2026-10-04T17:55:56.188Z"
+}

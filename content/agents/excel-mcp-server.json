@@ -1,0 +1,58 @@
+{
+  "id": "excel-mcp-server",
+  "name": "Excel MCP Server",
+  "slug": "excel-mcp-server",
+  "description": "Lets AI assistants create, read and edit Excel workbooks without Excel installed, covering formulas, formatting, tables, charts and validation, over stdio or Streamable HTTP MCP.",
+  "providerName": "Haris Musa",
+  "providerUrl": "https://excelmcpserver.com",
+  "agentUrl": "https://github.com/haris-musa/excel-mcp-server",
+  "categories": [
+    "productivity",
+    "data-analytics"
+  ],
+  "tags": [
+    "excel",
+    "spreadsheets",
+    "xlsx",
+    "mcp-server",
+    "streamable-http",
+    "charts",
+    "data-validation",
+    "community-mcp"
+  ],
+  "skills": [
+    {
+      "id": "cell-read-write",
+      "name": "Cell Read and Write",
+      "description": "Reads and writes cells, formulas and dates, with paging for large sheets and search, in .xlsx, .xlsm, .xltx and .xltm files."
+    },
+    {
+      "id": "workbook-formatting",
+      "name": "Workbook Formatting",
+      "description": "Sets fonts, fills, borders, number formats, column widths and frozen panes, plus conditional formatting and data validation rules."
+    },
+    {
+      "id": "sheet-structure",
+      "name": "Sheets, Tables and Charts",
+      "description": "Manages sheets, rows and columns, merged cells, tables, charts and summary tables inside a workbook through MCP tools."
+    },
+    {
+      "id": "vba-reading",
+      "name": "VBA Macro Reading",
+      "description": "Reads the VBA code in .xlsm files module by module in read-only mode, never running it, while preserving macros on save."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-04T17:55:56.219Z",
+  "updatedAt": "2026-10-04T17:55:56.219Z"
+}

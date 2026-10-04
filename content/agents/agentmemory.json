@@ -1,0 +1,62 @@
+{
+  "id": "agentmemory",
+  "name": "agentmemory",
+  "slug": "agentmemory",
+  "description": "Gives coding agents such as Claude Code, Codex, Cursor, and Gemini CLI a shared local memory server that captures sessions through hooks and serves recall over MCP and REST.",
+  "providerName": "Rohit Ghumare",
+  "providerUrl": "https://agent-memory.dev",
+  "agentUrl": "https://github.com/rohitg00/agentmemory",
+  "categories": [
+    "memory-state"
+  ],
+  "tags": [
+    "agent-memory",
+    "coding-agent",
+    "hybrid-search",
+    "local-first",
+    "mcp-server",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "hook-capture",
+      "name": "Automatic Hook Capture",
+      "description": "Records observations from agent sessions through native plugins and lifecycle hooks, so memory builds without manual saves."
+    },
+    {
+      "id": "hybrid-retrieval",
+      "name": "Triple-Stream Retrieval",
+      "description": "Recalls memories by fusing BM25, vector, and knowledge-graph results with reciprocal rank fusion; keyless mode falls back to BM25."
+    },
+    {
+      "id": "tiered-consolidation",
+      "name": "Tiered Memory Consolidation",
+      "description": "Consolidates memories across four tiers, decays stale ones over time, strengthens frequently used ones, and resolves contradictions."
+    },
+    {
+      "id": "git-snapshots",
+      "name": "Memory Git Snapshots",
+      "description": "Versions memory state with git snapshots so you can diff it, roll it back, or restore an earlier version."
+    },
+    {
+      "id": "team-memory",
+      "name": "Team Memory",
+      "description": "Shares namespaced memory across team members while keeping private memories separate for each person."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.157Z",
+  "updatedAt": "2026-10-04T17:55:56.157Z"
+}

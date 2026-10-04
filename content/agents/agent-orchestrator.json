@@ -1,0 +1,58 @@
+{
+  "id": "agent-orchestrator",
+  "name": "Agent Orchestrator",
+  "slug": "agent-orchestrator",
+  "description": "Runs and supervises parallel coding agents, each in its own branch and worktree, with a planning orchestrator and a live Kanban that tracks PRs, CI and reviews through merge.",
+  "providerName": "Untrivial",
+  "providerUrl": "https://orchestrator.inc",
+  "agentUrl": "https://github.com/Untrivial-ai/agent-orchestrator",
+  "categories": [
+    "orchestration",
+    "code-devtools"
+  ],
+  "tags": [
+    "parallel-agents",
+    "coding-agents",
+    "git-worktrees",
+    "kanban",
+    "pull-requests",
+    "claude-code",
+    "codex",
+    "desktop-app"
+  ],
+  "skills": [
+    {
+      "id": "isolated-workers",
+      "name": "Isolated Workers",
+      "description": "Gives each task one coding agent with its own branch and worktree, plus its terminal, isolated browser and pull request in one place."
+    },
+    {
+      "id": "project-orchestrator",
+      "name": "Project Orchestrator",
+      "description": "Keeps a persistent planning agent per project that turns outcomes into plans, spawns or redirects workers, and coordinates follow-up work."
+    },
+    {
+      "id": "live-kanban",
+      "name": "Live Kanban",
+      "description": "Places every worker on a board derived from session, pull request, CI and review state: Working, Needs you, In review and Ready to merge."
+    },
+    {
+      "id": "ao-cli",
+      "name": "ao CLI",
+      "description": "Drives the local daemon from a shell with ao spawn, ao session, ao project and ao status, each mapped to a documented daemon route."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-04T17:55:56.210Z",
+  "updatedAt": "2026-10-04T17:55:56.210Z"
+}

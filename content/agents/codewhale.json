@@ -1,0 +1,61 @@
+{
+  "id": "codewhale",
+  "name": "Codewhale",
+  "slug": "codewhale",
+  "description": "Runs a terminal coding agent with plan and work modes, approval levels, durable goals, agent teams, and MCP, using hosted or local models through Ollama, vLLM, or SGLang.",
+  "providerName": "Hmbown",
+  "providerUrl": "https://codewhale.net/",
+  "agentUrl": "https://github.com/Hmbown/Codewhale",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "coding-agent",
+    "terminal-agent",
+    "multi-provider",
+    "local-models",
+    "rust",
+    "open-source",
+    "codewhale"
+  ],
+  "skills": [
+    {
+      "id": "plan-work-modes",
+      "name": "Plan And Work Modes",
+      "description": "Explores read-only in plan mode, edits in work mode, and lets you pick Ask, Auto-Review, or Full Access approval levels."
+    },
+    {
+      "id": "headless-exec",
+      "name": "Headless Exec Runs",
+      "description": "Runs a task non-interactively with codewhale exec for scripts and CI, or opens the same runtime in a local web client."
+    },
+    {
+      "id": "agent-teams",
+      "name": "Agent Teams",
+      "description": "Coordinates teams of agents with roles kept as readable files in the project, without dumping their instructions into your transcript."
+    },
+    {
+      "id": "github-pr-review",
+      "name": "GitHub PR Review",
+      "description": "Reviews pull requests from a GitHub Action that runs codewhale review on a pinned release, authorized by a Codewhale account key."
+    },
+    {
+      "id": "undo-restore",
+      "name": "Undo And Restore",
+      "description": "Recovers workspace changes with /undo and /restore, and saves sessions with a durable /goal so long work can resume."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-04T17:55:56.158Z",
+  "updatedAt": "2026-10-04T17:55:56.158Z"
+}
