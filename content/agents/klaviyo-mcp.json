@@ -1,0 +1,57 @@
+{
+  "id": "klaviyo-mcp",
+  "name": "Klaviyo MCP",
+  "slug": "klaviyo-mcp",
+  "description": "Gives agents Klaviyo marketing data over a remote OAuth MCP server or local PyPI server, to report on and create email campaigns, flows, and catalogs.",
+  "providerName": "Klaviyo",
+  "providerUrl": "https://www.klaviyo.com",
+  "agentUrl": "https://developers.klaviyo.com/en/docs/klaviyo_mcp_server",
+  "categories": [
+    "sales-marketing",
+    "commerce-payments"
+  ],
+  "tags": [
+    "email-marketing",
+    "sms-marketing",
+    "marketing-campaigns",
+    "ecommerce",
+    "remote-mcp",
+    "official-mcp",
+    "klaviyo"
+  ],
+  "skills": [
+    {
+      "id": "campaigns",
+      "name": "Campaign Management",
+      "description": "Lists, creates, clones, updates, and sends campaigns, and estimates the number of recipients before a send."
+    },
+    {
+      "id": "performance-reports",
+      "name": "Performance Reporting",
+      "description": "Pulls campaign and flow performance reports and aggregates event data for a metric with query_metric_aggregates."
+    },
+    {
+      "id": "flows",
+      "name": "Flow Management",
+      "description": "Lists flows, inspects flow messages and actions, finds flows triggered by a metric, list, or segment, and creates flows."
+    },
+    {
+      "id": "catalogs",
+      "name": "Catalog Management",
+      "description": "Lists, creates, updates, and bulk-edits catalog items, variants, and categories, and creates back-in-stock subscriptions."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-04T17:55:56.174Z",
+  "updatedAt": "2026-10-04T17:55:56.174Z"
+}

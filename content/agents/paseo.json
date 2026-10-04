@@ -1,0 +1,59 @@
+{
+  "id": "paseo",
+  "name": "Paseo",
+  "slug": "paseo",
+  "description": "Runs Claude Code, Codex, Copilot, OpenCode, and other coding agents in parallel on your own machines through a local daemon, controlled from desktop, mobile, web, a CLI, or a TypeScript SDK.",
+  "providerName": "Paseo",
+  "providerUrl": "https://paseo.sh",
+  "agentUrl": "https://github.com/getpaseo/paseo",
+  "categories": [
+    "code-devtools",
+    "orchestration"
+  ],
+  "tags": [
+    "parallel-agents",
+    "agent-orchestration",
+    "self-hosted",
+    "mobile-app",
+    "claude-code",
+    "codex",
+    "voice-control",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "parallel-runs",
+      "name": "Parallel Agent Runs",
+      "description": "Starts agents on a chosen provider and model with paseo run, optionally in a git worktree, then lists, attaches to, or messages them."
+    },
+    {
+      "id": "remote-daemon",
+      "name": "Remote Daemon Control",
+      "description": "Runs tasks on another machine's daemon with --host, connected through an end-to-end encrypted relay, TCP, Tailscale, or a VPN."
+    },
+    {
+      "id": "typescript-sdk",
+      "name": "TypeScript SDK",
+      "description": "Builds issue integrations, dashboards, and orchestration services with @getpaseo/client, creating agents and waiting for their results."
+    },
+    {
+      "id": "handoff-skills",
+      "name": "Agent Handoff Skills",
+      "description": "Hands work from one agent to another, asks a second agent for advice, or forms a two-agent committee with the bundled Paseo skills."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.150Z",
+  "updatedAt": "2026-10-04T17:55:56.150Z"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "turbovec",
+  "name": "turbovec",
+  "slug": "turbovec",
+  "description": "Indexes and searches embeddings with 2- to 4-bit TurboQuant compression in a Rust library with Python bindings, for local RAG pipelines that need a small memory footprint.",
+  "providerName": "Ryan Codrai",
+  "providerUrl": "https://github.com/RyanCodrai",
+  "agentUrl": "https://github.com/RyanCodrai/turbovec",
+  "categories": [
+    "vector-databases"
+  ],
+  "tags": [
+    "vector-index",
+    "vector-quantization",
+    "turboquant",
+    "rust",
+    "python",
+    "rag",
+    "langchain",
+    "llamaindex"
+  ],
+  "skills": [
+    {
+      "id": "filtered-search",
+      "name": "Filtered Search",
+      "description": "Restricts search() to an id allowlist or slot bitmask inside the kernel, returning up to k results from the allowed set without over-fetching."
+    },
+    {
+      "id": "incremental-saves",
+      "name": "Incremental Saves",
+      "description": "Persists only what changed since the last sync(path) call with one fsync, so small appends or removals stay fast on large indexes."
+    },
+    {
+      "id": "framework-integrations",
+      "name": "Framework Integrations",
+      "description": "Replaces the in-memory vector stores of LangChain, LlamaIndex, Haystack and Agno through optional pip extras such as turbovec[langchain]."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.208Z",
+  "updatedAt": "2026-10-04T17:55:56.208Z"
+}

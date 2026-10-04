@@ -1,0 +1,58 @@
+{
+  "id": "trellis",
+  "name": "Trellis",
+  "slug": "trellis",
+  "description": "Persists specs, task PRDs and session journals in your repo and injects them into coding agents such as Claude Code, Cursor and Codex, with plan, implement and check sub-agents.",
+  "providerName": "Mindfold",
+  "providerUrl": "https://docs.trytrellis.app",
+  "agentUrl": "https://github.com/mindfold-ai/Trellis",
+  "categories": [
+    "code-devtools",
+    "orchestration"
+  ],
+  "tags": [
+    "spec-driven-development",
+    "coding-agents",
+    "project-memory",
+    "task-workflow",
+    "claude-code",
+    "cursor",
+    "codex",
+    "sub-agents"
+  ],
+  "skills": [
+    {
+      "id": "auto-injected-specs",
+      "name": "Auto-Injected Specs",
+      "description": "Injects the relevant conventions from .trellis/spec/ into each agent session so project rules are written once instead of repeated."
+    },
+    {
+      "id": "task-workflow",
+      "name": "Task Workflow",
+      "description": "Keeps PRDs, implementation and review context, and task status in .trellis/tasks/, and archives tasks with /trellis:finish-work."
+    },
+    {
+      "id": "session-journals",
+      "name": "Session Journals",
+      "description": "Writes per-developer journals in .trellis/workspace/ so each new agent session starts from what happened in the last one."
+    },
+    {
+      "id": "plan-implement-check",
+      "name": "Plan-Implement-Check Loop",
+      "description": "Runs brainstorm, implement and check sub-agents that write a PRD, code from it, and verify the diff against specs, lint, types and tests."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-04T17:55:56.211Z",
+  "updatedAt": "2026-10-04T17:55:56.211Z"
+}

@@ -1,0 +1,57 @@
+{
+  "id": "vercel-skills",
+  "name": "Vercel Skills",
+  "slug": "vercel-skills",
+  "description": "Installs, updates, and searches agent skills from GitHub, GitLab, any git URL, or a local path into Claude Code, Codex, Cursor, OpenCode, and other coding agents via npx skills.",
+  "providerName": "Vercel Labs",
+  "providerUrl": "https://skills.sh",
+  "agentUrl": "https://github.com/vercel-labs/skills",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "agent-skills",
+    "skill-installer",
+    "package-manager",
+    "skills-sh",
+    "vercel",
+    "claude-code",
+    "codex",
+    "cursor"
+  ],
+  "skills": [
+    {
+      "id": "skill-install",
+      "name": "Skill Installation",
+      "description": "Installs skills from GitHub shorthand, any git URL, or a local path into one or more agents, at project or global scope, by symlink or copy."
+    },
+    {
+      "id": "skill-use",
+      "name": "One-Off Skill Use",
+      "description": "Generates a prompt from a skill without installing it, or starts a supported coding agent with that skill loaded, using skills use."
+    },
+    {
+      "id": "skill-search",
+      "name": "Skill Search",
+      "description": "Searches for skills interactively or by keyword, optionally across every repository owned by one organization or user, with skills find."
+    },
+    {
+      "id": "skill-lifecycle",
+      "name": "Skill Updates And Removal",
+      "description": "Lists, updates, and removes installed skills per agent and scope, and scaffolds a new SKILL.md template with skills init."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-04T17:55:56.127Z",
+  "updatedAt": "2026-10-04T17:55:56.127Z"
+}

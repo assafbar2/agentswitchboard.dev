@@ -1,0 +1,56 @@
+{
+  "id": "miro-mcp",
+  "name": "Miro MCP",
+  "slug": "miro-mcp",
+  "description": "Lets agents read, search, and build Miro boards over a hosted OAuth MCP server, including SVG-based diagrams, tables, comments, and prototypes.",
+  "providerName": "Miro",
+  "providerUrl": "https://miro.com",
+  "agentUrl": "https://developers.miro.com/docs/miro-mcp",
+  "categories": [
+    "productivity",
+    "code-devtools"
+  ],
+  "tags": [
+    "whiteboard",
+    "diagrams",
+    "visual-collaboration",
+    "remote-mcp",
+    "official-mcp",
+    "miro"
+  ],
+  "skills": [
+    {
+      "id": "board-search",
+      "name": "Board Search",
+      "description": "Searches and lists the Miro boards the current user can access, and creates new boards from a prompt."
+    },
+    {
+      "id": "canvas-svg",
+      "name": "Canvas SVG Editing",
+      "description": "Reads board items as SVG and applies SVG diffs to create, update, or delete items, including Mermaid diagrams."
+    },
+    {
+      "id": "comments",
+      "name": "Comment Handling",
+      "description": "Lists comments on a board or a specific item, replies to comment threads, and resolves or unresolves them."
+    },
+    {
+      "id": "prototypes",
+      "name": "Prototype Screens",
+      "description": "Reads prototype screens and metadata from a board, and creates Miro prototypes from one or more HTML screens."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-04T17:55:56.178Z",
+  "updatedAt": "2026-10-04T17:55:56.178Z"
+}

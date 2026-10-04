@@ -1,0 +1,59 @@
+{
+  "id": "open-design",
+  "name": "Open Design",
+  "slug": "open-design",
+  "description": "Turns a local coding agent into a design engine that produces prototypes, decks, dashboards, and images, with a desktop app, od CLI, and stdio MCP server.",
+  "providerName": "Nexu",
+  "providerUrl": "https://open-design.ai",
+  "agentUrl": "https://github.com/nexu-io/open-design",
+  "categories": [
+    "content-media",
+    "code-devtools"
+  ],
+  "tags": [
+    "design-systems",
+    "prototyping",
+    "slide-decks",
+    "coding-agents",
+    "byok",
+    "stdio-mcp",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "prototype-generation",
+      "name": "Prototype Generation",
+      "description": "Generates web, desktop, and mobile prototypes from a brief by composing a skill or design template with your DESIGN.md."
+    },
+    {
+      "id": "slide-decks",
+      "name": "Slide Decks",
+      "description": "Builds magazine-style decks, weekly updates, and pitch decks as project files previewed in the OpenDesign studio."
+    },
+    {
+      "id": "mcp-project-access",
+      "name": "MCP Project Access",
+      "description": "Installs a stdio MCP server into 16+ agent CLIs with od mcp install so they read tokens, components, and HTML from projects."
+    },
+    {
+      "id": "plugin-management",
+      "name": "Plugin Management",
+      "description": "Lists, searches, installs, applies, and scaffolds OpenDesign plugins from the od CLI or the web UI."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.194Z",
+  "updatedAt": "2026-10-04T17:55:56.194Z"
+}

@@ -1,0 +1,58 @@
+{
+  "id": "nanoclaw",
+  "name": "NanoClaw",
+  "slug": "nanoclaw",
+  "description": "Runs a personal assistant agent on the Claude Agent SDK in per-agent Docker containers, reachable from WhatsApp, Telegram, Slack, Discord, and other chat apps, with scheduled tasks.",
+  "providerName": "NanoCo",
+  "providerUrl": "https://nanoclaw.dev",
+  "agentUrl": "https://github.com/nanocoai/nanoclaw",
+  "categories": [
+    "autonomous-agents",
+    "voice-messaging"
+  ],
+  "tags": [
+    "personal-assistant",
+    "container-isolation",
+    "claude-agent-sdk",
+    "whatsapp",
+    "telegram",
+    "slack",
+    "self-hosted",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "multi-channel",
+      "name": "Multi-Channel Messaging",
+      "description": "Connects agents to WhatsApp, Telegram, Discord, Slack, Teams, iMessage, Matrix, email, and more, added on demand with /add- skills."
+    },
+    {
+      "id": "container-isolation",
+      "name": "Container Isolation",
+      "description": "Runs each agent group in its own Linux container with its own CLAUDE.md, memory, and only the filesystem mounts you allow."
+    },
+    {
+      "id": "scheduled-tasks",
+      "name": "Scheduled Tasks",
+      "description": "Runs recurring jobs such as weekday briefings, with optional script gates that skip waking the agent when there is no work to do."
+    },
+    {
+      "id": "credential-gateway",
+      "name": "Credential Gateway",
+      "description": "Routes outbound requests through a gateway that injects credentials at request time, so agents never hold raw API keys."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-04T17:55:56.144Z",
+  "updatedAt": "2026-10-04T17:55:56.144Z"
+}

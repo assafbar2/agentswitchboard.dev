@@ -1,0 +1,63 @@
+{
+  "id": "code-review-graph",
+  "name": "code-review-graph",
+  "slug": "code-review-graph",
+  "description": "Builds a local Tree-sitter graph of a codebase and serves blast-radius and risk-scored review context to coding agents over MCP, plus a CLI and a GitHub Action for pull requests.",
+  "providerName": "Tirth Patel",
+  "providerUrl": "https://code-review-graph.com",
+  "agentUrl": "https://github.com/tirth8205/code-review-graph",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "code-review",
+    "code-graph",
+    "tree-sitter",
+    "local-mcp",
+    "blast-radius",
+    "github-actions",
+    "sqlite",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "blast-radius",
+      "name": "Blast-Radius Analysis",
+      "description": "Traces every caller, dependent, and test a changed file could affect, so the assistant reads those files instead of the whole project."
+    },
+    {
+      "id": "risk-scored-review",
+      "name": "Risk-Scored Reviews",
+      "description": "Maps a diff to affected functions, execution flows, and test gaps with detect_changes, and scores each change by risk for review."
+    },
+    {
+      "id": "pr-github-action",
+      "name": "PR Review Action",
+      "description": "Runs the analysis as a GitHub Action that posts one sticky risk-scored comment per pull request, with an optional fail-on-risk gate."
+    },
+    {
+      "id": "incremental-updates",
+      "name": "Incremental Graph Updates",
+      "description": "Keeps the graph current through editor hooks, a git pre-commit hook, and watch mode, re-parsing only files whose hash has changed."
+    },
+    {
+      "id": "architecture-overview",
+      "name": "Architecture Overview",
+      "description": "Clusters the graph into communities with Leiden and produces an architecture map with coupling warnings, hubs, and bridge nodes."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-10-04T17:55:56.145Z",
+  "updatedAt": "2026-10-04T17:55:56.145Z"
+}

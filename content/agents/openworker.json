@@ -1,0 +1,58 @@
+{
+  "id": "openworker",
+  "name": "OpenWorker",
+  "slug": "openworker",
+  "description": "Runs a local desktop coworker that plans and completes tasks across your files, terminal and 25+ connected apps, with approval gates, an audit trail and your own model keys or Ollama.",
+  "providerName": "Andrew Ng",
+  "providerUrl": "https://openworker.com",
+  "agentUrl": "https://github.com/andrewyng/openworker",
+  "categories": [
+    "autonomous-agents",
+    "productivity"
+  ],
+  "tags": [
+    "desktop-coworker",
+    "approval-gates",
+    "audit-trail",
+    "bring-your-own-key",
+    "ollama",
+    "mcp-client",
+    "sandboxing",
+    "security-review"
+  ],
+  "skills": [
+    {
+      "id": "security-review",
+      "name": "Security Review",
+      "description": "Scans a codebase and its dependencies with semgrep plus model reasoning, then re-scans and diff-reviews proposed fixes before you approve."
+    },
+    {
+      "id": "slack-sessions",
+      "name": "Work From Slack",
+      "description": "Opens a desktop session when you mention @OpenWorker in a Slack channel and posts the finished answer back as a thread reply."
+    },
+    {
+      "id": "scheduled-automations",
+      "name": "Scheduled Automations",
+      "description": "Runs recurring work such as a morning brief, weekly report or channel watch on a schedule, with full transcripts kept in the app."
+    },
+    {
+      "id": "sandboxed-commands",
+      "name": "Sandboxed Commands",
+      "description": "Runs each agent's shell and file tools in an NVIDIA OpenShell Linux container, or the built-in macOS sandbox, with an allow-listed network."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.203Z",
+  "updatedAt": "2026-10-04T17:55:56.203Z"
+}

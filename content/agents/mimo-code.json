@@ -1,0 +1,57 @@
+{
+  "id": "mimo-code",
+  "name": "MiMo Code",
+  "slug": "mimo-code",
+  "description": "Runs Xiaomi's terminal coding agent with build, plan, and compose modes, persistent project memory, subagents, and scripted multi-agent workflows across any mainstream model provider.",
+  "providerName": "Xiaomi",
+  "providerUrl": "https://mimo.xiaomi.com/mimocode",
+  "agentUrl": "https://github.com/XiaomiMiMo/MiMo-Code",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "coding-agent",
+    "terminal-agent",
+    "xiaomi",
+    "mimo",
+    "persistent-memory",
+    "subagents",
+    "opencode-fork",
+    "multi-provider"
+  ],
+  "skills": [
+    {
+      "id": "persistent-memory",
+      "name": "Persistent Project Memory",
+      "description": "Keeps project memory, session checkpoints, notes, and task progress in SQLite FTS5 and injects them when a session resumes."
+    },
+    {
+      "id": "goal-stop",
+      "name": "Goal Stop Condition",
+      "description": "Sets a stopping condition with /goal and has an independent judge model check it before the agent is allowed to end its run."
+    },
+    {
+      "id": "workflows",
+      "name": "Multi-Agent Workflows",
+      "description": "Runs deterministic JavaScript workflows such as compose, deep-research, fact-check, and research-experiment across parallel agents."
+    },
+    {
+      "id": "dream-distill",
+      "name": "Dream And Distill",
+      "description": "Extracts lasting knowledge from recent sessions into project memory with /dream, and packages repeated workflows as skills with /distill."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-04T17:55:56.142Z",
+  "updatedAt": "2026-10-04T17:55:56.142Z"
+}

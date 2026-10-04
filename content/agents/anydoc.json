@@ -1,0 +1,63 @@
+{
+  "id": "anydoc",
+  "name": "AnyDoc",
+  "slug": "anydoc",
+  "description": "Converts Word, PowerPoint, Excel, OpenDocument, RTF, EPUB, CSV, and PDF files to GitHub-Flavored Markdown for LLMs, via a CLI or Rust, Node, Python, and WASM libraries.",
+  "providerName": "Firecrawl",
+  "providerUrl": "https://firecrawl.github.io/anydoc/",
+  "agentUrl": "https://github.com/firecrawl/anydoc",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "document-conversion",
+    "markdown",
+    "pdf-parsing",
+    "office-documents",
+    "rust",
+    "agent-skills",
+    "firecrawl",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "markdown-conversion",
+      "name": "Markdown Conversion",
+      "description": "Converts office documents, EPUB, CSV, and text-based PDFs into one consistent GitHub-Flavored Markdown output."
+    },
+    {
+      "id": "format-detection",
+      "name": "Format Detection",
+      "description": "Detects a document's format from its bytes, such as PDF headers and ZIP mimetypes, so mislabeled files still convert."
+    },
+    {
+      "id": "equations-latex",
+      "name": "Equations As LaTeX",
+      "description": "Converts Word, PowerPoint, OpenDocument, EPUB, and RTF equations into inline and block GitHub-flavored math."
+    },
+    {
+      "id": "hosted-ocr",
+      "name": "Hosted OCR Fallback",
+      "description": "Sends scanned or image-only PDFs to Firecrawl Parse for OCR when opted in with an API key, returning the same Markdown."
+    },
+    {
+      "id": "agent-skill",
+      "name": "Document Conversion Skill",
+      "description": "Installs as an Agent Skill with npx skills add firecrawl/anydoc so coding agents convert documents with the CLI."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.192Z",
+  "updatedAt": "2026-10-04T17:55:56.192Z"
+}
