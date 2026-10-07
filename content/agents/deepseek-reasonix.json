@@ -1,0 +1,61 @@
+{
+  "id": "deepseek-reasonix",
+  "name": "Reasonix",
+  "slug": "deepseek-reasonix",
+  "description": "Runs a DeepSeek-first coding agent in the terminal, a desktop studio, or VS Code, with cache-aware context handling and other OpenAI-compatible providers via config.",
+  "providerName": "esengine",
+  "providerUrl": "https://reasonix.io/",
+  "agentUrl": "https://github.com/esengine/DeepSeek-Reasonix",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "coding-agents",
+    "deepseek",
+    "prompt-caching",
+    "terminal-ui",
+    "golang",
+    "mcp-client",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "config-driven-providers",
+      "name": "Config-Driven Providers",
+      "description": "Declares providers, the agent, tools, and plugins in reasonix.toml, with DeepSeek as a preset and other endpoints as config."
+    },
+    {
+      "id": "planner-executor",
+      "name": "Planner And Executor",
+      "description": "Runs two models together as an executor and a planner in separate, cache-stable sessions on the same task."
+    },
+    {
+      "id": "cache-aware-context",
+      "name": "Cache-Aware Context",
+      "description": "Injects a small stable environment summary and prunes stale tool output before summary compaction to keep caches warm."
+    },
+    {
+      "id": "mcp-plugins",
+      "name": "MCP Plugins",
+      "description": "Adds tools, prompts, and resources from MCP servers, plus Extension Protocol sidecars that intercept runtime events."
+    },
+    {
+      "id": "editor-integration",
+      "name": "Editor Integration",
+      "description": "Runs a local reasonix acp backend that the VS Code extension uses for chat, editor context, and tool-call approvals."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-04T17:55:56.196Z",
+  "updatedAt": "2026-10-04T17:55:56.196Z"
+}

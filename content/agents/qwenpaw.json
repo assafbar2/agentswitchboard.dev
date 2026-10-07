@@ -1,0 +1,59 @@
+{
+  "id": "qwenpaw",
+  "name": "QwenPaw",
+  "slug": "qwenpaw",
+  "description": "Runs a self-hosted personal assistant that answers on DingTalk, Lark, WeChat, Discord, Telegram and more, with layered memory, skills, cron jobs, a sandbox and optional local models.",
+  "providerName": "AgentScope",
+  "providerUrl": "https://qwenpaw.agentscope.io/",
+  "agentUrl": "https://github.com/agentscope-ai/QwenPaw",
+  "categories": [
+    "autonomous-agents",
+    "productivity",
+    "communication"
+  ],
+  "tags": [
+    "personal-assistant",
+    "self-hosted",
+    "dingtalk",
+    "telegram",
+    "discord",
+    "agent-memory",
+    "agentscope",
+    "qwen"
+  ],
+  "skills": [
+    {
+      "id": "multi-channel-chat",
+      "name": "Multi-Channel Chat",
+      "description": "Serves one assistant instance across DingTalk, Lark, WeChat, Discord, Telegram, iMessage and QQ, plus a web console, TUI and desktop app."
+    },
+    {
+      "id": "layered-memory",
+      "name": "Layered Memory",
+      "description": "Keeps live working context, full verbatim history and a self-evolving Markdown knowledge base built on ReMe across conversations."
+    },
+    {
+      "id": "scheduled-tasks",
+      "name": "Scheduled Tasks",
+      "description": "Sets up recurring jobs such as news digests, report generation and multi-channel broadcasts through QwenPaw's cron configuration."
+    },
+    {
+      "id": "local-models",
+      "name": "Local Models",
+      "description": "Runs QwenPaw-Flash 2B, 4B or 9B models in the built-in llama.cpp runtime, or Ollama and LM Studio, with no API key needed."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-04T17:55:56.204Z",
+  "updatedAt": "2026-10-04T17:55:56.204Z"
+}

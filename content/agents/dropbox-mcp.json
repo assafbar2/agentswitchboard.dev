@@ -1,0 +1,62 @@
+{
+  "id": "dropbox-mcp",
+  "name": "Dropbox MCP",
+  "slug": "dropbox-mcp",
+  "description": "Lets agents search, read, create, move, and share Dropbox files and Paper docs over a hosted OAuth MCP server in beta.",
+  "providerName": "Dropbox",
+  "providerUrl": "https://www.dropbox.com",
+  "agentUrl": "https://help.dropbox.com/integrations/connect-dropbox-mcp-server",
+  "categories": [
+    "productivity",
+    "content-media"
+  ],
+  "tags": [
+    "cloud-storage",
+    "file-management",
+    "file-sharing",
+    "dropbox-paper",
+    "remote-mcp",
+    "official-mcp",
+    "dropbox"
+  ],
+  "skills": [
+    {
+      "id": "file-search",
+      "name": "File Search",
+      "description": "Searches Dropbox files and folders by name or content, filtered by folder, file type, or last updated date."
+    },
+    {
+      "id": "file-content",
+      "name": "File Content Extraction",
+      "description": "Extracts text from PDFs, Word documents, and other text-representable files up to 5 MB, with a Dropbox link for each."
+    },
+    {
+      "id": "sharing",
+      "name": "Shared Links And Requests",
+      "description": "Creates shared links with up to 25 invited viewers, and creates file requests so others can upload to a chosen folder."
+    },
+    {
+      "id": "file-operations",
+      "name": "File Operations",
+      "description": "Copies, moves, renames, and deletes files or folders, and lists or restores a file's revision history."
+    },
+    {
+      "id": "paper-docs",
+      "name": "Paper Docs",
+      "description": "Reads, summarizes, creates, and edits Dropbox Paper docs the user can already access, and reviews changes to a doc."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-04T17:55:56.180Z",
+  "updatedAt": "2026-10-04T17:55:56.180Z"
+}

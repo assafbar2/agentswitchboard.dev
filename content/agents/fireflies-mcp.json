@@ -1,0 +1,61 @@
+{
+  "id": "fireflies-mcp",
+  "name": "Fireflies MCP",
+  "slug": "fireflies-mcp",
+  "description": "Lets agents search and read Fireflies meeting transcripts, summaries, and action items over a hosted OAuth MCP server, and share or organize meetings.",
+  "providerName": "Fireflies.ai",
+  "providerUrl": "https://fireflies.ai",
+  "agentUrl": "https://docs.fireflies.ai/getting-started/mcp-configuration",
+  "categories": [
+    "voice-messaging",
+    "productivity"
+  ],
+  "tags": [
+    "meeting-transcripts",
+    "meeting-notes",
+    "call-analytics",
+    "remote-mcp",
+    "official-mcp",
+    "fireflies"
+  ],
+  "skills": [
+    {
+      "id": "transcript-search",
+      "name": "Transcript Search",
+      "description": "Queries meetings by keyword, date range, organizers, participants, or channel, and returns their metadata and summaries."
+    },
+    {
+      "id": "transcript-retrieval",
+      "name": "Transcript Retrieval",
+      "description": "Fetches a full transcript with sentences, speakers, and timestamps, including a point-in-time snapshot of a live meeting."
+    },
+    {
+      "id": "meeting-summaries",
+      "name": "Meeting Summaries",
+      "description": "Fetches a meeting summary by ID with action items, keywords, and an overview, without the transcript content."
+    },
+    {
+      "id": "soundbites",
+      "name": "Soundbite Clips",
+      "description": "Lists existing soundbites and creates new soundbite clips from a recorded meeting through the soundbite tools."
+    },
+    {
+      "id": "meeting-management",
+      "name": "Meeting Management",
+      "description": "Shares meetings, revokes meeting access, updates meeting titles, and moves meetings between channels."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-04T17:55:56.183Z",
+  "updatedAt": "2026-10-04T17:55:56.183Z"
+}

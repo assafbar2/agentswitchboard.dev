@@ -1,0 +1,55 @@
+{
+  "id": "openhuman",
+  "name": "OpenHuman",
+  "slug": "openhuman",
+  "description": "Runs an open-source agent harness with a Rust core as a desktop app, browser UI, terminal client or embeddable library, with pluggable models, memory, search and workflows.",
+  "providerName": "TinyHumans",
+  "providerUrl": "https://tinyhumans.ai/openhuman",
+  "agentUrl": "https://github.com/tinyhumansai/openhuman",
+  "categories": [
+    "autonomous-agents",
+    "orchestration",
+    "memory-state"
+  ],
+  "tags": [
+    "agent-harness",
+    "rust",
+    "desktop-app",
+    "workflow-graphs",
+    "agent-memory",
+    "embeddable-library",
+    "terminal-client",
+    "tinyhumans"
+  ],
+  "skills": [
+    {
+      "id": "workflows",
+      "name": "Agent-Drafted Workflows",
+      "description": "Builds saved, typed automation graphs on the tinyflows engine with 22 node kinds; the agent drafts the graph and you review it on a canvas."
+    },
+    {
+      "id": "memory-v2",
+      "name": "Memory v2",
+      "description": "Provides Recall, Fetch and Store over a pluggable engine, either hosted TinyHumans CortexDB or your own CortexDB endpoint and key."
+    },
+    {
+      "id": "rust-embedding",
+      "name": "Rust Embedding Library",
+      "description": "Embeds the core in another Rust process via openhuman-embed, running agents with their own provider, access tier, MCP servers and skills."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.205Z",
+  "updatedAt": "2026-10-04T17:55:56.205Z"
+}

@@ -1,0 +1,59 @@
+{
+  "id": "wordpress-mcp-adapter",
+  "name": "WordPress MCP Adapter",
+  "slug": "wordpress-mcp-adapter",
+  "description": "Exposes WordPress Abilities API functions as MCP tools, resources, and prompts, so agents can work with a WordPress site over HTTP or WP-CLI STDIO.",
+  "providerName": "WordPress",
+  "providerUrl": "https://wordpress.org",
+  "agentUrl": "https://github.com/WordPress/mcp-adapter",
+  "categories": [
+    "content-media",
+    "infrastructure"
+  ],
+  "tags": [
+    "wordpress",
+    "abilities-api",
+    "wp-cli",
+    "php",
+    "cms",
+    "official-mcp",
+    "self-hosted",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "ability-conversion",
+      "name": "Ability To MCP Conversion",
+      "description": "Turns registered WordPress abilities into MCP tools, resources, and prompts, keeping each ability private until marked public."
+    },
+    {
+      "id": "default-server",
+      "name": "Default Server Meta-Tools",
+      "description": "Lets agents discover, inspect, and execute public abilities through three meta-tools on the default MCP server endpoint."
+    },
+    {
+      "id": "wp-cli-serve",
+      "name": "WP-CLI STDIO Server",
+      "description": "Serves an MCP server over STDIO with wp mcp-adapter serve, running as a chosen WordPress user for permission checks."
+    },
+    {
+      "id": "transport-permissions",
+      "name": "Transport Permissions",
+      "description": "Applies per-server authentication callbacks and per-ability capability checks, defaulting to logged-in users only."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-04T17:55:56.164Z",
+  "updatedAt": "2026-10-04T17:55:56.164Z"
+}

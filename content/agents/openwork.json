@@ -1,0 +1,57 @@
+{
+  "id": "openwork",
+  "name": "OpenWork",
+  "slug": "openwork",
+  "description": "Runs agents on your local files from an open-source desktop app built on OpenCode, and shares a team's skills, plugins, and MCP connections with Codex, Claude Code, or Cursor via one hosted MCP.",
+  "providerName": "Different AI",
+  "providerUrl": "https://openworklabs.com",
+  "agentUrl": "https://github.com/different-ai/openwork",
+  "categories": [
+    "productivity",
+    "autonomous-agents"
+  ],
+  "tags": [
+    "desktop-app",
+    "claude-cowork-alternative",
+    "remote-mcp",
+    "mcp-gateway",
+    "skill-sharing",
+    "opencode",
+    "bring-your-own-key"
+  ],
+  "skills": [
+    {
+      "id": "capability-search",
+      "name": "Capability Search And Run",
+      "description": "Finds the skills, plugins, and connections assigned to you with search_capabilities, then runs one with execute_capability."
+    },
+    {
+      "id": "skill-access",
+      "name": "Shared Skill Access",
+      "description": "Lists your assigned skills and reads any SKILL.md directly with list_skills and get_skill from Codex, Claude Code, or another MCP client."
+    },
+    {
+      "id": "team-control-plane",
+      "name": "Team Control Plane",
+      "description": "Publishes skills and plugins to an organization, team, or person, and controls which members can use each model provider, via OpenWork Den."
+    },
+    {
+      "id": "cowork-migration",
+      "name": "Cowork Migration",
+      "description": "Carries over existing Claude Cowork skills, Claude-compatible plugins, and MCP servers into an OpenWork workspace on any model."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-04T17:55:56.148Z",
+  "updatedAt": "2026-10-04T17:55:56.148Z"
+}

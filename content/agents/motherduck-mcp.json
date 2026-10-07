@@ -1,0 +1,61 @@
+{
+  "id": "motherduck-mcp",
+  "name": "MotherDuck MCP",
+  "slug": "motherduck-mcp",
+  "description": "Lets agents query and explore MotherDuck and DuckDB databases over a remote OAuth MCP server, and build Dives, schedule Flights, and maintain Guides.",
+  "providerName": "MotherDuck",
+  "providerUrl": "https://motherduck.com",
+  "agentUrl": "https://motherduck.com/docs/sql-reference/mcp/",
+  "categories": [
+    "data-analytics",
+    "infrastructure"
+  ],
+  "tags": [
+    "duckdb",
+    "sql",
+    "data-warehouse",
+    "remote-mcp",
+    "official-mcp",
+    "motherduck"
+  ],
+  "skills": [
+    {
+      "id": "sql-queries",
+      "name": "SQL Queries",
+      "description": "Runs read-only and read-write SQL against MotherDuck databases, guided by server instructions for writing DuckDB SQL."
+    },
+    {
+      "id": "schema-exploration",
+      "name": "Schema Exploration",
+      "description": "Explores databases, schemas, tables, and columns, and attaches or detaches MotherDuck shares for an agent session."
+    },
+    {
+      "id": "dives",
+      "name": "Dive Visualizations",
+      "description": "Creates and manages Dives, which are interactive data visualizations, and renders them inline in supported MCP clients."
+    },
+    {
+      "id": "flights",
+      "name": "Scheduled Flights",
+      "description": "Creates, schedules, runs, and monitors Flights, which are scheduled Python jobs that run on MotherDuck compute."
+    },
+    {
+      "id": "guides",
+      "name": "Context Guides",
+      "description": "Reads and writes Guides holding metric definitions and join conventions so agents produce accurate SQL for an org."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-04T17:55:56.173Z",
+  "updatedAt": "2026-10-04T17:55:56.173Z"
+}

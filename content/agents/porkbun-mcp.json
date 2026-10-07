@@ -1,0 +1,62 @@
+{
+  "id": "porkbun-mcp",
+  "name": "Porkbun MCP",
+  "slug": "porkbun-mcp",
+  "description": "Gives agents Porkbun account access over a hosted OAuth MCP or local npm server to check, register, and renew domains, edit DNS, and manage SSL and hosting.",
+  "providerName": "Porkbun",
+  "providerUrl": "https://porkbun.com",
+  "agentUrl": "https://porkbun.com/mcp",
+  "categories": [
+    "infrastructure",
+    "commerce-payments"
+  ],
+  "tags": [
+    "domains",
+    "dns",
+    "domain-registrar",
+    "ssl-certificates",
+    "remote-mcp",
+    "official-mcp",
+    "porkbun"
+  ],
+  "skills": [
+    {
+      "id": "domain-registration",
+      "name": "Domain Registration",
+      "description": "Checks availability and pricing, then registers, renews, or transfers domains, with dry runs and a monthly spend limit."
+    },
+    {
+      "id": "dns-management",
+      "name": "DNS Management",
+      "description": "Creates, updates, and deletes DNS records and DNSSEC on Porkbun nameservers, with scan-and-import for transferred domains."
+    },
+    {
+      "id": "cloudflare-zones",
+      "name": "Cloudflare Zone Moves",
+      "description": "Moves domains to a customer's own Cloudflare account, then manages those records, the proxy, and zone settings."
+    },
+    {
+      "id": "hosting",
+      "name": "Static And WordPress Hosting",
+      "description": "Provisions static hosting or a managed WordPress site, deploys files, and mints WordPress credentials for an agent."
+    },
+    {
+      "id": "scoped-endpoints",
+      "name": "Scoped Endpoints",
+      "description": "Offers no-purchases and no-topups MCP endpoints so an assistant can manage domains without buying or charging a card."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-04T17:55:56.165Z",
+  "updatedAt": "2026-10-04T17:55:56.165Z"
+}

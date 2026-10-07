@@ -1,0 +1,56 @@
+{
+  "id": "typeform-mcp",
+  "name": "Typeform MCP",
+  "slug": "typeform-mcp",
+  "description": "Lets agents build and edit Typeform forms, publish automations, manage contacts, and query response analytics over a hosted OAuth MCP server.",
+  "providerName": "Typeform",
+  "providerUrl": "https://www.typeform.com",
+  "agentUrl": "https://www.typeform.com/developers/mcp/",
+  "categories": [
+    "sales-marketing",
+    "productivity"
+  ],
+  "tags": [
+    "forms",
+    "surveys",
+    "response-analytics",
+    "remote-mcp",
+    "official-mcp",
+    "typeform"
+  ],
+  "skills": [
+    {
+      "id": "form-building",
+      "name": "Form Building",
+      "description": "Creates and edits Typeform forms, including fields and logic, and publishes them through the forms tool group."
+    },
+    {
+      "id": "automations",
+      "name": "Automation Publishing",
+      "description": "Builds and publishes automations with email, webhook, delay, and integration steps through the automations tools."
+    },
+    {
+      "id": "contact-lists",
+      "name": "Contact Lists",
+      "description": "Manages contacts and lists, including bulk upsert and mapping form fields to contacts, through the contacts tools."
+    },
+    {
+      "id": "response-insights",
+      "name": "Response Insights",
+      "description": "Queries raw submission data, aggregates, rankings, and time-series insights for a form's responses."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-04T17:55:56.182Z",
+  "updatedAt": "2026-10-04T17:55:56.182Z"
+}

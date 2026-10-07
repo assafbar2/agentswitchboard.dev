@@ -1,0 +1,56 @@
+{
+  "id": "mercury-mcp",
+  "name": "Mercury MCP",
+  "slug": "mercury-mcp",
+  "description": "Gives agents read-only access to Mercury business banking over a hosted OAuth MCP server in beta, covering balances, transactions, cards, statements, and invoices.",
+  "providerName": "Mercury",
+  "providerUrl": "https://mercury.com",
+  "agentUrl": "https://docs.mercury.com/docs/what-is-mercury-mcp",
+  "categories": [
+    "finance"
+  ],
+  "tags": [
+    "business-banking",
+    "transactions",
+    "spend-analysis",
+    "read-only",
+    "remote-mcp",
+    "official-mcp",
+    "mercury"
+  ],
+  "skills": [
+    {
+      "id": "spend-analysis",
+      "name": "Spend Analysis",
+      "description": "Lists transactions with filters for date range, status, and category, paginating automatically for complete results."
+    },
+    {
+      "id": "balances-statements",
+      "name": "Balances And Statements",
+      "description": "Retrieves account and treasury balances, plus monthly account or treasury statements for a chosen date range."
+    },
+    {
+      "id": "cards-recipients",
+      "name": "Cards And Recipients",
+      "description": "Lists debit and credit cards and payment recipients, and returns details for a specific card or recipient by ID."
+    },
+    {
+      "id": "invoices-customers",
+      "name": "Invoices And Customers",
+      "description": "Lists customers and invoices, returns an invoice's details and attachments, and checks the status of sent invoices."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-04T17:55:56.189Z",
+  "updatedAt": "2026-10-04T17:55:56.189Z"
+}

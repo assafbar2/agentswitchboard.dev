@@ -1,0 +1,55 @@
+{
+  "id": "docusign-mcp",
+  "name": "Docusign MCP",
+  "slug": "docusign-mcp",
+  "description": "Lets agents create, send, and track Docusign envelopes over a hosted OAuth MCP server, including templates, recipients, and signing reminders.",
+  "providerName": "Docusign",
+  "providerUrl": "https://www.docusign.com",
+  "agentUrl": "https://developers.docusign.com/platform/mcp-server/",
+  "categories": [
+    "legal"
+  ],
+  "tags": [
+    "e-signature",
+    "agreements",
+    "contract-management",
+    "remote-mcp",
+    "official-mcp",
+    "docusign"
+  ],
+  "skills": [
+    {
+      "id": "envelope-creation",
+      "name": "Envelope Creation",
+      "description": "Creates a new envelope from a template with documents, recipients, and tabs through the Docusign MCP server."
+    },
+    {
+      "id": "envelope-tracking",
+      "name": "Envelope Tracking",
+      "description": "Gets one envelope's status or searches envelopes by date, ID, or status, and lists recipient status and tab values."
+    },
+    {
+      "id": "envelope-updates",
+      "name": "Envelope Updates",
+      "description": "Voids envelopes, sends drafts, or changes envelope email, and adds, updates, or removes recipients on an envelope."
+    },
+    {
+      "id": "signing-reminders",
+      "name": "Signing Reminders",
+      "description": "Sends reminder notifications to every pending recipient who still needs to sign or act on a Docusign envelope."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-04T17:55:56.181Z",
+  "updatedAt": "2026-10-04T17:55:56.181Z"
+}

@@ -1,0 +1,55 @@
+{
+  "id": "asana-mcp",
+  "name": "Asana MCP",
+  "slug": "asana-mcp",
+  "description": "Lets agents search, create, and update Asana tasks, projects, and portfolios over a hosted OAuth MCP server, and post project status updates.",
+  "providerName": "Asana",
+  "providerUrl": "https://asana.com",
+  "agentUrl": "https://developers.asana.com/docs/using-asanas-mcp-server",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "project-management",
+    "task-management",
+    "work-graph",
+    "remote-mcp",
+    "official-mcp",
+    "asana"
+  ],
+  "skills": [
+    {
+      "id": "task-search",
+      "name": "Task Search",
+      "description": "Searches tasks by text and filters such as assignee, due date, project, tag, and custom fields, or lists your own tasks."
+    },
+    {
+      "id": "bulk-task-changes",
+      "name": "Bulk Task Changes",
+      "description": "Creates or updates up to 50 tasks per call, including assignees, due dates, dependencies, and subtasks."
+    },
+    {
+      "id": "project-setup",
+      "name": "Project Setup",
+      "description": "Creates a project with sections and tasks in one operation, or drafts it as a preview for review in Claude or ChatGPT."
+    },
+    {
+      "id": "status-reporting",
+      "name": "Status Reporting",
+      "description": "Builds aggregated status overviews for projects or portfolios and posts colored status updates to them."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-04T17:55:56.175Z",
+  "updatedAt": "2026-10-04T17:55:56.175Z"
+}

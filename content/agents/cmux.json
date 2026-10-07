@@ -1,0 +1,63 @@
+{
+  "id": "cmux",
+  "name": "cmux",
+  "slug": "cmux",
+  "description": "Runs many coding agents side by side in a native macOS terminal built on libghostty, with notification rings, a scriptable in-app browser, and a CLI and socket API for automation.",
+  "providerName": "Manaflow",
+  "providerUrl": "https://cmux.com",
+  "agentUrl": "https://github.com/manaflow-ai/cmux",
+  "categories": [
+    "code-devtools",
+    "productivity"
+  ],
+  "tags": [
+    "terminal-emulator",
+    "macos",
+    "ghostty",
+    "parallel-agents",
+    "claude-code",
+    "codex",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "agent-notifications",
+      "name": "Agent Notifications",
+      "description": "Rings the pane and lights the tab when a coding agent needs attention, with a panel that jumps to the most recent unread notification."
+    },
+    {
+      "id": "scriptable-browser",
+      "name": "Scriptable Browser Pane",
+      "description": "Splits a browser next to the terminal whose agent-browser-style API snapshots the accessibility tree, clicks, fills forms, and runs JS."
+    },
+    {
+      "id": "cli-socket-api",
+      "name": "CLI And Socket API",
+      "description": "Creates workspaces and tabs, splits panes, sends keystrokes, and opens URLs in the browser from the cmux CLI or its socket API."
+    },
+    {
+      "id": "remote-ssh",
+      "name": "Remote SSH Workspaces",
+      "description": "Opens a workspace on a remote machine with cmux ssh, routing browser panes through the remote network so localhost URLs still work."
+    },
+    {
+      "id": "claude-teams",
+      "name": "Claude Code Teams",
+      "description": "Runs Claude Code's teammate mode with cmux claude-teams, spawning each teammate as a native split with sidebar metadata and alerts."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.149Z",
+  "updatedAt": "2026-10-04T17:55:56.149Z"
+}

@@ -1,0 +1,58 @@
+{
+  "id": "lark-cli",
+  "name": "Lark CLI",
+  "slug": "lark-cli",
+  "description": "Gives humans and coding agents an official CLI and bundled skills for Lark and Feishu messaging, docs, Base, sheets, calendar, mail, and tasks, with OAuth login and raw API access.",
+  "providerName": "Lark (ByteDance)",
+  "providerUrl": "https://open.larksuite.com",
+  "agentUrl": "https://github.com/larksuite/cli",
+  "categories": [
+    "communication",
+    "productivity"
+  ],
+  "tags": [
+    "lark",
+    "feishu",
+    "official-cli",
+    "team-messaging",
+    "calendar",
+    "spreadsheets",
+    "agent-skills",
+    "bytedance"
+  ],
+  "skills": [
+    {
+      "id": "messenger",
+      "name": "Lark Messenger",
+      "description": "Sends and replies to messages, manages group chats, searches message history, and uploads or downloads images and files in Lark."
+    },
+    {
+      "id": "calendar",
+      "name": "Calendar Scheduling",
+      "description": "Views the agenda, creates and updates events, checks free/busy and time suggestions, finds meeting rooms, and replies to invitations."
+    },
+    {
+      "id": "docs-base",
+      "name": "Docs And Base",
+      "description": "Creates, reads, updates, and searches Markdown-based documents, and manages Base tables, fields, records, views, and dashboards."
+    },
+    {
+      "id": "raw-api",
+      "name": "Raw API Calls",
+      "description": "Calls any Lark Open Platform endpoint directly when no shortcut or API command exists, with dry runs and schema introspection to check it."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-04T17:55:56.138Z",
+  "updatedAt": "2026-10-04T17:55:56.138Z"
+}

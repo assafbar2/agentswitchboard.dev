@@ -1,0 +1,57 @@
+{
+  "id": "colibri",
+  "name": "Colibri",
+  "slug": "colibri",
+  "description": "Runs large Mixture-of-Experts models such as GLM, DeepSeek V4, and Kimi on consumer hardware by streaming routed experts from SSD, with an OpenAI-compatible local API.",
+  "providerName": "JustVugg",
+  "providerUrl": "https://justvugg.github.io/colibri",
+  "agentUrl": "https://github.com/JustVugg/colibri",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "local-inference",
+    "mixture-of-experts",
+    "ssd-streaming",
+    "openai-compatible",
+    "c-language",
+    "llm-serving",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "expert-streaming",
+      "name": "Expert Streaming",
+      "description": "Keeps dense weights resident in RAM and streams routed experts from disk on demand, with LRU and pinned hot-store caches."
+    },
+    {
+      "id": "openai-api",
+      "name": "OpenAI-Compatible API",
+      "description": "Serves chat and completion endpoints with SSE streaming and tool calls through coli serve or coli web."
+    },
+    {
+      "id": "cluster-mode",
+      "name": "Local Cluster Mode",
+      "description": "Spreads routed expert execution across worker machines via a coordinator, keeping routing and KV state local."
+    },
+    {
+      "id": "multi-ssd",
+      "name": "Multi-SSD Mirrors",
+      "description": "Streams model copies from more than one drive, validating mirrors at startup and falling back to the primary on errors."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.195Z",
+  "updatedAt": "2026-10-04T17:55:56.195Z"
+}

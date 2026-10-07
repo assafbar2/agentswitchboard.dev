@@ -1,0 +1,62 @@
+{
+  "id": "agent-browser",
+  "name": "agent-browser",
+  "slug": "agent-browser",
+  "description": "Lets coding agents drive Chrome from a native Rust CLI or stdio MCP server, using accessibility snapshots with element refs, semantic locators, and saved login state.",
+  "providerName": "Vercel Labs",
+  "providerUrl": "https://agent-browser.dev",
+  "agentUrl": "https://github.com/vercel-labs/agent-browser",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "browser-automation",
+    "headless-chrome",
+    "accessibility-tree",
+    "rust-cli",
+    "local-mcp",
+    "web-scraping",
+    "vercel"
+  ],
+  "skills": [
+    {
+      "id": "snapshot-refs",
+      "name": "Snapshot And Refs",
+      "description": "Captures the page accessibility tree with element refs, then clicks, fills, and reads elements by ref or by locators such as role and label."
+    },
+    {
+      "id": "agent-read",
+      "name": "Agent-Friendly Reading",
+      "description": "Reads a URL as markdown without launching Chrome, or the active tab's rendered DOM, with outline, filter, llms.txt, and JSON output options."
+    },
+    {
+      "id": "page-diff",
+      "name": "Snapshot And Visual Diff",
+      "description": "Compares accessibility snapshots or screenshots against a saved baseline, or two URLs against each other, to show what changed on a page."
+    },
+    {
+      "id": "mcp-tool-profiles",
+      "name": "MCP Tool Profiles",
+      "description": "Starts a stdio MCP server whose tool profiles, such as core, network, and react, keep the tool list small or expose full CLI parity."
+    },
+    {
+      "id": "login-persistence",
+      "name": "Login State Persistence",
+      "description": "Reuses Chrome profiles, saved state files, restored sessions, or an encrypted local credential vault so agents skip logging in on every run."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-10-04T17:55:56.126Z",
+  "updatedAt": "2026-10-04T17:55:56.126Z"
+}

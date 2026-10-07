@@ -1,0 +1,56 @@
+{
+  "id": "neo4j-mcp",
+  "name": "Neo4j MCP",
+  "slug": "neo4j-mcp",
+  "description": "Gives agents structured access to a Neo4j graph database over MCP to read the schema and run read or write Cypher queries, via STDIO or an HTTP mode.",
+  "providerName": "Neo4j",
+  "providerUrl": "https://neo4j.com",
+  "agentUrl": "https://neo4j.com/docs/mcp/current/",
+  "categories": [
+    "infrastructure",
+    "data-analytics"
+  ],
+  "tags": [
+    "graph-database",
+    "cypher",
+    "knowledge-graph",
+    "graph-data-science",
+    "official-mcp",
+    "neo4j"
+  ],
+  "skills": [
+    {
+      "id": "schema-introspection",
+      "name": "Schema Introspection",
+      "description": "Introspects node labels, relationship types, and property keys with get-schema so an agent can reason about the data model."
+    },
+    {
+      "id": "read-cypher",
+      "name": "Read-Only Cypher",
+      "description": "Runs read-only Cypher queries, enforced via EXPLAIN and Neo4j's query-type classification, to retrieve nodes and paths."
+    },
+    {
+      "id": "write-cypher",
+      "name": "Write Cypher",
+      "description": "Runs write Cypher queries to create or update graph data, and is disabled when NEO4J_MCP_READ_ONLY is set to true."
+    },
+    {
+      "id": "gds-procedures",
+      "name": "GDS Procedure Listing",
+      "description": "Lists available Graph Data Science procedures, and is turned off automatically when the GDS library is not installed."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-04T17:55:56.172Z",
+  "updatedAt": "2026-10-04T17:55:56.172Z"
+}

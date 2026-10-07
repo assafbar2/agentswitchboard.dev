@@ -1,0 +1,57 @@
+{
+  "id": "cloudflare-clef",
+  "name": "Cloudflare Clef",
+  "slug": "cloudflare-clef",
+  "description": "Serves Cloudflare's open-weight Clef and Clef-flash decision models on Workers AI, returning a probability for every option of typed questions about a text, JSON, or image state.",
+  "providerName": "Cloudflare",
+  "providerUrl": "https://www.cloudflare.com",
+  "agentUrl": "https://blog.cloudflare.com/clef-decision-models/",
+  "categories": [
+    "language",
+    "infrastructure"
+  ],
+  "tags": [
+    "cloudflare",
+    "workers-ai",
+    "decision-models",
+    "classification",
+    "open-weights",
+    "structured-output",
+    "fine-tuning"
+  ],
+  "skills": [
+    {
+      "id": "typed-decisions",
+      "name": "Typed Decision Questions",
+      "description": "Answers up to 64 noul, choice, or score questions per request about a given state, returning a probability for every allowed option."
+    },
+    {
+      "id": "image-state",
+      "name": "Image State Input",
+      "description": "Accepts up to four embedded PNG, JPEG, or WebP images placed before the text state, so decisions can draw on screenshots or photos."
+    },
+    {
+      "id": "clef-flash",
+      "name": "Clef-flash Model",
+      "description": "Runs the same question schema on Clef-flash, a 9B model with a lower per-token price than the 27B Clef, for latency-critical decisions."
+    },
+    {
+      "id": "open-weights",
+      "name": "Open Weights Download",
+      "description": "Downloads the Clef and Clef-flash weights from Hugging Face under an Apache 2.0 license to run the decision models on your own hardware."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.120Z",
+  "updatedAt": "2026-10-04T17:55:56.120Z"
+}

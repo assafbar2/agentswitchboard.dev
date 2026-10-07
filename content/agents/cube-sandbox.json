@@ -1,0 +1,62 @@
+{
+  "id": "cube-sandbox",
+  "name": "CubeSandbox",
+  "slug": "cube-sandbox",
+  "description": "Runs self-hosted, KVM-isolated sandboxes for agent code execution behind an E2B-compatible API, with snapshots, cloning, auto-pause, and kernel-level network policy.",
+  "providerName": "Tencent Cloud",
+  "providerUrl": "https://cubesandbox.com",
+  "agentUrl": "https://github.com/TencentCloud/CubeSandbox",
+  "categories": [
+    "infrastructure",
+    "security"
+  ],
+  "tags": [
+    "code-sandbox",
+    "microvm",
+    "e2b-compatible",
+    "self-hosted",
+    "kvm",
+    "open-source",
+    "tencent-cloud"
+  ],
+  "skills": [
+    {
+      "id": "e2b-compatible-api",
+      "name": "E2B-Compatible API",
+      "description": "Accepts E2B SDK calls so existing E2B clients switch to a self-hosted cluster by changing one environment variable."
+    },
+    {
+      "id": "snapshot-clone-rollback",
+      "name": "Snapshot Clone Rollback",
+      "description": "Checkpoints running sandboxes with the CubeCoW copy-on-write engine, then rolls back to or forks from any saved state."
+    },
+    {
+      "id": "network-policy",
+      "name": "Network Policy And Vault",
+      "description": "Filters egress per sandbox with eBPF and an L7 proxy that injects credentials, so API keys never enter the sandbox."
+    },
+    {
+      "id": "auto-pause-resume",
+      "name": "Auto Pause And Resume",
+      "description": "Suspends idle sandboxes and wakes them on the next request, with cross-node pause and resume through an S3 backend."
+    },
+    {
+      "id": "volumes",
+      "name": "Volume Framework",
+      "description": "Mounts E2B-compatible volumes with pluggable storage backends that live independently and can be shared across sandboxes."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.154Z",
+  "updatedAt": "2026-10-04T17:55:56.154Z"
+}

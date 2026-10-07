@@ -1,0 +1,61 @@
+{
+  "id": "shannon",
+  "name": "Shannon",
+  "slug": "shannon",
+  "description": "Pentests web apps and APIs you are authorized to test by reading their source, running real exploits, and reporting only findings with a working proof of concept.",
+  "providerName": "Keygraph",
+  "providerUrl": "https://keygraph.io/",
+  "agentUrl": "https://github.com/KeygraphHQ/shannon",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "pentesting",
+    "appsec",
+    "exploit-validation",
+    "white-box-testing",
+    "sarif",
+    "open-source",
+    "keygraph"
+  ],
+  "skills": [
+    {
+      "id": "proof-of-concept-findings",
+      "name": "Exploit-Proven Findings",
+      "description": "Executes real exploits against the running app and includes only vulnerabilities confirmed with a reproducible proof of concept."
+    },
+    {
+      "id": "source-informed-attacks",
+      "name": "Source-Informed Attacks",
+      "description": "Analyzes the app's source code to map attack paths, then tests injection, XSS, SSRF, and broken auth with browser and CLI tools."
+    },
+    {
+      "id": "authenticated-testing",
+      "name": "Authenticated Testing",
+      "description": "Tests behind login using configured credentials, login flows, TOTP, email authentication, focus areas, and rules of engagement."
+    },
+    {
+      "id": "ci-cd-gates",
+      "name": "CI/CD Release Gates",
+      "description": "Runs from the official GitHub Action or GitLab CI/CD component, publishes findings, and gates releases on proven vulnerabilities."
+    },
+    {
+      "id": "multi-format-reports",
+      "name": "Multi-Format Reports",
+      "description": "Writes evidence-rich PDF and Markdown reports plus JSON and SARIF 2.1.0 output, with SARIF on by default for exploit-mode scans."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-04T17:55:56.156Z",
+  "updatedAt": "2026-10-04T17:55:56.156Z"
+}

@@ -1,0 +1,57 @@
+{
+  "id": "openai-symphony",
+  "name": "OpenAI Symphony",
+  "slug": "openai-symphony",
+  "description": "Watches an issue tracker such as Linear or GitHub Issues and runs a Codex agent in its own workspace for each claimed issue, for teams testing autonomous coding.",
+  "providerName": "OpenAI",
+  "providerUrl": "https://openai.com",
+  "agentUrl": "https://github.com/openai/symphony",
+  "categories": [
+    "orchestration",
+    "code-devtools"
+  ],
+  "tags": [
+    "codex",
+    "issue-tracking",
+    "linear",
+    "coding-agent",
+    "open-source",
+    "openai",
+    "elixir"
+  ],
+  "skills": [
+    {
+      "id": "tracker-polling",
+      "name": "Tracker Polling",
+      "description": "Polls Linear, GitHub Issues, Jira Cloud, Asana, or GitLab for candidate work that matches the configured filters and labels."
+    },
+    {
+      "id": "per-issue-workspace",
+      "name": "Per-Issue Codex Workspace",
+      "description": "Creates a separate workspace for each claimed issue and launches Codex in App Server mode inside it with a workspace-write sandbox."
+    },
+    {
+      "id": "tracker-native-tools",
+      "name": "Tracker-Native Tools",
+      "description": "Gives the agent tracker tools such as linear_graphql or github_api, run with host-side auth so it needs no second tracker login."
+    },
+    {
+      "id": "terminal-state-cleanup",
+      "name": "Terminal State Cleanup",
+      "description": "Stops the running agent and removes its workspace when a claimed issue moves to Done, Closed, Cancelled, or Duplicate."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-04T17:55:56.156Z",
+  "updatedAt": "2026-10-04T17:55:56.156Z"
+}

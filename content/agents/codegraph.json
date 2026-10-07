@@ -1,0 +1,59 @@
+{
+  "id": "codegraph",
+  "name": "CodeGraph",
+  "slug": "codegraph",
+  "description": "Gives coding agents a local, auto-synced code knowledge graph of symbols, callers, and routes across 20+ languages, queried through one MCP tool, a CLI, or a library.",
+  "providerName": "Colby McHenry",
+  "providerUrl": "https://colbymchenry.github.io/codegraph/",
+  "agentUrl": "https://github.com/colbymchenry/codegraph",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "code-graph",
+    "code-intelligence",
+    "local-mcp",
+    "impact-analysis",
+    "sqlite",
+    "claude-code",
+    "cursor",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "codegraph-explore",
+      "name": "Explore Tool",
+      "description": "Answers how-does-X-work and flow questions in one MCP call, returning relevant symbols' source by file plus call paths between them."
+    },
+    {
+      "id": "impact-analysis",
+      "name": "Impact Analysis",
+      "description": "Traces callers, callees, and the full impact radius of a symbol with codegraph callers, callees, and impact before you change it."
+    },
+    {
+      "id": "affected-tests",
+      "name": "Affected Test Detection",
+      "description": "Follows import dependencies from changed files to the test files they affect, for piping git diff output into a test runner in CI."
+    },
+    {
+      "id": "auto-sync",
+      "name": "Automatic Index Sync",
+      "description": "Watches source files with native OS events and re-indexes after a short debounce, flagging pending files so agents never read stale data."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.136Z",
+  "updatedAt": "2026-10-04T17:55:56.136Z"
+}

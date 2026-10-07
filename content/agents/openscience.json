@@ -1,0 +1,62 @@
+{
+  "id": "openscience",
+  "name": "OpenScience",
+  "slug": "openscience",
+  "description": "Runs a research agent for scientists that reviews literature, writes and runs analysis code, and reproduces experiments, from a desktop app, browser workspace, or CLI.",
+  "providerName": "Synthetic Sciences",
+  "providerUrl": "https://openscience.sh",
+  "agentUrl": "https://github.com/synthetic-sciences/openscience",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "scientific-research",
+    "literature-review",
+    "data-analysis",
+    "reproducibility",
+    "bioinformatics",
+    "bring-your-own-key",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "literature-review",
+      "name": "Literature Review",
+      "description": "Searches scientific sources, compares findings, and saves cited evidence, with connectors to databases such as PubMed, arXiv, and UniProt."
+    },
+    {
+      "id": "data-analysis",
+      "name": "Data Analysis",
+      "description": "Inspects input data, writes and runs analysis code in shell, Python, or R kernels, and produces figures and reports in the project folder."
+    },
+    {
+      "id": "experiment-reproduction",
+      "name": "Experiment Reproduction",
+      "description": "Agrees on a claim, its prerequisites, and a budget with you, then reruns the experiment and compares the measured results to the claim."
+    },
+    {
+      "id": "remote-compute",
+      "name": "Remote Compute",
+      "description": "Sends long or GPU-bound jobs to Modal, SSH hosts, or Slurm and PBS clusters, with each dispatch approved by you before it runs."
+    },
+    {
+      "id": "headless-runs",
+      "name": "Headless Runs",
+      "description": "Runs a single research turn from a script or pipeline with openscience run, and continues the same session with the --continue flag."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.124Z",
+  "updatedAt": "2026-10-04T17:55:56.124Z"
+}
