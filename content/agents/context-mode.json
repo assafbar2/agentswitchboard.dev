@@ -1,0 +1,58 @@
+{
+  "id": "context-mode",
+  "name": "context-mode",
+  "slug": "context-mode",
+  "description": "Keeps raw tool output out of coding agents' context by running code and commands in a sandbox, indexing results for search, and restoring session state after compaction, via MCP.",
+  "providerName": "mksglu",
+  "providerUrl": "https://context-mode.com",
+  "agentUrl": "https://github.com/mksglu/context-mode",
+  "categories": [
+    "code-devtools",
+    "memory-state"
+  ],
+  "tags": [
+    "context-window",
+    "local-mcp",
+    "sandboxed-execution",
+    "full-text-search",
+    "session-continuity",
+    "claude-code",
+    "source-available"
+  ],
+  "skills": [
+    {
+      "id": "sandbox-execute",
+      "name": "Sandboxed Execution",
+      "description": "Runs code in 12 languages or processes files in an isolated subprocess with ctx_execute, letting only stdout enter the agent's context."
+    },
+    {
+      "id": "knowledge-base",
+      "name": "Indexed Knowledge Base",
+      "description": "Chunks markdown or fetched URLs into a SQLite FTS5 index with ctx_index and ctx_fetch_and_index, then returns snippets via ctx_search."
+    },
+    {
+      "id": "session-continuity",
+      "name": "Session Continuity",
+      "description": "Tracks file edits, git operations, tasks, errors, and decisions in SQLite, and rebuilds working state after compaction or resume."
+    },
+    {
+      "id": "batch-execute",
+      "name": "Batch Execution",
+      "description": "Runs several commands and search queries in one ctx_batch_execute call, with optional concurrency for I/O-bound batches."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-04T17:55:56.140Z",
+  "updatedAt": "2026-10-04T17:55:56.140Z"
+}

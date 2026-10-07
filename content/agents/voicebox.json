@@ -1,0 +1,58 @@
+{
+  "id": "voicebox",
+  "name": "Voicebox",
+  "slug": "voicebox",
+  "description": "Runs a local voice studio for voice cloning, text-to-speech and Whisper dictation, and lets agents speak or transcribe through a built-in MCP server and REST API.",
+  "providerName": "Jamie Pine",
+  "providerUrl": "https://voicebox.sh",
+  "agentUrl": "https://github.com/jamiepine/voicebox",
+  "categories": [
+    "voice-messaging"
+  ],
+  "tags": [
+    "text-to-speech",
+    "voice-cloning",
+    "speech-to-text",
+    "dictation",
+    "whisper",
+    "local-first",
+    "mcp-server",
+    "rest-api"
+  ],
+  "skills": [
+    {
+      "id": "agent-voice-output",
+      "name": "Agent Voice Output",
+      "description": "Lets any MCP-aware agent speak in a cloned voice via the voicebox_speak tool or POST /speak, with a per-agent voice binding."
+    },
+    {
+      "id": "voice-cloning",
+      "name": "Voice Cloning",
+      "description": "Clones a voice from a few seconds of audio and generates speech in 23 languages across seven TTS engines, with multi-sample profiles."
+    },
+    {
+      "id": "speech-to-text",
+      "name": "Whisper Transcription",
+      "description": "Transcribes audio with OpenAI Whisper on MLX or PyTorch, exposed through the /transcribe endpoint and the voicebox_transcribe MCP tool."
+    },
+    {
+      "id": "global-dictation",
+      "name": "Global Dictation",
+      "description": "Dictates into any text field with a push-to-talk or toggle hotkey, pasting the transcript into the focused field on macOS."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.202Z",
+  "updatedAt": "2026-10-04T17:55:56.202Z"
+}

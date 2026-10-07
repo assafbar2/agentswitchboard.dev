@@ -1,0 +1,63 @@
+{
+  "id": "json-render",
+  "name": "json-render",
+  "slug": "json-render",
+  "description": "Renders AI-generated JSON specs into UIs built only from a developer-defined component catalog, with renderers for React, Vue, Svelte, React Native, PDF, and email.",
+  "providerName": "Vercel Labs",
+  "providerUrl": "https://json-render.dev",
+  "agentUrl": "https://github.com/vercel-labs/json-render",
+  "categories": [
+    "code-devtools",
+    "content-media"
+  ],
+  "tags": [
+    "generative-ui",
+    "react",
+    "component-catalog",
+    "json-schema",
+    "shadcn-ui",
+    "streaming-ui",
+    "vercel",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "component-catalog",
+      "name": "Component Catalog",
+      "description": "Defines a catalog of allowed components and actions with Zod schemas so model output can only use those components."
+    },
+    {
+      "id": "cross-platform-renderers",
+      "name": "Cross-Platform Renderers",
+      "description": "Renders one spec in React, Vue, Svelte, SolidJS, React Native, Ink terminals, Remotion video, PDF, or HTML email."
+    },
+    {
+      "id": "progressive-streaming",
+      "name": "Progressive Streaming",
+      "description": "Streams and renders specs progressively as the model responds, using the SpecStream utilities in the core package."
+    },
+    {
+      "id": "mcp-apps",
+      "name": "MCP Apps Integration",
+      "description": "Serves json-render UIs as MCP Apps for Claude, ChatGPT, Cursor, and VS Code through the @json-render/mcp package."
+    },
+    {
+      "id": "shadcn-components",
+      "name": "Prebuilt shadcn Components",
+      "description": "Ships 36 prebuilt shadcn/ui components for React, plus shadcn-svelte components for Svelte, ready to use in a catalog."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.191Z",
+  "updatedAt": "2026-10-04T17:55:56.191Z"
+}

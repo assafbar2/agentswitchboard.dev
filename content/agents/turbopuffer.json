@@ -1,0 +1,57 @@
+{
+  "id": "turbopuffer",
+  "name": "turbopuffer",
+  "slug": "turbopuffer",
+  "description": "Gives search and RAG backends a serverless vector and BM25 full-text search database built on object storage, queried over an HTTP API or official SDKs.",
+  "providerName": "turbopuffer",
+  "providerUrl": "https://turbopuffer.com",
+  "agentUrl": "https://turbopuffer.com/docs",
+  "categories": [
+    "vector-databases",
+    "infrastructure"
+  ],
+  "tags": [
+    "vector-search",
+    "full-text-search",
+    "bm25",
+    "hybrid-search",
+    "object-storage",
+    "serverless",
+    "turbopuffer"
+  ],
+  "skills": [
+    {
+      "id": "vector-search",
+      "name": "Vector Search",
+      "description": "Runs approximate nearest neighbor queries over dense or sparse vectors, combined with attribute filters on an inverted index."
+    },
+    {
+      "id": "full-text-search",
+      "name": "BM25 Full-Text Search",
+      "description": "Ranks documents with BM25 full-text search, with ranking and boosting, and supports fast trigram regex queries."
+    },
+    {
+      "id": "hybrid-search",
+      "name": "Hybrid Search",
+      "description": "Combines vector and BM25 results with server-side reciprocal rank fusion to narrow large candidate sets before re-ranking."
+    },
+    {
+      "id": "namespace-branching",
+      "name": "Namespace Branching",
+      "description": "Creates instant copy-on-write clones of a namespace with branch_from, with fully independent reads and writes afterward."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.163Z",
+  "updatedAt": "2026-10-04T17:55:56.163Z"
+}

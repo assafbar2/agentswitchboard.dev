@@ -1,0 +1,64 @@
+{
+  "id": "paperclip",
+  "name": "Paperclip",
+  "slug": "paperclip",
+  "description": "Runs teams of coding and business agents as a self-hosted company with an org chart, ticketed tasks, heartbeats, budgets, and approval gates, managed from a web UI, CLI, or REST API.",
+  "providerName": "Paperclip",
+  "providerUrl": "https://paperclip.ing",
+  "agentUrl": "https://github.com/paperclipai/paperclip",
+  "categories": [
+    "orchestration",
+    "autonomous-agents"
+  ],
+  "tags": [
+    "multi-agent",
+    "agent-orchestration",
+    "org-chart",
+    "cost-control",
+    "task-management",
+    "self-hosted",
+    "claude-code",
+    "codex"
+  ],
+  "skills": [
+    {
+      "id": "heartbeats",
+      "name": "Agent Heartbeats",
+      "description": "Wakes each agent for assigned tasks, follow-up messages, or configured schedules, with delegation flowing up and down the org chart."
+    },
+    {
+      "id": "budgets",
+      "name": "Budgets And Cost Control",
+      "description": "Sets company, agent, and project budgets, tracks reported spend with threshold alerts, and pauses work when a configured limit is hit."
+    },
+    {
+      "id": "approvals",
+      "name": "Review And Approvals",
+      "description": "Adds review and approval stages to tasks and agent hires, and lets you pause, reassign, or stop an agent's work when needed."
+    },
+    {
+      "id": "routines",
+      "name": "Scheduled Routines",
+      "description": "Runs recurring work on cron, webhook, or API triggers, with each run creating a tracked issue and waking the assigned agent."
+    },
+    {
+      "id": "team-catalog",
+      "name": "Ready-Made Teams",
+      "description": "Previews and installs ready-made teams with roles, skills, projects, and routines, then lets you choose each agent's runtime."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.131Z",
+  "updatedAt": "2026-10-04T17:55:56.131Z"
+}

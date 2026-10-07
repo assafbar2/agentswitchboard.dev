@@ -1,0 +1,58 @@
+{
+  "id": "ds4",
+  "name": "ds4",
+  "slug": "ds4",
+  "description": "Runs DeepSeek V4 Flash, GLM 5.x, and Qwen models locally on Metal, CUDA, or ROCm with a native engine, a CLI, a coding agent, and an OpenAI-compatible server.",
+  "providerName": "Salvatore Sanfilippo (antirez)",
+  "providerUrl": "https://dwarfstar.sh",
+  "agentUrl": "https://github.com/antirez/ds4",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "local-inference",
+    "deepseek",
+    "metal",
+    "cuda",
+    "ssd-streaming",
+    "openai-compatible",
+    "llm-serving",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "local-server",
+      "name": "Local API Server",
+      "description": "Serves OpenAI-style chat, Responses, completions, and Anthropic-style messages endpoints with tools and SSE streaming."
+    },
+    {
+      "id": "native-agent",
+      "name": "Native Coding Agent",
+      "description": "Runs ds4-agent directly on the model without an HTTP server, using the model's native tool format and saved sessions."
+    },
+    {
+      "id": "ssd-streaming",
+      "name": "SSD Streaming",
+      "description": "Streams model weights from SSD so smaller Macs can run large models, such as full GLM 5.x on 128 GB systems."
+    },
+    {
+      "id": "multi-gpu",
+      "name": "Multi-GPU Serving",
+      "description": "Uses multiple CUDA cards, including Ada Lovelace L40S, as a multi-user LLM server for the supported models."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.198Z",
+  "updatedAt": "2026-10-04T17:55:56.198Z"
+}

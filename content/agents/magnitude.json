@@ -1,0 +1,58 @@
+{
+  "id": "magnitude",
+  "name": "Magnitude",
+  "slug": "magnitude",
+  "description": "Runs open-weight models locally on kernels tuned to your hardware and connects them to coding agents through the magnitude CLI and an OpenAI- and Anthropic-compatible API.",
+  "providerName": "Magnitude",
+  "providerUrl": "https://magnitude.dev",
+  "agentUrl": "https://magnitude.dev",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "local-inference",
+    "open-weights",
+    "llm-serving",
+    "openai-compatible",
+    "anthropic-compatible",
+    "apple-silicon",
+    "self-hosted",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "model-recommendations",
+      "name": "Hardware Model Recommendations",
+      "description": "Inspects local hardware and ranks compatible catalog models by preference with magnitude catalog recommendations, then pulls one to run."
+    },
+    {
+      "id": "agent-connections",
+      "name": "Agent Connections",
+      "description": "Configures Pi, OpenCode, Hermes, OpenClaw, Codex, Claude Code, Oh My Pi, or Cline to use local models with magnitude connections add."
+    },
+    {
+      "id": "local-inference-api",
+      "name": "Local Inference API",
+      "description": "Serves OpenAI Chat Completions, OpenAI Responses, and Anthropic Messages routes on port 10100, as JSON or server-sent event streams."
+    },
+    {
+      "id": "remote-server",
+      "name": "Remote Inference Server",
+      "description": "Runs magnitude serve on a dedicated machine behind an API key so agents on another computer can use its models over the network."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.121Z",
+  "updatedAt": "2026-10-04T17:55:56.121Z"
+}

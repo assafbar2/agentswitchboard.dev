@@ -1,0 +1,56 @@
+{
+  "id": "zvec",
+  "name": "Zvec",
+  "slug": "zvec",
+  "description": "Embeds an in-process vector database into applications for dense, sparse, full-text, and hybrid search with durable local storage, via Python, Node.js, Go, Rust, and Dart SDKs.",
+  "providerName": "Alibaba",
+  "providerUrl": "https://zvec.org",
+  "agentUrl": "https://github.com/alibaba/zvec",
+  "categories": [
+    "vector-databases"
+  ],
+  "tags": [
+    "vector-database",
+    "embedded-database",
+    "similarity-search",
+    "hybrid-search",
+    "full-text-search",
+    "alibaba",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "dense-sparse-vectors",
+      "name": "Dense And Sparse Vectors",
+      "description": "Stores dense and sparse embeddings with multi-vector queries and a choice of index types that scale from in-memory to on-disk."
+    },
+    {
+      "id": "full-text-search",
+      "name": "Full-Text Search",
+      "description": "Queries string fields with natural-language or structured keyword expressions, including an N-gram tokenizer for phrase and code search."
+    },
+    {
+      "id": "hybrid-search",
+      "name": "Hybrid Search",
+      "description": "Combines vector similarity, full-text search, and structured filters in a single query to narrow results to the precise matches."
+    },
+    {
+      "id": "durable-storage",
+      "name": "Durable Local Storage",
+      "description": "Persists collections with write-ahead logging so data survives crashes, and lets multiple processes read one collection at once."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.147Z",
+  "updatedAt": "2026-10-04T17:55:56.147Z"
+}

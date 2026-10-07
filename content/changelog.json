@@ -6,6 +6,559 @@
     "date": "2026-10-01"
   },
   {
+    "action": "added",
+    "slug": "excel-mcp-server",
+    "name": "Excel MCP Server",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "context-dev",
+    "name": "context.dev",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "chandra-ocr",
+    "name": "Chandra",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "openfang",
+    "name": "OpenFang",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "tolaria",
+    "name": "Tolaria",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "llm-wiki",
+    "name": "LLM Wiki",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "jcode",
+    "name": "jcode",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "trellis",
+    "name": "Trellis",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "agent-orchestrator",
+    "name": "Agent Orchestrator",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "everos",
+    "name": "EverOS",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "corsair",
+    "name": "Corsair",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "turbovec",
+    "name": "turbovec",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "freetoken",
+    "name": "FreeToken",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "omlx",
+    "name": "oMLX",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "openhuman",
+    "name": "OpenHuman",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "qwenpaw",
+    "name": "QwenPaw",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "openworker",
+    "name": "OpenWorker",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "voicebox",
+    "name": "Voicebox",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "impeccable",
+    "name": "Impeccable",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "t3-code",
+    "name": "T3 Code",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "ds4",
+    "name": "ds4",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "deepseek-reasonix",
+    "name": "Reasonix",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "colibri",
+    "name": "Colibri",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "open-design",
+    "name": "Open Design",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "gstack",
+    "name": "gstack",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "anydoc",
+    "name": "AnyDoc",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "json-render",
+    "name": "json-render",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "jotform-mcp",
+    "name": "Jotform MCP",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "mercury-mcp",
+    "name": "Mercury MCP",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "gocardless-mcp",
+    "name": "GoCardless MCP",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "sanity-mcp",
+    "name": "Sanity MCP",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "amplitude-mcp",
+    "name": "Amplitude MCP",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "mixpanel-mcp",
+    "name": "Mixpanel MCP",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "fireflies-mcp",
+    "name": "Fireflies MCP",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "typeform-mcp",
+    "name": "Typeform MCP",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "docusign-mcp",
+    "name": "Docusign MCP",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "dropbox-mcp",
+    "name": "Dropbox MCP",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "miro-mcp",
+    "name": "Miro MCP",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "clickup-mcp",
+    "name": "ClickUp MCP",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "asana-mcp",
+    "name": "Asana MCP",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "klaviyo-mcp",
+    "name": "Klaviyo MCP",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "motherduck-mcp",
+    "name": "MotherDuck MCP",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "neo4j-mcp",
+    "name": "Neo4j MCP",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "heroku-mcp",
+    "name": "Heroku MCP",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "auth0-mcp",
+    "name": "Auth0 MCP",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "xero-mcp",
+    "name": "Xero MCP",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "circleci-mcp",
+    "name": "CircleCI MCP",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "launchdarkly-mcp",
+    "name": "LaunchDarkly MCP",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "porkbun-mcp",
+    "name": "Porkbun MCP",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "wordpress-mcp-adapter",
+    "name": "WordPress MCP Adapter",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "turbopuffer",
+    "name": "turbopuffer",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "picoclaw",
+    "name": "PicoClaw",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "gas-town",
+    "name": "Gas Town",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "codewhale",
+    "name": "Codewhale",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "agentmemory",
+    "name": "agentmemory",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "shannon",
+    "name": "Shannon",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "openai-symphony",
+    "name": "OpenAI Symphony",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "cube-sandbox",
+    "name": "CubeSandbox",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "multica",
+    "name": "Multica",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "ironclaw",
+    "name": "IronClaw",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "paseo",
+    "name": "Paseo",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "cmux",
+    "name": "cmux",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "openwork",
+    "name": "OpenWork",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "zvec",
+    "name": "Zvec",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "qmd",
+    "name": "QMD",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "code-review-graph",
+    "name": "code-review-graph",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "nanoclaw",
+    "name": "NanoClaw",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "mimo-code",
+    "name": "MiMo Code",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "context-mode",
+    "name": "context-mode",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "headroom",
+    "name": "Headroom",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "lark-cli",
+    "name": "Lark CLI",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "codegraph",
+    "name": "CodeGraph",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "hindsight",
+    "name": "Hindsight",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "oh-my-pi",
+    "name": "oh-my-pi",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "liteparse",
+    "name": "LiteParse",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "paperclip",
+    "name": "Paperclip",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "hyperframes",
+    "name": "HyperFrames",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "vercel-skills",
+    "name": "Vercel Skills",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "agent-browser",
+    "name": "agent-browser",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "openscience",
+    "name": "OpenScience",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "forward-email-mcp",
+    "name": "Forward Email MCP",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "magnitude",
+    "name": "Magnitude",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "cloudflare-clef",
+    "name": "Cloudflare Clef",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "added",
+    "slug": "cloudflare-cf-cli",
+    "name": "Cloudflare cf CLI",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "updated",
+    "slug": "codeium-windsurf",
+    "name": "Codeium / Windsurf",
+    "note": "providerUrl updated",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "updated",
+    "slug": "codeium-windsurf",
+    "name": "Codeium / Windsurf",
+    "note": "agentUrl updated",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "updated",
+    "slug": "azure-ai-translator",
+    "name": "Azure AI Translator",
+    "note": "agentUrl updated",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "updated",
+    "slug": "kapso",
+    "name": "Kapso",
+    "note": "providerUrl updated",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "updated",
+    "slug": "kapso",
+    "name": "Kapso",
+    "note": "agentUrl updated",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "updated",
+    "slug": "factory-ai",
+    "name": "Factory",
+    "note": "agentUrl updated",
+    "date": "2026-10-04"
+  },
+  {
+    "action": "updated",
+    "slug": "goldie",
+    "name": "Goldie",
+    "note": "agentUrl updated",
+    "date": "2026-10-04"
+  },
+  {
     "action": "removed",
     "slug": "headlong",
     "name": "Headlong",

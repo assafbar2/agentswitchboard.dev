@@ -1,0 +1,55 @@
+{
+  "id": "launchdarkly-mcp",
+  "name": "LaunchDarkly MCP",
+  "slug": "launchdarkly-mcp",
+  "description": "Gives coding agents a hosted OAuth MCP server to create and target LaunchDarkly feature flags, manage AgentControl configs, and query observability data.",
+  "providerName": "LaunchDarkly",
+  "providerUrl": "https://launchdarkly.com",
+  "agentUrl": "https://launchdarkly.com/docs/home/getting-started/mcp-hosted",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "feature-flags",
+    "remote-mcp",
+    "official-mcp",
+    "observability",
+    "flag-cleanup",
+    "launchdarkly"
+  ],
+  "skills": [
+    {
+      "id": "flag-management",
+      "name": "Feature Flag Management",
+      "description": "Creates feature flags, turns them on or off across environments, and updates targeting rules from natural-language prompts."
+    },
+    {
+      "id": "agentcontrol-configs",
+      "name": "AgentControl Configs",
+      "description": "Creates, reads, updates, and deletes AgentControl configs in LaunchDarkly projects through the hosted MCP server."
+    },
+    {
+      "id": "observability-queries",
+      "name": "Observability Queries",
+      "description": "Queries logs, traces, error groups, and the Dashboards page, for example listing error groups from the last 24 hours."
+    },
+    {
+      "id": "flag-cleanup",
+      "name": "Flag Cleanup Readiness",
+      "description": "Classifies a flag as safe, caution, or not-ready for removal across environments, with evidence, before code cleanup."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-04T17:55:56.166Z",
+  "updatedAt": "2026-10-04T17:55:56.166Z"
+}

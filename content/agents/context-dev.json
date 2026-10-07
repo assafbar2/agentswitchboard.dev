@@ -1,0 +1,65 @@
+{
+  "id": "context-dev",
+  "name": "context.dev",
+  "slug": "context-dev",
+  "description": "Scrapes, crawls and searches the web for agents through a REST API, SDKs, CLI and hosted MCP server, returning LLM-ready Markdown, structured fields and company brand data.",
+  "providerName": "context.dev",
+  "providerUrl": "https://www.context.dev/",
+  "agentUrl": "https://www.context.dev/",
+  "categories": [
+    "browser-computer",
+    "research"
+  ],
+  "tags": [
+    "web-scraping",
+    "web-crawling",
+    "web-search",
+    "markdown-extraction",
+    "brand-data",
+    "remote-mcp",
+    "rest-api",
+    "context-dev"
+  ],
+  "skills": [
+    {
+      "id": "scrape",
+      "name": "Scrape to Markdown",
+      "description": "Turns any URL into Markdown, HTML, screenshots, images or CSS-parsed fields in one POST /v1/web/scrape request."
+    },
+    {
+      "id": "crawl",
+      "name": "Site Crawl",
+      "description": "Crawls a website into one Markdown document per reachable page with page and depth limits, or batches up to 25,000 URLs asynchronously."
+    },
+    {
+      "id": "search-and-answers",
+      "name": "Web Search and Answers",
+      "description": "Searches the web with page content via /v1/web/search, or researches a task and returns JSON with sources via /v1/web/answers."
+    },
+    {
+      "id": "brand-data",
+      "name": "Brand Data",
+      "description": "Retrieves logos, colors, fonts and company metadata by domain, email, company name, ticker or transaction descriptor."
+    },
+    {
+      "id": "page-monitors",
+      "name": "Page Monitors",
+      "description": "Watches a page, sitemap or a site's key pages on a schedule and reports changes by signed webhook or by polling runs."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-04T17:55:56.218Z",
+  "updatedAt": "2026-10-04T17:55:56.218Z"
+}

@@ -1,0 +1,58 @@
+{
+  "id": "omlx",
+  "name": "oMLX",
+  "slug": "omlx",
+  "description": "Serves local LLM, vision, embedding and reranker models on Apple Silicon Macs through OpenAI- and Anthropic-compatible APIs, with continuous batching and an SSD-backed KV cache.",
+  "providerName": "Jun Kim",
+  "providerUrl": "https://omlx.ai",
+  "agentUrl": "https://github.com/jundot/omlx",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "apple-silicon",
+    "mlx",
+    "local-inference",
+    "openai-compatible",
+    "anthropic-compatible",
+    "kv-cache",
+    "continuous-batching",
+    "macos"
+  ],
+  "skills": [
+    {
+      "id": "tiered-kv-cache",
+      "name": "Tiered KV Cache",
+      "description": "Keeps hot KV blocks in RAM and offloads cold ones to SSD, restoring matching prefixes from disk instead of recomputing, even after restarts."
+    },
+    {
+      "id": "compatible-apis",
+      "name": "OpenAI and Anthropic APIs",
+      "description": "Exposes streaming chat and text completions, Anthropic Messages, embeddings, rerank and model listing endpoints under /v1 for existing clients."
+    },
+    {
+      "id": "multi-model-serving",
+      "name": "Multi-Model Serving",
+      "description": "Loads LLMs, VLMs, embedding models and rerankers in one server, with LRU eviction, model pinning, per-model TTL and a memory limit."
+    },
+    {
+      "id": "agent-integrations",
+      "name": "Agent Integrations",
+      "description": "Sets up OpenClaw, OpenCode, Codex, Hermes Agent, Copilot, Pi and DeepSeek Harness against the local server from the admin dashboard."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.205Z",
+  "updatedAt": "2026-10-04T17:55:56.205Z"
+}

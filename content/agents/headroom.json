@@ -1,0 +1,64 @@
+{
+  "id": "headroom",
+  "name": "Headroom",
+  "slug": "headroom",
+  "description": "Compresses tool outputs, logs, RAG chunks, files, and history locally before they reach the model, as a Python or TypeScript library, a drop-in proxy, an agent wrapper, or an MCP server.",
+  "providerName": "Headroom Labs",
+  "providerUrl": "https://docs.headroomlabs.ai/docs",
+  "agentUrl": "https://github.com/headroomlabs-ai/headroom",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "context-compression",
+    "token-reduction",
+    "llm-proxy",
+    "local-mcp",
+    "prompt-caching",
+    "claude-code",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "inline-compress",
+      "name": "Inline Compression",
+      "description": "Compresses a message list in Python or TypeScript with compress(), routing JSON, source code, and prose to a matching compressor."
+    },
+    {
+      "id": "compression-proxy",
+      "name": "Compression Proxy",
+      "description": "Runs headroom proxy as a local drop-in endpoint that compresses traffic to Anthropic, OpenAI, or Bedrock with no application code changes."
+    },
+    {
+      "id": "agent-wrap",
+      "name": "Agent Wrapping",
+      "description": "Launches Claude Code, Codex, Cursor, Aider, and other agents routed through Headroom with headroom wrap, and undoes it with unwrap."
+    },
+    {
+      "id": "reversible-retrieval",
+      "name": "Reversible Retrieval",
+      "description": "Caches originals locally so the model can call headroom_retrieve over MCP when it needs the full text behind a compressed chunk."
+    },
+    {
+      "id": "headroom-learn",
+      "name": "Session Learning",
+      "description": "Mines failed sessions with headroom learn and writes corrections to CLAUDE.local.md, CLAUDE.md, AGENTS.md, or another agent file."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-04T17:55:56.139Z",
+  "updatedAt": "2026-10-04T17:55:56.139Z"
+}

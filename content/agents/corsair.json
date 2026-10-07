@@ -1,0 +1,59 @@
+{
+  "id": "corsair",
+  "name": "Corsair",
+  "slug": "corsair",
+  "description": "Connects your app and its agents to third-party services through one TypeScript SDK, with per-tenant OAuth and API keys, approval gates, verified webhooks and MCP tool adapters.",
+  "providerName": "Corsair",
+  "providerUrl": "https://corsair.dev",
+  "agentUrl": "https://github.com/corsairdev/corsair",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "integrations",
+    "managed-oauth",
+    "multi-tenant",
+    "typescript-sdk",
+    "mcp-adapters",
+    "webhooks",
+    "human-approval",
+    "corsair"
+  ],
+  "skills": [
+    {
+      "id": "mcp-adapters",
+      "name": "MCP Tool Adapters",
+      "description": "Exposes every installed integration as MCP tools for the Anthropic SDK, Claude Agent SDK, Vercel AI SDK, Mastra and coding agents."
+    },
+    {
+      "id": "approval-permissions",
+      "name": "Approval Permissions",
+      "description": "Gates write and destructive agent actions behind human approval using open, cautious, strict or readonly policies, optionally hosted on Hub."
+    },
+    {
+      "id": "multi-tenant-credentials",
+      "name": "Multi-Tenant Credentials",
+      "description": "Isolates OAuth tokens, API keys and integration data per tenant, with a connect flow that resumes failed work once a tenant links an account."
+    },
+    {
+      "id": "verified-webhooks",
+      "name": "Verified Webhooks",
+      "description": "Receives provider events on one signature-verified endpoint for every integration plugin, with handlers in your own application."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-04T17:55:56.209Z",
+  "updatedAt": "2026-10-04T17:55:56.209Z"
+}

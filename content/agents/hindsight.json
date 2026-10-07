@@ -1,0 +1,64 @@
+{
+  "id": "hindsight",
+  "name": "Hindsight",
+  "slug": "hindsight",
+  "description": "Gives agents a self-hosted long-term memory server that retains facts, recalls them with parallel semantic, keyword, graph, and time search, and reflects over them, via SDKs, REST, and MCP.",
+  "providerName": "Vectorize",
+  "providerUrl": "https://hindsight.vectorize.io/",
+  "agentUrl": "https://github.com/vectorize-io/hindsight",
+  "categories": [
+    "memory-state"
+  ],
+  "tags": [
+    "agent-memory",
+    "long-term-memory",
+    "memory-banks",
+    "hybrid-search",
+    "local-mcp",
+    "self-hosted",
+    "vectorize",
+    "postgres"
+  ],
+  "skills": [
+    {
+      "id": "retain",
+      "name": "Retain Memories",
+      "description": "Stores new information in a memory bank, using an LLM to extract facts, entities, relationships, and timestamps into search indexes."
+    },
+    {
+      "id": "recall",
+      "name": "Recall Memories",
+      "description": "Searches a bank with semantic, BM25 keyword, graph, and temporal retrieval in parallel, then fuses and reranks results to a token limit."
+    },
+    {
+      "id": "reflect",
+      "name": "Reflect Over Memories",
+      "description": "Analyzes existing memories to answer questions that need reasoning rather than lookup, shaped by the bank's disposition traits."
+    },
+    {
+      "id": "mental-models",
+      "name": "Mental Models",
+      "description": "Keeps standing answers and wiki-style knowledge pages for a bank that Hindsight rewrites in the background as the bank learns more."
+    },
+    {
+      "id": "coding-agent-memory",
+      "name": "Coding Agent Memory",
+      "description": "Installs per-repo memory into Claude Code, Codex, Cursor, and other CLI agents, built from git history and past sessions automatically."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-04T17:55:56.135Z",
+  "updatedAt": "2026-10-04T17:55:56.135Z"
+}

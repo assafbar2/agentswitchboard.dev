@@ -1,0 +1,54 @@
+{
+  "id": "chandra-ocr",
+  "name": "Chandra",
+  "slug": "chandra-ocr",
+  "description": "Converts PDFs and images into Markdown, HTML or JSON with layout preserved, handling tables, forms, handwriting and 90+ languages, via a CLI with local or vLLM inference.",
+  "providerName": "Datalab",
+  "providerUrl": "https://www.datalab.to",
+  "agentUrl": "https://github.com/datalab-to/chandra",
+  "categories": [
+    "data-analytics",
+    "infrastructure"
+  ],
+  "tags": [
+    "ocr",
+    "pdf-parsing",
+    "document-extraction",
+    "layout-analysis",
+    "handwriting-recognition",
+    "vllm",
+    "huggingface",
+    "datalab"
+  ],
+  "skills": [
+    {
+      "id": "layout-ocr",
+      "name": "Layout-Preserving OCR",
+      "description": "Converts images and PDFs into Markdown, HTML or JSON with detailed layout information, and extracts images and diagrams with captions."
+    },
+    {
+      "id": "tables-forms-math",
+      "name": "Tables, Forms and Math",
+      "description": "Reconstructs forms including checkboxes, complex tables, math and handwriting across 90+ languages from scanned or digital pages."
+    },
+    {
+      "id": "inference-modes",
+      "name": "Local or vLLM Inference",
+      "description": "Runs the model locally through HuggingFace with --method hf, or against a vLLM server launched with chandra_vllm, for single files or folders."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-10-04T17:55:56.217Z",
+  "updatedAt": "2026-10-04T17:55:56.217Z"
+}
