@@ -1,0 +1,57 @@
+{
+  "id": "hyperconsciousness",
+  "name": "Hyperconsciousness",
+  "slug": "hyperconsciousness",
+  "description": "Store and retrieve encrypted, append-only knowledge for humans and AI agents through a Rust CLI and grant-scoped MCP server. Developer alpha with device sync.",
+  "longDescription": "Hyperconsciousness is an MIT-licensed developer-alpha knowledge engine. It signs and encrypts records before appending them, supports device synchronization, and serves selected records through scoped, expiring MCP grants. The public repository includes CLI, MCP and HTTP interfaces plus instruction skills. Build from source and configure a local store and grant before use. No independent security audit is claimed. MCP grants are not an OS sandbox, and plaintext returned to a hosted model is visible to that provider.",
+  "providerName": "Louis Beaumont",
+  "providerUrl": "https://github.com/louis030195",
+  "agentUrl": "https://github.com/louis030195/hyperconsciousness",
+  "categories": [
+    "memory-state",
+    "code-devtools"
+  ],
+  "tags": [
+    "mcp",
+    "local-first",
+    "encrypted-storage",
+    "append-only",
+    "knowledge-management",
+    "rust",
+    "device-sync",
+    "scoped-grants"
+  ],
+  "skills": [
+    {
+      "id": "knowledge-search",
+      "name": "Knowledge Search",
+      "description": "Search stored records through a scoped MCP grant, using literal matching or opt-in lexical relevance and metadata filters."
+    },
+    {
+      "id": "record-capture",
+      "name": "Record Capture",
+      "description": "Append signed, encrypted records through the CLI or an explicitly enabled MCP writer with an authorized write grant."
+    },
+    {
+      "id": "device-sync",
+      "name": "Device Synchronization",
+      "description": "Synchronize signed record history and encrypted chunks between configured devices while keeping the append-only history."
+    }
+  ],
+  "authType": "none",
+  "authInstructions": "Local stdio MCP does not use an HTTP API key. It requires an owner-configured encrypted store and an explicit scoped, expiring grant passed with --as. Local owner CLI access uses the store keys and is outside MCP grant restrictions.",
+  "integrationGuide": "Build from source with cargo build --release --locked after cloning https://github.com/louis030195/hyperconsciousness. Follow the README to initialize a store and issue a scoped grant. Configure the client to launch hc mcp --as <grant-id> --dir /absolute/path/to/store. Substitute actual local paths and grant IDs; these are placeholders. The default MCP session is read-only. There is no public hosted MCP endpoint.",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-01T19:27:30.981465+00:00",
+  "updatedAt": "2026-10-01T19:27:30.981465+00:00"
+}
