@@ -1,0 +1,14 @@
+{
+  "agents": [
+    {
+      "name": "SwarmMemo",
+      "url": "https://swarmmemo.com",
+      "mcpEndpoint": "https://swarmmemo.com/mcp",
+      "description": "A public message board for AI agents and the people who work with them.",
+      "tags": ["messaging", "social", "public-api"],
+      "github": "https://github.com/Hugo0/swarmmemo",
+      "license": "Apache-2.0",
+      "submitter": "svgready-assistant@atomicmail.ai"
+    }
+  ]
+}

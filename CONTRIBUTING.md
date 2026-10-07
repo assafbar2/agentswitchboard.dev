@@ -1,73 +1,37 @@
-# Contributing to Agent Switchboard
+# Contributing to AgentSwitchboard.dev
 
-The catalog is maintained **in the open**: every agent in the directory is a
-JSON file in [`content/agents/`](content/agents/). Corrections and new
-listings happen via pull request — CI validates, a human maintainer merges.
+## Directory Submission
 
-## Submit a new agent
+To submit an agent for listing in the directory, visit `/submit` on the site or open a pull request.
 
-1. Fork the repo
-2. Add `content/agents/<your-slug>.json` (kebab-case slug, must match filename):
+### Requirements
+
+- The agent must expose a public Streamable HTTP MCP endpoint.
+- The agent must have a public HTTP API.
+- Read access must work without authentication (anonymous access).
+- The service must be open-source with a permissive license (MIT, Apache-2.0, etc.).
+
+### How to Submit
+
+1. Fork this repository.
+2. Add your agent entry to `.github/agents.json`.
+3. Update `README.md` with your agent in the table.
+4. Open a pull request with a clear description of your agent and its MCP endpoint.
+
+### agents.json Schema
 
 ```json
 {
-  "id": "your-slug",
-  "name": "Official Product Name",
-  "slug": "your-slug",
-  "description": "Starts with a verb. What it does + who it's for. Max 200 chars.",
-  "providerName": "Company or OSS org",
-  "providerUrl": "https://example.com",
-  "agentUrl": "https://docs.example.com",
-  "categories": ["code-devtools"],
-  "tags": ["six-to-eight", "specific-kebab-tags"],
-  "skills": [
-    { "id": "kebab-id", "name": "2-4 Word Name", "description": "Verb-first, 80-150 chars, a real documented capability." }
-  ],
-  "authType": "apiKey",
-  "supportsStreaming": false,
-  "supportsPushNotifications": false,
-  "status": "published",
-  "featured": false,
-  "verified": false,
-  "tier": "free",
-  "discoveredBy": "manual",
-  "accessMethods": ["api", "mcp"],
-  "createdAt": "2026-01-01T00:00:00Z",
-  "updatedAt": "2026-01-01T00:00:00Z"
+  "agents": [
+    {
+      "name": "Agent Name",
+      "url": "https://example.com",
+      "mcpEndpoint": "https://example.com/mcp",
+      "description": "Brief description of the agent.",
+      "tags": ["tag1", "tag2"],
+      "github": "https://github.com/example/repo",
+      "license": "MIT",
+      "submitter": "contact@example.com"
+    }
+  ]
 }
-```
-
-3. Add a line to `content/changelog.json` (top of the array):
-   `{ "action": "added", "slug": "your-slug", "name": "Official Product Name" }`
-4. Run `npx tsx scripts/validate-content.ts` locally (CI runs it too)
-5. Open the PR — fill in the template
-
-**Valid category slugs** are in [`content/categories.json`](content/categories.json).
-**Field rules** are enforced by [`scripts/validate-content.ts`](scripts/validate-content.ts):
-description ≤ 200 chars, no generic tags (`ai`, `tool`, `automation`…),
-kebab-case everywhere, 1–3 categories.
-
-## What gets accepted
-
-We are curators, not collectors. Listings need:
-
-- ✅ A real, working product with a loadable URL
-- ✅ Programmatic access: API, MCP, CLI, or browser extension — not just a web UI
-- ✅ An identifiable provider (company or OSS org)
-- ✅ Genuine adoption or traction signals (stars, registry listings, funding, community discussion — or, for vendors submitting their own product, endpoints we can verify live)
-- ❌ No vaporware, GPT wrappers, dead links, or pure self-promo
-
-Vendors submitting their own product: set `"verified": false` — maintainers
-verify before merge and flip it. **Verified** means we checked it works: your URLs
-load, you declare an access method, and any linked GitHub repo is live (not
-archived, pushed within 12 months). It's re-checked monthly and drops if the
-product stops meeting that bar. `featured` is maintainer-only.
-
-## Fix an existing entry
-
-Dead link, renamed product, new access method? Edit the entry's JSON file,
-add an `updated` line to the changelog, open a PR. These merge fast.
-
-## Not a developer?
-
-Use the form at [agentswitchboard.dev/submit](https://agentswitchboard.dev/submit).

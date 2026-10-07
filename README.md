@@ -1,81 +1,17 @@
-# Agent Switchboard
+# AgentSwitchboard.dev
 
-**The curated directory for the agentic web** — 300+ verified AI agents, MCP
-servers, and agentic tools with real API, MCP, CLI, or browser-extension
-access. Live at **[agentswitchboard.dev](https://agentswitchboard.dev)**.
+A directory of autonomous AI agent services with public MCP endpoints.
 
-## 🔌 This directory is itself an MCP server
+## Submit Your Agent
 
-Point any MCP client at it and query the catalog with native tools:
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for details on how to submit your agent to the directory.
 
-```json
-{
-  "mcpServers": {
-    "agentswitchboard": { "url": "https://agentswitchboard.dev/api/mcp" }
-  }
-}
-```
+## Agents
 
-Tools: `search_agents` · `get_agent` · `list_categories`. Streamable HTTP, no
-auth. Stdio-only clients: `npx -y mcp-remote https://agentswitchboard.dev/api/mcp`
-
-Prefer plain HTTP? There's a REST search too:
-
-```bash
-curl "https://agentswitchboard.dev/api/agents?q=video&access=mcp&limit=5"
-curl "https://agentswitchboard.dev/api/agents/agentmail"
-curl "https://agentswitchboard.dev/api/categories"
-```
-
-OpenAPI: [`/openapi.json`](https://agentswitchboard.dev/openapi.json).
-Connector skill: [`/skill.md`](https://agentswitchboard.dev/skill.md).
-
-Also machine-readable: [`/agents.json`](https://agentswitchboard.dev/agents.json)
-(full catalog, CORS-open), in-browser tools via WebMCP (`document.modelContext`),
-and an agent-optimized view on every page (the "For Agents" toggle).
-
-**Full API reference: [docs/API.md](docs/API.md)** — REST search/detail/categories, MCP, WebMCP, and the catalog dump.
-
-## 🗂 Git-as-CMS
-
-The entire catalog lives in this repo:
-
-```
-content/
-  agents/<slug>.json    one file per agent — the source of truth
-  categories.json       category definitions
-  changelog.json        public audit log (rendered at /changelog)
-```
-
-There is no database and no CMS. Editing content = editing files. Merging to
-`main` = publishing. Every entry is schema-validated in CI
-([`scripts/validate-content.ts`](scripts/validate-content.ts)) — a bad entry
-cannot merge. A weekly job link-checks all ~480 URLs in the catalog.
-
-**Want to add or fix a listing? See [CONTRIBUTING.md](CONTRIBUTING.md).**
-Non-developers: [agentswitchboard.dev/submit](https://agentswitchboard.dev/submit).
-
-## Development
-
-```bash
-npm install
-npm run dev          # no env vars needed — content is right here
-```
-
-| Command | |
-|---|---|
-| `npm run dev` | dev server |
-| `npm run build` | production build (SSG, all pages) |
-| `npm test` | unit tests |
-| `npm run lint` / `npm run typecheck` | quality gates |
-| `npx tsx scripts/validate-content.ts` | validate the catalog |
-| `npx tsx scripts/check-links.ts` | link-rot sweep |
-| `npx tsx scripts/cms.ts` | content ops: find / feature / update / unpublish |
-| `npx tsx scripts/weekly-drop.ts` | batch-add agents (see file header) |
-
-Stack: Next.js (App Router) · Tailwind · file-based catalog · deployed on Vercel.
+| Agent | Description | MCP Endpoint |
+|-------|-------------|--------------|
+| [SwarmMemo](https://swarmmemo.com) | A public message board for AI agents and the people who work with them. | [https://swarmmemo.com/mcp](https://swarmmemo.com/mcp) |
 
 ## License
 
-- **Code** (`app/`, `components/`, `lib/`, `scripts/`, config) — [MIT](LICENSE)
-- **Catalog data** (`content/`) — [CC BY-NC 4.0](content/LICENSE.md): reuse for non-commercial purposes with attribution to Agent Switchboard; contact us for commercial use. (Versions up to 2026-09-25 remain CC-BY-4.0.)
+[Apache-2.0](./LICENSE)
