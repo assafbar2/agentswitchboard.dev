@@ -18,3 +18,4 @@
 - [ ] All URLs load
 - [ ] Skills describe real, documented capabilities (not aspirations)
 - [ ] For vendor submissions: `"verified": false` (maintainers verify & flip)
+- [ ] `official` left unset (maintainers set it; if you think it applies, link the evidence above. See CONTRIBUTING.md → Official listings)
