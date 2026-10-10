@@ -1,6 +1,11 @@
 [
   {
     "action": "added",
+    "slug": "bureau-of-lost-context",
+    "name": "The Bureau of Lost Context"
+  },
+  {
+    "action": "added",
     "slug": "excel-mcp-server",
     "name": "Excel MCP Server",
     "date": "2026-10-04"
