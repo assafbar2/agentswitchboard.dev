@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { ExternalLink, Shield, Zap, Verified } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
 import { AccessMethodBadges } from '@/components/ui/AccessMethodBadges';
+import { OfficialBadge } from '@/components/ui/OfficialBadge';
 import type { Agent } from '@/lib/types';
 import { authTypeLabel, truncate } from '@/lib/utils';
 
@@ -35,6 +36,7 @@ export function AgentCard({ agent }: { agent: Agent }) {
           {agent.verified && (
             <Verified className="w-4 h-4 text-[var(--accent)]" />
           )}
+          <OfficialBadge agent={agent} />
           {agent.featured && (
             <Badge variant="amber">Featured</Badge>
           )}

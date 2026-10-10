@@ -5,7 +5,7 @@
   "description": "Searches millions of public GitHub repositories for real-world code patterns and API usage examples using literal or regex queries. No key needed.",
   "providerName": "Vercel",
   "providerUrl": "https://vercel.com",
-  "agentUrl": "https://smithery.ai/server/vercel/grep",
+  "agentUrl": "https://vercel.com/blog/grep-a-million-github-repositories-via-mcp",
   "categories": [
     "code-devtools"
   ],
@@ -41,11 +41,12 @@
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "mcp"
   ],
   "createdAt": "2026-06-07T17:51:22.747Z",
-  "updatedAt": "2026-06-07T17:51:22.747Z"
+  "updatedAt": "2026-10-10T21:36:47.176Z"
 }

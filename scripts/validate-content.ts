@@ -5,12 +5,15 @@
  * Runs in CI on every PR; a bad entry physically cannot merge.
  *
  * Run: npx tsx scripts/validate-content.ts
+ *      npx tsx scripts/validate-content.ts --official-candidates
+ *        (also lists unflagged entries whose agentUrl is on an official vendor source)
  * Exit 1 on any violation.
  */
 
 import * as fs from 'fs';
 import * as path from 'path';
 import { z } from 'zod';
+import { registryProblems, vendorsForUrl, type OfficialVendor } from '../lib/official';
 
 const CONTENT = path.resolve(process.cwd(), 'content');
 
@@ -62,6 +65,7 @@ const AgentSchema = z
     featured: z.boolean(),
     featuredUntil: z.string().optional(),
     verified: z.boolean(),
+    official: z.boolean().optional(),
     referralUrl: z.string().optional(),
     sponsorLabel: z.string().optional(),
     tier: z.enum(['free', 'premium']),
@@ -73,10 +77,51 @@ const AgentSchema = z
   })
   .strict();
 
+const SOURCE = /^[a-z0-9.-]+\.[a-z0-9-]+(\/[a-z0-9._-]+)?$/;
+
+const OfficialVendorSchema = z
+  .object({
+    slug: z.string().regex(SLUG, 'vendor slug must be kebab-case'),
+    name: z.string().min(1),
+    basis: z.enum(['public', 'frontier-lab', 'valuation', 'market-leader', 'subsidiary']),
+    evidence: z.string().min(5, 'evidence must say why the vendor qualifies'),
+    parent: z.string().optional(),
+    sources: z
+      .array(z.string().regex(SOURCE, 'source must be a lowercase host or host/org, no scheme'))
+      .min(1),
+  })
+  .strict();
+
+/** Parse and check content/official-vendors.json; returns the vendors and a violation count. */
+function loadOfficialVendors(): { vendors: OfficialVendor[]; errors: number } {
+  const p = path.join(CONTENT, 'official-vendors.json');
+  let raw: unknown;
+  try {
+    raw = JSON.parse(fs.readFileSync(p, 'utf8'));
+  } catch (e) {
+    console.log(`❌ content/official-vendors.json: ${(e as Error).message}`);
+    return { vendors: [], errors: 1 };
+  }
+  const result = z.array(OfficialVendorSchema).safeParse(raw);
+  if (!result.success) {
+    for (const issue of result.error.issues) {
+      console.log(`❌ content/official-vendors.json: ${issue.path.join('.')}: ${issue.message}`);
+    }
+    return { vendors: [], errors: result.error.issues.length };
+  }
+  const problems = registryProblems(result.data);
+  for (const problem of problems) console.log(`❌ content/official-vendors.json: ${problem}`);
+  return { vendors: result.data, errors: problems.length };
+}
+
 function main() {
+  const listCandidates = process.argv.includes('--official-candidates');
+  const official = loadOfficialVendors();
+  const candidates: string[] = [];
+  let flagged = 0;
   const dir = path.join(CONTENT, 'agents');
   const files = fs.readdirSync(dir).filter((f) => f.endsWith('.json'));
-  let errors = 0;
+  let errors = official.errors;
   const slugs = new Set<string>();
   const published = new Set<string>();
 
@@ -126,6 +171,32 @@ function main() {
     }
     slugs.add(slug);
     if (result.data.status === 'published') published.add(slug);
+
+    // Official needs evidence: the product URL must sit on exactly one
+    // registered vendor's official domain or GitHub org.
+    const vendors = vendorsForUrl(result.data.agentUrl, official.vendors);
+    if (result.data.official) {
+      flagged++;
+      if (vendors.length === 0) {
+        console.log(
+          `❌ ${file}: official: true but agentUrl ${result.data.agentUrl} is not on a source in content/official-vendors.json`
+        );
+        errors++;
+      } else if (vendors.length > 1) {
+        console.log(`❌ ${file}: agentUrl matches several official vendors (${vendors.map((v) => v.slug).join(', ')})`);
+        errors++;
+      }
+    } else if (vendors.length === 1 && result.data.status === 'published') {
+      candidates.push(`${slug} (${vendors[0].slug})`);
+    }
+  }
+
+  if (listCandidates) {
+    console.log(
+      candidates.length
+        ? `ℹ️  ${candidates.length} unflagged entr${candidates.length === 1 ? 'y' : 'ies'} on an official vendor source — review against the criteria:\n   ${candidates.join('\n   ')}`
+        : 'ℹ️  no unflagged entries on official vendor sources'
+    );
   }
 
   // Homepage placements must point at published agents, or the slot silently disappears.
@@ -152,7 +223,9 @@ function main() {
   }
 
   if (errors === 0) {
-    console.log(`✅ content valid: ${files.length} agents, ${validCategorySlugs.size} categories, 0 violations`);
+    console.log(
+      `✅ content valid: ${files.length} agents (${flagged} official, ${official.vendors.length} vendors), ${validCategorySlugs.size} categories, 0 violations`
+    );
   } else {
     console.log(`\n❌ ${errors} violation(s) across content/ — fix before merging.`);
     process.exit(1);

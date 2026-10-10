@@ -38,6 +38,7 @@ function makeAgent(overrides: Partial<Agent> = {}): Agent {
     status: 'published',
     featured: true,
     verified: true,
+    official: false,
     tier: 'free',
     discoveredBy: 'manual',
     accessMethods: ['api', 'mcp', 'cli'],
@@ -66,6 +67,7 @@ describe('summarizeAgent', () => {
     expect(card.slug).toBe('agentmail');
     expect(card.url).toBe('https://agentswitchboard.dev/agents/agentmail');
     expect(card.categories).toEqual(['infrastructure']);
+    expect(card.official).toBe(false);
     expect(card).not.toHaveProperty('skills');
     expect(card).not.toHaveProperty('id');
   });
@@ -84,6 +86,15 @@ describe('detailAgent', () => {
       },
     ]);
     expect(detail.tags).toEqual(['email', 'api']);
+  });
+
+  it('reports the official vendor, or null', () => {
+    expect(detailAgent(makeAgent()).officialVendor).toBeNull();
+    const official = detailAgent(
+      makeAgent({ official: true, officialVendor: { slug: 'notion', name: 'Notion' } })
+    );
+    expect(official.official).toBe(true);
+    expect(official.officialVendor).toBe('Notion');
   });
 });
 

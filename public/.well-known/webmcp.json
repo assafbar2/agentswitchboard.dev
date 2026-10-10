@@ -12,7 +12,7 @@
   "tools": [
     {
       "name": "search_agents",
-      "description": "Search Agent Switchboard's directory of vetted AI agents, MCP servers, and agentic tools. Filter by free-text query, category slug, and/or access method (api, mcp, cli, browser-extension).",
+      "description": "Search Agent Switchboard's directory of vetted AI agents, MCP servers, and agentic tools. Filter by free-text query, category slug, access method (api, mcp, cli, browser-extension), and/or official (first-party listings from major vendors).",
       "annotations": { "readOnlyHint": true },
       "outputSchema": {
         "type": "object",
@@ -30,7 +30,8 @@
                 "slug": { "type": "string" },
                 "url": { "type": "string" },
                 "categories": { "type": "array", "items": { "type": "string" } },
-                "accessMethods": { "type": "array", "items": { "type": "string" } }
+                "accessMethods": { "type": "array", "items": { "type": "string" } },
+                "official": { "type": "boolean" }
               }
             }
           }
@@ -54,6 +55,8 @@
           "accessMethods": { "type": "array", "items": { "type": "string" } },
           "tags": { "type": "array", "items": { "type": "string" } },
           "verified": { "type": "boolean" },
+          "official": { "type": "boolean" },
+          "officialVendor": { "type": ["string", "null"] },
           "tier": { "type": "string" },
           "error": { "type": "string" }
         }

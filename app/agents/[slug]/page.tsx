@@ -1,5 +1,6 @@
 import { getAgentBySlug, getEveryAgent } from '@/lib/catalog';
 import { Badge } from '@/components/ui/Badge';
+import { OfficialBadge } from '@/components/ui/OfficialBadge';
 import { AgentCard } from '@/components/AgentCard';
 import { JsonLd } from '@/components/JsonLd';
 import { getRelatedAgents } from '@/lib/related';
@@ -93,6 +94,7 @@ export default async function AgentPage({
     ['streaming', agent.supportsStreaming ? 'true' : 'false'],
     ['push', agent.supportsPushNotifications ? 'true' : 'false'],
     ['verified', agent.verified ? 'true' : 'false'],
+    ['official', agent.officialVendor ? `true · ${agent.officialVendor.name}` : 'false'],
     ['tags', agent.tags.join(', ') || '—'],
   ];
 
@@ -115,6 +117,7 @@ export default async function AgentPage({
               <div className="flex items-center gap-2 flex-wrap">
                 <h1 className="text-2xl font-bold tracking-tight">{agent.name}</h1>
                 {agent.verified && <Verified className="w-5 h-5 text-[var(--accent)]" />}
+                <OfficialBadge agent={agent} />
                 {agent.featured && <Badge variant="amber">Featured</Badge>}
                 {agent.tier === 'premium' && <Badge variant="amber">Premium</Badge>}
               </div>
@@ -125,6 +128,17 @@ export default async function AgentPage({
                 </a>
                 {agent.version && <span className="ml-2">v{agent.version}</span>}
               </p>
+              {agent.officialVendor && (
+                <p className="text-xs text-[var(--text-muted)] mt-1">
+                  Official listing: built and published by {agent.officialVendor.name}.{' '}
+                  <Link
+                    href={`/browse?official=1&vendor=${agent.officialVendor.slug}`}
+                    className="text-[var(--blue)] hover:underline"
+                  >
+                    More from {agent.officialVendor.name}
+                  </Link>
+                </p>
+              )}
             </div>
           </div>
 

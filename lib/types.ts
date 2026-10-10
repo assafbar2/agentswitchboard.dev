@@ -52,6 +52,10 @@ export interface Agent {
   featured: boolean;
   featuredUntil?: string;
   verified: boolean;
+  /** First-party listing from a major vendor in content/official-vendors.json. */
+  official: boolean;
+  /** The vendor behind an official listing, resolved from its agentUrl. */
+  officialVendor?: { slug: string; name: string };
   referralUrl?: string;
   sponsorLabel?: string;
   tier: 'free' | 'premium';
@@ -89,6 +93,7 @@ export interface AgentQueryOptions {
   tag?: string;
   featured?: boolean;
   verified?: boolean;
+  official?: boolean;
   tier?: string;
   search?: string;
   limit?: number;

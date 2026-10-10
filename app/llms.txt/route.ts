@@ -30,6 +30,7 @@ methods (API / MCP / CLI / Extension), and a direct link to the provider.
 
 To find agents by access method, fetch /agents.json and filter by \`accessMethods\`.
 To find agents by use case, filter by \`categories\`.
+To find first-party listings from major vendors (e.g. Notion's own Notion MCP), filter by \`official: true\`.
 
 ## This directory is itself an MCP server
 
@@ -37,7 +38,7 @@ To find agents by use case, filter by \`categories\`.
 - Stdio-only clients: npx -y mcp-remote https://agentswitchboard.dev/api/mcp
 - Server manifest: https://agentswitchboard.dev/.well-known/mcp.json
 - Tools: search_agents, get_agent, list_categories
-- Plain REST search (no MCP handshake needed): GET /api/agents?q=&category=&access=&limit=&offset=
+- Plain REST search (no MCP handshake needed): GET /api/agents?q=&category=&access=&official=&limit=&offset=
 - REST detail: GET /api/agents/{slug}
 - REST categories: GET /api/categories
 - OpenAPI: https://agentswitchboard.dev/openapi.json

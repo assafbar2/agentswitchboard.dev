@@ -4,6 +4,7 @@ import { AgentCard } from '@/components/AgentCard';
 import { CategoryIcon } from '@/components/ui/CategoryIcon';
 import { JsonLd } from '@/components/JsonLd';
 import { notFound } from 'next/navigation';
+import { Building2 } from 'lucide-react';
 import type { Metadata } from 'next';
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev';
@@ -58,6 +59,7 @@ export default async function CategoryPage({
   if (!result) notFound();
 
   const { category, agents } = result;
+  const officialCount = agents.filter((a) => a.official).length;
   const url = `${BASE_URL}/categories/${slug}`;
 
   const listSchema = {
@@ -91,6 +93,15 @@ export default async function CategoryPage({
               <p className="text-[var(--text-secondary)] mt-1">{category.description}</p>
             )}
           </div>
+          {officialCount > 0 && (
+            <Link
+              href={`/browse?official=1&category=${category.slug}`}
+              className="ml-auto hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs mono font-medium rounded-lg border border-[var(--blue)]/30 text-[var(--blue)] bg-[var(--blue-glow)] hover:opacity-90 transition-opacity"
+            >
+              <Building2 className="w-3.5 h-3.5" aria-hidden />
+              {officialCount} official
+            </Link>
+          )}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Verified, ArrowRight, Zap, Star, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
 import { AccessMethodBadges } from '@/components/ui/AccessMethodBadges';
+import { OfficialBadge } from '@/components/ui/OfficialBadge';
 import type { Agent, AgentLabel } from '@/lib/types';
 import { truncate } from '@/lib/utils';
 
@@ -87,9 +88,10 @@ export function FeaturedAgentCard({
               <Verified className="w-4 h-4 text-[var(--accent)] flex-shrink-0" />
             )}
           </div>
-          <p className="text-xs text-[var(--text-muted)] mt-0.5">
-            by {agent.providerName}
-          </p>
+          <div className="flex items-center gap-1.5 mt-0.5">
+            <p className="text-xs text-[var(--text-muted)] truncate">by {agent.providerName}</p>
+            <OfficialBadge agent={agent} />
+          </div>
         </div>
 
         {/* Label or sponsor badge */}

@@ -21,6 +21,7 @@
   "status": "published",
   "featured": false,
   "verified": false,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [

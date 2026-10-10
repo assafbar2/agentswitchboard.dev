@@ -20,6 +20,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { cache } from 'react';
 import { pickHomepageAgents } from './homepage';
+import { groupOfficialAgents, vendorForUrl, type OfficialGroup, type OfficialVendor } from './official';
 import type { Agent, Category, HomepageAgent, SiteSettings } from './types';
 
 const CONTENT_DIR = path.join(process.cwd(), 'content');
@@ -29,6 +30,7 @@ const CONTENT_DIR = path.join(process.cwd(), 'content');
 const loadAllAgentsRaw = cache(async (): Promise<Agent[]> => {
   const dir = path.join(CONTENT_DIR, 'agents');
   const files = await fs.promises.readdir(dir);
+  const vendors = await loadOfficialVendors();
   const agents = await Promise.all(
     files
       .filter((f) => f.endsWith('.json'))
@@ -38,6 +40,8 @@ const loadAllAgentsRaw = cache(async (): Promise<Agent[]> => {
         // categories are stored as slugs; hydrate to Category objects
         const cats = await loadCategoriesRaw();
         const bySlug = new Map(cats.map((c) => [c.slug, c]));
+        // validate-content guarantees an official entry resolves to one vendor.
+        const vendor = data.official ? vendorForUrl(data.agentUrl, vendors) : null;
         return {
           ...data,
           categories: (data.categories ?? [])
@@ -46,6 +50,8 @@ const loadAllAgentsRaw = cache(async (): Promise<Agent[]> => {
           tags: data.tags ?? [],
           skills: data.skills ?? [],
           accessMethods: data.accessMethods ?? [],
+          official: !!vendor,
+          officialVendor: vendor ? { slug: vendor.slug, name: vendor.name } : undefined,
         } as Agent;
       })
   );
@@ -55,6 +61,11 @@ const loadAllAgentsRaw = cache(async (): Promise<Agent[]> => {
 const loadCategoriesRaw = cache(async (): Promise<Category[]> => {
   const raw = await fs.promises.readFile(path.join(CONTENT_DIR, 'categories.json'), 'utf8');
   return JSON.parse(raw) as Category[];
+});
+
+export const loadOfficialVendors = cache(async (): Promise<OfficialVendor[]> => {
+  const raw = await fs.promises.readFile(path.join(CONTENT_DIR, 'official-vendors.json'), 'utf8');
+  return JSON.parse(raw) as OfficialVendor[];
 });
 
 // ── Public API ──────────────────────────────────────────────────────
@@ -113,6 +124,11 @@ export async function getCategoryBySlug(
 export async function getHomepageAgents(): Promise<HomepageAgent[]> {
   const [agents, settings] = await Promise.all([getEveryAgent(), getSiteSettings()]);
   return pickHomepageAgents(agents, settings?.homepageFeatured, new Date().toISOString());
+}
+
+/** Official listings grouped by vendor, largest vendor first. */
+export async function getOfficialGroups(): Promise<OfficialGroup[]> {
+  return groupOfficialAgents(await getEveryAgent());
 }
 
 export async function getSiteSettings(): Promise<SiteSettings | null> {

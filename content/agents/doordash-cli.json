@@ -5,7 +5,7 @@
   "description": "Lets AI agents place real DoorDash orders from the terminal — search stores, find deals, build carts, and check out via agentic commerce. Limited beta (US/Canada, macOS, waitlist). Launched July 2026.",
   "providerName": "DoorDash",
   "providerUrl": "https://doordash.com",
-  "agentUrl": "https://www.neura.market/news/doordash-command-line-tool-ai-agents",
+  "agentUrl": "https://github.com/doordash-oss/doordash-cli",
   "categories": [
     "commerce-payments"
   ],
@@ -41,6 +41,7 @@
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -48,5 +49,5 @@
     "mcp"
   ],
   "createdAt": "2026-07-17T20:41:38.358Z",
-  "updatedAt": "2026-07-17T20:41:38.358Z"
+  "updatedAt": "2026-10-10T21:36:47.532Z"
 }

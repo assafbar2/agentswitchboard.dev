@@ -28,7 +28,7 @@ Base URL: `https://agentswitchboard.dev`
 Prefer REST. OpenAPI: https://agentswitchboard.dev/openapi.json
 
 1. Optional: `GET /api/categories` when you need valid category slugs and counts.
-2. `GET /api/agents?q={text}&limit=10` to search. Add `category={slug}` and/or `access=mcp` (comma-separate to require several: `access=api,mcp`).
+2. `GET /api/agents?q={text}&limit=10` to search. Add `category={slug}`, `access=mcp` (comma-separate to require several: `access=api,mcp`), and/or `official=true` (first-party listings from major vendors only).
 3. `GET /api/agents/{slug}` for skills, `authType` of the **listed product**, tags, and homepage.
 
 Query notes:
@@ -50,6 +50,7 @@ Optional MCP (only if the client speaks MCP, not required): `POST https://agents
 - If nothing matches, say so and offer a broader `q` or a category from `/api/categories`.
 - `authType` on a listing (`apiKey`, `oauth2`, `bearer`, `none`) is how **that product** authenticates — not Switchboard.
 - `verified: true` means Switchboard marked the listing verified; it is not a Meta or Muse certification.
+- `official: true` means the listing is the vendor's own first-party product (for example Notion's Notion MCP, not a community build). Add `official=true` to search when the user wants the official tool.
 
 ## Hard limits
 

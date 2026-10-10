@@ -119,12 +119,12 @@ export default async function ForAgentsPage() {
             rather than an MCP handshake. Read-only, no auth, open CORS:
           </p>
           <pre className="rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-4 text-xs overflow-x-auto">
-{`GET /api/agents?q=<text>&category=<slug>&access=<method>&limit=<n>&offset=<n>
+{`GET /api/agents?q=<text>&category=<slug>&access=<method>&official=true&limit=<n>&offset=<n>
 GET /api/agents/<slug>
 GET /api/categories
 
 → search: { total, offset, limit, agents: [
-     { name, slug, url, description, provider, categories, accessMethods, verified }
+     { name, slug, url, description, provider, categories, accessMethods, verified, official }
    ] }`}
           </pre>
           <ul className="space-y-1 pl-4">
@@ -135,6 +135,11 @@ GET /api/categories
               <code className="text-[var(--accent)]">cli</code>,{' '}
               <code className="text-[var(--accent)]">browser-extension</code>{' '}
               (comma-separate to require several)
+            </li>
+            <li>
+              <span className="text-[var(--accent)]">official</span> —{' '}
+              <code className="text-[var(--accent)]">true</code> for first-party listings from
+              major vendors only (Notion&apos;s own Notion MCP, not a community build)
             </li>
             <li>
               <span className="text-[var(--accent)]">limit</span> — 1–50 (default 10);{' '}

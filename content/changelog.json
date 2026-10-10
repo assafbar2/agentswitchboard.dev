@@ -1,5 +1,26 @@
 [
   {
+    "action": "updated",
+    "slug": "doordash-cli",
+    "name": "dd-cli",
+    "note": "agentUrl updated",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "updated",
+    "slug": "vercel-grep-mcp",
+    "name": "Vercel Grep MCP",
+    "note": "agentUrl updated",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "updated",
+    "slug": "clickhouse-mcp",
+    "name": "ClickHouse MCP",
+    "note": "agentUrl updated",
+    "date": "2026-10-10"
+  },
+  {
     "action": "added",
     "slug": "agentlas-os",
     "name": "Agentlas OS",

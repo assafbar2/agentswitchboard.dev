@@ -29,7 +29,7 @@
       "get": {
         "operationId": "searchAgents",
         "summary": "Search published agents",
-        "description": "Relevance-ranked search over name, description, skills, categories, tags, and provider. Empty `q` lists published agents in catalog order. Filter by category slug and/or access methods. Paginate with `total` + `offset` + `limit`.",
+        "description": "Relevance-ranked search over name, description, skills, categories, tags, and provider. Empty `q` lists published agents in catalog order. Filter by category slug, access methods, and/or `official`. Paginate with `total` + `offset` + `limit`.",
         "tags": ["catalog"],
         "parameters": [
           {
@@ -52,6 +52,13 @@
             "required": false,
             "description": "One or more of `api`, `mcp`, `cli`, `browser-extension`. Comma-separate to require all (`access=api,mcp`). Unknown values are ignored.",
             "schema": { "type": "string", "examples": ["mcp", "api,mcp"] }
+          },
+          {
+            "name": "official",
+            "in": "query",
+            "required": false,
+            "description": "`true` (or `1`) returns only first-party listings from major vendors. Combines with `category`, `access`, and `q`.",
+            "schema": { "type": "boolean", "examples": [true] }
           },
           {
             "name": "limit",
@@ -89,7 +96,8 @@
                           "provider": "AgentMail",
                           "categories": ["infrastructure", "code-devtools"],
                           "accessMethods": ["api", "mcp", "cli"],
-                          "verified": true
+                          "verified": true,
+                          "official": false
                         }
                       ]
                     }
@@ -230,7 +238,8 @@
           "provider",
           "categories",
           "accessMethods",
-          "verified"
+          "verified",
+          "official"
         ],
         "properties": {
           "name": { "type": "string" },
@@ -254,7 +263,8 @@
             },
             "description": "How the listed product can be reached."
           },
-          "verified": { "type": "boolean" }
+          "verified": { "type": "boolean" },
+          "official": { "type": "boolean", "description": "First-party listing from a major vendor (publicly traded, frontier AI lab, or ~$1B+), published under the vendor's official domain or GitHub org. Factual, not paid; separate from verified and featured." }
         }
       },
       "AgentDetail": {
@@ -263,6 +273,10 @@
           {
             "type": "object",
             "properties": {
+              "officialVendor": {
+                "type": ["string", "null"],
+                "description": "Vendor behind an official listing, e.g. `Notion`; null when not official."
+              },
               "homepage": { "type": ["string", "null"], "format": "uri" },
               "providerUrl": { "type": ["string", "null"], "format": "uri" },
               "authType": {
@@ -339,6 +353,8 @@
           "accessMethods": { "type": "array", "items": { "type": "string" } },
           "tags": { "type": "array", "items": { "type": "string" } },
           "verified": { "type": "boolean" },
+          "official": { "type": "boolean", "description": "First-party listing from a major vendor (publicly traded, frontier AI lab, or ~$1B+), published under the vendor's official domain or GitHub org. Factual, not paid; separate from verified and featured." },
+          "officialVendor": { "type": ["string", "null"] },
           "tier": { "type": ["string", "null"] },
           "createdAt": { "type": ["string", "null"], "format": "date-time" },
           "updatedAt": { "type": ["string", "null"], "format": "date-time" }

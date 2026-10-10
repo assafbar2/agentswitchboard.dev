@@ -19,6 +19,8 @@ export async function GET(req: Request) {
     accessMethods: a.accessMethods ?? [],
     tags: a.tags ?? [],
     verified: a.verified,
+    official: a.official,
+    officialVendor: a.officialVendor?.name ?? null,
     tier: a.tier,
     createdAt: a.createdAt ?? null,
     updatedAt: a.updatedAt ?? null,
@@ -28,7 +30,7 @@ export async function GET(req: Request) {
     {
       source: 'Agent Switchboard — https://agentswitchboard.dev',
       description:
-        'Machine-readable catalog of vetted AI agents. Filter by categories or accessMethods to find the right tool.',
+        'Machine-readable catalog of vetted AI agents. Filter by categories or accessMethods to find the right tool; official: true marks first-party listings from major vendors.',
       generated: new Date().toISOString(),
       total: catalog.length,
       agents: catalog,
