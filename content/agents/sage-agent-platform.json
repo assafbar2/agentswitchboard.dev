@@ -1,0 +1,59 @@
+{
+  "id": "sage-agent-platform",
+  "name": "Sage",
+  "slug": "sage-agent-platform",
+  "description": "Build and run multi-agent workflows with a shared Python runtime, desktop and self-hosted web apps, durable sessions, MCP tools, and human approvals.",
+  "providerName": "ZHangZHengEric",
+  "providerUrl": "https://github.com/ZHangZHengEric",
+  "agentUrl": "https://github.com/ZHangZHengEric/Sage",
+  "version": "2.0.0",
+  "categories": [
+    "orchestration",
+    "infrastructure"
+  ],
+  "tags": [
+    "multi-agent",
+    "python",
+    "open-source",
+    "mcp-client",
+    "human-in-the-loop",
+    "self-hosted",
+    "durable-sessions"
+  ],
+  "skills": [
+    {
+      "id": "multi-agent-flows",
+      "name": "Multi-Agent Flows",
+      "description": "Compose agent flows in the Python runtime or coordinate Studio members through directed messages."
+    },
+    {
+      "id": "durable-sessions",
+      "name": "Durable Sessions",
+      "description": "Keep session history across runs and resume work after human input or approval requests are answered."
+    },
+    {
+      "id": "mcp-tool-integration",
+      "name": "MCP Tool Integration",
+      "description": "Connect configured MCP servers and discover their tools for use alongside built-in tools and Skills."
+    },
+    {
+      "id": "self-hosted-agent-api",
+      "name": "Self-Hosted Agent API",
+      "description": "Expose agents from a self-hosted Sage Server through authenticated HTTP and streaming A2A interfaces."
+    }
+  ],
+  "authType": "apiKey",
+  "authInstructions": "Self-host Sage Server and configure its authentication and your model provider credentials. There is no public hosted Sage API endpoint; model services may charge usage fees.",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-10T14:27:00Z",
+  "updatedAt": "2026-10-10T14:27:00Z"
+}
