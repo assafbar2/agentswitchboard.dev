@@ -5,7 +5,7 @@
   "description": "Official ClickHouse Cloud MCP — run SQL queries, list databases and tables, explore services and backups, inspect usage, and manage ClickPipes.",
   "providerName": "ClickHouse",
   "providerUrl": "https://clickhouse.com",
-  "agentUrl": "https://smithery.ai/server/clickhouse",
+  "agentUrl": "https://clickhouse.com/docs/products/cloud/features/ai-ml/remote-mcp",
   "categories": [
     "data-analytics"
   ],
@@ -47,5 +47,5 @@
     "mcp"
   ],
   "createdAt": "2026-06-07T17:51:29.066Z",
-  "updatedAt": "2026-06-07T17:51:29.066Z"
+  "updatedAt": "2026-10-10T21:36:46.804Z"
 }
