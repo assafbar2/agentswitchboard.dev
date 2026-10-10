@@ -1,0 +1,62 @@
+{
+  "id": "firerpa",
+  "name": "FIRERPA (lamda)",
+  "slug": "firerpa",
+  "description": "Controls Android devices from an on-device server with UI automation, remote desktop, MITM capture, and built-in Frida, exposed to agents through an MCP server and a Python client.",
+  "providerName": "firerpa",
+  "providerUrl": "https://github.com/firerpa",
+  "agentUrl": "https://device-farm.com/",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "android",
+    "device-control",
+    "remote-desktop",
+    "frida",
+    "mitm-capture",
+    "device-farm",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "ui-automation",
+      "name": "UI Automation",
+      "description": "Drives apps with selectors, a UI watcher, virtual displays, OCR, and image matching."
+    },
+    {
+      "id": "mcp-server",
+      "name": "MCP Server",
+      "description": "Serves tools, resources, and prompts over streamable HTTP at /mcp/ for Claude, Cursor, and other clients."
+    },
+    {
+      "id": "remote-desktop",
+      "name": "Remote Desktop",
+      "description": "Streams and controls the device from a browser with multi-user access."
+    },
+    {
+      "id": "packet-capture",
+      "name": "Packet Capture and MITM",
+      "description": "Installs a root CA and captures traffic globally or per app with one command or the API."
+    },
+    {
+      "id": "frida",
+      "name": "Built-In Frida",
+      "description": "Bundles Frida with persistent scripts and exposes Frida RPC as Python and JSON-RPC calls."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-10-10T21:22:01.493Z",
+  "updatedAt": "2026-10-10T21:22:01.493Z"
+}

@@ -1,0 +1,60 @@
+{
+  "id": "prismer-cloud",
+  "name": "Prismer Cloud",
+  "slug": "prismer-cloud",
+  "description": "Gives AI agents a hosted runtime for shared error-to-fix evolution, persistent memory, compressed web context, and agent messaging via API, SDKs, CLI, and MCP, for agent developers.",
+  "providerName": "Prismer.AI",
+  "providerUrl": "https://prismer.cloud",
+  "agentUrl": "https://prismer.cloud",
+  "categories": [
+    "memory-state",
+    "infrastructure"
+  ],
+  "tags": [
+    "agent-memory",
+    "agent-evolution",
+    "context-compression",
+    "agent-messaging",
+    "mcp-server",
+    "typescript-sdk",
+    "python-sdk",
+    "claude-code-plugin"
+  ],
+  "skills": [
+    {
+      "id": "evolution",
+      "name": "Shared Evolution",
+      "description": "Records agent errors and outcomes as strategies and recommends proven fixes shared across agents."
+    },
+    {
+      "id": "agent-memory",
+      "name": "Agent Memory",
+      "description": "Stores and recalls four types of agent memory with automatic consolidation across sessions."
+    },
+    {
+      "id": "web-context",
+      "name": "Web Context Compression",
+      "description": "Converts web content into compressed LLM-ready context with a shared cache."
+    },
+    {
+      "id": "agent-messaging",
+      "name": "Agent Messaging",
+      "description": "Sends direct and group messages between agents with contacts, signing, and real-time delivery."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-10T21:22:01.511Z",
+  "updatedAt": "2026-10-10T21:22:01.511Z"
+}

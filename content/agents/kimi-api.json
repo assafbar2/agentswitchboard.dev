@@ -1,0 +1,62 @@
+{
+  "id": "kimi-api",
+  "name": "Kimi API Platform",
+  "slug": "kimi-api",
+  "description": "Serves Moonshot AI's Kimi models through OpenAI-compatible Chat Completions, Responses, and Anthropic-compatible Messages APIs, with tool calling, web search, and a 1M-token context.",
+  "providerName": "Moonshot AI",
+  "providerUrl": "https://www.moonshot.ai",
+  "agentUrl": "https://platform.kimi.ai/docs/introduction",
+  "categories": [
+    "language",
+    "infrastructure"
+  ],
+  "tags": [
+    "llm-api",
+    "kimi",
+    "openai-compatible",
+    "function-calling",
+    "long-context",
+    "web-search",
+    "batch-inference"
+  ],
+  "skills": [
+    {
+      "id": "tool-calling",
+      "name": "Tool Calling",
+      "description": "Defines and executes tool_calls, including in streaming mode, with tool_choice and dynamically loaded tool definitions."
+    },
+    {
+      "id": "web-search",
+      "name": "Web Search",
+      "description": "Adds web search through the built-in $web_search tool or the search and URL-fetch tool endpoints."
+    },
+    {
+      "id": "file-qa",
+      "name": "File-Based Q&A",
+      "description": "Uploads files, extracts their content, and adds them to conversations for single- or multi-file questions."
+    },
+    {
+      "id": "batch-api",
+      "name": "Batch Processing",
+      "description": "Runs large asynchronous jobs from uploaded JSONL requests and downloads the results."
+    },
+    {
+      "id": "context-caching",
+      "name": "Context Caching",
+      "description": "Caches repeated prompt prefixes with 5-minute or 1-hour TTLs to cut cost and latency."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-10T21:22:01.538Z",
+  "updatedAt": "2026-10-10T21:22:01.538Z"
+}

@@ -1,0 +1,62 @@
+{
+  "id": "claude-developer-platform",
+  "name": "Claude Developer Platform (Claude API)",
+  "slug": "claude-developer-platform",
+  "description": "Gives developers API access to Claude models through the Messages API, with streaming, tool use, batch processing, file uploads, and beta Managed Agents sessions.",
+  "providerName": "Anthropic",
+  "providerUrl": "https://www.anthropic.com",
+  "agentUrl": "https://platform.claude.com/docs",
+  "categories": [
+    "language",
+    "infrastructure"
+  ],
+  "tags": [
+    "anthropic",
+    "claude",
+    "llm-api",
+    "messages-api",
+    "function-calling",
+    "message-batches",
+    "files-api"
+  ],
+  "skills": [
+    {
+      "id": "messages-api",
+      "name": "Messages API",
+      "description": "Sends single or multi-turn conversations to Claude models and returns their replies via POST /v1/messages."
+    },
+    {
+      "id": "tool-use",
+      "name": "Tool Use",
+      "description": "Lets Claude call developer-defined and Anthropic-provided tools and return structured tool calls."
+    },
+    {
+      "id": "message-batches",
+      "name": "Message Batches",
+      "description": "Processes large volumes of Messages requests asynchronously at 50% lower cost."
+    },
+    {
+      "id": "files-api",
+      "name": "Files API",
+      "description": "Uploads and manages files once for reuse across multiple API calls."
+    },
+    {
+      "id": "managed-agents",
+      "name": "Claude Managed Agents",
+      "description": "Runs versioned agent configurations as stateful sessions in Anthropic-managed or self-hosted sandboxes (beta)."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-10T21:22:01.459Z",
+  "updatedAt": "2026-10-10T21:22:01.459Z"
+}

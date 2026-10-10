@@ -1,0 +1,62 @@
+{
+  "id": "strands-box",
+  "name": "Strands Box",
+  "slug": "strands-box",
+  "description": "Sandboxes agent programs with OS-level file, program, and network limits plus Dogwood policy rules enforced across shell, Python, HTTP egress, and MCP calls; macOS preview.",
+  "providerName": "AWS",
+  "providerUrl": "https://aws.amazon.com",
+  "agentUrl": "https://github.com/strands-agents/box",
+  "categories": [
+    "security",
+    "infrastructure"
+  ],
+  "tags": [
+    "sandboxing",
+    "dogwood-policy",
+    "egress-gateway",
+    "credential-injection",
+    "mcp-broker",
+    "macos",
+    "strands"
+  ],
+  "skills": [
+    {
+      "id": "os-restrictions",
+      "name": "File, Program, and Network Restrictions",
+      "description": "Limits the agent's direct access with OS-enforced grants configured in box.toml."
+    },
+    {
+      "id": "semantic-policies",
+      "name": "Semantic and Temporal Policies",
+      "description": "Evaluates Dogwood permit and forbid rules that can depend on arguments, earlier actions, and elapsed time."
+    },
+    {
+      "id": "egress-checks",
+      "name": "Request and Tool-Call Checks",
+      "description": "Checks outbound connections, HTTP methods and paths, and configured MCP tool calls against policy."
+    },
+    {
+      "id": "credential-injection",
+      "name": "Credential Injection",
+      "description": "Authenticates permitted requests with API credentials or AWS SigV4 so the agent never sees secrets."
+    },
+    {
+      "id": "decision-records",
+      "name": "Decision Records",
+      "description": "Records each policy decision as OTLP JSON for audit."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-10T21:22:01.479Z",
+  "updatedAt": "2026-10-10T21:22:01.479Z"
+}

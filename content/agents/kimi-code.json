@@ -1,0 +1,62 @@
+{
+  "id": "kimi-code",
+  "name": "Kimi Code",
+  "slug": "kimi-code",
+  "description": "Runs Moonshot's Kimi coding agent in the terminal, a desktop app, or VS Code to read and edit code and run commands, with MCP, skills, subagents, hooks, and ACP editor support.",
+  "providerName": "Moonshot AI",
+  "providerUrl": "https://github.com/MoonshotAI",
+  "agentUrl": "https://www.kimi.com/code/docs/",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "kimi",
+    "moonshot",
+    "coding-cli",
+    "vs-code-extension",
+    "desktop-app",
+    "acp",
+    "mcp-client"
+  ],
+  "skills": [
+    {
+      "id": "mcp-config",
+      "name": "MCP Configuration",
+      "description": "Adds, edits, and authenticates MCP servers conversationally with /mcp-config."
+    },
+    {
+      "id": "agent-skills",
+      "name": "Agent Skills and Plugins",
+      "description": "Installs skills, MCP servers, and data sources from the marketplace or a GitHub repo."
+    },
+    {
+      "id": "subagents",
+      "name": "Subagents",
+      "description": "Dispatches built-in coder, explore, and plan subagents in isolated contexts."
+    },
+    {
+      "id": "hooks",
+      "name": "Lifecycle Hooks",
+      "description": "Runs local commands at key points to gate risky tool calls or trigger notifications."
+    },
+    {
+      "id": "acp",
+      "name": "Editor Integration (ACP)",
+      "description": "Lets Zed, JetBrains, and other Agent Client Protocol clients drive a session via kimi acp."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-10-10T21:22:01.473Z",
+  "updatedAt": "2026-10-10T21:22:01.473Z"
+}

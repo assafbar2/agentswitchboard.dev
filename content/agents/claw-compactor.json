@@ -1,0 +1,57 @@
+{
+  "id": "claw-compactor",
+  "name": "Claw Compactor",
+  "slug": "claw-compactor",
+  "description": "Compresses LLM context such as code, JSON, logs, and chat history through a reversible 14-stage pipeline with no LLM calls, via a Python API and CLI, for agent developers.",
+  "providerName": "OpenCompress",
+  "providerUrl": "https://www.opencompress.ai",
+  "agentUrl": "https://github.com/open-compress/claw-compactor",
+  "categories": [
+    "infrastructure",
+    "memory-state"
+  ],
+  "tags": [
+    "token-compression",
+    "context-window",
+    "reversible-compression",
+    "prompt-compression",
+    "python",
+    "cost-reduction"
+  ],
+  "skills": [
+    {
+      "id": "fusion-compression",
+      "name": "Fusion Pipeline Compression",
+      "description": "Routes code, JSON, logs, diffs, and search results through content-aware stages to cut token counts without LLM inference."
+    },
+    {
+      "id": "rewind-retrieval",
+      "name": "Reversible Rewind Retrieval",
+      "description": "Stores originals behind hash markers so the LLM can call a tool to retrieve any compressed section."
+    },
+    {
+      "id": "chat-compression",
+      "name": "Chat Message Compression",
+      "description": "Compresses chat message lists with cross-message deduplication before the per-message pipeline."
+    },
+    {
+      "id": "workspace-commands",
+      "name": "Workspace Commands",
+      "description": "Benchmarks, compresses, deduplicates, and estimates tokens across a workspace, with a watch mode for file changes."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-10-10T21:22:01.506Z",
+  "updatedAt": "2026-10-10T21:22:01.506Z"
+}

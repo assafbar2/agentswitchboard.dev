@@ -1,0 +1,64 @@
+{
+  "id": "vercel-sandbox",
+  "name": "Vercel Sandbox",
+  "slug": "vercel-sandbox",
+  "description": "Runs untrusted or agent-generated code in isolated Firecracker microVMs on Vercel, with snapshots, persistent sandboxes, and custom images, via TypeScript and Python SDKs and a CLI.",
+  "providerName": "Vercel",
+  "providerUrl": "https://vercel.com",
+  "agentUrl": "https://vercel.com/docs/sandbox",
+  "categories": [
+    "browser-computer",
+    "infrastructure"
+  ],
+  "tags": [
+    "vercel",
+    "microvm",
+    "firecracker",
+    "code-execution",
+    "sandboxing",
+    "snapshots",
+    "typescript-sdk",
+    "python-sdk"
+  ],
+  "skills": [
+    {
+      "id": "isolated-microvms",
+      "name": "Isolated MicroVMs",
+      "description": "Runs each sandbox in a Firecracker microVM with its own filesystem and network."
+    },
+    {
+      "id": "snapshots",
+      "name": "Snapshotting",
+      "description": "Saves a running sandbox's state so later runs resume without reinstalling dependencies."
+    },
+    {
+      "id": "persistent-sandboxes",
+      "name": "Persistent Sandboxes",
+      "description": "Auto-saves sandbox state on stop and resumes where it left off by default."
+    },
+    {
+      "id": "custom-images",
+      "name": "Managed and Custom Images",
+      "description": "Starts sandboxes from Vercel managed images or your own OCI images in Vercel Container Registry."
+    },
+    {
+      "id": "multi-agent-isolation",
+      "name": "Multi-Agent Isolation",
+      "description": "Gives each agent its own Linux user and home directory and shares files between agents with groups."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-10-10T21:22:01.465Z",
+  "updatedAt": "2026-10-10T21:22:01.465Z"
+}

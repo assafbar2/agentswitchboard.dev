@@ -1,0 +1,56 @@
+{
+  "id": "pipeboard",
+  "name": "Pipeboard",
+  "slug": "pipeboard",
+  "description": "Lets AI assistants analyze and manage ad campaigns on Meta, Google, TikTok, Snap, and Reddit through hosted remote MCP servers and a CLI, for paid marketing teams and agencies.",
+  "providerName": "Pipeboard",
+  "providerUrl": "https://pipeboard.co",
+  "agentUrl": "https://pipeboard.co",
+  "categories": [
+    "sales-marketing"
+  ],
+  "tags": [
+    "meta-ads",
+    "google-ads",
+    "tiktok-ads",
+    "ad-campaigns",
+    "paid-marketing",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "meta-ads",
+      "name": "Meta Ads Management",
+      "description": "Manages Facebook and Instagram campaigns, ad sets, ads, creatives, targeting, and insights through 42 MCP tools."
+    },
+    {
+      "id": "google-ads",
+      "name": "Google Ads Management",
+      "description": "Manages Google Ads campaigns, ad groups, keywords, Performance Max, and GAQL queries through 59 MCP tools."
+    },
+    {
+      "id": "tiktok-snap-reddit-ads",
+      "name": "TikTok, Snap, and Reddit Ads",
+      "description": "Runs campaigns, creatives, media uploads, and performance reports on TikTok, Snap, and Reddit Ads."
+    },
+    {
+      "id": "pipeboard-cli",
+      "name": "Pipeboard CLI",
+      "description": "Exposes every Pipeboard MCP tool as a typed shell command in one binary for coding agents and scripts."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-10T21:22:01.520Z",
+  "updatedAt": "2026-10-10T21:22:01.520Z"
+}

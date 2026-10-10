@@ -1,0 +1,57 @@
+{
+  "id": "upwork-mcp",
+  "name": "Upwork MCP Server",
+  "slug": "upwork-mcp",
+  "description": "Lets Upwork clients and freelancers use a hosted OAuth MCP server to draft job posts, search and invite freelancers, write proposals, and manage offers and contracts.",
+  "providerName": "Upwork",
+  "providerUrl": "https://www.upwork.com",
+  "agentUrl": "https://www.upwork.com/ai/mcp",
+  "categories": [
+    "productivity",
+    "commerce-payments"
+  ],
+  "tags": [
+    "freelance-marketplace",
+    "hiring",
+    "job-posting",
+    "proposals",
+    "remote-mcp",
+    "official-mcp",
+    "upwork"
+  ],
+  "skills": [
+    {
+      "id": "job-posts",
+      "name": "Job Post Drafting",
+      "description": "Turns a rough project brief into a reviewed Upwork job post, then publishes, updates, or closes it."
+    },
+    {
+      "id": "hiring-flow",
+      "name": "Freelancer Hiring",
+      "description": "Searches freelancers, reviews proposals, shortlists and invites candidates, and prepares contract offers."
+    },
+    {
+      "id": "proposal-writing",
+      "name": "Proposal Writing",
+      "description": "Researches a job and the freelancer's real work history to draft a tailored proposal for review and submission."
+    },
+    {
+      "id": "contract-tracking",
+      "name": "Contract And Milestone Tracking",
+      "description": "Shows active contracts and milestones that need attention, with write actions confirmed by the user first."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.524Z",
+  "updatedAt": "2026-10-10T21:22:01.524Z"
+}

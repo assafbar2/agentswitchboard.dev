@@ -201,12 +201,12 @@
   },
   "supportsStreaming": false,
   "supportsPushNotifications": false,
-  "status": "published",
+  "status": "archived",
   "featured": false,
   "verified": false,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [],
   "createdAt": "2026-03-20T10:08:55.939Z",
-  "updatedAt": "2026-03-22T09:57:49.540Z"
+  "updatedAt": "2026-10-10T20:55:09.655Z"
 }

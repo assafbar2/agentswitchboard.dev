@@ -1,6 +1,545 @@
 [
   {
     "action": "added",
+    "slug": "agentlas-os",
+    "name": "Agentlas OS",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "alibaba-model-studio",
+    "name": "Alibaba Cloud Model Studio",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "zai-api",
+    "name": "Z.ai API Platform",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "kimi-api",
+    "name": "Kimi API Platform",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "meta-model-api",
+    "name": "Meta Model API",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "edgegap-mcp",
+    "name": "Edgegap MCP Server",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "chainstack-mcp",
+    "name": "Chainstack MCP Server",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "formio-mcp",
+    "name": "Form.io MCP Server",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "unlayer-mcp",
+    "name": "Unlayer MCP",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "teamwork-mcp",
+    "name": "Teamwork.com MCP Server",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "unleash-mcp",
+    "name": "Unleash MCP Server",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "beehiiv-mcp",
+    "name": "beehiiv MCP",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "keboola-mcp",
+    "name": "Keboola MCP Server",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "celigo-mcp",
+    "name": "Celigo MCP Server",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "picsart-mcp",
+    "name": "Picsart Creative APIs MCP",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "aiven-mcp",
+    "name": "Aiven MCP Server",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "bird-mcp",
+    "name": "Bird MCP Server",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "upwork-mcp",
+    "name": "Upwork MCP Server",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "smartbear-mcp",
+    "name": "SmartBear MCP Server",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "currents-mcp",
+    "name": "Currents MCP Server",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "ankimcp",
+    "name": "AnkiMCP",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "pipeboard",
+    "name": "Pipeboard",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "stackql",
+    "name": "StackQL",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "tensorfold",
+    "name": "TensorFold",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "weave",
+    "name": "weave",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "agor",
+    "name": "Agor",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "kaibanjs",
+    "name": "KaibanJS",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "golem",
+    "name": "Golem",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "mirascope",
+    "name": "Mirascope",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "agmsg",
+    "name": "agmsg",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "prismer-cloud",
+    "name": "Prismer Cloud",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "terravision",
+    "name": "TerraVision",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "ghost-os",
+    "name": "Ghost OS",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "loushang",
+    "name": "Loushang",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "claw-compactor",
+    "name": "Claw Compactor",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "llm-space",
+    "name": "LLM Space",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "spacebot",
+    "name": "Spacebot",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "magentic",
+    "name": "magentic",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "boxlite",
+    "name": "BoxLite",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "argent",
+    "name": "Argent",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "sem",
+    "name": "sem",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "obsidian-wiki",
+    "name": "obsidian-wiki",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "openagent",
+    "name": "OpenAgent",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "intentkit",
+    "name": "IntentKit",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "talk-to-figma-mcp",
+    "name": "Talk to Figma MCP",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "flyte",
+    "name": "Flyte",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "firerpa",
+    "name": "FIRERPA (lamda)",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "openstatus",
+    "name": "openstatus",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "repowise",
+    "name": "Repowise",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "graft",
+    "name": "Graft",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "moli",
+    "name": "Moli",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "nocobase",
+    "name": "NocoBase",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "aionui",
+    "name": "AionUi",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "trendradar",
+    "name": "TrendRadar",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "bigarrow",
+    "name": "bigarrow (big-arrow-on-the-screen)",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "ollaya",
+    "name": "Ollaya",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "strata",
+    "name": "Strata",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "laya",
+    "name": "Laya",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "rea",
+    "name": "REA (Reverse Engineer Anything)",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "strands-box",
+    "name": "Strands Box",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "model-studio-cli",
+    "name": "Alibaba Cloud Model Studio CLI",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "fly-sprites",
+    "name": "Sprites (Fly.io)",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "fly-io",
+    "name": "Fly.io",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "kimi-code",
+    "name": "Kimi Code",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "deepseek-api",
+    "name": "DeepSeek API",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "xai-api",
+    "name": "xAI API",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "amazon-nova-act",
+    "name": "Amazon Nova Act",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "cloudflare-web-search-api",
+    "name": "Cloudflare Web Search API",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "vercel-mcp",
+    "name": "Vercel MCP",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "vercel-sandbox",
+    "name": "Vercel Sandbox",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "microsoft-mxc",
+    "name": "Microsoft Execution Containers (MXC)",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "docker-agent",
+    "name": "Docker Agent",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "claude-agent-sdk",
+    "name": "Claude Agent SDK",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "gemini-api",
+    "name": "Gemini API",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "claude-developer-platform",
+    "name": "Claude Developer Platform (Claude API)",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
+    "slug": "openai-api",
+    "name": "OpenAI API",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "removed",
+    "slug": "complianceguard",
+    "name": "ComplianceGuard",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "updated",
+    "slug": "openscience",
+    "name": "OpenScience",
+    "note": "authType updated",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "updated",
+    "slug": "gas-town",
+    "name": "Gas Town",
+    "note": "providerUrl updated",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "updated",
+    "slug": "watsonx-orchestrate",
+    "name": "IBM watsonx Orchestrate",
+    "note": "providerUrl updated",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "updated",
+    "slug": "ibm-contextforge",
+    "name": "IBM ContextForge",
+    "note": "providerUrl updated",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "updated",
+    "slug": "railway",
+    "name": "Railway",
+    "note": "accessMethods updated",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "updated",
+    "slug": "render",
+    "name": "Render",
+    "note": "accessMethods updated",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "updated",
+    "slug": "hugging-face-mcp",
+    "name": "Hugging Face MCP",
+    "note": "providerUrl updated",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "updated",
+    "slug": "hugging-face-mcp",
+    "name": "Hugging Face MCP",
+    "note": "providerName updated",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "updated",
+    "slug": "hugging-face-mcp",
+    "name": "Hugging Face MCP",
+    "note": "agentUrl updated",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "updated",
+    "slug": "claude-mcp",
+    "name": "Claude MCP",
+    "note": "providerUrl updated",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "updated",
+    "slug": "claude-mcp",
+    "name": "Claude MCP",
+    "note": "providerName updated",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
     "slug": "excel-mcp-server",
     "name": "Excel MCP Server",
     "date": "2026-10-04"

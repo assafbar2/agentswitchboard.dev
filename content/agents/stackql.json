@@ -1,0 +1,57 @@
+{
+  "id": "stackql",
+  "name": "StackQL",
+  "slug": "stackql",
+  "description": "Queries, provisions, and manages resources across 40+ cloud and SaaS providers with SQL from a shell, a Postgres-wire server, or an MCP server, for platform engineers and AI agents.",
+  "providerName": "StackQL Studios",
+  "providerUrl": "https://stackql.io/",
+  "agentUrl": "https://stackql.io/",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "sql",
+    "cloud-resources",
+    "infrastructure-as-code",
+    "multi-cloud",
+    "postgres-wire",
+    "mcp-server",
+    "golang"
+  ],
+  "skills": [
+    {
+      "id": "sql-queries",
+      "name": "SQL Resource Queries",
+      "description": "Queries cloud and SaaS resources with SELECT statements that are transpiled into provider API calls."
+    },
+    {
+      "id": "sql-provisioning",
+      "name": "SQL Provisioning",
+      "description": "Creates and changes resources with INSERT and other mutating SQL statements."
+    },
+    {
+      "id": "server-mode",
+      "name": "Postgres-Wire Server",
+      "description": "Runs as a service that Postgres clients reach over the wire protocol with mTLS, optionally alongside MCP."
+    },
+    {
+      "id": "mcp-server",
+      "name": "MCP Server",
+      "description": "Exposes SQL over 40+ providers to MCP clients via stdio, npm, PyPI, Docker, or .mcpb bundles."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.519Z",
+  "updatedAt": "2026-10-10T21:22:01.519Z"
+}

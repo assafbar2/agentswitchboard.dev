@@ -1,0 +1,62 @@
+{
+  "id": "unlayer-mcp",
+  "name": "Unlayer MCP",
+  "slug": "unlayer-mcp",
+  "description": "Lets coding agents build email, landing page, and document templates as code with Unlayer, generate designs from prompts, import HTML, and export to HTML, PDF, or PNG.",
+  "providerName": "Unlayer",
+  "providerUrl": "https://unlayer.com",
+  "agentUrl": "https://docs.unlayer.com/ai/mcp",
+  "categories": [
+    "content-media",
+    "code-devtools"
+  ],
+  "tags": [
+    "email-templates",
+    "email-design",
+    "landing-pages",
+    "pdf-rendering",
+    "remote-mcp",
+    "official-mcp",
+    "unlayer"
+  ],
+  "skills": [
+    {
+      "id": "elements-as-code",
+      "name": "Templates As Code",
+      "description": "Renders an Unlayer Elements tree to React source, HTML, and design JSON with an editor link."
+    },
+    {
+      "id": "ai-design",
+      "name": "Prompted Design Generation",
+      "description": "Generates a new design or refines an existing one from a prompt with the Unlayer AI Assistant."
+    },
+    {
+      "id": "html-import",
+      "name": "HTML Import",
+      "description": "Turns an existing HTML email or page into an editable Unlayer design."
+    },
+    {
+      "id": "render-export",
+      "name": "Render And Export",
+      "description": "Exports saved templates to HTML, PDF, or PNG and renders email-tuned HTML or preview images."
+    },
+    {
+      "id": "template-diagnostics",
+      "name": "Template Diagnostics",
+      "description": "Checks templates for missing alt text, low contrast, oversized images, and malformed merge tags."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.533Z",
+  "updatedAt": "2026-10-10T21:22:01.533Z"
+}
