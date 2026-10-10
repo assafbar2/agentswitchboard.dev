@@ -1,6 +1,12 @@
 [
   {
     "action": "added",
+    "slug": "tollex",
+    "name": "Tollex",
+    "date": "2026-10-10"
+  },
+  {
+    "action": "added",
     "slug": "excel-mcp-server",
     "name": "Excel MCP Server",
     "date": "2026-10-04"
