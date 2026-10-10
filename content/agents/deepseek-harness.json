@@ -42,6 +42,7 @@
   "status": "published",
   "featured": true,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
