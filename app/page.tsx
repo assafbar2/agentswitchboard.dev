@@ -7,9 +7,11 @@ import {
   getAgentCount,
   getUniqueProviderCount,
   getSiteSettings,
+  getOfficialGroups,
 } from '@/lib/catalog';
 import { FeaturedAgentCard } from '@/components/FeaturedAgentCard';
 import { CategoryCard } from '@/components/CategoryCard';
+import { OfficialPlatforms } from '@/components/OfficialPlatforms';
 import { JsonLd } from '@/components/JsonLd';
 import type { Metadata } from 'next';
 
@@ -27,13 +29,14 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const [homepageAgents, categories, agentCount, providerCount, settings] =
+  const [homepageAgents, categories, agentCount, providerCount, settings, officialGroups] =
     await Promise.all([
       getHomepageAgents(),
       getAllCategories(),
       getAgentCount(),
       getUniqueProviderCount(),
       getSiteSettings(),
+      getOfficialGroups(),
     ]);
 
   const homeSchema = [
@@ -186,6 +189,9 @@ export default async function HomePage() {
           </section>
         )}
 
+        {/* ── Official platforms ───────────────────────────────────── */}
+        <OfficialPlatforms groups={officialGroups} />
+
         {/* ── Categories ───────────────────────────────────────────── */}
         <section className="section">
           <div className="container-wide">
@@ -277,6 +283,24 @@ export default async function HomePage() {
             </div>
           )}
 
+          {/* Official platforms */}
+          {officialGroups.length > 0 && (
+            <div className="mb-8">
+              <div className="agent-section-title">official</div>
+              {officialGroups.slice(0, 12).map(({ vendor, agents }) => (
+                <Link
+                  key={vendor.slug}
+                  href={`/browse?official=1&vendor=${vendor.slug}`}
+                  className="agent-row hover:opacity-80 transition-opacity no-underline"
+                >
+                  <span className="agent-accent">{vendor.slug}</span>
+                  <span className="agent-dim">{vendor.name}</span>
+                  <span className="agent-dim">{agents.length} listing{agents.length !== 1 ? 's' : ''}</span>
+                </Link>
+              ))}
+            </div>
+          )}
+
           {/* Categories */}
           <div className="mb-8">
             <div className="agent-section-title">categories</div>
@@ -305,7 +329,7 @@ export default async function HomePage() {
             <div className="agent-row">
               <Link href="/browse" className="agent-accent hover:opacity-80">/browse</Link>
               <span className="agent-dim">filterable directory</span>
-              <span className="agent-dim">?q= ?category= ?access=</span>
+              <span className="agent-dim">?q= ?category= ?access= ?official=1</span>
             </div>
             <div className="agent-row">
               <Link href="/submit" className="agent-accent hover:opacity-80">/submit</Link>

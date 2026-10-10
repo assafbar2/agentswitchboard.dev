@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { Suspense } from 'react';
-import { getEveryAgent } from '@/lib/catalog';
-import { searchAgents } from '@/lib/search';
+import { getAllCategories, getEveryAgent, loadOfficialVendors } from '@/lib/catalog';
+import { filterAgents, parseFlag, searchAgents } from '@/lib/search';
 import { AgentCard } from '@/components/AgentCard';
 import { SearchBar } from '@/components/SearchBar';
 import { AccessMethodFilter } from '@/components/AccessMethodFilter';
+import { CatalogFilters } from '@/components/CatalogFilters';
 import type { Metadata } from 'next';
 
 export async function generateMetadata({
@@ -25,18 +26,27 @@ export async function generateMetadata({
 export default async function BrowsePage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string; access?: string; category?: string }>;
+  searchParams: Promise<{ q?: string; access?: string; category?: string; official?: string; vendor?: string }>;
 }) {
-  const { q, access, category } = await searchParams;
+  const { q, access, category, official, vendor } = await searchParams;
   const query = q?.trim() ?? '';
   const accessFilters = access?.split(',').filter(Boolean) ?? [];
   const categoryFilter = category?.trim() ?? '';
+  const vendorFilter = vendor?.trim() ?? '';
+  const officialOnly = parseFlag(official) || !!vendorFilter;
 
-  const allAgents = await getEveryAgent();
-  const inCategory = categoryFilter
-    ? allAgents.filter((a) => a.categories.some((c) => c.slug === categoryFilter))
-    : allAgents;
-  const agents = searchAgents(inCategory, query, accessFilters.length > 0 ? accessFilters : undefined);
+  const [allAgents, categories, vendors] = await Promise.all([
+    getEveryAgent(),
+    getAllCategories(),
+    loadOfficialVendors(),
+  ]);
+  const vendorName = vendors.find((v) => v.slug === vendorFilter)?.name;
+  const narrowed = filterAgents(allAgents, {
+    category: categoryFilter,
+    official: officialOnly,
+    vendor: vendorFilter,
+  });
+  const agents = searchAgents(narrowed, query, accessFilters.length > 0 ? accessFilters : undefined);
 
   return (
     <>
@@ -57,9 +67,14 @@ export default async function BrowsePage({
           <SearchBar defaultValue={query} autoFocus={!!query} />
         </div>
 
-        {/* Access method filters */}
-        <div className="mb-6">
+        {/* Official, category, and access method filters */}
+        <div className="mb-6 flex flex-wrap items-center gap-2">
           <Suspense>
+            <CatalogFilters
+              categories={categories.map((c) => ({ slug: c.slug, name: c.name }))}
+              vendorName={vendorName}
+            />
+            <span className="hidden sm:block w-px h-5 bg-[var(--border)] mx-1" aria-hidden />
             <AccessMethodFilter />
           </Suspense>
         </div>
@@ -68,7 +83,7 @@ export default async function BrowsePage({
         <p className="text-sm text-[var(--text-muted)] mb-6 mono">
           {agents.length === 0
             ? 'No agents found'
-            : `${agents.length} agent${agents.length !== 1 ? 's' : ''}${query ? ' matched' : ' listed'}`}
+            : `${agents.length}${officialOnly ? ' official' : ''} agent${agents.length !== 1 ? 's' : ''}${query ? ' matched' : ' listed'}`}
         </p>
 
         {/* Results */}
@@ -102,6 +117,7 @@ export default async function BrowsePage({
             <div className="agent-dim text-xs">
               {agents.length} agent{agents.length !== 1 ? 's' : ''}{query ? ' matched' : ' indexed'}
               {categoryFilter && ` · category: ${categoryFilter}`}
+              {officialOnly && ` · official${vendorFilter ? `: ${vendorFilter}` : ''}`}
               {accessFilters.length > 0 && ` · access: ${accessFilters.join('+')}`}
             </div>
           </div>
