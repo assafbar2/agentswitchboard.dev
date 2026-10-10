@@ -55,6 +55,7 @@ export function summarizeAgent(a: Agent) {
     categories: a.categories.map((c) => c.slug),
     accessMethods: a.accessMethods,
     verified: a.verified,
+    official: a.official,
   };
 }
 
@@ -62,6 +63,7 @@ export function summarizeAgent(a: Agent) {
 export function detailAgent(a: Agent) {
   return {
     ...summarizeAgent(a),
+    officialVendor: a.officialVendor?.name ?? null,
     homepage: a.agentUrl ?? null,
     providerUrl: a.providerUrl ?? null,
     authType: a.authType,

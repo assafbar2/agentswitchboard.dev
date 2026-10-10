@@ -14,7 +14,7 @@ import { createMcpHandler } from 'mcp-handler';
 import { z } from 'zod';
 import { getEveryAgent, getAllCategories } from '@/lib/catalog';
 import { logConsumer } from '@/lib/log';
-import { searchAgents, ALL_ACCESS_METHODS } from '@/lib/search';
+import { filterAgents, searchAgents, ALL_ACCESS_METHODS } from '@/lib/search';
 import type { Agent } from '@/lib/types';
 
 const SITE = 'https://agentswitchboard.dev';
@@ -29,6 +29,8 @@ function agentSummary(a: Agent) {
     accessMethods: a.accessMethods,
     authType: a.authType,
     verified: a.verified,
+    official: a.official,
+    officialVendor: a.officialVendor?.name ?? null,
     url: `${SITE}/agents/${a.slug}`,
   };
 }
@@ -44,6 +46,8 @@ const agentSummaryShape = {
   accessMethods: z.array(z.string()),
   authType: z.string(),
   verified: z.boolean(),
+  official: z.boolean().describe('First-party listing from a major vendor'),
+  officialVendor: z.string().nullable(),
   url: z.string(),
 };
 
@@ -55,13 +59,17 @@ const handler = createMcpHandler(
         title: 'Search Agents',
         description:
           'Search the Agent Switchboard directory of vetted AI agents, MCP servers, and agentic tools. ' +
-          'Returns relevance-ranked matches. Filter by category slug and/or access methods.',
+          'Returns relevance-ranked matches. Filter by category slug, access methods, and/or official (first-party listings from major vendors).',
         inputSchema: {
           query: z.string().describe('Free-text search (name, description, skills, tags)').optional(),
           category: z.string().describe('Category slug, e.g. "code-devtools", "voice-messaging"').optional(),
           access: z
             .array(z.enum(ALL_ACCESS_METHODS as [string, ...string[]]))
             .describe('Require ALL of these access methods (api, mcp, cli, browser-extension)')
+            .optional(),
+          official: z
+            .boolean()
+            .describe('Only first-party listings from major vendors (e.g. Notion\'s own Notion MCP)')
             .optional(),
           limit: z.number().int().min(1).max(50).default(10).describe('Max results per page (1–50)').optional(),
           offset: z.number().int().min(0).default(0).describe('Number of results to skip, for pagination').optional(),
@@ -73,11 +81,8 @@ const handler = createMcpHandler(
           agents: z.array(z.object(agentSummaryShape)),
         },
       },
-      async ({ query, category, access, limit, offset }) => {
-        let agents = await getEveryAgent();
-        if (category) {
-          agents = agents.filter((a) => a.categories.some((c) => c.slug === category));
-        }
+      async ({ query, category, access, official, limit, offset }) => {
+        const agents = filterAgents(await getEveryAgent(), { category, official });
         const matches = searchAgents(agents, query ?? '', access);
         const start = offset ?? 0;
         const size = limit ?? 10;

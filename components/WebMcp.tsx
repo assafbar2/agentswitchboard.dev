@@ -26,6 +26,8 @@ interface CatalogAgent {
   accessMethods: string[];
   tags: string[];
   verified: boolean;
+  official: boolean;
+  officialVendor: string | null;
   tier: string;
 }
 
@@ -84,7 +86,7 @@ export function WebMcp() {
           {
             name: 'search_agents',
             description:
-              "Search Agent Switchboard's directory of vetted AI agents, MCP servers, and agentic tools. Filter by free-text query, category slug, and/or access method (api, mcp, cli, browser-extension).",
+              "Search Agent Switchboard's directory of vetted AI agents, MCP servers, and agentic tools. Filter by free-text query, category slug, access method (api, mcp, cli, browser-extension), and/or official (first-party listings from major vendors).",
             inputSchema: {
               type: 'object',
               properties: {
@@ -95,6 +97,7 @@ export function WebMcp() {
                   enum: ['api', 'mcp', 'cli', 'browser-extension'],
                   description: 'Restrict to one access method',
                 },
+                official: { type: 'boolean', description: 'Only first-party listings from major vendors' },
                 limit: { type: 'number', minimum: 1, maximum: 50, default: 10, description: 'Max results per page (1–50)' },
                 offset: { type: 'number', minimum: 0, default: 0, description: 'Number of results to skip, for pagination' },
               },
@@ -116,6 +119,7 @@ export function WebMcp() {
                       url: { type: 'string' },
                       categories: { type: 'array', items: { type: 'string' } },
                       accessMethods: { type: 'array', items: { type: 'string' } },
+                      official: { type: 'boolean' },
                     },
                   },
                 },
@@ -130,6 +134,7 @@ export function WebMcp() {
               let res = all;
               if (category) res = res.filter((a) => a.categories.includes(category));
               if (access) res = res.filter((a) => a.accessMethods.includes(access));
+              if (input.official === true) res = res.filter((a) => a.official);
               if (q)
                 res = res.filter((a) =>
                   `${a.name} ${a.description} ${a.tags.join(' ')}`.toLowerCase().includes(q)
@@ -143,6 +148,7 @@ export function WebMcp() {
                 url: a.url,
                 categories: a.categories,
                 accessMethods: a.accessMethods,
+                official: a.official,
               }));
               return asResult({ total, offset, limit, agents: trimmed });
             },
@@ -172,6 +178,8 @@ export function WebMcp() {
                 accessMethods: { type: 'array', items: { type: 'string' } },
                 tags: { type: 'array', items: { type: 'string' } },
                 verified: { type: 'boolean' },
+                official: { type: 'boolean' },
+                officialVendor: { type: ['string', 'null'] },
                 tier: { type: 'string' },
                 error: { type: 'string' },
               },
