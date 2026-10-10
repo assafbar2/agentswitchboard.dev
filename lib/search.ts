@@ -10,6 +10,28 @@ export const ACCESS_METHOD_LABELS: Record<string, string> = {
 
 export const ALL_ACCESS_METHODS = Object.keys(ACCESS_METHOD_LABELS);
 
+export interface CatalogFilter {
+  category?: string;
+  official?: boolean;
+  /** Official vendor slug (content/official-vendors.json); implies official. */
+  vendor?: string;
+}
+
+/** Category / Official / vendor narrowing, applied before text search. */
+export function filterAgents(agents: Agent[], { category, official, vendor }: CatalogFilter): Agent[] {
+  return agents.filter(
+    (a) =>
+      (!category || a.categories.some((c) => c.slug === category)) &&
+      (!official || a.official) &&
+      (!vendor || a.officialVendor?.slug === vendor)
+  );
+}
+
+/** Query-string flag parsing: "1", "true", "yes" (any case) mean on. */
+export function parseFlag(raw: string | null | undefined): boolean {
+  return !!raw && ['1', 'true', 'yes'].includes(raw.trim().toLowerCase());
+}
+
 /**
  * Score an agent against a search query.
  * Higher = more relevant.

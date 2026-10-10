@@ -21,6 +21,8 @@
  * Auth types: 'apiKey' | 'oauth2' | 'bearer' | 'none'
  * verified: true only after the run itself verified the URLs/endpoints.
  * featured: leave unset — Assaf's decision, never set by the weekly run.
+ * official: true only for a first-party listing whose agentUrl is on a vendor
+ *   source in content/official-vendors.json (validate-content enforces it).
  * Valid category slugs: content/categories.json (or `npx tsx scripts/cms.ts categories`)
  */
 
@@ -1020,6 +1022,8 @@ interface AgentInput {
   supportsPushNotifications?: boolean;
   featured?: boolean;
   verified?: boolean;
+  /** Only for first-party listings from a vendor in content/official-vendors.json. */
+  official?: boolean;
   wellKnownUrl?: string;
   skills?: AgentSkill[];
 }
@@ -1067,6 +1071,7 @@ function createAgent(agent: AgentInput, catSlugs: Set<string>): 'created' | 'ski
     status: 'published',
     featured: agent.featured ?? false,
     verified: agent.verified ?? false,
+    ...(agent.official ? { official: true } : {}),
     tier: 'free',
     discoveredBy: 'manual',
     accessMethods: agent.accessMethods ?? [],

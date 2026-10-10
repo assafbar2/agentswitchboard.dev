@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { scoreAgent, searchAgents } from './search';
+import { filterAgents, parseFlag, scoreAgent, searchAgents } from './search';
 import type { Agent } from './types';
 
 function makeAgent(overrides: Partial<Agent> = {}): Agent {
@@ -20,6 +20,7 @@ function makeAgent(overrides: Partial<Agent> = {}): Agent {
     status: 'published',
     featured: false,
     verified: false,
+    official: false,
     tier: 'free',
     discoveredBy: 'manual',
     accessMethods: [],
@@ -106,5 +107,41 @@ describe('searchAgents', () => {
     const results = searchAgents(agents, 'alpha', ['mcp']);
     expect(results).toHaveLength(1);
     expect(results[0].slug).toBe('gamma');
+  });
+});
+
+describe('filterAgents', () => {
+  const code = { id: 'c', name: 'Code', slug: 'code-devtools', sortOrder: 1 };
+  const data = { id: 'd', name: 'Data', slug: 'data-analytics', sortOrder: 2 };
+  const google = { slug: 'google', name: 'Google' };
+  const agents = [
+    makeAgent({ slug: 'gemini-cli', categories: [code], official: true, officialVendor: google }),
+    makeAgent({ slug: 'bigquery', categories: [data], official: true, officialVendor: google }),
+    makeAgent({ slug: 'community-gemini', categories: [code] }),
+  ];
+  const slugs = (list: Agent[]) => list.map((a) => a.slug);
+
+  it('keeps everything with no filter', () => {
+    expect(filterAgents(agents, {})).toHaveLength(3);
+  });
+
+  it('narrows to official listings', () => {
+    expect(slugs(filterAgents(agents, { official: true }))).toEqual(['gemini-cli', 'bigquery']);
+  });
+
+  it('combines official with a category', () => {
+    expect(slugs(filterAgents(agents, { official: true, category: 'code-devtools' }))).toEqual(['gemini-cli']);
+  });
+
+  it('narrows to one vendor', () => {
+    expect(slugs(filterAgents(agents, { vendor: 'google', category: 'data-analytics' }))).toEqual(['bigquery']);
+  });
+});
+
+describe('parseFlag', () => {
+  it('accepts 1/true/yes and rejects everything else', () => {
+    expect(['1', 'true', 'TRUE', 'yes'].map(parseFlag)).toEqual([true, true, true, true]);
+    expect(['0', 'false', '', 'no'].map(parseFlag)).toEqual([false, false, false, false]);
+    expect(parseFlag(null)).toBe(false);
   });
 });
