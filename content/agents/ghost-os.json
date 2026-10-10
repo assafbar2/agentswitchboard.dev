@@ -1,0 +1,52 @@
+{
+  "id": "ghost-os",
+  "name": "Ghost OS",
+  "slug": "ghost-os",
+  "description": "Lets any MCP-capable agent see and operate every macOS app through the accessibility tree, with vision fallback and replayable JSON recipes, for users automating Mac workflows.",
+  "providerName": "Ghostwright",
+  "providerUrl": "https://ghostwright.dev",
+  "agentUrl": "https://ghostwright.dev/ghost-os",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "computer-use",
+    "macos",
+    "accessibility-tree",
+    "desktop-control",
+    "workflow-recipes",
+    "mcp-server",
+    "swift"
+  ],
+  "skills": [
+    {
+      "id": "app-control",
+      "name": "Native App Control",
+      "description": "Reads the macOS accessibility tree to click, type, and navigate in any app, falling back to a local vision model when needed."
+    },
+    {
+      "id": "workflow-recipes",
+      "name": "Workflow Recipes",
+      "description": "Saves workflows as transparent JSON recipes with parameters and wait conditions and replays them on demand."
+    },
+    {
+      "id": "learn-by-demonstration",
+      "name": "Learn by Demonstration",
+      "description": "Watches the user perform a task once and turns the recorded actions into a parameterized recipe."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-10T21:22:01.509Z",
+  "updatedAt": "2026-10-10T21:22:01.509Z"
+}

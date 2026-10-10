@@ -1,0 +1,64 @@
+{
+  "id": "bird-mcp",
+  "name": "Bird MCP Server",
+  "slug": "bird-mcp",
+  "description": "Lets agents send and track email, SMS, WhatsApp, and voice through Bird, set up domains, senders, and numbers, and manage templates over a hosted OAuth MCP or the bird CLI.",
+  "providerName": "Bird",
+  "providerUrl": "https://bird.com",
+  "agentUrl": "https://bird.com/docs/ai/mcp-server",
+  "categories": [
+    "communication",
+    "voice-messaging"
+  ],
+  "tags": [
+    "email-api",
+    "sms",
+    "whatsapp",
+    "voice-calls",
+    "messaging-api",
+    "remote-mcp",
+    "official-mcp",
+    "bird"
+  ],
+  "skills": [
+    {
+      "id": "multichannel-send",
+      "name": "Multichannel Messaging",
+      "description": "Sends single or batch email, SMS, and WhatsApp messages and reads their delivery status and event logs."
+    },
+    {
+      "id": "channel-setup",
+      "name": "Channel Setup",
+      "description": "Adds and verifies email sending domains, claims and registers SMS senders, and searches and buys phone numbers."
+    },
+    {
+      "id": "email-deliverability",
+      "name": "Email Deliverability",
+      "description": "Authors and previews email templates, manages suppressions, and configures dedicated IPs and pools."
+    },
+    {
+      "id": "recipient-verify",
+      "name": "Recipient Verification",
+      "description": "Sends and checks one-time passcodes, falls back across channels, and looks up phone numbers or email addresses."
+    },
+    {
+      "id": "mcp-events",
+      "name": "MCP Events",
+      "description": "Subscribes the client to Bird events, such as new mail in a mailbox, and delivers each one as a signed webhook."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-10T21:22:01.525Z",
+  "updatedAt": "2026-10-10T21:22:01.525Z"
+}

@@ -1,0 +1,60 @@
+{
+  "id": "aionui",
+  "name": "AionUi",
+  "slug": "aionui",
+  "description": "Runs a built-in agent plus Claude Code, Codex, OpenCode, and 20+ CLI agents in one desktop cowork app, with team mode, scheduled tasks, MCP management, and WebUI remote access.",
+  "providerName": "AionUi",
+  "providerUrl": "https://www.aionui.com",
+  "agentUrl": "https://www.aionui.com",
+  "categories": [
+    "autonomous-agents",
+    "productivity"
+  ],
+  "tags": [
+    "desktop-app",
+    "cowork",
+    "multi-cli",
+    "scheduled-tasks",
+    "mcp-management",
+    "webui",
+    "office-documents"
+  ],
+  "skills": [
+    {
+      "id": "multi-cli-mode",
+      "name": "Multi-Agent Mode",
+      "description": "Auto-detects installed CLI agents and runs them in parallel sessions under one interface."
+    },
+    {
+      "id": "team-mode",
+      "name": "Team Mode",
+      "description": "Has a leader agent split work and delegate subtasks to teammate agents through a built-in Team MCP server."
+    },
+    {
+      "id": "scheduled-tasks",
+      "name": "Scheduled Tasks",
+      "description": "Runs agent tasks on cron, fixed-interval, or one-time schedules."
+    },
+    {
+      "id": "assistants-skills",
+      "name": "Assistants and Skills",
+      "description": "Ships 21 built-in assistants and a three-tier skill system you can extend."
+    },
+    {
+      "id": "remote-access",
+      "name": "Remote Access",
+      "description": "Reaches the app from a browser via WebUI or from Telegram, Lark, DingTalk, and WeChat."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [],
+  "createdAt": "2026-10-10T21:22:01.486Z",
+  "updatedAt": "2026-10-10T21:22:01.486Z"
+}

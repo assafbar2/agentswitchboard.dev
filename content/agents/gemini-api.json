@@ -1,0 +1,62 @@
+{
+  "id": "gemini-api",
+  "name": "Gemini API",
+  "slug": "gemini-api",
+  "description": "Serves Google's Gemini models through the Gemini Developer API and Gen AI SDKs, with function calling, structured output, Live API voice, and image generation, for developers.",
+  "providerName": "Google",
+  "providerUrl": "https://google.com",
+  "agentUrl": "https://ai.google.dev/gemini-api/docs",
+  "categories": [
+    "language",
+    "infrastructure"
+  ],
+  "tags": [
+    "gemini",
+    "google-genai",
+    "llm-api",
+    "function-calling",
+    "structured-output",
+    "live-api",
+    "image-generation"
+  ],
+  "skills": [
+    {
+      "id": "function-calling",
+      "name": "Function Calling",
+      "description": "Lets Gemini models call functions you declare and return structured arguments for your code to run."
+    },
+    {
+      "id": "structured-output",
+      "name": "Structured Output",
+      "description": "Constrains Gemini responses to JSON that matches a supplied schema for automated processing."
+    },
+    {
+      "id": "live-api",
+      "name": "Live API",
+      "description": "Builds real-time voice applications and agents over a low-latency streaming connection."
+    },
+    {
+      "id": "image-generation",
+      "name": "Image Generation",
+      "description": "Generates and edits images with Gemini image models from text and image prompts."
+    },
+    {
+      "id": "embeddings",
+      "name": "Embeddings",
+      "description": "Converts text into embedding vectors for search, clustering, and classification."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-10T21:22:01.460Z",
+  "updatedAt": "2026-10-10T21:22:01.460Z"
+}

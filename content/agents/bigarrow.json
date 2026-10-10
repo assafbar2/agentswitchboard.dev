@@ -1,0 +1,62 @@
+{
+  "id": "bigarrow",
+  "name": "bigarrow (big-arrow-on-the-screen)",
+  "slug": "bigarrow",
+  "description": "Lets coding agents draw arrows, boxes, and labels over any macOS window to show the human what to click, with copy buttons and spoken signs, via a Swift CLI and agent skill.",
+  "providerName": "Franz Enzenhofer",
+  "providerUrl": "https://github.com/franzenzenhofer",
+  "agentUrl": "https://github.com/franzenzenhofer/big-arrow-on-the-screen",
+  "categories": [
+    "productivity",
+    "code-devtools"
+  ],
+  "tags": [
+    "macos",
+    "screen-overlay",
+    "human-in-the-loop",
+    "swift-cli",
+    "claude-code-skill",
+    "ui-guidance",
+    "accessibility-api"
+  ],
+  "skills": [
+    {
+      "id": "point-at-element",
+      "name": "Point at UI Elements",
+      "description": "Draws an arrow and sign at an element by label, a coordinate, a window, or the mouse, then removes it."
+    },
+    {
+      "id": "copy-button",
+      "name": "Copy Buttons",
+      "description": "Turns {{value}} in a sign into a copy button the human can click to paste."
+    },
+    {
+      "id": "spoken-signs",
+      "name": "Spoken Signs",
+      "description": "Reads the sign aloud with --say to call the human back to the screen."
+    },
+    {
+      "id": "png-render",
+      "name": "PNG Rendering",
+      "description": "Renders the overlay straight to a PNG with --png for demos and docs."
+    },
+    {
+      "id": "agent-skill",
+      "name": "Claude Code and Codex Skill",
+      "description": "Installs a skill that teaches agents when and how to point and to stop once the human acts."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-10T21:22:01.484Z",
+  "updatedAt": "2026-10-10T21:22:01.484Z"
+}

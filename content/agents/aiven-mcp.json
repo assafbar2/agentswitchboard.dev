@@ -1,0 +1,57 @@
+{
+  "id": "aiven-mcp",
+  "name": "Aiven MCP Server",
+  "slug": "aiven-mcp",
+  "description": "Lets AI assistants provision and operate Aiven-managed PostgreSQL and Apache Kafka, running SQL, producing and consuming messages, and diagnosing services from metrics and logs.",
+  "providerName": "Aiven",
+  "providerUrl": "https://aiven.io",
+  "agentUrl": "https://aiven.io/mcp",
+  "categories": [
+    "infrastructure",
+    "data-analytics"
+  ],
+  "tags": [
+    "postgresql",
+    "apache-kafka",
+    "managed-databases",
+    "pgvector",
+    "remote-mcp",
+    "official-mcp",
+    "aiven"
+  ],
+  "skills": [
+    {
+      "id": "postgres-ops",
+      "name": "PostgreSQL Operations",
+      "description": "Runs SQL and manages schemas, indexes, extensions, and pgvector on Aiven-managed PostgreSQL."
+    },
+    {
+      "id": "kafka-topics",
+      "name": "Kafka Topic Produce And Consume",
+      "description": "Creates topics, produces and consumes messages, and checks consumer group lag and offsets on managed Kafka."
+    },
+    {
+      "id": "service-diagnostics",
+      "name": "Service Diagnostics",
+      "description": "Pulls CPU and memory metrics and service logs, and uses pg_stat_statements and EXPLAIN to find slow queries."
+    },
+    {
+      "id": "scoped-access",
+      "name": "Read-Only And Scoped Access",
+      "description": "Limits the exposed tools by service scope, read-only mode, and a write allowlist set on the server URL."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.526Z",
+  "updatedAt": "2026-10-10T21:22:01.526Z"
+}

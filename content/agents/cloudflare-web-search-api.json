@@ -1,0 +1,62 @@
+{
+  "id": "cloudflare-web-search-api",
+  "name": "Cloudflare Web Search API",
+  "slug": "cloudflare-web-search-api",
+  "description": "Returns structured web search results from Exa, Linkup, or Ceramic through Cloudflare's AI Gateway via REST or a Workers binding, for agents that need live web context.",
+  "providerName": "Cloudflare",
+  "providerUrl": "https://cloudflare.com",
+  "agentUrl": "https://developers.cloudflare.com/web-search/",
+  "categories": [
+    "research",
+    "infrastructure"
+  ],
+  "tags": [
+    "cloudflare",
+    "web-search",
+    "search-grounding",
+    "workers-binding",
+    "exa",
+    "linkup",
+    "byok"
+  ],
+  "skills": [
+    {
+      "id": "multi-provider-search",
+      "name": "Multiple Search Providers",
+      "description": "Switches between Ceramic.ai, Exa, and Linkup with one provider parameter and a shared result format."
+    },
+    {
+      "id": "rest-search",
+      "name": "REST API",
+      "description": "Sends search queries from any backend and receives titles, URLs, and descriptions for model context."
+    },
+    {
+      "id": "workers-binding",
+      "name": "Workers Binding",
+      "description": "Calls env.AI.websearch() from a Cloudflare Worker through the AI binding."
+    },
+    {
+      "id": "byok",
+      "name": "Bring Your Own Key",
+      "description": "Uses your own provider API key instead of AI Gateway Unified Billing credits."
+    },
+    {
+      "id": "search-as-tool",
+      "name": "Web Search as a Tool",
+      "description": "Exposes web search as a tool that models can call during inference."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-10T21:22:01.469Z",
+  "updatedAt": "2026-10-10T21:22:01.469Z"
+}

@@ -1,0 +1,62 @@
+{
+  "id": "talk-to-figma-mcp",
+  "name": "Talk to Figma MCP",
+  "slug": "talk-to-figma-mcp",
+  "description": "Lets Cursor, Claude Code, and other MCP agents read Figma designs and create, edit, annotate, and export nodes through a local MCP server, WebSocket relay, and Figma plugin.",
+  "providerName": "Grab",
+  "providerUrl": "https://github.com/grab",
+  "agentUrl": "https://github.com/grab/cursor-talk-to-figma-mcp",
+  "categories": [
+    "code-devtools",
+    "content-media"
+  ],
+  "tags": [
+    "figma",
+    "design-editing",
+    "figma-plugin",
+    "websocket",
+    "mcp-server",
+    "design-to-code",
+    "annotations"
+  ],
+  "skills": [
+    {
+      "id": "read-design",
+      "name": "Read Designs",
+      "description": "Reads document info, the current selection, and node details from the open Figma file."
+    },
+    {
+      "id": "create-elements",
+      "name": "Create Elements",
+      "description": "Creates rectangles, frames, sections, and text nodes."
+    },
+    {
+      "id": "bulk-text-replace",
+      "name": "Bulk Text Updates",
+      "description": "Scans text nodes and updates many text contents in one batch."
+    },
+    {
+      "id": "annotations",
+      "name": "Annotations",
+      "description": "Reads and creates native Figma annotations, including batch updates."
+    },
+    {
+      "id": "export-image",
+      "name": "Export Nodes",
+      "description": "Exports a node as PNG, JPG, SVG, or PDF."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.495Z",
+  "updatedAt": "2026-10-10T21:22:01.495Z"
+}

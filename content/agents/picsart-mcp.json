@@ -1,0 +1,56 @@
+{
+  "id": "picsart-mcp",
+  "name": "Picsart Creative APIs MCP",
+  "slug": "picsart-mcp",
+  "description": "Lets coding agents call Picsart Creative APIs over MCP to remove backgrounds, upscale, enhance, and generate images, and to write integration code from the API docs.",
+  "providerName": "Picsart",
+  "providerUrl": "https://picsart.com",
+  "agentUrl": "https://docs.picsart.io/docs/mcp-creative-apis",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "image-editing",
+    "background-removal",
+    "image-upscaling",
+    "image-generation",
+    "remote-mcp",
+    "official-mcp",
+    "picsart"
+  ],
+  "skills": [
+    {
+      "id": "image-editing",
+      "name": "Image Editing",
+      "description": "Removes or changes backgrounds, upscales, enhances faces, and applies effects to images, one tool per API action."
+    },
+    {
+      "id": "genai-images",
+      "name": "Generative Images",
+      "description": "Generates images, stickers, and logos from text and inpaints, outpaints, or expands existing images."
+    },
+    {
+      "id": "docs-and-code",
+      "name": "API Docs And Code Snippets",
+      "description": "Searches the Creative APIs specs, inspects endpoints and schemas, and returns code snippets for an integration."
+    },
+    {
+      "id": "credits-balance",
+      "name": "Credits Balance",
+      "description": "Checks the remaining Picsart API credit balance to confirm the key works before running jobs."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.527Z",
+  "updatedAt": "2026-10-10T21:22:01.527Z"
+}

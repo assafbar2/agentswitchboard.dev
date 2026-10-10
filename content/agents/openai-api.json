@@ -1,0 +1,62 @@
+{
+  "id": "openai-api",
+  "name": "OpenAI API",
+  "slug": "openai-api",
+  "description": "Serves OpenAI models through the Responses and Chat Completions APIs, with function calling, file search, realtime voice, and remote MCP tools, for developers building model-backed apps.",
+  "providerName": "OpenAI",
+  "providerUrl": "https://openai.com",
+  "agentUrl": "https://developers.openai.com/api/docs",
+  "categories": [
+    "language",
+    "infrastructure"
+  ],
+  "tags": [
+    "openai",
+    "llm-api",
+    "responses-api",
+    "chat-completions",
+    "function-calling",
+    "remote-mcp",
+    "realtime-voice"
+  ],
+  "skills": [
+    {
+      "id": "text-generation",
+      "name": "Text Generation",
+      "description": "Generates text, code, and structured JSON from prompts with OpenAI models through the Responses API."
+    },
+    {
+      "id": "function-calling",
+      "name": "Function Calling",
+      "description": "Lets models call developer-defined functions described by JSON schema to reach application data and actions."
+    },
+    {
+      "id": "remote-mcp",
+      "name": "Remote MCP Servers",
+      "description": "Gives models tools from remote MCP servers, or private ones through Secure MCP Tunnel, during a response."
+    },
+    {
+      "id": "file-search",
+      "name": "File Search",
+      "description": "Retrieves passages from uploaded files in vector stores with semantic and keyword search inside the Responses API."
+    },
+    {
+      "id": "realtime-voice",
+      "name": "Realtime API",
+      "description": "Runs speech-to-speech voice sessions where the model works on audio directly, keeps state, and calls tools."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-10T21:22:01.457Z",
+  "updatedAt": "2026-10-10T21:22:01.457Z"
+}

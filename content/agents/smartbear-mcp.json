@@ -1,0 +1,57 @@
+{
+  "id": "smartbear-mcp",
+  "name": "SmartBear MCP Server",
+  "slug": "smartbear-mcp",
+  "description": "Connects coding agents to SmartBear's BugSnag, Swagger, PactFlow, Zephyr, QMetry, Reflect, and BearQ to debug errors, manage API specs, and run test management.",
+  "providerName": "SmartBear",
+  "providerUrl": "https://smartbear.com",
+  "agentUrl": "https://github.com/SmartBear/smartbear-mcp",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "error-monitoring",
+    "api-design",
+    "contract-testing",
+    "test-management",
+    "bugsnag",
+    "swagger",
+    "official-mcp",
+    "smartbear"
+  ],
+  "skills": [
+    {
+      "id": "bugsnag-errors",
+      "name": "BugSnag Error Debugging",
+      "description": "Lists project errors, reads events with stack traces and device context, and updates error status or severity."
+    },
+    {
+      "id": "swagger-studio-apis",
+      "name": "Swagger Studio API Management",
+      "description": "Searches, fetches, creates, and updates OpenAPI or AsyncAPI definitions and scans them against org standards."
+    },
+    {
+      "id": "pactflow-contracts",
+      "name": "PactFlow Contract Testing",
+      "description": "Generates and reviews Pact tests, fetches provider states, and checks can-i-deploy against the Pact Broker matrix."
+    },
+    {
+      "id": "zephyr-test-cases",
+      "name": "Zephyr Test Case Management",
+      "description": "Reads, creates, and updates Zephyr test cases, test scripts, and links to Jira issues and test cycles."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.523Z",
+  "updatedAt": "2026-10-10T21:22:01.523Z"
+}

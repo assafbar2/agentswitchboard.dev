@@ -1,0 +1,64 @@
+{
+  "id": "docker-agent",
+  "name": "Docker Agent",
+  "slug": "docker-agent",
+  "description": "Lets developers define multi-agent teams in YAML and run them with the docker agent CLI, expose them over MCP or an HTTP API, and share them through OCI registries.",
+  "providerName": "Docker",
+  "providerUrl": "https://www.docker.com",
+  "agentUrl": "https://docker.github.io/docker-agent/",
+  "categories": [
+    "orchestration",
+    "infrastructure"
+  ],
+  "tags": [
+    "docker",
+    "yaml-config",
+    "cli-plugin",
+    "oci-registry",
+    "mcp-server",
+    "rag",
+    "model-agnostic"
+  ],
+  "skills": [
+    {
+      "id": "multi-agent-teams",
+      "name": "Multi-Agent Teams",
+      "description": "Defines teams of specialized agents in YAML that delegate tasks to one another."
+    },
+    {
+      "id": "mcp-mode",
+      "name": "MCP Mode",
+      "description": "Exposes configured agents as MCP tools with docker agent serve mcp for Claude Desktop, Claude Code, and other clients."
+    },
+    {
+      "id": "api-server",
+      "name": "API Server",
+      "description": "Serves agents over an HTTP API with SSE-streamed runtime events and session management via docker agent serve api."
+    },
+    {
+      "id": "oci-distribution",
+      "name": "Agent Distribution",
+      "description": "Pushes agent configs to any OCI registry and pulls and runs them elsewhere."
+    },
+    {
+      "id": "rag",
+      "name": "RAG",
+      "description": "Adds pluggable retrieval with BM25, embeddings, hybrid search, and reranking to agents."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-10-10T21:22:01.463Z",
+  "updatedAt": "2026-10-10T21:22:01.463Z"
+}

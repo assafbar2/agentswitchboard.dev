@@ -1,0 +1,63 @@
+{
+  "id": "spacebot",
+  "name": "Spacebot",
+  "slug": "spacebot",
+  "description": "Runs a multi-user agent harness for Discord, Slack, Telegram, and Twitch with shared graph memory, tasks, cron jobs, and coding workers, for teams and communities.",
+  "providerName": "Spacedrive",
+  "providerUrl": "https://spacedrive.com",
+  "agentUrl": "https://spacebot.sh",
+  "categories": [
+    "autonomous-agents",
+    "communication"
+  ],
+  "tags": [
+    "discord-bot",
+    "slack-bot",
+    "telegram-bot",
+    "multi-user",
+    "graph-memory",
+    "cron-jobs",
+    "self-hosted",
+    "rust"
+  ],
+  "skills": [
+    {
+      "id": "graph-memory",
+      "name": "Typed Graph Memory",
+      "description": "Stores typed memories with importance scores and graph edges and recalls them with hybrid vector and full-text search."
+    },
+    {
+      "id": "task-execution",
+      "name": "Task Execution",
+      "description": "Runs tasks with execution plans, dependency gating, and spec-driven markdown descriptions through worker agents."
+    },
+    {
+      "id": "cron-scheduling",
+      "name": "Conversational Cron Jobs",
+      "description": "Turns natural-language requests into scheduled jobs that deliver results to a chosen channel."
+    },
+    {
+      "id": "messaging-adapters",
+      "name": "Messaging Adapters",
+      "description": "Connects one agent to Discord, Slack, Telegram, Twitch, Signal, Mattermost, email, webchat, and webhooks."
+    },
+    {
+      "id": "learned-skills",
+      "name": "Learned Skills",
+      "description": "Distills successful multi-step work into reusable skills and installs skills from the skills.sh registry."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-10T21:22:01.504Z",
+  "updatedAt": "2026-10-10T21:22:01.504Z"
+}

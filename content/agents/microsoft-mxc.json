@@ -1,0 +1,59 @@
+{
+  "id": "microsoft-mxc",
+  "name": "Microsoft Execution Containers (MXC)",
+  "slug": "microsoft-mxc",
+  "description": "Runs untrusted model output, plugins, and tools in policy-driven sandboxes on Windows, Linux, and macOS through Rust, .NET, and Node SDKs, for apps that execute agent code.",
+  "providerName": "Microsoft",
+  "providerUrl": "https://github.com/microsoft",
+  "agentUrl": "https://github.com/microsoft/mxc",
+  "categories": [
+    "security",
+    "infrastructure"
+  ],
+  "tags": [
+    "sandboxing",
+    "code-execution",
+    "filesystem-policy",
+    "network-policy",
+    "cross-platform",
+    "rust-sdk",
+    "dotnet-sdk",
+    "node-sdk"
+  ],
+  "skills": [
+    {
+      "id": "policy-sandboxing",
+      "name": "Policy-Driven Sandboxing",
+      "description": "Applies JSON filesystem, network, and UI policies to each contained workload."
+    },
+    {
+      "id": "containment-backends",
+      "name": "Multiple Containment Backends",
+      "description": "Selects a platform backend such as ProcessContainer, Bubblewrap, Seatbelt, LXC, or MicroVM behind one model."
+    },
+    {
+      "id": "container-lifecycle",
+      "name": "Container Lifecycle",
+      "description": "Provisions, starts, executes in, stops, and deprovisions persistent containers through versioned SDK APIs."
+    },
+    {
+      "id": "audit-diagnostics",
+      "name": "Diagnostics and Audit Mode",
+      "description": "Explains access-denied failures and records observed accesses to help author ProcessContainer policies."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-10-10T21:22:01.464Z",
+  "updatedAt": "2026-10-10T21:22:01.464Z"
+}

@@ -1,0 +1,62 @@
+{
+  "id": "alibaba-model-studio",
+  "name": "Alibaba Cloud Model Studio",
+  "slug": "alibaba-model-studio",
+  "description": "Serves Qwen and third-party models through DashScope and OpenAI-compatible APIs on Alibaba Cloud, covering text, vision, image, speech, and embeddings, plus a RAG knowledge base.",
+  "providerName": "Alibaba Cloud",
+  "providerUrl": "https://www.alibabacloud.com",
+  "agentUrl": "https://www.alibabacloud.com/help/en/model-studio/what-is-model-studio",
+  "categories": [
+    "language",
+    "infrastructure"
+  ],
+  "tags": [
+    "llm-api",
+    "qwen",
+    "dashscope",
+    "openai-compatible",
+    "function-calling",
+    "embeddings",
+    "text-to-image"
+  ],
+  "skills": [
+    {
+      "id": "function-calling",
+      "name": "Function Calling",
+      "description": "Lets Qwen models call developer-defined tools and return structured tool calls."
+    },
+    {
+      "id": "text-to-image",
+      "name": "Text-To-Image",
+      "description": "Generates images from prompts with Qwen-Image and Wan models."
+    },
+    {
+      "id": "embeddings",
+      "name": "Embeddings",
+      "description": "Converts text into vectors with embedding models for search and retrieval."
+    },
+    {
+      "id": "knowledge-base",
+      "name": "Knowledge Base",
+      "description": "Builds a knowledge base for retrieval-augmented generation in Model Studio, billed separately from inference."
+    },
+    {
+      "id": "realtime-tts",
+      "name": "Real-Time Speech Synthesis",
+      "description": "Streams synthesized speech with Qwen TTS and CosyVoice models."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-10T21:22:01.540Z",
+  "updatedAt": "2026-10-10T21:22:01.540Z"
+}

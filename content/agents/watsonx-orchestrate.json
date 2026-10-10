@@ -4,7 +4,7 @@
   "slug": "watsonx-orchestrate",
   "description": "Build and govern enterprise AI agents on IBM infrastructure — an agent builder, prebuilt agent catalog, multi-agent orchestration, and governance controls across business systems.",
   "providerName": "IBM",
-  "providerUrl": "https://www.ibm.com",
+  "providerUrl": "https://www.ibm.com/us-en",
   "agentUrl": "https://www.ibm.com/products/watsonx-orchestrate",
   "categories": [
     "orchestration"
@@ -47,5 +47,5 @@
     "api"
   ],
   "createdAt": "2026-09-13T20:13:54.429Z",
-  "updatedAt": "2026-09-13T20:13:54.429Z"
+  "updatedAt": "2026-10-10T20:55:08.699Z"
 }

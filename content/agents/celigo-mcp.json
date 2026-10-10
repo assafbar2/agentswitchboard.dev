@@ -1,0 +1,52 @@
+{
+  "id": "celigo-mcp",
+  "name": "Celigo MCP Server",
+  "slug": "celigo-mcp",
+  "description": "Lets AI coding assistants manage Celigo integrator.io integrations, flows, connections, errors, and jobs over a hosted OAuth MCP server in the US, EU, AU, or CA region.",
+  "providerName": "Celigo",
+  "providerUrl": "https://www.celigo.com",
+  "agentUrl": "https://github.com/celigo/ai/blob/main/docs/connect-mcp.md",
+  "categories": [
+    "orchestration",
+    "infrastructure"
+  ],
+  "tags": [
+    "ipaas",
+    "integration-flows",
+    "integrator-io",
+    "data-integration",
+    "remote-mcp",
+    "official-mcp",
+    "celigo"
+  ],
+  "skills": [
+    {
+      "id": "resource-management",
+      "name": "Integration Resource Management",
+      "description": "Lists, creates, updates, and deletes integrator.io resources such as connections, exports, imports, and flows."
+    },
+    {
+      "id": "flow-runs",
+      "name": "Flow Runs",
+      "description": "Runs flows on demand and deploys marketplace templates into an integrator.io account."
+    },
+    {
+      "id": "flow-troubleshooting",
+      "name": "Flow Troubleshooting",
+      "description": "Diagnoses failing flows and connection issues with bundled MCP prompts and an error-patterns resource."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.528Z",
+  "updatedAt": "2026-10-10T21:22:01.528Z"
+}
