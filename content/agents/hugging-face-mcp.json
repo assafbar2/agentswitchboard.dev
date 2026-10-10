@@ -3,9 +3,9 @@
   "name": "Hugging Face MCP",
   "slug": "hugging-face-mcp",
   "description": "Discovers AI models, explores datasets, and accesses model documentation and capabilities on Hugging Face — the central hub for open-source ML.",
-  "providerName": "Smithery",
-  "providerUrl": "https://smithery.ai",
-  "agentUrl": "https://smithery.ai/server/hugging-face",
+  "providerName": "Hugging Face",
+  "providerUrl": "https://huggingface.co",
+  "agentUrl": "https://huggingface.co/mcp",
   "categories": [
     "research"
   ],
@@ -47,5 +47,5 @@
     "mcp"
   ],
   "createdAt": "2026-06-07T17:51:31.896Z",
-  "updatedAt": "2026-06-07T17:51:31.896Z"
+  "updatedAt": "2026-10-10T20:55:07.428Z"
 }

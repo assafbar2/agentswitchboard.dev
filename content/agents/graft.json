@@ -1,0 +1,63 @@
+{
+  "id": "graft",
+  "name": "Graft",
+  "slug": "graft",
+  "description": "Builds a local, always-fresh graph of your codebase as linked markdown and serves it to coding agents over MCP and a CLI, so they spend fewer tokens and tool calls finding code.",
+  "providerName": "Trail",
+  "providerUrl": "https://trailhq.com",
+  "agentUrl": "https://trailhq.com/graft",
+  "categories": [
+    "code-devtools",
+    "memory-state"
+  ],
+  "tags": [
+    "code-graph",
+    "codebase-context",
+    "tree-sitter",
+    "mcp-server",
+    "claude-code",
+    "token-savings",
+    "monorepo"
+  ],
+  "skills": [
+    {
+      "id": "find-code",
+      "name": "Find Code",
+      "description": "Returns ranked graph nodes with file:line and inlined source for a natural-language question."
+    },
+    {
+      "id": "file-api",
+      "name": "File API Surface",
+      "description": "Lists every signature in a file without bodies."
+    },
+    {
+      "id": "trace-calls",
+      "name": "Trace Calls",
+      "description": "Shows who depends on a symbol, or what it depends on, several levels deep."
+    },
+    {
+      "id": "repo-map",
+      "name": "Repo Map",
+      "description": "Summarizes directory clusters, hubs, and hotspots of an unfamiliar repo."
+    },
+    {
+      "id": "freshness-check",
+      "name": "Freshness Check",
+      "description": "Reports whether the local graph has drifted from the code."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-10T21:22:01.488Z",
+  "updatedAt": "2026-10-10T21:22:01.488Z"
+}

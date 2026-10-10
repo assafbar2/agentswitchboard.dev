@@ -1,0 +1,62 @@
+{
+  "id": "vercel-mcp",
+  "name": "Vercel MCP",
+  "slug": "vercel-mcp",
+  "description": "Gives MCP clients OAuth access to Vercel teams, projects, deployments, runtime logs, and domains through Vercel's official remote MCP server, for developers debugging deploys.",
+  "providerName": "Vercel",
+  "providerUrl": "https://vercel.com",
+  "agentUrl": "https://vercel.com/docs/agent-resources/vercel-mcp",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "vercel",
+    "remote-mcp",
+    "official-mcp",
+    "deployments",
+    "runtime-logs",
+    "domains-dns",
+    "oauth"
+  ],
+  "skills": [
+    {
+      "id": "deployments",
+      "name": "Deployments",
+      "description": "Lists and inspects deployments and fetches content from protected deployment URLs you can access."
+    },
+    {
+      "id": "observability",
+      "name": "Runtime Logs and Errors",
+      "description": "Reads and filters runtime logs and investigates grouped runtime errors for a project or deployment."
+    },
+    {
+      "id": "projects-teams",
+      "name": "Projects and Teams",
+      "description": "Finds the teams you can access and inspects project configuration and details."
+    },
+    {
+      "id": "domains-dns",
+      "name": "Domains and DNS",
+      "description": "Manages domains and DNS records for Vercel projects."
+    },
+    {
+      "id": "docs-search",
+      "name": "Documentation Search",
+      "description": "Searches Vercel documentation from inside the MCP client."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.468Z",
+  "updatedAt": "2026-10-10T21:22:01.468Z"
+}

@@ -1,0 +1,62 @@
+{
+  "id": "zai-api",
+  "name": "Z.ai API Platform",
+  "slug": "zai-api",
+  "description": "Serves Z.ai's GLM models through an HTTP API and official Python and Java SDKs, with function calling, web search, image and video generation, and document layout parsing.",
+  "providerName": "Z.ai",
+  "providerUrl": "https://z.ai",
+  "agentUrl": "https://docs.z.ai/guides/overview/quick-start",
+  "categories": [
+    "language",
+    "infrastructure"
+  ],
+  "tags": [
+    "llm-api",
+    "glm",
+    "zhipu",
+    "function-calling",
+    "web-search",
+    "image-generation",
+    "video-generation"
+  ],
+  "skills": [
+    {
+      "id": "function-calling",
+      "name": "Function Calling",
+      "description": "Lets GLM models call developer-defined functions, with tool-call arguments streamed as they generate."
+    },
+    {
+      "id": "web-search",
+      "name": "Web Search",
+      "description": "Runs LLM-oriented web searches through the Web Search API and built-in tool."
+    },
+    {
+      "id": "image-generation",
+      "name": "Image Generation",
+      "description": "Generates images from text prompts with GLM-Image, synchronously or as async jobs."
+    },
+    {
+      "id": "video-generation",
+      "name": "Video Generation",
+      "description": "Generates video asynchronously with CogVideoX and returns results by task ID."
+    },
+    {
+      "id": "layout-parsing",
+      "name": "Layout Parsing",
+      "description": "Parses document and image layouts and extracts text with GLM-OCR."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-10T21:22:01.539Z",
+  "updatedAt": "2026-10-10T21:22:01.539Z"
+}

@@ -1,0 +1,62 @@
+{
+  "id": "strata",
+  "name": "Strata",
+  "slug": "strata",
+  "description": "Runs the Qwen3.8-Flash-Next model on a 12 GB+ consumer GPU and serves it locally over OpenAI- and Anthropic-compatible APIs, for people connecting chat apps and coding agents.",
+  "providerName": "Niko1221",
+  "providerUrl": "https://github.com/Niko1221",
+  "agentUrl": "https://github.com/Niko1221/Strata",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "local-inference",
+    "qwen",
+    "openai-compatible",
+    "anthropic-compatible",
+    "consumer-gpu",
+    "moe-offload",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "openai-compatible-api",
+      "name": "OpenAI-Compatible API",
+      "description": "Serves chat completions with streaming and tool calls at http://127.0.0.1:8080/v1."
+    },
+    {
+      "id": "anthropic-messages",
+      "name": "Anthropic Messages API",
+      "description": "Accepts Anthropic Messages requests so Claude Code can point ANTHROPIC_BASE_URL at the local server."
+    },
+    {
+      "id": "responses-api",
+      "name": "Responses API",
+      "description": "Serves the OpenAI Responses API statelessly for Codex CLI and similar clients."
+    },
+    {
+      "id": "vision",
+      "name": "Image Input",
+      "description": "Reads attached pictures in chat or through the API when image support is enabled at setup."
+    },
+    {
+      "id": "mcp-management",
+      "name": "Management MCP Server",
+      "description": "Lets an AI assistant install, start, stop, and check Strata through a bundled MCP server."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.482Z",
+  "updatedAt": "2026-10-10T21:22:01.482Z"
+}

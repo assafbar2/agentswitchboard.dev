@@ -1,0 +1,65 @@
+{
+  "id": "golem",
+  "name": "Golem",
+  "slug": "golem",
+  "description": "Runs durable WebAssembly agents written in Rust, TypeScript, Scala, or MoonBit with automatic state recovery, exposed over REST, CLI, and MCP, self-hosted or on Golem Cloud, for backend developers.",
+  "providerName": "Golem Cloud",
+  "providerUrl": "https://golem.cloud",
+  "agentUrl": "https://golem.cloud",
+  "categories": [
+    "infrastructure",
+    "orchestration"
+  ],
+  "tags": [
+    "durable-execution",
+    "webassembly",
+    "agent-runtime",
+    "rust",
+    "typescript",
+    "mcp-server",
+    "self-hosted",
+    "golem-cloud"
+  ],
+  "skills": [
+    {
+      "id": "durable-agents",
+      "name": "Durable Agents",
+      "description": "Persists agent state automatically so agents survive crashes and restarts, with configurable durability controls."
+    },
+    {
+      "id": "agent-rpc",
+      "name": "Agent-to-Agent Communication",
+      "description": "Lets agents call other agents with typed remote procedure calls."
+    },
+    {
+      "id": "mcp-exposure",
+      "name": "Automatic MCP Server",
+      "description": "Exposes agent methods as MCP tools and resources over streamable HTTP without extra code."
+    },
+    {
+      "id": "rest-invocation",
+      "name": "REST Invocation",
+      "description": "Invokes agent functions over the REST API, either enqueued or awaiting the result."
+    },
+    {
+      "id": "agent-forking",
+      "name": "Agent Forking",
+      "description": "Forks a running agent into a new agent that continues from the same state."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.514Z",
+  "updatedAt": "2026-10-10T21:22:01.514Z"
+}

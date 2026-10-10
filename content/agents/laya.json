@@ -1,0 +1,64 @@
+{
+  "id": "laya",
+  "name": "Laya",
+  "slug": "laya",
+  "description": "Answers typed choice, score, and yes/no questions about text in 100+ languages in one forward pass, via Python, CLI, a self-hosted HTTP server, or MCP, for routing and triage.",
+  "providerName": "Nandakishor M",
+  "providerUrl": "https://github.com/NandhaKishorM",
+  "agentUrl": "https://nandhakishorm.github.io/laya/",
+  "categories": [
+    "language",
+    "infrastructure"
+  ],
+  "tags": [
+    "decision-model",
+    "classification",
+    "multilingual",
+    "request-routing",
+    "guardrails",
+    "self-hosted",
+    "python-library"
+  ],
+  "skills": [
+    {
+      "id": "typed-decisions",
+      "name": "Typed Decisions",
+      "description": "Returns choice, score, and yes/no answers with probabilities for many questions in one forward pass."
+    },
+    {
+      "id": "language-routing",
+      "name": "Language Router",
+      "description": "Detects script and language and routes each request to the English or multilingual checkpoint."
+    },
+    {
+      "id": "workflow-presets",
+      "name": "Workflow Presets",
+      "description": "Ships presets for model routing, prompt guardrails, content moderation, ticket triage, and email triage."
+    },
+    {
+      "id": "http-server",
+      "name": "Self-Hosted HTTP Server",
+      "description": "Serves the router over HTTP on the Jev-compatible POST /v1/systemone protocol with laya-serve."
+    },
+    {
+      "id": "mcp-server",
+      "name": "MCP Server",
+      "description": "Exposes decisions to MCP clients through the optional laya-mcp-server."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.481Z",
+  "updatedAt": "2026-10-10T21:22:01.481Z"
+}

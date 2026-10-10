@@ -1,0 +1,59 @@
+{
+  "id": "boxlite",
+  "name": "BoxLite",
+  "slug": "boxlite",
+  "description": "Embeds hardware-isolated micro-VM sandboxes that run any OCI image with persistent state, via Python, Node, Go, and Rust SDKs, a CLI, or a REST server, for developers running agent code.",
+  "providerName": "BoxLite",
+  "providerUrl": "https://boxlite.ai",
+  "agentUrl": "https://boxlite.ai/",
+  "categories": [
+    "infrastructure",
+    "security"
+  ],
+  "tags": [
+    "sandbox",
+    "micro-vm",
+    "code-execution",
+    "oci-images",
+    "isolation",
+    "python-sdk",
+    "rest-api",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "isolated-execution",
+      "name": "Isolated Code Execution",
+      "description": "Runs commands in a per-box hardware-virtualized VM with streamed stdout and stderr, PTY support, and timeouts."
+    },
+    {
+      "id": "persistent-boxes",
+      "name": "Persistent Boxes",
+      "description": "Keeps box disks and installed packages across stop and restart, with clone and export or import as archives."
+    },
+    {
+      "id": "egress-control",
+      "name": "Egress Control and Secret Injection",
+      "description": "Restricts outbound network with an allow-list and injects secrets through placeholders that never enter the box."
+    },
+    {
+      "id": "rest-server",
+      "name": "REST Server Mode",
+      "description": "Serves boxes over a REST API with WebSocket exec and optional API-key auth via `boxlite serve`."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-10-10T21:22:01.502Z",
+  "updatedAt": "2026-10-10T21:22:01.502Z"
+}

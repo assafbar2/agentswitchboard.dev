@@ -1,0 +1,64 @@
+{
+  "id": "fly-sprites",
+  "name": "Sprites (Fly.io)",
+  "slug": "fly-sprites",
+  "description": "Gives agents persistent Linux computers with checkpoint and restore, per-Sprite HTTPS URLs, and credential-free connectors, via a CLI, REST API, SDKs, and remote MCP server.",
+  "providerName": "Fly.io",
+  "providerUrl": "https://fly.io",
+  "agentUrl": "https://sprites.dev",
+  "categories": [
+    "browser-computer",
+    "infrastructure"
+  ],
+  "tags": [
+    "fly-io",
+    "linux-vm",
+    "checkpoints",
+    "persistent-disk",
+    "remote-mcp",
+    "connectors",
+    "sandboxing"
+  ],
+  "skills": [
+    {
+      "id": "persistent-disk",
+      "name": "Persistent Disk",
+      "description": "Keeps a 100 GB filesystem across sleep and wake so installs and data stay in place."
+    },
+    {
+      "id": "checkpoints",
+      "name": "Checkpoints",
+      "description": "Snapshots the whole writable filesystem in about a second and restores to any checkpoint."
+    },
+    {
+      "id": "sprite-urls",
+      "name": "Sprite URLs",
+      "description": "Gives each Sprite its own HTTPS URL that wakes it on request."
+    },
+    {
+      "id": "connectors",
+      "name": "Connectors",
+      "description": "Calls GitHub, OpenRouter, Slack, or any HTTP API without the credential entering the Sprite."
+    },
+    {
+      "id": "remote-mcp",
+      "name": "Sprites MCP Server",
+      "description": "Lets MCP clients use Sprites over OAuth at sprites.dev/mcp without a local install."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.477Z",
+  "updatedAt": "2026-10-10T21:22:01.477Z"
+}

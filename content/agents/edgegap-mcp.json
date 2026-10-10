@@ -1,0 +1,51 @@
+{
+  "id": "edgegap-mcp",
+  "name": "Edgegap MCP Server",
+  "slug": "edgegap-mcp",
+  "description": "Lets coding agents containerize, deploy, and troubleshoot multiplayer game servers on Edgegap, checking Dockerfiles, pushing images, deploying near players, and reading logs.",
+  "providerName": "Edgegap",
+  "providerUrl": "https://edgegap.com",
+  "agentUrl": "https://docs.edgegap.com/docs/mcp-integration",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "game-servers",
+    "multiplayer",
+    "edge-computing",
+    "container-deployment",
+    "remote-mcp",
+    "official-mcp",
+    "edgegap"
+  ],
+  "skills": [
+    {
+      "id": "containerize",
+      "name": "Game Server Containerization",
+      "description": "Writes or checks a Dockerfile against Edgegap requirements and pushes the image to the Edgegap registry."
+    },
+    {
+      "id": "deploy-server",
+      "name": "Dedicated Server Deployment",
+      "description": "Creates an application and version, deploys close to players, and returns connection details."
+    },
+    {
+      "id": "troubleshoot",
+      "name": "Deployment Troubleshooting",
+      "description": "Inspects app versions and deployment status and reads container logs to explain failed deployments."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.536Z",
+  "updatedAt": "2026-10-10T21:22:01.536Z"
+}

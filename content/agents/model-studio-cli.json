@@ -1,0 +1,62 @@
+{
+  "id": "model-studio-cli",
+  "name": "Alibaba Cloud Model Studio CLI",
+  "slug": "model-studio-cli",
+  "description": "Lets coding agents call Alibaba Cloud Model Studio from the bl CLI to chat with Qwen, generate images, video, and speech, run Model Studio apps, and check usage and quotas.",
+  "providerName": "Alibaba Cloud Model Studio",
+  "providerUrl": "https://bailian.console.aliyun.com/",
+  "agentUrl": "https://bailian.console.aliyun.com/cli",
+  "categories": [
+    "infrastructure",
+    "language"
+  ],
+  "tags": [
+    "alibaba-cloud",
+    "model-studio",
+    "qwen",
+    "dashscope",
+    "bailian",
+    "media-generation",
+    "speech-recognition"
+  ],
+  "skills": [
+    {
+      "id": "model-generation",
+      "name": "Model Generation",
+      "description": "Generates and edits text, images, video, and speech with Model Studio models."
+    },
+    {
+      "id": "asset-understanding",
+      "name": "Asset Understanding",
+      "description": "Parses and answers questions about images, documents, audio, and long videos."
+    },
+    {
+      "id": "app-orchestration",
+      "name": "App Orchestration",
+      "description": "Calls Managed Agents, agents, and workflows published on Model Studio (China site accounts only)."
+    },
+    {
+      "id": "mcp-setup",
+      "name": "Native MCP Setup",
+      "description": "Registers Bailian MCP servers in Codex, Claude Code, Cursor, Qwen Code, and other clients (China site accounts only)."
+    },
+    {
+      "id": "account-operations",
+      "name": "Account Operations",
+      "description": "Shows usage, quota, and rate limits and manages models and seats (China site accounts only)."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-10T21:22:01.478Z",
+  "updatedAt": "2026-10-10T21:22:01.478Z"
+}

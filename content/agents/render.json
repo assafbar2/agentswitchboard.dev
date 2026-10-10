@@ -26,8 +26,9 @@
   "discoveredBy": "manual",
   "accessMethods": [
     "api",
-    "cli"
+    "cli",
+    "mcp"
   ],
   "createdAt": "2026-08-24T19:48:52.219Z",
-  "updatedAt": "2026-08-24T19:48:52.219Z"
+  "updatedAt": "2026-10-10T20:55:07.749Z"
 }

@@ -4,7 +4,7 @@
   "slug": "ibm-contextforge",
   "description": "Runs a self-hosted gateway and registry that federates MCP servers, A2A agents, and REST/gRPC APIs behind one endpoint with auth, rate limits, and observability.",
   "providerName": "IBM",
-  "providerUrl": "https://www.ibm.com",
+  "providerUrl": "https://www.ibm.com/us-en",
   "agentUrl": "https://ibm.github.io/mcp-context-forge/",
   "categories": [
     "orchestration",
@@ -57,5 +57,5 @@
     "cli"
   ],
   "createdAt": "2026-09-25T22:20:34.458Z",
-  "updatedAt": "2026-09-25T22:20:34.458Z"
+  "updatedAt": "2026-10-10T20:55:08.381Z"
 }

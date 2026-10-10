@@ -1,0 +1,62 @@
+{
+  "id": "amazon-nova-act",
+  "name": "Amazon Nova Act",
+  "slug": "amazon-nova-act",
+  "description": "Builds and runs browser UI-automation agents from natural-language act() steps and Python, with human-in-the-loop handoff and deployment to AWS, for teams automating web workflows.",
+  "providerName": "Amazon Web Services",
+  "providerUrl": "https://aws.amazon.com/",
+  "agentUrl": "https://nova.amazon.com/act",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "aws",
+    "amazon-nova",
+    "python-sdk",
+    "browser-workflows",
+    "data-extraction",
+    "human-in-the-loop",
+    "playwright"
+  ],
+  "skills": [
+    {
+      "id": "act-prompts",
+      "name": "Natural-Language Browser Steps",
+      "description": "Executes act() calls that observe the page and take browser actions in an agentic loop."
+    },
+    {
+      "id": "extract-information",
+      "name": "Information Extraction",
+      "description": "Extracts structured data from web pages into typed results."
+    },
+    {
+      "id": "human-in-the-loop",
+      "name": "Human-in-the-Loop",
+      "description": "Escalates steps to a human supervisor when a workflow needs approval or input."
+    },
+    {
+      "id": "parallel-sessions",
+      "name": "Parallel Sessions",
+      "description": "Runs multiple browser sessions in parallel within one workflow run."
+    },
+    {
+      "id": "deploy-workflows",
+      "name": "Workflow Deployment",
+      "description": "Deploys Python workflows to AWS AgentCore Runtime with the Nova Act CLI."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-10-10T21:22:01.470Z",
+  "updatedAt": "2026-10-10T21:22:01.470Z"
+}

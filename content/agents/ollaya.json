@@ -1,0 +1,64 @@
+{
+  "id": "ollaya",
+  "name": "Ollaya",
+  "slug": "ollaya",
+  "description": "Pulls and serves open decision models from a local daemon, Ollama-style, returning calibrated typed answers via a CLI, a TypeSafe-compatible HTTP API, or an MCP server.",
+  "providerName": "Ollaya",
+  "providerUrl": "https://ollaya.dev",
+  "agentUrl": "https://ollaya.dev",
+  "categories": [
+    "infrastructure",
+    "language"
+  ],
+  "tags": [
+    "decision-model",
+    "local-inference",
+    "typesafe-compatible",
+    "onnx",
+    "llama-cpp",
+    "modelfile",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "pull-and-run",
+      "name": "Pull and Run Models",
+      "description": "Pulls decision models by name and runs them with ollaya run, pull, list, ps, and related commands."
+    },
+    {
+      "id": "typesafe-api",
+      "name": "TypeSafe-Compatible API",
+      "description": "Serves POST /v1/systemone, /v1/decisions, and GET /v1/models wire-identical to TypeSafe."
+    },
+    {
+      "id": "native-api",
+      "name": "Native Decide API",
+      "description": "Returns decisions with routing information and timings from /api/decide."
+    },
+    {
+      "id": "mcp-server",
+      "name": "MCP Server",
+      "description": "Serves the models to Claude Code, Claude Desktop, Cursor, and other MCP clients via ollaya mcp."
+    },
+    {
+      "id": "modelfiles",
+      "name": "Modelfiles",
+      "description": "Bakes a question set into a custom model with ollaya create."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.482Z",
+  "updatedAt": "2026-10-10T21:22:01.482Z"
+}

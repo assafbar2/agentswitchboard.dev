@@ -1,0 +1,62 @@
+{
+  "id": "claude-agent-sdk",
+  "name": "Claude Agent SDK",
+  "slug": "claude-agent-sdk",
+  "description": "Lets Python and TypeScript developers embed the Claude Code agent loop in their apps, with built-in tools, hooks, subagents, MCP, permissions, and resumable sessions.",
+  "providerName": "Anthropic",
+  "providerUrl": "https://www.anthropic.com",
+  "agentUrl": "https://code.claude.com/docs/en/agent-sdk/overview",
+  "categories": [
+    "orchestration",
+    "code-devtools"
+  ],
+  "tags": [
+    "anthropic",
+    "claude-code",
+    "python-sdk",
+    "typescript-sdk",
+    "lifecycle-hooks",
+    "mcp-client",
+    "session-resume"
+  ],
+  "skills": [
+    {
+      "id": "built-in-tools",
+      "name": "Built-In Tools",
+      "description": "Gives the agent Claude Code's tools to read, write, and edit files, run commands, and search the web."
+    },
+    {
+      "id": "hooks",
+      "name": "Hooks",
+      "description": "Runs your callbacks on agent events such as tool calls or session start to block or modify behavior."
+    },
+    {
+      "id": "subagents",
+      "name": "Subagents",
+      "description": "Spawns separate agent instances for focused subtasks with isolated context, optionally in parallel."
+    },
+    {
+      "id": "mcp",
+      "name": "MCP Integration",
+      "description": "Connects the agent to external tools and data sources through Model Context Protocol servers."
+    },
+    {
+      "id": "sessions",
+      "name": "Sessions",
+      "description": "Persists conversation history to disk so an agent can resume or fork a session with full context."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-10T21:22:01.461Z",
+  "updatedAt": "2026-10-10T21:22:01.461Z"
+}

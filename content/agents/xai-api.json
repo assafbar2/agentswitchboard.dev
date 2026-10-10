@@ -1,0 +1,62 @@
+{
+  "id": "xai-api",
+  "name": "xAI API",
+  "slug": "xai-api",
+  "description": "Serves xAI's Grok models through an OpenAI-compatible Responses API with function calling, web search, voice, and image generation, for developers building on Grok.",
+  "providerName": "xAI",
+  "providerUrl": "https://x.ai",
+  "agentUrl": "https://docs.x.ai/overview",
+  "categories": [
+    "language",
+    "infrastructure"
+  ],
+  "tags": [
+    "xai",
+    "grok",
+    "llm-api",
+    "responses-api",
+    "function-calling",
+    "web-search",
+    "voice-api"
+  ],
+  "skills": [
+    {
+      "id": "responses-api",
+      "name": "Responses API",
+      "description": "Generates text and multi-turn replies with Grok models, optionally keeping conversation state server-side."
+    },
+    {
+      "id": "function-calling",
+      "name": "Function Calling",
+      "description": "Lets Grok request calls to custom tools you define with a JSON schema and run locally."
+    },
+    {
+      "id": "web-search",
+      "name": "Web Search",
+      "description": "Lets Grok search the web and browse pages in real time to answer with current information."
+    },
+    {
+      "id": "voice",
+      "name": "Voice APIs",
+      "description": "Provides text-to-speech, speech-to-text, and real-time speech-to-speech over WebSockets."
+    },
+    {
+      "id": "image-generation",
+      "name": "Image Generation",
+      "description": "Generates images from text prompts with Grok Imagine models, with aspect ratio and resolution control."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-10T21:22:01.471Z",
+  "updatedAt": "2026-10-10T21:22:01.471Z"
+}

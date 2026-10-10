@@ -1,0 +1,62 @@
+{
+  "id": "deepseek-api",
+  "name": "DeepSeek API",
+  "slug": "deepseek-api",
+  "description": "Serves DeepSeek models through OpenAI- and Anthropic-compatible APIs with thinking mode, tool calls, JSON output, and context caching, for developers using existing SDKs.",
+  "providerName": "DeepSeek",
+  "providerUrl": "https://deepseek.com",
+  "agentUrl": "https://api-docs.deepseek.com/",
+  "categories": [
+    "language",
+    "infrastructure"
+  ],
+  "tags": [
+    "deepseek",
+    "llm-api",
+    "openai-compatible",
+    "anthropic-compatible",
+    "thinking-mode",
+    "json-output",
+    "context-caching"
+  ],
+  "skills": [
+    {
+      "id": "thinking-mode",
+      "name": "Thinking Mode",
+      "description": "Enables model reasoning before the answer, with adjustable reasoning effort."
+    },
+    {
+      "id": "tool-calls",
+      "name": "Tool Calls",
+      "description": "Lets models call functions you define and return structured arguments."
+    },
+    {
+      "id": "json-output",
+      "name": "JSON Output",
+      "description": "Constrains responses to valid JSON for machine-readable results."
+    },
+    {
+      "id": "anthropic-compatible",
+      "name": "Anthropic API Compatibility",
+      "description": "Accepts Anthropic-format requests at a dedicated base URL so Anthropic SDKs work unchanged."
+    },
+    {
+      "id": "context-caching",
+      "name": "Context Caching",
+      "description": "Caches repeated prompt prefixes to reduce cost and latency on later requests."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-10T21:22:01.473Z",
+  "updatedAt": "2026-10-10T21:22:01.473Z"
+}

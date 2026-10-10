@@ -1,0 +1,62 @@
+{
+  "id": "meta-model-api",
+  "name": "Meta Model API",
+  "slug": "meta-model-api",
+  "description": "Serves Meta's Muse Spark, Muse Image, Muse Voice Transcribe, and SAM models through Responses, Chat Completions, and Messages-compatible APIs for app and agent developers.",
+  "providerName": "Meta",
+  "providerUrl": "https://ai.meta.com",
+  "agentUrl": "https://dev.meta.ai/docs/overview",
+  "categories": [
+    "language",
+    "infrastructure"
+  ],
+  "tags": [
+    "llm-api",
+    "muse-spark",
+    "openai-compatible",
+    "function-calling",
+    "image-generation",
+    "speech-to-text",
+    "segmentation"
+  ],
+  "skills": [
+    {
+      "id": "tool-calling",
+      "name": "Tool Calling",
+      "description": "Lets Muse Spark call developer-defined functions, including parallel calls with streamed arguments."
+    },
+    {
+      "id": "image-generation",
+      "name": "Image Generation",
+      "description": "Generates and edits images with Muse Image, refining them across turns on the Responses API."
+    },
+    {
+      "id": "speech-to-text",
+      "name": "Speech To Text",
+      "description": "Transcribes live audio over WebSocket or uploaded files with Muse Voice Transcribe, with speaker labels."
+    },
+    {
+      "id": "media-segmentation",
+      "name": "Media Segmentation",
+      "description": "Finds and outlines objects in images and video from a short text prompt with SAM 3.1, returning boxes and masks."
+    },
+    {
+      "id": "search-grounding",
+      "name": "Search Grounding",
+      "description": "Grounds responses in real-time web search results with inline citations."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-10T21:22:01.537Z",
+  "updatedAt": "2026-10-10T21:22:01.537Z"
+}

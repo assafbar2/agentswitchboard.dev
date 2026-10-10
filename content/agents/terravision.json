@@ -1,0 +1,59 @@
+{
+  "id": "terravision",
+  "name": "TerraVision",
+  "slug": "terravision",
+  "description": "Generates official-style AWS, Azure, and Google Cloud architecture diagrams from plain-language descriptions or Terraform, and Terraform from designs, via MCP or CLI, for cloud engineers.",
+  "providerName": "Patrick Chugh",
+  "providerUrl": "https://github.com/patrickchugh",
+  "agentUrl": "https://patrickchugh.github.io/terravision/",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "architecture-diagrams",
+    "terraform",
+    "aws",
+    "azure",
+    "google-cloud",
+    "infrastructure-as-code",
+    "mcp-server",
+    "draw-io"
+  ],
+  "skills": [
+    {
+      "id": "prompt-to-diagram",
+      "name": "Diagram from Description",
+      "description": "Draws a cloud architecture diagram with official provider icons from a plain-language description in an AI assistant."
+    },
+    {
+      "id": "terraform-to-diagram",
+      "name": "Diagram from Terraform",
+      "description": "Renders the resources a Terraform project or plan deploys as a nested VPC, subnet, and zone diagram."
+    },
+    {
+      "id": "diagram-to-terraform",
+      "name": "Terraform from Design",
+      "description": "Writes Terraform for a designed architecture and checks it by redrawing the generated code."
+    },
+    {
+      "id": "cicd-diagrams",
+      "name": "CI/CD Diagram Updates",
+      "description": "Regenerates architecture diagrams in CI/CD pipelines so they stay current with the code."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-10T21:22:01.510Z",
+  "updatedAt": "2026-10-10T21:22:01.510Z"
+}

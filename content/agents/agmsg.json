@@ -1,0 +1,57 @@
+{
+  "id": "agmsg",
+  "name": "agmsg",
+  "slug": "agmsg",
+  "description": "Lets CLI coding agents like Claude Code, Codex, and Gemini CLI message each other directly through a shared local SQLite store, with no daemon or network, for developers running several agents.",
+  "providerName": "fujibee",
+  "providerUrl": "https://github.com/fujibee",
+  "agentUrl": "https://github.com/fujibee/agmsg",
+  "categories": [
+    "communication",
+    "orchestration"
+  ],
+  "tags": [
+    "inter-agent-messaging",
+    "claude-code",
+    "codex",
+    "gemini-cli",
+    "sqlite",
+    "bash",
+    "local-first"
+  ],
+  "skills": [
+    {
+      "id": "team-messaging",
+      "name": "Team Messaging",
+      "description": "Sends and receives messages between named agents in a team through a shared WAL-mode SQLite store."
+    },
+    {
+      "id": "spawn-peer",
+      "name": "Spawn Peer Agents",
+      "description": "Launches a new independent peer agent in its own terminal and talks to it over agmsg."
+    },
+    {
+      "id": "delivery-modes",
+      "name": "Delivery Modes",
+      "description": "Surfaces incoming messages to agents through hooks or a real-time monitor stream, depending on the host agent."
+    },
+    {
+      "id": "history-replay",
+      "name": "History Replay",
+      "description": "Keeps durable message history and replays an old room into a fresh agent session."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-10T21:22:01.512Z",
+  "updatedAt": "2026-10-10T21:22:01.512Z"
+}

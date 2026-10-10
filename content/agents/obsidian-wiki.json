@@ -1,0 +1,65 @@
+{
+  "id": "obsidian-wiki",
+  "name": "obsidian-wiki",
+  "slug": "obsidian-wiki",
+  "description": "Compiles what you and your coding agent learn into a linked Obsidian markdown wiki through agent skills, a CLI, and an MCP memory server, for developers who want persistent agent memory.",
+  "providerName": "Arnav (Ar9av)",
+  "providerUrl": "https://github.com/Ar9av",
+  "agentUrl": "https://github.com/Ar9av/obsidian-wiki",
+  "categories": [
+    "memory-state"
+  ],
+  "tags": [
+    "obsidian",
+    "knowledge-base",
+    "markdown",
+    "agent-memory",
+    "second-brain",
+    "claude-code",
+    "python",
+    "llm-wiki"
+  ],
+  "skills": [
+    {
+      "id": "wiki-ingest",
+      "name": "Knowledge Ingest",
+      "description": "Compiles docs, PDFs, chat exports, transcripts, and URLs into interlinked wiki pages, processing only changed sources."
+    },
+    {
+      "id": "wiki-query",
+      "name": "Cited Wiki Queries",
+      "description": "Answers questions from the vault with wikilink citations and produces cited topic briefings and digests."
+    },
+    {
+      "id": "vault-maintenance",
+      "name": "Vault Lint and Dedup",
+      "description": "Finds broken links, orphans, and contradictions, merges duplicate pages, and cross-links new pages into the graph."
+    },
+    {
+      "id": "session-memory",
+      "name": "Session Memory",
+      "description": "Injects the owner profile, open threads, and recent changes at session start and captures reusable knowledge at session end."
+    },
+    {
+      "id": "memory-service",
+      "name": "MCP Memory Service",
+      "description": "Serves a vault over HTTP and MCP with search, read, write, recap, profile, and todo tools behind a bearer key."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp",
+    "api",
+    "browser-extension"
+  ],
+  "createdAt": "2026-10-10T21:22:01.498Z",
+  "updatedAt": "2026-10-10T21:22:01.498Z"
+}

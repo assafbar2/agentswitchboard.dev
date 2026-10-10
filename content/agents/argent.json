@@ -1,0 +1,64 @@
+{
+  "id": "argent",
+  "name": "Argent",
+  "slug": "argent",
+  "description": "Gives AI coding assistants control of iOS simulators, Android emulators, TVs, and Electron apps to tap, debug, profile, and replay flows, for mobile and desktop app developers.",
+  "providerName": "Software Mansion",
+  "providerUrl": "https://swmansion.com",
+  "agentUrl": "https://argent.swmansion.com",
+  "categories": [
+    "code-devtools",
+    "browser-computer"
+  ],
+  "tags": [
+    "ios-simulator",
+    "android-emulator",
+    "react-native",
+    "mobile-testing",
+    "profiling",
+    "visual-regression",
+    "electron",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "app-interaction",
+      "name": "App Interaction",
+      "description": "Taps, swipes, types, and presses hardware buttons on simulators, emulators, TVs, and Electron apps."
+    },
+    {
+      "id": "record-replay-flows",
+      "name": "Record and Replay Flows",
+      "description": "Records a UI path once and replays it deterministically as a bug repro or smoke test."
+    },
+    {
+      "id": "visual-regression",
+      "name": "Visual Regression",
+      "description": "Compares a baseline against a live capture with OCR- and font-aware diffing."
+    },
+    {
+      "id": "performance-profiling",
+      "name": "Performance Profiling",
+      "description": "Profiles renders, CPU hotspots, and hangs through Hermes, React DevTools, Xcode Instruments, and Perfetto."
+    },
+    {
+      "id": "app-debugging",
+      "name": "App Debugging",
+      "description": "Inspects logs, network traffic, native and React trees, and evaluates JavaScript in the running app."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-10T21:22:01.500Z",
+  "updatedAt": "2026-10-10T21:22:01.500Z"
+}

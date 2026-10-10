@@ -1,0 +1,64 @@
+{
+  "id": "nocobase",
+  "name": "NocoBase",
+  "slug": "nocobase",
+  "description": "Builds business systems on an open-source no-code platform where people work in a WYSIWYG editor and agents connect over MCP, the HTTP API, or the nb CLI under role permissions.",
+  "providerName": "NocoBase",
+  "providerUrl": "https://www.nocobase.com/",
+  "agentUrl": "https://www.nocobase.com",
+  "categories": [
+    "productivity",
+    "data-analytics"
+  ],
+  "tags": [
+    "no-code",
+    "low-code",
+    "business-apps",
+    "data-modeling",
+    "workflows",
+    "mcp-server",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "mcp-service",
+      "name": "NocoBase MCP",
+      "description": "Exposes an MCP endpoint over streamable HTTP so MCP clients can call NocoBase APIs."
+    },
+    {
+      "id": "ai-builder",
+      "name": "AI Builder",
+      "description": "Builds data models, pages, and workflows from natural-language requests."
+    },
+    {
+      "id": "ai-employees",
+      "name": "AI Employees",
+      "description": "Runs AI employees inside the system for analysis, form filling, document recognition, and task routing."
+    },
+    {
+      "id": "api-keys",
+      "name": "HTTP API with API Keys",
+      "description": "Calls the application's HTTP API with role-bound API keys."
+    },
+    {
+      "id": "coding-agent-cli",
+      "name": "Coding Agent CLI",
+      "description": "Installs and develops NocoBase apps with the nb CLI alongside Claude Code, Codex, or OpenCode."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-10-10T21:22:01.487Z",
+  "updatedAt": "2026-10-10T21:22:01.487Z"
+}
