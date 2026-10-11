@@ -1,5 +1,11 @@
 [
   {
+    "action": "added",
+    "slug": "invokely",
+    "name": "Invokely",
+    "date": "2026-10-11"
+  },
+  {
     "action": "updated",
     "slug": "doordash-cli",
     "name": "dd-cli",
