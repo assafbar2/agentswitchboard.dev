@@ -1,0 +1,61 @@
+{
+  "id": "deadbolt",
+  "name": "DeadBolt",
+  "slug": "deadbolt",
+  "description": "Gate locally routed agent tool calls with policy, fixed deadlines, one-use approvals and operator revocation. Integrate through Rust, local HTTP or stdio MCP.",
+  "providerName": "NextEleven LLC",
+  "providerUrl": "https://www.nexteleven.dev",
+  "agentUrl": "https://www.nexteleven.dev/deadbolt",
+  "version": "2.0.0",
+  "categories": [
+    "security",
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "execution-gate",
+    "local-first",
+    "stdio-mcp",
+    "tool-permissions",
+    "operator-revocation",
+    "fixed-deadlines",
+    "rust-library"
+  ],
+  "skills": [
+    {
+      "id": "gate-tool-dispatch",
+      "name": "Gate Tool Dispatch",
+      "description": "Check locally routed tool calls against an operator-owned policy before dispatch; deny when required state is unavailable."
+    },
+    {
+      "id": "bound-run-lifetime",
+      "name": "Bound Run Lifetime",
+      "description": "Enforce a fixed run deadline and optional supervisor-controlled liveness; renewal cannot extend the fixed deadline."
+    },
+    {
+      "id": "operator-revocation",
+      "name": "Operator Revocation",
+      "description": "Let a trusted operator pause or kill connected runs; block subsequent calls without claiming to cancel in-flight work."
+    },
+    {
+      "id": "one-use-approvals",
+      "name": "One-use Approvals",
+      "description": "Require operator-issued one-use grants for configured irreversible actions and reject replay of consumed grants."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-13T00:12:19.930218+00:00",
+  "updatedAt": "2026-10-13T00:12:19.930367+00:00"
+}

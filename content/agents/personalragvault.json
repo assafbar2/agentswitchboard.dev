@@ -1,0 +1,54 @@
+{
+  "slug": "personalragvault",
+  "name": "PersonalRAGVault",
+  "version": "1.5.1",
+  "description": "Search local documents and notes with hybrid retrieval and source previews through a Python CLI or local HTTP API; optionally compose answers with Ollama.",
+  "agentUrl": "https://github.com/seanebones-lang/personal-RAG",
+  "categories": [
+    "research",
+    "memory-state"
+  ],
+  "tags": [
+    "local-document-search",
+    "hybrid-retrieval",
+    "source-citations",
+    "ollama",
+    "python-cli",
+    "document-ingestion",
+    "retrieval-only"
+  ],
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "skills": [
+    {
+      "id": "ingest-local-files",
+      "name": "Ingest Local Files",
+      "description": "Index selected local documents and notes with stable chunk IDs; preview ingestion through a dry run before adding personal files."
+    },
+    {
+      "id": "retrieve-source-text",
+      "name": "Retrieve Source Text",
+      "description": "Combine semantic and keyword retrieval and inspect matching source text without requiring a generation provider."
+    },
+    {
+      "id": "optional-local-answers",
+      "name": "Optional Local Answers",
+      "description": "Compose answers from retrieved context with a configured Ollama model; review citations and use retrieval-only mode when preferred."
+    }
+  ],
+  "id": "personalragvault",
+  "providerName": "NextEleven LLC",
+  "providerUrl": "https://www.nexteleven.dev",
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "createdAt": "2026-10-13T00:13:29.275790+00:00",
+  "updatedAt": "2026-10-13T00:13:29.275790+00:00"
+}

@@ -1,0 +1,53 @@
+{
+  "slug": "harness-by-nexteleven",
+  "name": "Harness by NextEleven",
+  "version": "1.4.0-beta.2",
+  "description": "Run a Rust work assistant with chosen model routes, repository tools and resumable sessions through a terminal or local HTTP API. Developer-evaluation beta.",
+  "agentUrl": "https://github.com/seanebones-lang/harness",
+  "categories": [
+    "code-devtools",
+    "orchestration"
+  ],
+  "tags": [
+    "rust-assistant",
+    "repository-editing",
+    "resumable-sessions",
+    "model-routing",
+    "local-web-interface",
+    "developer-beta"
+  ],
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "authType": "bearer",
+  "supportsStreaming": true,
+  "skills": [
+    {
+      "id": "repository-work",
+      "name": "Repository Work",
+      "description": "Read, edit and verify repositories with configured tools; review tool authority and execution limits before use."
+    },
+    {
+      "id": "resume-sessions",
+      "name": "Resume Sessions",
+      "description": "Save, inspect, export and resume local sessions, including failed or incomplete runs, without treating a finished turn as acceptance."
+    },
+    {
+      "id": "model-routing",
+      "name": "Model Routing",
+      "description": "Select an explicit provider:model route and optional ordered fallbacks, including configured OpenAI-compatible endpoints."
+    }
+  ],
+  "id": "harness-by-nexteleven",
+  "providerName": "NextEleven LLC",
+  "providerUrl": "https://www.nexteleven.dev",
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "createdAt": "2026-10-13T00:13:29.275790+00:00",
+  "updatedAt": "2026-10-13T00:13:29.275790+00:00"
+}

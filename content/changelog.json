@@ -1,5 +1,29 @@
 [
   {
+    "action": "added",
+    "slug": "harness-by-nexteleven",
+    "name": "Harness by NextEleven",
+    "date": "2026-10-12"
+  },
+  {
+    "action": "added",
+    "slug": "repo-salvage",
+    "name": "Repo Salvage",
+    "date": "2026-10-12"
+  },
+  {
+    "action": "added",
+    "slug": "personalragvault",
+    "name": "PersonalRAGVault",
+    "date": "2026-10-12"
+  },
+  {
+    "action": "added",
+    "slug": "deadbolt",
+    "name": "DeadBolt",
+    "date": "2026-10-12"
+  },
+  {
     "action": "updated",
     "slug": "doordash-cli",
     "name": "dd-cli",
