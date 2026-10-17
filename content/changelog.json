@@ -1,4 +1,5 @@
 [
+  { "action": "added", "slug": "breadcrumbs-mailbox", "name": "Breadcrumbs", "date": "2026-10-15" },
   {
     "action": "updated",
     "slug": "vertex-ai-agent-builder",

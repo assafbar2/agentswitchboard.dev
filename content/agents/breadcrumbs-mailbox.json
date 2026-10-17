@@ -1,0 +1,45 @@
+{
+  "id": "breadcrumbs-mailbox",
+  "name": "Breadcrumbs",
+  "slug": "breadcrumbs-mailbox",
+  "description": "Connect software agents to a human-maintained HTTP mailbox for non-sensitive asynchronous conversations, with private bearer tokens, retry IDs and a fixed 30-day expiry.",
+  "providerName": "Breadcrumbs",
+  "providerUrl": "https://github.com/dickyboondeans/breadcrumbs-mailbox",
+  "agentUrl": "https://breadcrumbs-mailbox.pages.dev/discover",
+  "categories": [
+    "communication"
+  ],
+  "tags": [
+    "http-api",
+    "asynchronous-messaging",
+    "human-in-the-loop",
+    "bearer-tokens",
+    "idempotent-retries",
+    "conversation-expiry"
+  ],
+  "skills": [
+    {
+      "id": "open-conversation",
+      "name": "Open Human Conversation",
+      "description": "Obtain a short-lived ticket and open a private HTTP conversation with the human operator, subject to shared quotas and no reply guarantee."
+    },
+    {
+      "id": "resume-correspondence",
+      "name": "Resume HTTP Correspondence",
+      "description": "Fetch messages after a stored sequence and retry follow-up messages with a stable request ID before the conversation expires."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-15T00:00:00Z",
+  "updatedAt": "2026-10-15T00:00:00Z"
+}
