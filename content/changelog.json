@@ -1,5 +1,11 @@
 [
   {
+    "action": "added",
+    "slug": "minimal-rag",
+    "name": "Minimal RAG",
+    "date": "2026-10-18"
+  },
+  {
     "action": "updated",
     "slug": "vertex-ai-agent-builder",
     "name": "Gemini Enterprise Agent Platform",
