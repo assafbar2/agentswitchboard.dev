@@ -1,0 +1,57 @@
+{
+  "id": "minimal-rag",
+  "name": "Minimal RAG",
+  "slug": "minimal-rag",
+  "description": "Build inspectable document-QA workflows in Python with SQLite BM25 and search/read tools. Indexing and demo run locally; live QA needs your own model credentials and provider billing.",
+  "providerName": "Haoxiang Li",
+  "providerUrl": "https://github.com/hxli2005",
+  "agentUrl": "https://github.com/hxli2005/minimal-rag",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "rag",
+    "bm25",
+    "sqlite-fts5",
+    "document-retrieval",
+    "python-cli",
+    "tool-calling",
+    "source-citations",
+    "trace-inspection"
+  ],
+  "skills": [
+    {
+      "id": "index-jsonl-documents",
+      "name": "Index JSONL Documents",
+      "description": "Build a local SQLite FTS5 index from id/title/text/source records while preserving original text and character offsets for retrieval."
+    },
+    {
+      "id": "search-read-documents",
+      "name": "Search and Read",
+      "description": "Search the indexed corpus with BM25, then read original document spans by ID and character offset through model-callable tools."
+    },
+    {
+      "id": "inspect-qa-traces",
+      "name": "Inspect QA Traces",
+      "description": "Record tool calls, source excerpts, source IDs and available usage in a JSON trace for checking how an answer was produced."
+    },
+    {
+      "id": "run-offline-demo",
+      "name": "Run Offline Demo",
+      "description": "Execute real local search/read calls with scripted model decisions, requiring neither model requests nor API credentials."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-18T19:20:01Z",
+  "updatedAt": "2026-10-18T19:20:01Z"
+}
