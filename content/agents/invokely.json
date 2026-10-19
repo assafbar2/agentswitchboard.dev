@@ -1,0 +1,64 @@
+{
+  "id": "invokely",
+  "name": "Invokely",
+  "slug": "invokely",
+  "description": "Query official statistics through MCP or REST for developers and AI agents. Retrieve values, series, comparisons and rankings with periods, units and source citations.",
+  "providerName": "Invokely",
+  "providerUrl": "https://invokely.ai",
+  "version": "1.0.0",
+  "agentUrl": "https://invokely.ai/docs",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "official-statistics",
+    "public-data",
+    "statistics-api",
+    "mcp",
+    "rest-api",
+    "time-series",
+    "geographic-data",
+    "source-citations"
+  ],
+  "skills": [
+    {
+      "id": "find-indicators-and-places",
+      "name": "Find Indicators and Places",
+      "description": "Find official statistical indicators by topic, then resolve places to normalized entities and confirm their official codes."
+    },
+    {
+      "id": "retrieve-figures",
+      "name": "Retrieve Figures",
+      "description": "Get a latest or period-specific figure with its unit, period, status, source URL, retrieval date and ready-made citation."
+    },
+    {
+      "id": "explore-time-series",
+      "name": "Explore Time Series",
+      "description": "Return a single-source time series for one place, including periods, values, gaps and separately requested projections."
+    },
+    {
+      "id": "compare-places",
+      "name": "Compare Places",
+      "description": "Compare one indicator across two to ten places for the same period and report whether the values are comparable."
+    },
+    {
+      "id": "rank-places",
+      "name": "Rank Places",
+      "description": "Rank countries, regions, counties or Spanish municipalities by an indicator using one source and period for the ranking."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-10-11T21:34:06Z",
+  "updatedAt": "2026-10-11T21:34:06Z"
+}
