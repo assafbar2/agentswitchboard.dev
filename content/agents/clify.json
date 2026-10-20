@@ -1,0 +1,26 @@
+{
+  "id": "clify",
+  "name": "Clify",
+  "slug": "clify",
+  "description": "Provides no-install JSON and remote MCP commands for accessing verified public websites, including sites without official APIs.",
+  "providerName": "ToukoUrsin",
+  "providerUrl": "https://github.com/ToukoUrsin",
+  "agentUrl": "https://clify-dev.netlify.app/",
+  "categories": ["infrastructure"],
+  "tags": ["website-access", "json-api", "remote-mcp", "no-install", "verified-commands", "web-agents"],
+  "skills": [
+    {"id":"discover-website-commands","name":"Discover Website Commands","description":"Searches a directory of verified commands for public websites and returns exact JSON request schemas."},
+    {"id":"run-website-command","name":"Run Website Commands","description":"Runs read-only website commands over plain HTTPS or through a remote MCP endpoint without local installation."}
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": ["api", "mcp"],
+  "createdAt": "2026-10-20T20:00:00Z",
+  "updatedAt": "2026-10-20T20:00:00Z"
+}
