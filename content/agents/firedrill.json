@@ -1,0 +1,49 @@
+{
+  "id": "firedrill",
+  "name": "Firedrill",
+  "slug": "firedrill",
+  "description": "Simulate AI agents across scenarios, explore behavior and inspect saved evidence through MCP, CLI or SDK, while keeping the agent runner in your own repository or CI.",
+  "providerName": "Firedrill",
+  "providerUrl": "https://firedrill.run",
+  "agentUrl": "https://firedrill.run/agents",
+  "categories": ["code-devtools", "infrastructure"],
+  "tags": [
+    "ai-agent-simulation",
+    "agent-testing",
+    "synthetic-tools",
+    "semantic-evaluation",
+    "scenario-design",
+    "mcp",
+    "cli",
+    "ci-regressions"
+  ],
+  "skills": [
+    {
+      "id": "prepare-scenarios",
+      "name": "Prepare Scenarios",
+      "description": "Prepare reusable scenarios grounded in an agent's task, with optional checks, semantic assessment and repeated trials."
+    },
+    {
+      "id": "inspect-run-evidence",
+      "name": "Inspect Run Evidence",
+      "description": "Inspect retained run reports, recorded activity and assessment evidence without equating execution completion with task quality."
+    },
+    {
+      "id": "manage-synthetic-tools",
+      "name": "Manage Synthetic Tools",
+      "description": "Select and manage synthetic dependencies with datasets and reset boundaries, without silently using live vendor services."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "iconUrl": "https://firedrill.run/assets/firedrill-logo.svg",
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": ["api", "mcp", "cli"],
+  "createdAt": "2026-10-20T00:00:00Z",
+  "updatedAt": "2026-10-20T00:00:00Z"
+}

@@ -1,5 +1,11 @@
 [
   {
+    "action": "added",
+    "slug": "firedrill",
+    "name": "Firedrill",
+    "date": "2026-10-20"
+  },
+  {
     "action": "updated",
     "slug": "vertex-ai-agent-builder",
     "name": "Gemini Enterprise Agent Platform",
