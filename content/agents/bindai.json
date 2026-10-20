@@ -1,0 +1,68 @@
+{
+  "id": "bindai",
+  "name": "BindAI",
+  "slug": "bindai",
+  "description": "Build AI agents and agentic workflows in Python with an opinionated framework for tools, memory, knowledge, models, integrations, and APIs.",
+  "providerName": "BindBrain",
+  "providerUrl": "https://bindai.dev",
+  "agentUrl": "https://docs.bindai.dev",
+  "categories": [
+    "infrastructure",
+    "orchestration"
+  ],
+  "tags": [
+    "python",
+    "ai-agents",
+    "agentic-workflows",
+    "llm-applications",
+    "rag",
+    "function-calling",
+    "multi-agent",
+    "workflow-orchestration"
+  ],
+  "skills": [
+    {
+      "id": "build-ai-agents",
+      "name": "Build AI Agents",
+      "description": "Create Python AI agents with configurable models, instructions, tools, memory, knowledge, and execution behavior."
+    },
+    {
+      "id": "compose-workflows",
+      "name": "Compose Workflows",
+      "description": "Build multi-step workflows with conditions, loops, parallel execution, retries, timeouts, scheduling, and human tasks."
+    },
+    {
+      "id": "connect-tools",
+      "name": "Connect Tools",
+      "description": "Extend agents with custom tools and connect them to external services through BindAI's tool and connection systems."
+    },
+    {
+      "id": "add-memory",
+      "name": "Add Agent Memory",
+      "description": "Give agents persistent conversational memory through configurable memory providers and custom memory implementations."
+    },
+    {
+      "id": "build-rag",
+      "name": "Build RAG",
+      "description": "Load documents, generate embeddings, configure retrievers, and build retrieval-augmented generation pipelines."
+    },
+    {
+      "id": "expose-rest-api",
+      "name": "Expose REST API",
+      "description": "Expose agents, workflows, projects, and background runs through the BindAI REST API with API-key authentication."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-09-20T00:00:00Z",
+  "updatedAt": "2026-09-20T00:00:00Z"
+}
