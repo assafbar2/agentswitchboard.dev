@@ -1,5 +1,11 @@
 [
   {
+    "action": "added",
+    "slug": "distributionos-pag",
+    "name": "DistributionOS — Private Audience Gateway",
+    "date": "2026-10-23"
+  },
+  {
     "action": "updated",
     "slug": "vertex-ai-agent-builder",
     "name": "Gemini Enterprise Agent Platform",
