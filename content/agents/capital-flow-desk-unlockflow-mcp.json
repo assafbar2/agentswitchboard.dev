@@ -1,0 +1,39 @@
+{
+  "id": "cACQ43HySLFKzGkKdYUc9R",
+  "name": "Capital Flow Desk UnlockFlow MCP",
+  "slug": "capital-flow-desk-unlockflow-mcp",
+  "description": "Exposes UnlockFlowEvent v1 MCP tools for unlock × capital-flow research agents — list, get, and schema with illustrative seeds (NFA).",
+  "providerName": "Capital Flow Desk",
+  "providerUrl": "https://github.com/mhr2027r-dotcom/mcp-unlockflow",
+  "agentUrl": "https://github.com/mhr2027r-dotcom/mcp-unlockflow",
+  "categories": ["finance", "data-analytics"],
+  "tags": ["mcp", "crypto", "unlocks", "trading", "capital-flow", "research"],
+  "skills": [
+    {
+      "id": "list-unlock-events",
+      "name": "List Unlock Events",
+      "description": "List illustrative UnlockFlowEvent samples with optional asset ticker and horizon filters for agent loops."
+    },
+    {
+      "id": "get-unlock-event",
+      "name": "Get Unlock Event",
+      "description": "Fetch one UnlockFlowEvent by stable event_id from local illustrative seeds for typed agent workflows."
+    },
+    {
+      "id": "get-schema",
+      "name": "Get Schema",
+      "description": "Return UnlockFlowEvent JSON Schema v1 so agents can validate unlock × capital-flow payloads."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": ["mcp"],
+  "createdAt": "2026-09-19T20:41:53.000Z",
+  "updatedAt": "2026-09-19T20:41:53.000Z"
+}
