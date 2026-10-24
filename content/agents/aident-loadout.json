@@ -1,0 +1,53 @@
+{
+  "id": "HiCfGeyCrGUmQY7Bu2zYHY",
+  "name": "Aident Loadout",
+  "slug": "aident-loadout",
+  "description": "Connects Codex, Claude Code, Cursor and ChatGPT to 1,000+ apps and 400+ Skills through one reusable MCP setup with Vault and Audit.",
+  "providerName": "Aident AI",
+  "providerUrl": "https://aident.ai",
+  "agentUrl": "https://aident.ai",
+  "categories": [
+    "infrastructure",
+    "productivity"
+  ],
+  "tags": [
+    "mcp-server",
+    "oauth",
+    "credential-vault",
+    "agent-skills",
+    "tool-calling",
+    "audit-log"
+  ],
+  "skills": [
+    {
+      "id": "connect-apps-once",
+      "name": "Connect Apps Once",
+      "description": "Connect Gmail, Slack, GitHub and 1,000+ other apps once, then reuse them across every MCP client you run."
+    },
+    {
+      "id": "remote-mcp",
+      "name": "Remote MCP Server",
+      "description": "Expose a streamable-HTTP MCP endpoint that Claude Code, Cursor, Codex and ChatGPT can call with OAuth."
+    },
+    {
+      "id": "vault-and-audit",
+      "name": "Vault And Audit",
+      "description": "Keep API keys in Aident Vault so agents get results not secrets, and log every action with cost in Audit."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-10-13T17:57:57.754Z",
+  "updatedAt": "2026-10-13T17:57:57.754Z"
+}
