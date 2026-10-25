@@ -1,0 +1,53 @@
+{
+  "id": "actseal",
+  "name": "ActSeal",
+  "slug": "actseal",
+  "description": "Issue Ed25519-signed receipts for agent tool calls and let anyone verify them publicly without trusting the caller host.",
+  "providerName": "ActSeal",
+  "providerUrl": "https://actseal.xyz",
+  "agentUrl": "https://actseal.xyz/docs",
+  "categories": [
+    "security",
+    "code-devtools"
+  ],
+  "tags": [
+    "signed-receipts",
+    "ed25519",
+    "mcp",
+    "agent-audit",
+    "tool-call-verify",
+    "openapi",
+    "free-tier"
+  ],
+  "skills": [
+    {
+      "id": "issue-receipt",
+      "name": "Issue Receipt",
+      "description": "Posts an action plus input/output hashes and returns a portable Ed25519-signed receipt id for later verify."
+    },
+    {
+      "id": "verify-receipt",
+      "name": "Verify Receipt",
+      "description": "Publicly checks a receipt id and returns valid/invalid plus payload and issuer public key with no auth."
+    },
+    {
+      "id": "mcp-stdio",
+      "name": "MCP Stdio Tools",
+      "description": "Exposes issue_receipt and verify_receipt over stdio MCP for Cursor, Claude Desktop, and similar clients."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-10-25T07:13:18Z",
+  "updatedAt": "2026-10-25T07:13:18Z"
+}
