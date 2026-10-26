@@ -1,0 +1,55 @@
+{
+  "slug": "repo-salvage",
+  "name": "Repo Salvage",
+  "version": "0.2.1",
+  "description": "Find reusable implementations with pinned source, provenance and discovered license notices through a local API, CLI or MCP adapter. Development prototype.",
+  "agentUrl": "https://github.com/seanebones-lang/repo-salvage",
+  "categories": [
+    "code-devtools",
+    "research"
+  ],
+  "tags": [
+    "source-reuse",
+    "pinned-source",
+    "license-notices",
+    "source-provenance",
+    "local-catalog",
+    "stdio-mcp",
+    "developer-prototype"
+  ],
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "skills": [
+    {
+      "id": "search-components",
+      "name": "Search Components",
+      "description": "Search a locally hosted component catalog through structured agent endpoints; follow pagination and explicit coverage limits."
+    },
+    {
+      "id": "inspect-pinned-source",
+      "name": "Inspect Pinned Source",
+      "description": "Inspect source files pinned to analyzed commits, supporting evidence, discovered notices and documented integration gaps."
+    },
+    {
+      "id": "fetch-reuse-packet",
+      "name": "Fetch Reuse Packet",
+      "description": "Verify Git blob hashes and save source, discovered notices and provenance into a new directory without executing the downloaded code."
+    }
+  ],
+  "id": "repo-salvage",
+  "providerName": "NextEleven LLC",
+  "providerUrl": "https://www.nexteleven.dev",
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "createdAt": "2026-10-13T00:13:29.275790+00:00",
+  "updatedAt": "2026-10-13T00:13:29.275790+00:00"
+}
