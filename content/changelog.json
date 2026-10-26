@@ -1,5 +1,11 @@
 [
   {
+    "action": "added",
+    "slug": "w-system",
+    "name": "W System",
+    "date": "2026-10-26"
+  },
+  {
     "action": "removed",
     "slug": "fx-agent",
     "name": "fx",

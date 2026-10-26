@@ -1,0 +1,30 @@
+{
+  "id": "w-system",
+  "name": "W System",
+  "slug": "w-system",
+  "description": "Checks EU VAT, EORI, company registers and sanctions, and validates and builds EN 16931 e-invoices, for AI agents via a remote MCP server, REST API or x402 pay-per-call.",
+  "providerName": "W System",
+  "providerUrl": "https://wsystem.dev",
+  "agentUrl": "https://wsystem.dev/eu-business-data-mcp-server",
+  "categories": ["finance", "legal"],
+  "tags": ["mcp", "vat-validation", "vies", "e-invoicing", "peppol", "kyb", "sanctions-screening", "x402"],
+  "skills": [
+    {"id": "verify-vat", "name": "Verify EU VAT", "description": "Validates EU VAT numbers against VIES, with batch checks and flagged fallback to national sources when VIES is down."},
+    {"id": "verify-eori", "name": "Verify EORI", "description": "Checks EU and XI EORI numbers against the European Commission EOS service, singly or in batches of up to 100."},
+    {"id": "screen-sanctions", "name": "Screen Sanctions", "description": "Screens person and company names against the EU, UN, OFAC SDN and UK sanctions lists with fuzzy, transliteration-aware matching."},
+    {"id": "kyb-check", "name": "KYB Check", "description": "Combines VIES, an official business-register lookup and sanctions screening into one pass, review or fail verdict for a company."},
+    {"id": "validate-einvoice", "name": "Validate E-Invoice", "description": "Validates UBL, CII and ZUGFeRD or Factur-X invoices against EN 16931 and XRechnung rules, returning rule IDs and fix hints."},
+    {"id": "einvoice-route", "name": "E-Invoice Route", "description": "Tells an agent how to e-invoice a company: VIES status, Peppol registration, participant id and the country's mandate."}
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": ["api", "mcp"],
+  "createdAt": "2026-10-26T18:55:00Z",
+  "updatedAt": "2026-10-26T18:55:00Z"
+}
