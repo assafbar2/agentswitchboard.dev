@@ -1,4 +1,7 @@
 import Link from 'next/link';
+import { getSiteSettings } from '@/lib/catalog';
+
+const DEFAULT_FOOTER_TEXT = 'The curated directory of AI agents, MCP servers and agent tools.';
 
 const footerLinks = [
   {
@@ -32,7 +35,8 @@ const footerLinks = [
   },
 ];
 
-export function Footer() {
+export async function Footer() {
+  const settings = await getSiteSettings();
   return (
     <footer className="border-t border-[var(--border)] bg-[var(--bg-secondary)]">
       <div className="container-wide py-12">
@@ -46,7 +50,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-sm text-[var(--text-tertiary)] max-w-[240px] leading-relaxed">
-              The curated directory for A2A protocol agents. Discover the agentic web.
+              {settings?.footerText || DEFAULT_FOOTER_TEXT}
             </p>
           </div>
 

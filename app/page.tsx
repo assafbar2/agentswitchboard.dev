@@ -92,39 +92,31 @@ export default async function HomePage() {
           <div className="container-wide relative">
             <div className="max-w-3xl mx-auto text-center">
               {/* Terminal-style tag */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--border)] bg-[var(--bg-card)] mb-8 animate-fade-in">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--border)] bg-[var(--bg-card)] mb-8 animate-rise">
                 <Terminal className="w-3.5 h-3.5 text-[var(--accent)]" />
                 <span className="mono text-xs text-[var(--text-secondary)]">
                   {settings?.tagline || 'The directory for the agentic web'}
                 </span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6 animate-slide-up">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6 animate-rise">
                 Every AI Agent{' '}
                 <span className="gradient-text">Worth Knowing</span>
                 {', '}in One Place
               </h1>
 
-              <p
-                className="text-lg sm:text-xl text-[var(--text-secondary)] leading-relaxed max-w-2xl mx-auto mb-8 animate-slide-up"
-                style={{ animationDelay: '100ms' }}
-              >
+              <p className="text-lg sm:text-xl text-[var(--text-secondary)] leading-relaxed max-w-2xl mx-auto mb-8 animate-rise">
                 {settings?.heroSubtitle ||
                   'Browse, compare, and integrate verified AI agents with real API, MCP, and CLI access. The curated switchboard for the agentic web.'}
               </p>
 
-              <div
-                className="max-w-lg mx-auto animate-slide-up"
-                style={{ animationDelay: '200ms' }}
-              >
+              <div className="max-w-lg mx-auto animate-rise">
                 <SearchBar />
               </div>
 
-              {/* ── Stats pill ── */}
-              <div
-                className="inline-flex items-center gap-0 mt-6 rounded-full border border-[var(--border)] bg-[var(--bg-card)] overflow-hidden animate-fade-in"
-                style={{ animationDelay: '300ms' }}
-              >
+              {/* ── Stats pill ── stacks value over label below sm so all three
+                  fit a 320px screen instead of being clipped by the hero. */}
+              <div className="inline-flex max-w-full items-stretch mt-6 rounded-full border border-[var(--border)] bg-[var(--bg-card)] overflow-hidden animate-rise">
                 {[
                   { value: agentCount, label: 'Agents' },
                   { value: providerCount, label: 'Providers' },
@@ -132,10 +124,10 @@ export default async function HomePage() {
                 ].map(({ value, label }, i) => (
                   <div
                     key={label}
-                    className={`flex items-center gap-1.5 px-5 py-2 ${i < 2 ? 'border-r border-[var(--border)]' : ''}`}
+                    className={`flex flex-col sm:flex-row items-center justify-center gap-0 sm:gap-1.5 px-3 sm:px-5 py-1.5 sm:py-2 ${i < 2 ? 'border-r border-[var(--border)]' : ''}`}
                   >
                     <span className="mono text-sm font-bold text-[var(--text-primary)]">{value}</span>
-                    <span className="text-xs text-[var(--text-muted)] uppercase tracking-wider">{label}</span>
+                    <span className="text-[11px] sm:text-xs text-[var(--text-muted)] uppercase tracking-wide sm:tracking-wider">{label}</span>
                   </div>
                 ))}
               </div>
@@ -185,6 +177,14 @@ export default async function HomePage() {
                   <FeaturedAgentCard key={agent.id} agent={agent} label={label} index={i} />
                 ))}
               </div>
+
+              {/* The header link is hidden below sm; give phones an exit too. */}
+              <Link
+                href="/browse"
+                className="sm:hidden mt-4 flex items-center justify-center gap-1 rounded-lg border border-[var(--border)] px-4 py-3 text-sm text-[var(--accent)]"
+              >
+                View all <ArrowRight className="w-3.5 h-3.5" aria-hidden />
+              </Link>
             </div>
           </section>
         )}
@@ -217,6 +217,13 @@ export default async function HomePage() {
                 <CategoryCard key={cat.id} category={cat} index={i} />
               ))}
             </div>
+
+            <Link
+              href="/categories"
+              className="sm:hidden mt-4 flex items-center justify-center gap-1 rounded-lg border border-[var(--border)] px-4 py-3 text-sm text-[var(--accent)]"
+            >
+              All categories <ArrowRight className="w-3.5 h-3.5" aria-hidden />
+            </Link>
           </div>
         </section>
 

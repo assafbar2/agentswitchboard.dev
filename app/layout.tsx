@@ -80,14 +80,6 @@ export default function RootLayout({
         <Footer />
         <WebMcp />
         <Analytics />
-        {/* Google Analytics — loaded after hydration to keep it off the critical path */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-YF8BJ449WX"
-          strategy="afterInteractive"
-        />
-        <Script id="ga-init" strategy="afterInteractive">
-          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-YF8BJ449WX');`}
-        </Script>
         {umamiWebsiteId ? (
           <Script
             src="https://cloud.umami.is/script.js"

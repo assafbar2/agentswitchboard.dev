@@ -12,9 +12,16 @@
 
 import { createMcpHandler } from 'mcp-handler';
 import { z } from 'zod';
+import { VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 import { getEveryAgent, getAllCategories } from '@/lib/catalog';
 import { logConsumer } from '@/lib/log';
-import { filterAgents, searchAgents, ALL_ACCESS_METHODS } from '@/lib/search';
+import {
+  ACCESS_METHOD_INPUTS,
+  FEATURED_DEFINITION,
+  OFFICIAL_DEFINITION,
+  normalizeAccessMethods,
+} from '@/lib/public-api';
+import { filterAgents, searchAgents } from '@/lib/search';
 import type { Agent } from '@/lib/types';
 
 const SITE = 'https://agentswitchboard.dev';
@@ -31,9 +38,14 @@ function agentSummary(a: Agent) {
     verified: a.verified,
     official: a.official,
     officialVendor: a.officialVendor?.name ?? null,
+    featured: a.featured === true,
     url: `${SITE}/agents/${a.slug}`,
   };
 }
+
+// The three flags, defined once (lib/public-api.ts, components/VerifiedBadge.tsx)
+// and repeated in the tool descriptions so a model reads them before it calls.
+const LABELS = `${VERIFIED_DEFINITION} ${OFFICIAL_DEFINITION} ${FEATURED_DEFINITION}`;
 
 // Shared output shape for a single agent summary — reused by the search and
 // get_agent output schemas so declared output always matches agentSummary().
@@ -45,9 +57,10 @@ const agentSummaryShape = {
   categories: z.array(z.string()),
   accessMethods: z.array(z.string()),
   authType: z.string(),
-  verified: z.boolean(),
-  official: z.boolean().describe('First-party listing from a major vendor'),
+  verified: z.boolean().describe(VERIFIED_DEFINITION),
+  official: z.boolean().describe(OFFICIAL_DEFINITION),
   officialVendor: z.string().nullable(),
+  featured: z.boolean().describe(FEATURED_DEFINITION),
   url: z.string(),
 };
 
@@ -58,14 +71,20 @@ const handler = createMcpHandler(
       {
         title: 'Search Agents',
         description:
-          'Search the Agent Switchboard directory of vetted AI agents, MCP servers, and agentic tools. ' +
-          'Returns relevance-ranked matches. Filter by category slug, access methods, and/or official (first-party listings from major vendors).',
+          'Search the curated Agent Switchboard directory of AI agents, MCP servers, and agentic tools. ' +
+          'Filter by category slug, access methods, and/or official (first-party listings from major vendors). ' +
+          LABELS,
         inputSchema: {
-          query: z.string().describe('Free-text search (name, description, skills, tags)').optional(),
+          query: z
+            .string()
+            .describe('Free-text search over name, description, skills, categories, tags, and provider')
+            .optional(),
           category: z.string().describe('Category slug, e.g. "code-devtools", "voice-messaging"').optional(),
           access: z
-            .array(z.enum(ALL_ACCESS_METHODS as [string, ...string[]]))
-            .describe('Require ALL of these access methods (api, mcp, cli, browser-extension)')
+            .array(z.enum(ACCESS_METHOD_INPUTS as [string, ...string[]]))
+            .describe(
+              'Require ALL of these access methods: api, mcp, cli, browser-extension ("extension" is accepted as an alias of browser-extension)'
+            )
             .optional(),
           official: z
             .boolean()
@@ -83,7 +102,11 @@ const handler = createMcpHandler(
       },
       async ({ query, category, access, official, limit, offset }) => {
         const agents = filterAgents(await getEveryAgent(), { category, official });
-        const matches = searchAgents(agents, query ?? '', access);
+        const matches = searchAgents(
+          agents,
+          query ?? '',
+          access ? normalizeAccessMethods(access) : undefined
+        );
         const start = offset ?? 0;
         const size = limit ?? 10;
         const page = matches.slice(start, start + size);
@@ -105,7 +128,8 @@ const handler = createMcpHandler(
       {
         title: 'Get Agent Details',
         description:
-          'Full detail for one agent by slug: skills, auth, streaming/push support, tags, provider links.',
+          'Full detail for one agent by slug: skills, auth, streaming/push support, tags, provider links. ' +
+          LABELS,
         inputSchema: {
           slug: z.string().describe('Agent slug, e.g. "playwright-mcp"'),
         },
@@ -182,7 +206,7 @@ const handler = createMcpHandler(
     );
   },
   {
-    serverInfo: { name: 'agentswitchboard', version: '1.0.0' },
+    serverInfo: { name: 'agentswitchboard', version: '1.1.0' },
   },
   {
     basePath: '/api',

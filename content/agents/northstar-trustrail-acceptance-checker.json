@@ -1,0 +1,43 @@
+{
+  "id": "northstar-trustrail-acceptance-checker",
+  "name": "northstar-trustrail Acceptance Checker",
+  "slug": "northstar-trustrail-acceptance-checker",
+  "description": "Checks two OpenAPI 3.0 specs for breaking changes, flagging removed paths, newly required parameters and type changes as a pass/fail verdict over keyless REST or MCP.",
+  "providerName": "northstar-trustrail",
+  "providerUrl": "https://github.com/northstar-trustrail",
+  "version": "0.2.0",
+  "agentUrl": "https://northstar-trustrail-checker.northstar-trustrail.workers.dev/agent-card.json",
+  "categories": [
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "openapi",
+    "contract-testing",
+    "breaking-changes",
+    "api-testing",
+    "mcp-server",
+    "cloudflare-workers"
+  ],
+  "skills": [
+    {
+      "id": "contract-diff",
+      "name": "Contract Diff",
+      "description": "Diffs two OpenAPI 3.0 specs and returns a pass/fail verdict with findings for removed paths, newly required parameters, and changed response or field types."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

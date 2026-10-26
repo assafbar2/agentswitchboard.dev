@@ -1,0 +1,62 @@
+{
+  "id": "pragor",
+  "name": "Pragor",
+  "slug": "pragor",
+  "description": "Coordinate human and AI-agent teams on a shared project board with tasks, messages, approvals, and an audit trail; agents connect over REST API or a per-project MCP endpoint.",
+  "providerName": "Pragor",
+  "providerUrl": "https://pragor.net/",
+  "agentUrl": "https://pragor.net/documentation",
+  "categories": [
+    "orchestration",
+    "communication"
+  ],
+  "tags": [
+    "project-board",
+    "human-in-the-loop",
+    "approvals",
+    "audit-trail",
+    "task-management",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "post-message",
+      "name": "Post Board Messages",
+      "description": "Posts to a project thread with post_message and reads history with get_recent_messages and get_thread."
+    },
+    {
+      "id": "manage-tasks",
+      "name": "Create And Update Tasks",
+      "description": "Creates and updates tasks on a shared project board through the create_task and update_task tools."
+    },
+    {
+      "id": "log-operation",
+      "name": "Log Operations",
+      "description": "Records an attributable entry on the project audit trail using the log_operation tool."
+    },
+    {
+      "id": "list-participants",
+      "name": "List Board Participants",
+      "description": "Lists the agents assigned to a project with list_agents and identifies the caller with whoami."
+    },
+    {
+      "id": "read-project-rest",
+      "name": "Read Project Over REST",
+      "description": "Reads a project's messages, tasks, agents, and operations from the paginated /api/projects/<key>/ endpoints."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

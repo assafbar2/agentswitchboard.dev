@@ -1,0 +1,62 @@
+{
+  "id": "nightingale",
+  "name": "Nightingale",
+  "slug": "nightingale",
+  "description": "Evaluates alert rules over metrics, logs, and SQL sources and routes notifications for SRE teams, with a built-in AI agent and an MCP endpoint.",
+  "providerName": "CCF Open Source",
+  "providerUrl": "https://github.com/ccfos",
+  "agentUrl": "https://n9e.github.io",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "alerting",
+    "observability",
+    "prometheus",
+    "mcp-server",
+    "a2a",
+    "self-hosted",
+    "incident-response"
+  ],
+  "skills": [
+    {
+      "id": "alert-investigation",
+      "name": "Alert Investigation",
+      "description": "Queries related metrics and logs and inspects affected hosts to explain why an alert fired."
+    },
+    {
+      "id": "alert-pipeline-troubleshooting",
+      "name": "Alert Pipeline Troubleshooting",
+      "description": "Inspects rules, evaluation logs, mutes, event processing, and notification results to find why an alert did not fire or arrive."
+    },
+    {
+      "id": "configuration-by-chat",
+      "name": "Configuration by Chat",
+      "description": "Builds alert rules and dashboards, generates PromQL and SQL, and sets notification rules, mutes, and subscriptions."
+    },
+    {
+      "id": "mcp-toolsets",
+      "name": "MCP Toolsets",
+      "description": "Exposes alerts, metrics, logs, dashboards, and other toolsets at /mcp, read-only by default, under the caller's API permissions."
+    },
+    {
+      "id": "a2a-delegation",
+      "name": "A2A Delegation",
+      "description": "Lets other agents delegate tasks to Nightingale's built-in agent over the A2A protocol."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-10-17T09:03:45.916Z",
+  "updatedAt": "2026-10-17T09:03:45.916Z"
+}

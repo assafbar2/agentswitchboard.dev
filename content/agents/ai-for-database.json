@@ -1,0 +1,68 @@
+{
+  "id": "ai-for-database",
+  "name": "AI for Database",
+  "slug": "ai-for-database",
+  "description": "Queries PostgreSQL, MySQL, MongoDB and SQL Server in plain English via a scoped REST API and OAuth-gated remote MCP server, with read-only SQL, dashboards, webhooks and scheduled workflows.",
+  "providerName": "Vynara",
+  "providerUrl": "https://aifordatabase.com/about/",
+  "agentUrl": "https://app.aifordatabase.com/api/v1/docs",
+  "categories": [
+    "data-analytics",
+    "infrastructure",
+    "scheduling"
+  ],
+  "tags": [
+    "postgresql",
+    "mysql",
+    "mongodb",
+    "sql-server",
+    "natural-language-query",
+    "read-only-queries"
+  ],
+  "skills": [
+    {
+      "id": "natural-language-query",
+      "name": "Natural Language Query",
+      "description": "Runs plain-English questions against a connected PostgreSQL, MySQL, MongoDB or SQL Server database via POST /connections/{id}/query, executed as read-only SQL."
+    },
+    {
+      "id": "manage-connections",
+      "name": "Manage Connections",
+      "description": "Lists, inspects and configures database connections through the /connections endpoints under the connections API-key scope."
+    },
+    {
+      "id": "database-chat",
+      "name": "Database Chat",
+      "description": "Holds a multi-turn conversation about connected database data through the /chat endpoint under the chat scope."
+    },
+    {
+      "id": "build-dashboards",
+      "name": "Build Dashboards",
+      "description": "Creates and retrieves dashboards over the /dashboards endpoints for recurring reporting on connected databases."
+    },
+    {
+      "id": "run-workflows",
+      "name": "Run Workflows",
+      "description": "Defines and triggers scheduled database workflows via /workflows and POST /workflows/{id}/run."
+    },
+    {
+      "id": "saved-queries",
+      "name": "Saved Queries",
+      "description": "Stores and re-runs named queries through the /saved-queries endpoints for repeatable database reporting."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

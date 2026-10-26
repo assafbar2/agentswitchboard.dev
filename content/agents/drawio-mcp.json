@@ -1,0 +1,62 @@
+{
+  "id": "drawio-mcp",
+  "name": "draw.io MCP",
+  "slug": "drawio-mcp",
+  "description": "Lets AI assistants create and open draw.io diagrams from XML, CSV, or Mermaid, via a hosted MCP app server, an npm MCP server, or assistant plugins.",
+  "providerName": "draw.io",
+  "providerUrl": "https://www.drawio.com",
+  "agentUrl": "https://www.drawio.com",
+  "categories": [
+    "productivity",
+    "code-devtools"
+  ],
+  "tags": [
+    "draw-io",
+    "diagramming",
+    "mcp-server",
+    "mcp-apps",
+    "mermaid",
+    "architecture-diagrams",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "create-diagram",
+      "name": "Create Diagram",
+      "description": "Renders draw.io XML or Mermaid as an interactive diagram inline in MCP Apps hosts such as Claude.ai and ChatGPT."
+    },
+    {
+      "id": "search-shapes",
+      "name": "Search Shapes",
+      "description": "Searches 10,000+ shapes across draw.io libraries, including AWS, Azure, GCP, Kubernetes, UML, and BPMN."
+    },
+    {
+      "id": "open-in-editor",
+      "name": "Open in Editor",
+      "description": "Opens XML, CSV, or Mermaid diagrams directly in the draw.io editor in a new browser tab."
+    },
+    {
+      "id": "auto-layout",
+      "name": "Auto Layout",
+      "description": "Re-arranges nodes with ELK layout or reroutes connectors around shapes with libavoid."
+    },
+    {
+      "id": "file-export",
+      "name": "File Export",
+      "description": "Writes native .drawio files from assistant plugins, with optional PNG, SVG, or PDF export via draw.io Desktop."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-17T09:03:45.920Z",
+  "updatedAt": "2026-10-17T09:03:45.920Z"
+}

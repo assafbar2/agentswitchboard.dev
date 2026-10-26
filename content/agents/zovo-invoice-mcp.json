@@ -1,0 +1,57 @@
+{
+  "id": "zovo-invoice-mcp",
+  "name": "Zovo Invoice MCP",
+  "slug": "zovo-invoice-mcp",
+  "description": "Creates numbered line-item invoices with multi-rate VAT, renders them as downloadable documents, and tracks clients and payments over MCP, for freelancers and small businesses.",
+  "providerName": "Zovo",
+  "providerUrl": "https://zovo.one",
+  "version": "0.22.6",
+  "agentUrl": "https://mcp.zovo.one/s/invoice",
+  "categories": [
+    "finance"
+  ],
+  "tags": [
+    "invoicing",
+    "billing",
+    "vat-calculation",
+    "payment-tracking",
+    "client-records",
+    "remote-mcp",
+    "freelancers"
+  ],
+  "skills": [
+    {
+      "id": "invoice-creation",
+      "name": "Invoice Creation",
+      "description": "Creates numbered line-item invoices with invoice_create, or builds them from tracked hours with invoice_from_hours, applying VAT rates in integer minor units."
+    },
+    {
+      "id": "client-records",
+      "name": "Client Records",
+      "description": "Adds, lists, and removes clients with client_add, client_list, and client_delete, and stores the issuing business profile, currency, and default VAT rate via business_set."
+    },
+    {
+      "id": "invoice-documents",
+      "name": "Invoice Documents",
+      "description": "Renders an invoice to a downloadable document via invoice_pdf, returning a time-limited URL carrying the invoice number, client, VAT line, and total."
+    },
+    {
+      "id": "payment-tracking",
+      "name": "Payment Tracking",
+      "description": "Marks invoices paid with invoice_mark_paid, retrieves them with invoice_list and invoice_get, and reports what is still outstanding with overdue_report."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

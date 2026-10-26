@@ -1,0 +1,62 @@
+{
+  "id": "minimax-code",
+  "name": "MiniMax Code",
+  "slug": "minimax-code",
+  "description": "Runs MiniMax's open-source coding agent in the terminal for developers, with an interactive TUI, headless mcode exec with JSON output for CI, and an ACP server for editors.",
+  "providerName": "MiniMax AI",
+  "providerUrl": "https://www.minimax.io",
+  "agentUrl": "https://agent.minimax.io/docs/cli/quick-start",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "coding-cli",
+    "terminal",
+    "open-source",
+    "headless-mode",
+    "acp",
+    "plan-mode",
+    "minimax"
+  ],
+  "skills": [
+    {
+      "id": "headless-exec",
+      "name": "Headless Exec",
+      "description": "Runs a single task with mcode exec for shell scripts, CI and evaluations, with JSON output and stable exit codes."
+    },
+    {
+      "id": "acp-server",
+      "name": "ACP Server",
+      "description": "Runs MiniMax Code as an Agent Client Protocol server over stdio for editors and agent hosts."
+    },
+    {
+      "id": "plan-mode",
+      "name": "Plan Mode",
+      "description": "Drafts a reviewable plan before making changes on large or uncertain tasks."
+    },
+    {
+      "id": "skills-and-mcp",
+      "name": "Skills and MCP",
+      "description": "Loads configured skills, MCP servers and plugins into the agent."
+    },
+    {
+      "id": "session-recovery",
+      "name": "Session Recovery",
+      "description": "Continues the latest session or reopens a specific one by ID."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-17T09:03:45.929Z",
+  "updatedAt": "2026-10-17T09:03:45.929Z"
+}

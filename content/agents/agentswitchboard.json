@@ -2,7 +2,7 @@
   "id": "agentswitchboard",
   "name": "Agent Switchboard",
   "slug": "agentswitchboard",
-  "description": "Searches a curated, open-source directory of 300+ verified AI agents, MCP servers, and agentic tools by capability, category, or access method. Yes, this directory listed itself — it qualifies.",
+  "description": "Searches a curated, open-source directory of AI agents, MCP servers, and agentic tools by capability, category, or access method. Yes, this directory listed itself — it qualifies.",
   "providerName": "Agent Switchboard",
   "providerUrl": "https://agentswitchboard.dev",
   "agentUrl": "https://agentswitchboard.dev/for-agents",
@@ -23,5 +23,5 @@
   "discoveredBy": "manual",
   "accessMethods": ["mcp", "api"],
   "createdAt": "2026-07-23T00:00:00.000Z",
-  "updatedAt": "2026-07-23T00:00:00.000Z"
+  "updatedAt": "2026-10-25T01:16:46.687Z"
 }

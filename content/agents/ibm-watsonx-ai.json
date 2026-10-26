@@ -1,0 +1,63 @@
+{
+  "id": "ibm-watsonx-ai",
+  "name": "IBM watsonx.ai",
+  "slug": "ibm-watsonx-ai",
+  "description": "Runs, tunes, and deploys foundation models through IBM Cloud APIs and SDKs for enterprise teams building generative AI and forecasting apps.",
+  "providerName": "IBM",
+  "providerUrl": "https://www.ibm.com",
+  "agentUrl": "https://www.ibm.com/products/watsonx-ai",
+  "categories": [
+    "language",
+    "infrastructure"
+  ],
+  "tags": [
+    "foundation-models",
+    "model-inference",
+    "fine-tuning",
+    "embeddings",
+    "time-series-forecasting",
+    "ibm-cloud",
+    "enterprise"
+  ],
+  "skills": [
+    {
+      "id": "chat-inference",
+      "name": "Chat Inference",
+      "description": "Generates chat and text completions, with event-stream endpoints and chat completions on deployed models."
+    },
+    {
+      "id": "fine-tuning",
+      "name": "Fine-Tuning",
+      "description": "Creates and manages fine-tuning jobs, plus synthetic data generation and document extraction for tuning data."
+    },
+    {
+      "id": "embeddings-rerank",
+      "name": "Embeddings and Rerank",
+      "description": "Generates text embeddings and reranks passages for retrieval pipelines."
+    },
+    {
+      "id": "time-series-forecast",
+      "name": "Time Series Forecast",
+      "description": "Forecasts future values from time-series data through a dedicated forecast endpoint."
+    },
+    {
+      "id": "ai-service-deployment",
+      "name": "AI Service Deployment",
+      "description": "Uploads AI service code, versions its revisions, and deploys it as an endpoint with streaming execution."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-17T09:03:45.912Z",
+  "updatedAt": "2026-10-17T09:03:45.912Z"
+}

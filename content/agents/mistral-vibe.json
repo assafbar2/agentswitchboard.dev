@@ -1,0 +1,63 @@
+{
+  "id": "mistral-vibe",
+  "name": "Mistral Vibe",
+  "slug": "mistral-vibe",
+  "description": "Writes, tests, and refactors code from the terminal or ACP editors, and runs long work tasks over connected tools, for developers and teams on Mistral models.",
+  "providerName": "Mistral AI",
+  "providerUrl": "https://mistral.ai",
+  "agentUrl": "https://mistral.ai/products/vibe",
+  "categories": [
+    "code-devtools",
+    "autonomous-agents"
+  ],
+  "tags": [
+    "coding-agent",
+    "terminal-cli",
+    "agent-client-protocol",
+    "mcp-client",
+    "subagents",
+    "mistral",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "subagent-delegation",
+      "name": "Subagent Delegation",
+      "description": "Delegates work to independent subagents, such as the read-only explore agent, through the task tool."
+    },
+    {
+      "id": "programmatic-mode",
+      "name": "Programmatic Mode",
+      "description": "Runs non-interactively with --prompt or piped input for scripts, with optional auto-approval of tool calls."
+    },
+    {
+      "id": "acp-editor-integration",
+      "name": "ACP Editor Integration",
+      "description": "Runs inside VS Code, JetBrains, Zed, and other editors that support the Agent Client Protocol."
+    },
+    {
+      "id": "mcp-servers",
+      "name": "MCP Servers",
+      "description": "Connects local or remote MCP servers, with API-key headers or OAuth browser login, to extend its tools."
+    },
+    {
+      "id": "custom-skills",
+      "name": "Custom Skills",
+      "description": "Loads reusable skills from user and project folders, which can also register custom slash commands."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-17T09:03:45.908Z",
+  "updatedAt": "2026-10-17T09:03:45.908Z"
+}

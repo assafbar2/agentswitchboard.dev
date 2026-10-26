@@ -46,7 +46,7 @@
   "supportsPushNotifications": false,
   "status": "published",
   "featured": false,
-  "verified": false,
+  "verified": true,
   "official": true,
   "tier": "free",
   "discoveredBy": "manual",
@@ -54,5 +54,5 @@
     "mcp"
   ],
   "createdAt": "2026-10-10T21:22:01.524Z",
-  "updatedAt": "2026-10-10T21:22:01.524Z"
+  "updatedAt": "2026-10-25T01:16:46.687Z"
 }

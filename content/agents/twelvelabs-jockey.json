@@ -1,0 +1,63 @@
+{
+  "id": "twelvelabs-jockey",
+  "name": "Jockey by TwelveLabs",
+  "slug": "twelvelabs-jockey",
+  "description": "Searches, summarizes and assembles clips from your video and image library in plain language, for teams working in Claude, ChatGPT, or the Agents API.",
+  "providerName": "TwelveLabs",
+  "providerUrl": "https://www.twelvelabs.io",
+  "agentUrl": "https://www.twelvelabs.io/jockey",
+  "categories": [
+    "content-media",
+    "research"
+  ],
+  "tags": [
+    "video-understanding",
+    "video-search",
+    "knowledge-store",
+    "multimodal",
+    "highlight-reels",
+    "remote-mcp",
+    "media-library"
+  ],
+  "skills": [
+    {
+      "id": "cross-video-search",
+      "name": "Cross-Video Search",
+      "description": "Finds clips across a knowledge store that match a natural-language query, ranked by relevance and filterable by metadata."
+    },
+    {
+      "id": "cited-answers",
+      "name": "Answers with Citations",
+      "description": "Answers questions about a video collection in text that links to the exact clips each answer draws from."
+    },
+    {
+      "id": "highlight-reels",
+      "name": "Highlight Reel Assembly",
+      "description": "Finds and sequences clips around a theme, topic, or criteria into a curated highlight reel or playlist."
+    },
+    {
+      "id": "entity-tracking",
+      "name": "Entity Tracking",
+      "description": "Follows a person, place, brand, or object across videos and builds a chronological timeline of appearances with timestamps."
+    },
+    {
+      "id": "streaming-responses",
+      "name": "Streaming Responses",
+      "description": "Streams generated response text as events, with optional multi-turn sessions and structured JSON output."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-10-17T09:03:45.943Z",
+  "updatedAt": "2026-10-17T09:03:45.943Z"
+}

@@ -1,0 +1,59 @@
+{
+  "id": "perplexity-space",
+  "name": "Perplexity SPACE",
+  "slug": "perplexity-space",
+  "description": "Runs agent and user code in isolated Firecracker microVM sandboxes on your own infrastructure, with an HTTP API to create sandboxes and stream command output.",
+  "providerName": "Perplexity",
+  "providerUrl": "https://perplexity.ai",
+  "agentUrl": "https://space.docs.perplexity.ai",
+  "categories": [
+    "infrastructure",
+    "security"
+  ],
+  "tags": [
+    "code-sandbox",
+    "firecracker",
+    "microvm",
+    "self-hosted",
+    "code-execution",
+    "kubernetes",
+    "e2b-compatible"
+  ],
+  "skills": [
+    {
+      "id": "sandbox-lifecycle",
+      "name": "Sandbox Lifecycle",
+      "description": "Creates sandboxes from templates and pauses, suspends, wakes or deletes them through asynchronous operations you poll."
+    },
+    {
+      "id": "command-execution",
+      "name": "Command Execution",
+      "description": "Starts processes in a sandbox and streams their output and exit result over server-sent events with a session token."
+    },
+    {
+      "id": "e2b-compatibility",
+      "name": "E2B Compatibility",
+      "description": "Lets an existing E2B Python SDK client run against SPACE through the E2B Compatibility Wrapper and its own API keys."
+    },
+    {
+      "id": "warm-pools",
+      "name": "Warm Pools",
+      "description": "Keeps pools of booted sandboxes ready on Kubernetes so new sandbox creates skip a cold boot and start faster."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-10-17T09:03:45.939Z",
+  "updatedAt": "2026-10-17T09:03:45.939Z"
+}

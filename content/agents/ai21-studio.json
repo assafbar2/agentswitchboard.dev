@@ -1,0 +1,59 @@
+{
+  "id": "ai21-studio",
+  "name": "AI21 Studio",
+  "slug": "ai21-studio",
+  "description": "Serves AI21's Jamba models and the Maestro agent-run API with file search, web search and remote MCP tools, for enterprises building grounded RAG agents.",
+  "providerName": "AI21 Labs",
+  "providerUrl": "https://www.ai21.com",
+  "agentUrl": "https://docs.ai21.com",
+  "categories": [
+    "language",
+    "infrastructure",
+    "orchestration"
+  ],
+  "tags": [
+    "jamba",
+    "llm-api",
+    "maestro",
+    "rag",
+    "function-calling",
+    "file-search",
+    "mcp-client"
+  ],
+  "skills": [
+    {
+      "id": "maestro-runs",
+      "name": "Maestro Runs",
+      "description": "Plans, executes and validates multi-step tasks within budget, returning an execution trace and validation report."
+    },
+    {
+      "id": "file-and-web-search",
+      "name": "File Search and Web Search",
+      "description": "Grounds Maestro answers in uploaded documents and live web results."
+    },
+    {
+      "id": "remote-mcp-tools",
+      "name": "Remote MCP Tools",
+      "description": "Connects Maestro as a client to remote MCP servers and calls their tools during a run."
+    },
+    {
+      "id": "function-calling",
+      "name": "Function Calling",
+      "description": "Lets Jamba models call your functions through the Chat Completions API."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-17T09:03:45.931Z",
+  "updatedAt": "2026-10-17T09:03:45.931Z"
+}

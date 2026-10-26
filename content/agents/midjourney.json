@@ -18,7 +18,7 @@
   "authType": "none",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
-  "status": "published",
+  "status": "archived",
   "featured": false,
   "verified": false,
   "official": true,
@@ -28,5 +28,5 @@
     "api"
   ],
   "createdAt": "2026-03-22T09:52:47.899Z",
-  "updatedAt": "2026-03-22T16:47:12.396Z"
+  "updatedAt": "2026-10-25T01:16:46.687Z"
 }

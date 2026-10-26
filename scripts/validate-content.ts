@@ -124,6 +124,14 @@ function main() {
   let errors = official.errors;
   const slugs = new Set<string>();
   const published = new Set<string>();
+  // Rule 2 (CONTRIBUTING): one listing per product, not per endpoint. No cap —
+  // a vendor with many real products earns many entries — but large clusters are
+  // where suite-splitting hides, so surface them for a human to eyeball.
+  const byProvider = new Map<string, string[]>();
+  // Two published listings pointing at the same agentUrl are usually one product
+  // listed twice (the fx / fx-agent case). Monorepos legitimately host several
+  // products at one URL, so this is advisory, not a violation.
+  const byAgentUrl = new Map<string, string[]>();
 
   // Auxiliary content files aren't schema-validated, but they ARE parsed at
   // build time (e.g. /changelog does JSON.parse on changelog.json). A syntax
@@ -171,6 +179,12 @@ function main() {
     }
     slugs.add(slug);
     if (result.data.status === 'published') published.add(slug);
+    if (result.data.status === 'published') {
+      const prov = result.data.providerName;
+      byProvider.set(prov, [...(byProvider.get(prov) ?? []), slug]);
+      const url = result.data.agentUrl.replace(/\/+$/, '').toLowerCase();
+      byAgentUrl.set(url, [...(byAgentUrl.get(url) ?? []), slug]);
+    }
 
     // Official needs evidence: the product URL must sit on exactly one
     // registered vendor's official domain or GitHub org.
@@ -220,6 +234,24 @@ function main() {
     } catch {
       // invalid JSON is already reported above
     }
+  }
+
+  const clusters = [...byProvider.entries()]
+    .filter(([, slugs]) => slugs.length >= 4)
+    .sort((a, b) => b[1].length - a[1].length);
+  if (clusters.length) {
+    console.log(
+      `ℹ️  ${clusters.length} provider(s) with 4+ listings — check none is one product split across endpoints (CONTRIBUTING rule 2):\n   ` +
+        clusters.map(([p, s2]) => `${p} (${s2.length}): ${s2.slice(0, 6).join(', ')}${s2.length > 6 ? ', …' : ''}`).join('\n   ')
+    );
+  }
+
+  const sharedUrls = [...byAgentUrl.entries()].filter(([, slugs]) => slugs.length > 1);
+  if (sharedUrls.length) {
+    console.log(
+      `ℹ️  ${sharedUrls.length} agentUrl(s) shared by more than one published listing — confirm each is a separate product, not a duplicate:\n   ` +
+        sharedUrls.map(([u, s2]) => `${u}: ${s2.join(', ')}`).join('\n   ')
+    );
   }
 
   if (errors === 0) {

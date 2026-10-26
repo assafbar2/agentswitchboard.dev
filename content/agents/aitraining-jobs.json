@@ -1,0 +1,53 @@
+{
+  "id": "aitraining-jobs",
+  "name": "AITraining.jobs",
+  "slug": "aitraining-jobs",
+  "description": "Searches open AI-training jobs — trainers, RLHF evaluators, annotators, domain experts — collected hourly from about 60 platform boards, with advertised pay and median rates by work type.",
+  "providerName": "O-mega Enterprise, Inc.",
+  "providerUrl": "https://o-mega.ai",
+  "version": "1.0.0",
+  "agentUrl": "https://aitraining.jobs/api/v1/jobs",
+  "categories": [
+    "research",
+    "data-analytics"
+  ],
+  "tags": [
+    "job-search",
+    "rlhf",
+    "data-annotation",
+    "labor-market",
+    "pay-data",
+    "job-board"
+  ],
+  "skills": [
+    {
+      "id": "search-ai-training-jobs",
+      "name": "Search AI training jobs",
+      "description": "Searches live AI-training roles by keyword, platform, work kind, pay band or location, returning listing dates and direct role URLs."
+    },
+    {
+      "id": "get-ai-training-pay",
+      "name": "Get training pay rates",
+      "description": "Returns advertised pay bands and median rates for AI-training work, broken out by work type across the tracked platform boards."
+    },
+    {
+      "id": "get-ai-training-market",
+      "name": "Get training market stats",
+      "description": "Reports aggregate market figures for AI-training work: total open roles, counts by platform and work kind, and recent listing activity."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

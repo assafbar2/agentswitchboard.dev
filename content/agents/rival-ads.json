@@ -1,0 +1,74 @@
+{
+  "id": "rival-ads",
+  "name": "Rival Ads",
+  "slug": "rival-ads",
+  "description": "Tracks competitors’ ads on Meta, Google, TikTok and LinkedIn from public ad libraries, and exposes monitors, ad movement and stored strategy analyses over a REST API and a remote MCP server.",
+  "providerName": "Rival Ads",
+  "providerUrl": "https://www.rivalads.io",
+  "version": "1.0.0",
+  "agentUrl": "https://www.rivalads.io/api/docs",
+  "categories": [
+    "sales-marketing",
+    "research"
+  ],
+  "tags": [
+    "competitor-intelligence",
+    "ad-library",
+    "meta-ads",
+    "google-ads",
+    "tiktok-ads",
+    "linkedin-ads",
+    "swipe-file"
+  ],
+  "skills": [
+    {
+      "id": "competitor-monitors",
+      "name": "Competitor Monitors",
+      "description": "Creates, lists, updates and deletes monitors that each track one competitor on one of the Meta, Google, TikTok or LinkedIn ad channels."
+    },
+    {
+      "id": "ad-movement",
+      "name": "Ad Movement Feed",
+      "description": "Reads which ads a monitored competitor launched, kept running or stopped, via the Intelligence ad-movement endpoint."
+    },
+    {
+      "id": "strategic-analyses",
+      "name": "Strategic Analyses",
+      "description": "Lists the stored strategic analyses generated for a monitored competitor over a chosen week or month window."
+    },
+    {
+      "id": "monitor-sync",
+      "name": "Monitor Sync Jobs",
+      "description": "Triggers a fresh ad-library sync for a monitor and polls the resulting job until it is completed or failed."
+    },
+    {
+      "id": "swipe-file-library",
+      "name": "Swipe File Library",
+      "description": "Saves, moves and removes ads in the shared swipe file and manages its folders."
+    },
+    {
+      "id": "client-projects",
+      "name": "Client Projects",
+      "description": "Groups monitors into client, brand or market projects, and creates, renames or deletes them."
+    },
+    {
+      "id": "report-links",
+      "name": "Client Report Links",
+      "description": "Reads and updates the revocable client-facing report share link for a monitor."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

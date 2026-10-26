@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Verified, ArrowRight, Zap, Star, Sparkles } from 'lucide-react';
+import { ArrowRight, Zap, Star, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
 import { AccessMethodBadges } from '@/components/ui/AccessMethodBadges';
 import { OfficialBadge } from '@/components/ui/OfficialBadge';
+import { VerifiedBadge } from '@/components/VerifiedBadge';
 import type { Agent, AgentLabel } from '@/lib/types';
 import { truncate } from '@/lib/utils';
 
@@ -62,8 +63,8 @@ export function FeaturedAgentCard({
         }`}
       />
 
-      {/* Header */}
-      <div className="flex items-start gap-3 mb-4">
+      {/* Header: name and provider get the full width, so names wrap instead of truncating */}
+      <div className="flex items-start gap-3 mb-3">
         {agent.iconUrl ? (
           <Image
             src={agent.iconUrl}
@@ -73,52 +74,54 @@ export function FeaturedAgentCard({
             className="w-10 h-10 rounded-lg flex-shrink-0 bg-white/5"
           />
         ) : (
-          <div className="w-10 h-10 rounded-lg flex-shrink-0 bg-[var(--accent-subtle)] flex items-center justify-center">
+          <div
+            aria-hidden="true"
+            className="w-10 h-10 rounded-lg flex-shrink-0 bg-[var(--accent-subtle)] flex items-center justify-center"
+          >
             <span className="mono text-base text-[var(--accent)] font-bold">
               {agent.name[0]}
             </span>
           </div>
         )}
         <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-1.5">
-            <h3 className="mono text-base font-semibold text-[var(--text-primary)] truncate group-hover:text-[var(--accent)] transition-colors">
-              {agent.name}
-            </h3>
-            {agent.verified && (
-              <Verified className="w-4 h-4 text-[var(--accent)] flex-shrink-0" />
-            )}
-          </div>
-          <div className="flex items-center gap-1.5 mt-0.5">
-            <p className="text-xs text-[var(--text-muted)] truncate">by {agent.providerName}</p>
-            <OfficialBadge agent={agent} />
-          </div>
+          <h3 className="mono text-base font-semibold leading-snug wrap-break-word text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">
+            {agent.name}
+          </h3>
+          <p className="text-xs text-[var(--text-secondary)] mt-0.5 wrap-break-word">by {agent.providerName}</p>
         </div>
-
-        {/* Label or sponsor badge */}
-        {labelCfg ? (
-          labelCfg.badge
-        ) : agent.sponsorLabel ? (
-          <Badge variant="amber">{agent.sponsorLabel}</Badge>
-        ) : null}
       </div>
+
+      {/* Badges on their own row: label or sponsor badge first, then trust badges */}
+      {(labelCfg || agent.sponsorLabel || agent.verified || agent.official) && (
+        <div className="flex flex-wrap items-center gap-1.5 mb-4">
+          {labelCfg ? (
+            labelCfg.badge
+          ) : agent.sponsorLabel ? (
+            <Badge variant="amber">{agent.sponsorLabel}</Badge>
+          ) : null}
+          {agent.verified && <VerifiedBadge />}
+          <OfficialBadge agent={agent} />
+        </div>
+      )}
 
       {/* Description */}
       <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-4">
         {truncate(agent.description, 150)}
       </p>
 
-      {/* Skills preview */}
-      <div className="flex flex-wrap gap-1.5 mb-4">
-        {agent.skills.slice(0, 3).map((skill) => (
-          <Badge key={skill.id} variant="accent">
-            <Zap className="w-3 h-3" />
-            {skill.name}
-          </Badge>
-        ))}
-        {agent.skills.length > 3 && (
-          <Badge variant="outline">+{agent.skills.length - 3} more</Badge>
-        )}
-      </div>
+      {/* Skills preview (skipped when the agent lists none) */}
+      {agent.skills.length > 0 && (
+        <div className="flex flex-wrap gap-1.5 mb-4">
+          {agent.skills.slice(0, 3).map((skill) => (
+            <Badge key={skill.id} variant="accent">
+              {skill.name}
+            </Badge>
+          ))}
+          {agent.skills.length > 3 && (
+            <Badge variant="outline">+{agent.skills.length - 3} more</Badge>
+          )}
+        </div>
+      )}
 
       {/* Access methods */}
       {agent.accessMethods.length > 0 && (
@@ -131,7 +134,7 @@ export function FeaturedAgentCard({
       <div className="flex items-center justify-between">
         <div className="flex gap-1.5">
           {agent.categories.slice(0, 2).map((cat) => (
-            <span key={cat.id} className="text-xs text-[var(--text-muted)]">
+            <span key={cat.id} className="text-xs text-[var(--text-secondary)]">
               {cat.name}
             </span>
           ))}

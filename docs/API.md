@@ -28,7 +28,7 @@ handshake (e.g. wiring into a connector platform).
 |---|---|---|---|
 | `q` | string | `""` | Free-text over name, description, skills, categories, tags, provider. Empty = list all (relevance falls back to catalog order). |
 | `category` | string | — | Category slug, e.g. `content-media`. See `list_categories` / [`content/categories.json`](../content/categories.json). |
-| `access` | string | — | One or more of `api`, `mcp`, `cli`, `browser-extension`. Comma-separate to **require all** (`access=api,mcp`). Unknown values are ignored, not rejected. |
+| `access` | string | — | One or more of `api`, `mcp`, `cli`, `browser-extension` (`extension` is accepted as an alias). Comma-separate to **require all** (`access=api,mcp`). Unknown values are ignored, not rejected. |
 | `official` | boolean | `false` | `true` (or `1`) returns only [official listings](#official-listings): first-party products from major vendors. Combines with `category`, `access`, and `q`. |
 | `limit` | integer | `10` | Clamped to `1..50`. |
 | `offset` | integer | `0` | Number of results to skip, for pagination. |

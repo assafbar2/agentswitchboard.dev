@@ -1,7 +1,7 @@
 {
   "name": "io.github.assafbar2/agentswitchboard",
-  "description": "In-browser WebMCP tools for Agent Switchboard, registered on document.modelContext when the page loads. Same catalog and tools as the remote MCP server at /api/mcp.",
-  "version": "1.0.0",
+  "description": "In-browser WebMCP tools for Agent Switchboard, registered on document.modelContext when the page loads. Same three tools as the remote MCP server at /api/mcp. They call the public REST API (/api/agents, /api/agents/{slug}, /api/categories), so matches and their order are the same as the remote server's; result objects use the REST field names (see /openapi.json).",
+  "version": "1.1.0",
   "websiteUrl": "https://agentswitchboard.dev",
   "surface": "document.modelContext",
   "polyfill": "@mcp-b/webmcp-polyfill",
@@ -12,26 +12,117 @@
   "tools": [
     {
       "name": "search_agents",
-      "description": "Search Agent Switchboard's directory of vetted AI agents, MCP servers, and agentic tools. Filter by free-text query, category slug, access method (api, mcp, cli, browser-extension), and/or official (first-party listings from major vendors).",
-      "annotations": { "readOnlyHint": true },
+      "description": "Search the curated Agent Switchboard directory of AI agents, MCP servers, and agentic tools. Filter by category slug, access methods, and/or official (first-party listings from major vendors). Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working. Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified. Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order.",
+      "annotations": {
+        "readOnlyHint": true
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Free-text search over name, description, skills, categories, tags, and provider"
+          },
+          "category": {
+            "type": "string",
+            "description": "Category slug, e.g. \"code-devtools\", \"voice-messaging\""
+          },
+          "access": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "api",
+                "mcp",
+                "cli",
+                "browser-extension",
+                "extension"
+              ]
+            },
+            "description": "Require ALL of these access methods: api, mcp, cli, browser-extension (\"extension\" is accepted as an alias of browser-extension)"
+          },
+          "official": {
+            "type": "boolean",
+            "description": "Only first-party listings from major vendors (e.g. Notion's own Notion MCP)"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50,
+            "default": 10,
+            "description": "Max results per page (1–50)"
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 0,
+            "description": "Number of results to skip, for pagination"
+          }
+        }
+      },
       "outputSchema": {
         "type": "object",
-        "required": ["total", "offset", "limit", "agents"],
+        "required": [
+          "total",
+          "offset",
+          "limit",
+          "agents"
+        ],
         "properties": {
-          "total": { "type": "number" },
-          "offset": { "type": "number" },
-          "limit": { "type": "number" },
+          "total": {
+            "type": "integer",
+            "description": "Total matches before paging"
+          },
+          "offset": {
+            "type": "integer"
+          },
+          "limit": {
+            "type": "integer"
+          },
           "agents": {
             "type": "array",
             "items": {
               "type": "object",
               "properties": {
-                "name": { "type": "string" },
-                "slug": { "type": "string" },
-                "url": { "type": "string" },
-                "categories": { "type": "array", "items": { "type": "string" } },
-                "accessMethods": { "type": "array", "items": { "type": "string" } },
-                "official": { "type": "boolean" }
+                "name": {
+                  "type": "string"
+                },
+                "slug": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string"
+                },
+                "categories": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "accessMethods": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "verified": {
+                  "type": "boolean",
+                  "description": "Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working."
+                },
+                "official": {
+                  "type": "boolean",
+                  "description": "Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified."
+                },
+                "featured": {
+                  "type": "boolean",
+                  "description": "Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order."
+                }
               }
             }
           }
@@ -40,44 +131,173 @@
     },
     {
       "name": "get_agent",
-      "description": "Get full detail for one agent by slug: description, provider, categories, access methods, tags, and links.",
-      "annotations": { "readOnlyHint": true },
+      "description": "Full detail for one agent by slug: skills, auth, streaming/push support, tags, provider links. Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working. Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified. Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order.",
+      "annotations": {
+        "readOnlyHint": true
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": "string",
+            "description": "Agent slug, e.g. \"playwright-mcp\""
+          }
+        },
+        "required": [
+          "slug"
+        ]
+      },
       "outputSchema": {
         "type": "object",
         "properties": {
-          "name": { "type": "string" },
-          "slug": { "type": "string" },
-          "url": { "type": "string" },
-          "homepage": { "type": ["string", "null"] },
-          "provider": { "type": ["string", "null"] },
-          "description": { "type": "string" },
-          "categories": { "type": "array", "items": { "type": "string" } },
-          "accessMethods": { "type": "array", "items": { "type": "string" } },
-          "tags": { "type": "array", "items": { "type": "string" } },
-          "verified": { "type": "boolean" },
-          "official": { "type": "boolean" },
-          "officialVendor": { "type": ["string", "null"] },
-          "tier": { "type": "string" },
-          "error": { "type": "string" }
+          "name": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "provider": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "accessMethods": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "verified": {
+            "type": "boolean",
+            "description": "Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working."
+          },
+          "official": {
+            "type": "boolean",
+            "description": "Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified."
+          },
+          "featured": {
+            "type": "boolean",
+            "description": "Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order."
+          },
+          "officialVendor": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "homepage": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "providerUrl": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "authType": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "skills": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "supportsStreaming": {
+            "type": "boolean"
+          },
+          "supportsPushNotifications": {
+            "type": "boolean"
+          },
+          "tier": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "updatedAt": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
         }
       }
     },
     {
       "name": "list_categories",
-      "description": "List all directory categories with their agent counts. Slugs are valid inputs for search_agents.",
-      "annotations": { "readOnlyHint": true },
+      "description": "All directory categories with live agent counts. Slugs are valid inputs for search_agents.",
+      "annotations": {
+        "readOnlyHint": true
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
       "outputSchema": {
         "type": "object",
-        "required": ["categories"],
+        "required": [
+          "categories"
+        ],
         "properties": {
           "categories": {
             "type": "array",
             "items": {
               "type": "object",
-              "required": ["slug", "count"],
+              "required": [
+                "slug",
+                "name",
+                "agentCount"
+              ],
               "properties": {
-                "slug": { "type": "string" },
-                "count": { "type": "number" }
+                "slug": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "agentCount": {
+                  "type": "integer"
+                }
               }
             }
           }

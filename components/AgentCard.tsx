@@ -1,47 +1,79 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { ExternalLink, Shield, Zap, Verified } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
 import { AccessMethodBadges } from '@/components/ui/AccessMethodBadges';
 import { OfficialBadge } from '@/components/ui/OfficialBadge';
-import type { Agent } from '@/lib/types';
-import { authTypeLabel, truncate } from '@/lib/utils';
+import { VerifiedBadge } from '@/components/VerifiedBadge';
+import type { Agent, Category } from '@/lib/types';
+import { authTypeLabel, pluralize, truncate } from '@/lib/utils';
 
-export function AgentCard({ agent }: { agent: Agent }) {
+/**
+ * The fields an AgentCard renders. It is a Server Component, so only its
+ * rendered markup reaches the RSC payload, never the agent object. On /browse
+ * that markup is repeated for every listing, so keep it lean: no decorative
+ * per-card icons (each inline SVG costs about 1 KB across HTML and payload).
+ */
+export type AgentCardData = Pick<
+  Agent,
+  | 'slug'
+  | 'name'
+  | 'providerName'
+  | 'description'
+  | 'iconUrl'
+  | 'verified'
+  | 'official'
+  | 'officialVendor'
+  | 'featured'
+  | 'tier'
+  | 'accessMethods'
+  | 'authType'
+> & {
+  categories: Pick<Category, 'id' | 'name'>[];
+  /** Only the count is shown. */
+  skills: readonly unknown[];
+};
+
+export function AgentCard({ agent }: { agent: AgentCardData }) {
+  const skillCount = agent.skills.length;
+  const auth = agent.authType === 'none' ? 'No auth' : authTypeLabel(agent.authType);
+  const meta = skillCount > 0 ? `${skillCount} ${pluralize(skillCount, 'skill')} · ${auth}` : auth;
+
   return (
     <Link href={`/agents/${agent.slug}`} className="card block p-5 group">
-      {/* Top row: name + badges */}
-      <div className="flex items-start justify-between gap-2 mb-3">
-        <div className="flex items-center gap-2 min-w-0">
-          {agent.iconUrl ? (
-            <Image
-              src={agent.iconUrl}
-              alt=""
-              width={32}
-              height={32}
-              className="w-8 h-8 rounded-md flex-shrink-0 bg-white/5"
-            />
-          ) : (
-            <div className="w-8 h-8 rounded-md flex-shrink-0 bg-[var(--accent-subtle)] flex items-center justify-center">
-              <span className="mono text-xs text-[var(--accent)] font-bold">
-                {agent.name[0]}
-              </span>
-            </div>
-          )}
-          <h3 className="mono text-sm font-semibold text-[var(--text-primary)] truncate group-hover:text-[var(--accent)] transition-colors">
+      {/* Name and provider get the full width, so names wrap instead of truncating */}
+      <div className="flex items-start gap-2.5 mb-3">
+        {agent.iconUrl ? (
+          <Image
+            src={agent.iconUrl}
+            alt=""
+            width={32}
+            height={32}
+            className="w-8 h-8 rounded-md shrink-0 bg-white/5"
+          />
+        ) : (
+          <div
+            aria-hidden="true"
+            className="w-8 h-8 rounded-md shrink-0 bg-[var(--accent-subtle)] flex items-center justify-center mono text-xs text-[var(--accent)] font-bold"
+          >
+            {agent.name[0]}
+          </div>
+        )}
+        <div className="min-w-0 flex-1">
+          <h3 className="mono text-sm font-semibold leading-snug wrap-break-word text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">
             {agent.name}
           </h3>
-        </div>
-        <div className="flex items-center gap-1 flex-shrink-0">
-          {agent.verified && (
-            <Verified className="w-4 h-4 text-[var(--accent)]" />
-          )}
-          <OfficialBadge agent={agent} />
-          {agent.featured && (
-            <Badge variant="amber">Featured</Badge>
-          )}
+          <p className="text-xs text-[var(--text-secondary)] wrap-break-word">{`by ${agent.providerName}`}</p>
         </div>
       </div>
+
+      {/* Badges on their own row */}
+      {(agent.verified || agent.official || agent.featured) && (
+        <div className="flex flex-wrap items-center gap-1.5 mb-3">
+          {agent.verified && <VerifiedBadge />}
+          <OfficialBadge agent={agent} />
+          {agent.featured && <Badge variant="amber">Featured</Badge>}
+        </div>
+      )}
 
       {/* Description */}
       <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-4">
@@ -67,19 +99,12 @@ export function AgentCard({ agent }: { agent: Agent }) {
         </div>
       )}
 
-      {/* Bottom meta */}
-      <div className="flex items-center justify-between text-xs text-[var(--text-muted)]">
-        <div className="flex items-center gap-3">
-          <span className="flex items-center gap-1">
-            <Zap className="w-3 h-3" />
-            {agent.skills.length} skill{agent.skills.length !== 1 ? 's' : ''}
-          </span>
-          <span className="flex items-center gap-1">
-            <Shield className="w-3 h-3" />
-            {authTypeLabel(agent.authType)}
-          </span>
-        </div>
-        <ExternalLink className="w-3.5 h-3.5 opacity-0 group-hover:opacity-60 transition-opacity" />
+      {/* Bottom meta: the skill count only when there are skills */}
+      <div className="flex items-center justify-between gap-2 text-xs text-[var(--text-secondary)]">
+        <span>{meta}</span>
+        <span aria-hidden="true" className="opacity-0 group-hover:opacity-60 transition-opacity">
+          →
+        </span>
       </div>
     </Link>
   );

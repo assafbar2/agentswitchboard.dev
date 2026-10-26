@@ -1,0 +1,63 @@
+{
+  "id": "amazon-bedrock",
+  "name": "Amazon Bedrock",
+  "slug": "amazon-bedrock",
+  "description": "Serves 100+ foundation models from Anthropic, OpenAI, Amazon, DeepSeek, and others through one managed AWS API for teams building generative AI apps.",
+  "providerName": "Amazon Web Services",
+  "providerUrl": "https://aws.amazon.com/",
+  "agentUrl": "https://aws.amazon.com/bedrock/",
+  "categories": [
+    "language",
+    "infrastructure"
+  ],
+  "tags": [
+    "foundation-models",
+    "model-inference",
+    "converse-api",
+    "openai-compatible",
+    "guardrails",
+    "cross-region-inference",
+    "aws"
+  ],
+  "skills": [
+    {
+      "id": "converse-api",
+      "name": "Converse API",
+      "description": "Calls any supported model through one consistent messages API, with tool use, guardrails, and streaming via ConverseStream."
+    },
+    {
+      "id": "openai-compatible-apis",
+      "name": "OpenAI-Compatible APIs",
+      "description": "Accepts Responses and Chat Completions requests on the bedrock-runtime endpoint for supported models."
+    },
+    {
+      "id": "cross-region-inference",
+      "name": "Cross-Region Inference",
+      "description": "Routes requests through global and geographic inference profiles for higher throughput and lower per-token cost."
+    },
+    {
+      "id": "web-search",
+      "name": "Web Search",
+      "description": "Grounds OpenAI GPT models on Bedrock in current web results through a built-in server-side tool in the Responses API."
+    },
+    {
+      "id": "guardrails",
+      "name": "Guardrails",
+      "description": "Applies configured guardrails for content, PII, denied topics, and contextual grounding to model inputs and outputs."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-17T09:03:45.911Z",
+  "updatedAt": "2026-10-17T09:03:45.911Z"
+}

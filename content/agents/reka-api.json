@@ -1,0 +1,64 @@
+{
+  "id": "reka-api",
+  "name": "Reka API",
+  "slug": "reka-api",
+  "description": "Serves Reka's multimodal models and selected open models through an OpenAI-compatible API, plus a Vision API and MCP server for video search and Q&A, for developers.",
+  "providerName": "Reka",
+  "providerUrl": "https://reka.ai",
+  "agentUrl": "https://docs.reka.ai",
+  "categories": [
+    "language",
+    "infrastructure",
+    "content-media"
+  ],
+  "tags": [
+    "reka",
+    "multimodal",
+    "openai-compatible",
+    "video-understanding",
+    "video-search",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "multimodal-chat",
+      "name": "Multimodal Chat",
+      "description": "Sends text, images and short videos to Reka and open models through OpenAI-compatible Chat Completions."
+    },
+    {
+      "id": "video-search",
+      "name": "Video Search",
+      "description": "Finds timestamped moments across a video library with semantic or text search."
+    },
+    {
+      "id": "video-chat",
+      "name": "Video Chat",
+      "description": "Answers questions about one or more uploaded videos."
+    },
+    {
+      "id": "clip-generation",
+      "name": "Clip Generation",
+      "description": "Generates short highlight clips from longer videos."
+    },
+    {
+      "id": "vision-mcp-server",
+      "name": "Vision MCP Server",
+      "description": "Lets MCP clients upload, index, search and question videos through the reka-mcp server."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-10-17T09:03:45.933Z",
+  "updatedAt": "2026-10-17T09:03:45.933Z"
+}

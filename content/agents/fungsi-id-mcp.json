@@ -1,0 +1,66 @@
+{
+  "id": "fungsi-id-mcp",
+  "name": "Fungsi.id MCP",
+  "slug": "fungsi-id-mcp",
+  "description": "Search Indonesian job listings, company profiles, and city, province, category and job-type metadata through eight read-only MCP tools over Streamable HTTP; no account or API key required.",
+  "providerName": "Fungsi.id",
+  "providerUrl": "https://fungsi.id",
+  "version": "1.0.0",
+  "agentUrl": "https://fungsi.id/mcp",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "job-search",
+    "job-board",
+    "indonesia",
+    "hiring",
+    "recruiting",
+    "mcp"
+  ],
+  "skills": [
+    {
+      "id": "job-search",
+      "name": "Job Search",
+      "description": "Search Indonesian job listings by keyword with paginated results via the search_jobs tool."
+    },
+    {
+      "id": "job-detail-lookup",
+      "name": "Job Detail Lookup",
+      "description": "Fetch a full job record by slug, including description, company, location and publish date (get_job)."
+    },
+    {
+      "id": "company-profile-lookup",
+      "name": "Company Profile Lookup",
+      "description": "Retrieve a company profile with website, description, cities and job categories (get_company)."
+    },
+    {
+      "id": "company-job-listings",
+      "name": "Company Job Listings",
+      "description": "List all open positions posted by a single company, paginated (get_company_jobs)."
+    },
+    {
+      "id": "location-metadata",
+      "name": "Location Metadata",
+      "description": "List Indonesian cities and all 38 provinces with their open-job counts (list_cities, list_provinces)."
+    },
+    {
+      "id": "category-and-type-metadata",
+      "name": "Category And Type Metadata",
+      "description": "List job categories and job types such as full-time and part-time with open-job counts (list_categories, list_job_types)."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

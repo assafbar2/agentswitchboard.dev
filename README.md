@@ -1,8 +1,12 @@
 # Agent Switchboard
 
-**The curated directory for the agentic web** — 300+ verified AI agents, MCP
-servers, and agentic tools with real API, MCP, CLI, or browser-extension
-access. Live at **[agentswitchboard.dev](https://agentswitchboard.dev)**.
+**The curated directory for the agentic web** — AI agents, MCP servers, and
+agentic tools with real API, MCP, CLI, or browser-extension access. Live at
+**[agentswitchboard.dev](https://agentswitchboard.dev)**.
+
+A listing marked **Verified** is one we checked works: its URLs load and its
+declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the
+label drops if it stops working.
 
 ## 🔌 This directory is itself an MCP server
 
@@ -50,7 +54,7 @@ content/
 There is no database and no CMS. Editing content = editing files. Merging to
 `main` = publishing. Every entry is schema-validated in CI
 ([`scripts/validate-content.ts`](scripts/validate-content.ts)) — a bad entry
-cannot merge. A weekly job link-checks all ~480 URLs in the catalog.
+cannot merge. A weekly job link-checks every listing's agent and provider URLs.
 
 **Want to add or fix a listing? See [CONTRIBUTING.md](CONTRIBUTING.md).**
 Non-developers: [agentswitchboard.dev/submit](https://agentswitchboard.dev/submit).

@@ -1,0 +1,68 @@
+{
+  "id": "robylon",
+  "name": "Robylon",
+  "slug": "robylon",
+  "description": "Handles customer support across chat, email, WhatsApp, tickets and voice; exposes a REST API for workflow and voice triggers plus a read-only OAuth-gated MCP server over support data.",
+  "providerName": "Robylon",
+  "providerUrl": "https://www.robylon.ai",
+  "agentUrl": "https://www.robylon.ai/docs/mcp/overview",
+  "categories": [
+    "customer-support",
+    "communication",
+    "voice-messaging"
+  ],
+  "tags": [
+    "customer-support",
+    "helpdesk",
+    "whatsapp",
+    "voice",
+    "ticketing",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "get-analytics",
+      "name": "Support Analytics",
+      "description": "Returns workspace support analytics through the read-only get_analytics MCP tool."
+    },
+    {
+      "id": "search-conversations",
+      "name": "Conversation Search",
+      "description": "Searches past support conversations across channels with the read-only search_conversations MCP tool."
+    },
+    {
+      "id": "get-conversation",
+      "name": "Conversation Retrieval",
+      "description": "Fetches a single support conversation and its messages with the read-only get_conversation MCP tool."
+    },
+    {
+      "id": "list-workspaces",
+      "name": "Workspace Listing",
+      "description": "Lists the Robylon workspaces an authorized account can read, using the read-only list_workspaces MCP tool."
+    },
+    {
+      "id": "workflow-triggers",
+      "name": "Workflow Trigger API",
+      "description": "Starts a configured support workflow through the authenticated POST /triggers/v2/execute REST endpoint."
+    },
+    {
+      "id": "voice-call-triggers",
+      "name": "Voice Call Triggers",
+      "description": "Places and tests outbound voice agent calls through the authenticated /voice/agent/trigger-call and test-call endpoints."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

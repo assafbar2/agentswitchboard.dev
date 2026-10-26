@@ -9,9 +9,11 @@ export function CategoryCard({
   index = 0,
 }: {
   category: Category;
+  /** Overrides category.agentCount (which getAllCategories fills in). */
   agentCount?: number;
   index?: number;
 }) {
+  const count = agentCount ?? category.agentCount;
   return (
     <Link
       href={`/categories/${category.slug}`}
@@ -25,11 +27,15 @@ export function CategoryCard({
         <h3 className="text-sm font-medium text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors truncate">
           {category.name}
         </h3>
-        {(category.description || agentCount !== undefined) && (
+        {(category.description || count !== undefined) && (
           <p className="text-xs text-[var(--text-muted)] mt-0.5 truncate">
-            {agentCount !== undefined
-              ? `${agentCount} agent${agentCount !== 1 ? 's' : ''}`
-              : category.description}
+            {count !== undefined && (
+              <span className="mono text-[var(--text-secondary)]">
+                {count} listing{count !== 1 ? 's' : ''}
+              </span>
+            )}
+            {count !== undefined && category.description && ' · '}
+            {category.description}
           </p>
         )}
       </div>

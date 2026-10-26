@@ -1,0 +1,68 @@
+{
+  "id": "placement-api",
+  "name": "Placement API",
+  "slug": "placement-api",
+  "description": "Search, compare and buy SEO link placements across 10 supplier marketplaces via one API or MCP, with independently measured domain authority, held quotes and server-side spend caps.",
+  "providerName": "Future Bets, Inc.",
+  "providerUrl": "https://futurebets.co",
+  "agentUrl": "https://placementapi.com/api",
+  "categories": [
+    "sales-marketing",
+    "research",
+    "commerce-payments"
+  ],
+  "tags": [
+    "seo",
+    "backlinks",
+    "link-building",
+    "domain-authority",
+    "link-marketplace",
+    "prepaid-credits"
+  ],
+  "skills": [
+    {
+      "id": "search-placements",
+      "name": "Search placements",
+      "description": "Searches deduplicated link inventory from 10 supplier marketplaces by domain rating, price, niche, geo and language (search_placements, GET /v1/offers)."
+    },
+    {
+      "id": "plan-links",
+      "name": "Plan a link basket",
+      "description": "Turns a brief into a costed basket of placements held at the quoted price, with up to two alternatives per line (plan_links, POST /v1/quote)."
+    },
+    {
+      "id": "compare-domain",
+      "name": "Compare domain offers",
+      "description": "Lists every way to buy one domain, cheapest first, with independently measured traffic and a verification verdict (compare_domain, GET /v1/sites/{domain})."
+    },
+    {
+      "id": "gap-map",
+      "name": "Map competitor link gaps",
+      "description": "Returns the referring domains a target's competitors have and it lacks, priced and held (gap_map, POST /v1/targets/gap)."
+    },
+    {
+      "id": "keyword-winners",
+      "name": "Find keyword winners",
+      "description": "Reports who ranks for a keyword, who links to them, and which of those publishers the catalogue carries (keyword_winners, GET /v1/keywords/winners)."
+    },
+    {
+      "id": "place-order",
+      "name": "Place and track orders",
+      "description": "Places an order against prepaid credits with an idempotency key and reports delivery state; only for keys issued with the ordering scope (place_order, POST /v1/orders)."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

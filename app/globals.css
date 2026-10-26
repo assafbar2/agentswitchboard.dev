@@ -6,16 +6,17 @@
   /* Surface palette — deep blacks with subtle blue undertone */
   --bg-primary: #0a0a0f;
   --bg-secondary: #111118;
-  --bg-tertiary: #18182200;
+  --bg-tertiary: #181822;
   --bg-elevated: #1a1a24;
   --bg-card: #12121a;
   --bg-card-hover: #16161f;
 
-  /* Text hierarchy */
+  /* Text hierarchy. Every text token meets WCAG AA (4.5:1) on bg-primary,
+     bg-secondary, bg-card and bg-card-hover; check before darkening. */
   --text-primary: #e8e8ed;
   --text-secondary: #8888a0;
-  --text-tertiary: #55556a;
-  --text-muted: #44445a;
+  --text-tertiary: #82829a;
+  --text-muted: #7e7e96;
 
   /* Accent — electric green (terminal cursor) */
   --accent: #00ff88;
@@ -42,6 +43,10 @@
   --radius-lg: 14px;
   --radius-xl: 20px;
 
+  /* Verified label — its own tokens so it meets 4.5:1 regardless of --accent */
+  --verified-fg: #4ade80;
+  --verified-bg: rgba(74, 222, 128, 0.12);
+
   /* Fonts */
   --font-mono: var(--font-jetbrains), 'JetBrains Mono', ui-monospace, monospace;
   --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
@@ -50,6 +55,9 @@
 /* ── Light mode overrides ────────────────────────────────────────── */
 
 html.light {
+  /* Native controls and scrollbars follow the page theme (html sets dark). */
+  color-scheme: light;
+
   --bg-primary: #f8f8fc;
   --bg-secondary: #f0f0f6;
   --bg-tertiary: #e8e8f0;
@@ -57,15 +65,21 @@ html.light {
   --bg-card: #ffffff;
   --bg-card-hover: #f4f4fa;
 
+  /* Same AA rule as dark: 4.5:1 on every light surface, including the
+     accent when it is used as link text or as a button fill under
+     --bg-primary text. */
   --text-primary: #111118;
   --text-secondary: #44445a;
-  --text-tertiary: #8888a0;
-  --text-muted: #aaaabc;
+  --text-tertiary: #5c5c70;
+  --text-muted: #6a6a7e;
 
-  --accent: #00aa55;
-  --accent-dim: #008844;
+  --accent: #00733d;
+  --accent-dim: #005f30;
   --accent-glow: rgba(0, 170, 85, 0.12);
   --accent-subtle: rgba(0, 170, 85, 0.06);
+
+  --verified-fg: #1e7a3c;
+  --verified-bg: #e8f4eb;
 
   --blue: #2255dd;
   --blue-glow: rgba(34, 85, 221, 0.08);
@@ -155,6 +169,11 @@ body::after {
   color: #fff;
 }
 
+html.light ::selection {
+  background: rgba(0, 115, 61, 0.18);
+  color: var(--text-primary);
+}
+
 /* ── Scrollbar ───────────────────────────────────────────────────── */
 
 ::-webkit-scrollbar {
@@ -173,6 +192,14 @@ body::after {
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.14);
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.14);
+}
+
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.24);
 }
 
 /* ── Animations ──────────────────────────────────────────────────── */
@@ -196,6 +223,13 @@ body::after {
 @keyframes slide-up {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Movement only, never opacity: the hero holds the LCP element and the
+   search box, so they must paint visible on the first frame. */
+@keyframes rise {
+  from { transform: translateY(6px); }
+  to { transform: none; }
 }
 
 @keyframes count-up {
@@ -223,6 +257,10 @@ body::after {
   animation: slide-up 0.6s ease-out both;
 }
 
+.animate-rise {
+  animation: rise 0.4s ease-out both;
+}
+
 .animate-shimmer {
   background: linear-gradient(
     90deg,
@@ -243,6 +281,21 @@ body::after {
   color: var(--accent);
   animation: terminal-blink 1s step-end infinite;
   margin-left: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-fade-in,
+  .animate-slide-up,
+  .animate-rise,
+  .animate-shimmer,
+  .animate-pulse-glow,
+  .terminal-cursor::after {
+    animation: none;
+  }
 }
 
 /* Glow effects */

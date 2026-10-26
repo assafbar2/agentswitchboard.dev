@@ -19,7 +19,7 @@
   "supportsPushNotifications": false,
   "status": "published",
   "featured": false,
-  "verified": false,
+  "verified": true,
   "official": true,
   "tier": "free",
   "discoveredBy": "manual",
@@ -27,5 +27,5 @@
     "api"
   ],
   "createdAt": "2026-03-22T09:51:42.397Z",
-  "updatedAt": "2026-03-22T09:51:42.397Z"
+  "updatedAt": "2026-10-25T01:16:46.687Z"
 }

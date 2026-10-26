@@ -1,6 +1,6 @@
 ---
 name: agent-switchboard
-description: Search Agent Switchboard, a public directory of vetted AI agents, MCP servers, and agentic developer tools. Use when the user asks to find an agent or tool that does X, compare listed products, look up a listing by name, or list directory categories.
+description: Search Agent Switchboard, a public, curated directory of AI agents, MCP servers, and agentic developer tools. Use when the user asks to find an agent or tool that does X, compare listed products, look up a listing by name, or list directory categories.
 ---
 
 # Agent Switchboard
@@ -33,8 +33,8 @@ Prefer REST. OpenAPI: https://agentswitchboard.dev/openapi.json
 
 Query notes:
 
-- `q` — free text over name, description, skills, categories, tags, provider. Omit or empty to list (catalog order).
-- `access` — `api` | `mcp` | `cli` | `browser-extension`. Unknown values are ignored.
+- `q` — free text over name, description, skills, categories, tags, provider. Omit or empty to list (catalog order: featured first, then A→Z).
+- `access` — `api` | `mcp` | `cli` | `browser-extension`. `extension` is accepted as an alias of `browser-extension`. Unknown values are ignored.
 - `limit` — 1–50, default 10. `offset` pages through `total`.
 
 Unknown slugs return HTTP 404 `{ "error": "not_found", "message": "…" }`. Search again; do not retry the same slug.
@@ -49,8 +49,9 @@ Optional MCP (only if the client speaks MCP, not required): `POST https://agents
 - If several matches, pick the top few and say that more exist (`total`).
 - If nothing matches, say so and offer a broader `q` or a category from `/api/categories`.
 - `authType` on a listing (`apiKey`, `oauth2`, `bearer`, `none`) is how **that product** authenticates — not Switchboard.
-- `verified: true` means Switchboard marked the listing verified; it is not a Meta or Muse certification.
-- `official: true` means the listing is the vendor's own first-party product (for example Notion's Notion MCP, not a community build). Add `official=true` to search when the user wants the official tool.
+- `verified: true` — Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working. It is Switchboard's own check, not a Meta or Muse certification.
+- `official: true` — Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified. Add `official=true` to search when the user wants the official tool.
+- `featured: true` — Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order.
 
 ## Hard limits
 

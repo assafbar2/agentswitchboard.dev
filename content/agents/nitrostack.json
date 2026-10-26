@@ -1,0 +1,62 @@
+{
+  "id": "nitrostack",
+  "name": "NitroStack",
+  "slug": "nitrostack",
+  "description": "Builds, tests and deploys MCP servers in TypeScript with a decorator-based framework, a scaffolding CLI, a desktop testing studio, and NitroCloud hosting.",
+  "providerName": "NitroStack",
+  "providerUrl": "https://nitrostack.ai",
+  "agentUrl": "https://nitrostack.ai",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "mcp-framework",
+    "mcp-server",
+    "typescript",
+    "decorators",
+    "mcp-hosting",
+    "scaffolding",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "project-scaffolding",
+      "name": "Project Scaffolding",
+      "description": "Creates a new MCP server project from one of five official templates, including starter, OAuth 2.1, and enterprise search."
+    },
+    {
+      "id": "code-generation",
+      "name": "Code Generation",
+      "description": "Generates modules, tools, types, guards and health checks for an existing NitroStack project from the command line."
+    },
+    {
+      "id": "dev-server",
+      "name": "Hot-Reload Dev Server",
+      "description": "Runs the MCP server in development mode with automatic reloading, ready to open in NitroStudio for visual testing."
+    },
+    {
+      "id": "cursor-integration",
+      "name": "Cursor Integration",
+      "description": "Registers the MCP server with Cursor IDE over command, legacy SSE, or streamable HTTP transport with one CLI command."
+    },
+    {
+      "id": "git-push-deploy",
+      "name": "Git-Push Deploys",
+      "description": "Deploys an MCP server to NitroCloud from GitHub, the CLI, or a ZIP, with scale-to-zero compute and custom domains."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-17T09:03:45.941Z",
+  "updatedAt": "2026-10-17T09:03:45.941Z"
+}

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { getAgentCount, getUniqueProviderCount } from '@/lib/catalog';
+import { VerifiedBadge, VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -32,8 +33,9 @@ export default async function AboutPage() {
               Agent Switchboard is a curated directory of AI agents, MCP servers, and agentic
               developer tools. It currently lists {agentCount} agents from {providerCount}{' '}
               providers. Every entry records what an agent actually does and how you reach it —
-              API, MCP, or CLI — so a developer or another agent can go from &ldquo;does something
-              like this exist?&rdquo; to a working integration without a scavenger hunt.
+              API, MCP, CLI, or browser extension — so a developer or another agent can go from
+              &ldquo;does something like this exist?&rdquo; to the right tool without a scavenger
+              hunt.
             </p>
           </section>
 
@@ -69,12 +71,30 @@ export default async function AboutPage() {
                 submit an agent
               </Link>{' '}
               through the form or by opening a pull request against the catalog. Submissions are
-              reviewed by a human before they appear. Listing is free, and inclusion is not an
+              reviewed by a human before they appear, against{' '}
+              <Link href="/submit#rules" className="text-[var(--accent)] hover:underline">
+                published acceptance rules
+              </Link>
+              , and the decision is posted on GitHub. Listing is free, and inclusion is not an
               endorsement — see the{' '}
               <Link href="/disclaimer" className="text-[var(--accent)] hover:underline">
                 disclaimer
               </Link>
               .
+            </p>
+          </section>
+
+          <section id="verification" className="scroll-mt-20">
+            <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2">
+              How we verify
+            </h2>
+            <p className="mb-3">
+              <VerifiedBadge size="md" />
+            </p>
+            <p>{VERIFIED_DEFINITION}</p>
+            <p className="mt-3">
+              Every entry is reviewed before it&rsquo;s listed, but not every listing carries the
+              label: a listing without it hasn&rsquo;t passed the check yet, or no longer does.
             </p>
           </section>
 

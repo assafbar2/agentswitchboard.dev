@@ -3,9 +3,9 @@
   "name": "Codewhale",
   "slug": "codewhale",
   "description": "Runs a terminal coding agent with plan and work modes, approval levels, durable goals, agent teams, and MCP, using hosted or local models through Ollama, vLLM, or SGLang.",
-  "providerName": "Hmbown",
+  "providerName": "Codewhale",
   "providerUrl": "https://codewhale.net/",
-  "agentUrl": "https://github.com/Hmbown/Codewhale",
+  "agentUrl": "https://github.com/codewhale-hq/Codewhale",
   "categories": [
     "code-devtools"
   ],
@@ -57,5 +57,5 @@
     "cli"
   ],
   "createdAt": "2026-10-04T17:55:56.158Z",
-  "updatedAt": "2026-10-04T17:55:56.158Z"
+  "updatedAt": "2026-10-17T09:03:56.241Z"
 }

@@ -1,12 +1,12 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
   "name": "io.github.assafbar2/agentswitchboard",
-  "description": "Search a curated directory of 300+ verified AI agents, MCP servers, and agentic tools.",
+  "description": "Search a curated directory of 800+ AI agents, MCP servers, and agentic tools.",
   "repository": {
     "url": "https://github.com/assafbar2/agentswitchboard.dev",
     "source": "github"
   },
-  "version": "1.0.0",
+  "version": "1.1.0",
   "remotes": [
     {
       "type": "streamable-http",

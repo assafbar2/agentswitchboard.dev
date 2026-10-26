@@ -1,0 +1,67 @@
+{
+  "id": "unquant",
+  "name": "Unquant",
+  "slug": "unquant",
+  "description": "Serves delayed and end-of-day market data, company fundamentals, analyst ratings, financial news, US macro indicators, and US Congress trade disclosures over a keyless remote MCP endpoint.",
+  "providerName": "Streetbeat",
+  "providerUrl": "https://streetbeat.com",
+  "version": "1.26.0",
+  "agentUrl": "https://unquant.ai",
+  "categories": [
+    "finance",
+    "data-analytics"
+  ],
+  "tags": [
+    "market-data",
+    "fundamentals",
+    "financial-news",
+    "macro-indicators",
+    "congress-trading",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "market-quotes",
+      "name": "Market Quotes & History",
+      "description": "Returns delayed and end-of-day quotes, OHLCV price history, and symbol search via market_quote, market_price_history, and market_symbol_search."
+    },
+    {
+      "id": "company-fundamentals",
+      "name": "Company Fundamentals",
+      "description": "Pulls company profiles, financial statements, earnings, analyst ratings, and ETF holdings through the market_* fundamentals tools."
+    },
+    {
+      "id": "financial-news",
+      "name": "Financial News Retrieval",
+      "description": "Fetches stock-specific and general financial news, article bodies, and news impact analysis via news_stock, news_general, news_impacts, and news_article."
+    },
+    {
+      "id": "us-macro-indicators",
+      "name": "US Macro Indicators",
+      "description": "Reads US macroeconomic indicators, release calendars, and a themed current-conditions summary via macro_indicator, macro_calendar, and macro_current_conditions."
+    },
+    {
+      "id": "congress-trade-disclosures",
+      "name": "Congress Trade Disclosures",
+      "description": "Queries US Congress stock trade disclosures and aggregates by member or ticker via politics_us_congress_trades and politics_us_congress_aggregate."
+    },
+    {
+      "id": "dataset-catalog",
+      "name": "Dataset Catalog Browsing",
+      "description": "Lists, describes, searches, and previews the available datasets so an agent can discover coverage before querying, via the datasets_* and catalog_* tools."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

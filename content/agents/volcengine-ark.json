@@ -1,0 +1,63 @@
+{
+  "id": "volcengine-ark",
+  "name": "Volcengine Ark",
+  "slug": "volcengine-ark",
+  "description": "Serves ByteDance's Doubao models and third-party models through Volcengine's API, with text, vision, image and video generation plus tool calling, for developers building on Volcengine.",
+  "providerName": "Volcengine (ByteDance)",
+  "providerUrl": "https://www.volcengine.com",
+  "agentUrl": "https://www.volcengine.com/product/ark",
+  "categories": [
+    "language",
+    "infrastructure"
+  ],
+  "tags": [
+    "doubao",
+    "volcengine",
+    "llm-api",
+    "multimodal",
+    "image-generation",
+    "video-generation",
+    "function-calling"
+  ],
+  "skills": [
+    {
+      "id": "text-generation",
+      "name": "Text Generation and Deep Thinking",
+      "description": "Generates text with optional deep thinking through the Responses and Chat APIs."
+    },
+    {
+      "id": "multimodal-understanding",
+      "name": "Multimodal Understanding",
+      "description": "Analyzes images, video and PDF files, including visual grounding that returns object coordinates."
+    },
+    {
+      "id": "image-generation",
+      "name": "Image Generation",
+      "description": "Generates and edits images with Doubao Seedream models."
+    },
+    {
+      "id": "video-generation",
+      "name": "Video Generation",
+      "description": "Creates video from text, images or reference frames with Doubao Seedance models."
+    },
+    {
+      "id": "tool-calling",
+      "name": "Tool Calling",
+      "description": "Lets models use built-in web search and knowledge-base retrieval, custom functions, and remote MCP servers."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-17T09:03:45.926Z",
+  "updatedAt": "2026-10-17T09:03:45.926Z"
+}

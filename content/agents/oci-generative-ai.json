@@ -1,0 +1,64 @@
+{
+  "id": "oci-generative-ai",
+  "name": "OCI Generative AI",
+  "slug": "oci-generative-ai",
+  "description": "Provides Oracle Cloud's managed model inference, OpenAI-compatible Responses API, agent tools, vector stores and guardrails, for enterprises building governed AI apps and agents on OCI.",
+  "providerName": "Oracle",
+  "providerUrl": "https://www.oracle.com/artificial-intelligence/",
+  "agentUrl": "https://docs.oracle.com/en-us/iaas/Content/generative-ai/home.htm",
+  "categories": [
+    "language",
+    "infrastructure"
+  ],
+  "tags": [
+    "oracle-cloud",
+    "openai-compatible",
+    "responses-api",
+    "guardrails",
+    "nl2sql",
+    "vector-stores",
+    "enterprise-llm"
+  ],
+  "skills": [
+    {
+      "id": "responses-api",
+      "name": "Responses API",
+      "description": "Calls hosted or imported models through an OpenAI-compatible Responses API with conversation state, streaming and background runs."
+    },
+    {
+      "id": "agent-tools",
+      "name": "Agent Tools",
+      "description": "Adds file search, code interpreter, function calling and MCP calling to Responses API requests."
+    },
+    {
+      "id": "embeddings-rerank",
+      "name": "Embeddings and Rerank",
+      "description": "Runs chat, embedding and rerank tasks through the OCI-native inference API."
+    },
+    {
+      "id": "guardrails",
+      "name": "Guardrails",
+      "description": "Applies content moderation, prompt-injection detection and PII detection to model inputs and outputs."
+    },
+    {
+      "id": "nl2sql",
+      "name": "NL2SQL",
+      "description": "Turns natural-language questions into validated SQL over enterprise data using a semantic store."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-10-17T09:03:45.925Z",
+  "updatedAt": "2026-10-17T09:03:45.925Z"
+}

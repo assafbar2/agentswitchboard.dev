@@ -1,12 +1,14 @@
 import { getAgentBySlug, getEveryAgent } from '@/lib/catalog';
 import { Badge } from '@/components/ui/Badge';
 import { OfficialBadge } from '@/components/ui/OfficialBadge';
+import { AccessMethodBadges } from '@/components/ui/AccessMethodBadges';
+import { VerifiedBadge } from '@/components/VerifiedBadge';
 import { AgentCard } from '@/components/AgentCard';
 import { JsonLd } from '@/components/JsonLd';
 import { getRelatedAgents } from '@/lib/related';
 import { notFound } from 'next/navigation';
-import { Verified, ExternalLink, Zap, Shield, Radio, Bell } from 'lucide-react';
-import { authTypeLabel } from '@/lib/utils';
+import { ExternalLink, Zap, Shield, Plug } from 'lucide-react';
+import { authTypeLabel, pluralize } from '@/lib/utils';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
@@ -66,6 +68,8 @@ export default async function AgentPage({
 
   const related = getRelatedAgents(agent, allAgents);
 
+  // No `offers`: the catalog has no pricing data, and "no auth" does not mean
+  // free (paid products such as Midjourney list authType "none").
   const agentSchema = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
@@ -79,10 +83,9 @@ export default async function AgentPage({
       name: agent.providerName,
       url: agent.providerUrl,
     },
-    ...(agent.authType === 'none'
-      ? { offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } }
-      : {}),
   };
+
+  const skillCount = agent.skills.length;
 
   const fields: [string, string][] = [
     ['name', agent.name],
@@ -116,7 +119,7 @@ export default async function AgentPage({
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
                 <h1 className="text-2xl font-bold tracking-tight">{agent.name}</h1>
-                {agent.verified && <Verified className="w-5 h-5 text-[var(--accent)]" />}
+                {agent.verified && <VerifiedBadge size="md" />}
                 <OfficialBadge agent={agent} />
                 {agent.featured && <Badge variant="amber">Featured</Badge>}
                 {agent.tier === 'premium' && <Badge variant="amber">Premium</Badge>}
@@ -145,29 +148,38 @@ export default async function AgentPage({
           {/* Description */}
           <p className="text-[var(--text-secondary)] leading-relaxed mb-8">{agent.description}</p>
 
-          {/* Meta cards */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
-            <div className="card p-3 text-center">
-              <Zap className="w-4 h-4 mx-auto mb-1 text-[var(--accent)]" />
-              <div className="mono text-lg font-bold">{agent.skills.length}</div>
-              <div className="text-xs text-[var(--text-muted)]">Skills</div>
+          {/* Meta cards: how you reach it, how it authenticates, what it does.
+              Labels come first in the DOM (read as "Access: API, MCP") and
+              sit under the value visually. */}
+          <dl className={`grid grid-cols-2 gap-3 mb-8 ${skillCount > 0 ? 'sm:grid-cols-3' : ''}`}>
+            <div className={`card p-3 flex flex-col items-center text-center ${skillCount > 0 ? 'col-span-2 sm:col-span-1' : ''}`}>
+              <dt className="order-last mt-1 text-xs text-[var(--text-muted)]">Access</dt>
+              <dd className="flex flex-col items-center [&>div]:justify-center">
+                <Plug aria-hidden="true" className="w-4 h-4 mb-1 text-[var(--accent)]" />
+                {agent.accessMethods.length > 0 ? (
+                  <AccessMethodBadges methods={agent.accessMethods} size="md" />
+                ) : (
+                  <span className="mono text-sm font-bold">Not listed</span>
+                )}
+              </dd>
             </div>
-            <div className="card p-3 text-center">
-              <Shield className="w-4 h-4 mx-auto mb-1 text-[var(--blue)]" />
-              <div className="mono text-sm font-bold">{authTypeLabel(agent.authType)}</div>
-              <div className="text-xs text-[var(--text-muted)]">Auth</div>
+            <div className="card p-3 flex flex-col items-center text-center">
+              <dt className="order-last text-xs text-[var(--text-muted)]">Auth</dt>
+              <dd className="flex flex-col items-center mono text-sm font-bold">
+                <Shield aria-hidden="true" className="w-4 h-4 mb-1 text-[var(--blue)]" />
+                {authTypeLabel(agent.authType)}
+              </dd>
             </div>
-            <div className="card p-3 text-center">
-              <Radio className="w-4 h-4 mx-auto mb-1 text-[var(--amber)]" />
-              <div className="mono text-sm font-bold">{agent.supportsStreaming ? 'Yes' : 'No'}</div>
-              <div className="text-xs text-[var(--text-muted)]">Streaming</div>
-            </div>
-            <div className="card p-3 text-center">
-              <Bell className="w-4 h-4 mx-auto mb-1 text-[var(--rose)]" />
-              <div className="mono text-sm font-bold">{agent.supportsPushNotifications ? 'Yes' : 'No'}</div>
-              <div className="text-xs text-[var(--text-muted)]">Push</div>
-            </div>
-          </div>
+            {skillCount > 0 && (
+              <div className="card p-3 flex flex-col items-center text-center">
+                <dt className="order-last text-xs text-[var(--text-muted)]">{pluralize(skillCount, 'Skill')}</dt>
+                <dd className="flex flex-col items-center mono text-lg font-bold">
+                  <Zap aria-hidden="true" className="w-4 h-4 mb-1 text-[var(--accent)]" />
+                  {skillCount}
+                </dd>
+              </div>
+            )}
+          </dl>
 
           {/* Skills */}
           {agent.skills.length > 0 && (

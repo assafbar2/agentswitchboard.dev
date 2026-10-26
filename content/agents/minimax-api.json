@@ -1,0 +1,63 @@
+{
+  "id": "minimax-api",
+  "name": "MiniMax API Platform",
+  "slug": "minimax-api",
+  "description": "Serves MiniMax's M-series coding and agent models through Anthropic- and OpenAI-compatible APIs, plus video, speech, image and music generation, for developers building agents.",
+  "providerName": "MiniMax AI",
+  "providerUrl": "https://www.minimax.io",
+  "agentUrl": "https://platform.minimax.io",
+  "categories": [
+    "language",
+    "infrastructure"
+  ],
+  "tags": [
+    "minimax",
+    "llm-api",
+    "anthropic-compatible",
+    "openai-compatible",
+    "text-to-speech",
+    "video-generation",
+    "music-generation"
+  ],
+  "skills": [
+    {
+      "id": "tool-use-interleaved-thinking",
+      "name": "Tool Use and Interleaved Thinking",
+      "description": "Runs M-series models that interleave reasoning with tool calls for multi-step agent workflows."
+    },
+    {
+      "id": "video-generation",
+      "name": "Video Generation",
+      "description": "Creates videos from text, images or first and last frames with MiniMax H-series models."
+    },
+    {
+      "id": "text-to-speech",
+      "name": "Text to Speech and Voice Cloning",
+      "description": "Synthesizes speech over HTTP or streaming WebSocket and clones or designs custom voices."
+    },
+    {
+      "id": "image-generation",
+      "name": "Image Generation",
+      "description": "Generates images from text or reference images."
+    },
+    {
+      "id": "music-generation",
+      "name": "Music Generation",
+      "description": "Generates songs from a style prompt and lyrics, and writes or edits lyrics."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-17T09:03:45.928Z",
+  "updatedAt": "2026-10-17T09:03:45.928Z"
+}

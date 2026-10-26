@@ -1,0 +1,57 @@
+{
+  "id": "ibm-bob",
+  "name": "IBM Bob",
+  "slug": "ibm-bob",
+  "description": "Assists enterprise developers with an agentic IDE and the Bob Shell CLI that plan, write, refactor and document code, run commands, and plug into CI/CD pipelines.",
+  "providerName": "IBM",
+  "providerUrl": "https://www.ibm.com",
+  "agentUrl": "https://bob.ibm.com",
+  "categories": [
+    "code-devtools",
+    "autonomous-agents"
+  ],
+  "tags": [
+    "agentic-ide",
+    "coding-cli",
+    "ci-cd",
+    "mcp-client",
+    "subagents",
+    "enterprise-development"
+  ],
+  "skills": [
+    {
+      "id": "agent-ask-plan-modes",
+      "name": "Agent, Ask and Plan Modes",
+      "description": "Switches between autonomous editing, codebase Q&A without changes, and planning before implementation."
+    },
+    {
+      "id": "non-interactive-shell",
+      "name": "Non-Interactive Bob Shell",
+      "description": "Runs Bob tasks from scripts and CI/CD pipelines, authenticated with an API key."
+    },
+    {
+      "id": "subagents",
+      "name": "Subagents",
+      "description": "Splits complex tasks into parallel subagents in focused modes, each approved before it starts."
+    },
+    {
+      "id": "mcp-tools",
+      "name": "MCP Tools",
+      "description": "Connects local or remote MCP servers to give Bob access to databases, APIs and internal systems."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-17T09:03:45.927Z",
+  "updatedAt": "2026-10-17T09:03:45.927Z"
+}

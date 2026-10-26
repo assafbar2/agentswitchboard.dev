@@ -2,7 +2,8 @@
  * Full listing for one published agent.
  *
  *   GET /api/agents/<slug>
- *   → skills, auth type, homepage, tags, streaming/push flags
+ *   → the search-result fields (including verified, official, featured) plus
+ *     skills, auth type, homepage, tags, streaming/push flags
  *
  * Read-only, no auth, open CORS. 404 when the slug is unknown or unpublished.
  */

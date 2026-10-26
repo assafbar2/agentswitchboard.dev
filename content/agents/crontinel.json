@@ -1,0 +1,67 @@
+{
+  "id": "crontinel",
+  "name": "Crontinel",
+  "slug": "crontinel",
+  "description": "Monitors cron, queue, and Horizon jobs via HTTP outcome receipts that flag runs exiting 0 without doing work, and exposes job status and alerts to AI agents over an OAuth-gated MCP endpoint.",
+  "providerName": "Crontinel",
+  "providerUrl": "https://crontinel.com",
+  "agentUrl": "https://docs.crontinel.com/mcp/tools/",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "cron-monitoring",
+    "queue-monitoring",
+    "laravel-horizon",
+    "job-alerts",
+    "scheduled-jobs",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "scheduled-job-inventory",
+      "name": "Scheduled Job Inventory",
+      "description": "Lists every monitored scheduled job through the list_scheduled_jobs tool so an agent can see what is under watch and how it is configured."
+    },
+    {
+      "id": "cron-run-status",
+      "name": "Cron Run Status",
+      "description": "Reports the latest cron run state with get_cron_status, covering missed, late, and failed executions for a monitored schedule."
+    },
+    {
+      "id": "queue-and-horizon-health",
+      "name": "Queue And Horizon Health",
+      "description": "Checks worker and backlog health using get_queue_status and get_horizon_status across Laravel Horizon and other queue backends."
+    },
+    {
+      "id": "alert-triage",
+      "name": "Alert Triage",
+      "description": "Reads open incidents with list_recent_alerts and clears them using acknowledge_alert so an agent can triage job failures in place."
+    },
+    {
+      "id": "alert-creation",
+      "name": "Alert Creation",
+      "description": "Opens a new alert through the create_alert tool when an agent detects a job problem outside the monitor own scheduled checks."
+    },
+    {
+      "id": "run-outcome-ingest",
+      "name": "Run Outcome Ingest",
+      "description": "Posts run outcomes to the /api/v1/ingest cron, schedule, event, and ping endpoints with an API key to record what a job actually did."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

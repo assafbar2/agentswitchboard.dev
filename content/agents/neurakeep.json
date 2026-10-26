@@ -1,0 +1,64 @@
+{
+  "id": "neurakeep",
+  "name": "NeuraKeep",
+  "slug": "neurakeep",
+  "description": "Stores source-cited agent memory with review-gated updates and failure history; exposes search/read/propose tools over local stdio MCP and a CLI, plus an OAuth-gated hosted MCP endpoint.",
+  "providerName": "Agentix Labs",
+  "providerUrl": "https://agentixlabs.com",
+  "version": "0.1.0",
+  "agentUrl": "https://www.neurakeep.com/mcp",
+  "categories": [
+    "memory-state",
+    "infrastructure"
+  ],
+  "tags": [
+    "agent-memory",
+    "citations",
+    "local-mcp",
+    "sqlite",
+    "audit-trail",
+    "oauth",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "memory-search",
+      "name": "Memory Search",
+      "description": "Searches stored memory for relevant entries through the memory_search tool, over stdio MCP or the local HTTP server."
+    },
+    {
+      "id": "memory-read",
+      "name": "Memory Read",
+      "description": "Reads a stored memory entry in full with the memory_read tool, returning its recorded content to the agent."
+    },
+    {
+      "id": "explain-sources",
+      "name": "Explain Memory Sources",
+      "description": "Returns the sources behind a memory entry via memory_explain_sources, so an agent can check where a stored claim came from."
+    },
+    {
+      "id": "propose-update",
+      "name": "Propose Memory Update",
+      "description": "Submits a proposed change to stored memory with memory_propose_update, queuing it for review instead of writing directly."
+    },
+    {
+      "id": "apply-update",
+      "name": "Apply Memory Update",
+      "description": "Commits a reviewed memory proposal with memory_apply_update, completing the review-gated write path."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

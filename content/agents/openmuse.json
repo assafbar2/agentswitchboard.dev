@@ -1,0 +1,62 @@
+{
+  "id": "openmuse",
+  "name": "OpenMuse",
+  "slug": "openmuse",
+  "description": "Runs a self-hosted personal assistant with its own browser, Linux terminal and files, for developers who want an open, inspectable agent app to build on.",
+  "providerName": "CopilotKit",
+  "providerUrl": "https://copilotkit.ai",
+  "agentUrl": "https://github.com/CopilotKit/openmuse",
+  "categories": [
+    "autonomous-agents",
+    "productivity"
+  ],
+  "tags": [
+    "personal-assistant",
+    "self-hosted",
+    "persistent-browser",
+    "copilotkit",
+    "gmail",
+    "react-native",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "agent-computer",
+      "name": "Agent Computer",
+      "description": "Gives the assistant a persistent Chromium browser and an optional isolated Linux terminal, with a takeover console for you."
+    },
+    {
+      "id": "durable-tasks",
+      "name": "Durable Tasks",
+      "description": "Runs delegated tasks with plans and progress, plus pause, resume, cancel and retry, approvals, and saved receipts."
+    },
+    {
+      "id": "gmail-calendar",
+      "name": "Gmail and Calendar",
+      "description": "Searches and reads Gmail threads, drafts replies, and creates or updates Calendar events, each behind a stored review."
+    },
+    {
+      "id": "pdf-form-filling",
+      "name": "PDF Form Filling",
+      "description": "Turns an email attachment into a PDF filled with the requested form values, then prepares a reviewed reply."
+    },
+    {
+      "id": "page-tracking",
+      "name": "Page Change Tracking",
+      "description": "Runs recurring checks on public pages for changes, text availability, or USD price thresholds, with deduplicated alerts."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-17T09:03:45.937Z",
+  "updatedAt": "2026-10-17T09:03:45.937Z"
+}

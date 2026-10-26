@@ -1,0 +1,64 @@
+{
+  "id": "baidu-qianfan",
+  "name": "Baidu Qianfan",
+  "slug": "baidu-qianfan",
+  "description": "Serves Baidu's ERNIE and third-party models through an OpenAI-compatible API and hosts an agent development platform with tools, MCP and knowledge bases, for enterprises in China.",
+  "providerName": "Baidu",
+  "providerUrl": "https://cloud.baidu.com",
+  "agentUrl": "https://cloud.baidu.com/product/qianfan.html",
+  "categories": [
+    "language",
+    "infrastructure",
+    "orchestration"
+  ],
+  "tags": [
+    "ernie",
+    "baidu-cloud",
+    "llm-api",
+    "openai-compatible",
+    "anthropic-compatible",
+    "function-calling",
+    "web-search"
+  ],
+  "skills": [
+    {
+      "id": "function-calling",
+      "name": "Function Calling",
+      "description": "Triggers predefined functions from natural-language requests for structured data exchange."
+    },
+    {
+      "id": "structured-output",
+      "name": "Structured Output",
+      "description": "Generates output that conforms to a user-defined JSON Schema."
+    },
+    {
+      "id": "web-search",
+      "name": "Web Search",
+      "description": "Retrieves live web information and summarizes it in the response."
+    },
+    {
+      "id": "anthropic-compatible",
+      "name": "Anthropic API Compatibility",
+      "description": "Accepts Anthropic Claude API requests so Claude SDKs work without code changes."
+    },
+    {
+      "id": "responses-api",
+      "name": "Responses API",
+      "description": "Provides a Responses API with built-in function calling and knowledge-base retrieval for agent building."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-17T09:03:45.934Z",
+  "updatedAt": "2026-10-17T09:03:45.934Z"
+}

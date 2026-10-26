@@ -1,0 +1,69 @@
+{
+  "id": "revdoku",
+  "name": "Revdoku",
+  "slug": "revdoku",
+  "description": "Gives AI agents their own email addresses with per-mailbox file storage: receive mail and attachments, send replies and upload files via REST API, hosted MCP server or CLI.",
+  "providerName": "Revdoku",
+  "providerUrl": "https://revdoku.com",
+  "agentUrl": "https://revdoku.com/api.md",
+  "categories": [
+    "communication",
+    "infrastructure"
+  ],
+  "tags": [
+    "email",
+    "mailbox",
+    "mcp",
+    "rest-api",
+    "attachments",
+    "file-storage",
+    "webhooks"
+  ],
+  "skills": [
+    {
+      "id": "mailbox-management",
+      "name": "Mailbox Management",
+      "description": "Create, list, update, archive and delete mailboxes via /v1/mailboxes, each with its own address."
+    },
+    {
+      "id": "read-email-attachments",
+      "name": "Read Email & Attachments",
+      "description": "List and read received email and download attachments with listEmails, getEmail and getAttachmentDownload."
+    },
+    {
+      "id": "send-email",
+      "name": "Send Email",
+      "description": "Send email and threaded replies to allowed recipients with sendEmail and in_reply_to."
+    },
+    {
+      "id": "file-storage",
+      "name": "Mailbox File Storage",
+      "description": "Upload, list, rename, move, copy and download files in a mailbox, plus append text and bulk uploads."
+    },
+    {
+      "id": "email-events",
+      "name": "Email Events",
+      "description": "Register a per-mailbox webhook URL with a signing secret, or open a WebSocket ticket for live email events."
+    },
+    {
+      "id": "address-settings",
+      "name": "Address Settings",
+      "description": "Manage the primary address, alias addresses, allowed senders and custom email domains for a mailbox."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

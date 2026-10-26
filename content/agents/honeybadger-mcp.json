@@ -1,0 +1,62 @@
+{
+  "id": "honeybadger-mcp",
+  "name": "Honeybadger MCP",
+  "slug": "honeybadger-mcp",
+  "description": "Lets coding agents query Honeybadger errors, Insights data, dashboards, alarms and check-ins through a hosted OAuth MCP server or a self-hosted container.",
+  "providerName": "Honeybadger",
+  "providerUrl": "https://www.honeybadger.io",
+  "agentUrl": "https://mcp.honeybadger.io",
+  "categories": [
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "error-monitoring",
+    "remote-mcp",
+    "observability",
+    "badgerql",
+    "debugging",
+    "cron-monitoring",
+    "honeybadger"
+  ],
+  "skills": [
+    {
+      "id": "fault-triage",
+      "name": "Fault Triage",
+      "description": "Lists and filters faults, reads their notices and affected users, and updates resolved, ignored, or assignee state."
+    },
+    {
+      "id": "insights-queries",
+      "name": "Insights Queries",
+      "description": "Runs BadgerQL queries against Honeybadger Insights data and lists the data streams available for a project."
+    },
+    {
+      "id": "dashboards-alarms",
+      "name": "Dashboards and Alarms",
+      "description": "Creates, updates and inspects Insights dashboards and alarms, including alarm trigger history, when writes are enabled."
+    },
+    {
+      "id": "check-ins",
+      "name": "Check-In Monitoring",
+      "description": "Lists, creates and updates check-ins that monitor cron jobs and scheduled tasks for a Honeybadger project."
+    },
+    {
+      "id": "project-reports",
+      "name": "Project Reports",
+      "description": "Gets project details, occurrence counts, integrations, and report data for your Honeybadger projects."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-17T09:03:45.947Z",
+  "updatedAt": "2026-10-17T09:03:45.947Z"
+}

@@ -27,33 +27,62 @@ const CONTENT_DIR = path.join(process.cwd(), 'content');
 
 // ── Raw file loading ────────────────────────────────────────────────
 
+/**
+ * Most agent files open at once, across the whole process. The catalog is
+ * ~850 files; opening them all together (plus categories.json once per file,
+ * as this loader used to) needed ~1,700 descriptors at peak and failed with
+ * EMFILE under the 1,024 a serverless function gets — /index.md returned 500.
+ * The limit is shared, so concurrent requests that each load the catalog
+ * (React cache() does not dedupe inside route handlers) stay bounded too.
+ */
+export const MAX_CONCURRENT_READS = 32;
+
+let activeReads = 0;
+const waitingReads: (() => void)[] = [];
+
+/** Read one UTF-8 file, never more than MAX_CONCURRENT_READS at once. */
+async function readFileBounded(file: string): Promise<string> {
+  if (activeReads >= MAX_CONCURRENT_READS) {
+    // Woken by a finishing read, which hands its slot straight over.
+    await new Promise<void>((resolve) => waitingReads.push(resolve));
+  } else {
+    activeReads++;
+  }
+  try {
+    return await fs.promises.readFile(file, 'utf8');
+  } finally {
+    const next = waitingReads.shift();
+    if (next) next();
+    else activeReads--;
+  }
+}
+
 const loadAllAgentsRaw = cache(async (): Promise<Agent[]> => {
   const dir = path.join(CONTENT_DIR, 'agents');
-  const files = await fs.promises.readdir(dir);
-  const vendors = await loadOfficialVendors();
+  const files = (await fs.promises.readdir(dir)).filter((f) => f.endsWith('.json'));
+  // Categories and vendors are shared by every agent: load each once per pass.
+  const [cats, vendors] = await Promise.all([loadCategoriesRaw(), loadOfficialVendors()]);
+  // categories are stored as slugs; hydrate to Category objects
+  const bySlug = new Map(cats.map((c) => [c.slug, c]));
+  // Promise.all keeps readdir order regardless of which read finishes first.
   const agents = await Promise.all(
-    files
-      .filter((f) => f.endsWith('.json'))
-      .map(async (f) => {
-        const raw = await fs.promises.readFile(path.join(dir, f), 'utf8');
-        const data = JSON.parse(raw);
-        // categories are stored as slugs; hydrate to Category objects
-        const cats = await loadCategoriesRaw();
-        const bySlug = new Map(cats.map((c) => [c.slug, c]));
-        // validate-content guarantees an official entry resolves to one vendor.
-        const vendor = data.official ? vendorForUrl(data.agentUrl, vendors) : null;
-        return {
-          ...data,
-          categories: (data.categories ?? [])
-            .map((slug: string) => bySlug.get(slug))
-            .filter(Boolean),
-          tags: data.tags ?? [],
-          skills: data.skills ?? [],
-          accessMethods: data.accessMethods ?? [],
-          official: !!vendor,
-          officialVendor: vendor ? { slug: vendor.slug, name: vendor.name } : undefined,
-        } as Agent;
-      })
+    files.map(async (f) => {
+      const raw = await readFileBounded(path.join(dir, f));
+      const data = JSON.parse(raw);
+      // validate-content guarantees an official entry resolves to one vendor.
+      const vendor = data.official ? vendorForUrl(data.agentUrl, vendors) : null;
+      return {
+        ...data,
+        categories: (data.categories ?? [])
+          .map((slug: string) => bySlug.get(slug))
+          .filter(Boolean),
+        tags: data.tags ?? [],
+        skills: data.skills ?? [],
+        accessMethods: data.accessMethods ?? [],
+        official: !!vendor,
+        officialVendor: vendor ? { slug: vendor.slug, name: vendor.name } : undefined,
+      } as Agent;
+    })
   );
   return agents;
 });

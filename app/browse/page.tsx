@@ -16,7 +16,8 @@ export async function generateMetadata({
   const { q } = await searchParams;
   return {
     title: q ? `"${q}" — Search Results` : 'Browse Agents',
-    description: 'Explore the full directory of A2A protocol agents.',
+    description:
+      'Search and filter the full directory of AI agents, MCP servers and agent tools by category, access method (MCP, API, CLI or browser extension) and official vendor.',
     // Self-referencing canonical without query params — filtered/search
     // views canonicalize to the clean browse URL.
     alternates: { canonical: '/browse' },
@@ -80,7 +81,7 @@ export default async function BrowsePage({
         </div>
 
         {/* Count */}
-        <p className="text-sm text-[var(--text-muted)] mb-6 mono">
+        <p className="text-sm text-[var(--text-secondary)] mb-6 mono">
           {agents.length === 0
             ? 'No agents found'
             : `${agents.length}${officialOnly ? ' official' : ''} agent${agents.length !== 1 ? 's' : ''}${query ? ' matched' : ' listed'}`}
@@ -98,7 +99,7 @@ export default async function BrowsePage({
             <p className="text-[var(--text-secondary)] mb-2">
               No agents found{query && <> matching <span className="mono">&ldquo;{query}&rdquo;</span></>}
             </p>
-            <p className="text-sm text-[var(--text-muted)]">
+            <p className="text-sm text-[var(--text-secondary)]">
               Try a different search or clear the filters.
             </p>
           </div>

@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Agent Switchboard Directory API",
-    "version": "1.1.0",
-    "summary": "Read-only catalog of vetted AI agents, MCP servers, and agentic developer tools.",
+    "version": "1.2.0",
+    "summary": "Read-only catalog of AI agents, MCP servers, and agentic developer tools.",
     "description": "Agent Switchboard is a public discovery directory. Use this API to answer questions like 'is there an agent that does X?' or 'which listed products expose an MCP server?'. There is no authentication, no user account, and no write access. This API does not proxy the underlying products — it only returns Switchboard listings. For interactive tool-shaped access, an MCP server is also available at /api/mcp. Listing data returned by this API is licensed CC BY-NC 4.0 (attribution required; commercial reuse needs a license: https://agentswitchboard.dev/contact). The API definition itself is MIT.",
     "contact": {
       "name": "Barnir",
@@ -29,7 +29,7 @@
       "get": {
         "operationId": "searchAgents",
         "summary": "Search published agents",
-        "description": "Relevance-ranked search over name, description, skills, categories, tags, and provider. Empty `q` lists published agents in catalog order. Filter by category slug, access methods, and/or `official`. Paginate with `total` + `offset` + `limit`.",
+        "description": "Relevance-ranked search over name, description, skills, categories, tags, and provider. Empty `q` lists published agents in catalog order: featured first, then A→Z. With `q`, results are ranked by relevance and equal scores keep that featured-first order. Filter by category slug, access methods, and/or `official`. Paginate with `total` + `offset` + `limit`.",
         "tags": ["catalog"],
         "parameters": [
           {
@@ -50,14 +50,14 @@
             "name": "access",
             "in": "query",
             "required": false,
-            "description": "One or more of `api`, `mcp`, `cli`, `browser-extension`. Comma-separate to require all (`access=api,mcp`). Unknown values are ignored.",
-            "schema": { "type": "string", "examples": ["mcp", "api,mcp"] }
+            "description": "One or more of `api`, `mcp`, `cli`, `browser-extension`. `extension` is accepted as an alias of `browser-extension`. Case-insensitive. Comma-separate to require all (`access=api,mcp`). Unknown values are ignored.",
+            "schema": { "type": "string", "examples": ["mcp", "api,mcp", "extension"] }
           },
           {
             "name": "official",
             "in": "query",
             "required": false,
-            "description": "`true` (or `1`) returns only first-party listings from major vendors. Combines with `category`, `access`, and `q`.",
+            "description": "`true` (or `1`, `yes`) returns only first-party listings from major vendors; any other value applies no filter. Combines with `category`, `access`, and `q`.",
             "schema": { "type": "boolean", "examples": [true] }
           },
           {
@@ -97,7 +97,8 @@
                           "categories": ["infrastructure", "code-devtools"],
                           "accessMethods": ["api", "mcp", "cli"],
                           "verified": true,
-                          "official": false
+                          "official": false,
+                          "featured": true
                         }
                       ]
                     }
@@ -113,7 +114,7 @@
       "get": {
         "operationId": "getAgent",
         "summary": "Get one agent by slug",
-        "description": "Full listing for a published agent: skills, auth type, provider homepage, tags, streaming and push flags. Use a `slug` returned by searchAgents. Unpublished or unknown slugs return 404.",
+        "description": "Full listing for a published agent: the searchAgents fields (including `verified`, `official` and `featured`) plus skills, auth type, provider homepage, tags, streaming and push flags. Use a `slug` returned by searchAgents. Unpublished or unknown slugs return 404.",
         "tags": ["catalog"],
         "parameters": [
           {
@@ -166,7 +167,7 @@
       "get": {
         "operationId": "listAgents",
         "summary": "Fetch the full agent catalog",
-        "description": "Returns every published agent in one document. Filter client-side on `categories` or `accessMethods`. Prefer GET /api/agents for targeted search. The payload is cached for five minutes at the edge.",
+        "description": "Returns every published agent in one document, featured first, then A→Z. Filter client-side on `categories` or `accessMethods`. Prefer GET /api/agents for targeted search. The payload is cached for five minutes at the edge.",
         "tags": ["catalog"],
         "responses": {
           "200": {
@@ -239,7 +240,8 @@
           "categories",
           "accessMethods",
           "verified",
-          "official"
+          "official",
+          "featured"
         ],
         "properties": {
           "name": { "type": "string" },
@@ -263,8 +265,9 @@
             },
             "description": "How the listed product can be reached."
           },
-          "verified": { "type": "boolean" },
-          "official": { "type": "boolean", "description": "First-party listing from a major vendor (publicly traded, frontier AI lab, or ~$1B+), published under the vendor's official domain or GitHub org. Factual, not paid; separate from verified and featured." }
+          "verified": { "type": "boolean", "description": "Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working." },
+          "official": { "type": "boolean", "description": "First-party listing from a major vendor (publicly traded, frontier AI lab, or ~$1B+), published under the vendor's official domain or GitHub org. Factual, not paid; separate from verified and featured." },
+          "featured": { "type": "boolean", "description": "Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order." }
         }
       },
       "AgentDetail": {
@@ -340,7 +343,25 @@
       },
       "CatalogAgent": {
         "type": "object",
-        "required": ["name", "slug", "url", "description", "categories"],
+        "required": [
+          "name",
+          "slug",
+          "url",
+          "homepage",
+          "provider",
+          "providerUrl",
+          "description",
+          "categories",
+          "accessMethods",
+          "tags",
+          "verified",
+          "official",
+          "officialVendor",
+          "featured",
+          "tier",
+          "createdAt",
+          "updatedAt"
+        ],
         "properties": {
           "name": { "type": "string" },
           "slug": { "type": "string" },
@@ -350,11 +371,15 @@
           "providerUrl": { "type": ["string", "null"], "format": "uri" },
           "description": { "type": "string" },
           "categories": { "type": "array", "items": { "type": "string" } },
-          "accessMethods": { "type": "array", "items": { "type": "string" } },
+          "accessMethods": {
+            "type": "array",
+            "items": { "type": "string", "enum": ["api", "mcp", "cli", "browser-extension"] }
+          },
           "tags": { "type": "array", "items": { "type": "string" } },
-          "verified": { "type": "boolean" },
+          "verified": { "type": "boolean", "description": "Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working." },
           "official": { "type": "boolean", "description": "First-party listing from a major vendor (publicly traded, frontier AI lab, or ~$1B+), published under the vendor's official domain or GitHub org. Factual, not paid; separate from verified and featured." },
           "officialVendor": { "type": ["string", "null"] },
+          "featured": { "type": "boolean", "description": "Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order." },
           "tier": { "type": ["string", "null"] },
           "createdAt": { "type": ["string", "null"], "format": "date-time" },
           "updatedAt": { "type": ["string", "null"], "format": "date-time" }

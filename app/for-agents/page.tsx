@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { VerifiedBadge, VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 import { getEveryAgent } from '@/lib/catalog';
+import { FEATURED_DEFINITION, OFFICIAL_DEFINITION } from '@/lib/public-api';
+import type { Agent } from '@/lib/types';
 
 export const metadata: Metadata = {
   title: 'For AI Agents — Agent Switchboard',
@@ -10,8 +13,18 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+// Stored access-method values with what each means. Typed against the data so
+// a key that doesn't exist (the old `extension`, which always counted 0) can't compile.
+const ACCESS_METHODS: { key: Agent['accessMethods'][number]; meaning: string }[] = [
+  { key: 'api', meaning: 'direct REST or HTTP API' },
+  { key: 'mcp', meaning: 'Model Context Protocol compatible' },
+  { key: 'cli', meaning: 'command-line interface' },
+  { key: 'browser-extension', meaning: 'browser or IDE extension' },
+];
+
 export default async function ForAgentsPage() {
   const agents = await getEveryAgent();
+  const verifiedCount = agents.filter((a) => a.verified).length;
 
   const byCategory = agents.reduce<Record<string, number>>((acc, a) => {
     a.categories.forEach((c) => {
@@ -29,7 +42,7 @@ export default async function ForAgentsPage() {
 
   return (
     <div className="container-wide section">
-      <div className="max-w-2xl mx-auto py-12 font-mono text-sm text-[var(--text-secondary)] leading-relaxed space-y-10">
+      <div className="max-w-2xl mx-auto py-12 font-mono text-sm text-[var(--text-secondary)] leading-relaxed space-y-10 break-words">
 
         {/* Header */}
         <div>
@@ -54,8 +67,9 @@ export default async function ForAgentsPage() {
         <section className="space-y-2">
           <h2 className="text-[var(--text-primary)] font-semibold">## What this site is</h2>
           <p>
-            Agent Switchboard is a curated directory of {agents.length} vetted AI agents,
-            organized by category and access method (API, MCP, CLI, Extension).
+            Agent Switchboard is a curated directory of {agents.length} AI agents
+            ({verifiedCount} of them verified), organized by category and access method
+            (api, mcp, cli, browser-extension).
             It is designed for developers and AI agents that need to discover,
             compare, or recommend specialized tools.
           </p>
@@ -63,6 +77,20 @@ export default async function ForAgentsPage() {
             If you are an AI agent helping a user find a tool, delegate a task,
             or integrate a capability — this directory is your starting point.
           </p>
+          <p>
+            The <code className="text-[var(--accent)]">verified</code>,{' '}
+            <code className="text-[var(--accent)]">official</code> and{' '}
+            <code className="text-[var(--accent)]">featured</code> flags in search and
+            detail results mean:
+          </p>
+          <ul className="space-y-2 pl-4">
+            <li>
+              {/* The badge already says "Verified", so drop the definition's own label. */}
+              <VerifiedBadge /> {VERIFIED_DEFINITION.replace(/^Verified:\s*/, '')}
+            </li>
+            <li>{OFFICIAL_DEFINITION}</li>
+            <li>{FEATURED_DEFINITION}</li>
+          </ul>
         </section>
 
         {/* MCP server */}
@@ -95,7 +123,9 @@ export default async function ForAgentsPage() {
             registered on{' '}
             <code className="text-[var(--accent)]">document.modelContext</code>{' '}
             (W3C WebMCP API, polyfilled). Call them directly — no scraping, no setup.
-            They self-register on page load and read the same catalog as the remote server.
+            They self-register on page load and call the REST API below, so matches
+            and their order are the same as the remote server&apos;s; result objects
+            use the REST field names.
           </p>
           <ul className="space-y-1 pl-4">
             <li>
@@ -124,7 +154,8 @@ GET /api/agents/<slug>
 GET /api/categories
 
 → search: { total, offset, limit, agents: [
-     { name, slug, url, description, provider, categories, accessMethods, verified, official }
+     { name, slug, url, description, provider, categories, accessMethods,
+       verified, official, featured }
    ] }`}
           </pre>
           <ul className="space-y-1 pl-4">
@@ -134,7 +165,9 @@ GET /api/categories
               <code className="text-[var(--accent)]">mcp</code>,{' '}
               <code className="text-[var(--accent)]">cli</code>,{' '}
               <code className="text-[var(--accent)]">browser-extension</code>{' '}
-              (comma-separate to require several)
+              (comma-separate to require several;{' '}
+              <code className="text-[var(--accent)]">extension</code> is accepted as an
+              alias of <code className="text-[var(--accent)]">browser-extension</code>)
             </li>
             <li>
               <span className="text-[var(--accent)]">official</span> —{' '}
@@ -145,6 +178,11 @@ GET /api/categories
               <span className="text-[var(--accent)]">limit</span> — 1–50 (default 10);{' '}
               <span className="text-[var(--accent)]">offset</span> — for paging;{' '}
               <code className="text-[var(--accent)]">total</code> is the full match count
+            </li>
+            <li>
+              <span className="text-[var(--accent)]">order</span> — without{' '}
+              <code className="text-[var(--accent)]">q</code>, featured listings first, then
+              A→Z; with <code className="text-[var(--accent)]">q</code>, by relevance
             </li>
           </ul>
           <p>
@@ -197,10 +235,25 @@ GET /api/categories
                 https://agentswitchboard.dev/browse
               </Link>
             </li>
+            <li>
+              <span className="text-[var(--accent)]">→ Plain-language guide:</span>{' '}
+              <a href="/llms.txt" className="underline hover:text-[var(--accent)]">
+                https://agentswitchboard.dev/llms.txt
+              </a>
+            </li>
+            <li>
+              <span className="text-[var(--accent)]">→ MCP server manifest:</span>{' '}
+              <a href="/.well-known/mcp.json" className="underline hover:text-[var(--accent)]">
+                https://agentswitchboard.dev/.well-known/mcp.json
+              </a>
+            </li>
           </ul>
           <p className="pt-1">
-            To find agents by capability: fetch{' '}
-            <code className="text-[var(--accent)]">/agents.json</code> and filter by{' '}
+            To find agents by capability, search:{' '}
+            <code className="text-[var(--accent)]">search_agents</code> over MCP, or{' '}
+            <code className="text-[var(--accent)]">GET /api/agents?access=mcp&amp;category=&lt;slug&gt;</code>.{' '}
+            <code className="text-[var(--accent)]">/agents.json</code> is the whole catalog
+            in one large file — use it for bulk or offline work, filtering on{' '}
             <code className="text-[var(--accent)]">accessMethods</code> or{' '}
             <code className="text-[var(--accent)]">categories</code>.
           </p>
@@ -210,10 +263,11 @@ GET /api/categories
         <section className="space-y-2">
           <h2 className="text-[var(--text-primary)] font-semibold">## Access methods</h2>
           <ul className="space-y-1 pl-4">
-            <li><span className="text-[var(--accent)]">api</span> — {byAccess['api'] ?? 0} agents — direct REST or HTTP API</li>
-            <li><span className="text-[var(--accent)]">mcp</span> — {byAccess['mcp'] ?? 0} agents — Model Context Protocol compatible</li>
-            <li><span className="text-[var(--accent)]">cli</span> — {byAccess['cli'] ?? 0} agents — command-line interface</li>
-            <li><span className="text-[var(--accent)]">extension</span> — {byAccess['extension'] ?? 0} agents — browser or IDE extension</li>
+            {ACCESS_METHODS.map(({ key, meaning }) => (
+              <li key={key}>
+                <span className="text-[var(--accent)]">{key}</span> — {byAccess[key] ?? 0} agents — {meaning}
+              </li>
+            ))}
           </ul>
         </section>
 

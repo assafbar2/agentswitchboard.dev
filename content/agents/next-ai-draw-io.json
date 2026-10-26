@@ -1,0 +1,62 @@
+{
+  "id": "next-ai-draw-io",
+  "name": "Next AI Draw.io",
+  "slug": "next-ai-draw-io",
+  "description": "Draws and edits draw.io diagrams from chat prompts, images, or documents for engineers and analysts, via web app, desktop app, or MCP server.",
+  "providerName": "Dayuan Jiang",
+  "providerUrl": "https://github.com/DayuanJiang",
+  "agentUrl": "https://next-ai-drawio.jiang.jp/",
+  "categories": [
+    "content-media",
+    "productivity"
+  ],
+  "tags": [
+    "draw-io",
+    "diagramming",
+    "architecture-diagrams",
+    "mcp-server",
+    "flowcharts",
+    "self-hosted",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "prompt-to-diagram",
+      "name": "Prompt to Diagram",
+      "description": "Generates architecture diagrams, flowcharts, sequence diagrams, and more from one sentence, with AWS, Azure, GCP, and Kubernetes icons."
+    },
+    {
+      "id": "edit-selection",
+      "name": "Edit Selection",
+      "description": "Changes only the shapes selected on the canvas and highlights what the AI modified."
+    },
+    {
+      "id": "image-to-diagram",
+      "name": "Image and File to Diagram",
+      "description": "Redraws an uploaded screenshot or sketch, or diagrams the content of PDF, Markdown, or code files."
+    },
+    {
+      "id": "version-history",
+      "name": "Version History",
+      "description": "Saves every AI change as a version that can be compared with the canvas, restored, or undone."
+    },
+    {
+      "id": "diagram-export",
+      "name": "Diagram Export",
+      "description": "Exports diagrams as .drawio, .png, .svg, or .drawio.svg files at any time."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-17T09:03:45.914Z",
+  "updatedAt": "2026-10-17T09:03:45.914Z"
+}

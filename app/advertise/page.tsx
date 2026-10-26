@@ -14,7 +14,8 @@ export default function AdvertisePage() {
         <Megaphone className="w-10 h-10 text-[var(--accent)] mx-auto mb-4" />
         <h1 className="text-3xl font-bold tracking-tight mb-3">Advertise with Us</h1>
         <p className="text-[var(--text-secondary)] mb-6">
-          Get your agent featured in front of developers building on the A2A protocol.
+          Get your agent featured in front of developers building with AI agents, MCP servers,
+          and agentic tools.
           Reach out to discuss featured listings, sponsored slots, and partnership opportunities.
         </p>
         <a

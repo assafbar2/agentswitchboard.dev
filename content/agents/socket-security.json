@@ -22,7 +22,7 @@
   "supportsPushNotifications": false,
   "status": "published",
   "featured": false,
-  "verified": false,
+  "verified": true,
   "official": true,
   "tier": "free",
   "discoveredBy": "manual",
@@ -31,5 +31,5 @@
     "browser-extension"
   ],
   "createdAt": "2026-05-22T07:35:22.838Z",
-  "updatedAt": "2026-05-22T07:35:22.838Z"
+  "updatedAt": "2026-10-25T01:16:46.687Z"
 }

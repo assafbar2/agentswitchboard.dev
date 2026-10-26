@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Categories',
-  description: 'Browse A2A agents by category.',
+  description: 'Browse AI agents, MCP servers and agent tools by category.',
   alternates: { canonical: '/categories' },
 };
 

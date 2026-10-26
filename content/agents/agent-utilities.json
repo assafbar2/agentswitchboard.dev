@@ -1,0 +1,65 @@
+{
+  "id": "agent-utilities",
+  "name": "Agent Utilities",
+  "slug": "agent-utilities",
+  "description": "Validate and reshape supplied HTML, JSON and shopping data with 60+ deterministic tools: GTIN check digits, whole-pack price planning, OpenAPI diffs and security header audits. Keyless MCP and REST.",
+  "providerName": "Ben Helfand",
+  "providerUrl": "https://github.com/cgvhbjk/agent-utilities-mcp",
+  "version": "1.10.0",
+  "agentUrl": "https://agent-utilities.agent-utilities.workers.dev/integrations/mcp",
+  "categories": [
+    "code-devtools",
+    "commerce-payments",
+    "data-analytics"
+  ],
+  "tags": [
+    "mcp-server",
+    "html-parsing",
+    "json-patch",
+    "openapi",
+    "gtin",
+    "security-headers",
+    "keyless"
+  ],
+  "skills": [
+    {
+      "id": "html-extraction",
+      "name": "HTML Extraction",
+      "description": "Extracts main text, metadata, headings, links, tables and JSON-LD from supplied HTML via html.main-text, html.metadata and html.jsonld."
+    },
+    {
+      "id": "json-transforms",
+      "name": "JSON Transforms",
+      "description": "Applies RFC 6902 patches, RFC 6901 pointer selection, canonical serialization and bounded diffs via data.json-patch, data.json-pointer and data.json-diff."
+    },
+    {
+      "id": "api-contract-checks",
+      "name": "API Contract Checks",
+      "description": "Lints OpenAPI 3.0 documents, detects breaking changes between versions and validates data against JSON Schema 2020-12 via contracts.openapi-lint and contracts.openapi-diff."
+    },
+    {
+      "id": "security-header-audit",
+      "name": "Security Header Audit",
+      "description": "Audits response headers, CSP directives and Set-Cookie attributes, decodes JWT claims and scans for credential patterns via security.header-audit and security.secret-scan."
+    },
+    {
+      "id": "commerce-pricing",
+      "name": "Commerce Pricing",
+      "description": "Validates GTIN check digits, plans lowest-cost whole-pack combinations and compares unit prices via commerce.gtin-validate, commerce.pack-plan and commerce.unit-price."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

@@ -1,0 +1,63 @@
+{
+  "id": "hol-guard",
+  "name": "HOL Guard",
+  "slug": "hol-guard",
+  "description": "Blocks risky AI coding agent actions at runtime on your machine — shell commands, secret access, MCP servers, plugins and package installs — against local policy. Apache-2.0 CLI, free on one machine.",
+  "providerName": "Hashgraph Online",
+  "providerUrl": "https://github.com/hashgraph-online",
+  "version": "3.55.1",
+  "agentUrl": "https://hol.org/guard",
+  "categories": [
+    "security",
+    "code-devtools"
+  ],
+  "tags": [
+    "runtime-guardrails",
+    "policy-enforcement",
+    "mcp-security",
+    "secret-scanning",
+    "supply-chain",
+    "coding-assistants",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "policy-lint",
+      "name": "Policy Lint",
+      "description": "Checks an agent setup against local policy rules via the hol-guard lint subcommand in the published CLI."
+    },
+    {
+      "id": "install-doctor",
+      "name": "Install Doctor",
+      "description": "Reports on the local install and policy configuration through the hol-guard doctor subcommand."
+    },
+    {
+      "id": "policy-verify",
+      "name": "Policy Verify",
+      "description": "Verifies artifacts and submitted policy through the hol-guard verify and submit subcommands."
+    },
+    {
+      "id": "secret-scan",
+      "name": "Secret Scan",
+      "description": "Scans for secret exposure in agent workflows via the separate hol-guard-secrets console entry point."
+    },
+    {
+      "id": "policy-eval",
+      "name": "Policy Eval",
+      "description": "Runs policy evaluations through the hol-guard-eval console entry point shipped alongside the main CLI."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

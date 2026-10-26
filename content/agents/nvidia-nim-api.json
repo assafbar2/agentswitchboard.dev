@@ -1,0 +1,63 @@
+{
+  "id": "nvidia-nim-api",
+  "name": "NVIDIA NIM API",
+  "slug": "nvidia-nim-api",
+  "description": "Serves open models as NVIDIA-hosted NIM endpoints through an OpenAI-compatible API, with chat, embedding, reranking and image models, for developers prototyping before self-hosting.",
+  "providerName": "NVIDIA",
+  "providerUrl": "https://www.nvidia.com",
+  "agentUrl": "https://build.nvidia.com",
+  "categories": [
+    "language",
+    "infrastructure"
+  ],
+  "tags": [
+    "nvidia-nim",
+    "openai-compatible",
+    "llm-api",
+    "open-models",
+    "embeddings",
+    "reranking",
+    "hosted-inference"
+  ],
+  "skills": [
+    {
+      "id": "chat-completions",
+      "name": "OpenAI-Compatible Chat",
+      "description": "Runs chat completions on hosted open models at integrate.api.nvidia.com/v1, with SSE streaming and tool calling."
+    },
+    {
+      "id": "embeddings-reranking",
+      "name": "Embeddings and Reranking",
+      "description": "Creates text and image embeddings and reranks passages with NeMo Retriever and other retrieval models."
+    },
+    {
+      "id": "image-generation",
+      "name": "Image Generation",
+      "description": "Generates images with hosted visual models such as FLUX."
+    },
+    {
+      "id": "safety-guard-models",
+      "name": "Safety Guard Models",
+      "description": "Screens content safety, topic control and jailbreak attempts with NemoGuard models."
+    },
+    {
+      "id": "self-hosted-nim",
+      "name": "Self-Hosted NIM",
+      "description": "Runs the same models as NIM microservices on your own cloud, data center or workstation."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-17T09:03:45.923Z",
+  "updatedAt": "2026-10-17T09:03:45.923Z"
+}

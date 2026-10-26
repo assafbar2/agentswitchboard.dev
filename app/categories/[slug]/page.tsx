@@ -83,11 +83,12 @@ export default async function CategoryPage({
       {/* ── Human view ─────────────────────────────────────────────── */}
       <div className="human-only container-wide section">
         <JsonLd schema={listSchema} />
-        <div className="mb-10 flex items-center gap-3">
-          <span className="text-[var(--text-secondary)]">
+        <div className="mb-10 flex flex-wrap items-center gap-3">
+          <span className="shrink-0 text-[var(--text-secondary)]">
             <CategoryIcon name={category.icon} className="w-7 h-7" />
           </span>
-          <div>
+          {/* Grows on wide screens; on phones the official link wraps below */}
+          <div className="min-w-0 flex-1 basis-60">
             <h1 className="text-3xl font-bold tracking-tight">{category.name}</h1>
             {category.description && (
               <p className="text-[var(--text-secondary)] mt-1">{category.description}</p>
@@ -96,7 +97,7 @@ export default async function CategoryPage({
           {officialCount > 0 && (
             <Link
               href={`/browse?official=1&category=${category.slug}`}
-              className="ml-auto hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs mono font-medium rounded-lg border border-[var(--blue)]/30 text-[var(--blue)] bg-[var(--blue-glow)] hover:opacity-90 transition-opacity"
+              className="sm:ml-auto inline-flex items-center gap-1.5 px-3 py-1.5 text-xs mono font-medium rounded-lg border border-[var(--blue)]/30 text-[var(--blue)] bg-[var(--blue-glow)] hover:opacity-90 transition-opacity"
             >
               <Building2 className="w-3.5 h-3.5" aria-hidden />
               {officialCount} official
@@ -111,7 +112,7 @@ export default async function CategoryPage({
         </div>
 
         {agents.length === 0 && (
-          <p className="text-center text-[var(--text-muted)] py-20">
+          <p className="text-center text-[var(--text-secondary)] py-20">
             No agents in this category yet.
           </p>
         )}

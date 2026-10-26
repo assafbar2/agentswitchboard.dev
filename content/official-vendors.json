@@ -1,5 +1,6 @@
 [
   {"slug": "ada", "name": "Ada", "basis": "valuation", "evidence": "Valued $1.2B (2021 Series C)", "sources": ["ada.cx"]},
+  {"slug": "ai21-labs", "name": "AI21 Labs", "basis": "valuation", "evidence": "Valued $1.4B (2023 round; Reuters)", "sources": ["ai21.com"]},
   {"slug": "airbyte", "name": "Airbyte", "basis": "valuation", "evidence": "Valued $1.5B (2021 Series B)", "sources": ["airbyte.com", "github.com/airbytehq"]},
   {"slug": "aiven", "name": "Aiven", "basis": "valuation", "evidence": "Valued $3B (2022 Series D)", "sources": ["aiven.io", "github.com/aiven"]},
   {"slug": "algolia", "name": "Algolia", "basis": "valuation", "evidence": "Valued $2.25B (2021 Series D)", "sources": ["algolia.com", "github.com/algolia"]},
@@ -69,7 +70,7 @@
   {"slug": "gmo-pepabo", "name": "GMO Pepabo", "basis": "public", "evidence": "TSE: 3633 (Muumuu Domain)", "sources": ["muumuu-domain.com", "pepabo.com", "github.com/pepabo"]},
   {"slug": "gocardless", "name": "GoCardless", "basis": "valuation", "evidence": "Acquired by Mollie for €1.1B (Sep 2026)", "sources": ["gocardless.com", "github.com/gocardless"]},
   {"slug": "gong", "name": "Gong", "basis": "valuation", "evidence": "Valued $7.25B (2021 Series E)", "sources": ["gong.io"]},
-  {"slug": "google", "name": "Google", "basis": "public", "evidence": "Alphabet, NASDAQ: GOOGL; includes Google DeepMind and Google Cloud", "sources": ["google.com", "google.dev", "jules.google", "deepmind.google", "agentexecutor.io", "firebase.studio", "genkit.dev", "adk.dev", "mcp-toolbox.dev", "github.com/google", "github.com/google-gemini", "github.com/google-deepmind", "github.com/googleapis", "github.com/googlecloudplatform", "github.com/googlecolab", "github.com/googleworkspace", "github.com/genkit-ai", "github.com/chromedevtools"]},
+  {"slug": "google", "name": "Google", "basis": "public", "evidence": "Alphabet, NASDAQ: GOOGL; includes Google DeepMind and Google Cloud", "sources": ["google.com", "google.dev", "jules.google", "antigravity.google", "deepmind.google", "agentexecutor.io", "firebase.studio", "genkit.dev", "adk.dev", "mcp-toolbox.dev", "github.com/google", "github.com/google-gemini", "github.com/google-deepmind", "github.com/googleapis", "github.com/googlecloudplatform", "github.com/googlecolab", "github.com/googleworkspace", "github.com/genkit-ai", "github.com/chromedevtools"]},
   {"slug": "grafana", "name": "Grafana Labs", "basis": "valuation", "evidence": "Valued $6B (2024)", "sources": ["grafana.com", "github.com/grafana"]},
   {"slug": "groq", "name": "Groq", "basis": "valuation", "evidence": "Valued $6.9B (2025)", "sources": ["groq.com", "github.com/groq"]},
   {"slug": "harvey", "name": "Harvey", "basis": "valuation", "evidence": "Valued $8B (2025)", "sources": ["harvey.ai"]},
@@ -134,6 +135,7 @@
   {"slug": "ramp", "name": "Ramp", "basis": "valuation", "evidence": "Valued $22.5B+ (2025)", "sources": ["ramp.com"]},
   {"slug": "reclaim", "name": "Reclaim.ai", "basis": "subsidiary", "evidence": "Acquired by Dropbox (NASDAQ: DBX), Jul 2024", "parent": "Dropbox", "sources": ["reclaim.ai"]},
   {"slug": "redis", "name": "Redis", "basis": "valuation", "evidence": "Valued $2B (2021 Series G)", "sources": ["redis.io", "github.com/redis"]},
+  {"slug": "reka", "name": "Reka", "basis": "valuation", "evidence": "Valued ~$1B ($110M round, Jul 2025; Bloomberg)", "sources": ["reka.ai"]},
   {"slug": "render", "name": "Render", "basis": "valuation", "evidence": "Valued $1.5B (Feb 2026 Series C extension)", "sources": ["render.com", "github.com/render-oss"]},
   {"slug": "replicate", "name": "Replicate", "basis": "subsidiary", "evidence": "Acquired by Cloudflare (NYSE: NET), Dec 2025", "parent": "Cloudflare", "sources": ["replicate.com", "github.com/replicate"]},
   {"slug": "replit", "name": "Replit", "basis": "valuation", "evidence": "Valued $9B (Mar 2026 Series D)", "sources": ["replit.com", "github.com/replit"]},

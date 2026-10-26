@@ -1,0 +1,27 @@
+{
+  "id": "objekts-production-desk",
+  "name": "objekts Production Desk",
+  "slug": "objekts-production-desk",
+  "description": "Diagnoses and estimates video production briefs over a keyless MCP server, and routes submitted briefs to the objekts studio's own production team.",
+  "providerName": "objekts",
+  "providerUrl": "https://objekts.ai",
+  "agentUrl": "https://mcp.objekts.ai/mcp",
+  "categories": ["content-media", "sales-marketing"],
+  "tags": ["video-production", "creative-brief", "production-estimates", "studio"],
+  "skills": [
+    { "id": "diagnose-production", "name": "Diagnose Production", "description": "Analyses a video production brief and flags gaps such as unbound authority or missing creative constraints." },
+    { "id": "estimate-production", "name": "Estimate Production", "description": "Produces a cost and scope estimate for a described video production, quoted by the studio in local currency." },
+    { "id": "submit-production-brief", "name": "Submit Production Brief", "description": "Submits a completed brief to the objekts studio and exposes status lookups on the submitted request." }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": ["mcp"],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:41:29.000Z"
+}

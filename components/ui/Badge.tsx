@@ -3,8 +3,10 @@ import { type ReactNode } from 'react';
 type Variant = 'default' | 'accent' | 'blue' | 'amber' | 'rose' | 'outline';
 
 const variantStyles: Record<Variant, string> = {
+  // A light tint of the theme's text colour: about white/5% in dark mode (as
+  // before) and a soft grey in light mode, where white/5% vanished on white.
   default:
-    'bg-white/[0.05] text-[var(--text-secondary)] border-[var(--border)]',
+    'bg-[var(--text-primary)]/7 text-[var(--text-secondary)] border-[var(--border)]',
   accent:
     'bg-[var(--accent-subtle)] text-[var(--accent)] border-[var(--border-accent)]',
   blue: 'bg-[var(--blue-glow)] text-[var(--blue)] border-[var(--blue)]/20',

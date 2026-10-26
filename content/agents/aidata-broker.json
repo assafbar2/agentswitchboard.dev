@@ -1,0 +1,69 @@
+{
+  "id": "aidata-broker",
+  "name": "AIData.Broker",
+  "slug": "aidata-broker",
+  "description": "Queries published AI training-data prices, market rates, buyers, licensing deals and court rulings, and values a data holding against them, through a keyless MCP server and open CSV/JSON datasets.",
+  "providerName": "O-mega Enterprise, Inc.",
+  "providerUrl": "https://o-mega.ai",
+  "version": "2026.10.16",
+  "agentUrl": "https://aidata.broker/mcp-server",
+  "categories": [
+    "data-analytics",
+    "research",
+    "finance"
+  ],
+  "tags": [
+    "training-data",
+    "data-licensing",
+    "market-rates",
+    "data-valuation",
+    "open-data",
+    "mcp"
+  ],
+  "skills": [
+    {
+      "id": "get-market-rates",
+      "name": "Market Rates",
+      "description": "Returns median, IQR and range of published prices per data kind and market side, each cell citing the figures behind it."
+    },
+    {
+      "id": "search-prices",
+      "name": "Price Search",
+      "description": "Searches a 1,303-row corpus of published AI data prices, returned with the source for each figure."
+    },
+    {
+      "id": "value-data",
+      "name": "Data Valuation",
+      "description": "Estimates a low-high USD range for a stated data holding (kind, amount, unit) and shows the comparables used."
+    },
+    {
+      "id": "find-buyers",
+      "name": "Buyer Discovery",
+      "description": "Lists AI labs and vendors buying a given data kind, with their websites and published licensing terms."
+    },
+    {
+      "id": "search-deals",
+      "name": "Deal Search",
+      "description": "Finds disclosed AI data licensing deals by party or keyword, with dates, annual values and sourcing notes."
+    },
+    {
+      "id": "search-cases",
+      "name": "Case Law Search",
+      "description": "Searches court rulings on AI training data and scraping rights relevant to licensing a data holding."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

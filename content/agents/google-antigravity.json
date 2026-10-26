@@ -1,0 +1,64 @@
+{
+  "id": "google-antigravity",
+  "name": "Google Antigravity",
+  "slug": "google-antigravity",
+  "description": "Builds and runs coding agents for developers across a desktop agent manager, an agentic IDE, a terminal CLI, and a Python SDK on Google's Antigravity harness.",
+  "providerName": "Google",
+  "providerUrl": "https://google.com",
+  "agentUrl": "https://antigravity.google",
+  "categories": [
+    "code-devtools",
+    "autonomous-agents"
+  ],
+  "tags": [
+    "agentic-ide",
+    "coding-agent",
+    "gemini",
+    "python-sdk",
+    "terminal-cli",
+    "browser-in-the-loop",
+    "subagents",
+    "google"
+  ],
+  "skills": [
+    {
+      "id": "parallel-agent-manager",
+      "name": "Parallel Agent Manager",
+      "description": "Runs multiple local agents in parallel from the desktop app, grouped into projects across several workspaces."
+    },
+    {
+      "id": "scheduled-tasks",
+      "name": "Scheduled Tasks",
+      "description": "Automates routine work with scheduled messages, also available as the /schedule command."
+    },
+    {
+      "id": "background-subagents",
+      "name": "Background Subagents",
+      "description": "Spawns and manages background subagents from the terminal CLI while running shell commands directly."
+    },
+    {
+      "id": "browser-in-the-loop",
+      "name": "Browser-in-the-Loop",
+      "description": "Drives a browser during tasks to automate repetitive UX work, with browser recordings and allow and deny lists."
+    },
+    {
+      "id": "custom-agent-sdk",
+      "name": "Custom Agent SDK",
+      "description": "Builds custom Python agents on the Antigravity harness with custom tools, MCP servers, skills, hooks, and streamed output."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-17T09:03:45.905Z",
+  "updatedAt": "2026-10-17T09:03:45.905Z"
+}

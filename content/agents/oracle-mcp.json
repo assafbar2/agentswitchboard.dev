@@ -1,0 +1,62 @@
+{
+  "id": "oracle-mcp",
+  "name": "Oracle MCP Servers",
+  "slug": "oracle-mcp",
+  "description": "Connects MCP clients to Oracle Cloud Infrastructure, Oracle Database, MySQL HeatWave and GoldenGate through Oracle's open-source reference MCP servers.",
+  "providerName": "Oracle",
+  "providerUrl": "https://www.oracle.com",
+  "agentUrl": "https://github.com/oracle/mcp",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "oracle-cloud",
+    "oci",
+    "oracle-database",
+    "mysql-heatwave",
+    "goldengate",
+    "reference-implementation",
+    "uvx"
+  ],
+  "skills": [
+    {
+      "id": "oci-sdk-calls",
+      "name": "OCI SDK Calls",
+      "description": "Finds, describes, and invokes any OCI Python SDK client operation by class and method name through one general server."
+    },
+    {
+      "id": "oci-cli-commands",
+      "name": "OCI CLI Commands",
+      "description": "Discovers and runs OCI CLI commands through the CLI-backed OCI API MCP server, using your configured OCI profile."
+    },
+    {
+      "id": "mysql-heatwave",
+      "name": "MySQL HeatWave",
+      "description": "Executes SQL and uses MySQL AI or HeatWave ML and GenAI tools, including RAG over vector stores, on MySQL connections."
+    },
+    {
+      "id": "database-tools",
+      "name": "Database Tools",
+      "description": "Lists autonomous databases and connections across a tenancy and runs SQL through OCI Database Tools connections."
+    },
+    {
+      "id": "goldengate-admin",
+      "name": "GoldenGate Administration",
+      "description": "Manages GoldenGate deployments through the GoldenGate Administration REST APIs, covering process lifecycle and monitoring."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-17T09:03:45.948Z",
+  "updatedAt": "2026-10-17T09:03:45.948Z"
+}

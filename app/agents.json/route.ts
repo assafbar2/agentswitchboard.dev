@@ -1,6 +1,8 @@
+import { VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 import { getEveryAgent } from '@/lib/catalog';
 import { BASE_URL } from '@/lib/env';
 import { logConsumer } from '@/lib/log';
+import { FEATURED_DEFINITION, OFFICIAL_DEFINITION } from '@/lib/public-api';
 import { NextResponse } from 'next/server';
 
 export async function GET(req: Request) {
@@ -21,6 +23,8 @@ export async function GET(req: Request) {
     verified: a.verified,
     official: a.official,
     officialVendor: a.officialVendor?.name ?? null,
+    // Featured listings sort first in this file's order, so callers see why.
+    featured: a.featured === true,
     tier: a.tier,
     createdAt: a.createdAt ?? null,
     updatedAt: a.updatedAt ?? null,
@@ -30,7 +34,8 @@ export async function GET(req: Request) {
     {
       source: 'Agent Switchboard — https://agentswitchboard.dev',
       description:
-        'Machine-readable catalog of vetted AI agents. Filter by categories or accessMethods to find the right tool; official: true marks first-party listings from major vendors.',
+        'Machine-readable catalog of every published Agent Switchboard listing (AI agents, MCP servers and agentic tools), featured first, then A→Z. Filter by categories or accessMethods to find the right tool. ' +
+        `Flags: ${VERIFIED_DEFINITION} ${OFFICIAL_DEFINITION} ${FEATURED_DEFINITION}`,
       generated: new Date().toISOString(),
       total: catalog.length,
       agents: catalog,

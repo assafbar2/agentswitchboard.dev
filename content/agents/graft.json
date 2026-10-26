@@ -1,11 +1,11 @@
 {
   "id": "graft",
-  "name": "Graft",
+  "name": "Trail-code",
   "slug": "graft",
   "description": "Builds a local, always-fresh graph of your codebase as linked markdown and serves it to coding agents over MCP and a CLI, so they spend fewer tokens and tool calls finding code.",
   "providerName": "Trail",
   "providerUrl": "https://trailhq.com",
-  "agentUrl": "https://trailhq.com/graft",
+  "agentUrl": "https://trailhq.com/trail-code",
   "categories": [
     "code-devtools",
     "memory-state"
@@ -59,5 +59,5 @@
     "cli"
   ],
   "createdAt": "2026-10-10T21:22:01.488Z",
-  "updatedAt": "2026-10-10T21:22:01.488Z"
+  "updatedAt": "2026-10-17T09:03:54.757Z"
 }

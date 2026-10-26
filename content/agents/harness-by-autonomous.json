@@ -1,0 +1,63 @@
+{
+  "id": "harness-by-autonomous",
+  "name": "Harness by Autonomous",
+  "slug": "harness-by-autonomous",
+  "description": "Runs Claude Code, Codex, Cursor and other coding agents across your laptop, servers and GPU boxes from one end-to-end encrypted command center and CLI.",
+  "providerName": "Autonomous",
+  "providerUrl": "https://www.autonomous.ai",
+  "agentUrl": "https://www.autonomous.ai/harness",
+  "categories": [
+    "orchestration",
+    "code-devtools"
+  ],
+  "tags": [
+    "multi-machine",
+    "tmux",
+    "end-to-end-encryption",
+    "claude-code",
+    "codex",
+    "remote-terminals",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "remote-sessions",
+      "name": "Remote Sessions",
+      "description": "Starts a coding-agent session on any linked machine and folder with harness new, running it in a daemon-owned tmux pane."
+    },
+    {
+      "id": "cross-harness-coordination",
+      "name": "Cross-Harness Coordination",
+      "description": "Lets Claude Code and Codex start, wait for, and read other harnesses through the harness skill and its CLI verbs."
+    },
+    {
+      "id": "daemon-mcp",
+      "name": "Daemon MCP Server",
+      "description": "Serves the paired daemon's tools as a stdio MCP server to list harnesses, read open questions, and send prompts."
+    },
+    {
+      "id": "encrypted-links",
+      "name": "Encrypted Machine Links",
+      "description": "Connects your machines over direct WebRTC, Cloudflare TURN, or a keyless relay, with every path sealed end to end."
+    },
+    {
+      "id": "domain-harnesses",
+      "name": "Domain Harnesses",
+      "description": "Installs Store harnesses that give a coding agent a craft's instructions, toolchain and live viewer, such as Blender or KiCad."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-10-17T09:03:45.942Z",
+  "updatedAt": "2026-10-17T09:03:45.942Z"
+}

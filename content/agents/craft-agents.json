@@ -1,0 +1,62 @@
+{
+  "id": "craft-agents",
+  "name": "Craft Agents",
+  "slug": "craft-agents",
+  "description": "Runs multiple agent sessions in a desktop workspace for knowledge workers, connecting MCP servers, REST APIs, and local files without config files.",
+  "providerName": "Craft",
+  "providerUrl": "https://www.craft.do",
+  "agentUrl": "https://agents.craft.do",
+  "categories": [
+    "autonomous-agents",
+    "productivity"
+  ],
+  "tags": [
+    "desktop-app",
+    "agent-workspace",
+    "mcp-client",
+    "claude-agent-sdk",
+    "headless-server",
+    "open-source",
+    "craft"
+  ],
+  "skills": [
+    {
+      "id": "source-connection",
+      "name": "Source Connection",
+      "description": "Adds MCP servers, REST APIs, or local files as sources on request, reading their docs and setting up credentials."
+    },
+    {
+      "id": "multi-session-inbox",
+      "name": "Multi-Session Inbox",
+      "description": "Organizes parallel agent sessions in an inbox with status workflows, flags, and saved conversation history."
+    },
+    {
+      "id": "permission-modes",
+      "name": "Permission Modes",
+      "description": "Switches between Explore (read-only), Ask to Edit, and Auto modes with customizable rules."
+    },
+    {
+      "id": "automations",
+      "name": "Automations",
+      "description": "Starts agent sessions automatically on label changes, schedules, tool use, and other events."
+    },
+    {
+      "id": "headless-server",
+      "name": "Headless Server",
+      "description": "Runs sessions on a remote server that the desktop thin client or the craft-cli terminal client connects to."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-17T09:03:45.919Z",
+  "updatedAt": "2026-10-17T09:03:45.919Z"
+}

@@ -1,0 +1,72 @@
+{
+  "id": "aamarva",
+  "name": "AAMARVA",
+  "slug": "aamarva",
+  "description": "Manage AI agent identities, MCP server and tool assignments, IP access policies, fleet activity, and end-to-end encrypted agent-to-agent and cluster messaging over a REST API.",
+  "providerName": "AAMARVA",
+  "providerUrl": "https://aamarva.com",
+  "agentUrl": "https://aamarva.com/api/adk",
+  "categories": [
+    "orchestration",
+    "autonomous-agents",
+    "infrastructure"
+  ],
+  "tags": [
+    "agent-identity",
+    "mcp-governance",
+    "end-to-end-encryption",
+    "fleet-management",
+    "access-control",
+    "rest-api"
+  ],
+  "skills": [
+    {
+      "id": "agent-identity",
+      "name": "Agent Identity",
+      "description": "Register and administer agent identities with master/slave account relationships, profiles, and credential rotation via the /api/agents routes."
+    },
+    {
+      "id": "floor-tool-governance",
+      "name": "FLOOR Tool Governance",
+      "description": "Connect MCP servers, discover their tools, and assign per-agent tool access with enforced authorization policies."
+    },
+    {
+      "id": "encrypted-connections",
+      "name": "Encrypted Connections",
+      "description": "Authorize agent-to-agent relationships and exchange end-to-end encrypted direct messages between connected accounts."
+    },
+    {
+      "id": "encrypted-clusters",
+      "name": "Encrypted Clusters",
+      "description": "Create clusters, administer membership and member roles, and send encrypted group messages using recipient-specific key envelopes."
+    },
+    {
+      "id": "e2ee-key-registry",
+      "name": "E2EE Key Registry",
+      "description": "Register and retrieve ECDH P-256 public keys, key epochs, fingerprints, and peer keys for recipient-specific message encryption."
+    },
+    {
+      "id": "network-access-control",
+      "name": "Network Access Control",
+      "description": "Restrict agent authentication to whitelisted IP addresses and CIDR ranges, with account, agent, and session access controls."
+    },
+    {
+      "id": "watchtower-activity-stream",
+      "name": "Watchtower Activity Stream",
+      "description": "Continuously updating activity stream of events across the authorized agent fleet, separate from recorded telemetry measurements."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

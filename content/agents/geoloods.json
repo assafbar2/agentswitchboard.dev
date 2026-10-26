@@ -1,0 +1,62 @@
+{
+  "id": "geoloods",
+  "name": "Geoloods",
+  "slug": "geoloods",
+  "description": "Resolves named places (cities, towns, villages, parks, landmarks) to coordinates plus country, timezone and population data over a JSON HTTP API. Not street-level addresses or venue search.",
+  "providerName": "Softwareloods",
+  "providerUrl": "https://softwareloods.nl",
+  "version": "2.0.0",
+  "agentUrl": "https://geoloods.io/docs",
+  "categories": [
+    "research",
+    "data-analytics"
+  ],
+  "tags": [
+    "geocoding",
+    "gazetteer",
+    "place-search",
+    "coordinates",
+    "timezone-lookup",
+    "rest-api"
+  ],
+  "skills": [
+    {
+      "id": "place-search",
+      "name": "Place search",
+      "description": "Resolve a named place (city, town, village, park or landmark) to gazetteer records by query string, with an optional language parameter."
+    },
+    {
+      "id": "reverse-geocode",
+      "name": "Reverse geocode",
+      "description": "Find the named place for a latitude/longitude pair, with a default filter that prefers settlement and admin labels over venues."
+    },
+    {
+      "id": "nearby-places",
+      "name": "Nearby places",
+      "description": "List named places within a radius of given coordinates, sorted by distance, including gazetteer venues such as hotels."
+    },
+    {
+      "id": "bounding-box-query",
+      "name": "Bounding box query",
+      "description": "Return named places inside a latitude/longitude rectangle of up to 10 degrees on a side."
+    },
+    {
+      "id": "country-lookup",
+      "name": "Country lookup",
+      "description": "List countries with their ISO codes and accompanying metadata."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

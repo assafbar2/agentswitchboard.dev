@@ -1,0 +1,28 @@
+{
+  "id": "ball-ranks",
+  "name": "Ball Ranks Fantasy Sports",
+  "slug": "ball-ranks",
+  "description": "Serves NFL and NBA fantasy rankings and player projections to agents over a keyless read-only MCP server and a public REST API with an OpenAPI 3.1 spec.",
+  "providerName": "Ball Ranks",
+  "providerUrl": "https://ballranks.com",
+  "version": "1.1.2",
+  "agentUrl": "https://ballranks.com/api/mcp",
+  "categories": ["data-analytics", "research"],
+  "tags": ["fantasy-sports", "nfl", "nba", "player-projections", "rankings", "sports-data"],
+  "skills": [
+    { "id": "get-season-rankings", "name": "Get Season Rankings", "description": "Returns full-season fantasy rankings for football or basketball, with projected points per player." },
+    { "id": "get-week-rankings", "name": "Get Week Rankings", "description": "Returns weekly fantasy rankings for a given sport and week, for lineup and waiver decisions." },
+    { "id": "get-player-projections", "name": "Get Player Projections", "description": "Returns projection data for an individual player, including projected fantasy points for the period." }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": ["api", "mcp"],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:41:29.000Z"
+}

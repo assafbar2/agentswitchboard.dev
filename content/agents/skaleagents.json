@@ -1,0 +1,65 @@
+{
+  "id": "skaleagents",
+  "name": "SkaleAgents",
+  "slug": "skaleagents",
+  "description": "Scans Terraform, CloudFormation, Kubernetes and Pulumi IaC plus CI files and Dockerfiles for misconfigurations and committed secrets, and reviews app architecture, from an MCP server or offline CLI.",
+  "providerName": "Binary Labs LLC",
+  "providerUrl": "https://skaleagents.com",
+  "version": "0.8.2",
+  "agentUrl": "https://skaleagents.com/mcp-config",
+  "categories": [
+    "code-devtools",
+    "security",
+    "infrastructure"
+  ],
+  "tags": [
+    "terraform",
+    "kubernetes",
+    "infrastructure-as-code",
+    "static-analysis",
+    "secret-scanning",
+    "architecture-review",
+    "cloudformation"
+  ],
+  "skills": [
+    {
+      "id": "scan-iac",
+      "name": "Scan IaC",
+      "description": "Scans Terraform, CloudFormation, Kubernetes, Helm, Ansible, Bicep, ARM and Dockerfiles, returning a resource inventory plus findings with rule IDs, severity and remediation."
+    },
+    {
+      "id": "review-architecture",
+      "name": "Review Architecture",
+      "description": "Reviews a single source snippet or infrastructure config for security, reliability and cost concerns, such as disabled timeouts or unbounded retry limits."
+    },
+    {
+      "id": "review-application-architecture",
+      "name": "Review Application Architecture",
+      "description": "Maps related source files into an import graph and checks Next.js boundaries, covering data access, authorization, reliability and delivery with cited evidence."
+    },
+    {
+      "id": "plan-architecture-review",
+      "name": "Plan Architecture Review",
+      "description": "Starts a review consultation from a repository-relative file inventory and project goals, suggesting files to read and asking focused follow-up questions."
+    },
+    {
+      "id": "offline-cli-scan",
+      "name": "Offline CLI Scan",
+      "description": "Scans IaC, CI, Dockerfile and package files locally with no account and no network calls, supporting baselines, changed-file mode and JSON output."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

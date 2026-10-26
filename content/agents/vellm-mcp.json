@@ -1,0 +1,34 @@
+{
+  "id": "vellm-mcp",
+  "name": "Vellm MCP",
+  "slug": "vellm-mcp",
+  "description": "Generates short videos from user photos via a remote OAuth MCP server: named TikTok/Reels template routines, image-to-video, text-to-video, and image generation. Runs on Seedance 2.5; paid credits.",
+  "providerName": "Vellm",
+  "providerUrl": "https://vellm.app",
+  "agentUrl": "https://vellm.app/mcp",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "video-generation",
+    "image-to-video",
+    "text-to-video",
+    "short-form-video",
+    "social-media",
+    "oauth"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

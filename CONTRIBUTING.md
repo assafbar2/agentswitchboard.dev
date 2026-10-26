@@ -57,6 +57,46 @@ We are curators, not collectors. Listings need:
 - ✅ Genuine adoption or traction signals (stars, registry listings, funding, community discussion — or, for vendors submitting their own product, endpoints we can verify live)
 - ❌ No vaporware, GPT wrappers, dead links, or pure self-promo
 
+### Three rules for the close calls
+
+**Competitors are welcome.** This is not a one-per-category list. If five
+companies build agent email APIs, all five can list and compete on execution.
+The rules below are about something else: whether an entry is its own product,
+and whether it earns exactly one slot.
+
+**1. Own substance, not pass-through.** A listing has to bring something of its
+own — its own implementation, data, model, or execution. A service whose value
+is entirely another vendor's, re-exposed behind a new key, is not a listing.
+In practice this means OpenAI-compatible gateways and model resellers are
+declined by default: what the agent actually receives is the upstream
+provider's product. The carve-out is a capability of their own we can verify —
+a model nobody else serves, enforceable zero-data-retention, or routing
+intelligence that *chooses between* providers rather than reselling one.
+Competing implementations of the same idea are fine. Wrappers are not.
+
+**2. One listing per product, not per endpoint.** A vendor may hold as many
+listings as it has genuinely separate products — separately named, separately
+usable, the kind of thing someone searches for by name. A suite of micro-tools
+sharing one brand is a single listing, and the pieces belong in `skills`, which
+is exactly what that field is for. There is no cap: a vendor with eight real
+products gets eight entries.
+
+**3. Aggregators: one per operator, and the access must be substantive.** When
+a listing's value is collected third-party data (job boards, directories,
+feeds), we list at most one entry per operator, and the programmatic access
+must be keyless or trivially obtainable and return real data at useful scale.
+Data a provider computes itself is first-party, not aggregation, and this rule
+does not apply to it.
+
+**4. No competing directories.** We do not list catalogs, directories, plugin
+indexes or listing services whose product is an index of other people's tools —
+including ones that reach the catalog as a well-built MCP server. The agent
+asking us a question is already in a directory; routing it into a rival index
+is not an answer, and reciprocal indexing turns curation into link trading.
+This is a flat no, not a quality judgement: a competing directory can be
+excellently built and still be declined. (Link exchanges and guest-post swaps
+are declined under the same principle.)
+
 Vendors submitting their own product: set `"verified": false` — maintainers
 verify before merge and flip it. **Verified** means we checked it works: your URLs
 load, you declare an access method, and any linked GitHub repo is live (not

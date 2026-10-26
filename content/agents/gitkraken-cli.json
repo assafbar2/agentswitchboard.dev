@@ -1,0 +1,52 @@
+{
+  "id": "gitkraken-cli",
+  "name": "GitKraken CLI",
+  "slug": "gitkraken-cli",
+  "description": "Manages multi-repo work items, AI commits and pull requests from the terminal, and gives coding agents a local MCP server for git, issues, and PRs.",
+  "providerName": "GitKraken",
+  "providerUrl": "https://www.gitkraken.com",
+  "agentUrl": "https://help.gitkraken.com/cli/cli-home/",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "git",
+    "multi-repo",
+    "pull-requests",
+    "issue-tracking",
+    "local-mcp",
+    "github",
+    "jira"
+  ],
+  "skills": [
+    {
+      "id": "work-items",
+      "name": "Multi-Repo Work Items",
+      "description": "Groups several repositories into one work item so you can commit, push, and open pull requests across them together."
+    },
+    {
+      "id": "ai-commits-prs",
+      "name": "AI Commits and PRs",
+      "description": "Writes commit messages and pull request descriptions with AI through gk work commit --ai and gk work pr create --ai."
+    },
+    {
+      "id": "mcp-server",
+      "name": "Local MCP Server",
+      "description": "Gives coding agents git operations, issue tracking, and pull request workflows across GitHub, GitLab, Jira and Azure DevOps."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-10-17T09:03:45.945Z",
+  "updatedAt": "2026-10-17T09:03:45.945Z"
+}

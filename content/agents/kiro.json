@@ -1,0 +1,63 @@
+{
+  "id": "kiro",
+  "name": "Kiro",
+  "slug": "kiro",
+  "description": "Turns prompts into specs, designs, and task lists, then implements them for developers in Kiro's agentic IDE or CLI, including headless CI runs.",
+  "providerName": "Kiro (AWS)",
+  "providerUrl": "https://kiro.dev",
+  "agentUrl": "https://kiro.dev",
+  "categories": [
+    "code-devtools",
+    "autonomous-agents"
+  ],
+  "tags": [
+    "spec-driven-development",
+    "agentic-ide",
+    "coding-agent",
+    "headless-ci",
+    "agent-client-protocol",
+    "mcp-client",
+    "aws"
+  ],
+  "skills": [
+    {
+      "id": "spec-driven-development",
+      "name": "Spec-Driven Development",
+      "description": "Generates requirements.md, design.md, and tasks.md for a feature or bugfix, then tracks implementation task by task."
+    },
+    {
+      "id": "parallel-task-execution",
+      "name": "Parallel Task Execution",
+      "description": "Builds a dependency graph of spec tasks and runs independent tasks concurrently in waves."
+    },
+    {
+      "id": "headless-mode",
+      "name": "Headless Mode",
+      "description": "Runs prompts non-interactively in CI/CD pipelines with an API key and emits JSON Lines events for scripts."
+    },
+    {
+      "id": "agent-client-protocol",
+      "name": "Agent Client Protocol",
+      "description": "Exposes the Kiro CLI over ACP for programmatic agent interactions from editors and other tools."
+    },
+    {
+      "id": "agent-hooks",
+      "name": "Agent Hooks",
+      "description": "Automates actions before and after commands and tool calls, including PreToolUse hooks that can deny a call."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-17T09:03:45.907Z",
+  "updatedAt": "2026-10-17T09:03:45.907Z"
+}

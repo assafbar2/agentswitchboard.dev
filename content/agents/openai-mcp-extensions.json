@@ -1,0 +1,63 @@
+{
+  "id": "openai-mcp-extensions",
+  "name": "OpenAI MCP Extensions",
+  "slug": "openai-mcp-extensions",
+  "description": "Extends MCP servers and apps with ChatGPT-native features like sidebar entrypoints, file handlers, and composer mentions, for plugin developers.",
+  "providerName": "OpenAI",
+  "providerUrl": "https://openai.com",
+  "agentUrl": "https://github.com/openai/mcp-extensions",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "mcp-extensions",
+    "chatgpt-plugins",
+    "mcp-apps",
+    "typescript-sdk",
+    "python-sdk",
+    "specification",
+    "openai"
+  ],
+  "skills": [
+    {
+      "id": "app-entrypoints",
+      "name": "App Entrypoints",
+      "description": "Lets users open a plugin's MCP App from the ChatGPT sidebar or from a thread, including through deep links."
+    },
+    {
+      "id": "file-extension-handlers",
+      "name": "File Extension Handlers",
+      "description": "Renders custom file viewers when users open a supported file type, with resource reads and writes."
+    },
+    {
+      "id": "composer-mentions",
+      "name": "Composer Mentions",
+      "description": "Lets users search a plugin's resources from the composer and attach references to a message."
+    },
+    {
+      "id": "form-elicitation",
+      "name": "Form Elicitation",
+      "description": "Extends MCP elicitation with thumbnails, option descriptions, suggested values, and resource selection."
+    },
+    {
+      "id": "structured-settings",
+      "name": "Structured Settings",
+      "description": "Exposes plugin settings that ChatGPT can read and update through a structured schema."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-17T09:03:45.922Z",
+  "updatedAt": "2026-10-17T09:03:45.922Z"
+}

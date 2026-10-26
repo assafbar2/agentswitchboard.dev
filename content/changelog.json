@@ -24,6 +24,1039 @@
     "date": "2026-10-12"
   },
   {
+    "action": "removed",
+    "slug": "fx-agent",
+    "name": "fx",
+    "note": "Duplicate of vercel-fx: the same product (fx.sh, Vercel Labs, github.com/vercel-labs/fx), listed twice. vercel-fx stays, with the correct provider and skills",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "ball-ranks",
+    "name": "Ball Ranks Fantasy Sports",
+    "note": "Verified: URLs load, MCP initialize handshake succeeds, public REST API responds",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "objekts-production-desk",
+    "name": "objekts Production Desk",
+    "note": "Verified: URLs load, MCP initialize handshake succeeds",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "threadkeep",
+    "name": "ThreadKeep",
+    "note": "Verified: URLs load, MCP initialize handshake succeeds, HTTP API answers with an auth challenge",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "removed",
+    "slug": "midjourney",
+    "name": "Midjourney",
+    "note": "No programmatic access: Midjourney states it does not provide an API and prohibits automation, so it fails the \"not just a web UI\" bar",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "removed",
+    "slug": "smithery",
+    "name": "Smithery",
+    "note": "Rule 4 (no competing directories): an MCP registry whose product is an index of other people's servers",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "agentswitchboard",
+    "name": "Agent Switchboard",
+    "note": "description updated",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "aamarva",
+    "name": "AAMARVA",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "agent-utilities",
+    "name": "Agent Utilities",
+    "note": "Verified: URLs load, access method declared, GitHub repo live",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "agentcouch",
+    "name": "AgentCouch",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "ai-for-database",
+    "name": "AI for Database",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "aidata-broker",
+    "name": "AIData.Broker",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "aitraining-jobs",
+    "name": "AITraining.jobs",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "artifact-council",
+    "name": "Artifact Council",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "arvow",
+    "name": "Arvow",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "clify",
+    "name": "Clify",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "clipmyapp",
+    "name": "ClipMyApp",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "cosvoice",
+    "name": "CosVoice",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "crontinel",
+    "name": "Crontinel",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "fleeting-chat",
+    "name": "fleeting.chat",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "flexqueries",
+    "name": "FlexQueries",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "founden",
+    "name": "Founden",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "fungsi-id-mcp",
+    "name": "Fungsi.id MCP",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "geardex",
+    "name": "GearDex",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "geoloods",
+    "name": "Geoloods",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "herohunt-ai",
+    "name": "HeroHunt.ai",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "hol-guard",
+    "name": "HOL Guard",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "hourtick",
+    "name": "Hourtick",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "ilook",
+    "name": "iLook",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "mangatranslate",
+    "name": "MangaTranslate",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "menlo-insurance-mcp",
+    "name": "Menlo Insurance MCP",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "neurakeep",
+    "name": "NeuraKeep",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "nolizi-calendar",
+    "name": "Nolizi Calendar",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "northstar-trustrail-acceptance-checker",
+    "name": "northstar-trustrail Acceptance Checker",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "one-workrr",
+    "name": "ONE",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "openagentforum",
+    "name": "OpenAgentForum",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "placement-api",
+    "name": "Placement API",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "polyphemus",
+    "name": "Polyphemus (Eye.Art)",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "praesidia",
+    "name": "Praesidia",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "pragor",
+    "name": "Pragor",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "revdoku",
+    "name": "Revdoku",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "rival-ads",
+    "name": "Rival Ads",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "robylon",
+    "name": "Robylon",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "sandbox0",
+    "name": "Sandbox0",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "skaleagents",
+    "name": "SkaleAgents",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "sniffington",
+    "name": "Sniffington",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "superagnt",
+    "name": "superagnt_",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "swarmmemo",
+    "name": "SwarmMemo",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "taskfolk",
+    "name": "Taskfolk",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "unquant",
+    "name": "Unquant",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "vellm-mcp",
+    "name": "Vellm MCP",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "vidmoat",
+    "name": "Vidmoat",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "whooshly",
+    "name": "Whooshly",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "xquik",
+    "name": "Xquik",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "zeroshot",
+    "name": "Zeroshot",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "zovo-invoice-mcp",
+    "name": "Zovo Invoice MCP",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "ada",
+    "name": "Ada",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "contentful",
+    "name": "Contentful",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "socket-security",
+    "name": "Socket Security",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "upwork-mcp",
+    "name": "Upwork MCP Server",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "updated",
+    "slug": "wso2-agent-manager",
+    "name": "WSO2 Agent Manager",
+    "note": "Verified: URLs load, access method declared",
+    "date": "2026-10-25"
+  },
+  {
+    "action": "added",
+    "slug": "ai-for-database",
+    "name": "AI for Database",
+    "note": "Queries PostgreSQL, MySQL, MongoDB and SQL Server in plain English via a scoped REST API and OAuth-gated remot",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "xquik",
+    "name": "Xquik",
+    "note": "Search X (Twitter) posts, profiles and followers, run keyword and account monitors, and post or manage connect",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "mangatranslate",
+    "name": "MangaTranslate",
+    "note": "Translates manga pages and PDFs through a credit-metered REST API: OCR, text removal, background repair and ty",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "aidata-broker",
+    "name": "AIData.Broker",
+    "note": "Queries published AI training-data prices, market rates, buyers, licensing deals and court rulings, and values",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "herohunt-ai",
+    "name": "HeroHunt.ai",
+    "note": "Searches and enriches public talent profiles across GitHub, StackOverflow and the web through a natural-langua",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "flexqueries",
+    "name": "FlexQueries",
+    "note": "Research keywords, SERPs, backlinks, competitors, rankings, site audits and AI visibility via a hosted OAuth M",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "crontinel",
+    "name": "Crontinel",
+    "note": "Monitors cron, queue, and Horizon jobs via HTTP outcome receipts that flag runs exiting 0 without doing work, ",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "zovo-invoice-mcp",
+    "name": "Zovo Invoice MCP",
+    "note": "Creates numbered line-item invoices with multi-rate VAT, renders them as downloadable documents, and tracks cl",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "whooshly",
+    "name": "Whooshly",
+    "note": "Creates short links, dynamic QR codes, UTM templates, vCards and landing pages, and reads click and scan analy",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "sniffington",
+    "name": "Sniffington",
+    "note": "Monitors brand mentions across Reddit, X, LinkedIn and other platforms. Exposes mentions, briefs, analytics an",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "superagnt",
+    "name": "superagnt_",
+    "note": "Connects agents to social, web, SEO and lead-enrichment data across 10 platforms and 262 REST endpoints, reach",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "praesidia",
+    "name": "Praesidia",
+    "note": "Govern AI agent and MCP server access with runtime policy, approvals, guardrails and a signed audit trail, thr",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "hourtick",
+    "name": "Hourtick",
+    "note": "Tracks billable time, tasks and team chat for people and AI agents via an OAuth-gated MCP server and an OpenAP",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "zeroshot",
+    "name": "Zeroshot",
+    "note": "Runs coding agents through a configurable graph of implementation, independent review and bounded repair, with",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "polyphemus",
+    "name": "Polyphemus (Eye.Art)",
+    "note": "Generates and edits images, icons, and editable SVG from natural language or page code (HTML/CSS/JSX/TSX) via ",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "fungsi-id-mcp",
+    "name": "Fungsi.id MCP",
+    "note": "Search Indonesian job listings, company profiles, and city, province, category and job-type metadata through e",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "swarmmemo",
+    "name": "SwarmMemo",
+    "note": "Post and read public agent messages, send private DMs, and create or claim paid tasks over a keyless MCP endpo",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "robylon",
+    "name": "Robylon",
+    "note": "Handles customer support across chat, email, WhatsApp, tickets and voice; exposes a REST API for workflow and ",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "cosvoice",
+    "name": "CosVoice",
+    "note": "Provisions a dedicated US phone number and email address for an AI agent over MCP: place and answer calls, sen",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "vidmoat",
+    "name": "Vidmoat",
+    "note": "Edits video programmatically from agents over a remote MCP server and a REST v1 API: import media, run timelin",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "fleeting-chat",
+    "name": "fleeting.chat",
+    "note": "Opens ephemeral HTTP rooms for agent-to-agent messaging: reserve a 9-digit channel, bind 2-8 seats with ED2551",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "skaleagents",
+    "name": "SkaleAgents",
+    "note": "Scans Terraform, CloudFormation, Kubernetes and Pulumi IaC plus CI files and Dockerfiles for misconfigurations",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "nolizi-calendar",
+    "name": "Nolizi Calendar",
+    "note": "Books meetings through a hosted MCP server and owner-authenticated REST API: list event types, check live avai",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "geoloods",
+    "name": "Geoloods",
+    "note": "Resolves named places (cities, towns, villages, parks, landmarks) to coordinates plus country, timezone and po",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "agentcouch",
+    "name": "AgentCouch",
+    "note": "Connects agents across owners, clients, and machines through hosted MCP rooms with persistent, account-attribu",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "taskfolk",
+    "name": "Taskfolk",
+    "note": "Tracks projects, issues, sprints, and docs over a 198-operation REST API and a hosted MCP server, letting AI a",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "clipmyapp",
+    "name": "ClipMyApp",
+    "note": "Turns app screen recordings into short videos, memes, and carousels; MCP server and REST API let assistants cr",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "revdoku",
+    "name": "Revdoku",
+    "note": "Gives AI agents their own email addresses with per-mailbox file storage: receive mail and attachments, send re",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "rival-ads",
+    "name": "Rival Ads",
+    "note": "Tracks competitors’ ads on Meta, Google, TikTok and LinkedIn from public ad libraries, and exposes monitors, a",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "neurakeep",
+    "name": "NeuraKeep",
+    "note": "Stores source-cited agent memory with review-gated updates and failure history; exposes search/read/propose to",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "unquant",
+    "name": "Unquant",
+    "note": "Serves delayed and end-of-day market data, company fundamentals, analyst ratings, financial news, US macro ind",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "menlo-insurance-mcp",
+    "name": "Menlo Insurance MCP",
+    "note": "Lists Menlo property and casualty insurance products and quote links over MCP without auth, then continues one",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "northstar-trustrail-acceptance-checker",
+    "name": "northstar-trustrail Acceptance Checker",
+    "note": "Checks two OpenAPI 3.0 specs for breaking changes, flagging removed paths, newly required parameters and type ",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "clify",
+    "name": "Clify",
+    "note": "Calls 135 public websites — package registries, weather, transit, government and science data — as typed JSON ",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "vellm-mcp",
+    "name": "Vellm MCP",
+    "note": "Generates short videos from user photos via a remote OAuth MCP server: named TikTok/Reels template routines, i",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "founden",
+    "name": "Founden",
+    "note": "Builds and deploys a running company from a plain-language prompt — website, user app with sign-in, and back o",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "pragor",
+    "name": "Pragor",
+    "note": "Coordinate human and AI-agent teams on a shared project board with tasks, messages, approvals, and an audit tr",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "geardex",
+    "name": "GearDex",
+    "note": "Tracks camera gear inventory, shoot plans, maintenance and lending for photographers, with a scoped Studio RES",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "artifact-council",
+    "name": "Artifact Council",
+    "note": "Hosts councils of AI agents that propose, vote on and revise shared text documents over a keyless REST API, re",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "placement-api",
+    "name": "Placement API",
+    "note": "Search, compare and buy SEO link placements across 10 supplier marketplaces via one API or MCP, with independe",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "openagentforum",
+    "name": "OpenAgentForum",
+    "note": "Coordinates autonomous agents over an Ed25519-signed message protocol: public channels, encrypted DMs, task bo",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "hol-guard",
+    "name": "HOL Guard",
+    "note": "Blocks risky AI coding agent actions at runtime on your machine — shell commands, secret access, MCP servers, ",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "one-workrr",
+    "name": "ONE",
+    "note": "Connects autonomous agents via a public commons: claim an Ed25519-signed handle, find specialists, post questi",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "agent-utilities",
+    "name": "Agent Utilities",
+    "note": "Validate and reshape supplied HTML, JSON and shopping data with 60+ deterministic tools: GTIN check digits, wh",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "aamarva",
+    "name": "AAMARVA",
+    "note": "Manage AI agent identities, MCP server and tool assignments, IP access policies, fleet activity, and end-to-en",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "ilook",
+    "name": "iLook",
+    "note": "Scores user-submitted face photos over REST and MCP, returning face shape, facial symmetry, Golden Ratio phi, ",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "aitraining-jobs",
+    "name": "AITraining.jobs",
+    "note": "Searches open AI-training jobs — trainers, RLHF evaluators, annotators, domain experts — collected hourly from",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "arvow",
+    "name": "Arvow",
+    "note": "AI SEO agents — REST API (OpenAPI 3.1) + OAuth-gated MCP.",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "threadkeep",
+    "name": "ThreadKeep",
+    "note": "MCP task checkpoints for cross-session agent recovery.",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "ball-ranks",
+    "name": "Ball Ranks Fantasy Sports",
+    "note": "Keyless read-only MCP + REST for NFL/NBA fantasy rankings.",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "objekts-production-desk",
+    "name": "objekts Production Desk",
+    "note": "Keyless MCP for video production diagnosis and estimates.",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "added",
+    "slug": "sandbox0",
+    "name": "Sandbox0",
+    "note": "Managed cloud sandboxes for agent code — REST API + CLI.",
+    "date": "2026-10-24"
+  },
+  {
+    "action": "updated",
+    "slug": "vertex-ai-agent-builder",
+    "name": "Gemini Enterprise Agent Platform",
+    "note": "agentUrl updated",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "updated",
+    "slug": "vertex-ai-agent-builder",
+    "name": "Gemini Enterprise Agent Platform",
+    "note": "name updated",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "updated",
+    "slug": "codewhale",
+    "name": "Codewhale",
+    "note": "providerName updated",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "updated",
+    "slug": "codewhale",
+    "name": "Codewhale",
+    "note": "agentUrl updated",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "updated",
+    "slug": "experiential",
+    "name": "Experiential",
+    "note": "providerUrl updated",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "updated",
+    "slug": "experiential",
+    "name": "Experiential",
+    "note": "agentUrl updated",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "updated",
+    "slug": "graft",
+    "name": "Trail-code",
+    "note": "agentUrl updated",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "updated",
+    "slug": "graft",
+    "name": "Trail-code",
+    "note": "name updated",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "oracle-mcp",
+    "name": "Oracle MCP Servers",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "honeybadger-mcp",
+    "name": "Honeybadger MCP",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "gitkraken-cli",
+    "name": "GitKraken CLI",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "twelvelabs-jockey",
+    "name": "Jockey by TwelveLabs",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "harness-by-autonomous",
+    "name": "Harness by Autonomous",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "nitrostack",
+    "name": "NitroStack",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "jevgrep",
+    "name": "jevgrep",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "perplexity-space",
+    "name": "Perplexity SPACE",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "openmuse",
+    "name": "OpenMuse",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "coucou",
+    "name": "Coucou",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "baidu-qianfan",
+    "name": "Baidu Qianfan",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "reka-api",
+    "name": "Reka API",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "ai21-studio",
+    "name": "AI21 Studio",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "fish-audio",
+    "name": "Fish Audio",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "minimax-code",
+    "name": "MiniMax Code",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "minimax-api",
+    "name": "MiniMax API Platform",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "ibm-bob",
+    "name": "IBM Bob",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "volcengine-ark",
+    "name": "Volcengine Ark",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "oci-generative-ai",
+    "name": "OCI Generative AI",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "nvidia-nim-api",
+    "name": "NVIDIA NIM API",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "openai-mcp-extensions",
+    "name": "OpenAI MCP Extensions",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "drawio-mcp",
+    "name": "draw.io MCP",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "craft-agents",
+    "name": "Craft Agents",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "kev",
+    "name": "Kev",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "nightingale",
+    "name": "Nightingale",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "next-ai-draw-io",
+    "name": "Next AI Draw.io",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "ibm-watsonx-ai",
+    "name": "IBM watsonx.ai",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "amazon-bedrock",
+    "name": "Amazon Bedrock",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "mistral-vibe",
+    "name": "Mistral Vibe",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "kiro",
+    "name": "Kiro",
+    "date": "2026-10-17"
+  },
+  {
+    "action": "added",
+    "slug": "google-antigravity",
+    "name": "Google Antigravity",
+    "date": "2026-10-17"
+  },
+  {
     "action": "updated",
     "slug": "doordash-cli",
     "name": "dd-cli",
