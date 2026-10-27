@@ -1,5 +1,12 @@
 [
   {
+    "action": "added",
+    "slug": "bucketlist-nl-dream-of-the-day-api",
+    "name": "Bucketlist.nl Dream of the Day API",
+    "note": "Vendor-submitted keyless daily experience data API; maintainer verification pending.",
+    "date": "2026-10-27"
+  },
+  {
     "action": "removed",
     "slug": "fx-agent",
     "name": "fx",

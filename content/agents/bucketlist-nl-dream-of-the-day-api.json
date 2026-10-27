@@ -1,0 +1,41 @@
+{
+  "id": "bucketlist-nl-dream-of-the-day-api",
+  "name": "Bucketlist.nl Dream of the Day API",
+  "slug": "bucketlist-nl-dream-of-the-day-api",
+  "description": "Return one daily experience idea with an image and source attribution through a free keyless JSON API, with language, scope and theme parameters. Onward links may be labelled affiliate links.",
+  "providerName": "Bucketlist.nl",
+  "providerUrl": "https://bucketlist.nl/",
+  "agentUrl": "https://bucketlist.nl/brand/droom-van-de-dag.openapi.json",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "travel-inspiration",
+    "bucket-lists",
+    "daily-experiences",
+    "read-only-api",
+    "multilingual",
+    "openapi",
+    "netherlands"
+  ],
+  "skills": [
+    {
+      "id": "daily-experience",
+      "name": "Retrieve Daily Experience",
+      "description": "Retrieve one daily experience idea with its image, canonical source URL and attribution, using language, scope and an optional theme query parameter."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-27T12:24:10.159Z",
+  "updatedAt": "2026-10-27T12:24:10.159Z"
+}
