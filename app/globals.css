@@ -366,6 +366,11 @@ body {
     color: inherit;
   }
 
+  /* Focus ring on yellow: --dir-ink turns light in dark theme (1.3:1 on yellow). */
+  .dir-bar a:focus-visible {
+    outline-color: var(--dir-on-yellow);
+  }
+
   .dir-bar-count {
     font-weight: 600;
     letter-spacing: 0;
@@ -437,6 +442,11 @@ body {
 
 [data-view="agent"] .human-only { display: none !important; }
 [data-view="agent"] .agent-only { display: block !important; }
+
+/* AgentViewButton label pair: CSS picks the label so it never flips on hydration. */
+.avb-when-agent { display: none; }
+[data-view="agent"] .avb-when-human { display: none; }
+[data-view="agent"] .avb-when-agent { display: inline; }
 
 /* Global agent mode overrides */
 [data-view="agent"] body {

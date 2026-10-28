@@ -27,6 +27,7 @@ export function CategoryCard({
     return (
       <Link
         href={`/categories/${category.slug}`}
+        title={category.name}
         className="dir-row break-inside-avoid [font-family:var(--font-display)]"
       >
         <span className="dir-row-name">{category.name}</span>

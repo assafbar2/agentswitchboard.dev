@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useSyncExternalStore } from 'react';
+import { useCallback, useEffect, useSyncExternalStore, type ReactNode } from 'react';
 
 export type ViewMode = 'human' | 'agent';
 
@@ -98,11 +98,61 @@ const tabClass =
 
 const tabSubClass = 'mt-1 text-xs font-semibold tracking-normal text-[var(--dir-bar-fg)]';
 
+/* Does the current page have an agent (text-only) view? A page with no
+   .agent-only block looks the same in agent view, so there the agent button
+   links to the text version (/index.md) instead of doing nothing. Watched
+   with a MutationObserver so client-side navigation keeps it right. */
+function subscribeAgentView(onChange: () => void) {
+  const observer = new MutationObserver(onChange);
+  observer.observe(document.body, { childList: true, subtree: true });
+  return () => observer.disconnect();
+}
+
+function pageHasAgentView(): boolean {
+  return document.querySelector('.agent-only') !== null;
+}
+
+/** Both labels render; CSS picks one from html[data-view], so it never flips on hydration. */
+function ModeLabel({ human, agent }: { human: ReactNode; agent: ReactNode }) {
+  return (
+    <>
+      <span className="avb-when-human">{human}</span>
+      <span className="avb-when-agent">{agent}</span>
+    </>
+  );
+}
+
+const switchLabel = (
+  <>
+    Switch to text-only view <span aria-hidden="true">→</span>
+  </>
+);
+const backLabel = (
+  <>
+    <span aria-hidden="true">←</span> Back to the human view
+  </>
+);
+const tabSwitchLabel = (
+  <>
+    text only <span aria-hidden="true">→</span>
+  </>
+);
+const tabBackLabel = (
+  <>
+    <span aria-hidden="true">←</span> human view
+  </>
+);
+
 /**
  * The obvious "give me the text version" control for AI agents. Switches the
  * page to the existing agent (text-only) view; in agent view it switches back.
  * Before hydration it is a plain link to /index.md, so an agent without JS
- * still reaches the text version.
+ * still reaches the text version. On a page with no agent view it stays that
+ * link, so a click is never a no-op.
+ *
+ * A plain action button, deliberately without aria-pressed: its label says
+ * what it will do, and a toggle button's label must not change with state.
+ * The header ViewModeToggle exposes the pressed state.
  */
 export function AgentViewButton({
   className,
@@ -112,23 +162,28 @@ export function AgentViewButton({
   variant?: 'bar' | 'tab';
 }) {
   const { mode, mounted, setMode } = useViewMode();
+  const hasAgentView = useSyncExternalStore(subscribeAgentView, pageHasAgentView, () => true);
   const isAgent = mode === 'agent';
   const base = `${variant === 'tab' ? tabClass : barClass} font-[family-name:var(--font-display)] ${className ?? ''}`;
 
-  if (!mounted) {
+  if (!mounted || !hasAgentView) {
+    // Before mount only CSS knows the saved mode (the head script sets
+    // html[data-view]), so both labels render. After mount, on a page with
+    // no agent view, the link always offers the text version.
+    const dual = !mounted;
     return (
       <a href="/index.md" className={base}>
         {variant === 'tab' ? (
           <>
             AGENTS
             <span className={tabSubClass}>
-              text only <span aria-hidden="true">→</span>
+              {dual ? <ModeLabel human={tabSwitchLabel} agent={tabBackLabel} /> : tabSwitchLabel}
             </span>
           </>
+        ) : dual ? (
+          <ModeLabel human={switchLabel} agent={backLabel} />
         ) : (
-          <>
-            Switch to text-only view <span aria-hidden="true">→</span>
-          </>
+          switchLabel
         )}
       </a>
     );
@@ -138,32 +193,17 @@ export function AgentViewButton({
     <button
       type="button"
       onClick={() => setMode(isAgent ? 'human' : 'agent')}
-      aria-pressed={isAgent}
       className={`${base} cursor-pointer`}
     >
       {variant === 'tab' ? (
         <>
           AGENTS
           <span className={tabSubClass}>
-            {isAgent ? (
-              <>
-                <span aria-hidden="true">←</span> human view
-              </>
-            ) : (
-              <>
-                text only <span aria-hidden="true">→</span>
-              </>
-            )}
+            <ModeLabel human={tabSwitchLabel} agent={tabBackLabel} />
           </span>
         </>
-      ) : isAgent ? (
-        <>
-          <span aria-hidden="true">←</span> Back to the human view
-        </>
       ) : (
-        <>
-          Switch to text-only view <span aria-hidden="true">→</span>
-        </>
+        <ModeLabel human={switchLabel} agent={backLabel} />
       )}
     </button>
   );

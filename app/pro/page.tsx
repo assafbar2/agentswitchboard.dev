@@ -19,7 +19,7 @@ export default function ProPage() {
         </p>
         <a
           href="mailto:barnir@agentmail.to?subject=Pro Access Inquiry — Agent Switchboard"
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--accent)] text-[var(--bg-primary)] font-medium text-sm hover:opacity-90 transition-opacity mb-4"
+          className="inline-flex min-h-11 items-center justify-center gap-2 bg-[var(--dir-yellow)] px-6 text-[17px] font-extrabold text-[var(--dir-on-yellow)] no-underline hover:underline cursor-pointer [font-family:var(--font-display)] mb-4"
         >
           Get in touch
         </a>

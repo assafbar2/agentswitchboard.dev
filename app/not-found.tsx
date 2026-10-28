@@ -22,13 +22,13 @@ export default function NotFound() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link
             href="/browse"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--accent)] text-[var(--bg-primary)] font-medium text-sm hover:opacity-90 transition-opacity"
+            className="inline-flex min-h-11 items-center justify-center gap-2 bg-[var(--dir-yellow)] px-6 text-[17px] font-extrabold text-[var(--dir-on-yellow)] no-underline hover:underline cursor-pointer [font-family:var(--font-display)]"
           >
             Browse all agents
           </Link>
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[var(--border)] text-[var(--text-secondary)] text-sm hover:border-[var(--border-accent)] hover:text-[var(--text-primary)] transition-all"
+            className="inline-flex min-h-11 items-center justify-center gap-2 border-2 border-[var(--dir-ink)]! px-6 text-[17px] font-bold text-[var(--dir-ink)] no-underline hover:underline [font-family:var(--font-display)]"
           >
             Back to home
           </Link>
@@ -40,25 +40,25 @@ export default function NotFound() {
           <p className="mb-2">Looking for structured data? Start here:</p>
           <ul className="space-y-1 mono text-xs">
             <li>
-              <a href="/llms.txt" className="text-[var(--accent)] hover:underline">
+              <a href="/llms.txt" className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 /llms.txt
               </a>{' '}
               — what this site is and when to use it
             </li>
             <li>
-              <a href="/sitemap.xml" className="text-[var(--accent)] hover:underline">
+              <a href="/sitemap.xml" className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 /sitemap.xml
               </a>{' '}
               — every valid URL
             </li>
             <li>
-              <a href="/agents.json" className="text-[var(--accent)] hover:underline">
+              <a href="/agents.json" className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 /agents.json
               </a>{' '}
               — the full catalog as JSON
             </li>
             <li>
-              <a href="/openapi.json" className="text-[var(--accent)] hover:underline">
+              <a href="/openapi.json" className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 /openapi.json
               </a>{' '}
               — the HTTP surface

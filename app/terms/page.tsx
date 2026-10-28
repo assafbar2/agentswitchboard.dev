@@ -44,7 +44,7 @@ export default function TermsPage() {
             </h2>
             <p>
               The catalog endpoints (including{' '}
-              <Link href="/api/agents" className="text-[var(--accent)] hover:underline">
+              <Link href="/api/agents" className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 GET /api/agents
               </Link>
               , GET /api/agents/&#123;slug&#125;, GET /api/categories, GET /agents.json, and POST
@@ -63,7 +63,7 @@ export default function TermsPage() {
               data is also available under{' '}
               <a
                 href="https://github.com/assafbar2/agentswitchboard.dev/blob/main/content/LICENSE.md"
-                className="text-[var(--accent)] hover:underline"
+                className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2"
               >
                 CC BY-NC 4.0
               </a>{' '}
@@ -92,7 +92,7 @@ export default function TermsPage() {
               The service is provided as is. To the fullest extent permitted by law, Agent
               Switchboard and its operators are not liable for indirect, incidental, or
               consequential damages, or for reliance on a listing or search result. See also the{' '}
-              <Link href="/disclaimer" className="text-[var(--accent)] hover:underline">
+              <Link href="/disclaimer" className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 disclaimer
               </Link>
               .
@@ -111,11 +111,11 @@ export default function TermsPage() {
             <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2">Contact</h2>
             <p>
               Questions:{' '}
-              <a href={`mailto:${EMAIL}`} className="text-[var(--accent)] hover:underline mono">
+              <a href={`mailto:${EMAIL}`} className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2 mono">
                 {EMAIL}
               </a>
               . Privacy practices are described on the{' '}
-              <Link href="/privacy" className="text-[var(--accent)] hover:underline">
+              <Link href="/privacy" className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 privacy page
               </Link>
               .

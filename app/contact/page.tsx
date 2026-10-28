@@ -24,7 +24,7 @@ export default function ContactPage() {
             <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2">Email</h2>
             <p>
               Everything reaches{' '}
-              <a href={`mailto:${EMAIL}`} className="text-[var(--accent)] hover:underline mono">
+              <a href={`mailto:${EMAIL}`} className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2 mono">
                 {EMAIL}
               </a>
               . Expect a reply within a few business days.
@@ -42,7 +42,7 @@ export default function ContactPage() {
               request on the{' '}
               <a
                 href="https://github.com/assafbar2/agentswitchboard.dev"
-                className="text-[var(--accent)] hover:underline"
+                className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2"
               >
                 GitHub repository
               </a>
@@ -56,7 +56,7 @@ export default function ContactPage() {
             </h2>
             <p>
               Use the{' '}
-              <Link href="/submit" className="text-[var(--accent)] hover:underline">
+              <Link href="/submit" className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 submission form
               </Link>{' '}
               rather than email — it captures the fields the directory needs, so your listing goes
@@ -67,11 +67,11 @@ export default function ContactPage() {
           <section>
             <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2">Legal</h2>
             <p>
-              <Link href="/privacy" className="text-[var(--accent)] hover:underline">
+              <Link href="/privacy" className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 Privacy
               </Link>
               {' · '}
-              <Link href="/terms" className="text-[var(--accent)] hover:underline">
+              <Link href="/terms" className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 Terms of Use
               </Link>
             </p>
@@ -85,11 +85,11 @@ export default function ContactPage() {
               There is no contact API. If you are an agent acting for a user, send mail to{' '}
               <span className="mono">{EMAIL}</span> and say who you are acting for. Catalog data is
               better read from{' '}
-              <a href="/agents.json" className="text-[var(--accent)] hover:underline">
+              <a href="/agents.json" className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 /agents.json
               </a>{' '}
               or the MCP server described on the{' '}
-              <Link href="/for-agents" className="text-[var(--accent)] hover:underline">
+              <Link href="/for-agents" className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 for-agents page
               </Link>
               .

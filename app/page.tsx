@@ -103,6 +103,27 @@ export default async function HomePage() {
       {/* ── Human view ─────────────────────────────────────────────── */}
       {/* lg+ reserves the right edge for the thumb-index rail, so it never covers content. */}
       <div className="human-only relative text-[var(--dir-ink)] [font-family:var(--font-display)] lg:pr-[88px]">
+        {/* ── Thumb-index rail (lg+): the agents' text-only tab first, then categories ── */}
+        <div className="absolute top-0 right-0 hidden w-[88px] flex-col lg:flex">
+          <AgentViewButton variant="tab" className="w-full" />
+          <nav aria-label="Categories">
+            <ul className="m-0 list-none p-0">
+              {categories.map((cat) => (
+                <li key={cat.id}>
+                  <Link
+                    href={`/categories/${cat.slug}`}
+                    aria-label={cat.name}
+                    title={cat.name}
+                    className="flex min-h-[56px] items-center justify-center border-b border-l-[3px] border-[var(--dir-ink)]! bg-[var(--dir-paper)] px-1 text-center text-[12px] font-extrabold uppercase leading-[1.05] tracking-[0.02em] text-[var(--dir-ink)] no-underline hyphens-auto [overflow-wrap:anywhere] hover:bg-[var(--dir-yellow)] hover:text-[var(--dir-on-yellow)] focus-visible:bg-[var(--dir-yellow)] focus-visible:text-[var(--dir-on-yellow)]"
+                  >
+                    {railLabel(cat.name)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+
         {/* ── Hero ──────────────────────────────────────────────────── */}
         <section className="border-b border-[var(--dir-ink)]!">
           <div className="container-wide flex flex-col gap-8 pt-8 pb-7 sm:pt-10 lg:flex-row lg:items-end lg:gap-12">
@@ -242,27 +263,6 @@ export default async function HomePage() {
             </div>
           </div>
         </section>
-
-        {/* ── Thumb-index rail (lg+): the agents' text-only tab first, then categories ── */}
-        <div className="absolute top-0 right-0 hidden w-[88px] flex-col lg:flex">
-          <AgentViewButton variant="tab" className="w-full" />
-          <nav aria-label="Categories">
-            <ul className="m-0 list-none p-0">
-              {categories.map((cat) => (
-                <li key={cat.id}>
-                  <Link
-                    href={`/categories/${cat.slug}`}
-                    aria-label={cat.name}
-                    title={cat.name}
-                    className="flex min-h-[56px] items-center justify-center border-b border-l-[3px] border-[var(--dir-ink)]! bg-[var(--dir-paper)] px-1 text-center text-[12px] font-extrabold uppercase leading-[1.05] tracking-[0.02em] text-[var(--dir-ink)] no-underline hyphens-auto [overflow-wrap:anywhere] hover:bg-[var(--dir-yellow)] hover:text-[var(--dir-on-yellow)] focus-visible:bg-[var(--dir-yellow)] focus-visible:text-[var(--dir-on-yellow)]"
-                  >
-                    {railLabel(cat.name)}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
       </div>
 
       {/* ── Agent view ─────────────────────────────────────────────── */}
@@ -282,7 +282,7 @@ export default async function HomePage() {
             <div className="mb-8">
               <div className="agent-section-title">featured</div>
               {homepageAgents.map(({ agent }) => (
-                <Link key={agent.id} href={`/agents/${agent.slug}`} className="agent-row hover:opacity-80 transition-opacity no-underline">
+                <Link key={agent.id} href={`/agents/${agent.slug}`} className="agent-row no-underline hover:underline">
                   <span className="agent-accent">{agent.slug}</span>
                   <span className="agent-dim">{agent.categories[0]?.slug ?? '—'}</span>
                   <span className="agent-dim">{agent.accessMethods.join('+') || '—'}</span>
@@ -299,7 +299,7 @@ export default async function HomePage() {
                 <Link
                   key={vendor.slug}
                   href={`/browse?official=1&vendor=${vendor.slug}`}
-                  className="agent-row hover:opacity-80 transition-opacity no-underline"
+                  className="agent-row no-underline hover:underline"
                 >
                   <span className="agent-accent">{vendor.slug}</span>
                   <span className="agent-dim">{vendor.name}</span>
@@ -313,7 +313,7 @@ export default async function HomePage() {
           <div className="mb-8">
             <div className="agent-section-title">categories</div>
             {categories.map((cat) => (
-              <Link key={cat.id} href={`/categories/${cat.slug}`} className="agent-row hover:opacity-80 transition-opacity no-underline">
+              <Link key={cat.id} href={`/categories/${cat.slug}`} className="agent-row no-underline hover:underline">
                 <span className="agent-accent">{cat.slug}</span>
                 <span className="agent-dim">{cat.name}</span>
                 <span className="agent-dim">{cat.agentCount != null ? `${cat.agentCount} agents` : ''}</span>

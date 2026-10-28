@@ -56,7 +56,7 @@ export default function PrivacyPage() {
             </h2>
             <p>
               If you{' '}
-              <Link href="/submit" className="text-[var(--accent)] hover:underline">
+              <Link href="/submit" className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 submit an agent
               </Link>
               , the description you enter becomes a public GitHub issue on the directory&apos;s
@@ -98,20 +98,20 @@ export default function PrivacyPage() {
             </h2>
             <p>
               Email{' '}
-              <a href={`mailto:${EMAIL}`} className="text-[var(--accent)] hover:underline mono">
+              <a href={`mailto:${EMAIL}`} className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2 mono">
                 {EMAIL}
               </a>{' '}
               with any privacy question, or to ask that a listing be corrected or removed. See also
               the{' '}
-              <Link href="/contact" className="text-[var(--accent)] hover:underline">
+              <Link href="/contact" className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 contact page
               </Link>
               , the{' '}
-              <Link href="/terms" className="text-[var(--accent)] hover:underline">
+              <Link href="/terms" className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 terms of use
               </Link>
               , and the{' '}
-              <Link href="/disclaimer" className="text-[var(--accent)] hover:underline">
+              <Link href="/disclaimer" className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 disclaimer
               </Link>
               .

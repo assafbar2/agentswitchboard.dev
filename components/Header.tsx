@@ -46,22 +46,22 @@ export function Header() {
           {/* Logo block */}
           <Link
             href="/"
-            className="flex shrink-0 items-center bg-[var(--dir-yellow)] px-4 text-xl font-extrabold tracking-[-0.01em] text-[var(--dir-on-yellow)] no-underline hover:underline focus-visible:outline focus-visible:outline-[3px] focus-visible:-outline-offset-[6px] focus-visible:outline-[var(--dir-on-yellow)] sm:px-6 sm:text-2xl lg:px-10"
+            className="flex shrink-0 items-center bg-[var(--dir-yellow)] px-4 text-xl font-extrabold tracking-[-0.01em] text-[var(--dir-on-yellow)] no-underline hover:underline focus-visible:outline focus-visible:outline-[3px] focus-visible:-outline-offset-[6px] focus-visible:outline-[var(--dir-on-yellow)] sm:px-6 sm:text-2xl lg:px-6 xl:px-10"
           >
             Agent Switchboard
           </Link>
 
           {/* Desktop nav — from lg up; four links plus the toggle don't fit at md. */}
-          <nav aria-label="Main" className="hidden items-center gap-[30px] px-10 text-[17px] font-semibold lg:flex">
+          <nav aria-label="Main" className="hidden items-center gap-5 px-6 text-[17px] font-semibold lg:flex xl:gap-[30px] xl:px-10">
             {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} className={`${navLinkClass} whitespace-nowrap py-2`}>
+              <Link key={link.href} href={link.href} className={`${navLinkClass} inline-flex min-h-11 items-center whitespace-nowrap`}>
                 {link.label}
               </Link>
             ))}
           </nav>
 
           {/* View toggle, theme, mobile menu */}
-          <div className="ml-auto flex items-center gap-3 pl-3 pr-4 sm:pr-6 lg:pr-10">
+          <div className="ml-auto flex items-center gap-3 pl-3 pr-4 sm:pr-6 xl:pr-10">
             {/* Segmented view toggle. Below lg it lives in the mobile menu
                 instead, so it never shows twice. */}
             <LabelledViewModeToggle className="hidden lg:block" />

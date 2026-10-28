@@ -74,7 +74,7 @@ export default async function CategoriesPage() {
             <Link
               key={cat.id}
               href={`/categories/${cat.slug}`}
-              className="agent-row hover:opacity-80 transition-opacity no-underline"
+              className="agent-row no-underline hover:underline"
             >
               <span className="agent-accent">{cat.slug}</span>
               <span className="agent-dim">{cat.name}</span>

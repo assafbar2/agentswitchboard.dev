@@ -72,11 +72,12 @@ export default function RootLayout({
       className={`${jetbrainsMono.variable} ${inter.variable} ${barlow.variable} h-full light`}
       suppressHydrationWarning
     >
-      {/* Prevent flash: SSR defaults to light; remove class only if user saved dark */}
+      {/* Prevent flash: SSR defaults to light and the human view; apply a saved
+          dark theme or agent view before first paint. */}
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.classList.remove('light');}catch(e){}})();`,
+            __html: `(function(){try{var d=document.documentElement;if(localStorage.getItem('theme')==='dark')d.classList.remove('light');if(localStorage.getItem('viewMode')==='agent')d.setAttribute('data-view','agent');}catch(e){}})();`,
           }}
         />
         {/* Machine-readable agent context */}
