@@ -7,7 +7,7 @@ import { AgentCard } from '@/components/AgentCard';
 import { JsonLd } from '@/components/JsonLd';
 import { getRelatedAgents } from '@/lib/related';
 import { notFound } from 'next/navigation';
-import { ExternalLink, Zap, Shield, Plug } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { authTypeLabel, pluralize } from '@/lib/utils';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -104,39 +104,49 @@ export default async function AgentPage({
   return (
     <>
       {/* ── Human view ─────────────────────────────────────────────── */}
-      <div className="human-only container-wide section">
+      <div className="human-only container-wide section font-[family-name:var(--font-display)] text-[var(--dir-ink)]">
         <JsonLd schema={agentSchema} />
         <div className="max-w-3xl mx-auto">
-          {/* Header */}
-          <div className="flex items-start gap-4 mb-8">
+          {/* Header: a directory entry. Name, provider, then the small labels,
+              closed off by the heavy ink rule. */}
+          <div className="flex items-start gap-4 mb-6 pb-5 border-b-[3px] border-[var(--dir-ink)]!">
             {agent.iconUrl ? (
-              <Image src={agent.iconUrl} alt="" width={56} height={56} className="w-14 h-14 rounded-xl bg-white/5" />
+              <Image src={agent.iconUrl} alt="" width={56} height={56} className="w-14 h-14 shrink-0 rounded-none border border-[var(--dir-rule)]!" />
             ) : (
-              <div className="w-14 h-14 rounded-xl bg-[var(--accent-subtle)] flex items-center justify-center">
-                <span className="mono text-2xl text-[var(--accent)] font-bold">{agent.name[0]}</span>
+              <div className="w-14 h-14 shrink-0 bg-[var(--dir-yellow)] flex items-center justify-center">
+                <span className="text-3xl font-extrabold text-[var(--dir-on-yellow)]">{agent.name[0]}</span>
               </div>
             )}
             <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2 flex-wrap">
-                <h1 className="text-2xl font-bold tracking-tight">{agent.name}</h1>
-                {agent.verified && <VerifiedBadge size="md" />}
-                <OfficialBadge agent={agent} />
-                {agent.featured && <Badge variant="amber">Featured</Badge>}
-                {agent.tier === 'premium' && <Badge variant="amber">Premium</Badge>}
-              </div>
-              <p className="text-sm text-[var(--text-muted)] mt-1">
+              <h1 className="text-4xl sm:text-5xl font-extrabold leading-[0.95] tracking-[-0.02em] wrap-break-word">
+                {agent.name}
+              </h1>
+              <p className="text-lg font-semibold text-[var(--dir-muted)] mt-2">
                 by{' '}
-                <a href={agent.providerUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--text-secondary)] transition-colors">
+                <a
+                  href={agent.providerUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2"
+                >
                   {agent.providerName}
                 </a>
                 {agent.version && <span className="ml-2">v{agent.version}</span>}
               </p>
+              {(agent.verified || agent.official || agent.featured || agent.tier === 'premium') && (
+                <div className="flex items-center gap-1.5 flex-wrap mt-3">
+                  {agent.verified && <VerifiedBadge size="md" />}
+                  <OfficialBadge agent={agent} />
+                  {agent.featured && <Badge variant="amber">Featured</Badge>}
+                  {agent.tier === 'premium' && <Badge variant="amber">Premium</Badge>}
+                </div>
+              )}
               {agent.officialVendor && (
-                <p className="text-xs text-[var(--text-muted)] mt-1">
+                <p className="text-sm text-[var(--dir-muted)] mt-2">
                   Official listing: built and published by {agent.officialVendor.name}.{' '}
                   <Link
                     href={`/browse?official=1&vendor=${agent.officialVendor.slug}`}
-                    className="text-[var(--blue)] hover:underline"
+                    className="font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2"
                   >
                     More from {agent.officialVendor.name}
                   </Link>
@@ -146,63 +156,61 @@ export default async function AgentPage({
           </div>
 
           {/* Description */}
-          <p className="text-[var(--text-secondary)] leading-relaxed mb-8">{agent.description}</p>
+          <p className="text-lg leading-relaxed mb-8">{agent.description}</p>
 
-          {/* Meta cards: how you reach it, how it authenticates, what it does.
-              Labels come first in the DOM (read as "Access: API, MCP") and
-              sit under the value visually. */}
-          <dl className={`grid grid-cols-2 gap-3 mb-8 ${skillCount > 0 ? 'sm:grid-cols-3' : ''}`}>
-            <div className={`card p-3 flex flex-col items-center text-center ${skillCount > 0 ? 'col-span-2 sm:col-span-1' : ''}`}>
-              <dt className="order-last mt-1 text-xs text-[var(--text-muted)]">Access</dt>
-              <dd className="flex flex-col items-center [&>div]:justify-center">
-                <Plug aria-hidden="true" className="w-4 h-4 mb-1 text-[var(--accent)]" />
+          {/* Facts: how you reach it, how it authenticates, what it does, as a
+              ruled definition list (label, dotted leader, value). */}
+          <dl className="mb-10 border-t-[3px] border-[var(--dir-ink)]!">
+            <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-1 border-b border-[var(--dir-rule)]! py-2.5">
+              <dt className="flex min-w-0 flex-1 items-baseline gap-1.5">
+                <span className="dir-label shrink-0">Access</span>
+                <span aria-hidden="true" className="min-w-4 flex-1 -translate-y-1 border-b-2 border-dotted border-[var(--dir-leader)]!" />
+              </dt>
+              <dd className="flex justify-end">
                 {agent.accessMethods.length > 0 ? (
                   <AccessMethodBadges methods={agent.accessMethods} size="md" />
                 ) : (
-                  <span className="mono text-sm font-bold">Not listed</span>
+                  <span className="font-bold">Not listed</span>
                 )}
               </dd>
             </div>
-            <div className="card p-3 flex flex-col items-center text-center">
-              <dt className="order-last text-xs text-[var(--text-muted)]">Auth</dt>
-              <dd className="flex flex-col items-center mono text-sm font-bold">
-                <Shield aria-hidden="true" className="w-4 h-4 mb-1 text-[var(--blue)]" />
-                {authTypeLabel(agent.authType)}
-              </dd>
+            <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-1 border-b border-[var(--dir-rule)]! py-2.5">
+              <dt className="flex min-w-0 flex-1 items-baseline gap-1.5">
+                <span className="dir-label shrink-0">Auth</span>
+                <span aria-hidden="true" className="min-w-4 flex-1 -translate-y-1 border-b-2 border-dotted border-[var(--dir-leader)]!" />
+              </dt>
+              <dd className="font-bold">{authTypeLabel(agent.authType)}</dd>
             </div>
             {skillCount > 0 && (
-              <div className="card p-3 flex flex-col items-center text-center">
-                <dt className="order-last text-xs text-[var(--text-muted)]">{pluralize(skillCount, 'Skill')}</dt>
-                <dd className="flex flex-col items-center mono text-lg font-bold">
-                  <Zap aria-hidden="true" className="w-4 h-4 mb-1 text-[var(--accent)]" />
-                  {skillCount}
-                </dd>
+              <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-1 border-b border-[var(--dir-rule)]! py-2.5">
+                <dt className="flex min-w-0 flex-1 items-baseline gap-1.5">
+                  <span className="dir-label shrink-0">{pluralize(skillCount, 'Skill')}</span>
+                  <span aria-hidden="true" className="min-w-4 flex-1 -translate-y-1 border-b-2 border-dotted border-[var(--dir-leader)]!" />
+                </dt>
+                <dd className="font-bold">{skillCount}</dd>
               </div>
             )}
           </dl>
 
           {/* Skills */}
           {agent.skills.length > 0 && (
-            <div className="mb-8">
-              <h2 className="text-lg font-semibold mb-4">Skills</h2>
-              <div className="space-y-3">
+            <div className="mb-10">
+              <h2 className="dir-bar mb-1">Skills</h2>
+              <ul>
                 {agent.skills.map((skill) => (
-                  <div key={skill.id} className="card p-4">
-                    <div className="flex items-center gap-2 mb-1">
-                      <Zap className="w-3.5 h-3.5 text-[var(--accent)]" />
-                      <h3 className="mono text-sm font-semibold">{skill.name}</h3>
-                    </div>
-                    <p className="text-sm text-[var(--text-secondary)]">{skill.description}</p>
-                  </div>
+                  <li key={skill.id} className="border-b border-[var(--dir-rule)]! py-3">
+                    <h3 className="text-[17px] font-bold leading-snug">{skill.name}</h3>
+                    <p className="text-[var(--dir-muted)] mt-0.5">{skill.description}</p>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           )}
 
           {/* Categories & Tags */}
           <div className="flex flex-wrap gap-2 mb-8">
             {agent.categories.map((cat) => (
-              <Link key={cat.id} href={`/categories/${cat.slug}`}>
+              <Link key={cat.id} href={`/categories/${cat.slug}`} className="no-underline hover:underline">
                 <Badge variant="default">{cat.name}</Badge>
               </Link>
             ))}
@@ -216,16 +224,16 @@ export default async function AgentPage({
             href={agent.agentUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--accent)] text-[var(--bg-primary)] font-medium text-sm hover:opacity-90 transition-opacity"
+            className="inline-flex min-h-11 items-center gap-2 rounded-none border-2 border-[var(--dir-ink)]! bg-[var(--dir-yellow)] px-5 text-lg font-extrabold tracking-[0.02em] text-[var(--dir-on-yellow)] no-underline hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--dir-ink)]"
           >
-            Visit Agent <ExternalLink className="w-4 h-4" />
+            Visit Agent <ExternalLink aria-hidden="true" className="w-4 h-4" />
           </a>
 
           {/* Related Agents */}
           {related.length > 0 && (
-            <div className="mt-16 pt-8 border-t border-[var(--border)]">
-              <h2 className="text-lg font-semibold mb-4">Related Agents</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="mt-16">
+              <h2 className="dir-bar mb-1">Related Agents</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10">
                 {related.map((r) => (
                   <AgentCard key={r.id} agent={r} />
                 ))}

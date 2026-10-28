@@ -4,13 +4,12 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
 import { ACCESS_METHOD_LABELS } from '@/lib/search';
 
-const methodColors: Record<string, string> = {
-  api: 'border-[var(--blue)]/30 text-[var(--blue)] bg-[var(--blue-glow)]',
-  mcp: 'border-[var(--accent)]/30 text-[var(--accent)] bg-[var(--accent-subtle)]',
-  cli: 'border-[var(--amber)]/30 text-[var(--amber)] bg-[var(--amber-glow)]',
-  'browser-extension':
-    'border-[var(--rose)]/30 text-[var(--rose)] bg-[var(--rose-glow)]',
-};
+// Square, ink-bordered toggles; the pressed one is filled with ink.
+export const FILTER_BASE =
+  'inline-flex min-h-11 items-center gap-1.5 rounded-none border-2 border-[var(--dir-ink)]! px-3 text-sm font-bold uppercase tracking-[0.06em] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--dir-ink)]';
+export const FILTER_ON = 'bg-[var(--dir-ink)] text-[var(--dir-paper)]';
+export const FILTER_OFF =
+  'bg-[var(--dir-paper)] text-[var(--dir-ink)] hover:bg-[var(--dir-rule)]';
 
 export function AccessMethodFilter() {
   const router = useRouter();
@@ -42,12 +41,10 @@ export function AccessMethodFilter() {
         return (
           <button
             key={key}
+            type="button"
+            aria-pressed={active}
             onClick={() => toggle(key)}
-            className={`px-3 py-1.5 text-xs mono font-medium rounded-lg border transition-all ${
-              active
-                ? methodColors[key]
-                : 'border-[var(--border)] text-[var(--text-muted)] bg-transparent hover:border-[var(--border-accent)] hover:text-[var(--text-secondary)]'
-            }`}
+            className={`${FILTER_BASE} ${active ? FILTER_ON : FILTER_OFF}`}
           >
             {label}
           </button>

@@ -17,16 +17,16 @@ export default async function AboutPage() {
   ]);
 
   return (
-    <div className="container-wide section">
+    <div className="container-wide section font-[family-name:var(--font-display)] text-[var(--dir-ink)]">
       <div className="max-w-2xl mx-auto py-12">
-        <h1 className="text-3xl font-bold tracking-tight mb-2">About Agent Switchboard</h1>
-        <p className="text-sm text-[var(--text-muted)] mono mb-10">
+        <h1 className="text-4xl sm:text-5xl font-extrabold leading-[0.95] tracking-[-0.02em] mb-3">About Agent Switchboard</h1>
+        <p className="dir-label text-[var(--dir-muted)] pb-6 mb-8 border-b-[3px] border-[var(--dir-ink)]!">
           A directory for the agentic web
         </p>
 
-        <div className="space-y-8 text-[var(--text-secondary)] leading-relaxed">
+        <div className="space-y-10 text-[17px] leading-relaxed">
           <section>
-            <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2">
+            <h2 className="dir-bar mb-3">
               What this is
             </h2>
             <p>
@@ -40,20 +40,20 @@ export default async function AboutPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2">
+            <h2 className="dir-bar mb-3">
               Who maintains it
             </h2>
             <p>
               The directory is built and maintained by Assaf Barnir, an operator and engineer
               working on customer-facing technical organisations for the AI era. Reach the
               maintainer at{' '}
-              <Link href="/contact" className="text-[var(--accent)] hover:underline">
+              <Link href="/contact" className="font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 the contact page
               </Link>
               . The catalog is open source and the full listing data lives in the{' '}
               <a
                 href="https://github.com/assafbar2/agentswitchboard.dev"
-                className="text-[var(--accent)] hover:underline"
+                className="font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2"
               >
                 public repository
               </a>
@@ -62,22 +62,22 @@ export default async function AboutPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2">
+            <h2 className="dir-bar mb-3">
               How agents get listed
             </h2>
             <p>
               Anyone can{' '}
-              <Link href="/submit" className="text-[var(--accent)] hover:underline">
+              <Link href="/submit" className="font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 submit an agent
               </Link>{' '}
               through the form or by opening a pull request against the catalog. Submissions are
               reviewed by a human before they appear, against{' '}
-              <Link href="/submit#rules" className="text-[var(--accent)] hover:underline">
+              <Link href="/submit#rules" className="font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 published acceptance rules
               </Link>
               , and the decision is posted on GitHub. Listing is free, and inclusion is not an
               endorsement — see the{' '}
-              <Link href="/disclaimer" className="text-[var(--accent)] hover:underline">
+              <Link href="/disclaimer" className="font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 disclaimer
               </Link>
               .
@@ -85,7 +85,7 @@ export default async function AboutPage() {
           </section>
 
           <section id="verification" className="scroll-mt-20">
-            <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2">
+            <h2 className="dir-bar mb-3">
               How we verify
             </h2>
             <p className="mb-3">
@@ -99,26 +99,26 @@ export default async function AboutPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2">
+            <h2 className="dir-bar mb-3">
               Built to be read by agents
             </h2>
             <p>
               The whole catalog is available to machines, not just browsers. There is a JSON index
               at{' '}
-              <a href="/agents.json" className="text-[var(--accent)] hover:underline">
+              <a href="/agents.json" className="font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 /agents.json
               </a>
               , an MCP server at <code className="mono text-sm">/api/mcp</code>, an OpenAPI
               description at{' '}
-              <a href="/openapi.json" className="text-[var(--accent)] hover:underline">
+              <a href="/openapi.json" className="font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 /openapi.json
               </a>
               , and a plain-language site guide at{' '}
-              <a href="/llms.txt" className="text-[var(--accent)] hover:underline">
+              <a href="/llms.txt" className="font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 /llms.txt
               </a>
               . The{' '}
-              <Link href="/for-agents" className="text-[var(--accent)] hover:underline">
+              <Link href="/for-agents" className="font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 for-agents page
               </Link>{' '}
               explains how to use each of them.
@@ -126,14 +126,14 @@ export default async function AboutPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2">Legal</h2>
+            <h2 className="dir-bar mb-3">Legal</h2>
             <p>
               How the directory handles data is on the{' '}
-              <Link href="/privacy" className="text-[var(--accent)] hover:underline">
+              <Link href="/privacy" className="font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 privacy page
               </Link>
               . Use of the site and the public catalog API is covered by the{' '}
-              <Link href="/terms" className="text-[var(--accent)] hover:underline">
+              <Link href="/terms" className="font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 terms of use
               </Link>
               .

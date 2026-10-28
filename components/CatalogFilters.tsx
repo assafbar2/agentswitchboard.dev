@@ -3,6 +3,7 @@
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
 import { Building2, X } from 'lucide-react';
+import { FILTER_BASE, FILTER_OFF, FILTER_ON } from '@/components/AccessMethodFilter';
 
 /**
  * Official toggle + category picker for /browse. Both write to the URL
@@ -40,11 +41,7 @@ export function CatalogFilters({
         type="button"
         aria-pressed={official}
         onClick={() => update(official ? { official: null, vendor: null } : { official: '1' })}
-        className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs mono font-medium rounded-lg border transition-all ${
-          official
-            ? 'border-[var(--blue)]/30 text-[var(--blue)] bg-[var(--blue-glow)]'
-            : 'border-[var(--border)] text-[var(--text-muted)] bg-transparent hover:border-[var(--border-accent)] hover:text-[var(--text-secondary)]'
-        }`}
+        className={`${FILTER_BASE} ${official ? FILTER_ON : FILTER_OFF}`}
       >
         <Building2 className="w-3.5 h-3.5" aria-hidden />
         Official
@@ -54,7 +51,7 @@ export function CatalogFilters({
         <button
           type="button"
           onClick={() => update({ vendor: null })}
-          className="inline-flex items-center gap-1 px-3 py-1.5 text-xs mono font-medium rounded-lg border border-[var(--blue)]/30 text-[var(--blue)] bg-[var(--blue-glow)]"
+          className={`${FILTER_BASE} ${FILTER_ON}`}
         >
           {vendorName}
           <X className="w-3 h-3" aria-label={`Clear ${vendorName}`} />
@@ -68,10 +65,8 @@ export function CatalogFilters({
         id="category-filter"
         value={category}
         onChange={(e) => update({ category: e.target.value || null })}
-        className={`px-3 py-1.5 text-xs mono font-medium rounded-lg border bg-[var(--bg-card)] transition-all ${
-          category
-            ? 'border-[var(--border-accent)] text-[var(--text-primary)]'
-            : 'border-[var(--border)] text-[var(--text-muted)] hover:border-[var(--border-accent)]'
+        className={`min-h-11 max-w-full rounded-none border-2 border-[var(--dir-ink)]! px-3 text-sm font-bold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--dir-ink)] ${
+          category ? FILTER_ON : FILTER_OFF
         }`}
       >
         <option value="">All categories</option>

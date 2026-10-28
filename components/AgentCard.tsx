@@ -1,9 +1,8 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { Badge } from '@/components/ui/Badge';
-import { AccessMethodBadges } from '@/components/ui/AccessMethodBadges';
 import { OfficialBadge } from '@/components/ui/OfficialBadge';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
+import { ACCESS_METHOD_LABELS } from '@/lib/search';
 import type { Agent, Category } from '@/lib/types';
 import { authTypeLabel, pluralize, truncate } from '@/lib/utils';
 
@@ -37,73 +36,47 @@ export function AgentCard({ agent }: { agent: AgentCardData }) {
   const skillCount = agent.skills.length;
   const auth = agent.authType === 'none' ? 'No auth' : authTypeLabel(agent.authType);
   const meta = skillCount > 0 ? `${skillCount} ${pluralize(skillCount, 'skill')} · ${auth}` : auth;
+  const access = agent.accessMethods.map((m) => ACCESS_METHOD_LABELS[m] ?? m).join(' · ');
+  const categories = agent.categories.slice(0, 2).map((c) => c.name).join(', ');
+  const hasLabels = agent.verified || agent.official || agent.featured || agent.tier === 'premium';
 
+  // A directory entry: bold name, dotted leader, access methods right-aligned,
+  // the one-line description beneath, then provider and the small labels.
   return (
-    <Link href={`/agents/${agent.slug}`} className="card block p-5 group">
-      {/* Name and provider get the full width, so names wrap instead of truncating */}
-      <div className="flex items-start gap-2.5 mb-3">
-        {agent.iconUrl ? (
-          <Image
-            src={agent.iconUrl}
-            alt=""
-            width={32}
-            height={32}
-            className="w-8 h-8 rounded-md shrink-0 bg-white/5"
-          />
-        ) : (
-          <div
-            aria-hidden="true"
-            className="w-8 h-8 rounded-md shrink-0 bg-[var(--accent-subtle)] flex items-center justify-center mono text-xs text-[var(--accent)] font-bold"
-          >
-            {agent.name[0]}
-          </div>
-        )}
-        <div className="min-w-0 flex-1">
-          <h3 className="mono text-sm font-semibold leading-snug wrap-break-word text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">
-            {agent.name}
-          </h3>
-          <p className="text-xs text-[var(--text-secondary)] wrap-break-word">{`by ${agent.providerName}`}</p>
-        </div>
+    <Link
+      href={`/agents/${agent.slug}`}
+      className="group block min-w-0 border-b border-[var(--dir-rule)]! px-0.5 py-3 font-[family-name:var(--font-display)] text-[var(--dir-ink)] no-underline hover:no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--dir-ink)]"
+    >
+      <div className="flex min-w-0 items-baseline gap-1.5">
+        <h3 className="min-w-0 wrap-break-word text-[17px] font-bold leading-snug group-hover:underline">
+          {agent.name}
+        </h3>
+        <span
+          aria-hidden="true"
+          className="min-w-4 flex-1 -translate-y-1 border-b-2 border-dotted border-[var(--dir-leader)]!"
+        />
+        <span className="shrink-0 whitespace-nowrap text-sm font-semibold tracking-[0.06em]">
+          {access || '—'}
+        </span>
       </div>
 
-      {/* Badges on their own row */}
-      {(agent.verified || agent.official || agent.featured) && (
-        <div className="flex flex-wrap items-center gap-1.5 mb-3">
-          {agent.verified && <VerifiedBadge />}
-          <OfficialBadge agent={agent} />
-          {agent.featured && <Badge variant="amber">Featured</Badge>}
-        </div>
-      )}
-
-      {/* Description */}
-      <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-4">
+      <p className="mt-0.5 line-clamp-2 text-[15px] leading-snug text-[var(--dir-muted)] sm:line-clamp-1">
         {truncate(agent.description, 120)}
       </p>
 
-      {/* Tags row */}
-      <div className="flex flex-wrap gap-1.5 mb-4">
-        {agent.categories.slice(0, 2).map((cat) => (
-          <Badge key={cat.id} variant="default">
-            {cat.name}
-          </Badge>
-        ))}
-        {agent.tier === 'premium' && (
-          <Badge variant="amber">Premium</Badge>
+      <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-[13px] leading-5 text-[var(--dir-muted)]">
+        {hasLabels && (
+          <span className="flex flex-wrap items-center gap-1">
+            {agent.verified && <VerifiedBadge />}
+            <OfficialBadge agent={agent} />
+            {agent.featured && <Badge variant="amber">Featured</Badge>}
+            {agent.tier === 'premium' && <Badge variant="amber">Premium</Badge>}
+          </span>
         )}
-      </div>
-
-      {/* Access methods */}
-      {agent.accessMethods.length > 0 && (
-        <div className="mb-3">
-          <AccessMethodBadges methods={agent.accessMethods} />
-        </div>
-      )}
-
-      {/* Bottom meta: the skill count only when there are skills */}
-      <div className="flex items-center justify-between gap-2 text-xs text-[var(--text-secondary)]">
-        <span>{meta}</span>
-        <span aria-hidden="true" className="opacity-0 group-hover:opacity-60 transition-opacity">
-          →
+        <span className="min-w-0 wrap-break-word">
+          {`by ${agent.providerName}`}
+          {categories && ` · ${categories}`}
+          {` · ${meta}`}
         </span>
       </div>
     </Link>
