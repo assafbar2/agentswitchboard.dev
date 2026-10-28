@@ -1,146 +1,90 @@
 import Link from 'next/link';
-import Image from 'next/image';
-import { ArrowRight, Zap, Star, Sparkles } from 'lucide-react';
-import { Badge } from '@/components/ui/Badge';
-import { AccessMethodBadges } from '@/components/ui/AccessMethodBadges';
 import { OfficialBadge } from '@/components/ui/OfficialBadge';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
+import { ACCESS_METHOD_LABELS } from '@/lib/search';
 import type { Agent, AgentLabel } from '@/lib/types';
 import { truncate } from '@/lib/utils';
 
-const LABEL_CONFIG = {
-  'editors-pick': {
-    badge: (
-      <Badge variant="amber">
-        <Star className="w-3 h-3" />
-        Editor&apos;s Pick
-      </Badge>
-    ),
-    topLine: 'bg-gradient-to-r from-transparent via-amber-400/50 to-transparent',
-  },
-  featured: {
-    badge: (
-      <Badge variant="blue">
-        <Zap className="w-3 h-3" />
-        Featured
-      </Badge>
-    ),
-    topLine: 'bg-gradient-to-r from-transparent via-blue-400/50 to-transparent',
-  },
-  new: {
-    badge: (
-      <Badge variant="accent">
-        <Sparkles className="w-3 h-3" />
-        New
-      </Badge>
-    ),
-    topLine: 'bg-gradient-to-r from-transparent via-[var(--accent)]/40 to-transparent',
-  },
+const LABEL_TEXT: Record<AgentLabel, string> = {
+  'editors-pick': "Editor's Pick",
+  featured: 'Featured',
+  new: 'New',
 };
 
+/** Letters only, so "⭐ Editor's Pick" and "Editor's Pick" count as the same tag. */
+const tagKey = (s: string) => s.toLowerCase().replace(/[^a-z]/g, '');
+
+const TAG =
+  'inline-flex items-center px-1.5 py-px text-[12px] font-bold uppercase tracking-[0.08em] leading-[1.4]';
+
+/**
+ * A homepage "Top Agents" listing in the directory look: name, dotted leader,
+ * access methods, then the provider, tags, description and skills underneath.
+ */
 export function FeaturedAgentCard({
   agent,
   label,
-  index = 0,
 }: {
   agent: Agent;
   label?: AgentLabel;
+  /** Kept for callers that still pass a position; the directory look has no stagger. */
   index?: number;
 }) {
-  const labelCfg = label ? LABEL_CONFIG[label] : null;
+  const labelText = label ? LABEL_TEXT[label] : undefined;
+  // The sponsor label always shows (it is the disclosure), unless it just
+  // repeats the placement label.
+  const sponsorText =
+    agent.sponsorLabel && (!labelText || tagKey(agent.sponsorLabel) !== tagKey(labelText))
+      ? agent.sponsorLabel
+      : undefined;
+  const access = agent.accessMethods.map((m) => ACCESS_METHOD_LABELS[m] ?? m).join(' · ');
 
   return (
     <Link
       href={`/agents/${agent.slug}`}
-      className="card relative overflow-hidden p-6 group animate-fade-in"
-      style={{ animationDelay: `${index * 80}ms` }}
+      className="group block break-inside-avoid border-b border-[var(--dir-rule)]! py-3 text-[var(--dir-ink)] no-underline [font-family:var(--font-display)]"
     >
-      {/* Top accent line — amber for Editor's Pick, green for New */}
-      <div
-        className={`absolute top-0 inset-x-0 h-px ${
-          labelCfg?.topLine ??
-          'bg-gradient-to-r from-transparent via-[var(--accent)]/40 to-transparent'
-        }`}
-      />
+      <span className="flex items-baseline gap-1.5">
+        <span className="dir-row-name min-w-0 text-[19px] group-hover:underline">{agent.name}</span>
+        <span className="dir-row-leader" aria-hidden="true" />
+        {access && <span className="dir-row-meta">{access}</span>}
+      </span>
 
-      {/* Header: name and provider get the full width, so names wrap instead of truncating */}
-      <div className="flex items-start gap-3 mb-3">
-        {agent.iconUrl ? (
-          <Image
-            src={agent.iconUrl}
-            alt=""
-            width={40}
-            height={40}
-            className="w-10 h-10 rounded-lg flex-shrink-0 bg-white/5"
-          />
-        ) : (
-          <div
-            aria-hidden="true"
-            className="w-10 h-10 rounded-lg flex-shrink-0 bg-[var(--accent-subtle)] flex items-center justify-center"
-          >
-            <span className="mono text-base text-[var(--accent)] font-bold">
-              {agent.name[0]}
-            </span>
-          </div>
+      <span className="mt-0.5 block text-[15px] text-[var(--dir-muted)]">
+        by {agent.providerName}
+        {agent.categories.length > 0 && (
+          <> · {agent.categories.slice(0, 2).map((c) => c.name).join(', ')}</>
         )}
-        <div className="min-w-0 flex-1">
-          <h3 className="mono text-base font-semibold leading-snug wrap-break-word text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">
-            {agent.name}
-          </h3>
-          <p className="text-xs text-[var(--text-secondary)] mt-0.5 wrap-break-word">by {agent.providerName}</p>
-        </div>
-      </div>
+      </span>
 
-      {/* Badges on their own row: label or sponsor badge first, then trust badges */}
-      {(labelCfg || agent.sponsorLabel || agent.verified || agent.official) && (
-        <div className="flex flex-wrap items-center gap-1.5 mb-4">
-          {labelCfg ? (
-            labelCfg.badge
-          ) : agent.sponsorLabel ? (
-            <Badge variant="amber">{agent.sponsorLabel}</Badge>
-          ) : null}
+      {(labelText || sponsorText || agent.verified || agent.official) && (
+        <span className="mt-1.5 flex flex-wrap items-center gap-1.5">
+          {labelText && (
+            <span className={`${TAG} border border-[var(--dir-ink)]! text-[var(--dir-ink)]`}>
+              {labelText}
+            </span>
+          )}
+          {sponsorText && (
+            <span className={`${TAG} bg-[var(--dir-ink)] text-[var(--dir-paper)]`}>
+              {sponsorText}
+            </span>
+          )}
           {agent.verified && <VerifiedBadge />}
           <OfficialBadge agent={agent} />
-        </div>
+        </span>
       )}
 
-      {/* Description */}
-      <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-4">
+      <span className="mt-1.5 block text-[16px] leading-snug text-[var(--dir-ink)]">
         {truncate(agent.description, 150)}
-      </p>
+      </span>
 
-      {/* Skills preview (skipped when the agent lists none) */}
       {agent.skills.length > 0 && (
-        <div className="flex flex-wrap gap-1.5 mb-4">
-          {agent.skills.slice(0, 3).map((skill) => (
-            <Badge key={skill.id} variant="accent">
-              {skill.name}
-            </Badge>
-          ))}
-          {agent.skills.length > 3 && (
-            <Badge variant="outline">+{agent.skills.length - 3} more</Badge>
-          )}
-        </div>
+        <span className="mt-1 block text-[14px] text-[var(--dir-muted)]">
+          <span className="font-bold uppercase tracking-[0.08em]">Skills</span>{' '}
+          {agent.skills.slice(0, 3).map((s) => s.name).join(' · ')}
+          {agent.skills.length > 3 && ` · +${agent.skills.length - 3} more`}
+        </span>
       )}
-
-      {/* Access methods */}
-      {agent.accessMethods.length > 0 && (
-        <div className="mb-4">
-          <AccessMethodBadges methods={agent.accessMethods} />
-        </div>
-      )}
-
-      {/* Footer */}
-      <div className="flex items-center justify-between">
-        <div className="flex gap-1.5">
-          {agent.categories.slice(0, 2).map((cat) => (
-            <span key={cat.id} className="text-xs text-[var(--text-secondary)]">
-              {cat.name}
-            </span>
-          ))}
-        </div>
-        <ArrowRight className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[var(--accent)] group-hover:translate-x-0.5 transition-all" />
-      </div>
     </Link>
   );
 }

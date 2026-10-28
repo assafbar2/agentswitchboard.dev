@@ -1,20 +1,23 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useId } from 'react';
 import { useRouter } from 'next/navigation';
-import { Search } from 'lucide-react';
 import { browseHref } from '@/lib/search';
 
 export function SearchBar({
   defaultValue = '',
   placeholder = 'Search agents, skills, categories...',
   autoFocus = false,
+  label,
 }: {
   defaultValue?: string;
   placeholder?: string;
   autoFocus?: boolean;
+  /** Visible label above the box (e.g. "Look it up"). Without one the box keeps its aria-label. */
+  label?: string;
 }) {
   const router = useRouter();
+  const inputId = useId();
   const [value, setValue] = useState(defaultValue);
 
   // Follow the URL's query when it changes under a mounted bar (back/forward
@@ -39,24 +42,38 @@ export function SearchBar({
   );
 
   return (
-    <form onSubmit={handleSubmit} role="search" className="relative w-full">
-      <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text-muted)] pointer-events-none" aria-hidden />
-      <input
-        type="search"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        placeholder={placeholder}
-        aria-label="Search the directory"
-        enterKeyHint="search"
-        autoFocus={autoFocus}
-        className="w-full pl-11 pr-14 py-3.5 rounded-xl bg-[var(--bg-card)] border border-[var(--border)] text-sm text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-[var(--border-accent)] focus:ring-1 focus:ring-[var(--accent)]/20 transition-all mono"
-      />
-      <kbd
-        aria-hidden
-        className="absolute right-3 top-1/2 -translate-y-1/2 hidden sm:inline-flex px-2 py-0.5 rounded text-[10px] mono text-[var(--text-muted)] bg-white/[0.04] border border-[var(--border)] pointer-events-none"
-      >
-        ↵
-      </kbd>
+    <form
+      onSubmit={handleSubmit}
+      role="search"
+      className="w-full [font-family:var(--font-display)]"
+    >
+      {label && (
+        <label
+          htmlFor={inputId}
+          className="dir-label mb-1.5 block text-[14px] font-bold uppercase tracking-[0.1em] text-[var(--dir-ink)]"
+        >
+          {label}
+        </label>
+      )}
+      <div className="flex border-[3px] border-[var(--dir-ink)]! bg-[var(--dir-paper)] focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[var(--dir-ink)]">
+        <input
+          id={inputId}
+          type="search"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          placeholder={placeholder}
+          aria-label={label ? undefined : 'Search the directory'}
+          enterKeyHint="search"
+          autoFocus={autoFocus}
+          className="min-h-[50px] min-w-0 flex-1 rounded-none border-0 bg-transparent px-3.5 text-[19px] text-[var(--dir-ink)] placeholder:text-[var(--dir-muted)] outline-none"
+        />
+        <button
+          type="submit"
+          className="min-h-[50px] min-w-[64px] shrink-0 cursor-pointer rounded-none border-0 border-l-[3px] border-[var(--dir-ink)]! bg-[var(--dir-yellow)] px-5 text-[17px] font-extrabold text-[var(--dir-on-yellow)] hover:underline focus-visible:outline-2 focus-visible:-outline-offset-6 focus-visible:outline-[var(--dir-on-yellow)]"
+        >
+          Find
+        </button>
+      </div>
     </form>
   );
 }
