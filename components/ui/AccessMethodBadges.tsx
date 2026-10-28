@@ -1,13 +1,9 @@
 import { ACCESS_METHOD_LABELS } from '@/lib/search';
 
-const methodStyles: Record<string, string> = {
-  api: 'bg-[var(--blue-glow)] text-[var(--blue)] border-[var(--blue)]/20',
-  mcp: 'bg-[var(--accent-subtle)] text-[var(--accent)] border-[var(--border-accent)]',
-  cli: 'bg-[var(--amber-glow)] text-[var(--amber)] border-[var(--amber)]/20',
-  'browser-extension':
-    'bg-[var(--rose-glow)] text-[var(--rose)] border-[var(--rose)]/20',
-};
-
+/**
+ * Access methods as square ink-bordered tags (API, MCP, CLI, Extension). The
+ * directory look carries meaning in the words, not in per-method colours.
+ */
 export function AccessMethodBadges({
   methods,
   size = 'sm',
@@ -17,17 +13,14 @@ export function AccessMethodBadges({
 }) {
   if (methods.length === 0) return null;
 
-  const cls =
-    size === 'sm'
-      ? 'px-1.5 py-0.5 text-[10px]'
-      : 'px-2 py-0.5 text-xs';
+  const cls = size === 'sm' ? 'px-1.5 py-px text-[11px]' : 'px-2 py-0.5 text-sm';
 
   return (
     <div className="flex flex-wrap gap-1">
       {methods.map((method) => (
         <span
           key={method}
-          className={`inline-flex items-center rounded-md border mono font-medium ${cls} ${methodStyles[method] ?? 'bg-white/5 text-[var(--text-secondary)] border-[var(--border)]'}`}
+          className={`inline-flex items-center rounded-none border border-[var(--dir-ink)]! font-bold uppercase leading-4 tracking-[0.06em] text-[var(--dir-ink)] ${cls}`}
         >
           {ACCESS_METHOD_LABELS[method] ?? method}
         </span>

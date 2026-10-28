@@ -1,7 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import Link from 'next/link';
-import { PlusCircle, MinusCircle, RefreshCw } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -18,12 +17,6 @@ interface ChangelogEntry {
   date?: string;
 }
 
-const ICONS = {
-  added: <PlusCircle className="w-4 h-4 text-[var(--accent)]" />,
-  removed: <MinusCircle className="w-4 h-4 text-[var(--rose)]" />,
-  updated: <RefreshCw className="w-4 h-4 text-[var(--blue)]" />,
-};
-
 export default function ChangelogPage() {
   const raw = fs.readFileSync(path.join(process.cwd(), 'content', 'changelog.json'), 'utf8');
   const entries: ChangelogEntry[] = JSON.parse(raw);
@@ -31,37 +24,46 @@ export default function ChangelogPage() {
   return (
     <>
       {/* ── Human view ─────────────────────────────────────────────── */}
-      <div className="human-only container-wide section">
+      <div className="human-only container-wide section font-[family-name:var(--font-display)] text-[var(--dir-ink)]">
         <div className="max-w-2xl mx-auto">
-          <div className="mb-10">
-            <h1 className="text-3xl font-bold tracking-tight mb-2">Changelog</h1>
-            <p className="text-[var(--text-secondary)]">
+          <div className="mb-6 pb-6 border-b-[3px] border-[var(--dir-ink)]!">
+            <h1 className="text-4xl sm:text-5xl font-extrabold leading-[0.95] tracking-[-0.02em] mb-3">Changelog</h1>
+            <p className="text-lg text-[var(--dir-muted)]">
               Every addition, removal, and correction — the directory is
               maintained in the open.
             </p>
           </div>
 
-          <div className="space-y-3">
+          {/* One ruled entry per change: name, dotted leader, action and date */}
+          <ul>
             {entries.map((e, i) => (
-              <div key={`${e.slug}-${e.action}-${i}`} className="card p-4 flex items-start gap-3">
-                <div className="mt-0.5">{ICONS[e.action]}</div>
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    {e.action === 'removed' ? (
-                      <span className="mono text-sm font-semibold">{e.name}</span>
-                    ) : (
-                      <Link href={`/agents/${e.slug}`} className="mono text-sm font-semibold hover:text-[var(--accent)] transition-colors">
-                        {e.name}
-                      </Link>
-                    )}
-                    <span className="text-xs uppercase tracking-wider text-[var(--text-muted)]">{e.action}</span>
-                    {e.date && <span className="mono text-xs text-[var(--text-muted)]">{e.date}</span>}
-                  </div>
-                  {e.note && <p className="text-sm text-[var(--text-secondary)] mt-1">{e.note}</p>}
+              <li key={`${e.slug}-${e.action}-${i}`} className="border-b border-[var(--dir-rule)]! py-3">
+                <div className="flex min-w-0 items-baseline gap-1.5">
+                  {e.action === 'removed' ? (
+                    <span className="min-w-0 wrap-break-word text-[17px] font-bold leading-snug">
+                      {e.name}
+                    </span>
+                  ) : (
+                    <Link
+                      href={`/agents/${e.slug}`}
+                      className="min-w-0 wrap-break-word text-[17px] font-bold leading-snug text-[var(--dir-ink)] no-underline hover:underline"
+                    >
+                      {e.name}
+                    </Link>
+                  )}
+                  <span
+                    aria-hidden="true"
+                    className="min-w-4 flex-1 -translate-y-1 border-b-2 border-dotted border-[var(--dir-leader)]!"
+                  />
+                  <span className="flex shrink-0 items-baseline gap-2 whitespace-nowrap">
+                    <span className="dir-label">{e.action}</span>
+                    {e.date && <span className="text-sm font-semibold text-[var(--dir-muted)]">{e.date}</span>}
+                  </span>
                 </div>
-              </div>
+                {e.note && <p className="text-[15px] text-[var(--dir-muted)] mt-0.5">{e.note}</p>}
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
 

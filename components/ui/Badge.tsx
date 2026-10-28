@@ -2,19 +2,18 @@ import { type ReactNode } from 'react';
 
 type Variant = 'default' | 'accent' | 'blue' | 'amber' | 'rose' | 'outline';
 
+/**
+ * Square directory tags: small uppercase labels with a 1px rule, no tints or
+ * glows. Yellow is a fill only (amber = sponsored / featured), always with
+ * --dir-on-yellow text, so it reads in both themes.
+ */
 const variantStyles: Record<Variant, string> = {
-  // A light tint of the theme's text colour: about white/5% in dark mode (as
-  // before) and a soft grey in light mode, where white/5% vanished on white.
-  default:
-    'bg-[var(--text-primary)]/7 text-[var(--text-secondary)] border-[var(--border)]',
-  accent:
-    'bg-[var(--accent-subtle)] text-[var(--accent)] border-[var(--border-accent)]',
-  blue: 'bg-[var(--blue-glow)] text-[var(--blue)] border-[var(--blue)]/20',
-  amber:
-    'bg-[var(--amber-glow)] text-[var(--amber)] border-[var(--amber)]/20',
-  rose: 'bg-[var(--rose-glow)] text-[var(--rose)] border-[var(--rose)]/20',
-  outline:
-    'bg-transparent text-[var(--text-secondary)] border-[var(--border)]',
+  default: 'bg-transparent text-[var(--dir-ink)] border-[var(--dir-ink)]!',
+  accent: 'bg-transparent text-[var(--dir-ink)] border-[var(--dir-ink)]!',
+  blue: 'bg-[var(--dir-paper)] text-[var(--dir-ink)] border-[var(--dir-ink)]!',
+  amber: 'bg-[var(--dir-yellow)] text-[var(--dir-on-yellow)] border-[var(--dir-ink)]!',
+  rose: 'bg-transparent text-[var(--rose)] border-current!',
+  outline: 'bg-transparent text-[var(--dir-muted)] border-[var(--dir-rule)]!',
 };
 
 export function Badge({
@@ -28,7 +27,7 @@ export function Badge({
 }) {
   return (
     <span
-      className={`inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium rounded-md border mono ${variantStyles[variant]} ${className}`}
+      className={`inline-flex items-center gap-1 rounded-none border px-1.5 py-px text-[11px] font-bold uppercase leading-4 tracking-[0.08em] ${variantStyles[variant]} ${className}`}
     >
       {children}
     </span>

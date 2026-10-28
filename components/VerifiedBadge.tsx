@@ -17,11 +17,13 @@ export const VERIFIED_TITLE = 'Verified: we checked it works. See About › How 
 
 export function VerifiedBadge({ size = 'sm' }: { size?: 'sm' | 'md' }) {
   const md = size === 'md';
+  // Square, ink-bordered directory tag. Colours stay on the --verified-*
+  // tokens so the label keeps its own AA-checked pair in both themes.
   return (
     <span
       title={VERIFIED_TITLE}
-      className={`inline-flex shrink-0 items-center gap-1 rounded-full font-semibold text-[var(--verified-fg)] bg-[var(--verified-bg)] ${
-        md ? 'px-2.5 py-1 text-xs' : 'px-2 py-0.5 text-[11px]'
+      className={`inline-flex shrink-0 items-center gap-1 rounded-none border border-[var(--dir-ink)]! font-bold uppercase tracking-[0.08em] text-[var(--verified-fg)] bg-[var(--verified-bg)] ${
+        md ? 'px-2 py-0.5 text-xs leading-4' : 'px-1.5 py-px text-[11px] leading-4'
       }`}
     >
       <Verified aria-hidden="true" className={md ? 'w-3.5 h-3.5' : 'w-3 h-3'} />

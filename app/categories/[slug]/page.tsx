@@ -81,23 +81,30 @@ export default async function CategoryPage({
   return (
     <>
       {/* ── Human view ─────────────────────────────────────────────── */}
-      <div className="human-only container-wide section">
+      <div className="human-only container-wide section font-[family-name:var(--font-display)] text-[var(--dir-ink)]">
         <JsonLd schema={listSchema} />
-        <div className="mb-10 flex flex-wrap items-center gap-3">
-          <span className="shrink-0 text-[var(--text-secondary)]">
+        {/* Section header bar: yellow fill, ink text, the listing count beside the title */}
+        <div className="mb-3 flex flex-wrap items-baseline gap-x-3 gap-y-1 bg-[var(--dir-yellow)] px-3 py-2 text-[var(--dir-on-yellow)]">
+          <span className="hidden sm:block shrink-0 self-center" aria-hidden="true">
             <CategoryIcon name={category.icon} className="w-7 h-7" />
           </span>
+          <h1 className="min-w-0 wrap-break-word text-3xl sm:text-4xl font-extrabold uppercase leading-none tracking-[0.02em]">
+            {category.name}
+          </h1>
+          <span className="text-xl sm:text-2xl font-semibold leading-none">
+            · {agents.length}
+          </span>
+        </div>
+
+        <div className="mb-6 flex flex-wrap items-start gap-3 border-b-[3px] border-[var(--dir-ink)]! pb-4">
           {/* Grows on wide screens; on phones the official link wraps below */}
-          <div className="min-w-0 flex-1 basis-60">
-            <h1 className="text-3xl font-bold tracking-tight">{category.name}</h1>
-            {category.description && (
-              <p className="text-[var(--text-secondary)] mt-1">{category.description}</p>
-            )}
-          </div>
+          {category.description && (
+            <p className="min-w-0 flex-1 basis-60 text-lg text-[var(--dir-muted)]">{category.description}</p>
+          )}
           {officialCount > 0 && (
             <Link
               href={`/browse?official=1&category=${category.slug}`}
-              className="sm:ml-auto inline-flex items-center gap-1.5 px-3 py-1.5 text-xs mono font-medium rounded-lg border border-[var(--blue)]/30 text-[var(--blue)] bg-[var(--blue-glow)] hover:opacity-90 transition-opacity"
+              className="sm:ml-auto inline-flex min-h-11 items-center gap-1.5 rounded-none border-2 border-[var(--dir-ink)]! px-3 text-sm font-bold uppercase tracking-[0.06em] text-[var(--dir-ink)] no-underline hover:bg-[var(--dir-rule)] hover:no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--dir-ink)]"
             >
               <Building2 className="w-3.5 h-3.5" aria-hidden />
               {officialCount} official
@@ -105,14 +112,14 @@ export default async function CategoryPage({
           )}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10">
           {agents.map((agent) => (
             <AgentCard key={agent.id} agent={agent} />
           ))}
         </div>
 
         {agents.length === 0 && (
-          <p className="text-center text-[var(--text-secondary)] py-20">
+          <p className="text-[var(--dir-muted)] py-16">
             No agents in this category yet.
           </p>
         )}

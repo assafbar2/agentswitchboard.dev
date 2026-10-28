@@ -52,14 +52,14 @@ export default async function BrowsePage({
   return (
     <>
       {/* ── Human view ─────────────────────────────────────────────── */}
-      <div className="human-only container-wide section">
+      <div className="human-only container-wide section font-[family-name:var(--font-display)] text-[var(--dir-ink)]">
         {/* Search bar */}
         <div className="max-w-xl mb-6">
-          <h1 className="text-3xl font-bold tracking-tight mb-4">
+          <h1 className="text-4xl sm:text-5xl font-extrabold leading-[0.95] tracking-[-0.02em] mb-4 wrap-break-word">
             {query ? (
               <>
                 Results for{' '}
-                <span className="text-[var(--accent)] mono">&ldquo;{query}&rdquo;</span>
+                <span>&ldquo;{query}&rdquo;</span>
               </>
             ) : (
               'Browse Agents'
@@ -75,13 +75,13 @@ export default async function BrowsePage({
               categories={categories.map((c) => ({ slug: c.slug, name: c.name }))}
               vendorName={vendorName}
             />
-            <span className="hidden sm:block w-px h-5 bg-[var(--border)] mx-1" aria-hidden />
+            <span className="hidden sm:block w-[3px] h-8 bg-[var(--dir-ink)] mx-1" aria-hidden />
             <AccessMethodFilter />
           </Suspense>
         </div>
 
-        {/* Count */}
-        <p className="text-sm text-[var(--text-secondary)] mb-6 mono">
+        {/* Count, as the yellow section bar the listings sit under */}
+        <p className="dir-bar mb-2">
           {agents.length === 0
             ? 'No agents found'
             : `${agents.length}${officialOnly ? ' official' : ''} agent${agents.length !== 1 ? 's' : ''}${query ? ' matched' : ' listed'}`}
@@ -89,17 +89,17 @@ export default async function BrowsePage({
 
         {/* Results */}
         {agents.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10">
             {agents.map((agent) => (
               <AgentCard key={agent.id} agent={agent} />
             ))}
           </div>
         ) : (
-          <div className="text-center py-20">
-            <p className="text-[var(--text-secondary)] mb-2">
-              No agents found{query && <> matching <span className="mono">&ldquo;{query}&rdquo;</span></>}
+          <div className="py-16 border-b border-[var(--dir-rule)]!">
+            <p className="text-lg font-bold mb-2">
+              No agents found{query && <> matching <span>&ldquo;{query}&rdquo;</span></>}
             </p>
-            <p className="text-sm text-[var(--text-secondary)]">
+            <p className="text-[var(--dir-muted)]">
               Try a different search or clear the filters.
             </p>
           </div>
