@@ -59,14 +59,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${jetbrainsMono.variable} ${inter.variable} h-full light`}
+      className={`${jetbrainsMono.variable} ${inter.variable} h-full`}
       suppressHydrationWarning
     >
-      {/* Prevent flash: SSR defaults to light; remove class only if user saved dark */}
+      {/* Prevent flash: SSR defaults to dark; add the light class only if the user saved light */}
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.classList.remove('light');}catch(e){}})();`,
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='light')document.documentElement.classList.add('light');}catch(e){}})();`,
           }}
         />
         {/* Machine-readable agent context */}

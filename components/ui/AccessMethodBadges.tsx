@@ -19,7 +19,7 @@ export function AccessMethodBadges({
 
   const cls =
     size === 'sm'
-      ? 'px-1.5 py-0.5 text-[10px]'
+      ? 'px-1.5 py-0.5 text-[11px] leading-4'
       : 'px-2 py-0.5 text-xs';
 
   return (
@@ -27,7 +27,7 @@ export function AccessMethodBadges({
       {methods.map((method) => (
         <span
           key={method}
-          className={`inline-flex items-center rounded-md border mono font-medium ${cls} ${methodStyles[method] ?? 'bg-white/5 text-[var(--text-secondary)] border-[var(--border)]'}`}
+          className={`inline-flex items-center rounded-sm border mono font-medium uppercase tracking-wide ${cls} ${methodStyles[method] ?? 'bg-[var(--text-primary)]/7 text-[var(--text-secondary)] border-[var(--border)]'}`}
         >
           {ACCESS_METHOD_LABELS[method] ?? method}
         </span>

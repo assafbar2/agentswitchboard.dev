@@ -102,7 +102,7 @@ export default async function ForAgentsPage() {
             <code className="text-[var(--accent)]">get_agent</code>,{' '}
             <code className="text-[var(--accent)]">list_categories</code>:
           </p>
-          <pre className="rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-4 text-xs overflow-x-auto">
+          <pre className="terminal-strip p-4 text-xs overflow-x-auto">
 {`{
   "mcpServers": {
     "agentswitchboard": { "url": "https://agentswitchboard.dev/api/mcp" }
@@ -148,7 +148,7 @@ export default async function ForAgentsPage() {
             A simple parameterized GET for wiring tools that want plain HTTP
             rather than an MCP handshake. Read-only, no auth, open CORS:
           </p>
-          <pre className="rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-4 text-xs overflow-x-auto">
+          <pre className="terminal-strip p-4 text-xs overflow-x-auto">
 {`GET /api/agents?q=<text>&category=<slug>&access=<method>&official=true&limit=<n>&offset=<n>
 GET /api/agents/<slug>
 GET /api/categories

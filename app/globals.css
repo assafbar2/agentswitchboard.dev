@@ -3,47 +3,49 @@
 /* ── Terminal Luxe Design System ─────────────────────────────────── */
 
 :root {
-  /* Surface palette — deep blacks with subtle blue undertone */
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #111118;
-  --bg-tertiary: #181822;
-  --bg-elevated: #1a1a24;
-  --bg-card: #12121a;
-  --bg-card-hover: #16161f;
+  /* Surface palette — Terminal: near-black with a faint phosphor-green cast */
+  --bg-primary: #0a0e0b;
+  --bg-secondary: #0e130f;
+  --bg-tertiary: #131b16;
+  --bg-elevated: #111814;
+  --bg-card: #111814;
+  --bg-card-hover: #16201a;
 
   /* Text hierarchy. Every text token meets WCAG AA (4.5:1) on bg-primary,
-     bg-secondary, bg-card and bg-card-hover; check before darkening. */
-  --text-primary: #e8e8ed;
-  --text-secondary: #8888a0;
-  --text-tertiary: #82829a;
-  --text-muted: #7e7e96;
+     bg-secondary, bg-card and bg-card-hover; check before darkening.
+     Measured: primary 14.0+, secondary 7.9+, tertiary/muted 6.3+. */
+  --text-primary: #e6ede8;
+  --text-secondary: #a9b6ae;
+  --text-tertiary: #93a39a;
+  --text-muted: #93a39a;
 
-  /* Accent — electric green (terminal cursor) */
-  --accent: #00ff88;
-  --accent-dim: #00cc6a;
-  --accent-glow: rgba(0, 255, 136, 0.15);
-  --accent-subtle: rgba(0, 255, 136, 0.06);
+  /* Accent — phosphor green (terminal cursor); 9.6:1+ on every surface */
+  --accent: #4ade80;
+  --accent-dim: #22c55e;
+  --accent-glow: rgba(74, 222, 128, 0.14);
+  --accent-subtle: rgba(74, 222, 128, 0.06);
 
-  /* Secondary accents */
-  --blue: #4488ff;
-  --blue-glow: rgba(68, 136, 255, 0.12);
-  --amber: #ffaa00;
-  --amber-glow: rgba(255, 170, 0, 0.12);
-  --rose: #ff4466;
-  --rose-glow: rgba(255, 68, 102, 0.12);
+  /* Secondary accents (as text: 7.8:1+ on every surface, 5:1+ on own tint) */
+  --blue: #7db4ff;
+  --blue-glow: rgba(125, 180, 255, 0.12);
+  --amber: #f2b84b;
+  --amber-glow: rgba(242, 184, 75, 0.12);
+  --rose: #ff6b81;
+  --rose-glow: rgba(255, 107, 129, 0.12);
 
   /* Borders */
-  --border: rgba(255, 255, 255, 0.06);
-  --border-subtle: rgba(255, 255, 255, 0.03);
-  --border-accent: rgba(0, 255, 136, 0.2);
+  --border: rgba(74, 222, 128, 0.1);
+  --border-subtle: rgba(255, 255, 255, 0.04);
+  --border-accent: rgba(74, 222, 128, 0.28);
 
-  /* Radii */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
-  --radius-xl: 20px;
+  /* Radii — squarer, terminal-flat */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 10px;
 
-  /* Verified label — its own tokens so it meets 4.5:1 regardless of --accent */
+  /* Verified label — its own tokens so it meets 4.5:1 regardless of --accent;
+     kept in step with the phosphor accent. */
   --verified-fg: #4ade80;
   --verified-bg: rgba(74, 222, 128, 0.12);
 
@@ -116,10 +118,15 @@ html.light body::after {
 
 /* ── Base ────────────────────────────────────────────────────────── */
 
-*,
-*::before,
-*::after {
-  border-color: var(--border);
+/* Default border colour. In the base layer: unlayered, it outranked every
+   Tailwind border-colour utility, so border-[var(--border-accent)] and the
+   like silently rendered as --border. */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--border);
+  }
 }
 
 html {
@@ -135,6 +142,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Terminal type: mono for headings, Inter stays for body copy. In the base
+   layer so a utility class on an element still wins. */
+@layer base {
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-mono);
+    letter-spacing: -0.025em;
+  }
+
+  h1 {
+    letter-spacing: -0.03em;
+  }
+}
+
 /* Dot-grid background */
 body::before {
   content: '';
@@ -143,7 +165,7 @@ body::before {
   z-index: -1;
   background-image: radial-gradient(
     circle at 1px 1px,
-    rgba(255, 255, 255, 0.03) 1px,
+    rgba(255, 255, 255, 0.025) 1px,
     transparent 0
   );
   background-size: 32px 32px;
@@ -165,7 +187,7 @@ body::after {
 /* ── Selection ───────────────────────────────────────────────────── */
 
 ::selection {
-  background: rgba(0, 255, 136, 0.2);
+  background: rgba(74, 222, 128, 0.24);
   color: #fff;
 }
 
@@ -186,12 +208,12 @@ html.light ::selection {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(74, 222, 128, 0.14);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(74, 222, 128, 0.26);
 }
 
 html.light ::-webkit-scrollbar-thumb {
@@ -278,6 +300,7 @@ html.light ::-webkit-scrollbar-thumb:hover {
 
 .terminal-cursor::after {
   content: '▊';
+  content: '▊' / '';
   color: var(--accent);
   animation: terminal-blink 1s step-end infinite;
   margin-left: 2px;
@@ -300,7 +323,7 @@ html.light ::-webkit-scrollbar-thumb:hover {
 
 /* Glow effects */
 .glow-accent {
-  box-shadow: 0 0 20px var(--accent-glow), 0 0 40px rgba(0, 255, 136, 0.05);
+  box-shadow: 0 0 20px var(--accent-glow), 0 0 40px rgba(74, 222, 128, 0.05);
 }
 
 .glow-border {
@@ -308,19 +331,26 @@ html.light ::-webkit-scrollbar-thumb:hover {
   box-shadow: 0 0 10px var(--accent-glow);
 }
 
-/* Card base */
+/* Card base — flat panel, 1px rule, accent border on hover (no glow, no lift) */
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  transition: all 0.2s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
 .card:hover {
   background: var(--bg-card-hover);
   border-color: var(--border-accent);
-  box-shadow: 0 0 20px var(--accent-glow);
-  transform: translateY(-1px);
+}
+
+/* Prompt line / terminal strip — the voice of the Terminal look */
+.terminal-strip {
+  font-family: var(--font-mono);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-accent);
+  border-left: 2px solid var(--accent);
+  border-radius: var(--radius-md);
 }
 
 /* Code/mono text */

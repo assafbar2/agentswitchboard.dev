@@ -86,22 +86,19 @@ export default async function HomePage() {
       <div className="human-only">
         {/* ── Hero ──────────────────────────────────────────────────── */}
         <section className="pt-6 sm:pt-8 pb-8 relative overflow-hidden">
-          {/* Top gradient wash */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[var(--accent)] opacity-[0.04] blur-[120px] rounded-full pointer-events-none" />
-
           <div className="container-wide relative">
             <div className="max-w-3xl mx-auto text-center">
-              {/* Terminal-style tag */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--border)] bg-[var(--bg-card)] mb-8 animate-rise">
-                <Terminal className="w-3.5 h-3.5 text-[var(--accent)]" />
-                <span className="mono text-xs text-[var(--text-secondary)]">
+              {/* Terminal-style tag, styled as a prompt line */}
+              <div className="terminal-strip inline-flex items-center gap-2 px-3 py-1.5 mb-8 animate-rise">
+                <Terminal className="w-3.5 h-3.5 text-[var(--accent)]" aria-hidden />
+                <span className="mono text-xs text-[var(--accent)]">
                   {settings?.tagline || 'The directory for the agentic web'}
                 </span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6 animate-rise">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.1] mb-6 text-[var(--text-primary)] animate-rise">
                 Every AI Agent{' '}
-                <span className="gradient-text">Worth Knowing</span>
+                <span className="text-[var(--accent)]">Worth Knowing</span>
                 {', '}in One Place
               </h1>
 
@@ -116,7 +113,7 @@ export default async function HomePage() {
 
               {/* ── Stats pill ── stacks value over label below sm so all three
                   fit a 320px screen instead of being clipped by the hero. */}
-              <div className="inline-flex max-w-full items-stretch mt-6 rounded-full border border-[var(--border)] bg-[var(--bg-card)] overflow-hidden animate-rise">
+              <div className="inline-flex max-w-full items-stretch mt-6 rounded-md border border-[var(--border)] bg-[var(--bg-card)] overflow-hidden animate-rise">
                 {[
                   { value: agentCount, label: 'Agents' },
                   { value: providerCount, label: 'Providers' },
@@ -127,7 +124,7 @@ export default async function HomePage() {
                     className={`flex flex-col sm:flex-row items-center justify-center gap-0 sm:gap-1.5 px-3 sm:px-5 py-1.5 sm:py-2 ${i < 2 ? 'border-r border-[var(--border)]' : ''}`}
                   >
                     <span className="mono text-sm font-bold text-[var(--text-primary)]">{value}</span>
-                    <span className="text-[11px] sm:text-xs text-[var(--text-muted)] uppercase tracking-wide sm:tracking-wider">{label}</span>
+                    <span className="mono text-[11px] sm:text-xs text-[var(--text-muted)] uppercase tracking-wide">{label}</span>
                   </div>
                 ))}
               </div>
@@ -140,9 +137,9 @@ export default async function HomePage() {
           <div className="container-wide">
             <Link
               href="/for-agents#mcp"
-              className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 rounded-xl border border-[var(--border-accent)] bg-[var(--bg-card)] px-5 py-3.5 hover:border-[var(--accent)] transition-colors group"
+              className="terminal-strip flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 px-5 py-3.5 hover:border-[var(--accent)] hover:bg-[var(--accent-subtle)] transition-colors group"
             >
-              <span className="mono text-xs text-[var(--accent)]">$ this directory is an MCP server</span>
+              <span className="mono text-xs font-semibold text-[var(--accent)] terminal-cursor">$ this directory is an MCP server</span>
               <span className="mono text-xs text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors">
                 connect your agent → agentswitchboard.dev/api/mcp
               </span>
@@ -166,7 +163,7 @@ export default async function HomePage() {
                 </div>
                 <Link
                   href="/browse"
-                  className="hidden sm:flex items-center gap-1 text-sm text-[var(--accent)] hover:underline"
+                  className="hidden sm:flex items-center gap-1 mono text-sm text-[var(--accent)] hover:underline"
                 >
                   View all <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
@@ -181,7 +178,7 @@ export default async function HomePage() {
               {/* The header link is hidden below sm; give phones an exit too. */}
               <Link
                 href="/browse"
-                className="sm:hidden mt-4 flex items-center justify-center gap-1 rounded-lg border border-[var(--border)] px-4 py-3 text-sm text-[var(--accent)]"
+                className="sm:hidden mt-4 flex items-center justify-center gap-1 rounded-md border border-[var(--border)] px-4 py-3 mono text-sm text-[var(--accent)]"
               >
                 View all <ArrowRight className="w-3.5 h-3.5" aria-hidden />
               </Link>
@@ -206,7 +203,7 @@ export default async function HomePage() {
               </div>
               <Link
                 href="/categories"
-                className="hidden sm:flex items-center gap-1 text-sm text-[var(--accent)] hover:underline"
+                className="hidden sm:flex items-center gap-1 mono text-sm text-[var(--accent)] hover:underline"
               >
                 All categories <ArrowRight className="w-3.5 h-3.5" />
               </Link>
@@ -220,7 +217,7 @@ export default async function HomePage() {
 
             <Link
               href="/categories"
-              className="sm:hidden mt-4 flex items-center justify-center gap-1 rounded-lg border border-[var(--border)] px-4 py-3 text-sm text-[var(--accent)]"
+              className="sm:hidden mt-4 flex items-center justify-center gap-1 rounded-md border border-[var(--border)] px-4 py-3 mono text-sm text-[var(--accent)]"
             >
               All categories <ArrowRight className="w-3.5 h-3.5" aria-hidden />
             </Link>
@@ -230,10 +227,7 @@ export default async function HomePage() {
         {/* ── CTA ──────────────────────────────────────────────────── */}
         <section className="section">
           <div className="container-wide">
-            <div className="relative rounded-2xl border border-[var(--border-accent)] bg-[var(--bg-card)] p-10 sm:p-14 text-center overflow-hidden">
-              {/* Background glow */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-[var(--accent)] opacity-[0.04] blur-[100px] rounded-full pointer-events-none" />
-
+            <div className="relative rounded-lg border border-[var(--border-accent)] bg-[var(--bg-card)] p-10 sm:p-14 text-center overflow-hidden">
               <div className="relative">
                 <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4">
                   List your agent on the switchboard
@@ -246,14 +240,14 @@ export default async function HomePage() {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                   <Link
                     href="/submit"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--accent)] text-[var(--bg-primary)] font-medium text-sm hover:opacity-90 transition-opacity"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-[var(--accent)] text-[var(--bg-primary)] mono font-semibold text-sm hover:opacity-90 transition-opacity"
                   >
                     List Your Agent
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                   <Link
                     href="/advertise"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[var(--border)] text-[var(--text-secondary)] text-sm hover:border-[var(--border-accent)] hover:text-[var(--text-primary)] transition-all"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-[var(--border)] text-[var(--text-secondary)] mono text-sm hover:border-[var(--border-accent)] hover:text-[var(--text-primary)] transition-colors"
                   >
                     Advertise with us
                   </Link>

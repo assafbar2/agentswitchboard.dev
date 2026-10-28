@@ -16,7 +16,7 @@ const LABEL_CONFIG = {
         Editor&apos;s Pick
       </Badge>
     ),
-    topLine: 'bg-gradient-to-r from-transparent via-amber-400/50 to-transparent',
+    topLine: 'bg-[var(--amber)]/60',
   },
   featured: {
     badge: (
@@ -25,7 +25,7 @@ const LABEL_CONFIG = {
         Featured
       </Badge>
     ),
-    topLine: 'bg-gradient-to-r from-transparent via-blue-400/50 to-transparent',
+    topLine: 'bg-[var(--blue)]/60',
   },
   new: {
     badge: (
@@ -34,7 +34,7 @@ const LABEL_CONFIG = {
         New
       </Badge>
     ),
-    topLine: 'bg-gradient-to-r from-transparent via-[var(--accent)]/40 to-transparent',
+    topLine: 'bg-[var(--accent)]/60',
   },
 };
 
@@ -55,12 +55,11 @@ export function FeaturedAgentCard({
       className="card relative overflow-hidden p-6 group animate-fade-in"
       style={{ animationDelay: `${index * 80}ms` }}
     >
-      {/* Top accent line — amber for Editor's Pick, green for New */}
+      {/* Top rule — a flat 1px line: amber for Editor's Pick, blue for
+          Featured, green for New and unlabelled picks */}
       <div
-        className={`absolute top-0 inset-x-0 h-px ${
-          labelCfg?.topLine ??
-          'bg-gradient-to-r from-transparent via-[var(--accent)]/40 to-transparent'
-        }`}
+        aria-hidden="true"
+        className={`absolute top-0 inset-x-0 h-px ${labelCfg?.topLine ?? 'bg-[var(--border-accent)]'}`}
       />
 
       {/* Header: name and provider get the full width, so names wrap instead of truncating */}
@@ -71,12 +70,12 @@ export function FeaturedAgentCard({
             alt=""
             width={40}
             height={40}
-            className="w-10 h-10 rounded-lg flex-shrink-0 bg-white/5"
+            className="w-10 h-10 rounded-md flex-shrink-0 bg-white/5"
           />
         ) : (
           <div
             aria-hidden="true"
-            className="w-10 h-10 rounded-lg flex-shrink-0 bg-[var(--accent-subtle)] flex items-center justify-center"
+            className="w-10 h-10 rounded-md flex-shrink-0 bg-[var(--accent-subtle)] border border-[var(--border)] flex items-center justify-center"
           >
             <span className="mono text-base text-[var(--accent)] font-bold">
               {agent.name[0]}
@@ -134,7 +133,7 @@ export function FeaturedAgentCard({
       <div className="flex items-center justify-between">
         <div className="flex gap-1.5">
           {agent.categories.slice(0, 2).map((cat) => (
-            <span key={cat.id} className="text-xs text-[var(--text-secondary)]">
+            <span key={cat.id} className="mono text-xs text-[var(--text-secondary)]">
               {cat.name}
             </span>
           ))}

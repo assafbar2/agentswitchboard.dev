@@ -20,11 +20,11 @@ export function CategoryCard({
       className="card flex items-center gap-4 p-4 group animate-fade-in"
       style={{ animationDelay: `${index * 50}ms` }}
     >
-      <span className="flex-shrink-0 text-[var(--text-secondary)]">
+      <span className="flex-shrink-0 text-[var(--accent)]">
         <CategoryIcon name={category.icon} className="w-5 h-5" />
       </span>
       <div className="min-w-0 flex-1">
-        <h3 className="text-sm font-medium text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors truncate">
+        <h3 className="mono text-sm font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors truncate">
           {category.name}
         </h3>
         {(category.description || count !== undefined) && (

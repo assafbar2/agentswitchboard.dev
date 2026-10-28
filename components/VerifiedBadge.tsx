@@ -20,7 +20,7 @@ export function VerifiedBadge({ size = 'sm' }: { size?: 'sm' | 'md' }) {
   return (
     <span
       title={VERIFIED_TITLE}
-      className={`inline-flex shrink-0 items-center gap-1 rounded-full font-semibold text-[var(--verified-fg)] bg-[var(--verified-bg)] ${
+      className={`inline-flex shrink-0 items-center gap-1 rounded-sm border border-[var(--verified-fg)]/25 mono font-semibold text-[var(--verified-fg)] bg-[var(--verified-bg)] ${
         md ? 'px-2.5 py-1 text-xs' : 'px-2 py-0.5 text-[11px]'
       }`}
     >

@@ -46,7 +46,7 @@ export function OfficialPlatforms({ groups: rawGroups }: { groups: OfficialGroup
           </div>
           <Link
             href="/browse?official=1"
-            className="hidden sm:flex items-center gap-1 text-sm text-[var(--accent)] hover:underline"
+            className="hidden sm:flex items-center gap-1 mono text-sm text-[var(--accent)] hover:underline"
           >
             All {total} official <ArrowRight className="w-3.5 h-3.5" />
           </Link>
@@ -76,7 +76,7 @@ export function OfficialPlatforms({ groups: rawGroups }: { groups: OfficialGroup
                       key={agent.slug}
                       href={`/agents/${agent.slug}`}
                       title={`${agent.name} by ${agent.providerName}`}
-                      className="px-2 py-0.5 text-xs mono rounded-md border border-[var(--border)] text-[var(--text-secondary)] hover:border-[var(--blue)]/40 hover:text-[var(--blue)] transition-colors"
+                      className="px-2 py-0.5 text-xs mono rounded-sm border border-[var(--border)] bg-[var(--bg-secondary)] text-[var(--text-secondary)] hover:border-[var(--blue)]/40 hover:text-[var(--blue)] transition-colors"
                     >
                       {labels.get(agent.slug)}
                     </Link>
@@ -84,7 +84,7 @@ export function OfficialPlatforms({ groups: rawGroups }: { groups: OfficialGroup
                   {extra > 0 && (
                     <Link
                       href={vendorHref}
-                      className="px-2 py-0.5 text-xs mono rounded-md text-[var(--blue)] hover:underline"
+                      className="px-2 py-0.5 text-xs mono rounded-sm text-[var(--blue)] hover:underline"
                     >
                       +{extra} more
                     </Link>
@@ -107,7 +107,7 @@ export function OfficialPlatforms({ groups: rawGroups }: { groups: OfficialGroup
         ) : (
           <Link
             href="/browse?official=1"
-            className="sm:hidden mt-4 flex items-center justify-center gap-1 rounded-lg border border-[var(--border)] px-4 py-3 text-sm text-[var(--accent)]"
+            className="sm:hidden mt-4 flex items-center justify-center gap-1 rounded-md border border-[var(--border)] px-4 py-3 mono text-sm text-[var(--accent)]"
           >
             All {total} official <ArrowRight className="w-3.5 h-3.5" aria-hidden />
           </Link>

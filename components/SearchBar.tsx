@@ -40,7 +40,7 @@ export function SearchBar({
 
   return (
     <form onSubmit={handleSubmit} role="search" className="relative w-full">
-      <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text-muted)] pointer-events-none" aria-hidden />
+      <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--accent)] pointer-events-none" aria-hidden />
       <input
         type="search"
         value={value}
@@ -49,11 +49,11 @@ export function SearchBar({
         aria-label="Search the directory"
         enterKeyHint="search"
         autoFocus={autoFocus}
-        className="w-full pl-11 pr-14 py-3.5 rounded-xl bg-[var(--bg-card)] border border-[var(--border)] text-sm text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-[var(--border-accent)] focus:ring-1 focus:ring-[var(--accent)]/20 transition-all mono"
+        className="w-full pl-11 pr-14 py-3.5 rounded-md bg-[var(--bg-secondary)] border border-[var(--border-accent)] shadow-[inset_0_1px_2px_rgba(0,0,0,0.25)] text-sm text-[var(--text-primary)] caret-[var(--accent)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent-glow)] transition-colors mono"
       />
       <kbd
         aria-hidden
-        className="absolute right-3 top-1/2 -translate-y-1/2 hidden sm:inline-flex px-2 py-0.5 rounded text-[10px] mono text-[var(--text-muted)] bg-white/[0.04] border border-[var(--border)] pointer-events-none"
+        className="absolute right-3 top-1/2 -translate-y-1/2 hidden sm:inline-flex px-2 py-0.5 rounded-sm text-[11px] mono text-[var(--text-muted)] bg-[var(--text-primary)]/5 border border-[var(--border)] pointer-events-none"
       >
         ↵
       </kbd>

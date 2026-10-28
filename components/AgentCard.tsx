@@ -53,7 +53,7 @@ export function AgentCard({ agent }: { agent: AgentCardData }) {
         ) : (
           <div
             aria-hidden="true"
-            className="w-8 h-8 rounded-md shrink-0 bg-[var(--accent-subtle)] flex items-center justify-center mono text-xs text-[var(--accent)] font-bold"
+            className="w-8 h-8 rounded-md shrink-0 bg-[var(--accent-subtle)] border border-[var(--border)] flex items-center justify-center mono text-xs text-[var(--accent)] font-bold"
           >
             {agent.name[0]}
           </div>
@@ -100,7 +100,7 @@ export function AgentCard({ agent }: { agent: AgentCardData }) {
       )}
 
       {/* Bottom meta: the skill count only when there are skills */}
-      <div className="flex items-center justify-between gap-2 text-xs text-[var(--text-secondary)]">
+      <div className="flex items-center justify-between gap-2 mono text-xs text-[var(--text-secondary)]">
         <span>{meta}</span>
         <span aria-hidden="true" className="opacity-0 group-hover:opacity-60 transition-opacity">
           →

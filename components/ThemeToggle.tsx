@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Moon, Sun } from 'lucide-react';
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<'dark' | 'light'>('light');
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   const [mounted, setMounted] = useState(false);
 
   function applyTheme(t: 'dark' | 'light') {
@@ -22,7 +22,7 @@ export function ThemeToggle() {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
     const saved = localStorage.getItem('theme') as 'dark' | 'light' | null;
-    const initial = saved ?? 'light';
+    const initial = saved === 'light' ? 'light' : 'dark';
      
     setTheme(initial);
     applyTheme(initial);
@@ -40,7 +40,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggle}
-      className="p-2 rounded-lg border border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-accent)] hover:bg-[var(--accent-subtle)] transition-all"
+      className="p-2 rounded-md border border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-accent)] hover:bg-[var(--accent-subtle)] transition-all"
       aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
       title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
     >
