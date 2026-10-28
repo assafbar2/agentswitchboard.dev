@@ -1,45 +1,64 @@
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 import { CategoryIcon } from '@/components/ui/CategoryIcon';
 import type { Category } from '@/lib/types';
 
+/**
+ * One category as a directory listing: name, dotted leader, listing count.
+ * `compact` is the single-line phone-book row used in the homepage directory;
+ * the default entry adds the icon and the description underneath.
+ */
 export function CategoryCard({
   category,
   agentCount,
-  index = 0,
+  compact = false,
 }: {
   category: Category;
   /** Overrides category.agentCount (which getAllCategories fills in). */
   agentCount?: number;
+  /** Kept for callers that still pass a position; the directory look has no stagger. */
   index?: number;
+  compact?: boolean;
 }) {
   const count = agentCount ?? category.agentCount;
+  const countText =
+    count !== undefined ? `${count} listing${count !== 1 ? 's' : ''}` : undefined;
+
+  if (compact) {
+    return (
+      <Link
+        href={`/categories/${category.slug}`}
+        className="dir-row break-inside-avoid [font-family:var(--font-display)]"
+      >
+        <span className="dir-row-name">{category.name}</span>
+        <span className="dir-row-leader" aria-hidden="true" />
+        {count !== undefined && (
+          <span className="dir-row-meta">
+            {count}
+            <span className="sr-only"> listing{count !== 1 ? 's' : ''}</span>
+          </span>
+        )}
+      </Link>
+    );
+  }
+
   return (
     <Link
       href={`/categories/${category.slug}`}
-      className="card flex items-center gap-4 p-4 group animate-fade-in"
-      style={{ animationDelay: `${index * 50}ms` }}
+      className="group block border-b border-[var(--dir-rule)]! py-2.5 text-[var(--dir-ink)] no-underline [font-family:var(--font-display)]"
     >
-      <span className="flex-shrink-0 text-[var(--text-secondary)]">
-        <CategoryIcon name={category.icon} className="w-5 h-5" />
+      <span className="flex items-baseline gap-1.5">
+        <span aria-hidden="true" className="shrink-0 self-center text-[var(--dir-ink)]">
+          <CategoryIcon name={category.icon} className="w-4 h-4" />
+        </span>
+        <span className="dir-row-name min-w-0 group-hover:underline">{category.name}</span>
+        <span className="dir-row-leader" aria-hidden="true" />
+        {countText && <span className="dir-row-meta">{countText}</span>}
       </span>
-      <div className="min-w-0 flex-1">
-        <h3 className="text-sm font-medium text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors truncate">
-          {category.name}
-        </h3>
-        {(category.description || count !== undefined) && (
-          <p className="text-xs text-[var(--text-muted)] mt-0.5 truncate">
-            {count !== undefined && (
-              <span className="mono text-[var(--text-secondary)]">
-                {count} listing{count !== 1 ? 's' : ''}
-              </span>
-            )}
-            {count !== undefined && category.description && ' · '}
-            {category.description}
-          </p>
-        )}
-      </div>
-      <ArrowRight className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[var(--accent)] flex-shrink-0 group-hover:translate-x-0.5 transition-all" />
+      {category.description && (
+        <span className="mt-0.5 block text-[15px] leading-snug text-[var(--dir-muted)]">
+          {category.description}
+        </span>
+      )}
     </Link>
   );
 }

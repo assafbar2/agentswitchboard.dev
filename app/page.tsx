@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { ArrowRight, Terminal } from 'lucide-react';
 import { SearchBar } from '@/components/SearchBar';
 import {
   getHomepageAgents,
@@ -13,6 +12,7 @@ import { FeaturedAgentCard } from '@/components/FeaturedAgentCard';
 import { CategoryCard } from '@/components/CategoryCard';
 import { OfficialPlatforms } from '@/components/OfficialPlatforms';
 import { JsonLd } from '@/components/JsonLd';
+import { AgentViewButton } from '@/components/ViewModeToggle';
 import type { Metadata } from 'next';
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev';
@@ -27,6 +27,24 @@ export const metadata: Metadata = {
     url: BASE_URL,
   },
 };
+
+/** Thumb-tab abbreviations for first words too long for the 88px rail. */
+const RAIL_SHORT: Record<string, string> = {
+  infrastructure: 'Infra',
+  // Each stays a prefix of the full name, so the visible text is part of the accessible name.
+  communication: 'Comm.',
+  orchestration: 'Orch.',
+};
+
+/**
+ * Short thumb-tab text: the first word of the category name ("Data & Analytics"
+ * -> "Data"), abbreviated when it would not fit the rail. The tab's accessible
+ * name is still the full category name.
+ */
+function railLabel(name: string): string {
+  const word = name.split(/\s*&\s*|\s+/)[0] || name;
+  return RAIL_SHORT[word.toLowerCase()] ?? (word.length > 12 ? `${word.slice(0, 5)}.` : word);
+}
 
 export default async function HomePage() {
   const [homepageAgents, categories, agentCount, providerCount, settings, officialGroups] =
@@ -83,185 +101,168 @@ export default async function HomePage() {
       <JsonLd schema={homeSchema as Record<string, unknown>[]} />
 
       {/* ── Human view ─────────────────────────────────────────────── */}
-      <div className="human-only">
+      {/* lg+ reserves the right edge for the thumb-index rail, so it never covers content. */}
+      <div className="human-only relative text-[var(--dir-ink)] [font-family:var(--font-display)] lg:pr-[88px]">
         {/* ── Hero ──────────────────────────────────────────────────── */}
-        <section className="pt-6 sm:pt-8 pb-8 relative overflow-hidden">
-          {/* Top gradient wash */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[var(--accent)] opacity-[0.04] blur-[120px] rounded-full pointer-events-none" />
+        <section className="border-b border-[var(--dir-ink)]!">
+          <div className="container-wide flex flex-col gap-8 pt-8 pb-7 sm:pt-10 lg:flex-row lg:items-end lg:gap-12">
+            <div className="min-w-0 flex-1">
+              <p className="dir-label mb-2.5 text-[15px] font-bold uppercase tracking-[0.12em]">
+                {settings?.tagline || 'The directory for the agentic web'}
+              </p>
 
-          <div className="container-wide relative">
-            <div className="max-w-3xl mx-auto text-center">
-              {/* Terminal-style tag */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--border)] bg-[var(--bg-card)] mb-8 animate-rise">
-                <Terminal className="w-3.5 h-3.5 text-[var(--accent)]" />
-                <span className="mono text-xs text-[var(--text-secondary)]">
-                  {settings?.tagline || 'The directory for the agentic web'}
-                </span>
-              </div>
-
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6 animate-rise">
-                Every AI Agent{' '}
-                <span className="gradient-text">Worth Knowing</span>
-                {', '}in One Place
+              <h1 className="mb-3.5 text-[40px] font-extrabold leading-[0.95] tracking-[-0.025em] sm:text-[56px] xl:text-[72px]">
+                Every AI Agent Worth Knowing, in One Place
               </h1>
 
-              <p className="text-lg sm:text-xl text-[var(--text-secondary)] leading-relaxed max-w-2xl mx-auto mb-8 animate-rise">
+              <p className="max-w-[46rem] text-[18px] leading-[1.45] text-[var(--dir-muted)] sm:text-[19px]">
                 {settings?.heroSubtitle ||
                   'Browse, compare, and integrate verified AI agents with real API, MCP, and CLI access. The curated switchboard for the agentic web.'}
               </p>
 
-              <div className="max-w-lg mx-auto animate-rise">
-                <SearchBar />
-              </div>
-
-              {/* ── Stats pill ── stacks value over label below sm so all three
-                  fit a 320px screen instead of being clipped by the hero. */}
-              <div className="inline-flex max-w-full items-stretch mt-6 rounded-full border border-[var(--border)] bg-[var(--bg-card)] overflow-hidden animate-rise">
+              <dl className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-[15px]">
                 {[
                   { value: agentCount, label: 'Agents' },
                   { value: providerCount, label: 'Providers' },
                   { value: categories.length, label: 'Categories' },
-                ].map(({ value, label }, i) => (
-                  <div
-                    key={label}
-                    className={`flex flex-col sm:flex-row items-center justify-center gap-0 sm:gap-1.5 px-3 sm:px-5 py-1.5 sm:py-2 ${i < 2 ? 'border-r border-[var(--border)]' : ''}`}
-                  >
-                    <span className="mono text-sm font-bold text-[var(--text-primary)]">{value}</span>
-                    <span className="text-[11px] sm:text-xs text-[var(--text-muted)] uppercase tracking-wide sm:tracking-wider">{label}</span>
+                ].map(({ value, label }) => (
+                  <div key={label} className="flex items-baseline gap-1.5">
+                    <dt className="dir-label order-last font-semibold uppercase tracking-[0.1em] text-[var(--dir-muted)]">
+                      {label}
+                    </dt>
+                    <dd className="text-[18px] font-extrabold">{value}</dd>
                   </div>
                 ))}
-              </div>
+              </dl>
+            </div>
+
+            <div className="w-full lg:w-[420px] lg:flex-none">
+              <SearchBar label="Look it up" />
             </div>
           </div>
         </section>
 
         {/* ── MCP callout ──────────────────────────────────────────── */}
-        <section className="pb-4">
+        <section className="pt-5">
           <div className="container-wide">
             <Link
               href="/for-agents#mcp"
-              className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 rounded-xl border border-[var(--border-accent)] bg-[var(--bg-card)] px-5 py-3.5 hover:border-[var(--accent)] transition-colors group"
+              className="group flex flex-col gap-1 border border-[var(--dir-ink)]! px-4 py-3 text-[var(--dir-ink)] no-underline sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-4"
             >
-              <span className="mono text-xs text-[var(--accent)]">$ this directory is an MCP server</span>
-              <span className="mono text-xs text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors">
+              <span className="mono text-[13px] font-bold">$ this directory is an MCP server</span>
+              <span className="mono text-[13px] group-hover:underline">
                 connect your agent → agentswitchboard.dev/api/mcp
               </span>
-              <span className="mono text-xs text-[var(--text-muted)]">search_agents · get_agent · list_categories</span>
+              <span className="mono text-[13px] text-[var(--dir-muted)] sm:ml-auto">
+                search_agents · get_agent · list_categories
+              </span>
             </Link>
           </div>
         </section>
 
-        {/* ── Featured Agents ──────────────────────────────────────── */}
-        {homepageAgents.length > 0 && (
-          <section className="pt-4 pb-14">
-            <div className="container-wide">
-              <div className="flex items-end justify-between mb-8">
-                <div>
-                  <h2 className="text-2xl font-bold tracking-tight">
-                    Top Agents
-                  </h2>
-                  <p className="text-sm text-[var(--text-secondary)] mt-1">
+        {/* ── Directory: Top Agents + categories, phone-book columns ── */}
+        <section aria-label="Listings" className="pt-6 pb-14">
+          <div className="container-wide gap-x-10 md:columns-2 lg:columns-3">
+            {homepageAgents.length > 0 && (
+              <section aria-labelledby="top-agents" className="mb-6">
+                {/* Bar, blurb and first listing stay together so a column never ends on a bare header. */}
+                <div className="break-inside-avoid">
+                  <div className="dir-bar flex items-baseline gap-1.5">
+                    <h2 id="top-agents" className="m-0">Top Agents</h2>
+                    <span className="font-semibold tracking-normal">· {homepageAgents.length}</span>
+                  </div>
+                  <p className="mt-1.5 text-[15px] text-[var(--dir-muted)]">
                     Editor&apos;s picks and the latest additions to the switchboard
                   </p>
+                  <FeaturedAgentCard agent={homepageAgents[0].agent} label={homepageAgents[0].label} />
                 </div>
-                <Link
-                  href="/browse"
-                  className="hidden sm:flex items-center gap-1 text-sm text-[var(--accent)] hover:underline"
-                >
-                  View all <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {homepageAgents.map(({ agent, label }, i) => (
-                  <FeaturedAgentCard key={agent.id} agent={agent} label={label} index={i} />
+                {homepageAgents.slice(1).map(({ agent, label }) => (
+                  <FeaturedAgentCard key={agent.id} agent={agent} label={label} />
                 ))}
-              </div>
+                <Link href="/browse" className="dir-row break-inside-avoid">
+                  <span className="dir-row-name">View all</span>
+                  <span className="dir-row-leader" aria-hidden="true" />
+                  <span className="dir-row-meta" aria-hidden="true">→</span>
+                </Link>
+              </section>
+            )}
 
-              {/* The header link is hidden below sm; give phones an exit too. */}
-              <Link
-                href="/browse"
-                className="sm:hidden mt-4 flex items-center justify-center gap-1 rounded-lg border border-[var(--border)] px-4 py-3 text-sm text-[var(--accent)]"
-              >
-                View all <ArrowRight className="w-3.5 h-3.5" aria-hidden />
+            <section aria-labelledby="browse-categories" className="mb-6">
+              <div className="break-inside-avoid">
+                <div className="dir-bar flex items-baseline gap-1.5">
+                  <h2 id="browse-categories" className="m-0">Browse by Category</h2>
+                  <span className="font-semibold tracking-normal">· {categories.length}</span>
+                </div>
+                <p className="mt-1.5 mb-1 text-[15px] text-[var(--dir-muted)]">
+                  Find agents by what they do
+                </p>
+                {categories[0] && <CategoryCard category={categories[0]} compact />}
+              </div>
+              {categories.slice(1).map((cat) => (
+                <CategoryCard key={cat.id} category={cat} compact />
+              ))}
+              <Link href="/categories" className="dir-row break-inside-avoid">
+                <span className="dir-row-name">All categories</span>
+                <span className="dir-row-leader" aria-hidden="true" />
+                <span className="dir-row-meta" aria-hidden="true">→</span>
               </Link>
-            </div>
-          </section>
-        )}
+            </section>
+          </div>
+        </section>
 
         {/* ── Official platforms ───────────────────────────────────── */}
         <OfficialPlatforms groups={officialGroups} />
 
-        {/* ── Categories ───────────────────────────────────────────── */}
-        <section className="section">
-          <div className="container-wide">
-            <div className="flex items-end justify-between mb-8">
-              <div>
-                <h2 className="text-2xl font-bold tracking-tight">
-                  Browse by Category
-                </h2>
-                <p className="text-sm text-[var(--text-secondary)] mt-1">
-                  Find agents by what they do
-                </p>
-              </div>
-              <Link
-                href="/categories"
-                className="hidden sm:flex items-center gap-1 text-sm text-[var(--accent)] hover:underline"
-              >
-                All categories <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {categories.map((cat, i) => (
-                <CategoryCard key={cat.id} category={cat} index={i} />
-              ))}
-            </div>
-
-            <Link
-              href="/categories"
-              className="sm:hidden mt-4 flex items-center justify-center gap-1 rounded-lg border border-[var(--border)] px-4 py-3 text-sm text-[var(--accent)]"
-            >
-              All categories <ArrowRight className="w-3.5 h-3.5" aria-hidden />
-            </Link>
-          </div>
-        </section>
-
         {/* ── CTA ──────────────────────────────────────────────────── */}
-        <section className="section">
+        <section className="pb-16">
           <div className="container-wide">
-            <div className="relative rounded-2xl border border-[var(--border-accent)] bg-[var(--bg-card)] p-10 sm:p-14 text-center overflow-hidden">
-              {/* Background glow */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-[var(--accent)] opacity-[0.04] blur-[100px] rounded-full pointer-events-none" />
-
-              <div className="relative">
-                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4">
-                  List your agent on the switchboard
-                </h2>
-                <p className="text-[var(--text-secondary)] max-w-lg mx-auto mb-8">
-                  The catalog is open source — add your agent with a pull request
-                  or the listing form. Verified entries get discovered by
-                  developers and agents across the agentic web.
-                </p>
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                  <Link
-                    href="/submit"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--accent)] text-[var(--bg-primary)] font-medium text-sm hover:opacity-90 transition-opacity"
-                  >
-                    List Your Agent
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                  <Link
-                    href="/advertise"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[var(--border)] text-[var(--text-secondary)] text-sm hover:border-[var(--border-accent)] hover:text-[var(--text-primary)] transition-all"
-                  >
-                    Advertise with us
-                  </Link>
-                </div>
+            <div className="border-[3px] border-[var(--dir-ink)]! p-6 sm:p-10">
+              <h2 className="mb-3 text-[28px] font-extrabold leading-tight tracking-[-0.015em] sm:text-[36px]">
+                List your agent on the switchboard
+              </h2>
+              <p className="mb-6 max-w-[40rem] text-[18px] leading-[1.45] text-[var(--dir-muted)]">
+                The catalog is open source — add your agent with a pull request
+                or the listing form. Verified entries get discovered by
+                developers and agents across the agentic web.
+              </p>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <Link
+                  href="/submit"
+                  className="inline-flex min-h-11 items-center justify-center gap-2 bg-[var(--dir-yellow)] px-6 text-[17px] font-extrabold text-[var(--dir-on-yellow)] no-underline hover:underline"
+                >
+                  List Your Agent <span aria-hidden="true">→</span>
+                </Link>
+                <Link
+                  href="/advertise"
+                  className="inline-flex min-h-11 items-center justify-center border-2 border-[var(--dir-ink)]! px-6 text-[17px] font-bold text-[var(--dir-ink)] no-underline hover:underline"
+                >
+                  Advertise with us
+                </Link>
               </div>
             </div>
           </div>
         </section>
+
+        {/* ── Thumb-index rail (lg+): the agents' text-only tab first, then categories ── */}
+        <div className="absolute top-0 right-0 hidden w-[88px] flex-col lg:flex">
+          <AgentViewButton variant="tab" className="w-full" />
+          <nav aria-label="Categories">
+            <ul className="m-0 list-none p-0">
+              {categories.map((cat) => (
+                <li key={cat.id}>
+                  <Link
+                    href={`/categories/${cat.slug}`}
+                    aria-label={cat.name}
+                    title={cat.name}
+                    className="flex min-h-[56px] items-center justify-center border-b border-l-[3px] border-[var(--dir-ink)]! bg-[var(--dir-paper)] px-1 text-center text-[12px] font-extrabold uppercase leading-[1.05] tracking-[0.02em] text-[var(--dir-ink)] no-underline hyphens-auto [overflow-wrap:anywhere] hover:bg-[var(--dir-yellow)] hover:text-[var(--dir-on-yellow)] focus-visible:bg-[var(--dir-yellow)] focus-visible:text-[var(--dir-on-yellow)]"
+                  >
+                    {railLabel(cat.name)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
       </div>
 
       {/* ── Agent view ─────────────────────────────────────────────── */}

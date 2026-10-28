@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { ArrowRight, Building2 } from 'lucide-react';
 import type { OfficialGroup } from '@/lib/official';
+import { ACCESS_METHOD_LABELS } from '@/lib/search';
 import type { Agent } from '@/lib/types';
 
 const VENDORS_SHOWN = 12;
@@ -32,85 +32,82 @@ export function OfficialPlatforms({ groups: rawGroups }: { groups: OfficialGroup
   const moreVendors = groups.length - shown.length;
 
   return (
-    <section className="pb-14" aria-labelledby="official-platforms">
+    <section
+      className="pb-14 text-[var(--dir-ink)] [font-family:var(--font-display)]"
+      aria-labelledby="official-platforms"
+    >
       <div className="container-wide">
-        <div className="flex items-end justify-between mb-8">
+        <div className="mb-6 flex flex-wrap items-end justify-between gap-x-6 gap-y-2 border-t-[3px] border-[var(--dir-ink)]! pt-4">
           <div>
-            <h2 id="official-platforms" className="text-2xl font-bold tracking-tight flex items-center gap-2">
-              <Building2 className="w-5 h-5 text-[var(--blue)]" aria-hidden />
+            <h2
+              id="official-platforms"
+              className="text-[32px] font-extrabold leading-none tracking-[-0.015em] sm:text-[40px]"
+            >
               Official platforms
             </h2>
-            <p className="text-sm text-[var(--text-secondary)] mt-1">
+            <p className="mt-2 text-[17px] text-[var(--dir-muted)]">
               First-party agents, MCP servers, and SDKs from {groups.length} major vendors
             </p>
           </div>
           <Link
             href="/browse?official=1"
-            className="hidden sm:flex items-center gap-1 text-sm text-[var(--accent)] hover:underline"
+            className="inline-flex min-h-11 items-center text-[17px] font-bold text-[var(--dir-ink)] underline underline-offset-4"
           >
-            All {total} official <ArrowRight className="w-3.5 h-3.5" />
+            All {total} official <span aria-hidden="true">&nbsp;→</span>
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="gap-x-10 md:columns-2 lg:columns-3">
           {shown.map(({ vendor, agents }) => {
             const extra = agents.length - AGENTS_PER_VENDOR;
             const labels = chipLabels(agents);
             const vendorHref = `/browse?official=1&vendor=${vendor.slug}`;
             return (
-              <div key={vendor.slug} className="card p-4">
-                <div className="flex items-center justify-between gap-2 mb-3">
-                  <Link
-                    href={vendorHref}
-                    className="mono text-sm font-semibold text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors truncate"
-                  >
-                    {vendor.name}
-                  </Link>
-                  <span className="mono text-xs text-[var(--text-muted)] flex-shrink-0">
-                    {agents.length} listing{agents.length !== 1 ? 's' : ''}
+              <div key={vendor.slug} className="mb-5 break-inside-avoid">
+                <div className="dir-bar flex items-baseline gap-1.5">
+                  <h3 className="m-0 min-w-0 text-inherit">
+                    <Link href={vendorHref} className="text-[var(--dir-on-yellow)] hover:underline">
+                      {vendor.name}
+                    </Link>
+                  </h3>
+                  <span className="font-semibold tracking-normal">
+                    · {agents.length}
+                    <span className="sr-only"> listing{agents.length !== 1 ? 's' : ''}</span>
                   </span>
                 </div>
-                <div className="flex flex-wrap gap-1.5">
-                  {agents.slice(0, AGENTS_PER_VENDOR).map((agent) => (
-                    <Link
-                      key={agent.slug}
-                      href={`/agents/${agent.slug}`}
-                      title={`${agent.name} by ${agent.providerName}`}
-                      className="px-2 py-0.5 text-xs mono rounded-md border border-[var(--border)] text-[var(--text-secondary)] hover:border-[var(--blue)]/40 hover:text-[var(--blue)] transition-colors"
-                    >
-                      {labels.get(agent.slug)}
-                    </Link>
-                  ))}
-                  {extra > 0 && (
-                    <Link
-                      href={vendorHref}
-                      className="px-2 py-0.5 text-xs mono rounded-md text-[var(--blue)] hover:underline"
-                    >
-                      +{extra} more
-                    </Link>
-                  )}
-                </div>
+                {agents.slice(0, AGENTS_PER_VENDOR).map((agent) => (
+                  <Link
+                    key={agent.slug}
+                    href={`/agents/${agent.slug}`}
+                    title={`${agent.name} by ${agent.providerName}`}
+                    className="dir-row"
+                  >
+                    <span className="dir-row-name">{labels.get(agent.slug)}</span>
+                    <span className="dir-row-leader" aria-hidden="true" />
+                    <span className="dir-row-meta">
+                      {agent.accessMethods.map((m) => ACCESS_METHOD_LABELS[m] ?? m).join(' · ') || '—'}
+                    </span>
+                  </Link>
+                ))}
+                {extra > 0 && (
+                  <Link href={vendorHref} className="dir-row">
+                    <span className="dir-row-name">+{extra} more</span>
+                    <span className="dir-row-leader" aria-hidden="true" />
+                    <span className="dir-row-meta" aria-hidden="true">→</span>
+                  </Link>
+                )}
               </div>
             );
           })}
         </div>
 
-        {/* The header link is hidden below sm, so phones always need an exit:
-            the "more vendors" line, or a full-width link when there is none. */}
-        {moreVendors > 0 ? (
-          <p className="text-sm text-[var(--text-muted)] mt-4">
+        {moreVendors > 0 && (
+          <p className="mt-2 text-[17px] text-[var(--dir-muted)]">
             Plus {moreVendors} more vendors.{' '}
-            <Link href="/browse?official=1" className="text-[var(--accent)] hover:underline">
+            <Link href="/browse?official=1" className="font-bold text-[var(--dir-ink)] underline underline-offset-4">
               Browse all official listings
             </Link>
           </p>
-        ) : (
-          <Link
-            href="/browse?official=1"
-            className="sm:hidden mt-4 flex items-center justify-center gap-1 rounded-lg border border-[var(--border)] px-4 py-3 text-sm text-[var(--accent)]"
-          >
-            All {total} official <ArrowRight className="w-3.5 h-3.5" aria-hidden />
-          </Link>
         )}
       </div>
     </section>
