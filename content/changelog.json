@@ -1,6 +1,12 @@
 [
   {
     "action": "added",
+    "slug": "farmdash-agent-os",
+    "name": "FarmDash Agent OS",
+    "date": "2026-10-28"
+  },
+  {
+    "action": "added",
     "slug": "barnir-hired",
     "name": "Barnir Hired",
     "note": "Read-only MCP for technical-GTM job fit. Sponsored placement.",
@@ -647,7 +653,7 @@
     "action": "added",
     "slug": "rival-ads",
     "name": "Rival Ads",
-    "note": "Tracks competitors’ ads on Meta, Google, TikTok and LinkedIn from public ad libraries, and exposes monitors, a",
+    "note": "Tracks competitors\u2019 ads on Meta, Google, TikTok and LinkedIn from public ad libraries, and exposes monitors, a",
     "date": "2026-10-24"
   },
   {
@@ -682,7 +688,7 @@
     "action": "added",
     "slug": "clify",
     "name": "Clify",
-    "note": "Calls 135 public websites — package registries, weather, transit, government and science data — as typed JSON ",
+    "note": "Calls 135 public websites \u2014 package registries, weather, transit, government and science data \u2014 as typed JSON ",
     "date": "2026-10-24"
   },
   {
@@ -696,7 +702,7 @@
     "action": "added",
     "slug": "founden",
     "name": "Founden",
-    "note": "Builds and deploys a running company from a plain-language prompt — website, user app with sign-in, and back o",
+    "note": "Builds and deploys a running company from a plain-language prompt \u2014 website, user app with sign-in, and back o",
     "date": "2026-10-24"
   },
   {
@@ -738,7 +744,7 @@
     "action": "added",
     "slug": "hol-guard",
     "name": "HOL Guard",
-    "note": "Blocks risky AI coding agent actions at runtime on your machine — shell commands, secret access, MCP servers, ",
+    "note": "Blocks risky AI coding agent actions at runtime on your machine \u2014 shell commands, secret access, MCP servers, ",
     "date": "2026-10-24"
   },
   {
@@ -773,14 +779,14 @@
     "action": "added",
     "slug": "aitraining-jobs",
     "name": "AITraining.jobs",
-    "note": "Searches open AI-training jobs — trainers, RLHF evaluators, annotators, domain experts — collected hourly from",
+    "note": "Searches open AI-training jobs \u2014 trainers, RLHF evaluators, annotators, domain experts \u2014 collected hourly from",
     "date": "2026-10-24"
   },
   {
     "action": "added",
     "slug": "arvow",
     "name": "Arvow",
-    "note": "AI SEO agents — REST API (OpenAPI 3.1) + OAuth-gated MCP.",
+    "note": "AI SEO agents \u2014 REST API (OpenAPI 3.1) + OAuth-gated MCP.",
     "date": "2026-10-24"
   },
   {
@@ -808,7 +814,7 @@
     "action": "added",
     "slug": "sandbox0",
     "name": "Sandbox0",
-    "note": "Managed cloud sandboxes for agent code — REST API + CLI.",
+    "note": "Managed cloud sandboxes for agent code \u2014 REST API + CLI.",
     "date": "2026-10-24"
   },
   {
@@ -4632,7 +4638,7 @@
     "action": "added",
     "slug": "agentswitchboard",
     "name": "Agent Switchboard",
-    "note": "The directory listed itself — it qualifies: live MCP server, verified endpoints, identifiable provider",
+    "note": "The directory listed itself \u2014 it qualifies: live MCP server, verified endpoints, identifiable provider",
     "date": "2026-07-23"
   },
   {
@@ -4646,7 +4652,7 @@
     "action": "removed",
     "slug": "sangria",
     "name": "Sangria",
-    "note": "Product discontinued — repo deleted",
+    "note": "Product discontinued \u2014 repo deleted",
     "date": "2026-07-17"
   },
   {

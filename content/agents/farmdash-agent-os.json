@@ -1,0 +1,57 @@
+{
+  "id": "farmdash-agent-os",
+  "name": "FarmDash Agent OS",
+  "slug": "farmdash-agent-os",
+  "description": "Give DeFi agents protocol intelligence, wallet-risk analysis, simulation and zero-custody execution controls through REST and 94 MCP tools.",
+  "longDescription": "FarmDash Agent OS is a zero-custody DeFi intelligence and execution-control layer for AI agents. MCP v5.0.0 exposes 94 capability-labeled tools. USER_SIGNED is the default; separately authorized policy-bounded automation is gated by live capabilities. Payment, API keys and sessions do not grant transaction authority. FarmDash never receives customer raw private keys. Public source installation uses a local stdio adapter; npm publication and remote MCP transport are not claimed. Scout access is free and quota-limited, with paid API tiers and route-specific x402 access. ERC-4337 server submission, generic server intent execution and MEE remain preparation-only; ACP depends on deployment prerequisites.",
+  "providerName": "FarmDash",
+  "providerUrl": "https://www.farmdash.one",
+  "version": "5.0.0",
+  "agentUrl": "https://www.farmdash.one/agents",
+  "categories": [
+    "finance",
+    "infrastructure"
+  ],
+  "tags": [
+    "defi",
+    "mcp",
+    "openapi",
+    "wallet-risk",
+    "transaction-simulation",
+    "zero-custody",
+    "x402",
+    "execution-controls"
+  ],
+  "skills": [
+    {
+      "id": "protocol-intelligence",
+      "name": "Protocol Intelligence",
+      "description": "Research DeFi protocols with Trail Heat scores, risk factors and yield context before choosing an agent workflow."
+    },
+    {
+      "id": "wallet-risk-analysis",
+      "name": "Wallet Risk Analysis",
+      "description": "Inspect wallet balances, portfolio context and Sybil or allowance-risk signals for agent planning."
+    },
+    {
+      "id": "simulate-and-authorize",
+      "name": "Simulate and Authorize",
+      "description": "Simulate proposed actions and apply user-signed or separately authorized policy-bounded execution controls."
+    }
+  ],
+  "authType": "bearer",
+  "authInstructions": "Scout access is keyless within published route quotas. FARMDASH_API_KEY is optional for local stdio clients and enables paid capacity; it does not authorize transactions. Customers retain signing keys.",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-10-28T07:53:08.128262Z",
+  "updatedAt": "2026-10-28T07:53:08.128262Z"
+}
