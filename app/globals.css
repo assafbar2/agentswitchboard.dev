@@ -319,108 +319,113 @@ body {
 
 /* ── Directory utilities ─────────────────────────────────────────── */
 
-/* Uppercase letterspaced small label ("LOOK IT UP"). */
-.dir-label {
-  font-family: var(--font-display);
-  font-size: 0.875rem;
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
+/* In the components layer so Tailwind utilities on the same element win:
+   `dir-bar flex`, `dir-bar mb-3`, `dir-label text-[15px]` all behave as
+   written. Unlayered, these rules overrode every utility they touched. */
+@layer components {
+  /* Uppercase letterspaced small label ("LOOK IT UP"). */
+  .dir-label {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
 
-/* Heavy 3px ink rule. Draws a bottom rule on any element; on an <hr>
-   it is the rule itself. */
-.dir-rule-heavy {
-  border-style: solid;
-  border-color: var(--dir-ink);
-  border-width: 0 0 3px 0;
-}
+  /* Heavy 3px ink rule. Draws a bottom rule on any element; on an <hr>
+     it is the rule itself. */
+  .dir-rule-heavy {
+    border-style: solid;
+    border-color: var(--dir-ink);
+    border-width: 0 0 3px 0;
+  }
 
-hr.dir-rule-heavy {
-  height: 0;
-  margin: 0;
-}
+  hr.dir-rule-heavy {
+    height: 0;
+    margin: 0;
+  }
 
-/* Yellow section header bar: "INFRASTRUCTURE & OPS · 245".
-   Put the count in a child .dir-bar-count. */
-.dir-bar {
-  display: block;
-  margin: 0;
-  padding: 4px 8px;
-  background: var(--dir-yellow);
-  color: var(--dir-on-yellow);
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 800;
-  line-height: 1.25;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
+  /* Yellow section header bar: "INFRASTRUCTURE & OPS · 245".
+     Put the count in a child .dir-bar-count. */
+  .dir-bar {
+    display: block;
+    margin: 0;
+    padding: 4px 8px;
+    background: var(--dir-yellow);
+    color: var(--dir-on-yellow);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
 
-.dir-bar a {
-  color: inherit;
-}
+  .dir-bar a {
+    color: inherit;
+  }
 
-.dir-bar-count {
-  font-weight: 600;
-  letter-spacing: 0;
-}
+  .dir-bar-count {
+    font-weight: 600;
+    letter-spacing: 0;
+  }
 
-/* Phone-book listing row: name ........ API · MCP
-   <a class="dir-row">
-     <span class="dir-row-name">Name</span>
-     <span class="dir-row-leader" aria-hidden="true"></span>
-     <span class="dir-row-meta">API · MCP</span>
-   </a> */
-.dir-row {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-  min-width: 0;
-  padding: 5px 2px;
-  border-bottom: 1px solid var(--dir-rule);
-  color: var(--dir-ink);
-  font-family: var(--font-display);
-  font-size: 1.0625rem;
-  line-height: 1.3;
-  text-decoration: none;
-}
-
-.dir-row-name {
-  flex: 0 1 auto;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-weight: 700;
-}
-
-.dir-row-leader {
-  flex: 1 1 auto;
-  min-width: 1rem;
-  border-bottom: 2px dotted var(--dir-leader);
-  transform: translateY(-4px);
-}
-
-.dir-row-meta {
-  flex: 0 0 auto;
-  white-space: nowrap;
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-}
-
-a.dir-row:hover .dir-row-name,
-a.dir-row:focus-visible .dir-row-name {
-  text-decoration: underline;
-}
-
-/* Taller rows on touch screens so each listing is a comfortable target. */
-@media (max-width: 639px) {
+  /* Phone-book listing row: name ........ API · MCP
+     <a class="dir-row">
+       <span class="dir-row-name">Name</span>
+       <span class="dir-row-leader" aria-hidden="true"></span>
+       <span class="dir-row-meta">API · MCP</span>
+     </a> */
   .dir-row {
-    padding-top: 11px;
-    padding-bottom: 11px;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    min-width: 0;
+    padding: 5px 2px;
+    border-bottom: 1px solid var(--dir-rule);
+    color: var(--dir-ink);
+    font-family: var(--font-display);
+    font-size: 1.0625rem;
+    line-height: 1.3;
+    text-decoration: none;
+  }
+
+  .dir-row-name {
+    flex: 0 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 700;
+  }
+
+  .dir-row-leader {
+    flex: 1 1 auto;
+    min-width: 1rem;
+    border-bottom: 2px dotted var(--dir-leader);
+    transform: translateY(-4px);
+  }
+
+  .dir-row-meta {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+  }
+
+  a.dir-row:hover .dir-row-name,
+  a.dir-row:focus-visible .dir-row-name {
+    text-decoration: underline;
+  }
+
+  /* Taller rows on touch screens so each listing is a comfortable target. */
+  @media (max-width: 639px) {
+    .dir-row {
+      padding-top: 11px;
+      padding-bottom: 11px;
+    }
   }
 }
 
