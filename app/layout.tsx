@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
-import { JetBrains_Mono, Inter } from 'next/font/google';
+import { JetBrains_Mono, Inter, Barlow_Semi_Condensed } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -13,8 +13,18 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
+// Inter is only a fallback in the --font-sans stack now, so it is not
+// preloaded; Barlow Semi Condensed carries display and body text.
 const inter = Inter({
   variable: '--font-inter',
+  subsets: ['latin'],
+  display: 'swap',
+  preload: false,
+});
+
+const barlow = Barlow_Semi_Condensed({
+  variable: '--font-barlow',
+  weight: ['400', '500', '600', '700', '800'],
   subsets: ['latin'],
   display: 'swap',
 });
@@ -59,7 +69,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${jetbrainsMono.variable} ${inter.variable} h-full light`}
+      className={`${jetbrainsMono.variable} ${inter.variable} ${barlow.variable} h-full light`}
       suppressHydrationWarning
     >
       {/* Prevent flash: SSR defaults to light; remove class only if user saved dark */}

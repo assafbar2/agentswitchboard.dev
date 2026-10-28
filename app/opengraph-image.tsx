@@ -4,153 +4,119 @@ export const alt = 'Agent Switchboard — AI Agent Directory';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
+// Exchange Directory look: white paper, #111 ink, signal yellow as a fill
+// only (the name block and the access-method tags), square corners.
+const INK = '#111111';
+const PAPER = '#ffffff';
+const YELLOW = '#FFD400';
+const MUTED = '#444444';
+
 export default function Image() {
   return new ImageResponse(
     (
       <div
         style={{
-          background: '#0a0a0f',
+          background: PAPER,
           width: '100%',
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'flex-start',
-          justifyContent: 'center',
-          padding: '80px',
-          position: 'relative',
+          fontFamily: 'sans-serif',
+          color: INK,
         }}
       >
-        {/* Top accent line */}
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            height: '3px',
-            background: 'linear-gradient(90deg, transparent, #00ff88, transparent)',
-            display: 'flex',
-          }}
-        />
-
-        {/* Logo dot + name */}
+        {/* Header strip: yellow name block on a heavy ink rule */}
         <div
           style={{
             display: 'flex',
-            alignItems: 'center',
-            gap: '16px',
-            marginBottom: '48px',
+            alignItems: 'stretch',
+            height: '120px',
+            borderBottom: `6px solid ${INK}`,
           }}
         >
           <div
             style={{
-              width: '18px',
-              height: '18px',
-              borderRadius: '50%',
-              background: '#00ff88',
               display: 'flex',
-            }}
-          />
-          <span
-            style={{
-              color: '#ffffff',
-              fontSize: '28px',
-              fontWeight: 700,
-              letterSpacing: '0.05em',
-              fontFamily: 'monospace',
+              alignItems: 'center',
+              padding: '0 64px',
+              background: YELLOW,
+              color: INK,
+              fontSize: '44px',
+              fontWeight: 800,
+              letterSpacing: '-0.01em',
             }}
           >
             switchboard
-          </span>
+          </div>
         </div>
 
-        {/* Headline */}
+        {/* Body */}
         <div
           style={{
             display: 'flex',
-            flexWrap: 'wrap',
-            alignItems: 'baseline',
-            gap: '18px',
-            marginBottom: '28px',
+            flexDirection: 'column',
+            flex: 1,
+            padding: '56px 64px 0',
           }}
         >
-          <span
+          <div
             style={{
-              color: '#ffffff',
-              fontSize: '72px',
+              display: 'flex',
+              fontSize: '88px',
               fontWeight: 800,
-              lineHeight: 1.1,
-              letterSpacing: '-0.02em',
-              fontFamily: 'sans-serif',
+              lineHeight: 1,
+              letterSpacing: '-0.025em',
+              marginBottom: '28px',
             }}
           >
-            The AI Agent
-          </span>
-          <span
+            The AI Agent Directory
+          </div>
+
+          <div
             style={{
-              color: '#00ff88',
-              fontSize: '72px',
-              fontWeight: 800,
-              lineHeight: 1.1,
-              letterSpacing: '-0.02em',
-              fontFamily: 'sans-serif',
+              display: 'flex',
+              color: MUTED,
+              fontSize: '30px',
+              lineHeight: 1.4,
+              maxWidth: '900px',
             }}
           >
-            Directory
-          </span>
+            Browse, compare, and integrate AI agents with real API, MCP, and CLI access.
+          </div>
+
+          {/* Tags: ink on yellow fills */}
+          <div style={{ display: 'flex', gap: '14px', marginTop: '44px' }}>
+            {['API', 'MCP', 'CLI', 'Extension'].map((tag) => (
+              <div
+                key={tag}
+                style={{
+                  display: 'flex',
+                  background: YELLOW,
+                  color: INK,
+                  padding: '8px 20px',
+                  fontSize: '22px',
+                  fontWeight: 800,
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                }}
+              >
+                {tag}
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Subtitle */}
+        {/* Footer rule + URL */}
         <div
           style={{
             display: 'flex',
-            color: '#888899',
-            fontSize: '28px',
-            lineHeight: 1.5,
-            maxWidth: '780px',
-            fontFamily: 'sans-serif',
-          }}
-        >
-          Browse, compare, and integrate AI agents with real API, MCP, and CLI access.
-        </div>
-
-        {/* Tag chips */}
-        <div
-          style={{
-            display: 'flex',
-            gap: '12px',
-            marginTop: '56px',
-          }}
-        >
-          {['API', 'MCP', 'CLI', 'Extension'].map((tag) => (
-            <div
-              key={tag}
-              style={{
-                display: 'flex',
-                background: 'rgba(0,255,136,0.08)',
-                border: '1px solid rgba(0,255,136,0.2)',
-                borderRadius: '6px',
-                padding: '6px 18px',
-                color: '#00ff88',
-                fontSize: '18px',
-                fontFamily: 'monospace',
-                letterSpacing: '0.05em',
-              }}
-            >
-              {tag}
-            </div>
-          ))}
-        </div>
-
-        {/* Bottom right URL */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: '44px',
-            right: '80px',
-            display: 'flex',
-            color: '#444455',
-            fontSize: '20px',
+            justifyContent: 'flex-end',
+            margin: '0 64px',
+            padding: '18px 0 40px',
+            borderTop: `3px solid ${INK}`,
+            color: INK,
+            fontSize: '24px',
+            fontWeight: 600,
             fontFamily: 'monospace',
           }}
         >

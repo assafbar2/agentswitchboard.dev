@@ -3,6 +3,11 @@
 import { useEffect, useState } from 'react';
 import { Moon, Sun } from 'lucide-react';
 
+// Square, ink-bordered control in the Exchange Directory look. 44px so it
+// is a comfortable touch target; the placeholder matches its size so the
+// header does not shift on mount.
+const SIZE = 'w-11 h-11';
+
 export function ThemeToggle() {
   const [theme, setTheme] = useState<'dark' | 'light'>('light');
   const [mounted, setMounted] = useState(false);
@@ -23,7 +28,7 @@ export function ThemeToggle() {
     setMounted(true);
     const saved = localStorage.getItem('theme') as 'dark' | 'light' | null;
     const initial = saved ?? 'light';
-     
+
     setTheme(initial);
     applyTheme(initial);
   }, []);
@@ -35,19 +40,20 @@ export function ThemeToggle() {
     localStorage.setItem('theme', next);
   }
 
-  if (!mounted) return <div className="w-8 h-8" />;
+  if (!mounted) return <div className={`${SIZE} shrink-0`} aria-hidden="true" />;
 
   return (
     <button
+      type="button"
       onClick={toggle}
-      className="p-2 rounded-lg border border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-accent)] hover:bg-[var(--accent-subtle)] transition-all"
+      className={`${SIZE} shrink-0 inline-flex items-center justify-center rounded-none border-2 border-[var(--dir-ink)] bg-[var(--dir-paper)] text-[var(--dir-ink)] hover:bg-[var(--dir-yellow)] hover:text-[var(--dir-on-yellow)] transition-colors cursor-pointer`}
       aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
       title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       {theme === 'dark' ? (
-        <Sun className="w-4 h-4" />
+        <Sun className="w-5 h-5" aria-hidden="true" />
       ) : (
-        <Moon className="w-4 h-4" />
+        <Moon className="w-5 h-5" aria-hidden="true" />
       )}
     </button>
   );
