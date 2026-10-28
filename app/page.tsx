@@ -12,7 +12,7 @@ import { FeaturedAgentCard } from '@/components/FeaturedAgentCard';
 import { CategoryCard } from '@/components/CategoryCard';
 import { OfficialPlatforms } from '@/components/OfficialPlatforms';
 import { JsonLd } from '@/components/JsonLd';
-import { AgentViewButton } from '@/components/ViewModeToggle';
+import { CategoryRail } from '@/components/CategoryRail';
 import type { Metadata } from 'next';
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev';
@@ -27,24 +27,6 @@ export const metadata: Metadata = {
     url: BASE_URL,
   },
 };
-
-/** Thumb-tab abbreviations for first words too long for the 88px rail. */
-const RAIL_SHORT: Record<string, string> = {
-  infrastructure: 'Infra',
-  // Each stays a prefix of the full name, so the visible text is part of the accessible name.
-  communication: 'Comm.',
-  orchestration: 'Orch.',
-};
-
-/**
- * Short thumb-tab text: the first word of the category name ("Data & Analytics"
- * -> "Data"), abbreviated when it would not fit the rail. The tab's accessible
- * name is still the full category name.
- */
-function railLabel(name: string): string {
-  const word = name.split(/\s*&\s*|\s+/)[0] || name;
-  return RAIL_SHORT[word.toLowerCase()] ?? (word.length > 12 ? `${word.slice(0, 5)}.` : word);
-}
 
 export default async function HomePage() {
   const [homepageAgents, categories, agentCount, providerCount, settings, officialGroups] =
@@ -104,25 +86,7 @@ export default async function HomePage() {
       {/* lg+ reserves the right edge for the thumb-index rail, so it never covers content. */}
       <div className="human-only relative text-[var(--dir-ink)] [font-family:var(--font-display)] lg:pr-[88px]">
         {/* ── Thumb-index rail (lg+): the agents' text-only tab first, then categories ── */}
-        <div className="absolute top-0 right-0 hidden w-[88px] flex-col lg:flex">
-          <AgentViewButton variant="tab" className="w-full" />
-          <nav aria-label="Categories">
-            <ul className="m-0 list-none p-0">
-              {categories.map((cat) => (
-                <li key={cat.id}>
-                  <Link
-                    href={`/categories/${cat.slug}`}
-                    aria-label={cat.name}
-                    title={cat.name}
-                    className="flex min-h-[56px] items-center justify-center border-b border-l-[3px] border-[var(--dir-ink)]! bg-[var(--dir-paper)] px-1 text-center text-[12px] font-extrabold uppercase leading-[1.05] tracking-[0.02em] text-[var(--dir-ink)] no-underline hyphens-auto [overflow-wrap:anywhere] hover:bg-[var(--dir-yellow)] hover:text-[var(--dir-on-yellow)] focus-visible:bg-[var(--dir-yellow)] focus-visible:text-[var(--dir-on-yellow)]"
-                  >
-                    {railLabel(cat.name)}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
+        <CategoryRail categories={categories} className="absolute top-0 right-0" />
 
         {/* ── Hero ──────────────────────────────────────────────────── */}
         <section className="border-b border-[var(--dir-ink)]!">

@@ -102,12 +102,15 @@ export function OfficialPlatforms({ groups: rawGroups }: { groups: OfficialGroup
         </div>
 
         {moreVendors > 0 && (
-          <p className="mt-2 text-[17px] text-[var(--dir-muted)]">
-            Plus {moreVendors} more vendors.{' '}
-            <Link href="/browse?official=1" className="font-bold text-[var(--dir-ink)] underline underline-offset-4">
-              Browse all official listings
-            </Link>
-          </p>
+          <Link
+            href="/browse?official=1"
+            className="mt-4 flex min-h-14 flex-wrap items-center justify-between gap-x-6 gap-y-1 border-[3px] border-[var(--dir-ink)]! bg-[var(--dir-yellow)] px-4 py-3 text-[var(--dir-on-yellow)] no-underline hover:underline focus-visible:outline-[var(--dir-ink)]"
+          >
+            <span className="text-[20px] font-extrabold leading-tight">Plus {moreVendors} more vendors.</span>
+            <span className="text-[17px] font-bold leading-tight">
+              Browse all official listings ({total} from {groups.length} vendors) <span aria-hidden="true">→</span>
+            </span>
+          </Link>
         )}
       </div>
     </section>

@@ -1,6 +1,12 @@
 import { AgentViewButton } from '@/components/ViewModeToggle';
 
-const fetchLinks = ['/llms.txt', '/index.md', '/api/mcp'];
+// /api/mcp only answers MCP POSTs (a browser GET gets 405), so its link opens
+// the connection instructions instead of the raw endpoint.
+const fetchLinks = [
+  { href: '/llms.txt', label: '/llms.txt' },
+  { href: '/index.md', label: '/index.md' },
+  { href: '/for-agents#mcp', label: '/api/mcp', title: 'How to connect to the MCP server at /api/mcp' },
+];
 
 // inline-flex + min-h-11 gives each fetch link a 44px touch target.
 const linkClass =
@@ -33,11 +39,11 @@ export function AgentBar() {
 
         <span className="order-4 w-full font-mono text-[13px] text-[var(--dir-bar-fg)] sm:order-3 sm:ml-auto sm:w-auto sm:text-[15px] lg:order-4">
           or fetch{' '}
-          {fetchLinks.map((href, i) => (
+          {fetchLinks.map(({ href, label, title }, i) => (
             <span key={href}>
               {i > 0 ? <span aria-hidden="true"> · </span> : null}
-              <a href={href} className={linkClass}>
-                {href}
+              <a href={href} title={title} className={linkClass}>
+                {label}
               </a>
             </span>
           ))}

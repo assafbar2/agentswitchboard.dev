@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { CategoryRail } from '@/components/CategoryRail';
 import { Suspense } from 'react';
 import { getAllCategories, getEveryAgent, loadOfficialVendors } from '@/lib/catalog';
 import { filterAgents, parseFlag, searchAgents } from '@/lib/search';
@@ -52,7 +53,10 @@ export default async function BrowsePage({
   return (
     <>
       {/* ── Human view ─────────────────────────────────────────────── */}
-      <div className="human-only container-wide section font-[family-name:var(--font-display)] text-[var(--dir-ink)]">
+      {/* .human-only sets display:block unlayered, so the flex row is its own element. */}
+      <div className="human-only">
+      <div className="lg:flex">
+        <div className="container-wide section min-w-0 flex-1 font-[family-name:var(--font-display)] text-[var(--dir-ink)]">
         {/* Search bar */}
         <div className="max-w-xl mb-6">
           <h1 className="text-4xl sm:text-5xl font-extrabold leading-[0.95] tracking-[-0.02em] mb-4 wrap-break-word">
@@ -104,6 +108,10 @@ export default async function BrowsePage({
             </p>
           </div>
         )}
+      </div>
+
+        <CategoryRail categories={categories} activeSlug={categoryFilter} />
+      </div>
       </div>
 
       {/* ── Agent view ─────────────────────────────────────────────── */}

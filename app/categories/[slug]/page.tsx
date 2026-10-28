@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { CategoryRail } from '@/components/CategoryRail';
 import { getCategoryBySlug, getAllCategories } from '@/lib/catalog';
 import { AgentCard } from '@/components/AgentCard';
 import { CategoryIcon } from '@/components/ui/CategoryIcon';
@@ -55,7 +56,7 @@ export default async function CategoryPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const result = await getCategoryBySlug(slug);
+  const [result, categories] = await Promise.all([getCategoryBySlug(slug), getAllCategories()]);
   if (!result) notFound();
 
   const { category, agents } = result;
@@ -81,7 +82,10 @@ export default async function CategoryPage({
   return (
     <>
       {/* ── Human view ─────────────────────────────────────────────── */}
-      <div className="human-only container-wide section font-[family-name:var(--font-display)] text-[var(--dir-ink)]">
+      {/* .human-only sets display:block unlayered, so the flex row is its own element. */}
+      <div className="human-only">
+      <div className="lg:flex">
+        <div className="container-wide section min-w-0 flex-1 font-[family-name:var(--font-display)] text-[var(--dir-ink)]">
         <JsonLd schema={listSchema} />
         {/* Section header bar: yellow fill, ink text, the listing count beside the title */}
         <div className="mb-3 flex flex-wrap items-baseline gap-x-3 gap-y-1 bg-[var(--dir-yellow)] px-3 py-2 text-[var(--dir-on-yellow)]">
@@ -123,6 +127,10 @@ export default async function CategoryPage({
             No agents in this category yet.
           </p>
         )}
+      </div>
+
+        <CategoryRail categories={categories} activeSlug={slug} />
+      </div>
       </div>
 
       {/* ── Agent view ─────────────────────────────────────────────── */}

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { CategoryRail } from '@/components/CategoryRail';
 import { getAllCategories } from '@/lib/catalog';
 import { CategoryIcon } from '@/components/ui/CategoryIcon';
 import type { Metadata } from 'next';
@@ -15,7 +16,10 @@ export default async function CategoriesPage() {
   return (
     <>
       {/* ── Human view ─────────────────────────────────────────────── */}
-      <div className="human-only container-wide section font-[family-name:var(--font-display)] text-[var(--dir-ink)]">
+      {/* .human-only sets display:block unlayered, so the flex row is its own element. */}
+      <div className="human-only">
+      <div className="lg:flex">
+        <div className="container-wide section min-w-0 flex-1 font-[family-name:var(--font-display)] text-[var(--dir-ink)]">
         <div className="mb-8 pb-6 border-b-[3px] border-[var(--dir-ink)]!">
           <h1 className="text-4xl sm:text-5xl font-extrabold leading-[0.95] tracking-[-0.02em] mb-3">Categories</h1>
           <p className="text-lg text-[var(--dir-muted)]">
@@ -58,6 +62,10 @@ export default async function CategoriesPage() {
             );
           })}
         </ul>
+      </div>
+
+        <CategoryRail categories={categories} />
+      </div>
       </div>
 
       {/* ── Agent view ─────────────────────────────────────────────── */}
