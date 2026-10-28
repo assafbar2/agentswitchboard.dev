@@ -5,6 +5,7 @@ import { useId, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { ViewModeToggle } from '@/components/ViewModeToggle';
+import { AgentBar } from '@/components/AgentBar';
 
 const navLinks = [
   { href: '/browse', label: 'Browse' },
@@ -29,79 +30,81 @@ function LabelledViewModeToggle({ className, toggleClassName }: { className?: st
   );
 }
 
+const navLinkClass =
+  'text-[var(--dir-ink)] decoration-2 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-[var(--dir-ink)]';
+
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--bg-primary)]/80 backdrop-blur-xl">
-      <div className="container-wide flex h-16 items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <span className="relative flex h-3 w-3">
-            <span className="absolute inset-0 rounded-full bg-[var(--accent)] animate-pulse-glow" />
-            <span className="relative rounded-full h-3 w-3 bg-[var(--accent)]" />
-          </span>
-          <span className="mono text-lg font-bold tracking-tight text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">
-            switchboard
-          </span>
-        </Link>
+    <>
+      {/* Agent entry: the first thing on every page, in human and agent view. */}
+      <AgentBar />
 
-        {/* Desktop nav — from lg up; four links plus the toggle don't fit at md. */}
-        <nav className="hidden lg:flex items-center gap-1">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="px-3.5 py-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors rounded-lg hover:bg-[var(--bg-card-hover)] whitespace-nowrap"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-
-        {/* CTA + mobile toggle */}
-        <div className="flex items-center gap-3">
-          {/* Segmented view toggle — replaces Activate Pro. Below lg it lives
-              in the mobile menu instead, so it never shows twice. */}
-          <LabelledViewModeToggle className="hidden lg:block" />
-
-          <ThemeToggle />
-
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            aria-label="Toggle menu"
-            aria-expanded={mobileOpen}
+      <header className="sticky top-0 z-50 border-b-[3px] border-[var(--dir-ink)] bg-[var(--dir-paper)] font-[family-name:var(--font-display)] text-[var(--dir-ink)]">
+        <div className="flex h-16 items-stretch">
+          {/* Logo block */}
+          <Link
+            href="/"
+            className="flex shrink-0 items-center bg-[var(--dir-yellow)] px-4 text-xl font-extrabold tracking-[-0.01em] text-[var(--dir-on-yellow)] no-underline hover:underline focus-visible:outline focus-visible:outline-[3px] focus-visible:-outline-offset-[6px] focus-visible:outline-[var(--dir-on-yellow)] sm:px-6 sm:text-2xl lg:px-10"
           >
-            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
-        </div>
-      </div>
+            Agent Switchboard
+          </Link>
 
-      {/* Mobile nav */}
-      {mobileOpen && (
-        <nav className="lg:hidden border-t border-[var(--border)] bg-[var(--bg-primary)]">
-          <div className="container-wide py-4 flex flex-col gap-1">
+          {/* Desktop nav — from lg up; four links plus the toggle don't fit at md. */}
+          <nav aria-label="Main" className="hidden items-center gap-[30px] px-10 text-[17px] font-semibold lg:flex">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="px-3 py-2.5 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] rounded-lg hover:bg-[var(--bg-card-hover)]"
-              >
+              <Link key={link.href} href={link.href} className={`${navLinkClass} whitespace-nowrap py-2`}>
                 {link.label}
               </Link>
             ))}
-            {/* View toggle in mobile menu */}
-            <div className="mt-3 pt-3 border-t border-[var(--border)]">
-              <LabelledViewModeToggle toggleClassName="w-full justify-center" />
-              <p aria-hidden="true" className="mt-2 px-1 text-xs text-[var(--text-muted)]">
-                For Agents shows a compact plain-text version of each page.
-              </p>
-            </div>
+          </nav>
+
+          {/* View toggle, theme, mobile menu */}
+          <div className="ml-auto flex items-center gap-3 pl-3 pr-4 sm:pr-6 lg:pr-10">
+            {/* Segmented view toggle. Below lg it lives in the mobile menu
+                instead, so it never shows twice. */}
+            <LabelledViewModeToggle className="hidden lg:block" />
+
+            <ThemeToggle />
+
+            <button
+              type="button"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="inline-flex h-11 w-11 items-center justify-center border-[3px] border-[var(--dir-ink)] text-[var(--dir-ink)] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-[var(--dir-ink)] lg:hidden"
+              aria-label="Toggle menu"
+              aria-expanded={mobileOpen}
+            >
+              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
           </div>
-        </nav>
-      )}
-    </header>
+        </div>
+
+        {/* Mobile nav */}
+        {mobileOpen && (
+          <nav aria-label="Main" className="border-t-[3px] border-[var(--dir-ink)] bg-[var(--dir-paper)] lg:hidden">
+            <div className="flex flex-col px-4 py-3 sm:px-6">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={`${navLinkClass} flex min-h-11 items-center border-b border-[var(--dir-rule)] px-1 text-[17px] font-semibold`}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              {/* View toggle in mobile menu */}
+              <div className="mt-4">
+                <LabelledViewModeToggle toggleClassName="w-full [&>button]:flex-1 [&>button]:justify-center" />
+                <p aria-hidden="true" className="mt-2 px-1 text-sm text-[var(--dir-muted)]">
+                  For Agents shows a compact plain-text version of each page.
+                </p>
+              </div>
+            </div>
+          </nav>
+        )}
+      </header>
+    </>
   );
 }

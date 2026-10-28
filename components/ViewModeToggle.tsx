@@ -1,67 +1,217 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useSyncExternalStore } from 'react';
+
+export type ViewMode = 'human' | 'agent';
+
+const STORAGE_KEY = 'viewMode';
+const SYNC_EVENT = 'asb:viewmode';
+
+/* ── Shared view-mode store ──────────────────────────────────────────
+   One value per page, read from localStorage once and kept in memory, so
+   every control (header toggle, agent bar, rail tab) shows the same state.
+   Instances on the page sync through a window CustomEvent; other tabs sync
+   through the 'storage' event. */
+
+let current: ViewMode | null = null;
+
+function readStored(): ViewMode {
+  try {
+    return window.localStorage.getItem(STORAGE_KEY) === 'agent' ? 'agent' : 'human';
+  } catch {
+    return 'human';
+  }
+}
+
+function getSnapshot(): ViewMode {
+  if (current === null) current = readStored();
+  return current;
+}
+
+function getServerSnapshot(): ViewMode {
+  return 'human';
+}
+
+function applyMode(m: ViewMode) {
+  const html = document.documentElement;
+  if (m === 'agent') {
+    html.setAttribute('data-view', 'agent');
+  } else {
+    html.removeAttribute('data-view');
+  }
+}
+
+function subscribe(onChange: () => void) {
+  function onStorage(e: StorageEvent) {
+    if (e.key !== STORAGE_KEY && e.key !== null) return;
+    current = readStored();
+    applyMode(current);
+    onChange();
+  }
+  window.addEventListener(SYNC_EVENT, onChange);
+  window.addEventListener('storage', onStorage);
+  return () => {
+    window.removeEventListener(SYNC_EVENT, onChange);
+    window.removeEventListener('storage', onStorage);
+  };
+}
+
+function writeMode(next: ViewMode) {
+  current = next;
+  applyMode(next);
+  try {
+    window.localStorage.setItem(STORAGE_KEY, next);
+  } catch {
+    // Private mode or blocked storage: the choice still applies to this page.
+  }
+  window.dispatchEvent(new CustomEvent(SYNC_EVENT, { detail: next }));
+}
+
+const noopSubscribe = () => () => {};
+
+/** The page's human/agent view mode, shared by every control that uses it. */
+export function useViewMode(): { mode: ViewMode; mounted: boolean; setMode(m: ViewMode): void } {
+  const mode = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const mounted = useSyncExternalStore(noopSubscribe, () => true, () => false);
+
+  // Keep html[data-view] in line with the stored mode after hydration.
+  useEffect(() => {
+    if (mounted) applyMode(mode);
+  }, [mode, mounted]);
+
+  const setMode = useCallback((m: ViewMode) => writeMode(m), []);
+  return { mode, mounted, setMode };
+}
+
+/* ── Agent entry button ──────────────────────────────────────────── */
+
+const focusRing =
+  'focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-[var(--dir-yellow)]';
+
+const barClass =
+  'inline-flex min-h-[44px] shrink-0 items-center gap-2.5 bg-[var(--dir-yellow)] px-4 text-base font-extrabold tracking-[0.02em] text-[var(--dir-on-yellow)] whitespace-nowrap no-underline hover:underline sm:px-5 sm:text-lg ' +
+  focusRing;
+
+// The rail sits on paper, so the tab's focus ring goes inside its black fill.
+const tabClass =
+  'flex h-[88px] w-full flex-col items-center justify-center border-b-[3px] border-l-[3px] border-b-[var(--dir-yellow)] border-l-[var(--dir-ink)] bg-[var(--dir-bar-bg)] px-1.5 text-center text-sm font-extrabold leading-[1.1] tracking-[0.06em] text-[var(--dir-yellow)] no-underline hover:underline focus-visible:outline focus-visible:outline-[3px] focus-visible:-outline-offset-[7px] focus-visible:outline-[var(--dir-yellow)]';
+
+const tabSubClass = 'mt-1 text-xs font-semibold tracking-normal text-[var(--dir-bar-fg)]';
+
+/**
+ * The obvious "give me the text version" control for AI agents. Switches the
+ * page to the existing agent (text-only) view; in agent view it switches back.
+ * Before hydration it is a plain link to /index.md, so an agent without JS
+ * still reaches the text version.
+ */
+export function AgentViewButton({
+  className,
+  variant = 'bar',
+}: {
+  className?: string;
+  variant?: 'bar' | 'tab';
+}) {
+  const { mode, mounted, setMode } = useViewMode();
+  const isAgent = mode === 'agent';
+  const base = `${variant === 'tab' ? tabClass : barClass} font-[family-name:var(--font-display)] ${className ?? ''}`;
+
+  if (!mounted) {
+    return (
+      <a href="/index.md" className={base}>
+        {variant === 'tab' ? (
+          <>
+            AGENTS
+            <span className={tabSubClass}>
+              text only <span aria-hidden="true">→</span>
+            </span>
+          </>
+        ) : (
+          <>
+            Switch to text-only view <span aria-hidden="true">→</span>
+          </>
+        )}
+      </a>
+    );
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={() => setMode(isAgent ? 'human' : 'agent')}
+      aria-pressed={isAgent}
+      className={`${base} cursor-pointer`}
+    >
+      {variant === 'tab' ? (
+        <>
+          AGENTS
+          <span className={tabSubClass}>
+            {isAgent ? (
+              <>
+                <span aria-hidden="true">←</span> human view
+              </>
+            ) : (
+              <>
+                text only <span aria-hidden="true">→</span>
+              </>
+            )}
+          </span>
+        </>
+      ) : isAgent ? (
+        <>
+          <span aria-hidden="true">←</span> Back to the human view
+        </>
+      ) : (
+        <>
+          Switch to text-only view <span aria-hidden="true">→</span>
+        </>
+      )}
+    </button>
+  );
+}
+
+/* ── Header segmented control ────────────────────────────────────── */
 
 export function ViewModeToggle({ className }: { className?: string }) {
-  const [mode, setMode] = useState<'human' | 'agent'>('human');
-  const [mounted, setMounted] = useState(false);
+  const { mode, mounted, setMode } = useViewMode();
 
-  function applyMode(m: 'human' | 'agent') {
-    const html = document.documentElement;
-    if (m === 'agent') {
-      html.setAttribute('data-view', 'agent');
-    } else {
-      html.removeAttribute('data-view');
-    }
+  const segment =
+    'inline-flex min-h-[44px] items-center px-3.5 text-[15px] font-bold tracking-[0.02em] whitespace-nowrap cursor-pointer focus-visible:relative focus-visible:z-10 focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-[5px] focus-visible:outline-[var(--dir-ink)]';
+
+  if (!mounted) {
+    return (
+      <div
+        aria-hidden="true"
+        className={`inline-flex h-[50px] min-w-[208px] border-[3px] border-[var(--dir-ink)] ${className ?? ''}`}
+      />
+    );
   }
-
-  useEffect(() => {
-    // Intentional post-hydration sync from localStorage (SSR can't read it);
-    // runs once, so no cascading-render risk.
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setMounted(true);
-    const saved = localStorage.getItem('viewMode') as 'human' | 'agent' | null;
-    const initial = saved ?? 'human';
-     
-    setMode(initial);
-    applyMode(initial);
-  }, []);
-
-  function select(next: 'human' | 'agent') {
-    setMode(next);
-    applyMode(next);
-    localStorage.setItem('viewMode', next);
-  }
-
-  if (!mounted) return <div className={`h-9 w-40 rounded-lg bg-[var(--bg-card)] ${className ?? ''}`} />;
 
   return (
     <div
-      className={`flex items-center rounded-lg border border-[var(--border)] bg-[var(--bg-card)] p-0.5 text-xs font-medium ${className ?? ''}`}
+      className={`inline-flex items-stretch border-[3px] border-[var(--dir-ink)] bg-[var(--dir-paper)] font-[family-name:var(--font-display)] ${className ?? ''}`}
     >
       <button
-        onClick={() => select('human')}
-        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all whitespace-nowrap ${
-          mode === 'human'
-            ? 'bg-[var(--bg-primary)] text-[var(--text-primary)] shadow-sm'
-            : 'text-[var(--text-muted)] hover:text-[var(--text-secondary)]'
-        }`}
+        type="button"
+        onClick={() => setMode('human')}
         aria-pressed={mode === 'human'}
+        className={`${segment} ${
+          mode === 'human'
+            ? 'bg-[var(--dir-ink)] text-[var(--dir-paper)]'
+            : 'text-[var(--dir-ink)] hover:underline'
+        }`}
       >
-        <span className={`w-1.5 h-1.5 rounded-full ${mode === 'human' ? 'bg-[var(--text-secondary)]' : 'bg-[var(--border)]'}`} />
         For Humans
       </button>
-
       <button
-        onClick={() => select('agent')}
-        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all whitespace-nowrap font-mono ${
-          mode === 'agent'
-            ? 'bg-[var(--accent)]/15 text-[var(--accent)] shadow-sm border border-[var(--accent)]/20'
-            : 'text-[var(--text-muted)] hover:text-[var(--text-secondary)]'
-        }`}
+        type="button"
+        onClick={() => setMode('agent')}
         aria-pressed={mode === 'agent'}
+        className={`${segment} border-l-[3px] border-[var(--dir-ink)] ${
+          mode === 'agent'
+            ? 'bg-[var(--dir-yellow)] text-[var(--dir-on-yellow)]'
+            : 'text-[var(--dir-ink)] hover:underline'
+        }`}
       >
-        <span className={`w-1.5 h-1.5 rounded-full ${mode === 'agent' ? 'bg-[var(--accent)] animate-pulse' : 'bg-[var(--border)]'}`} />
         For Agents
       </button>
     </div>
