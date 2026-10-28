@@ -53,7 +53,7 @@ export function SearchBar({
       />
       <kbd
         aria-hidden
-        className="absolute right-3 top-1/2 -translate-y-1/2 hidden sm:inline-flex px-2 py-0.5 rounded-sm text-[11px] mono text-[var(--text-muted)] bg-[var(--text-primary)]/5 border border-[var(--border)] pointer-events-none"
+        className="absolute right-3 top-1/2 -translate-y-1/2 hidden sm:inline-flex px-2 py-0.5 rounded-sm text-[11px] mono text-[var(--text-tertiary)] bg-[var(--text-primary)]/5 border border-[var(--border)] pointer-events-none"
       >
         ↵
       </kbd>

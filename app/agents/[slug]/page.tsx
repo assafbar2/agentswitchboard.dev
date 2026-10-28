@@ -118,7 +118,7 @@ export default async function AgentPage({
             )}
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
-                <h1 className="text-2xl font-bold tracking-tight">{agent.name}</h1>
+                <h1 className="text-2xl font-bold tracking-tight min-w-0 wrap-break-word">{agent.name}</h1>
                 {agent.verified && <VerifiedBadge size="md" />}
                 <OfficialBadge agent={agent} />
                 {agent.featured && <Badge variant="amber">Featured</Badge>}
@@ -279,7 +279,7 @@ export default async function AgentPage({
               href={agent.agentUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="agent-accent text-xs hover:opacity-80 transition-opacity"
+              className="agent-accent text-xs hover:underline"
             >
               → {agent.agentUrl}
             </a>

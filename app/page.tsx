@@ -275,7 +275,7 @@ export default async function HomePage() {
             <div className="mb-8">
               <div className="agent-section-title">featured</div>
               {homepageAgents.map(({ agent }) => (
-                <Link key={agent.id} href={`/agents/${agent.slug}`} className="agent-row hover:opacity-80 transition-opacity no-underline">
+                <Link key={agent.id} href={`/agents/${agent.slug}`} className="agent-row hover:bg-[var(--bg-card-hover)] transition-colors no-underline">
                   <span className="agent-accent">{agent.slug}</span>
                   <span className="agent-dim">{agent.categories[0]?.slug ?? '—'}</span>
                   <span className="agent-dim">{agent.accessMethods.join('+') || '—'}</span>
@@ -292,7 +292,7 @@ export default async function HomePage() {
                 <Link
                   key={vendor.slug}
                   href={`/browse?official=1&vendor=${vendor.slug}`}
-                  className="agent-row hover:opacity-80 transition-opacity no-underline"
+                  className="agent-row hover:bg-[var(--bg-card-hover)] transition-colors no-underline"
                 >
                   <span className="agent-accent">{vendor.slug}</span>
                   <span className="agent-dim">{vendor.name}</span>
@@ -306,7 +306,7 @@ export default async function HomePage() {
           <div className="mb-8">
             <div className="agent-section-title">categories</div>
             {categories.map((cat) => (
-              <Link key={cat.id} href={`/categories/${cat.slug}`} className="agent-row hover:opacity-80 transition-opacity no-underline">
+              <Link key={cat.id} href={`/categories/${cat.slug}`} className="agent-row hover:bg-[var(--bg-card-hover)] transition-colors no-underline">
                 <span className="agent-accent">{cat.slug}</span>
                 <span className="agent-dim">{cat.name}</span>
                 <span className="agent-dim">{cat.agentCount != null ? `${cat.agentCount} agents` : ''}</span>
@@ -318,7 +318,7 @@ export default async function HomePage() {
           <div>
             <div className="agent-section-title">endpoints</div>
             <div className="agent-row">
-              <Link href="/agents.json" className="agent-accent hover:opacity-80">/agents.json</Link>
+              <Link href="/agents.json" className="agent-accent hover:underline">/agents.json</Link>
               <span className="agent-dim">machine-readable full index</span>
               <span className="agent-dim">GET · no auth</span>
             </div>
@@ -328,12 +328,12 @@ export default async function HomePage() {
               <span className="agent-dim">streamable-http · no auth</span>
             </div>
             <div className="agent-row">
-              <Link href="/browse" className="agent-accent hover:opacity-80">/browse</Link>
+              <Link href="/browse" className="agent-accent hover:underline">/browse</Link>
               <span className="agent-dim">filterable directory</span>
               <span className="agent-dim">?q= ?category= ?access= ?official=1</span>
             </div>
             <div className="agent-row">
-              <Link href="/submit" className="agent-accent hover:opacity-80">/submit</Link>
+              <Link href="/submit" className="agent-accent hover:underline">/submit</Link>
               <span className="agent-dim">list your agent · PR or form</span>
               <span className="agent-dim">see CONTRIBUTING.md</span>
             </div>

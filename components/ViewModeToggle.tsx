@@ -61,7 +61,7 @@ export function ViewModeToggle({ className }: { className?: string }) {
         }`}
         aria-pressed={mode === 'agent'}
       >
-        <span className={`w-1.5 h-1.5 rounded-full ${mode === 'agent' ? 'bg-[var(--accent)] animate-pulse' : 'bg-[var(--border)]'}`} />
+        <span className={`w-1.5 h-1.5 rounded-full ${mode === 'agent' ? 'bg-[var(--accent)] motion-safe:animate-pulse' : 'bg-[var(--border)]'}`} />
         For Agents
       </button>
     </div>

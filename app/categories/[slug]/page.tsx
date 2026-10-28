@@ -97,7 +97,7 @@ export default async function CategoryPage({
           {officialCount > 0 && (
             <Link
               href={`/browse?official=1&category=${category.slug}`}
-              className="sm:ml-auto inline-flex items-center gap-1.5 px-3 py-1.5 text-xs mono font-medium rounded-lg border border-[var(--blue)]/30 text-[var(--blue)] bg-[var(--blue-glow)] hover:opacity-90 transition-opacity"
+              className="sm:ml-auto inline-flex items-center gap-1.5 px-3 py-1.5 text-xs mono font-medium rounded-lg border border-[var(--blue)]/30 text-[var(--blue)] bg-[var(--blue-glow)] hover:border-[var(--blue)]/60 transition-colors"
             >
               <Building2 className="w-3.5 h-3.5" aria-hidden />
               {officialCount} official
@@ -138,7 +138,7 @@ export default async function CategoryPage({
                 <Link
                   key={agent.id}
                   href={`/agents/${agent.slug}`}
-                  className="agent-row hover:opacity-80 transition-opacity no-underline"
+                  className="agent-row hover:bg-[var(--bg-card-hover)] transition-colors no-underline"
                 >
                   <span className="agent-accent">{agent.slug}</span>
                   <span className="agent-dim">{agent.providerName}</span>

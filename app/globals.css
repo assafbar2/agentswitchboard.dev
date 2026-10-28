@@ -316,6 +316,7 @@ html.light ::-webkit-scrollbar-thumb:hover {
   .animate-rise,
   .animate-shimmer,
   .animate-pulse-glow,
+  .animate-pulse,
   .terminal-cursor::after {
     animation: none;
   }
@@ -331,26 +332,31 @@ html.light ::-webkit-scrollbar-thumb:hover {
   box-shadow: 0 0 10px var(--accent-glow);
 }
 
-/* Card base — flat panel, 1px rule, accent border on hover (no glow, no lift) */
-.card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  transition: background-color 0.15s ease, border-color 0.15s ease;
-}
+/* Component classes live in the components layer so Tailwind utilities
+   (hover:border-*, border-*, bg-*) on the same element can override them.
+   Unlayered, they beat every layered utility. */
+@layer components {
+  /* Card base — flat panel, 1px rule, accent border on hover (no glow, no lift) */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+  }
 
-.card:hover {
-  background: var(--bg-card-hover);
-  border-color: var(--border-accent);
-}
+  .card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-accent);
+  }
 
-/* Prompt line / terminal strip — the voice of the Terminal look */
-.terminal-strip {
-  font-family: var(--font-mono);
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-accent);
-  border-left: 2px solid var(--accent);
-  border-radius: var(--radius-md);
+  /* Prompt line / terminal strip — the voice of the Terminal look */
+  .terminal-strip {
+    font-family: var(--font-mono);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-accent);
+    border-left: 2px solid var(--accent);
+    border-radius: var(--radius-md);
+  }
 }
 
 /* Code/mono text */
@@ -424,6 +430,12 @@ html.light ::-webkit-scrollbar-thumb:hover {
   border-bottom: 1px solid var(--border);
   font-size: 0.8125rem;
   line-height: 1.5;
+}
+
+/* Hover keeps text at full opacity (fading drops light-theme text below 4.5:1) */
+[data-view="agent"] .agent-row:hover {
+  opacity: 1;
+  background: var(--bg-card-hover);
 }
 
 [data-view="agent"] .agent-row:last-child {

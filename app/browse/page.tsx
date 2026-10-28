@@ -130,7 +130,7 @@ export default async function BrowsePage({
                 <Link
                   key={agent.id}
                   href={`/agents/${agent.slug}`}
-                  className="agent-row hover:opacity-80 transition-opacity no-underline"
+                  className="agent-row hover:bg-[var(--bg-card-hover)] transition-colors no-underline"
                 >
                   <span className="agent-accent">{agent.slug}</span>
                   <span className="agent-dim">{agent.categories[0]?.slug ?? '—'}</span>
