@@ -185,7 +185,7 @@ test.describe('mobile 375x812', () => {
     await page.getByRole('button', { name: 'Find' }).tap();
     await expect(page).toHaveURL(/\/browse\?q=code$/);
     await expect(page.getByRole('heading', { level: 1 })).toContainText('Results for');
-    await expect(page.locator('.human-only p.dir-bar')).toContainText(/\d+ agents? matched/);
+    await expect(page.locator('.human-only h2.dir-bar')).toContainText(/\d+ agents? matched/);
     const info = await overflowInfo(page);
     expect(info.scrollWidth, info.offenders.join(' | ')).toBeLessThanOrEqual(info.innerWidth);
   });

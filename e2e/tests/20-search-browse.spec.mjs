@@ -22,7 +22,7 @@ async function apiSlugs(page, params, limit = 50) {
 }
 
 const human = (page) => page.locator('.human-only');
-const countBar = (page) => human(page).locator('p.dir-bar');
+const countBar = (page) => human(page).locator('h2.dir-bar');
 const cards = (page) => human(page).locator('a[href^="/agents/"]:has(h3)');
 const cardFor = (page, slug) => human(page).locator(`a[href="/agents/${slug}"]:has(h3)`);
 const searchBox = (page) => human(page).getByRole('search').getByRole('searchbox');
