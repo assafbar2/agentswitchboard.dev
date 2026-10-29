@@ -16,7 +16,8 @@ const nextConfig: NextConfig = {
   // The proxy sets Vary too, but the renderer overwrites it on the HTML
   // branch, so declare it here as well — otherwise a CDN can cache the HTML
   // variant and hand it to an agent that asked for Markdown. On Vercel the
-  // prerendered HTML still loses it, so vercel.json sets it at the edge too.
+  // prerendered HTML still loses it (vercel.json headers do not help either);
+  // Vercel's own cache is safe because proxy.ts runs before it.
   async redirects() {
     return [
       { source: "/tos", destination: "/terms", permanent: true },
