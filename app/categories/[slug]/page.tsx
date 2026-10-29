@@ -122,6 +122,8 @@ export default async function CategoryPage({
           )}
         </div>
 
+        {/* The card titles are h3s; this keeps the outline h1 > h2 > h3. */}
+        <h2 className="sr-only">Listings</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10">
           {agents.map((agent) => (
             <AgentCard key={agent.id} agent={agent} />

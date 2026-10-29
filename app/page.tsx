@@ -247,7 +247,10 @@ export default async function HomePage() {
               <div className="agent-section-title">featured</div>
               {homepageAgents.map(({ agent }) => (
                 <Link key={agent.id} href={`/agents/${agent.slug}`} className="agent-row no-underline hover:underline">
-                  <span className="agent-accent">{agent.slug}</span>
+                  <span className="agent-accent">
+                    {agent.slug}
+                    {agent.sponsorLabel && <span className="agent-dim"> ({agent.sponsorLabel.toLowerCase()})</span>}
+                  </span>
                   <span className="agent-dim">{agent.categories[0]?.slug ?? '—'}</span>
                   <span className="agent-dim">{agent.accessMethods.join('+') || '—'}</span>
                 </Link>

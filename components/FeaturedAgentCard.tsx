@@ -27,9 +27,8 @@ export function FeaturedAgentCard({
   index?: number;
 }) {
   const labelText = label ? LABEL_TEXT[label] : undefined;
-  // As before the reskin: the placement label, or the sponsor label when there
-  // is no placement label.
-  const sponsorText = !labelText ? agent.sponsorLabel : undefined;
+  // A paid listing always discloses it, next to whatever placement label it has.
+  const sponsorText = agent.sponsorLabel;
   const access = agent.accessMethods.map((m) => ACCESS_METHOD_LABELS[m] ?? m).join(' · ');
 
   return (

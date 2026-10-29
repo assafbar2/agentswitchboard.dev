@@ -1,17 +1,23 @@
 import Link from 'next/link';
-import type { Metadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 import { VerifiedBadge, VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 import { getEveryAgent } from '@/lib/catalog';
 import { FEATURED_DEFINITION, OFFICIAL_DEFINITION } from '@/lib/public-api';
 import type { Agent } from '@/lib/types';
 
-export const metadata: Metadata = {
-  title: 'For AI Agents — Agent Switchboard',
-  description:
-    'Machine-readable context about Agent Switchboard: what it is, how to use the catalog, and how to find the right AI agent by category or access method.',
-  alternates: { canonical: '/for-agents' },
-  robots: { index: true, follow: true },
-};
+export function generateMetadata(_props: unknown, parent: ResolvingMetadata): Promise<Metadata> {
+  return pageMetadata(
+    {
+      title: 'For AI Agents',
+      description:
+        'Machine-readable context about Agent Switchboard: what it is, how to use the catalog, and how to find the right AI agent by category or access method.',
+      path: '/for-agents',
+      robots: { index: true, follow: true },
+    },
+    parent
+  );
+}
 
 // Stored access-method values with what each means. Typed against the data so
 // a key that doesn't exist (the old `extension`, which always counted 0) can't compile.

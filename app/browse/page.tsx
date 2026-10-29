@@ -3,26 +3,31 @@ import { CategoryRail } from '@/components/CategoryRail';
 import { Suspense } from 'react';
 import { getAllCategories, getEveryAgent, loadOfficialVendors } from '@/lib/catalog';
 import { filterAgents, parseFlag, searchAgents } from '@/lib/search';
+import { normalizeAccessMethods } from '@/lib/public-api';
 import { AgentCard } from '@/components/AgentCard';
 import { SearchBar } from '@/components/SearchBar';
 import { AccessMethodFilter } from '@/components/AccessMethodFilter';
 import { CatalogFilters } from '@/components/CatalogFilters';
-import type { Metadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 
 export async function generateMetadata({
   searchParams,
 }: {
   searchParams: Promise<{ q?: string }>;
-}): Promise<Metadata> {
+}, parent: ResolvingMetadata): Promise<Metadata> {
   const { q } = await searchParams;
-  return {
-    title: q ? `"${q}" — Search Results` : 'Browse Agents',
-    description:
-      'Search and filter the full directory of AI agents, MCP servers and agent tools by category, access method (MCP, API, CLI or browser extension) and official vendor.',
-    // Self-referencing canonical without query params — filtered/search
-    // views canonicalize to the clean browse URL.
-    alternates: { canonical: '/browse' },
-  };
+  return pageMetadata(
+    {
+      title: q ? `"${q}" — Search Results` : 'Browse Agents',
+      description:
+        'Search and filter the full directory of AI agents, MCP servers and agent tools by category, access method (MCP, API, CLI or browser extension) and official vendor.',
+      // Self-referencing canonical without query params — filtered/search
+      // views canonicalize to the clean browse URL.
+      path: '/browse',
+    },
+    parent
+  );
 }
 
 export default async function BrowsePage({
@@ -32,7 +37,9 @@ export default async function BrowsePage({
 }) {
   const { q, access, category, official, vendor } = await searchParams;
   const query = q?.trim() ?? '';
-  const accessFilters = access?.split(',').filter(Boolean) ?? [];
+  // Same parsing as /api/agents: aliases map to their method and unknown values
+  // are dropped, so a stale or mistyped link never empties the directory.
+  const accessFilters = normalizeAccessMethods(access?.split(',') ?? []);
   const categoryFilter = category?.trim() ?? '';
   const vendorFilter = vendor?.trim() ?? '';
   const officialOnly = parseFlag(official) || !!vendorFilter;
@@ -84,12 +91,13 @@ export default async function BrowsePage({
           </Suspense>
         </div>
 
-        {/* Count, as the yellow section bar the listings sit under */}
-        <p className="dir-bar mb-2">
+        {/* Count, as the yellow section bar the listings sit under. An h2, so the
+            card h3s are not a skipped heading level under the h1. */}
+        <h2 className="dir-bar mb-2">
           {agents.length === 0
             ? 'No agents found'
             : `${agents.length}${officialOnly ? ' official' : ''} agent${agents.length !== 1 ? 's' : ''}${query ? ' matched' : ' listed'}`}
-        </p>
+        </h2>
 
         {/* Results */}
         {agents.length > 0 ? (

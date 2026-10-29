@@ -137,10 +137,11 @@ export default async function AgentPage({
                 </a>
                 {agent.version && <span className="ml-2">v{agent.version}</span>}
               </p>
-              {(agent.verified || agent.official || agent.featured || agent.tier === 'premium') && (
+              {(agent.verified || agent.official || agent.featured || agent.sponsorLabel || agent.tier === 'premium') && (
                 <div className="flex items-center gap-1.5 flex-wrap mt-3">
                   {agent.verified && <VerifiedBadge size="md" />}
                   <OfficialBadge agent={agent} />
+                  {agent.sponsorLabel && <Badge variant="sponsor">{agent.sponsorLabel}</Badge>}
                   {agent.featured && <Badge variant="amber">Featured</Badge>}
                   {agent.tier === 'premium' && <Badge variant="amber">Premium</Badge>}
                 </div>

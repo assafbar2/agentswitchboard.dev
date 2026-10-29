@@ -21,6 +21,14 @@ const eslintConfig = defineConfig([
       "@typescript-eslint/no-unused-vars": "off",
     },
   },
+  {
+    // Playwright fixtures hand values on with a `use()` callback, which the
+    // React hooks rule mistakes for React's use().
+    files: ["e2e/**"],
+    rules: { "react-hooks/rules-of-hooks": "off" },
+  },
+  // Playwright run output.
+  globalIgnores(["e2e/test-results/**", "e2e/results/**"]),
 ]);
 
 export default eslintConfig;

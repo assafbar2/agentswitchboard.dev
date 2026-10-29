@@ -1,12 +1,18 @@
 import Link from 'next/link';
-import type { Metadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
-  title: 'Privacy',
-  description:
-    'What Agent Switchboard collects, which analytics providers it uses, and how to get in touch about your data.',
-  alternates: { canonical: '/privacy' },
-};
+export function generateMetadata(_props: unknown, parent: ResolvingMetadata): Promise<Metadata> {
+  return pageMetadata(
+    {
+      title: 'Privacy',
+      description:
+        'What Agent Switchboard collects, which analytics providers it uses, and how to get in touch about your data.',
+      path: '/privacy',
+    },
+    parent
+  );
+}
 
 const EMAIL = 'barnir@agentmail.to';
 

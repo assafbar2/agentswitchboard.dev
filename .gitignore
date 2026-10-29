@@ -44,3 +44,7 @@ next-env.d.ts
 
 # git worktree checkouts created by tooling
 .claude/worktrees/
+
+# live e2e output
+/e2e/test-results/
+/e2e/results/

@@ -23,6 +23,7 @@ export type AgentCardData = Pick<
   | 'official'
   | 'officialVendor'
   | 'featured'
+  | 'sponsorLabel'
   | 'tier'
   | 'accessMethods'
   | 'authType'
@@ -38,7 +39,7 @@ export function AgentCard({ agent }: { agent: AgentCardData }) {
   const meta = skillCount > 0 ? `${skillCount} ${pluralize(skillCount, 'skill')} · ${auth}` : auth;
   const access = agent.accessMethods.map((m) => ACCESS_METHOD_LABELS[m] ?? m).join(' · ');
   const categories = agent.categories.slice(0, 2).map((c) => c.name).join(', ');
-  const hasLabels = agent.verified || agent.official || agent.featured || agent.tier === 'premium';
+  const hasLabels = agent.verified || agent.official || agent.featured || agent.sponsorLabel || agent.tier === 'premium';
 
   // A directory entry: bold name, dotted leader, access methods right-aligned,
   // the one-line description beneath, then provider and the small labels.
@@ -69,6 +70,7 @@ export function AgentCard({ agent }: { agent: AgentCardData }) {
           <span className="flex flex-wrap items-center gap-1">
             {agent.verified && <VerifiedBadge />}
             <OfficialBadge agent={agent} />
+            {agent.sponsorLabel && <Badge variant="sponsor">{agent.sponsorLabel}</Badge>}
             {agent.featured && <Badge variant="amber">Featured</Badge>}
             {agent.tier === 'premium' && <Badge variant="amber">Premium</Badge>}
           </span>

@@ -1,13 +1,19 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import Link from 'next/link';
-import type { Metadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
-  title: 'Changelog',
-  description: 'Every addition, removal, and correction to the Agent Switchboard directory.',
-  alternates: { canonical: '/changelog' },
-};
+export function generateMetadata(_props: unknown, parent: ResolvingMetadata): Promise<Metadata> {
+  return pageMetadata(
+    {
+      title: 'Changelog',
+      description: 'Every addition, removal, and correction to the Agent Switchboard directory.',
+      path: '/changelog',
+    },
+    parent
+  );
+}
 
 interface ChangelogEntry {
   action: 'added' | 'removed' | 'updated';

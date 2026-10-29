@@ -60,9 +60,9 @@ export async function Footer() {
           {/* Link groups */}
           {footerLinks.map((group) => (
             <div key={group.title}>
-              <h3 className="dir-label mb-2 border-b-[3px] border-[var(--dir-ink)] pb-1.5 text-sm font-bold uppercase tracking-[0.12em] text-[var(--dir-ink)]">
+              <h2 className="dir-label mb-2 border-b-[3px] border-[var(--dir-ink)] pb-1.5 text-sm font-bold uppercase tracking-[0.12em] text-[var(--dir-ink)]">
                 {group.title}
-              </h3>
+              </h2>
               <ul>
                 {group.links.map((link) => (
                   <li key={link.href} className="border-b border-[var(--dir-rule)]">

@@ -1,11 +1,17 @@
 import { Zap } from 'lucide-react';
-import type { Metadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
-  title: 'Pro Access',
-  description: 'Unlock premium agent listings and advanced features.',
-  alternates: { canonical: '/pro' },
-};
+export function generateMetadata(_props: unknown, parent: ResolvingMetadata): Promise<Metadata> {
+  return pageMetadata(
+    {
+      title: 'Pro Access',
+      description: 'Unlock premium agent listings and advanced features.',
+      path: '/pro',
+    },
+    parent
+  );
+}
 
 export default function ProPage() {
   return (

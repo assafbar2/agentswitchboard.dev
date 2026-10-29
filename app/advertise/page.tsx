@@ -1,11 +1,17 @@
 import { Megaphone } from 'lucide-react';
-import type { Metadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
-  title: 'Advertise',
-  description: 'Promote your agent to developers building the agentic web.',
-  alternates: { canonical: '/advertise' },
-};
+export function generateMetadata(_props: unknown, parent: ResolvingMetadata): Promise<Metadata> {
+  return pageMetadata(
+    {
+      title: 'Advertise',
+      description: 'Promote your agent to developers building the agentic web.',
+      path: '/advertise',
+    },
+    parent
+  );
+}
 
 export default function AdvertisePage() {
   return (

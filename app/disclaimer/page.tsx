@@ -1,10 +1,16 @@
-import type { Metadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
-  title: 'Disclaimer',
-  description: 'Legal disclaimer for Agent Switchboard.',
-  alternates: { canonical: '/disclaimer' },
-};
+export function generateMetadata(_props: unknown, parent: ResolvingMetadata): Promise<Metadata> {
+  return pageMetadata(
+    {
+      title: 'Disclaimer',
+      description: 'Legal disclaimer for Agent Switchboard.',
+      path: '/disclaimer',
+    },
+    parent
+  );
+}
 
 export default function DisclaimerPage() {
   return (

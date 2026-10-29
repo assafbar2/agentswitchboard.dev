@@ -2,13 +2,19 @@ import Link from 'next/link';
 import { CategoryRail } from '@/components/CategoryRail';
 import { getAllCategories } from '@/lib/catalog';
 import { CategoryIcon } from '@/components/ui/CategoryIcon';
-import type { Metadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
-  title: 'Categories',
-  description: 'Browse AI agents, MCP servers and agent tools by category.',
-  alternates: { canonical: '/categories' },
-};
+export function generateMetadata(_props: unknown, parent: ResolvingMetadata): Promise<Metadata> {
+  return pageMetadata(
+    {
+      title: 'Categories',
+      description: 'Browse AI agents, MCP servers and agent tools by category.',
+      path: '/categories',
+    },
+    parent
+  );
+}
 
 export default async function CategoriesPage() {
   const categories = await getAllCategories();

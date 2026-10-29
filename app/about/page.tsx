@@ -1,14 +1,20 @@
 import Link from 'next/link';
-import type { Metadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 import { getAgentCount, getUniqueProviderCount } from '@/lib/catalog';
 import { VerifiedBadge, VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 
-export const metadata: Metadata = {
-  title: 'About',
-  description:
-    'What Agent Switchboard is, who maintains it, how agents get listed, and how the directory is kept accurate.',
-  alternates: { canonical: '/about' },
-};
+export function generateMetadata(_props: unknown, parent: ResolvingMetadata): Promise<Metadata> {
+  return pageMetadata(
+    {
+      title: 'About',
+      description:
+        'What Agent Switchboard is, who maintains it, how agents get listed, and how the directory is kept accurate.',
+      path: '/about',
+    },
+    parent
+  );
+}
 
 export default async function AboutPage() {
   const [agentCount, providerCount] = await Promise.all([

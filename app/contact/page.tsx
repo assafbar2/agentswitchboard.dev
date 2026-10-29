@@ -1,12 +1,18 @@
 import Link from 'next/link';
-import type { Metadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
-  title: 'Contact',
-  description:
-    'How to reach Agent Switchboard: corrections to a listing, removal requests, partnership enquiries, and support.',
-  alternates: { canonical: '/contact' },
-};
+export function generateMetadata(_props: unknown, parent: ResolvingMetadata): Promise<Metadata> {
+  return pageMetadata(
+    {
+      title: 'Contact',
+      description:
+        'How to reach Agent Switchboard: corrections to a listing, removal requests, partnership enquiries, and support.',
+      path: '/contact',
+    },
+    parent
+  );
+}
 
 const EMAIL = 'barnir@agentmail.to';
 

@@ -2,14 +2,20 @@ import Link from 'next/link';
 import { FileJson } from 'lucide-react';
 import { SubmitForm } from '@/components/SubmitForm';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
-import type { Metadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
-  title: 'List Your Agent',
-  description:
-    'Add your agent, MCP server, or agentic tool to the directory — open a pull request or use the form. Every entry is reviewed before it’s listed, and decisions are posted on GitHub.',
-  alternates: { canonical: '/submit' },
-};
+export function generateMetadata(_props: unknown, parent: ResolvingMetadata): Promise<Metadata> {
+  return pageMetadata(
+    {
+      title: 'List Your Agent',
+      description:
+        'Add your agent, MCP server, or agentic tool to the directory — open a pull request or use the form. Every entry is reviewed before it’s listed, and decisions are posted on GitHub.',
+      path: '/submit',
+    },
+    parent
+  );
+}
 
 const REPO = 'https://github.com/assafbar2/agentswitchboard.dev';
 const RULES_URL = `${REPO}/blob/main/CONTRIBUTING.md#three-rules-for-the-close-calls`;

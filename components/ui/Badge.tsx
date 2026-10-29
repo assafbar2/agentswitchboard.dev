@@ -1,17 +1,19 @@
 import { type ReactNode } from 'react';
 
-type Variant = 'default' | 'accent' | 'blue' | 'amber' | 'rose' | 'outline';
+type Variant = 'default' | 'accent' | 'blue' | 'amber' | 'sponsor' | 'rose' | 'outline';
 
 /**
  * Square directory tags: small uppercase labels with a 1px rule, no tints or
- * glows. Yellow is a fill only (amber = sponsored / featured), always with
- * --dir-on-yellow text, so it reads in both themes.
+ * glows. Yellow is a fill only (amber = featured), always with --dir-on-yellow
+ * text, so it reads in both themes. Paid placements get the solid ink `sponsor`
+ * tag so the disclosure never blends into the editorial labels.
  */
 const variantStyles: Record<Variant, string> = {
   default: 'bg-transparent text-[var(--dir-ink)] border-[var(--dir-ink)]!',
   accent: 'bg-transparent text-[var(--dir-ink)] border-[var(--dir-ink)]!',
   blue: 'bg-[var(--dir-paper)] text-[var(--dir-ink)] border-[var(--dir-ink)]!',
   amber: 'bg-[var(--dir-yellow)] text-[var(--dir-on-yellow)] border-[var(--dir-ink)]!',
+  sponsor: 'bg-[var(--dir-ink)] text-[var(--dir-paper)] border-[var(--dir-ink)]!',
   rose: 'bg-transparent text-[var(--rose)] border-current!',
   outline: 'bg-transparent text-[var(--dir-muted)] border-[var(--dir-rule)]!',
 };
