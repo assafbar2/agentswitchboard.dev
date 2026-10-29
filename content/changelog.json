@@ -1,6 +1,12 @@
 [
   {
     "action": "added",
+    "slug": "toolspad",
+    "name": "ToolsPad",
+    "date": "2026-10-29"
+  },
+  {
+    "action": "added",
     "slug": "barnir-hired",
     "name": "Barnir Hired",
     "note": "Read-only MCP for technical-GTM job fit. Sponsored placement.",
