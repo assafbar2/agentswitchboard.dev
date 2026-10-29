@@ -1,0 +1,64 @@
+{
+  "id": "toolspad",
+  "name": "ToolsPad",
+  "slug": "toolspad",
+  "description": "Manage CRM contacts, notes, tasks, lead forms and appointments in one team workspace through a hosted MCP connection with revocable, workspace-scoped OAuth access.",
+  "providerName": "ToolsPad",
+  "providerUrl": "https://toolspad.com/",
+  "agentUrl": "https://toolspad.com/mcp?utm_source=agentswitchboard&utm_medium=referral&utm_campaign=aidm&utm_id=aidm_organic_v1&utm_content=asb_workspace_001",
+  "categories": [
+    "productivity",
+    "scheduling"
+  ],
+  "tags": [
+    "crm",
+    "task-management",
+    "shared-notes",
+    "lead-forms",
+    "appointment-scheduling",
+    "oauth-mcp",
+    "team-workspace"
+  ],
+  "skills": [
+    {
+      "id": "create-crm-contacts",
+      "name": "Create CRM Contacts",
+      "description": "Create a CRM contact in the authorized workspace and keep its client context alongside related notes and tasks."
+    },
+    {
+      "id": "organize-team-tasks",
+      "name": "Organize Team Tasks",
+      "description": "Create or update a task in the authorized workspace with its list, responsible person and due date."
+    },
+    {
+      "id": "capture-workspace-notes",
+      "name": "Capture Workspace Notes",
+      "description": "Create and update notes in the connected workspace so an approved workflow can retain its business context."
+    },
+    {
+      "id": "create-lead-forms",
+      "name": "Create Lead Forms",
+      "description": "Create a lead form with required name and email fields using the documented workspace-authorized MCP workflow."
+    },
+    {
+      "id": "schedule-appointments",
+      "name": "Schedule Appointments",
+      "description": "Create or update appointment and calendar records through the approved workspace connection and access mode."
+    }
+  ],
+  "authType": "oauth2",
+  "authInstructions": "Connect https://app.toolspad.com/mcp in a compatible MCP client. Sign in to ToolsPad, select one workspace, and approve read-only or read-and-write access. Revoke access from Settings → AI connections.",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "iconUrl": "https://toolspad.com/toolspad-logo-128.png",
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-29T14:50:06Z",
+  "updatedAt": "2026-10-29T14:50:06Z"
+}
