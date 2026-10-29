@@ -11,7 +11,7 @@ import { ExternalLink } from 'lucide-react';
 import { authTypeLabel, pluralize } from '@/lib/utils';
 import Link from 'next/link';
 import Image from 'next/image';
-import type { Metadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev';
 
@@ -20,11 +20,14 @@ export async function generateStaticParams() {
   return agents.map((a) => ({ slug: a.slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
+export async function generateMetadata(
+  {
+    params,
+  }: {
+    params: Promise<{ slug: string }>;
+  },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
   const { slug } = await params;
   const agent = await getAgentBySlug(slug);
   if (!agent) return { title: 'Agent Not Found' };
@@ -43,13 +46,14 @@ export async function generateMetadata({
       url,
       type: 'website',
       siteName: 'Agent Switchboard',
-      images: [{ url: `${BASE_URL}/opengraph-image`, width: 1200, height: 630, alt: ogTitle }],
+      // A page-level openGraph block replaces the root one, so carry over the
+      // root's content-hashed opengraph-image (twitter:image inherits it).
+      images: (await parent).openGraph?.images ?? [],
     },
     twitter: {
       card: 'summary_large_image',
       title: ogTitle,
       description: agent.description,
-      images: [`${BASE_URL}/opengraph-image`],
     },
   };
 }

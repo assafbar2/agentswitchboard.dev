@@ -6,7 +6,7 @@ import { CategoryIcon } from '@/components/ui/CategoryIcon';
 import { JsonLd } from '@/components/JsonLd';
 import { notFound } from 'next/navigation';
 import { Building2 } from 'lucide-react';
-import type { Metadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev';
 
@@ -15,11 +15,14 @@ export async function generateStaticParams() {
   return categories.map((cat) => ({ slug: cat.slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
+export async function generateMetadata(
+  {
+    params,
+  }: {
+    params: Promise<{ slug: string }>;
+  },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
   const { slug } = await params;
   const result = await getCategoryBySlug(slug);
   if (!result) return { title: 'Category Not Found' };
@@ -41,6 +44,9 @@ export async function generateMetadata({
       url,
       type: 'website',
       siteName: 'Agent Switchboard',
+      // A page-level openGraph block replaces the root one, so carry over the
+      // root's content-hashed opengraph-image (twitter:image inherits it).
+      images: (await parent).openGraph?.images ?? [],
     },
     twitter: {
       card: 'summary_large_image',
