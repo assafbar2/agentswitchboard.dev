@@ -1,5 +1,11 @@
 [
   {
+    "action": "added",
+    "slug": "agent-qa",
+    "name": "agent-qa",
+    "date": "2026-10-25"
+  },
+  {
     "action": "updated",
     "slug": "ibm-watsonx-ai",
     "name": "IBM watsonx.ai",
