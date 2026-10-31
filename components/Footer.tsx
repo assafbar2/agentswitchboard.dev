@@ -16,6 +16,7 @@ const footerLinks = [
     title: 'Resources',
     links: [
       { href: '/for-agents#mcp', label: 'MCP Server' },
+      { href: '/connect', label: 'Use with Grok, Claude, ChatGPT' },
       { href: '/for-agents', label: 'For AI Agents' },
       { href: '/changelog', label: 'Changelog' },
       { href: '/pro', label: 'Pro Access' },

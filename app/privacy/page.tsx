@@ -65,11 +65,12 @@ export default function PrivacyPage() {
               <Link href="/submit" className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 submit an agent
               </Link>
-              , the description you enter becomes a public GitHub issue on the directory&apos;s
-              repository, where the review decision is posted. Do not put anything in the
-              description you would not want published. Your email address is not on the issue:
-              it is sent privately to the maintainer&apos;s inbox so we can follow up, and is never
-              posted publicly.
+              , or an assistant submits one for you through the MCP server&apos;s{' '}
+              <code className="mono text-sm">submit_listing</code> tool, the description becomes a
+              public GitHub issue on the directory&apos;s repository, where the review decision is
+              posted. Do not put anything in the description you would not want published. Your
+              email address, if you give one, is not on the issue: it is sent privately to the
+              maintainer&apos;s inbox so we can follow up, and is never posted publicly.
             </p>
           </section>
 

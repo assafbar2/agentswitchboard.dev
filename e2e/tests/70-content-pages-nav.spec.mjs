@@ -17,13 +17,14 @@ const HEADER_NAV = [
 // components/Footer.tsx footerLinks
 const FOOTER_GROUPS = {
   Directory: ['/browse', '/categories', '/submit'],
-  Resources: ['/for-agents#mcp', '/for-agents', '/changelog', '/pro', '/advertise'],
+  Resources: ['/for-agents#mcp', '/connect', '/for-agents', '/changelog', '/pro', '/advertise'],
   Company: ['/about', '/contact', 'https://github.com/assafbar2/agentswitchboard.dev', '/privacy', '/terms', '/disclaimer'],
 };
 
 // app/<page>/page.tsx metadata.title + h1
 const CONTENT_PAGES = [
   { path: '/about', title: 'About', h1: 'About Agent Switchboard' },
+  { path: '/connect', title: 'Use with Grok, Claude, ChatGPT', h1: 'Use with Grok, Claude, ChatGPT' },
   { path: '/for-agents', title: 'For AI Agents', h1: 'Agent Switchboard' },
   { path: '/changelog', title: 'Changelog', h1: 'Changelog' },
   { path: '/contact', title: 'Contact', h1: 'Contact' },

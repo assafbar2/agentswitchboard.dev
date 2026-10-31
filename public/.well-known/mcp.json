@@ -1,8 +1,8 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
   "name": "io.github.assafbar2/agentswitchboard",
-  "description": "Search a curated directory of AI agents, MCP servers, and agentic tools. Use it to find out whether an agent already exists for a job, which access methods it offers (API, MCP, CLI, browser extension), and where its homepage is.",
-  "version": "1.1.0",
+  "description": "Search a curated directory of AI agents, MCP servers, and agentic tools, and suggest new listings. Use it to find out whether an agent already exists for a job, which access methods it offers (API, MCP, CLI, browser extension), and where its homepage is.",
+  "version": "1.2.0",
   "websiteUrl": "https://agentswitchboard.dev",
   "repository": {
     "url": "https://github.com/assafbar2/agentswitchboard.dev",
@@ -93,6 +93,66 @@
         "$schema": "http://json-schema.org/draft-07/schema#",
         "type": "object",
         "properties": {}
+      }
+    },
+    {
+      "name": "submit_listing",
+      "title": "Submit a Listing",
+      "description": "Suggest a new listing for the Agent Switchboard directory. This opens a PUBLIC GitHub issue that the maintainer reviews by hand; it does not publish anything. Use it only when the user asks to submit or list a product, after you show them the name, URL, and description you will send and they agree. Call search_agents first: if the product is already listed, tell the user instead. Limited to 5 submissions per hour per caller and one per URL per day.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 100,
+            "description": "Product name, e.g. \"Acme MCP\""
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 500,
+            "description": "The product's own homepage, docs, or GitHub repo (https)"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 20,
+            "maxLength": 1500,
+            "description": "What it does and who it is for, in plain words (20–1500 characters)"
+          },
+          "access": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "api",
+                "mcp",
+                "cli",
+                "browser-extension"
+              ]
+            },
+            "maxItems": 4,
+            "description": "How agents reach it: api, mcp, cli, browser-extension"
+          },
+          "category": {
+            "type": "string",
+            "maxLength": 60,
+            "description": "Suggested category slug from list_categories"
+          },
+          "contact_email": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 200,
+            "description": "Optional. Sent privately to the maintainer for follow-up, never posted. Only include an address the user gave you for this purpose."
+          }
+        },
+        "required": [
+          "name",
+          "url",
+          "description"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
       }
     }
   ],

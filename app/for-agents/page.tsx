@@ -106,7 +106,9 @@ export default async function ForAgentsPage() {
             Connect directly and query the catalog with native tools —{' '}
             <code className="font-bold">search_agents</code>,{' '}
             <code className="font-bold">get_agent</code>,{' '}
-            <code className="font-bold">list_categories</code>:
+            <code className="font-bold">list_categories</code> — and suggest a
+            listing with <code className="font-bold">submit_listing</code> (files a
+            public GitHub issue for human review; publishes nothing):
           </p>
           <pre className="rounded-none border-2 border-[var(--dir-ink)]! bg-[var(--dir-paper)] p-4 text-xs overflow-x-auto">
 {`{
@@ -118,6 +120,12 @@ export default async function ForAgentsPage() {
           <p>
             Streamable HTTP, no auth. Stdio-only clients:{' '}
             <code className="font-bold">npx -y mcp-remote https://agentswitchboard.dev/api/mcp</code>
+          </p>
+          <p>
+            Step-by-step for Grok, Grok Bot, the xAI API, Claude, and ChatGPT:{' '}
+            <Link href="/connect" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
+              /connect
+            </Link>
           </p>
         </section>
 

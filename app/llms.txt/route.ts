@@ -50,7 +50,8 @@ one large file; use it for bulk or offline work, filtering on \`accessMethods\`,
 - Remote MCP (Streamable HTTP, no auth): https://agentswitchboard.dev/api/mcp
 - Stdio-only clients: npx -y mcp-remote https://agentswitchboard.dev/api/mcp
 - Server manifest: https://agentswitchboard.dev/.well-known/mcp.json
-- Tools: search_agents, get_agent, list_categories
+- Tools: search_agents, get_agent, list_categories, submit_listing (files a public GitHub issue for human review; publishes nothing)
+- Connect it to Grok, Grok Bot, the xAI API, Claude, or ChatGPT: https://agentswitchboard.dev/connect
 - Plain REST search (no MCP handshake needed): GET /api/agents?q=&category=&access=&official=&limit=&offset=
 - REST detail: GET /api/agents/{slug}
 - REST categories: GET /api/categories

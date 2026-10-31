@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { submitAgent, type SubmitState } from '@/app/submit/actions';
+import { fileSubmission } from '@/lib/submission';
 
 const GITHUB_ISSUES = 'https://api.github.com/repos/assafbar2/agentswitchboard.dev/issues';
 const AGENTMAIL_SEND =
@@ -151,6 +152,20 @@ describe('submitAgent', () => {
     expect(callsTo(fetchMock, GITHUB_ISSUES)).toHaveLength(1);
     expect(JSON.stringify(fetchMock.mock.calls)).not.toContain(EMAIL);
     expect(consoleOutput(consoleSpies)).not.toContain(EMAIL);
+  });
+
+  it('files an MCP submission with no email: public issue only, no private send', async () => {
+    const fetchMock = vi.fn(async () => githubCreated());
+    vi.stubGlobal('fetch', fetchMock);
+
+    const result = await fileSubmission({ ask: 'Taskfolk — https://taskfolk.example\n\nTasks for @octocat.', source: 'mcp' });
+
+    expect(result).toEqual({ ok: true, issueUrl: ISSUE_URL });
+    expect(callsTo(fetchMock, AGENTMAIL_SEND)).toHaveLength(0);
+    const { body } = githubPayload(fetchMock);
+    expect(body).toContain('via MCP submit_listing tool');
+    expect(body).toContain('**Contact:** none given.');
+    expect(body).not.toMatch(/(^|\s)@octocat/);
   });
 
   it('reports an error, without trying the private send, when GitHub rejects the issue', async () => {

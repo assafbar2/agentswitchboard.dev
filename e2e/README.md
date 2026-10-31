@@ -13,7 +13,9 @@ npm run test:e2e
 - **Read-only.** `tests/fixtures.mjs` routes every request: only GET/HEAD/OPTIONS
   and JSON-RPC POSTs to `/api/mcp` reach the site; anything else (the submit
   form's server action, for one) is answered 418 and recorded. Analytics beacons
-  are dropped, and requests carry an `asb-e2e` user agent.
+  are dropped, and requests carry an `asb-e2e` user agent. The MCP
+  `submit_listing` tool files a real public issue, so tests call it only with an
+  already-listed URL or invalid input, which return before anything is filed.
 - **Target.** `E2E_BASE_URL=https://… npm run test:e2e` points it at another
   deployment. Some assertions check absolute production URLs in the content, so
   production is the reference target.

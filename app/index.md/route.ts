@@ -39,7 +39,7 @@ The \`verified\`, \`official\` and \`featured\` flags in search and detail resul
 
 ## What to use
 
-- \`${BASE_URL}/api/mcp\` — MCP server (streamable HTTP). Tools: \`search_agents\`, \`get_agent\`, \`list_categories\`.
+- \`${BASE_URL}/api/mcp\` — MCP server (streamable HTTP). Tools: \`search_agents\`, \`get_agent\`, \`list_categories\`, \`submit_listing\` (files a public GitHub issue for review). Setup for Grok, Claude, ChatGPT: [/connect](${BASE_URL}/connect).
 - \`GET ${BASE_URL}/api/agents?q=&category=&access=&official=&limit=&offset=\` — plain REST search, no auth. Detail: \`/api/agents/{slug}\`.
 - [/openapi.json](${BASE_URL}/openapi.json) — OpenAPI 3.1 description of the HTTP surface.
 - [/.well-known/mcp.json](${BASE_URL}/.well-known/mcp.json) — MCP server manifest.

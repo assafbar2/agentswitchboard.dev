@@ -54,7 +54,9 @@ export default function TermsPage() {
                 GET /api/agents
               </Link>
               , GET /api/agents/&#123;slug&#125;, GET /api/categories, GET /agents.json, and POST
-              /api/mcp) are public, read-only, and require no account or API key. You may call them
+              /api/mcp) are public and require no account or API key. They are read-only, except
+              the MCP <code className="mono text-sm">submit_listing</code> tool, which files a
+              public suggestion for review like the submit form. You may call them
               from your own applications and from assistant platforms (including Meta Muse) under
               ordinary fair use. Do not attempt to overload, scrape around published rate-friendly
               caches, or present the directory as your own catalog without attribution.

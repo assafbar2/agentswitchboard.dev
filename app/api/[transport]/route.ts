@@ -6,8 +6,10 @@
  *   { "agentswitchboard": { "url": "https://agentswitchboard.dev/api/mcp" } }
  * Stdio-only clients: npx -y mcp-remote https://agentswitchboard.dev/api/mcp
  *
- * Tools are read-only views over the same cached catalog that powers the
+ * The read tools are views over the same cached catalog that powers the
  * site (lib/catalog.ts), so MCP results always match the web directory.
+ * submit_listing is the one write: it files a public GitHub issue through
+ * the same path as the /submit form (lib/mcp-submit.ts).
  */
 
 import { createMcpHandler } from 'mcp-handler';
@@ -16,13 +18,37 @@ import { VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 import { getEveryAgent, getAllCategories } from '@/lib/catalog';
 import { logConsumer } from '@/lib/log';
 import {
+  SUBMIT_LISTING_DESCRIPTION,
+  submitListing,
+  submitListingInput,
+  submitListingOutput,
+} from '@/lib/mcp-submit';
+import {
   ACCESS_METHOD_INPUTS,
   FEATURED_DEFINITION,
   OFFICIAL_DEFINITION,
   normalizeAccessMethods,
 } from '@/lib/public-api';
+import { clientIp, fixedWindowLimiter } from '@/lib/rate-limit';
 import { filterAgents, searchAgents } from '@/lib/search';
 import type { Agent } from '@/lib/types';
+
+/**
+ * Per-IP request budget. Assistant platforms call from shared server IPs, so
+ * this is sized for many of their users at once, not for one person.
+ */
+const REQUESTS_PER_MINUTE = 300;
+const MAX_BODY_BYTES = 64 * 1024;
+const requestLimiter = fixedWindowLimiter({ limit: REQUESTS_PER_MINUTE, windowMs: 60_000 });
+
+const READ_ONLY = { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false };
+
+const INSTRUCTIONS =
+  'Agent Switchboard is a curated directory of AI agents, MCP servers, and agentic tools. ' +
+  'Use search_agents to find tools for a job (filter by category, access method, or official), ' +
+  'get_agent for one listing, and list_categories for valid category slugs. ' +
+  'Link users to each result\'s url. submit_listing only files a public suggestion for human review; ' +
+  'call it only when the user asks to list a product and has confirmed the details.';
 
 const SITE = 'https://agentswitchboard.dev';
 
@@ -74,6 +100,7 @@ const handler = createMcpHandler(
           'Search the curated Agent Switchboard directory of AI agents, MCP servers, and agentic tools. ' +
           'Filter by category slug, access methods, and/or official (first-party listings from major vendors). ' +
           LABELS,
+        annotations: READ_ONLY,
         inputSchema: {
           query: z
             .string()
@@ -130,6 +157,7 @@ const handler = createMcpHandler(
         description:
           'Full detail for one agent by slug: skills, auth, streaming/push support, tags, provider links. ' +
           LABELS,
+        annotations: READ_ONLY,
         inputSchema: {
           slug: z.string().describe('Agent slug, e.g. "playwright-mcp"'),
         },
@@ -176,6 +204,7 @@ const handler = createMcpHandler(
       {
         title: 'List Categories',
         description: 'All directory categories with live agent counts. Slugs are valid inputs for search_agents.',
+        annotations: READ_ONLY,
         inputSchema: {},
         outputSchema: {
           categories: z.array(
@@ -204,9 +233,22 @@ const handler = createMcpHandler(
         };
       }
     );
+
+    server.registerTool(
+      'submit_listing',
+      {
+        title: 'Submit a Listing',
+        description: SUBMIT_LISTING_DESCRIPTION,
+        annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: true },
+        inputSchema: submitListingInput,
+        outputSchema: submitListingOutput,
+      },
+      async (input, extra) => submitListing(input, extra.requestInfo?.headers ?? {})
+    );
   },
   {
-    serverInfo: { name: 'agentswitchboard', version: '1.1.0' },
+    serverInfo: { name: 'agentswitchboard', version: '1.2.0' },
+    instructions: INSTRUCTIONS,
   },
   {
     basePath: '/api',
@@ -217,11 +259,26 @@ const handler = createMcpHandler(
 // Wrap the handler to log consumers: UA + JSON-RPC method + tool called.
 // Vercel log explorer: filter `asb_consumer` to see who uses the catalog.
 async function loggedHandler(req: Request): Promise<Response> {
+  const limited = requestLimiter.take(clientIp(req.headers));
+  if (!limited.ok) {
+    logConsumer('/api/mcp', req, { method: 'rate_limited' });
+    return jsonRpcError(429, -32000, 'Rate limit exceeded. Slow down and retry.', {
+      'Retry-After': String(limited.retryAfterSeconds),
+    });
+  }
+
   let method: string | undefined;
   let tool: string | undefined;
   if (req.method === 'POST') {
+    if (Number(req.headers.get('content-length') ?? 0) > MAX_BODY_BYTES) {
+      return jsonRpcError(413, -32600, `Request body over ${MAX_BODY_BYTES} bytes.`);
+    }
+    const text = await req.clone().text();
+    if (new TextEncoder().encode(text).length > MAX_BODY_BYTES) {
+      return jsonRpcError(413, -32600, `Request body over ${MAX_BODY_BYTES} bytes.`);
+    }
     try {
-      const body = await req.clone().json();
+      const body = JSON.parse(text);
       method = body?.method;
       if (method === 'tools/call') tool = body?.params?.name;
     } catch {
@@ -230,6 +287,18 @@ async function loggedHandler(req: Request): Promise<Response> {
   }
   logConsumer('/api/mcp', req, { method, tool });
   return handler(req);
+}
+
+function jsonRpcError(
+  status: number,
+  code: number,
+  message: string,
+  headers: Record<string, string> = {}
+): Response {
+  return new Response(JSON.stringify({ jsonrpc: '2.0', error: { code, message }, id: null }), {
+    status,
+    headers: { 'Content-Type': 'application/json', ...headers },
+  });
 }
 
 export { loggedHandler as GET, loggedHandler as POST };

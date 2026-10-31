@@ -23,6 +23,7 @@ export type ClientBucket =
   | 'claude'
   | 'cursor'
   | 'chatgpt-openai'
+  | 'grok'
   | 'windsurf'
   | 'vscode'
   | 'mcp-remote'
@@ -47,6 +48,7 @@ export const EDGE_LOGGED_HEADER = 'x-asb-edge-logged';
 const CLIENT_PATTERNS: ReadonlyArray<readonly [ClientBucket, RegExp]> = [
   ['claude', /claude|anthropic/i],
   ['chatgpt-openai', /chatgpt|openai|gptbot|oai-searchbot/i],
+  ['grok', /grok|\bxai\b/i],
   ['cursor', /cursor/i],
   ['windsurf', /windsurf|codeium/i],
   // VS Code's Electron UA carries `Code/1.x`; capitalised, so `claude-code/` is not it.
