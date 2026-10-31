@@ -161,6 +161,19 @@ test.describe('content pages', () => {
     await expect(mcp).toContainText('npx -y mcp-remote https://agentswitchboard.dev/api/mcp');
   });
 
+  test('/connect#grok-bot explains the one-time setup, @bot tagging, and where answers land', async ({ page }) => {
+    await page.goto('/connect#grok-bot');
+    const section = page.locator('section#grok-bot');
+    await expect(section).toBeVisible();
+    await expect(section.getByRole('heading', { level: 2 })).toHaveText('Use it from Grok Bot / X');
+    await expect(section).toContainText('Add a custom MCP server named Agent Switchboard at https://agentswitchboard.dev/api/mcp');
+    await expect(section).toContainText('@bot find alternatives to this on Agent Switchboard');
+    await expect(section).toContainText('not as a reply on X');
+    await expect(section).toContainText('the EU, the UK, Australia');
+    await expect(section).toContainText('not affiliated with or endorsed by xAI');
+    await expect(section.getByRole('link', { name: 'x.ai/bot' })).toHaveAttribute('href', 'https://x.ai/bot');
+  });
+
   test('in-page anchors linked from content pages exist (#verification, #rules)', async ({ page }) => {
     await page.goto('/about#verification');
     await expect(page.locator('#verification')).toBeVisible();

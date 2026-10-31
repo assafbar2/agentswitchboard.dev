@@ -104,6 +104,15 @@ test.describe('homepage — hero', () => {
     await page.waitForURL(/\/for-agents#mcp$/);
     await expect(page.locator('#mcp')).toBeVisible();
   });
+
+  test('Grok Bot / X strip links to the Grok Bot section on /connect', async ({ page }) => {
+    await page.goto('/');
+    const link = human(page).getByRole('link', { name: /Use it from Grok Bot \/ X/ });
+    await expect(link).toHaveAttribute('href', '/connect#grok-bot');
+    await link.click();
+    await page.waitForURL(/\/connect#grok-bot$/);
+    await expect(page.locator('#grok-bot')).toBeVisible();
+  });
 });
 
 test.describe('homepage — agent bar', () => {
