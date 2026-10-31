@@ -148,23 +148,20 @@ export default async function HomePage() {
         {/* ── Directory: Top Agents + categories, phone-book columns ── */}
         <section aria-label="Listings" className="pt-6 pb-14">
           <div className="container-wide gap-x-10 md:columns-2 lg:columns-3">
+            {/* Unlike the categories, Top Agents never splits across columns. */}
             {homepageAgents.length > 0 && (
-              <section aria-labelledby="top-agents" className="mb-6">
-                {/* Bar, blurb and first listing stay together so a column never ends on a bare header. */}
-                <div className="break-inside-avoid">
-                  <div className="dir-bar flex items-baseline gap-1.5">
-                    <h2 id="top-agents" className="m-0">Top Agents</h2>
-                    <span className="font-semibold tracking-normal">· {homepageAgents.length}</span>
-                  </div>
-                  <p className="mt-1.5 text-[15px] text-[var(--dir-muted)]">
-                    Editor&apos;s picks and the latest additions to the switchboard
-                  </p>
-                  <FeaturedAgentCard agent={homepageAgents[0].agent} label={homepageAgents[0].label} />
+              <section aria-labelledby="top-agents" className="mb-6 break-inside-avoid">
+                <div className="dir-bar flex items-baseline gap-1.5">
+                  <h2 id="top-agents" className="m-0">Top Agents</h2>
+                  <span className="font-semibold tracking-normal">· {homepageAgents.length}</span>
                 </div>
-                {homepageAgents.slice(1).map(({ agent, label }) => (
+                <p className="mt-1.5 text-[15px] text-[var(--dir-muted)]">
+                  Editor&apos;s picks and the latest additions to the switchboard
+                </p>
+                {homepageAgents.map(({ agent, label }) => (
                   <FeaturedAgentCard key={agent.id} agent={agent} label={label} />
                 ))}
-                <Link href="/browse" className="dir-row break-inside-avoid">
+                <Link href="/browse" className="dir-row">
                   <span className="dir-row-name">View all</span>
                   <span className="dir-row-leader" aria-hidden="true" />
                   <span className="dir-row-meta" aria-hidden="true">→</span>
