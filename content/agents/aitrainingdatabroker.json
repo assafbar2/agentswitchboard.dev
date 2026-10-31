@@ -1,0 +1,58 @@
+{
+  "id": "aitrainingdatabroker",
+  "name": "AI Training Data Broker",
+  "slug": "aitrainingdatabroker",
+  "description": "Searches and reads guidance on selling or licensing company data to AI labs, sourcing licensed training data and de-identification. Read-only MCP over a public blog; no sign-up.",
+  "providerName": "AI Training Data Broker",
+  "providerUrl": "https://aitrainingdatabroker.com",
+  "version": "1.0.0",
+  "agentUrl": "https://aitrainingdatabroker.com/api/mcp",
+  "categories": [
+    "research",
+    "data-analytics"
+  ],
+  "tags": [
+    "ai-training-data",
+    "data-licensing",
+    "de-identification",
+    "privacy-compliance",
+    "company-data",
+    "remote-mcp",
+    "read-only"
+  ],
+  "skills": [
+    {
+      "id": "latest-articles",
+      "name": "Latest Articles",
+      "description": "Lists the newest articles, optionally only for sellers, buyers or de-identification, with a one-line summary and link each."
+    },
+    {
+      "id": "search-articles",
+      "name": "Search Articles",
+      "description": "Searches the blog by topic, such as exclusive license or de-identification, and returns matching articles with summaries and links."
+    },
+    {
+      "id": "read-article-opening",
+      "name": "Read Article Opening",
+      "description": "Returns one article by slug or URL: title, audience, the opening 120 words and the questions its FAQ answers, with a link to the rest."
+    },
+    {
+      "id": "connector-search-fetch",
+      "name": "Connector Search And Fetch",
+      "description": "Connector-style search that returns ids, then fetch of one article by id, for clients that expect those two tools."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-30T22:00:00.000Z",
+  "updatedAt": "2026-10-30T22:00:00.000Z"
+}
