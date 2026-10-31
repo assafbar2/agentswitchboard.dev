@@ -1,0 +1,64 @@
+{
+  "id": "microsoft-dataverse-mcp",
+  "name": "Microsoft Dataverse MCP",
+  "slug": "microsoft-dataverse-mcp",
+  "description": "Lets MCP clients such as Claude Code and GitHub Copilot search, query, and update Dataverse tables and records, for Power Platform teams wiring agents to business data.",
+  "providerName": "Microsoft",
+  "providerUrl": "https://www.microsoft.com",
+  "agentUrl": "https://learn.microsoft.com/en-us/power-apps/maker/data-platform/data-platform-mcp",
+  "categories": [
+    "data-analytics",
+    "infrastructure"
+  ],
+  "tags": [
+    "dataverse",
+    "power-platform",
+    "dynamics-365",
+    "business-data",
+    "entra-id",
+    "official-mcp",
+    "microsoft"
+  ],
+  "skills": [
+    {
+      "id": "search-data",
+      "name": "Search Data And Schemas",
+      "description": "Searches structured and unstructured Dataverse data, and searches table schemas and business skills by keyword."
+    },
+    {
+      "id": "manage-records",
+      "name": "Manage Records",
+      "description": "Creates, updates, and deletes table rows, deleting only after explicit user approval."
+    },
+    {
+      "id": "manage-tables",
+      "name": "Manage Tables",
+      "description": "Creates tables with a specified schema and modifies or deletes existing tables, with deletes gated on user approval."
+    },
+    {
+      "id": "run-sql-queries",
+      "name": "Run SQL Queries",
+      "description": "Runs supported Dataverse SQL SELECT queries against your environment's tables."
+    },
+    {
+      "id": "transfer-files",
+      "name": "Upload And Download Files",
+      "description": "Generates SAS URLs for file uploads and downloads, and commits completed uploads."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-31T07:10:38.149Z",
+  "updatedAt": "2026-10-31T07:10:38.149Z"
+}

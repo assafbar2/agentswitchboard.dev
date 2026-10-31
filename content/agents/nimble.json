@@ -1,0 +1,64 @@
+{
+  "id": "nimble",
+  "name": "Nimble",
+  "slug": "nimble",
+  "description": "Searches, extracts, maps and crawls the live web and runs cited research agents, for AI agents that need real-time web data, via REST API, SDKs, a CLI, and a hosted MCP server.",
+  "providerName": "Nimble",
+  "providerUrl": "https://www.nimbleway.com",
+  "agentUrl": "https://www.nimbleway.com",
+  "categories": [
+    "research",
+    "browser-computer"
+  ],
+  "tags": [
+    "web-search",
+    "web-scraping",
+    "crawling",
+    "data-extraction",
+    "serp",
+    "research-agents",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "web-search",
+      "name": "Web Search",
+      "description": "Runs real-time web search across multiple engines with configurable depth and focus, returning structured results."
+    },
+    {
+      "id": "page-extract",
+      "name": "Page Extract",
+      "description": "Extracts clean, structured content from any URL, synchronously or as async and batch tasks with status polling."
+    },
+    {
+      "id": "site-map",
+      "name": "Site Map",
+      "description": "Discovers the URLs on a website by following links and reading sitemaps, ready for targeted extraction."
+    },
+    {
+      "id": "site-crawl",
+      "name": "Site Crawl",
+      "description": "Crawls multiple pages of a site with path filtering, subdomain control, and progress tracking."
+    },
+    {
+      "id": "web-search-agents",
+      "name": "Web Search Agents",
+      "description": "Creates and runs research agents that complete a web research task and return results with per-claim citations."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-31T07:10:38.219Z",
+  "updatedAt": "2026-10-31T07:10:38.219Z"
+}

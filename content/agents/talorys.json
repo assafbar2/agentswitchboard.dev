@@ -1,0 +1,61 @@
+{
+  "id": "talorys",
+  "name": "Talorys",
+  "slug": "talorys",
+  "description": "Deploys a private personal AI assistant to your own Cloudflare free tier, with memory, tasks, notes and scheduled reminders, plus a token-scoped REST API for your scripts.",
+  "providerName": "rociiu",
+  "providerUrl": "https://github.com/rociiu",
+  "agentUrl": "https://rociiu.github.io/talorys/",
+  "categories": [
+    "autonomous-agents",
+    "productivity"
+  ],
+  "tags": [
+    "personal-assistant",
+    "self-hosted",
+    "cloudflare-workers",
+    "long-term-memory",
+    "reminders",
+    "mcp-client"
+  ],
+  "skills": [
+    {
+      "id": "personal-memory",
+      "name": "Memory",
+      "description": "Keeps durable personal facts and preferences you can view, edit and delete, and tracks facts that change over time."
+    },
+    {
+      "id": "semantic-recall",
+      "name": "Semantic recall",
+      "description": "Finds memories, tasks, notes and automations by meaning as well as keyword. Off by default."
+    },
+    {
+      "id": "reminders-routines",
+      "name": "Automations",
+      "description": "Runs one-time and recurring reminders, daily task digests and optional AI routines on a schedule."
+    },
+    {
+      "id": "tasks-notes",
+      "name": "Tasks and notes",
+      "description": "Manages tasks, notes and projects, and keeps working when the AI quota is used up."
+    },
+    {
+      "id": "remote-mcp-tools",
+      "name": "Remote MCP tools",
+      "description": "Connects remote MCP servers and asks for approval before tool calls that may change something."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-31T07:10:38.184Z",
+  "updatedAt": "2026-10-31T07:10:38.184Z"
+}

@@ -1,0 +1,56 @@
+{
+  "id": "corgi",
+  "name": "Corgi",
+  "slug": "corgi",
+  "description": "Runs your coding agents in a terminal multiplexer that shows which are working, finished or need you, with a scriptable CLI. For developers juggling Claude Code, Codex, Pi and OpenCode.",
+  "providerName": "tals",
+  "providerUrl": "https://github.com/tals",
+  "agentUrl": "https://corgi.computer",
+  "categories": [
+    "code-devtools",
+    "orchestration"
+  ],
+  "tags": [
+    "terminal-multiplexer",
+    "coding-agents",
+    "claude-code",
+    "codex",
+    "agent-status",
+    "ghostty"
+  ],
+  "skills": [
+    {
+      "id": "agent-status",
+      "name": "Agent status",
+      "description": "Shows whether each agent is working, needs you, or is done, with activity summaries."
+    },
+    {
+      "id": "usage-tracking",
+      "name": "Context and rate limits",
+      "description": "Tracks each agent's context, tokens and rate limits."
+    },
+    {
+      "id": "session-resume",
+      "name": "Resume sessions",
+      "description": "Resumes agent sessions after a crash or reboot, and lets you detach and reconnect."
+    },
+    {
+      "id": "pane-scripting",
+      "name": "Scripting",
+      "description": "Controls the running session from any shell: list panes, open tabs, send input and read output, with JSON output."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-31T07:10:38.187Z",
+  "updatedAt": "2026-10-31T07:10:38.187Z"
+}

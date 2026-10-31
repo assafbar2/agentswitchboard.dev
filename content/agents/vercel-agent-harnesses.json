@@ -1,0 +1,60 @@
+{
+  "id": "vercel-agent-harnesses",
+  "name": "Vercel Agent Harnesses",
+  "slug": "vercel-agent-harnesses",
+  "description": "Runs Claude Code, Codex, OpenCode, and Pi as durable harnesses whose turns resume after crashes or timeouts, for teams deploying coding agents on Vercel.",
+  "providerName": "Vercel",
+  "providerUrl": "https://vercel.com",
+  "agentUrl": "https://vercel.com/docs/agent-harnesses",
+  "categories": [
+    "orchestration",
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "durable-execution",
+    "vercel-workflow",
+    "crash-recovery",
+    "claude-code",
+    "codex",
+    "opencode",
+    "vercel-sandbox",
+    "typescript"
+  ],
+  "skills": [
+    {
+      "id": "resume-interrupted-turns",
+      "name": "Resume Interrupted Turns",
+      "description": "Keeps each session in a durable log so a new function resumes a turn after a crash, function timeout, or redeploy."
+    },
+    {
+      "id": "run-popular-harnesses",
+      "name": "Run Popular Harnesses",
+      "description": "Runs Pi and OpenCode in your function, and Claude Code and Codex experimentally in a Vercel Sandbox, keeping each harness's options and tools."
+    },
+    {
+      "id": "isolate-model-commands",
+      "name": "Isolate Model Commands",
+      "description": "Runs commands and files the model picks in a virtual workspace or a Vercel Sandbox, never on the function's own disk."
+    },
+    {
+      "id": "self-host-on-a-world",
+      "name": "Self-Host On Any World",
+      "description": "Stores the session log in a Workflow SDK World: Vercel's on Vercel, files on your machine, or Postgres on your own servers."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-31T07:10:38.147Z",
+  "updatedAt": "2026-10-31T07:10:38.147Z"
+}

@@ -1,0 +1,59 @@
+{
+  "id": "google-cloud-mcp",
+  "name": "Google Cloud MCP servers",
+  "slug": "google-cloud-mcp",
+  "description": "Connects MCP clients to Google-managed remote MCP servers for BigQuery, GKE, Compute Engine, Cloud Run, Cloud SQL, Maps, and more, with IAM controls, toolsets, and Model Armor.",
+  "providerName": "Google",
+  "providerUrl": "https://cloud.google.com",
+  "agentUrl": "https://docs.cloud.google.com/mcp/overview",
+  "categories": [
+    "infrastructure",
+    "data-analytics"
+  ],
+  "tags": [
+    "google-cloud",
+    "remote-mcp",
+    "bigquery",
+    "gke",
+    "cloud-run",
+    "iam",
+    "model-armor",
+    "mcp-toolsets"
+  ],
+  "skills": [
+    {
+      "id": "toolsets",
+      "name": "Toolsets",
+      "description": "Selects a logical group of MCP tools, each with its own endpoint, so agents load only the tools they need."
+    },
+    {
+      "id": "iam-authorization",
+      "name": "IAM Access Control",
+      "description": "Controls who can use which MCP tools on which Google Cloud resources with IAM allow and deny policies."
+    },
+    {
+      "id": "model-armor",
+      "name": "Model Armor Protection",
+      "description": "Scans MCP requests and responses to mitigate prompt injection, sensitive data disclosure, and tool poisoning."
+    },
+    {
+      "id": "mcp-apps",
+      "name": "MCP Apps",
+      "description": "Renders sandboxed charts, forms, and dashboards from supported servers inside the agent conversation."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-31T07:10:38.129Z",
+  "updatedAt": "2026-10-31T07:10:38.129Z"
+}

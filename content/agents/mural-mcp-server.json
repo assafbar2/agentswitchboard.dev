@@ -1,0 +1,62 @@
+{
+  "id": "mural-mcp-server",
+  "name": "Mural MCP Server",
+  "slug": "mural-mcp-server",
+  "description": "Lets AI assistants create, read, and organize Mural canvases for product, research, and workshop teams, through Mural's official remote MCP server (paid plans).",
+  "providerName": "Mural",
+  "providerUrl": "https://www.mural.co",
+  "agentUrl": "https://www.mural.co/use-case/mural-mcp-server",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "visual-collaboration",
+    "digital-whiteboard",
+    "remote-mcp",
+    "research-synthesis",
+    "workshop-planning",
+    "sticky-notes"
+  ],
+  "skills": [
+    {
+      "id": "canvas-creation",
+      "name": "Canvas Creation",
+      "description": "Creates a canvas for a project, planning session, or initiative."
+    },
+    {
+      "id": "canvas-organization",
+      "name": "Canvas Organization",
+      "description": "Adds stickies, shapes, text, connectors, and areas, and arranges them into sections and groups."
+    },
+    {
+      "id": "research-synthesis",
+      "name": "Research Synthesis",
+      "description": "Groups similar ideas, identifies recurring themes, and summarizes research or team input into one shared view."
+    },
+    {
+      "id": "workshop-boards",
+      "name": "Workshop Boards",
+      "description": "Generates a ready-to-facilitate workshop board from a problem statement, requirements, and existing documentation."
+    },
+    {
+      "id": "decision-capture",
+      "name": "Decision Capture",
+      "description": "Captures decisions, action items, and next steps on the canvas so the assistant can move them into other tools it can access."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-10-31T07:10:38.162Z",
+  "updatedAt": "2026-10-31T07:10:38.162Z"
+}

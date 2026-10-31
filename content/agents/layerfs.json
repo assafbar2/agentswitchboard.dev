@@ -1,0 +1,63 @@
+{
+  "id": "layerfs",
+  "name": "LayerFS",
+  "slug": "layerfs",
+  "description": "Gives each coding agent an ephemeral, writable workspace over shared copy-on-write history, so many agents can branch, commit and merge in parallel. For multi-agent system builders.",
+  "providerName": "Ephemeral AI Lab",
+  "providerUrl": "https://github.com/Ephemeral-AI-Lab",
+  "agentUrl": "https://layerfs.ai",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "filesystem",
+    "copy-on-write",
+    "agent-workspaces",
+    "fuse",
+    "snapshots",
+    "multi-agent",
+    "typescript-sdk"
+  ],
+  "skills": [
+    {
+      "id": "ephemeral-workspaces",
+      "name": "Ephemeral workspaces",
+      "description": "Mounts a complete writable workspace over committed history for each command, then commits and unmounts."
+    },
+    {
+      "id": "recursive-branching",
+      "name": "Recursive branching",
+      "description": "Forks a new branch from any commit at any depth so agents can try alternatives in parallel."
+    },
+    {
+      "id": "conflict-rules",
+      "name": "Conflict rules",
+      "description": "Refuses conflicting commits to the same file unless a .lww rule says the newest edit wins."
+    },
+    {
+      "id": "auto-checkpoints",
+      "name": "Auto checkpoints",
+      "description": "Records every agent step as a commit that the agent can return to."
+    },
+    {
+      "id": "deduplicated-storage",
+      "name": "Deduplicated storage",
+      "description": "Chunks content and stores each chunk once in a single SQLite store shared by all agents."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-10-31T07:10:38.181Z",
+  "updatedAt": "2026-10-31T07:10:38.181Z"
+}

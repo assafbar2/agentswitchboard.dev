@@ -1,0 +1,64 @@
+{
+  "id": "cursor-agent-sdk",
+  "name": "Cursor Agent SDK",
+  "slug": "cursor-agent-sdk",
+  "description": "Lets developers define, test, evaluate, and deploy agents as Markdown and TypeScript code, on Cursor-managed hosting or their own infrastructure.",
+  "providerName": "Anysphere",
+  "providerUrl": "https://cursor.com",
+  "agentUrl": "https://cursor.com/docs/agent-sdk",
+  "categories": [
+    "orchestration",
+    "code-devtools"
+  ],
+  "tags": [
+    "typescript-sdk",
+    "evals",
+    "managed-hosting",
+    "self-hosted",
+    "slack-bots",
+    "pr-review",
+    "cursor"
+  ],
+  "skills": [
+    {
+      "id": "scaffold-projects",
+      "name": "Scaffold Agent Projects",
+      "description": "Creates a project of Markdown instructions and TypeScript tools with agent-sdk init, then runs it locally with agent-sdk dev."
+    },
+    {
+      "id": "run-evals",
+      "name": "Run Evals",
+      "description": "Discovers and runs eval cases from the project's evals folder, locally or as remote batches, with agent-sdk eval."
+    },
+    {
+      "id": "deploy-and-manage",
+      "name": "Deploy And Manage Agents",
+      "description": "Deploys agents to Cursor-managed hosting, then lists, rolls back, stops, or deletes deployments and manages their secrets."
+    },
+    {
+      "id": "slack-and-github",
+      "name": "Connect Slack And GitHub",
+      "description": "Provisions Slack channel apps and forwards, replays, and inspects GitHub webhooks so agents can act in Slack and on pull requests."
+    },
+    {
+      "id": "serve-over-mcp",
+      "name": "Serve Agents Over MCP",
+      "description": "Connects an MCP client to a running agent with agent-sdk mcp serve or mcp install."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-10-31T07:10:38.145Z",
+  "updatedAt": "2026-10-31T07:10:38.145Z"
+}

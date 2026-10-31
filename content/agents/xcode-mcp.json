@@ -1,0 +1,46 @@
+{
+  "id": "xcode-mcp",
+  "name": "Xcode MCP",
+  "slug": "xcode-mcp",
+  "description": "Exposes Xcode's tools through a built-in MCP server so external coding agents such as Claude Code and Codex can modify and build Apple-platform projects.",
+  "providerName": "Apple",
+  "providerUrl": "https://www.apple.com",
+  "agentUrl": "https://developer.apple.com/documentation/xcode/giving-external-agents-access-to-xcode",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "xcode",
+    "ios-development",
+    "macos-development",
+    "official-mcp",
+    "local-mcp",
+    "apple"
+  ],
+  "skills": [
+    {
+      "id": "modify-xcode-projects",
+      "name": "Modify Xcode Projects",
+      "description": "Lets an external agent modify the project open in Xcode once external agents are allowed in Intelligence settings."
+    },
+    {
+      "id": "build-apps",
+      "name": "Build Apps",
+      "description": "Performs Xcode actions such as building your app for an agent connected through the xcrun mcpbridge command."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-31T07:10:38.143Z",
+  "updatedAt": "2026-10-31T07:10:38.143Z"
+}

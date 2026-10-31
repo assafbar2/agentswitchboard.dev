@@ -1,0 +1,63 @@
+{
+  "id": "hugging-face-inference-providers",
+  "name": "Hugging Face Inference Providers",
+  "slug": "hugging-face-inference-providers",
+  "description": "Routes open-model inference across partner providers such as Groq, Together, and Fireworks with one Hugging Face token, via an OpenAI-compatible API and Python and JS SDKs.",
+  "providerName": "Hugging Face",
+  "providerUrl": "https://huggingface.co",
+  "agentUrl": "https://huggingface.co/docs/inference-providers",
+  "categories": [
+    "language",
+    "infrastructure"
+  ],
+  "tags": [
+    "hugging-face",
+    "inference-routing",
+    "open-models",
+    "openai-compatible",
+    "serverless-inference",
+    "text-to-image",
+    "provider-selection"
+  ],
+  "skills": [
+    {
+      "id": "chat-completion",
+      "name": "Chat Completion",
+      "description": "Runs LLM and vision-language chat completions as a drop-in replacement for the OpenAI chat completions API."
+    },
+    {
+      "id": "text-to-image",
+      "name": "Text to Image",
+      "description": "Generates images from text prompts with diffusion models served by partner providers."
+    },
+    {
+      "id": "feature-extraction",
+      "name": "Feature Extraction",
+      "description": "Produces embeddings for semantic search, RAG systems, and recommendation engines."
+    },
+    {
+      "id": "speech-to-text",
+      "name": "Speech to Text",
+      "description": "Transcribes audio with speech recognition models on supported providers."
+    },
+    {
+      "id": "provider-selection",
+      "name": "Provider Selection Policies",
+      "description": "Picks the serving provider per model with :fastest, :cheapest, or :preferred suffixes on the model id."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-31T07:10:38.133Z",
+  "updatedAt": "2026-10-31T07:10:38.133Z"
+}

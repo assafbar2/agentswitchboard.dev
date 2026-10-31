@@ -1,0 +1,59 @@
+{
+  "id": "harness2",
+  "name": "Harness²",
+  "slug": "harness2",
+  "description": "Optimizes an agent's harness (prompts, tools, memory, skills, subagents) on unseen tasks through recursive Propose–Probe–Compose refinement, for researchers benchmarking agents.",
+  "providerName": "Google Research",
+  "providerUrl": "https://research.google",
+  "agentUrl": "https://github.com/google-research/harness2",
+  "categories": [
+    "orchestration",
+    "autonomous-agents"
+  ],
+  "tags": [
+    "harness-optimization",
+    "prompt-optimization",
+    "self-improvement",
+    "agent-benchmarks",
+    "opencode",
+    "codex",
+    "python",
+    "research-framework"
+  ],
+  "skills": [
+    {
+      "id": "task-level-recursion",
+      "name": "Task-Level Recursion",
+      "description": "Proposes harness edits, probes their effects on the same task, and composes a refined harness without ground-truth feedback."
+    },
+    {
+      "id": "harnessing-level-recursion",
+      "name": "Harnessing-Level Recursion",
+      "description": "Updates a persistent improvement harness with adopted harnesses and lessons from each task to guide later refinement."
+    },
+    {
+      "id": "parallel-sequential-modes",
+      "name": "Parallel and Sequential Recursion",
+      "description": "Explores K candidate harnesses in parallel or refines one harness through K successive steps."
+    },
+    {
+      "id": "benchmark-runs",
+      "name": "Benchmark Runs",
+      "description": "Sets up, runs, judges, and reports JobBench, LAB, and WorkBuddy-Bench tasks with OpenCode or Codex executors."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-31T07:10:38.125Z",
+  "updatedAt": "2026-10-31T07:10:38.125Z"
+}

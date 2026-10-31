@@ -1,0 +1,57 @@
+{
+  "id": "nuget-mcp-server",
+  "name": "NuGet MCP Server",
+  "slug": "nuget-mcp-server",
+  "description": "Helps .NET developers' coding assistants fix vulnerable NuGet packages, update dependencies to compatible versions, and review package source mappings.",
+  "providerName": "Microsoft",
+  "providerUrl": "https://www.microsoft.com",
+  "agentUrl": "https://learn.microsoft.com/en-us/nuget/concepts/nuget-mcp-server",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "nuget",
+    "dotnet",
+    "dependency-updates",
+    "vulnerability-remediation",
+    "supply-chain-security",
+    "visual-studio",
+    "official-mcp"
+  ],
+  "skills": [
+    {
+      "id": "fix-vulnerabilities",
+      "name": "Fix Package Vulnerabilities",
+      "description": "Analyzes a project's dependencies and suggests updates to packages that have known vulnerabilities."
+    },
+    {
+      "id": "update-all-packages",
+      "name": "Update All Packages",
+      "description": "Updates packages to the latest versions compatible with the project's target frameworks."
+    },
+    {
+      "id": "update-package-version",
+      "name": "Update A Package To A Version",
+      "description": "Updates a named package to a specific version you choose."
+    },
+    {
+      "id": "review-source-mapping",
+      "name": "Review Package Source Mapping",
+      "description": "Reviews a repository's supply chain configuration and gives guidance on enabling, simplifying, or moving Package Source Mapping."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-31T07:10:38.151Z",
+  "updatedAt": "2026-10-31T07:10:38.151Z"
+}

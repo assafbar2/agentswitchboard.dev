@@ -1,0 +1,63 @@
+{
+  "id": "heygen",
+  "name": "HeyGen MCP and API",
+  "slug": "heygen",
+  "description": "Generates avatar videos, prompt-to-video scenes, video translations and short clips from AI agents and apps, through HeyGen's hosted MCP server, REST API, or CLI.",
+  "providerName": "HeyGen",
+  "providerUrl": "https://www.heygen.com",
+  "agentUrl": "https://developers.heygen.com/mcp/overview",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "video-generation",
+    "ai-avatars",
+    "video-translation",
+    "lip-sync",
+    "text-to-speech",
+    "video-clipping",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "video-agent",
+      "name": "Video Agent",
+      "description": "Turns a prompt into a finished video, with the agent handling script, avatar selection, scene composition, and rendering."
+    },
+    {
+      "id": "avatar-video",
+      "name": "Avatar Video",
+      "description": "Creates a lip-synced video in which a HeyGen avatar or an image speaks your script or audio track."
+    },
+    {
+      "id": "video-translation",
+      "name": "Video Translation",
+      "description": "Translates a video into one or more target languages with voice cloning and lip-sync, in speed or precision mode."
+    },
+    {
+      "id": "ai-clipping",
+      "name": "AI Clipping",
+      "description": "Cuts a long video into short clips by picking highlights from its spoken dialogue, as an asynchronous job."
+    },
+    {
+      "id": "speech-generation",
+      "name": "Speech Generation",
+      "description": "Generates speech audio from a HeyGen voice clone in your workspace, returning a WAV file or another requested format."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-31T07:10:38.216Z",
+  "updatedAt": "2026-10-31T07:10:38.216Z"
+}

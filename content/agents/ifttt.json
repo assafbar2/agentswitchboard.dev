@@ -1,0 +1,62 @@
+{
+  "id": "ifttt",
+  "name": "IFTTT MCP",
+  "slug": "ifttt",
+  "description": "Lets AI assistants run actions, query live data, and create Applets across the services connected to an IFTTT account, from Slack to smart-home devices, via a first-party remote MCP server.",
+  "providerName": "IFTTT",
+  "providerUrl": "https://ifttt.com",
+  "agentUrl": "https://ifttt.com/mcp",
+  "categories": [
+    "orchestration",
+    "productivity"
+  ],
+  "tags": [
+    "applets",
+    "app-integrations",
+    "smart-home",
+    "workflow-triggers",
+    "no-code",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "service-search",
+      "name": "Service Search",
+      "description": "Searches IFTTT services, Applets, triggers, queries, and actions to find what can be connected for a task."
+    },
+    {
+      "id": "applet-management",
+      "name": "Applet Management",
+      "description": "Creates, edits, and turns on Applets, including multi-action Applets and Applets with filters."
+    },
+    {
+      "id": "on-demand-actions",
+      "name": "On-Demand Actions",
+      "description": "Runs a service action immediately, such as adding a spreadsheet row or sending a notification, with no Applet needed."
+    },
+    {
+      "id": "live-queries",
+      "name": "Live Queries",
+      "description": "Runs queries that pull live information from connected services, such as today's calendar events or the weather."
+    },
+    {
+      "id": "activity-history",
+      "name": "Activity History",
+      "description": "Checks recent account activity to show which Applets ran, which were skipped, and which failed."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-10-31T07:10:38.220Z",
+  "updatedAt": "2026-10-31T07:10:38.220Z"
+}

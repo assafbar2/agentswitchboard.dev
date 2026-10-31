@@ -1,0 +1,63 @@
+{
+  "id": "paddle-mcp",
+  "name": "Paddle MCP",
+  "slug": "paddle-mcp",
+  "description": "Lets agents query and manage Paddle Billing products, prices, subscriptions, customers, and transactions through a hosted MCP server that searches and chains API calls.",
+  "providerName": "Paddle",
+  "providerUrl": "https://www.paddle.com",
+  "agentUrl": "https://mcp.paddle.com/",
+  "categories": [
+    "commerce-payments",
+    "finance"
+  ],
+  "tags": [
+    "paddle",
+    "subscription-billing",
+    "payments",
+    "remote-mcp",
+    "code-mode",
+    "revenue-metrics",
+    "sandbox"
+  ],
+  "skills": [
+    {
+      "id": "api-search",
+      "name": "API Search",
+      "description": "Looks up Paddle API methods by name or description and returns the method path, parameters, and response shape."
+    },
+    {
+      "id": "chained-execution",
+      "name": "Chained API Execution",
+      "description": "Runs a JavaScript async function that chains several Paddle API calls in one invocation, with warnings on destructive operations."
+    },
+    {
+      "id": "metrics-charts",
+      "name": "Metrics Charts",
+      "description": "Draws a Paddle metric as an interactive chart in AI clients that support MCP Apps."
+    },
+    {
+      "id": "sandbox-environment",
+      "name": "Sandbox Environment",
+      "description": "Connects to a separate sandbox server with a sandbox API key so agents can test, then port a catalog to live."
+    },
+    {
+      "id": "scoped-permissions",
+      "name": "Scoped Permissions",
+      "description": "Starts OAuth connections with read access and lets you widen or revoke them under Paddle > Connectors > MCPs."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-31T07:10:38.194Z",
+  "updatedAt": "2026-10-31T07:10:38.194Z"
+}

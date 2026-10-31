@@ -1,0 +1,63 @@
+{
+  "id": "oneuptime",
+  "name": "OneUptime",
+  "slug": "oneuptime",
+  "description": "Lets AI assistants investigate incidents, query logs and traces, acknowledge alerts, and set up monitors in OneUptime, an open-source observability platform, via remote MCP.",
+  "providerName": "OneUptime",
+  "providerUrl": "https://oneuptime.com",
+  "agentUrl": "https://oneuptime.com",
+  "categories": [
+    "infrastructure",
+    "security"
+  ],
+  "tags": [
+    "observability",
+    "uptime-monitoring",
+    "incident-management",
+    "on-call",
+    "status-pages",
+    "remote-mcp",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "monitors",
+      "name": "Monitors",
+      "description": "Creates and configures monitors, checks their status, and reviews their history."
+    },
+    {
+      "id": "incident-response",
+      "name": "Incident Response",
+      "description": "Creates, acknowledges, and resolves incidents, adds internal or public notes, and manages teams and on-call policies."
+    },
+    {
+      "id": "alerts",
+      "name": "Alerts",
+      "description": "Acknowledges and resolves alerts, adds notes, and manages alert states and severities."
+    },
+    {
+      "id": "status-pages",
+      "name": "Status Pages and Maintenance",
+      "description": "Manages status pages, posts announcements, and creates scheduled maintenance events."
+    },
+    {
+      "id": "telemetry-queries",
+      "name": "Telemetry Queries",
+      "description": "Queries logs, metrics, traces, exceptions, monitor logs, and security events, read-only."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-10-31T07:10:38.172Z",
+  "updatedAt": "2026-10-31T07:10:38.172Z"
+}

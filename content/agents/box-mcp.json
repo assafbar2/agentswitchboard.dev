@@ -1,0 +1,63 @@
+{
+  "id": "box-mcp",
+  "name": "Box MCP server",
+  "slug": "box-mcp",
+  "description": "Lets AI agents search, read, and ask questions about enterprise Box files through a hosted MCP server that keeps Box permissions and uses OAuth sign-in.",
+  "providerName": "Box",
+  "providerUrl": "https://www.box.com",
+  "agentUrl": "https://developer.box.com/guides/box-mcp",
+  "categories": [
+    "productivity",
+    "data-analytics"
+  ],
+  "tags": [
+    "box",
+    "enterprise-content",
+    "file-search",
+    "document-qa",
+    "metadata-extraction",
+    "remote-mcp",
+    "official-mcp"
+  ],
+  "skills": [
+    {
+      "id": "search-files",
+      "name": "Search Files",
+      "description": "Searches files by keyword or SQL-like metadata queries, and finds folders by name."
+    },
+    {
+      "id": "read-files-and-folders",
+      "name": "Read Files And Folders",
+      "description": "Returns file content, details, and previews, and lists folder contents with metadata and permissions."
+    },
+    {
+      "id": "ask-box-ai",
+      "name": "Ask Box AI",
+      "description": "Asks questions about a single file, several files, or a Box Hub with Box AI, returning citations when available."
+    },
+    {
+      "id": "extract-metadata",
+      "name": "Extract Metadata",
+      "description": "Extracts freeform or structured metadata from files with Box AI, including against existing metadata templates."
+    },
+    {
+      "id": "manage-content-and-hubs",
+      "name": "Manage Content And Hubs",
+      "description": "Uploads, copies, and organizes files and folders, adds comments, and creates Box Hubs; some write tools need an admin to turn them on."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-31T07:10:38.153Z",
+  "updatedAt": "2026-10-31T07:10:38.153Z"
+}

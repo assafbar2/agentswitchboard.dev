@@ -1,0 +1,62 @@
+{
+  "id": "sap-ui5-mcp",
+  "name": "SAP UI5 MCP server",
+  "slug": "sap-ui5-mcp",
+  "description": "Gives coding agents UI5 API docs, best-practice guidelines, linting, manifest validation, and app scaffolding for SAP UI5 developers, as a local npm MCP server.",
+  "providerName": "SAP",
+  "providerUrl": "https://www.sap.com",
+  "agentUrl": "https://github.com/UI5/mcp-server",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "sap",
+    "ui5",
+    "openui5",
+    "mcp-server",
+    "code-linting",
+    "app-scaffolding",
+    "typescript-migration"
+  ],
+  "skills": [
+    {
+      "id": "ui5-app-scaffolding",
+      "name": "UI5 App Scaffolding",
+      "description": "Scaffolds new UI5 applications from a set of templates, and new UI Integration Cards."
+    },
+    {
+      "id": "ui5-api-reference",
+      "name": "UI5 API Reference",
+      "description": "Fetches and formats UI5 API documentation and retrieves UI5 framework version information."
+    },
+    {
+      "id": "ui5-guidelines",
+      "name": "UI5 Guidelines",
+      "description": "Provides UI5 and Integration Cards best practices, plus guidelines for converting JavaScript apps and controls to TypeScript."
+    },
+    {
+      "id": "ui5-linting",
+      "name": "UI5 Linting and Manifest Validation",
+      "description": "Runs @ui5/linter to report UI5-specific code issues and validates manifests against the UI5 Manifest schema."
+    },
+    {
+      "id": "ui5-project-info",
+      "name": "Project Info",
+      "description": "Extracts metadata and configuration from a UI5 project."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-31T07:10:38.159Z",
+  "updatedAt": "2026-10-31T07:10:38.159Z"
+}

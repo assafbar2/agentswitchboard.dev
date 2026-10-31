@@ -1,0 +1,62 @@
+{
+  "id": "cloudflare-ai-gateway",
+  "name": "Cloudflare AI Gateway",
+  "slug": "cloudflare-ai-gateway",
+  "description": "Proxies requests to OpenAI, Anthropic, Google, Workers AI, and other model providers, adding analytics, logging, caching, rate limiting, and retries with model fallback.",
+  "providerName": "Cloudflare",
+  "providerUrl": "https://cloudflare.com",
+  "agentUrl": "https://developers.cloudflare.com/ai-gateway/",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "llm-gateway",
+    "cloudflare",
+    "response-caching",
+    "rate-limiting",
+    "model-fallback",
+    "request-logging",
+    "llm-observability"
+  ],
+  "skills": [
+    {
+      "id": "analytics",
+      "name": "Analytics",
+      "description": "Shows metrics such as request counts, tokens, and the cost of running your application."
+    },
+    {
+      "id": "logging",
+      "name": "Logging",
+      "description": "Records requests and errors passing through the gateway for inspection."
+    },
+    {
+      "id": "caching",
+      "name": "Caching",
+      "description": "Serves repeat requests from Cloudflare's cache instead of the model provider to cut latency and cost."
+    },
+    {
+      "id": "rate-limiting",
+      "name": "Rate Limiting",
+      "description": "Limits the number of requests your application receives to control how it scales."
+    },
+    {
+      "id": "retry-fallback",
+      "name": "Request Retry and Fallback",
+      "description": "Retries failed requests and falls back to other models when a provider returns an error."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-31T07:10:38.138Z",
+  "updatedAt": "2026-10-31T07:10:38.138Z"
+}

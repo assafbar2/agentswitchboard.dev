@@ -1,0 +1,48 @@
+{
+  "id": "sap-cap-mcp",
+  "name": "SAP CAP MCP server",
+  "slug": "sap-cap-mcp",
+  "description": "Helps coding agents build SAP Cloud Application Programming Model (CAP) apps by searching CDS models and CAP docs locally, via an npm MCP server and CLI.",
+  "providerName": "SAP",
+  "providerUrl": "https://www.sap.com",
+  "agentUrl": "https://github.com/cap-js/mcp-server",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "sap",
+    "sap-cap",
+    "cds-models",
+    "mcp-server",
+    "docs-search",
+    "local-embeddings",
+    "enterprise-apps"
+  ],
+  "skills": [
+    {
+      "id": "search-docs",
+      "name": "CAP Docs Search",
+      "description": "Searches preprocessed CAP documentation locally with vector embeddings, keeping results for the project's Node.js or Java runtime."
+    },
+    {
+      "id": "search-model",
+      "name": "CDS Model Search",
+      "description": "Fuzzy-searches definitions in the compiled CDS model, including entities, services, annotations, and HTTP endpoints."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-31T07:10:38.160Z",
+  "updatedAt": "2026-10-31T07:10:38.160Z"
+}

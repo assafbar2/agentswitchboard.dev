@@ -1,0 +1,58 @@
+{
+  "id": "voyage-ai",
+  "name": "Voyage AI (MongoDB)",
+  "slug": "voyage-ai",
+  "description": "Provides Voyage AI text, contextualized chunk, and multimodal embedding models plus rerankers through a MongoDB-hosted API, for developers building semantic search and RAG.",
+  "providerName": "MongoDB",
+  "providerUrl": "https://mongodb.com",
+  "agentUrl": "https://www.mongodb.com/docs/voyageai/",
+  "categories": [
+    "vector-databases",
+    "infrastructure"
+  ],
+  "tags": [
+    "embeddings",
+    "reranking",
+    "multimodal-embeddings",
+    "rag",
+    "semantic-search",
+    "mongodb",
+    "voyage-ai"
+  ],
+  "skills": [
+    {
+      "id": "text-embeddings",
+      "name": "Text Embeddings",
+      "description": "Converts text into vector embeddings for general-purpose and multilingual retrieval."
+    },
+    {
+      "id": "contextualized-chunk-embeddings",
+      "name": "Contextualized Chunk Embeddings",
+      "description": "Embeds document chunks with their surrounding context for more accurate retrieval."
+    },
+    {
+      "id": "multimodal-embeddings",
+      "name": "Multimodal Embeddings",
+      "description": "Vectorizes interleaved text and visual data such as PDF screenshots, slides, tables, figures, and videos."
+    },
+    {
+      "id": "reranking",
+      "name": "Reranking",
+      "description": "Scores relevance between a query and search results and reorders documents by that score."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-31T07:10:38.132Z",
+  "updatedAt": "2026-10-31T07:10:38.132Z"
+}

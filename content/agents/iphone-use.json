@@ -1,0 +1,61 @@
+{
+  "id": "iphone-use",
+  "name": "iPhone Use",
+  "slug": "iphone-use",
+  "description": "Lets Codex and other coding agents operate a real iPhone over USB through a local MCP server: open apps, read screens, tap, swipe and type. For macOS users with Xcode.",
+  "providerName": "zhongerxin",
+  "providerUrl": "https://github.com/zhongerxin",
+  "agentUrl": "https://github.com/zhongerxin/iPhone-use",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "iphone",
+    "ios",
+    "mobile-automation",
+    "webdriveragent",
+    "mcp-server",
+    "codex-plugin",
+    "usb"
+  ],
+  "skills": [
+    {
+      "id": "app-navigation",
+      "name": "App navigation",
+      "description": "Opens a target app and moves into its search, detail, settings or draft pages."
+    },
+    {
+      "id": "screen-reading",
+      "name": "Screen reading",
+      "description": "Returns a compact control tree with text and positions, plus real screenshots of the phone."
+    },
+    {
+      "id": "tap-and-gestures",
+      "name": "Taps and gestures",
+      "description": "Taps by control or coordinate, swipes and drags, and waits for an on-screen target to appear."
+    },
+    {
+      "id": "unicode-text-input",
+      "name": "Text input",
+      "description": "Types full Unicode text, including Chinese, and splits long text into resumable segments."
+    },
+    {
+      "id": "list-collection",
+      "name": "List search and collection",
+      "description": "Scrolls lists within bounds, reads with overlap and deduplicates, reporting the range it covered."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-31T07:10:38.176Z",
+  "updatedAt": "2026-10-31T07:10:38.176Z"
+}

@@ -1,0 +1,58 @@
+{
+  "id": "cerebras-inference",
+  "name": "Cerebras Inference",
+  "slug": "cerebras-inference",
+  "description": "Serves open-weight LLMs such as Qwen and GPT OSS through an OpenAI-compatible API on wafer-scale hardware, for developers who need very fast inference.",
+  "providerName": "Cerebras",
+  "providerUrl": "https://www.cerebras.ai",
+  "agentUrl": "https://inference-docs.cerebras.ai",
+  "categories": [
+    "language",
+    "infrastructure"
+  ],
+  "tags": [
+    "fast-inference",
+    "openai-compatible",
+    "wafer-scale",
+    "llm-api",
+    "open-weight-models",
+    "structured-outputs",
+    "batch-inference"
+  ],
+  "skills": [
+    {
+      "id": "tool-calling",
+      "name": "Tool Calling",
+      "description": "Connects models to external tools, with strict mode constraining tool-call arguments to a supported JSON Schema subset."
+    },
+    {
+      "id": "structured-outputs",
+      "name": "Structured Outputs",
+      "description": "Constrains model responses to a JSON schema so applications can process the generated data reliably."
+    },
+    {
+      "id": "batch-inference",
+      "name": "Batch Inference",
+      "description": "Runs large-scale inference workloads asynchronously from uploaded JSONL request files, with create, list, and cancel endpoints."
+    },
+    {
+      "id": "prompt-caching",
+      "name": "Prompt Caching",
+      "description": "Stores and reuses previously processed prompts to cut latency on similar or repeated queries."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-31T07:10:38.141Z",
+  "updatedAt": "2026-10-31T07:10:38.141Z"
+}

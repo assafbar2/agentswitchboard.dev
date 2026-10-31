@@ -1,0 +1,65 @@
+{
+  "id": "writer",
+  "name": "WRITER",
+  "slug": "writer",
+  "description": "Builds enterprise agents on WRITER's Palmyra models with chat completion, Knowledge Graph RAG, guardrails, and Agent Builder, via REST API, Python and Node SDKs, and a hosted MCP.",
+  "providerName": "WRITER",
+  "providerUrl": "https://writer.com",
+  "agentUrl": "https://dev.writer.com",
+  "categories": [
+    "orchestration",
+    "language"
+  ],
+  "tags": [
+    "writer",
+    "palmyra",
+    "enterprise-llm",
+    "knowledge-graph",
+    "graph-rag",
+    "guardrails",
+    "agent-builder",
+    "python-sdk"
+  ],
+  "skills": [
+    {
+      "id": "chat-completion",
+      "name": "Chat Completion",
+      "description": "Generates multi-turn responses from Palmyra models with tool calling, structured output, image input, and streaming."
+    },
+    {
+      "id": "knowledge-graph",
+      "name": "Knowledge Graph",
+      "description": "Indexes your content into graph-based RAG and answers questions against it with inline citations."
+    },
+    {
+      "id": "applications-api",
+      "name": "Applications API",
+      "description": "Invokes deployed no-code agents as microservices, synchronously or asynchronously in batches."
+    },
+    {
+      "id": "agent-builder",
+      "name": "Agent Builder v2",
+      "description": "Deploys full-code agents to Writer from your IDE with GitHub sync, snapshots, and promotion to production."
+    },
+    {
+      "id": "mcp-playbooks",
+      "name": "WRITER MCP Playbooks",
+      "description": "Runs published playbooks and reads Writer Meet recordings from any MCP client after signing in with a Writer account."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-10-31T07:10:38.200Z",
+  "updatedAt": "2026-10-31T07:10:38.200Z"
+}

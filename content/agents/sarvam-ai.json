@@ -1,0 +1,64 @@
+{
+  "id": "sarvam-ai",
+  "name": "Sarvam AI API",
+  "slug": "sarvam-ai",
+  "description": "Transcribes, synthesizes, translates, and chats in Indian languages and English with Sarvam's Saaras, Bulbul, Mayura, and Sarvam-105B models, via REST, WebSocket, SDKs, and MCP.",
+  "providerName": "Sarvam AI",
+  "providerUrl": "https://www.sarvam.ai",
+  "agentUrl": "https://docs.sarvam.ai/",
+  "categories": [
+    "language",
+    "voice-messaging"
+  ],
+  "tags": [
+    "sarvam",
+    "indian-languages",
+    "speech-to-text",
+    "text-to-speech",
+    "translation",
+    "indic-llm",
+    "document-ai"
+  ],
+  "skills": [
+    {
+      "id": "speech-to-text",
+      "name": "Saaras v3 Speech-to-Text",
+      "description": "Transcribes, translates, and captions code-mixed and regional Indian speech in real time or in batch."
+    },
+    {
+      "id": "text-to-speech",
+      "name": "Bulbul v3 Text-to-Speech",
+      "description": "Generates expressive speech in Indian languages with control over pitch, pace, and speaker."
+    },
+    {
+      "id": "chat-completion",
+      "name": "Sarvam-105B Chat",
+      "description": "Runs chat completions on Sarvam-105B, a flagship model tuned for Indic reasoning with a 128K context window."
+    },
+    {
+      "id": "text-translation",
+      "name": "Mayura Translation",
+      "description": "Translates, transliterates, and detects the language of short text across Indian languages."
+    },
+    {
+      "id": "document-intelligence",
+      "name": "Sarvam Vision Document AI",
+      "description": "Turns PDFs, scans, and handwriting into structured, searchable data, as whole documents or only the fields you define."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-10-31T07:10:38.205Z",
+  "updatedAt": "2026-10-31T07:10:38.205Z"
+}

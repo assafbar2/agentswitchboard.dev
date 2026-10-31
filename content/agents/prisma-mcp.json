@@ -1,0 +1,62 @@
+{
+  "id": "prisma-mcp",
+  "name": "Prisma MCP",
+  "slug": "prisma-mcp",
+  "description": "Lets agents create and manage Prisma Postgres databases, run SQL and schema updates, restore backups, and operate Prisma Compute apps and Object Storage over a remote MCP server.",
+  "providerName": "Prisma",
+  "providerUrl": "https://www.prisma.io",
+  "agentUrl": "https://www.prisma.io/docs/ai/tools/mcp-server",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "prisma",
+    "prisma-postgres",
+    "postgres",
+    "remote-mcp",
+    "database-management",
+    "object-storage",
+    "deployments"
+  ],
+  "skills": [
+    {
+      "id": "database-management",
+      "name": "Database Management",
+      "description": "Creates, lists, and deletes Prisma Postgres databases and their connection strings in the selected workspace."
+    },
+    {
+      "id": "sql-and-schema",
+      "name": "SQL and Schema",
+      "description": "Introspects a database schema, runs SQL queries, and applies schema updates to a Prisma Postgres database."
+    },
+    {
+      "id": "backup-recovery",
+      "name": "Backup Recovery",
+      "description": "Lists automated backups and restores a Prisma Postgres database to a new database from a chosen backup."
+    },
+    {
+      "id": "compute-deployments",
+      "name": "Compute Deployments",
+      "description": "Lists Prisma Compute apps, builds, and deployments, reads runtime logs, and promotes, rolls back, starts, or stops deployments."
+    },
+    {
+      "id": "object-storage",
+      "name": "Object Storage",
+      "description": "Creates and deletes object-store buckets and S3-compatible access keys in a Prisma project."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-31T07:10:38.195Z",
+  "updatedAt": "2026-10-31T07:10:38.195Z"
+}

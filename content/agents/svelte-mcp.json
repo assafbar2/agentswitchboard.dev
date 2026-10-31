@@ -1,0 +1,62 @@
+{
+  "id": "svelte-mcp",
+  "name": "Svelte MCP",
+  "slug": "svelte-mcp",
+  "description": "Gives coding agents the official Svelte documentation and a static-analysis autofixer for generated Svelte code, via a remote MCP server, a local MCP server, or a CLI.",
+  "providerName": "Svelte",
+  "providerUrl": "https://svelte.dev",
+  "agentUrl": "https://svelte.dev/docs/ai/mcp",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "svelte",
+    "sveltekit",
+    "frontend",
+    "documentation-lookup",
+    "static-analysis",
+    "remote-mcp",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "documentation-lookup",
+      "name": "Documentation Lookup",
+      "description": "Lists the available Svelte documentation sections and fetches the full, current text of the requested sections from svelte.dev."
+    },
+    {
+      "id": "svelte-autofixer",
+      "name": "Svelte Autofixer",
+      "description": "Uses static analysis to flag issues in generated Svelte code, and can be called in a loop until every suggestion is resolved."
+    },
+    {
+      "id": "playground-link",
+      "name": "Playground Link",
+      "description": "Generates an ephemeral Svelte playground link that holds the generated code, so a solution can be tested without writing files."
+    },
+    {
+      "id": "svelte-task-prompt",
+      "name": "Svelte Task Prompt",
+      "description": "Provides a prompt that tells the model which doc sections exist, which tools to call and when, and how to read their results."
+    },
+    {
+      "id": "doc-section-resources",
+      "name": "Doc Section Resources",
+      "description": "Exposes every Svelte documentation section as an MCP resource the user can attach to a session for targeted context."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-31T07:10:38.210Z",
+  "updatedAt": "2026-10-31T07:10:38.210Z"
+}
