@@ -1,6 +1,13 @@
 [
   {
     "action": "added",
+    "slug": "aitrainingdatabroker",
+    "name": "AI Training Data Broker",
+    "note": "Read-only MCP over the AI Training Data Broker blog: latest, search and open articles on selling and licensing company data to AI labs.",
+    "date": "2026-10-30"
+  },
+  {
+    "action": "added",
     "slug": "barnir-hired",
     "name": "Barnir Hired",
     "note": "Read-only MCP for technical-GTM job fit. Sponsored placement.",
