@@ -13,6 +13,7 @@ import { CategoryCard } from '@/components/CategoryCard';
 import { OfficialPlatforms } from '@/components/OfficialPlatforms';
 import { JsonLd } from '@/components/JsonLd';
 import { CategoryRail } from '@/components/CategoryRail';
+import { BotMark } from '@/components/BotMark';
 import type { Metadata } from 'next';
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev';
@@ -140,6 +141,21 @@ export default async function HomePage() {
               </span>
               <span className="mono text-[13px] text-[var(--dir-muted)] sm:ml-auto">
                 search_agents · get_agent · list_categories
+              </span>
+            </Link>
+            <Link
+              href="/connect#grok-bot"
+              className="group mt-2 flex items-center gap-3 border border-[var(--dir-ink)]! px-4 py-3 text-[var(--dir-ink)] no-underline"
+            >
+              <BotMark className="h-9 w-9 shrink-0" />
+              <span className="flex min-w-0 flex-1 flex-col gap-0.5 sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-4">
+                <span className="text-[16px] font-extrabold group-hover:underline">Use it from Grok&nbsp;Bot&nbsp;/&nbsp;X</span>
+                <span className="text-[15px] text-[var(--dir-muted)]">
+                  Tag @bot under any post. The answer lands in your Grok Bot app.
+                </span>
+              </span>
+              <span className="text-[15px] font-bold whitespace-nowrap" aria-hidden="true">
+                Setup →
               </span>
             </Link>
           </div>
