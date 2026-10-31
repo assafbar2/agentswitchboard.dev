@@ -1,6 +1,7 @@
 // Machine endpoints on the live site: llms.txt, index.md, content negotiation,
 // agents.json, REST API, skill.md, robots, sitemap, .well-known, openapi, MCP.
-// GET only, plus JSON-RPC POSTs to /api/mcp (read-only tools).
+// GET only, plus JSON-RPC POSTs to /api/mcp (read-only tools, and submit_listing
+// only on paths that return before an issue is filed).
 import { test, expect } from './fixtures.mjs';
 
 const UA = 'Mozilla/5.0 asb-e2e (machine endpoint tests)';
@@ -48,14 +49,14 @@ async function callTool(request, name, args = {}) {
 }
 
 test.describe('text docs', () => {
-  test('/llms.txt is plain text, links /api/mcp and lists the three MCP tools', async ({ request }) => {
+  test('/llms.txt is plain text, links /api/mcp and lists the MCP tools', async ({ request }) => {
     const res = await request.get('/llms.txt', { headers: H });
     expect(res.status()).toBe(200);
     expect(res.headers()['content-type']).toMatch(/^text\/plain/);
     const body = await res.text();
     expect(body).toMatch(/^# Agent Switchboard/);
     expect(body).toContain('https://agentswitchboard.dev/api/mcp');
-    expect(body).toContain('Tools: search_agents, get_agent, list_categories');
+    expect(body).toContain('Tools: search_agents, get_agent, list_categories, submit_listing');
   });
 
   test('/llms.txt agent and category counts match the live API', async ({ request }) => {
@@ -261,11 +262,11 @@ test.describe('crawler files', () => {
 });
 
 test.describe('manifests', () => {
-  test('/.well-known/mcp.json names the remote endpoint and the three tools', async ({ request }) => {
+  test('/.well-known/mcp.json names the remote endpoint and the four tools', async ({ request }) => {
     const { res, body } = await getJson(request, '/.well-known/mcp.json');
     expect(res.headers()['content-type']).toMatch(/json/);
     expect(body.remotes).toContainEqual({ type: 'streamable-http', url: 'https://agentswitchboard.dev/api/mcp' });
-    expect(body.tools.map((t) => t.name).sort()).toEqual(['get_agent', 'list_categories', 'search_agents']);
+    expect(body.tools.map((t) => t.name).sort()).toEqual(['get_agent', 'list_categories', 'search_agents', 'submit_listing']);
   });
 
   test('/.well-known/webmcp.json declares the document.modelContext tools', async ({ request }) => {
@@ -305,13 +306,17 @@ test.describe('MCP server /api/mcp', () => {
     expect(body.result.serverInfo.name).toBe('agentswitchboard');
     expect(body.result.serverInfo.version).toBeTruthy();
     expect(body.result.capabilities.tools).toBeTruthy();
+    expect(body.result.instructions).toContain('submit_listing');
   });
 
-  test('tools/list lists search_agents, get_agent and list_categories', async ({ request }) => {
+  test('tools/list lists the three read tools and submit_listing', async ({ request }) => {
     const body = await mcp(request, 'tools/list');
     expect(body.error).toBeUndefined();
     const names = body.result.tools.map((t) => t.name).sort();
-    expect(names).toEqual(['get_agent', 'list_categories', 'search_agents']);
+    expect(names).toEqual(['get_agent', 'list_categories', 'search_agents', 'submit_listing']);
+    for (const t of body.result.tools) {
+      expect(t.annotations?.readOnlyHint, `${t.name} readOnlyHint`).toBe(t.name !== 'submit_listing');
+    }
     const search = body.result.tools.find((t) => t.name === 'search_agents');
     expect(Object.keys(search.inputSchema.properties)).toEqual(
       expect.arrayContaining(['query', 'category', 'access', 'official', 'limit', 'offset'])
@@ -351,6 +356,27 @@ test.describe('MCP server /api/mcp', () => {
     const result = await callTool(request, 'get_agent', { slug: 'definitely-not-a-real-agent-asb-e2e' });
     expect(result.isError).toBe(true);
     expect(result.content[0].text).toContain('No agent with slug');
+  });
+
+  // Never files: an already-listed URL and an invalid one both return before GitHub is called.
+  test('submit_listing refuses an already-listed product without filing', async ({ request }) => {
+    const { body: rest } = await getJson(request, `/api/agents/${REAL_SLUG}`);
+    const result = await callTool(request, 'submit_listing', {
+      name: rest.name,
+      url: rest.homepage,
+      description: 'asb-e2e duplicate check; this must not create an issue.',
+    });
+    expect(result.isError).toBeFalsy();
+    expect(result.structuredContent).toMatchObject({ status: 'already_listed', existingSlug: REAL_SLUG });
+  });
+
+  test('submit_listing validates its input', async ({ request }) => {
+    const body = await mcp(request, 'tools/call', {
+      name: 'submit_listing',
+      arguments: { name: 'x', url: 'not a url', description: 'short' },
+    });
+    const failed = body.error !== undefined || body.result?.isError === true;
+    expect(failed).toBe(true);
   });
 
   test('list_categories matches GET /api/categories', async ({ request }) => {

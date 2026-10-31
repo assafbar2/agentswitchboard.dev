@@ -9,7 +9,7 @@ need no authentication, are CORS-open, and read the same cached catalog**
 | **REST search** | plain HTTP clients, connector platforms | `GET /api/agents` |
 | **REST detail** | one listing by slug | `GET /api/agents/{slug}` |
 | **REST categories** | valid `category` slugs + counts | `GET /api/categories` |
-| **MCP server** | MCP clients (Claude, Cursor, …) | `POST /api/mcp` |
+| **MCP server** | MCP clients (Grok, Claude, ChatGPT, Cursor, …) | `POST /api/mcp` |
 | **WebMCP** | agents viewing the page in a browser | `document.modelContext` |
 | **Catalog dump** | bulk / offline indexing | `GET /agents.json` |
 
@@ -125,8 +125,26 @@ Stdio-only clients: `npx -y mcp-remote https://agentswitchboard.dev/api/mcp`
 | `search_agents` | `query?`, `category?`, `access?` (enum[]), `official?` (boolean), `limit?` (1–50), `offset?` | `{ total, offset, limit, agents[] }` |
 | `get_agent` | `slug` (required) | full agent detail: skills, auth, streaming/push, tags, links |
 | `list_categories` | — | `{ categories: [ { slug, name, description, agentCount } ] }` |
+| `submit_listing` | `name`, `url`, `description` (required); `access?`, `category?`, `contact_email?` | `{ status, message, issueUrl?, existingSlug? }` |
 
-All tools declare an `outputSchema` and return `structuredContent`.
+All tools declare an `outputSchema` and return `structuredContent`. The three
+read tools are annotated `readOnlyHint: true`.
+
+`submit_listing` is the only write. It files a **public GitHub issue** through
+the same path as the [/submit](https://agentswitchboard.dev/submit) form and
+publishes nothing: the maintainer reviews every issue by hand. `status` is
+`filed`, `already_listed` (the URL matches a listing's homepage; nothing is
+filed), `rate_limited`, or `unavailable`. `contact_email` is optional and goes
+privately to the maintainer, never onto the issue. Limits: 5 per caller IP per
+hour, one per URL per day.
+
+**Rate limits.** 300 requests per minute per IP (HTTP 429 with `Retry-After`
+past that) and a 64 KB request body cap. Assistant platforms call from shared
+server IPs, so back off and retry on 429.
+
+**Connecting from an assistant.** Step-by-step for Grok (grok.com connectors),
+Grok Bot, the xAI API `mcp` tool, Claude, and ChatGPT:
+[/connect](https://agentswitchboard.dev/connect).
 Discovery manifest: [`/.well-known/mcp.json`](https://agentswitchboard.dev/.well-known/mcp.json).
 
 ---

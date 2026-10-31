@@ -65,6 +65,8 @@ describe('bucketClient', () => {
     ['ChatGPT-User', UA.chatgptUser, 'chatgpt-openai'],
     ['OpenAI MCP client', UA.openaiMcp, 'chatgpt-openai'],
     ['OAI-SearchBot', UA.oaiSearch, 'chatgpt-openai'],
+    ['Grok connector', 'grok-mcp-client/1.0', 'grok'],
+    ['xAI API', 'xai-mcp/2.1 (+https://x.ai)', 'grok'],
     ['Cursor', UA.cursor, 'cursor'],
     ['Windsurf', UA.windsurf, 'windsurf'],
     ['VS Code', UA.vscode, 'vscode'],
