@@ -1,0 +1,64 @@
+{
+  "id": "copilot-sdk",
+  "name": "Microsoft Copilot SDK",
+  "slug": "copilot-sdk",
+  "description": "Embeds the agent runtime behind Copilot CLI in your own apps, with TypeScript, Python, Go, .NET, Java, and Rust SDKs that handle planning, tool calls, and file edits.",
+  "providerName": "GitHub",
+  "providerUrl": "https://github.com",
+  "agentUrl": "https://github.com/github/copilot-sdk",
+  "categories": [
+    "orchestration",
+    "code-devtools"
+  ],
+  "tags": [
+    "github-copilot",
+    "agent-runtime",
+    "sdk",
+    "byok",
+    "mcp",
+    "typescript",
+    "python",
+    "json-rpc"
+  ],
+  "skills": [
+    {
+      "id": "custom-agents",
+      "name": "Custom Agents",
+      "description": "Defines specialized sub-agents with scoped tools and instructions inside a Copilot session."
+    },
+    {
+      "id": "session-hooks",
+      "name": "Hooks",
+      "description": "Intercepts session behavior to control tool execution, transform results, and handle errors."
+    },
+    {
+      "id": "mcp-servers",
+      "name": "MCP Servers",
+      "description": "Connects Model Context Protocol servers to a session for external tool access."
+    },
+    {
+      "id": "fleet-mode",
+      "name": "Fleet Mode",
+      "description": "Dispatches multiple sub-agents in parallel for large, independent workstreams."
+    },
+    {
+      "id": "byok",
+      "name": "Bring Your Own Key",
+      "description": "Uses your own OpenAI, Microsoft Foundry, or Anthropic API keys instead of GitHub Copilot authentication."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-31T07:10:38.121Z",
+  "updatedAt": "2026-10-31T07:10:38.121Z"
+}

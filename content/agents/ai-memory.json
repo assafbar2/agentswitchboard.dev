@@ -1,0 +1,65 @@
+{
+  "id": "ai-memory",
+  "name": "ai-memory",
+  "slug": "ai-memory",
+  "description": "Gives coding agents self-hosted shared memory and handoffs, so work carries across Claude Code, Codex, Cursor, and other harnesses, machines, and teammates.",
+  "providerName": "Fabio Akita",
+  "providerUrl": "https://akitaonrails.com",
+  "agentUrl": "https://aimemory.sh",
+  "categories": [
+    "memory-state",
+    "code-devtools"
+  ],
+  "tags": [
+    "long-term-memory",
+    "agent-handoffs",
+    "coding-agents",
+    "markdown-wiki",
+    "lifecycle-hooks",
+    "mcp-server",
+    "self-hosted",
+    "rust"
+  ],
+  "skills": [
+    {
+      "id": "cross-agent-handoffs",
+      "name": "Cross-Agent Handoffs",
+      "description": "Passes the next agent a typed handoff, claimed exactly once, saying where work stopped, what failed, and what is still open."
+    },
+    {
+      "id": "session-capture",
+      "name": "Session Capture",
+      "description": "Records prompts, tool calls, and session boundaries through lifecycle hooks and sanitizes them before anything is stored."
+    },
+    {
+      "id": "markdown-wiki",
+      "name": "Markdown Wiki Memory",
+      "description": "Consolidates sessions into git-versioned markdown wiki pages that stay the source of truth."
+    },
+    {
+      "id": "memory-search",
+      "name": "Memory Search",
+      "description": "Searches full-text, entities, links, and optional vectors fused into one ranking."
+    },
+    {
+      "id": "memory-aging",
+      "name": "Memory Aging",
+      "description": "Decays unused memory on a tunable schedule and can compact cold notes to durable facts, with zero LLM calls."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-10-31T07:10:38.165Z",
+  "updatedAt": "2026-10-31T07:10:38.165Z"
+}

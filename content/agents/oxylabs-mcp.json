@@ -1,0 +1,63 @@
+{
+  "id": "oxylabs-mcp",
+  "name": "Oxylabs MCP",
+  "slug": "oxylabs-mcp",
+  "description": "Lets AI agents scrape any URL with JavaScript rendering and geo-targeting, pull Google and Amazon results, and crawl sites with AI extraction, via the official Oxylabs MCP server.",
+  "providerName": "Oxylabs",
+  "providerUrl": "https://oxylabs.io",
+  "agentUrl": "https://github.com/oxylabs/oxylabs-mcp",
+  "categories": [
+    "research",
+    "browser-computer"
+  ],
+  "tags": [
+    "web-scraping",
+    "serp",
+    "crawling",
+    "data-extraction",
+    "geo-targeting",
+    "browser-automation",
+    "remote-mcp",
+    "python"
+  ],
+  "skills": [
+    {
+      "id": "universal-scraper",
+      "name": "Universal Scraper",
+      "description": "Scrapes any URL with optional JavaScript rendering and geo-targeting, returning Markdown, HTML, or extracted links."
+    },
+    {
+      "id": "google-search-scraper",
+      "name": "Google Search Scraper",
+      "description": "Extracts Google Search results for a query, with optional parsing of the results page into structured JSON."
+    },
+    {
+      "id": "amazon-scrapers",
+      "name": "Amazon Scrapers",
+      "description": "Scrapes Amazon search result pages and individual product pages, with optional parsing into structured JSON."
+    },
+    {
+      "id": "ai-crawler",
+      "name": "AI Crawler",
+      "description": "Crawls a website from a starting URL based on a prompt and collects the requested data across multiple pages."
+    },
+    {
+      "id": "ai-browser-agent",
+      "name": "AI Browser Agent",
+      "description": "Controls a real browser from a prompt, navigating, clicking, and filling forms, then returns the result of the task."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-31T07:10:38.212Z",
+  "updatedAt": "2026-10-31T07:10:38.212Z"
+}

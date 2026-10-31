@@ -1,0 +1,63 @@
+{
+  "id": "cloudflare-computer",
+  "name": "Cloudflare Computer",
+  "slug": "cloudflare-computer",
+  "description": "Gives agents on Cloudflare Workers a durable SQLite-backed filesystem in a Durable Object, with shell, JavaScript, and container execution backends, git, and AI SDK tools.",
+  "providerName": "Cloudflare",
+  "providerUrl": "https://cloudflare.com",
+  "agentUrl": "https://github.com/cloudflare/computer",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "cloudflare-workers",
+    "durable-objects",
+    "virtual-filesystem",
+    "sqlite",
+    "code-execution",
+    "dynamic-workers",
+    "typescript-sdk"
+  ],
+  "skills": [
+    {
+      "id": "workspace-filesystem",
+      "name": "Workspace Filesystem",
+      "description": "Reads, writes, lists, greps, and removes files in a virtual filesystem stored in Durable Object SQLite."
+    },
+    {
+      "id": "runtime-exec",
+      "name": "Runtime Exec",
+      "description": "Runs shell commands or ECMAScript modules against the workspace through container, Worker shell, or Worker JavaScript backends."
+    },
+    {
+      "id": "agent-tools",
+      "name": "Tools for Agents",
+      "description": "Exposes ready-made AI SDK tools such as read, grep, write, edit, delete, and exec over a workspace."
+    },
+    {
+      "id": "git-client",
+      "name": "Git",
+      "description": "Adds an opt-in typed git client backed by isomorphic-git that works on the workspace files."
+    },
+    {
+      "id": "interrupt-resume",
+      "name": "Interrupt and Resume",
+      "description": "Restarts or replays interrupted isolate JavaScript and pauses runs for answers with ctx.interrupt() (experimental)."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-31T07:10:38.123Z",
+  "updatedAt": "2026-10-31T07:10:38.123Z"
+}

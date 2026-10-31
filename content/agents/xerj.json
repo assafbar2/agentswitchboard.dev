@@ -1,0 +1,66 @@
+{
+  "id": "xerj",
+  "name": "XERJ",
+  "slug": "xerj",
+  "description": "Indexes code, docs, logs, and PDFs locally so coding agents can run cited full-text, vector, and hybrid search over MCP, a CLI, or an Elasticsearch-compatible API.",
+  "providerName": "XERJ",
+  "providerUrl": "https://xerj.org",
+  "agentUrl": "https://xerj.org",
+  "categories": [
+    "code-devtools",
+    "vector-databases",
+    "memory-state"
+  ],
+  "tags": [
+    "local-search",
+    "code-search",
+    "hybrid-search",
+    "elasticsearch-compatible",
+    "mcp-server",
+    "agent-memory",
+    "rust",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "autoindex",
+      "name": "Zero-Config Autoindex",
+      "description": "Turns a folder of code, docs, logs, JSONL/CSV, PDFs, and office files into typed, queryable indices."
+    },
+    {
+      "id": "hybrid-search",
+      "name": "Full-Text, Vector, and Hybrid Search",
+      "description": "Runs BM25, kNN, semantic, and fused hybrid queries; the default embedder is lexical unless neural mode is turned on."
+    },
+    {
+      "id": "go-to-definition",
+      "name": "Go-to-Definition",
+      "description": "Finds local symbol definitions with file, line, and signature through xerj def or the xerj_def tool."
+    },
+    {
+      "id": "agent-memory",
+      "name": "Agent Memory",
+      "description": "Stores durable agent memory in namespaces and recalls it by text, meaning, or vector."
+    },
+    {
+      "id": "reference-coding",
+      "name": "Reference Coding",
+      "description": "Indexes the open-source repos closest to a task so an agent can search how they solved it before writing code."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-10-31T07:10:38.164Z",
+  "updatedAt": "2026-10-31T07:10:38.164Z"
+}

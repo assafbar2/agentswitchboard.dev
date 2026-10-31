@@ -3,9 +3,9 @@
   "name": "Airtable MCP",
   "slug": "airtable-mcp",
   "description": "Manages Airtable as a database and operations layer for agents — create bases and schema, work with records, and share structured data across teams.",
-  "providerName": "Smithery",
-  "providerUrl": "https://smithery.ai",
-  "agentUrl": "https://smithery.ai/server/airtable",
+  "providerName": "Airtable",
+  "providerUrl": "https://airtable.com",
+  "agentUrl": "https://airtable.com/developers/agents/mcp/getting-started",
   "categories": [
     "data-analytics"
   ],
@@ -47,5 +47,5 @@
     "mcp"
   ],
   "createdAt": "2026-06-07T17:51:27.702Z",
-  "updatedAt": "2026-06-07T17:51:27.702Z"
+  "updatedAt": "2026-10-31T07:10:44.958Z"
 }

@@ -1,0 +1,64 @@
+{
+  "id": "vercel-ai-gateway",
+  "name": "Vercel AI Gateway",
+  "slug": "vercel-ai-gateway",
+  "description": "Routes model calls from any app or coding agent across providers with one API key, adding fallbacks, request logs, spend budgets, and BYOK, via the AI SDK or OpenAI-compatible APIs.",
+  "providerName": "Vercel",
+  "providerUrl": "https://vercel.com",
+  "agentUrl": "https://vercel.com/docs/ai-gateway",
+  "categories": [
+    "infrastructure",
+    "language"
+  ],
+  "tags": [
+    "llm-gateway",
+    "model-routing",
+    "provider-fallbacks",
+    "byok",
+    "spend-controls",
+    "openai-compatible",
+    "ai-sdk",
+    "llm-observability"
+  ],
+  "skills": [
+    {
+      "id": "provider-failover",
+      "name": "Provider Failover",
+      "description": "Routes a model across healthy providers with ordered provider and model fallbacks."
+    },
+    {
+      "id": "request-logs",
+      "name": "Request Logging",
+      "description": "Records each request's model, provider attempts, latency, token usage, status, and cost."
+    },
+    {
+      "id": "spend-budgets",
+      "name": "Spending Controls",
+      "description": "Sets budgets for a team, project, API key, or team member and rejects new requests once a budget is exceeded."
+    },
+    {
+      "id": "byok",
+      "name": "Bring Your Own Key",
+      "description": "Uses your own provider accounts and credentials through the gateway with no markup on token prices."
+    },
+    {
+      "id": "multimodal-models",
+      "name": "Modalities",
+      "description": "Serves text, image, and video generation, speech, transcription, realtime, embeddings, and reranking models."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-31T07:10:38.135Z",
+  "updatedAt": "2026-10-31T07:10:38.135Z"
+}

@@ -1,5 +1,402 @@
 [
   {
+    "action": "updated",
+    "slug": "ibm-watsonx-ai",
+    "name": "IBM watsonx.ai",
+    "note": "providerUrl updated",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "updated",
+    "slug": "ibm-bob",
+    "name": "IBM Bob",
+    "note": "providerUrl updated",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "updated",
+    "slug": "bigquery",
+    "name": "BigQuery",
+    "note": "accessMethods updated",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "updated",
+    "slug": "airtable-mcp",
+    "name": "Airtable MCP",
+    "note": "providerUrl updated",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "updated",
+    "slug": "airtable-mcp",
+    "name": "Airtable MCP",
+    "note": "providerName updated",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "updated",
+    "slug": "airtable-mcp",
+    "name": "Airtable MCP",
+    "note": "agentUrl updated",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "updated",
+    "slug": "browser-use",
+    "name": "Browser Use",
+    "note": "accessMethods updated",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "ifttt",
+    "name": "IFTTT MCP",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "nimble",
+    "name": "Nimble",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "arcjet",
+    "name": "Arcjet",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "heygen",
+    "name": "HeyGen MCP and API",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "planetscale-mcp",
+    "name": "PlanetScale MCP",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "qase-mcp",
+    "name": "Qase MCP",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "oxylabs-mcp",
+    "name": "Oxylabs MCP",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "svelte-mcp",
+    "name": "Svelte MCP",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "mintlify-autopilot",
+    "name": "Mintlify Autopilot",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "resend-inboxes",
+    "name": "Resend Inboxes",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "sarvam-ai",
+    "name": "Sarvam AI API",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "runpod",
+    "name": "Runpod",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "luma-ai-api",
+    "name": "Luma AI API",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "writer",
+    "name": "WRITER",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "superhuman-go",
+    "name": "Superhuman Go",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "stack-overflow-for-agents",
+    "name": "Stack Overflow for Agents",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "prisma-mcp",
+    "name": "Prisma MCP",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "paddle-mcp",
+    "name": "Paddle MCP",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "workos-pipes",
+    "name": "WorkOS Pipes",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "pi-pod",
+    "name": "pi pod",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "corgi",
+    "name": "Corgi",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "openqodex",
+    "name": "OpenQodex",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "talorys",
+    "name": "Talorys",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "its-a-plan",
+    "name": "It's a Plan",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "layerfs",
+    "name": "LayerFS",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "somark-oxr",
+    "name": "OXR (SoMark)",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "radar",
+    "name": "Radar",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "iphone-use",
+    "name": "iPhone Use",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "entire",
+    "name": "Entire",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "oneuptime",
+    "name": "OneUptime",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "presenton",
+    "name": "Presenton",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "ekko-studio",
+    "name": "Ekko Studio",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "concat",
+    "name": "Concat",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "ai-memory",
+    "name": "ai-memory",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "xerj",
+    "name": "XERJ",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "mural-mcp-server",
+    "name": "Mural MCP Server",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "sap-cap-mcp",
+    "name": "SAP CAP MCP server",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "sap-ui5-mcp",
+    "name": "SAP UI5 MCP server",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "jfrog-mcp",
+    "name": "JFrog MCP Server",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "new-relic-mcp",
+    "name": "New Relic MCP",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "box-mcp",
+    "name": "Box MCP server",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "nuget-mcp-server",
+    "name": "NuGet MCP Server",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "microsoft-dataverse-mcp",
+    "name": "Microsoft Dataverse MCP",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "vercel-agent-harnesses",
+    "name": "Vercel Agent Harnesses",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "cursor-agent-sdk",
+    "name": "Cursor Agent SDK",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "android-cli",
+    "name": "Android CLI",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "xcode-mcp",
+    "name": "Xcode MCP",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "cerebras-inference",
+    "name": "Cerebras Inference",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "cloudflare-ai-gateway",
+    "name": "Cloudflare AI Gateway",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "cloudflare-workers-ai",
+    "name": "Cloudflare Workers AI",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "vercel-ai-gateway",
+    "name": "Vercel AI Gateway",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "hugging-face-inference-providers",
+    "name": "Hugging Face Inference Providers",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "voyage-ai",
+    "name": "Voyage AI (MongoDB)",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "google-cloud-mcp",
+    "name": "Google Cloud MCP servers",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "understand-anything",
+    "name": "Understand-Anything",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "harness2",
+    "name": "Harness²",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "cloudflare-computer",
+    "name": "Cloudflare Computer",
+    "date": "2026-10-31"
+  },
+  {
+    "action": "added",
+    "slug": "copilot-sdk",
+    "name": "Microsoft Copilot SDK",
+    "date": "2026-10-31"
+  },
+  {
     "action": "added",
     "slug": "barnir-hired",
     "name": "Barnir Hired",

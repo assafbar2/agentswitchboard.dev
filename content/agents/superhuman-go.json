@@ -1,0 +1,65 @@
+{
+  "id": "superhuman-go",
+  "name": "Superhuman Go",
+  "slug": "superhuman-go",
+  "description": "Runs a cross-app assistant with no-code custom agents, an Agent Store, and MCP connectors; developers extend it with the Plugins SDK and connect AI clients via Superhuman Mail MCP.",
+  "providerName": "Superhuman",
+  "providerUrl": "https://superhuman.com",
+  "agentUrl": "https://superhuman.com/developers",
+  "categories": [
+    "productivity",
+    "orchestration"
+  ],
+  "tags": [
+    "superhuman",
+    "grammarly",
+    "agent-store",
+    "plugins-sdk",
+    "email-mcp",
+    "connectors",
+    "no-code-agents"
+  ],
+  "skills": [
+    {
+      "id": "custom-agents",
+      "name": "Custom Agents",
+      "description": "Builds agents in the Go agent builder that run on a schedule, while the user types, or when an email or Slack message arrives."
+    },
+    {
+      "id": "agent-store",
+      "name": "Agent Store",
+      "description": "Adds ready-made agents from Superhuman and partners for tasks such as schoolwork, sales, and accounting."
+    },
+    {
+      "id": "mcp-connectors",
+      "name": "MCP Connectors",
+      "description": "Grounds Go's answers and actions in the user's apps through pre-built or custom MCP connectors."
+    },
+    {
+      "id": "plugins-sdk",
+      "name": "Plugins SDK",
+      "description": "Builds connectors with formulas, actions, indexed sync tables, and skills that Go's LLM can call, using @superhuman/plugins-sdk."
+    },
+    {
+      "id": "mail-mcp",
+      "name": "Superhuman Mail MCP",
+      "description": "Lets Claude, ChatGPT, and other MCP clients search, draft, and send email across connected Gmail and Outlook inboxes, with approval before sending."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "browser-extension"
+  ],
+  "createdAt": "2026-10-31T07:10:38.198Z",
+  "updatedAt": "2026-10-31T07:10:38.198Z"
+}

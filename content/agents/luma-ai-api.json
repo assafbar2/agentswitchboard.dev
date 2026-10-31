@@ -1,0 +1,62 @@
+{
+  "id": "luma-ai-api",
+  "name": "Luma AI API",
+  "slug": "luma-ai-api",
+  "description": "Generates video with Luma's Ray 2 models and images with Photon through the Dream Machine API, with keyframes, extend, reframe, and modify, for apps using REST, Python, or JS SDKs.",
+  "providerName": "Luma AI",
+  "providerUrl": "https://lumalabs.ai",
+  "agentUrl": "https://docs.lumalabs.ai",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "luma",
+    "dream-machine",
+    "video-generation",
+    "image-generation",
+    "text-to-video",
+    "ray-2",
+    "photon"
+  ],
+  "skills": [
+    {
+      "id": "ray-video-generation",
+      "name": "Ray 2 Video Generation",
+      "description": "Generates video from a text prompt or from start and end keyframes with Ray 2 or Ray 2 Flash, with loop and aspect ratio options."
+    },
+    {
+      "id": "extend-video",
+      "name": "Extend and Interpolate",
+      "description": "Extends a generated video forward or in reverse, or interpolates between two videos."
+    },
+    {
+      "id": "photon-image-generation",
+      "name": "Photon Image Generation",
+      "description": "Generates images with Photon or Photon Flash, guided by image, style, or character references."
+    },
+    {
+      "id": "modify-video",
+      "name": "Modify Video",
+      "description": "Applies style transfer and prompt-based edits to an existing video."
+    },
+    {
+      "id": "reframe",
+      "name": "Reframe",
+      "description": "Changes the aspect ratio of an existing image or video generation by its ID."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-31T07:10:38.201Z",
+  "updatedAt": "2026-10-31T07:10:38.201Z"
+}

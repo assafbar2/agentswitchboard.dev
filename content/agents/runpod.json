@@ -1,0 +1,64 @@
+{
+  "id": "runpod",
+  "name": "Runpod",
+  "slug": "runpod",
+  "description": "Runs AI workloads on Runpod GPUs with autoscaling serverless endpoints, on-demand Pods, and network volumes, managed via REST API, the runpod Python SDK and rp CLI, or a hosted MCP.",
+  "providerName": "Runpod",
+  "providerUrl": "https://www.runpod.io",
+  "agentUrl": "https://docs.runpod.io/",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "runpod",
+    "gpu-cloud",
+    "serverless-gpu",
+    "gpu-pods",
+    "inference-endpoints",
+    "network-volumes",
+    "python-sdk"
+  ],
+  "skills": [
+    {
+      "id": "serverless-endpoints",
+      "name": "Serverless Endpoints",
+      "description": "Deploys worker images from Docker Hub or GitHub as pay-as-you-go endpoints with queue-based or load-balanced scaling."
+    },
+    {
+      "id": "pods",
+      "name": "Pods",
+      "description": "Creates, starts, stops, and terminates on-demand GPU Pods from the console, the REST API, or the rp CLI."
+    },
+    {
+      "id": "sdk-apps",
+      "name": "Runpod SDK Apps",
+      "description": "Runs local Python functions on Runpod GPUs and deploys them as endpoints with rp flash dev and rp flash deploy."
+    },
+    {
+      "id": "network-volumes",
+      "name": "Network Volumes",
+      "description": "Attaches persistent network volumes to Pods and endpoints and manages their files through an S3-compatible API."
+    },
+    {
+      "id": "public-endpoints",
+      "name": "Public Endpoints",
+      "description": "Calls pre-deployed image, video, audio, and text models with an API key and no deployment of your own."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-10-31T07:10:38.203Z",
+  "updatedAt": "2026-10-31T07:10:38.203Z"
+}

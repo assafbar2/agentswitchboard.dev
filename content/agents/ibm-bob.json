@@ -4,7 +4,7 @@
   "slug": "ibm-bob",
   "description": "Assists enterprise developers with an agentic IDE and the Bob Shell CLI that plan, write, refactor and document code, run commands, and plug into CI/CD pipelines.",
   "providerName": "IBM",
-  "providerUrl": "https://www.ibm.com",
+  "providerUrl": "https://www.ibm.com/us-en",
   "agentUrl": "https://bob.ibm.com",
   "categories": [
     "code-devtools",
@@ -53,5 +53,5 @@
     "cli"
   ],
   "createdAt": "2026-10-17T09:03:45.927Z",
-  "updatedAt": "2026-10-17T09:03:45.927Z"
+  "updatedAt": "2026-10-31T07:10:45.609Z"
 }

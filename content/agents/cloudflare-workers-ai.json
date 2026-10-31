@@ -1,0 +1,64 @@
+{
+  "id": "cloudflare-workers-ai",
+  "name": "Cloudflare Workers AI",
+  "slug": "cloudflare-workers-ai",
+  "description": "Runs open-source models on serverless GPUs across Cloudflare's network from Workers, Pages, or the REST API, for text generation, embeddings, speech, and image tasks.",
+  "providerName": "Cloudflare",
+  "providerUrl": "https://cloudflare.com",
+  "agentUrl": "https://developers.cloudflare.com/workers-ai/",
+  "categories": [
+    "infrastructure",
+    "language"
+  ],
+  "tags": [
+    "cloudflare-workers",
+    "serverless-gpu",
+    "open-models",
+    "inference-api",
+    "text-embeddings",
+    "openai-compatible",
+    "function-calling",
+    "batch-inference"
+  ],
+  "skills": [
+    {
+      "id": "text-generation",
+      "name": "Text Generation",
+      "description": "Generates text with open-source LLMs from the Workers AI model catalog."
+    },
+    {
+      "id": "text-embeddings",
+      "name": "Text Embeddings",
+      "description": "Creates text embeddings, including through an OpenAI-compatible /v1/embeddings endpoint."
+    },
+    {
+      "id": "function-calling",
+      "name": "Function Calling",
+      "description": "Lets models return structured tool calls so your code can execute functions or call external APIs."
+    },
+    {
+      "id": "batch-api",
+      "name": "Asynchronous Batch API",
+      "description": "Queues a collection of inference requests in one call and returns results later by request ID."
+    },
+    {
+      "id": "openai-compatible-endpoints",
+      "name": "OpenAI-Compatible Endpoints",
+      "description": "Accepts OpenAI SDK requests for Chat Completions, Embeddings, and Responses on supported GPT-OSS models."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-31T07:10:38.137Z",
+  "updatedAt": "2026-10-31T07:10:38.137Z"
+}

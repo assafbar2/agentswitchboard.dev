@@ -1,0 +1,62 @@
+{
+  "id": "workos-pipes",
+  "name": "WorkOS Pipes",
+  "slug": "workos-pipes",
+  "description": "Manages OAuth connections and auto-refreshed tokens for users' GitHub, Slack, Salesforce and other accounts, so SaaS apps and their agents can act in those apps on users' behalf.",
+  "providerName": "WorkOS",
+  "providerUrl": "https://workos.com",
+  "agentUrl": "https://workos.com/pipes",
+  "categories": [
+    "infrastructure",
+    "security"
+  ],
+  "tags": [
+    "oauth",
+    "integrations",
+    "token-management",
+    "credential-vault",
+    "connected-accounts",
+    "saas"
+  ],
+  "skills": [
+    {
+      "id": "access-tokens",
+      "name": "Access tokens",
+      "description": "Returns a user's current provider access token, refreshed automatically, with any missing scopes listed."
+    },
+    {
+      "id": "relay",
+      "name": "Relay",
+      "description": "Calls the provider API on your behalf and returns its response, so the user's token never enters your environment."
+    },
+    {
+      "id": "connection-sharing",
+      "name": "Connection sharing",
+      "description": "Lets an organization admin connect a provider once and share it with every active member."
+    },
+    {
+      "id": "custom-providers",
+      "name": "Custom providers",
+      "description": "Defines providers beyond the built-in list, using OAuth, API keys or client credentials."
+    },
+    {
+      "id": "pipes-widget",
+      "name": "Pipes widget",
+      "description": "Provides a pre-built UI where users connect and manage their third-party accounts."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-31T07:10:38.191Z",
+  "updatedAt": "2026-10-31T07:10:38.191Z"
+}

@@ -1,0 +1,64 @@
+{
+  "id": "new-relic-mcp",
+  "name": "New Relic MCP",
+  "slug": "new-relic-mcp",
+  "description": "Lets coding agents query New Relic observability data in plain English, check alerts, and analyze logs, errors, and deployments, for on-call and performance engineers.",
+  "providerName": "New Relic",
+  "providerUrl": "https://newrelic.com",
+  "agentUrl": "https://docs.newrelic.com/docs/agentic-ai/mcp/overview/",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "observability",
+    "nrql",
+    "apm",
+    "alerting",
+    "incident-response",
+    "remote-mcp",
+    "official-mcp",
+    "new-relic"
+  ],
+  "skills": [
+    {
+      "id": "nrql-queries",
+      "name": "Query With NRQL",
+      "description": "Executes NRQL queries against NRDB, or converts a plain-English request into NRQL and runs it."
+    },
+    {
+      "id": "alerts-and-issues",
+      "name": "Check Alerts And Issues",
+      "description": "Lists alert policies, conditions, open issues, and alert events, and reports synthetic monitor results and statistics."
+    },
+    {
+      "id": "incident-analysis",
+      "name": "Analyze Incidents And Deployments",
+      "description": "Generates alert insights and user-impact reports for an issue and analyzes a deployment's performance impact (OAuth only)."
+    },
+    {
+      "id": "performance-and-logs",
+      "name": "Analyze Performance And Logs",
+      "description": "Analyzes golden metrics, transactions, threads, and application logs to find slow transactions, errors, and anomalous behavior."
+    },
+    {
+      "id": "instrumentation-gaps",
+      "name": "Find Instrumentation Gaps",
+      "description": "Checks project files for missing New Relic config, APM agent, Browser agent, and Change Tracking setup."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-31T07:10:38.154Z",
+  "updatedAt": "2026-10-31T07:10:38.154Z"
+}

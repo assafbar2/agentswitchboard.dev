@@ -1,0 +1,61 @@
+{
+  "id": "qase-mcp",
+  "name": "Qase MCP",
+  "slug": "qase-mcp",
+  "description": "Lets AI assistants read and write Qase test cases, runs, results, defects and suites, report CI results, and search with QQL, for QA teams using Qase test management.",
+  "providerName": "Qase",
+  "providerUrl": "https://www.qase.io",
+  "agentUrl": "https://qase.io",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "test-management",
+    "qa",
+    "test-cases",
+    "defect-tracking",
+    "ci-reporting",
+    "qql",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "test-case-management",
+      "name": "Test Case Management",
+      "description": "Creates, updates, and deletes test cases, singly or up to 100 at once, along with suites, shared steps, and milestones."
+    },
+    {
+      "id": "ci-result-reporting",
+      "name": "CI Result Reporting",
+      "description": "Reports CI test results to a Qase project in one composite call, recording a pass or fail outcome for each test case."
+    },
+    {
+      "id": "defect-triage",
+      "name": "Defect Triage",
+      "description": "Creates a defect for a failed test result in one composite call, linking it to the run where the failure happened."
+    },
+    {
+      "id": "qql-search",
+      "name": "QQL Search",
+      "description": "Searches cases, runs, results, defects, and plans with Qase Query Language, such as all failed results from the last week."
+    },
+    {
+      "id": "project-context",
+      "name": "Project Context",
+      "description": "Returns a project's full structure in one call: suites, milestones, environments, users, and custom fields."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-31T07:10:38.213Z",
+  "updatedAt": "2026-10-31T07:10:38.213Z"
+}

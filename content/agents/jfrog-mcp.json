@@ -1,0 +1,60 @@
+{
+  "id": "jfrog-mcp",
+  "name": "JFrog MCP Server",
+  "slug": "jfrog-mcp",
+  "description": "Connects AI coding assistants to the JFrog Platform to manage projects and Artifactory repositories and to check package vulnerability and curation status.",
+  "providerName": "JFrog",
+  "providerUrl": "https://jfrog.com",
+  "agentUrl": "https://docs.jfrog.com/integrations/docs/jfrog-mcp-server",
+  "categories": [
+    "code-devtools",
+    "security"
+  ],
+  "tags": [
+    "artifactory",
+    "package-security",
+    "software-supply-chain",
+    "curation",
+    "xray",
+    "jfrog-cli",
+    "remote-mcp",
+    "official-mcp"
+  ],
+  "skills": [
+    {
+      "id": "projects-and-repositories",
+      "name": "Manage Projects And Repositories",
+      "description": "Creates and views JFrog projects, Artifactory repositories, roles, users, and groups."
+    },
+    {
+      "id": "package-vulnerabilities",
+      "name": "Check Package Vulnerabilities",
+      "description": "Looks up package versions and their vulnerability status, and returns Xray security summaries and violations for artifacts."
+    },
+    {
+      "id": "curation-compliance",
+      "name": "Review Curation Compliance",
+      "description": "Checks remote packages against curation policies, queries audit events, and creates or decides waiver requests."
+    },
+    {
+      "id": "inspect-builds",
+      "name": "Inspect Builds",
+      "description": "Lists Artifactory builds and build runs and returns detailed build information."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-31T07:10:38.156Z",
+  "updatedAt": "2026-10-31T07:10:38.156Z"
+}

@@ -1,0 +1,62 @@
+{
+  "id": "android-cli",
+  "name": "Android CLI",
+  "slug": "android-cli",
+  "description": "Gives coding agents and scripts one command-line entry point to set up the Android SDK, scaffold, build, and run apps, manage devices, and profile performance.",
+  "providerName": "Google",
+  "providerUrl": "https://developer.android.com",
+  "agentUrl": "https://developer.android.com/tools/agents/android-cli",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "android",
+    "android-sdk",
+    "jetpack-compose",
+    "android-emulator",
+    "app-profiling",
+    "crashlytics",
+    "google"
+  ],
+  "skills": [
+    {
+      "id": "setup-and-scaffold",
+      "name": "Set Up SDK And Scaffold Projects",
+      "description": "Automates Android SDK and environment setup and scaffolds new projects from templates."
+    },
+    {
+      "id": "build-and-run",
+      "name": "Build And Run On Devices",
+      "description": "Builds, installs, and runs apps on connected devices or emulators, manages virtual devices, and inspects live screens and UI hierarchies."
+    },
+    {
+      "id": "render-compose-previews",
+      "name": "Render Compose Previews",
+      "description": "Renders Jetpack Compose previews to images on your machine, with no device or Android Studio required."
+    },
+    {
+      "id": "profile-and-analyze",
+      "name": "Profile And Analyze Apps",
+      "description": "Records system traces and heap dumps, and reports APK and app bundle sizes, R8 optimization metrics, and keep rule warnings."
+    },
+    {
+      "id": "investigate-crashes",
+      "name": "Investigate Field Crashes",
+      "description": "Investigates crashes, ANRs, and non-fatal issues that Firebase Crashlytics reports for your app, including out-of-memory heap dumps."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-31T07:10:38.144Z",
+  "updatedAt": "2026-10-31T07:10:38.144Z"
+}

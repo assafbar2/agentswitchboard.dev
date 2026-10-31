@@ -1,0 +1,64 @@
+{
+  "id": "radar",
+  "name": "Radar",
+  "slug": "radar",
+  "description": "Shows what is broken in a Kubernetes cluster and why, and gives coding agents the same topology, events, changes and logs through a built-in MCP server. For platform and SRE teams.",
+  "providerName": "Skyhook",
+  "providerUrl": "https://skyhook.io",
+  "agentUrl": "https://radarhq.io",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "kubernetes",
+    "kubectl-plugin",
+    "cluster-debugging",
+    "mcp-server",
+    "helm",
+    "gitops",
+    "sre"
+  ],
+  "skills": [
+    {
+      "id": "live-issues",
+      "name": "Live issues",
+      "description": "Ranks live operational failures: failing workloads, stuck Helm releases, dangling references and expiring certificates."
+    },
+    {
+      "id": "workload-diagnose",
+      "name": "Diagnose",
+      "description": "Collects a bounded evidence bundle for one workload, GitOps reconciler or network entry, with optional reachability probes."
+    },
+    {
+      "id": "helm-releases",
+      "name": "Helm releases",
+      "description": "Lists and inspects Helm releases with history, hooks, redacted values and revision diffs."
+    },
+    {
+      "id": "prometheus-query",
+      "name": "Prometheus queries",
+      "description": "Runs PromQL against the cluster's Prometheus and discovers metric names and alerting rules."
+    },
+    {
+      "id": "ai-investigations",
+      "name": "AI investigations",
+      "description": "Runs an investigation with your local Claude Code, Codex, Cursor or OpenCode CLI and ends on a findings page with evidence."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-10-31T07:10:38.178Z",
+  "updatedAt": "2026-10-31T07:10:38.178Z"
+}
