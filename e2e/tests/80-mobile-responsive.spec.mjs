@@ -152,7 +152,7 @@ test.describe('mobile 375x812', () => {
       'text-only switch': page.getByRole('complementary', { name: 'For AI agents' }).getByRole('button', { name: /Switch to text-only view/ }),
       'menu toggle': page.getByRole('button', { name: 'Toggle menu' }),
       'theme toggle': page.getByRole('button', { name: /Switch to (dark|light) mode/ }),
-      'search box': page.getByRole('searchbox', { name: 'Look it up' }),
+      'search box': page.getByRole('combobox', { name: 'Look it up' }),
       'Find button': page.getByRole('button', { name: 'Find' }),
       'fetch /llms.txt': page.getByRole('complementary', { name: 'For AI agents' }).getByRole('link', { name: '/llms.txt' }),
     };
@@ -177,7 +177,7 @@ test.describe('mobile 375x812', () => {
 
   test('homepage search is usable on mobile and lands on browse results', async ({ page }) => {
     await open(page, '/');
-    const box = page.getByRole('searchbox', { name: 'Look it up' });
+    const box = page.getByRole('combobox', { name: 'Look it up' });
     const b = await box.boundingBox();
     expect(b.width, 'search box width').toBeGreaterThanOrEqual(200);
     await box.tap();
