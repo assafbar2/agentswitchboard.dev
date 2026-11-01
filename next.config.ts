@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
   // Static analysis can't see dynamic readdir calls, so include the content
   // dir in every route's trace (agents.json, /api/mcp, dynamic fallbacks).
   outputFileTracingIncludes: {
-    "/**": ["./content/**"],
+    "/**": ["./content/**", "./CHANGELOG.md"],
   },
   // `/` answers as HTML or Markdown depending on Accept (see proxy.ts).
   // The proxy sets Vary too, but the renderer overwrites it on the HTML

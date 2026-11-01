@@ -29,6 +29,15 @@ export function truncate(text: string, maxLength: number): string {
   return (cut || head.trimEnd()) + '…';
 }
 
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+/** "2026-11-01" → "Nov 1, 2026". Reads the date as written, with no timezone shift. */
+export function formatDay(isoDate: string): string {
+  const [y, m, d] = isoDate.slice(0, 10).split('-').map(Number);
+  if (!y || !m || !d) return isoDate;
+  return `${MONTHS[m - 1]} ${d}, ${y}`;
+}
+
 export function authTypeLabel(type: string): string {
   const labels: Record<string, string> = {
     apiKey: 'API Key',
