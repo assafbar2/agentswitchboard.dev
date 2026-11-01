@@ -1,5 +1,13 @@
 import { describe, it, expect } from 'vitest';
-import { getRelatedAgents, agentKeywords, MAX_RELATED } from '@/lib/related';
+import {
+  agentKeywords,
+  alternativesPage,
+  getAlternatives,
+  getRelatedAgents,
+  MAX_ALTERNATIVES,
+  MAX_RELATED,
+  MIN_ALTERNATIVES,
+} from '@/lib/related';
 import { getEveryAgent } from '@/lib/catalog';
 import type { Agent, Category } from '@/lib/types';
 
@@ -148,6 +156,115 @@ describe('agentKeywords', () => {
     expect(kw.has('web')).toBe(true);
     expect(kw.has('web search')).toBe(true);
   });
+
+  it('reads every spelling of real-time as one keyword', () => {
+    expect([...keywordsOf('real-time')]).toEqual(['realtime']);
+    expect([...keywordsOf('Real Time')]).toEqual(['realtime']);
+    expect(overlaps(keywordsOf('realtime-voice'), keywordsOf('real-time-audio'))).toBe(true);
+  });
+
+  it('reads traits and platforms as one keyword, without packaging words', () => {
+    expect([...keywordsOf('human-in-the-loop')]).toEqual(['hitl']);
+    expect([...keywordsOf('human-in-loop')]).toEqual(['hitl']);
+    expect([...keywordsOf('no-code-agents')]).toEqual(['nocode']);
+    expect([...keywordsOf('google-cloud')]).toEqual(['gcp']);
+    expect([...keywordsOf('claude-code-plugin')]).toEqual(['claudecode']);
+    expect([...keywordsOf('vs-code-extension')]).toEqual(['vscode']);
+    expect([...keywordsOf('end-to-end-encryption')]).toEqual(['e2ee']);
+  });
+
+  it('keeps multi-agent, though both its words are stopwords', () => {
+    expect([...keywordsOf('multi-agent')]).toEqual(['multiagent']);
+    expect(overlaps(keywordsOf('multi-agent-systems'), keywordsOf('multi-agent'))).toBe(true);
+  });
+
+  it('folds -es plurals, but not words whose singular ends in e', () => {
+    expect([...keywordsOf('sandboxes', 'branches', 'harnesses')]).toEqual(['sandbox', 'branch', 'harness']);
+    expect([...keywordsOf('caches')]).toEqual([...keywordsOf('cache')]);
+  });
+
+  it('ignores licence, funding and portability tags', () => {
+    const kw = keywordsOf('mit-license', 'apache-2-0', 'yc-backed', 'yc-s26', 'y-combinator', 'framework-agnostic');
+    expect([...kw]).toEqual(['framework']);
+  });
+});
+
+describe('getAlternatives', () => {
+  const pgPeers = Array.from({ length: 10 }, (_, i) =>
+    makeAgent(`pg-${i}`, {
+      categories: [cat('data-analytics')],
+      tags: ['postgresql', 'index-tuning', 'database-health'],
+      accessMethods: ['cli', 'mcp'],
+    })
+  );
+
+  it('says what each alternative shares: access methods, and keywords as the listing writes them', () => {
+    const [first] = getAlternatives(postgresPro, [...catalog, ...pgPeers]);
+    expect(first.access).toEqual(['mcp']);
+    // "postgres" from postgres-access, not the stem "postgre"; "index tuning" stands in for "index" and "tuning".
+    expect(first.keywords).toEqual(expect.arrayContaining(['index tuning', 'postgres']));
+    expect(first.keywords).not.toContain('tuning');
+    expect(first.keywords.length).toBeLessThanOrEqual(3);
+  });
+
+  it('writes a phrase in full and names one form of a word', () => {
+    const asr = (slug: string, tags: string[]) =>
+      makeAgent(slug, { categories: [cat('voice')], tags, accessMethods: ['api'] });
+    const current = asr('current', ['speech-to-text', 'alerts', 'alerting']);
+    const peer = asr('peer', ['speech-to-text', 'alert', 'alerting']);
+    const [alt] = getAlternatives(current, [current, peer, ...filler(800)]);
+    expect(alt.keywords).toContain('speech to text');
+    expect(alt.keywords.filter((k) => k.startsWith('alert'))).toHaveLength(1);
+  });
+
+  describe('counts one thing in common once', () => {
+    const ops = (slug: string, tags: string[]) => makeAgent(slug, { categories: [cat('ops')], tags, accessMethods: ['api'] });
+    const monitor = ops('monitor', ['time-series', 'alerting']);
+    const alternativesTo = (current: Agent, ...others: Agent[]) =>
+      getAlternatives(current, [current, ...others, ...filler(800)]);
+
+    it('a term inside a longer phrase: "time series" and "time series forecasting"', () => {
+      expect(alternativesTo(monitor, ops('forecaster', ['time-series-forecasting']))).toEqual([]);
+    });
+
+    it('but a phrase both write the same way counts in full', () => {
+      expect(slugs(alternativesTo(monitor, ops('tsdb', ['time-series'])).map((a) => a.agent))).toEqual(['tsdb']);
+    });
+
+    it('and names the term as one', () => {
+      const [alt] = alternativesTo(monitor, ops('forecaster', ['time-series-forecasting', 'alerting']));
+      expect(alt.keywords).toEqual(expect.arrayContaining(['time series', 'alerting']));
+      expect(alt.keywords).not.toContain('time');
+    });
+
+    it('two forms of one word: "deploy" and "deployment"', () => {
+      expect(alternativesTo(ops('host', ['deploy', 'deployment']), ops('platform', ['deployment', 'deploy']))).toEqual([]);
+      const [alt] = alternativesTo(
+        ops('host', ['deploy', 'deployment', 'rollback']),
+        ops('platform', ['deployment', 'deploy', 'rollback'])
+      );
+      expect(alt.keywords.filter((k) => k.startsWith('deploy'))).toHaveLength(1);
+    });
+
+    it('a shared platform: two listings on Google Cloud', () => {
+      expect(alternativesTo(ops('a', ['google-cloud', 'billing']), ops('b', ['google-cloud', 'storage']))).toEqual([]);
+    });
+  });
+
+  it(`lists at most ${MAX_ALTERNATIVES}, best first, and the related agents are its first ${MAX_RELATED}`, () => {
+    const all = [...catalog, ...pgPeers];
+    const alternatives = getAlternatives(postgresPro, all);
+    expect(alternatives.length).toBe(MAX_ALTERNATIVES);
+    expect(getRelatedAgents(postgresPro, all)).toEqual(alternatives.slice(0, MAX_RELATED).map((a) => a.agent));
+  });
+});
+
+describe('alternativesPage', () => {
+  it(`needs at least ${MIN_ALTERNATIVES} alternatives, so no page is thin`, () => {
+    expect(getAlternatives(postgresPro, catalog).length).toBe(MIN_ALTERNATIVES);
+    expect(alternativesPage(postgresPro, catalog)).toHaveLength(MIN_ALTERNATIVES);
+    expect(alternativesPage(postgresPro, catalog.filter((a) => a.slug !== 'neon-mcp'))).toBeNull();
+  });
 });
 
 describe('getRelatedAgents', () => {
@@ -245,5 +362,43 @@ describe('getRelatedAgents on the real catalog', () => {
     expect(related).not.toContain('netdata');
     const peers = ['neon-mcp', 'deepsql', 'aiven-mcp', 'ai-for-database'];
     expect(related.filter((s) => peers.includes(s)).length).toBeGreaterThanOrEqual(2);
+  });
+
+  it('gives every alternatives page enough alternatives, each with a stated reason', async () => {
+    const all = await getEveryAgent();
+    let pages = 0;
+    for (const agent of all) {
+      const alternatives = alternativesPage(agent, all);
+      if (!alternatives) continue;
+      pages++;
+      expect(alternatives.length).toBeGreaterThanOrEqual(MIN_ALTERNATIVES);
+      expect(alternatives.length).toBeLessThanOrEqual(MAX_ALTERNATIVES);
+      for (const { agent: alt, access, keywords } of alternatives) {
+        expect(access.length).toBeGreaterThan(0);
+        expect(access.every((m) => agent.accessMethods.includes(m) && alt.accessMethods.includes(m))).toBe(true);
+        expect(keywords.length).toBeGreaterThan(0);
+      }
+    }
+    // Most listings get a page; a sharp drop means the matching broke.
+    expect(pages / all.length).toBeGreaterThan(0.7);
+  });
+
+  it('pairs real-time voice frameworks, not an email API with a monitoring tool', async () => {
+    const all = await getEveryAgent();
+    const alternativesTo = (slug: string) => slugs(getAlternatives(all.find((a) => a.slug === slug)!, all).map((a) => a.agent));
+    expect(alternativesTo('livekit-agents')).toEqual(expect.arrayContaining(['pipecat', 'ten-framework']));
+    expect(alternativesTo('agentmail')).not.toContain('netdata');
+    expect(alternativesTo('netdata')).not.toContain('agentmail');
+  });
+
+  it('pairs multi-agent frameworks, not tools that only share a platform, a trait or one term', async () => {
+    const all = await getEveryAgent();
+    const alternativesTo = (slug: string) => slugs(getAlternatives(all.find((a) => a.slug === slug)!, all).map((a) => a.agent));
+    expect(alternativesTo('praisonai')).toEqual(expect.arrayContaining(['ag2', 'google-adk', 'microsoft-agent-framework']));
+    expect(alternativesTo('langgraph')).toEqual(expect.arrayContaining(['autogen', 'crewai']));
+    // Google Cloud; deploy and deployment; time series.
+    expect(alternativesTo('terravision')).not.toContain('vertex-ai-agent-builder');
+    expect(alternativesTo('langgraph')).not.toContain('alpic');
+    expect(alternativesTo('netdata')).not.toContain('ibm-watsonx-ai');
   });
 });
