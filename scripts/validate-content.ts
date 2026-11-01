@@ -10,12 +10,14 @@
  * Exit 1 on any violation.
  */
 
+import * as crypto from 'crypto';
 import * as fs from 'fs';
 import * as path from 'path';
 import { z } from 'zod';
 import { registryProblems, vendorsForUrl, type OfficialVendor } from '../lib/official';
 
 const CONTENT = path.resolve(process.cwd(), 'content');
+const ICONS = path.resolve(process.cwd(), 'public', 'icons');
 
 const categories = JSON.parse(fs.readFileSync(path.join(CONTENT, 'categories.json'), 'utf8'));
 const validCategorySlugs = new Set<string>(categories.map((c: { slug: string }) => c.slug));
@@ -91,6 +93,73 @@ const OfficialVendorSchema = z
       .min(1),
   })
   .strict();
+
+const IconRecordSchema = z
+  .object({
+    v: z.string().regex(/^[0-9a-f]{8}$/, 'v must be 8 lowercase hex chars'),
+    source: z.string().url(),
+    px: z.number().int().positive().optional(),
+  })
+  .strict();
+
+/**
+ * Check content/icons.json against public/icons/ (scripts/fetch-icons.ts
+ * writes both). Every record needs its 128px and 48px PNGs and a `v` that is
+ * still the 128px file's hash, since `v` is what tells caches the image
+ * changed. Returns the slugs that have an icon and a violation count.
+ */
+function checkIcons(listings: Set<string>): { slugs: Set<string>; errors: number } {
+  const p = path.join(CONTENT, 'icons.json');
+  if (!fs.existsSync(p)) return { slugs: new Set(), errors: 0 };
+  let raw: unknown;
+  try {
+    raw = JSON.parse(fs.readFileSync(p, 'utf8'));
+  } catch (e) {
+    console.log(`❌ content/icons.json: invalid JSON — ${(e as Error).message}`);
+    return { slugs: new Set(), errors: 1 };
+  }
+  const result = z.record(z.string(), IconRecordSchema).safeParse(raw);
+  if (!result.success) {
+    for (const issue of result.error.issues) {
+      console.log(`❌ content/icons.json: ${issue.path.join('.')}: ${issue.message}`);
+    }
+    return { slugs: new Set(), errors: result.error.issues.length };
+  }
+
+  const manifest = result.data;
+  let errors = 0;
+  for (const [slug, record] of Object.entries(manifest)) {
+    if (!listings.has(slug)) {
+      console.log(`❌ content/icons.json: "${slug}" is not a listing`);
+      errors++;
+      continue;
+    }
+    const files = [path.join(ICONS, `${slug}.png`), path.join(ICONS, 'sm', `${slug}.png`)];
+    const missing = files.filter((f) => !fs.existsSync(f));
+    if (missing.length > 0) {
+      console.log(`❌ content/icons.json: "${slug}" has no ${missing.map((f) => path.relative(process.cwd(), f)).join(' or ')}`);
+      errors++;
+      continue;
+    }
+    const hash = crypto.createHash('sha1').update(fs.readFileSync(files[0])).digest('hex').slice(0, 8);
+    if (record.v !== hash) {
+      console.log(
+        `❌ content/icons.json: "${slug}" has v "${record.v}" but its PNG hashes to "${hash}"; rerun npx tsx scripts/fetch-icons.ts ${slug}`
+      );
+      errors++;
+    }
+  }
+  for (const dir of [ICONS, path.join(ICONS, 'sm')]) {
+    if (!fs.existsSync(dir)) continue;
+    for (const file of fs.readdirSync(dir)) {
+      if (file.endsWith('.png') && !manifest[file.slice(0, -'.png'.length)]) {
+        console.log(`❌ ${path.relative(process.cwd(), path.join(dir, file))}: not in content/icons.json`);
+        errors++;
+      }
+    }
+  }
+  return { slugs: new Set(Object.keys(manifest)), errors };
+}
 
 /** Parse and check content/official-vendors.json; returns the vendors and a violation count. */
 function loadOfficialVendors(): { vendors: OfficialVendor[]; errors: number } {
@@ -254,9 +323,19 @@ function main() {
     );
   }
 
+  const icons = checkIcons(slugs);
+  errors += icons.errors;
+  const iconless = [...published].filter((s) => !icons.slugs.has(s)).sort();
+  if (iconless.length) {
+    console.log(
+      `ℹ️  ${iconless.length} published listing(s) without an icon show their initial instead; npx tsx scripts/fetch-icons.ts retries them:\n   ` +
+        `${iconless.slice(0, 12).join(', ')}${iconless.length > 12 ? ', …' : ''}`
+    );
+  }
+
   if (errors === 0) {
     console.log(
-      `✅ content valid: ${files.length} agents (${flagged} official, ${official.vendors.length} vendors), ${validCategorySlugs.size} categories, 0 violations`
+      `✅ content valid: ${files.length} agents (${flagged} official, ${official.vendors.length} vendors), ${validCategorySlugs.size} categories, ${icons.slugs.size} icons, 0 violations`
     );
   } else {
     console.log(`\n❌ ${errors} violation(s) across content/ — fix before merging.`);

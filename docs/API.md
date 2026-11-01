@@ -45,12 +45,14 @@ handshake (e.g. wiring into a connector platform).
       "name": "YouTube MCP",
       "slug": "youtube-mcp",
       "url": "https://agentswitchboard.dev/agents/youtube-mcp",
+      "iconUrl": "https://agentswitchboard.dev/icons/youtube-mcp.png?v=93bf5448",
       "description": "Manages YouTube via MCP — search videos, retrieve statistics…",
       "provider": "Smithery",
       "categories": ["content-media"],
       "accessMethods": ["mcp"],
       "verified": false,
-      "official": false
+      "official": false,
+      "featured": false
     }
     // …
   ]
@@ -59,6 +61,11 @@ handshake (e.g. wiring into a connector platform).
 
 Paginate with `total` + `offset` + `limit`. `Cache-Control` is
 `s-maxage=300, stale-while-revalidate=600`.
+
+`iconUrl` is the listing's icon: a 128px PNG served by Agent Switchboard
+itself, never hotlinked from the provider, or `null` when the listing has
+none. The `v` query changes whenever the image does, so it can be cached
+indefinitely.
 
 OpenAPI: [`/openapi.json`](https://agentswitchboard.dev/openapi.json).
 Connector skill: [`/skill.md`](https://agentswitchboard.dev/skill.md).
@@ -164,7 +171,7 @@ Static declaration: [`/.well-known/webmcp.json`](https://agentswitchboard.dev/.w
 
 The entire catalog as one JSON document, CORS-open, for bulk indexing.
 Filter client-side on `accessMethods`, `categories`, and `official`. Each
-agent carries `official` and `officialVendor`.
+agent carries `official`, `officialVendor` and `iconUrl`.
 
 ---
 

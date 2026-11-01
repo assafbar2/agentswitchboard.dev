@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { AgentIcon } from '@/components/AgentIcon';
 import { OfficialBadge } from '@/components/ui/OfficialBadge';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
 import { ACCESS_METHOD_LABELS } from '@/lib/search';
@@ -14,8 +15,8 @@ const TAG =
   'inline-flex items-center px-1.5 py-px text-[12px] font-bold uppercase tracking-[0.08em] leading-[1.4]';
 
 /**
- * A homepage "Top Agents" listing in the directory look: name, dotted leader,
- * access methods, then one muted line with its tags and provider.
+ * A homepage "Top Agents" listing in the directory look: icon, name, dotted
+ * leader, access methods, then one muted line with its tags and provider.
  */
 export function FeaturedAgentCard({
   agent,
@@ -37,6 +38,7 @@ export function FeaturedAgentCard({
       className="group block break-inside-avoid border-b border-[var(--dir-rule)]! py-2 text-[var(--dir-ink)] no-underline [font-family:var(--font-display)]"
     >
       <span className="flex items-baseline gap-1.5">
+        <AgentIcon name={agent.name} iconUrl={agent.iconUrl} className="mr-0.5 self-center" />
         <span className="dir-row-name min-w-0 text-[19px] group-hover:underline">{agent.name}</span>
         <span className="dir-row-leader" aria-hidden="true" />
         {access && <span className="dir-row-meta">{access}</span>}

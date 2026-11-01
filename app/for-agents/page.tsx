@@ -168,8 +168,8 @@ GET /api/agents/<slug>
 GET /api/categories
 
 → search: { total, offset, limit, agents: [
-     { name, slug, url, description, provider, categories, accessMethods,
-       verified, official, featured }
+     { name, slug, url, iconUrl, description, provider, categories,
+       accessMethods, verified, official, featured }
    ] }`}
           </pre>
           <ul className="space-y-1 pl-4">

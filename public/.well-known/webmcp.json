@@ -1,7 +1,7 @@
 {
   "name": "io.github.assafbar2/agentswitchboard",
   "description": "In-browser WebMCP tools for Agent Switchboard, registered on document.modelContext when the page loads. Same three tools as the remote MCP server at /api/mcp. They call the public REST API (/api/agents, /api/agents/{slug}, /api/categories), so matches and their order are the same as the remote server's; result objects use the REST field names (see /openapi.json).",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "websiteUrl": "https://agentswitchboard.dev",
   "surface": "document.modelContext",
   "polyfill": "@mcp-b/webmcp-polyfill",
@@ -93,6 +93,13 @@
                 "url": {
                   "type": "string"
                 },
+                "iconUrl": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "Absolute URL of the listing's 128px PNG icon, served by Agent Switchboard; null when it has none"
+                },
                 "description": {
                   "type": "string"
                 },
@@ -158,6 +165,13 @@
           },
           "url": {
             "type": "string"
+          },
+          "iconUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Absolute URL of the listing's 128px PNG icon, served by Agent Switchboard; null when it has none"
           },
           "description": {
             "type": "string"

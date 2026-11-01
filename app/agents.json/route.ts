@@ -1,6 +1,7 @@
 import { VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 import { getEveryAgent } from '@/lib/catalog';
 import { BASE_URL } from '@/lib/env';
+import { absoluteIconUrl } from '@/lib/icons';
 import { logConsumer } from '@/lib/log';
 import { FEATURED_DEFINITION, OFFICIAL_DEFINITION } from '@/lib/public-api';
 import { NextResponse } from 'next/server';
@@ -13,6 +14,7 @@ export async function GET(req: Request) {
     name: a.name,
     slug: a.slug,
     url: `${BASE_URL}/agents/${a.slug}`,
+    iconUrl: absoluteIconUrl(a.iconUrl),
     homepage: a.agentUrl ?? null,
     provider: a.providerName ?? null,
     providerUrl: a.providerUrl ?? null,

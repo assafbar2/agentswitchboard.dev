@@ -4,9 +4,10 @@
  * that consume a simple parameterized GET rather than an MCP handshake.
  *
  *   GET /api/agents?q=<text>&category=<slug>&access=<method>&official=true&limit=<n>&offset=<n>
- *   → { total, offset, limit, agents: [ { name, slug, url, description,
- *                                          provider, categories, accessMethods,
- *                                          verified, official, featured } ] }
+ *   → { total, offset, limit, agents: [ { name, slug, url, iconUrl,
+ *                                          description, provider, categories,
+ *                                          accessMethods, verified, official,
+ *                                          featured } ] }
  *
  * `access` takes api | mcp | cli | browser-extension (comma-separate to require
  * several); `extension` is accepted as an alias of `browser-extension`.

@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { getAllCategories, getEveryAgent, MAX_CONCURRENT_READS } from '@/lib/catalog';
+import { iconPath, type IconRecord } from '@/lib/icons';
 import { vendorForUrl, type OfficialVendor } from '@/lib/official';
 import type { Agent, Category } from '@/lib/types';
 
@@ -25,14 +26,15 @@ function readJson<T>(file: string): T {
 function referenceCatalog(): Agent[] {
   const cats = readJson<Category[]>(path.join(CONTENT, 'categories.json'));
   const vendors = readJson<OfficialVendor[]>(path.join(CONTENT, 'official-vendors.json'));
+  const icons = readJson<Record<string, IconRecord>>(path.join(CONTENT, 'icons.json'));
   const bySlug = new Map(cats.map((c) => [c.slug, c]));
   return fs
     .readdirSync(AGENTS_DIR)
     .filter((f) => f.endsWith('.json'))
     .map((f) => {
-      const data = readJson<Record<string, unknown> & { agentUrl: string; official?: boolean; categories?: string[] }>(
-        path.join(AGENTS_DIR, f)
-      );
+      const data = readJson<
+        Record<string, unknown> & { slug: string; agentUrl: string; official?: boolean; categories?: string[] }
+      >(path.join(AGENTS_DIR, f));
       const vendor = data.official ? vendorForUrl(data.agentUrl, vendors) : null;
       return {
         ...data,
@@ -42,6 +44,7 @@ function referenceCatalog(): Agent[] {
         accessMethods: data.accessMethods ?? [],
         official: !!vendor,
         officialVendor: vendor ? { slug: vendor.slug, name: vendor.name } : undefined,
+        iconUrl: icons[data.slug] ? iconPath(data.slug, icons[data.slug]) : undefined,
       } as Agent;
     })
     .filter((a) => a.status === 'published')
@@ -81,11 +84,12 @@ afterEach(() => {
 });
 
 describe('catalog loading', () => {
-  it('reads categories.json and official-vendors.json once per catalog load', async () => {
+  it('reads categories.json, official-vendors.json and icons.json once per catalog load', async () => {
     const reads = watchReads();
     await getEveryAgent();
     expect(reads.count(path.join(CONTENT, 'categories.json'))).toBe(1);
     expect(reads.count(path.join(CONTENT, 'official-vendors.json'))).toBe(1);
+    expect(reads.count(path.join(CONTENT, 'icons.json'))).toBe(1);
   });
 
   it('reads each agent file exactly once', async () => {

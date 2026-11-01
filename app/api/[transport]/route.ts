@@ -16,6 +16,7 @@ import { createMcpHandler } from 'mcp-handler';
 import { z } from 'zod';
 import { VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 import { getEveryAgent, getAllCategories } from '@/lib/catalog';
+import { absoluteIconUrl } from '@/lib/icons';
 import { logConsumer } from '@/lib/log';
 import {
   SUBMIT_LISTING_DESCRIPTION,
@@ -66,6 +67,7 @@ function agentSummary(a: Agent) {
     officialVendor: a.officialVendor?.name ?? null,
     featured: a.featured === true,
     url: `${SITE}/agents/${a.slug}`,
+    iconUrl: absoluteIconUrl(a.iconUrl, SITE),
   };
 }
 
@@ -88,6 +90,10 @@ const agentSummaryShape = {
   officialVendor: z.string().nullable(),
   featured: z.boolean().describe(FEATURED_DEFINITION),
   url: z.string(),
+  iconUrl: z
+    .string()
+    .nullable()
+    .describe("Absolute URL of the listing's 128px PNG icon, served by Agent Switchboard; null when it has none"),
 };
 
 const handler = createMcpHandler(
@@ -247,7 +253,7 @@ const handler = createMcpHandler(
     );
   },
   {
-    serverInfo: { name: 'agentswitchboard', version: '1.2.0' },
+    serverInfo: { name: 'agentswitchboard', version: '1.3.0' },
     instructions: INSTRUCTIONS,
   },
   {

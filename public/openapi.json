@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Agent Switchboard Directory API",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "summary": "Read-only catalog of AI agents, MCP servers, and agentic developer tools.",
     "description": "Agent Switchboard is a public discovery directory. Use this API to answer questions like 'is there an agent that does X?' or 'which listed products expose an MCP server?'. There is no authentication, no user account, and no write access. This API does not proxy the underlying products — it only returns Switchboard listings. For interactive tool-shaped access, an MCP server is also available at /api/mcp. Listing data returned by this API is licensed CC BY-NC 4.0 (attribution required; commercial reuse needs a license: https://agentswitchboard.dev/contact). The API definition itself is MIT.",
     "contact": {
@@ -92,6 +92,7 @@
                           "name": "AgentMail",
                           "slug": "agentmail",
                           "url": "https://agentswitchboard.dev/agents/agentmail",
+                          "iconUrl": "https://agentswitchboard.dev/icons/agentmail.png?v=aca5768d",
                           "description": "Email inbox API built for AI agents.",
                           "provider": "AgentMail",
                           "categories": ["infrastructure", "code-devtools"],
@@ -235,6 +236,7 @@
           "name",
           "slug",
           "url",
+          "iconUrl",
           "description",
           "provider",
           "categories",
@@ -253,6 +255,11 @@
             "type": "string",
             "format": "uri",
             "description": "Human listing page on Agent Switchboard."
+          },
+          "iconUrl": {
+            "type": ["string", "null"],
+            "format": "uri",
+            "description": "Absolute URL of the listing's 128px PNG icon, served by Agent Switchboard; null when it has none."
           },
           "description": { "type": "string" },
           "provider": { "type": ["string", "null"] },
@@ -347,6 +354,7 @@
           "name",
           "slug",
           "url",
+          "iconUrl",
           "homepage",
           "provider",
           "providerUrl",
@@ -366,6 +374,11 @@
           "name": { "type": "string" },
           "slug": { "type": "string" },
           "url": { "type": "string", "format": "uri" },
+          "iconUrl": {
+            "type": ["string", "null"],
+            "format": "uri",
+            "description": "Absolute URL of the listing's 128px PNG icon, served by Agent Switchboard; null when it has none."
+          },
           "homepage": { "type": ["string", "null"], "format": "uri" },
           "provider": { "type": ["string", "null"] },
           "providerUrl": { "type": ["string", "null"], "format": "uri" },

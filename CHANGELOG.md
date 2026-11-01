@@ -8,6 +8,11 @@ Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes 
 
 ### Added
 - Changelog: every site release is now recorded here and shown on [/changelog](https://agentswitchboard.dev/changelog), above the directory's own change log. Earlier versions were reconstructed from the git history. ([#287](https://github.com/assafbar2/agentswitchboard.dev/pull/287))
+- Real icons for 890 of the 900 listings, on cards, the homepage and listing pages. Each is fetched once from the product's own site or its GitHub organization, reviewed by eye, and served from agentswitchboard.dev. A listing without one shows its initial on yellow. ([#289](https://github.com/assafbar2/agentswitchboard.dev/pull/289))
+- `iconUrl` in REST, [/agents.json](https://agentswitchboard.dev/agents.json), MCP and WebMCP results: an absolute link to the listing's 128px icon, or `null`. The MCP server is now version 1.3.0. ([#289](https://github.com/assafbar2/agentswitchboard.dev/pull/289))
+
+### Security
+- Closed an open image proxy: the image optimizer fetched images from any https host, so anyone could route images through the site. Icons are now plain files. ([#289](https://github.com/assafbar2/agentswitchboard.dev/pull/289))
 
 ## [2.1.5] - 2026-10-31 - Grok Bot on X
 

@@ -116,6 +116,10 @@ const summaryProps = {
   name: { type: 'string' },
   slug: { type: 'string' },
   url: { type: 'string' },
+  iconUrl: {
+    type: ['string', 'null'],
+    description: "Absolute URL of the listing's 128px PNG icon, served by Agent Switchboard; null when it has none",
+  },
   description: { type: 'string' },
   provider: { type: 'string' },
   categories: { type: 'array', items: { type: 'string' } },

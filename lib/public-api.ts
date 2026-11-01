@@ -7,6 +7,7 @@
 
 import type { Agent, Category } from './types';
 import { BASE_URL } from './env';
+import { absoluteIconUrl } from './icons';
 import { ALL_ACCESS_METHODS } from './search';
 
 // ── Label definitions ───────────────────────────────────────────────
@@ -96,6 +97,7 @@ export function summarizeAgent(a: Agent) {
     name: a.name,
     slug: a.slug,
     url: `${BASE_URL}/agents/${a.slug}`,
+    iconUrl: absoluteIconUrl(a.iconUrl),
     description: a.description,
     provider: a.providerName,
     categories: a.categories.map((c) => c.slug),

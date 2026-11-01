@@ -47,6 +47,10 @@ export interface Agent {
   integrationGuide?: RichTextDocument;
   supportsStreaming: boolean;
   supportsPushNotifications: boolean;
+  /**
+   * Site path of the listing's fetched icon (/icons/<slug>.png?v=…), from
+   * content/icons.json; absent when it has none. See lib/icons.ts.
+   */
   iconUrl?: string;
   status: 'published' | 'draft' | 'archived';
   featured: boolean;

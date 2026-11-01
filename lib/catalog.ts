@@ -4,6 +4,7 @@
  * Reads the directory's content from checked-in files:
  *   content/agents/<slug>.json   one file per agent (source of truth)
  *   content/categories.json      category definitions, ordered
+ *   content/icons.json           fetched icons (see lib/icons.ts)
  *   content/site.json            site settings
  *
  * The public API and its semantics are byte-compatible with the previous
@@ -20,6 +21,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { cache } from 'react';
 import { pickHomepageAgents } from './homepage';
+import { iconPath, type IconRecord } from './icons';
 import { groupOfficialAgents, vendorForUrl, type OfficialGroup, type OfficialVendor } from './official';
 import type { Agent, Category, HomepageAgent, SiteSettings } from './types';
 
@@ -60,8 +62,8 @@ async function readFileBounded(file: string): Promise<string> {
 const loadAllAgentsRaw = cache(async (): Promise<Agent[]> => {
   const dir = path.join(CONTENT_DIR, 'agents');
   const files = (await fs.promises.readdir(dir)).filter((f) => f.endsWith('.json'));
-  // Categories and vendors are shared by every agent: load each once per pass.
-  const [cats, vendors] = await Promise.all([loadCategoriesRaw(), loadOfficialVendors()]);
+  // Categories, vendors and icons are shared by every agent: load each once per pass.
+  const [cats, vendors, icons] = await Promise.all([loadCategoriesRaw(), loadOfficialVendors(), loadIcons()]);
   // categories are stored as slugs; hydrate to Category objects
   const bySlug = new Map(cats.map((c) => [c.slug, c]));
   // Promise.all keeps readdir order regardless of which read finishes first.
@@ -81,10 +83,17 @@ const loadAllAgentsRaw = cache(async (): Promise<Agent[]> => {
         accessMethods: data.accessMethods ?? [],
         official: !!vendor,
         officialVendor: vendor ? { slug: vendor.slug, name: vendor.name } : undefined,
+        // A listing file's own iconUrl only feeds scripts/fetch-icons.ts.
+        iconUrl: icons[data.slug] ? iconPath(data.slug, icons[data.slug]) : undefined,
       } as Agent;
     })
   );
   return agents;
+});
+
+const loadIcons = cache(async (): Promise<Record<string, IconRecord>> => {
+  const raw = await fs.promises.readFile(path.join(CONTENT_DIR, 'icons.json'), 'utf8');
+  return JSON.parse(raw) as Record<string, IconRecord>;
 });
 
 const loadCategoriesRaw = cache(async (): Promise<Category[]> => {

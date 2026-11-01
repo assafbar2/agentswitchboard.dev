@@ -432,6 +432,30 @@ body {
       padding-bottom: 11px;
     }
   }
+
+  /* A listing's icon (components/AgentIcon.tsx). White in both themes, so a
+     dark logo stays visible on dark paper; the hairline edges it on light. */
+  .agent-icon {
+    flex: none;
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: #ffffff;
+    border: 1px solid var(--dir-rule);
+  }
+
+  .agent-icon-initial {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--dir-yellow);
+    border-color: var(--dir-yellow);
+    color: var(--dir-on-yellow);
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1;
+  }
 }
 
 /* ── Agent Mode ───────────────────────────────────────────────── */

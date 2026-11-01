@@ -71,6 +71,12 @@ describe('summarizeAgent', () => {
     expect(card).not.toHaveProperty('skills');
     expect(card).not.toHaveProperty('id');
   });
+
+  it('gives an absolute icon URL, or null when the listing has none', () => {
+    const withIcon = summarizeAgent(makeAgent({ iconUrl: '/icons/agentmail.png?v=aca5768d' }));
+    expect(withIcon.iconUrl).toBe('https://agentswitchboard.dev/icons/agentmail.png?v=aca5768d');
+    expect(summarizeAgent(makeAgent()).iconUrl).toBeNull();
+  });
 });
 
 describe('detailAgent', () => {

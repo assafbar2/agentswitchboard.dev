@@ -4,13 +4,14 @@ import { OfficialBadge } from '@/components/ui/OfficialBadge';
 import { AccessMethodBadges } from '@/components/ui/AccessMethodBadges';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
 import { AgentCard } from '@/components/AgentCard';
+import { AgentIcon } from '@/components/AgentIcon';
 import { JsonLd } from '@/components/JsonLd';
 import { getRelatedAgents } from '@/lib/related';
+import { absoluteIconUrl } from '@/lib/icons';
 import { notFound } from 'next/navigation';
 import { ExternalLink } from 'lucide-react';
 import { authTypeLabel, pluralize } from '@/lib/utils';
 import Link from 'next/link';
-import Image from 'next/image';
 import type { Metadata, ResolvingMetadata } from 'next';
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev';
@@ -80,6 +81,7 @@ export default async function AgentPage({
     name: agent.name,
     description: agent.description,
     url: agent.agentUrl,
+    ...(agent.iconUrl && { image: absoluteIconUrl(agent.iconUrl, BASE_URL) }),
     applicationCategory: 'DeveloperApplication',
     operatingSystem: 'Cloud',
     provider: {
@@ -114,13 +116,7 @@ export default async function AgentPage({
           {/* Header: a directory entry. Name, provider, then the small labels,
               closed off by the heavy ink rule. */}
           <div className="flex items-start gap-4 mb-6 pb-5 border-b-[3px] border-[var(--dir-ink)]!">
-            {agent.iconUrl ? (
-              <Image src={agent.iconUrl} alt="" width={56} height={56} className="w-14 h-14 shrink-0 rounded-none border border-[var(--dir-rule)]!" />
-            ) : (
-              <div className="w-14 h-14 shrink-0 bg-[var(--dir-yellow)] flex items-center justify-center">
-                <span className="text-3xl font-extrabold text-[var(--dir-on-yellow)]">{agent.name[0]}</span>
-              </div>
-            )}
+            <AgentIcon name={agent.name} iconUrl={agent.iconUrl} size={56} lazy={false} />
             <div className="flex-1 min-w-0">
               <h1 className="text-4xl sm:text-5xl font-extrabold leading-[0.95] tracking-[-0.02em] wrap-break-word">
                 {agent.name}

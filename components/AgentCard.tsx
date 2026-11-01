@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { AgentIcon } from '@/components/AgentIcon';
 import { Badge } from '@/components/ui/Badge';
 import { OfficialBadge } from '@/components/ui/OfficialBadge';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
@@ -9,8 +10,9 @@ import { authTypeLabel, pluralize, truncate } from '@/lib/utils';
 /**
  * The fields an AgentCard renders. It is a Server Component, so only its
  * rendered markup reaches the RSC payload, never the agent object. On /browse
- * that markup is repeated for every listing, so keep it lean: no decorative
- * per-card icons (each inline SVG costs about 1 KB across HTML and payload).
+ * that markup is repeated for every listing, so keep it lean: the listing's
+ * own icon is a single <img>, and there are no decorative inline SVGs (each
+ * costs about 1 KB across HTML and payload).
  */
 export type AgentCardData = Pick<
   Agent,
@@ -41,14 +43,16 @@ export function AgentCard({ agent }: { agent: AgentCardData }) {
   const categories = agent.categories.slice(0, 2).map((c) => c.name).join(', ');
   const hasLabels = agent.verified || agent.official || agent.featured || agent.sponsorLabel || agent.tier === 'premium';
 
-  // A directory entry: bold name, dotted leader, access methods right-aligned,
-  // the one-line description beneath, then provider and the small labels.
+  // A directory entry: icon, bold name, dotted leader, access methods
+  // right-aligned, the one-line description beneath, then provider and the
+  // small labels.
   return (
     <Link
       href={`/agents/${agent.slug}`}
       className="group block min-w-0 border-b border-[var(--dir-rule)]! px-0.5 py-3 font-[family-name:var(--font-display)] text-[var(--dir-ink)] no-underline hover:no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--dir-ink)]"
     >
       <div className="flex min-w-0 items-baseline gap-1.5">
+        <AgentIcon name={agent.name} iconUrl={agent.iconUrl} className="mr-0.5 self-start" />
         <h3 className="min-w-0 wrap-break-word text-[17px] font-bold leading-snug group-hover:underline">
           {agent.name}
         </h3>
