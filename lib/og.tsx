@@ -11,7 +11,7 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { ImageResponse } from 'next/og';
 import type { ReactElement, ReactNode } from 'react';
-import { CARD_SIZE, type CategoryCard, type ListingCard, type SiteCard } from './share-cards';
+import { CARD_SIZE, type CategoryCard, type DropCard, type ListingCard, type SiteCard } from './share-cards';
 import { formatNumber, pluralize } from './utils';
 
 const INK = '#111111';
@@ -119,25 +119,66 @@ export async function renderListingCard(card: ListingCard): Promise<ImageRespons
 }
 
 export async function renderCategoryCard(card: CategoryCard): Promise<ImageResponse> {
-  const icons = await Promise.all(card.icons.map(iconSrc));
   const official = card.official > 0 ? ` · ${formatNumber(card.official)} official` : '';
   return render(
-    <Frame kicker="Category">
+    <Headline
+      kicker="Category"
+      title={card.name}
+      counts={`${formatNumber(card.agents)} ${pluralize(card.agents, 'agent')}${official}`}
+      text={card.description}
+      icons={await Promise.all(card.icons.map(iconSrc))}
+    />
+  );
+}
+
+export async function renderDropCard(card: DropCard): Promise<ImageResponse> {
+  const counts = [
+    `+${formatNumber(card.added)} ${pluralize(card.added, 'agent')}`,
+    card.official > 0 ? `${formatNumber(card.official)} official` : null,
+    card.updated > 0 ? `${formatNumber(card.updated)} updated` : null,
+  ];
+  const more = card.added - card.names.length;
+  const names = card.names.length > 0 ? `${card.names.join(', ')}${more > 0 ? ` and ${formatNumber(more)} more` : ''}` : '';
+  return render(
+    <Headline
+      kicker="Weekly drop"
+      title={card.date}
+      counts={counts.filter(Boolean).join(' · ')}
+      text={names}
+      icons={await Promise.all(card.icons.map(iconSrc))}
+    />
+  );
+}
+
+/** A title, a bold count line, a muted line of up to two rows, and a row of icons along the bottom. */
+function Headline({
+  kicker,
+  title,
+  counts,
+  text,
+  icons,
+}: {
+  kicker: string;
+  title: string;
+  counts: string;
+  text: string;
+  icons: string[];
+}) {
+  return (
+    <Frame kicker={kicker}>
       <div
         style={{
           display: 'flex',
-          fontSize: card.name.length > 24 ? 72 : 92,
+          fontSize: title.length > 24 ? 72 : 92,
           fontWeight: 800,
           lineHeight: 1,
           letterSpacing: '-0.02em',
         }}
       >
-        {card.name}
+        {title}
       </div>
-      <div style={{ display: 'flex', marginTop: 18, fontSize: 34, fontWeight: 800 }}>
-        {`${formatNumber(card.agents)} ${pluralize(card.agents, 'agent')}${official}`}
-      </div>
-      {card.description && (
+      <div style={{ display: 'flex', marginTop: 18, fontSize: 34, fontWeight: 800 }}>{counts}</div>
+      {text && (
         <div
           style={{
             display: 'block',
@@ -149,7 +190,7 @@ export async function renderCategoryCard(card: CategoryCard): Promise<ImageRespo
             color: MUTED,
           }}
         >
-          {card.description}
+          {text}
         </div>
       )}
       <IconRow icons={icons} size={76} />

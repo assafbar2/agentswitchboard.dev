@@ -28,6 +28,7 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+import { DROP_INTRO_MAX, groupDrops } from '../lib/drops';
 import { appendChangelog } from './lib/changelog';
 
 // ─── AGENTS TO ADD — edit this array, run, commit, then clear ────────────────
@@ -1107,10 +1108,19 @@ function main() {
   if (created > 0) {
     console.log('\n📌 Next steps:');
     console.log('   1. git checkout scripts/weekly-drop.ts   (revert the pasted array)');
-    console.log('   2. npx tsx scripts/validate-content.ts');
-    console.log('   3. git add content/ && git commit -m "Weekly drop YYYY-MM-DD: added N, updated M, archived K"');
-    console.log('   4. git push -u origin HEAD and open a PR — never push to main');
+    console.log(`   2. ${dropIntroHint()}`);
+    console.log('   3. npx tsx scripts/validate-content.ts');
+    console.log('   4. git add content/ && git commit -m "Weekly drop YYYY-MM-DD: added N, updated M, archived K"');
+    console.log('   5. git push -u origin HEAD and open a PR — never push to main');
   }
+}
+
+/** Where this run's drop page intro goes: content/drops.json is keyed by the drop's first day, which may differ from the run's name. */
+function dropIntroHint(): string {
+  const log = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'content', 'changelog.json'), 'utf8'));
+  const { drops, pending } = groupDrops(log);
+  if (pending || !drops[0]) return 'Too small for its own drop page: it joins the next drop on /drops.';
+  return `Optional: a one-line intro for /drops/${drops[0].date}, in content/drops.json under "${drops[0].date}" (max ${DROP_INTRO_MAX} characters).`;
 }
 
 main();

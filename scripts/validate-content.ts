@@ -14,6 +14,7 @@ import * as crypto from 'crypto';
 import * as fs from 'fs';
 import * as path from 'path';
 import { z } from 'zod';
+import { DROP_INTRO_MAX, groupDrops } from '../lib/drops';
 import { registryProblems, vendorsForUrl, type OfficialVendor } from '../lib/official';
 
 const CONTENT = path.resolve(process.cwd(), 'content');
@@ -93,6 +94,76 @@ const OfficialVendorSchema = z
       .min(1),
   })
   .strict();
+
+const ChangelogEntrySchema = z
+  .object({
+    action: z.enum(['added', 'updated', 'removed']),
+    slug: z.string().regex(SLUG, 'slug must be kebab-case'),
+    name: z.string().min(1),
+    note: z.string().nullable().optional(),
+    date: z
+      .string()
+      .regex(/^\d{4}-\d{2}-\d{2}$/, 'date must be YYYY-MM-DD')
+      .refine((d) => !Number.isNaN(Date.parse(d)), 'not a calendar date'),
+  })
+  .strict();
+
+const DropIntroSchema = z.object({ intro: z.string().min(1).max(DROP_INTRO_MAX) }).strict();
+
+/**
+ * content/changelog.json is grouped into the drop pages by date (lib/drops.ts),
+ * so every entry needs a real one. content/drops.json adds optional intros,
+ * keyed by drop date: a key that is not a drop would never be shown.
+ * Returns the number of drops and a violation count.
+ */
+function checkChangelogAndDrops(): { drops: number; errors: number } {
+  let raw: unknown;
+  try {
+    raw = JSON.parse(fs.readFileSync(path.join(CONTENT, 'changelog.json'), 'utf8'));
+  } catch {
+    return { drops: 0, errors: 0 }; // reported with the other auxiliary files
+  }
+  const log = z.array(ChangelogEntrySchema).safeParse(raw);
+  if (!log.success) {
+    for (const issue of log.error.issues) {
+      console.log(`❌ content/changelog.json: entry ${issue.path.join('.')}: ${issue.message}`);
+    }
+    return { drops: 0, errors: log.error.issues.length };
+  }
+
+  const dropsFile = path.join(CONTENT, 'drops.json');
+  let intros: Record<string, { intro: string }> = {};
+  if (fs.existsSync(dropsFile)) {
+    let parsed: unknown;
+    try {
+      parsed = JSON.parse(fs.readFileSync(dropsFile, 'utf8'));
+    } catch (e) {
+      console.log(`❌ content/drops.json: invalid JSON — ${(e as Error).message}`);
+      return { drops: 0, errors: 1 };
+    }
+    const result = z.record(z.string(), DropIntroSchema).safeParse(parsed);
+    if (!result.success) {
+      for (const issue of result.error.issues) {
+        console.log(`❌ content/drops.json: ${issue.path.join('.')}: ${issue.message}`);
+      }
+      return { drops: 0, errors: result.error.issues.length };
+    }
+    intros = result.data;
+  }
+
+  const { drops } = groupDrops(log.data, intros);
+  const dates = new Set(drops.map((d) => d.date));
+  let errors = 0;
+  for (const date of Object.keys(intros)) {
+    if (!dates.has(date)) {
+      console.log(
+        `❌ content/drops.json: "${date}" is not a drop; drops are named by their first batch day in content/changelog.json (lib/drops.ts)`
+      );
+      errors++;
+    }
+  }
+  return { drops: drops.length, errors };
+}
 
 const IconRecordSchema = z
   .object({
@@ -325,6 +396,8 @@ function main() {
 
   const icons = checkIcons(slugs);
   errors += icons.errors;
+  const drops = checkChangelogAndDrops();
+  errors += drops.errors;
   const iconless = [...published].filter((s) => !icons.slugs.has(s)).sort();
   if (iconless.length) {
     console.log(
@@ -335,7 +408,7 @@ function main() {
 
   if (errors === 0) {
     console.log(
-      `✅ content valid: ${files.length} agents (${flagged} official, ${official.vendors.length} vendors), ${validCategorySlugs.size} categories, ${icons.slugs.size} icons, 0 violations`
+      `✅ content valid: ${files.length} agents (${flagged} official, ${official.vendors.length} vendors), ${validCategorySlugs.size} categories, ${icons.slugs.size} icons, ${drops.drops} drops, 0 violations`
     );
   } else {
     console.log(`\n❌ ${errors} violation(s) across content/ — fix before merging.`);

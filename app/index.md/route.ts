@@ -1,5 +1,6 @@
 import { VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 import { getEveryAgent, getAllCategories } from '@/lib/catalog';
+import { getDropSchedule } from '@/lib/drops';
 import { BASE_URL } from '@/lib/env';
 import { FEATURED_DEFINITION, OFFICIAL_DEFINITION } from '@/lib/public-api';
 
@@ -26,6 +27,10 @@ export async function GET() {
   const agentCount = agents.length;
   const verifiedCount = agents.filter((a) => a.verified).length;
   const providerCount = new Set(agents.map((a) => a.providerName)).size;
+  const latestDrop = getDropSchedule().drops[0];
+  const dropLine = latestDrop
+    ? `\n- [/drops](${BASE_URL}/drops) — what's new, batch by batch; the latest is [/drops/${latestDrop.date}](${BASE_URL}/drops/${latestDrop.date}) (${latestDrop.added.length} added).`
+    : '';
 
   const body = `# Agent Switchboard
 
@@ -45,7 +50,7 @@ The \`verified\`, \`official\` and \`featured\` flags in search and detail resul
 - [/.well-known/mcp.json](${BASE_URL}/.well-known/mcp.json) — MCP server manifest.
 - [/agents.json](${BASE_URL}/agents.json) — the entire catalog as one large JSON file, no auth. Use it for bulk or offline work; search for everything else.
 - [/llms.txt](${BASE_URL}/llms.txt) — plain-language site guide.
-- [/for-agents](${BASE_URL}/for-agents) — how to use all of the above.
+- [/for-agents](${BASE_URL}/for-agents) — how to use all of the above.${dropLine}
 
 ## When to use this site
 
@@ -57,7 +62,7 @@ ${categories.map((c) => `- ${c.name} (\`${c.slug}\`)`).join('\n')}
 
 ## Pages
 
-- [Browse](${BASE_URL}/browse) · [Categories](${BASE_URL}/categories) · [Submit an agent](${BASE_URL}/submit)
+- [Browse](${BASE_URL}/browse) · [Categories](${BASE_URL}/categories) · [Weekly drops](${BASE_URL}/drops) · [Submit an agent](${BASE_URL}/submit)
 - [About](${BASE_URL}/about) · [Contact](${BASE_URL}/contact) · [Privacy](${BASE_URL}/privacy) · [Terms of Use](${BASE_URL}/terms) · [Disclaimer](${BASE_URL}/disclaimer)
 
 Contact: barnir@agentmail.to

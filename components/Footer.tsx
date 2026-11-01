@@ -9,6 +9,7 @@ const footerLinks = [
     links: [
       { href: '/browse', label: 'Browse Agents' },
       { href: '/categories', label: 'Categories' },
+      { href: '/drops', label: 'Weekly Drops' },
       { href: '/submit', label: 'List Your Agent' },
     ],
   },

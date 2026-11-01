@@ -13,6 +13,11 @@ export function pluralize(count: number, singular: string, plural?: string): str
   return count === 1 ? singular : (plural ?? `${singular}s`);
 }
 
+/** ["a", "b", "c"] → "a, b and c". */
+export function joinList(items: string[]): string {
+  return items.length <= 1 ? (items[0] ?? '') : `${items.slice(0, -1).join(', ')} and ${items.at(-1)}`;
+}
+
 /**
  * Shorten text to at most `maxLength` characters, ellipsis included. The cut
  * falls on the last word boundary before the limit, never mid-word, and

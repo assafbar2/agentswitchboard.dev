@@ -9,14 +9,16 @@
  */
 
 import { createHash } from 'crypto';
+import { dropAdditions, dropHighlights, type Drop } from './drops';
 import { ACCESS_METHOD_LABELS } from './search';
 import type { Agent, Category } from './types';
+import { formatDay } from './utils';
 
 /**
  * Hash of lib/og.tsx and assets/fonts/, so a redesigned card gets new URLs.
  * lib/share-cards.test.ts prints the new value whenever either changes.
  */
-export const CARD_DESIGN = 'f735ddd2';
+export const CARD_DESIGN = '806ba220';
 
 export const CARD_SIZE = { width: 1200, height: 630 } as const;
 
@@ -49,6 +51,17 @@ export interface CategoryCard {
   icons: string[];
 }
 
+export interface DropCard {
+  /** As the page shows it: "Oct 31, 2026". */
+  date: string;
+  added: number;
+  official: number;
+  updated: number;
+  /** A few additions still listed: lib/drops.ts dropHighlights. */
+  names: string[];
+  icons: string[];
+}
+
 /** An entry for Metadata openGraph.images; twitter:image copies it. */
 export interface ShareImage {
   url: string;
@@ -60,6 +73,8 @@ export interface ShareImage {
 
 const SITE_ICONS = 12;
 const CATEGORY_ICONS = 10;
+const DROP_ICONS = 10;
+const DROP_NAMES = 3;
 
 export function siteCard(agents: Agent[], categories: Category[]): SiteCard {
   return {
@@ -94,6 +109,18 @@ export function categoryCard(category: Category, agents: Agent[], catalog: Agent
   };
 }
 
+export function dropCard(drop: Drop, catalog: Agent[]): DropCard {
+  const { listed } = dropAdditions(drop, catalog);
+  return {
+    date: formatDay(drop.date),
+    added: drop.added.length,
+    official: listed.filter((a) => a.official).length,
+    updated: drop.updated.length,
+    names: dropHighlights(listed, DROP_NAMES).map((a) => a.name),
+    icons: sampleIcons(listed, catalog, DROP_ICONS),
+  };
+}
+
 export function siteCardImage(card: SiteCard): ShareImage {
   return shareImage('/card.png', card, 'Agent Switchboard — AI Agent Directory');
 }
@@ -106,7 +133,15 @@ export function categoryCardImage(slug: string, card: CategoryCard): ShareImage 
   return shareImage(`/categories/${slug}/card.png`, card, `${card.name}: ${card.agents} AI agents on Agent Switchboard`);
 }
 
-function shareImage(path: string, card: SiteCard | ListingCard | CategoryCard, alt: string): ShareImage {
+export function dropCardImage(date: string, card: DropCard): ShareImage {
+  return shareImage(
+    `/drops/${date}/card.png`,
+    card,
+    `The ${card.date} drop on Agent Switchboard: ${card.added} listings added, ${card.updated} updated`
+  );
+}
+
+function shareImage(path: string, card: SiteCard | ListingCard | CategoryCard | DropCard, alt: string): ShareImage {
   const v = createHash('sha1').update(JSON.stringify([CARD_DESIGN, card])).digest('hex').slice(0, 8);
   return { url: `${path}?v=${v}`, ...CARD_SIZE, alt, type: 'image/png' };
 }

@@ -1,5 +1,6 @@
 import { VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 import { getEveryAgent, getAllCategories } from '@/lib/catalog';
+import { getDropSchedule } from '@/lib/drops';
 import { FEATURED_DEFINITION, OFFICIAL_DEFINITION } from '@/lib/public-api';
 
 export const dynamic = 'force-static';
@@ -11,6 +12,10 @@ export async function GET() {
   const verifiedCount = agents.filter((a) => a.verified).length;
 
   const categoryLines = categories.map((c) => `- ${c.slug}: ${c.name}`).join('\n');
+  const latestDrop = getDropSchedule().drops[0];
+  const dropLine = latestDrop
+    ? `\n- What's new, batch by batch: https://agentswitchboard.dev/drops (latest: https://agentswitchboard.dev/drops/${latestDrop.date}, ${latestDrop.added.length} added)`
+    : '';
 
   const body = `# Agent Switchboard
 
@@ -37,7 +42,7 @@ The \`verified\`, \`official\` and \`featured\` flags in search and detail resul
 - Full agent context (for agents): https://agentswitchboard.dev/for-agents
 - Full machine-readable catalog (JSON): https://agentswitchboard.dev/agents.json
 - Browse by category: https://agentswitchboard.dev/categories
-- Search and filter: https://agentswitchboard.dev/browse
+- Search and filter: https://agentswitchboard.dev/browse${dropLine}
 
 To find agents by access method or use case, search: the \`search_agents\` MCP tool, or
 GET /api/agents?access=mcp&category=<slug> (add \`official=true\` for first-party listings

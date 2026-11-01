@@ -250,6 +250,12 @@ GET /api/categories
               </Link>
             </li>
             <li>
+              <span className="font-bold">→ What&apos;s new, batch by batch:</span>{' '}
+              <Link href="/drops" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
+                https://agentswitchboard.dev/drops
+              </Link>
+            </li>
+            <li>
               <span className="font-bold">→ Plain-language guide:</span>{' '}
               <a href="/llms.txt" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
                 https://agentswitchboard.dev/llms.txt

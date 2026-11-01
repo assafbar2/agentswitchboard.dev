@@ -1,6 +1,6 @@
 // SEO, social cards and HTTP headers on the live site (read-only: GET/HEAD only).
 // Source of truth: app/layout.tsx (root metadata), app/page.tsx, lib/share-cards.ts,
-// lib/og.tsx, app/agents/[slug]/page.tsx, app/categories/[slug]/page.tsx, next.config.ts, proxy.ts.
+// lib/og.tsx, app/agents/[slug]/page.tsx, app/categories/[slug]/page.tsx, app/drops/, next.config.ts, proxy.ts.
 import zlib from 'node:zlib';
 import { test, expect } from './fixtures.mjs';
 
@@ -22,6 +22,8 @@ const PAGES = [
     canonical: `${ORIGIN}/categories/code-devtools`,
     card: '/categories/code-devtools/card.png',
   },
+  { path: '/drops', canonical: `${ORIGIN}/drops`, card: '/card.png' },
+  { path: '/drops/2026-10-31', canonical: `${ORIGIN}/drops/2026-10-31`, card: '/drops/2026-10-31/card.png' },
 ];
 
 const escape = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');

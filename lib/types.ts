@@ -90,6 +90,17 @@ export interface SiteSettings {
   homepageFeatured?: string[];
 }
 
+/** One line of content/changelog.json, the directory's change log. */
+export interface ChangelogEntry {
+  action: 'added' | 'removed' | 'updated';
+  slug: string;
+  name: string;
+  /** What changed, or why a listing was removed. Older entries may have null. */
+  note?: string | null;
+  /** YYYY-MM-DD, UTC. */
+  date: string;
+}
+
 // ── Query options ───────────────────────────────────────────────────
 
 export interface AgentQueryOptions {

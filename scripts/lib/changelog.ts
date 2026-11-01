@@ -1,24 +1,19 @@
 /**
  * Append entries to content/changelog.json (newest first).
  * Used by weekly-drop.ts and cms.ts so the audit log maintains itself.
- * Dates are included automatically going forward; older seeded entries
- * may omit them.
+ * The drop pages (lib/drops.ts) group the log by its dates.
  */
 
 import * as fs from 'fs';
 import * as path from 'path';
+import type { ChangelogEntry } from '../../lib/types';
 
-export interface ChangelogEntry {
-  action: 'added' | 'removed' | 'updated';
-  slug: string;
-  name: string;
-  note?: string;
-  date?: string;
-}
+/** Dated today (UTC) unless it carries its own date. */
+type NewEntry = Omit<ChangelogEntry, 'date'> & { date?: string };
 
 const FILE = path.resolve(process.cwd(), 'content', 'changelog.json');
 
-export function appendChangelog(entries: ChangelogEntry | ChangelogEntry[]): void {
+export function appendChangelog(entries: NewEntry | NewEntry[]): void {
   const list: ChangelogEntry[] = fs.existsSync(FILE)
     ? JSON.parse(fs.readFileSync(FILE, 'utf8'))
     : [];

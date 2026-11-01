@@ -2,10 +2,13 @@ import { createHash } from 'crypto';
 import * as fs from 'fs';
 import * as path from 'path';
 import { describe, it, expect } from 'vitest';
+import type { Drop, DropItem } from './drops';
 import {
   CARD_DESIGN,
   categoryCard,
   categoryCardImage,
+  dropCard,
+  dropCardImage,
   listingCard,
   listingCardImage,
   sampleIcons,
@@ -113,6 +116,39 @@ describe('card images', () => {
     expect(url(makeAgent())).toBe(url(makeAgent({ tags: ['email'], updatedAt: '2026-11-01' })));
     expect(url(makeAgent())).not.toBe(url(makeAgent({ description: 'Inboxes for agents.' })));
     expect(url(makeAgent())).not.toBe(url(makeAgent({ iconUrl: '/icons/agentmail.png?v=0123abcd' })));
+  });
+});
+
+describe('dropCard', () => {
+  const item = (slug: string): DropItem => ({ slug, name: slug, date: '2026-10-31', notes: [] });
+  const catalog = [
+    official('big-1', 'Big', 'bbbb0001'),
+    official('big-2', 'Big', 'bbbb0002'),
+    makeAgent({ slug: 'indie', name: 'Indie', providerName: 'Indie', iconUrl: '/icons/indie.png?v=cccc0001' }),
+  ];
+  const drop: Drop = {
+    date: '2026-10-31',
+    days: ['2026-10-31'],
+    added: [item('big-1'), item('big-2'), item('indie'), item('since-removed')],
+    updated: [item('agentmail')],
+    removed: [],
+  };
+
+  it('counts every addition but names, counts Official and shows icons for those still listed', () => {
+    expect(dropCard(drop, catalog)).toEqual({
+      date: 'Oct 31, 2026',
+      added: 4,
+      official: 2,
+      updated: 1,
+      names: ['big-1', 'Indie', 'big-2'],
+      icons: ['/icons/big-1.png?v=bbbb0001', '/icons/indie.png?v=cccc0001'],
+    });
+  });
+
+  it('is served at its own versioned card URL', () => {
+    const image = dropCardImage('2026-10-31', dropCard(drop, catalog));
+    expect(image.url).toMatch(/^\/drops\/2026-10-31\/card\.png\?v=[0-9a-f]{8}$/);
+    expect(image.alt).toBe('The Oct 31, 2026 drop on Agent Switchboard: 4 listings added, 1 updated');
   });
 });
 

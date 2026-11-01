@@ -7,7 +7,11 @@ import {
   getUniqueProviderCount,
   getSiteSettings,
   getOfficialGroups,
+  getEveryAgent,
 } from '@/lib/catalog';
+import { dropAdditions, dropHighlights, getDropSchedule } from '@/lib/drops';
+import { formatDay, formatNumber, joinList, pluralize } from '@/lib/utils';
+import { AgentIcon } from '@/components/AgentIcon';
 import { FeaturedAgentCard } from '@/components/FeaturedAgentCard';
 import { CategoryCard } from '@/components/CategoryCard';
 import { OfficialPlatforms } from '@/components/OfficialPlatforms';
@@ -33,7 +37,7 @@ export async function generateMetadata(_props: unknown, parent: ResolvingMetadat
 }
 
 export default async function HomePage() {
-  const [homepageAgents, categories, agentCount, providerCount, settings, officialGroups] =
+  const [homepageAgents, categories, agentCount, providerCount, settings, officialGroups, catalog] =
     await Promise.all([
       getHomepageAgents(),
       getAllCategories(),
@@ -41,7 +45,11 @@ export default async function HomePage() {
       getUniqueProviderCount(),
       getSiteSettings(),
       getOfficialGroups(),
+      getEveryAgent(),
     ]);
+  const latestDrop = getDropSchedule().drops[0];
+  const latestAdded = latestDrop ? dropAdditions(latestDrop, catalog).listed : [];
+  const latestOfficial = latestAdded.filter((a) => a.official).length;
 
   const homeSchema = [
     {
@@ -131,9 +139,33 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* ── MCP callout ──────────────────────────────────────────── */}
+        {/* ── Latest drop, MCP and Grok Bot callouts ─────────────────── */}
         <section className="pt-5">
           <div className="container-wide">
+            {latestDrop && latestAdded.length > 0 && (
+              <Link
+                href={`/drops/${latestDrop.date}`}
+                className="group mb-2 flex items-center gap-3 border border-[var(--dir-ink)]! px-4 py-3 text-[var(--dir-ink)] no-underline"
+              >
+                <span className="flex shrink-0 gap-1">
+                  {dropHighlights(latestAdded.filter((a) => a.iconUrl)).map((agent) => (
+                      <AgentIcon key={agent.slug} name={agent.name} iconUrl={agent.iconUrl} size={28} lazy={false} />
+                    ))}
+                </span>
+                <span className="flex min-w-0 flex-1 flex-col gap-0.5 sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-4">
+                  <span className="text-[16px] font-extrabold group-hover:underline">
+                    Latest drop: +{formatNumber(latestDrop.added.length)} {pluralize(latestDrop.added.length, 'agent')}
+                  </span>
+                  <span className="text-[15px] text-[var(--dir-muted)]">
+                    {formatDay(latestDrop.date)} · {latestOfficial > 0 && `${latestOfficial} Official, `}including{' '}
+                    {joinList(dropHighlights(latestAdded).map((a) => a.name))}
+                  </span>
+                </span>
+                <span className="text-[15px] font-bold whitespace-nowrap" aria-hidden="true">
+                  See the drop →
+                </span>
+              </Link>
+            )}
             <Link
               href="/for-agents#mcp"
               className="group flex flex-col gap-1 border border-[var(--dir-ink)]! px-4 py-3 text-[var(--dir-ink)] no-underline sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-4"
@@ -256,6 +288,19 @@ export default async function HomePage() {
               {agentCount} agents indexed · {providerCount} providers · {categories.length} categories · api+mcp+cli
             </div>
           </div>
+
+          {latestDrop && (
+            <div className="mb-8">
+              <div className="agent-section-title">latest drop</div>
+              <Link href={`/drops/${latestDrop.date}`} className="agent-row no-underline hover:underline">
+                <span className="agent-accent">/drops/{latestDrop.date}</span>
+                <span className="agent-dim">
+                  +{latestDrop.added.length} added · {latestDrop.updated.length} updated
+                </span>
+                <span className="agent-dim">{latestOfficial} official</span>
+              </Link>
+            </div>
+          )}
 
           {/* Featured agents */}
           {homepageAgents.length > 0 && (

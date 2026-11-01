@@ -7,6 +7,7 @@ import { getReleases, releaseAnchor } from '@/lib/changelog';
 import { inlineMarkdownToText } from '@/lib/inline-markdown';
 import { InlineMarkdown } from '@/components/InlineMarkdown';
 import { formatDay } from '@/lib/utils';
+import type { ChangelogEntry } from '@/lib/types';
 
 export function generateMetadata(_props: unknown, parent: ResolvingMetadata): Promise<Metadata> {
   return pageMetadata(
@@ -20,14 +21,6 @@ export function generateMetadata(_props: unknown, parent: ResolvingMetadata): Pr
 }
 
 const GITHUB_CHANGELOG = 'https://github.com/assafbar2/agentswitchboard.dev/blob/main/CHANGELOG.md';
-
-interface ChangelogEntry {
-  action: 'added' | 'removed' | 'updated';
-  slug: string;
-  name: string;
-  note?: string;
-  date?: string;
-}
 
 const inlineLink =
   'font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2';
@@ -59,6 +52,9 @@ export default function ChangelogPage() {
               <a href="#directory-changes" className={inlineLink}>
                 Directory changes
               </a>
+              <Link href="/drops" className={inlineLink}>
+                Weekly drops
+              </Link>
             </p>
           </div>
 
@@ -109,6 +105,13 @@ export default function ChangelogPage() {
             <h2 id="directory-changes" className="dir-bar scroll-mt-24">
               Directory changes <span className="dir-bar-count">· {entries.length}</span>
             </h2>
+            <p className="mt-2 text-[15px] text-[var(--dir-muted)]">
+              The same changes, batch by batch with icons and one-liners, are on{' '}
+              <Link href="/drops" className={inlineLink}>
+                the weekly drops
+              </Link>
+              .
+            </p>
             <ul>
               {entries.map((e, i) => (
                 <li key={`${e.slug}-${e.action}-${i}`} className="border-b border-[var(--dir-rule)]! py-3">
