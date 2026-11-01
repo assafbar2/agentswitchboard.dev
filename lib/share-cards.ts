@@ -13,6 +13,7 @@ import { dropAdditions, dropHighlights, type Drop } from './drops';
 import type { Alternative } from './related';
 import { ACCESS_METHOD_LABELS } from './search';
 import { stackAccessMethods, type Stack, type StackEntry } from './stacks';
+import { taskTitle, type Task } from './tasks';
 import type { Agent, Category } from './types';
 import { formatDay } from './utils';
 
@@ -20,7 +21,7 @@ import { formatDay } from './utils';
  * Hash of lib/og.tsx and assets/fonts/, so a redesigned card gets new URLs.
  * lib/share-cards.test.ts prints the new value whenever either changes.
  */
-export const CARD_DESIGN = 'dedf58a6';
+export const CARD_DESIGN = '8cd54bcf';
 
 export const CARD_SIZE = { width: 1200, height: 630 } as const;
 
@@ -97,6 +98,24 @@ export interface StacksCard {
   icons: string[];
 }
 
+export interface TaskCard {
+  /** "I need to query a database" */
+  title: string;
+  blurb: string;
+  tools: number;
+  official: number;
+  /** The best fits' icons, best first, each image once. */
+  icons: string[];
+}
+
+export interface TasksCard {
+  tasks: number;
+  /** Distinct listings across every task. */
+  tools: number;
+  /** Each task's best fit's icon, in the tasks' order, each image once. */
+  icons: string[];
+}
+
 /** An entry for Metadata openGraph.images; twitter:image copies it. */
 export interface ShareImage {
   url: string;
@@ -111,6 +130,7 @@ const CATEGORY_ICONS = 10;
 const DROP_ICONS = 10;
 const DROP_NAMES = 3;
 const ALTERNATIVE_NAMES = 3;
+const TASK_ICONS = 10;
 
 export function siteCard(agents: Agent[], categories: Category[]): SiteCard {
   return {
@@ -191,6 +211,27 @@ export function stacksCard(stacks: { entries: StackEntry[] }[]): StacksCard {
   };
 }
 
+/** `fits` as lib/search.ts taskMatches ranks them. */
+export function taskCard(task: Task, fits: Agent[]): TaskCard {
+  return {
+    title: taskTitle(task),
+    blurb: task.blurb,
+    tools: fits.length,
+    official: fits.filter((a) => a.official).length,
+    icons: distinctIcons(fits).slice(0, TASK_ICONS),
+  };
+}
+
+/** Every task in the order /tasks shows them, each with its fits. */
+export function tasksCard(tasks: { fits: Agent[] }[]): TasksCard {
+  const tools = new Set(tasks.flatMap((t) => t.fits.map((a) => a.slug)));
+  return {
+    tasks: tasks.length,
+    tools: tools.size,
+    icons: distinctIcons(tasks.flatMap((t) => t.fits.slice(0, 1))).slice(0, TASK_ICONS),
+  };
+}
+
 export function siteCardImage(card: SiteCard): ShareImage {
   return shareImage('/card.png', card, 'Agent Switchboard — AI Agent Directory');
 }
@@ -227,9 +268,17 @@ export function stacksCardImage(card: StacksCard): ShareImage {
   return shareImage('/stacks/card.png', card, `${card.stacks} stacks of AI tools that work together, on Agent Switchboard`);
 }
 
+export function taskCardImage(slug: string, card: TaskCard): ShareImage {
+  return shareImage(`/tasks/${slug}/card.png`, card, `${card.title}: ${card.tools} tools that do it, on Agent Switchboard`);
+}
+
+export function tasksCardImage(card: TasksCard): ShareImage {
+  return shareImage('/tasks/card.png', card, `${card.tasks} tasks, each with the AI tools that do it, on Agent Switchboard`);
+}
+
 function shareImage(
   path: string,
-  card: SiteCard | ListingCard | CategoryCard | DropCard | AlternativesCard | StackCard | StacksCard,
+  card: SiteCard | ListingCard | CategoryCard | DropCard | AlternativesCard | StackCard | StacksCard | TaskCard | TasksCard,
   alt: string
 ): ShareImage {
   const v = createHash('sha1').update(JSON.stringify([CARD_DESIGN, card])).digest('hex').slice(0, 8);

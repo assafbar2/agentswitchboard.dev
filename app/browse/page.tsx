@@ -21,18 +21,25 @@ import { AccessMethodFilter } from '@/components/AccessMethodFilter';
 import { CatalogFilters } from '@/components/CatalogFilters';
 import { NoResults, NoResultsText } from '@/components/NoResults';
 import { SortSelect } from '@/components/SortSelect';
+import { TaskBanner } from '@/components/TaskBanner';
+import { TaskEvents } from '@/components/TaskEvents';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { pageMetadata } from '@/lib/metadata';
+import { getTask, taskExplanation, taskTitle } from '@/lib/tasks';
+
+/** A ?task= slug, any case; an unknown one is no task, so a stale link still lists everything. */
+const taskOf = (raw: string | undefined) => (raw ? getTask(raw.trim().toLowerCase()) : null);
 
 export async function generateMetadata({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string }>;
+  searchParams: Promise<{ q?: string; task?: string }>;
 }, parent: ResolvingMetadata): Promise<Metadata> {
-  const { q } = await searchParams;
+  const { q, task: taskParam } = await searchParams;
+  const task = taskOf(taskParam);
   return pageMetadata(
     {
-      title: q ? `"${q}" — Search Results` : 'Browse Agents',
+      title: q ? `"${q}" — Search Results` : task ? taskTitle(task) : 'Browse Agents',
       description:
         'Search and filter the full directory of AI agents, MCP servers and agent tools by category, access method (MCP, API, CLI or browser extension) and official vendor.',
       // Self-referencing canonical without query params — filtered/search
@@ -48,6 +55,7 @@ export default async function BrowsePage({
 }: {
   searchParams: Promise<{
     q?: string;
+    task?: string;
     access?: string;
     category?: string;
     official?: string;
@@ -57,8 +65,9 @@ export default async function BrowsePage({
     sort?: string;
   }>;
 }) {
-  const { q, access, category, official, vendor, verified, auth, sort } = await searchParams;
+  const { q, task: taskParam, access, category, official, vendor, verified, auth, sort } = await searchParams;
   const query = q?.trim() ?? '';
+  const task = taskOf(taskParam);
   // Same parsing as /api/agents: aliases map to their method and unknown values
   // are dropped, so a stale or mistyped link never empties the directory.
   const accessFilters = normalizeAccessMethods(access?.split(',') ?? []);
@@ -77,6 +86,7 @@ export default async function BrowsePage({
   const vendorName = vendors.find((v) => v.slug === vendorFilter)?.name;
   const state: BrowseState = {
     query,
+    task: task ?? undefined,
     category: categoryFilter,
     official: parseFlag(official),
     vendor: vendorFilter,
@@ -91,6 +101,16 @@ export default async function BrowsePage({
   if (verifiedOnly) applied.add('verified');
   if (authFilter.length === 1 && authFilter[0] === 'none') applied.add('no-auth');
   const breakdown = resultBreakdown(agents, applied);
+  const categoryName = (slug: string) => categories.find((c) => c.slug === slug)?.name ?? slug;
+  const counted = query ? ' matched' : task ? ` ${agents.length === 1 ? 'fits' : 'fit'} this task` : ' listed';
+  const withoutTask = browseStateHref({ ...state, task: undefined }, sortOrder);
+  const results = (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10">
+      {agents.map((agent) => (
+        <AgentCard key={agent.id} agent={agent} />
+      ))}
+    </div>
+  );
 
   return (
     <>
@@ -114,6 +134,14 @@ export default async function BrowsePage({
           <SearchBar defaultValue={query} autoFocus={!!query} />
         </div>
 
+        {task && (
+          <TaskBanner
+            task={task}
+            explanation={taskExplanation(task, categoryName)}
+            removeHref={withoutTask}
+          />
+        )}
+
         {/* Official, category, and access method filters */}
         <div className="mb-6 flex flex-wrap items-center gap-2">
           <Suspense>
@@ -131,7 +159,7 @@ export default async function BrowsePage({
         <h2 className="dir-bar mb-2">
           {agents.length === 0
             ? 'No agents found'
-            : `${agents.length}${officialOnly ? ' official' : ''} agent${agents.length !== 1 ? 's' : ''}${query ? ' matched' : ' listed'}`}
+            : `${agents.length}${officialOnly ? ' official' : ''} agent${agents.length !== 1 ? 's' : ''}${counted}`}
         </h2>
 
         {/* What each filter chip would keep, and the result order */}
@@ -142,20 +170,21 @@ export default async function BrowsePage({
             )}
             <div className="sm:ml-auto">
               <Suspense>
-                <SortSelect hasQuery={!!query} />
+                <SortSelect hasQuery={!!query || !!task} />
               </Suspense>
             </div>
           </div>
         )}
 
         {/* Results */}
-        {agents.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10">
-            {agents.map((agent) => (
-              <AgentCard key={agent.id} agent={agent} />
-            ))}
-          </div>
-        )}
+        {agents.length > 0 &&
+          (task ? (
+            <TaskEvents task={task.slug} from="browse">
+              {results}
+            </TaskEvents>
+          ) : (
+            results
+          ))}
         {recovery && (
           // Keyed by the view, so a client-side move to another empty view counts it again.
           <NoResults
@@ -163,7 +192,7 @@ export default async function BrowsePage({
             state={state}
             recovery={recovery}
             sort={sortOrder}
-            names={{ category: categories.find((c) => c.slug === categoryFilter)?.name, vendor: vendorName }}
+            names={{ task: task?.label, category: categories.find((c) => c.slug === categoryFilter)?.name, vendor: vendorName }}
           />
         )}
       </div>
@@ -182,7 +211,8 @@ export default async function BrowsePage({
               {query ? `search: "${query}"` : '/browse'}
             </div>
             <div className="agent-dim text-xs">
-              {agents.length} agent{agents.length !== 1 ? 's' : ''}{query ? ' matched' : ' indexed'}
+              {agents.length} agent{agents.length !== 1 ? 's' : ''}{query ? ' matched' : task ? ` ${agents.length === 1 ? 'fits' : 'fit'} the task` : ' indexed'}
+              {task && ` · task: ${task.slug}`}
               {categoryFilter && ` · category: ${categoryFilter}`}
               {officialOnly && ` · official${vendorFilter ? `: ${vendorFilter}` : ''}`}
               {verifiedOnly && ' · verified'}
@@ -193,6 +223,13 @@ export default async function BrowsePage({
             {breakdown.length > 0 && (
               <div className="agent-dim text-xs">
                 {breakdown.map(({ key, count }) => `${key}: ${count}`).join(' · ')}
+              </div>
+            )}
+            {task && (
+              <div className="agent-dim text-xs mt-1">
+                {taskTitle(task)}: {task.blurb} {taskExplanation(task, categoryName)} Best fits with why:{' '}
+                <Link href={`/tasks/${task.slug}`}>/tasks/{task.slug}</Link> · without the task:{' '}
+                <Link href={withoutTask}>{withoutTask}</Link>
               </div>
             )}
           </div>

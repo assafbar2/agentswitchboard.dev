@@ -368,7 +368,12 @@ export default async function HomePage() {
             <div className="agent-row">
               <Link href="/browse" className="agent-accent hover:opacity-80">/browse</Link>
               <span className="agent-dim">filterable directory</span>
-              <span className="agent-dim">?q= ?category= ?access= ?official=1</span>
+              <span className="agent-dim">?q= ?task= ?category= ?access= ?official=1</span>
+            </div>
+            <div className="agent-row">
+              <Link href="/tasks" className="agent-accent hover:opacity-80">/tasks</Link>
+              <span className="agent-dim">start from the job: the tools that do it, best fit first</span>
+              <span className="agent-dim">json: GET /api/tasks</span>
             </div>
             <div className="agent-row">
               <Link href="/stacks" className="agent-accent hover:opacity-80">/stacks</Link>

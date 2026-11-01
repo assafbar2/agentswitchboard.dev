@@ -16,7 +16,7 @@ const HEADER_NAV = [
 
 // components/Footer.tsx footerLinks
 const FOOTER_GROUPS = {
-  Directory: ['/browse', '/categories', '/drops', '/stacks', '/submit'],
+  Directory: ['/browse', '/categories', '/tasks', '/drops', '/stacks', '/submit'],
   Resources: ['/for-agents#mcp', '/connect', '/for-agents', '/changelog', '/pro', '/advertise'],
   Company: ['/about', '/contact', 'https://github.com/assafbar2/agentswitchboard.dev', '/privacy', '/terms', '/disclaimer'],
 };

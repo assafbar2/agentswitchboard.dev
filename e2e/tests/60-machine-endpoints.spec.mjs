@@ -247,7 +247,7 @@ test.describe('catalog JSON', () => {
     expect(sum).toBeGreaterThanOrEqual(catalog.total);
   });
 
-  for (const path of ['/api/agents', '/api/categories', `/api/agents/${REAL_SLUG}`, '/api/stacks', '/agents.json', '/index.md']) {
+  for (const path of ['/api/agents', '/api/categories', `/api/agents/${REAL_SLUG}`, '/api/stacks', '/api/tasks', '/agents.json', '/index.md']) {
     test(`CORS: ${path} allows any origin`, async ({ request }) => {
       const res = await request.get(path, { headers: { ...H, origin: 'https://example.com' } });
       expect(res.status()).toBe(200);
@@ -325,7 +325,7 @@ test.describe('manifests', () => {
     const { res, body } = await getJson(request, '/openapi.json');
     expect(res.headers()['access-control-allow-origin']).toBe('*');
     expect(body.openapi).toMatch(/^3\.1/);
-    for (const p of ['/api/agents', '/api/agents/{slug}', '/api/categories', '/api/stacks', '/api/stacks/{slug}', '/agents.json', '/api/mcp']) {
+    for (const p of ['/api/agents', '/api/agents/{slug}', '/api/categories', '/api/stacks', '/api/stacks/{slug}', '/api/tasks', '/api/tasks/{slug}', '/agents.json', '/api/mcp']) {
       expect(Object.keys(body.paths)).toContain(p);
     }
   });
@@ -364,7 +364,7 @@ test.describe('MCP server /api/mcp', () => {
     }
     const search = body.result.tools.find((t) => t.name === 'search_agents');
     expect(Object.keys(search.inputSchema.properties)).toEqual(
-      expect.arrayContaining(['query', 'category', 'access', 'official', 'verified', 'auth', 'sort', 'limit', 'offset'])
+      expect.arrayContaining(['query', 'task', 'category', 'access', 'official', 'verified', 'auth', 'sort', 'limit', 'offset'])
     );
   });
 
@@ -398,6 +398,21 @@ test.describe('MCP server /api/mcp', () => {
     expect(data.total).toBeGreaterThan(0);
     expect(data.total).toBe(body.total);
     expect(data.agents.map((a) => a.slug)).toEqual(body.agents.map((a) => a.slug));
+  });
+
+  test('search_agents takes a task like GET /api/agents, and lists the task slugs for an unknown one', async ({ request }) => {
+    const result = await callTool(request, 'search_agents', { task: 'query-a-database', access: ['mcp'], limit: 10 });
+    expect(result.isError).toBeFalsy();
+    const data = result.structuredContent ?? JSON.parse(result.content[0].text);
+    const { body } = await getJson(request, '/api/agents?task=query-a-database&access=mcp&limit=10');
+    expect(data.total).toBeGreaterThan(0);
+    expect(data.total).toBe(body.total);
+    expect(data.agents.map((a) => a.slug)).toEqual(body.agents.map((a) => a.slug));
+
+    const unknown = await callTool(request, 'search_agents', { task: 'not-a-real-task' });
+    expect(unknown.isError).toBe(true);
+    expect(unknown.content[0].text).toContain('No task with slug "not-a-real-task"');
+    expect(unknown.content[0].text).toContain('query-a-database');
   });
 
   test('search_agents with a query returns matching results', async ({ request }) => {

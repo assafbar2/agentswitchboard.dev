@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { slugify, truncate, pluralize, authTypeLabel } from './utils';
+import { slugify, truncate, pluralize, authTypeLabel, joinList } from './utils';
 
 describe('slugify', () => {
   it('lowercases and hyphenates', () => {
@@ -18,6 +18,16 @@ describe('truncate', () => {
     const out = truncate('a'.repeat(20), 10);
     expect(out.length).toBeLessThanOrEqual(10);
     expect(out.endsWith('…')).toBe(true);
+  });
+});
+
+describe('joinList', () => {
+  it('joins with commas and the conjunction before the last item', () => {
+    expect(joinList(['a', 'b', 'c'])).toBe('a, b and c');
+    expect(joinList(['a', 'b', 'c'], 'or')).toBe('a, b or c');
+    expect(joinList(['a', 'b'], 'or')).toBe('a or b');
+    expect(joinList(['a'])).toBe('a');
+    expect(joinList([])).toBe('');
   });
 });
 

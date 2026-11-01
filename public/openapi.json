@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Agent Switchboard Directory API",
-    "version": "1.5.0",
+    "version": "1.6.0",
     "summary": "Read-only catalog of AI agents, MCP servers, and agentic developer tools.",
     "description": "Agent Switchboard is a public discovery directory. Use this API to answer questions like 'is there an agent that does X?' or 'which listed products expose an MCP server?'. There is no authentication, no user account, and no write access. This API does not proxy the underlying products — it only returns Switchboard listings. For interactive tool-shaped access, an MCP server is also available at /api/mcp. Listing data returned by this API is licensed CC BY-NC 4.0 (attribution required; commercial reuse needs a license: https://agentswitchboard.dev/contact). The API definition itself is MIT.",
     "contact": {
@@ -29,7 +29,7 @@
       "get": {
         "operationId": "searchAgents",
         "summary": "Search published agents",
-        "description": "Relevance-ranked search over name, description, skills, categories, tags, and provider. Empty `q` lists published agents in catalog order: featured first, then A→Z. With `q`, results are ranked by relevance and equal scores keep that featured-first order. `sort` can order them by newest, most skills, or name instead. Filter by category slug, access methods, `official`, `verified`, and/or `auth`. Paginate with `total` + `offset` + `limit`.",
+        "description": "Relevance-ranked search over name, description, skills, categories, tags, and provider. Empty `q` lists published agents in catalog order: featured first, then A→Z. With `q`, results are ranked by relevance and equal scores keep that featured-first order. `sort` can order them by newest, most skills, or name instead. Filter by task, category slug, access methods, `official`, `verified`, and/or `auth`. With a `task` and no `q`, results are best fit first. Paginate with `total` + `offset` + `limit`.",
         "tags": ["catalog"],
         "parameters": [
           {
@@ -38,6 +38,13 @@
             "required": false,
             "description": "Free-text query. Empty string or omitted = no text filter.",
             "schema": { "type": "string", "examples": ["email", "browser automation"] }
+          },
+          {
+            "name": "task",
+            "in": "query",
+            "required": false,
+            "description": "Task slug from GET /api/tasks, e.g. `query-a-database`: keeps only the listings that do that job, best fit first. Case-insensitive. An unknown slug returns 400 with `error: \"unknown_task\"`.",
+            "schema": { "type": "string", "examples": ["query-a-database", "transcribe-audio"] }
           },
           {
             "name": "category",
@@ -78,7 +85,7 @@
             "name": "sort",
             "in": "query",
             "required": false,
-            "description": "Result order. `relevance` (default): with `q`, best match first; without, featured first, then A→Z. `newest`: most recently added first. `skills`: most skills first. `name`: A→Z. Ties keep the default order. Unknown values mean `relevance`.",
+            "description": "Result order. `relevance` (default): with `q`, best match first; without, best fit first for a `task`, else featured first, then A→Z. `newest`: most recently added first. `skills`: most skills first. `name`: A→Z. Ties keep the default order. Unknown values mean `relevance`.",
             "schema": { "type": "string", "enum": ["relevance", "newest", "skills", "name"], "default": "relevance" }
           },
           {
@@ -126,6 +133,14 @@
                     }
                   }
                 }
+              }
+            }
+          },
+          "400": {
+            "description": "`task` is not a task slug from GET /api/tasks.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
               }
             }
           }
@@ -229,6 +244,59 @@
           },
           "404": {
             "description": "No stack with that slug.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tasks": {
+      "get": {
+        "operationId": "listTasks",
+        "summary": "List tasks",
+        "description": "Tasks are jobs (\"query a database\", \"transcribe audio\"), each with how many listings do it. Use a task's `slug` as the `task` parameter on searchAgents to filter and page those listings, best fit first, or call getTask for its best fits with why each one fits. In the order /tasks shows them.",
+        "tags": ["catalog"],
+        "responses": {
+          "200": {
+            "description": "Every task.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/TaskList" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tasks/{slug}": {
+      "get": {
+        "operationId": "getTask",
+        "summary": "Get one task by slug",
+        "description": "One task with every listing that does it, best fit first, each with the skill that does the job when it has one. Also the slugs of related tasks and of stacks that use its listings. Use a `slug` returned by listTasks. Unknown slugs return 404.",
+        "tags": ["catalog"],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "description": "Stable task identifier, e.g. `query-a-database`.",
+            "schema": { "type": "string", "examples": ["query-a-database"] }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The task.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/TaskDetail" }
+              }
+            }
+          },
+          "404": {
+            "description": "No task with that slug.",
             "content": {
               "application/json": {
                 "schema": { "$ref": "#/components/schemas/Error" }
@@ -459,6 +527,88 @@
                 "description": "How the listed product authenticates. Not used by this API."
               },
               "why": { "type": "string", "description": "What this listing does for the stack's job." }
+            }
+          }
+        ]
+      },
+      "TaskList": {
+        "type": "object",
+        "required": ["total", "tasks"],
+        "properties": {
+          "total": { "type": "integer" },
+          "tasks": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Task" }
+          }
+        }
+      },
+      "Task": {
+        "type": "object",
+        "required": ["slug", "label", "blurb", "keywords", "categories", "access", "count", "official", "url", "browseUrl", "agentsUrl"],
+        "properties": {
+          "slug": { "type": "string", "description": "Stable identifier. Pass as `task` to GET /api/agents, or to GET /api/tasks/{slug}." },
+          "label": { "type": "string", "description": "The job, worded to follow \"I need to\", e.g. \"query a database\"." },
+          "blurb": { "type": "string", "description": "One line on what the task covers." },
+          "keywords": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "The words and phrases listings are matched on, in their name, description, tags and skills."
+          },
+          "categories": { "type": "array", "items": { "type": "string" }, "description": "Category slugs whose matching listings rank higher." },
+          "access": {
+            "type": "array",
+            "items": { "type": "string", "enum": ["api", "mcp", "cli", "browser-extension"] },
+            "description": "Access methods whose matching listings rank higher."
+          },
+          "count": { "type": "integer", "description": "How many listings fit the task." },
+          "official": { "type": "integer", "description": "How many of those are official listings." },
+          "url": { "type": "string", "format": "uri", "description": "Human task page on Agent Switchboard." },
+          "browseUrl": { "type": "string", "format": "uri", "description": "/browse filtered to the task, where more filters can be added." },
+          "agentsUrl": { "type": "string", "format": "uri", "description": "GET /api/agents filtered to the task." }
+        }
+      },
+      "TaskDetail": {
+        "allOf": [
+          { "$ref": "#/components/schemas/Task" },
+          {
+            "type": "object",
+            "required": ["agents", "relatedTasks", "stacks"],
+            "properties": {
+              "agents": {
+                "type": "array",
+                "description": "Every listing that fits the task, best fit first.",
+                "items": { "$ref": "#/components/schemas/TaskAgent" }
+              },
+              "relatedTasks": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "Slugs of tasks that share listings or categories with this one, closest first."
+              },
+              "stacks": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "Slugs of stacks that include listings that fit this task, most shared first."
+              }
+            }
+          }
+        ]
+      },
+      "TaskAgent": {
+        "allOf": [
+          { "$ref": "#/components/schemas/AgentSummary" },
+          {
+            "type": "object",
+            "required": ["authType", "why"],
+            "properties": {
+              "authType": {
+                "type": "string",
+                "enum": ["apiKey", "oauth2", "bearer", "none"],
+                "description": "How the listed product authenticates. Not used by this API."
+              },
+              "why": {
+                "type": ["string", "null"],
+                "description": "The listing's own skill that does the job; null when it fits by its name, description or tags."
+              }
             }
           }
         ]

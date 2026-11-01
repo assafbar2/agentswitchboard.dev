@@ -1,13 +1,14 @@
 /**
  * Shared shapes and HTTP helpers for the public catalog REST API.
- * Used by GET /api/agents, GET /api/agents/[slug], GET /api/categories and
- * GET /api/stacks, and — for the label definitions and access-method input
+ * Used by GET /api/agents, GET /api/agents/[slug], GET /api/categories,
+ * GET /api/stacks and GET /api/tasks, and — for the label definitions and access-method input
  * rules — by the MCP server (/api/mcp), WebMCP and the agent docs, so they
  * cannot drift apart. WebMCP runs in the browser: import only types from
  * modules that read files.
  */
 
 import type { Stack, StackEntry } from './stacks';
+import type { Task } from './tasks';
 import type { Agent, Category } from './types';
 import { BASE_URL } from './env';
 import { absoluteIconUrl } from './icons';
@@ -80,7 +81,14 @@ export const AUTH_INPUT =
   'Only listings with one of these auth types: none (no key or sign-in needed), apiKey, oauth2, bearer. A listing has one auth type, so several mean any of them';
 
 export const SORT_INPUT =
-  'Result order. relevance (default): best match first with search text, featured then A→Z without. newest: most recently added first. skills: most skills first. name: A→Z';
+  'Result order. relevance (default): best match first with search text; without it, best fit first for a task, else featured then A→Z. newest: most recently added first. skills: most skills first. name: A→Z';
+
+export const TASK_INPUT =
+  'Task slug, e.g. "query-a-database": only the listings that do that job, best fit first. GET https://agentswitchboard.dev/api/tasks lists the tasks';
+
+export function unknownTaskMessage(slug: string): string {
+  return `No task with slug "${slug}". GET /api/tasks lists every task.`;
+}
 
 export const CORS_GET = {
   'Access-Control-Allow-Origin': '*',
@@ -178,5 +186,41 @@ export function summarizeStack(stack: Stack, entries: StackEntry[]) {
     week: stack.week ?? null,
     url: `${BASE_URL}/stacks/${stack.slug}`,
     items: entries.map(({ agent, why }) => ({ ...summarizeAgent(agent), authType: agent.authType, why })),
+  };
+}
+
+/** A task for GET /api/tasks: the job, what its listings are picked by, and how many fit (`fits`). */
+export function summarizeTask(task: Task, fits: Agent[]) {
+  return {
+    slug: task.slug,
+    label: task.label,
+    blurb: task.blurb,
+    keywords: task.keywords,
+    categories: task.categories,
+    access: task.access,
+    count: fits.length,
+    official: fits.filter((a) => a.official).length,
+    url: `${BASE_URL}/tasks/${task.slug}`,
+    browseUrl: `${BASE_URL}/browse?task=${task.slug}`,
+    agentsUrl: `${BASE_URL}/api/agents?task=${task.slug}`,
+  };
+}
+
+/**
+ * One task for GET /api/tasks/{slug}: its summary, every listing that fits
+ * best first with why (lib/tasks.ts whyItFits, or null), and the slugs of
+ * related tasks and of stacks with its listings.
+ */
+export function detailTask(
+  task: Task,
+  fits: { agent: Agent; why: string | null }[],
+  related: Task[],
+  stacks: Stack[]
+) {
+  return {
+    ...summarizeTask(task, fits.map((f) => f.agent)),
+    agents: fits.map(({ agent, why }) => ({ ...summarizeAgent(agent), authType: agent.authType, why })),
+    relatedTasks: related.map((t) => t.slug),
+    stacks: stacks.map((s) => s.slug),
   };
 }

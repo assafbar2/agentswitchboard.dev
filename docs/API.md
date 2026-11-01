@@ -9,6 +9,7 @@ need no authentication, are CORS-open, and read the same cached catalog**
 | **REST search** | plain HTTP clients, connector platforms | `GET /api/agents` |
 | **REST detail** | one listing by slug | `GET /api/agents/{slug}` |
 | **REST categories** | valid `category` slugs + counts | `GET /api/categories` |
+| **REST tasks** | starting from a job: the listings that do it | `GET /api/tasks` |
 | **REST stacks** | listings that together do one job | `GET /api/stacks` |
 | **MCP server** | MCP clients (Grok, Claude, ChatGPT, Cursor, …) | `POST /api/mcp` |
 | **WebMCP** | agents viewing the page in a browser | `document.modelContext` |
@@ -28,12 +29,13 @@ handshake (e.g. wiring into a connector platform).
 | Param | Type | Default | Notes |
 |---|---|---|---|
 | `q` | string | `""` | Free-text over name, description, skills, categories, tags, provider. Empty = list all (relevance falls back to catalog order). |
+| `task` | string | — | A task slug from [`GET /api/tasks`](#rest-tasks--get-apitasks), e.g. `query-a-database`: keeps only the listings that do that job. With no `q`, best fit first. An unknown slug is a `400` with `{ "error": "unknown_task", "message": "…" }`. |
 | `category` | string | — | Category slug, e.g. `content-media`. See `list_categories` / [`content/categories.json`](../content/categories.json). |
 | `access` | string | — | One or more of `api`, `mcp`, `cli`, `browser-extension` (`extension` is accepted as an alias). Comma-separate to **require all** (`access=api,mcp`). Unknown values are ignored, not rejected. |
 | `official` | boolean | `false` | `true` (or `1`) returns only [official listings](#official-listings): first-party products from major vendors. Combines with `category`, `access`, and `q`. |
 | `verified` | boolean | `false` | `true` (or `1`) returns only Verified listings: checked to work, re-checked monthly. |
 | `auth` | string | — | Only listings with this auth type: `none` (no key or sign-in needed), `apiKey`, `oauth2`, `bearer`. A listing has one, so comma-separated values mean **any of them** (`auth=none,apiKey`). Unknown values are ignored. |
-| `sort` | string | `relevance` | `relevance`: best match first with `q`, featured then A→Z without. `newest`: most recently added first. `skills`: most skills first. `name`: A→Z. Ties keep the `relevance` order; unknown values mean `relevance`. |
+| `sort` | string | `relevance` | `relevance`: best match first with `q`; without it, best fit first with a `task`, else featured then A→Z. `newest`: most recently added first. `skills`: most skills first. `name`: A→Z. Ties keep the `relevance` order; unknown values mean `relevance`. |
 | `limit` | integer | `10` | Clamped to `1..50`. |
 | `offset` | integer | `0` | Number of results to skip, for pagination. |
 
@@ -88,6 +90,9 @@ curl "https://agentswitchboard.dev/api/agents?official=true&category=code-devtoo
 
 # The newest MCP servers that need no key or sign-in
 curl "https://agentswitchboard.dev/api/agents?access=mcp&auth=none&sort=newest"
+
+# MCP servers that query a database, best fit first
+curl "https://agentswitchboard.dev/api/agents?task=query-a-database&access=mcp"
 ```
 
 ---
@@ -115,6 +120,49 @@ curl "https://agentswitchboard.dev/api/categories"
 
 Response: `{ "categories": [ { slug, name, description, agentCount } ] }`.
 Use `slug` as the `category` query parameter on `GET /api/agents`.
+
+---
+
+## REST tasks — `GET /api/tasks`
+
+A task is a job ("query a database", "transcribe audio") and the listings that
+do it. The same tasks as [`/tasks`](https://agentswitchboard.dev/tasks), from
+[`content/tasks.json`](../content/tasks.json). A listing fits a task when its
+name, description, tags or skills use the task's `keywords`; listings in the
+task's `categories` or with its `access` methods rank higher.
+
+```bash
+curl "https://agentswitchboard.dev/api/tasks"
+curl "https://agentswitchboard.dev/api/tasks/query-a-database"
+```
+
+```jsonc
+{
+  "total": 38,
+  "tasks": [
+    {
+      "slug": "query-a-database",
+      "label": "query a database", // reads after "I need to"
+      "blurb": "Ask Postgres, MySQL, MongoDB and other databases questions, run SQL and manage schemas from an agent.",
+      "keywords": ["database", "sql", "postgres", "mongodb"],
+      "categories": ["data-analytics", "infrastructure", "code-devtools"],
+      "access": ["mcp"],
+      "count": 46,    // listings that fit
+      "official": 23, // of which official
+      "url": "https://agentswitchboard.dev/tasks/query-a-database",
+      "browseUrl": "https://agentswitchboard.dev/browse?task=query-a-database",
+      "agentsUrl": "https://agentswitchboard.dev/api/agents?task=query-a-database"
+    }
+  ]
+}
+```
+
+`GET /api/tasks/{slug}` returns one task with the same fields plus `agents`
+(every listing that fits, best fit first: the REST search fields, `authType`,
+and `why`, the listing's own skill that does the job, or `null` when it fits
+by its name, description or tags), `relatedTasks` and `stacks` (slugs). An
+unknown slug returns `404` with `{ "error": "not_found", "message": "…" }`.
+To filter or page a task's listings, use `GET /api/agents?task={slug}`.
 
 ---
 
@@ -177,7 +225,7 @@ Stdio-only clients: `npx -y mcp-remote https://agentswitchboard.dev/api/mcp`
 
 | Tool | Input | Output |
 |---|---|---|
-| `search_agents` | `query?`, `category?`, `access?` (enum[]), `official?` (boolean), `verified?` (boolean), `auth?` (enum[]), `sort?` (enum), `limit?` (1–50), `offset?` | `{ total, offset, limit, agents[] }` |
+| `search_agents` | `query?`, `task?`, `category?`, `access?` (enum[]), `official?` (boolean), `verified?` (boolean), `auth?` (enum[]), `sort?` (enum), `limit?` (1–50), `offset?` | `{ total, offset, limit, agents[] }` |
 | `get_agent` | `slug` (required) | full agent detail: skills, auth, streaming/push, tags, links |
 | `list_categories` | — | `{ categories: [ { slug, name, description, agentCount } ] }` |
 | `submit_listing` | `name`, `url`, `description` (required); `access?`, `category?`, `contact_email?` | `{ status, message, issueUrl?, existingSlug? }` |

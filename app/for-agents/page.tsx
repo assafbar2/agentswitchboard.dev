@@ -165,12 +165,15 @@ export default async function ForAgentsPage() {
             rather than an MCP handshake. Read-only, no auth, open CORS:
           </p>
           <pre className="rounded-none border-2 border-[var(--dir-ink)]! bg-[var(--dir-paper)] p-4 text-xs overflow-x-auto">
-{`GET /api/agents?q=<text>&category=<slug>&access=<method>&official=true
-               &verified=true&auth=<type>&sort=<order>&limit=<n>&offset=<n>
+{`GET /api/agents?q=<text>&task=<slug>&category=<slug>&access=<method>
+               &official=true&verified=true&auth=<type>&sort=<order>
+               &limit=<n>&offset=<n>
 GET /api/agents/<slug>
 GET /api/categories
 GET /api/stacks
 GET /api/stacks/<slug>
+GET /api/tasks
+GET /api/tasks/<slug>
 
 → search: { total, offset, limit, agents: [
      { name, slug, url, iconUrl, description, provider, categories,
@@ -179,9 +182,20 @@ GET /api/stacks/<slug>
 → stacks: { total, stackOfTheWeek, stacks: [
      { slug, title, promise, week, url,
        items: [ { …the search fields, authType, why } ] }
-   ] }`}
+   ] }
+→ tasks: { total, tasks: [
+     { slug, label, blurb, keywords, categories, access, count,
+       official, url, browseUrl, agentsUrl }
+   ] }
+→ task: { …the task fields, agents: [ { …the search fields, authType,
+       why } ], relatedTasks, stacks }`}
           </pre>
           <ul className="space-y-1 pl-4">
+            <li>
+              <span className="font-bold">task</span> — a task slug from{' '}
+              <code className="font-bold">GET /api/tasks</code>: only the listings
+              that fit it, best fit first (an unknown slug is a 400)
+            </li>
             <li>
               <span className="font-bold">access</span> — one of{' '}
               <code className="font-bold">api</code>,{' '}
@@ -217,7 +231,8 @@ GET /api/stacks/<slug>
             <li>
               <span className="font-bold">sort</span> — by default, without{' '}
               <code className="font-bold">q</code>, featured listings first, then
-              A→Z; with <code className="font-bold">q</code>, by relevance. Or{' '}
+              A→Z (best fit first with a <code className="font-bold">task</code>);
+              with <code className="font-bold">q</code>, by relevance. Or{' '}
               <code className="font-bold">newest</code> (most recently added),{' '}
               <code className="font-bold">skills</code> (most first) or{' '}
               <code className="font-bold">name</code> (A→Z)
@@ -239,6 +254,14 @@ GET /api/stacks/<slug>
             {' · '}
             <EndpointLink href="/api/stacks" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
               /api/stacks
+            </EndpointLink>
+            {' · '}
+            <EndpointLink href="/api/tasks" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
+              /api/tasks
+            </EndpointLink>
+            {' · '}
+            <EndpointLink href="/api/agents?task=query-a-database&access=mcp&limit=5" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
+              /api/agents?task=query-a-database&amp;access=mcp&amp;limit=5
             </EndpointLink>
             {' · '}
             <EndpointLink href="/openapi.json" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
@@ -297,6 +320,14 @@ GET /api/stacks/<slug>
               <code className="font-bold">GET /api/stacks</code>
             </li>
             <li>
+              <span className="font-bold">→ Tasks, to start from the job (&quot;query a database&quot;):</span>{' '}
+              <Link href="/tasks" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
+                https://agentswitchboard.dev/tasks
+              </Link>
+              , each with the listings that fit it, best first, and why; as JSON at{' '}
+              <code className="font-bold">GET /api/tasks</code>
+            </li>
+            <li>
               <span className="font-bold">→ Plain-language guide:</span>{' '}
               <a href="/llms.txt" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
                 https://agentswitchboard.dev/llms.txt
@@ -312,7 +343,10 @@ GET /api/stacks/<slug>
           <p className="pt-1">
             To find agents by capability, search:{' '}
             <code className="font-bold">search_agents</code> over MCP, or{' '}
-            <code className="font-bold">GET /api/agents?access=mcp&amp;category=&lt;slug&gt;</code>.{' '}
+            <code className="font-bold">GET /api/agents?access=mcp&amp;category=&lt;slug&gt;</code>.
+            To start from a job, pass a task slug from{' '}
+            <code className="font-bold">GET /api/tasks</code> as{' '}
+            <code className="font-bold">task</code> to either.{' '}
             <code className="font-bold">/agents.json</code> is the whole catalog
             in one large file — use it for bulk or offline work, filtering on{' '}
             <code className="font-bold">accessMethods</code> or{' '}

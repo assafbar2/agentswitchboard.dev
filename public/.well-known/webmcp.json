@@ -1,7 +1,7 @@
 {
   "name": "io.github.assafbar2/agentswitchboard",
   "description": "In-browser WebMCP tools for Agent Switchboard, registered on document.modelContext when the page loads. Same three tools as the remote MCP server at /api/mcp. They call the public REST API (/api/agents, /api/agents/{slug}, /api/categories), so matches and their order are the same as the remote server's; result objects use the REST field names (see /openapi.json).",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "websiteUrl": "https://agentswitchboard.dev",
   "surface": "document.modelContext",
   "polyfill": "@mcp-b/webmcp-polyfill",
@@ -12,7 +12,7 @@
   "tools": [
     {
       "name": "search_agents",
-      "description": "Search the curated Agent Switchboard directory of AI agents, MCP servers, and agentic tools. Filter by category slug, access methods, official (first-party listings from major vendors), verified, and/or auth type; sort by relevance, newest, most skills, or name. Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working. Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified. Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order.",
+      "description": "Search the curated Agent Switchboard directory of AI agents, MCP servers, and agentic tools. Filter by task, category slug, access methods, official (first-party listings from major vendors), verified, and/or auth type; sort by relevance, newest, most skills, or name. Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working. Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified. Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order.",
       "annotations": {
         "readOnlyHint": true
       },
@@ -22,6 +22,10 @@
           "query": {
             "type": "string",
             "description": "Free-text search over name, description, skills, categories, tags, and provider"
+          },
+          "task": {
+            "type": "string",
+            "description": "Task slug, e.g. \"query-a-database\": only the listings that do that job, best fit first. GET https://agentswitchboard.dev/api/tasks lists the tasks"
           },
           "category": {
             "type": "string",
@@ -70,7 +74,7 @@
               "skills",
               "name"
             ],
-            "description": "Result order. relevance (default): best match first with search text, featured then A→Z without. newest: most recently added first. skills: most skills first. name: A→Z"
+            "description": "Result order. relevance (default): best match first with search text; without it, best fit first for a task, else featured then A→Z. newest: most recently added first. skills: most skills first. name: A→Z"
           },
           "limit": {
             "type": "integer",

@@ -10,8 +10,8 @@ interface Props {
   state: BrowseState;
   recovery: Recovery;
   sort: SortOrder;
-  /** Display names of the category and vendor filters. */
-  names: { category?: string; vendor?: string };
+  /** Display names of the task, category and vendor filters. */
+  names: { task?: string; category?: string; vendor?: string };
 }
 
 /** “a” · “a” or “b” · “a”, “b” or “c” */
@@ -24,6 +24,7 @@ const results = (n: number) => `${n} result${n === 1 ? '' : 's'}`;
 
 function filterCount(state: BrowseState): number {
   return (
+    Number(!!state.task) +
     state.access.length +
     Number(!!state.category) +
     Number(state.official || !!state.vendor) +

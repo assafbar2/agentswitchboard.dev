@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { constraintLabel, editDistance, recover } from './recovery';
-import type { BrowseState } from './search';
+import type { BrowseState, TaskQuery } from './search';
 import type { Agent, Category } from './types';
 
 function makeAgent(overrides: Partial<Agent> = {}): Agent {
@@ -171,6 +171,33 @@ describe('recover: removals', () => {
   });
 });
 
+describe('recover: a task', () => {
+  const task: TaskQuery = {
+    slug: 'query-a-database',
+    keywords: ['database', 'postgres'],
+    categories: ['data-analytics'],
+    access: ['mcp'],
+  };
+
+  it('offers to drop the task, keeping the search, and previews the search without it', () => {
+    expect(removals(view({ task, query: 'blog' }))).toEqual([
+      ['task', 'query-a-database', 1],
+      ['word', 'blog', 2],
+    ]);
+    const r = recover(agents, view({ task, query: 'blog' }), categories);
+    expect(r.preview).toMatchObject({ kind: 'unfiltered', total: 1, without: { what: 'task', value: 'query-a-database' } });
+    expect(slugs(r.preview!.agents)).toEqual(['ghostwriter']);
+  });
+
+  it('weighs the task against the other filters, and never offers the whole directory', () => {
+    expect(removals(view({ task, access: ['cli'] }))).toEqual([
+      ['access', 'cli', 2],
+      ['task', 'query-a-database', 1],
+    ]);
+    expect(removals(view({ task: { ...task, keywords: ['zzqx'] } }))).toEqual([]);
+  });
+});
+
 describe('recover: closest matches and categories', () => {
   it('ranks the closest matches by how many words they have, then by how well', () => {
     const r = recover(agents, view({ query: 'postgres storage zzqxjv' }), categories);
@@ -195,6 +222,8 @@ describe('recover: closest matches and categories', () => {
 describe('constraintLabel', () => {
   it('names words, filters and auth types the way the page shows them', () => {
     expect(constraintLabel({ what: 'word', value: 'zzqx' })).toBe('“zzqx”');
+    expect(constraintLabel({ what: 'task', value: 'query-a-database' }, { task: 'query a database' })).toBe('Task: query a database');
+    expect(constraintLabel({ what: 'task', value: 'query-a-database' })).toBe('Task: query-a-database');
     expect(constraintLabel({ what: 'access', value: 'browser-extension' })).toBe('Extension');
     expect(constraintLabel({ what: 'category', value: 'writing' }, { category: 'Writing' })).toBe('Writing');
     expect(constraintLabel({ what: 'vendor', value: 'github' })).toBe('github');

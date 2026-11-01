@@ -45,7 +45,10 @@ const MCP_JSON = `{
 }`;
 
 const TOOLS: { name: string; does: string }[] = [
-  { name: 'search_agents', does: 'Search by text, category, access method (api, mcp, cli, browser-extension), and official. Paged.' },
+  {
+    name: 'search_agents',
+    does: 'Search by text or task ("query-a-database"), category, access method (api, mcp, cli, browser-extension), official, verified and auth type. Sorted and paged.',
+  },
   { name: 'get_agent', does: 'Full detail for one listing: skills, auth, links, Verified and Official status.' },
   { name: 'list_categories', does: 'Every category with its slug and live agent count.' },
   { name: 'submit_listing', does: 'Suggest a new listing. Opens a public GitHub issue for review; publishes nothing.' },

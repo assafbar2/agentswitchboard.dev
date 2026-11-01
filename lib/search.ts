@@ -133,6 +133,8 @@ export function browseHref(query: string, current: string | URLSearchParams = ''
 /** What a /browse view asks for, parsed from its URL. */
 export interface BrowseState {
   query: string;
+  /** ?task=<slug>, resolved. An unknown slug is no task. */
+  task?: TaskQuery;
   category: string;
   /** ?official=1. A vendor implies it without it. */
   official: boolean;
@@ -142,9 +144,13 @@ export interface BrowseState {
   access: string[];
 }
 
-/** The listings a /browse view shows, before sorting. */
+/**
+ * The listings a /browse view shows, before sorting. A task picks its
+ * listings from all of `agents` before the filters apply, so a filter keeps
+ * the same listings the breakdown line counted for it.
+ */
 export function browseMatches(agents: Agent[], state: BrowseState): Agent[] {
-  const narrowed = filterAgents(agents, {
+  const narrowed = filterAgents(state.task ? taskMatches(agents, state.task) : agents, {
     category: state.category,
     official: state.official || !!state.vendor,
     vendor: state.vendor,
@@ -157,6 +163,7 @@ export function browseMatches(agents: Agent[], state: BrowseState): Agent[] {
 /** The /browse URL for `state`, written the way the filters write it. */
 export function browseStateHref(state: BrowseState, sort: SortOrder = 'relevance'): string {
   const params = new URLSearchParams();
+  if (state.task) params.set('task', state.task.slug);
   if (state.query) params.set('q', state.query);
   if (state.category) params.set('category', state.category);
   if (state.official) params.set('official', '1');
@@ -467,4 +474,135 @@ export function searchAgents(
     .filter(({ score }) => score > 0)
     .sort((a, b) => b.score - a.score)
     .map(({ agent }) => agent);
+}
+
+// ── Tasks ───────────────────────────────────────────────────────────
+
+/** What a task (content/tasks.json, lib/tasks.ts) asks the ranker for. */
+export interface TaskQuery {
+  slug: string;
+  /** Words and phrases its listings use. Each must match one field on its own. */
+  keywords: readonly string[];
+  /** Listings in these categories rank higher. */
+  categories: readonly string[];
+  /** Listings with one of these access methods rank higher. */
+  access: readonly string[];
+}
+
+/**
+ * Points a task keyword earns in each field of a listing, once per field.
+ * The description says what a listing is for, so it counts for more than a
+ * skill name; skill descriptions often name things a listing only touches.
+ * A listing in one of the task's categories gets the category bonus: it is
+ * what tells a search tool from a model API with a web search feature.
+ */
+const TASK_POINTS = {
+  name: 100,
+  exactName: 20,
+  description: 60,
+  tags: 50,
+  skillNames: 40,
+  skillDescriptions: 15,
+  category: 100,
+  access: 20,
+};
+
+/**
+ * The score a listing needs to fit a task. In one of the task's categories,
+ * a keyword in its name is enough, or one in its description and in one
+ * more field or with one of the task's access methods; outside them it
+ * takes about three fields, so a listing that mentions a keyword in passing
+ * is left out.
+ */
+export const TASK_MIN_SCORE = 170;
+
+const WORD_SPLIT = new RegExp(`${NOT_WORD}+`, 'u');
+
+/** Lowercased words of `text`, filler words left out unless there is nothing else. */
+function contentWords(text: string): string[] {
+  const all = text.toLowerCase().split(WORD_SPLIT).filter(Boolean);
+  const kept = all.filter((w) => !STOPWORDS.has(w));
+  return kept.length > 0 ? kept : all;
+}
+
+/**
+ * Tests for one task keyword against lowercased text, each word (or a
+ * synonym) by the rules for search words (makeVariant), filler words left
+ * out. `anywhere`: every word somewhere in the text, for names, tags and
+ * skill names. `phrase`: the words next to each other in order, for
+ * descriptions, where "search" and "api" far apart mean nothing; filler
+ * between them is skipped, so "text-to-speech" matches "text to speech".
+ */
+export function keywordMatcher(keyword: string): {
+  anywhere: (text: string, inName?: boolean) => boolean;
+  phrase: (text: string) => boolean;
+} {
+  const words = contentWords(keyword).map((w) => (SYNONYMS.get(w) ?? [w]).map(makeVariant));
+  const anywhere = (text: string, inName?: boolean) =>
+    words.length > 0 && words.every((variants) => variants.some((v) => v.test(text, inName)));
+  if (words.length <= 1) return { anywhere, phrase: (text) => anywhere(text) };
+  return {
+    anywhere,
+    phrase: (text) => {
+      const tokens = contentWords(text);
+      for (let i = 0; i + words.length <= tokens.length; i++) {
+        if (words.every((variants, j) => variants.some((v) => v.test(tokens[i + j])))) return true;
+      }
+      return false;
+    },
+  };
+}
+
+type Matcher = ReturnType<typeof keywordMatcher>;
+
+/**
+ * How well `agent` fits `task`. `points`: for each keyword, the points of
+ * every field that has it (see keywordMatcher; the tags count as one
+ * field). `score`: the points with the category and access bonuses, or 0
+ * without points.
+ */
+export function taskScore(agent: Agent, task: TaskQuery): { points: number; score: number } {
+  return scoreTask(haystackOf(agent), agent, task.keywords.map(keywordMatcher), task);
+}
+
+function scoreTask(h: Haystack, agent: Agent, matchers: Matcher[], task: TaskQuery): { points: number; score: number } {
+  const tags = h.tags.join(' ');
+  let points = 0;
+  task.keywords.forEach((keyword, i) => {
+    const { anywhere, phrase } = matchers[i];
+    if (anywhere(h.name, true)) points += TASK_POINTS.name + (h.name === keyword.toLowerCase() ? TASK_POINTS.exactName : 0);
+    if (phrase(h.description)) points += TASK_POINTS.description;
+    if (anywhere(tags)) points += TASK_POINTS.tags;
+    if (h.skillNames.some((s) => anywhere(s))) points += TASK_POINTS.skillNames;
+    if (h.skillDescriptions.some((s) => phrase(s))) points += TASK_POINTS.skillDescriptions;
+  });
+  if (points === 0) return { points, score: 0 };
+  let score = points;
+  if (h.categorySlugs.some((c) => task.categories.includes(c))) score += TASK_POINTS.category;
+  if ((agent.accessMethods ?? []).some((m) => task.access.includes(m))) score += TASK_POINTS.access;
+  return { points, score };
+}
+
+const taskResults = new WeakMap<Agent[], Map<string, Agent[]>>();
+
+/**
+ * The listings that fit `task`, best first; equal scores keep the incoming
+ * order. Remembered per catalog array, since /browse and its ways back ask
+ * for the same task many times.
+ */
+export function taskMatches(agents: Agent[], task: TaskQuery): Agent[] {
+  let byTask = taskResults.get(agents);
+  if (!byTask) taskResults.set(agents, (byTask = new Map()));
+  const key = JSON.stringify([task.slug, task.keywords, task.categories, task.access]);
+  const known = byTask.get(key);
+  if (known) return known;
+
+  const matchers = task.keywords.map(keywordMatcher);
+  const result = agents
+    .map((agent) => ({ agent, score: scoreTask(haystackOf(agent), agent, matchers, task).score }))
+    .filter(({ score }) => score >= TASK_MIN_SCORE)
+    .sort((a, b) => b.score - a.score)
+    .map(({ agent }) => agent);
+  byTask.set(key, result);
+  return result;
 }
