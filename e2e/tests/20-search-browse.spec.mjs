@@ -69,12 +69,17 @@ test.describe('search queries', () => {
     await expect(cardFor(page, 'agentmail')).toBeVisible();
   });
 
-  test('a nonsense query shows the empty state', async ({ page }) => {
+  test('a nonsense query says so and offers two categories and the suggestion form', async ({ page }) => {
     await page.goto('/browse?q=zzqxjvnonsense');
     await expect(countBar(page)).toHaveText('No agents found');
     await expect(cards(page)).toHaveCount(0);
     await expect(human(page).getByText('No agents found matching “zzqxjvnonsense”')).toBeVisible();
-    await expect(human(page).getByText('Try a different search or clear the filters.')).toBeVisible();
+    await expect(human(page).getByText('Nothing in the directory mentions “zzqxjvnonsense”.')).toBeVisible();
+    await expect(human(page).locator('[data-recovery="category"] a[href^="/categories/"]')).toHaveCount(2);
+    await expect(human(page).locator('[data-recovery="submit"]').getByRole('link', { name: 'Suggest a listing' })).toHaveAttribute(
+      'href',
+      '/submit'
+    );
   });
 
   test('the page title reflects the query', async ({ page }) => {
@@ -401,14 +406,133 @@ test.describe('analytics events', () => {
     const events = await page.evaluate(() =>
       (window.vaq ?? []).filter(([kind]) => kind === 'event').map(([, e]) => ({ name: e.name, data: e.data }))
     );
-    expect(events).toEqual([
+    expect(JSON.stringify(events)).not.toMatch(/postgres|backups/);
+    // Whether this view finds anything depends on the catalog; the no-results tests cover that event.
+    expect(events.filter((e) => e.name !== 'search_zero_results')).toEqual([
       { name: 'filter_change', data: { filter: 'verified', state: 'on' } },
       { name: 'filter_change', data: { filter: 'access', value: 'mcp', state: 'on' } },
       { name: 'sort_change', data: { sort: 'skills' } },
       { name: 'filter_change', data: { filter: 'category', value: 'data-analytics' } },
       { name: 'search_submit', data: { page: '/browse', words: 2 } },
     ]);
-    expect(JSON.stringify(events)).not.toMatch(/postgres|backups/);
+  });
+});
+
+test.describe('no results', () => {
+  const recovery = (page, kind) => human(page).locator(`[data-recovery="${kind}"]`);
+  const chips = (page) => recovery(page, 'removal').getByRole('link');
+  const previewCards = (section) => section.locator('a[href^="/agents/"]:has(h3)');
+  const events = (page) =>
+    page.evaluate(() =>
+      (window.vaq ?? []).filter(([kind]) => kind === 'event').map(([, e]) => ({ name: e.name, data: e.data }))
+    );
+  /** Effects run after hydration, so once the view is counted its links navigate client-side. */
+  const counted = (page) =>
+    page.waitForFunction(() => (window.vaq ?? []).some(([kind, e]) => kind === 'event' && e.name === 'search_zero_results'));
+
+  test('a misspelled word offers the search respelled, with a preview', async ({ page }) => {
+    await page.goto('/browse?q=postgress');
+    const total = await apiTotal(page, { q: 'postgres' });
+    await expect(countBar(page)).toHaveText('No agents found');
+    const suggestion = human(page).locator('p[data-recovery="spelling"]');
+    await expect(suggestion).toHaveText(`Did you mean postgres? ${total} results`);
+    const preview = human(page).locator('div[data-recovery="spelling"]');
+    await expect(preview.locator('.dir-label')).toHaveText('Results for “postgres”');
+    await expect(previewCards(preview)).toHaveCount(Math.min(total, 6));
+    await expect(previewCards(preview).first()).toHaveAttribute('href', '/agents/postgres-mcp-pro');
+    await expect(preview.getByRole('link', { name: `See all ${total}` })).toHaveAttribute('href', '/browse?q=postgres');
+    await counted(page);
+    await suggestion.getByRole('link', { name: 'postgres' }).click();
+    await expect(page).toHaveURL(/\/browse\?q=postgres$/);
+    await expect(countBar(page)).toHaveText(`${total} agents matched`);
+  });
+
+  test('a word nothing uses: drop it, or see the closest matches', async ({ page }) => {
+    await page.goto('/browse?q=postgres%20zzqxjv');
+    const total = await apiTotal(page, { q: 'postgres' });
+    await expect(human(page).getByText('Nothing in the directory mentions “zzqxjv”.')).toBeVisible();
+    await expect(chips(page)).toHaveCount(1);
+    await expect(chips(page)).toHaveAccessibleName(`Remove “zzqxjv” · ${total} results`);
+    await expect(chips(page)).toHaveAttribute('href', '/browse?q=postgres');
+    const closest = recovery(page, 'closest');
+    await expect(closest.locator('.dir-label')).toHaveText('Closest matches');
+    await expect(closest).toContainText('Each has some of your words, none has all of them.');
+    await expect(previewCards(closest).first()).toHaveAttribute('href', '/agents/postgres-mcp-pro');
+    await expect(previewCards(closest)).toHaveCount(6);
+  });
+
+  test('a filter that leaves nothing: remove it, and see the search without it, sort kept', async ({ page }) => {
+    expect(await apiTotal(page, { q: 'postgres', access: 'browser-extension' })).toBe(0);
+    const total = await apiTotal(page, { q: 'postgres' });
+    const extensions = await apiTotal(page, { access: 'browser-extension' });
+    await page.goto('/browse?q=postgres&access=browser-extension&sort=newest');
+    await expect(chips(page)).toHaveCount(2);
+    await expect(chips(page).nth(0)).toHaveAccessibleName(`Remove Extension · ${total} results`);
+    await expect(chips(page).nth(0)).toHaveAttribute('href', '/browse?q=postgres&sort=newest');
+    await expect(chips(page).nth(1)).toHaveAccessibleName(`Remove “postgres” · ${extensions} results`);
+    await expect(chips(page).nth(1)).toHaveAttribute('href', '/browse?access=browser-extension&sort=newest');
+    const closest = recovery(page, 'closest');
+    await expect(closest.locator('.dir-label')).toHaveText('Closest matches, without Extension');
+    const newest = await apiSlugs(page, { q: 'postgres', sort: 'newest' }, 6);
+    expect(await previewCards(closest).evaluateAll((els) => els.map((a) => a.getAttribute('href')))).toEqual(
+      newest.map((slug) => `/agents/${slug}`)
+    );
+    await expect(closest.getByRole('link', { name: `See all ${total}` })).toHaveAttribute('href', '/browse?q=postgres&sort=newest');
+  });
+
+  test('inside a category: drop the word, or browse another category', async ({ page }) => {
+    const inCategory = await apiTotal(page, { category: 'security' });
+    await page.goto('/browse?q=zzqxjvnonsense&category=security');
+    await expect(chips(page)).toHaveCount(1);
+    await expect(chips(page)).toHaveAccessibleName(`Remove “zzqxjvnonsense” · ${inCategory} results`);
+    await expect(chips(page)).toHaveAttribute('href', '/browse?category=security');
+    const links = recovery(page, 'category').locator('a[href^="/categories/"]');
+    await expect(links).toHaveCount(2);
+    expect(await links.evaluateAll((els) => els.map((a) => a.getAttribute('href')))).not.toContain('/categories/security');
+  });
+
+  test('the empty view and each way back taken are counted, never with the search text', async ({ page }) => {
+    await page.goto('/browse?q=postgress');
+    await counted(page);
+    await human(page).locator('p[data-recovery="spelling"]').getByRole('link').click();
+    await expect(page).toHaveURL(/\/browse\?q=postgres$/);
+    await page.goBack();
+    await expect(countBar(page)).toHaveText('No agents found');
+    await recovery(page, 'category').getByRole('link').first().click();
+    await expect(page).toHaveURL(/\/categories\//);
+    const seen = await events(page);
+    expect(seen).toEqual([
+      { name: 'search_zero_results', data: { offer: 'spelling', words: 1, filters: 0 } },
+      { name: 'recovery_click', data: { kind: 'spelling' } },
+      { name: 'search_zero_results', data: { offer: 'spelling', words: 1, filters: 0 } },
+      { name: 'recovery_click', data: { kind: 'category' } },
+    ]);
+    expect(JSON.stringify(seen)).not.toMatch(/postgres/);
+  });
+
+  test('a removal is counted with what it removed', async ({ page }) => {
+    await page.goto('/browse?q=postgres&access=browser-extension');
+    await counted(page);
+    await chips(page).first().click();
+    await expect(page).toHaveURL(/\/browse\?q=postgres$/);
+    expect(await events(page)).toEqual([
+      { name: 'search_zero_results', data: { offer: 'unfiltered', words: 1, filters: 1 } },
+      { name: 'recovery_click', data: { kind: 'removal', what: 'access' } },
+    ]);
+  });
+
+  test('the text-only view lists the same ways back', async ({ page }) => {
+    const total = await apiTotal(page, { q: 'postgres' });
+    await page.addInitScript(() => { try { localStorage.setItem('viewMode', 'agent'); } catch {} });
+    await page.goto('/browse?q=postgres%20zzqxjv');
+    const agentView = page.locator('.agent-only');
+    await expect(agentView).toBeVisible();
+    await expect(agentView).toContainText('no agents matched "postgres zzqxjv"');
+    await expect(agentView).toContainText('not in the directory: zzqxjv');
+    await expect(agentView).toContainText(`without word zzqxjv: /browse?q=postgres (${total})`);
+    await expect(agentView.getByRole('link', { name: '/browse?q=postgres', exact: true })).toHaveAttribute('href', '/browse?q=postgres');
+    await expect(agentView).toContainText(/closest: postgres-mcp-pro, /);
+    await expect(agentView.locator('a[href^="/categories/"]')).toHaveCount(2);
   });
 });
 
@@ -521,6 +645,16 @@ test.describe('mobile', () => {
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     expect(overflow).toBeLessThanOrEqual(0);
     await expect(page.getByRole('navigation', { name: 'Categories' })).toBeHidden();
+  });
+
+  test('the ways back from no results fit a phone screen', async ({ page }) => {
+    await page.goto('/browse?q=postgres&access=browser-extension');
+    const chip = human(page).locator('[data-recovery="removal"] a').first();
+    await expect(chip).toBeVisible();
+    expect((await chip.boundingBox()).height).toBeGreaterThanOrEqual(44);
+    await expect(human(page).locator('[data-recovery="closest"] a[href^="/agents/"]:has(h3)').first()).toBeVisible();
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+    expect(overflow).toBeLessThanOrEqual(0);
   });
 
   test('every chip, the breakdown line and the sort menu fit a phone screen', async ({ page }) => {

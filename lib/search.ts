@@ -130,6 +130,45 @@ export function browseHref(query: string, current: string | URLSearchParams = ''
   return qs ? `/browse?${qs}` : '/browse';
 }
 
+/** What a /browse view asks for, parsed from its URL. */
+export interface BrowseState {
+  query: string;
+  category: string;
+  /** ?official=1. A vendor implies it without it. */
+  official: boolean;
+  vendor: string;
+  verified: boolean;
+  auth: string[];
+  access: string[];
+}
+
+/** The listings a /browse view shows, before sorting. */
+export function browseMatches(agents: Agent[], state: BrowseState): Agent[] {
+  const narrowed = filterAgents(agents, {
+    category: state.category,
+    official: state.official || !!state.vendor,
+    vendor: state.vendor,
+    verified: state.verified,
+    auth: state.auth,
+  });
+  return searchAgents(narrowed, state.query, state.access.length > 0 ? state.access : undefined);
+}
+
+/** The /browse URL for `state`, written the way the filters write it. */
+export function browseStateHref(state: BrowseState, sort: SortOrder = 'relevance'): string {
+  const params = new URLSearchParams();
+  if (state.query) params.set('q', state.query);
+  if (state.category) params.set('category', state.category);
+  if (state.official) params.set('official', '1');
+  if (state.vendor) params.set('vendor', state.vendor);
+  if (state.verified) params.set('verified', '1');
+  if (state.auth.length > 0) params.set('auth', state.auth.join(','));
+  if (state.access.length > 0) params.set('access', state.access.join(','));
+  if (sort !== 'relevance') params.set('sort', sort);
+  const qs = params.toString();
+  return qs ? `/browse?${qs}` : '/browse';
+}
+
 // ── Query parsing ───────────────────────────────────────────────────
 
 type AccessMethod = Agent['accessMethods'][number];
@@ -242,9 +281,9 @@ interface ParsedQuery {
   access: QueryAccess[];
 }
 
-function parseQuery(query: string): ParsedQuery {
-  const phrase = query.toLowerCase().trim().replace(/\s+/g, ' ');
-  const words = [
+/** The distinct words of a lowercased query, edge punctuation trimmed. */
+function splitPhrase(phrase: string): string[] {
+  return [
     ...new Set(
       phrase
         .split(/[\s,;|]+/)
@@ -252,6 +291,19 @@ function parseQuery(query: string): ParsedQuery {
         .filter(Boolean)
     ),
   ];
+}
+
+/**
+ * The words of `query` that narrow a search, lowercased, in order and once
+ * each: access-method words and everything that is not a stopword.
+ */
+export function narrowingWords(query: string): string[] {
+  return splitPhrase(query.toLowerCase()).filter((w) => accessAlias(w) || !STOPWORDS.has(w));
+}
+
+function parseQuery(query: string): ParsedQuery {
+  const phrase = query.toLowerCase().trim().replace(/\s+/g, ' ');
+  const words = splitPhrase(phrase);
 
   const access: QueryAccess[] = [];
   const kept: string[] = [];
