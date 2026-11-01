@@ -239,9 +239,17 @@ test.describe('crawler files', () => {
     const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
     const { body: catalog } = await getJson(request, '/agents.json');
     const { body: cats } = await getJson(request, '/api/categories');
-    const agentLocs = locs.filter((u) => u.startsWith('https://agentswitchboard.dev/agents/'));
+    const agentLocs = locs.filter((u) => /^https:\/\/agentswitchboard\.dev\/agents\/[a-z0-9-]+$/.test(u));
+    const alternativesLocs = locs.filter((u) => /^https:\/\/agentswitchboard\.dev\/agents\/[a-z0-9-]+\/alternatives$/.test(u));
     const catLocs = locs.filter((u) => u.startsWith('https://agentswitchboard.dev/categories/'));
     expect(agentLocs.length).toBe(catalog.total);
+    // Only listings with enough genuine alternatives get a page (lib/related.ts).
+    expect(alternativesLocs.length).toBeGreaterThan(0);
+    expect(alternativesLocs.length).toBeLessThan(catalog.total);
+    for (const u of alternativesLocs) expect(agentLocs, u).toContain(u.replace(/\/alternatives$/, ''));
+    expect(locs.filter((u) => u.startsWith('https://agentswitchboard.dev/agents/'))).toHaveLength(
+      agentLocs.length + alternativesLocs.length
+    );
     expect(catLocs.length).toBe(cats.categories.length);
     expect(locs).toContain(`https://agentswitchboard.dev/agents/${REAL_SLUG}`);
     expect(locs.filter((u) => ARCHIVED_SLUGS.some((s) => u.endsWith(`/agents/${s}`)))).toEqual([]);
