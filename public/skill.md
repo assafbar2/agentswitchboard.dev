@@ -1,6 +1,6 @@
 ---
 name: agent-switchboard
-description: Search Agent Switchboard, a public, curated directory of AI agents, MCP servers, and agentic developer tools. Use when the user asks to find an agent or tool that does X, compare listed products, look up a listing by name, or list directory categories.
+description: Search Agent Switchboard, a public, curated directory of AI agents, MCP servers, and agentic developer tools. Use when the user asks to find an agent or tool that does X, compare listed products, look up a listing by name, list directory categories, or find a set of tools that work together for one job.
 ---
 
 # Agent Switchboard
@@ -14,6 +14,7 @@ Maintainer: Barnir — barnir@agentmail.to
 - The user wants an AI agent, MCP server, CLI, or HTTP API for a task (email, browser automation, voice, code review, …).
 - The user asks whether a named product is listed, and how it is reached (API / MCP / CLI / browser extension).
 - The user wants categories or a short comparison of listed options.
+- The user wants a set of tools that work together for one job (a research setup, a voice agent, iPhone and Android app builds): Switchboard's stacks.
 
 Do not use this connector to operate a listed product. After you return a listing, send the user to that product’s `homepage` (and its own auth). Switchboard never has those credentials.
 
@@ -30,6 +31,7 @@ Prefer REST. OpenAPI: https://agentswitchboard.dev/openapi.json
 1. Optional: `GET /api/categories` when you need valid category slugs and counts.
 2. `GET /api/agents?q={text}&limit=10` to search. Add `category={slug}`, `access=mcp` (comma-separate to require several: `access=api,mcp`), and/or `official=true` (first-party listings from major vendors only).
 3. `GET /api/agents/{slug}` for skills, `authType` of the **listed product**, tags, and homepage.
+4. `GET /api/stacks` for stacks: listings picked to do one job together, in order, each with a `why` line. `GET /api/stacks/{slug}` for one.
 
 Query notes:
 
@@ -66,6 +68,7 @@ Optional MCP (only if the client speaks MCP, not required): `POST https://agents
 - “Which listed agents are both API and MCP in code-devtools?”
 - “Look up AgentMail on Agent Switchboard.”
 - “What categories exist on Agent Switchboard?”
+- “What tools would I need to build a realtime voice agent?”
 
 ## Example calls
 
@@ -74,6 +77,7 @@ GET https://agentswitchboard.dev/api/agents?q=email&limit=5
 GET https://agentswitchboard.dev/api/agents?access=mcp&category=code-devtools&limit=10
 GET https://agentswitchboard.dev/api/agents/agentmail
 GET https://agentswitchboard.dev/api/categories
+GET https://agentswitchboard.dev/api/stacks
 ```
 
 Privacy: https://agentswitchboard.dev/privacy  

@@ -3,6 +3,7 @@ import { getEveryAgent, getAllCategories } from '@/lib/catalog';
 import { getDropSchedule } from '@/lib/drops';
 import { FEATURED_DEFINITION, OFFICIAL_DEFINITION } from '@/lib/public-api';
 import { MIN_ALTERNATIVES } from '@/lib/related';
+import { getStacks, stackOfTheWeek } from '@/lib/stacks';
 
 export const dynamic = 'force-static';
 
@@ -17,6 +18,9 @@ export async function GET() {
   const dropLine = latestDrop
     ? `\n- What's new, batch by batch: https://agentswitchboard.dev/drops (latest: https://agentswitchboard.dev/drops/${latestDrop.date}, ${latestDrop.added.length} added)`
     : '';
+  const stacks = getStacks();
+  const week = stackOfTheWeek(stacks);
+  const weekLine = week ? `; stack of the week: https://agentswitchboard.dev/stacks/${week.slug}` : '';
 
   const body = `# Agent Switchboard
 
@@ -45,6 +49,7 @@ The \`verified\`, \`official\` and \`featured\` flags in search and detail resul
 - Browse by category: https://agentswitchboard.dev/categories
 - Search and filter: https://agentswitchboard.dev/browse${dropLine}
 - Alternatives to a listing: https://agentswitchboard.dev/agents/<slug>/alternatives (listings with at least ${MIN_ALTERNATIVES}; each says what it has in common)
+- Stacks, tools that work together for one job: https://agentswitchboard.dev/stacks (${stacks.length} stacks, each tool with why it is there${weekLine})
 
 To find agents by access method or use case, search: the \`search_agents\` MCP tool, or
 GET /api/agents?access=mcp&category=<slug> (add \`official=true\` for first-party listings
@@ -62,6 +67,7 @@ one large file; use it for bulk or offline work, filtering on \`accessMethods\`,
 - Plain REST search (no MCP handshake needed): GET /api/agents?q=&category=&access=&official=&limit=&offset=
 - REST detail: GET /api/agents/{slug}
 - REST categories: GET /api/categories
+- REST stacks: GET /api/stacks, GET /api/stacks/{slug}
 - OpenAPI: https://agentswitchboard.dev/openapi.json
 - Connector skill: https://agentswitchboard.dev/skill.md
 

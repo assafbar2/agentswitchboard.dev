@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Agent Switchboard Directory API",
-    "version": "1.3.0",
+    "version": "1.4.0",
     "summary": "Read-only catalog of AI agents, MCP servers, and agentic developer tools.",
     "description": "Agent Switchboard is a public discovery directory. Use this API to answer questions like 'is there an agent that does X?' or 'which listed products expose an MCP server?'. There is no authentication, no user account, and no write access. This API does not proxy the underlying products — it only returns Switchboard listings. For interactive tool-shaped access, an MCP server is also available at /api/mcp. Listing data returned by this API is licensed CC BY-NC 4.0 (attribution required; commercial reuse needs a license: https://agentswitchboard.dev/contact). The API definition itself is MIT.",
     "contact": {
@@ -158,6 +158,59 @@
             "content": {
               "application/json": {
                 "schema": { "$ref": "#/components/schemas/CategoryList" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/stacks": {
+      "get": {
+        "operationId": "listStacks",
+        "summary": "List stacks",
+        "description": "Stacks are editor-picked sets of listings that together do one job, each listing with why it is in the stack. In the order /stacks shows them: the stack of the week first. `stackOfTheWeek` is the slug of the newest stack tied to a weekly drop.",
+        "tags": ["catalog"],
+        "responses": {
+          "200": {
+            "description": "Every stack, the stack of the week first.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/StackList" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/stacks/{slug}": {
+      "get": {
+        "operationId": "getStack",
+        "summary": "Get one stack by slug",
+        "description": "One stack with its listings in order, each with why it is in the stack. Use a `slug` returned by listStacks. Unknown slugs return 404.",
+        "tags": ["catalog"],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "description": "Stable stack identifier, e.g. `research-analyst`.",
+            "schema": { "type": "string", "examples": ["research-analyst"] }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The stack.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Stack" }
+              }
+            }
+          },
+          "404": {
+            "description": "No stack with that slug.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
               }
             }
           }
@@ -336,6 +389,58 @@
           "description": { "type": ["string", "null"] },
           "agentCount": { "type": "integer" }
         }
+      },
+      "StackList": {
+        "type": "object",
+        "required": ["total", "stackOfTheWeek", "stacks"],
+        "properties": {
+          "total": { "type": "integer" },
+          "stackOfTheWeek": {
+            "type": ["string", "null"],
+            "description": "Slug of the stack of the week: the newest stack tied to a weekly drop."
+          },
+          "stacks": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Stack" }
+          }
+        }
+      },
+      "Stack": {
+        "type": "object",
+        "required": ["slug", "title", "promise", "week", "url", "items"],
+        "properties": {
+          "slug": { "type": "string", "description": "Stable identifier. Pass to GET /api/stacks/{slug}." },
+          "title": { "type": "string" },
+          "promise": { "type": "string", "description": "One line on what the stack gets done." },
+          "week": {
+            "type": ["string", "null"],
+            "format": "date",
+            "description": "For a stack of the week, the date of its weekly drop (its page is /drops/{week}); null otherwise."
+          },
+          "url": { "type": "string", "format": "uri", "description": "Human stack page on Agent Switchboard." },
+          "items": {
+            "type": "array",
+            "description": "The stack's listings, in order.",
+            "items": { "$ref": "#/components/schemas/StackItem" }
+          }
+        }
+      },
+      "StackItem": {
+        "allOf": [
+          { "$ref": "#/components/schemas/AgentSummary" },
+          {
+            "type": "object",
+            "required": ["authType", "why"],
+            "properties": {
+              "authType": {
+                "type": "string",
+                "enum": ["apiKey", "oauth2", "bearer", "none"],
+                "description": "How the listed product authenticates. Not used by this API."
+              },
+              "why": { "type": "string", "description": "What this listing does for the stack's job." }
+            }
+          }
+        ]
       },
       "Catalog": {
         "type": "object",

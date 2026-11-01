@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { AgentCard } from '@/components/AgentCard';
 import { JsonLd } from '@/components/JsonLd';
+import { StackCallout } from '@/components/StackCallout';
 import { getEveryAgent } from '@/lib/catalog';
 import {
   describeNotes,
@@ -15,6 +16,7 @@ import {
 } from '@/lib/drops';
 import { pageMetadata } from '@/lib/metadata';
 import { dropCard, dropCardImage } from '@/lib/share-cards';
+import { getStacks, stackEntries, stackForDrop } from '@/lib/stacks';
 import { formatDay, joinList } from '@/lib/utils';
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev';
@@ -57,6 +59,8 @@ export default async function DropPage({ params }: Props) {
   const { listed, gone } = dropAdditions(drop, catalog);
   const official = listed.filter((a) => a.official);
   const vendors = [...new Set(official.map((a) => a.officialVendor?.name ?? a.providerName))];
+  const stack = stackForDrop(getStacks(), drop.date);
+  const stackItems = stack ? stackEntries(stack, catalog) : [];
   const title = `The ${formatDay(drop.date)} drop`;
 
   const listSchema = {
@@ -111,6 +115,8 @@ export default async function DropPage({ params }: Props) {
             </p>
           )}
         </div>
+
+        {stack && <StackCallout stack={stack} entries={stackItems} className="mb-8" />}
 
         {drop.added.length > 0 && (
           <section aria-labelledby="added" className="mb-10">
@@ -179,6 +185,17 @@ export default async function DropPage({ params }: Props) {
             </div>
             {drop.intro && <div className="agent-dim text-xs mt-1">{drop.intro}</div>}
           </div>
+
+          {stack && (
+            <>
+              <div className="agent-section-title">stack of the week</div>
+              <Link href={`/stacks/${stack.slug}`} className="agent-row no-underline hover:underline">
+                <span className="agent-accent">/stacks/{stack.slug}</span>
+                <span className="agent-dim">{stackItems.length} tools</span>
+                <span className="agent-dim">{stack.title}</span>
+              </Link>
+            </>
+          )}
 
           {drop.added.length > 0 && (
             <>

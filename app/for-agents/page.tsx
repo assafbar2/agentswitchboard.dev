@@ -168,10 +168,16 @@ export default async function ForAgentsPage() {
 {`GET /api/agents?q=<text>&category=<slug>&access=<method>&official=true&limit=<n>&offset=<n>
 GET /api/agents/<slug>
 GET /api/categories
+GET /api/stacks
+GET /api/stacks/<slug>
 
 → search: { total, offset, limit, agents: [
      { name, slug, url, iconUrl, description, provider, categories,
        accessMethods, verified, official, featured }
+   ] }
+→ stacks: { total, stackOfTheWeek, stacks: [
+     { slug, title, promise, week, url,
+       items: [ { …the search fields, authType, why } ] }
    ] }`}
           </pre>
           <ul className="space-y-1 pl-4">
@@ -213,6 +219,10 @@ GET /api/categories
             {' · '}
             <EndpointLink href="/api/categories" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
               /api/categories
+            </EndpointLink>
+            {' · '}
+            <EndpointLink href="/api/stacks" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
+              /api/stacks
             </EndpointLink>
             {' · '}
             <EndpointLink href="/openapi.json" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
@@ -261,6 +271,14 @@ GET /api/categories
               <span className="font-bold">→ Alternatives to a listing:</span>{' '}
               <code className="font-bold">https://agentswitchboard.dev/agents/&lt;slug&gt;/alternatives</code>, for
               listings with at least {MIN_ALTERNATIVES}, each with what it has in common
+            </li>
+            <li>
+              <span className="font-bold">→ Stacks, tools that work together for one job:</span>{' '}
+              <Link href="/stacks" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
+                https://agentswitchboard.dev/stacks
+              </Link>
+              , each tool with why it is in the stack; as JSON at{' '}
+              <code className="font-bold">GET /api/stacks</code>
             </li>
             <li>
               <span className="font-bold">→ Plain-language guide:</span>{' '}

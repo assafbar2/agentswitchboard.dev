@@ -4,6 +4,7 @@ import {
   summarizeAgent,
   detailAgent,
   summarizeCategory,
+  summarizeStack,
 } from './public-api';
 import type { Agent, Category } from './types';
 
@@ -118,5 +119,30 @@ describe('summarizeCategory', () => {
       description: null,
       agentCount: 0,
     });
+  });
+});
+
+describe('summarizeStack', () => {
+  const stack = {
+    slug: 'email-agent',
+    title: 'An email agent',
+    promise: 'Give an agent its own inbox.',
+    items: [{ slug: 'agentmail', why: 'Its inbox.' }],
+  };
+
+  it('lists each listing as a search result with its auth type and why it is in the stack', () => {
+    const agent = makeAgent();
+    expect(summarizeStack(stack, [{ agent, why: 'Its inbox.' }])).toEqual({
+      slug: 'email-agent',
+      title: 'An email agent',
+      promise: 'Give an agent its own inbox.',
+      week: null,
+      url: 'https://agentswitchboard.dev/stacks/email-agent',
+      items: [{ ...summarizeAgent(agent), authType: 'apiKey', why: 'Its inbox.' }],
+    });
+  });
+
+  it("gives a stack of the week's drop date", () => {
+    expect(summarizeStack({ ...stack, week: '2026-10-31' }, []).week).toBe('2026-10-31');
   });
 });

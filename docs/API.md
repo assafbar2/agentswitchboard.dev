@@ -9,6 +9,7 @@ need no authentication, are CORS-open, and read the same cached catalog**
 | **REST search** | plain HTTP clients, connector platforms | `GET /api/agents` |
 | **REST detail** | one listing by slug | `GET /api/agents/{slug}` |
 | **REST categories** | valid `category` slugs + counts | `GET /api/categories` |
+| **REST stacks** | listings that together do one job | `GET /api/stacks` |
 | **MCP server** | MCP clients (Grok, Claude, ChatGPT, Cursor, …) | `POST /api/mcp` |
 | **WebMCP** | agents viewing the page in a browser | `document.modelContext` |
 | **Catalog dump** | bulk / offline indexing | `GET /agents.json` |
@@ -108,6 +109,47 @@ curl "https://agentswitchboard.dev/api/categories"
 
 Response: `{ "categories": [ { slug, name, description, agentCount } ] }`.
 Use `slug` as the `category` query parameter on `GET /api/agents`.
+
+---
+
+## REST stacks — `GET /api/stacks`
+
+A stack is a set of listings picked to do one job together, in order, each
+with a `why` line saying what it does for that job. The same stacks as
+[`/stacks`](https://agentswitchboard.dev/stacks), from
+[`content/stacks.json`](../content/stacks.json).
+
+```bash
+curl "https://agentswitchboard.dev/api/stacks"
+curl "https://agentswitchboard.dev/api/stacks/research-analyst"
+```
+
+```jsonc
+{
+  "total": 6,
+  "stackOfTheWeek": "iphone-and-android-apps", // the newest stack tied to a weekly drop
+  "stacks": [
+    {
+      "slug": "iphone-and-android-apps",
+      "title": "Ship iPhone and Android apps from one coding agent",
+      "promise": "Build, run and test on both platforms from Claude Code or Codex, …",
+      "week": "2026-10-31", // the drop it is the stack of the week for; null otherwise
+      "url": "https://agentswitchboard.dev/stacks/iphone-and-android-apps",
+      "items": [
+        {
+          // …the REST search fields (name, slug, url, iconUrl, accessMethods, …)
+          "authType": "none",
+          "why": "Lets Claude Code or Codex modify and build the project you have open in Xcode, …"
+        }
+      ]
+    }
+  ]
+}
+```
+
+Stacks are listed as `/stacks` shows them: the stack of the week first.
+`GET /api/stacks/{slug}` returns one stack in the same shape; an unknown slug
+returns `404` with `{ "error": "not_found", "message": "…" }`.
 
 ---
 

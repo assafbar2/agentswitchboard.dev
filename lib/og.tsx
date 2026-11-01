@@ -18,6 +18,8 @@ import {
   type DropCard,
   type ListingCard,
   type SiteCard,
+  type StackCard,
+  type StacksCard,
 } from './share-cards';
 import { formatNumber, joinList, pluralize } from './utils';
 
@@ -192,6 +194,57 @@ export async function renderAlternativesCard(card: AlternativesCard): Promise<Im
   );
 }
 
+export async function renderStackCard(card: StackCard): Promise<ImageResponse> {
+  const icons = await Promise.all(card.icons.map(iconSrc));
+  const counts = `${formatNumber(card.tools)} ${pluralize(card.tools, 'tool')}${card.week ? ` · ${card.week}` : ''}`;
+  return render(
+    <Frame
+      kicker={card.week ? 'Stack of the week' : 'Stack'}
+      footer={card.access.length > 0 ? <Tags labels={card.access} /> : null}
+    >
+      <div
+        style={{
+          display: 'block',
+          lineClamp: 2,
+          fontSize: titleSize(card.title),
+          fontWeight: 800,
+          lineHeight: 1,
+          letterSpacing: '-0.02em',
+        }}
+      >
+        {card.title}
+      </div>
+      <div style={{ display: 'flex', marginTop: 18, fontSize: 34, fontWeight: 800 }}>{counts}</div>
+      <div
+        style={{
+          display: 'block',
+          lineClamp: 2,
+          marginTop: 10,
+          fontSize: 28,
+          fontWeight: 500,
+          lineHeight: 1.35,
+          color: MUTED,
+        }}
+      >
+        {card.promise}
+      </div>
+      <IconRow icons={icons} size={76} />
+    </Frame>
+  );
+}
+
+export async function renderStacksCard(card: StacksCard): Promise<ImageResponse> {
+  return render(
+    <Headline
+      kicker="Stacks"
+      title="Stacks"
+      counts={`${formatNumber(card.stacks)} ${pluralize(card.stacks, 'stack')} · ${formatNumber(card.tools)} ${pluralize(card.tools, 'tool')}`}
+      text="AI tools that work together, each stack picked for one job."
+      icons={await Promise.all(card.icons.map(iconSrc))}
+    />
+  );
+}
+
 /** A title, a bold count line, a muted line of up to two rows, and a row of icons along the bottom. */
 function Headline({
   kicker,
@@ -238,6 +291,13 @@ function Headline({
       <IconRow icons={icons} size={76} />
     </Frame>
   );
+}
+
+/** A stack title of up to STACK_TITLE_MAX (70) characters fits two lines at the smallest size. */
+function titleSize(title: string): number {
+  if (title.length <= 24) return 80;
+  if (title.length <= 40) return 68;
+  return 60;
 }
 
 /** The longest names (about 38 characters) wrap to two lines at the smallest size. */

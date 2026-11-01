@@ -210,7 +210,7 @@ test.describe('catalog JSON', () => {
     expect(sum).toBeGreaterThanOrEqual(catalog.total);
   });
 
-  for (const path of ['/api/agents', '/api/categories', `/api/agents/${REAL_SLUG}`, '/agents.json', '/index.md']) {
+  for (const path of ['/api/agents', '/api/categories', `/api/agents/${REAL_SLUG}`, '/api/stacks', '/agents.json', '/index.md']) {
     test(`CORS: ${path} allows any origin`, async ({ request }) => {
       const res = await request.get(path, { headers: { ...H, origin: 'https://example.com' } });
       expect(res.status()).toBe(200);
@@ -288,7 +288,7 @@ test.describe('manifests', () => {
     const { res, body } = await getJson(request, '/openapi.json');
     expect(res.headers()['access-control-allow-origin']).toBe('*');
     expect(body.openapi).toMatch(/^3\.1/);
-    for (const p of ['/api/agents', '/api/agents/{slug}', '/api/categories', '/agents.json', '/api/mcp']) {
+    for (const p of ['/api/agents', '/api/agents/{slug}', '/api/categories', '/api/stacks', '/api/stacks/{slug}', '/agents.json', '/api/mcp']) {
       expect(Object.keys(body.paths)).toContain(p);
     }
   });

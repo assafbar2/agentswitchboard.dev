@@ -1,10 +1,13 @@
 /**
  * Shared shapes and HTTP helpers for the public catalog REST API.
- * Used by GET /api/agents, GET /api/agents/[slug], and GET /api/categories,
- * and — for the label definitions and access-method input rules — by the MCP
- * server (/api/mcp), WebMCP and the agent docs, so they cannot drift apart.
+ * Used by GET /api/agents, GET /api/agents/[slug], GET /api/categories and
+ * GET /api/stacks, and — for the label definitions and access-method input
+ * rules — by the MCP server (/api/mcp), WebMCP and the agent docs, so they
+ * cannot drift apart. WebMCP runs in the browser: import only types from
+ * modules that read files.
  */
 
+import type { Stack, StackEntry } from './stacks';
 import type { Agent, Category } from './types';
 import { BASE_URL } from './env';
 import { absoluteIconUrl } from './icons';
@@ -137,5 +140,17 @@ export function summarizeCategory(c: Category) {
     name: c.name,
     description: c.description ?? null,
     agentCount: c.agentCount ?? 0,
+  };
+}
+
+/** A stack for GET /api/stacks and /api/stacks/{slug}: its listings in order, each with why it is there. */
+export function summarizeStack(stack: Stack, entries: StackEntry[]) {
+  return {
+    slug: stack.slug,
+    title: stack.title,
+    promise: stack.promise,
+    week: stack.week ?? null,
+    url: `${BASE_URL}/stacks/${stack.slug}`,
+    items: entries.map(({ agent, why }) => ({ ...summarizeAgent(agent), authType: agent.authType, why })),
   };
 }

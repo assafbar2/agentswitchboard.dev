@@ -91,11 +91,12 @@ export default function RootLayout({
         <link rel="ai-index" href="/for-agents" />
       </head>
       <body className="min-h-full flex flex-col antialiased">
+        {/* First: React runs earlier siblings' effects first, and track() drops events sent before this sets up its queue. */}
+        <Analytics />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
         <WebMcp />
-        <Analytics />
         {umamiWebsiteId ? (
           <Script
             src="https://cloud.umami.is/script.js"

@@ -12,6 +12,7 @@ import { createHash } from 'crypto';
 import { dropAdditions, dropHighlights, type Drop } from './drops';
 import type { Alternative } from './related';
 import { ACCESS_METHOD_LABELS } from './search';
+import { stackAccessMethods, type Stack, type StackEntry } from './stacks';
 import type { Agent, Category } from './types';
 import { formatDay } from './utils';
 
@@ -19,7 +20,7 @@ import { formatDay } from './utils';
  * Hash of lib/og.tsx and assets/fonts/, so a redesigned card gets new URLs.
  * lib/share-cards.test.ts prints the new value whenever either changes.
  */
-export const CARD_DESIGN = '01c57ea2';
+export const CARD_DESIGN = 'dedf58a6';
 
 export const CARD_SIZE = { width: 1200, height: 630 } as const;
 
@@ -73,6 +74,26 @@ export interface AlternativesCard {
   /** The strongest few, best first. */
   names: string[];
   /** The alternatives' icons, best first, each image once. */
+  icons: string[];
+}
+
+export interface StackCard {
+  title: string;
+  promise: string;
+  /** As the page shows it, for a stack of the week: "Oct 31, 2026". */
+  week: string | null;
+  tools: number;
+  /** Display labels of every access method in the stack, in the site's order. */
+  access: string[];
+  /** The listings' icons in the stack's order, each image once. */
+  icons: string[];
+}
+
+export interface StacksCard {
+  stacks: number;
+  /** Distinct listings across every stack. */
+  tools: number;
+  /** One icon per stack, the stack of the week's first. */
   icons: string[];
 }
 
@@ -138,18 +159,35 @@ export function dropCard(drop: Drop, catalog: Agent[]): DropCard {
 
 /** `alternatives` as lib/related.ts alternativesPage lists them. */
 export function alternativesCard(agent: Agent, alternatives: Alternative[]): AlternativesCard {
-  const icons = new Map<string, string>();
-  for (const { agent: alt } of alternatives) {
-    const hash = alt.iconUrl?.split('?v=')[1];
-    if (alt.iconUrl && hash && !icons.has(hash)) icons.set(hash, alt.iconUrl);
-  }
   return {
     name: agent.name,
     icon: agent.iconUrl ?? null,
     category: agent.categories[0]?.name ?? null,
     alternatives: alternatives.length,
     names: alternatives.slice(0, ALTERNATIVE_NAMES).map((a) => a.agent.name),
-    icons: [...icons.values()],
+    icons: distinctIcons(alternatives.map((a) => a.agent)),
+  };
+}
+
+/** `entries` as lib/stacks.ts stackEntries lists them. */
+export function stackCard(stack: Stack, entries: StackEntry[]): StackCard {
+  return {
+    title: stack.title,
+    promise: stack.promise,
+    week: stack.week ? formatDay(stack.week) : null,
+    tools: entries.length,
+    access: stackAccessMethods(entries).map((m) => ACCESS_METHOD_LABELS[m]),
+    icons: distinctIcons(entries.map((e) => e.agent)),
+  };
+}
+
+/** `stacks` in the order /stacks shows them, each with its entries. */
+export function stacksCard(stacks: { entries: StackEntry[] }[]): StacksCard {
+  const tools = new Set(stacks.flatMap((s) => s.entries.map((e) => e.agent.slug)));
+  return {
+    stacks: stacks.length,
+    tools: tools.size,
+    icons: distinctIcons(stacks.flatMap((s) => s.entries.slice(0, 1).map((e) => e.agent))),
   };
 }
 
@@ -181,13 +219,31 @@ export function alternativesCardImage(slug: string, card: AlternativesCard): Sha
   );
 }
 
+export function stackCardImage(slug: string, card: StackCard): ShareImage {
+  return shareImage(`/stacks/${slug}/card.png`, card, `${card.title}: a stack of ${card.tools} tools on Agent Switchboard`);
+}
+
+export function stacksCardImage(card: StacksCard): ShareImage {
+  return shareImage('/stacks/card.png', card, `${card.stacks} stacks of AI tools that work together, on Agent Switchboard`);
+}
+
 function shareImage(
   path: string,
-  card: SiteCard | ListingCard | CategoryCard | DropCard | AlternativesCard,
+  card: SiteCard | ListingCard | CategoryCard | DropCard | AlternativesCard | StackCard | StacksCard,
   alt: string
 ): ShareImage {
   const v = createHash('sha1').update(JSON.stringify([CARD_DESIGN, card])).digest('hex').slice(0, 8);
   return { url: `${path}?v=${v}`, ...CARD_SIZE, alt, type: 'image/png' };
+}
+
+/** The listings' icons in order, each image once: an icon URL carries its image's hash as ?v=. */
+function distinctIcons(agents: Agent[]): string[] {
+  const icons = new Map<string, string>();
+  for (const a of agents) {
+    const hash = a.iconUrl?.split('?v=')[1];
+    if (a.iconUrl && hash && !icons.has(hash)) icons.set(hash, a.iconUrl);
+  }
+  return [...icons.values()];
 }
 
 /**

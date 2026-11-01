@@ -14,8 +14,16 @@ import * as crypto from 'crypto';
 import * as fs from 'fs';
 import * as path from 'path';
 import { z } from 'zod';
-import { DROP_INTRO_MAX, groupDrops } from '../lib/drops';
+import { DROP_INTRO_MAX, groupDrops, type Drop } from '../lib/drops';
 import { registryProblems, vendorsForUrl, type OfficialVendor } from '../lib/official';
+import {
+  STACK_MAX_ITEMS,
+  STACK_MIN_ITEMS,
+  STACK_PROMISE_MAX,
+  STACK_TITLE_MAX,
+  STACK_WHY_MAX,
+  stackProblems,
+} from '../lib/stacks';
 
 const CONTENT = path.resolve(process.cwd(), 'content');
 const ICONS = path.resolve(process.cwd(), 'public', 'icons');
@@ -110,25 +118,48 @@ const ChangelogEntrySchema = z
 
 const DropIntroSchema = z.object({ intro: z.string().min(1).max(DROP_INTRO_MAX) }).strict();
 
+const StackSchema = z
+  .object({
+    slug: z.string().regex(SLUG, 'slug must be kebab-case'),
+    title: z.string().min(1).max(STACK_TITLE_MAX),
+    promise: z.string().min(1).max(STACK_PROMISE_MAX),
+    week: z
+      .string()
+      .regex(/^\d{4}-\d{2}-\d{2}$/, 'week must be YYYY-MM-DD')
+      .optional(),
+    items: z
+      .array(
+        z
+          .object({
+            slug: z.string().regex(SLUG, 'slug must be kebab-case'),
+            why: z.string().min(1).max(STACK_WHY_MAX),
+          })
+          .strict()
+      )
+      .min(STACK_MIN_ITEMS)
+      .max(STACK_MAX_ITEMS),
+  })
+  .strict();
+
 /**
  * content/changelog.json is grouped into the drop pages by date (lib/drops.ts),
  * so every entry needs a real one. content/drops.json adds optional intros,
  * keyed by drop date: a key that is not a drop would never be shown.
- * Returns the number of drops and a violation count.
+ * Returns the drops and a violation count.
  */
-function checkChangelogAndDrops(): { drops: number; errors: number } {
+function checkChangelogAndDrops(): { drops: Drop[]; errors: number } {
   let raw: unknown;
   try {
     raw = JSON.parse(fs.readFileSync(path.join(CONTENT, 'changelog.json'), 'utf8'));
   } catch {
-    return { drops: 0, errors: 0 }; // reported with the other auxiliary files
+    return { drops: [], errors: 0 }; // reported with the other auxiliary files
   }
   const log = z.array(ChangelogEntrySchema).safeParse(raw);
   if (!log.success) {
     for (const issue of log.error.issues) {
       console.log(`❌ content/changelog.json: entry ${issue.path.join('.')}: ${issue.message}`);
     }
-    return { drops: 0, errors: log.error.issues.length };
+    return { drops: [], errors: log.error.issues.length };
   }
 
   const dropsFile = path.join(CONTENT, 'drops.json');
@@ -139,14 +170,14 @@ function checkChangelogAndDrops(): { drops: number; errors: number } {
       parsed = JSON.parse(fs.readFileSync(dropsFile, 'utf8'));
     } catch (e) {
       console.log(`❌ content/drops.json: invalid JSON — ${(e as Error).message}`);
-      return { drops: 0, errors: 1 };
+      return { drops: [], errors: 1 };
     }
     const result = z.record(z.string(), DropIntroSchema).safeParse(parsed);
     if (!result.success) {
       for (const issue of result.error.issues) {
         console.log(`❌ content/drops.json: ${issue.path.join('.')}: ${issue.message}`);
       }
-      return { drops: 0, errors: result.error.issues.length };
+      return { drops: [], errors: result.error.issues.length };
     }
     intros = result.data;
   }
@@ -162,7 +193,33 @@ function checkChangelogAndDrops(): { drops: number; errors: number } {
       errors++;
     }
   }
-  return { drops: drops.length, errors };
+  return { drops, errors };
+}
+
+/**
+ * content/stacks.json (lib/stacks.ts): each stack's shape, then stackProblems
+ * against the published listings and the drops.
+ */
+function checkStacks(published: Set<string>, drops: Drop[]): { stacks: number; errors: number } {
+  const file = path.join(CONTENT, 'stacks.json');
+  if (!fs.existsSync(file)) return { stacks: 0, errors: 0 };
+  let raw: unknown;
+  try {
+    raw = JSON.parse(fs.readFileSync(file, 'utf8'));
+  } catch (e) {
+    console.log(`❌ content/stacks.json: invalid JSON — ${(e as Error).message}`);
+    return { stacks: 0, errors: 1 };
+  }
+  const result = z.array(StackSchema).safeParse(raw);
+  if (!result.success) {
+    for (const issue of result.error.issues) {
+      console.log(`❌ content/stacks.json: ${issue.path.join('.')}: ${issue.message}`);
+    }
+    return { stacks: 0, errors: result.error.issues.length };
+  }
+  const problems = stackProblems(result.data, published, drops);
+  for (const problem of problems) console.log(`❌ content/stacks.json: ${problem}`);
+  return { stacks: result.data.length, errors: problems.length };
 }
 
 const IconRecordSchema = z
@@ -398,6 +455,8 @@ function main() {
   errors += icons.errors;
   const drops = checkChangelogAndDrops();
   errors += drops.errors;
+  const stacks = checkStacks(published, drops.drops);
+  errors += stacks.errors;
   const iconless = [...published].filter((s) => !icons.slugs.has(s)).sort();
   if (iconless.length) {
     console.log(
@@ -408,7 +467,7 @@ function main() {
 
   if (errors === 0) {
     console.log(
-      `✅ content valid: ${files.length} agents (${flagged} official, ${official.vendors.length} vendors), ${validCategorySlugs.size} categories, ${icons.slugs.size} icons, ${drops.drops} drops, 0 violations`
+      `✅ content valid: ${files.length} agents (${flagged} official, ${official.vendors.length} vendors), ${validCategorySlugs.size} categories, ${icons.slugs.size} icons, ${drops.drops.length} drops, ${stacks.stacks} stacks, 0 violations`
     );
   } else {
     console.log(`\n❌ ${errors} violation(s) across content/ — fix before merging.`);
