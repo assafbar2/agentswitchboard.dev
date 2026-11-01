@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { pageMetadata } from '@/lib/metadata';
+import { EndpointLink } from '@/components/EndpointLink';
 
 export function generateMetadata(_props: unknown, parent: ResolvingMetadata): Promise<Metadata> {
   return pageMetadata(
@@ -50,9 +51,9 @@ export default function TermsPage() {
             </h2>
             <p>
               The catalog endpoints (including{' '}
-              <Link href="/api/agents" className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2">
+              <EndpointLink href="/api/agents" className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 GET /api/agents
-              </Link>
+              </EndpointLink>
               , GET /api/agents/&#123;slug&#125;, GET /api/categories, GET /agents.json, and POST
               /api/mcp) are public and require no account or API key. They are read-only, except
               the MCP <code className="mono text-sm">submit_listing</code> tool, which files a

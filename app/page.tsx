@@ -12,6 +12,7 @@ import {
 import { dropAdditions, dropHighlights, getDropSchedule } from '@/lib/drops';
 import { formatDay, formatNumber, joinList, pluralize } from '@/lib/utils';
 import { AgentIcon } from '@/components/AgentIcon';
+import { EndpointLink } from '@/components/EndpointLink';
 import { FeaturedAgentCard } from '@/components/FeaturedAgentCard';
 import { CategoryCard } from '@/components/CategoryCard';
 import { OfficialPlatforms } from '@/components/OfficialPlatforms';
@@ -353,7 +354,7 @@ export default async function HomePage() {
           <div>
             <div className="agent-section-title">endpoints</div>
             <div className="agent-row">
-              <Link href="/agents.json" className="agent-accent hover:opacity-80">/agents.json</Link>
+              <EndpointLink href="/agents.json" className="agent-accent hover:opacity-80">/agents.json</EndpointLink>
               <span className="agent-dim">machine-readable full index</span>
               <span className="agent-dim">GET · no auth</span>
             </div>

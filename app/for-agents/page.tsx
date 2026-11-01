@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { pageMetadata } from '@/lib/metadata';
+import { EndpointLink } from '@/components/EndpointLink';
 import { VerifiedBadge, VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 import { getEveryAgent } from '@/lib/catalog';
 import { FEATURED_DEFINITION, OFFICIAL_DEFINITION } from '@/lib/public-api';
@@ -202,25 +203,25 @@ GET /api/categories
           </ul>
           <p>
             Example:{' '}
-            <Link href="/api/agents?q=video&limit=5" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
+            <EndpointLink href="/api/agents?q=video&limit=5" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
               /api/agents?q=video&amp;limit=5
-            </Link>
+            </EndpointLink>
             {' · '}
-            <Link href="/api/agents/agentmail" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
+            <EndpointLink href="/api/agents/agentmail" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
               /api/agents/agentmail
-            </Link>
+            </EndpointLink>
             {' · '}
-            <Link href="/api/categories" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
+            <EndpointLink href="/api/categories" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
               /api/categories
-            </Link>
+            </EndpointLink>
             {' · '}
-            <Link href="/openapi.json" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
+            <EndpointLink href="/openapi.json" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
               /openapi.json
-            </Link>
+            </EndpointLink>
             {' · '}
-            <Link href="/skill.md" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
+            <EndpointLink href="/skill.md" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
               /skill.md
-            </Link>
+            </EndpointLink>
           </p>
         </section>
 

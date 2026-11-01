@@ -291,6 +291,19 @@ describe('logConsumer', () => {
     logConsumer('/api/mcp', request({ 'user-agent': UA.curl, [EDGE_LOGGED_HEADER]: '1' }));
     expect(consumerLines().map((line) => line.route)).toEqual(['/api/agents', '/api/mcp']);
   });
+
+  it("does not count the site's own router fetches: a <Link> prefetch or a client-side navigation", () => {
+    const prefetch = { 'user-agent': UA.chrome, rsc: '1', 'next-router-prefetch': '1' };
+    logConsumer('/api/stacks', request(prefetch));
+    logConsumer('/api/agents/[slug]', request(prefetch), { slug: 'agentmail' });
+    logConsumer('/api/categories', request({ 'user-agent': UA.chrome, rsc: '1' }));
+    expect(consumerLines()).toHaveLength(0);
+    expect(mocks.after).not.toHaveBeenCalled();
+
+    // The browser then loads a target that is not a page normally: that request counts.
+    logConsumer('/api/categories', request({ 'user-agent': UA.chrome }));
+    expect(consumerLines()).toMatchObject([{ route: '/api/categories', client: 'browser' }]);
+  });
 });
 
 describe('proxy', () => {
@@ -369,6 +382,17 @@ describe('proxy', () => {
   it('does not count CORS preflights or HEAD checks', () => {
     proxy(proxyRequest('/skill.md', { method: 'OPTIONS' }));
     proxy(proxyRequest('/agents.json', { method: 'HEAD' }));
+    expect(consumerLines()).toHaveLength(0);
+    expect(mocks.after).not.toHaveBeenCalled();
+  });
+
+  it("does not count the site's own router prefetch of a machine doc it links to", () => {
+    const res = proxy(
+      proxyRequest('/openapi.json', {
+        headers: { 'user-agent': UA.chrome, rsc: '1', 'next-router-prefetch': '1' },
+      })
+    );
+    expect(res.headers.get('x-middleware-next')).toBe('1');
     expect(consumerLines()).toHaveLength(0);
     expect(mocks.after).not.toHaveBeenCalled();
   });

@@ -19,6 +19,9 @@ Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes 
 - The site's own preview image shows live listing counts and vendor logos. It moved to [/card.png](https://agentswitchboard.dev/card.png); the old `/opengraph-image` address redirects there. ([#290](https://github.com/assafbar2/agentswitchboard.dev/pull/290))
 - Related Agents pairs listings on what they do, not where they run or how they are built. A shared platform or trait (Google Cloud, Claude Code, human-in-the-loop, no-code, real-time, a licence or a funding round) no longer makes two listings related on its own. Neither does one term split across two tags ("time series" in a monitoring tool, "time series forecasting" in a model platform) or two forms of one word ("deploy" and "deployment"). Multi-agent frameworks now pair with each other (PraisonAI with AG2, Google ADK and Microsoft Agent Framework; LangGraph with AutoGen and CrewAI), as do real-time voice frameworks such as LiveKit Agents, Pipecat and TEN. ([#294](https://github.com/assafbar2/agentswitchboard.dev/pull/294))
 
+### Fixed
+- Usage counts for the API and the machine-readable docs no longer include the site's own link prefetches. Each visit to [/for-agents](https://agentswitchboard.dev/for-agents) was counted as calls to the API endpoints, `/openapi.json` and `/skill.md` it links to, and each visit to [/terms](https://agentswitchboard.dev/terms) as a call to `GET /api/agents`. ([#295](https://github.com/assafbar2/agentswitchboard.dev/pull/295))
+
 ### Security
 - Closed an open image proxy: the image optimizer fetched images from any https host, so anyone could route images through the site. Icons are now plain files. ([#289](https://github.com/assafbar2/agentswitchboard.dev/pull/289))
 

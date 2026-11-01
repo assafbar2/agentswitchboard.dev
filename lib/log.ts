@@ -44,6 +44,16 @@ export const MAX_EVENT_VALUE_LENGTH = 255;
  */
 export const EDGE_LOGGED_HEADER = 'x-asb-edge-logged';
 
+/**
+ * Next's client router sends `RSC: 1` on its own fetches: prefetching a
+ * <Link> in view, and client-side navigation. Neither is a consumer. When the
+ * target is not a page, the browser then loads it normally, and that request
+ * is the one counted.
+ */
+function isRouterFetch(req: Request): boolean {
+  return req.headers.get('rsc') === '1';
+}
+
 /** First match wins, so specific clients come before generic runtimes. */
 const CLIENT_PATTERNS: ReadonlyArray<readonly [ClientBucket, RegExp]> = [
   ['claude', /claude|anthropic/i],
@@ -174,6 +184,7 @@ export function logConsumer(
   extra: Record<string, unknown> = {}
 ): void {
   try {
+    if (isRouterFetch(req)) return;
     const surface = surfaceFor(route);
     // proxy.ts already counted this machine-doc request.
     if (surface === 'doc' && req.headers.get(EDGE_LOGGED_HEADER) !== null) return;
@@ -193,6 +204,7 @@ export function logEdgeDoc(
   extra: Record<string, unknown> = {}
 ): void {
   try {
+    if (isRouterFetch(req)) return;
     record(route, 'doc', req, extra);
   } catch {
     // logging must never break the request
