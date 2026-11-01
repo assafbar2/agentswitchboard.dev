@@ -4,19 +4,22 @@ import { Suspense } from 'react';
 import { getAllCategories, getEveryAgent, loadOfficialVendors } from '@/lib/catalog';
 import {
   breakdownLine,
-  filterAgents,
+  browseMatches,
+  browseStateHref,
   parseFlag,
   parseSort,
   resultBreakdown,
-  searchAgents,
   sortAgents,
   type BreakdownKey,
+  type BrowseState,
 } from '@/lib/search';
 import { normalizeAccessMethods, normalizeAuthTypes } from '@/lib/public-api';
+import { recover } from '@/lib/recovery';
 import { AgentCard } from '@/components/AgentCard';
 import { SearchBar } from '@/components/SearchBar';
 import { AccessMethodFilter } from '@/components/AccessMethodFilter';
 import { CatalogFilters } from '@/components/CatalogFilters';
+import { NoResults, NoResultsText } from '@/components/NoResults';
 import { SortSelect } from '@/components/SortSelect';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { pageMetadata } from '@/lib/metadata';
@@ -72,17 +75,17 @@ export default async function BrowsePage({
     loadOfficialVendors(),
   ]);
   const vendorName = vendors.find((v) => v.slug === vendorFilter)?.name;
-  const narrowed = filterAgents(allAgents, {
+  const state: BrowseState = {
+    query,
     category: categoryFilter,
-    official: officialOnly,
+    official: parseFlag(official),
     vendor: vendorFilter,
     verified: verifiedOnly,
     auth: authFilter,
-  });
-  const agents = sortAgents(
-    searchAgents(narrowed, query, accessFilters.length > 0 ? accessFilters : undefined),
-    sortOrder
-  );
+    access: accessFilters,
+  };
+  const agents = sortAgents(browseMatches(allAgents, state), sortOrder);
+  const recovery = agents.length === 0 ? recover(allAgents, state, categories, sortOrder) : undefined;
   const applied = new Set<BreakdownKey>(accessFilters as BreakdownKey[]);
   if (officialOnly) applied.add('official');
   if (verifiedOnly) applied.add('verified');
@@ -146,21 +149,22 @@ export default async function BrowsePage({
         )}
 
         {/* Results */}
-        {agents.length > 0 ? (
+        {agents.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10">
             {agents.map((agent) => (
               <AgentCard key={agent.id} agent={agent} />
             ))}
           </div>
-        ) : (
-          <div className="py-16 border-b border-[var(--dir-rule)]!">
-            <p className="text-lg font-bold mb-2">
-              No agents found{query && <> matching <span>&ldquo;{query}&rdquo;</span></>}
-            </p>
-            <p className="text-[var(--dir-muted)]">
-              Try a different search or clear the filters.
-            </p>
-          </div>
+        )}
+        {recovery && (
+          // Keyed by the view, so a client-side move to another empty view counts it again.
+          <NoResults
+            key={browseStateHref(state, sortOrder)}
+            state={state}
+            recovery={recovery}
+            sort={sortOrder}
+            names={{ category: categories.find((c) => c.slug === categoryFilter)?.name, vendor: vendorName }}
+          />
         )}
       </div>
 
@@ -193,7 +197,7 @@ export default async function BrowsePage({
             )}
           </div>
 
-          {agents.length > 0 ? (
+          {agents.length > 0 && (
             <div>
               <div className="agent-section-title">results</div>
               {agents.map((agent) => (
@@ -208,11 +212,8 @@ export default async function BrowsePage({
                 </Link>
               ))}
             </div>
-          ) : (
-            <div className="agent-dim py-8 text-xs">
-              {query ? `no agents matched "${query}"` : 'no agents found'}
-            </div>
           )}
+          {recovery && <NoResultsText state={state} recovery={recovery} sort={sortOrder} />}
 
         </div>
       </div>

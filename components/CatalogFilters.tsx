@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
 import { Building2, LockOpen, Verified, X } from 'lucide-react';
-import { FILTER_BASE, FILTER_OFF, FILTER_ON } from '@/components/AccessMethodFilter';
+import { FILTER_BASE, FILTER_OFF, FILTER_ON } from '@/components/filter-chip';
 import { count } from '@/lib/analytics';
 import { normalizeAuthTypes } from '@/lib/public-api';
 import { parseFlag } from '@/lib/search';

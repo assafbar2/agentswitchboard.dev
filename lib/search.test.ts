@@ -1,7 +1,10 @@
 import { describe, it, expect } from 'vitest';
 import {
   breakdownLine,
+  browseMatches,
+  browseStateHref,
   filterAgents,
+  narrowingWords,
   parseFlag,
   parseSort,
   resultBreakdown,
@@ -9,6 +12,7 @@ import {
   searchAgents,
   sortAgents,
   type BreakdownKey,
+  type BrowseState,
 } from './search';
 import type { Agent } from './types';
 
@@ -245,5 +249,39 @@ describe('parseFlag', () => {
     expect(['1', 'true', 'TRUE', 'yes'].map(parseFlag)).toEqual([true, true, true, true]);
     expect(['0', 'false', '', 'no'].map(parseFlag)).toEqual([false, false, false, false]);
     expect(parseFlag(null)).toBe(false);
+  });
+});
+
+describe('narrowingWords', () => {
+  it('keeps access words and drops filler, lowercased, in order and once each', () => {
+    expect(narrowingWords('An MCP server for Postgres, postgres!')).toEqual(['mcp', 'postgres']);
+    expect(narrowingWords('the tools')).toEqual([]);
+    expect(narrowingWords('  ')).toEqual([]);
+  });
+});
+
+describe('browseMatches and browseStateHref', () => {
+  const google = { slug: 'google', name: 'Google' };
+  const agents = [
+    makeAgent({ slug: 'gemini-cli', name: 'Gemini CLI', official: true, officialVendor: google, accessMethods: ['cli'] }),
+    makeAgent({ slug: 'gemini-mcp', name: 'Gemini MCP', accessMethods: ['mcp'], verified: true }),
+  ];
+  const none: BrowseState = { query: '', category: '', official: false, vendor: '', verified: false, auth: [], access: [] };
+  const slugs = (state: BrowseState) => browseMatches(agents, state).map((a) => a.slug);
+
+  it('applies the filters, then the search; a vendor implies Official', () => {
+    expect(slugs({ ...none, query: 'gemini' })).toEqual(['gemini-cli', 'gemini-mcp']);
+    expect(slugs({ ...none, query: 'gemini', vendor: 'google' })).toEqual(['gemini-cli']);
+    expect(slugs({ ...none, query: 'gemini', access: ['mcp'] })).toEqual(['gemini-mcp']);
+    expect(slugs({ ...none, verified: true, auth: ['apiKey'] })).toEqual([]);
+  });
+
+  it('writes a view as the filters do, without empty or default parameters', () => {
+    const all: BrowseState = { query: 'postgres mcp', category: 'data-analytics', official: true, vendor: 'google', verified: true, auth: ['none'], access: ['mcp', 'cli'] };
+    expect(browseStateHref(all, 'newest')).toBe(
+      '/browse?q=postgres+mcp&category=data-analytics&official=1&vendor=google&verified=1&auth=none&access=mcp%2Ccli&sort=newest'
+    );
+    expect(browseStateHref(none)).toBe('/browse');
+    expect(browseStateHref(none, 'relevance')).toBe('/browse');
   });
 });
