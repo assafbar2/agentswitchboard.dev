@@ -53,9 +53,10 @@ The \`verified\`, \`official\` and \`featured\` flags in search and detail resul
 
 To find agents by access method or use case, search: the \`search_agents\` MCP tool, or
 GET /api/agents?access=mcp&category=<slug> (add \`official=true\` for first-party listings
-from major vendors, e.g. Notion's own Notion MCP). /agents.json is the whole catalog in
-one large file; use it for bulk or offline work, filtering on \`accessMethods\`,
-\`categories\` and \`official\`.
+from major vendors, e.g. Notion's own Notion MCP; \`verified=true\` for Verified ones;
+\`auth=none\` for no key or sign-in; \`sort=newest\` for the latest additions first).
+/agents.json is the whole catalog in one large file; use it for bulk or offline work,
+filtering on \`accessMethods\`, \`categories\` and \`official\`.
 
 ## This directory is itself an MCP server
 
@@ -64,7 +65,7 @@ one large file; use it for bulk or offline work, filtering on \`accessMethods\`,
 - Server manifest: https://agentswitchboard.dev/.well-known/mcp.json
 - Tools: search_agents, get_agent, list_categories, submit_listing (files a public GitHub issue for human review; publishes nothing)
 - Connect it to Grok, Grok Bot, the xAI API, Claude, or ChatGPT: https://agentswitchboard.dev/connect
-- Plain REST search (no MCP handshake needed): GET /api/agents?q=&category=&access=&official=&limit=&offset=
+- Plain REST search (no MCP handshake needed): GET /api/agents?q=&category=&access=&official=&verified=&auth=&sort=&limit=&offset=
 - REST detail: GET /api/agents/{slug}
 - REST categories: GET /api/categories
 - REST stacks: GET /api/stacks, GET /api/stacks/{slug}

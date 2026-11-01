@@ -31,6 +31,9 @@ handshake (e.g. wiring into a connector platform).
 | `category` | string | — | Category slug, e.g. `content-media`. See `list_categories` / [`content/categories.json`](../content/categories.json). |
 | `access` | string | — | One or more of `api`, `mcp`, `cli`, `browser-extension` (`extension` is accepted as an alias). Comma-separate to **require all** (`access=api,mcp`). Unknown values are ignored, not rejected. |
 | `official` | boolean | `false` | `true` (or `1`) returns only [official listings](#official-listings): first-party products from major vendors. Combines with `category`, `access`, and `q`. |
+| `verified` | boolean | `false` | `true` (or `1`) returns only Verified listings: checked to work, re-checked monthly. |
+| `auth` | string | — | Only listings with this auth type: `none` (no key or sign-in needed), `apiKey`, `oauth2`, `bearer`. A listing has one, so comma-separated values mean **any of them** (`auth=none,apiKey`). Unknown values are ignored. |
+| `sort` | string | `relevance` | `relevance`: best match first with `q`, featured then A→Z without. `newest`: most recently added first. `skills`: most skills first. `name`: A→Z. Ties keep the `relevance` order; unknown values mean `relevance`. |
 | `limit` | integer | `10` | Clamped to `1..50`. |
 | `offset` | integer | `0` | Number of results to skip, for pagination. |
 
@@ -82,6 +85,9 @@ curl "https://agentswitchboard.dev/api/agents?access=mcp&category=code-devtools&
 
 # Vendors' own first-party tools in a category
 curl "https://agentswitchboard.dev/api/agents?official=true&category=code-devtools"
+
+# The newest MCP servers that need no key or sign-in
+curl "https://agentswitchboard.dev/api/agents?access=mcp&auth=none&sort=newest"
 ```
 
 ---
@@ -171,7 +177,7 @@ Stdio-only clients: `npx -y mcp-remote https://agentswitchboard.dev/api/mcp`
 
 | Tool | Input | Output |
 |---|---|---|
-| `search_agents` | `query?`, `category?`, `access?` (enum[]), `official?` (boolean), `limit?` (1–50), `offset?` | `{ total, offset, limit, agents[] }` |
+| `search_agents` | `query?`, `category?`, `access?` (enum[]), `official?` (boolean), `verified?` (boolean), `auth?` (enum[]), `sort?` (enum), `limit?` (1–50), `offset?` | `{ total, offset, limit, agents[] }` |
 | `get_agent` | `slug` (required) | full agent detail: skills, auth, streaming/push, tags, links |
 | `list_categories` | — | `{ categories: [ { slug, name, description, agentCount } ] }` |
 | `submit_listing` | `name`, `url`, `description` (required); `access?`, `category?`, `contact_email?` | `{ status, message, issueUrl?, existingSlug? }` |
@@ -241,7 +247,7 @@ It is factual, not paid, and independent of the other two flags:
 | `featured` | Editorial or commercial placement | maintainers only |
 
 On the website: the **Official** filter on [`/browse?official=1`](https://agentswitchboard.dev/browse?official=1)
-combines with categories and access methods.
+combines with **Verified**, **No auth needed**, categories and access methods.
 
 ---
 

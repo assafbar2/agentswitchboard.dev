@@ -2,6 +2,7 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
+import { count } from '@/lib/analytics';
 import { ACCESS_METHOD_LABELS } from '@/lib/search';
 
 // Square, ink-bordered toggles; the pressed one is filled with ink.
@@ -19,9 +20,9 @@ export function AccessMethodFilter() {
   const toggle = useCallback(
     (method: string) => {
       const params = new URLSearchParams(searchParams.toString());
-      const filters = activeFilters.includes(method)
-        ? activeFilters.filter((m) => m !== method)
-        : [...activeFilters, method];
+      const wasOn = activeFilters.includes(method);
+      const filters = wasOn ? activeFilters.filter((m) => m !== method) : [...activeFilters, method];
+      count('filter_change', { filter: 'access', value: method, state: wasOn ? 'off' : 'on' });
 
       if (filters.length > 0) {
         params.set('access', filters.join(','));

@@ -27,10 +27,14 @@ import { track } from '@vercel/analytics';
 import { VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 import {
   ACCESS_METHOD_INPUTS,
+  AUTH_INPUT,
   FEATURED_DEFINITION,
   MAX_LIMIT,
   OFFICIAL_DEFINITION,
+  SORT_INPUT,
+  VERIFIED_INPUT,
 } from '@/lib/public-api';
+import { AUTH_TYPES, SORT_ORDERS } from '@/lib/search';
 
 type ToolResult = {
   content: { type: 'text'; text: string }[];
@@ -145,7 +149,8 @@ export function WebMcp() {
             name: 'search_agents',
             description:
               'Search the curated Agent Switchboard directory of AI agents, MCP servers, and agentic tools. ' +
-              'Filter by category slug, access methods, and/or official (first-party listings from major vendors). ' +
+              'Filter by category slug, access methods, official (first-party listings from major vendors), verified, and/or auth type; ' +
+              'sort by relevance, newest, most skills, or name. ' +
               LABELS,
             inputSchema: {
               type: 'object',
@@ -165,6 +170,9 @@ export function WebMcp() {
                   type: 'boolean',
                   description: "Only first-party listings from major vendors (e.g. Notion's own Notion MCP)",
                 },
+                verified: { type: 'boolean', description: VERIFIED_INPUT },
+                auth: { type: 'array', items: { type: 'string', enum: AUTH_TYPES }, description: AUTH_INPUT },
+                sort: { type: 'string', enum: SORT_ORDERS, description: SORT_INPUT },
                 limit: {
                   type: 'integer',
                   minimum: 1,
@@ -203,6 +211,11 @@ export function WebMcp() {
               // The API maps aliases and ignores unknown values, as the MCP does.
               if (access.length > 0) params.set('access', access.join(','));
               if (input.official === true) params.set('official', 'true');
+              if (input.verified === true) params.set('verified', 'true');
+              const auth = strings(input.auth);
+              if (auth.length > 0) params.set('auth', auth.join(','));
+              const sort = str(input.sort);
+              if (sort) params.set('sort', sort);
               if (limit !== undefined) params.set('limit', String(limit));
               if (offset !== undefined) params.set('offset', String(offset));
               const { status, body } = await getJson(`/api/agents?${params}`);

@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useId } from 'react';
 import { useRouter } from 'next/navigation';
+import { count } from '@/lib/analytics';
 import { browseHref } from '@/lib/search';
 
 export function SearchBar({
@@ -36,6 +37,8 @@ export function SearchBar({
       // rather than with useSearchParams, which would need a Suspense boundary
       // on the statically rendered homepage.
       const current = window.location.pathname === '/browse' ? window.location.search : '';
+      const words = value.trim().split(/\s+/).filter(Boolean).length;
+      count('search_submit', { page: window.location.pathname, words });
       router.push(browseHref(value, current));
     },
     [value, router]

@@ -1,7 +1,7 @@
-// Search and /browse: query matching, filters, URL state, counts vs the public API.
+// Search and /browse: query matching, filters, sort, URL state, counts vs the public API.
 // Source: components/SearchBar.tsx, components/CatalogFilters.tsx,
-// components/AccessMethodFilter.tsx, app/browse/page.tsx, lib/search.ts,
-// app/api/agents/route.ts, components/CategoryRail.tsx.
+// components/AccessMethodFilter.tsx, components/SortSelect.tsx, app/browse/page.tsx,
+// lib/search.ts, app/api/agents/route.ts, components/CategoryRail.tsx.
 import { test, expect } from './fixtures.mjs';
 
 const UA = { 'user-agent': 'Mozilla/5.0 asb-e2e' };
@@ -23,8 +23,11 @@ async function apiSlugs(page, params, limit = 50) {
 
 const human = (page) => page.locator('.human-only');
 const countBar = (page) => human(page).locator('h2.dir-bar');
+const breakdown = (page) => human(page).locator('h2.dir-bar + div p');
+const sortMenu = (page) => human(page).getByLabel('Sort');
 const cards = (page) => human(page).locator('a[href^="/agents/"]:has(h3)');
 const cardFor = (page, slug) => human(page).locator(`a[href="/agents/${slug}"]:has(h3)`);
+const cardHrefs = (page) => cards(page).evaluateAll((els) => els.map((a) => a.getAttribute('href')));
 const searchBox = (page) => human(page).getByRole('search').getByRole('searchbox');
 
 /** The number shown in the yellow count bar ("51 agents listed"), or 0 for "No agents found". */
@@ -239,6 +242,176 @@ test.describe('official and category filters', () => {
   });
 });
 
+test.describe('Verified and No auth needed chips', () => {
+  test('Verified sets ?verified=1 and the count matches /api/agents', async ({ page }) => {
+    await page.goto('/browse');
+    const chip = human(page).getByRole('button', { name: 'Verified', exact: true });
+    await expect(chip).toHaveAttribute('aria-pressed', 'false');
+    await chip.click();
+    await expect(page).toHaveURL(/\/browse\?verified=1$/);
+    await expect(chip).toHaveAttribute('aria-pressed', 'true');
+    await expect(countBar(page)).toHaveText(`${await apiTotal(page, { verified: 'true' })} agents listed`);
+    await chip.click();
+    await expect(page).toHaveURL(/\/browse$/);
+  });
+
+  test('No auth needed keeps the search and leaves only cards marked "No auth"', async ({ page }) => {
+    await page.goto('/browse?q=browser');
+    const chip = human(page).getByRole('button', { name: 'No auth needed' });
+    await chip.click();
+    await expect(page).toHaveURL(/auth=none/);
+    await expect(chip).toHaveAttribute('aria-pressed', 'true');
+    expect(new URL(page.url()).searchParams.get('q')).toBe('browser');
+    const total = await apiTotal(page, { q: 'browser', auth: 'none' });
+    expect(total).toBeGreaterThan(0);
+    expect(total).toBeLessThan(await apiTotal(page, { q: 'browser' }));
+    await expect(countBar(page)).toHaveText(`${total} agents matched`);
+    const texts = await cards(page).allInnerTexts();
+    expect(texts).toHaveLength(total);
+    for (const text of texts) expect(text).toContain('No auth');
+    await chip.click();
+    await expect(page).not.toHaveURL(/auth=/);
+    await expect(chip).toHaveAttribute('aria-pressed', 'false');
+  });
+
+  test('verified=true and auth=NONE are read like the chips write them', async ({ page }) => {
+    await page.goto('/browse?verified=1&auth=none');
+    const n = await shownCount(page);
+    expect(n).toBe(await apiTotal(page, { verified: 'true', auth: 'none' }));
+    await page.goto('/browse?verified=true&auth=NONE');
+    expect(await shownCount(page)).toBe(n);
+    await expect(human(page).getByRole('button', { name: 'Verified', exact: true })).toHaveAttribute('aria-pressed', 'true');
+    await expect(human(page).getByRole('button', { name: 'No auth needed' })).toHaveAttribute('aria-pressed', 'true');
+  });
+
+  test('unknown auth and sort values are ignored, as /api/agents does', async ({ page }) => {
+    await page.goto('/browse?auth=bogus&sort=oldest');
+    expect(await shownCount(page)).toBe(await apiTotal(page, {}));
+    await expect(human(page).getByRole('button', { name: 'No auth needed' })).toHaveAttribute('aria-pressed', 'false');
+    await expect(sortMenu(page)).toHaveValue('relevance');
+  });
+});
+
+test.describe('sort menu', () => {
+  test('with a search the default is Best match; A–Z reorders like /api/agents and keeps the query', async ({ page }) => {
+    await page.goto('/browse?q=postgres');
+    await expect(sortMenu(page)).toHaveValue('relevance');
+    await expect(sortMenu(page).locator('option[value="relevance"]')).toHaveText('Best match');
+    await sortMenu(page).selectOption('name');
+    await expect(page).toHaveURL(/sort=name/);
+    expect(new URL(page.url()).searchParams.get('q')).toBe('postgres');
+    const slugs = await apiSlugs(page, { q: 'postgres', sort: 'name' });
+    await expect.poll(() => cardHrefs(page)).toEqual(slugs.map((s) => `/agents/${s}`));
+    await sortMenu(page).selectOption('relevance');
+    await expect(page).not.toHaveURL(/sort=/);
+    await expect(cards(page).first()).toHaveAttribute('href', '/agents/postgres-mcp-pro');
+  });
+
+  test('without a search the default is Featured first', async ({ page }) => {
+    await page.goto('/browse');
+    await expect(sortMenu(page).locator('option[value="relevance"]')).toHaveText('Featured first');
+  });
+
+  for (const sort of ['newest', 'skills']) {
+    test(`?sort=${sort} lists the same first 20 as /api/agents`, async ({ page }) => {
+      await page.goto(`/browse?sort=${sort}`);
+      await expect(sortMenu(page)).toHaveValue(sort);
+      const slugs = await apiSlugs(page, { sort }, 20);
+      expect((await cardHrefs(page)).slice(0, 20)).toEqual(slugs.map((s) => `/agents/${s}`));
+    });
+  }
+
+  test('sorting keeps the filters and the result count', async ({ page }) => {
+    await page.goto('/browse?access=mcp&verified=1');
+    const n = await shownCount(page);
+    await sortMenu(page).selectOption('skills');
+    await expect(page).toHaveURL(/sort=skills/);
+    const url = new URL(page.url());
+    expect(url.searchParams.get('access')).toBe('mcp');
+    expect(url.searchParams.get('verified')).toBe('1');
+    expect(await shownCount(page)).toBe(n);
+  });
+});
+
+test.describe('breakdown line', () => {
+  const CHIPS = [
+    { key: 'official', label: 'Official', params: { official: 'true' } },
+    { key: 'verified', label: 'Verified', params: { verified: 'true' } },
+    { key: 'no-auth', label: 'No auth needed', params: { auth: 'none' } },
+    { key: 'api', label: 'API', params: { access: 'api' } },
+    { key: 'mcp', label: 'MCP', params: { access: 'mcp' } },
+    { key: 'cli', label: 'CLI', params: { access: 'cli' } },
+    { key: 'browser-extension', label: 'Extension', params: { access: 'browser-extension' } },
+  ];
+
+  /** The line /browse should show for `base` (API params), from /api/agents counts. */
+  async function expectedLine(page, base, applied = []) {
+    const total = await apiTotal(page, base);
+    const parts = [];
+    for (const { key, label, params } of CHIPS) {
+      if (applied.includes(key)) continue;
+      const access = [base.access, params.access].filter(Boolean).join(',');
+      const n = await apiTotal(page, { ...base, ...params, ...(access ? { access } : {}) });
+      if (n > 0) parts.push(`${n === total ? 'all' : n} ${label}`);
+    }
+    return parts.join(' · ');
+  }
+
+  test('counts what each chip would keep for "postgres"', async ({ page }) => {
+    await page.goto('/browse?q=postgres');
+    await expect(breakdown(page)).toHaveText(await expectedLine(page, { q: 'postgres' }));
+  });
+
+  test('applied chips drop out of the line', async ({ page }) => {
+    await page.goto('/browse?q=github&access=mcp&verified=1');
+    const line = await expectedLine(page, { q: 'github', access: 'mcp', verified: 'true' }, ['mcp', 'verified']);
+    expect(line).not.toMatch(/Verified|MCP/);
+    await expect(breakdown(page)).toHaveText(line);
+  });
+
+  test('a single result shows no line, only the sort menu', async ({ page }) => {
+    await page.goto('/browse?q=agentmail');
+    await expect(countBar(page)).toHaveText('1 agent matched');
+    await expect(sortMenu(page)).toBeVisible();
+    await expect(breakdown(page)).toHaveCount(0);
+  });
+
+  test('no results shows neither the line nor the sort menu', async ({ page }) => {
+    await page.goto('/browse?q=zzqxjvnonsense');
+    await expect(countBar(page)).toHaveText('No agents found');
+    await expect(sortMenu(page)).toHaveCount(0);
+  });
+});
+
+test.describe('analytics events', () => {
+  test('filters, sort and search are counted, never with the search text', async ({ page }) => {
+    await page.goto('/browse');
+    await human(page).getByRole('button', { name: 'Verified', exact: true }).click();
+    await expect(page).toHaveURL(/verified=1/);
+    await human(page).getByRole('button', { name: 'MCP', exact: true }).click();
+    await expect(page).toHaveURL(/access=mcp/);
+    await sortMenu(page).selectOption('skills');
+    await expect(page).toHaveURL(/sort=skills/);
+    await human(page).getByLabel('Category').selectOption('data-analytics');
+    await expect(page).toHaveURL(/category=data-analytics/);
+    await searchBox(page).fill('postgres backups');
+    await searchBox(page).press('Enter');
+    await expect(page).toHaveURL(/q=postgres/);
+    // The insights script is blocked, so track() leaves its events queued on window.vaq.
+    const events = await page.evaluate(() =>
+      (window.vaq ?? []).filter(([kind]) => kind === 'event').map(([, e]) => ({ name: e.name, data: e.data }))
+    );
+    expect(events).toEqual([
+      { name: 'filter_change', data: { filter: 'verified', state: 'on' } },
+      { name: 'filter_change', data: { filter: 'access', value: 'mcp', state: 'on' } },
+      { name: 'sort_change', data: { sort: 'skills' } },
+      { name: 'filter_change', data: { filter: 'category', value: 'data-analytics' } },
+      { name: 'search_submit', data: { page: '/browse', words: 2 } },
+    ]);
+    expect(JSON.stringify(events)).not.toMatch(/postgres|backups/);
+  });
+});
+
 test.describe('category counts and the rail', () => {
   // A real list: every category, against /api/categories counts. Few enough pages to be polite.
   const sample = ['language', 'code-devtools', 'security', 'orchestration', 'productivity'];
@@ -348,5 +521,17 @@ test.describe('mobile', () => {
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     expect(overflow).toBeLessThanOrEqual(0);
     await expect(page.getByRole('navigation', { name: 'Categories' })).toBeHidden();
+  });
+
+  test('every chip, the breakdown line and the sort menu fit a phone screen', async ({ page }) => {
+    await page.goto('/browse?q=github&verified=1&auth=none&sort=newest');
+    await expect(breakdown(page)).toBeVisible();
+    await expect(sortMenu(page)).toBeVisible();
+    for (const name of ['Official', 'Verified', 'No auth needed', 'MCP', 'Extension']) {
+      const box = await human(page).getByRole('button', { name, exact: true }).boundingBox();
+      expect(box.height, `${name} chip height`).toBeGreaterThanOrEqual(44);
+    }
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+    expect(overflow).toBeLessThanOrEqual(0);
   });
 });

@@ -166,6 +166,43 @@ test.describe('catalog JSON', () => {
     for (const a of body.agents) expect(a.accessMethods).toContain('mcp');
   });
 
+  test('/api/agents?verified=true returns only Verified listings', async ({ request }) => {
+    const { body } = await getJson(request, '/api/agents?verified=true&limit=50');
+    expect(body.total).toBeGreaterThan(0);
+    for (const a of body.agents) expect(a.verified).toBe(true);
+  });
+
+  test('/api/agents?auth= keeps listings with any of the given auth types', async ({ request }) => {
+    const total = async (auth) => (await getJson(request, `/api/agents?limit=1${auth ? `&auth=${auth}` : ''}`)).body.total;
+    const none = await total('none');
+    const apiKey = await total('apiKey');
+    expect(none).toBeGreaterThan(0);
+    expect(apiKey).toBeGreaterThan(0);
+    expect(await total('none,apiKey')).toBe(none + apiKey);
+    expect(await total('NONE')).toBe(none);
+    expect(await total('bogus')).toBe(await total(''));
+    const { body } = await getJson(request, '/api/agents?auth=none&limit=5');
+    for (const a of body.agents) {
+      expect((await getJson(request, `/api/agents/${a.slug}`)).body.authType, a.slug).toBe('none');
+    }
+  });
+
+  test('/api/agents?sort=name is A→Z and sort=newest is newest first', async ({ request }) => {
+    const { body: byName } = await getJson(request, '/api/agents?sort=name&limit=50');
+    const names = byName.agents.map((a) => a.name);
+    expect(names).toEqual([...names].sort((a, b) => a.localeCompare(b)));
+    const { body: newest } = await getJson(request, '/api/agents?sort=newest&limit=8');
+    const added = [];
+    for (const a of newest.agents) added.push(Date.parse((await getJson(request, `/api/agents/${a.slug}`)).body.createdAt));
+    expect(added).toEqual([...added].sort((a, b) => b - a));
+  });
+
+  test('/api/agents with an unknown sort keeps the default order', async ({ request }) => {
+    const { body: plain } = await getJson(request, '/api/agents?q=email&limit=20');
+    const { body: odd } = await getJson(request, '/api/agents?q=email&sort=oldest&limit=20');
+    expect(odd.agents.map((a) => a.slug)).toEqual(plain.agents.map((a) => a.slug));
+  });
+
   test('/api/agents?category filters to that category', async ({ request }) => {
     const { body: cats } = await getJson(request, '/api/categories');
     const cat = cats.categories.find((c) => c.agentCount > 0);
@@ -327,8 +364,40 @@ test.describe('MCP server /api/mcp', () => {
     }
     const search = body.result.tools.find((t) => t.name === 'search_agents');
     expect(Object.keys(search.inputSchema.properties)).toEqual(
-      expect.arrayContaining(['query', 'category', 'access', 'official', 'limit', 'offset'])
+      expect.arrayContaining(['query', 'category', 'access', 'official', 'verified', 'auth', 'sort', 'limit', 'offset'])
     );
+  });
+
+  test('the manifests list the live search_agents inputs and server version', async ({ request }) => {
+    const listed = await mcp(request, 'tools/list');
+    const live = listed.result.tools.find((t) => t.name === 'search_agents');
+    const init = await mcp(request, 'initialize', {
+      protocolVersion: '2025-03-26',
+      capabilities: {},
+      clientInfo: { name: 'asb-e2e', version: '1.0.0' },
+    });
+    for (const path of ['/.well-known/mcp.json', '/.well-known/webmcp.json']) {
+      const { body } = await getJson(request, path);
+      const tool = body.tools.find((t) => t.name === 'search_agents');
+      expect(Object.keys(tool.inputSchema.properties).sort(), path).toEqual(Object.keys(live.inputSchema.properties).sort());
+      expect(body.version, `${path} version`).toBe(init.result.serverInfo.version);
+    }
+  });
+
+  test('search_agents takes verified, auth and sort like GET /api/agents', async ({ request }) => {
+    const result = await callTool(request, 'search_agents', {
+      access: ['mcp'],
+      auth: ['none'],
+      verified: true,
+      sort: 'newest',
+      limit: 10,
+    });
+    expect(result.isError).toBeFalsy();
+    const data = result.structuredContent ?? JSON.parse(result.content[0].text);
+    const { body } = await getJson(request, '/api/agents?access=mcp&auth=none&verified=true&sort=newest&limit=10');
+    expect(data.total).toBeGreaterThan(0);
+    expect(data.total).toBe(body.total);
+    expect(data.agents.map((a) => a.slug)).toEqual(body.agents.map((a) => a.slug));
   });
 
   test('search_agents with a query returns matching results', async ({ request }) => {

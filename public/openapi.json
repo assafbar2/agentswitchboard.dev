@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Agent Switchboard Directory API",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "summary": "Read-only catalog of AI agents, MCP servers, and agentic developer tools.",
     "description": "Agent Switchboard is a public discovery directory. Use this API to answer questions like 'is there an agent that does X?' or 'which listed products expose an MCP server?'. There is no authentication, no user account, and no write access. This API does not proxy the underlying products — it only returns Switchboard listings. For interactive tool-shaped access, an MCP server is also available at /api/mcp. Listing data returned by this API is licensed CC BY-NC 4.0 (attribution required; commercial reuse needs a license: https://agentswitchboard.dev/contact). The API definition itself is MIT.",
     "contact": {
@@ -29,7 +29,7 @@
       "get": {
         "operationId": "searchAgents",
         "summary": "Search published agents",
-        "description": "Relevance-ranked search over name, description, skills, categories, tags, and provider. Empty `q` lists published agents in catalog order: featured first, then A→Z. With `q`, results are ranked by relevance and equal scores keep that featured-first order. Filter by category slug, access methods, and/or `official`. Paginate with `total` + `offset` + `limit`.",
+        "description": "Relevance-ranked search over name, description, skills, categories, tags, and provider. Empty `q` lists published agents in catalog order: featured first, then A→Z. With `q`, results are ranked by relevance and equal scores keep that featured-first order. `sort` can order them by newest, most skills, or name instead. Filter by category slug, access methods, `official`, `verified`, and/or `auth`. Paginate with `total` + `offset` + `limit`.",
         "tags": ["catalog"],
         "parameters": [
           {
@@ -59,6 +59,27 @@
             "required": false,
             "description": "`true` (or `1`, `yes`) returns only first-party listings from major vendors; any other value applies no filter. Combines with `category`, `access`, and `q`.",
             "schema": { "type": "boolean", "examples": [true] }
+          },
+          {
+            "name": "verified",
+            "in": "query",
+            "required": false,
+            "description": "`true` (or `1`, `yes`) returns only Verified listings: checked to work, re-checked monthly. Any other value applies no filter.",
+            "schema": { "type": "boolean", "examples": [true] }
+          },
+          {
+            "name": "auth",
+            "in": "query",
+            "required": false,
+            "description": "Only listings with this auth type: `none` (no key or sign-in needed), `apiKey`, `oauth2`, or `bearer`. Case-insensitive. A listing has one auth type, so comma-separated values mean any of them (`auth=none,apiKey`). Unknown values are ignored.",
+            "schema": { "type": "string", "examples": ["none", "none,apiKey"] }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "description": "Result order. `relevance` (default): with `q`, best match first; without, featured first, then A→Z. `newest`: most recently added first. `skills`: most skills first. `name`: A→Z. Ties keep the default order. Unknown values mean `relevance`.",
+            "schema": { "type": "string", "enum": ["relevance", "newest", "skills", "name"], "default": "relevance" }
           },
           {
             "name": "limit",
@@ -239,7 +260,7 @@
       "post": {
         "operationId": "mcpTransport",
         "summary": "Model Context Protocol endpoint (streamable HTTP)",
-        "description": "Speaks MCP over streamable HTTP. Exposes three tools: `search_agents`, `get_agent`, and `list_categories`. This is a JSON-RPC transport, not a REST resource. REST clients should call /api/agents instead.",
+        "description": "Speaks MCP over streamable HTTP. Exposes four tools: `search_agents`, `get_agent`, `list_categories`, and `submit_listing`, which files a listing suggestion for human review. This is a JSON-RPC transport, not a REST resource. REST clients should call /api/agents instead.",
         "tags": ["mcp"],
         "requestBody": {
           "required": true,
