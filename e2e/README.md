@@ -1,10 +1,10 @@
 # Live e2e checks
 
-About 470 Playwright tests that run against the production site after a deploy:
-homepage, search and `/browse`, every category, listing pages, the text-only
-view and theme, the machine endpoints (`/api/mcp`, `/llms.txt`, `/agents.json`,
-…), content pages and navigation, mobile layout, accessibility, and social-card
-and HTTP-header metadata.
+About 690 Playwright tests that run against the production site after a deploy:
+homepage, search and `/browse`, every category, listing pages, weekly drops,
+stacks and tasks, the text-only view and theme, the machine endpoints
+(`/api/mcp`, `/llms.txt`, `/agents.json`, …), content pages and navigation,
+mobile layout, accessibility, and social-card and HTTP-header metadata.
 
 ```bash
 npm run test:e2e
