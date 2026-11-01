@@ -4,6 +4,7 @@ import { pageMetadata } from '@/lib/metadata';
 import { VerifiedBadge, VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 import { getEveryAgent } from '@/lib/catalog';
 import { FEATURED_DEFINITION, OFFICIAL_DEFINITION } from '@/lib/public-api';
+import { MIN_ALTERNATIVES } from '@/lib/related';
 import type { Agent } from '@/lib/types';
 
 export function generateMetadata(_props: unknown, parent: ResolvingMetadata): Promise<Metadata> {
@@ -254,6 +255,11 @@ GET /api/categories
               <Link href="/drops" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
                 https://agentswitchboard.dev/drops
               </Link>
+            </li>
+            <li>
+              <span className="font-bold">→ Alternatives to a listing:</span>{' '}
+              <code className="font-bold">https://agentswitchboard.dev/agents/&lt;slug&gt;/alternatives</code>, for
+              listings with at least {MIN_ALTERNATIVES}, each with what it has in common
             </li>
             <li>
               <span className="font-bold">→ Plain-language guide:</span>{' '}

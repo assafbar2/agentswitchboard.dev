@@ -2,6 +2,7 @@ import { VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 import { getEveryAgent, getAllCategories } from '@/lib/catalog';
 import { getDropSchedule } from '@/lib/drops';
 import { FEATURED_DEFINITION, OFFICIAL_DEFINITION } from '@/lib/public-api';
+import { MIN_ALTERNATIVES } from '@/lib/related';
 
 export const dynamic = 'force-static';
 
@@ -43,6 +44,7 @@ The \`verified\`, \`official\` and \`featured\` flags in search and detail resul
 - Full machine-readable catalog (JSON): https://agentswitchboard.dev/agents.json
 - Browse by category: https://agentswitchboard.dev/categories
 - Search and filter: https://agentswitchboard.dev/browse${dropLine}
+- Alternatives to a listing: https://agentswitchboard.dev/agents/<slug>/alternatives (listings with at least ${MIN_ALTERNATIVES}; each says what it has in common)
 
 To find agents by access method or use case, search: the \`search_agents\` MCP tool, or
 GET /api/agents?access=mcp&category=<slug> (add \`official=true\` for first-party listings

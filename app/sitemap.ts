@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { getEveryAgent, getAllCategories } from '@/lib/catalog';
 import { getDropSchedule } from '@/lib/drops';
+import { alternativesPage } from '@/lib/related';
 
 export const revalidate = 3600; // regenerate every hour
 
@@ -34,6 +35,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: agent.featured ? 0.9 : 0.7,
   }));
 
+  const alternativesPages: MetadataRoute.Sitemap = agents
+    .filter((agent) => alternativesPage(agent, agents))
+    .map((agent) => ({
+      url: `${base}/agents/${agent.slug}/alternatives`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    }));
+
   // Dynamic category pages
   const categories = await getAllCategories();
   const categoryPages: MetadataRoute.Sitemap = categories.map((cat) => ({
@@ -50,5 +60,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...agentPages, ...categoryPages, ...dropPages];
+  return [...staticPages, ...agentPages, ...alternativesPages, ...categoryPages, ...dropPages];
 }

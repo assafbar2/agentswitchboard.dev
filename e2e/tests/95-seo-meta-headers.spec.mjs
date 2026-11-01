@@ -1,6 +1,7 @@
 // SEO, social cards and HTTP headers on the live site (read-only: GET/HEAD only).
 // Source of truth: app/layout.tsx (root metadata), app/page.tsx, lib/share-cards.ts,
-// lib/og.tsx, app/agents/[slug]/page.tsx, app/categories/[slug]/page.tsx, app/drops/, next.config.ts, proxy.ts.
+// lib/og.tsx, app/agents/[slug]/page.tsx, app/agents/[slug]/alternatives/, app/categories/[slug]/page.tsx,
+// app/drops/, next.config.ts, proxy.ts.
 import zlib from 'node:zlib';
 import { test, expect } from './fixtures.mjs';
 
@@ -16,6 +17,11 @@ const PAGES = [
   { path: '/browse', canonical: `${ORIGIN}/browse`, card: '/card.png' },
   { path: '/for-agents', canonical: `${ORIGIN}/for-agents`, card: '/card.png' },
   { path: '/agents/11x-ai', canonical: `${ORIGIN}/agents/11x-ai`, card: '/agents/11x-ai/card.png' },
+  {
+    path: '/agents/livekit-agents/alternatives',
+    canonical: `${ORIGIN}/agents/livekit-agents/alternatives`,
+    card: '/agents/livekit-agents/alternatives/card.png',
+  },
   { path: '/categories/language', canonical: `${ORIGIN}/categories/language`, card: '/categories/language/card.png' },
   {
     path: '/categories/code-devtools',

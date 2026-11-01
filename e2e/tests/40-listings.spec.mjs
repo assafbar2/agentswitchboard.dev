@@ -95,7 +95,8 @@ test('Related Agents links on listings resolve to published listings', async ({ 
   for (const slug of ['agentmail', 'claude-code', 'playwright-mcp']) {
     await page.goto(`/agents/${slug}`);
     const rel = listing(page).locator('div:has(> h2:has-text("Related Agents")) a[href^="/agents/"]');
-    const list = await rel.evaluateAll((as) => as.map((a) => a.getAttribute('href')));
+    // "See N alternatives" under the grid is a page, not a listing (43-alternatives covers it).
+    const list = (await rel.evaluateAll((as) => as.map((a) => a.getAttribute('href')))).filter((h) => !h.endsWith('/alternatives'));
     expect(list.length, `${slug} related`).toBeGreaterThan(0);
     expect(list, `${slug} links to itself`).not.toContain(`/agents/${slug}`);
     list.forEach((h) => hrefs.add(h));

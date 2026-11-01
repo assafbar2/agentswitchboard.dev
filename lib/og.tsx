@@ -11,8 +11,15 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { ImageResponse } from 'next/og';
 import type { ReactElement, ReactNode } from 'react';
-import { CARD_SIZE, type CategoryCard, type DropCard, type ListingCard, type SiteCard } from './share-cards';
-import { formatNumber, pluralize } from './utils';
+import {
+  CARD_SIZE,
+  type AlternativesCard,
+  type CategoryCard,
+  type DropCard,
+  type ListingCard,
+  type SiteCard,
+} from './share-cards';
+import { formatNumber, joinList, pluralize } from './utils';
 
 const INK = '#111111';
 const PAPER = '#ffffff';
@@ -147,6 +154,41 @@ export async function renderDropCard(card: DropCard): Promise<ImageResponse> {
       text={names}
       icons={await Promise.all(card.icons.map(iconSrc))}
     />
+  );
+}
+
+export async function renderAlternativesCard(card: AlternativesCard): Promise<ImageResponse> {
+  const [icon, icons] = await Promise.all([card.icon ? iconSrc(card.icon) : null, Promise.all(card.icons.map(iconSrc))]);
+  const more = card.alternatives - card.names.length;
+  const names = more > 0 ? `${card.names.join(', ')} and ${more} more` : joinList(card.names);
+  return render(
+    <Frame kicker="Alternatives">
+      <div style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
+        <Icon src={icon} name={card.name} size={112} />
+        <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minWidth: 0 }}>
+          <div style={{ display: 'flex', fontSize: 34, fontWeight: 600, color: MUTED }}>Alternatives to</div>
+          <div
+            style={{
+              display: 'block',
+              lineClamp: 2,
+              fontSize: nameSize(card.name),
+              fontWeight: 800,
+              lineHeight: 1,
+              letterSpacing: '-0.02em',
+            }}
+          >
+            {card.name}
+          </div>
+        </div>
+      </div>
+      <div style={{ display: 'flex', marginTop: 24, fontSize: 34, fontWeight: 800 }}>
+        {`${card.alternatives} similar ${pluralize(card.alternatives, 'tool')}${card.category ? ` in ${card.category}` : ''}`}
+      </div>
+      <div style={{ display: 'block', lineClamp: 1, marginTop: 8, fontSize: 28, fontWeight: 500, color: MUTED }}>
+        {names}
+      </div>
+      <IconRow icons={icons} size={76} />
+    </Frame>
   );
 }
 

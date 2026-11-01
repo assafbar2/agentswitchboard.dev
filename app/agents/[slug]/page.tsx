@@ -7,7 +7,7 @@ import { AgentCard } from '@/components/AgentCard';
 import { AgentIcon } from '@/components/AgentIcon';
 import { JsonLd } from '@/components/JsonLd';
 import { TryThisFirst } from '@/components/TryThisFirst';
-import { getRelatedAgents } from '@/lib/related';
+import { alternativesPage, getRelatedAgents } from '@/lib/related';
 import { tryThis } from '@/lib/try-this';
 import { absoluteIconUrl } from '@/lib/icons';
 import { listingCard, listingCardImage } from '@/lib/share-cards';
@@ -71,6 +71,7 @@ export default async function AgentPage({
   if (!agent) notFound();
 
   const related = getRelatedAgents(agent, allAgents);
+  const alternatives = alternativesPage(agent, allAgents);
   const tryFirst = tryThis(agent);
 
   // No `offers`: the catalog has no pricing data, and "no auth" does not mean
@@ -241,6 +242,13 @@ export default async function AgentPage({
                   <AgentCard key={r.id} agent={r} />
                 ))}
               </div>
+              {alternatives && (
+                <Link href={`/agents/${agent.slug}/alternatives`} className="dir-row mt-2">
+                  <span className="dir-row-name">See {alternatives.length} alternatives</span>
+                  <span className="dir-row-leader" aria-hidden="true" />
+                  <span className="dir-row-meta" aria-hidden="true">→</span>
+                </Link>
+              )}
             </div>
           )}
         </div>
@@ -295,6 +303,17 @@ export default async function AgentPage({
                   </span>
                 </div>
               ))}
+            </>
+          )}
+
+          {alternatives && (
+            <>
+              <div className="agent-section-title">alternatives</div>
+              <Link href={`/agents/${agent.slug}/alternatives`} className="agent-row no-underline hover:underline">
+                <span className="agent-accent">/agents/{agent.slug}/alternatives</span>
+                <span className="agent-dim">{alternatives.length} listed</span>
+                <span className="agent-dim">{alternatives.slice(0, 3).map((a) => a.agent.slug).join(', ')}</span>
+              </Link>
             </>
           )}
 

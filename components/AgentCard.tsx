@@ -35,7 +35,8 @@ export type AgentCardData = Pick<
   skills: readonly unknown[];
 };
 
-export function AgentCard({ agent }: { agent: AgentCardData }) {
+/** `why` adds a closing line saying why the listing is shown here. */
+export function AgentCard({ agent, why }: { agent: AgentCardData; why?: string }) {
   const skillCount = agent.skills.length;
   const auth = agent.authType === 'none' ? 'No auth' : authTypeLabel(agent.authType);
   const meta = skillCount > 0 ? `${skillCount} ${pluralize(skillCount, 'skill')} · ${auth}` : auth;
@@ -85,6 +86,12 @@ export function AgentCard({ agent }: { agent: AgentCardData }) {
           {` · ${meta}`}
         </span>
       </div>
+
+      {why && (
+        <p className="mt-1.5 text-[15px] leading-snug">
+          <span className="dir-label text-[13px]">Why</span> {why}
+        </p>
+      )}
     </Link>
   );
 }

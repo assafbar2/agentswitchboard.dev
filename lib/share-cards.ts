@@ -10,6 +10,7 @@
 
 import { createHash } from 'crypto';
 import { dropAdditions, dropHighlights, type Drop } from './drops';
+import type { Alternative } from './related';
 import { ACCESS_METHOD_LABELS } from './search';
 import type { Agent, Category } from './types';
 import { formatDay } from './utils';
@@ -18,7 +19,7 @@ import { formatDay } from './utils';
  * Hash of lib/og.tsx and assets/fonts/, so a redesigned card gets new URLs.
  * lib/share-cards.test.ts prints the new value whenever either changes.
  */
-export const CARD_DESIGN = '806ba220';
+export const CARD_DESIGN = '01c57ea2';
 
 export const CARD_SIZE = { width: 1200, height: 630 } as const;
 
@@ -62,6 +63,19 @@ export interface DropCard {
   icons: string[];
 }
 
+export interface AlternativesCard {
+  /** The listing the alternatives replace. */
+  name: string;
+  icon: string | null;
+  /** Its primary category, which every alternative shares. */
+  category: string | null;
+  alternatives: number;
+  /** The strongest few, best first. */
+  names: string[];
+  /** The alternatives' icons, best first, each image once. */
+  icons: string[];
+}
+
 /** An entry for Metadata openGraph.images; twitter:image copies it. */
 export interface ShareImage {
   url: string;
@@ -75,6 +89,7 @@ const SITE_ICONS = 12;
 const CATEGORY_ICONS = 10;
 const DROP_ICONS = 10;
 const DROP_NAMES = 3;
+const ALTERNATIVE_NAMES = 3;
 
 export function siteCard(agents: Agent[], categories: Category[]): SiteCard {
   return {
@@ -121,6 +136,23 @@ export function dropCard(drop: Drop, catalog: Agent[]): DropCard {
   };
 }
 
+/** `alternatives` as lib/related.ts alternativesPage lists them. */
+export function alternativesCard(agent: Agent, alternatives: Alternative[]): AlternativesCard {
+  const icons = new Map<string, string>();
+  for (const { agent: alt } of alternatives) {
+    const hash = alt.iconUrl?.split('?v=')[1];
+    if (alt.iconUrl && hash && !icons.has(hash)) icons.set(hash, alt.iconUrl);
+  }
+  return {
+    name: agent.name,
+    icon: agent.iconUrl ?? null,
+    category: agent.categories[0]?.name ?? null,
+    alternatives: alternatives.length,
+    names: alternatives.slice(0, ALTERNATIVE_NAMES).map((a) => a.agent.name),
+    icons: [...icons.values()],
+  };
+}
+
 export function siteCardImage(card: SiteCard): ShareImage {
   return shareImage('/card.png', card, 'Agent Switchboard — AI Agent Directory');
 }
@@ -141,7 +173,19 @@ export function dropCardImage(date: string, card: DropCard): ShareImage {
   );
 }
 
-function shareImage(path: string, card: SiteCard | ListingCard | CategoryCard | DropCard, alt: string): ShareImage {
+export function alternativesCardImage(slug: string, card: AlternativesCard): ShareImage {
+  return shareImage(
+    `/agents/${slug}/alternatives/card.png`,
+    card,
+    `${card.alternatives} alternatives to ${card.name} on Agent Switchboard`
+  );
+}
+
+function shareImage(
+  path: string,
+  card: SiteCard | ListingCard | CategoryCard | DropCard | AlternativesCard,
+  alt: string
+): ShareImage {
   const v = createHash('sha1').update(JSON.stringify([CARD_DESIGN, card])).digest('hex').slice(0, 8);
   return { url: `${path}?v=${v}`, ...CARD_SIZE, alt, type: 'image/png' };
 }
