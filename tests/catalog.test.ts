@@ -145,4 +145,53 @@ describe('catalog loading', () => {
     // The read slots were all released: a later load still completes.
     await expect(getEveryAgent()).resolves.toHaveLength(referenceCatalog().length);
   });
+
+  it('reads the files again on every load outside production, so content edits show up', async () => {
+    const reads = watchReads();
+    const first = await getEveryAgent();
+    const second = await getEveryAgent();
+    expect(second).not.toBe(first);
+    expect(reads.count(path.join(CONTENT, 'categories.json'))).toBe(2);
+  });
+});
+
+describe('catalog loading in production', () => {
+  async function productionCatalog() {
+    vi.stubEnv('NODE_ENV', 'production');
+    vi.resetModules();
+    return import('@/lib/catalog');
+  }
+
+  afterEach(() => {
+    vi.unstubAllEnvs();
+  });
+
+  it('loads the catalog once per process, however many renders ask for it', async () => {
+    const catalog = await productionCatalog();
+    const reads = watchReads();
+    const [first, concurrent] = await Promise.all([catalog.getEveryAgent(), catalog.getEveryAgent()]);
+    const later = await catalog.getEveryAgent();
+    expect(concurrent).toBe(first);
+    expect(later).toBe(first);
+    expect(first).toEqual(referenceCatalog());
+    const agentFiles = fs.readdirSync(AGENTS_DIR).filter((f) => f.endsWith('.json'));
+    expect(reads.agentReads()).toHaveLength(agentFiles.length);
+    for (const f of agentFiles) expect(reads.count(path.join(AGENTS_DIR, f))).toBe(1);
+  });
+
+  it('loads again after a failed load instead of keeping the failure', async () => {
+    const catalog = await productionCatalog();
+    vi.spyOn(fs.promises, 'readFile').mockImplementation((async (
+      file: Parameters<typeof realReadFile>[0],
+      options?: Parameters<typeof realReadFile>[1]
+    ) => {
+      if (String(file).startsWith(AGENTS_DIR + path.sep)) {
+        throw Object.assign(new Error('EMFILE: too many open files'), { code: 'EMFILE' });
+      }
+      return realReadFile(file, options);
+    }) as typeof realReadFile);
+    await expect(catalog.getEveryAgent()).rejects.toThrow('EMFILE');
+    vi.restoreAllMocks();
+    await expect(catalog.getEveryAgent()).resolves.toHaveLength(referenceCatalog().length);
+  });
 });

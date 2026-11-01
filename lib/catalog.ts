@@ -11,7 +11,8 @@
  * Contentful layer (lib/contentful.ts, removed in the git-cms migration):
  * same Agent/Category types, same ordering (featured first, then name),
  * same published-status filter. All reads are wrapped in React cache()
- * so a render shares one filesystem pass.
+ * so a render shares one filesystem pass, and a production process loads
+ * the catalog once (see `once`).
  *
  * Editing content = editing files + committing. Validation is enforced
  * by scripts/validate-content.ts in CI.
@@ -106,18 +107,37 @@ export const loadOfficialVendors = cache(async (): Promise<OfficialVendor[]> => 
   return JSON.parse(raw) as OfficialVendor[];
 });
 
+/**
+ * In production the content files cannot change under the process, so one
+ * load serves every render in it. React cache() lasts a single render, and
+ * `next build` prerenders thousands of pages and cards that each need the
+ * whole catalog. Development loads per render so content edits show up.
+ * Callers share the result: never mutate what it returns.
+ */
+function once<T>(load: () => Promise<T>): () => Promise<T> {
+  if (process.env.NODE_ENV !== 'production') return load;
+  let loaded: Promise<T> | undefined;
+  return () =>
+    (loaded ??= load().catch((error) => {
+      loaded = undefined;
+      throw error;
+    }));
+}
+
 // ── Public API ──────────────────────────────────────────────────────
 
 /** Every published agent, featured first then A→Z (the canonical order). */
-export const getEveryAgent = cache(async (): Promise<Agent[]> => {
-  const agents = await loadAllAgentsRaw();
-  return agents
-    .filter((a) => a.status === 'published')
-    .sort(
-      (a, b) =>
-        Number(b.featured) - Number(a.featured) || a.name.localeCompare(b.name)
-    );
-});
+export const getEveryAgent = cache(
+  once(async (): Promise<Agent[]> => {
+    const agents = await loadAllAgentsRaw();
+    return agents
+      .filter((a) => a.status === 'published')
+      .sort(
+        (a, b) =>
+          Number(b.featured) - Number(a.featured) || a.name.localeCompare(b.name)
+      );
+  })
+);
 
 export async function getAgentBySlug(slug: string): Promise<Agent | null> {
   const agents = await getEveryAgent();
