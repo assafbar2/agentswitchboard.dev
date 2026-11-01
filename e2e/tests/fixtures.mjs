@@ -10,7 +10,7 @@ export const test = base.extend({
     await page.route('**/*', (route) => {
       const req = route.request();
       const url = new URL(req.url());
-      if (url.pathname.startsWith('/_vercel/insights') || url.pathname.startsWith('/_vercel/speed-insights') || /sentry\.io/.test(url.host)) return route.abort();
+      if (url.pathname.startsWith('/_vercel/insights') || url.pathname.startsWith('/_vercel/speed-insights') || /sentry\.io|umami\.is$/.test(url.host)) return route.abort();
       const m = req.method();
       if (m === 'GET' || m === 'HEAD' || m === 'OPTIONS') return route.continue();
       if (m === 'POST' && url.pathname === '/api/mcp') return route.continue();
