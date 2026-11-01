@@ -7,7 +7,7 @@ const SITE_NAME = 'Agent Switchboard';
  * matching Open Graph and Twitter tags (og:url = the canonical).
  *
  * A page-level openGraph block replaces the root one wholesale, so this carries
- * over the root's content-hashed opengraph-image; twitter:image inherits it.
+ * over the root's share card (lib/share-cards.ts); twitter:image copies it.
  */
 export async function pageMetadata(
   {

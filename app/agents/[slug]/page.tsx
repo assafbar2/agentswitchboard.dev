@@ -8,11 +8,12 @@ import { AgentIcon } from '@/components/AgentIcon';
 import { JsonLd } from '@/components/JsonLd';
 import { getRelatedAgents } from '@/lib/related';
 import { absoluteIconUrl } from '@/lib/icons';
+import { listingCard, listingCardImage } from '@/lib/share-cards';
 import { notFound } from 'next/navigation';
 import { ExternalLink } from 'lucide-react';
 import { authTypeLabel, pluralize } from '@/lib/utils';
 import Link from 'next/link';
-import type { Metadata, ResolvingMetadata } from 'next';
+import type { Metadata } from 'next';
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev';
 
@@ -21,14 +22,11 @@ export async function generateStaticParams() {
   return agents.map((a) => ({ slug: a.slug }));
 }
 
-export async function generateMetadata(
-  {
-    params,
-  }: {
-    params: Promise<{ slug: string }>;
-  },
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const { slug } = await params;
   const agent = await getAgentBySlug(slug);
   if (!agent) return { title: 'Agent Not Found' };
@@ -47,9 +45,8 @@ export async function generateMetadata(
       url,
       type: 'website',
       siteName: 'Agent Switchboard',
-      // A page-level openGraph block replaces the root one, so carry over the
-      // root's content-hashed opengraph-image (twitter:image inherits it).
-      images: (await parent).openGraph?.images ?? [],
+      // twitter:image copies it.
+      images: [listingCardImage(slug, listingCard(agent))],
     },
     twitter: {
       card: 'summary_large_image',

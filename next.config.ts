@@ -17,6 +17,8 @@ const nextConfig: NextConfig = {
     return [
       { source: "/tos", destination: "/terms", permanent: true },
       { source: "/TOS", destination: "/terms", permanent: true },
+      // The site card's URL before per-page share cards (lib/share-cards.ts).
+      { source: "/opengraph-image", destination: "/card.png", permanent: true },
     ];
   },
   async rewrites() {

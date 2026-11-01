@@ -199,13 +199,14 @@ test('canonical URL is the absolute listing URL from the API', async ({ page }) 
   await expect(page).toHaveTitle(new RegExp(`^${rec.name}`));
 });
 
-test('og:image and twitter:image are absolute and serve a 1200x630 PNG', async ({ page }) => {
+test("og:image and twitter:image are the listing's own card: absolute, versioned, a 1200x630 PNG", async ({ page }) => {
   await page.goto('/agents/agentmail');
   const og = await page.locator('meta[property="og:image"]').first().getAttribute('content');
   const tw = await page.locator('meta[name="twitter:image"]').first().getAttribute('content');
   await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute('content', 'summary_large_image');
+  expect(tw).toBe(og);
   for (const url of [og, tw]) {
-    expect(url).toMatch(/^https:\/\/agentswitchboard\.dev\//);
+    expect(url).toMatch(/^https:\/\/agentswitchboard\.dev\/agents\/agentmail\/card\.png\?v=[0-9a-f]{8}$/);
     const res = await page.request.get(url, { headers: UA });
     expect(res.status(), url).toBe(200);
     expect(res.headers()['content-type']).toContain('image/png');

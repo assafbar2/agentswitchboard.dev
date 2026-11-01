@@ -174,6 +174,10 @@ test.describe('category page details', () => {
     const og = await page.locator('meta[property="og:image"]').first().getAttribute('content', { timeout: 2000 }).catch(() => null);
     const tw = await page.locator('meta[name="twitter:image"]').first().getAttribute('content', { timeout: 2000 }).catch(() => null);
     expect({ og: !!og, tw: !!tw }, 'category page share-card image tags').toEqual({ og: true, tw: true });
+    expect(tw, "the category's own versioned card").toMatch(
+      new RegExp(`^https://agentswitchboard\\.dev/categories/${small.slug}/card\\.png\\?v=[0-9a-f]{8}$`)
+    );
+    expect(tw).toBe(og);
     const res = await page.request.get(tw, { headers: UA });
     expect(res.status()).toBe(200);
     expect(res.headers()['content-type']).toContain('image/png');

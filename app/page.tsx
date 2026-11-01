@@ -14,20 +14,23 @@ import { OfficialPlatforms } from '@/components/OfficialPlatforms';
 import { JsonLd } from '@/components/JsonLd';
 import { CategoryRail } from '@/components/CategoryRail';
 import { BotMark } from '@/components/BotMark';
-import type { Metadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev';
 
-export const metadata: Metadata = {
-  alternates: { canonical: BASE_URL },
-  openGraph: {
-    // `type` is repeated here on purpose: a page-level openGraph block replaces
-    // the layout's rather than merging into it, so leaving it out drops og:type
-    // from the homepage only.
-    type: 'website',
-    url: BASE_URL,
-  },
-};
+export async function generateMetadata(_props: unknown, parent: ResolvingMetadata): Promise<Metadata> {
+  return {
+    alternates: { canonical: BASE_URL },
+    openGraph: {
+      // `type` and `images` are repeated here on purpose: a page-level
+      // openGraph block replaces the layout's rather than merging into it, so
+      // leaving them out drops og:type and the share card from the homepage only.
+      type: 'website',
+      url: BASE_URL,
+      images: (await parent).openGraph?.images ?? [],
+    },
+  };
+}
 
 export default async function HomePage() {
   const [homepageAgents, categories, agentCount, providerCount, settings, officialGroups] =

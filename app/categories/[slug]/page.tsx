@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import { CategoryRail } from '@/components/CategoryRail';
-import { getCategoryBySlug, getAllCategories } from '@/lib/catalog';
+import { getCategoryBySlug, getAllCategories, getEveryAgent } from '@/lib/catalog';
+import { categoryCard, categoryCardImage } from '@/lib/share-cards';
 import { AgentCard } from '@/components/AgentCard';
 import { CategoryIcon } from '@/components/ui/CategoryIcon';
 import { JsonLd } from '@/components/JsonLd';
 import { notFound } from 'next/navigation';
 import { Building2 } from 'lucide-react';
-import type { Metadata, ResolvingMetadata } from 'next';
+import type { Metadata } from 'next';
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev';
 
@@ -15,19 +16,16 @@ export async function generateStaticParams() {
   return categories.map((cat) => ({ slug: cat.slug }));
 }
 
-export async function generateMetadata(
-  {
-    params,
-  }: {
-    params: Promise<{ slug: string }>;
-  },
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const { slug } = await params;
-  const result = await getCategoryBySlug(slug);
+  const [result, catalog] = await Promise.all([getCategoryBySlug(slug), getEveryAgent()]);
   if (!result) return { title: 'Category Not Found' };
 
-  const { category } = result;
+  const { category, agents } = result;
   const url = `${BASE_URL}/categories/${slug}`;
   const title = `${category.name} AI Agents`;
   const description =
@@ -44,9 +42,8 @@ export async function generateMetadata(
       url,
       type: 'website',
       siteName: 'Agent Switchboard',
-      // A page-level openGraph block replaces the root one, so carry over the
-      // root's content-hashed opengraph-image (twitter:image inherits it).
-      images: (await parent).openGraph?.images ?? [],
+      // twitter:image copies it.
+      images: [categoryCardImage(slug, categoryCard(category, agents, catalog))],
     },
     twitter: {
       card: 'summary_large_image',

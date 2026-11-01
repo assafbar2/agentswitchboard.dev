@@ -5,6 +5,8 @@ import { Analytics } from '@vercel/analytics/react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { WebMcp } from '@/components/WebMcp';
+import { getAllCategories, getEveryAgent } from '@/lib/catalog';
+import { siteCard, siteCardImage } from '@/lib/share-cards';
 import './globals.css';
 
 const jetbrainsMono = JetBrains_Mono({
@@ -29,35 +31,38 @@ const barlow = Barlow_Semi_Condensed({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: 'Agent Switchboard — AI Agent Directory',
-    template: '%s | Agent Switchboard',
-  },
-  description:
-    'Browse, compare, and integrate AI agents with real API, MCP, and CLI access. The curated directory for developers building on the agentic web.',
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev'
-  ),
-  // NOTE: no global `alternates.canonical` here — a root-level canonical is
-  // inherited by every page that doesn't override it, telling search engines
-  // all pages are duplicates of the homepage. Each page sets its own.
-  openGraph: {
-    type: 'website',
-    siteName: 'Agent Switchboard',
-    title: 'Agent Switchboard — AI Agent Directory',
+export async function generateMetadata(): Promise<Metadata> {
+  const [agents, categories] = await Promise.all([getEveryAgent(), getAllCategories()]);
+  return {
+    title: {
+      default: 'Agent Switchboard — AI Agent Directory',
+      template: '%s | Agent Switchboard',
+    },
     description:
       'Browse, compare, and integrate AI agents with real API, MCP, and CLI access. The curated directory for developers building on the agentic web.',
-  },
-  // No `images` here or under openGraph: app/opengraph-image.tsx supplies both
-  // tags with a content-hashed URL, so X and others refetch when the card changes.
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Agent Switchboard — AI Agent Directory',
-    description:
-      'Browse, compare, and integrate AI agents with real API, MCP, and CLI access.',
-  },
-};
+    metadataBase: new URL(
+      process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev'
+    ),
+    // NOTE: no global `alternates.canonical` here — a root-level canonical is
+    // inherited by every page that doesn't override it, telling search engines
+    // all pages are duplicates of the homepage. Each page sets its own.
+    openGraph: {
+      type: 'website',
+      siteName: 'Agent Switchboard',
+      title: 'Agent Switchboard — AI Agent Directory',
+      description:
+        'Browse, compare, and integrate AI agents with real API, MCP, and CLI access. The curated directory for developers building on the agentic web.',
+      // Pages without their own card carry this over; twitter:image copies it.
+      images: [siteCardImage(siteCard(agents, categories))],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Agent Switchboard — AI Agent Directory',
+      description:
+        'Browse, compare, and integrate AI agents with real API, MCP, and CLI access.',
+    },
+  };
+}
 
 export default function RootLayout({
   children,

@@ -34,7 +34,7 @@ test.describe('homepage — head metadata', () => {
   test('og:image resolves to a 1200x630 PNG', async ({ page }) => {
     await page.goto('/');
     const og = await meta(page, 'meta[property="og:image"]');
-    expect(og).toMatch(/^https:\/\/agentswitchboard\.dev\/opengraph-image/);
+    expect(og).toMatch(/^https:\/\/agentswitchboard\.dev\/card\.png\?v=[0-9a-f]{8}$/);
     const res = await page.request.get(og, { headers: UA });
     expect(res.status()).toBe(200);
     expect(res.headers()['content-type']).toContain('image/png');
@@ -43,9 +43,9 @@ test.describe('homepage — head metadata', () => {
     expect([buf.readUInt32BE(16), buf.readUInt32BE(20)]).toEqual([1200, 630]);
   });
 
-  // Twitter/X caches card images by URL. og:image carries Next's content hash
-  // (?<hash>) so a new image gets a new URL; twitter:image must too, or X keeps
-  // showing the cached old card.
+  // Twitter/X caches card images by URL. og:image carries ?v=<hash of the card's
+  // design and data> (lib/share-cards.ts) so a new image gets a new URL;
+  // twitter:image must too, or X keeps showing the cached old card.
   test('twitter:image is the same versioned image URL as og:image', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute('content', 'summary_large_image');

@@ -1,23 +1,30 @@
 // SEO, social cards and HTTP headers on the live site (read-only: GET/HEAD only).
-// Source of truth: app/layout.tsx (root metadata), app/page.tsx, app/opengraph-image.tsx,
-// app/agents/[slug]/page.tsx, app/categories/[slug]/page.tsx, next.config.ts, proxy.ts.
+// Source of truth: app/layout.tsx (root metadata), app/page.tsx, lib/share-cards.ts,
+// lib/og.tsx, app/agents/[slug]/page.tsx, app/categories/[slug]/page.tsx, next.config.ts, proxy.ts.
 import zlib from 'node:zlib';
 import { test, expect } from './fixtures.mjs';
 
 const ORIGIN = 'https://agentswitchboard.dev';
 const UA = { 'user-agent': 'Mozilla/5.0 asb-e2e (seo-meta-headers)' };
 
-// Pages covered by the per-page checks. Slugs come from content/agents/*.json
-// and content/categories.json.
+// Pages covered by the per-page checks, with the share card each one hands out
+// (lib/share-cards.ts). Slugs come from content/agents/*.json and
+// content/categories.json.
 const PAGES = [
-  { path: '/', canonical: ORIGIN },
-  { path: '/about', canonical: `${ORIGIN}/about` },
-  { path: '/browse', canonical: `${ORIGIN}/browse` },
-  { path: '/for-agents', canonical: `${ORIGIN}/for-agents` },
-  { path: '/agents/11x-ai', canonical: `${ORIGIN}/agents/11x-ai` },
-  { path: '/categories/language', canonical: `${ORIGIN}/categories/language` },
-  { path: '/categories/code-devtools', canonical: `${ORIGIN}/categories/code-devtools` },
+  { path: '/', canonical: ORIGIN, card: '/card.png' },
+  { path: '/about', canonical: `${ORIGIN}/about`, card: '/card.png' },
+  { path: '/browse', canonical: `${ORIGIN}/browse`, card: '/card.png' },
+  { path: '/for-agents', canonical: `${ORIGIN}/for-agents`, card: '/card.png' },
+  { path: '/agents/11x-ai', canonical: `${ORIGIN}/agents/11x-ai`, card: '/agents/11x-ai/card.png' },
+  { path: '/categories/language', canonical: `${ORIGIN}/categories/language`, card: '/categories/language/card.png' },
+  {
+    path: '/categories/code-devtools',
+    canonical: `${ORIGIN}/categories/code-devtools`,
+    card: '/categories/code-devtools/card.png',
+  },
 ];
+
+const escape = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 // ---------- helpers ----------
 const htmlCache = new Map();
@@ -129,20 +136,21 @@ test.describe('per-page head metadata', () => {
       expect(h.meta('og:url'), 'og:url (one of the four required Open Graph properties)').toBe(p.canonical);
     });
 
-    test(`${p.path}: has og:image and twitter:image with twitter:card summary_large_image`, async ({ page }) => {
+    test(`${p.path}: has og:image and twitter:image (${p.card}) with twitter:card summary_large_image`, async ({ page }) => {
       const h = head(await getHtml(page.request, p.path));
+      const card = new RegExp(`^${escape(ORIGIN + p.card)}\\?`);
       expect.soft(h.meta('twitter:card')).toBe('summary_large_image');
-      expect.soft(h.meta('og:image'), 'og:image').toMatch(/^https:\/\/agentswitchboard\.dev\/opengraph-image/);
-      expect(h.meta('twitter:image'), 'twitter:image').toMatch(/^https:\/\/agentswitchboard\.dev\/opengraph-image/);
+      expect.soft(h.meta('og:image'), 'og:image').toMatch(card);
+      expect(h.meta('twitter:image'), 'twitter:image').toMatch(card);
     });
 
-    test(`${p.path}: twitter:image is the same content-hashed URL as og:image (so X refetches a changed card)`, async ({ page }) => {
-      // X caches the card image by URL. app/opengraph-image.tsx emits
-      // /opengraph-image?<content hash>; a bare /opengraph-image never changes
-      // when the image does, so X keeps showing the old card.
+    test(`${p.path}: twitter:image is the same versioned URL as og:image (so X refetches a changed card)`, async ({ page }) => {
+      // X caches the card image by URL. lib/share-cards.ts adds ?v=<hash of the
+      // card's design and data>; a bare card URL never changes when the image
+      // does, so X would keep showing the old card.
       const h = head(await getHtml(page.request, p.path));
       const tw = h.meta('twitter:image');
-      expect(tw, 'twitter:image carries a cache-busting content hash').toMatch(/\/opengraph-image\?[0-9a-f]{8,}$/);
+      expect(tw, 'twitter:image carries a cache-busting version').toMatch(/\/card\.png\?v=[0-9a-f]{8}$/);
       expect(tw).toBe(h.meta('og:image'));
     });
   }
@@ -210,10 +218,27 @@ for (const key of ['og:image', 'twitter:image']) {
 test('card image is the current directory design (yellow name block on white), not the old dark card', async ({ page }) => {
   const h = head(await getHtml(page.request, '/'));
   const buf = await (await page.request.get(h.meta('twitter:image'), { headers: UA })).body();
-  // app/opengraph-image.tsx: YELLOW #FFD400 block at top-left, PAPER #ffffff elsewhere.
+  // lib/og.tsx: YELLOW #FFD400 block at top-left, PAPER #ffffff elsewhere.
   // The previous card (aa8913c) was a #0a0a0f dark background.
   expect(near(pngPixel(buf, 10, 10), [0xff, 0xd4, 0x00]), 'top-left is signal yellow').toBe(true);
   expect(near(pngPixel(buf, 1180, 60), [0xff, 0xff, 0xff]), 'top-right is white paper').toBe(true);
+});
+
+test("a listing's card is its own image, not the site card", async ({ page }) => {
+  const get = async (path) => {
+    const url = head(await getHtml(page.request, path)).meta('og:image');
+    const res = await page.request.get(url, { headers: UA });
+    expect(res.status(), url).toBe(200);
+    expect(pngSize(await res.body())).toEqual({ width: 1200, height: 630 });
+    return (await res.body()).toString('base64');
+  };
+  expect(await get('/agents/11x-ai')).not.toBe(await get('/'));
+});
+
+test('the pre-2.2 card URL /opengraph-image permanently redirects to the site card', async ({ page }) => {
+  const res = await page.request.get('/opengraph-image', { headers: UA, maxRedirects: 0 });
+  expect(res.status()).toBe(308);
+  expect(res.headers()['location']).toMatch(/^(https:\/\/agentswitchboard\.dev)?\/card\.png$/);
 });
 
 // ---------- JSON-LD ----------

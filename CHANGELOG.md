@@ -10,6 +10,10 @@ Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes 
 - Changelog: every site release is now recorded here and shown on [/changelog](https://agentswitchboard.dev/changelog), above the directory's own change log. Earlier versions were reconstructed from the git history. ([#287](https://github.com/assafbar2/agentswitchboard.dev/pull/287))
 - Real icons for 890 of the 900 listings, on cards, the homepage and listing pages. Each is fetched once from the product's own site or its GitHub organization, reviewed by eye, and served from agentswitchboard.dev. A listing without one shows its initial on yellow. ([#289](https://github.com/assafbar2/agentswitchboard.dev/pull/289))
 - `iconUrl` in REST, [/agents.json](https://agentswitchboard.dev/agents.json), MCP and WebMCP results: an absolute link to the listing's 128px icon, or `null`. The MCP server is now version 1.3.0. ([#289](https://github.com/assafbar2/agentswitchboard.dev/pull/289))
+- Share cards: every listing and category has its own preview image when its link is shared on X, LinkedIn, Slack and elsewhere. A listing's card shows its icon, name, provider, Official and Verified labels, access methods and category; a category's shows its listing count and sample icons. ([#290](https://github.com/assafbar2/agentswitchboard.dev/pull/290))
+
+### Changed
+- The site's own preview image shows live listing counts and vendor logos. It moved to [/card.png](https://agentswitchboard.dev/card.png); the old `/opengraph-image` address redirects there. ([#290](https://github.com/assafbar2/agentswitchboard.dev/pull/290))
 
 ### Security
 - Closed an open image proxy: the image optimizer fetched images from any https host, so anyone could route images through the site. Icons are now plain files. ([#289](https://github.com/assafbar2/agentswitchboard.dev/pull/289))
