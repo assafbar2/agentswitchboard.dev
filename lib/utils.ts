@@ -13,9 +13,9 @@ export function pluralize(count: number, singular: string, plural?: string): str
   return count === 1 ? singular : (plural ?? `${singular}s`);
 }
 
-/** ["a", "b", "c"] → "a, b and c". */
-export function joinList(items: string[]): string {
-  return items.length <= 1 ? (items[0] ?? '') : `${items.slice(0, -1).join(', ')} and ${items.at(-1)}`;
+/** ["a", "b", "c"] → "a, b and c", or "a, b or c". */
+export function joinList(items: string[], conjunction: 'and' | 'or' = 'and'): string {
+  return items.length <= 1 ? (items[0] ?? '') : `${items.slice(0, -1).join(', ')} ${conjunction} ${items.at(-1)}`;
 }
 
 /**

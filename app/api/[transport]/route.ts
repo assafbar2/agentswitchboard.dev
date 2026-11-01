@@ -30,11 +30,14 @@ import {
   FEATURED_DEFINITION,
   OFFICIAL_DEFINITION,
   SORT_INPUT,
+  TASK_INPUT,
   VERIFIED_INPUT,
   normalizeAccessMethods,
+  unknownTaskMessage,
 } from '@/lib/public-api';
 import { clientIp, fixedWindowLimiter } from '@/lib/rate-limit';
-import { AUTH_TYPES, SORT_ORDERS, filterAgents, searchAgents, sortAgents } from '@/lib/search';
+import { AUTH_TYPES, SORT_ORDERS, filterAgents, searchAgents, sortAgents, taskMatches } from '@/lib/search';
+import { getTask, getTasks } from '@/lib/tasks';
 import type { Agent } from '@/lib/types';
 
 /**
@@ -49,7 +52,7 @@ const READ_ONLY = { readOnlyHint: true, destructiveHint: false, idempotentHint: 
 
 const INSTRUCTIONS =
   'Agent Switchboard is a curated directory of AI agents, MCP servers, and agentic tools. ' +
-  'Use search_agents to find tools for a job (filter by category, access method, official, verified, or auth type; sort by newest or most skills), ' +
+  'Use search_agents to find tools for a job (pick a task such as "query-a-database", or filter by category, access method, official, verified, or auth type; sort by newest or most skills), ' +
   'get_agent for one listing, and list_categories for valid category slugs. ' +
   'Link users to each result\'s url. submit_listing only files a public suggestion for human review; ' +
   'call it only when the user asks to list a product and has confirmed the details.';
@@ -107,7 +110,7 @@ const handler = createMcpHandler(
         title: 'Search Agents',
         description:
           'Search the curated Agent Switchboard directory of AI agents, MCP servers, and agentic tools. ' +
-          'Filter by category slug, access methods, official (first-party listings from major vendors), verified, and/or auth type; ' +
+          'Filter by task, category slug, access methods, official (first-party listings from major vendors), verified, and/or auth type; ' +
           'sort by relevance, newest, most skills, or name. ' +
           LABELS,
         annotations: READ_ONLY,
@@ -116,6 +119,7 @@ const handler = createMcpHandler(
             .string()
             .describe('Free-text search over name, description, skills, categories, tags, and provider')
             .optional(),
+          task: z.string().describe(TASK_INPUT).optional(),
           category: z.string().describe('Category slug, e.g. "code-devtools", "voice-messaging"').optional(),
           access: z
             .array(z.enum(ACCESS_METHOD_INPUTS as [string, ...string[]]))
@@ -140,8 +144,23 @@ const handler = createMcpHandler(
           agents: z.array(z.object(agentSummaryShape)),
         },
       },
-      async ({ query, category, access, official, verified, auth, sort, limit, offset }) => {
-        const agents = filterAgents(await getEveryAgent(), { category, official, verified, auth });
+      async ({ query, task, category, access, official, verified, auth, sort, limit, offset }) => {
+        const slug = task?.trim().toLowerCase();
+        const picked = slug ? getTask(slug) : null;
+        if (slug && !picked) {
+          const slugs = getTasks().map((t) => t.slug).join(', ');
+          return {
+            content: [{ type: 'text', text: `${unknownTaskMessage(slug)} The task slugs: ${slugs}.` }],
+            isError: true,
+          };
+        }
+        const catalog = await getEveryAgent();
+        const agents = filterAgents(picked ? taskMatches(catalog, picked) : catalog, {
+          category,
+          official,
+          verified,
+          auth,
+        });
         const matches = sortAgents(
           searchAgents(agents, query ?? '', access ? normalizeAccessMethods(access) : undefined),
           sort ?? 'relevance'
@@ -259,7 +278,7 @@ const handler = createMcpHandler(
     );
   },
   {
-    serverInfo: { name: 'agentswitchboard', version: '1.4.0' },
+    serverInfo: { name: 'agentswitchboard', version: '1.5.0' },
     instructions: INSTRUCTIONS,
   },
   {

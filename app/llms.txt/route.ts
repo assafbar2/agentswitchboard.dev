@@ -4,6 +4,7 @@ import { getDropSchedule } from '@/lib/drops';
 import { FEATURED_DEFINITION, OFFICIAL_DEFINITION } from '@/lib/public-api';
 import { MIN_ALTERNATIVES } from '@/lib/related';
 import { getStacks, stackOfTheWeek } from '@/lib/stacks';
+import { getTasks } from '@/lib/tasks';
 
 export const dynamic = 'force-static';
 
@@ -50,7 +51,11 @@ The \`verified\`, \`official\` and \`featured\` flags in search and detail resul
 - Search and filter: https://agentswitchboard.dev/browse${dropLine}
 - Alternatives to a listing: https://agentswitchboard.dev/agents/<slug>/alternatives (listings with at least ${MIN_ALTERNATIVES}; each says what it has in common)
 - Stacks, tools that work together for one job: https://agentswitchboard.dev/stacks (${stacks.length} stacks, each tool with why it is there${weekLine})
+- Tasks, to start from the job ("query a database"): https://agentswitchboard.dev/tasks (${getTasks().length} tasks, each with the listings that fit it, best first; /browse?task=<slug> filters them)
 
+For a job rather than a product name, GET /api/tasks lists the tasks, and
+GET /api/agents?task=<slug> (or \`task\` on the \`search_agents\` MCP tool) returns
+the listings that fit one, best fit first.
 To find agents by access method or use case, search: the \`search_agents\` MCP tool, or
 GET /api/agents?access=mcp&category=<slug> (add \`official=true\` for first-party listings
 from major vendors, e.g. Notion's own Notion MCP; \`verified=true\` for Verified ones;
@@ -65,10 +70,11 @@ filtering on \`accessMethods\`, \`categories\` and \`official\`.
 - Server manifest: https://agentswitchboard.dev/.well-known/mcp.json
 - Tools: search_agents, get_agent, list_categories, submit_listing (files a public GitHub issue for human review; publishes nothing)
 - Connect it to Grok, Grok Bot, the xAI API, Claude, or ChatGPT: https://agentswitchboard.dev/connect
-- Plain REST search (no MCP handshake needed): GET /api/agents?q=&category=&access=&official=&verified=&auth=&sort=&limit=&offset=
+- Plain REST search (no MCP handshake needed): GET /api/agents?q=&task=&category=&access=&official=&verified=&auth=&sort=&limit=&offset=
 - REST detail: GET /api/agents/{slug}
 - REST categories: GET /api/categories
 - REST stacks: GET /api/stacks, GET /api/stacks/{slug}
+- REST tasks: GET /api/tasks, GET /api/tasks/{slug}
 - OpenAPI: https://agentswitchboard.dev/openapi.json
 - Connector skill: https://agentswitchboard.dev/skill.md
 

@@ -14,7 +14,12 @@ import {
   sampleIcons,
   siteCard,
   siteCardImage,
+  taskCard,
+  taskCardImage,
+  tasksCard,
+  tasksCardImage,
 } from './share-cards';
+import type { Task } from './tasks';
 import type { Agent, Category } from './types';
 
 const category: Category = {
@@ -184,5 +189,42 @@ describe('sampleIcons', () => {
     const twins = [official('one', 'One', 'dddd0001'), official('two', 'Two', 'dddd0001')];
     expect(sampleIcons(twins, twins, 10)).toEqual(['/icons/one.png?v=dddd0001']);
     expect(sampleIcons(catalog, catalog, 2)).toHaveLength(2);
+  });
+});
+
+describe('taskCard and tasksCard', () => {
+  const task: Task = {
+    slug: 'send-and-read-email',
+    label: 'send and read email',
+    blurb: 'Give an agent an inbox.',
+    keywords: ['email', 'inbox', 'smtp'],
+    categories: ['infrastructure'],
+    access: ['api'],
+  };
+  const fits = [
+    official('gmail', 'Google', 'aaaa0001'),
+    makeAgent({ slug: 'agentmail' }),
+    official('gmail-mcp', 'Google', 'aaaa0001'),
+    makeAgent({ slug: 'plain', iconUrl: undefined }),
+  ];
+
+  it('shows the job, how many tools do it, and their icons best first, each image once', () => {
+    expect(taskCard(task, fits)).toEqual({
+      title: 'I need to send and read email',
+      blurb: 'Give an agent an inbox.',
+      tools: 4,
+      official: 2,
+      icons: ['/icons/gmail.png?v=aaaa0001', '/icons/agentmail.png?v=aca5768d'],
+    });
+    const image = taskCardImage('send-and-read-email', taskCard(task, fits));
+    expect(image.url).toMatch(/^\/tasks\/send-and-read-email\/card\.png\?v=[0-9a-f]{8}$/);
+    expect(image.alt).toBe('I need to send and read email: 4 tools that do it, on Agent Switchboard');
+  });
+
+  it("counts each tool once across tasks and shows each task's best fit", () => {
+    const card = tasksCard([{ fits }, { fits: [makeAgent({ slug: 'agentmail' }), official('slack', 'Slack', 'cccc0001')] }]);
+    expect(card).toEqual({ tasks: 2, tools: 5, icons: ['/icons/gmail.png?v=aaaa0001', '/icons/agentmail.png?v=aca5768d'] });
+    expect(tasksCardImage(card).url).toMatch(/^\/tasks\/card\.png\?v=[0-9a-f]{8}$/);
+    expect(tasksCardImage(card).alt).toBe('2 tasks, each with the AI tools that do it, on Agent Switchboard');
   });
 });

@@ -20,6 +20,8 @@ import {
   type SiteCard,
   type StackCard,
   type StacksCard,
+  type TaskCard,
+  type TasksCard,
 } from './share-cards';
 import { formatNumber, joinList, pluralize } from './utils';
 
@@ -240,6 +242,31 @@ export async function renderStacksCard(card: StacksCard): Promise<ImageResponse>
       title="Stacks"
       counts={`${formatNumber(card.stacks)} ${pluralize(card.stacks, 'stack')} · ${formatNumber(card.tools)} ${pluralize(card.tools, 'tool')}`}
       text="AI tools that work together, each stack picked for one job."
+      icons={await Promise.all(card.icons.map(iconSrc))}
+    />
+  );
+}
+
+export async function renderTaskCard(card: TaskCard): Promise<ImageResponse> {
+  const official = card.official > 0 ? ` · ${formatNumber(card.official)} official` : '';
+  return render(
+    <Headline
+      kicker="Task"
+      title={card.title}
+      counts={`${formatNumber(card.tools)} ${pluralize(card.tools, 'tool')}${official}`}
+      text={card.blurb}
+      icons={await Promise.all(card.icons.map(iconSrc))}
+    />
+  );
+}
+
+export async function renderTasksCard(card: TasksCard): Promise<ImageResponse> {
+  return render(
+    <Headline
+      kicker="Tasks"
+      title="I need to…"
+      counts={`${formatNumber(card.tasks)} ${pluralize(card.tasks, 'task')} · ${formatNumber(card.tools)} ${pluralize(card.tools, 'tool')}`}
+      text="Start from the job: each task lists the AI tools that do it, best fit first."
       icons={await Promise.all(card.icons.map(iconSrc))}
     />
   );

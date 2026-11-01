@@ -32,7 +32,9 @@ import {
   MAX_LIMIT,
   OFFICIAL_DEFINITION,
   SORT_INPUT,
+  TASK_INPUT,
   VERIFIED_INPUT,
+  unknownTaskMessage,
 } from '@/lib/public-api';
 import { AUTH_TYPES, SORT_ORDERS } from '@/lib/search';
 
@@ -149,7 +151,7 @@ export function WebMcp() {
             name: 'search_agents',
             description:
               'Search the curated Agent Switchboard directory of AI agents, MCP servers, and agentic tools. ' +
-              'Filter by category slug, access methods, official (first-party listings from major vendors), verified, and/or auth type; ' +
+              'Filter by task, category slug, access methods, official (first-party listings from major vendors), verified, and/or auth type; ' +
               'sort by relevance, newest, most skills, or name. ' +
               LABELS,
             inputSchema: {
@@ -159,6 +161,7 @@ export function WebMcp() {
                   type: 'string',
                   description: 'Free-text search over name, description, skills, categories, tags, and provider',
                 },
+                task: { type: 'string', description: TASK_INPUT },
                 category: { type: 'string', description: 'Category slug, e.g. "code-devtools", "voice-messaging"' },
                 access: {
                   type: 'array',
@@ -202,11 +205,13 @@ export function WebMcp() {
             execute: tool('search_agents', async (input) => {
               const params = new URLSearchParams();
               const query = str(input.query);
+              const task = str(input.task).toLowerCase();
               const category = str(input.category);
               const access = strings(input.access);
               const limit = num(input.limit);
               const offset = num(input.offset);
               if (query) params.set('q', query);
+              if (task) params.set('task', task);
               if (category) params.set('category', category);
               // The API maps aliases and ignores unknown values, as the MCP does.
               if (access.length > 0) params.set('access', access.join(','));
@@ -219,6 +224,7 @@ export function WebMcp() {
               if (limit !== undefined) params.set('limit', String(limit));
               if (offset !== undefined) params.set('offset', String(offset));
               const { status, body } = await getJson(`/api/agents?${params}`);
+              if (status === 400 && body?.error === 'unknown_task') return asError(unknownTaskMessage(task));
               if (status !== 200 || !body) return asError(`search_agents failed (HTTP ${status}).`);
               return asResult(body);
             }),

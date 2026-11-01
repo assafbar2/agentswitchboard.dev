@@ -24,12 +24,15 @@ import {
   STACK_WHY_MAX,
   stackProblems,
 } from '../lib/stacks';
+import { TASK_BLURB_MAX, TASK_LABEL_MAX, TASK_MAX_KEYWORDS, TASK_MIN_KEYWORDS, taskProblems } from '../lib/tasks';
+import type { Agent, Category } from '../lib/types';
 
 const CONTENT = path.resolve(process.cwd(), 'content');
 const ICONS = path.resolve(process.cwd(), 'public', 'icons');
 
-const categories = JSON.parse(fs.readFileSync(path.join(CONTENT, 'categories.json'), 'utf8'));
-const validCategorySlugs = new Set<string>(categories.map((c: { slug: string }) => c.slug));
+const categories: Category[] = JSON.parse(fs.readFileSync(path.join(CONTENT, 'categories.json'), 'utf8'));
+const validCategorySlugs = new Set<string>(categories.map((c) => c.slug));
+const categoryBySlug = new Map(categories.map((c) => [c.slug, c]));
 
 const GENERIC_TAGS = new Set(['ai', 'tool', 'tools', 'automation', 'agent', 'agents']);
 const SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
@@ -88,6 +91,19 @@ const AgentSchema = z
   })
   .strict();
 
+/** A valid listing as the site ranks it, with its categories as objects. */
+function asListing(data: z.infer<typeof AgentSchema>): Agent {
+  return {
+    ...data,
+    longDescription: undefined,
+    authInstructions: undefined,
+    integrationGuide: undefined,
+    skills: data.skills.map(({ id, name, description }) => ({ id, name, description })),
+    official: data.official ?? false,
+    categories: data.categories.map((slug) => categoryBySlug.get(slug)!),
+  };
+}
+
 const SOURCE = /^[a-z0-9.-]+\.[a-z0-9-]+(\/[a-z0-9._-]+)?$/;
 
 const OfficialVendorSchema = z
@@ -138,6 +154,26 @@ const StackSchema = z
       )
       .min(STACK_MIN_ITEMS)
       .max(STACK_MAX_ITEMS),
+  })
+  .strict();
+
+const TaskSchema = z
+  .object({
+    slug: z.string().regex(SLUG, 'slug must be kebab-case'),
+    label: z
+      .string()
+      .min(1)
+      .max(TASK_LABEL_MAX)
+      .regex(/^[a-z]/, 'label must start lowercase: it reads after "I need to"'),
+    blurb: z.string().min(1).max(TASK_BLURB_MAX),
+    categories: z
+      .array(z.string().refine((s) => validCategorySlugs.has(s), (s) => ({ message: `unknown category "${s}"` })))
+      .min(1),
+    access: z.array(z.enum(['api', 'mcp', 'cli', 'browser-extension'])).min(1),
+    keywords: z
+      .array(z.string().min(2).regex(/^[^A-Z]+$/, 'keywords are lowercase'))
+      .min(TASK_MIN_KEYWORDS)
+      .max(TASK_MAX_KEYWORDS),
   })
   .strict();
 
@@ -220,6 +256,32 @@ function checkStacks(published: Set<string>, drops: Drop[]): { stacks: number; e
   const problems = stackProblems(result.data, published, drops);
   for (const problem of problems) console.log(`❌ content/stacks.json: ${problem}`);
   return { stacks: result.data.length, errors: problems.length };
+}
+
+/**
+ * content/tasks.json (lib/tasks.ts): each task's shape, then taskProblems
+ * against the published listings, ranked as the site ranks them.
+ */
+function checkTasks(published: Agent[]): { tasks: number; errors: number } {
+  const file = path.join(CONTENT, 'tasks.json');
+  if (!fs.existsSync(file)) return { tasks: 0, errors: 0 };
+  let raw: unknown;
+  try {
+    raw = JSON.parse(fs.readFileSync(file, 'utf8'));
+  } catch (e) {
+    console.log(`❌ content/tasks.json: invalid JSON — ${(e as Error).message}`);
+    return { tasks: 0, errors: 1 };
+  }
+  const result = z.array(TaskSchema).safeParse(raw);
+  if (!result.success) {
+    for (const issue of result.error.issues) {
+      console.log(`❌ content/tasks.json: ${issue.path.join('.')}: ${issue.message}`);
+    }
+    return { tasks: 0, errors: result.error.issues.length };
+  }
+  const problems = taskProblems(result.data, published);
+  for (const problem of problems) console.log(`❌ content/tasks.json: ${problem}`);
+  return { tasks: result.data.length, errors: problems.length };
 }
 
 const IconRecordSchema = z
@@ -321,6 +383,7 @@ function main() {
   let errors = official.errors;
   const slugs = new Set<string>();
   const published = new Set<string>();
+  const listings: Agent[] = [];
   // Rule 2 (CONTRIBUTING): one listing per product, not per endpoint. No cap —
   // a vendor with many real products earns many entries — but large clusters are
   // where suite-splitting hides, so surface them for a human to eyeball.
@@ -377,6 +440,7 @@ function main() {
     slugs.add(slug);
     if (result.data.status === 'published') published.add(slug);
     if (result.data.status === 'published') {
+      listings.push(asListing(result.data));
       const prov = result.data.providerName;
       byProvider.set(prov, [...(byProvider.get(prov) ?? []), slug]);
       const url = result.data.agentUrl.replace(/\/+$/, '').toLowerCase();
@@ -457,6 +521,8 @@ function main() {
   errors += drops.errors;
   const stacks = checkStacks(published, drops.drops);
   errors += stacks.errors;
+  const tasks = checkTasks(listings);
+  errors += tasks.errors;
   const iconless = [...published].filter((s) => !icons.slugs.has(s)).sort();
   if (iconless.length) {
     console.log(
@@ -467,7 +533,7 @@ function main() {
 
   if (errors === 0) {
     console.log(
-      `✅ content valid: ${files.length} agents (${flagged} official, ${official.vendors.length} vendors), ${validCategorySlugs.size} categories, ${icons.slugs.size} icons, ${drops.drops.length} drops, ${stacks.stacks} stacks, 0 violations`
+      `✅ content valid: ${files.length} agents (${flagged} official, ${official.vendors.length} vendors), ${validCategorySlugs.size} categories, ${icons.slugs.size} icons, ${drops.drops.length} drops, ${stacks.stacks} stacks, ${tasks.tasks} tasks, 0 violations`
     );
   } else {
     console.log(`\n❌ ${errors} violation(s) across content/ — fix before merging.`);

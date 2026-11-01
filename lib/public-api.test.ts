@@ -7,7 +7,11 @@ import {
   detailAgent,
   summarizeCategory,
   summarizeStack,
+  summarizeTask,
+  detailTask,
+  unknownTaskMessage,
 } from './public-api';
+import type { Task } from './tasks';
 import type { Agent, Category } from './types';
 
 function makeAgent(overrides: Partial<Agent> = {}): Agent {
@@ -166,5 +170,55 @@ describe('summarizeStack', () => {
 
   it("gives a stack of the week's drop date", () => {
     expect(summarizeStack({ ...stack, week: '2026-10-31' }, []).week).toBe('2026-10-31');
+  });
+});
+
+describe('summarizeTask and detailTask', () => {
+  const task: Task = {
+    slug: 'send-and-read-email',
+    label: 'send and read email',
+    blurb: 'Give an agent an inbox.',
+    keywords: ['email', 'inbox', 'smtp'],
+    categories: ['infrastructure'],
+    access: ['api'],
+  };
+  const fits = [makeAgent(), makeAgent({ slug: 'gmail', official: true })];
+
+  it('counts the listings that fit and links the page, the filtered /browse and the API', () => {
+    expect(summarizeTask(task, fits)).toEqual({
+      slug: 'send-and-read-email',
+      label: 'send and read email',
+      blurb: 'Give an agent an inbox.',
+      keywords: ['email', 'inbox', 'smtp'],
+      categories: ['infrastructure'],
+      access: ['api'],
+      count: 2,
+      official: 1,
+      url: 'https://agentswitchboard.dev/tasks/send-and-read-email',
+      browseUrl: 'https://agentswitchboard.dev/browse?task=send-and-read-email',
+      agentsUrl: 'https://agentswitchboard.dev/api/agents?task=send-and-read-email',
+    });
+  });
+
+  it('lists every fit best first with its auth type and why, and names related tasks and stacks by slug', () => {
+    const [agentmail, gmail] = fits;
+    const detail = detailTask(
+      task,
+      [
+        { agent: agentmail, why: 'Inbox Management: Create and list inboxes.' },
+        { agent: gmail, why: null },
+      ],
+      [{ ...task, slug: 'manage-tickets' }],
+      [{ slug: 'email-agent', title: 'An email agent', promise: '', items: [] }]
+    );
+    expect(detail).toMatchObject({ slug: 'send-and-read-email', count: 2, relatedTasks: ['manage-tickets'], stacks: ['email-agent'] });
+    expect(detail.agents).toEqual([
+      { ...summarizeAgent(agentmail), authType: 'apiKey', why: 'Inbox Management: Create and list inboxes.' },
+      { ...summarizeAgent(gmail), authType: 'apiKey', why: null },
+    ]);
+  });
+
+  it('points an unknown slug at the list of tasks', () => {
+    expect(unknownTaskMessage('nope')).toBe('No task with slug "nope". GET /api/tasks lists every task.');
   });
 });

@@ -4,6 +4,7 @@ import {
   browseMatches,
   browseStateHref,
   filterAgents,
+  keywordMatcher,
   narrowingWords,
   parseFlag,
   parseSort,
@@ -11,10 +12,14 @@ import {
   scoreAgent,
   searchAgents,
   sortAgents,
+  taskMatches,
+  taskScore,
+  TASK_MIN_SCORE,
   type BreakdownKey,
   type BrowseState,
+  type TaskQuery,
 } from './search';
-import type { Agent } from './types';
+import type { Agent, Category } from './types';
 
 function makeAgent(overrides: Partial<Agent> = {}): Agent {
   return {
@@ -283,5 +288,82 @@ describe('browseMatches and browseStateHref', () => {
     );
     expect(browseStateHref(none)).toBe('/browse');
     expect(browseStateHref(none, 'relevance')).toBe('/browse');
+  });
+});
+
+describe('keywordMatcher', () => {
+  it('anywhere: every word of the keyword somewhere in the text, in any order', () => {
+    const { anywhere } = keywordMatcher('phone calls');
+    expect(anywhere('calls over the phone')).toBe(true);
+    expect(anywhere('phone numbers')).toBe(false);
+  });
+
+  it('phrase: the words next to each other, filler between them skipped', () => {
+    const { phrase } = keywordMatcher('text to speech');
+    expect(phrase('natural text-to-speech voices')).toBe(true);
+    expect(phrase('speech recognition for any text')).toBe(false);
+    expect(keywordMatcher('phone calls').phrase('make and answer phone calls')).toBe(true);
+    expect(keywordMatcher('phone calls').phrase('calls over the phone')).toBe(false);
+  });
+
+  it('takes the synonyms and word rules of search', () => {
+    expect(keywordMatcher('postgres').anywhere('a postgresql client')).toBe(true);
+    expect(keywordMatcher('sql').anywhere('a mysql client')).toBe(true);
+    expect(keywordMatcher('sql').anywhere('dbsql')).toBe(false);
+    expect(keywordMatcher('sql').anywhere('dbsql', true)).toBe(true);
+  });
+});
+
+describe('taskScore and taskMatches', () => {
+  const data: Category = { id: 'c1', name: 'Data', slug: 'data', description: '', sortOrder: 1 };
+  const task: TaskQuery = { slug: 'query-data', keywords: ['database'], categories: ['data'], access: ['mcp'] };
+
+  it('adds the points of every field with a keyword, and the bonuses only when there are points', () => {
+    expect(taskScore(makeAgent({ name: 'Database' }), task)).toEqual({ points: 120, score: 120 });
+    const fields = makeAgent({
+      description: 'A database for agents.',
+      tags: ['database'],
+      skills: [{ id: 's1', name: 'Query database', description: 'Run a query against a database' }],
+    });
+    expect(taskScore(fields, task)).toEqual({ points: 60 + 50 + 40 + 15, score: 165 });
+    const bonus = makeAgent({ description: 'A database.', categories: [data], accessMethods: ['mcp'] });
+    expect(taskScore(bonus, task)).toEqual({ points: 60, score: 180 });
+    expect(taskScore(makeAgent({ categories: [data], accessMethods: ['mcp'] }), task)).toEqual({ points: 0, score: 0 });
+  });
+
+  const agents = [
+    makeAgent({ slug: 'in-passing', description: 'Mentions a database once.' }),
+    makeAgent({ slug: 'in-category', description: 'A database.', categories: [data], accessMethods: ['mcp'] }),
+    makeAgent({ slug: 'named', name: 'Database Kit', categories: [data] }),
+    makeAgent({ slug: 'named-too', name: 'Database Box', categories: [data] }),
+    makeAgent({ slug: 'everywhere', name: 'Database', description: 'A database.', tags: ['database'] }),
+    makeAgent({ slug: 'unrelated', name: 'Mailer', categories: [data], accessMethods: ['mcp'] }),
+  ];
+
+  it(`keeps listings scoring ${TASK_MIN_SCORE} or more, best first, equal scores in the incoming order`, () => {
+    expect(taskMatches(agents, task).map((a) => a.slug)).toEqual(['everywhere', 'named', 'named-too', 'in-category']);
+  });
+
+  it('remembers the result per catalog and task', () => {
+    const first = taskMatches(agents, task);
+    expect(taskMatches(agents, { ...task })).toBe(first);
+    expect(taskMatches([...agents], task)).not.toBe(first);
+    expect(taskMatches(agents, { ...task, keywords: ['mailer'] }).map((a) => a.slug)).toEqual(['unrelated']);
+  });
+
+  const none: BrowseState = { query: '', category: '', official: false, vendor: '', verified: false, auth: [], access: [] };
+
+  it('on /browse, picks the task listings first, then filters and searches them', () => {
+    const slugs = (state: BrowseState) => browseMatches(agents, state).map((a) => a.slug);
+    expect(slugs({ ...none, task })).toEqual(['everywhere', 'named', 'named-too', 'in-category']);
+    expect(slugs({ ...none, task, access: ['mcp'] })).toEqual(['in-category']);
+    expect(slugs({ ...none, task, query: 'kit' })).toEqual(['named']);
+  });
+
+  it('writes the task first in a /browse URL', () => {
+    expect(browseStateHref({ ...none, task })).toBe('/browse?task=query-data');
+    expect(browseStateHref({ ...none, task, query: 'kit', access: ['mcp'] }, 'newest')).toBe(
+      '/browse?task=query-data&q=kit&access=mcp&sort=newest'
+    );
   });
 });

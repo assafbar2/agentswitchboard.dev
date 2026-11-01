@@ -3,6 +3,7 @@ import { getEveryAgent, getAllCategories } from '@/lib/catalog';
 import { getDropSchedule } from '@/lib/drops';
 import { alternativesPage } from '@/lib/related';
 import { getStacks } from '@/lib/stacks';
+import { getTasks } from '@/lib/tasks';
 
 export const revalidate = 3600; // regenerate every hour
 
@@ -17,6 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/changelog`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.6 },
     { url: `${base}/drops`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
     { url: `${base}/stacks`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
+    { url: `${base}/tasks`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
     { url: `${base}/submit`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
     { url: `${base}/for-agents`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${base}/connect`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
@@ -69,5 +71,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...agentPages, ...alternativesPages, ...categoryPages, ...dropPages, ...stackPages];
+  const taskPages: MetadataRoute.Sitemap = getTasks().map((task) => ({
+    url: `${base}/tasks/${task.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.7,
+  }));
+
+  return [
+    ...staticPages,
+    ...agentPages,
+    ...alternativesPages,
+    ...categoryPages,
+    ...dropPages,
+    ...stackPages,
+    ...taskPages,
+  ];
 }

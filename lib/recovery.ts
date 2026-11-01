@@ -20,8 +20,8 @@ import { authTypeLabel } from './utils';
 
 /** A search word or one filter of a view. */
 export interface Constraint {
-  what: 'word' | 'access' | 'category' | 'vendor' | 'official' | 'verified' | 'auth';
-  /** The word, access method, category or vendor slug, or auth types; empty for official and verified. */
+  what: 'word' | 'task' | 'access' | 'category' | 'vendor' | 'official' | 'verified' | 'auth';
+  /** The word, task, access method, category or vendor slug, or auth types; empty for official and verified. */
   value: string;
 }
 
@@ -88,11 +88,16 @@ export function recover(
   return { unknown, removals, preview, categories: nearestCategories(near, categories, state.category) };
 }
 
-/** How a word or filter is named on the page: "“zzqx”", "MCP", "Legal", "API Key or OAuth 2.0 auth". */
-export function constraintLabel(c: Constraint, names: { category?: string; vendor?: string } = {}): string {
+/**
+ * How a word or filter is named on the page: "“zzqx”", "Task: query a
+ * database", "MCP", "Legal", "API Key or OAuth 2.0 auth".
+ */
+export function constraintLabel(c: Constraint, names: { task?: string; category?: string; vendor?: string } = {}): string {
   switch (c.what) {
     case 'word':
       return `“${c.value}”`;
+    case 'task':
+      return `Task: ${names.task ?? c.value}`;
     case 'access':
       return ACCESS_METHOD_LABELS[c.value] ?? c.value;
     case 'category':
@@ -118,6 +123,7 @@ function removalsOf(agents: Agent[], state: BrowseState): Removal[] {
     // Filler alone ("server for") would search for the filler words.
     return { what: 'word', value: word, state: { ...state, query: hasWords({ ...state, query: rest }) ? rest : '' } };
   });
+  if (state.task) options.push({ what: 'task', value: state.task.slug, state: { ...state, task: undefined } });
   for (const method of state.access) {
     options.push({ what: 'access', value: method, state: { ...state, access: state.access.filter((m) => m !== method) } });
   }
@@ -140,6 +146,7 @@ function removalsOf(agents: Agent[], state: BrowseState): Removal[] {
 function isEverything(state: BrowseState): boolean {
   return (
     !state.query.trim() &&
+    !state.task &&
     !state.category &&
     !state.official &&
     !state.vendor &&

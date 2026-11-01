@@ -1,6 +1,6 @@
 ---
 name: agent-switchboard
-description: Search Agent Switchboard, a public, curated directory of AI agents, MCP servers, and agentic developer tools. Use when the user asks to find an agent or tool that does X, compare listed products, look up a listing by name, list directory categories, or find a set of tools that work together for one job.
+description: Search Agent Switchboard, a public, curated directory of AI agents, MCP servers, and agentic developer tools. Use when the user asks to find an agent or tool that does X, starts from a job ("I need to query a database") and wants the tools that do it, compares listed products, looks up a listing by name, lists directory categories, or wants a set of tools that work together for one job.
 ---
 
 # Agent Switchboard
@@ -12,6 +12,7 @@ Maintainer: Barnir — barnir@agentmail.to
 ## When to use this connector
 
 - The user wants an AI agent, MCP server, CLI, or HTTP API for a task (email, browser automation, voice, code review, …).
+- The user names a job rather than a product (“I need to query a database”, “transcribe audio”): Switchboard's tasks list the listings that do it, best fit first, with why each one fits.
 - The user asks whether a named product is listed, and how it is reached (API / MCP / CLI / browser extension).
 - The user wants categories or a short comparison of listed options.
 - The user wants a set of tools that work together for one job (a research setup, a voice agent, iPhone and Android app builds): Switchboard's stacks.
@@ -31,14 +32,16 @@ Prefer REST. OpenAPI: https://agentswitchboard.dev/openapi.json
 1. Optional: `GET /api/categories` when you need valid category slugs and counts.
 2. `GET /api/agents?q={text}&limit=10` to search. Add `category={slug}`, `access=mcp` (comma-separate to require several: `access=api,mcp`), `official=true` (first-party listings from major vendors only), `verified=true`, and/or `auth=none` (no key or sign-in needed). `sort=newest` lists the most recently added first.
 3. `GET /api/agents/{slug}` for skills, `authType` of the **listed product**, tags, and homepage.
-4. `GET /api/stacks` for stacks: listings picked to do one job together, in order, each with a `why` line. `GET /api/stacks/{slug}` for one.
+4. `GET /api/tasks` for tasks: jobs (“query a database”), each with the number of listings that do it. Add `task={slug}` to `/api/agents` to keep only those listings, best fit first, or `GET /api/tasks/{slug}` for the best fits with a `why` line each.
+5. `GET /api/stacks` for stacks: listings picked to do one job together, in order, each with a `why` line. `GET /api/stacks/{slug}` for one.
 
 Query notes:
 
 - `q` — free text over name, description, skills, categories, tags, provider. Omit or empty to list (catalog order: featured first, then A→Z).
+- `task` — a task slug from `/api/tasks`: keeps the listings that do that job. With no `q`, results are best fit first. An unknown slug is HTTP 400 `{ "error": "unknown_task" }`; list the tasks and pick one.
 - `access` — `api` | `mcp` | `cli` | `browser-extension`. `extension` is accepted as an alias of `browser-extension`. Unknown values are ignored.
 - `auth` — `none` | `apiKey` | `oauth2` | `bearer`: how the **listed product** authenticates. Comma-separate to accept any of them (`auth=none,apiKey`).
-- `sort` — `relevance` (default) | `newest` | `skills` (most first) | `name` (A→Z).
+- `sort` — `relevance` (default; best fit first with a `task`) | `newest` | `skills` (most first) | `name` (A→Z).
 - `limit` — 1–50, default 10. `offset` pages through `total`.
 
 Unknown slugs return HTTP 404 `{ "error": "not_found", "message": "…" }`. Search again; do not retry the same slug.
@@ -69,6 +72,7 @@ Optional MCP (only if the client speaks MCP, not required): `POST https://agents
 - “Find an MCP server for sending email.”
 - “Which listed agents are both API and MCP in code-devtools?”
 - “What are the newest MCP servers that don't need an API key?”
+- “I need to query a database. Which MCP servers can do that?”
 - “Look up AgentMail on Agent Switchboard.”
 - “What categories exist on Agent Switchboard?”
 - “What tools would I need to build a realtime voice agent?”
@@ -81,6 +85,8 @@ GET https://agentswitchboard.dev/api/agents?access=mcp&category=code-devtools&li
 GET https://agentswitchboard.dev/api/agents?access=mcp&auth=none&sort=newest&limit=10
 GET https://agentswitchboard.dev/api/agents/agentmail
 GET https://agentswitchboard.dev/api/categories
+GET https://agentswitchboard.dev/api/tasks
+GET https://agentswitchboard.dev/api/agents?task=query-a-database&access=mcp&limit=5
 GET https://agentswitchboard.dev/api/stacks
 ```
 
