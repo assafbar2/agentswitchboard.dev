@@ -4,6 +4,15 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops).
 
+## [2.3.0] - 2026-11-01 - Find it faster
+
+### Added
+- Search filters for **Verified** and **No auth needed** (listings you can try without a key or sign-in) beside Official on [/browse](https://agentswitchboard.dev/browse), and a Sort menu: best match, newest, most skills or A–Z. Under the result count, a line shows how many of the results each filter would keep: a search for postgres reads "6 Official · all Verified · 3 No auth needed · 4 API · 15 MCP · 8 CLI". ([#296](https://github.com/assafbar2/agentswitchboard.dev/pull/296))
+- `verified`, `auth` and `sort` for assistants and scripts, on `GET /api/agents`, the MCP tool `search_agents` and WebMCP: ask for the newest MCP servers that need no key with `access=mcp&auth=none&sort=newest`. The MCP server is now version 1.4.0, the OpenAPI document 1.5.0. ([#296](https://github.com/assafbar2/agentswitchboard.dev/pull/296))
+
+### Fixed
+- The MCP server's manifest at `/.well-known/mcp.json` gave an old version number, and the OpenAPI document listed three MCP tools instead of four. ([#296](https://github.com/assafbar2/agentswitchboard.dev/pull/296))
+
 ## [2.2.0] - 2026-11-01 - Share & discover
 
 ### Added

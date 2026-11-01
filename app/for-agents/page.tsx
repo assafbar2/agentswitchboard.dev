@@ -165,7 +165,8 @@ export default async function ForAgentsPage() {
             rather than an MCP handshake. Read-only, no auth, open CORS:
           </p>
           <pre className="rounded-none border-2 border-[var(--dir-ink)]! bg-[var(--dir-paper)] p-4 text-xs overflow-x-auto">
-{`GET /api/agents?q=<text>&category=<slug>&access=<method>&official=true&limit=<n>&offset=<n>
+{`GET /api/agents?q=<text>&category=<slug>&access=<method>&official=true
+               &verified=true&auth=<type>&sort=<order>&limit=<n>&offset=<n>
 GET /api/agents/<slug>
 GET /api/categories
 GET /api/stacks
@@ -197,14 +198,29 @@ GET /api/stacks/<slug>
               major vendors only (Notion&apos;s own Notion MCP, not a community build)
             </li>
             <li>
+              <span className="font-bold">verified</span> —{' '}
+              <code className="font-bold">true</code> for Verified listings only
+            </li>
+            <li>
+              <span className="font-bold">auth</span> — how the listed product
+              authenticates: <code className="font-bold">none</code> (no key or
+              sign-in), <code className="font-bold">apiKey</code>,{' '}
+              <code className="font-bold">oauth2</code> or{' '}
+              <code className="font-bold">bearer</code> (comma-separate to accept
+              any of them)
+            </li>
+            <li>
               <span className="font-bold">limit</span> — 1–50 (default 10);{' '}
               <span className="font-bold">offset</span> — for paging;{' '}
               <code className="font-bold">total</code> is the full match count
             </li>
             <li>
-              <span className="font-bold">order</span> — without{' '}
+              <span className="font-bold">sort</span> — by default, without{' '}
               <code className="font-bold">q</code>, featured listings first, then
-              A→Z; with <code className="font-bold">q</code>, by relevance
+              A→Z; with <code className="font-bold">q</code>, by relevance. Or{' '}
+              <code className="font-bold">newest</code> (most recently added),{' '}
+              <code className="font-bold">skills</code> (most first) or{' '}
+              <code className="font-bold">name</code> (A→Z)
             </li>
           </ul>
           <p>

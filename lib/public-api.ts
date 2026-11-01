@@ -11,7 +11,7 @@ import type { Stack, StackEntry } from './stacks';
 import type { Agent, Category } from './types';
 import { BASE_URL } from './env';
 import { absoluteIconUrl } from './icons';
-import { ALL_ACCESS_METHODS } from './search';
+import { ALL_ACCESS_METHODS, AUTH_TYPES } from './search';
 
 // ── Label definitions ───────────────────────────────────────────────
 // "Verified" is worded once, in components/VerifiedBadge.tsx
@@ -55,6 +55,32 @@ export function normalizeAccessMethods(values: readonly string[]): string[] {
   }
   return [...methods];
 }
+
+/**
+ * Canonical, de-duplicated auth types from raw input: trims, matches any case
+ * (`apikey` → `apiKey`) and drops unknown values.
+ */
+export function normalizeAuthTypes(values: readonly string[]): string[] {
+  const types = new Set<string>();
+  for (const raw of values) {
+    const value = raw.trim().toLowerCase();
+    const type = AUTH_TYPES.find((t) => t.toLowerCase() === value);
+    if (type) types.add(type);
+  }
+  return [...types];
+}
+
+// ── Search input wording ────────────────────────────────────────────
+// Shared by the MCP server and WebMCP. public/openapi.json and the
+// /.well-known manifests are static, so they repeat it.
+
+export const VERIFIED_INPUT = 'Only Verified listings: checked to work, re-checked monthly';
+
+export const AUTH_INPUT =
+  'Only listings with one of these auth types: none (no key or sign-in needed), apiKey, oauth2, bearer. A listing has one auth type, so several mean any of them';
+
+export const SORT_INPUT =
+  'Result order. relevance (default): best match first with search text, featured then A→Z without. newest: most recently added first. skills: most skills first. name: A→Z';
 
 export const CORS_GET = {
   'Access-Control-Allow-Origin': '*',

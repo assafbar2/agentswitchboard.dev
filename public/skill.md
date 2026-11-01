@@ -29,7 +29,7 @@ Base URL: `https://agentswitchboard.dev`
 Prefer REST. OpenAPI: https://agentswitchboard.dev/openapi.json
 
 1. Optional: `GET /api/categories` when you need valid category slugs and counts.
-2. `GET /api/agents?q={text}&limit=10` to search. Add `category={slug}`, `access=mcp` (comma-separate to require several: `access=api,mcp`), and/or `official=true` (first-party listings from major vendors only).
+2. `GET /api/agents?q={text}&limit=10` to search. Add `category={slug}`, `access=mcp` (comma-separate to require several: `access=api,mcp`), `official=true` (first-party listings from major vendors only), `verified=true`, and/or `auth=none` (no key or sign-in needed). `sort=newest` lists the most recently added first.
 3. `GET /api/agents/{slug}` for skills, `authType` of the **listed product**, tags, and homepage.
 4. `GET /api/stacks` for stacks: listings picked to do one job together, in order, each with a `why` line. `GET /api/stacks/{slug}` for one.
 
@@ -37,13 +37,15 @@ Query notes:
 
 - `q` — free text over name, description, skills, categories, tags, provider. Omit or empty to list (catalog order: featured first, then A→Z).
 - `access` — `api` | `mcp` | `cli` | `browser-extension`. `extension` is accepted as an alias of `browser-extension`. Unknown values are ignored.
+- `auth` — `none` | `apiKey` | `oauth2` | `bearer`: how the **listed product** authenticates. Comma-separate to accept any of them (`auth=none,apiKey`).
+- `sort` — `relevance` (default) | `newest` | `skills` (most first) | `name` (A→Z).
 - `limit` — 1–50, default 10. `offset` pages through `total`.
 
 Unknown slugs return HTTP 404 `{ "error": "not_found", "message": "…" }`. Search again; do not retry the same slug.
 
 Bulk dump (large): `GET /agents.json`. Prefer search for user questions.
 
-Optional MCP (only if the client speaks MCP, not required): `POST https://agentswitchboard.dev/api/mcp` with tools `search_agents`, `get_agent`, `list_categories`.
+Optional MCP (only if the client speaks MCP, not required): `POST https://agentswitchboard.dev/api/mcp` with tools `search_agents` (the same filters and `sort`), `get_agent`, `list_categories`.
 
 ## How to answer the user
 
@@ -66,6 +68,7 @@ Optional MCP (only if the client speaks MCP, not required): `POST https://agents
 
 - “Find an MCP server for sending email.”
 - “Which listed agents are both API and MCP in code-devtools?”
+- “What are the newest MCP servers that don't need an API key?”
 - “Look up AgentMail on Agent Switchboard.”
 - “What categories exist on Agent Switchboard?”
 - “What tools would I need to build a realtime voice agent?”
@@ -75,6 +78,7 @@ Optional MCP (only if the client speaks MCP, not required): `POST https://agents
 ```
 GET https://agentswitchboard.dev/api/agents?q=email&limit=5
 GET https://agentswitchboard.dev/api/agents?access=mcp&category=code-devtools&limit=10
+GET https://agentswitchboard.dev/api/agents?access=mcp&auth=none&sort=newest&limit=10
 GET https://agentswitchboard.dev/api/agents/agentmail
 GET https://agentswitchboard.dev/api/categories
 GET https://agentswitchboard.dev/api/stacks

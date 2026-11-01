@@ -1,6 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import {
   clampInt,
+  normalizeAccessMethods,
+  normalizeAuthTypes,
   summarizeAgent,
   detailAgent,
   summarizeCategory,
@@ -48,6 +50,26 @@ function makeAgent(overrides: Partial<Agent> = {}): Agent {
     ...overrides,
   };
 }
+
+describe('normalizeAccessMethods', () => {
+  it('maps the extension alias, ignores case and drops unknown values', () => {
+    expect(normalizeAccessMethods([' MCP', 'extension', 'browser-extension', 'bogus', ''])).toEqual([
+      'mcp',
+      'browser-extension',
+    ]);
+  });
+});
+
+describe('normalizeAuthTypes', () => {
+  it('matches any case to the canonical spelling and drops unknown values', () => {
+    expect(normalizeAuthTypes(['NONE', ' apikey ', 'OAuth2', 'bearer', 'oauth', 'none', ''])).toEqual([
+      'none',
+      'apiKey',
+      'oauth2',
+      'bearer',
+    ]);
+  });
+});
 
 describe('clampInt', () => {
   it('returns fallback for null or NaN', () => {

@@ -10,21 +10,105 @@ export const ACCESS_METHOD_LABELS: Record<string, string> = {
 
 export const ALL_ACCESS_METHODS = Object.keys(ACCESS_METHOD_LABELS);
 
+/** Every auth type a listing can declare (Agent.authType). */
+export const AUTH_TYPES = ['none', 'apiKey', 'oauth2', 'bearer'] as const;
+
 export interface CatalogFilter {
   category?: string;
   official?: boolean;
   /** Official vendor slug (content/official-vendors.json); implies official. */
   vendor?: string;
+  verified?: boolean;
+  /** Auth types to keep. A listing has exactly one, so several mean any of them. */
+  auth?: readonly string[];
 }
 
-/** Category / Official / vendor narrowing, applied before text search. */
-export function filterAgents(agents: Agent[], { category, official, vendor }: CatalogFilter): Agent[] {
+/** Category / Official / vendor / Verified / auth narrowing, applied before text search. */
+export function filterAgents(
+  agents: Agent[],
+  { category, official, vendor, verified, auth }: CatalogFilter
+): Agent[] {
   return agents.filter(
     (a) =>
       (!category || a.categories.some((c) => c.slug === category)) &&
       (!official || a.official) &&
-      (!vendor || a.officialVendor?.slug === vendor)
+      (!vendor || a.officialVendor?.slug === vendor) &&
+      (!verified || a.verified) &&
+      (!auth?.length || auth.includes(a.authType))
   );
+}
+
+// ── Sorting ─────────────────────────────────────────────────────────
+
+/**
+ * Result orders. `relevance`, the default, is the order searchAgents returns:
+ * best match first with search text, the catalog order (featured, then A→Z)
+ * without. The others sort stably, so ties keep that order.
+ */
+export const SORT_ORDERS = ['relevance', 'newest', 'skills', 'name'] as const;
+export type SortOrder = (typeof SORT_ORDERS)[number];
+
+/** A `sort` parameter; anything else is the default, `relevance`. */
+export function parseSort(raw: string | null | undefined): SortOrder {
+  const value = raw?.trim().toLowerCase();
+  return SORT_ORDERS.find((s) => s === value) ?? 'relevance';
+}
+
+const addedAt = (a: Agent) => Date.parse(a.createdAt ?? '') || 0;
+const skillCount = (a: Agent) => a.skills?.length ?? 0;
+
+/** `agents` in `sort` order: newest added, most skills, or A→Z. `relevance` keeps the given order. */
+export function sortAgents(agents: Agent[], sort: SortOrder): Agent[] {
+  switch (sort) {
+    case 'newest':
+      return [...agents].sort((a, b) => addedAt(b) - addedAt(a));
+    case 'skills':
+      return [...agents].sort((a, b) => skillCount(b) - skillCount(a));
+    case 'name':
+      return [...agents].sort((a, b) => a.name.localeCompare(b.name));
+    default:
+      return agents;
+  }
+}
+
+// ── Result breakdown ───────────────────────────────────────────────
+
+/** The /browse filter chips a breakdown counts. */
+export type BreakdownKey = 'official' | 'verified' | 'no-auth' | AccessMethod;
+
+export interface BreakdownItem {
+  key: BreakdownKey;
+  label: string;
+  count: number;
+}
+
+const BREAKDOWN: { key: BreakdownKey; label: string; keeps: (a: Agent) => boolean }[] = [
+  { key: 'official', label: 'Official', keeps: (a) => a.official },
+  { key: 'verified', label: 'Verified', keeps: (a) => a.verified },
+  { key: 'no-auth', label: 'No auth needed', keeps: (a) => a.authType === 'none' },
+  ...ALL_ACCESS_METHODS.map((m) => ({
+    key: m as AccessMethod,
+    label: ACCESS_METHOD_LABELS[m],
+    keeps: (a: Agent) => a.accessMethods.includes(m as AccessMethod),
+  })),
+];
+
+/**
+ * How many of `agents` each filter chip would keep, in the chips' order.
+ * Chips already applied (`applied`) and zero counts are left out.
+ */
+export function resultBreakdown(agents: Agent[], applied: ReadonlySet<BreakdownKey> = new Set()): BreakdownItem[] {
+  return BREAKDOWN.filter(({ key }) => !applied.has(key))
+    .map(({ key, label, keeps }) => ({ key, label, count: agents.filter(keeps).length }))
+    .filter(({ count }) => count > 0);
+}
+
+/**
+ * A breakdown as /browse shows it under `total` results: "6 Official · all
+ * Verified · 15 MCP". A chip that would keep every result says "all".
+ */
+export function breakdownLine(items: BreakdownItem[], total: number): string {
+  return items.map(({ label, count }) => `${count === total ? 'all' : count} ${label}`).join(' · ');
 }
 
 /** Query-string flag parsing: "1", "true", "yes" (any case) mean on. */
@@ -34,8 +118,8 @@ export function parseFlag(raw: string | null | undefined): boolean {
 
 /**
  * The /browse URL for a submitted search. Params already in `current`
- * (category, access, official, vendor) are kept, so a search never clears
- * the active filters. Pass '' as `current` to start a fresh search.
+ * (filters and sort) are kept, so a search never clears them. Pass '' as
+ * `current` to start a fresh search.
  */
 export function browseHref(query: string, current: string | URLSearchParams = ''): string {
   const params = new URLSearchParams(current);

@@ -1,5 +1,15 @@
 import { describe, it, expect } from 'vitest';
-import { filterAgents, parseFlag, scoreAgent, searchAgents } from './search';
+import {
+  breakdownLine,
+  filterAgents,
+  parseFlag,
+  parseSort,
+  resultBreakdown,
+  scoreAgent,
+  searchAgents,
+  sortAgents,
+  type BreakdownKey,
+} from './search';
 import type { Agent } from './types';
 
 function makeAgent(overrides: Partial<Agent> = {}): Agent {
@@ -135,6 +145,98 @@ describe('filterAgents', () => {
 
   it('narrows to one vendor', () => {
     expect(slugs(filterAgents(agents, { vendor: 'google', category: 'data-analytics' }))).toEqual(['bigquery']);
+  });
+
+  it('narrows to Verified listings and to auth types', () => {
+    const more = [
+      makeAgent({ slug: 'open', verified: true, authType: 'none' }),
+      makeAgent({ slug: 'keyed', verified: true, authType: 'apiKey' }),
+      makeAgent({ slug: 'unchecked', verified: false, authType: 'none' }),
+    ];
+    expect(slugs(filterAgents(more, { verified: true }))).toEqual(['open', 'keyed']);
+    expect(slugs(filterAgents(more, { auth: ['none'] }))).toEqual(['open', 'unchecked']);
+    expect(slugs(filterAgents(more, { auth: ['none', 'apiKey'], verified: true }))).toEqual(['open', 'keyed']);
+    expect(filterAgents(more, { auth: [] })).toHaveLength(3);
+  });
+});
+
+describe('sortAgents', () => {
+  const agents = [
+    makeAgent({ name: 'Beta', slug: 'beta', createdAt: '2026-05-01T00:00:00.000Z', skills: [] }),
+    makeAgent({
+      name: 'alpha',
+      slug: 'alpha',
+      createdAt: '2026-10-30T00:00:00Z',
+      skills: [{ id: 'a', name: 'A', description: '' }],
+    }),
+    makeAgent({ name: 'Gamma', slug: 'gamma', createdAt: undefined, skills: [] }),
+    makeAgent({
+      name: 'Delta',
+      slug: 'delta',
+      createdAt: '2026-08-01T00:00:00.000Z',
+      skills: [{ id: 'a', name: 'A', description: '' }],
+    }),
+  ];
+  const order = (sort: Parameters<typeof sortAgents>[1]) => sortAgents(agents, sort).map((a) => a.slug);
+
+  it('relevance keeps the incoming order', () => {
+    expect(order('relevance')).toEqual(['beta', 'alpha', 'gamma', 'delta']);
+  });
+
+  it('newest puts the latest additions first and undated listings last', () => {
+    expect(order('newest')).toEqual(['alpha', 'delta', 'beta', 'gamma']);
+  });
+
+  it('skills puts most skills first, ties in the incoming order', () => {
+    expect(order('skills')).toEqual(['alpha', 'delta', 'beta', 'gamma']);
+  });
+
+  it('name sorts A→Z regardless of case', () => {
+    expect(order('name')).toEqual(['alpha', 'beta', 'delta', 'gamma']);
+  });
+
+  it('never reorders the array it was given', () => {
+    sortAgents(agents, 'name');
+    expect(agents.map((a) => a.slug)).toEqual(['beta', 'alpha', 'gamma', 'delta']);
+  });
+});
+
+describe('parseSort', () => {
+  it('accepts the four orders in any case and defaults to relevance', () => {
+    expect(['newest', ' Skills', 'NAME', 'relevance'].map(parseSort)).toEqual(['newest', 'skills', 'name', 'relevance']);
+    expect(['', 'oldest', 'constructor', null, undefined].map(parseSort)).toEqual(Array(5).fill('relevance'));
+  });
+});
+
+describe('resultBreakdown', () => {
+  const agents = [
+    makeAgent({ official: true, verified: true, authType: 'none', accessMethods: ['mcp'] }),
+    makeAgent({ verified: true, authType: 'apiKey', accessMethods: ['api', 'mcp'] }),
+    makeAgent({ verified: true, authType: 'oauth2', accessMethods: ['api'] }),
+  ];
+  const line = (applied?: Set<BreakdownKey>) =>
+    resultBreakdown(agents, applied).map(({ label, count }) => `${count} ${label}`);
+
+  it('counts what each chip would keep, in chip order, without zeros', () => {
+    expect(line()).toEqual(['1 Official', '3 Verified', '1 No auth needed', '2 API', '2 MCP']);
+  });
+
+  it('leaves out chips that are already applied', () => {
+    expect(line(new Set(['verified', 'mcp']))).toEqual(['1 Official', '1 No auth needed', '2 API']);
+  });
+
+  it('is empty for no results', () => {
+    expect(resultBreakdown([])).toEqual([]);
+  });
+});
+
+describe('breakdownLine', () => {
+  it('joins the counts and says "all" for a chip that keeps every result', () => {
+    const items = resultBreakdown([
+      makeAgent({ official: true, verified: true, accessMethods: ['mcp'] }),
+      makeAgent({ verified: true, authType: 'apiKey', accessMethods: ['mcp', 'cli'] }),
+    ]);
+    expect(breakdownLine(items, 2)).toBe('1 Official · all Verified · 1 No auth needed · all MCP · 1 CLI');
   });
 });
 

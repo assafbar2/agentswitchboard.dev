@@ -2,12 +2,22 @@ import Link from 'next/link';
 import { CategoryRail } from '@/components/CategoryRail';
 import { Suspense } from 'react';
 import { getAllCategories, getEveryAgent, loadOfficialVendors } from '@/lib/catalog';
-import { filterAgents, parseFlag, searchAgents } from '@/lib/search';
-import { normalizeAccessMethods } from '@/lib/public-api';
+import {
+  breakdownLine,
+  filterAgents,
+  parseFlag,
+  parseSort,
+  resultBreakdown,
+  searchAgents,
+  sortAgents,
+  type BreakdownKey,
+} from '@/lib/search';
+import { normalizeAccessMethods, normalizeAuthTypes } from '@/lib/public-api';
 import { AgentCard } from '@/components/AgentCard';
 import { SearchBar } from '@/components/SearchBar';
 import { AccessMethodFilter } from '@/components/AccessMethodFilter';
 import { CatalogFilters } from '@/components/CatalogFilters';
+import { SortSelect } from '@/components/SortSelect';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { pageMetadata } from '@/lib/metadata';
 
@@ -33,16 +43,28 @@ export async function generateMetadata({
 export default async function BrowsePage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string; access?: string; category?: string; official?: string; vendor?: string }>;
+  searchParams: Promise<{
+    q?: string;
+    access?: string;
+    category?: string;
+    official?: string;
+    vendor?: string;
+    verified?: string;
+    auth?: string;
+    sort?: string;
+  }>;
 }) {
-  const { q, access, category, official, vendor } = await searchParams;
+  const { q, access, category, official, vendor, verified, auth, sort } = await searchParams;
   const query = q?.trim() ?? '';
   // Same parsing as /api/agents: aliases map to their method and unknown values
   // are dropped, so a stale or mistyped link never empties the directory.
   const accessFilters = normalizeAccessMethods(access?.split(',') ?? []);
+  const authFilter = normalizeAuthTypes(auth?.split(',') ?? []);
   const categoryFilter = category?.trim() ?? '';
   const vendorFilter = vendor?.trim() ?? '';
   const officialOnly = parseFlag(official) || !!vendorFilter;
+  const verifiedOnly = parseFlag(verified);
+  const sortOrder = parseSort(sort);
 
   const [allAgents, categories, vendors] = await Promise.all([
     getEveryAgent(),
@@ -54,8 +76,18 @@ export default async function BrowsePage({
     category: categoryFilter,
     official: officialOnly,
     vendor: vendorFilter,
+    verified: verifiedOnly,
+    auth: authFilter,
   });
-  const agents = searchAgents(narrowed, query, accessFilters.length > 0 ? accessFilters : undefined);
+  const agents = sortAgents(
+    searchAgents(narrowed, query, accessFilters.length > 0 ? accessFilters : undefined),
+    sortOrder
+  );
+  const applied = new Set<BreakdownKey>(accessFilters as BreakdownKey[]);
+  if (officialOnly) applied.add('official');
+  if (verifiedOnly) applied.add('verified');
+  if (authFilter.length === 1 && authFilter[0] === 'none') applied.add('no-auth');
+  const breakdown = resultBreakdown(agents, applied);
 
   return (
     <>
@@ -99,6 +131,20 @@ export default async function BrowsePage({
             : `${agents.length}${officialOnly ? ' official' : ''} agent${agents.length !== 1 ? 's' : ''}${query ? ' matched' : ' listed'}`}
         </h2>
 
+        {/* What each filter chip would keep, and the result order */}
+        {agents.length > 0 && (
+          <div className="mb-4 flex flex-wrap items-center gap-x-6 gap-y-2">
+            {agents.length > 1 && breakdown.length > 0 && (
+              <p className="text-[15px] text-[var(--dir-muted)]">{breakdownLine(breakdown, agents.length)}</p>
+            )}
+            <div className="sm:ml-auto">
+              <Suspense>
+                <SortSelect hasQuery={!!query} />
+              </Suspense>
+            </div>
+          </div>
+        )}
+
         {/* Results */}
         {agents.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10">
@@ -135,8 +181,16 @@ export default async function BrowsePage({
               {agents.length} agent{agents.length !== 1 ? 's' : ''}{query ? ' matched' : ' indexed'}
               {categoryFilter && ` · category: ${categoryFilter}`}
               {officialOnly && ` · official${vendorFilter ? `: ${vendorFilter}` : ''}`}
+              {verifiedOnly && ' · verified'}
+              {authFilter.length > 0 && ` · auth: ${authFilter.join('|')}`}
               {accessFilters.length > 0 && ` · access: ${accessFilters.join('+')}`}
+              {sortOrder !== 'relevance' && ` · sort: ${sortOrder}`}
             </div>
+            {breakdown.length > 0 && (
+              <div className="agent-dim text-xs">
+                {breakdown.map(({ key, count }) => `${key}: ${count}`).join(' · ')}
+              </div>
+            )}
           </div>
 
           {agents.length > 0 ? (
