@@ -28,7 +28,31 @@ const sortMenu = (page) => human(page).getByLabel('Sort');
 const cards = (page) => human(page).locator('a[href^="/agents/"]:has(h3)');
 const cardFor = (page, slug) => human(page).locator(`a[href="/agents/${slug}"]:has(h3)`);
 const cardHrefs = (page) => cards(page).evaluateAll((els) => els.map((a) => a.getAttribute('href')));
-const searchBox = (page) => human(page).getByRole('search').getByRole('searchbox');
+const searchBox = (page) => human(page).getByRole('search').getByRole('combobox');
+const suggestionList = (page) => human(page).getByRole('search').getByRole('listbox');
+const suggestions = (page) => suggestionList(page).getByRole('option');
+const suggestionGroup = (page, name) => suggestionList(page).getByRole('group', { name });
+const events = (page) =>
+  page.evaluate(() =>
+    (window.vaq ?? []).filter(([kind]) => kind === 'event').map(([, e]) => ({ name: e.name, data: e.data }))
+  );
+
+/** Opens `path` and focuses the search box until it has loaded the suggestion index. */
+async function readyToSuggest(page, path = '/') {
+  let requested = false;
+  page.on('request', (r) => {
+    if (new URL(r.url()).pathname === '/search-index.json') requested = true;
+  });
+  const loaded = page.waitForResponse((r) => new URL(r.url()).pathname === '/search-index.json');
+  await page.goto(path);
+  // Before hydration the box has no focus handler, so focus it again until it asks.
+  await expect(async () => {
+    await searchBox(page).blur();
+    await searchBox(page).focus();
+    expect(requested).toBe(true);
+  }).toPass();
+  expect((await loaded).status()).toBe(200);
+}
 
 /** The number shown in the yellow count bar ("51 agents listed"), or 0 for "No agents found". */
 async function shownCount(page) {
@@ -152,6 +176,154 @@ test.describe('search box submission', () => {
     await page.getByLabel('Look it up').press('Enter');
     await expect(page).toHaveURL(/\/browse\?q=agentmail$/);
     expect(blocked).toEqual([]);
+  });
+});
+
+test.describe('search suggestions', () => {
+  test('open after two characters: listings with icons, categories and vendors with counts', async ({ page }) => {
+    await readyToSuggest(page);
+    await searchBox(page).pressSequentially('d');
+    await expect(suggestionList(page)).toBeHidden();
+    await expect(searchBox(page)).toHaveAttribute('aria-expanded', 'false');
+    await searchBox(page).pressSequentially('ata');
+    await expect(suggestionList(page)).toBeVisible();
+    await expect(searchBox(page)).toHaveAttribute('aria-expanded', 'true');
+    const agents = suggestionGroup(page, 'Agents').getByRole('option');
+    await expect(agents).toHaveCount(5);
+    await expect(suggestionGroup(page, 'Agents').locator('img').first()).toHaveAttribute('src', /^\/icons\/sm\/[\w.-]+\.png\?v=\w+$/);
+    await expect(suggestionGroup(page, 'Categories').getByRole('option', { name: /^Data & Analytics \d+ agents?$/ })).toBeVisible();
+    await expect(suggestionGroup(page, 'Official vendors').getByRole('option', { name: /^Datadog \d+ agents?$/ })).toBeVisible();
+    await expect(suggestions(page).last()).toHaveText('Search for “data”');
+  });
+
+  test('arrow keys move the highlight, wrapping, and Enter opens the highlighted listing', async ({ page }) => {
+    await readyToSuggest(page);
+    await searchBox(page).pressSequentially('agentmail');
+    const first = suggestions(page).first();
+    await expect(first).toHaveText('AgentMail');
+    await expect(first).toHaveAttribute('aria-selected', 'false');
+    await searchBox(page).press('ArrowDown');
+    await expect(first).toHaveAttribute('aria-selected', 'true');
+    await expect(searchBox(page)).toHaveAttribute('aria-activedescendant', await first.getAttribute('id'));
+    await searchBox(page).press('ArrowUp');
+    await expect(suggestions(page).last()).toHaveAttribute('aria-selected', 'true');
+    await expect(first).toHaveAttribute('aria-selected', 'false');
+    await searchBox(page).press('ArrowDown');
+    await expect(first).toHaveAttribute('aria-selected', 'true');
+    await searchBox(page).press('Enter');
+    await expect(page).toHaveURL(/\/agents\/agentmail$/);
+  });
+
+  test('Esc closes the list and keeps the text; Enter then runs the search', async ({ page }) => {
+    await readyToSuggest(page);
+    await searchBox(page).pressSequentially('postgres');
+    await expect(suggestionList(page)).toBeVisible();
+    await searchBox(page).press('ArrowDown');
+    await searchBox(page).press('Escape');
+    await expect(suggestionList(page)).toBeHidden();
+    await expect(searchBox(page)).toHaveAttribute('aria-expanded', 'false');
+    await expect(searchBox(page)).not.toHaveAttribute('aria-activedescendant');
+    await expect(searchBox(page)).toHaveValue('postgres');
+    await searchBox(page).press('Enter');
+    await expect(page).toHaveURL(/\/browse\?q=postgres$/);
+  });
+
+  test('Enter with nothing highlighted runs the search, list open or not', async ({ page }) => {
+    await readyToSuggest(page);
+    await searchBox(page).pressSequentially('brows');
+    await expect(suggestionList(page)).toBeVisible();
+    await searchBox(page).press('Enter');
+    await expect(page).toHaveURL(/\/browse\?q=brows$/);
+  });
+
+  test('a category opens /browse filtered to it, with the count it showed', async ({ page }) => {
+    await readyToSuggest(page);
+    await searchBox(page).pressSequentially('vector');
+    const option = suggestionGroup(page, 'Categories').getByRole('option', { name: /^Vector Databases/ });
+    const shown = Number((await option.textContent()).match(/(\d+) agents?$/)[1]);
+    await option.click();
+    await expect(page).toHaveURL(/\/browse\?category=vector-databases$/);
+    await expect(countBar(page)).toHaveText(`${shown} agents listed`);
+    await expect(searchBox(page)).toHaveValue('');
+  });
+
+  test('a vendor opens /browse with its Official listings, as many as it showed', async ({ page }) => {
+    await readyToSuggest(page, '/browse');
+    await searchBox(page).pressSequentially('cloudfl');
+    const option = suggestionGroup(page, 'Official vendors').getByRole('option', { name: /^Cloudflare/ });
+    const shown = Number((await option.textContent()).match(/(\d+) agents?$/)[1]);
+    await option.click();
+    await expect(page).toHaveURL(/\/browse\?vendor=cloudflare$/);
+    await expect(countBar(page)).toHaveText(`${shown} official agents listed`);
+    await expect(searchBox(page)).toHaveValue('');
+  });
+
+  test('the last option runs the search and keeps the /browse filters', async ({ page }) => {
+    await readyToSuggest(page, '/browse?access=mcp');
+    await searchBox(page).pressSequentially('github');
+    await expect(suggestionList(page)).toBeVisible();
+    await searchBox(page).press('ArrowUp');
+    const last = suggestions(page).last();
+    await expect(last).toHaveText('Search for “github”');
+    await expect(last).toHaveAttribute('aria-selected', 'true');
+    const position = await suggestions(page).count();
+    await searchBox(page).press('Enter');
+    await expect(page).toHaveURL(/q=github/);
+    expect(new URL(page.url()).searchParams.get('access')).toBe('mcp');
+    expect(await events(page)).toEqual([
+      { name: 'autocomplete_select', data: { kind: 'search', position, chars: 6, page: '/browse' } },
+      { name: 'search_submit', data: { page: '/browse', words: 1 } },
+    ]);
+  });
+
+  test('a pick is counted by kind and position, never with the text', async ({ page }) => {
+    await readyToSuggest(page);
+    await searchBox(page).pressSequentially('agentmail');
+    await searchBox(page).press('ArrowDown');
+    await searchBox(page).press('Enter');
+    await expect(page).toHaveURL(/\/agents\/agentmail$/);
+    const sent = await events(page);
+    expect(sent).toEqual([{ name: 'autocomplete_select', data: { kind: 'agent', position: 1, chars: 9, page: '/' } }]);
+    expect(JSON.stringify(sent)).not.toMatch(/agentmail/i);
+  });
+
+  test('each keystroke updates the list in under 100 ms', async ({ page }) => {
+    await readyToSuggest(page);
+    await searchBox(page).pressSequentially('po');
+    await expect(suggestionList(page)).toBeVisible();
+    const times = await page.evaluate(async () => {
+      const input = document.querySelector('.human-only form[role="search"] input');
+      const setValue = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set;
+      const shows = (q) =>
+        [...document.querySelectorAll('[role="listbox"] [role="option"]')].some((o) => o.textContent === `Search for “${q}”`);
+      const out = [];
+      for (const q of ['pos', 'post', 'postg', 'postgr', 'postgre', 'postgres']) {
+        const start = performance.now();
+        setValue.call(input, q);
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        await new Promise((done) => {
+          const check = () => (shows(q) ? done() : requestAnimationFrame(check));
+          check();
+        });
+        out.push(performance.now() - start);
+      }
+      return out;
+    });
+    expect(Math.max(...times), `per-keystroke ms: ${times.map((t) => t.toFixed(1)).join(', ')}`).toBeLessThan(100);
+  });
+
+  test('the index has every listing, category and vendor, stays small, and is kept out of search engines', async ({ page }) => {
+    const res = await page.request.get('/search-index.json', { headers: UA });
+    expect(res.status()).toBe(200);
+    expect(res.headers()['content-type']).toMatch(/^application\/json/);
+    expect(res.headers()['x-robots-tag']).toBe('noindex');
+    const body = await res.body();
+    const index = JSON.parse(body.toString());
+    expect(index.agents.length).toBe(await apiTotal(page, {}));
+    expect(index.categories.length).toBeGreaterThanOrEqual(20);
+    expect(index.vendors.length).toBeGreaterThanOrEqual(100);
+    // 68 KB for 900 listings, scaled with the catalog.
+    expect(body.length).toBeLessThan((68 * 1024 * index.agents.length) / 900);
   });
 });
 
@@ -422,10 +594,6 @@ test.describe('no results', () => {
   const recovery = (page, kind) => human(page).locator(`[data-recovery="${kind}"]`);
   const chips = (page) => recovery(page, 'removal').getByRole('link');
   const previewCards = (section) => section.locator('a[href^="/agents/"]:has(h3)');
-  const events = (page) =>
-    page.evaluate(() =>
-      (window.vaq ?? []).filter(([kind]) => kind === 'event').map(([, e]) => ({ name: e.name, data: e.data }))
-    );
   /** Effects run after hydration, so once the view is counted its links navigate client-side. */
   const counted = (page) =>
     page.waitForFunction(() => (window.vaq ?? []).some(([kind, e]) => kind === 'event' && e.name === 'search_zero_results'));
@@ -655,6 +823,30 @@ test.describe('mobile', () => {
     await expect(human(page).locator('[data-recovery="closest"] a[href^="/agents/"]:has(h3)').first()).toBeVisible();
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     expect(overflow).toBeLessThanOrEqual(0);
+  });
+
+  test('suggestions fit a phone screen in 44px rows, and a tap picks one', async ({ page }) => {
+    await readyToSuggest(page);
+    await searchBox(page).pressSequentially('data');
+    await expect(suggestionList(page)).toBeVisible();
+    // The box sits mid-screen on a phone: the page scrolls until the list ends on screen.
+    await expect.poll(async () => {
+      const { y, height } = await suggestionList(page).boundingBox();
+      return y + height;
+    }).toBeLessThanOrEqual(812);
+    const header = await page.locator('header').boundingBox();
+    expect((await searchBox(page).boundingBox()).y).toBeGreaterThanOrEqual(header.y + header.height);
+    const list = await suggestionList(page).boundingBox();
+    expect(list.x).toBeGreaterThanOrEqual(0);
+    expect(list.x + list.width).toBeLessThanOrEqual(375);
+    for (const option of await suggestions(page).all()) {
+      const box = await option.boundingBox();
+      expect(box.height, `${await option.textContent()} height`).toBeGreaterThanOrEqual(44);
+    }
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+    expect(overflow).toBeLessThanOrEqual(0);
+    await suggestionGroup(page, 'Categories').getByRole('option').first().tap();
+    await expect(page).toHaveURL(/\/browse\?category=data-analytics$/);
   });
 
   test('every chip, the breakdown line and the sort menu fit a phone screen', async ({ page }) => {

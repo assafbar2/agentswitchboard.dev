@@ -17,8 +17,13 @@ export interface IconRecord {
 }
 
 /** Site path of a listing's 128px icon. */
-export function iconPath(slug: string, icon: IconRecord): string {
+export function iconPath(slug: string, icon: Pick<IconRecord, 'v'>): string {
   return `/icons/${slug}.png?v=${icon.v}`;
+}
+
+/** The `v` of an icon path from iconPath. */
+export function iconVersion(iconUrl: string): string {
+  return new URL(iconUrl, BASE_URL).searchParams.get('v') ?? '';
 }
 
 /** The 48px copy of an icon path, for icons shown at 32px or less. */

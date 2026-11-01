@@ -79,18 +79,18 @@ test.describe('homepage — hero', () => {
 
   test('"Look it up" search submits to /browse with the query', async ({ page }) => {
     await page.goto('/');
-    const box = page.getByRole('searchbox', { name: 'Look it up' });
+    const box = page.getByRole('combobox', { name: 'Look it up' });
     await expect(box).toBeVisible();
     await box.fill('email agent');
     await box.press('Enter');
     await page.waitForURL(/\/browse\?q=email(\+|%20)agent/);
     expect(new URL(page.url()).searchParams.get('q')).toBe('email agent');
-    await expect(page.getByRole('searchbox').first()).toHaveValue('email agent');
+    await expect(page.getByRole('search').getByRole('combobox')).toHaveValue('email agent');
   });
 
   test('"Find" button also submits the search', async ({ page, blocked }) => {
     await page.goto('/');
-    await page.getByRole('searchbox', { name: 'Look it up' }).fill('mcp');
+    await page.getByRole('combobox', { name: 'Look it up' }).fill('mcp');
     await page.getByRole('button', { name: 'Find' }).click();
     await page.waitForURL(/\/browse\?q=mcp$/);
     expect(blocked, 'search is a client navigation, not a write').toEqual([]);

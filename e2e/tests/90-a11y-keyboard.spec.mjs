@@ -242,7 +242,7 @@ test.describe('keyboard', () => {
 
   test('homepage search is operable by keyboard: type and Enter opens /browse?q=', async ({ page }) => {
     await open(page, '/');
-    const box = page.getByRole('searchbox', { name: 'Look it up' });
+    const box = page.getByRole('combobox', { name: 'Look it up' });
     await box.focus();
     await page.keyboard.type('browser');
     await page.keyboard.press('Enter');
@@ -277,7 +277,7 @@ test.describe('form labels', () => {
 
   test('/browse search box has an accessible name', async ({ page }) => {
     await open(page, '/browse');
-    await expect(page.getByRole('searchbox', { name: /\S/ }).first()).toBeVisible();
+    await expect(page.getByRole('search').getByRole('combobox', { name: /\S/ })).toBeVisible();
   });
 
   test('/submit fields are tied to their visible labels', async ({ page }) => {
