@@ -6,7 +6,9 @@ import { VerifiedBadge } from '@/components/VerifiedBadge';
 import { AgentCard } from '@/components/AgentCard';
 import { AgentIcon } from '@/components/AgentIcon';
 import { JsonLd } from '@/components/JsonLd';
+import { TryThisFirst } from '@/components/TryThisFirst';
 import { getRelatedAgents } from '@/lib/related';
+import { tryThis } from '@/lib/try-this';
 import { absoluteIconUrl } from '@/lib/icons';
 import { listingCard, listingCardImage } from '@/lib/share-cards';
 import { notFound } from 'next/navigation';
@@ -69,6 +71,7 @@ export default async function AgentPage({
   if (!agent) notFound();
 
   const related = getRelatedAgents(agent, allAgents);
+  const tryFirst = tryThis(agent);
 
   // No `offers`: the catalog has no pricing data, and "no auth" does not mean
   // free (paid products such as Midjourney list authType "none").
@@ -155,6 +158,8 @@ export default async function AgentPage({
 
           {/* Description */}
           <p className="text-lg leading-relaxed mb-8">{agent.description}</p>
+
+          {tryFirst && <TryThisFirst slug={agent.slug} tryThis={tryFirst} />}
 
           {/* Facts: how you reach it, how it authenticates, what it does, as a
               ruled definition list (label, dotted leader, value). */}
@@ -250,6 +255,20 @@ export default async function AgentPage({
             <div className="agent-accent text-base font-bold mb-1">{agent.slug}</div>
             <div className="agent-dim text-xs leading-relaxed mt-1">{agent.description}</div>
           </div>
+
+          {tryFirst && (
+            <>
+              <div className="agent-section-title">try this first</div>
+              <div className="agent-dim text-xs">{tryFirst.lead}</div>
+              {tryFirst.prompts.map((prompt) => (
+                <div key={prompt.skillId} className="agent-row">
+                  <span className="agent-accent">{prompt.text}</span>
+                  <span className="agent-dim">{prompt.skillId}</span>
+                  <span />
+                </div>
+              ))}
+            </>
+          )}
 
           {/* Fields */}
           <div className="agent-section-title">fields</div>

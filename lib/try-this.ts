@@ -19,12 +19,19 @@ export const MAX_ACTION_WORDS = 10;
 export interface TryPrompt {
   skillId: string;
   skillName: string;
+  /** "Use Box MCP to search files" */
+  task: string;
+  /** "what you're looking for": the part the visitor replaces. */
+  slot: string;
+  /** The prompt as copied: "Use Box MCP to search files: ‹what you're looking for›". */
   text: string;
 }
 
 export interface TryThis {
   /** MCP listings are prompted from an assistant with the server connected; API and CLI ones from a coding agent. */
   audience: 'assistant' | 'coding-agent';
+  /** Where to paste them: "Ask your assistant, with Box MCP connected:". */
+  lead: string;
   prompts: TryPrompt[];
 }
 
@@ -154,6 +161,9 @@ const SEARCH_VERBS = new Set(['browse', 'discover', 'explore', 'find', 'fuzzy-se
 
 /** The product starting its own server isn't something to ask for. */
 const SERVES_ITSELF = /^(?:run|start|launch) (?:a |an |the |its )?(?:\w+ )?(?:MCP )?server\b/i;
+
+/** "Takes a high-level goal and…" names the input; taking is a task only when something is captured. */
+const CAPTURES = /^(?:backup|note|photo|picture|recording|screenshot|snapshot)s?$/;
 
 const strip = (word: string) => word.replace(/[,:;.!?)\]"]+$/, '');
 const bare = (word: string | undefined) => strip(word ?? '').toLowerCase();
@@ -352,6 +362,7 @@ export function skillAction(description: string): string | null {
   const objects = phrase.slice(objectsFrom).filter((w) => !PARTICLES.has(bare(w)));
   const text = phrase.join(' ').replace(SPEED_CLAIM, '');
   if (objects.length === 0 || openList(phrase) || phrase.some(unpromptable) || SERVES_ITSELF.test(text)) return null;
+  if (head.words[0] === 'take' && !CAPTURES.test(last())) return null;
   return text;
 }
 
@@ -386,6 +397,12 @@ export function tryThis(agent: Pick<Agent, 'name' | 'skills' | 'accessMethods'>)
   const setup = candidates.filter((c) => SETUP_VERBS.has(verbOf(c.action)));
   const prompts = [...candidates.filter((c) => !setup.includes(c)), ...setup]
     .slice(0, MAX_PROMPTS)
-    .map(({ skill, action }) => ({ skillId: skill.id, skillName: skill.name, text: `Use ${agent.name} to ${action}: ‹${slotFor(action)}›` }));
-  return prompts.length > 0 ? { audience, prompts } : null;
+    .map(({ skill, action }) => {
+      const task = `Use ${agent.name} to ${action}`;
+      const slot = slotFor(action);
+      return { skillId: skill.id, skillName: skill.name, task, slot, text: `${task}: ‹${slot}›` };
+    });
+  if (prompts.length === 0) return null;
+  const lead = audience === 'assistant' ? `Ask your assistant, with ${agent.name} connected:` : 'Ask your coding agent:';
+  return { audience, lead, prompts };
 }

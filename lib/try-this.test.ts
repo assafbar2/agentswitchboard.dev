@@ -7,7 +7,7 @@ function skill(description: string, name = description.split(' ').slice(0, 3).jo
   return { id: name.toLowerCase().replace(/\W+/g, '-'), name, description };
 }
 
-function listing(skills: Skill[], accessMethods: Agent['accessMethods'] = ['mcp'], name = 'Box MCP') {
+function listing(skills: AgentSkill[], accessMethods: Agent['accessMethods'] = ['mcp'], name = 'Box MCP') {
   return { name, skills, accessMethods };
 }
 
@@ -72,6 +72,8 @@ describe('skillAction: the verb phrase a description opens with', () => {
     expect(skillAction('Runs on your own infrastructure')).toBeNull();
     expect(skillAction('Starts a stdio MCP server whose tool profiles match the client')).toBeNull();
     expect(skillAction('Captures the prompts, transcript, and files touched for each commit')).toBeNull();
+    expect(skillAction('Takes a high-level goal and works it end to end inside a cloud VM')).toBeNull();
+    expect(skillAction('Takes a DOM snapshot with element UIDs')).toBe('take a DOM snapshot');
   });
 });
 
@@ -88,6 +90,18 @@ describe('tryThis: prompts for a listing', () => {
     expect(tryThis(listing([search], ['api']))?.audience).toBe('coding-agent');
     expect(tryThis(listing([search], ['browser-extension']))).toBeNull();
     expect(tryThis(listing([search], []))).toBeNull();
+    expect(tryThis(listing([search]))?.lead).toBe('Ask your assistant, with Box MCP connected:');
+    expect(tryThis(listing([search], ['cli']))?.lead).toBe('Ask your coding agent:');
+  });
+
+  it('splits each prompt into the task and the part to replace', () => {
+    expect(tryThis(listing([search]))?.prompts[0]).toEqual({
+      skillId: 'search',
+      skillName: 'Search',
+      task: 'Use Box MCP to search files',
+      slot: "what you're looking for",
+      text: "Use Box MCP to search files: ‹what you're looking for›",
+    });
   });
 
   it('fills a slot that fits the verb', () => {
