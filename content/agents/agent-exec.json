@@ -1,0 +1,27 @@
+{
+  "id": "agent-exec",
+  "name": "agent-exec",
+  "slug": "agent-exec",
+  "description": "Runs sandboxed code and other pay-per-call services for software agents over x402, no account required.",
+  "providerName": "agent-exec",
+  "providerUrl": "https://agent-exec.448c.org",
+  "agentUrl": "https://agent-exec.448c.org",
+  "categories": ["infrastructure", "code-devtools"],
+  "tags": ["code-execution", "sandbox", "x402", "storage", "dns", "mcp"],
+  "skills": [
+    { "id": "execute-code", "name": "Execute Code", "description": "Runs python3 or node source to completion in an isolated, network-less sandbox and returns stdout, stderr, and exit code." },
+    { "id": "object-storage", "name": "Object Storage", "description": "Stores durable objects paid once for bytes times retention, with free reads for anyone holding the id." },
+    { "id": "url-watch", "name": "URL Watch", "description": "Polls a URL until a caller-given predicate fires or a time-to-live ends, priced by interval times duration." }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": ["api", "mcp"],
+  "createdAt": "2026-10-22T00:00:00Z",
+  "updatedAt": "2026-10-22T00:00:00Z"
+}
