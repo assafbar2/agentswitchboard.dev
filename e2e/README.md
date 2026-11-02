@@ -1,6 +1,6 @@
 # Live e2e checks
 
-About 690 Playwright tests that run against the production site after a deploy:
+About 710 Playwright tests that run against the production site after a deploy:
 homepage, search and `/browse`, every category, listing pages, weekly drops,
 stacks and tasks, the text-only view and theme, the machine endpoints
 (`/api/mcp`, `/llms.txt`, `/agents.json`, …), content pages and navigation,

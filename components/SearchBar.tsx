@@ -11,6 +11,7 @@ import { pluralize } from '@/lib/utils';
 
 const GROUP_LABELS: Record<SuggestionKind, string> = {
   agent: 'Agents',
+  task: 'Tasks',
   category: 'Categories',
   vendor: 'Official vendors',
 };
@@ -133,8 +134,9 @@ export function SearchBar({
     });
     setActive(-1);
     if (!picked) return submit();
+    if (picked.task) count('task_select', { task: picked.task, from: 'autocomplete' });
     setOpen(false);
-    // A category or vendor view has no search text, so the box must not keep any.
+    // A task, category or vendor view has no search text, so the box must not keep any.
     if (picked.kind !== 'agent') setValue('');
     router.push(picked.href);
   }
