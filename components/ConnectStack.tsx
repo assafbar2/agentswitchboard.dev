@@ -35,16 +35,18 @@ function Listing({ item, children }: { item: BundleItem; children?: ReactNode })
 }
 
 /**
- * Connect them all, on a stack's page: the stack's connect bundle
- * (lib/bundle.ts), as GET /api/bundle gives it, grouped by what to do with
- * each listing.
+ * Connect them all, on a stack's page or the Operator's: the stack's connect
+ * bundle (lib/bundle.ts), as GET /api/bundle gives it, grouped by what to do
+ * with each listing. A copy counts `stack_bundle_export`, or
+ * `operator_bundle_export` from the Operator.
  */
-export function ConnectStack({ bundle, from, stack }: { bundle: Bundle; from: 'stacks' | 'stack'; stack?: string }) {
+export function ConnectStack({ bundle, from, stack }: { bundle: Bundle; from: 'stacks' | 'stack' | 'operator'; stack?: string }) {
   const { items, config, claudeCode, setupPrompt } = bundle;
   const inConfig = items.filter((i) => i.how === 'config');
   const guided = items.filter((i) => i.how === 'guide');
   const rest = items.filter((i) => i.how === 'other');
   const names = (group: BundleItem[]) => joinList(group.map((i) => i.agent.name));
+  const event = from === 'operator' ? 'operator_bundle_export' : 'stack_bundle_export';
   const data = (what: string) => ({ from, items: items.length, servers: inConfig.length, what, ...(stack && { stack }) });
 
   return (
@@ -64,7 +66,7 @@ export function ConnectStack({ bundle, from, stack }: { bundle: Bundle; from: 's
               label={inConfig.some((i) => i.server && 'url' in i.server) ? 'Cursor and other MCP clients' : 'Cursor, Claude Desktop and other MCP clients'}
               text={JSON.stringify(config, null, 2)}
               what="the MCP client config for this stack"
-              event="stack_bundle_export"
+              event={event}
               data={data('mcp-config')}
             />
             {claudeCode.length > 0 && (
@@ -72,7 +74,7 @@ export function ConnectStack({ bundle, from, stack }: { bundle: Bundle; from: 's
                 label="Claude Code"
                 text={claudeCode.join('\n')}
                 what={claudeCode.length === 1 ? 'the Claude Code command for this stack' : 'the Claude Code commands for this stack'}
-                event="stack_bundle_export"
+                event={event}
                 data={data('claude-code')}
               />
             )}
@@ -93,7 +95,7 @@ export function ConnectStack({ bundle, from, stack }: { bundle: Bundle; from: 's
               label={guided.length === 1 ? 'Ask your coding agent to set it up' : 'Ask your coding agent to set them up'}
               text={setupPrompt}
               what="the setup prompt for this stack"
-              event="stack_bundle_export"
+              event={event}
               data={data('setup-prompt')}
               prose
             />

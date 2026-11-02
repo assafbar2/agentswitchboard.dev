@@ -1,5 +1,15 @@
 import { describe, expect, it } from 'vitest';
-import { cleanRequest, NEAREST_TASKS, OPERATOR_EXAMPLES, operatorHref, PARTS_MAX, REQUEST_MAX, requestParts } from './request-parts';
+import {
+  cleanRequest,
+  NEAREST_TASKS,
+  OPERATOR_EXAMPLES,
+  operatorHref,
+  operatorQuery,
+  PARTS_MAX,
+  rephrased,
+  REQUEST_MAX,
+  requestParts,
+} from './request-parts';
 import { getTasks } from './tasks';
 
 const tasks = getTasks();
@@ -138,7 +148,33 @@ describe('cleanRequest', () => {
 
 describe('operatorHref', () => {
   it('links /operator with the request as read', () => {
-    expect(operatorHref(' read my Notion,  ping me on Slack ')).toBe('/operator?q=read%20my%20Notion%2C%20ping%20me%20on%20Slack');
+    expect(operatorHref(' read my Notion,  ping me on Slack ')).toBe('/operator?q=read+my+Notion,+ping+me+on+Slack');
     expect(operatorHref('  ')).toBe('/operator');
+  });
+
+  it('reads back as typed, a "+" in it too', () => {
+    for (const request of ['run C++ & C# builds, then ping me', 'query Postgres; 50% off? a+b=c / d']) {
+      const q = operatorQuery(request);
+      expect(new URLSearchParams(q).get('q')).toBe(cleanRequest(request).text);
+    }
+  });
+});
+
+describe('rephrased', () => {
+  it("says one part of the request another way, so it names the task offered for it", () => {
+    const request = 'answer support calls, book meetings';
+    const [vague] = requestParts(request, tasks).parts;
+    const [calls] = vague.nearest;
+    const again = rephrased(request, vague.text, calls.label);
+    expect(again).toBe(`${calls.label}, book meetings`);
+    expect(partsOf(again ?? '')).toEqual([
+      [calls.label, 'make-phone-calls'],
+      ['book meetings', 'schedule-meetings'],
+    ]);
+  });
+
+  it('is null when the words are not in the request', () => {
+    expect(rephrased('book meetings', 'zzz', 'make phone calls')).toBeNull();
+    expect(rephrased('book meetings', '', 'make phone calls')).toBeNull();
   });
 });

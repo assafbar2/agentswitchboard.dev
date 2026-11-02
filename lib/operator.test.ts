@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { getEveryAgent } from './catalog';
-import { OPERATOR_ALTERNATIVES, putThrough } from './operator';
+import { OPERATOR_ALTERNATIVES, pickedBecause, putThrough } from './operator';
 import { OPERATOR_EXAMPLES } from './request-parts';
 import { getTasks, type Task } from './tasks';
 import type { Agent, Category } from './types';
@@ -149,10 +149,14 @@ describe('putThrough', () => {
       listing('api-mailer', undefined, { accessMethods: ['api'], official: true }),
       listing('other-mcp-mailer'),
     ];
-    expect(onePart('send email with a CLI', catalog)).toMatchObject({ pick: 'cli-mailer', alternatives: [], unmet: [] });
-    expect(onePart('send email with an API', catalog)).toMatchObject({ pick: 'api-mailer', unmet: [] });
-    expect(onePart('an official way to send email', catalog)).toMatchObject({ pick: 'api-mailer', unmet: [] });
-    expect(onePart('send email with an MCP', catalog)).toMatchObject({ pick: 'mcp-mailer', alternatives: ['other-mcp-mailer'] });
+    expect(onePart('send email with a CLI', catalog)).toMatchObject({ pick: 'cli-mailer', alternatives: [], met: ['has a CLI'], unmet: [] });
+    expect(onePart('send email with an API', catalog)).toMatchObject({ pick: 'api-mailer', met: ['has an API'], unmet: [] });
+    expect(onePart('an official way to send email', catalog)).toMatchObject({ pick: 'api-mailer', met: ['is Official'], unmet: [] });
+    expect(onePart('send email with an MCP', catalog)).toMatchObject({
+      pick: 'mcp-mailer',
+      alternatives: ['other-mcp-mailer'],
+      met: ['has an MCP server'],
+    });
   });
 
   it('says what it asked for that no fit has, and picks without it', () => {
@@ -164,6 +168,7 @@ describe('putThrough', () => {
     });
     expect(onePart('the official email MCP', catalog)).toMatchObject({
       pick: 'mcp-mailer',
+      met: ['has an MCP server'],
       unmet: ['No tool for this task is Official as well.'],
     });
   });
@@ -194,7 +199,7 @@ describe('putThrough', () => {
 
   it('puts a part without a task, or a task without fits, through to nothing', () => {
     const catalog = [listing('plain-mailer')];
-    const nothing = { fits: 0, pick: null, alternatives: [], named: [], unmet: [], why: null };
+    const nothing = { fits: 0, pick: null, alternatives: [], named: [], met: [], unmet: [], why: null };
     expect(putThrough('I want a pizza', tasks, catalog)).toEqual({
       request: 'I want a pizza',
       parts: [{ text: 'I want a pizza', task: null, nearest: [], ...nothing }],
@@ -215,6 +220,20 @@ describe('putThrough', () => {
     ]);
     expect(slugs(once.stack)).toEqual(['combo']);
     expect(slugs(putThrough('send email with Gmail, query a database', tasks, catalog).stack)).toEqual(['gmail-sender', 'combo']);
+  });
+});
+
+describe('pickedBecause', () => {
+  it('says what the pick mentions and has that the part asked for', () => {
+    expect(pickedBecause({ named: ['Postgres'], met: ['has a CLI'] })).toBe('Picked because it mentions “Postgres” and has a CLI.');
+    expect(pickedBecause({ named: ['errors', 'Sentry'], met: [] })).toBe('Picked because it mentions “errors” and “Sentry”.');
+    expect(pickedBecause({ named: [], met: ['has an MCP server', 'is Official'] })).toBe(
+      'Picked because it has an MCP server and is Official.'
+    );
+  });
+
+  it("says when the pick is just the task's best fit", () => {
+    expect(pickedBecause({ named: [], met: [] })).toMatch(/^The task’s best fit\./);
   });
 });
 

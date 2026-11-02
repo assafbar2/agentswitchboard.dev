@@ -6,7 +6,9 @@ import { COMPARE_MAX } from '@/lib/compare-link';
 import { getDropSchedule } from '@/lib/drops';
 import { BASE_URL } from '@/lib/env';
 import { isNew, NEW_DAYS, newSince } from '@/lib/freshness';
+import { OPERATOR_ALTERNATIVES } from '@/lib/operator';
 import { FEATURED_DEFINITION, OFFICIAL_DEFINITION } from '@/lib/public-api';
+import { OPERATOR_EXAMPLES, PARTS_MAX } from '@/lib/request-parts';
 import { MY_STACK_MAX } from '@/lib/stack-link';
 import { getStacks, stackOfTheWeek } from '@/lib/stacks';
 import { getTasks } from '@/lib/tasks';
@@ -56,6 +58,7 @@ export async function GET() {
     comparisons[0] ? `, such as [/compare/${comparisons[0].slug}](${BASE_URL}/compare/${comparisons[0].slug})` : ''
   }.`;
   const boardLine = `\n- [/switchboard](${BASE_URL}/switchboard) — every listing on one board: a jack per listing in a panel per category, Official ones filled in and the latest drop's lit. The board as one image: [/switchboard/card.png](${BASE_URL}/switchboard/card.png).`;
+  const operatorLine = `\n- [/operator](${BASE_URL}/operator) — the Operator: a whole job in plain words at \`/operator?q={request}\` ("${OPERATOR_EXAMPLES[0]}"), put through to a tool for each part, up to ${PARTS_MAX}: its task, the pick and why, ${OPERATOR_ALTERNATIVES} alternatives, and one config to connect them all. Assembled from the task map, no AI: the same request always gets the same stack.`;
 
   const body = `# Agent Switchboard
 
@@ -76,7 +79,7 @@ The \`verified\`, \`official\` and \`featured\` flags in search and detail resul
 - [/.well-known/mcp.json](${BASE_URL}/.well-known/mcp.json) — MCP server manifest.
 - [/agents.json](${BASE_URL}/agents.json) — the entire catalog as one large JSON file, no auth. Use it for bulk or offline work; search for everything else.
 - [/llms.txt](${BASE_URL}/llms.txt) — plain-language site guide.
-- [/for-agents](${BASE_URL}/for-agents) — how to use all of the above.${dropLine}${newLine}${releaseLine}${stackLine}${taskLine}${compareLine}${boardLine}
+- [/for-agents](${BASE_URL}/for-agents) — how to use all of the above.${dropLine}${newLine}${releaseLine}${stackLine}${taskLine}${compareLine}${boardLine}${operatorLine}
 
 ## When to use this site
 

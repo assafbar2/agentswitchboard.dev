@@ -21,6 +21,8 @@ import {
   listingCardImage,
   newCard,
   newCardImage,
+  operatorCard,
+  operatorCardImage,
   sampleIcons,
   sharedStackCard,
   sharedStackCardImage,
@@ -381,5 +383,50 @@ describe('boardCard', () => {
       'All 3 listings on Agent Switchboard as jacks on one board, the 1 from the Oct 31, 2026 drop lit'
     );
     expect(boardCardImage(boardCard({ ...board, drop: null, lit: 0 })).alt).toBe('All 3 listings on Agent Switchboard as jacks on one board');
+  });
+});
+
+describe('operatorCard', () => {
+  const task = (label: string): Task => ({ slug: label, label, blurb: '', categories: [], access: [], keywords: [] });
+  const mail = makeAgent();
+  const plain = makeAgent({ slug: 'plain', name: 'Plain', iconUrl: undefined });
+  const part = (text: string, label: string | null, pick: Agent | null) => ({
+    text,
+    task: label ? task(label) : null,
+    nearest: [],
+    fits: pick ? 5 : 0,
+    pick,
+    alternatives: [],
+    named: [],
+    met: [],
+    unmet: [],
+    why: null,
+  });
+  const operator = {
+    request: 'send email, read my inbox, zzz, run a cli',
+    parts: [part('send email', 'send and read email', mail), part('zzz', null, null), part('run a cli', 'run commands', plain)],
+    stack: [mail, plain],
+    extra: 0,
+    cut: false,
+  };
+
+  it("names the stack and its parts' tasks, never the request", () => {
+    expect(operatorCard(operator, false)).toEqual({
+      example: null,
+      names: ['AgentMail', 'Plain'],
+      jobs: 2,
+      tasks: ['Send and read email', 'Run commands'],
+      icons: ['/icons/agentmail.png?v=aca5768d'],
+    });
+    expect(operatorCard(operator, true).example).toBe(operator.request);
+  });
+
+  it("is drawn at the request's own link, or /operator's without one", () => {
+    const image = operatorCardImage(' send  email, run a cli ', operatorCard(operator, false));
+    expect(image.url).toMatch(/^\/operator\/card\.png\?q=send\+email,\+run\+a\+cli&v=[0-9a-f]{8}$/);
+    expect(image.alt).toBe('AgentMail and Plain: 2 tools for 2 jobs, from the Operator on Agent Switchboard');
+    const example = operatorCardImage(null, operatorCard(operator, true));
+    expect(example.url).toMatch(/^\/operator\/card\.png\?v=[0-9a-f]{8}$/);
+    expect(example.alt).toBe(`Ask the switchboard: “${operator.request}” put through to AgentMail and Plain, on Agent Switchboard`);
   });
 });

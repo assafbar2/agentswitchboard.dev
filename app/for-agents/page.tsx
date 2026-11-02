@@ -6,8 +6,10 @@ import { VerifiedBadge, VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 import { getEveryAgent } from '@/lib/catalog';
 import { COMPARE_MAX } from '@/lib/compare-link';
 import { NEW_DAYS } from '@/lib/freshness';
+import { OPERATOR_ALTERNATIVES } from '@/lib/operator';
 import { FEATURED_DEFINITION, OFFICIAL_DEFINITION } from '@/lib/public-api';
 import { MIN_ALTERNATIVES } from '@/lib/related';
+import { PARTS_MAX } from '@/lib/request-parts';
 import { MY_STACK_MAX } from '@/lib/stack-link';
 import type { Agent } from '@/lib/types';
 
@@ -424,6 +426,16 @@ GET /api/tasks/<slug>
               >
                 /switchboard/card.png
               </EndpointLink>
+            </li>
+            <li>
+              <span className="font-bold">→ A whole job in plain words, the Operator:</span>{' '}
+              <code className="font-bold break-all">https://agentswitchboard.dev/operator?q=&lt;request&gt;</code>
+              , each part put through to a tool, up to {PARTS_MAX}, with its task, why it was picked and {OPERATOR_ALTERNATIVES}{' '}
+              alternatives, then one config to connect them all. It is assembled from the task map, no AI, so the same request
+              always gets the same stack; examples at{' '}
+              <Link href="/operator" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
+                https://agentswitchboard.dev/operator
+              </Link>
             </li>
             <li>
               <span className="font-bold">→ Plain-language guide:</span>{' '}

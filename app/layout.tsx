@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import { JetBrains_Mono, Inter, Barlow_Semi_Condensed } from 'next/font/google';
-import { Analytics } from '@vercel/analytics/react';
 import { CompareTray } from '@/components/CompareTray';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { MyStackClient } from '@/components/MyStackClient';
+import { SiteAnalytics } from '@/components/SiteAnalytics';
 import { WebMcp } from '@/components/WebMcp';
 import { getAllCategories, getEveryAgent } from '@/lib/catalog';
 import { siteCard, siteCardImage } from '@/lib/share-cards';
@@ -96,7 +96,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col antialiased">
         {/* First: React runs earlier siblings' effects first, and track() drops events sent before this sets up its queue. */}
-        <Analytics />
+        <SiteAnalytics />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

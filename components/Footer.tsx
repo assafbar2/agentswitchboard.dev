@@ -17,6 +17,7 @@ const footerLinks = [
       { href: '/my-stack', label: 'My Stack' },
       { href: '/compare', label: 'Compare' },
       { href: '/switchboard', label: 'The Switchboard' },
+      { href: '/operator', label: 'The Operator' },
       { href: '/submit', label: 'List Your Agent' },
     ],
   },

@@ -22,6 +22,7 @@ import {
   type DropCard,
   type ListingCard,
   type NewCard,
+  type OperatorCard,
   type SiteCard,
   type StackCard,
   type StacksCard,
@@ -420,6 +421,52 @@ export async function renderBoardCard(card: BoardCard): Promise<ImageResponse> {
         height={BOARD_AREA.height}
         style={{ marginTop: 24 }}
       />
+    </Frame>
+  );
+}
+
+export async function renderOperatorCard(card: OperatorCard): Promise<ImageResponse> {
+  const icons = await Promise.all(card.icons.map(iconSrc));
+  const tools = joinList(card.names);
+  const title = card.example ? 'Ask the switchboard' : tools;
+  return render(
+    <Frame
+      kicker="The Operator"
+      footer={
+        <div style={{ display: 'flex', fontSize: 24, fontWeight: 600, color: MUTED }}>
+          From the directory&apos;s task map, no AI guesses
+        </div>
+      }
+    >
+      <div
+        style={{
+          display: 'block',
+          lineClamp: 2,
+          fontSize: titleSize(title),
+          fontWeight: 800,
+          lineHeight: 1,
+          letterSpacing: '-0.02em',
+        }}
+      >
+        {title}
+      </div>
+      <div style={{ display: 'flex', marginTop: 18, fontSize: 34, fontWeight: 800 }}>
+        {`${formatNumber(card.names.length)} ${pluralize(card.names.length, 'tool')} for ${formatNumber(card.jobs)} ${pluralize(card.jobs, 'job')}`}
+      </div>
+      <div
+        style={{
+          display: 'block',
+          lineClamp: 2,
+          marginTop: 10,
+          fontSize: 28,
+          fontWeight: 500,
+          lineHeight: 1.35,
+          color: MUTED,
+        }}
+      >
+        {card.example ? `“${card.example}”: ${tools}` : card.tasks.join(' · ')}
+      </div>
+      <IconRow icons={icons} size={76} />
     </Frame>
   );
 }

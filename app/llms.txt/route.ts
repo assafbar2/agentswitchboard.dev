@@ -6,7 +6,9 @@ import { COMPARE_MAX } from '@/lib/compare-link';
 import { getDropSchedule } from '@/lib/drops';
 import { isNew, NEW_DAYS, newSince } from '@/lib/freshness';
 import { FEATURED_DEFINITION, OFFICIAL_DEFINITION } from '@/lib/public-api';
+import { OPERATOR_ALTERNATIVES } from '@/lib/operator';
 import { MIN_ALTERNATIVES } from '@/lib/related';
+import { OPERATOR_EXAMPLES, PARTS_MAX } from '@/lib/request-parts';
 import { MY_STACK_MAX } from '@/lib/stack-link';
 import { getStacks, stackOfTheWeek } from '@/lib/stacks';
 import { getTasks } from '@/lib/tasks';
@@ -68,6 +70,7 @@ The \`verified\`, \`official\` and \`featured\` flags in search and detail resul
 - Tasks, to start from the job ("query a database"): https://agentswitchboard.dev/tasks (${getTasks().length} tasks, each with the listings that fit it, best first; /browse?task=<slug> filters them)
 - Compare up to ${COMPARE_MAX} listings side by side: https://agentswitchboard.dev/compare?a=<slug>&b=<slug>&c=<slug> (what each does, access, auth, how to connect it, skills; ${comparisons.length} curated comparisons are listed at https://agentswitchboard.dev/compare)
 - The Switchboard, every listing on one board: https://agentswitchboard.dev/switchboard (a jack per listing in a panel per category, Official ones filled in and the latest drop's lit; the board as one image: https://agentswitchboard.dev/switchboard/card.png)
+- The Operator, a whole job in plain words put through to a tool for each part: https://agentswitchboard.dev/operator?q=<request> (for example ?q=${OPERATOR_EXAMPLES[0].replace(/ /g, '+')}; up to ${PARTS_MAX} parts, each with its task, its pick and why, ${OPERATOR_ALTERNATIVES} alternatives and one config to connect them all. Assembled from the task map, no AI: the same request always gets the same stack)
 
 For a job rather than a product name, GET /api/tasks lists the tasks, and
 GET /api/agents?task=<slug> (or \`task\` on the \`search_agents\` MCP tool) returns

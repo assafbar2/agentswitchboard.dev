@@ -82,10 +82,20 @@ export function cleanRequest(raw: unknown): { text: string; cut: boolean } {
   return { text: atWord.replace(/[\s,]+$/, ''), cut: true };
 }
 
+/** The query that carries a request, as read, its spaces "+" and its commas as typed: "q=read+my+Notion,+ping+me". */
+export function operatorQuery(request: string): string {
+  return `q=${encodeURIComponent(cleanRequest(request).text).replace(/%20/g, '+').replace(/%2C/g, ',')}`;
+}
+
 /** /operator for this request. */
 export function operatorHref(request: string): string {
-  const { text } = cleanRequest(request);
-  return text ? `/operator?q=${encodeURIComponent(text)}` : '/operator';
+  return cleanRequest(request).text ? `/operator?${operatorQuery(request)}` : '/operator';
+}
+
+/** `request` with one part's words said another way, or null when they aren't in it as read. */
+export function rephrased(request: string, part: string, words: string): string | null {
+  const at = part ? request.indexOf(part) : -1;
+  return at < 0 ? null : `${request.slice(0, at)}${words}${request.slice(at + part.length)}`;
 }
 
 /** True when `text` has a word that can say what the job is. */

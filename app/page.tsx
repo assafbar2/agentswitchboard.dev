@@ -13,6 +13,7 @@ import { getReleases, highlightedReleases } from '@/lib/changelog';
 import { dropAdditions, dropHighlights, getDropSchedule } from '@/lib/drops';
 import { isNew, NEW_DAYS, newSince } from '@/lib/freshness';
 import { inlineMarkdownToText } from '@/lib/inline-markdown';
+import { OPERATOR_EXAMPLES, operatorHref } from '@/lib/request-parts';
 import { taskMatches } from '@/lib/search';
 import { getStacks, stackEntries, stackOfTheWeek } from '@/lib/stacks';
 import { getTasks } from '@/lib/tasks';
@@ -21,6 +22,7 @@ import { IconCallout } from '@/components/IconCallout';
 import { StackCallout } from '@/components/StackCallout';
 import { TASK_CHIPS, TaskChips } from '@/components/TaskChips';
 import { TaskSearch, type TaskChoice } from '@/components/TaskSearch';
+import { OperatorBox, OperatorEvents } from '@/components/OperatorBox';
 import { EndpointLink } from '@/components/EndpointLink';
 import { Highlights } from '@/components/Highlights';
 import { FeaturedAgentCard } from '@/components/FeaturedAgentCard';
@@ -171,6 +173,36 @@ export default async function HomePage() {
             </div>
             <div className="min-w-0 flex-1 lg:pt-[29px]">
               <TaskChips tasks={tasks} from="home" />
+            </div>
+          </div>
+        </section>
+
+        {/* ── Ask the switchboard: a whole job, a tool for each part ── */}
+        <section aria-labelledby="ask-the-switchboard" className="border-b border-[var(--dir-ink)]!">
+          <div className="container-wide flex flex-col gap-3 py-6 lg:flex-row lg:gap-12">
+            <div className="w-full lg:w-[420px] lg:flex-none">
+              <OperatorBox tasks={taskChoices} label="Ask the switchboard" headingId="ask-the-switchboard" from="home" />
+            </div>
+            <div className="min-w-0 flex-1 lg:pt-[29px]">
+              <p className="text-[17px] font-bold leading-snug">
+                The operator takes the whole job and puts each part through to a tool, with one config to connect them all.
+              </p>
+              <p className="mt-1 text-[15px] text-[var(--dir-muted)]">Assembled from the directory&apos;s task map — no AI guesses.</p>
+              <OperatorEvents from="home">
+                <ul className="mt-2">
+                  {OPERATOR_EXAMPLES.slice(1).map((request, i) => (
+                    <li key={request}>
+                      <Link href={operatorHref(request)} data-example={i + 2} className="dir-row max-sm:items-end">
+                        <span className="dir-row-name max-sm:whitespace-normal">&ldquo;{request}&rdquo;</span>
+                        <span className="dir-row-leader" aria-hidden="true" />
+                        <span className="dir-row-meta" aria-hidden="true">
+                          →
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </OperatorEvents>
             </div>
           </div>
         </section>
@@ -410,6 +442,22 @@ export default async function HomePage() {
               </Link>
             </div>
           )}
+
+          <div className="mb-8">
+            <div className="agent-section-title">ask the switchboard</div>
+            {OPERATOR_EXAMPLES.map((request) => (
+              <Link key={request} href={operatorHref(request)} className="agent-row agent-row-stack no-underline hover:underline">
+                <span className="agent-accent">{operatorHref(request)}</span>
+                <span className="agent-dim">{request}</span>
+                <span className="agent-dim" />
+              </Link>
+            ))}
+            <Link href="/operator" className="agent-row no-underline hover:underline">
+              <span className="agent-accent">/operator</span>
+              <span className="agent-dim">a whole job in plain words, a tool for each part · from the task map, no AI guesses</span>
+              <span className="agent-dim">?q=&lt;request&gt;</span>
+            </Link>
+          </div>
 
           {/* Featured agents */}
           {homepageAgents.length > 0 && (

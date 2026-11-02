@@ -16,7 +16,9 @@ import { compareQuery } from './compare-link';
 import { dropAdditions, dropHighlights, rankAdditions, type Drop } from './drops';
 import type { NewGroup } from './freshness';
 import { inlineMarkdownToText } from './inline-markdown';
+import type { Operator } from './operator';
 import type { Alternative } from './related';
+import { operatorQuery } from './request-parts';
 import { ACCESS_METHOD_LABELS } from './search';
 import { stackQuery, UNTITLED_STACK } from './stack-link';
 import { stackAccessMethods, type Stack, type StackEntry } from './stacks';
@@ -28,7 +30,7 @@ import { formatDay, joinList, pluralize } from './utils';
  * Hash of lib/og.tsx and assets/fonts/, so a redesigned card gets new URLs.
  * lib/share-cards.test.ts prints the new value whenever either changes.
  */
-export const CARD_DESIGN = '145196b1';
+export const CARD_DESIGN = 'e2bbf5fa';
 
 export const CARD_SIZE = { width: 1200, height: 630 } as const;
 
@@ -167,6 +169,19 @@ export interface BoardCard {
   drop: string | null;
   /** Each panel's jacks, as lib/board.ts panelCode writes them. */
   panels: string[];
+}
+
+export interface OperatorCard {
+  /** The example /operator opens with, as typed; a visitor's own request is never drawn. */
+  example: string | null;
+  /** The stack's listing names, in order. */
+  names: string[];
+  /** Parts put through to a tool. */
+  jobs: number;
+  /** Their tasks' labels, capitalized, in order, each once. */
+  tasks: string[];
+  /** The stack's icons, in order, each image once. */
+  icons: string[];
 }
 
 /** An entry for Metadata openGraph.images; twitter:image copies it. */
@@ -352,6 +367,18 @@ export function boardCard(board: Board): BoardCard {
   };
 }
 
+/** `operator` as lib/operator.ts putThrough returns it; `example` when its request is /operator's own example. */
+export function operatorCard(operator: Operator, example: boolean): OperatorCard {
+  const tasks = operator.parts.flatMap((p) => (p.pick && p.task ? [p.task.label] : []));
+  return {
+    example: example ? operator.request : null,
+    names: operator.stack.map((a) => a.name),
+    jobs: tasks.length,
+    tasks: [...new Set(tasks.map((label) => `${label.charAt(0).toUpperCase()}${label.slice(1)}`))],
+    icons: distinctIcons(operator.stack),
+  };
+}
+
 export function siteCardImage(card: SiteCard): ShareImage {
   return shareImage('/card.png', card, 'Agent Switchboard — AI Agent Directory');
 }
@@ -434,6 +461,18 @@ export function boardCardImage(card: BoardCard): ShareImage {
   return shareImage('/switchboard/card.png', card, `All ${card.listings} listings on Agent Switchboard as jacks on one board${lit}`);
 }
 
+/** /operator's card shows its example; a request's is drawn when asked for at /operator/card.png?q=…, as a /stack link's is. */
+export function operatorCardImage(request: string | null, card: OperatorCard): ShareImage {
+  const tools = joinList(card.names);
+  return shareImage(
+    request === null ? '/operator/card.png' : `/operator/card.png?${operatorQuery(request)}`,
+    card,
+    card.example
+      ? `Ask the switchboard: “${card.example}” put through to ${tools}, on Agent Switchboard`
+      : `${tools}: ${card.names.length} ${pluralize(card.names.length, 'tool')} for ${card.jobs} ${pluralize(card.jobs, 'job')}, from the Operator on Agent Switchboard`
+  );
+}
+
 function shareImage(
   path: string,
   card:
@@ -450,7 +489,8 @@ function shareImage(
     | TasksCard
     | CompareCard
     | ComparisonsCard
-    | BoardCard,
+    | BoardCard
+    | OperatorCard,
   alt: string
 ): ShareImage {
   const v = createHash('sha1').update(JSON.stringify([CARD_DESIGN, card])).digest('hex').slice(0, 8);

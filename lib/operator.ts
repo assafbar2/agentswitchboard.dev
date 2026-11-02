@@ -20,6 +20,7 @@ import { REQUEST_FILLER, requestParts } from './request-parts';
 import { ownWords, sameWord, wordsOf } from './task-match';
 import { whyItFits, type Task } from './tasks';
 import type { Agent } from './types';
+import { joinList } from './utils';
 
 /** Fits offered after a part's pick. */
 export const OPERATOR_ALTERNATIVES = 2;
@@ -48,6 +49,8 @@ export interface OperatorPart {
   alternatives: Agent[];
   /** What the part names that its pick mentions, as typed, words typed next to each other as one: "Notion", "pull requests". */
   named: string[];
+  /** What the part asks for that its pick has: "has a CLI", "is Official". */
+  met: string[];
   /** What the part asks for that no listing for its task has, so the pick goes without it: "No tool for this task has a CLI." */
   unmet: string[];
   /** Why the pick fits the task, from its skills (lib/tasks.ts whyItFits). */
@@ -193,7 +196,7 @@ export function putThrough(raw: unknown, tasks: Task[], catalog: Agent[]): Opera
   const stack: Agent[] = [];
 
   const put = parts.map(({ text: words, task, nearest }): OperatorPart => {
-    const none = { text: words, task, nearest, fits: 0, pick: null, alternatives: [], named: [], unmet: [], why: null };
+    const none = { text: words, task, nearest, fits: 0, pick: null, alternatives: [], named: [], met: [], unmet: [], why: null };
     if (!task) return none;
     const all = taskMatches(catalog, task);
     if (all.length === 0) return none;
@@ -211,10 +214,19 @@ export function putThrough(raw: unknown, tasks: Task[], catalog: Agent[]): Opera
       pick,
       alternatives: ranked.filter((a) => a !== pick && met.every((ask) => ask.keeps(a))).slice(0, OPERATOR_ALTERNATIVES),
       named: namedBy(pick),
+      met: met.map((ask) => ask.has),
       unmet,
       why: whyItFits(pick, task),
     };
   });
 
   return { request: text, parts: put, stack, extra, cut };
+}
+
+/** Why a part's pick is first, in a sentence: "Picked because it mentions “Postgres” and has a CLI." */
+export function pickedBecause(part: Pick<OperatorPart, 'named' | 'met'>): string {
+  const because = [...(part.named.length > 0 ? [`mentions ${joinList(part.named.map((n) => `“${n}”`))}`] : []), ...part.met];
+  return because.length > 0
+    ? `Picked because it ${joinList(because)}.`
+    : 'The task’s best fit. Name a product, or ask for an MCP, a CLI or Official, to pick another.';
 }

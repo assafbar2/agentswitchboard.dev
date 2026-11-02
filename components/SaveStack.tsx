@@ -2,10 +2,11 @@
 
 /**
  * Puts a whole stack into My stack (lib/my-stack.ts). On a curated stack page
- * it adds the stack's listings to whatever My stack holds. On a shared stack
- * it makes the visitor's own copy to edit, so the link they opened stays as
- * it was; when My stack already holds other listings, it first asks whether
- * to replace them or add to them. Hidden without JavaScript, like the toggles.
+ * or the Operator's, it adds the stack's listings to whatever My stack holds.
+ * On a shared stack it makes the visitor's own copy to edit, so the link they
+ * opened stays as it was; when My stack already holds other listings, it
+ * first asks whether to replace them or add to them. Hidden without
+ * JavaScript, like the toggles.
  */
 
 import Link from 'next/link';
@@ -44,7 +45,7 @@ function replaceOrAdd(held: number, fresh: number): string {
   return fresh > room ? `${ask} Only ${room} more ${room === 1 ? 'fits' : 'fit'}.` : ask;
 }
 
-export function SaveStack({ items, title, from }: { items: MyStackItem[]; title: string; from: 'stacks' | 'stack' }) {
+export function SaveStack({ items, title, from }: { items: MyStackItem[]; title: string; from: 'stacks' | 'stack' | 'operator' }) {
   const router = useRouter();
   const current = useMyStack();
   const [said, setSaid] = useState('');
@@ -81,7 +82,7 @@ export function SaveStack({ items, title, from }: { items: MyStackItem[]; title:
     setAsking(true);
   }
 
-  if (from === 'stacks') {
+  if (from !== 'stack') {
     return (
       <div className="stk-needs-js mt-4">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
