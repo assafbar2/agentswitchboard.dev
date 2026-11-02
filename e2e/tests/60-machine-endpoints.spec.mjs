@@ -31,6 +31,9 @@ const GUIDED = pick(CATALOG.find((a) => hasMcp(a) && !a.mcpEndpoint && !a.mcpCom
 const NO_MCP = pick(CATALOG.find((a) => !hasMcp(a)), 'without an MCP server');
 const BUNDLE = [GUIDED, HOSTED, NO_MCP, LOCAL];
 const compareQuery = (slugs) => slugs.map((slug, i) => `${'abc'[i]}=${slug}`).join('&');
+// MCP answers are organic: REST bodies minus paid-placement fields, ranked as ?order=organic ranks them.
+const PLACEMENT = new Set(['featured', 'featuredUntil', 'sponsored', 'sponsorLabel', 'tier']);
+const organic = (body) => JSON.parse(JSON.stringify(body, (key, value) => (PLACEMENT.has(key) ? undefined : value)));
 
 async function getJson(request, path) {
   const res = await request.get(path, { headers: H });
@@ -553,7 +556,7 @@ test.describe('MCP server /api/mcp', () => {
     });
     expect(result.isError).toBeFalsy();
     const data = result.structuredContent ?? JSON.parse(result.content[0].text);
-    const { body } = await getJson(request, '/api/agents?access=mcp&auth=none&verified=true&sort=newest&limit=10');
+    const { body } = await getJson(request, '/api/agents?access=mcp&auth=none&verified=true&sort=newest&limit=10&order=organic');
     expect(data.total).toBeGreaterThan(0);
     expect(data.total).toBe(body.total);
     expect(data.agents.map((a) => a.slug)).toEqual(body.agents.map((a) => a.slug));
@@ -563,7 +566,7 @@ test.describe('MCP server /api/mcp', () => {
     const result = await callTool(request, 'search_agents', { task: 'query-a-database', access: ['mcp'], limit: 10 });
     expect(result.isError).toBeFalsy();
     const data = result.structuredContent ?? JSON.parse(result.content[0].text);
-    const { body } = await getJson(request, '/api/agents?task=query-a-database&access=mcp&limit=10');
+    const { body } = await getJson(request, '/api/agents?task=query-a-database&access=mcp&limit=10&order=organic');
     expect(data.total).toBeGreaterThan(0);
     expect(data.total).toBe(body.total);
     expect(data.agents.map((a) => a.slug)).toEqual(body.agents.map((a) => a.slug));
@@ -587,7 +590,7 @@ test.describe('MCP server /api/mcp', () => {
   test('search_agents agrees with GET /api/agents for the same query', async ({ request }) => {
     const result = await callTool(request, 'search_agents', { query: 'email', limit: 10 });
     const data = result.structuredContent ?? JSON.parse(result.content[0].text);
-    const { body } = await getJson(request, '/api/agents?q=email&limit=10');
+    const { body } = await getJson(request, '/api/agents?q=email&limit=10&order=organic');
     expect(data.total).toBe(body.total);
     expect(data.agents.map((a) => a.slug)).toEqual(body.agents.map((a) => a.slug));
   });
@@ -642,7 +645,7 @@ test.describe('MCP server /api/mcp', () => {
   test('search_agents takes since like GET /api/agents, as a count or a day', async ({ request }) => {
     const result = await callTool(request, 'search_agents', { since: 30, sort: 'newest', limit: 10 });
     expect(result.isError).toBeFalsy();
-    const { body } = await getJson(request, '/api/agents?since=30&sort=newest&limit=10');
+    const { body } = await getJson(request, '/api/agents?since=30&sort=newest&limit=10&order=organic');
     expect(result.structuredContent.since).toBe(body.since);
     expect(result.structuredContent.total).toBe(body.total);
     expect(result.structuredContent.agents.map((a) => a.slug)).toEqual(body.agents.map((a) => a.slug));
@@ -658,7 +661,7 @@ test.describe('MCP server /api/mcp', () => {
     const result = await callTool(request, 'compare_agents', { slugs: CURATED.items });
     expect(result.isError).toBeFalsy();
     const { body } = await getJson(request, `/api/compare?${compareQuery(CURATED.items)}`);
-    expect(result.structuredContent).toEqual(body);
+    expect(result.structuredContent).toEqual(organic(body));
 
     const one = await callTool(request, 'compare_agents', { slugs: [CURATED.items[0]] });
     expect(one.isError).toBe(true);
@@ -668,8 +671,8 @@ test.describe('MCP server /api/mcp', () => {
   test('alternatives_to answers as GET /api/agents/<slug>/alternatives does', async ({ request }) => {
     const result = await callTool(request, 'alternatives_to', { slug: WITH_ALTERNATIVES, limit: 3 });
     expect(result.isError).toBeFalsy();
-    const { body } = await getJson(request, `/api/agents/${WITH_ALTERNATIVES}/alternatives?limit=3`);
-    expect(result.structuredContent).toEqual(body);
+    const { body } = await getJson(request, `/api/agents/${WITH_ALTERNATIVES}/alternatives?limit=3&order=organic`);
+    expect(result.structuredContent).toEqual(organic(body));
     expect(body.alternatives).toHaveLength(3);
 
     const unknown = await callTool(request, 'alternatives_to', { slug: 'definitely-not-a-real-agent-asb-e2e' });
@@ -682,7 +685,7 @@ test.describe('MCP server /api/mcp', () => {
     const result = await callTool(request, 'connect_bundle', { slugs });
     expect(result.isError).toBeFalsy();
     const { body } = await getJson(request, `/api/bundle?items=${slugs.join(',')}`);
-    expect(result.structuredContent).toEqual(body);
+    expect(result.structuredContent).toEqual(organic(body));
 
     const none = await callTool(request, 'connect_bundle', { slugs: ['definitely-not-a-real-agent-asb-e2e'] });
     expect(none.isError).toBe(true);

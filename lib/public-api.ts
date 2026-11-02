@@ -28,7 +28,8 @@ export const OFFICIAL_DEFINITION =
 
 /** What `featured: true` means, and how it affects result order. */
 export const FEATURED_DEFINITION =
-  'Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order.';
+  'Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order. ' +
+  'The MCP server and WebMCP ignore it: their results are organic and leave the flag out.';
 
 // ── Access-method input ─────────────────────────────────────────────
 

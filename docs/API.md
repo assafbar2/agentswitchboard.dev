@@ -40,6 +40,7 @@ handshake (e.g. wiring into a connector platform).
 | `auth` | string | — | Only listings with this auth type: `none` (no key or sign-in needed), `apiKey`, `oauth2`, `bearer`. A listing has one, so comma-separated values mean **any of them** (`auth=none,apiKey`). Unknown values are ignored. |
 | `since` | string | — | Only listings added to the directory on or after a day: `YYYY-MM-DD`, or a number of days back with today included (`since=7` is the last 7 days; `7d` works too). Add `sort=newest` for the latest first. Anything else is a `400` with `{ "error": "invalid_since", "message": "…" }`. |
 | `sort` | string | `relevance` | `relevance`: best match first with `q`; without it, best fit first with a `task`, else featured then A→Z. `newest`: most recently added first. `skills`: most skills first. `name`: A→Z. Ties keep the `relevance` order; unknown values mean `relevance`. |
+| `order` | string | — | `organic` ignores featured placement: the default order and ties become A→Z. The MCP server and WebMCP always list this way. |
 | `limit` | integer | `10` | Clamped to `1..50`. |
 | `offset` | integer | `0` | Number of results to skip, for pagination. |
 
@@ -391,7 +392,7 @@ Stdio-only clients: `npx -y mcp-remote https://agentswitchboard.dev/api/mcp`
 | `connect_bundle` | `slugs` (1 to 10, required) | as [`GET /api/bundle`](#rest-connect-bundle--get-apibundle): `{ summary, stackUrl, config, claudeCode, setupPrompt, items[], notes }` |
 | `submit_listing` | `name`, `url`, `description` (required); `access?`, `category?`, `contact_email?` | `{ status, message, issueUrl?, existingSlug? }` |
 
-All tools declare an `outputSchema` and return `structuredContent`. The six
+All tools declare an `outputSchema` and return `structuredContent`. Results are organic: they never list featured listings first, and they leave out `featured` and any other placement field. The six
 read tools are annotated `readOnlyHint: true`, `destructiveHint: false`;
 `submit_listing` is `readOnlyHint: false`, `destructiveHint: true` (it posts a public
 issue the user can't take back), so clients ask before each call. Every tool also

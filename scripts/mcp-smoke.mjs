@@ -65,6 +65,18 @@ check('list_categories', categories.length > 0, `${categories.length} categories
 const search = await client.callTool({ name: 'search_agents', arguments: { query: 'browser automation', limit: 5 } });
 check('search_agents query', search.structuredContent?.agents?.length > 0, `total ${search.structuredContent?.total}`);
 
+// Claude and ChatGPT directories reject paid placement in tool results: no featured-first order, no placement fields.
+const listed = await client.callTool({ name: 'search_agents', arguments: { limit: 20 } });
+const listedNames = (listed.structuredContent?.agents ?? []).map((a) => a.name);
+const placement = ['featured', 'sponsored', 'sponsorLabel', 'tier'];
+check(
+  'search_agents organic',
+  listedNames.length > 0 &&
+    listedNames.every((n, i) => i === 0 || listedNames[i - 1].localeCompare(n) <= 0) &&
+    !placement.some((field) => JSON.stringify(listed.structuredContent).includes(`"${field}"`)),
+  listedNames.slice(0, 3).join(', ')
+);
+
 const category = categories[0]?.slug;
 const official = await client.callTool({
   name: 'search_agents',

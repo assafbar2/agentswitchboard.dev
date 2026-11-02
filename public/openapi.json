@@ -96,6 +96,13 @@
             "schema": { "type": "string", "enum": ["relevance", "newest", "skills", "name"], "default": "relevance" }
           },
           {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "description": "`organic`: ignore featured placement, so the default order and ties are A→Z. WebMCP uses it.",
+            "schema": { "type": "string", "enum": ["organic"] }
+          },
+          {
             "name": "limit",
             "in": "query",
             "required": false,
@@ -209,6 +216,13 @@
             "required": false,
             "description": "Most alternatives to return. Clamped to 1–8. Default 8.",
             "schema": { "type": "integer", "minimum": 1, "maximum": 8, "default": 8 }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "description": "`organic`: break score ties A→Z instead of featured first. WebMCP uses it.",
+            "schema": { "type": "string", "enum": ["organic"] }
           }
         ],
         "responses": {

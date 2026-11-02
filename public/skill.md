@@ -66,7 +66,7 @@ Optional MCP (only if the client speaks MCP, not required): `POST https://agents
 - `authType` on a listing (`apiKey`, `oauth2`, `bearer`, `none`) is how **that product** authenticates — not Switchboard.
 - `verified: true` — Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working. It is Switchboard's own check, not a Meta or Muse certification.
 - `official: true` — Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified. Add `official=true` to search when the user wants the official tool.
-- `featured: true` — Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order.
+- `featured: true` — Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order. The MCP server and WebMCP ignore it: their results are organic and leave the flag out.
 
 ## Hard limits
 

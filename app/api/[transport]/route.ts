@@ -19,6 +19,7 @@ import { getEveryAgent, getAllCategories, getRetiredListings } from '@/lib/catal
 import { COMPARE_QUERY_KEYS } from '@/lib/compare-link';
 import { alternativesDecision, bundleDecision, compareDecision, type Decision } from '@/lib/decide';
 import { absoluteIconUrl } from '@/lib/icons';
+import { organicOrder, withoutPlacement } from '@/lib/organic';
 import { logConsumer } from '@/lib/log';
 import {
   SUBMIT_LISTING_DESCRIPTION,
@@ -34,10 +35,8 @@ import {
   COMPARE_AGENTS_DESCRIPTION,
   COMPARE_SLUGS_INPUT,
   CONNECT_BUNDLE_DESCRIPTION,
-  FEATURED_DEFINITION,
   OFFICIAL_DEFINITION,
   SINCE_INPUT,
-  SORT_INPUT,
   TASK_INPUT,
   VERIFIED_INPUT,
   normalizeAccessMethods,
@@ -109,15 +108,22 @@ function agentSummary(a: Agent) {
     verified: a.verified,
     official: a.official,
     officialVendor: a.officialVendor?.name ?? null,
-    featured: a.featured === true,
     url: `${SITE}/agents/${a.slug}`,
     iconUrl: absoluteIconUrl(a.iconUrl, SITE),
   };
 }
 
-// The three flags, defined once (lib/public-api.ts, components/VerifiedBadge.tsx)
+// The two flags, defined once (lib/public-api.ts, components/VerifiedBadge.tsx)
 // and repeated in the tool descriptions so a model reads them before it calls.
-const LABELS = `${VERIFIED_DEFINITION} ${OFFICIAL_DEFINITION} ${FEATURED_DEFINITION}`;
+const LABELS = `${VERIFIED_DEFINITION} ${OFFICIAL_DEFINITION}`;
+
+// Results are organic (lib/organic.ts): no featured-first order, no placement fields.
+const MCP_SORT_INPUT =
+  'Result order. relevance (default): best match first with search text; without it, best fit first for a task, else A→Z. newest: most recently added first. skills: most skills first. name: A→Z';
+
+async function organicCatalog() {
+  return organicOrder(await getEveryAgent());
+}
 
 // Shared output shape for a single agent summary — reused by the search and
 // get_agent output schemas so declared output always matches agentSummary().
@@ -132,7 +138,6 @@ const agentSummaryShape = {
   verified: z.boolean().describe(VERIFIED_DEFINITION),
   official: z.boolean().describe(OFFICIAL_DEFINITION),
   officialVendor: z.string().nullable(),
-  featured: z.boolean().describe(FEATURED_DEFINITION),
   url: z.string(),
   iconUrl: z
     .string()
@@ -154,7 +159,6 @@ const decisionAgentShape = {
   accessMethods: z.array(z.string()),
   verified: agentSummaryShape.verified,
   official: agentSummaryShape.official,
-  featured: agentSummaryShape.featured,
   authType: z.string(),
 };
 
@@ -169,7 +173,8 @@ const mcpServerShape = z.union([z.object({ url: z.string() }), z.object({ comman
 /** A decision tool's answer as a tool result; a refusal is a tool error with its message. */
 function decisionResult<T extends Record<string, unknown>>(decision: Decision<T>) {
   if (!decision.ok) return { content: [{ type: 'text' as const, text: decision.message }], isError: true };
-  return { content: [{ type: 'text' as const, text: JSON.stringify(decision.body) }], structuredContent: decision.body };
+  const body = withoutPlacement(decision.body);
+  return { content: [{ type: 'text' as const, text: JSON.stringify(body) }], structuredContent: body };
 }
 
 // lib/use-it-now.ts howToUseJson(): the listing page's Use it now panel as data.
@@ -237,7 +242,7 @@ const handler = createMcpHandler(
             .preprocess((value) => (typeof value === 'number' ? String(value) : value), z.string())
             .describe(SINCE_INPUT)
             .optional(),
-          sort: z.enum(SORT_ORDERS).describe(SORT_INPUT).optional(),
+          sort: z.enum(SORT_ORDERS).describe(MCP_SORT_INPUT).optional(),
           limit: z.number().int().min(1).max(50).default(10).describe('Max results per page (1–50)').optional(),
           offset: z.number().int().min(0).default(0).describe('Number of results to skip, for pagination').optional(),
         },
@@ -264,7 +269,7 @@ const handler = createMcpHandler(
         if (sinceText && !firstDay) {
           return { content: [{ type: 'text', text: invalidSinceMessage(sinceText) }], isError: true };
         }
-        const catalog = await getEveryAgent();
+        const catalog = await organicCatalog();
         const agents = filterAgents(picked ? taskMatches(catalog, picked) : catalog, {
           category,
           official,
@@ -412,7 +417,7 @@ const handler = createMcpHandler(
         },
       },
       async ({ slugs }) => {
-        const [catalog, retired] = await Promise.all([getEveryAgent(), getRetiredListings()]);
+        const [catalog, retired] = await Promise.all([organicCatalog(), getRetiredListings()]);
         return decisionResult(compareDecision(slugs, catalog, retired));
       }
     );
@@ -450,7 +455,7 @@ const handler = createMcpHandler(
         },
       },
       async ({ slug, limit }) => {
-        const [catalog, retired] = await Promise.all([getEveryAgent(), getRetiredListings()]);
+        const [catalog, retired] = await Promise.all([organicCatalog(), getRetiredListings()]);
         return decisionResult(alternativesDecision(slug, catalog, retired, limit ?? MAX_ALTERNATIVES));
       }
     );
@@ -491,7 +496,7 @@ const handler = createMcpHandler(
         },
       },
       async ({ slugs }) => {
-        const [catalog, retired] = await Promise.all([getEveryAgent(), getRetiredListings()]);
+        const [catalog, retired] = await Promise.all([organicCatalog(), getRetiredListings()]);
         return decisionResult(bundleDecision(requestedStackSlugs(slugs), catalog, retired));
       }
     );
