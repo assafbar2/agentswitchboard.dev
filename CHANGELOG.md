@@ -4,6 +4,11 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
+## [2.7.3] - 2026-11-02 - Missing spaces
+
+### Fixed
+- Three sentences on [/connect](https://agentswitchboard.dev/connect#troubleshooting) and [/privacy](https://agentswitchboard.dev/privacy) ran two words together after inline code or bold text ("/api/mcpand", "use it.Make", "submit_listingtool"). ([#320](https://github.com/assafbar2/agentswitchboard.dev/pull/320))
+
 ## [2.7.2] - 2026-11-02 - Ready for the connector directories
 
 ### Changed

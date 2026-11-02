@@ -112,7 +112,8 @@ export default function PrivacyPage() {
                 submit an agent
               </Link>
               , or an assistant submits one for you through the MCP server&apos;s{' '}
-              <code className="mono text-sm">submit_listing</code> tool, the description becomes a
+              <code className="mono text-sm">submit_listing</code>{' '}
+              tool, the description becomes a
               public GitHub issue on the directory&apos;s repository, where the review decision is
               posted. Do not put anything in the description you would not want published. Your
               email address, if you give one, is not on the issue: it is sent privately to the
