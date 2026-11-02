@@ -228,7 +228,7 @@ const ACCESS_ALIASES: Record<string, AccessMethod> = {
 };
 
 /** Own keys only, so "constructor" is a search word, not an access method. */
-function accessAlias(word: string): AccessMethod | undefined {
+export function accessAlias(word: string): AccessMethod | undefined {
   return Object.prototype.hasOwnProperty.call(ACCESS_ALIASES, word) ? ACCESS_ALIASES[word] : undefined;
 }
 
