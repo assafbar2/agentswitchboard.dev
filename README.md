@@ -80,6 +80,7 @@ npm run dev          # no env vars needed — content is right here
 | `npx tsx scripts/check-links.ts` | link-rot sweep |
 | `npx tsx scripts/cms.ts` | content ops: find / feature / update / unpublish |
 | `npx tsx scripts/weekly-drop.ts` | batch-add agents (see file header) |
+| `npx tsx scripts/drop-impact.ts` | what a content change does elsewhere on the site, compared with `origin/main` |
 
 Stack: Next.js (App Router) · Tailwind · file-based catalog · deployed on Vercel.
 
