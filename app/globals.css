@@ -669,6 +669,23 @@ body {
   border-bottom: none;
 }
 
+/* A row led by a long path, such as a Try it link with its query: on a phone the
+   path gets its own line and may break anywhere, so it can't widen the page. */
+@media (max-width: 639px) {
+  [data-view="agent"] .agent-row-stack {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.125rem;
+  }
+
+  [data-view="agent"] .agent-row-stack > :empty {
+    display: none;
+  }
+
+  [data-view="agent"] .agent-row-stack .agent-accent {
+    overflow-wrap: anywhere;
+  }
+}
+
 [data-view="agent"] .agent-section-title {
   font-size: 0.6875rem;
   text-transform: uppercase;

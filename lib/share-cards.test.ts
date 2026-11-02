@@ -26,6 +26,8 @@ import {
   taskCardImage,
   tasksCard,
   tasksCardImage,
+  whatsNewCard,
+  whatsNewCardImage,
 } from './share-cards';
 import type { Task } from './tasks';
 import type { Agent, Category } from './types';
@@ -190,6 +192,33 @@ describe('newCard', () => {
     const image = newCardImage(newCard(groups, '2026-10-04', catalog));
     expect(image.url).toMatch(/^\/new\/card\.png\?v=[0-9a-f]{8}$/);
     expect(image.alt).toBe('3 listings added to Agent Switchboard since Oct 4, 2026');
+  });
+});
+
+describe('whatsNewCard', () => {
+  const release = {
+    version: '2.5.0',
+    date: '2026-11-02',
+    title: 'Come back',
+    highlights: ['See what is `new`.', 'Filter the [log](https://agentswitchboard.dev/changelog).', 'Follow.', 'Fourth.'].map(
+      (text) => ({ text, tryIt: '/new' })
+    ),
+    sections: [],
+  };
+
+  it("shows the release and its first three highlights as plain text", () => {
+    expect(whatsNewCard(release)).toEqual({
+      version: '2.5.0',
+      title: 'Come back',
+      date: 'Nov 2, 2026',
+      lines: ['See what is new.', 'Filter the log.', 'Follow.'],
+    });
+  });
+
+  it('is served at its own versioned card URL', () => {
+    const image = whatsNewCardImage(whatsNewCard(release));
+    expect(image.url).toMatch(/^\/whats-new\/card\.png\?v=[0-9a-f]{8}$/);
+    expect(image.alt).toBe("What's new on Agent Switchboard: 2.5.0, Come back");
   });
 });
 

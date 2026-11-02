@@ -2,16 +2,30 @@
 
 Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first. The site shows the same list at [agentswitchboard.dev/changelog](https://agentswitchboard.dev/changelog), followed by every change to the directory itself.
 
-Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops).
+Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
 ## [2.5.0] - 2026-11-02 - Come back
+
+### Highlights
+- See everything added to the directory in the last 30 days on one page, grouped by the weekly drop that brought it in. [Try it](https://agentswitchboard.dev/new)
+- Spot new listings by their New tag, and see how many listings each category gained in the last 30 days. [Try it](https://agentswitchboard.dev/categories/infrastructure)
+- Filter the directory's change log to what was added, updated or removed, in one category or all, and link the result. [Try it](https://agentswitchboard.dev/changelog?action=added&category=infrastructure#directory-changes)
+- Catch up on what each release lets you do, with a link to try it, and follow every release and weekly drop in your feed reader. [Try it](https://agentswitchboard.dev/whats-new#follow)
 
 ### Added
 - New listings: [/new](https://agentswitchboard.dev/new) puts everything added to the directory in the last 30 days on one page, grouped by the weekly drop that brought it in, newest first, each group linking its drop. On November 2 that is 302 listings from five drops, 100 of them official. The page has its own share card and a text-only view, and the homepage, footer, [/drops](https://agentswitchboard.dev/drops), /changelog, llms.txt, index.md and /for-agents link it. ([#305](https://github.com/assafbar2/agentswitchboard.dev/pull/305))
 - A New tag on the cards of listings added in the last 30 days, on /browse, on category, task, stack and alternatives pages, and under Related Agents. A category page says how many of its listings are new and links them, newest first: [Infrastructure & Ops](https://agentswitchboard.dev/categories/infrastructure) reads "105 new in 30 days". ([#305](https://github.com/assafbar2/agentswitchboard.dev/pull/305))
 - Filters for the directory's change log on [/changelog](https://agentswitchboard.dev/changelog): show only what was added, updated or removed, in one category or all, each with how many changes it keeps. The address keeps the choice (`/changelog?action=removed&category=infrastructure`), so a filtered log can be linked; with JavaScript off, the whole log shows as before. ([#305](https://github.com/assafbar2/agentswitchboard.dev/pull/305))
+- What's new: [/whats-new](https://agentswitchboard.dev/whats-new) says what each release since 2.2.0 lets you do, one line per feature, each with a Try it link to the page where you can try it, and links each release's full notes on /changelog. For 30 days after a release, the homepage opens with its highlights; after that, one line links /whats-new. The page has its own share card, with the latest release's first three highlights, and a text-only view; the footer, /changelog, llms.txt, index.md and /for-agents link it. Each Try it link is checked against the pages the site generates before it goes live, so none leads to a missing page. ([#306](https://github.com/assafbar2/agentswitchboard.dev/pull/306))
+- Feeds of every release and weekly drop, newest first, for feed readers: [/feed.xml](https://agentswitchboard.dev/feed.xml) (RSS) and [/atom.xml](https://agentswitchboard.dev/atom.xml) (Atom). A release's entry lists its highlights with their Try it links; a drop's names the listings it added, updated and removed. Every page points feed readers to them, and /whats-new and the footer link them. ([#306](https://github.com/assafbar2/agentswitchboard.dev/pull/306))
 
 ## [2.4.0] - 2026-11-02 - Decide & act
+
+### Highlights
+- Start using a listing from its page: copy its MCP client config, add it to Cursor or Claude in one click, or copy its install command. [Try it](https://agentswitchboard.dev/agents/figma-mcp-server)
+- Put up to three listings side by side, with what sets each one apart. [Try it](https://agentswitchboard.dev/compare/firecrawl-vs-crawl4ai-vs-jina-reader)
+- Browse curated comparisons of close alternatives, each saying what they share and where they differ. [Try it](https://agentswitchboard.dev/compare)
+- Let your assistant set a listing up for you: the directory's MCP tool `get_agent` returns its ready-made client config and install command. [Try it](https://agentswitchboard.dev/connect)
 
 ### Added
 - "Use it now" on listing pages, under the description: how to start using the listing, taken from its own docs. Its "Try this first" prompts come first, then a part for each way it can be used. An MCP server gets its client config to copy, Add to Cursor and Add to Claude buttons, the Claude Code command, and the address to add in Grok or ChatGPT (Figma's is `https://mcp.figma.com/mcp`); a server whose address isn't known yet gets a prompt to paste into your coding agent instead. A CLI gets its install command (Claude Code: `curl -fsSL https://claude.ai/install.sh | bash`), an API its base URL and the sign-in it needs in plain words, each with a link to its setup guide. 118 MCP servers have their address or launch command, 99 CLIs their install command and 102 APIs their base URL, each copied from the product's docs and checked against them; 316 listings link their setup guide. Nothing is filled in by guesswork: a listing without these details links to its own page. Every command is shown in full, so it can be copied by hand with JavaScript off, and the text-only view lists the same details. ([#302](https://github.com/assafbar2/agentswitchboard.dev/pull/302))
@@ -21,6 +35,13 @@ Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes 
 - Curated comparisons: [/compare](https://agentswitchboard.dev/compare) lists 13 sets of close alternatives, each on its own page with one line on what they share and where they differ, from [Deepgram vs AssemblyAI](https://agentswitchboard.dev/compare/deepgram-vs-assemblyai) to [Firecrawl vs Crawl4AI vs Jina Reader](https://agentswitchboard.dev/compare/firecrawl-vs-crawl4ai-vs-jina-reader). A listing's page links the comparisons it is in, and the footer links /compare. Curated pages are in the sitemap; any other mix is kept out of search results. ([#304](https://github.com/assafbar2/agentswitchboard.dev/pull/304))
 
 ## [2.3.0] - 2026-11-01 - Find it faster
+
+### Highlights
+- Start from the job, not a product name: say what you need done and get the tools that do it, best fit first. [Try it](https://agentswitchboard.dev/#i-need-an-agent-to)
+- Browse tasks, from querying a database to taking payments, each with the listings that fit it and why. [Try it](https://agentswitchboard.dev/tasks)
+- Get suggestions as you type in the search box: listings with their icons, then categories, vendors and tasks. [Try it](https://agentswitchboard.dev/browse)
+- Narrow a search to Verified listings, or to those you can try without a key or sign-in, and sort by newest or most skills. [Try it](https://agentswitchboard.dev/browse?q=postgres&verified=1&auth=none)
+- When a search finds nothing, see the nearest spelling and which words or filters to drop. [Try it](https://agentswitchboard.dev/browse?q=postgress)
 
 ### Added
 - Search filters for **Verified** and **No auth needed** (listings you can try without a key or sign-in) beside Official on [/browse](https://agentswitchboard.dev/browse), and a Sort menu: best match, newest, most skills or A–Z. Under the result count, a line shows how many of the results each filter would keep: a search for postgres reads "6 Official · all Verified · 3 No auth needed · 4 API · 15 MCP · 8 CLI". ([#296](https://github.com/assafbar2/agentswitchboard.dev/pull/296))
@@ -35,6 +56,12 @@ Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes 
 - The MCP server's manifest at `/.well-known/mcp.json` gave an old version number, and the OpenAPI document listed three MCP tools instead of four. ([#296](https://github.com/assafbar2/agentswitchboard.dev/pull/296))
 
 ## [2.2.0] - 2026-11-01 - Share & discover
+
+### Highlights
+- Browse each weekly drop: what it added, Official listings first, and what it updated and removed. [Try it](https://agentswitchboard.dev/drops)
+- Copy a ready-made first prompt from a listing's page, built from one of its own skills. [Try it](https://agentswitchboard.dev/agents/box-mcp)
+- See a listing's closest alternatives, each saying what it has in common with it. [Try it](https://agentswitchboard.dev/agents/firecrawl/alternatives)
+- Pick up a stack: tools that work together for one job, in order, each saying what it does there. [Try it](https://agentswitchboard.dev/stacks/research-analyst)
 
 ### Added
 - Changelog: every site release is now recorded here and shown on [/changelog](https://agentswitchboard.dev/changelog), above the directory's own change log. Earlier versions were reconstructed from the git history. ([#287](https://github.com/assafbar2/agentswitchboard.dev/pull/287))

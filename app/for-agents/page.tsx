@@ -303,7 +303,7 @@ GET /api/tasks/<slug>
               </Link>
             </li>
             <li>
-              <span className="font-bold">→ What&apos;s new, batch by batch:</span>{' '}
+              <span className="font-bold">→ Weekly drops, the new listings batch by batch:</span>{' '}
               <Link href="/drops" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
                 https://agentswitchboard.dev/drops
               </Link>
@@ -315,6 +315,21 @@ GET /api/tasks/<slug>
               </Link>
               , grouped by drop; <code className="font-bold">GET /api/agents?sort=newest</code> lists the latest
               additions first
+            </li>
+            <li>
+              <span className="font-bold">→ What&apos;s new on the site, release by release:</span>{' '}
+              <Link href="/whats-new" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
+                https://agentswitchboard.dev/whats-new
+              </Link>
+              , each feature with the page to try it; every release and weekly drop as a feed at{' '}
+              <EndpointLink href="/feed.xml" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
+                /feed.xml
+              </EndpointLink>{' '}
+              (RSS) or{' '}
+              <EndpointLink href="/atom.xml" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
+                /atom.xml
+              </EndpointLink>{' '}
+              (Atom)
             </li>
             <li>
               <span className="font-bold">→ Alternatives to a listing:</span>{' '}

@@ -76,6 +76,8 @@ export const config = {
     '/skill.md',
     '/SKILL.md',
     '/openapi.json',
+    '/feed.xml',
+    '/atom.xml',
     '/.well-known/:path*',
     '/compare/:pair',
   ],

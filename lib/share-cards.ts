@@ -9,10 +9,12 @@
  */
 
 import { createHash } from 'crypto';
+import type { Release } from './changelog';
 import { pairPath } from './compare';
 import { compareQuery } from './compare-link';
 import { dropAdditions, dropHighlights, rankAdditions, type Drop } from './drops';
 import type { NewGroup } from './freshness';
+import { inlineMarkdownToText } from './inline-markdown';
 import type { Alternative } from './related';
 import { ACCESS_METHOD_LABELS } from './search';
 import { stackAccessMethods, type Stack, type StackEntry } from './stacks';
@@ -24,7 +26,7 @@ import { formatDay } from './utils';
  * Hash of lib/og.tsx and assets/fonts/, so a redesigned card gets new URLs.
  * lib/share-cards.test.ts prints the new value whenever either changes.
  */
-export const CARD_DESIGN = '2f790d47';
+export const CARD_DESIGN = '8f42b104';
 
 export const CARD_SIZE = { width: 1200, height: 630 } as const;
 
@@ -77,6 +79,16 @@ export interface NewCard {
   /** A few of them, the biggest vendors first and one per provider. */
   names: string[];
   icons: string[];
+}
+
+export interface WhatsNewCard {
+  version: string;
+  /** The release's title: "Come back". */
+  title: string;
+  /** As the page shows it: "Nov 2, 2026". */
+  date: string;
+  /** Its first highlights, as plain text. */
+  lines: string[];
 }
 
 export interface AlternativesCard {
@@ -157,6 +169,7 @@ const DROP_ICONS = 10;
 const DROP_NAMES = 3;
 const NEW_ICONS = 10;
 const NEW_NAMES = 3;
+const WHATS_NEW_LINES = 3;
 const ALTERNATIVE_NAMES = 3;
 const TASK_ICONS = 10;
 const COMPARISON_ICONS = 10;
@@ -215,6 +228,16 @@ export function newCard(groups: NewGroup[], since: string, catalog: Agent[]): Ne
     since: formatDay(since),
     names: dropHighlights(rankAdditions(fresh, catalog), NEW_NAMES).map((a) => a.name),
     icons: sampleIcons(fresh, catalog, NEW_ICONS),
+  };
+}
+
+/** The newest release with highlights, as /whats-new opens with it. */
+export function whatsNewCard(release: Release): WhatsNewCard {
+  return {
+    version: release.version,
+    title: release.title,
+    date: formatDay(release.date),
+    lines: release.highlights.slice(0, WHATS_NEW_LINES).map((h) => inlineMarkdownToText(h.text)),
   };
 }
 
@@ -314,6 +337,10 @@ export function newCardImage(card: NewCard): ShareImage {
   return shareImage('/new/card.png', card, `${card.added} listings added to Agent Switchboard since ${card.since}`);
 }
 
+export function whatsNewCardImage(card: WhatsNewCard): ShareImage {
+  return shareImage('/whats-new/card.png', card, `What's new on Agent Switchboard: ${card.version}, ${card.title}`);
+}
+
 export function alternativesCardImage(slug: string, card: AlternativesCard): ShareImage {
   return shareImage(
     `/agents/${slug}/alternatives/card.png`,
@@ -362,6 +389,7 @@ function shareImage(
     | CategoryCard
     | DropCard
     | NewCard
+    | WhatsNewCard
     | AlternativesCard
     | StackCard
     | StacksCard

@@ -12,10 +12,27 @@ import { cache } from 'react';
 export const RELEASE_SECTIONS = ['Added', 'Changed', 'Fixed', 'Removed', 'Security', 'Directory'] as const;
 export type ReleaseSectionName = (typeof RELEASE_SECTIONS)[number];
 
+/**
+ * Every x.y.0 release from this version on opens with a "### Highlights" list:
+ * one line per feature, each ending in a Try it link. A patch release may have
+ * one too. /whats-new, the homepage and the feeds show those; /changelog shows
+ * the sections below them.
+ */
+export const HIGHLIGHTS_SINCE = '2.2.0';
+/** So the homepage's What's new block stays a glance. */
+export const MAX_HIGHLIGHTS = 5;
+
 export interface ReleaseSection {
   name: ReleaseSectionName;
   /** One inline-Markdown line per bullet (links, `code`, **bold**). */
   items: string[];
+}
+
+export interface Highlight {
+  /** What you can do now, as inline Markdown, without the Try it link. */
+  text: string;
+  /** Where to try it: a path on this site, with any query and hash. */
+  tryIt: string;
 }
 
 export interface Release {
@@ -23,19 +40,31 @@ export interface Release {
   /** YYYY-MM-DD */
   date: string;
   title: string;
+  highlights: Highlight[];
   sections: ReleaseSection[];
 }
 
 const RELEASE_HEADING = /^## \[(\d+\.\d+\.\d+)\] - (\d{4}-\d{2}-\d{2}) - (\S.*)$/;
+const HIGHLIGHTS = 'Highlights';
+const TRY_IT = /^(\S.*?)\s+\[Try it\]\(https:\/\/agentswitchboard\.dev(\/[^\s)]*)\)$/;
 
 function isSectionName(name: string): name is ReleaseSectionName {
   return (RELEASE_SECTIONS as readonly string[]).includes(name);
 }
 
+function toHighlight(line: string, version: string): Highlight {
+  const match = TRY_IT.exec(line);
+  if (!match) {
+    throw new Error(`CHANGELOG.md ${version}: a highlight ends with a [Try it](https://agentswitchboard.dev/…) link: "${line}"`);
+  }
+  return { text: match[1], tryIt: match[2] };
+}
+
 export function parseChangelog(markdown: string): Release[] {
   const releases: Release[] = [];
+  const highlightLines = new Map<Release, string[]>();
   let release: Release | null = null;
-  let section: ReleaseSection | null = null;
+  let items: string[] | null = null;
 
   markdown.split('\n').forEach((raw, index) => {
     const line = raw.trimEnd();
@@ -44,8 +73,8 @@ export function parseChangelog(markdown: string): Release[] {
     if (line.startsWith('## ')) {
       const match = RELEASE_HEADING.exec(line);
       if (!match) throw new Error(`${where}: release headings look like "## [1.2.3] - YYYY-MM-DD - Title"`);
-      release = { version: match[1], date: match[2], title: match[3].trim(), sections: [] };
-      section = null;
+      release = { version: match[1], date: match[2], title: match[3].trim(), highlights: [], sections: [] };
+      items = null;
       releases.push(release);
       return;
     }
@@ -54,26 +83,36 @@ export function parseChangelog(markdown: string): Release[] {
 
     if (line.startsWith('### ')) {
       const name = line.slice(4).trim();
-      if (!isSectionName(name)) {
-        throw new Error(`${where}: unknown section "${name}" (use ${RELEASE_SECTIONS.join(', ')})`);
+      if (name === HIGHLIGHTS) {
+        if (release.sections.length > 0 || highlightLines.has(release)) {
+          throw new Error(`${where}: "### ${HIGHLIGHTS}" comes once, before the other sections`);
+        }
+        items = [];
+        highlightLines.set(release, items);
+        return;
       }
-      section = { name, items: [] };
+      if (!isSectionName(name)) {
+        throw new Error(`${where}: unknown section "${name}" (use ${HIGHLIGHTS}, ${RELEASE_SECTIONS.join(', ')})`);
+      }
+      const section: ReleaseSection = { name, items: [] };
       release.sections.push(section);
+      items = section.items;
       return;
     }
     if (line.startsWith('- ')) {
-      if (!section) throw new Error(`${where}: a bullet needs a "### Section" heading above it`);
-      section.items.push(line.slice(2).trim());
+      if (!items) throw new Error(`${where}: a bullet needs a "### Section" heading above it`);
+      items.push(line.slice(2).trim());
       return;
     }
     // An indented line continues the bullet above it.
-    if (/^\s+\S/.test(line) && section && section.items.length > 0) {
-      section.items[section.items.length - 1] += ` ${line.trim()}`;
+    if (/^\s+\S/.test(line) && items && items.length > 0) {
+      items[items.length - 1] += ` ${line.trim()}`;
       return;
     }
     if (line.trim() !== '') throw new Error(`${where}: expected a "### Section" heading or a "- " bullet`);
   });
 
+  for (const [r, lines] of highlightLines) r.highlights = lines.map((line) => toHighlight(line, r.version));
   return releases;
 }
 
@@ -95,6 +134,13 @@ export function changelogProblems(releases: Release[]): string[] {
     if (r.sections.length === 0 || r.sections.some((s) => s.items.length === 0)) {
       problems.push(`${r.version}: every release and section needs at least one bullet`);
     }
+    const isPatch = r.version.split('.')[2] !== '0';
+    if (!isPatch && compareVersions(r.version, HIGHLIGHTS_SINCE) >= 0 && r.highlights.length === 0) {
+      problems.push(`${r.version}: every x.y.0 release from ${HIGHLIGHTS_SINCE} on opens with "### ${HIGHLIGHTS}"`);
+    }
+    if (r.highlights.length > MAX_HIGHLIGHTS) {
+      problems.push(`${r.version}: ${r.highlights.length} highlights; keep it to ${MAX_HIGHLIGHTS}`);
+    }
     const older = releases[i + 1];
     if (!older) return;
     if (compareVersions(r.version, older.version) <= 0) {
@@ -111,4 +157,22 @@ export const getReleases = cache((): Release[] =>
 
 export function releaseAnchor(version: string): string {
   return `v${version.replaceAll('.', '-')}`;
+}
+
+/** The releases /whats-new shows, newest first: those with highlights. */
+export function highlightedReleases(releases: Release[]): Release[] {
+  return releases.filter((r) => r.highlights.length > 0);
+}
+
+/**
+ * Try it links whose page the build didn't generate. `pages` holds every
+ * path the build prerendered or serves without parameters (scripts/check-try-links.ts
+ * reads them from .next); a link's query and hash aren't checked.
+ */
+export function tryItProblems(releases: Release[], pages: ReadonlySet<string>): string[] {
+  return releases.flatMap((r) =>
+    r.highlights
+      .filter((h) => !pages.has(new URL(h.tryIt, 'https://agentswitchboard.dev').pathname))
+      .map((h) => `${r.version}: Try it ${h.tryIt} is not a page the build generates`)
+  );
 }

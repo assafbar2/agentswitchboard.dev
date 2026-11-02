@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { EndpointLink } from '@/components/EndpointLink';
 import { getSiteSettings } from '@/lib/catalog';
 
 const DEFAULT_FOOTER_TEXT = 'The curated directory of AI agents, MCP servers and agent tools.';
@@ -23,7 +24,9 @@ const footerLinks = [
       { href: '/for-agents#mcp', label: 'MCP Server' },
       { href: '/connect', label: 'Use with Grok, Claude, ChatGPT' },
       { href: '/for-agents', label: 'For AI Agents' },
+      { href: '/whats-new', label: "What's New" },
       { href: '/changelog', label: 'Changelog' },
+      { href: '/feed.xml', label: 'RSS Feed', endpoint: true },
       { href: '/pro', label: 'Pro Access' },
       { href: '/advertise', label: 'Advertise' },
     ],
@@ -72,15 +75,21 @@ export async function Footer() {
               <ul>
                 {group.links.map((link) => (
                   <li key={link.href} className="border-b border-[var(--dir-rule)]">
-                    <Link
-                      href={link.href}
-                      {...('external' in link && link.external
-                        ? { target: '_blank', rel: 'noopener noreferrer' }
-                        : {})}
-                      className={`${linkClass} block py-1.5 text-base font-semibold`}
-                    >
-                      {link.label}
-                    </Link>
+                    {'endpoint' in link && link.endpoint ? (
+                      <EndpointLink href={link.href} className={`${linkClass} block py-1.5 text-base font-semibold`}>
+                        {link.label}
+                      </EndpointLink>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        {...('external' in link && link.external
+                          ? { target: '_blank', rel: 'noopener noreferrer' }
+                          : {})}
+                        className={`${linkClass} block py-1.5 text-base font-semibold`}
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
