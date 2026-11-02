@@ -69,3 +69,39 @@ export function clientIp(headers: HeaderSource): string {
   const forwarded = header(headers, 'x-forwarded-for')?.split(',')[0]?.trim();
   return forwarded || header(headers, 'x-real-ip')?.trim() || 'unknown';
 }
+
+/**
+ * Anthropic's published outbound range for MCP tool calls, stable and
+ * announced before it changes: https://platform.claude.com/docs/en/api/ip-addresses.
+ * Every Claude user of a directory-listed connector arrives from these
+ * addresses, so they get a larger per-IP budget than a single client.
+ * OpenAI's ChatGPT ranges are hundreds of small prefixes that change without
+ * a schedule, so they are not listed here.
+ */
+export const ASSISTANT_PLATFORM_CIDRS = ['160.79.104.0/21'] as const;
+
+function ipv4ToInt(ip: string): number | null {
+  const parts = ip.split('.');
+  if (parts.length !== 4) return null;
+  let n = 0;
+  for (const part of parts) {
+    if (!/^\d{1,3}$/.test(part) || Number(part) > 255) return null;
+    n = n * 256 + Number(part);
+  }
+  return n;
+}
+
+/** Whether an IPv4 address falls inside a CIDR block; false for anything unparseable. */
+export function inCidr(ip: string, cidr: string): boolean {
+  const [base, bitsText] = cidr.split('/');
+  const addr = ipv4ToInt(ip);
+  const start = ipv4ToInt(base);
+  const bits = Number(bitsText);
+  if (addr === null || start === null || !Number.isInteger(bits) || bits < 0 || bits > 32) return false;
+  const size = 2 ** (32 - bits);
+  return Math.floor(addr / size) === Math.floor(start / size);
+}
+
+export function isAssistantPlatformIp(ip: string): boolean {
+  return ASSISTANT_PLATFORM_CIDRS.some((cidr) => inCidr(ip, cidr));
+}

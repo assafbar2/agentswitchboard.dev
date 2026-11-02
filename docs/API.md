@@ -392,7 +392,10 @@ Stdio-only clients: `npx -y mcp-remote https://agentswitchboard.dev/api/mcp`
 | `submit_listing` | `name`, `url`, `description` (required); `access?`, `category?`, `contact_email?` | `{ status, message, issueUrl?, existingSlug? }` |
 
 All tools declare an `outputSchema` and return `structuredContent`. The six
-read tools are annotated `readOnlyHint: true`. A request a decision tool can't
+read tools are annotated `readOnlyHint: true`, `destructiveHint: false`;
+`submit_listing` is `readOnlyHint: false`, `destructiveHint: true` (it posts a public
+issue the user can't take back), so clients ask before each call. Every tool also
+carries its `title` in `annotations`. A request a decision tool can't
 answer (fewer than two listings to compare, an unknown slug, no listing in a
 bundle) is a tool error whose message says what to do next.
 
@@ -405,7 +408,9 @@ privately to the maintainer, never onto the issue. Limits: 5 per caller IP per
 hour, one per URL per day.
 
 **Rate limits.** 300 requests per minute per IP (HTTP 429 with `Retry-After`
-past that) and a 64 KB request body cap. Assistant platforms call from shared
+past that), 3,000 per IP from Anthropic's published outbound range
+(`160.79.104.0/21`), and a 64 KB request body cap. The endpoint answers CORS
+preflights for any origin. Assistant platforms call from shared
 server IPs, so back off and retry on 429.
 
 **Connecting from an assistant.** Step-by-step for Grok (grok.com connectors),

@@ -322,6 +322,37 @@ export default function ConnectPage() {
             </p>
           </section>
 
+          <section id="troubleshooting">
+            <h2 className="dir-bar mb-3">Troubleshooting</h2>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>
+                <strong>The app can&rsquo;t connect.</strong> Check the address ends in{' '}
+                <code className="mono text-sm">/api/mcp</code> and authentication is set to none. Opening
+                it in a browser shows &ldquo;Method not allowed&rdquo;: that is expected, because MCP
+                clients send POST requests.
+              </li>
+              <li>
+                <strong>The assistant doesn&rsquo;t use it.</strong> Make sure the connector is turned on
+                for the chat, or name it: &ldquo;Use Agent Switchboard to find&hellip;&rdquo;.
+              </li>
+              <li>
+                <strong>&ldquo;No agent with slug&rdquo;.</strong> Slugs come from search results; ask
+                it to search first.
+              </li>
+              <li>
+                <strong>HTTP 429.</strong> Too many requests from one address in a minute. Wait for the
+                seconds in <code className="mono text-sm">Retry-After</code> and try again.
+              </li>
+              <li>
+                <strong>Something else.</strong> Email{' '}
+                <Link href="/contact" className={link}>
+                  support
+                </Link>{' '}
+                with the app you use and what it showed.
+              </li>
+            </ul>
+          </section>
+
           <section id="limits">
             <h2 className="dir-bar mb-3">Limits and privacy</h2>
             <p>

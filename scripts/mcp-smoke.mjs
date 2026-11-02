@@ -36,8 +36,27 @@ check(
   names.join(', ')
 );
 for (const t of tools) {
-  check(`${t.name} readOnlyHint`, t.annotations?.readOnlyHint === (t.name !== 'submit_listing'));
+  const write = t.name === 'submit_listing';
+  const a = t.annotations ?? {};
+  check(`${t.name} readOnlyHint`, a.readOnlyHint === !write);
+  // Claude and ChatGPT directory review: a title, and every hint an explicit boolean.
+  check(
+    `${t.name} directory annotations`,
+    Boolean(t.title) && a.title === t.title && a.destructiveHint === write && typeof a.openWorldHint === 'boolean',
+    `destructiveHint ${a.destructiveHint}, openWorldHint ${a.openWorldHint}`
+  );
 }
+
+const preflight = await fetch(url, {
+  method: 'OPTIONS',
+  headers: { ...headers, Origin: 'https://example.com', 'Access-Control-Request-Method': 'POST' },
+});
+check(
+  'CORS preflight',
+  preflight.ok && preflight.headers.get('access-control-allow-origin') === '*' &&
+    /mcp-protocol-version/i.test(preflight.headers.get('access-control-allow-headers') ?? ''),
+  `HTTP ${preflight.status}`
+);
 
 const cats = await client.callTool({ name: 'list_categories', arguments: {} });
 const categories = cats.structuredContent?.categories ?? [];

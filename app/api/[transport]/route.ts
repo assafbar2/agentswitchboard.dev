@@ -44,7 +44,7 @@ import {
   unknownTaskMessage,
   howToUseFields,
 } from '@/lib/public-api';
-import { clientIp, fixedWindowLimiter } from '@/lib/rate-limit';
+import { clientIp, fixedWindowLimiter, isAssistantPlatformIp } from '@/lib/rate-limit';
 import { MAX_ALTERNATIVES } from '@/lib/related';
 import {
   AUTH_TYPES,
@@ -66,10 +66,25 @@ import { howToUseJson } from '@/lib/use-it-now';
  * this is sized for many of their users at once, not for one person.
  */
 const REQUESTS_PER_MINUTE = 300;
+/** Per IP in a platform's published egress range (lib/rate-limit.ts), shared by all of its users. */
+const PLATFORM_REQUESTS_PER_MINUTE = 3000;
 const MAX_BODY_BYTES = 64 * 1024;
 const requestLimiter = fixedWindowLimiter({ limit: REQUESTS_PER_MINUTE, windowMs: 60_000 });
+const platformLimiter = fixedWindowLimiter({ limit: PLATFORM_REQUESTS_PER_MINUTE, windowMs: 60_000 });
 
-const READ_ONLY = { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false };
+// Directory reviewers (Claude, ChatGPT) read the hints and the title from annotations, so every tool sets all of them.
+function readOnly(title: string) {
+  return { title, readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false };
+}
+
+// Browser-based MCP clients call cross-origin. No cookies or credentials are involved, so any origin may.
+const CORS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Accept, Authorization, Mcp-Session-Id, Mcp-Protocol-Version, Last-Event-ID',
+  'Access-Control-Expose-Headers': 'Mcp-Session-Id, Mcp-Protocol-Version',
+  'Access-Control-Max-Age': '86400',
+};
 
 const INSTRUCTIONS =
   'Agent Switchboard is a curated directory of AI agents, MCP servers, and agentic tools. ' +
@@ -77,7 +92,7 @@ const INSTRUCTIONS =
   'since keeps what was added lately; sort by newest or most skills), get_agent for one listing, and list_categories for valid category slugs. ' +
   'To help a user choose: compare_agents puts 2 or 3 listings side by side, alternatives_to finds listings that could stand in for one, ' +
   'and connect_bundle turns up to 10 listings into one MCP client config to paste, with how to connect the rest. ' +
-  'Link users to each result\'s url. submit_listing only files a public suggestion for human review; ' +
+  'Each result\'s url is its listing page on the site. submit_listing only files a public suggestion for human review; ' +
   'call it only when the user asks to list a product and has confirmed the details.';
 
 const SITE = 'https://agentswitchboard.dev';
@@ -154,7 +169,7 @@ const mcpServerShape = z.union([z.object({ url: z.string() }), z.object({ comman
 /** A decision tool's answer as a tool result; a refusal is a tool error with its message. */
 function decisionResult<T extends Record<string, unknown>>(decision: Decision<T>) {
   if (!decision.ok) return { content: [{ type: 'text' as const, text: decision.message }], isError: true };
-  return { content: [{ type: 'text' as const, text: JSON.stringify(decision.body, null, 2) }], structuredContent: decision.body };
+  return { content: [{ type: 'text' as const, text: JSON.stringify(decision.body) }], structuredContent: decision.body };
 }
 
 // lib/use-it-now.ts howToUseJson(): the listing page's Use it now panel as data.
@@ -197,7 +212,7 @@ const handler = createMcpHandler(
           'Filter by task, category slug, access methods, official (first-party listings from major vendors), verified, and/or auth type; ' +
           'sort by relevance, newest, most skills, or name. ' +
           LABELS,
-        annotations: READ_ONLY,
+        annotations: readOnly('Search Agents'),
         inputSchema: {
           query: z
             .string()
@@ -272,7 +287,7 @@ const handler = createMcpHandler(
           agents: page.map(agentSummary),
         };
         return {
-          content: [{ type: 'text', text: JSON.stringify(structured, null, 2) }],
+          content: [{ type: 'text', text: JSON.stringify(structured) }],
           structuredContent: structured,
         };
       }
@@ -286,7 +301,7 @@ const handler = createMcpHandler(
           'Full detail for one agent by slug: skills, auth, streaming/push support, tags, provider links, ' +
           'and useItNow: how to start using it (MCP client config, install command, API base URL, setup links). ' +
           LABELS,
-        annotations: READ_ONLY,
+        annotations: readOnly('Get Agent Details'),
         inputSchema: {
           slug: z.string().describe('Agent slug, e.g. "playwright-mcp"'),
         },
@@ -330,7 +345,7 @@ const handler = createMcpHandler(
           useItNow: howToUseJson(agent),
         };
         return {
-          content: [{ type: 'text', text: JSON.stringify(structured, null, 2) }],
+          content: [{ type: 'text', text: JSON.stringify(structured) }],
           structuredContent: structured,
         };
       }
@@ -341,7 +356,7 @@ const handler = createMcpHandler(
       {
         title: 'List Categories',
         description: 'All directory categories with live agent counts. Slugs are valid inputs for search_agents.',
-        annotations: READ_ONLY,
+        annotations: readOnly('List Categories'),
         inputSchema: {},
         outputSchema: {
           categories: z.array(
@@ -365,7 +380,7 @@ const handler = createMcpHandler(
           })),
         };
         return {
-          content: [{ type: 'text', text: JSON.stringify(structured, null, 2) }],
+          content: [{ type: 'text', text: JSON.stringify(structured) }],
           structuredContent: structured,
         };
       }
@@ -376,7 +391,7 @@ const handler = createMcpHandler(
       {
         title: 'Compare Agents',
         description: COMPARE_AGENTS_DESCRIPTION,
-        annotations: READ_ONLY,
+        annotations: readOnly('Compare Agents'),
         inputSchema: {
           slugs: z.array(z.string()).min(1).max(COMPARE_QUERY_KEYS.length).describe(COMPARE_SLUGS_INPUT),
         },
@@ -407,7 +422,7 @@ const handler = createMcpHandler(
       {
         title: 'Alternatives To',
         description: ALTERNATIVES_TO_DESCRIPTION,
-        annotations: READ_ONLY,
+        annotations: readOnly('Alternatives To'),
         inputSchema: {
           slug: z.string().describe('Agent slug, e.g. "deepgram"'),
           limit: z
@@ -445,7 +460,7 @@ const handler = createMcpHandler(
       {
         title: 'Connect Bundle',
         description: CONNECT_BUNDLE_DESCRIPTION,
-        annotations: READ_ONLY,
+        annotations: readOnly('Connect Bundle'),
         inputSchema: {
           slugs: z.array(z.string()).min(1).max(REQUESTED_MAX).describe(BUNDLE_SLUGS_INPUT),
         },
@@ -486,7 +501,8 @@ const handler = createMcpHandler(
       {
         title: 'Submit a Listing',
         description: SUBMIT_LISTING_DESCRIPTION,
-        annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: true },
+        // It posts a public GitHub issue the user cannot take back, so clients should confirm before each call.
+        annotations: { title: 'Submit a Listing', readOnlyHint: false, destructiveHint: true, idempotentHint: false, openWorldHint: true },
         inputSchema: submitListingInput,
         outputSchema: submitListingOutput,
       },
@@ -494,7 +510,7 @@ const handler = createMcpHandler(
     );
   },
   {
-    serverInfo: { name: 'agentswitchboard', version: '1.7.0' },
+    serverInfo: { name: 'agentswitchboard', version: '1.8.0' },
     instructions: INSTRUCTIONS,
   },
   {
@@ -506,7 +522,12 @@ const handler = createMcpHandler(
 // Wrap the handler to log consumers: UA + JSON-RPC method + tool called.
 // Vercel log explorer: filter `asb_consumer` to see who uses the catalog.
 async function loggedHandler(req: Request): Promise<Response> {
-  const limited = requestLimiter.take(clientIp(req.headers));
+  return withCors(await limitedHandler(req));
+}
+
+async function limitedHandler(req: Request): Promise<Response> {
+  const ip = clientIp(req.headers);
+  const limited = (isAssistantPlatformIp(ip) ? platformLimiter : requestLimiter).take(ip);
   if (!limited.ok) {
     logConsumer('/api/mcp', req, { method: 'rate_limited' });
     return jsonRpcError(429, -32000, 'Rate limit exceeded. Slow down and retry.', {
@@ -548,4 +569,14 @@ function jsonRpcError(
   });
 }
 
-export { loggedHandler as GET, loggedHandler as POST };
+function withCors(res: Response): Response {
+  const headers = new Headers(res.headers);
+  for (const [name, value] of Object.entries(CORS)) headers.set(name, value);
+  return new Response(res.body, { status: res.status, statusText: res.statusText, headers });
+}
+
+function preflight(): Response {
+  return new Response(null, { status: 204, headers: CORS });
+}
+
+export { loggedHandler as GET, loggedHandler as POST, loggedHandler as DELETE, preflight as OPTIONS };
