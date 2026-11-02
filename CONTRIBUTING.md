@@ -118,6 +118,11 @@ load, you declare an access method, and any linked GitHub repo is live (not
 archived, pushed within 12 months). It's re-checked monthly and drops if the
 product stops meeting that bar. `featured` is maintainer-only.
 
+Paid placement never reaches AI assistants. The MCP server and the WebMCP tools
+are always organic: they rank by relevance or A→Z and never return or rank by
+`featured`, `sponsored`, `sponsorLabel` or `tier`, because the Claude and ChatGPT
+connector directories forbid ads and paid placement. See [DISTRIBUTION.md](DISTRIBUTION.md).
+
 ## Official listings
 
 `"official": true` puts an **Official** badge on a listing and includes it in
