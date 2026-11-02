@@ -37,6 +37,8 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://docs.link.com/quickstart/overview",
+  "apiBaseUrl": "https://api.link.com",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -47,5 +49,5 @@
     "api"
   ],
   "createdAt": "2026-08-29T07:00:14.836Z",
-  "updatedAt": "2026-08-29T07:00:14.836Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

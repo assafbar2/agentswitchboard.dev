@@ -17,6 +17,7 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://developers.glean.com/guides/mcp",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -29,5 +30,5 @@
     "browser-extension"
   ],
   "createdAt": "2026-03-22T09:53:04.324Z",
-  "updatedAt": "2026-03-22T09:53:04.324Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

@@ -19,6 +19,7 @@
   "authType": "oauth2",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://docs.cloud.google.com/bigquery/docs/quickstarts/load-data-bq",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -31,5 +32,5 @@
     "mcp"
   ],
   "createdAt": "2026-08-24T19:48:52.220Z",
-  "updatedAt": "2026-10-31T07:10:45.292Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

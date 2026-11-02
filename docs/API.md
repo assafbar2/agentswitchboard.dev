@@ -103,6 +103,19 @@ Full listing for one published agent: skills, `authType` (of the listed
 product, not of Switchboard), homepage, tags, streaming/push flags, and
 `officialVendor` (the vendor's name on an official listing, otherwise `null`).
 
+How to start using it, as the listing page's **Use it now** panel shows it:
+
+- `mcpEndpoint`, `mcpCommand`, `install` (`{ type, command }`),
+  `quickstartUrl`, `apiBaseUrl`: each copied from the vendor's own docs, and
+  `null` when they don't give one.
+- `useItNow`: the panel as data. `tryThisFirst` (prompts built from its
+  skills), then one part per access method it has, `null` for the rest.
+  `mcp` has a ready `clientConfig` (`{ "mcpServers": { … } }`),
+  `cursorInstallUrl`, `claudeConnectorUrl` and `claudeCodeCommand` when the
+  address or command is known, or else a `setupPrompt` for a coding agent;
+  `cli` has the `install` command; `api` has `baseUrl` and `auth` in plain
+  words. Every part has a `docsUrl`: the quickstart page, or the homepage.
+
 ```bash
 curl "https://agentswitchboard.dev/api/agents/agentmail"
 ```
@@ -226,7 +239,7 @@ Stdio-only clients: `npx -y mcp-remote https://agentswitchboard.dev/api/mcp`
 | Tool | Input | Output |
 |---|---|---|
 | `search_agents` | `query?`, `task?`, `category?`, `access?` (enum[]), `official?` (boolean), `verified?` (boolean), `auth?` (enum[]), `sort?` (enum), `limit?` (1–50), `offset?` | `{ total, offset, limit, agents[] }` |
-| `get_agent` | `slug` (required) | full agent detail: skills, auth, streaming/push, tags, links |
+| `get_agent` | `slug` (required) | full agent detail: skills, auth, streaming/push, tags, links, and `useItNow` (how to start using it) |
 | `list_categories` | — | `{ categories: [ { slug, name, description, agentCount } ] }` |
 | `submit_listing` | `name`, `url`, `description` (required); `access?`, `category?`, `contact_email?` | `{ status, message, issueUrl?, existingSlug? }` |
 

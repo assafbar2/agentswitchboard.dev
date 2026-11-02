@@ -13,6 +13,7 @@ import type { Agent, Category } from './types';
 import { BASE_URL } from './env';
 import { absoluteIconUrl } from './icons';
 import { ALL_ACCESS_METHODS, AUTH_TYPES } from './search';
+import { howToUseJson } from './use-it-now';
 
 // ── Label definitions ───────────────────────────────────────────────
 // "Verified" is worded once, in components/VerifiedBadge.tsx
@@ -165,6 +166,19 @@ export function detailAgent(a: Agent) {
     tier: a.tier,
     createdAt: a.createdAt ?? null,
     updatedAt: a.updatedAt ?? null,
+    ...howToUseFields(a),
+    useItNow: howToUseJson(a),
+  };
+}
+
+/** A listing's Use it now fields as published, null when its vendor's docs don't give one. */
+export function howToUseFields(a: Agent) {
+  return {
+    mcpEndpoint: a.mcpEndpoint ?? null,
+    mcpCommand: a.mcpCommand ?? null,
+    install: a.install ?? null,
+    quickstartUrl: a.quickstartUrl ?? null,
+    apiBaseUrl: a.apiBaseUrl ?? null,
   };
 }
 

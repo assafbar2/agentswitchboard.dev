@@ -25,7 +25,8 @@ import {
   stackProblems,
 } from '../lib/stacks';
 import { TASK_BLURB_MAX, TASK_LABEL_MAX, TASK_MAX_KEYWORDS, TASK_MIN_KEYWORDS, taskProblems } from '../lib/tasks';
-import type { Agent, Category } from '../lib/types';
+import { INSTALL_TYPES, type Agent, type Category } from '../lib/types';
+import { USE_IT_COMMAND_MAX, howToUseProblems } from '../lib/use-it-now';
 
 const CONTENT = path.resolve(process.cwd(), 'content');
 const ICONS = path.resolve(process.cwd(), 'public', 'icons');
@@ -74,6 +75,14 @@ const AgentSchema = z
     integrationGuide: z.unknown().optional(),
     supportsStreaming: z.boolean(),
     supportsPushNotifications: z.boolean(),
+    mcpEndpoint: z.string().url().startsWith('https://').optional(),
+    mcpCommand: z.string().max(USE_IT_COMMAND_MAX).optional(),
+    install: z
+      .object({ type: z.enum(INSTALL_TYPES), command: z.string().min(5).max(USE_IT_COMMAND_MAX) })
+      .strict()
+      .optional(),
+    quickstartUrl: z.string().url().startsWith('https://').optional(),
+    apiBaseUrl: z.string().url().startsWith('https://').optional(),
     iconUrl: z.string().url().optional(),
     status: z.enum(['published', 'draft', 'archived']),
     featured: z.boolean(),
@@ -438,6 +447,10 @@ function main() {
       errors++;
     }
     slugs.add(slug);
+    for (const problem of howToUseProblems(result.data)) {
+      console.log(`❌ ${file}: ${problem}`);
+      errors++;
+    }
     if (result.data.status === 'published') published.add(slug);
     if (result.data.status === 'published') {
       listings.push(asListing(result.data));

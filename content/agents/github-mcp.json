@@ -47,6 +47,9 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://api.githubcopilot.com/mcp/",
+  "mcpCommand": "docker run -i --rm -e GITHUB_PERSONAL_ACCESS_TOKEN ghcr.io/github/github-mcp-server",
+  "quickstartUrl": "https://github.com/github/github-mcp-server",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -57,5 +60,5 @@
     "mcp"
   ],
   "createdAt": "2026-04-13T21:38:30.932Z",
-  "updatedAt": "2026-04-13T21:38:30.932Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

@@ -50,6 +50,11 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": true,
+  "install": {
+    "type": "brew",
+    "command": "brew install messagebird/tap/bird"
+  },
+  "quickstartUrl": "https://bird.com/docs/cli",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -61,5 +66,5 @@
     "cli"
   ],
   "createdAt": "2026-10-10T21:22:01.525Z",
-  "updatedAt": "2026-10-10T21:22:01.525Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

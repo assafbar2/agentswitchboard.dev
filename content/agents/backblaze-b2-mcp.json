@@ -37,6 +37,8 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpCommand": "npx -y @backblaze-labs/b2-mcp",
+  "quickstartUrl": "https://github.com/backblaze-labs/b2-mcp",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -47,5 +49,5 @@
     "mcp"
   ],
   "createdAt": "2026-09-02T07:21:11.733Z",
-  "updatedAt": "2026-09-02T07:21:11.733Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

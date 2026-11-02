@@ -37,6 +37,8 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.gong.io/mcp",
+  "quickstartUrl": "https://help.gong.io/docs/create-an-integration-to-connect-to-the-mcp-server",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -48,5 +50,5 @@
     "api"
   ],
   "createdAt": "2026-09-02T07:21:11.745Z",
-  "updatedAt": "2026-09-02T07:21:11.745Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

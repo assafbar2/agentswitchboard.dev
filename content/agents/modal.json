@@ -19,6 +19,7 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://modal.com/docs/guide",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -30,5 +31,5 @@
     "cli"
   ],
   "createdAt": "2026-08-11T00:40:13.004Z",
-  "updatedAt": "2026-08-11T00:40:13.004Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

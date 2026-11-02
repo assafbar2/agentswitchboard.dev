@@ -44,6 +44,7 @@
   "authType": "none",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://amd-gaia.ai/docs/guides/mcp/agent-ui",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -56,5 +57,5 @@
     "cli"
   ],
   "createdAt": "2026-04-25T18:49:57.941Z",
-  "updatedAt": "2026-04-25T18:49:57.941Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

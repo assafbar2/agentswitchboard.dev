@@ -17,6 +17,7 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://developers.make.com/api-documentation/getting-started/making-your-first-api-request",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -29,5 +30,5 @@
     "cli"
   ],
   "createdAt": "2026-03-22T09:53:08.493Z",
-  "updatedAt": "2026-03-22T09:53:08.493Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

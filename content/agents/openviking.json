@@ -38,6 +38,11 @@
   "authType": "none",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npm install -g @openviking/cli"
+  },
+  "quickstartUrl": "https://docs.openviking.ai/en/getting-started/05-cli-setup",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -50,5 +55,5 @@
     "mcp"
   ],
   "createdAt": "2026-07-25T16:22:45.422Z",
-  "updatedAt": "2026-07-25T16:22:45.422Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

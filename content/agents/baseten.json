@@ -38,6 +38,7 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://docs.baseten.co/reference/cli/baseten/overview",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -49,5 +50,5 @@
     "cli"
   ],
   "createdAt": "2026-08-15T07:16:38.709Z",
-  "updatedAt": "2026-08-15T07:16:38.709Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

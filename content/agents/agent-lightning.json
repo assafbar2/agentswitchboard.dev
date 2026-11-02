@@ -38,6 +38,7 @@
   "authType": "none",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://microsoft.github.io/agent-lightning/stable/01-quick-start/",
   "status": "published",
   "featured": true,
   "verified": true,
@@ -49,5 +50,5 @@
     "cli"
   ],
   "createdAt": "2026-09-02T07:21:11.720Z",
-  "updatedAt": "2026-09-02T07:21:11.720Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

@@ -39,6 +39,8 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpCommand": "npx -y @toolbox-sdk/server --prebuilt=postgres --stdio",
+  "quickstartUrl": "https://github.com/googleapis/mcp-toolbox",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -50,5 +52,5 @@
     "cli"
   ],
   "createdAt": "2026-05-13T16:56:42.425Z",
-  "updatedAt": "2026-09-25T23:53:29.654Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

@@ -20,6 +20,10 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://netlify-mcp.netlify.app/mcp",
+  "mcpCommand": "npx -y @netlify/mcp",
+  "quickstartUrl": "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api/",
+  "apiBaseUrl": "https://api.netlify.com/api/v1",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -32,5 +36,5 @@
     "cli"
   ],
   "createdAt": "2026-08-11T00:40:13.011Z",
-  "updatedAt": "2026-08-11T00:40:13.011Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

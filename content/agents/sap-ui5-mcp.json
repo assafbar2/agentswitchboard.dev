@@ -48,6 +48,8 @@
   "authType": "none",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpCommand": "npx -y @ui5/mcp-server",
+  "quickstartUrl": "https://github.com/UI5/mcp-server",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -58,5 +60,5 @@
     "mcp"
   ],
   "createdAt": "2026-10-31T07:10:38.159Z",
-  "updatedAt": "2026-10-31T07:10:38.159Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

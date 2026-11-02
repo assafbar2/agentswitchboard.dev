@@ -20,6 +20,8 @@
   "authType": "bearer",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://docs.devin.ai/api-reference/overview",
+  "apiBaseUrl": "https://api.devin.ai/v3",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -31,5 +33,5 @@
     "browser-extension"
   ],
   "createdAt": "2026-05-22T07:35:03.666Z",
-  "updatedAt": "2026-09-25T23:53:33.400Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

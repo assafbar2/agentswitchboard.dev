@@ -49,6 +49,7 @@
   "authType": "oauth2",
   "supportsStreaming": true,
   "supportsPushNotifications": true,
+  "quickstartUrl": "https://shopify.dev/docs/agents/get-started/quickstart",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -60,5 +61,5 @@
     "mcp"
   ],
   "createdAt": "2026-03-31T00:56:27.374Z",
-  "updatedAt": "2026-07-10T21:07:07.655Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

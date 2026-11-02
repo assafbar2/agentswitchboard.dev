@@ -39,6 +39,9 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.sentry.dev/mcp",
+  "mcpCommand": "npx @sentry/mcp-server",
+  "quickstartUrl": "https://mcp.sentry.dev/",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -49,5 +52,5 @@
     "mcp"
   ],
   "createdAt": "2026-08-06T16:18:17.843Z",
-  "updatedAt": "2026-08-06T16:18:17.843Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

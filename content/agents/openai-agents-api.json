@@ -44,6 +44,7 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": true,
+  "quickstartUrl": "https://developers.openai.com/api/docs/guides/agents-api/tools/mcp",
   "status": "published",
   "featured": true,
   "verified": true,
@@ -55,5 +56,5 @@
     "mcp"
   ],
   "createdAt": "2026-09-13T20:13:54.422Z",
-  "updatedAt": "2026-09-13T20:13:54.422Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

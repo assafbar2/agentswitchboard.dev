@@ -43,6 +43,7 @@
   "authType": "none",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://learn.microsoft.com/en-us/nuget/concepts/nuget-mcp-server",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -53,5 +54,5 @@
     "mcp"
   ],
   "createdAt": "2026-10-31T07:10:38.151Z",
-  "updatedAt": "2026-10-31T07:10:38.151Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

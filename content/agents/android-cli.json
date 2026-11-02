@@ -48,6 +48,11 @@
   "authType": "none",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "binary",
+    "command": "curl -fsSL https://dl.google.com/android/cli/latest/linux_x86_64/install.sh | bash"
+  },
+  "quickstartUrl": "https://developer.android.com/tools/agents/android-cli",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -58,5 +63,5 @@
     "cli"
   ],
   "createdAt": "2026-10-31T07:10:38.144Z",
-  "updatedAt": "2026-10-31T07:10:38.144Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

@@ -18,6 +18,9 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.tavily.com/mcp/",
+  "mcpCommand": "npx -y tavily-mcp@latest",
+  "quickstartUrl": "https://docs.tavily.com/documentation/mcp",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -29,5 +32,5 @@
     "mcp"
   ],
   "createdAt": "2026-03-22T09:53:01.304Z",
-  "updatedAt": "2026-03-22T09:53:01.304Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

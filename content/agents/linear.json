@@ -18,6 +18,8 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://linear.app/developers/graphql",
+  "apiBaseUrl": "https://api.linear.app/graphql",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -29,5 +31,5 @@
     "mcp"
   ],
   "createdAt": "2026-03-22T09:51:53.418Z",
-  "updatedAt": "2026-03-22T09:51:53.418Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

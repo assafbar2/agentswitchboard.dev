@@ -34,11 +34,13 @@ import {
   VERIFIED_INPUT,
   normalizeAccessMethods,
   unknownTaskMessage,
+  howToUseFields,
 } from '@/lib/public-api';
 import { clientIp, fixedWindowLimiter } from '@/lib/rate-limit';
 import { AUTH_TYPES, SORT_ORDERS, filterAgents, searchAgents, sortAgents, taskMatches } from '@/lib/search';
 import { getTask, getTasks } from '@/lib/tasks';
 import type { Agent } from '@/lib/types';
+import { howToUseJson } from '@/lib/use-it-now';
 
 /**
  * Per-IP request budget. Assistant platforms call from shared server IPs, so
@@ -101,6 +103,35 @@ const agentSummaryShape = {
     .nullable()
     .describe("Absolute URL of the listing's 128px PNG icon, served by Agent Switchboard; null when it has none"),
 };
+
+// lib/use-it-now.ts howToUseJson(): the listing page's Use it now panel as data.
+const useItNowShape = z
+  .object({
+    tryThisFirst: z
+      .object({ lead: z.string(), prompts: z.array(z.object({ skill: z.string(), text: z.string() })) })
+      .nullable(),
+    mcp: z
+      .object({
+        endpoint: z.string().nullable(),
+        command: z.string().nullable(),
+        clientConfig: z.object({ mcpServers: z.record(z.string(), z.unknown()) }).nullable(),
+        cursorInstallUrl: z.string().nullable(),
+        claudeConnectorUrl: z.string().nullable(),
+        claudeCodeCommand: z.string().nullable(),
+        setupPrompt: z.string(),
+        docsUrl: z.string(),
+      })
+      .nullable(),
+    cli: z
+      .object({ install: z.object({ type: z.string(), command: z.string() }).nullable(), docsUrl: z.string() })
+      .nullable(),
+    api: z.object({ baseUrl: z.string().nullable(), auth: z.string(), docsUrl: z.string() }).nullable(),
+    extension: z.object({ url: z.string() }).nullable(),
+  })
+  .describe(
+    'How to start using it, per access method: client config and install links for MCP, the install command for a CLI, base URL and auth for an API. ' +
+      'Commands and addresses come from the vendor\'s own docs; when there are none, docsUrl is where its instructions are.'
+  );
 
 const handler = createMcpHandler(
   (server) => {
@@ -186,7 +217,8 @@ const handler = createMcpHandler(
       {
         title: 'Get Agent Details',
         description:
-          'Full detail for one agent by slug: skills, auth, streaming/push support, tags, provider links. ' +
+          'Full detail for one agent by slug: skills, auth, streaming/push support, tags, provider links, ' +
+          'and useItNow: how to start using it (MCP client config, install command, API base URL, setup links). ' +
           LABELS,
         annotations: READ_ONLY,
         inputSchema: {
@@ -202,6 +234,12 @@ const handler = createMcpHandler(
           supportsStreaming: z.boolean(),
           supportsPushNotifications: z.boolean(),
           addedAt: z.string().optional(),
+          mcpEndpoint: z.string().nullable().describe("The vendor's hosted MCP server address"),
+          mcpCommand: z.string().nullable().describe('The command that runs its MCP server locally'),
+          install: z.object({ type: z.string(), command: z.string() }).nullable().describe('The command that installs its CLI'),
+          quickstartUrl: z.string().nullable().describe("The vendor's setup or getting-started page"),
+          apiBaseUrl: z.string().nullable().describe("Base URL of the vendor's public API"),
+          useItNow: useItNowShape,
         },
       },
       async ({ slug }) => {
@@ -222,6 +260,8 @@ const handler = createMcpHandler(
           supportsStreaming: agent.supportsStreaming,
           supportsPushNotifications: agent.supportsPushNotifications,
           addedAt: agent.createdAt,
+          ...howToUseFields(agent),
+          useItNow: howToUseJson(agent),
         };
         return {
           content: [{ type: 'text', text: JSON.stringify(structured, null, 2) }],
@@ -278,7 +318,7 @@ const handler = createMcpHandler(
     );
   },
   {
-    serverInfo: { name: 'agentswitchboard', version: '1.5.0' },
+    serverInfo: { name: 'agentswitchboard', version: '1.6.0' },
     instructions: INSTRUCTIONS,
   },
   {

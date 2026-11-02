@@ -45,6 +45,11 @@
   "authType": "none",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "binary",
+    "command": "curl -LsSf https://raw.githubusercontent.com/NVIDIA/OpenShell/main/install.sh | sh"
+  },
+  "quickstartUrl": "https://docs.nvidia.com/openshell/latest/about/installation",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -56,5 +61,5 @@
     "api"
   ],
   "createdAt": "2026-09-25T22:20:34.456Z",
-  "updatedAt": "2026-09-25T22:20:34.456Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

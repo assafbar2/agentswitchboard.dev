@@ -18,6 +18,8 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://elevenlabs.io/docs/api-reference/introduction",
+  "apiBaseUrl": "https://api.elevenlabs.io",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -29,5 +31,5 @@
     "mcp"
   ],
   "createdAt": "2026-03-22T09:52:43.006Z",
-  "updatedAt": "2026-03-22T09:52:43.006Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

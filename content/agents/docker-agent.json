@@ -49,6 +49,7 @@
   "authType": "none",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://docs.docker.com/ai/docker-agent/features/api-server/",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -61,5 +62,5 @@
     "api"
   ],
   "createdAt": "2026-10-10T21:22:01.463Z",
-  "updatedAt": "2026-10-10T21:22:01.463Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

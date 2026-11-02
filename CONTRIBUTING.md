@@ -37,6 +37,21 @@ listings happen via pull request — CI validates, a human maintainer merges.
 }
 ```
 
+   Optional, for the listing page's **Use it now** panel. Add one only when
+   your own docs print it, and never a placeholder:
+
+   ```json
+   "mcpEndpoint": "https://mcp.example.com/mcp",
+   "mcpCommand": "npx -y @example/mcp-server",
+   "install": { "type": "npm", "command": "npm install -g @example/cli" },
+   "quickstartUrl": "https://docs.example.com/quickstart",
+   "apiBaseUrl": "https://api.example.com/v1"
+   ```
+
+   `mcpEndpoint` is your hosted MCP server, the same address for every user;
+   `mcpCommand` runs it locally (npx, uvx, bunx, docker or pipx, plain
+   arguments only). `install.type` is `npm`, `pip`, `brew`, `docker` or
+   `binary` (an install script). Each needs the matching access method.
 3. Add a line to `content/changelog.json` (top of the array):
    `{ "action": "added", "slug": "your-slug", "name": "Official Product Name" }`
 4. Run `npx tsx scripts/validate-content.ts` locally (CI runs it too)

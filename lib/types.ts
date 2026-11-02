@@ -20,6 +20,13 @@ export interface AgentSkill {
 
 export type AgentLabel = 'editors-pick' | 'featured' | 'new';
 
+export const INSTALL_TYPES = ['npm', 'pip', 'brew', 'docker', 'binary'] as const;
+
+export interface AgentInstall {
+  type: (typeof INSTALL_TYPES)[number];
+  command: string;
+}
+
 export interface HomepageAgent {
   agent: Agent;
   label: AgentLabel;
@@ -47,6 +54,18 @@ export interface Agent {
   integrationGuide?: RichTextDocument;
   supportsStreaming: boolean;
   supportsPushNotifications: boolean;
+  // How to start using it, each value printed in the vendor's own docs and
+  // absent when they don't print one. See lib/use-it-now.ts.
+  /** The vendor's hosted MCP server address. */
+  mcpEndpoint?: string;
+  /** The command that runs the MCP server locally, e.g. "npx -y @playwright/mcp@latest". */
+  mcpCommand?: string;
+  /** The command that installs the CLI. */
+  install?: AgentInstall;
+  /** The vendor's setup or getting-started page. */
+  quickstartUrl?: string;
+  /** Base URL of the vendor's public API. */
+  apiBaseUrl?: string;
   /**
    * Site path of the listing's fetched icon (/icons/<slug>.png?v=…), from
    * content/icons.json; absent when it has none. See lib/icons.ts.

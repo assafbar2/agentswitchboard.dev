@@ -6,9 +6,10 @@ import { VerifiedBadge } from '@/components/VerifiedBadge';
 import { AgentCard } from '@/components/AgentCard';
 import { AgentIcon } from '@/components/AgentIcon';
 import { JsonLd } from '@/components/JsonLd';
-import { TryThisFirst } from '@/components/TryThisFirst';
+import { UseItNow } from '@/components/UseItNow';
 import { alternativesPage, getRelatedAgents } from '@/lib/related';
 import { tryThis } from '@/lib/try-this';
+import { howToUse, howToUseRows } from '@/lib/use-it-now';
 import { absoluteIconUrl } from '@/lib/icons';
 import { listingCard, listingCardImage } from '@/lib/share-cards';
 import { notFound } from 'next/navigation';
@@ -73,6 +74,8 @@ export default async function AgentPage({
   const related = getRelatedAgents(agent, allAgents);
   const alternatives = alternativesPage(agent, allAgents);
   const tryFirst = tryThis(agent);
+  const use = howToUse(agent);
+  const useRows = howToUseRows(use);
 
   // No `offers`: the catalog has no pricing data, and "no auth" does not mean
   // free (paid products such as Midjourney list authType "none").
@@ -160,7 +163,7 @@ export default async function AgentPage({
           {/* Description */}
           <p className="text-lg leading-relaxed mb-8">{agent.description}</p>
 
-          {tryFirst && <TryThisFirst slug={agent.slug} tryThis={tryFirst} />}
+          <UseItNow agent={agent} tryThis={tryFirst} use={use} />
 
           {/* Facts: how you reach it, how it authenticates, what it does, as a
               ruled definition list (label, dotted leader, value). */}
@@ -272,6 +275,27 @@ export default async function AgentPage({
                 <div key={prompt.skillId} className="agent-row">
                   <span className="agent-accent">{prompt.text}</span>
                   <span className="agent-dim">{prompt.skillId}</span>
+                  <span />
+                </div>
+              ))}
+            </>
+          )}
+
+          {useRows.length > 0 && (
+            <>
+              <div className="agent-section-title">use it now</div>
+              {useRows.map(([key, value]) => (
+                <div key={key} className="agent-row">
+                  <span className="agent-accent break-all">
+                    {/^https?:\/\//.test(value) ? (
+                      <a href={value} rel="noopener noreferrer" className="hover:opacity-80">
+                        {value}
+                      </a>
+                    ) : (
+                      value
+                    )}
+                  </span>
+                  <span className="agent-dim">{key}</span>
                   <span />
                 </div>
               ))}

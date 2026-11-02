@@ -47,6 +47,8 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.jina.ai/v1",
+  "quickstartUrl": "https://github.com/jina-ai/MCP",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -58,5 +60,5 @@
     "mcp"
   ],
   "createdAt": "2026-04-13T21:38:15.219Z",
-  "updatedAt": "2026-04-13T21:38:15.219Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

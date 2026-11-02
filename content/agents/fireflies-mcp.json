@@ -48,6 +48,8 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://api.fireflies.ai/mcp",
+  "quickstartUrl": "https://docs.fireflies.ai/getting-started/mcp-configuration",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -58,5 +60,5 @@
     "mcp"
   ],
   "createdAt": "2026-10-04T17:55:56.183Z",
-  "updatedAt": "2026-10-04T17:55:56.183Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

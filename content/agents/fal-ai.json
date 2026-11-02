@@ -43,6 +43,9 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": true,
+  "mcpEndpoint": "https://mcp.fal.ai/mcp-relay",
+  "quickstartUrl": "https://fal.ai/docs/documentation/quickstart",
+  "apiBaseUrl": "https://queue.fal.run",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -55,5 +58,5 @@
     "mcp"
   ],
   "createdAt": "2026-09-25T22:20:34.464Z",
-  "updatedAt": "2026-09-25T22:20:34.464Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

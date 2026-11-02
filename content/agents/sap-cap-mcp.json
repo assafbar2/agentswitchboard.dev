@@ -33,6 +33,12 @@
   "authType": "none",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpCommand": "npx -y @cap-js/mcp-server",
+  "install": {
+    "type": "npm",
+    "command": "npm i -g @cap-js/mcp-server"
+  },
+  "quickstartUrl": "https://github.com/cap-js/mcp-server#cli-usage",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -44,5 +50,5 @@
     "cli"
   ],
   "createdAt": "2026-10-31T07:10:38.160Z",
-  "updatedAt": "2026-10-31T07:10:38.160Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

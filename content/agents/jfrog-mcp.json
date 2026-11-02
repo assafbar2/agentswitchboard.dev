@@ -45,6 +45,7 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://docs.jfrog.com/integrations/docs/add-the-jfrog-mcp-server-to-an-mcp-client",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -56,5 +57,5 @@
     "cli"
   ],
   "createdAt": "2026-10-31T07:10:38.156Z",
-  "updatedAt": "2026-10-31T07:10:38.156Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

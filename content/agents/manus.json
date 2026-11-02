@@ -38,6 +38,8 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://open.manus.im/docs/v2/introduction",
+  "apiBaseUrl": "https://api.manus.ai",
   "status": "published",
   "featured": true,
   "verified": true,
@@ -48,5 +50,5 @@
     "api"
   ],
   "createdAt": "2026-09-02T07:21:11.735Z",
-  "updatedAt": "2026-09-02T07:21:11.735Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

@@ -17,6 +17,7 @@ export interface SubmitState {
 }
 
 const OK_MESSAGE = 'Thanks! Your submission is filed as a public GitHub issue.';
+const USE_IT_MAX = 1000;
 
 export async function submitAgent(
   _prev: SubmitState,
@@ -28,6 +29,7 @@ export async function submitAgent(
   }
 
   const ask = String(formData.get('ask') ?? '').trim();
+  const useIt = String(formData.get('useit') ?? '').trim();
   const email = String(formData.get('email') ?? '').trim();
 
   if (ask.length < 20) {
@@ -36,11 +38,15 @@ export async function submitAgent(
   if (ask.length > 4000) {
     return { status: 'error', message: 'Please keep it under 4000 characters.' };
   }
+  if (useIt.length > USE_IT_MAX) {
+    return { status: 'error', message: `Please keep how to start using it under ${USE_IT_MAX} characters.` };
+  }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return { status: 'error', message: 'Please provide a valid email so we can follow up.' };
   }
 
-  const result = await fileSubmission({ ask, email, source: 'form' });
+  const body = useIt ? `${ask}\n\nHow to start using it (from its docs):\n${useIt}` : ask;
+  const result = await fileSubmission({ ask: body, email, source: 'form' });
   if (!result.ok) {
     return {
       status: 'error',

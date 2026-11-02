@@ -18,6 +18,7 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://learn.microsoft.com/en-us/azure/ai-services/translator/text-translation/quickstart/rest-api",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -29,5 +30,5 @@
     "cli"
   ],
   "createdAt": "2026-03-22T09:51:31.373Z",
-  "updatedAt": "2026-10-04T17:52:59.823Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

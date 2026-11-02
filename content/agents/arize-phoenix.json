@@ -38,6 +38,11 @@
   "authType": "none",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "pip",
+    "command": "pip install arize-phoenix"
+  },
+  "quickstartUrl": "https://arize.com/docs/phoenix/sdk-api-reference/rest-api/overview",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -49,5 +54,5 @@
     "cli"
   ],
   "createdAt": "2026-07-25T16:22:45.430Z",
-  "updatedAt": "2026-09-25T23:53:31.223Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

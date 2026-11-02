@@ -48,6 +48,8 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpCommand": "uvx oracle.oci-cloud-mcp-server@latest",
+  "quickstartUrl": "https://github.com/oracle/mcp",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -58,5 +60,5 @@
     "mcp"
   ],
   "createdAt": "2026-10-17T09:03:45.948Z",
-  "updatedAt": "2026-10-17T09:03:45.948Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

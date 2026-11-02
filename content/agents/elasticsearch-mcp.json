@@ -21,6 +21,8 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpCommand": "docker run -i --rm -e ES_URL -e ES_API_KEY docker.elastic.co/mcp/elasticsearch stdio",
+  "quickstartUrl": "https://github.com/elastic/mcp-server-elasticsearch",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -31,5 +33,5 @@
     "mcp"
   ],
   "createdAt": "2026-08-11T00:40:13.009Z",
-  "updatedAt": "2026-08-11T00:40:13.009Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }
