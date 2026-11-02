@@ -2,10 +2,10 @@
   "id": "WahG1o2MbQiLMiMAzDEtg",
   "name": "Google Sheets MCP",
   "slug": "google-sheets-mcp",
-  "description": "Reads, writes, and formats Google Sheets data via MCP — manage sheets, run formulas, and collaborate on structured spreadsheet data in real time.",
-  "providerName": "Smithery",
-  "providerUrl": "https://smithery.ai",
-  "agentUrl": "https://smithery.ai/server/googlesheets",
+  "description": "Google's official remote MCP server for Google Sheets, in Developer Preview: reads values and spreadsheet metadata, updates values and formulas, and inserts rows or columns.",
+  "providerName": "Google",
+  "providerUrl": "https://developers.google.com/workspace",
+  "agentUrl": "https://developers.google.com/workspace/sheets/api/guides/configure-mcp-server",
   "categories": [
     "data-analytics"
   ],
@@ -15,24 +15,23 @@
     "google",
     "oauth2",
     "formulas",
-    "data-collaboration",
     "structured-data"
   ],
   "skills": [
     {
-      "id": "spreadsheet-rw",
-      "name": "Spreadsheet Read/Write",
-      "description": "Reads and writes cell data, rows, and ranges in Google Sheets with support for formatting and formula execution."
+      "id": "value-reading",
+      "name": "Value Reading",
+      "description": "Reads cell values, sheet names, grid properties, and other spreadsheet metadata."
     },
     {
-      "id": "sheet-management",
-      "name": "Sheet Management",
-      "description": "Creates, renames, and deletes sheets within a Google Sheets document and manages sharing permissions."
+      "id": "value-updates",
+      "name": "Value Updates",
+      "description": "Updates cell values and sets formulas across ranges of a spreadsheet."
     },
     {
-      "id": "formula-execution",
-      "name": "Formula Execution",
-      "description": "Runs spreadsheet formulas and retrieves computed values across cells and named ranges in real time."
+      "id": "sheet-structure",
+      "name": "Sheet Structure",
+      "description": "Inserts rows or columns and runs batch structural updates on a spreadsheet."
     }
   ],
   "authType": "oauth2",
@@ -47,5 +46,7 @@
     "mcp"
   ],
   "createdAt": "2026-06-07T17:51:21.436Z",
-  "updatedAt": "2026-06-07T17:51:21.436Z"
+  "updatedAt": "2026-11-02T21:56:37.372Z",
+  "mcpEndpoint": "https://sheetsmcp.googleapis.com/mcp/v1",
+  "official": true
 }

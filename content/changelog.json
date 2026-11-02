@@ -1,6 +1,272 @@
 [
   {
     "action": "updated",
+    "slug": "google-sheets-mcp",
+    "name": "Google Sheets MCP",
+    "note": "tags updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "google-sheets-mcp",
+    "name": "Google Sheets MCP",
+    "note": "skills updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "google-sheets-mcp",
+    "name": "Google Sheets MCP",
+    "note": "description updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "google-sheets-mcp",
+    "name": "Google Sheets MCP",
+    "note": "official updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "google-sheets-mcp",
+    "name": "Google Sheets MCP",
+    "note": "mcpEndpoint updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "google-sheets-mcp",
+    "name": "Google Sheets MCP",
+    "note": "agentUrl updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "google-sheets-mcp",
+    "name": "Google Sheets MCP",
+    "note": "providerUrl updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "google-sheets-mcp",
+    "name": "Google Sheets MCP",
+    "note": "providerName updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "gmail-mcp",
+    "name": "Gmail MCP",
+    "note": "tags updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "gmail-mcp",
+    "name": "Gmail MCP",
+    "note": "skills updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "gmail-mcp",
+    "name": "Gmail MCP",
+    "note": "description updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "gmail-mcp",
+    "name": "Gmail MCP",
+    "note": "official updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "gmail-mcp",
+    "name": "Gmail MCP",
+    "note": "mcpEndpoint updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "gmail-mcp",
+    "name": "Gmail MCP",
+    "note": "agentUrl updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "gmail-mcp",
+    "name": "Gmail MCP",
+    "note": "providerUrl updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "gmail-mcp",
+    "name": "Gmail MCP",
+    "note": "providerName updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "xero-mcp",
+    "name": "Xero MCP",
+    "note": "description updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "agentmail",
+    "name": "AgentMail",
+    "note": "mcpEndpoint updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "xero-mcp",
+    "name": "Xero MCP",
+    "note": "mcpEndpoint updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "airtable-mcp",
+    "name": "Airtable MCP",
+    "note": "mcpEndpoint updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "honeycomb-mcp",
+    "name": "Honeycomb MCP",
+    "note": "mcpEndpoint updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "grafana-mcp",
+    "name": "Grafana MCP Server",
+    "note": "mcpEndpoint updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "databricks-ai",
+    "name": "Databricks AI",
+    "note": "quickstartUrl updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "databricks-ai",
+    "name": "Databricks AI",
+    "note": "accessMethods updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "snowflake-cortex",
+    "name": "Snowflake Cortex",
+    "note": "quickstartUrl updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "snowflake-cortex",
+    "name": "Snowflake Cortex",
+    "note": "accessMethods updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "zoom",
+    "name": "Zoom",
+    "note": "mcpEndpoint updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "zoom",
+    "name": "Zoom",
+    "note": "accessMethods updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "runway-ml",
+    "name": "Runway ML",
+    "note": "mcpEndpoint updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "runway-ml",
+    "name": "Runway ML",
+    "note": "accessMethods updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "hex",
+    "name": "Hex",
+    "note": "mcpEndpoint updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "hex",
+    "name": "Hex",
+    "note": "accessMethods updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "v0",
+    "name": "v0",
+    "note": "mcpEndpoint updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "v0",
+    "name": "v0",
+    "note": "accessMethods updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "replit-agent",
+    "name": "Replit Agent",
+    "note": "mcpEndpoint updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "replit-agent",
+    "name": "Replit Agent",
+    "note": "accessMethods updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "lovable",
+    "name": "Lovable",
+    "note": "mcpEndpoint updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "lovable",
+    "name": "Lovable",
+    "note": "accessMethods updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
     "slug": "ibm-watsonx-ai",
     "name": "IBM watsonx.ai",
     "note": "providerUrl updated",
