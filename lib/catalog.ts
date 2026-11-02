@@ -24,7 +24,7 @@ import { cache } from 'react';
 import { pickHomepageAgents } from './homepage';
 import { iconPath, type IconRecord } from './icons';
 import { groupOfficialAgents, vendorForUrl, type OfficialGroup, type OfficialVendor } from './official';
-import type { Agent, Category, HomepageAgent, SiteSettings } from './types';
+import type { Agent, Category, ChangelogEntry, HomepageAgent, SiteSettings } from './types';
 
 const CONTENT_DIR = path.join(process.cwd(), 'content');
 
@@ -136,6 +136,27 @@ export const getEveryAgent = cache(
         (a, b) =>
           Number(b.featured) - Number(a.featured) || a.name.localeCompare(b.name)
       );
+  })
+);
+
+/**
+ * Listings the directory had and no longer lists, slug → name: archived
+ * files, and removals in content/changelog.json whose file is gone. Lets an
+ * old link say what it pointed at.
+ */
+export const getRetiredListings = cache(
+  once(async (): Promise<Map<string, string>> => {
+    const [agents, raw] = await Promise.all([
+      loadAllAgentsRaw(),
+      fs.promises.readFile(path.join(CONTENT_DIR, 'changelog.json'), 'utf8'),
+    ]);
+    const listed = new Set(agents.filter((a) => a.status === 'published').map((a) => a.slug));
+    const retired = new Map<string, string>();
+    for (const a of agents) if (a.status === 'archived') retired.set(a.slug, a.name);
+    for (const e of JSON.parse(raw) as ChangelogEntry[]) {
+      if (e.action === 'removed' && !listed.has(e.slug) && !retired.has(e.slug)) retired.set(e.slug, e.name);
+    }
+    return retired;
   })
 );
 

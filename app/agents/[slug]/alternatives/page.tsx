@@ -5,6 +5,7 @@ import { AgentCard } from '@/components/AgentCard';
 import { AgentIcon } from '@/components/AgentIcon';
 import { JsonLd } from '@/components/JsonLd';
 import { getEveryAgent } from '@/lib/catalog';
+import { COMPARE_MAX, compareHref } from '@/lib/compare-link';
 import { pageMetadata } from '@/lib/metadata';
 import { alternativesPage, type Alternative } from '@/lib/related';
 import { ACCESS_METHOD_LABELS } from '@/lib/search';
@@ -64,6 +65,8 @@ export default async function AlternativesPage({ params }: Props) {
   const category = agent.categories[0];
   const count = alternatives.length;
   const url = `${BASE_URL}/agents/${agent.slug}/alternatives`;
+  const top = alternatives.slice(0, COMPARE_MAX - 1).map((a) => a.agent);
+  const compareTop = compareHref([agent.slug, ...top.map((a) => a.slug)]);
 
   const listSchema = {
     '@context': 'https://schema.org',
@@ -111,6 +114,15 @@ export default async function AlternativesPage({ params }: Props) {
                 {agent.accessMethods.map(label).join(' · ')}
               </span>
             </Link>
+            <p className="mt-4 text-[16px]">
+              <Link
+                href={compareTop}
+                className="font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2"
+              >
+                Compare {agent.name} with {joinList(top.map((a) => a.name))}, side by side
+                <span aria-hidden="true"> →</span>
+              </Link>
+            </p>
           </div>
 
           <section aria-labelledby="alternatives">
@@ -160,6 +172,13 @@ export default async function AlternativesPage({ params }: Props) {
               <span className="agent-dim">{keywords.join(', ')}</span>
             </Link>
           ))}
+
+          <div className="agent-section-title">compare</div>
+          <Link href={compareTop} className="agent-row no-underline hover:underline">
+            <span className="agent-accent break-all">{compareTop}</span>
+            <span className="agent-dim">with the top {top.length}</span>
+            <span />
+          </Link>
 
           <div className="agent-section-title">listing</div>
           <Link href={`/agents/${agent.slug}`} className="agent-row no-underline hover:underline">

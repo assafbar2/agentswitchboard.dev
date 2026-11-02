@@ -456,6 +456,148 @@ body {
     font-weight: 800;
     line-height: 1;
   }
+
+  /* "+ Compare" (components/CompareTray.tsx). Every card renders one, but
+     it does nothing without the tray's script, so it stays hidden until the
+     tray marks the page ready. On a card it sits in the bottom-right corner,
+     and the card's last line leaves room for it. */
+  .cmp-toggle {
+    display: none;
+    align-items: center;
+    gap: 4px;
+    min-height: 28px;
+    padding: 0 8px;
+    border: 2px solid var(--dir-ink);
+    background: var(--dir-paper);
+    color: var(--dir-ink);
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  html[data-cmp-ready] .cmp-toggle {
+    display: inline-flex;
+  }
+
+  .cmp-card > .cmp-toggle {
+    position: absolute;
+    right: 2px;
+    bottom: 8px;
+  }
+
+  html[data-cmp-ready] .cmp-card > a > :last-child {
+    padding-right: 6.5rem;
+  }
+
+  .cmp-toggle::before {
+    content: '+';
+  }
+
+  .cmp-toggle[aria-pressed='true'] {
+    background: var(--dir-yellow);
+    color: var(--dir-on-yellow);
+  }
+
+  .cmp-toggle[aria-pressed='true']::before {
+    content: '\2713';
+  }
+
+  .cmp-toggle:hover {
+    background: var(--dir-yellow);
+    color: var(--dir-on-yellow);
+  }
+
+  .cmp-toggle:focus-visible {
+    outline: 2px solid var(--dir-ink);
+    outline-offset: 2px;
+  }
+
+  /* The listing page's toggle, beside "Compare with …": button size. */
+  .cmp-toggle.cmp-toggle-lg {
+    min-height: 40px;
+    padding: 0 12px;
+    font-size: 14px;
+  }
+
+  /* A block with nothing to show without JavaScript but the toggle. It must
+     not carry a display utility, which would win over this rule. */
+  html:not([data-cmp-ready]) .cmp-needs-js {
+    display: none;
+  }
+
+  /* The compare table (components/CompareView.tsx). On a phone the columns
+     scroll sideways under the row labels, which stay put. */
+  .cmp-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .cmp-table[data-cols='2'] {
+    min-width: 34rem;
+  }
+
+  .cmp-table[data-cols='3'] {
+    min-width: 46rem;
+  }
+
+  .cmp-table th,
+  .cmp-table td {
+    padding: 10px 14px 10px 0;
+    border-bottom: 1px solid var(--dir-rule);
+    text-align: left;
+    vertical-align: top;
+    overflow-wrap: anywhere;
+  }
+
+  .cmp-table thead th,
+  .cmp-table thead td {
+    padding-bottom: 12px;
+    border-bottom: 3px solid var(--dir-ink);
+  }
+
+  .cmp-table thead td:first-child,
+  .cmp-table tbody th {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    width: 8.5rem;
+    background: var(--dir-paper);
+  }
+
+  .cmp-table tbody th {
+    font-family: var(--font-display);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .cmp-table .cmp-same th,
+  .cmp-table .cmp-same td {
+    color: var(--dir-muted);
+  }
+
+  @media (max-width: 639px) {
+    .cmp-table thead td:first-child,
+    .cmp-table tbody th {
+      width: 6.5rem;
+    }
+  }
+}
+
+/* The compare tray is fixed to the bottom of the window; the page leaves room
+   for it so the footer can still be read. */
+body {
+  padding-bottom: var(--cmp-tray-h, 0px);
 }
 
 /* ── Agent Mode ───────────────────────────────────────────────── */

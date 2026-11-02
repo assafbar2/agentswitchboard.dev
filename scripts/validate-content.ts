@@ -14,6 +14,8 @@ import * as crypto from 'crypto';
 import * as fs from 'fs';
 import * as path from 'path';
 import { z } from 'zod';
+import { COMPARISON_INTRO_MAX, COMPARISON_INTRO_MIN, comparisonProblems, pairUnsafeSlugs } from '../lib/compare';
+import { COMPARE_MAX } from '../lib/compare-link';
 import { DROP_INTRO_MAX, groupDrops, type Drop } from '../lib/drops';
 import { registryProblems, vendorsForUrl, type OfficialVendor } from '../lib/official';
 import {
@@ -186,6 +188,13 @@ const TaskSchema = z
   })
   .strict();
 
+const ComparisonSchema = z
+  .object({
+    items: z.array(z.string().regex(SLUG, 'slug must be kebab-case')).min(2).max(COMPARE_MAX),
+    intro: z.string().min(COMPARISON_INTRO_MIN).max(COMPARISON_INTRO_MAX),
+  })
+  .strict();
+
 /**
  * content/changelog.json is grouped into the drop pages by date (lib/drops.ts),
  * so every entry needs a real one. content/drops.json adds optional intros,
@@ -291,6 +300,38 @@ function checkTasks(published: Agent[]): { tasks: number; errors: number } {
   const problems = taskProblems(result.data, published);
   for (const problem of problems) console.log(`❌ content/tasks.json: ${problem}`);
   return { tasks: result.data.length, errors: problems.length };
+}
+
+/**
+ * content/comparisons.json (lib/compare.ts): each comparison's shape, then
+ * comparisonProblems against the published listings. Every listing slug is
+ * checked too: /compare/<a>-vs-<b> splits on "-vs-", so no slug may contain it.
+ */
+function checkComparisons(published: Agent[], slugs: Set<string>): { comparisons: number; errors: number } {
+  let errors = 0;
+  for (const slug of pairUnsafeSlugs([...slugs].map((s) => ({ slug: s })))) {
+    console.log(`❌ ${slug}.json: slug contains "-vs-", which a /compare/<a>-vs-<b> address uses to separate listings`);
+    errors++;
+  }
+  const file = path.join(CONTENT, 'comparisons.json');
+  if (!fs.existsSync(file)) return { comparisons: 0, errors };
+  let raw: unknown;
+  try {
+    raw = JSON.parse(fs.readFileSync(file, 'utf8'));
+  } catch (e) {
+    console.log(`❌ content/comparisons.json: invalid JSON — ${(e as Error).message}`);
+    return { comparisons: 0, errors: errors + 1 };
+  }
+  const result = z.array(ComparisonSchema).safeParse(raw);
+  if (!result.success) {
+    for (const issue of result.error.issues) {
+      console.log(`❌ content/comparisons.json: ${issue.path.join('.')}: ${issue.message}`);
+    }
+    return { comparisons: 0, errors: errors + result.error.issues.length };
+  }
+  const problems = comparisonProblems(result.data, published);
+  for (const problem of problems) console.log(`❌ content/comparisons.json: ${problem}`);
+  return { comparisons: result.data.length, errors: errors + problems.length };
 }
 
 const IconRecordSchema = z
@@ -536,6 +577,8 @@ function main() {
   errors += stacks.errors;
   const tasks = checkTasks(listings);
   errors += tasks.errors;
+  const comparisons = checkComparisons(listings, slugs);
+  errors += comparisons.errors;
   const iconless = [...published].filter((s) => !icons.slugs.has(s)).sort();
   if (iconless.length) {
     console.log(
@@ -546,7 +589,7 @@ function main() {
 
   if (errors === 0) {
     console.log(
-      `✅ content valid: ${files.length} agents (${flagged} official, ${official.vendors.length} vendors), ${validCategorySlugs.size} categories, ${icons.slugs.size} icons, ${drops.drops.length} drops, ${stacks.stacks} stacks, ${tasks.tasks} tasks, 0 violations`
+      `✅ content valid: ${files.length} agents (${flagged} official, ${official.vendors.length} vendors), ${validCategorySlugs.size} categories, ${icons.slugs.size} icons, ${drops.drops.length} drops, ${stacks.stacks} stacks, ${tasks.tasks} tasks, ${comparisons.comparisons} comparisons, 0 violations`
     );
   } else {
     console.log(`\n❌ ${errors} violation(s) across content/ — fix before merging.`);

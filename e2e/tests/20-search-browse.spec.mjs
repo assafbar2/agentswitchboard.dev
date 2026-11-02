@@ -781,10 +781,10 @@ test.describe('URL parameter handling', () => {
 
   test('vendor=<slug> shows a vendor chip and only that vendor', async ({ page }) => {
     await page.goto('/browse?vendor=aiven');
-    await expect(human(page).getByRole('button', { name: /Aiven/ })).toBeVisible();
+    await expect(human(page).getByRole('button', { name: /Clear Aiven/ })).toBeVisible();
     await expect(countBar(page)).toHaveText(/official agents? listed$/);
     expect(await shownCount(page)).toBeGreaterThan(0);
-    await human(page).getByRole('button', { name: /Aiven/ }).click();
+    await human(page).getByRole('button', { name: /Clear Aiven/ }).click();
     await expect(page).not.toHaveURL(/vendor=/);
   });
 

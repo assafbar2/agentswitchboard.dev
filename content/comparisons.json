@@ -1,0 +1,54 @@
+[
+  {
+    "items": ["github-copilot", "cursor", "codeium-windsurf"],
+    "intro": "Three AI coding assistants, each an official listing. Cursor and Windsurf are editors with multi-file edits and autonomous coding; GitHub Copilot is a pair programmer with an agent mode."
+  },
+  {
+    "items": ["langgraph", "crewai", "autogen"],
+    "intro": "Frameworks for multi-agent systems. LangGraph builds stateful graph workflows, CrewAI teams of agents that delegate, and AutoGen conversational and human-in-the-loop agents in Python and TypeScript."
+  },
+  {
+    "items": ["mem0", "zep", "letta"],
+    "intro": "Three ways to give agents long-term memory. Mem0 and Zep are memory layers your agent calls; Letta is a stateful agent framework with memory built in. Mem0 also has an MCP server."
+  },
+  {
+    "items": ["pinecone", "qdrant", "weaviate"],
+    "intro": "Vector databases for RAG and semantic search. Pinecone is fully managed; Qdrant and Weaviate are open source. Beyond the API, Qdrant has a CLI and Weaviate an MCP server."
+  },
+  {
+    "items": ["browserbase", "browser-use", "browserless"],
+    "intro": "Browsers for AI agents. Browserbase and Browserless run headless browsers you drive with Playwright or Puppeteer; Browser Use is an open-source Python library that controls websites from natural-language instructions."
+  },
+  {
+    "items": ["e2b", "daytona", "vercel-sandbox"],
+    "intro": "Sandboxes where agents run untrusted code, each with an API and a CLI. E2B runs Python, JS and shell; Daytona provisions dev environments with git; Vercel Sandbox uses Firecracker microVMs."
+  },
+  {
+    "items": ["firecrawl", "crawl4ai", "jina-reader"],
+    "intro": "All three turn web pages into clean Markdown for LLMs. Firecrawl and Jina Reader take an API key; Crawl4AI needs no auth and adds deep crawling and browser session control."
+  },
+  {
+    "items": ["figma-mcp-server", "figma-context-mcp", "talk-to-figma-mcp"],
+    "intro": "MCP servers that bring Figma designs to coding agents. Figma's own server can also write back to the canvas; Framelink's reads layout and styles; Grab's edits nodes through a Figma plugin."
+  },
+  {
+    "items": ["ollama", "lm-studio", "vllm"],
+    "intro": "Run open models on your own hardware behind an OpenAI-compatible API, with no auth. Ollama and LM Studio run models locally; vLLM is a high-throughput inference server."
+  },
+  {
+    "items": ["asana-mcp", "clickup-mcp", "monday-mcp"],
+    "intro": "Official project-management MCP servers, all hosted with OAuth sign-in. monday.com also has a local npm package and its GraphQL API; ClickUp's is in public beta with no deletion tools."
+  },
+  {
+    "items": ["groq", "cerebras-inference"],
+    "intro": "Fast inference APIs for open models, both OpenAI-compatible with streaming. Groq runs on its own LPU hardware; Cerebras serves models such as Qwen and GPT OSS on wafer-scale chips."
+  },
+  {
+    "items": ["deepgram", "assemblyai"],
+    "intro": "Speech-to-text APIs with real-time streaming. Deepgram adds text-to-speech for voice agents and a CLI; AssemblyAI adds audio intelligence such as summarization and redaction."
+  },
+  {
+    "items": ["neon-mcp", "planetscale-mcp"],
+    "intro": "MCP servers for managed SQL databases with branching. Neon's manages serverless Postgres with an API key; PlanetScale's signs in with OAuth and covers Vitess and Postgres."
+  }
+]

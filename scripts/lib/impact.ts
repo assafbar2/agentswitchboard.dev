@@ -32,6 +32,8 @@ export interface Snapshot {
   tasks: TaskFacts[];
   /** Stack slug → its listings. */
   stacks: Record<string, string[]>;
+  /** Curated comparison slug → its listings. */
+  comparisons: Record<string, string[]>;
   /** Homepage slots, in order. */
   homepage: string[];
   /** Pages the build makes from the content, each with a share card. */
@@ -166,6 +168,15 @@ export function impactReport(before: Snapshot, after: Snapshot, opts: ReportOpti
         .filter(([, items]) => items.includes(slug))
         .map(([stack]) => stack);
       if (stacks.length) notes.push(`**still in stack ${slugList(stacks)}: swap it out**`);
+      const comparisons = Object.entries(after.comparisons)
+        .filter(([, items]) => items.includes(slug))
+        .map(([comparison]) => comparison);
+      if (comparisons.length) {
+        const one = comparisons.length === 1;
+        notes.push(
+          `**still in ${one ? 'comparison' : 'comparisons'} ${slugList(comparisons)}: swap it out or remove ${one ? 'that comparison' : 'those comparisons'}**`
+        );
+      }
       out.push(`- \`${slug}\`: ${notes.join('; ')}.`);
     }
   }

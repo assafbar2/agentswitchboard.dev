@@ -17,6 +17,7 @@ import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 import { getAllCategories, getEveryAgent, getHomepageAgents } from '../lib/catalog';
+import { comparisonSlug, curatedComparisons, getComparisons } from '../lib/compare';
 import { getDropSchedule } from '../lib/drops';
 import { getAlternatives, MAX_RELATED, MIN_ALTERNATIVES } from '../lib/related';
 import { taskMatches } from '../lib/search';
@@ -66,8 +67,16 @@ async function snapshot(): Promise<Snapshot> {
     listings,
     tasks,
     stacks: Object.fromEntries(stacks.map((s) => [s.slug, s.items.map((i) => i.slug)])),
+    comparisons: Object.fromEntries(getComparisons().map((c) => [comparisonSlug(c), c.items])),
     homepage: (await getHomepageAgents()).map((h) => h.agent.slug),
-    pages: all.length + alternativesPages + tasks.length + getDropSchedule().drops.length + categories + stacks.length,
+    pages:
+      all.length +
+      alternativesPages +
+      tasks.length +
+      getDropSchedule().drops.length +
+      categories +
+      stacks.length +
+      curatedComparisons(all).length,
   };
 }
 

@@ -9,6 +9,8 @@
  */
 
 import { createHash } from 'crypto';
+import { pairPath } from './compare';
+import { compareQuery } from './compare-link';
 import { dropAdditions, dropHighlights, type Drop } from './drops';
 import type { Alternative } from './related';
 import { ACCESS_METHOD_LABELS } from './search';
@@ -21,7 +23,7 @@ import { formatDay } from './utils';
  * Hash of lib/og.tsx and assets/fonts/, so a redesigned card gets new URLs.
  * lib/share-cards.test.ts prints the new value whenever either changes.
  */
-export const CARD_DESIGN = '8cd54bcf';
+export const CARD_DESIGN = 'fcfa7846';
 
 export const CARD_SIZE = { width: 1200, height: 630 } as const;
 
@@ -116,6 +118,18 @@ export interface TasksCard {
   icons: string[];
 }
 
+export interface CompareCard {
+  /** The compared listings, in column order. */
+  columns: { name: string; provider: string; icon: string | null; access: string[] }[];
+}
+
+export interface ComparisonsCard {
+  /** Curated comparisons. */
+  comparisons: number;
+  /** Their listings' icons, in the file's order, each image once. */
+  icons: string[];
+}
+
 /** An entry for Metadata openGraph.images; twitter:image copies it. */
 export interface ShareImage {
   url: string;
@@ -131,6 +145,7 @@ const DROP_ICONS = 10;
 const DROP_NAMES = 3;
 const ALTERNATIVE_NAMES = 3;
 const TASK_ICONS = 10;
+const COMPARISON_ICONS = 10;
 
 export function siteCard(agents: Agent[], categories: Category[]): SiteCard {
   return {
@@ -232,6 +247,23 @@ export function tasksCard(tasks: { fits: Agent[] }[]): TasksCard {
   };
 }
 
+/** `agents` in column order, as lib/compare.ts selectCompared picks them. */
+export function compareCard(agents: Agent[]): CompareCard {
+  return {
+    columns: agents.map((a) => ({
+      name: a.name,
+      provider: a.providerName,
+      icon: a.iconUrl ?? null,
+      access: a.accessMethods.map((m) => ACCESS_METHOD_LABELS[m] ?? m),
+    })),
+  };
+}
+
+/** Each curated comparison's listings, in content/comparisons.json's order. */
+export function comparisonsCard(comparisons: Agent[][]): ComparisonsCard {
+  return { comparisons: comparisons.length, icons: distinctIcons(comparisons.flat()).slice(0, COMPARISON_ICONS) };
+}
+
 export function siteCardImage(card: SiteCard): ShareImage {
   return shareImage('/card.png', card, 'Agent Switchboard — AI Agent Directory');
 }
@@ -276,13 +308,40 @@ export function tasksCardImage(card: TasksCard): ShareImage {
   return shareImage('/tasks/card.png', card, `${card.tasks} tasks, each with the AI tools that do it, on Agent Switchboard`);
 }
 
+const compareAlt = (card: CompareCard) => `${card.columns.map((c) => c.name).join(' vs ')}, side by side on Agent Switchboard`;
+
+/** A curated comparison's card, prerendered at /compare/<a>-vs-<b>/card.png. */
+export function comparisonCardImage(slugs: readonly string[], card: CompareCard): ShareImage {
+  return shareImage(`${pairPath(slugs)}/card.png`, card, compareAlt(card));
+}
+
+/** Any other 2 or 3 listings' card, drawn when asked for at /compare/card.png?a=&b=&c=. */
+export function compareCardImage(slugs: readonly string[], card: CompareCard): ShareImage {
+  return shareImage(`/compare/card.png?${compareQuery(slugs)}`, card, compareAlt(card));
+}
+
+export function comparisonsCardImage(card: ComparisonsCard): ShareImage {
+  return shareImage('/compare/card.png', card, 'Compare AI tools side by side on Agent Switchboard');
+}
+
 function shareImage(
   path: string,
-  card: SiteCard | ListingCard | CategoryCard | DropCard | AlternativesCard | StackCard | StacksCard | TaskCard | TasksCard,
+  card:
+    | SiteCard
+    | ListingCard
+    | CategoryCard
+    | DropCard
+    | AlternativesCard
+    | StackCard
+    | StacksCard
+    | TaskCard
+    | TasksCard
+    | CompareCard
+    | ComparisonsCard,
   alt: string
 ): ShareImage {
   const v = createHash('sha1').update(JSON.stringify([CARD_DESIGN, card])).digest('hex').slice(0, 8);
-  return { url: `${path}?v=${v}`, ...CARD_SIZE, alt, type: 'image/png' };
+  return { url: `${path}${path.includes('?') ? '&' : '?'}v=${v}`, ...CARD_SIZE, alt, type: 'image/png' };
 }
 
 /** The listings' icons in order, each image once: an icon URL carries its image's hash as ?v=. */

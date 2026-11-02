@@ -17,6 +17,7 @@ function before(): Snapshot {
     },
     tasks: [{ slug: 'query', label: 'query a database', fits: ['alpha', 'beta', 'gamma'] }],
     stacks: { starter: ['alpha', 'delta'] },
+    comparisons: { 'alpha-vs-delta': ['alpha', 'delta'], 'alpha-vs-beta': ['alpha', 'beta'] },
     homepage: ['alpha', 'beta'],
     pages: 10,
   };
@@ -59,7 +60,7 @@ describe('impactReport', () => {
     expect(report).toContain('- CLI with no install command, so the page links its docs (1): `echo`.');
     expect(report).not.toContain('API with no base URL');
     expect(report).toContain(
-      '- `delta`: its page, share card and alternatives page go away; an alternative on 2 listings; **still in stack `starter`: swap it out**.'
+      '- `delta`: its page, share card and alternatives page go away; an alternative on 2 listings; **still in stack `starter`: swap it out**; **still in comparison `alpha-vs-delta`: swap it out or remove that comparison**.'
     );
     expect(report).toContain(
       'Alternatives pages: 3 → 3. 1 new listing gets one. 1 existing listing gains one: `gamma`. **1 listing loses its page, and that URL will return 404: `beta`.**'
