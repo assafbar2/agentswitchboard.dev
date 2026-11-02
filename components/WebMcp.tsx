@@ -14,8 +14,10 @@
  * /api/bundle). That runs the same code as the remote MCP server at /api/mcp,
  * so answers and their order are the same; search and listing objects use the
  * REST field names (see /openapi.json), which differ from the remote MCP's in
- * a few places. Keep /.well-known/webmcp.json in step with the declarations
- * below.
+ * a few places. Results are organic, as on the remote MCP (lib/organic.ts):
+ * search and alternatives ask for `order=organic`, and every result leaves out
+ * the placement fields (featured, sponsored, sponsorLabel, tier). Keep
+ * /.well-known/webmcp.json in step with the declarations below.
  *
  * Every call is counted as a Vercel Analytics event (`webmcp_call`), fire and
  * forget: analytics can never fail or delay a tool.
@@ -36,15 +38,14 @@ import {
   COMPARE_AGENTS_DESCRIPTION,
   COMPARE_SLUGS_INPUT,
   CONNECT_BUNDLE_DESCRIPTION,
-  FEATURED_DEFINITION,
   MAX_LIMIT,
   OFFICIAL_DEFINITION,
   SINCE_INPUT,
-  SORT_INPUT,
   TASK_INPUT,
   VERIFIED_INPUT,
   unknownTaskMessage,
 } from '@/lib/public-api';
+import { withoutPlacement } from '@/lib/organic';
 import { MAX_ALTERNATIVES } from '@/lib/related';
 import { AUTH_TYPES, SORT_ORDERS, invalidSinceMessage } from '@/lib/search';
 import { REQUESTED_MAX } from '@/lib/shared-stack';
@@ -71,14 +72,17 @@ interface WebMcpRegistrar {
   ): Promise<void>;
 }
 
-const LABELS = `${VERIFIED_DEFINITION} ${OFFICIAL_DEFINITION} ${FEATURED_DEFINITION}`;
+const LABELS = `${VERIFIED_DEFINITION} ${OFFICIAL_DEFINITION}`;
+
+const SORT_INPUT =
+  'Result order. relevance (default): best match first with search text; without it, best fit first for a task, else A→Z. newest: most recently added first. skills: most skills first. name: A→Z';
 
 // Every tool returns the same object as text (human/legacy fallback) and as
 // structuredContent (matches the declared outputSchema).
-const asResult = (o: Record<string, unknown>): ToolResult => ({
-  content: [{ type: 'text', text: JSON.stringify(o, null, 2) }],
-  structuredContent: o,
-});
+const asResult = (body: Record<string, unknown>): ToolResult => {
+  const o = withoutPlacement(body);
+  return { content: [{ type: 'text', text: JSON.stringify(o) }], structuredContent: o };
+};
 // Errors match the remote MCP: a text message with isError, no structured body.
 const asError = (text: string): ToolResult => ({
   content: [{ type: 'text', text }],
@@ -133,7 +137,6 @@ function tool(name: string, run: (input: ToolInput) => Promise<ToolResult>) {
 const labelProps = {
   verified: { type: 'boolean', description: VERIFIED_DEFINITION },
   official: { type: 'boolean', description: OFFICIAL_DEFINITION },
-  featured: { type: 'boolean', description: FEATURED_DEFINITION },
 };
 
 // GET /api/agents `agents[]` (lib/public-api.ts summarizeAgent).
@@ -231,7 +234,7 @@ export function WebMcp() {
             },
             annotations: { readOnlyHint: true },
             execute: tool('search_agents', async (input) => {
-              const params = new URLSearchParams();
+              const params = new URLSearchParams({ order: 'organic' });
               const query = str(input.query);
               const task = str(input.task).toLowerCase();
               const category = str(input.category);
@@ -299,7 +302,6 @@ export function WebMcp() {
                 },
                 supportsStreaming: { type: 'boolean' },
                 supportsPushNotifications: { type: 'boolean' },
-                tier: { type: 'string' },
                 createdAt: { type: ['string', 'null'] },
                 updatedAt: { type: ['string', 'null'] },
                 mcpEndpoint: { type: ['string', 'null'] },
@@ -470,7 +472,7 @@ export function WebMcp() {
               const slug = str(input.slug).toLowerCase();
               if (!slug) return asError('alternatives_to needs the slug of a listing, e.g. "deepgram".');
               const limit = num(input.limit);
-              const query = limit !== undefined ? `?limit=${limit}` : '';
+              const query = `?order=organic${limit !== undefined ? `&limit=${limit}` : ''}`;
               return decide('alternatives_to', `/api/agents/${encodeURIComponent(slug)}/alternatives${query}`);
             }),
           },

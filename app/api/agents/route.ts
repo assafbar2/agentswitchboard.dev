@@ -5,7 +5,7 @@
  *
  *   GET /api/agents?q=<text>&task=<slug>&category=<slug>&access=<method>
  *                  &official=true&verified=true&auth=<type>&since=<day|days>
- *                  &sort=<order>&limit=<n>&offset=<n>
+ *                  &sort=<order>&order=organic&limit=<n>&offset=<n>
  *   → { total, offset, limit, since?, agents: [ { name, slug, url, iconUrl,
  *                                          description, provider, categories,
  *                                          accessMethods, verified, official,
@@ -22,13 +22,15 @@
  * Order (`sort`): relevance by default — no `q` → featured first, then A→Z,
  * or best fit first with a `task`; with `q` → best match (see
  * FEATURED_DEFINITION in lib/public-api.ts) — or newest, skills (most
- * first), name (A→Z).
+ * first), name (A→Z). `order=organic` ignores featured, so ties and the
+ * no-`q` order are A→Z (lib/organic.ts); WebMCP asks for it.
  *
  * Read-only, no auth, open CORS. Same cached catalog (lib/catalog.ts) as the
  * site and the MCP server, so results always match the web directory.
  */
 
 import { getEveryAgent } from '@/lib/catalog';
+import { organicOrder, wantsOrganic } from '@/lib/organic';
 import {
   filterAgents,
   invalidSinceMessage,
@@ -92,7 +94,8 @@ export async function GET(req: Request): Promise<Response> {
     return jsonResponse({ error: 'invalid_since', message: invalidSinceMessage(sinceRaw) }, 400);
   }
 
-  const catalog = await getEveryAgent();
+  const everyAgent = await getEveryAgent();
+  const catalog = wantsOrganic(searchParams) ? organicOrder(everyAgent) : everyAgent;
   const agents = filterAgents(task ? taskMatches(catalog, task) : catalog, {
     category,
     official,

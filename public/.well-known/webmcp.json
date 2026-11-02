@@ -12,7 +12,7 @@
   "tools": [
     {
       "name": "search_agents",
-      "description": "Search the curated Agent Switchboard directory of AI agents, MCP servers, and agentic tools. Filter by task, category slug, access methods, official (first-party listings from major vendors), verified, and/or auth type; sort by relevance, newest, most skills, or name. Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working. Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified. Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order.",
+      "description": "Search the curated Agent Switchboard directory of AI agents, MCP servers, and agentic tools. Filter by task, category slug, access methods, official (first-party listings from major vendors), verified, and/or auth type; sort by relevance, newest, most skills, or name. Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working. Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified.",
       "annotations": {
         "readOnlyHint": true
       },
@@ -78,7 +78,7 @@
               "skills",
               "name"
             ],
-            "description": "Result order. relevance (default): best match first with search text; without it, best fit first for a task, else featured then A→Z. newest: most recently added first. skills: most skills first. name: A→Z"
+            "description": "Result order. relevance (default): best match first with search text; without it, best fit first for a task, else A→Z. newest: most recently added first. skills: most skills first. name: A→Z"
           },
           "limit": {
             "type": "integer",
@@ -164,10 +164,6 @@
                 "official": {
                   "type": "boolean",
                   "description": "Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified."
-                },
-                "featured": {
-                  "type": "boolean",
-                  "description": "Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order."
                 }
               }
             }
@@ -177,7 +173,7 @@
     },
     {
       "name": "get_agent",
-      "description": "Full detail for one agent by slug: skills, auth, streaming/push support, tags, provider links, and useItNow: how to start using it (MCP client config, install command, API base URL, setup links). Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working. Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified. Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order.",
+      "description": "Full detail for one agent by slug: skills, auth, streaming/push support, tags, provider links, and useItNow: how to start using it (MCP client config, install command, API base URL, setup links). Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working. Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified.",
       "annotations": {
         "readOnlyHint": true
       },
@@ -238,10 +234,6 @@
             "type": "boolean",
             "description": "Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified."
           },
-          "featured": {
-            "type": "boolean",
-            "description": "Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order."
-          },
           "officialVendor": {
             "type": [
               "string",
@@ -291,9 +283,6 @@
           },
           "supportsPushNotifications": {
             "type": "boolean"
-          },
-          "tier": {
-            "type": "string"
           },
           "createdAt": {
             "type": [
@@ -652,10 +641,6 @@
                   "type": "boolean",
                   "description": "Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified."
                 },
-                "featured": {
-                  "type": "boolean",
-                  "description": "Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order."
-                },
                 "authType": {
                   "type": "string"
                 },
@@ -780,10 +765,6 @@
                 "type": "boolean",
                 "description": "Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified."
               },
-              "featured": {
-                "type": "boolean",
-                "description": "Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order."
-              },
               "authType": {
                 "type": "string"
               }
@@ -857,10 +838,6 @@
                 "official": {
                   "type": "boolean",
                   "description": "Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified."
-                },
-                "featured": {
-                  "type": "boolean",
-                  "description": "Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order."
                 },
                 "authType": {
                   "type": "string"
@@ -998,10 +975,6 @@
                 "official": {
                   "type": "boolean",
                   "description": "Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified."
-                },
-                "featured": {
-                  "type": "boolean",
-                  "description": "Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order."
                 },
                 "authType": {
                   "type": "string"
