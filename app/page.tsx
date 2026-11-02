@@ -10,6 +10,7 @@ import {
   getEveryAgent,
 } from '@/lib/catalog';
 import { dropAdditions, dropHighlights, getDropSchedule } from '@/lib/drops';
+import { isNew, NEW_DAYS, newSince } from '@/lib/freshness';
 import { taskMatches } from '@/lib/search';
 import { getStacks, stackEntries, stackOfTheWeek } from '@/lib/stacks';
 import { getTasks } from '@/lib/tasks';
@@ -57,6 +58,8 @@ export default async function HomePage() {
   const latestDrop = getDropSchedule().drops[0];
   const latestAdded = latestDrop ? dropAdditions(latestDrop, catalog).listed : [];
   const latestOfficial = latestAdded.filter((a) => a.official).length;
+  const since = newSince();
+  const newCount = catalog.filter((a) => isNew(a.createdAt, since)).length;
   const weekStack = stackOfTheWeek(getStacks());
   const weekEntries = weekStack ? stackEntries(weekStack, catalog) : [];
   const tasks = getTasks();
@@ -227,6 +230,15 @@ export default async function HomePage() {
                 {homepageAgents.map(({ agent, label }) => (
                   <FeaturedAgentCard key={agent.id} agent={agent} label={label} />
                 ))}
+                {newCount > 0 && (
+                  <Link href="/new" className="dir-row">
+                    <span className="dir-row-name">New listings</span>
+                    <span className="dir-row-leader" aria-hidden="true" />
+                    <span className="dir-row-meta">
+                      +{formatNumber(newCount)} in {NEW_DAYS} days
+                    </span>
+                  </Link>
+                )}
                 <Link href="/browse" className="dir-row">
                   <span className="dir-row-name">View all</span>
                   <span className="dir-row-leader" aria-hidden="true" />
@@ -410,6 +422,11 @@ export default async function HomePage() {
               <Link href="/browse" className="agent-accent hover:opacity-80">/browse</Link>
               <span className="agent-dim">filterable directory</span>
               <span className="agent-dim">?q= ?task= ?category= ?access= ?official=1</span>
+            </div>
+            <div className="agent-row">
+              <Link href="/new" className="agent-accent hover:opacity-80">/new</Link>
+              <span className="agent-dim">every listing added in the last {NEW_DAYS} days, by drop</span>
+              <span className="agent-dim">{newCount} since {since}</span>
             </div>
             <div className="agent-row">
               <Link href="/tasks" className="agent-accent hover:opacity-80">/tasks</Link>

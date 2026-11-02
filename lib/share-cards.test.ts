@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { describe, it, expect } from 'vitest';
 import type { Drop, DropItem } from './drops';
+import type { NewGroup } from './freshness';
 import {
   CARD_DESIGN,
   categoryCard,
@@ -16,6 +17,8 @@ import {
   dropCardImage,
   listingCard,
   listingCardImage,
+  newCard,
+  newCardImage,
   sampleIcons,
   siteCard,
   siteCardImage,
@@ -159,6 +162,34 @@ describe('dropCard', () => {
     const image = dropCardImage('2026-10-31', dropCard(drop, catalog));
     expect(image.url).toMatch(/^\/drops\/2026-10-31\/card\.png\?v=[0-9a-f]{8}$/);
     expect(image.alt).toBe('The Oct 31, 2026 drop on Agent Switchboard: 4 listings added, 1 updated');
+  });
+});
+
+describe('newCard', () => {
+  const catalog = [
+    official('big-1', 'Big', 'bbbb0001'),
+    official('big-2', 'Big', 'bbbb0002'),
+    makeAgent({ slug: 'indie', name: 'Indie', providerName: 'Indie', iconUrl: '/icons/indie.png?v=cccc0001' }),
+  ];
+  const groups: NewGroup[] = [
+    { drop: null, agents: [catalog[2]] },
+    { drop: { date: '2026-10-31', days: ['2026-10-31'], added: [], updated: [], removed: [] }, agents: catalog.slice(0, 2) },
+  ];
+
+  it('counts every new listing and names the biggest vendors first, one per provider before repeats', () => {
+    expect(newCard(groups, '2026-10-04', catalog)).toEqual({
+      added: 3,
+      official: 2,
+      since: 'Oct 4, 2026',
+      names: ['big-1', 'Indie', 'big-2'],
+      icons: ['/icons/big-1.png?v=bbbb0001', '/icons/indie.png?v=cccc0001'],
+    });
+  });
+
+  it('is served at its own versioned card URL', () => {
+    const image = newCardImage(newCard(groups, '2026-10-04', catalog));
+    expect(image.url).toMatch(/^\/new\/card\.png\?v=[0-9a-f]{8}$/);
+    expect(image.alt).toBe('3 listings added to Agent Switchboard since Oct 4, 2026');
   });
 });
 

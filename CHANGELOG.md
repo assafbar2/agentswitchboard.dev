@@ -4,6 +4,13 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops).
 
+## [2.5.0] - 2026-11-02 - Come back
+
+### Added
+- New listings: [/new](https://agentswitchboard.dev/new) puts everything added to the directory in the last 30 days on one page, grouped by the weekly drop that brought it in, newest first, each group linking its drop. On November 2 that is 302 listings from five drops, 100 of them official. The page has its own share card and a text-only view, and the homepage, footer, [/drops](https://agentswitchboard.dev/drops), /changelog, llms.txt, index.md and /for-agents link it. ([#305](https://github.com/assafbar2/agentswitchboard.dev/pull/305))
+- A New tag on the cards of listings added in the last 30 days, on /browse, on category, task, stack and alternatives pages, and under Related Agents. A category page says how many of its listings are new and links them, newest first: [Infrastructure & Ops](https://agentswitchboard.dev/categories/infrastructure) reads "105 new in 30 days". ([#305](https://github.com/assafbar2/agentswitchboard.dev/pull/305))
+- Filters for the directory's change log on [/changelog](https://agentswitchboard.dev/changelog): show only what was added, updated or removed, in one category or all, each with how many changes it keeps. The address keeps the choice (`/changelog?action=removed&category=infrastructure`), so a filtered log can be linked; with JavaScript off, the whole log shows as before. ([#305](https://github.com/assafbar2/agentswitchboard.dev/pull/305))
+
 ## [2.4.0] - 2026-11-02 - Decide & act
 
 ### Added

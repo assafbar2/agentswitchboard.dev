@@ -133,18 +133,24 @@ function notesOf(entries: ChangelogEntry[]): string[] {
 }
 
 /**
- * A drop's additions that are still listed, in the order a drop shows them:
- * Official first, the biggest vendor in the catalog first, then the rest A→Z.
- * `gone` are the additions that have since left the directory.
+ * New listings in the order a drop shows them: Official first, the biggest
+ * vendor in `catalog` first, then the rest A→Z.
  */
-export function dropAdditions(drop: DropChanges, catalog: Agent[]): { listed: Agent[]; gone: DropItem[] } {
-  const bySlug = new Map(catalog.map((a) => [a.slug, a]));
+export function rankAdditions(agents: Agent[], catalog: Agent[]): Agent[] {
   const vendorSize = new Map<string, number>();
   for (const a of catalog) {
     if (a.officialVendor) vendorSize.set(a.officialVendor.slug, (vendorSize.get(a.officialVendor.slug) ?? 0) + 1);
   }
   const rank = (a: Agent) => (a.officialVendor ? (vendorSize.get(a.officialVendor.slug) ?? 0) : -1);
+  return [...agents].sort((a, b) => rank(b) - rank(a) || a.name.localeCompare(b.name));
+}
 
+/**
+ * A drop's additions that are still listed, ranked by rankAdditions. `gone`
+ * are the additions that have since left the directory.
+ */
+export function dropAdditions(drop: DropChanges, catalog: Agent[]): { listed: Agent[]; gone: DropItem[] } {
+  const bySlug = new Map(catalog.map((a) => [a.slug, a]));
   const listed: Agent[] = [];
   const gone: DropItem[] = [];
   for (const item of drop.added) {
@@ -152,8 +158,7 @@ export function dropAdditions(drop: DropChanges, catalog: Agent[]): { listed: Ag
     if (agent) listed.push(agent);
     else gone.push(item);
   }
-  listed.sort((a, b) => rank(b) - rank(a) || a.name.localeCompare(b.name));
-  return { listed, gone };
+  return { listed: rankAdditions(listed, catalog), gone };
 }
 
 /** The first `n` of dropAdditions(…).listed, one per provider before any repeats, so one vendor can't fill the line. */

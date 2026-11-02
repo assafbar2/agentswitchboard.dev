@@ -1,10 +1,15 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import Link from 'next/link';
+import { Suspense } from 'react';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { pageMetadata } from '@/lib/metadata';
+import { getAllCategories, getListingCategories } from '@/lib/catalog';
 import { getReleases, releaseAnchor } from '@/lib/changelog';
+import { NEW_DAYS } from '@/lib/freshness';
 import { inlineMarkdownToText } from '@/lib/inline-markdown';
+import { logCounts } from '@/lib/log-filter';
+import { ChangelogFilters } from '@/components/ChangelogFilters';
 import { InlineMarkdown } from '@/components/InlineMarkdown';
 import { formatDay } from '@/lib/utils';
 import type { ChangelogEntry } from '@/lib/types';
@@ -25,10 +30,18 @@ const GITHUB_CHANGELOG = 'https://github.com/assafbar2/agentswitchboard.dev/blob
 const inlineLink =
   'font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2';
 
-export default function ChangelogPage() {
+const LOG_LIST_ID = 'directory-log';
+
+export default async function ChangelogPage() {
   const raw = fs.readFileSync(path.join(process.cwd(), 'content', 'changelog.json'), 'utf8');
   const entries: ChangelogEntry[] = JSON.parse(raw);
   const releases = getReleases();
+  const listingCategories = await getListingCategories();
+  const categoriesOf = (slug: string) => listingCategories.get(slug) ?? [];
+  const counts = logCounts(entries, categoriesOf);
+  const categories = (await getAllCategories())
+    .filter((c) => counts[c.slug])
+    .map((c) => ({ slug: c.slug, name: c.name }));
 
   return (
     <>
@@ -54,6 +67,9 @@ export default function ChangelogPage() {
               </a>
               <Link href="/drops" className={inlineLink}>
                 Weekly drops
+              </Link>
+              <Link href="/new" className={inlineLink}>
+                New listings
               </Link>
             </p>
           </div>
@@ -110,11 +126,23 @@ export default function ChangelogPage() {
               <Link href="/drops" className={inlineLink}>
                 the weekly drops
               </Link>
+              , and the listings added in the last {NEW_DAYS} days on{' '}
+              <Link href="/new" className={inlineLink}>
+                New listings
+              </Link>
               .
             </p>
-            <ul>
+            <Suspense>
+              <ChangelogFilters listId={LOG_LIST_ID} categories={categories} counts={counts} />
+            </Suspense>
+            <ul id={LOG_LIST_ID}>
               {entries.map((e, i) => (
-                <li key={`${e.slug}-${e.action}-${i}`} className="border-b border-[var(--dir-rule)]! py-3">
+                <li
+                  key={`${e.slug}-${e.action}-${i}`}
+                  data-action={e.action}
+                  data-cats={categoriesOf(e.slug).join(' ') || undefined}
+                  className="border-b border-[var(--dir-rule)]! py-3"
+                >
                   <div className="flex min-w-0 items-baseline gap-1.5">
                     {e.action === 'removed' ? (
                       <span className="min-w-0 wrap-break-word text-[17px] font-bold leading-snug">

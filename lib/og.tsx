@@ -19,6 +19,7 @@ import {
   type ComparisonsCard,
   type DropCard,
   type ListingCard,
+  type NewCard,
   type SiteCard,
   type StackCard,
   type StacksCard,
@@ -156,6 +157,21 @@ export async function renderDropCard(card: DropCard): Promise<ImageResponse> {
     <Headline
       kicker="Weekly drop"
       title={card.date}
+      counts={counts.filter(Boolean).join(' · ')}
+      text={names}
+      icons={await Promise.all(card.icons.map(iconSrc))}
+    />
+  );
+}
+
+export async function renderNewCard(card: NewCard): Promise<ImageResponse> {
+  const counts = [`Since ${card.since}`, card.official > 0 ? `${formatNumber(card.official)} official` : null];
+  const more = card.added - card.names.length;
+  const names = card.names.length > 0 ? `${card.names.join(', ')}${more > 0 ? ` and ${formatNumber(more)} more` : ''}` : '';
+  return render(
+    <Headline
+      kicker="New listings"
+      title={card.added > 0 ? `${formatNumber(card.added)} new AI ${pluralize(card.added, 'agent')}` : 'No new listings'}
       counts={counts.filter(Boolean).join(' · ')}
       text={names}
       icons={await Promise.all(card.icons.map(iconSrc))}

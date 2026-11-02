@@ -3,6 +3,7 @@ import { AgentIcon } from '@/components/AgentIcon';
 import { Badge } from '@/components/ui/Badge';
 import { OfficialBadge } from '@/components/ui/OfficialBadge';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
+import { isNew } from '@/lib/freshness';
 import { ACCESS_METHOD_LABELS } from '@/lib/search';
 import type { Agent, Category } from '@/lib/types';
 import { authTypeLabel, pluralize, truncate } from '@/lib/utils';
@@ -29,6 +30,7 @@ export type AgentCardData = Pick<
   | 'tier'
   | 'accessMethods'
   | 'authType'
+  | 'createdAt'
 > & {
   categories: Pick<Category, 'id' | 'name'>[];
   /** Only the count is shown. */
@@ -36,18 +38,22 @@ export type AgentCardData = Pick<
 };
 
 /**
- * `why` adds a closing line saying why the listing is shown here. The
- * Compare toggle sits beside the link, since a button can't go inside one;
+ * `why` adds a closing line saying why the listing is shown here. A listing
+ * added in the last 30 days (lib/freshness.ts) is tagged New, unless the list
+ * already says when it was added (`markNew={false}`). The Compare toggle sits
+ * beside the link, since a button can't go inside one;
  * components/CompareTray.tsx shows it and reads the name and icon from the
  * card.
  */
-export function AgentCard({ agent, why }: { agent: AgentCardData; why?: string }) {
+export function AgentCard({ agent, why, markNew = true }: { agent: AgentCardData; why?: string; markNew?: boolean }) {
   const skillCount = agent.skills.length;
   const auth = agent.authType === 'none' ? 'No auth' : authTypeLabel(agent.authType);
   const meta = skillCount > 0 ? `${skillCount} ${pluralize(skillCount, 'skill')} · ${auth}` : auth;
   const access = agent.accessMethods.map((m) => ACCESS_METHOD_LABELS[m] ?? m).join(' · ');
   const categories = agent.categories.slice(0, 2).map((c) => c.name).join(', ');
-  const hasLabels = agent.verified || agent.official || agent.featured || agent.sponsorLabel || agent.tier === 'premium';
+  const fresh = markNew && isNew(agent.createdAt);
+  const hasLabels =
+    agent.verified || agent.official || agent.featured || agent.sponsorLabel || agent.tier === 'premium' || fresh;
 
   // A directory entry: icon, bold name, dotted leader, access methods
   // right-aligned, the one-line description beneath, then provider and the
@@ -84,6 +90,7 @@ export function AgentCard({ agent, why }: { agent: AgentCardData; why?: string }
               {agent.sponsorLabel && <Badge variant="sponsor">{agent.sponsorLabel}</Badge>}
               {agent.featured && <Badge variant="amber">Featured</Badge>}
               {agent.tier === 'premium' && <Badge variant="amber">Premium</Badge>}
+              {fresh && <span className="new-tag">New</span>}
             </span>
           )}
           <span className="min-w-0 wrap-break-word">

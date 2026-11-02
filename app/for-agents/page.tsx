@@ -5,6 +5,7 @@ import { EndpointLink } from '@/components/EndpointLink';
 import { VerifiedBadge, VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 import { getEveryAgent } from '@/lib/catalog';
 import { COMPARE_MAX } from '@/lib/compare-link';
+import { NEW_DAYS } from '@/lib/freshness';
 import { FEATURED_DEFINITION, OFFICIAL_DEFINITION } from '@/lib/public-api';
 import { MIN_ALTERNATIVES } from '@/lib/related';
 import type { Agent } from '@/lib/types';
@@ -306,6 +307,14 @@ GET /api/tasks/<slug>
               <Link href="/drops" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
                 https://agentswitchboard.dev/drops
               </Link>
+            </li>
+            <li>
+              <span className="font-bold">→ New listings, the last {NEW_DAYS} days:</span>{' '}
+              <Link href="/new" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
+                https://agentswitchboard.dev/new
+              </Link>
+              , grouped by drop; <code className="font-bold">GET /api/agents?sort=newest</code> lists the latest
+              additions first
             </li>
             <li>
               <span className="font-bold">→ Alternatives to a listing:</span>{' '}

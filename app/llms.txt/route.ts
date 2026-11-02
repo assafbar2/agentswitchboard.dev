@@ -3,6 +3,7 @@ import { getEveryAgent, getAllCategories } from '@/lib/catalog';
 import { curatedComparisons } from '@/lib/compare';
 import { COMPARE_MAX } from '@/lib/compare-link';
 import { getDropSchedule } from '@/lib/drops';
+import { isNew, NEW_DAYS, newSince } from '@/lib/freshness';
 import { FEATURED_DEFINITION, OFFICIAL_DEFINITION } from '@/lib/public-api';
 import { MIN_ALTERNATIVES } from '@/lib/related';
 import { getStacks, stackOfTheWeek } from '@/lib/stacks';
@@ -21,6 +22,8 @@ export async function GET() {
   const dropLine = latestDrop
     ? `\n- What's new, batch by batch: https://agentswitchboard.dev/drops (latest: https://agentswitchboard.dev/drops/${latestDrop.date}, ${latestDrop.added.length} added)`
     : '';
+  const since = newSince();
+  const newCount = agents.filter((a) => isNew(a.createdAt, since)).length;
   const stacks = getStacks();
   const week = stackOfTheWeek(stacks);
   const weekLine = week ? `; stack of the week: https://agentswitchboard.dev/stacks/${week.slug}` : '';
@@ -52,6 +55,7 @@ The \`verified\`, \`official\` and \`featured\` flags in search and detail resul
 - Full machine-readable catalog (JSON): https://agentswitchboard.dev/agents.json
 - Browse by category: https://agentswitchboard.dev/categories
 - Search and filter: https://agentswitchboard.dev/browse${dropLine}
+- New listings, everything added in the last ${NEW_DAYS} days: https://agentswitchboard.dev/new (${newCount} since ${since}, grouped by drop)
 - Alternatives to a listing: https://agentswitchboard.dev/agents/<slug>/alternatives (listings with at least ${MIN_ALTERNATIVES}; each says what it has in common)
 - Stacks, tools that work together for one job: https://agentswitchboard.dev/stacks (${stacks.length} stacks, each tool with why it is there${weekLine})
 - Tasks, to start from the job ("query a database"): https://agentswitchboard.dev/tasks (${getTasks().length} tasks, each with the listings that fit it, best first; /browse?task=<slug> filters them)
