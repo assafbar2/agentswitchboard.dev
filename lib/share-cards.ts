@@ -11,7 +11,8 @@
 import { createHash } from 'crypto';
 import { pairPath } from './compare';
 import { compareQuery } from './compare-link';
-import { dropAdditions, dropHighlights, type Drop } from './drops';
+import { dropAdditions, dropHighlights, rankAdditions, type Drop } from './drops';
+import type { NewGroup } from './freshness';
 import type { Alternative } from './related';
 import { ACCESS_METHOD_LABELS } from './search';
 import { stackAccessMethods, type Stack, type StackEntry } from './stacks';
@@ -23,7 +24,7 @@ import { formatDay } from './utils';
  * Hash of lib/og.tsx and assets/fonts/, so a redesigned card gets new URLs.
  * lib/share-cards.test.ts prints the new value whenever either changes.
  */
-export const CARD_DESIGN = 'fcfa7846';
+export const CARD_DESIGN = '2f790d47';
 
 export const CARD_SIZE = { width: 1200, height: 630 } as const;
 
@@ -63,6 +64,17 @@ export interface DropCard {
   official: number;
   updated: number;
   /** A few additions still listed: lib/drops.ts dropHighlights. */
+  names: string[];
+  icons: string[];
+}
+
+export interface NewCard {
+  /** Listings added since `since`. */
+  added: number;
+  official: number;
+  /** The window's first day, as the page shows it: "Oct 4, 2026". */
+  since: string;
+  /** A few of them, the biggest vendors first and one per provider. */
   names: string[];
   icons: string[];
 }
@@ -143,6 +155,8 @@ const SITE_ICONS = 12;
 const CATEGORY_ICONS = 10;
 const DROP_ICONS = 10;
 const DROP_NAMES = 3;
+const NEW_ICONS = 10;
+const NEW_NAMES = 3;
 const ALTERNATIVE_NAMES = 3;
 const TASK_ICONS = 10;
 const COMPARISON_ICONS = 10;
@@ -189,6 +203,18 @@ export function dropCard(drop: Drop, catalog: Agent[]): DropCard {
     updated: drop.updated.length,
     names: dropHighlights(listed, DROP_NAMES).map((a) => a.name),
     icons: sampleIcons(listed, catalog, DROP_ICONS),
+  };
+}
+
+/** `groups` as lib/freshness.ts newListings returns them for `since`. */
+export function newCard(groups: NewGroup[], since: string, catalog: Agent[]): NewCard {
+  const fresh = groups.flatMap((g) => g.agents);
+  return {
+    added: fresh.length,
+    official: fresh.filter((a) => a.official).length,
+    since: formatDay(since),
+    names: dropHighlights(rankAdditions(fresh, catalog), NEW_NAMES).map((a) => a.name),
+    icons: sampleIcons(fresh, catalog, NEW_ICONS),
   };
 }
 
@@ -284,6 +310,10 @@ export function dropCardImage(date: string, card: DropCard): ShareImage {
   );
 }
 
+export function newCardImage(card: NewCard): ShareImage {
+  return shareImage('/new/card.png', card, `${card.added} listings added to Agent Switchboard since ${card.since}`);
+}
+
 export function alternativesCardImage(slug: string, card: AlternativesCard): ShareImage {
   return shareImage(
     `/agents/${slug}/alternatives/card.png`,
@@ -331,6 +361,7 @@ function shareImage(
     | ListingCard
     | CategoryCard
     | DropCard
+    | NewCard
     | AlternativesCard
     | StackCard
     | StacksCard

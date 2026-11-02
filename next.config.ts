@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/**": ["./content/**", "./CHANGELOG.md"],
   },
+  // The moment of the build, inlined into every bundle. lib/freshness.ts
+  // counts "new" from the build's day, so prerendered pages and pages
+  // rendered per request (/browse) agree on which listings are new.
+  env: { BUILD_TIME: String(Date.now()) },
   // `/` answers as HTML or Markdown depending on Accept (see proxy.ts).
   // The proxy sets Vary too, but the renderer overwrites it on the HTML
   // branch, so declare it here as well — otherwise a CDN can cache the HTML

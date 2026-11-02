@@ -160,6 +160,17 @@ export const getRetiredListings = cache(
   })
 );
 
+/**
+ * Every listing file's category slugs, archived ones too, so the change log
+ * can filter an entry by category after its listing has left.
+ */
+export const getListingCategories = cache(
+  once(
+    async (): Promise<Map<string, string[]>> =>
+      new Map((await loadAllAgentsRaw()).map((a) => [a.slug, a.categories.map((c) => c.slug)]))
+  )
+);
+
 export async function getAgentBySlug(slug: string): Promise<Agent | null> {
   const agents = await getEveryAgent();
   return agents.find((a) => a.slug === slug) ?? null;

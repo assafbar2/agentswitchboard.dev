@@ -20,7 +20,7 @@ export function InlineMarkdown({ text }: { text: string }) {
     const [, code, label, href, bold] = match;
     if (code !== undefined) {
       nodes.push(
-        <code key={at} className="mono text-[0.9em]">
+        <code key={at} className="mono text-[0.9em] wrap-break-word">
           {code}
         </code>
       );

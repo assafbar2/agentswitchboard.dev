@@ -131,7 +131,7 @@ export default async function DropPage({ params }: Props) {
             )}
             <div className="grid grid-cols-1 gap-x-10 md:grid-cols-2 lg:grid-cols-3">
               {listed.map((agent) => (
-                <AgentCard key={agent.slug} agent={agent} />
+                <AgentCard key={agent.slug} agent={agent} markNew={false} />
               ))}
             </div>
             {gone.length > 0 && (

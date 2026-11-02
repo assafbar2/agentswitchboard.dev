@@ -12,6 +12,7 @@ import {
   type DropChanges,
   type DropItem,
 } from '@/lib/drops';
+import { NEW_DAYS } from '@/lib/freshness';
 import { pageMetadata } from '@/lib/metadata';
 import { formatDay, formatNumber, pluralize } from '@/lib/utils';
 
@@ -65,7 +66,12 @@ export default async function DropsPage() {
               <Link href="/changelog#directory-changes" className={inlineLink}>
                 directory change log
               </Link>
-              , so a new batch gets its page the moment it lands.
+              , so a new batch gets its page the moment it lands. Everything added in the last {NEW_DAYS} days is
+              also on one page:{' '}
+              <Link href="/new" className={inlineLink}>
+                New listings
+              </Link>
+              .
             </p>
           </div>
 

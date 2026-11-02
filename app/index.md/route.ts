@@ -4,6 +4,7 @@ import { curatedComparisons } from '@/lib/compare';
 import { COMPARE_MAX } from '@/lib/compare-link';
 import { getDropSchedule } from '@/lib/drops';
 import { BASE_URL } from '@/lib/env';
+import { isNew, NEW_DAYS, newSince } from '@/lib/freshness';
 import { FEATURED_DEFINITION, OFFICIAL_DEFINITION } from '@/lib/public-api';
 import { getStacks, stackOfTheWeek } from '@/lib/stacks';
 import { getTasks } from '@/lib/tasks';
@@ -35,6 +36,10 @@ export async function GET() {
   const dropLine = latestDrop
     ? `\n- [/drops](${BASE_URL}/drops) — what's new, batch by batch; the latest is [/drops/${latestDrop.date}](${BASE_URL}/drops/${latestDrop.date}) (${latestDrop.added.length} added).`
     : '';
+  const since = newSince();
+  const newLine = `\n- [/new](${BASE_URL}/new) — every listing added in the last ${NEW_DAYS} days (${
+    agents.filter((a) => isNew(a.createdAt, since)).length
+  } since ${since}), grouped by drop.`;
   const weekStack = stackOfTheWeek(getStacks());
   const stackLine = `\n- [/stacks](${BASE_URL}/stacks) — tools that work together for one job, each with why it is there${
     weekStack ? `; the stack of the week is [/stacks/${weekStack.slug}](${BASE_URL}/stacks/${weekStack.slug})` : ''
@@ -63,7 +68,7 @@ The \`verified\`, \`official\` and \`featured\` flags in search and detail resul
 - [/.well-known/mcp.json](${BASE_URL}/.well-known/mcp.json) — MCP server manifest.
 - [/agents.json](${BASE_URL}/agents.json) — the entire catalog as one large JSON file, no auth. Use it for bulk or offline work; search for everything else.
 - [/llms.txt](${BASE_URL}/llms.txt) — plain-language site guide.
-- [/for-agents](${BASE_URL}/for-agents) — how to use all of the above.${dropLine}${stackLine}${taskLine}${compareLine}
+- [/for-agents](${BASE_URL}/for-agents) — how to use all of the above.${dropLine}${newLine}${stackLine}${taskLine}${compareLine}
 
 ## When to use this site
 
@@ -75,7 +80,7 @@ ${categories.map((c) => `- ${c.name} (\`${c.slug}\`)`).join('\n')}
 
 ## Pages
 
-- [Browse](${BASE_URL}/browse) · [Categories](${BASE_URL}/categories) · [Tasks](${BASE_URL}/tasks) · [Weekly drops](${BASE_URL}/drops) · [Stacks](${BASE_URL}/stacks) · [Compare](${BASE_URL}/compare) · [Submit an agent](${BASE_URL}/submit)
+- [Browse](${BASE_URL}/browse) · [Categories](${BASE_URL}/categories) · [Tasks](${BASE_URL}/tasks) · [Weekly drops](${BASE_URL}/drops) · [New listings](${BASE_URL}/new) · [Stacks](${BASE_URL}/stacks) · [Compare](${BASE_URL}/compare) · [Submit an agent](${BASE_URL}/submit)
 - [About](${BASE_URL}/about) · [Contact](${BASE_URL}/contact) · [Privacy](${BASE_URL}/privacy) · [Terms of Use](${BASE_URL}/terms) · [Disclaimer](${BASE_URL}/disclaimer)
 
 Contact: barnir@agentmail.to

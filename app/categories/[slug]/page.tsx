@@ -5,11 +5,15 @@ import { categoryCard, categoryCardImage } from '@/lib/share-cards';
 import { AgentCard } from '@/components/AgentCard';
 import { CategoryIcon } from '@/components/ui/CategoryIcon';
 import { JsonLd } from '@/components/JsonLd';
+import { isNew, NEW_DAYS, newSince } from '@/lib/freshness';
 import { notFound } from 'next/navigation';
 import { Building2 } from 'lucide-react';
 import type { Metadata } from 'next';
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev';
+
+const headerLink =
+  'inline-flex min-h-11 items-center gap-1.5 rounded-none border-2 border-[var(--dir-ink)]! px-3 text-sm font-bold uppercase tracking-[0.06em] text-[var(--dir-ink)] no-underline hover:bg-[var(--dir-rule)] hover:no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--dir-ink)]';
 
 export async function generateStaticParams() {
   const categories = await getAllCategories();
@@ -64,6 +68,8 @@ export default async function CategoryPage({
 
   const { category, agents } = result;
   const officialCount = agents.filter((a) => a.official).length;
+  const since = newSince();
+  const newCount = agents.filter((a) => isNew(a.createdAt, since)).length;
   const url = `${BASE_URL}/categories/${slug}`;
 
   const listSchema = {
@@ -108,14 +114,20 @@ export default async function CategoryPage({
           {category.description && (
             <p className="min-w-0 flex-1 basis-60 text-lg text-[var(--dir-muted)]">{category.description}</p>
           )}
-          {officialCount > 0 && (
-            <Link
-              href={`/browse?official=1&category=${category.slug}`}
-              className="sm:ml-auto inline-flex min-h-11 items-center gap-1.5 rounded-none border-2 border-[var(--dir-ink)]! px-3 text-sm font-bold uppercase tracking-[0.06em] text-[var(--dir-ink)] no-underline hover:bg-[var(--dir-rule)] hover:no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--dir-ink)]"
-            >
-              <Building2 className="w-3.5 h-3.5" aria-hidden />
-              {officialCount} official
-            </Link>
+          {(newCount > 0 || officialCount > 0) && (
+            <div className="flex flex-wrap gap-2 sm:ml-auto">
+              {newCount > 0 && (
+                <Link href={`/browse?category=${category.slug}&sort=newest`} className={headerLink}>
+                  {newCount} new in {NEW_DAYS} days
+                </Link>
+              )}
+              {officialCount > 0 && (
+                <Link href={`/browse?official=1&category=${category.slug}`} className={headerLink}>
+                  <Building2 className="w-3.5 h-3.5" aria-hidden />
+                  {officialCount} official
+                </Link>
+              )}
+            </div>
           )}
         </div>
 
@@ -147,6 +159,7 @@ export default async function CategoryPage({
             <div className="agent-accent text-base font-bold mb-1">{category.slug}</div>
             <div className="agent-dim text-xs">
               {category.name} · {agents.length} agent{agents.length !== 1 ? 's' : ''}
+              {newCount > 0 && ` · ${newCount} new in ${NEW_DAYS} days`}
               {category.description && ` · ${category.description}`}
             </div>
           </div>
