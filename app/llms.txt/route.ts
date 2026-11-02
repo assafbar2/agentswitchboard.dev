@@ -67,6 +67,7 @@ The \`verified\`, \`official\` and \`featured\` flags in search and detail resul
 - A stack of your own to hand a user: https://agentswitchboard.dev/stack?items=<slug>,<slug>&title=<title> (up to ${MY_STACK_MAX} listings in your order, as a page they can open, compare, connect and copy to My stack at https://agentswitchboard.dev/my-stack)
 - Tasks, to start from the job ("query a database"): https://agentswitchboard.dev/tasks (${getTasks().length} tasks, each with the listings that fit it, best first; /browse?task=<slug> filters them)
 - Compare up to ${COMPARE_MAX} listings side by side: https://agentswitchboard.dev/compare?a=<slug>&b=<slug>&c=<slug> (what each does, access, auth, how to connect it, skills; ${comparisons.length} curated comparisons are listed at https://agentswitchboard.dev/compare)
+- The Switchboard, every listing on one board: https://agentswitchboard.dev/switchboard (a jack per listing in a panel per category, Official ones filled in and the latest drop's lit; the board as one image: https://agentswitchboard.dev/switchboard/card.png)
 
 For a job rather than a product name, GET /api/tasks lists the tasks, and
 GET /api/agents?task=<slug> (or \`task\` on the \`search_agents\` MCP tool) returns

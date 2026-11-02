@@ -742,6 +742,107 @@ body {
       width: 6.5rem;
     }
   }
+
+  /* The Switchboard (components/Switchboard.tsx): a panel of jacks per
+     category, in as many columns as fit. A jack is an ink ring; an Official
+     one is filled with ink, one from the newest drop is lit yellow, and one
+     that is both gets a heavy ring. */
+  .board {
+    columns: 4 17rem;
+    column-gap: 2rem;
+  }
+
+  .board-panel {
+    break-inside: avoid;
+    padding-bottom: 1.5rem;
+    scroll-margin-top: 9rem;
+    transition: opacity 0.2s;
+  }
+
+  .board-panel-title {
+    padding-top: 0.5rem;
+    border-top: 3px solid var(--dir-ink);
+    font-family: var(--font-display);
+    font-size: 0.8125rem;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .board-panel-title a {
+    color: var(--dir-ink);
+    text-decoration: none;
+  }
+
+  .board-panel-title a:hover {
+    text-decoration: underline;
+  }
+
+  .jacks circle {
+    fill: var(--dir-paper);
+    stroke: var(--dir-ink);
+    stroke-width: 1.5;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .jacks .o circle {
+    fill: var(--dir-ink);
+  }
+
+  .jacks .l circle {
+    fill: var(--dir-yellow);
+  }
+
+  .jacks .o.l circle {
+    stroke-width: 4;
+  }
+
+  .board a {
+    transition: opacity 0.2s;
+  }
+
+  .board a:hover circle,
+  .board a:focus-visible circle,
+  .board a[data-on] circle {
+    transform: scale(1.4);
+  }
+
+  .board a:focus-visible {
+    outline: 2px solid var(--dir-ink);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .board .l circle {
+      animation: board-light-up 0.5s ease-out both;
+    }
+  }
+
+  /* The jack under the pointer (components/BoardEvents.tsx), kept in view
+     just under the sticky header (h-16 and its 3px rule). Its height is fixed,
+     so the board never moves under the pointer. */
+  .board-readout {
+    position: sticky;
+    top: 67px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 3.75rem;
+    margin: 0.75rem 0 1rem;
+    border-bottom: 1px solid var(--dir-rule);
+    background: var(--dir-paper);
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+}
+
+@keyframes board-light-up {
+  from {
+    fill: var(--dir-paper);
+  }
 }
 
 /* The compare tray is fixed to the bottom of the window; the page leaves room

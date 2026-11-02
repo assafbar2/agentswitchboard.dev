@@ -55,6 +55,7 @@ export async function GET() {
   const compareLine = `\n- [/compare](${BASE_URL}/compare) — up to ${COMPARE_MAX} listings side by side at \`/compare?a={slug}&b={slug}&c={slug}\`: what each does, access, auth, how to connect it, skills. ${comparisons.length} curated comparisons${
     comparisons[0] ? `, such as [/compare/${comparisons[0].slug}](${BASE_URL}/compare/${comparisons[0].slug})` : ''
   }.`;
+  const boardLine = `\n- [/switchboard](${BASE_URL}/switchboard) — every listing on one board: a jack per listing in a panel per category, Official ones filled in and the latest drop's lit. The board as one image: [/switchboard/card.png](${BASE_URL}/switchboard/card.png).`;
 
   const body = `# Agent Switchboard
 
@@ -75,7 +76,7 @@ The \`verified\`, \`official\` and \`featured\` flags in search and detail resul
 - [/.well-known/mcp.json](${BASE_URL}/.well-known/mcp.json) — MCP server manifest.
 - [/agents.json](${BASE_URL}/agents.json) — the entire catalog as one large JSON file, no auth. Use it for bulk or offline work; search for everything else.
 - [/llms.txt](${BASE_URL}/llms.txt) — plain-language site guide.
-- [/for-agents](${BASE_URL}/for-agents) — how to use all of the above.${dropLine}${newLine}${releaseLine}${stackLine}${taskLine}${compareLine}
+- [/for-agents](${BASE_URL}/for-agents) — how to use all of the above.${dropLine}${newLine}${releaseLine}${stackLine}${taskLine}${compareLine}${boardLine}
 
 ## When to use this site
 
