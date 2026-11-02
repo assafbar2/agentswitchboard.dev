@@ -159,7 +159,7 @@ export function compareRows(agents: readonly Agent[]): CompareRow[] {
     ['provider', 'Provider', (a) => a.providerName],
     ['official', 'Official vendor', (a) => a.officialVendor?.name ?? 'Not an official listing'],
     ['verified', 'Verified', (a) => yesNo(a.verified)],
-    ['access', 'Access', (a) => a.accessMethods.map((m) => ACCESS_METHOD_LABELS[m] ?? m)],
+    ['access', 'Access', (a) => ALL_ACCESS_METHODS.filter((m) => offers(a, m as Agent['accessMethods'][number])).map((m) => ACCESS_METHOD_LABELS[m])],
     ['auth', 'Auth', (a) => authTypeLabel(a.authType)],
     ...setup,
     ['skills', 'Skills', (a) => names(a.skills)],
@@ -323,8 +323,10 @@ export function comparisonsWith<C extends Comparison>(slug: string, comparisons:
 /**
  * What is wrong with content/comparisons.json beyond its shape: each names 2
  * to COMPARE_MAX published listings once each, no two compare the same set,
- * and every listing after the first is one of the first's alternatives
+ * and every listing after the first is a genuine alternative to the first
  * (lib/related.ts), so curated pages come from the related-listing clusters.
+ * At any rank: every new listing reshuffles the top MAX_ALTERNATIVES, and a
+ * weekly drop must not fail on a comparison it never touched.
  */
 export function comparisonProblems(comparisons: readonly Comparison[], catalog: Agent[]): string[] {
   const problems: string[] = [];
@@ -353,10 +355,10 @@ export function comparisonProblems(comparisons: readonly Comparison[], catalog: 
 
     const first = bySlug.get(items[0]);
     if (first) {
-      const alternatives = new Set(getAlternatives(first, catalog).map((a) => a.agent.slug));
+      const alternatives = new Set(getAlternatives(first, catalog, Infinity).map((a) => a.agent.slug));
       for (const item of items.slice(1)) {
         if (item !== items[0] && bySlug.has(item) && !alternatives.has(item)) {
-          problems.push(`${slug}: "${item}" is not among ${items[0]}'s alternatives (lib/related.ts)`);
+          problems.push(`${slug}: "${item}" is not an alternative to ${items[0]} (lib/related.ts)`);
         }
       }
     }

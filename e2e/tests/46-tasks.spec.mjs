@@ -317,7 +317,7 @@ test.describe('every task page', () => {
 
       const best = agents.slice(0, PAGE_SIZE);
       await expect(bestFits(page).locator('#best-fits')).toHaveText(`Best fits · ${best.length}`);
-      const fits = bestFits(page).locator('ol > li > a');
+      const fits = bestFits(page).locator('ol > li > .cmp-card > a');
       expect(await hrefs(fits)).toEqual(best.map((a) => `/agents/${a.slug}`));
       for (const [i, a] of best.entries()) {
         await expect(fits.nth(i).locator('h3')).toHaveText(a.name);
@@ -369,7 +369,7 @@ test.describe('task page details', () => {
   test('counts task_to_listing_click when a best fit is opened', async ({ page, request }) => {
     const item = (await detail(request, SAMPLE.slug)).agents[1];
     await openHydrated(page, `/tasks/${SAMPLE.slug}`);
-    await bestFits(page).locator('ol > li > a').nth(1).click();
+    await bestFits(page).locator('ol > li > .cmp-card > a').nth(1).click();
     await expect(page).toHaveURL(new RegExp(`/agents/${item.slug}$`));
     expect(await events(page, 'task_to_listing_click')).toEqual([{ task: SAMPLE.slug, slug: item.slug, from: 'task-page' }]);
   });

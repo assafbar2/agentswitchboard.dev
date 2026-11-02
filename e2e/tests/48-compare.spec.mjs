@@ -28,7 +28,7 @@ const pick = (found, what) => {
 const INSTALLED = pick(catalog.find((a) => a.install && !a.accessMethods.includes('mcp')), 'with an install command and no MCP');
 const API_ONLY = pick(catalog.find((a) => a.accessMethods.join() === 'api' && notCurated(INSTALLED, a.slug)), 'that is only an API');
 const HOSTED = pick(catalog.find((a) => a.mcpEndpoint && notCurated(a.slug, API_ONLY)), 'with an mcpEndpoint');
-const sameProvider = Object.values(Object.groupBy(catalog, (a) => a.providerName)).find((group) => group.length >= 2);
+const sameProvider = Object.values(Object.groupBy(catalog, (a) => a.provider)).find((group) => group.length >= 2);
 const RETIRED = content('changelog.json').find((e) => e.action === 'removed' && !bySlug.has(e.slug));
 
 const sitemap = await (await fetch(`${BASE}/sitemap.xml`, { headers: UA })).text();
@@ -121,7 +121,9 @@ test('a curated set asked for in another order points search engines at its cura
 });
 
 test('a hand-edited link still opens: a repeat, an unknown slug and a fourth listing are left out, each with a note', async ({ page }) => {
-  const [p, q, r, s] = CURATED.flatMap((c) => c.items).filter((slug, i, all) => all.indexOf(slug) === i);
+  // The first listing of four curated comparisons: three of them make no curated set, so the page stays out of search.
+  const [p, q, r, s] = CURATED.slice(0, 4).map((c) => c.items[0]);
+  expect(notCurated(p, q, r)).toBe(true);
   await page.goto(`/compare?a=${p}&b=${p}&c=no-such-listing-xyz&d=${q}&e=${r}&f=${s}`);
   await expect(table(page).locator('thead th a[href^="/agents/"]')).toHaveText([name(p), name(q), name(r)]);
   await expect(notes(page)).toHaveText([
@@ -174,7 +176,7 @@ test('a row where every column says the same is shown once, dimmed', async ({ pa
   await expect(provider).toHaveClass(/cmp-same/);
   await expect(provider.locator('td')).toHaveCount(1);
   await expect(provider.locator('td')).toHaveAttribute('colspan', '2');
-  await expect(provider.locator('td')).toContainText(`${a.providerName}Same for all`);
+  await expect(provider.locator('td')).toContainText(`${a.provider}Same for all`);
 });
 
 test('share cards: bare, curated and any other mix are PNGs; one naming fewer than two listings is a 404', async ({ request }) => {

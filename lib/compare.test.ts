@@ -19,6 +19,7 @@ import {
   type Comparison,
 } from './compare';
 import { COMPARE_MAX, compareHref } from './compare-link';
+import { getAlternatives } from './related';
 import type { Agent } from './types';
 import { INSTALL_LABELS } from './use-it-now';
 import { formatDay } from './utils';
@@ -157,6 +158,14 @@ describe('compareRows', () => {
     expect(rows.get('api')?.values).toEqual(['No API', 'No API', 'In its docs']);
   });
 
+  it('lists access methods in one order for every column', () => {
+    const rows = new Map(compareRows([listing('cli-first', { accessMethods: ['cli', 'mcp', 'api'] }), local]).map((r) => [r.key, r]));
+    expect(rows.get('access')?.values).toEqual([
+      ['API', 'MCP', 'CLI'],
+      ['MCP', 'CLI'],
+    ]);
+  });
+
   it('marks a row the same when every column says the same, lists in any order', () => {
     const rows = new Map(compareRows([hosted, local]).map((r) => [r.key, r]));
     expect(rows.get('provider')?.same).toBe(true);
@@ -246,11 +255,24 @@ describe('comparisonProblems', () => {
       'alpha-vs-alpha: names a listing twice',
       'alpha-vs-nope: "nope" is not a published listing',
       'beta-vs-gamma: intro is 10 characters; keep it to 40–220',
-      'beta-vs-gamma: "gamma" is not among beta\'s alternatives (lib/related.ts)',
+      'beta-vs-gamma: "gamma" is not an alternative to beta (lib/related.ts)',
       'gamma-vs-beta: compares the same listings as "beta-vs-gamma"',
       'gamma-vs-beta: intro contains a URL',
-      'gamma-vs-beta: "beta" is not among gamma\'s alternatives (lib/related.ts)',
+      'gamma-vs-beta: "beta" is not an alternative to gamma (lib/related.ts)',
     ]);
+  });
+
+  it('accepts a genuine alternative ranked below the top eight, so a new listing cannot break a comparison', () => {
+    const category = [{ id: 'x', name: 'X', slug: 'x', sortOrder: 1 }];
+    const tags = ['zebra', 'quokka', 'narwhal', 'okapi'];
+    const hub = listing('hub', { categories: category, tags });
+    const strong = Array.from({ length: 9 }, (_, i) => listing(`strong-${i}`, { categories: category, tags }));
+    const weak = listing('weak', { categories: category, tags: tags.slice(0, 2) });
+    const filler = Array.from({ length: 300 }, (_, i) => listing(`filler-${i}`, { tags: [`filler${i}`] }));
+    const all = [hub, ...strong, weak, ...filler];
+    expect(getAlternatives(hub, all).map((a) => a.agent.slug)).not.toContain('weak');
+    expect(getAlternatives(hub, all, Infinity).map((a) => a.agent.slug)).toContain('weak');
+    expect(comparisonProblems([{ items: ['hub', 'weak'], intro }], all)).toEqual([]);
   });
 
   it('passes every curated comparison in content/comparisons.json', async () => {
