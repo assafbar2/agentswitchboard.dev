@@ -7,7 +7,7 @@ import { JsonLd } from '@/components/JsonLd';
 import { getEveryAgent } from '@/lib/catalog';
 import { COMPARE_MAX, compareHref } from '@/lib/compare-link';
 import { pageMetadata } from '@/lib/metadata';
-import { alternativesPage, type Alternative } from '@/lib/related';
+import { alternativesPage, alternativeWhy, type Alternative } from '@/lib/related';
 import { ACCESS_METHOD_LABELS } from '@/lib/search';
 import { alternativesCard, alternativesCardImage } from '@/lib/share-cards';
 import type { Agent } from '@/lib/types';
@@ -52,11 +52,6 @@ export async function generateMetadata({ params }: Props, parent: ResolvingMetad
 }
 
 const label = (method: string) => ACCESS_METHOD_LABELS[method] ?? method;
-
-/** The shared access methods and keywords: the category is the same for every row, so the intro says it once. */
-function why({ access, keywords }: Alternative): string {
-  return `Both offer ${joinList(access.map(label))}. In common: ${keywords.join(', ')}.`;
-}
 
 export default async function AlternativesPage({ params }: Props) {
   const found = await load((await params).slug);
@@ -132,7 +127,7 @@ export default async function AlternativesPage({ params }: Props) {
             <ol>
               {alternatives.map((alt) => (
                 <li key={alt.agent.id}>
-                  <AgentCard agent={alt.agent} why={why(alt)} />
+                  <AgentCard agent={alt.agent} why={alternativeWhy(alt)} />
                 </li>
               ))}
             </ol>

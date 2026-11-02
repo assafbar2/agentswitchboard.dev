@@ -15,7 +15,9 @@
 import { createMcpHandler } from 'mcp-handler';
 import { z } from 'zod';
 import { VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
-import { getEveryAgent, getAllCategories } from '@/lib/catalog';
+import { getEveryAgent, getAllCategories, getRetiredListings } from '@/lib/catalog';
+import { COMPARE_QUERY_KEYS } from '@/lib/compare-link';
+import { alternativesDecision, bundleDecision, compareDecision, type Decision } from '@/lib/decide';
 import { absoluteIconUrl } from '@/lib/icons';
 import { logConsumer } from '@/lib/log';
 import {
@@ -26,9 +28,15 @@ import {
 } from '@/lib/mcp-submit';
 import {
   ACCESS_METHOD_INPUTS,
+  ALTERNATIVES_TO_DESCRIPTION,
   AUTH_INPUT,
+  BUNDLE_SLUGS_INPUT,
+  COMPARE_AGENTS_DESCRIPTION,
+  COMPARE_SLUGS_INPUT,
+  CONNECT_BUNDLE_DESCRIPTION,
   FEATURED_DEFINITION,
   OFFICIAL_DEFINITION,
+  SINCE_INPUT,
   SORT_INPUT,
   TASK_INPUT,
   VERIFIED_INPUT,
@@ -37,7 +45,18 @@ import {
   howToUseFields,
 } from '@/lib/public-api';
 import { clientIp, fixedWindowLimiter } from '@/lib/rate-limit';
-import { AUTH_TYPES, SORT_ORDERS, filterAgents, searchAgents, sortAgents, taskMatches } from '@/lib/search';
+import { MAX_ALTERNATIVES } from '@/lib/related';
+import {
+  AUTH_TYPES,
+  SORT_ORDERS,
+  filterAgents,
+  invalidSinceMessage,
+  parseSince,
+  searchAgents,
+  sortAgents,
+  taskMatches,
+} from '@/lib/search';
+import { REQUESTED_MAX, requestedStackSlugs } from '@/lib/shared-stack';
 import { getTask, getTasks } from '@/lib/tasks';
 import type { Agent } from '@/lib/types';
 import { howToUseJson } from '@/lib/use-it-now';
@@ -54,8 +73,10 @@ const READ_ONLY = { readOnlyHint: true, destructiveHint: false, idempotentHint: 
 
 const INSTRUCTIONS =
   'Agent Switchboard is a curated directory of AI agents, MCP servers, and agentic tools. ' +
-  'Use search_agents to find tools for a job (pick a task such as "query-a-database", or filter by category, access method, official, verified, or auth type; sort by newest or most skills), ' +
-  'get_agent for one listing, and list_categories for valid category slugs. ' +
+  'Use search_agents to find tools for a job (pick a task such as "query-a-database", or filter by category, access method, official, verified, or auth type; ' +
+  'since keeps what was added lately; sort by newest or most skills), get_agent for one listing, and list_categories for valid category slugs. ' +
+  'To help a user choose: compare_agents puts 2 or 3 listings side by side, alternatives_to finds listings that could stand in for one, ' +
+  'and connect_bundle turns up to 10 listings into one MCP client config to paste, with how to connect the rest. ' +
   'Link users to each result\'s url. submit_listing only files a public suggestion for human review; ' +
   'call it only when the user asks to list a product and has confirmed the details.';
 
@@ -103,6 +124,38 @@ const agentSummaryShape = {
     .nullable()
     .describe("Absolute URL of the listing's 128px PNG icon, served by Agent Switchboard; null when it has none"),
 };
+
+// A listing in compare_agents, alternatives_to and connect_bundle (lib/public-api.ts
+// decisionAgent): the REST search-result fields and its auth type, the same as
+// GET /api/compare, /api/agents/{slug}/alternatives and /api/bundle return.
+const decisionAgentShape = {
+  name: z.string(),
+  slug: z.string(),
+  url: z.string(),
+  iconUrl: agentSummaryShape.iconUrl,
+  description: z.string(),
+  provider: z.string(),
+  categories: z.array(z.string()),
+  accessMethods: z.array(z.string()),
+  verified: agentSummaryShape.verified,
+  official: agentSummaryShape.official,
+  featured: agentSummaryShape.featured,
+  authType: z.string(),
+};
+
+const compareValueShape = z.union([
+  z.string(),
+  z.array(z.string()),
+  z.object({ code: z.string(), note: z.string().optional() }).describe('A command or address from the listing\'s docs, with what it is'),
+]);
+
+const mcpServerShape = z.union([z.object({ url: z.string() }), z.object({ command: z.string(), args: z.array(z.string()) })]);
+
+/** A decision tool's answer as a tool result; a refusal is a tool error with its message. */
+function decisionResult<T extends Record<string, unknown>>(decision: Decision<T>) {
+  if (!decision.ok) return { content: [{ type: 'text' as const, text: decision.message }], isError: true };
+  return { content: [{ type: 'text' as const, text: JSON.stringify(decision.body, null, 2) }], structuredContent: decision.body };
+}
 
 // lib/use-it-now.ts howToUseJson(): the listing page's Use it now panel as data.
 const useItNowShape = z
@@ -164,6 +217,11 @@ const handler = createMcpHandler(
             .optional(),
           verified: z.boolean().describe(VERIFIED_INPUT).optional(),
           auth: z.array(z.enum(AUTH_TYPES)).describe(AUTH_INPUT).optional(),
+          // A number of days is accepted as a number too: the schema says string, models don't always listen.
+          since: z
+            .preprocess((value) => (typeof value === 'number' ? String(value) : value), z.string())
+            .describe(SINCE_INPUT)
+            .optional(),
           sort: z.enum(SORT_ORDERS).describe(SORT_INPUT).optional(),
           limit: z.number().int().min(1).max(50).default(10).describe('Max results per page (1–50)').optional(),
           offset: z.number().int().min(0).default(0).describe('Number of results to skip, for pagination').optional(),
@@ -172,10 +230,11 @@ const handler = createMcpHandler(
           total: z.number().int().describe('Total matches before paging'),
           offset: z.number().int(),
           limit: z.number().int(),
+          since: z.string().optional().describe('With since: the first day kept (YYYY-MM-DD, UTC)'),
           agents: z.array(z.object(agentSummaryShape)),
         },
       },
-      async ({ query, task, category, access, official, verified, auth, sort, limit, offset }) => {
+      async ({ query, task, category, access, official, verified, auth, since, sort, limit, offset }) => {
         const slug = task?.trim().toLowerCase();
         const picked = slug ? getTask(slug) : null;
         if (slug && !picked) {
@@ -185,12 +244,18 @@ const handler = createMcpHandler(
             isError: true,
           };
         }
+        const sinceText = since?.trim() ?? '';
+        const firstDay = sinceText ? parseSince(sinceText) : null;
+        if (sinceText && !firstDay) {
+          return { content: [{ type: 'text', text: invalidSinceMessage(sinceText) }], isError: true };
+        }
         const catalog = await getEveryAgent();
         const agents = filterAgents(picked ? taskMatches(catalog, picked) : catalog, {
           category,
           official,
           verified,
           auth,
+          since: firstDay ?? undefined,
         });
         const matches = sortAgents(
           searchAgents(agents, query ?? '', access ? normalizeAccessMethods(access) : undefined),
@@ -203,6 +268,7 @@ const handler = createMcpHandler(
           total: matches.length,
           offset: start,
           limit: size,
+          ...(firstDay && { since: firstDay }),
           agents: page.map(agentSummary),
         };
         return {
@@ -306,6 +372,116 @@ const handler = createMcpHandler(
     );
 
     server.registerTool(
+      'compare_agents',
+      {
+        title: 'Compare Agents',
+        description: COMPARE_AGENTS_DESCRIPTION,
+        annotations: READ_ONLY,
+        inputSchema: {
+          slugs: z.array(z.string()).min(1).max(COMPARE_QUERY_KEYS.length).describe(COMPARE_SLUGS_INPUT),
+        },
+        outputSchema: {
+          title: z.string(),
+          url: z.string().describe('The comparison on the site'),
+          intro: z.string().nullable().describe("A curated comparison's editorial line; null for any other mix"),
+          agents: z.array(z.object({ ...decisionAgentShape, setsApart: z.array(z.string()) })),
+          rows: z.array(
+            z.object({
+              key: z.string(),
+              label: z.string(),
+              same: z.boolean().describe('Every listing has the same value'),
+              values: z.record(z.string(), compareValueShape).describe("Each listing's value, by slug"),
+            })
+          ),
+          notes: z.array(z.string()).describe('Named listings that were left out, and why'),
+        },
+      },
+      async ({ slugs }) => {
+        const [catalog, retired] = await Promise.all([getEveryAgent(), getRetiredListings()]);
+        return decisionResult(compareDecision(slugs, catalog, retired));
+      }
+    );
+
+    server.registerTool(
+      'alternatives_to',
+      {
+        title: 'Alternatives To',
+        description: ALTERNATIVES_TO_DESCRIPTION,
+        annotations: READ_ONLY,
+        inputSchema: {
+          slug: z.string().describe('Agent slug, e.g. "deepgram"'),
+          limit: z
+            .number()
+            .int()
+            .min(1)
+            .max(MAX_ALTERNATIVES)
+            .describe(`Most alternatives to return (1–${MAX_ALTERNATIVES}, default ${MAX_ALTERNATIVES})`)
+            .optional(),
+        },
+        outputSchema: {
+          agent: z.object(decisionAgentShape),
+          total: z.number().int().describe(`How many alternatives it has, up to ${MAX_ALTERNATIVES}`),
+          url: z.string().nullable().describe('Its alternatives page; null when it has too few for one'),
+          compareUrl: z.string().nullable().describe('The listing side by side with its top two alternatives'),
+          basis: z.string().describe('What every alternative has in common with the listing'),
+          alternatives: z.array(
+            z.object({
+              ...decisionAgentShape,
+              sharedAccess: z.array(z.string()).describe('Access methods both offer'),
+              inCommon: z.array(z.string()).describe('Skills and tags both have, rarest first'),
+              why: z.string(),
+            })
+          ),
+        },
+      },
+      async ({ slug, limit }) => {
+        const [catalog, retired] = await Promise.all([getEveryAgent(), getRetiredListings()]);
+        return decisionResult(alternativesDecision(slug, catalog, retired, limit ?? MAX_ALTERNATIVES));
+      }
+    );
+
+    server.registerTool(
+      'connect_bundle',
+      {
+        title: 'Connect Bundle',
+        description: CONNECT_BUNDLE_DESCRIPTION,
+        annotations: READ_ONLY,
+        inputSchema: {
+          slugs: z.array(z.string()).min(1).max(REQUESTED_MAX).describe(BUNDLE_SLUGS_INPUT),
+        },
+        outputSchema: {
+          summary: z.string().describe('How many are in the config, to set up from a guide, and without an MCP server'),
+          stackUrl: z.string().describe('These listings as a shared stack on the site'),
+          config: z
+            .object({ mcpServers: z.record(z.string(), mcpServerShape) })
+            .nullable()
+            .describe('The MCP client config to paste; null when no listing has an address or command to copy'),
+          claudeCode: z.array(z.string()).describe('A claude mcp add command for each server in the config'),
+          setupPrompt: z
+            .string()
+            .nullable()
+            .describe('For a coding agent: set up each MCP server that has only a setup guide'),
+          items: z.array(
+            z.object({
+              ...decisionAgentShape,
+              how: z
+                .enum(['config', 'guide', 'other'])
+                .describe('config: in the config; guide: an MCP server to set up from its guide; other: no MCP server'),
+              server: mcpServerShape.nullable().describe('Its entry in the config, under its slug'),
+              docsUrl: z.string().describe('Its setup instructions'),
+              note: z.string().describe('How it connects'),
+            })
+          ),
+          notes: z.array(z.string()).describe('Named listings that were left out, and why'),
+        },
+      },
+      async ({ slugs }) => {
+        const [catalog, retired] = await Promise.all([getEveryAgent(), getRetiredListings()]);
+        return decisionResult(bundleDecision(requestedStackSlugs(slugs), catalog, retired));
+      }
+    );
+
+    server.registerTool(
       'submit_listing',
       {
         title: 'Submit a Listing',
@@ -318,7 +494,7 @@ const handler = createMcpHandler(
     );
   },
   {
-    serverInfo: { name: 'agentswitchboard', version: '1.6.0' },
+    serverInfo: { name: 'agentswitchboard', version: '1.7.0' },
     instructions: INSTRUCTIONS,
   },
   {

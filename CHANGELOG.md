@@ -4,6 +4,18 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
+## [2.6.0] - 2026-11-02 - Assistants
+
+### Highlights
+- Ask your assistant to compare two or three tools, and it gets the same facts, side by side, as the compare page. [Try it](https://agentswitchboard.dev/connect)
+- Ask your assistant for alternatives to a tool, each with what it has in common, or for what was added to the directory this week. [Try it](https://agentswitchboard.dev/connect#tools)
+- Have your assistant turn a list of tools into one MCP config to paste, every address and command copied from the vendor's docs. [Try it](https://agentswitchboard.dev/connect#tools)
+
+### Added
+- Three MCP tools that help an assistant help you choose and set up. `compare_agents` puts 2 or 3 listings side by side, as [/compare](https://agentswitchboard.dev/compare) does: the facts that set each apart ("Only one with a CLI"), then each field, listing by listing, with a curated comparison's intro line when there is one. `alternatives_to` returns the listings that could stand in for one, strongest first, as its alternatives page lists them, each with why: "Both offer API. In common: audio, speech to text, transcription." `connect_bundle` turns up to 10 listings into one MCP client config to paste (`{"mcpServers": …}`), with a `claude mcp add` command for each server in it, a prompt that has a coding agent set up the servers whose docs give no address or command, and how to connect the listings without an MCP server. Nothing in it is guessed: every address and command is copied from the vendor's docs, as on the listing's page. For Linear, Sentry, Playwright MCP and Postgres MCP Pro, the config holds the first three and Postgres MCP Pro goes to its setup guide. ([#310](https://github.com/assafbar2/agentswitchboard.dev/pull/310))
+- The same answers over plain HTTP, for scripts and connector platforms: `GET /api/compare?a=<slug>&b=<slug>` takes the parameters of a /compare link, `GET /api/agents/<slug>/alternatives` follows the address of the alternatives page, and `GET /api/bundle?items=<slug>,<slug>` takes the `items` of a shared stack link. In the browser, WebMCP has the three tools too. ([#310](https://github.com/assafbar2/agentswitchboard.dev/pull/310))
+- `since` on `GET /api/agents`, the MCP tool `search_agents` and WebMCP: `since=7` keeps what was added to the directory in the last 7 days (59 listings on November 2), `since=2026-10-01` what was added on or after that day. The MCP server is now version 1.7.0, the OpenAPI document 1.8.0. ([#310](https://github.com/assafbar2/agentswitchboard.dev/pull/310))
+
 ## [2.5.0] - 2026-11-02 - Come back
 
 ### Highlights

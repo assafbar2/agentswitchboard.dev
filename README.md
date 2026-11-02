@@ -20,9 +20,11 @@ Point any MCP client at it and query the catalog with native tools:
 }
 ```
 
-Tools: `search_agents` · `get_agent` · `list_categories` · `submit_listing`
-(files a public GitHub issue for review; publishes nothing). Streamable HTTP, no
-auth. Stdio-only clients: `npx -y mcp-remote https://agentswitchboard.dev/api/mcp`
+Tools: `search_agents` · `get_agent` · `list_categories` · `compare_agents` ·
+`alternatives_to` · `connect_bundle` (one MCP client config for up to 10
+listings) · `submit_listing` (files a public GitHub issue for review; publishes
+nothing). Streamable HTTP, no auth. Stdio-only clients:
+`npx -y mcp-remote https://agentswitchboard.dev/api/mcp`
 
 Setup for Grok, Grok Bot, the xAI API, Claude, and ChatGPT:
 [agentswitchboard.dev/connect](https://agentswitchboard.dev/connect).
@@ -33,6 +35,8 @@ Prefer plain HTTP? There's a REST search too:
 curl "https://agentswitchboard.dev/api/agents?q=video&access=mcp&limit=5"
 curl "https://agentswitchboard.dev/api/agents/agentmail"
 curl "https://agentswitchboard.dev/api/categories"
+curl "https://agentswitchboard.dev/api/compare?a=deepgram&b=assemblyai"
+curl "https://agentswitchboard.dev/api/bundle?items=linear,sentry-mcp,playwright-mcp"
 ```
 
 OpenAPI: [`/openapi.json`](https://agentswitchboard.dev/openapi.json).
@@ -42,7 +46,7 @@ Also machine-readable: [`/agents.json`](https://agentswitchboard.dev/agents.json
 (full catalog, CORS-open), in-browser tools via WebMCP (`document.modelContext`),
 and an agent-optimized view on every page (the "For Agents" toggle).
 
-**Full API reference: [docs/API.md](docs/API.md)** — REST search/detail/categories, MCP, WebMCP, and the catalog dump.
+**Full API reference: [docs/API.md](docs/API.md)** — REST search/detail/categories, compare, alternatives and the connect bundle, MCP, WebMCP, and the catalog dump.
 
 ## 🗂 Git-as-CMS
 

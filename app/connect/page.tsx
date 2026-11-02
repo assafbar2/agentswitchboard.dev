@@ -10,7 +10,7 @@ export function generateMetadata(_props: unknown, parent: ResolvingMetadata): Pr
     {
       title: 'Use with Grok, Claude, ChatGPT',
       description:
-        'Connect Agent Switchboard to Grok, Grok Bot, Claude, ChatGPT, Cursor, or your own bot as a remote MCP server: search the catalog, filter by category or Official, and submit a listing.',
+        'Connect Agent Switchboard to Grok, Grok Bot, Claude, ChatGPT, Cursor, or your own bot as a remote MCP server: search the catalog, compare listings, find alternatives, and submit a listing.',
       path: '/connect',
       robots: { index: true, follow: true },
     },
@@ -34,7 +34,10 @@ const XAI_API_EXAMPLE = `curl https://api.x.ai/v1/responses \\
       "type": "mcp",
       "server_url": "${MCP_URL}",
       "server_label": "agentswitchboard",
-      "allowed_tools": ["search_agents", "get_agent", "list_categories"]
+      "allowed_tools": [
+        "search_agents", "get_agent", "list_categories",
+        "compare_agents", "alternatives_to", "connect_bundle"
+      ]
     }]
   }'`;
 
@@ -47,10 +50,19 @@ const MCP_JSON = `{
 const TOOLS: { name: string; does: string }[] = [
   {
     name: 'search_agents',
-    does: 'Search by text or task ("query-a-database"), category, access method (api, mcp, cli, browser-extension), official, verified and auth type. Sorted and paged.',
+    does: 'Search by text or task ("query-a-database"), category, access method (api, mcp, cli, browser-extension), official, verified, auth type and how recently it was added. Sorted and paged.',
   },
-  { name: 'get_agent', does: 'Full detail for one listing: skills, auth, links, Verified and Official status.' },
+  { name: 'get_agent', does: 'Full detail for one listing: skills, auth, links, Verified and Official status, and how to start using it.' },
   { name: 'list_categories', does: 'Every category with its slug and live agent count.' },
+  {
+    name: 'compare_agents',
+    does: '2 or 3 listings side by side: what sets each apart, then access, auth, how to connect it and skills, field by field.',
+  },
+  { name: 'alternatives_to', does: 'Listings that could stand in for one, strongest first, each with what it has in common.' },
+  {
+    name: 'connect_bundle',
+    does: "One MCP client config to paste for up to 10 listings, copied from each vendor's docs, and how to connect the rest.",
+  },
   { name: 'submit_listing', does: 'Suggest a new listing. Opens a public GitHub issue for review; publishes nothing.' },
 ];
 
@@ -59,6 +71,7 @@ const GROK_BOT_PROMPTS = [
   'Use Agent Switchboard to list official MCP servers for payments.',
   'Use Agent Switchboard to find browser agents that have a CLI.',
   'Use Agent Switchboard to compare GitHub MCP and Linear: auth, access methods, skills.',
+  'Use Agent Switchboard to give me one MCP config for GitHub, Linear and Sentry.',
 ];
 
 const link = 'font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2';

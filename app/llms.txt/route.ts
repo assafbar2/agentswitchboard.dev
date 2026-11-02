@@ -74,22 +74,35 @@ the listings that fit one, best fit first.
 To find agents by access method or use case, search: the \`search_agents\` MCP tool, or
 GET /api/agents?access=mcp&category=<slug> (add \`official=true\` for first-party listings
 from major vendors, e.g. Notion's own Notion MCP; \`verified=true\` for Verified ones;
-\`auth=none\` for no key or sign-in; \`sort=newest\` for the latest additions first).
+\`auth=none\` for no key or sign-in; \`since=7\` for what was added in the last 7 days, or
+\`since=<YYYY-MM-DD>\`; \`sort=newest\` for the latest additions first).
 /agents.json is the whole catalog in one large file; use it for bulk or offline work,
 filtering on \`accessMethods\`, \`categories\` and \`official\`.
+
+To help a user choose and set up:
+- Compare 2 or 3 listings, the facts that set each apart and one row per field: the
+  \`compare_agents\` MCP tool, or GET /api/compare?a=<slug>&b=<slug>&c=<slug>
+- Listings that could stand in for one, each with why: the \`alternatives_to\` MCP tool,
+  or GET /api/agents/<slug>/alternatives
+- One MCP client config to paste for up to ${MY_STACK_MAX} listings, with how to connect the
+  ones it can't hold: the \`connect_bundle\` MCP tool, or GET /api/bundle?items=<slug>,<slug>
+  (every address and command is copied from the vendor's docs, as on its listing page)
 
 ## This directory is itself an MCP server
 
 - Remote MCP (Streamable HTTP, no auth): https://agentswitchboard.dev/api/mcp
 - Stdio-only clients: npx -y mcp-remote https://agentswitchboard.dev/api/mcp
 - Server manifest: https://agentswitchboard.dev/.well-known/mcp.json
-- Tools: search_agents, get_agent, list_categories, submit_listing (files a public GitHub issue for human review; publishes nothing)
+- Tools: search_agents, get_agent, list_categories, compare_agents, alternatives_to, connect_bundle, submit_listing (files a public GitHub issue for human review; publishes nothing)
 - Connect it to Grok, Grok Bot, the xAI API, Claude, or ChatGPT: https://agentswitchboard.dev/connect
-- Plain REST search (no MCP handshake needed): GET /api/agents?q=&task=&category=&access=&official=&verified=&auth=&sort=&limit=&offset=
+- Plain REST search (no MCP handshake needed): GET /api/agents?q=&task=&category=&access=&official=&verified=&auth=&since=&sort=&limit=&offset=
 - REST detail: GET /api/agents/{slug}
 - REST categories: GET /api/categories
 - REST stacks: GET /api/stacks, GET /api/stacks/{slug}
 - REST tasks: GET /api/tasks, GET /api/tasks/{slug}
+- REST compare: GET /api/compare?a={slug}&b={slug}&c={slug}
+- REST alternatives: GET /api/agents/{slug}/alternatives
+- REST connect bundle: GET /api/bundle?items={slug},{slug}
 - OpenAPI: https://agentswitchboard.dev/openapi.json
 - Connector skill: https://agentswitchboard.dev/skill.md
 
@@ -100,9 +113,10 @@ on \`document.modelContext\` (W3C WebMCP API, polyfilled) — call them directly
 instead of scraping the DOM. No setup: they self-register on page load.
 
 - Declaration: https://agentswitchboard.dev/.well-known/webmcp.json
-- Tools: search_agents, get_agent, list_categories. They call the REST API above, so
-  matches and their order are the same as the remote MCP's; result objects use the
-  REST field names (see the OpenAPI document).
+- Tools: search_agents, get_agent, list_categories, compare_agents, alternatives_to,
+  connect_bundle. They call the REST API above, so answers and their order are the
+  same as the remote MCP's; search and listing objects use the REST field names (see
+  the OpenAPI document).
 
 ## Access methods explained
 

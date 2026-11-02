@@ -4,9 +4,9 @@
  * that consume a simple parameterized GET rather than an MCP handshake.
  *
  *   GET /api/agents?q=<text>&task=<slug>&category=<slug>&access=<method>
- *                  &official=true&verified=true&auth=<type>&sort=<order>
- *                  &limit=<n>&offset=<n>
- *   → { total, offset, limit, agents: [ { name, slug, url, iconUrl,
+ *                  &official=true&verified=true&auth=<type>&since=<day|days>
+ *                  &sort=<order>&limit=<n>&offset=<n>
+ *   → { total, offset, limit, since?, agents: [ { name, slug, url, iconUrl,
  *                                          description, provider, categories,
  *                                          accessMethods, verified, official,
  *                                          featured } ] }
@@ -16,6 +16,9 @@
  * `access` takes api | mcp | cli | browser-extension (comma-separate to require
  * several); `extension` is accepted as an alias of `browser-extension`.
  * `auth` takes none | apiKey | oauth2 | bearer (comma-separate to accept any).
+ * `since` keeps listings added on or after a day: YYYY-MM-DD, or a number of
+ * days back with today included (since=7 is the last 7 days). The response
+ * echoes the first day kept; anything else is a 400.
  * Order (`sort`): relevance by default — no `q` → featured first, then A→Z,
  * or best fit first with a `task`; with `q` → best match (see
  * FEATURED_DEFINITION in lib/public-api.ts) — or newest, skills (most
@@ -26,7 +29,16 @@
  */
 
 import { getEveryAgent } from '@/lib/catalog';
-import { filterAgents, parseFlag, parseSort, searchAgents, sortAgents, taskMatches } from '@/lib/search';
+import {
+  filterAgents,
+  invalidSinceMessage,
+  parseFlag,
+  parseSince,
+  parseSort,
+  searchAgents,
+  sortAgents,
+  taskMatches,
+} from '@/lib/search';
 import { getTask } from '@/lib/tasks';
 import { logConsumer } from '@/lib/log';
 import {
@@ -55,6 +67,8 @@ export async function GET(req: Request): Promise<Response> {
   const verified = parseFlag(searchParams.get('verified'));
   const auth = normalizeAuthTypes((searchParams.get('auth') ?? '').split(','));
   const sort = parseSort(searchParams.get('sort'));
+  const sinceRaw = (searchParams.get('since') ?? '').trim();
+  const since = sinceRaw ? parseSince(sinceRaw) : null;
   const limit = clampInt(searchParams.get('limit'), DEFAULT_LIMIT, 1, MAX_LIMIT);
   const offset = clampInt(searchParams.get('offset'), 0, 0, Number.MAX_SAFE_INTEGER);
 
@@ -66,6 +80,7 @@ export async function GET(req: Request): Promise<Response> {
     official: official || undefined,
     verified: verified || undefined,
     auth: auth.join('|') || undefined,
+    since: sinceRaw || undefined,
     sort: sort === 'relevance' ? undefined : sort,
   });
 
@@ -73,9 +88,18 @@ export async function GET(req: Request): Promise<Response> {
   if (taskSlug && !task) {
     return jsonResponse({ error: 'unknown_task', message: unknownTaskMessage(taskSlug) }, 400);
   }
+  if (sinceRaw && !since) {
+    return jsonResponse({ error: 'invalid_since', message: invalidSinceMessage(sinceRaw) }, 400);
+  }
 
   const catalog = await getEveryAgent();
-  const agents = filterAgents(task ? taskMatches(catalog, task) : catalog, { category, official, verified, auth });
+  const agents = filterAgents(task ? taskMatches(catalog, task) : catalog, {
+    category,
+    official,
+    verified,
+    auth,
+    since: since ?? undefined,
+  });
   const matches = sortAgents(searchAgents(agents, q, access.length > 0 ? access : undefined), sort);
   const page = matches.slice(offset, offset + limit);
 
@@ -83,6 +107,7 @@ export async function GET(req: Request): Promise<Response> {
     total: matches.length,
     offset,
     limit,
+    ...(since && { since }),
     agents: page.map(summarizeAgent),
   });
 }

@@ -1,4 +1,6 @@
+import { ACCESS_METHOD_LABELS } from './search';
 import type { Agent } from './types';
+import { joinList } from './utils';
 
 /**
  * "Related Agents" on a listing page: genuine alternatives to the agent being
@@ -311,6 +313,14 @@ function reasons(common: Shared[]): Shared[] {
     if (!named.some((n) => sameRoot(key(n), key(c)))) named.push(c);
   }
   return named;
+}
+
+/**
+ * Why an alternative is on the list, beyond the category it shares with the
+ * listing: "Both offer API and MCP. In common: postgres, index tuning."
+ */
+export function alternativeWhy({ access, keywords }: Pick<Alternative, 'access' | 'keywords'>): string {
+  return `Both offer ${joinList(access.map((m) => ACCESS_METHOD_LABELS[m] ?? m))}. In common: ${keywords.join(', ')}.`;
 }
 
 /** Up to MAX_RELATED genuine alternatives to `current`, best first. */

@@ -4,10 +4,13 @@ import {
   browseMatches,
   browseStateHref,
   filterAgents,
+  invalidSinceMessage,
   keywordMatcher,
   narrowingWords,
   parseFlag,
+  parseSince,
   parseSort,
+  SINCE_MAX_DAYS,
   resultBreakdown,
   scoreAgent,
   searchAgents,
@@ -166,6 +169,49 @@ describe('filterAgents', () => {
     expect(slugs(filterAgents(more, { auth: ['none'] }))).toEqual(['open', 'unchecked']);
     expect(slugs(filterAgents(more, { auth: ['none', 'apiKey'], verified: true }))).toEqual(['open', 'keyed']);
     expect(filterAgents(more, { auth: [] })).toHaveLength(3);
+  });
+
+  it('keeps listings added on or after the since day, and none without an added date', () => {
+    const dated = [
+      makeAgent({ slug: 'before', createdAt: '2026-10-26T23:59:59Z' }),
+      makeAgent({ slug: 'on', createdAt: '2026-10-27T00:00:00Z' }),
+      makeAgent({ slug: 'after', createdAt: '2026-11-02T09:00:00Z' }),
+      makeAgent({ slug: 'undated' }),
+    ];
+    expect(slugs(filterAgents(dated, { since: '2026-10-27' }))).toEqual(['on', 'after']);
+    expect(filterAgents(dated, { since: '' })).toHaveLength(4);
+  });
+});
+
+describe('parseSince', () => {
+  const now = Date.UTC(2026, 10, 2, 16, 30);
+
+  it('reads a date, or a timestamp by its day', () => {
+    expect(parseSince('2026-10-01', now)).toBe('2026-10-01');
+    expect(parseSince(' 2026-10-01T12:30:00Z ', now)).toBe('2026-10-01');
+    expect(parseSince('2026-10-01T08:00+02:00', now)).toBe('2026-10-01');
+  });
+
+  it('counts days back with today included', () => {
+    expect(parseSince('1', now)).toBe('2026-11-02');
+    expect(parseSince('7', now)).toBe('2026-10-27');
+    expect(parseSince(7, now)).toBe('2026-10-27');
+    expect(parseSince('7d', now)).toBe('2026-10-27');
+    expect(parseSince('7 days', now)).toBe('2026-10-27');
+    expect(parseSince(String(SINCE_MAX_DAYS), now)).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+  });
+
+  it('refuses anything that is not a calendar day or a count of days in range', () => {
+    for (const bad of ['', '0', String(SINCE_MAX_DAYS + 1), '-7', '7.5', 'last week', '2026-02-30', '2026-13-01', '2026-1-1', '20261001']) {
+      expect(parseSince(bad, now), bad).toBeNull();
+    }
+  });
+
+  it('says what it accepts, quoting a short part of the value', () => {
+    expect(invalidSinceMessage('last week')).toBe(
+      `since must be a date (YYYY-MM-DD) or a number of days from 1 to ${SINCE_MAX_DAYS}, such as 7; got "last week".`
+    );
+    expect(invalidSinceMessage('x'.repeat(100))).toContain(`got "${'x'.repeat(40)}".`);
   });
 });
 
