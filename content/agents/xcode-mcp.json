@@ -32,6 +32,7 @@
   "authType": "none",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://developer.apple.com/documentation/xcode/giving-external-agents-access-to-xcode",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -42,5 +43,5 @@
     "mcp"
   ],
   "createdAt": "2026-10-31T07:10:38.143Z",
-  "updatedAt": "2026-10-31T07:10:38.143Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

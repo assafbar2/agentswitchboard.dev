@@ -3,7 +3,7 @@ import { getEveryAgent } from '@/lib/catalog';
 import { BASE_URL } from '@/lib/env';
 import { absoluteIconUrl } from '@/lib/icons';
 import { logConsumer } from '@/lib/log';
-import { FEATURED_DEFINITION, OFFICIAL_DEFINITION } from '@/lib/public-api';
+import { FEATURED_DEFINITION, OFFICIAL_DEFINITION, howToUseFields } from '@/lib/public-api';
 import { NextResponse } from 'next/server';
 
 export async function GET(req: Request) {
@@ -30,6 +30,7 @@ export async function GET(req: Request) {
     tier: a.tier,
     createdAt: a.createdAt ?? null,
     updatedAt: a.updatedAt ?? null,
+    ...howToUseFields(a),
   }));
 
   return NextResponse.json(

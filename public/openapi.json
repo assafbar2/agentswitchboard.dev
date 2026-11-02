@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Agent Switchboard Directory API",
-    "version": "1.6.0",
+    "version": "1.7.0",
     "summary": "Read-only catalog of AI agents, MCP servers, and agentic developer tools.",
     "description": "Agent Switchboard is a public discovery directory. Use this API to answer questions like 'is there an agent that does X?' or 'which listed products expose an MCP server?'. There is no authentication, no user account, and no write access. This API does not proxy the underlying products — it only returns Switchboard listings. For interactive tool-shaped access, an MCP server is also available at /api/mcp. Listing data returned by this API is licensed CC BY-NC 4.0 (attribution required; commercial reuse needs a license: https://agentswitchboard.dev/contact). The API definition itself is MIT.",
     "contact": {
@@ -445,7 +445,20 @@
               "supportsPushNotifications": { "type": "boolean" },
               "tier": { "type": ["string", "null"] },
               "createdAt": { "type": ["string", "null"], "format": "date-time" },
-              "updatedAt": { "type": ["string", "null"], "format": "date-time" }
+              "updatedAt": { "type": ["string", "null"], "format": "date-time" },
+              "mcpEndpoint": {
+                "type": ["string", "null"],
+                "format": "uri",
+                "description": "The vendor's hosted MCP server address, from its docs; null when they give none."
+              },
+              "mcpCommand": {
+                "type": ["string", "null"],
+                "description": "The command that runs its MCP server locally, e.g. `npx -y @playwright/mcp@latest`; null when its docs give none."
+              },
+              "install": { "oneOf": [{ "$ref": "#/components/schemas/AgentInstall" }, { "type": "null" }] },
+              "quickstartUrl": { "type": ["string", "null"], "format": "uri", "description": "The vendor's setup or getting-started page." },
+              "apiBaseUrl": { "type": ["string", "null"], "format": "uri", "description": "Base URL of the vendor's public API." },
+              "useItNow": { "$ref": "#/components/schemas/UseItNow" }
             }
           }
         ]
@@ -457,6 +470,60 @@
           "id": { "type": "string" },
           "name": { "type": "string" },
           "description": { "type": "string" }
+        }
+      },
+      "AgentInstall": {
+        "type": "object",
+        "description": "The command that installs its CLI, from the vendor's docs.",
+        "required": ["type", "command"],
+        "properties": {
+          "type": { "type": "string", "enum": ["npm", "pip", "brew", "docker", "binary"] },
+          "command": { "type": "string" }
+        }
+      },
+      "UseItNow": {
+        "type": "object",
+        "description": "How to start using it, per access method, as the listing page's Use it now panel shows it. Commands and addresses come from the vendor's own docs; when there are none, docsUrl is where its instructions are. A part is null when the listing lacks that access method.",
+        "properties": {
+          "tryThisFirst": {
+            "type": ["object", "null"],
+            "properties": {
+              "lead": { "type": "string" },
+              "prompts": {
+                "type": "array",
+                "items": { "type": "object", "properties": { "skill": { "type": "string" }, "text": { "type": "string" } } }
+              }
+            }
+          },
+          "mcp": {
+            "type": ["object", "null"],
+            "properties": {
+              "endpoint": { "type": ["string", "null"] },
+              "command": { "type": ["string", "null"] },
+              "clientConfig": { "type": ["object", "null"], "description": "`{\"mcpServers\": {...}}` for Cursor and other MCP clients." },
+              "cursorInstallUrl": { "type": ["string", "null"] },
+              "claudeConnectorUrl": { "type": ["string", "null"] },
+              "claudeCodeCommand": { "type": ["string", "null"] },
+              "setupPrompt": { "type": "string" },
+              "docsUrl": { "type": "string", "format": "uri" }
+            }
+          },
+          "cli": {
+            "type": ["object", "null"],
+            "properties": {
+              "install": { "oneOf": [{ "$ref": "#/components/schemas/AgentInstall" }, { "type": "null" }] },
+              "docsUrl": { "type": "string", "format": "uri" }
+            }
+          },
+          "api": {
+            "type": ["object", "null"],
+            "properties": {
+              "baseUrl": { "type": ["string", "null"] },
+              "auth": { "type": "string", "description": "How the API authenticates, in plain words." },
+              "docsUrl": { "type": "string", "format": "uri" }
+            }
+          },
+          "extension": { "type": ["object", "null"], "properties": { "url": { "type": "string", "format": "uri" } } }
         }
       },
       "CategoryList": {
@@ -671,7 +738,12 @@
           "featured": { "type": "boolean", "description": "Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order." },
           "tier": { "type": ["string", "null"] },
           "createdAt": { "type": ["string", "null"], "format": "date-time" },
-          "updatedAt": { "type": ["string", "null"], "format": "date-time" }
+          "updatedAt": { "type": ["string", "null"], "format": "date-time" },
+          "mcpEndpoint": { "type": ["string", "null"], "format": "uri", "description": "The vendor's hosted MCP server address, from its docs." },
+          "mcpCommand": { "type": ["string", "null"], "description": "The command that runs its MCP server locally." },
+          "install": { "oneOf": [{ "$ref": "#/components/schemas/AgentInstall" }, { "type": "null" }] },
+          "quickstartUrl": { "type": ["string", "null"], "format": "uri", "description": "The vendor's setup or getting-started page." },
+          "apiBaseUrl": { "type": ["string", "null"], "format": "uri", "description": "Base URL of the vendor's public API." }
         }
       },
       "Error": {

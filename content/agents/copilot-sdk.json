@@ -50,6 +50,7 @@
   "authType": "oauth2",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://github.com/github/copilot-sdk/blob/main/docs/getting-started.md",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -60,5 +61,5 @@
     "api"
   ],
   "createdAt": "2026-10-31T07:10:38.121Z",
-  "updatedAt": "2026-10-31T07:10:38.121Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

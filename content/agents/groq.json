@@ -20,6 +20,8 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://console.groq.com/docs/quickstart",
+  "apiBaseUrl": "https://api.groq.com/openai/v1",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -30,5 +32,5 @@
     "api"
   ],
   "createdAt": "2026-08-11T00:40:13.002Z",
-  "updatedAt": "2026-08-11T00:40:13.002Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

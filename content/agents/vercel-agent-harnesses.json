@@ -46,6 +46,7 @@
   "authType": "bearer",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://vercel.com/docs/agent-harnesses",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -56,5 +57,5 @@
     "api"
   ],
   "createdAt": "2026-10-31T07:10:38.147Z",
-  "updatedAt": "2026-10-31T07:10:38.147Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

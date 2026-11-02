@@ -38,6 +38,11 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "binary",
+    "command": "curl -fsSL https://fx.sh/setup.sh | bash"
+  },
+  "quickstartUrl": "https://fx.sh/docs/getting-started/installation",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -48,5 +53,5 @@
     "cli"
   ],
   "createdAt": "2026-09-02T07:21:11.715Z",
-  "updatedAt": "2026-09-02T07:21:11.715Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

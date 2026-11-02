@@ -45,6 +45,8 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://docs.ai21.com/reference/introduction",
+  "apiBaseUrl": "https://api.ai21.com/studio/v1",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -55,5 +57,5 @@
     "api"
   ],
   "createdAt": "2026-10-17T09:03:45.931Z",
-  "updatedAt": "2026-10-17T09:03:45.931Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

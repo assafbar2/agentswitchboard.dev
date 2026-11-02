@@ -49,6 +49,11 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "brew",
+    "command": "brew update && brew install oci-cli"
+  },
+  "quickstartUrl": "https://docs.oracle.com/en-us/iaas/Content/generative-ai/get-started-agents.htm",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -60,5 +65,5 @@
     "cli"
   ],
   "createdAt": "2026-10-17T09:03:45.925Z",
-  "updatedAt": "2026-10-17T09:03:45.925Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

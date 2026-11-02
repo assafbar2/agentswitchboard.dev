@@ -39,6 +39,8 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.airbyte.com/mcp",
+  "quickstartUrl": "https://github.com/airbytehq/airbyte-agent-sdk",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -50,5 +52,5 @@
     "mcp"
   ],
   "createdAt": "2026-05-07T00:58:28.715Z",
-  "updatedAt": "2026-07-17T19:37:39.211Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

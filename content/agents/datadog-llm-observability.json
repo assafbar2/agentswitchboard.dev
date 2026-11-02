@@ -18,6 +18,12 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.datadoghq.com/v1/mcp",
+  "install": {
+    "type": "brew",
+    "command": "brew install datadog/lapdog/lapdog"
+  },
+  "quickstartUrl": "https://docs.datadoghq.com/llm_observability/instrument/api/",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -30,5 +36,5 @@
     "cli"
   ],
   "createdAt": "2026-03-22T09:52:51.040Z",
-  "updatedAt": "2026-03-22T09:52:51.040Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

@@ -37,6 +37,7 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://github.com/snyk/agent-scan#quick-start",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -47,5 +48,5 @@
     "cli"
   ],
   "createdAt": "2026-05-07T00:58:32.917Z",
-  "updatedAt": "2026-05-07T00:58:32.917Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

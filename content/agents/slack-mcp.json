@@ -37,6 +37,8 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.slack.com/mcp",
+  "quickstartUrl": "https://docs.slack.dev/ai/slack-mcp-server/",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -47,5 +49,5 @@
     "mcp"
   ],
   "createdAt": "2026-05-22T08:28:14.457Z",
-  "updatedAt": "2026-05-22T08:28:14.457Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

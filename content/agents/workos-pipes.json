@@ -48,6 +48,8 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://workos.com/docs/pipes",
+  "apiBaseUrl": "https://api.workos.com",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -58,5 +60,5 @@
     "api"
   ],
   "createdAt": "2026-10-31T07:10:38.191Z",
-  "updatedAt": "2026-10-31T07:10:38.191Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

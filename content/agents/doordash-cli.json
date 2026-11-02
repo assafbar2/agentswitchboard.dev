@@ -38,6 +38,7 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://github.com/doordash-oss/doordash-cli",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -49,5 +50,5 @@
     "mcp"
   ],
   "createdAt": "2026-07-17T20:41:38.358Z",
-  "updatedAt": "2026-10-10T21:36:47.532Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

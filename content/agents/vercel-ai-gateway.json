@@ -50,6 +50,8 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://vercel.com/docs/ai-gateway/getting-started",
+  "apiBaseUrl": "https://ai-gateway.vercel.sh/v1",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -60,5 +62,5 @@
     "api"
   ],
   "createdAt": "2026-10-31T07:10:38.135Z",
-  "updatedAt": "2026-10-31T07:10:38.135Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

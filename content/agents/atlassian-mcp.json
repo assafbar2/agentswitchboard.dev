@@ -21,6 +21,8 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.atlassian.com/v2/mcp",
+  "quickstartUrl": "https://support.atlassian.com/atlassian-ai-gateway/docs/get-started-with-the-atlassian-remote-mcp-server/",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -31,5 +33,5 @@
     "mcp"
   ],
   "createdAt": "2026-08-24T19:48:52.214Z",
-  "updatedAt": "2026-08-24T19:48:52.214Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

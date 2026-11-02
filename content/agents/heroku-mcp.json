@@ -49,6 +49,13 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.heroku.com/mcp",
+  "mcpCommand": "npx -y @heroku/mcp-server",
+  "install": {
+    "type": "brew",
+    "command": "brew install heroku/brew/heroku"
+  },
+  "quickstartUrl": "https://devcenter.heroku.com/articles/heroku-mcp-server",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -60,5 +67,5 @@
     "cli"
   ],
   "createdAt": "2026-10-04T17:55:56.170Z",
-  "updatedAt": "2026-10-04T17:55:56.170Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

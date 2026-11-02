@@ -45,6 +45,7 @@
   "authType": "none",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://github.com/microsoft/mxc",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -56,5 +57,5 @@
     "cli"
   ],
   "createdAt": "2026-10-10T21:22:01.464Z",
-  "updatedAt": "2026-10-10T21:22:01.464Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

@@ -18,6 +18,10 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.exa.ai/mcp",
+  "mcpCommand": "npx -y exa-mcp-server",
+  "quickstartUrl": "https://exa.ai/docs/get-started/quickstart",
+  "apiBaseUrl": "https://api.exa.ai",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -29,5 +33,5 @@
     "mcp"
   ],
   "createdAt": "2026-03-22T09:52:59.975Z",
-  "updatedAt": "2026-09-25T23:53:34.627Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

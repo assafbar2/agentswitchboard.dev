@@ -20,6 +20,7 @@
   "authType": "none",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://huggingface.co/docs/smolagents/guided_tour",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -30,5 +31,5 @@
     "api"
   ],
   "createdAt": "2026-05-22T07:35:06.268Z",
-  "updatedAt": "2026-05-22T07:35:06.268Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

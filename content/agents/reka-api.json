@@ -49,6 +49,9 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "mcpCommand": "uvx reka-mcp",
+  "quickstartUrl": "https://docs.reka.ai/quickstart",
+  "apiBaseUrl": "https://api.reka.ai/v1",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -60,5 +63,5 @@
     "mcp"
   ],
   "createdAt": "2026-10-17T09:03:45.933Z",
-  "updatedAt": "2026-10-17T09:03:45.933Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

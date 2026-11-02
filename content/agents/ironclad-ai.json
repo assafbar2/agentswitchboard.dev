@@ -17,6 +17,8 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://developer.ironcladapp.com/reference/getting-started-api",
+  "apiBaseUrl": "https://ironcladapp.com/public/api/v1",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -27,5 +29,5 @@
     "api"
   ],
   "createdAt": "2026-03-22T09:52:39.685Z",
-  "updatedAt": "2026-03-22T16:47:09.046Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

@@ -39,6 +39,8 @@
   "authType": "oauth2",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://home.googleapis.com/mcp",
+  "quickstartUrl": "https://developers.home.google.com/mcp/home",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -49,5 +51,5 @@
     "mcp"
   ],
   "createdAt": "2026-09-18T22:02:13.792Z",
-  "updatedAt": "2026-09-18T22:02:13.792Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

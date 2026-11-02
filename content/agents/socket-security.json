@@ -20,6 +20,8 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://docs.socket.dev/reference/introduction-to-socket-api",
+  "apiBaseUrl": "https://api.socket.dev/v0",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -31,5 +33,5 @@
     "browser-extension"
   ],
   "createdAt": "2026-05-22T07:35:22.838Z",
-  "updatedAt": "2026-10-25T01:16:46.687Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

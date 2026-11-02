@@ -21,6 +21,8 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://v0.app/docs/api/v1/quickstart",
+  "apiBaseUrl": "https://api.v0.dev",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -31,5 +33,5 @@
     "api"
   ],
   "createdAt": "2026-08-24T19:48:52.207Z",
-  "updatedAt": "2026-08-24T19:48:52.207Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

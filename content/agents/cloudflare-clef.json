@@ -44,6 +44,8 @@
   "authType": "bearer",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://developers.cloudflare.com/workers-ai/models/clef/",
+  "apiBaseUrl": "https://api.cloudflare.com/client/v4",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -54,5 +56,5 @@
     "api"
   ],
   "createdAt": "2026-10-04T17:55:56.120Z",
-  "updatedAt": "2026-10-04T17:55:56.120Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

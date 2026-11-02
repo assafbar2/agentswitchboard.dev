@@ -38,6 +38,7 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://help.emergent.sh/the-universal-llm-key",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -48,5 +49,5 @@
     "api"
   ],
   "createdAt": "2026-07-17T20:41:36.820Z",
-  "updatedAt": "2026-07-17T20:41:36.820Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

@@ -39,6 +39,7 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://github.com/deepseek-ai/deepseek-harness",
   "status": "published",
   "featured": true,
   "verified": true,
@@ -50,5 +51,5 @@
     "api"
   ],
   "createdAt": "2026-08-15T07:16:38.171Z",
-  "updatedAt": "2026-08-15T07:16:38.171Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

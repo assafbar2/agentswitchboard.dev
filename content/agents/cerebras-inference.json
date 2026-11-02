@@ -44,6 +44,8 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://inference-docs.cerebras.ai/quickstart",
+  "apiBaseUrl": "https://api.cerebras.ai/v1",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -54,5 +56,5 @@
     "api"
   ],
   "createdAt": "2026-10-31T07:10:38.141Z",
-  "updatedAt": "2026-10-31T07:10:38.141Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

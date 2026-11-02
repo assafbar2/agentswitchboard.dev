@@ -37,6 +37,9 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.terraform.io/mcp",
+  "mcpCommand": "docker run -i --rm hashicorp/terraform-mcp-server",
+  "quickstartUrl": "https://developer.hashicorp.com/terraform/mcp-server/deploy",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -47,5 +50,5 @@
     "mcp"
   ],
   "createdAt": "2026-05-22T08:28:10.826Z",
-  "updatedAt": "2026-05-22T08:28:10.826Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

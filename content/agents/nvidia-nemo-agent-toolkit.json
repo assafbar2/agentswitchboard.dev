@@ -44,6 +44,11 @@
   "authType": "none",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "pip",
+    "command": "pip install nvidia-nat"
+  },
+  "quickstartUrl": "https://docs.nvidia.com/nemo/agent-toolkit/latest/get-started/quick-start.html",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -56,5 +61,5 @@
     "mcp"
   ],
   "createdAt": "2026-09-25T22:20:34.461Z",
-  "updatedAt": "2026-09-25T22:20:34.461Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

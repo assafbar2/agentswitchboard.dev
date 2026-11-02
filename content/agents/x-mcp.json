@@ -39,6 +39,9 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://api.x.com/mcp",
+  "mcpCommand": "npx -y @xdevplatform/xurl mcp https://api.x.com/mcp",
+  "quickstartUrl": "https://docs.x.com/tools/mcp",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -49,5 +52,5 @@
     "mcp"
   ],
   "createdAt": "2026-07-17T20:40:50.963Z",
-  "updatedAt": "2026-07-17T20:40:50.963Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

@@ -236,7 +236,8 @@ export function WebMcp() {
           {
             name: 'get_agent',
             description:
-              'Full detail for one agent by slug: skills, auth, streaming/push support, tags, provider links. ' +
+              'Full detail for one agent by slug: skills, auth, streaming/push support, tags, provider links, ' +
+              'and useItNow: how to start using it (MCP client config, install command, API base URL, setup links). ' +
               LABELS,
             inputSchema: {
               type: 'object',
@@ -269,6 +270,22 @@ export function WebMcp() {
                 tier: { type: 'string' },
                 createdAt: { type: ['string', 'null'] },
                 updatedAt: { type: ['string', 'null'] },
+                mcpEndpoint: { type: ['string', 'null'] },
+                mcpCommand: { type: ['string', 'null'] },
+                install: { type: ['object', 'null'], properties: { type: { type: 'string' }, command: { type: 'string' } } },
+                quickstartUrl: { type: ['string', 'null'] },
+                apiBaseUrl: { type: ['string', 'null'] },
+                useItNow: {
+                  type: 'object',
+                  description: 'How to start using it, per access method (mcp, cli, api, extension; null when it lacks one), after its tryThisFirst prompts.',
+                  properties: {
+                    tryThisFirst: { type: ['object', 'null'] },
+                    mcp: { type: ['object', 'null'] },
+                    cli: { type: ['object', 'null'] },
+                    api: { type: ['object', 'null'] },
+                    extension: { type: ['object', 'null'] },
+                  },
+                },
               },
             },
             annotations: { readOnlyHint: true },

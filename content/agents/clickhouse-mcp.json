@@ -38,6 +38,8 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.clickhouse.cloud/mcp",
+  "quickstartUrl": "https://clickhouse.com/docs/products/cloud/features/ai-ml/mcp/remote-mcp",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -48,5 +50,5 @@
     "mcp"
   ],
   "createdAt": "2026-06-07T17:51:29.066Z",
-  "updatedAt": "2026-10-10T21:36:46.804Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

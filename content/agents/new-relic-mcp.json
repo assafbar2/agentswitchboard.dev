@@ -50,6 +50,8 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.newrelic.com/mcp/",
+  "quickstartUrl": "https://docs.newrelic.com/docs/agentic-ai/mcp/setup/",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -60,5 +62,5 @@
     "mcp"
   ],
   "createdAt": "2026-10-31T07:10:38.154Z",
-  "updatedAt": "2026-10-31T07:10:38.154Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

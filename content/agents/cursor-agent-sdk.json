@@ -49,6 +49,11 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npm install --global @grok/agent-sdk"
+  },
+  "quickstartUrl": "https://cursor.com/docs/agent-sdk/quickstart",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -60,5 +65,5 @@
     "cli"
   ],
   "createdAt": "2026-10-31T07:10:38.145Z",
-  "updatedAt": "2026-10-31T07:10:38.145Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

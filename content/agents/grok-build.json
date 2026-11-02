@@ -39,6 +39,11 @@
   "authType": "oauth2",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "binary",
+    "command": "curl -fsSL https://x.ai/cli/install.sh | bash"
+  },
+  "quickstartUrl": "https://docs.x.ai/build/overview",
   "status": "published",
   "featured": true,
   "verified": true,
@@ -51,5 +56,5 @@
     "api"
   ],
   "createdAt": "2026-07-17T20:40:49.549Z",
-  "updatedAt": "2026-07-17T20:40:49.549Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

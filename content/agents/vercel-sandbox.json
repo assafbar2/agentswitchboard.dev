@@ -50,6 +50,12 @@
   "authType": "bearer",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npm i -g sandbox"
+  },
+  "quickstartUrl": "https://vercel.com/docs/sandbox/quickstart",
+  "apiBaseUrl": "https://api.vercel.com",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -61,5 +67,5 @@
     "cli"
   ],
   "createdAt": "2026-10-10T21:22:01.465Z",
-  "updatedAt": "2026-10-10T21:22:01.465Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

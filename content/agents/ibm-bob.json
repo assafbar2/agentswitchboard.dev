@@ -43,6 +43,11 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "binary",
+    "command": "curl -fsSL https://bob.ibm.com/download/bobshell.sh | bash"
+  },
+  "quickstartUrl": "https://bob.ibm.com/docs/shell/getting-started/install-and-setup",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -53,5 +58,5 @@
     "cli"
   ],
   "createdAt": "2026-10-17T09:03:45.927Z",
-  "updatedAt": "2026-10-31T07:10:45.609Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

@@ -19,6 +19,10 @@
   "authType": "oauth2",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://bigquery.googleapis.com/mcp",
+  "mcpCommand": "npx -y @toolbox-sdk/server --prebuilt bigquery --stdio",
+  "quickstartUrl": "https://docs.cloud.google.com/bigquery/docs/reference/rest",
+  "apiBaseUrl": "https://bigquery.googleapis.com",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -31,5 +35,5 @@
     "mcp"
   ],
   "createdAt": "2026-08-24T19:48:52.220Z",
-  "updatedAt": "2026-10-31T07:10:45.292Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

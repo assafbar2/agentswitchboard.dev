@@ -47,6 +47,8 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://developers.mural.co/public/docs/getting-started",
+  "apiBaseUrl": "https://app.mural.co/api/public/v1",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -58,5 +60,5 @@
     "api"
   ],
   "createdAt": "2026-10-31T07:10:38.162Z",
-  "updatedAt": "2026-10-31T07:10:38.162Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

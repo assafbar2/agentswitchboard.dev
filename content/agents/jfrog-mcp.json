@@ -45,6 +45,11 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "brew",
+    "command": "brew install jfrog-cli"
+  },
+  "quickstartUrl": "https://docs.jfrog.com/integrations/docs/jf-mcp",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -56,5 +61,5 @@
     "cli"
   ],
   "createdAt": "2026-10-31T07:10:38.156Z",
-  "updatedAt": "2026-10-31T07:10:38.156Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

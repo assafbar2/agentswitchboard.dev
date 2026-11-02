@@ -48,6 +48,12 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.circleci.com/v1/mcp",
+  "install": {
+    "type": "brew",
+    "command": "brew install circleci"
+  },
+  "quickstartUrl": "https://circleci.com/docs/guides/toolkit/connecting-to-the-circleci-cli-mcp/",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -59,5 +65,5 @@
     "cli"
   ],
   "createdAt": "2026-10-04T17:55:56.167Z",
-  "updatedAt": "2026-10-04T17:55:56.167Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

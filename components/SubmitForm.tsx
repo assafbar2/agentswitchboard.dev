@@ -53,6 +53,24 @@ export function SubmitForm() {
       </div>
 
       <div>
+        <label htmlFor="useit" className="dir-label block mb-1.5">
+          How to start using it <span className="font-semibold normal-case tracking-normal text-[var(--dir-muted)]">(optional)</span>
+        </label>
+        <textarea
+          id="useit"
+          name="useit"
+          maxLength={1000}
+          rows={3}
+          aria-describedby="useit-hint"
+          placeholder="MCP server address, install command, quickstart link, API base URL"
+          className="w-full rounded-none border-2 border-[var(--dir-ink)]! bg-[var(--dir-paper)] p-3 text-[17px] text-[var(--dir-ink)] placeholder:text-[var(--dir-muted)] focus:outline-2 focus:outline-offset-2 focus:outline-[var(--dir-ink)]"
+        />
+        <p id="useit-hint" className="mt-1 text-[15px] text-[var(--dir-muted)]">
+          Copied from your own docs, with a link to the page. It fills in the listing&apos;s Use it now panel.
+        </p>
+      </div>
+
+      <div>
         <label htmlFor="email" className="dir-label block mb-1.5">
           Your email
         </label>

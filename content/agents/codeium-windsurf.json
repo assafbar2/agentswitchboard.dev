@@ -18,6 +18,8 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://docs.devin.ai/desktop/accounts/api-reference/api-introduction",
+  "apiBaseUrl": "https://server.codeium.com/api/v1",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -29,5 +31,5 @@
     "browser-extension"
   ],
   "createdAt": "2026-03-22T09:51:50.205Z",
-  "updatedAt": "2026-10-04T17:53:00.468Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

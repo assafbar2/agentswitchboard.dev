@@ -17,6 +17,10 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://api.perplexity.ai/mcp",
+  "mcpCommand": "npx -y @perplexity-ai/mcp-server",
+  "quickstartUrl": "https://docs.perplexity.ai/docs/getting-started/quickstart",
+  "apiBaseUrl": "https://api.perplexity.ai",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -28,5 +32,5 @@
     "mcp"
   ],
   "createdAt": "2026-03-22T09:52:58.489Z",
-  "updatedAt": "2026-03-22T16:40:29.060Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

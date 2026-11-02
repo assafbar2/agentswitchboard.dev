@@ -39,6 +39,11 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npm install -g @alibaba-group/open-code-review"
+  },
+  "quickstartUrl": "https://github.com/alibaba/open-code-review",
   "status": "published",
   "featured": true,
   "verified": true,
@@ -50,5 +55,5 @@
     "api"
   ],
   "createdAt": "2026-09-18T22:02:13.776Z",
-  "updatedAt": "2026-09-18T22:02:13.776Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

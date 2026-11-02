@@ -17,6 +17,8 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpCommand": "uvx falcon-mcp",
+  "quickstartUrl": "https://developer.crowdstrike.com/falcon-mcp/modules/agentworks/",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -28,5 +30,5 @@
     "mcp"
   ],
   "createdAt": "2026-03-22T09:53:15.704Z",
-  "updatedAt": "2026-03-22T09:53:15.704Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

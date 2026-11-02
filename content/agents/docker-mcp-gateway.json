@@ -44,6 +44,8 @@
   "authType": "none",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpCommand": "docker mcp gateway run",
+  "quickstartUrl": "https://docs.docker.com/ai/mcp-catalog-and-toolkit/mcp-gateway/",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -55,5 +57,5 @@
     "cli"
   ],
   "createdAt": "2026-09-25T22:20:34.466Z",
-  "updatedAt": "2026-09-25T22:20:34.466Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

@@ -38,6 +38,12 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "binary",
+    "command": "curl -fsSL https://cli.coderabbit.ai/install.sh | sh"
+  },
+  "quickstartUrl": "https://docs.coderabbit.ai/api",
+  "apiBaseUrl": "https://api.coderabbit.ai",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -50,5 +56,5 @@
     "browser-extension"
   ],
   "createdAt": "2026-07-06T07:04:12.633Z",
-  "updatedAt": "2026-07-06T07:04:12.633Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

@@ -38,6 +38,7 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://developer.watson-orchestrate.ibm.com/getting_started/installing",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -48,5 +49,5 @@
     "api"
   ],
   "createdAt": "2026-09-13T20:13:54.429Z",
-  "updatedAt": "2026-10-10T20:55:08.699Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }
