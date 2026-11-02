@@ -7,7 +7,7 @@ Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes 
 ## [2.7.3] - 2026-11-02 - Missing spaces
 
 ### Fixed
-- Three sentences on [/connect](https://agentswitchboard.dev/connect#troubleshooting) and [/privacy](https://agentswitchboard.dev/privacy) ran two words together after inline code or bold text ("/api/mcpand", "use it.Make", "submit_listingtool"). (PR_LINK)
+- Three sentences on [/connect](https://agentswitchboard.dev/connect#troubleshooting) and [/privacy](https://agentswitchboard.dev/privacy) ran two words together after inline code or bold text ("/api/mcpand", "use it.Make", "submit_listingtool"). ([#320](https://github.com/assafbar2/agentswitchboard.dev/pull/320))
 
 ## [2.7.2] - 2026-11-02 - Ready for the connector directories
 
