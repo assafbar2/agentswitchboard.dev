@@ -7,7 +7,7 @@ Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes 
 ## [2.7.4] - 2026-11-02 - MCP sign-in
 
 ### Directory
-- Lovable, v0, Hex and Runway now say you sign in with your account when you connect their MCP server, as their docs say, instead of asking for an API key; each description says what their API needs instead.
+- Lovable, v0, Hex and Runway now say you sign in with your account when you connect their MCP server, as their docs say, instead of asking for an API key; each description says what their API needs instead. ([#319](https://github.com/assafbar2/agentswitchboard.dev/pull/319))
 
 ## [2.7.3] - 2026-11-02 - Missing spaces
 
