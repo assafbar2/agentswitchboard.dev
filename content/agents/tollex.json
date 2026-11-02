@@ -1,0 +1,63 @@
+{
+  "id": "tollex",
+  "name": "Tollex",
+  "slug": "tollex",
+  "description": "Sells agents paid capabilities over x402: Robinhood Chain data, Stock Token quotes, x402 endpoint checks. Pay per call in USDC on Base or USDG; signed receipts.",
+  "providerName": "Tollex",
+  "providerUrl": "https://tollex.org",
+  "agentUrl": "https://github.com/ShiftAboveCtrl/tollex/blob/main/AGENTS.md",
+  "wellKnownUrl": "https://api.tollex.org/.well-known/agent-card.json",
+  "categories": [
+    "commerce-payments",
+    "data-analytics"
+  ],
+  "tags": [
+    "x402",
+    "a2a",
+    "base-usdc",
+    "robinhood-chain",
+    "stock-tokens",
+    "signed-receipts",
+    "agent-payments"
+  ],
+  "skills": [
+    {
+      "id": "free-capability-planning",
+      "name": "Free Capability Planning",
+      "description": "Resolves a plain-language need to a priced capability and input with POST /v1/resolve, without signing or spending anything."
+    },
+    {
+      "id": "pay-per-call-x402",
+      "name": "Pay Per Call",
+      "description": "Accepts x402 v2 exact payments in USDC on Base or USDG on Robinhood Chain for each call, settled on chain."
+    },
+    {
+      "id": "signed-execution-receipts",
+      "name": "Signed Execution Receipts",
+      "description": "Returns an EIP-712 receipt with every paid result, signed by a key published at /.well-known/tollex-receipt-keys."
+    },
+    {
+      "id": "robinhood-chain-data",
+      "name": "Robinhood Chain Data",
+      "description": "Reads blocks, logs, balances, Stock Token prices and halt status, and simulates calls on Robinhood Chain."
+    },
+    {
+      "id": "x402-endpoint-inspection",
+      "name": "x402 Endpoint Inspection",
+      "description": "Fetches any x402 URL unpaid and decodes its live v2 payment terms: network, asset, payTo and amount."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-10T08:56:10.000Z",
+  "updatedAt": "2026-10-10T08:56:10.000Z"
+}
