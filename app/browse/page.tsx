@@ -22,10 +22,11 @@ import { CatalogFilters } from '@/components/CatalogFilters';
 import { NoResults, NoResultsText } from '@/components/NoResults';
 import { SortSelect } from '@/components/SortSelect';
 import { TaskBanner } from '@/components/TaskBanner';
+import { TaskChips } from '@/components/TaskChips';
 import { TaskEvents } from '@/components/TaskEvents';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { pageMetadata } from '@/lib/metadata';
-import { getTask, taskExplanation, taskTitle } from '@/lib/tasks';
+import { getTask, getTasks, taskExplanation, taskTitle } from '@/lib/tasks';
 
 /** A ?task= slug, any case; an unknown one is no task, so a stale link still lists everything. */
 const taskOf = (raw: string | undefined) => (raw ? getTask(raw.trim().toLowerCase()) : null);
@@ -104,6 +105,8 @@ export default async function BrowsePage({
   const categoryName = (slug: string) => categories.find((c) => c.slug === slug)?.name ?? slug;
   const counted = query ? ' matched' : task ? ` ${agents.length === 1 ? 'fits' : 'fit'} this task` : ' listed';
   const withoutTask = browseStateHref({ ...state, task: undefined }, sortOrder);
+  const unfiltered =
+    !query && !task && !categoryFilter && !officialOnly && !verifiedOnly && authFilter.length === 0 && accessFilters.length === 0;
   const results = (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10">
       {agents.map((agent) => (
@@ -133,6 +136,20 @@ export default async function BrowsePage({
           </h1>
           <SearchBar defaultValue={query} autoFocus={!!query} />
         </div>
+
+        {unfiltered && (
+          <section aria-labelledby="browse-by-task" className="mb-6">
+            <h2 id="browse-by-task" className="dir-label mb-2 text-[14px] font-bold uppercase tracking-[0.1em]">
+              I need an agent to…
+            </h2>
+            <TaskChips
+              tasks={getTasks()}
+              from="browse"
+              href={(t) => browseStateHref({ ...state, task: t }, sortOrder)}
+              oneRowOnPhones
+            />
+          </section>
+        )}
 
         {task && (
           <TaskBanner

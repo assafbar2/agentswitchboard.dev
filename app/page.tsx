@@ -10,10 +10,14 @@ import {
   getEveryAgent,
 } from '@/lib/catalog';
 import { dropAdditions, dropHighlights, getDropSchedule } from '@/lib/drops';
+import { taskMatches } from '@/lib/search';
 import { getStacks, stackEntries, stackOfTheWeek } from '@/lib/stacks';
+import { getTasks } from '@/lib/tasks';
 import { formatDay, formatNumber, joinList, pluralize } from '@/lib/utils';
 import { IconCallout } from '@/components/IconCallout';
 import { StackCallout } from '@/components/StackCallout';
+import { TASK_CHIPS, TaskChips } from '@/components/TaskChips';
+import { TaskSearch, type TaskChoice } from '@/components/TaskSearch';
 import { EndpointLink } from '@/components/EndpointLink';
 import { FeaturedAgentCard } from '@/components/FeaturedAgentCard';
 import { CategoryCard } from '@/components/CategoryCard';
@@ -55,6 +59,13 @@ export default async function HomePage() {
   const latestOfficial = latestAdded.filter((a) => a.official).length;
   const weekStack = stackOfTheWeek(getStacks());
   const weekEntries = weekStack ? stackEntries(weekStack, catalog) : [];
+  const tasks = getTasks();
+  const taskChoices: TaskChoice[] = tasks.map((task) => ({
+    slug: task.slug,
+    label: task.label,
+    keywords: task.keywords,
+    count: taskMatches(catalog, task).length,
+  }));
 
   const homeSchema = [
     {
@@ -140,6 +151,18 @@ export default async function HomePage() {
 
             <div className="w-full lg:w-[420px] lg:flex-none">
               <SearchBar label="Look it up" />
+            </div>
+          </div>
+        </section>
+
+        {/* ── I need an agent to…: the job in your own words, or a task ── */}
+        <section aria-labelledby="i-need-an-agent-to" className="border-b border-[var(--dir-ink)]!">
+          <div className="container-wide flex flex-col gap-3 py-6 lg:flex-row lg:gap-12">
+            <div className="w-full lg:w-[420px] lg:flex-none">
+              <TaskSearch tasks={taskChoices} headingId="i-need-an-agent-to" />
+            </div>
+            <div className="min-w-0 flex-1 lg:pt-[29px]">
+              <TaskChips tasks={tasks} from="home" />
             </div>
           </div>
         </section>
@@ -301,6 +324,24 @@ export default async function HomePage() {
                 <span className="agent-accent">/stacks/{weekStack.slug}</span>
                 <span className="agent-dim">{weekEntries.length} tools · week {weekStack.week}</span>
                 <span className="agent-dim">{weekEntries.map((e) => e.agent.slug).join('+')}</span>
+              </Link>
+            </div>
+          )}
+
+          {taskChoices.length > 0 && (
+            <div className="mb-8">
+              <div className="agent-section-title">i need an agent to…</div>
+              {taskChoices.slice(0, TASK_CHIPS).map((task) => (
+                <Link key={task.slug} href={`/browse?task=${task.slug}`} className="agent-row no-underline hover:underline">
+                  <span className="agent-accent">/browse?task={task.slug}</span>
+                  <span className="agent-dim">{task.count} fit</span>
+                  <span className="agent-dim">{task.label}</span>
+                </Link>
+              ))}
+              <Link href="/tasks" className="agent-row no-underline hover:underline">
+                <span className="agent-accent">/tasks</span>
+                <span className="agent-dim">all {taskChoices.length} tasks</span>
+                <span className="agent-dim">best fits, with why</span>
               </Link>
             </div>
           )}

@@ -11,15 +11,17 @@ import type { MouseEvent, ReactNode } from 'react';
 import { count } from '@/lib/analytics';
 
 const LISTING = /^\/agents\/([^/?#]+)$/;
-const TASK = /^\/(?:tasks\/|browse\?task=)([^/?&#]+)$/;
+// A task page, or /browse with the task first and maybe a sort after it.
+const TASK = /^\/(?:tasks\/([^/?#]+)$|browse\?task=([^&#]+))/;
 
 export function TaskEvents({ task, from, children }: { task?: string; from: string; children: ReactNode }) {
   function onClick(event: MouseEvent<HTMLDivElement>) {
     const href = (event.target as Element).closest('a[href]')?.getAttribute('href') ?? '';
     const listing = LISTING.exec(href);
     if (task && listing) count('task_to_listing_click', { task, slug: listing[1], from });
-    const picked = TASK.exec(href);
-    if (picked && picked[1] !== task) count('task_select', { task: picked[1], from });
+    const match = TASK.exec(href);
+    const picked = match?.[1] ?? match?.[2];
+    if (picked && picked !== task) count('task_select', { task: picked, from });
   }
 
   return <div onClick={onClick}>{children}</div>;

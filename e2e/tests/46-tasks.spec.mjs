@@ -1,8 +1,10 @@
 // Tasks: the /tasks index, every /tasks/<slug> page (content/tasks.json via
 // lib/tasks.ts, ranked by lib/search.ts taskMatches), their share cards,
-// GET /api/tasks and /api/tasks/<slug>, `task` on GET /api/agents, and
-// /browse?task= with its banner, filters, sort and ways back. Each page is
-// checked against GET /api/tasks/<slug>, and each why line against the
+// GET /api/tasks and /api/tasks/<slug>, `task` on GET /api/agents,
+// /browse?task= with its banner, filters, sort and ways back, and the ways in:
+// the homepage's "I need an agent to…" box (lib/task-match.ts) and task chips,
+// the chips atop /browse, and tasks in the search box's suggestions. Each page
+// is checked against GET /api/tasks/<slug>, and each why line against the
 // listing's own skills.
 // Read-only: only GETs (via fetch at collection time, page.goto and page.request).
 import { test, expect } from './fixtures.mjs';
@@ -47,6 +49,24 @@ const banner = (page) => human(page).locator('section[aria-label="Task"]');
 const indexRows = (page) => human(page).locator('section[aria-labelledby="i-need-to"] li > a');
 const bestFits = (page) => human(page).locator('section[aria-labelledby="best-fits"]');
 
+// components/TaskChips.tsx TASK_CHIPS, components/TaskSearch.tsx
+const CHIPS = 8;
+const EMPTY_HINT = 'Say it in your own words, or pick a task.';
+const homeBlock = (page) => human(page).locator('section[aria-labelledby="i-need-an-agent-to"]');
+const browseBlock = (page) => human(page).locator('section[aria-labelledby="browse-by-task"]');
+const chips = (block) => block.locator('li > a[href^="/browse?task="]');
+const taskBox = (page) => homeBlock(page).getByLabel('I need an agent to…');
+const hint = (page) => homeBlock(page).locator('[aria-live="polite"]');
+const chipHrefs = (query = '') => TASKS.slice(0, CHIPS).map((t) => `/browse?task=${t.slug}${query}`);
+
+/** Types `text` into the homepage box, again until the page has hydrated and the line under it follows. */
+async function say(page, text) {
+  await expect(async () => {
+    await taskBox(page).fill(text);
+    await expect(hint(page)).not.toHaveText(EMPTY_HINT, { timeout: 1000 });
+  }).toPass();
+}
+
 async function json(request, path, status = 200) {
   const res = await request.get(path, { headers: UA });
   expect(res.status(), path).toBe(status);
@@ -74,6 +94,13 @@ async function itemList(page) {
 /** The analytics script is blocked (fixtures.mjs), so events wait in its queue. */
 function events(page, name) {
   return page.evaluate((n) => (window.vaq ?? []).filter(([kind, e]) => kind === 'event' && e.name === n).map(([, e]) => e.data), name);
+}
+
+/** Opens `path` and waits for React to run it: a click before then is a full page load, which loses what it counted. */
+async function openHydrated(page, path) {
+  await page.goto(path);
+  // After hydration the header's view control renders real buttons (see 50-viewmode-theme).
+  await expect(page.getByRole('group', { name: 'Page view' }).getByRole('button', { name: 'For Humans' })).toBeVisible();
 }
 
 async function expectCard(page, url) {
@@ -245,7 +272,7 @@ test.describe('/tasks index', () => {
 
   test('opening a task counts task_select from the index', async ({ page }) => {
     const target = TASKS[TASKS.length - 1];
-    await page.goto('/tasks');
+    await openHydrated(page, '/tasks');
     await human(page).locator(`a[href="/tasks/${target.slug}"]`).click();
     await expect(page).toHaveURL(new RegExp(`/tasks/${target.slug}$`));
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(titleOf(target));
@@ -341,7 +368,7 @@ test.describe('every task page', () => {
 test.describe('task page details', () => {
   test('counts task_to_listing_click when a best fit is opened', async ({ page, request }) => {
     const item = (await detail(request, SAMPLE.slug)).agents[1];
-    await page.goto(`/tasks/${SAMPLE.slug}`);
+    await openHydrated(page, `/tasks/${SAMPLE.slug}`);
     await bestFits(page).locator('ol > li > a').nth(1).click();
     await expect(page).toHaveURL(new RegExp(`/agents/${item.slug}$`));
     expect(await events(page, 'task_to_listing_click')).toEqual([{ task: SAMPLE.slug, slug: item.slug, from: 'task-page' }]);
@@ -350,7 +377,7 @@ test.describe('task page details', () => {
   test('counts task_select when a related task is opened', async ({ page, request }) => {
     const { relatedTasks } = await detail(request, SAMPLE.slug);
     test.skip(relatedTasks.length === 0, 'no related tasks');
-    await page.goto(`/tasks/${SAMPLE.slug}`);
+    await openHydrated(page, `/tasks/${SAMPLE.slug}`);
     await human(page).locator('section[aria-labelledby="related-tasks"] li > a').first().click();
     await expect(page).toHaveURL(new RegExp(`/tasks/${relatedTasks[0]}$`));
     expect(await events(page, 'task_select')).toEqual([{ task: relatedTasks[0], from: 'task-page' }]);
@@ -453,7 +480,7 @@ test.describe('/browse?task=', () => {
 
   test('counts task_to_listing_click when a listing is opened from a task view', async ({ page, request }) => {
     const first = (await detail(request, SAMPLE.slug)).agents[0];
-    await page.goto(`/browse?task=${SAMPLE.slug}`);
+    await openHydrated(page, `/browse?task=${SAMPLE.slug}`);
     await cards(page).first().click();
     await expect(page).toHaveURL(new RegExp(`/agents/${first.slug}$`));
     expect(await events(page, 'task_to_listing_click')).toEqual([{ task: SAMPLE.slug, slug: first.slug, from: 'browse' }]);
@@ -502,6 +529,169 @@ test.describe('/browse?task=', () => {
     await expect(agentView.locator('a[href="/browse?access=mcp"]')).toHaveCount(1);
     const mcp = agents.filter((a) => a.accessMethods.includes('mcp'));
     expect(await hrefs(agentView.locator('a.agent-row[href^="/agents/"]'))).toEqual(mcp.map((a) => `/agents/${a.slug}`));
+  });
+});
+
+test.describe('"I need an agent to…" on the homepage', () => {
+  test('a box labelled by its heading, the first tasks as chips and a link to all of them', async ({ page }) => {
+    await page.goto('/');
+    const block = homeBlock(page);
+    await expect(block.getByRole('heading', { level: 2 })).toHaveText('I need an agent to…');
+    await expect(taskBox(page)).toHaveAttribute('placeholder', 'read my email');
+    await expect(block.getByRole('button', { name: 'Go', exact: true })).toBeVisible();
+    await expect(hint(page)).toHaveText(EMPTY_HINT);
+    expect(await hrefs(chips(block))).toEqual(chipHrefs());
+    expect(await chips(block).allTextContents()).toEqual(TASKS.slice(0, CHIPS).map((t) => t.label));
+    await expect(block.getByRole('link', { name: `All ${TASKS.length} tasks` })).toHaveAttribute('href', '/tasks');
+    // The hero's box stays the page's only search landmark.
+    await expect(page.getByRole('search')).toHaveCount(1);
+  });
+
+  test('a chip opens its task on /browse, counted as picked on the homepage', async ({ page }) => {
+    const task = TASKS[1];
+    await openHydrated(page, '/');
+    await chips(homeBlock(page)).nth(1).click();
+    await page.waitForURL(new RegExp(`/browse\\?task=${task.slug}$`));
+    await expect(banner(page)).toHaveAttribute('data-task', task.slug);
+    expect(await events(page, 'task_select')).toEqual([{ task: task.slug, from: 'home' }]);
+  });
+
+  test('words that name a task go to it, and the line under the box says so first', async ({ page }) => {
+    const task = TASKS.find((t) => t.slug === 'send-and-read-email');
+    await page.goto('/');
+    await say(page, 'read my inbox please');
+    await expect(hint(page)).toContainText(`Task: ${task.label} · ${tools(task.count)}`);
+    await expect(hint(page).getByRole('link', { name: 'search the directory instead' })).toHaveAttribute(
+      'href',
+      '/browse?q=read+my+inbox+please'
+    );
+    await taskBox(page).press('Enter');
+    await page.waitForURL(new RegExp(`/browse\\?task=${task.slug}$`));
+    await expect(countBar(page)).toHaveText(fitLine(task.count));
+    expect(await events(page, 'task_search')).toEqual([{ matched: true, task: task.slug, words: 4 }]);
+    expect(JSON.stringify(await page.evaluate(() => window.vaq ?? []))).not.toMatch(/inbox|please/);
+  });
+
+  test('words that name no task run as a search, with the closest tasks offered', async ({ page }) => {
+    await page.goto('/');
+    await say(page, 'build an agent');
+    await expect(hint(page)).toContainText('Searches the directory for “build an agent”');
+    const close = hint(page).getByRole('link');
+    await expect(close).toHaveCount(2);
+    for (const link of await close.all()) {
+      const label = (await link.textContent()).trim();
+      const task = TASKS.find((t) => t.label === label);
+      expect(task, `"${label}" is a task`).toBeTruthy();
+      expect(label).toMatch(/\bbuild\b/);
+      await expect(link).toHaveAttribute('href', `/browse?task=${task.slug}`);
+    }
+    await homeBlock(page).getByRole('button', { name: 'Go', exact: true }).click();
+    await page.waitForURL(/\/browse\?q=build\+an\+agent$/);
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('Results for “build an agent”');
+    expect(await events(page, 'task_search')).toEqual([{ matched: false, words: 3 }]);
+  });
+
+  test('a task offered under the box opens it, counted as picked from the box', async ({ page }) => {
+    await page.goto('/');
+    await say(page, 'build an agent');
+    const link = hint(page).getByRole('link').first();
+    const label = (await link.textContent()).trim();
+    const task = TASKS.find((t) => t.label === label);
+    await link.click();
+    await page.waitForURL(new RegExp(`/browse\\?task=${task.slug}$`));
+    expect(await events(page, 'task_select')).toEqual([{ task: task.slug, from: 'task-search' }]);
+    expect(await events(page, 'task_search')).toEqual([]);
+  });
+
+  test('"search the directory instead" runs the words and counts the task it passed over', async ({ page }) => {
+    await page.goto('/');
+    await say(page, 'read my email');
+    await hint(page).getByRole('link', { name: 'search the directory instead' }).click();
+    await page.waitForURL(/\/browse\?q=read\+my\+email$/);
+    await expect(countBar(page)).toBeVisible();
+    expect(await events(page, 'task_search')).toEqual([{ matched: false, words: 3, declined: 'send-and-read-email' }]);
+  });
+
+  test('Go with nothing typed opens every task', async ({ page }) => {
+    await page.goto('/');
+    await say(page, 'x');
+    await taskBox(page).fill('');
+    await expect(hint(page)).toHaveText(EMPTY_HINT);
+    await homeBlock(page).getByRole('button', { name: 'Go', exact: true }).click();
+    await page.waitForURL(/\/tasks$/);
+    expect(await events(page, 'task_search')).toEqual([]);
+  });
+
+  test('the text-only view lists the same tasks with how many fit', async ({ page }) => {
+    await page.addInitScript(() => { try { localStorage.setItem('viewMode', 'agent'); } catch {} });
+    await page.goto('/');
+    const rows = page.locator('.agent-only a.agent-row[href^="/browse?task="]');
+    expect(await hrefs(rows)).toEqual(chipHrefs());
+    for (const [i, t] of TASKS.slice(0, CHIPS).entries()) await expect(rows.nth(i)).toContainText(`${t.count} fit`);
+  });
+});
+
+test.describe('task chips atop /browse', () => {
+  test('/browse with nothing chosen offers the first tasks, and keeps the sort in their links', async ({ page }) => {
+    await page.goto('/browse');
+    const block = browseBlock(page);
+    await expect(block.getByRole('heading', { level: 2 })).toHaveText('I need an agent to…');
+    expect(await hrefs(chips(block))).toEqual(chipHrefs());
+    await expect(block.getByRole('link', { name: `All ${TASKS.length} tasks` })).toHaveAttribute('href', '/tasks');
+    await page.goto('/browse?sort=newest');
+    expect(await hrefs(chips(browseBlock(page)))).toEqual(chipHrefs('&sort=newest'));
+  });
+
+  test('a chip opens its task with the sort kept, counted as picked on /browse', async ({ page }) => {
+    const task = TASKS[0];
+    await openHydrated(page, '/browse?sort=newest');
+    await chips(browseBlock(page)).first().click();
+    await page.waitForURL(new RegExp(`/browse\\?task=${task.slug}&sort=newest$`));
+    await expect(banner(page)).toHaveAttribute('data-task', task.slug);
+    await expect(sortMenu(page)).toHaveValue('newest');
+    expect(await events(page, 'task_select')).toEqual([{ task: task.slug, from: 'browse' }]);
+  });
+
+  test('a search, a task or any filter puts the chips away', async ({ page }) => {
+    for (const query of ['q=postgres', `task=${SAMPLE.slug}`, 'category=code-devtools', 'official=1', 'vendor=github', 'verified=1', 'auth=none', 'access=mcp']) {
+      await page.goto(`/browse?${query}`);
+      await expect(countBar(page), query).toBeVisible();
+      await expect(browseBlock(page), query).toHaveCount(0);
+    }
+  });
+});
+
+test.describe('tasks in the search box suggestions', () => {
+  test('/search-index.json carries every task with how many listings fit it and its keywords', async ({ request }) => {
+    const index = await json(request, '/search-index.json');
+    expect(index.tasks).toEqual(TASKS.map((t) => [t.label, t.slug, t.count, t.keywords]));
+  });
+
+  test('a keyword suggests its task; picking it opens the task on /browse and empties the box', async ({ page }) => {
+    let requested = false;
+    page.on('request', (r) => {
+      if (new URL(r.url()).pathname === '/search-index.json') requested = true;
+    });
+    await page.goto('/');
+    const box = page.getByRole('combobox', { name: 'Look it up' });
+    await expect(async () => {
+      await box.blur();
+      await box.focus();
+      expect(requested).toBe(true);
+    }).toPass();
+    await box.pressSequentially('postgres');
+    const list = human(page).getByRole('search').getByRole('listbox');
+    const option = list
+      .getByRole('group', { name: 'Tasks' })
+      .getByRole('option', { name: new RegExp(`^${escapeRe(SAMPLE.label)} ${SAMPLE.count} agents$`) });
+    await expect(option).toBeVisible();
+    const position = (await list.getByRole('option').allTextContents()).findIndex((t) => t.startsWith(SAMPLE.label)) + 1;
+    await option.click();
+    await page.waitForURL(new RegExp(`/browse\\?task=${SAMPLE.slug}$`));
+    await expect(banner(page)).toHaveAttribute('data-task', SAMPLE.slug);
+    await expect(human(page).getByRole('search').getByRole('combobox')).toHaveValue('');
+    expect(await events(page, 'autocomplete_select')).toEqual([{ kind: 'task', position, chars: 8, page: '/' }]);
+    expect(await events(page, 'task_select')).toEqual([{ task: SAMPLE.slug, from: 'autocomplete' }]);
   });
 });
 
@@ -556,5 +746,30 @@ test.describe('tasks on a phone', () => {
       if (sw > cw + 1) overflow.push(`${path}: scrollWidth ${sw} > ${cw}`);
     }
     expect(overflow).toEqual([]);
+  });
+
+  test('the homepage and /browse task chips fit, and the box, Go and every chip are easy to tap', async ({ page }) => {
+    for (const [path, block] of [['/', homeBlock], ['/browse', browseBlock]]) {
+      await page.goto(path);
+      const [sw, cw] = await page.evaluate(() => [document.documentElement.scrollWidth, document.documentElement.clientWidth]);
+      expect(sw, path).toBeLessThanOrEqual(cw + 1);
+      const heights = await block(page).locator('input, button, li > a').evaluateAll((els) => els.map((e) => e.getBoundingClientRect().height));
+      expect(heights.length, path).toBeGreaterThan(CHIPS);
+      expect(Math.min(...heights), path).toBeGreaterThanOrEqual(44);
+    }
+  });
+
+  test('on /browse the chips are one row that scrolls sideways, so the filters stay near the top', async ({ page }) => {
+    await page.goto('/browse');
+    const row = browseBlock(page).locator('ul');
+    const tops = await row.locator('li').evaluateAll((els) => els.map((e) => Math.round(e.getBoundingClientRect().top)));
+    expect(new Set(tops).size).toBe(1);
+    const [scrollWidth, clientWidth] = await row.evaluate((e) => [e.scrollWidth, e.clientWidth]);
+    expect(scrollWidth).toBeGreaterThan(clientWidth);
+    const all = browseBlock(page).getByRole('link', { name: `All ${TASKS.length} tasks` });
+    await all.scrollIntoViewIfNeeded();
+    await expect(all).toBeInViewport();
+    const [sw, cw] = await page.evaluate(() => [document.documentElement.scrollWidth, document.documentElement.clientWidth]);
+    expect(sw).toBeLessThanOrEqual(cw + 1);
   });
 });

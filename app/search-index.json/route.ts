@@ -1,5 +1,7 @@
 import { buildSuggestIndex } from '@/lib/autocomplete';
 import { getAllCategories, getEveryAgent, getOfficialGroups } from '@/lib/catalog';
+import { taskMatches } from '@/lib/search';
+import { getTasks } from '@/lib/tasks';
 
 export const dynamic = 'force-static';
 
@@ -9,7 +11,8 @@ export async function GET() {
   const agents = await getEveryAgent();
   const categories = await getAllCategories();
   const vendors = await getOfficialGroups();
-  return Response.json(buildSuggestIndex(agents, categories, vendors), {
+  const tasks = getTasks().map((task) => ({ ...task, count: taskMatches(agents, task).length }));
+  return Response.json(buildSuggestIndex(agents, categories, vendors, tasks), {
     headers: { 'X-Robots-Tag': 'noindex' },
   });
 }

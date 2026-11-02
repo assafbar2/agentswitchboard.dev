@@ -1,5 +1,13 @@
 import { describe, it, expect } from 'vitest';
-import { buildSuggestIndex, isSuggestIndex, suggest, type AgentRow, type GroupRow, type SuggestIndex } from './autocomplete';
+import {
+  buildSuggestIndex,
+  isSuggestIndex,
+  suggest,
+  type AgentRow,
+  type GroupRow,
+  type SuggestIndex,
+  type TaskRow,
+} from './autocomplete';
 import { groupOfficialAgents } from './official';
 import type { Agent, Category } from './types';
 
@@ -65,11 +73,58 @@ describe('buildSuggestIndex', () => {
     expect(index.vendors).toEqual([['Supabase', 'supabase', 1]]);
   });
 
+  it('keeps each task as [label, slug, listings that fit it, keywords]', () => {
+    const withTasks = buildSuggestIndex(agents, [data], [], [
+      { label: 'query a database', slug: 'query-a-database', keywords: ['database', 'sql'], count: 2 },
+    ]);
+    expect(withTasks.tasks).toEqual([['query a database', 'query-a-database', 2, ['database', 'sql']]]);
+  });
+
   it('recognizes its own shape and rejects others', () => {
     expect(isSuggestIndex(JSON.parse(JSON.stringify(index)))).toBe(true);
     expect(isSuggestIndex(null)).toBe(false);
     expect(isSuggestIndex({ agents: [] })).toBe(false);
     expect(isSuggestIndex({ agents: 'x', categories: [], vendors: [] })).toBe(false);
+  });
+
+  it('takes an index without tasks, as an older deploy wrote it, but not one with a malformed list', () => {
+    expect(isSuggestIndex({ agents: [], categories: [], vendors: [] })).toBe(true);
+    expect(isSuggestIndex({ agents: [], categories: [], vendors: [], tasks: 'x' })).toBe(false);
+  });
+});
+
+describe('suggest: tasks', () => {
+  const tasks: TaskRow[] = [
+    ['query a database', 'query-a-database', 46, ['database', 'sql', 'postgres']],
+    ['write and fix code', 'write-and-fix-code', 90, ['agentic coding', 'code editor']],
+    ['review code', 'review-code', 30, ['code review', 'pr review']],
+    ['build a voice agent', 'build-a-voice-agent', 40, ['voice agent', 'voice ai']],
+    ['manage AWS, Azure or Google Cloud', 'manage-cloud-infrastructure', 20, ['aws', 'azure']],
+  ];
+  const index = indexOf(['Postgres MCP Pro'], { tasks, categories: [['Data & Analytics', 'data-analytics', 78]] });
+
+  it('suggests the task a keyword belongs to, after the listings and before the categories', () => {
+    expect(suggest(index, 'postgres')).toEqual([
+      { kind: 'agent', name: 'Postgres MCP Pro', href: '/agents/postgres-mcp-pro', iconUrl: undefined },
+      { kind: 'task', name: 'query a database', count: 46, href: '/browse?task=query-a-database', task: 'query-a-database' },
+    ]);
+    expect(suggest(index, 'data').map((s) => s.kind)).toEqual(['task', 'category']);
+  });
+
+  it('matches the label as names are matched, and words across the label and the keywords', () => {
+    expect(names(index, 'query a database')).toEqual(['query a database']);
+    expect(names(index, 'query a d')).toEqual(['query a database']);
+    expect(names(index, 'query postgres')).toEqual(['query a database']);
+  });
+
+  it('suggests two tasks at most: the best match, then the one with the most listings', () => {
+    expect(names(index, 'code')).toEqual(['write and fix code', 'review code']);
+    expect(names(index, 'review code')).toEqual(['review code']);
+  });
+
+  it('waits for three letters, so "ai" alone suggests no task', () => {
+    expect(names(index, 'ai')).toEqual([]);
+    expect(names(index, 'aws')).toEqual(['manage AWS, Azure or Google Cloud']);
   });
 });
 
