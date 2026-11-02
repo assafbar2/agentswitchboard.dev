@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Agent Switchboard Directory API",
-    "version": "1.8.0",
+    "version": "1.9.0",
     "summary": "Read-only catalog of AI agents, MCP servers, and agentic developer tools.",
     "description": "Agent Switchboard is a public discovery directory. Use this API to answer questions like 'is there an agent that does X?' or 'which listed products expose an MCP server?'. There is no authentication, no user account, and no write access. This API does not proxy the underlying products — it only returns Switchboard listings. For interactive tool-shaped access, an MCP server is also available at /api/mcp. Listing data returned by this API is licensed CC BY-NC 4.0 (attribution required; commercial reuse needs a license: https://agentswitchboard.dev/contact). The API definition itself is MIT.",
     "contact": {
@@ -679,7 +679,7 @@
       },
       "Stack": {
         "type": "object",
-        "required": ["slug", "title", "promise", "week", "url", "items"],
+        "required": ["slug", "title", "promise", "week", "url", "bundleUrl", "items"],
         "properties": {
           "slug": { "type": "string", "description": "Stable identifier. Pass to GET /api/stacks/{slug}." },
           "title": { "type": "string" },
@@ -690,6 +690,11 @@
             "description": "For a stack of the week, the date of its weekly drop (its page is /drops/{week}); null otherwise."
           },
           "url": { "type": "string", "format": "uri", "description": "Human stack page on Agent Switchboard." },
+          "bundleUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "GET /api/bundle for the stack's listings: one MCP client config to paste, and how to connect the rest."
+          },
           "items": {
             "type": "array",
             "description": "The stack's listings, in order.",

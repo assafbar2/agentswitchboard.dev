@@ -211,6 +211,8 @@ curl "https://agentswitchboard.dev/api/stacks/research-analyst"
       "promise": "Build, run and test on both platforms from Claude Code or Codex, …",
       "week": "2026-10-31", // the drop it is the stack of the week for; null otherwise
       "url": "https://agentswitchboard.dev/stacks/iphone-and-android-apps",
+      // one MCP client config for the stack, and how to connect the rest
+      "bundleUrl": "https://agentswitchboard.dev/api/bundle?items=xcode-mcp,iphone-use,android-cli,stack-overflow-for-agents",
       "items": [
         {
           // …the REST search fields (name, slug, url, iconUrl, accessMethods, …)
@@ -225,7 +227,9 @@ curl "https://agentswitchboard.dev/api/stacks/research-analyst"
 
 Stacks are listed as `/stacks` shows them: the stack of the week first.
 `GET /api/stacks/{slug}` returns one stack in the same shape; an unknown slug
-returns `404` with `{ "error": "not_found", "message": "…" }`.
+returns `404` with `{ "error": "not_found", "message": "…" }`. `bundleUrl` is
+the [connect bundle](#rest-connect-bundle--get-apibundle) for the stack's
+listings, as the stack's page shows it under Connect them all.
 
 ---
 

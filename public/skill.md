@@ -35,7 +35,7 @@ Prefer REST. OpenAPI: https://agentswitchboard.dev/openapi.json
 2. `GET /api/agents?q={text}&limit=10` to search. Add `category={slug}`, `access=mcp` (comma-separate to require several: `access=api,mcp`), `official=true` (first-party listings from major vendors only), `verified=true`, and/or `auth=none` (no key or sign-in needed). `sort=newest` lists the most recently added first.
 3. `GET /api/agents/{slug}` for skills, `authType` of the **listed product**, tags, and homepage.
 4. `GET /api/tasks` for tasks: jobs (“query a database”), each with the number of listings that do it. Add `task={slug}` to `/api/agents` to keep only those listings, best fit first, or `GET /api/tasks/{slug}` for the best fits with a `why` line each.
-5. `GET /api/stacks` for stacks: listings picked to do one job together, in order, each with a `why` line. `GET /api/stacks/{slug}` for one.
+5. `GET /api/stacks` for stacks: listings picked to do one job together, in order, each with a `why` line. `GET /api/stacks/{slug}` for one. Each stack's `bundleUrl` is the `/api/bundle` call (step 8) that connects its listings.
 6. `GET /api/compare?a={slug}&b={slug}` (add `&c={slug}` for a third) to put listings side by side: what sets each apart (`setsApart`), then one row per field with each listing's value by slug.
 7. `GET /api/agents/{slug}/alternatives` for listings that could stand in for one, strongest first, each with a `why` line.
 8. `GET /api/bundle?items={slug},{slug}` (up to 10) for one MCP client config to paste (`config`, `{"mcpServers": …}`), and how each listing connects (`items[].how` and `note`).

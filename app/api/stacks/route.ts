@@ -3,7 +3,7 @@
  *
  *   GET /api/stacks
  *   → { total, stackOfTheWeek, stacks: [ { slug, title, promise, week, url,
- *       items: [ { the search-result fields, authType, why } ] } ] }
+ *       bundleUrl, items: [ { the search-result fields, authType, why } ] } ] }
  *
  * In the order /stacks shows them, the stack of the week first. Read-only,
  * no auth, open CORS.

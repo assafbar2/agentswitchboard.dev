@@ -10,6 +10,7 @@
 import { extraText, sharedStackNoteText, type SharedStack } from './shared-stack';
 import type { Agent } from './types';
 import { commandConfig, howToUse, type McpServerConfig } from './use-it-now';
+import { joinList } from './utils';
 
 /**
  * How a listing connects: `config`, it is in the bundle's config; `guide`, an
@@ -140,6 +141,19 @@ export function connectBundle(agents: readonly Agent[]): Bundle {
           ? `Connect ${guided[0].agent.name} as an MCP server, following its setup instructions at ${guided[0].docsUrl}`
           : `Connect these as MCP servers, following each one's setup instructions: ${guided.map((i) => `${i.agent.name} at ${i.docsUrl}`).join('; ')}`,
   };
+}
+
+/** "2 in the config, 1 to set up from its guide and 1 without an MCP server" */
+export function bundleSummary(items: readonly Pick<BundleItem, 'how'>[]): string {
+  const count = (how: BundleHow) => items.filter((i) => i.how === how).length;
+  const [config, guide, other] = [count('config'), count('guide'), count('other')];
+  return joinList(
+    [
+      config > 0 && `${config} in the config`,
+      guide > 0 && `${guide} to set up from ${guide === 1 ? 'its guide' : 'their guides'}`,
+      other > 0 && `${other} without an MCP server`,
+    ].filter((part): part is string => !!part)
+  );
 }
 
 /** What a bundle leaves out of a named stack, and why: unknown and repeated slugs, listings no longer listed, any past the cap. */

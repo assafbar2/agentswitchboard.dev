@@ -20,6 +20,8 @@ const [A, B, C] = catalog.slice(0, 3).map((a) => a.slug);
 const RETIRED = content('changelog.json').find((e) => e.action === 'removed' && !bySlug.has(e.slug));
 const CURATED = content('stacks.json')[0];
 const WITH_PANEL = catalog.find((a) => a.mcpEndpoint && a.iconUrl);
+const HOSTED = catalog.find((a) => a.mcpEndpoint && a.accessMethods.includes('mcp'));
+const CONNECTED = [HOSTED.slug, ...[A, B].filter((slug) => slug !== HOSTED.slug)].slice(0, 2);
 const PANEL_LESS = catalog.find((a) => !a.accessMethods.some((m) => ['mcp', 'cli', 'api', 'browser-extension'].includes(m)));
 
 const human = (page) => page.locator('.human-only');
@@ -177,6 +179,7 @@ test.describe('/my-stack', () => {
     await expect(button(page, `Remove ${name(C)} from My stack`)).toBeFocused();
     await expect(share).toHaveText(`${ORIGIN}/stack?items=${A},${C}&title=Agent%20tools`);
     await expect(human(page).getByRole('link', { name: 'Compare both' })).toHaveAttribute('href', `/compare?a=${A}&b=${C}`);
+    await expect(human(page).getByRole('link', { name: 'Connect them all' })).toHaveAttribute('href', `/stack?items=${A},${C}&title=Agent%20tools#connect`);
     await expect(human(page).getByRole('link', { name: 'Open the shared page' })).toHaveAttribute('href', `/stack?items=${A},${C}&title=Agent%20tools`);
     await expect(headerLink(page, 2)).toBeVisible();
     expect(await stored(page)).toEqual({ title: 'Agent tools', items: [A, C].map(item) });
@@ -205,7 +208,21 @@ test.describe('/my-stack', () => {
     await textOnly(page);
     const view = page.locator('div.agent-only', { has: page.locator('.agent-section-title', { hasText: 'share' }) });
     await expect(view.getByText(`up to ${MAX} listings kept in this browser's localStorage`)).toBeVisible();
-    await expect(view.locator('.agent-row .agent-accent')).toHaveText([A, B, `/stack?items=${A},${B}&title=T`, `/compare?a=${A}&b=${B}`]);
+    await expect(view.locator('.agent-row .agent-accent')).toHaveText([
+      A,
+      B,
+      `/stack?items=${A},${B}&title=T`,
+      `/compare?a=${A}&b=${B}`,
+      `/api/bundle?items=${A},${B}`,
+    ]);
+  });
+
+  test('Connect them all opens the shared page at its config', async ({ page }) => {
+    await seed(page, { title: '', items: CONNECTED.map(item) });
+    await openReady(page, '/my-stack');
+    await human(page).getByRole('link', { name: 'Connect them all' }).click();
+    await expect(page).toHaveURL(new RegExp(`/stack\\?items=${CONNECTED.join(',')}#connect$`));
+    await expect(human(page).getByRole('region', { name: 'Connect them all' })).toBeInViewport();
   });
 });
 
@@ -255,6 +272,19 @@ test.describe('/stack', () => {
     await page.goto('/stack?items=no-such-a');
     await expect(human(page).getByText('This link names no listing in the directory.')).toBeVisible();
     await expect(human(page).locator('header ul li')).toHaveText(['“no-such-a” isn’t a listing in the directory, so it is left out.']);
+  });
+
+  test('a shared stack connects them all, as GET /api/bundle does for its items', async ({ page }) => {
+    const items = CONNECTED.join(',');
+    const bundle = await (await page.request.get(`/api/bundle?items=${items}`, { headers: UA })).json();
+    await page.goto(`/stack?items=${items}`);
+    const connect = human(page).getByRole('region', { name: 'Connect them all' });
+    await expect(connect.locator(':scope > p').first()).toHaveText(`${bundle.summary}.`);
+    expect(JSON.parse(await connect.getByRole('region', { name: 'In the config' }).locator('pre').first().textContent())).toEqual(bundle.config);
+    expect(bundle.config.mcpServers[HOSTED.slug]).toEqual({ url: HOSTED.mcpEndpoint });
+
+    await page.goto(`/stack?items=${HOSTED.slug}`);
+    await expect(human(page).getByRole('region', { name: 'Connect it' })).toBeVisible();
   });
 
   test('a title holding a web address is dropped', async ({ page }) => {
@@ -356,6 +386,17 @@ test.describe('copying', () => {
     await button(page, 'Copy the link to this stack').click();
     expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(`${ORIGIN}${path}`);
     expect(await events(page, 'stack_share')).toEqual([{ items: 2, from: 'stack' }]);
+  });
+
+  test('a shared stack copies its MCP config and counts stack_bundle_export', async ({ page }) => {
+    const items = CONNECTED.join(',');
+    const bundle = await (await page.request.get(`/api/bundle?items=${items}`, { headers: UA })).json();
+    await openReady(page, `/stack?items=${items}`);
+    await button(page, 'Copy the MCP client config for this stack').click();
+    expect(JSON.parse(await page.evaluate(() => navigator.clipboard.readText()))).toEqual(bundle.config);
+    expect(await events(page, 'stack_bundle_export')).toEqual([
+      { from: 'stack', items: 2, servers: Object.keys(bundle.config.mcpServers).length, what: 'mcp-config' },
+    ]);
   });
 });
 

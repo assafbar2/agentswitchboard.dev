@@ -164,6 +164,7 @@ describe('summarizeStack', () => {
       promise: 'Give an agent its own inbox.',
       week: null,
       url: 'https://agentswitchboard.dev/stacks/email-agent',
+      bundleUrl: 'https://agentswitchboard.dev/api/bundle?items=agentmail',
       items: [{ ...summarizeAgent(agent), authType: 'apiKey', why: 'Its inbox.' }],
     });
   });

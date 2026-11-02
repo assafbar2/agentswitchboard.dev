@@ -6,7 +6,7 @@
  * stack page), so an assistant says what a visitor sees.
  */
 
-import { bundleNotes, connectBundle, type BundleHow } from './bundle';
+import { bundleNotes, bundleSummary, connectBundle } from './bundle';
 import {
   compareRows,
   compareSuggestions,
@@ -25,7 +25,7 @@ import { alternativeWhy, getAlternatives, MAX_ALTERNATIVES, MIN_ALTERNATIVES } f
 import { listedAgents, sharedStack } from './shared-stack';
 import { stackHref } from './stack-link';
 import type { Agent } from './types';
-import { joinList, pluralize } from './utils';
+import { pluralize } from './utils';
 
 /** Why a decision tool has no answer: the HTTP status, an error code and a message, plus anything that helps the next call. */
 export interface Refusal {
@@ -138,24 +138,10 @@ export function alternativesDecision(
 
 // ── connect bundle ──────────────────────────────────────────────────
 
-/** "2 in the config, 1 to set up from its guide and 1 without an MCP server" */
-export function bundleSummary(counts: Record<BundleHow, number>): string {
-  const { config, guide, other } = counts;
-  return joinList(
-    [
-      config > 0 && `${config} in the config`,
-      guide > 0 && `${guide} to set up from ${guide === 1 ? 'its guide' : 'their guides'}`,
-      other > 0 && `${other} without an MCP server`,
-    ].filter((part): part is string => !!part)
-  );
-}
-
 function bundleBody(agents: Agent[], notes: string[]) {
   const bundle = connectBundle(agents);
-  const counts: Record<BundleHow, number> = { config: 0, guide: 0, other: 0 };
-  for (const item of bundle.items) counts[item.how]++;
   return {
-    summary: bundleSummary(counts),
+    summary: bundleSummary(bundle.items),
     stackUrl: `${BASE_URL}${stackHref(agents.map((a) => a.slug))}`,
     config: bundle.config,
     claudeCode: bundle.claudeCode,

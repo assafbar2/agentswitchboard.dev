@@ -14,6 +14,7 @@ import { ChevronDown, ChevronUp, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { AgentIcon } from '@/components/AgentIcon';
 import { CopyButton } from '@/components/CopyButton';
+import { EndpointLink } from '@/components/EndpointLink';
 import { COMPARE_MAX, compareHref } from '@/lib/compare-link';
 import { EMPTY_STACK, readMyStack, useHydrated, useMyStack, withMoved, withoutItem, withTitle, writeMyStack } from '@/lib/my-stack';
 import { cleanStackTitle, MY_STACK_MAX, STACK_TITLE_MAX, stackHref, UNTITLED_STACK } from '@/lib/stack-link';
@@ -78,6 +79,11 @@ export function MyStackEditor({ view }: { view: 'human' | 'agent' }) {
                 <span className="agent-dim" />
               </Link>
             )}
+            <EndpointLink href={`/api/bundle?items=${slugs.join(',')}`} className="agent-row agent-row-stack no-underline hover:underline">
+              <span className="agent-accent">/api/bundle?items={slugs.join(',')}</span>
+              <span className="agent-dim">one MCP client config for these listings, as JSON</span>
+              <span className="agent-dim">GET · no auth</span>
+            </EndpointLink>
           </>
         )}
       </>
@@ -231,15 +237,24 @@ export function MyStackEditor({ view }: { view: 'human' | 'agent' }) {
               ))}
             </ol>
             {compared.length > 1 && (
-              <Link href={compareHref(compared)} className="dir-row mt-2">
-                <span className="dir-row-name">
-                  Compare {compared.length === slugs.length ? (slugs.length === 2 ? 'both' : 'all 3') : `the first ${compared.length}`}
-                </span>
-                <span className="dir-row-leader" aria-hidden="true" />
-                <span className="dir-row-meta" aria-hidden="true">
-                  Side by side →
-                </span>
-              </Link>
+              <div className="mt-2">
+                <Link href={compareHref(compared)} className="dir-row">
+                  <span className="dir-row-name">
+                    Compare {compared.length === slugs.length ? (slugs.length === 2 ? 'both' : 'all 3') : `the first ${compared.length}`}
+                  </span>
+                  <span className="dir-row-leader" aria-hidden="true" />
+                  <span className="dir-row-meta" aria-hidden="true">
+                    Side by side →
+                  </span>
+                </Link>
+                <Link href={`${href}#connect`} className="dir-row">
+                  <span className="dir-row-name">Connect them all</span>
+                  <span className="dir-row-leader" aria-hidden="true" />
+                  <span className="dir-row-meta" aria-hidden="true">
+                    How to connect each →
+                  </span>
+                </Link>
+              </div>
             )}
           </section>
 

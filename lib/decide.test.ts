@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { getEveryAgent } from './catalog';
 import { compareRows, compareSuggestions, compareTitle, curatedComparisons, factLines, pairPath } from './compare';
 import { compareHref } from './compare-link';
-import { alternativesDecision, bundleDecision, bundleSummary, compareDecision } from './decide';
+import { alternativesDecision, bundleDecision, compareDecision } from './decide';
 import { BASE_URL } from './env';
 import { alternativeWhy, getAlternatives, MAX_ALTERNATIVES, MIN_ALTERNATIVES } from './related';
 import { MY_STACK_MAX, stackHref } from './stack-link';
@@ -187,16 +187,6 @@ describe('alternativesDecision', () => {
       message:
         'Gone Tool is no longer listed in the directory, so it has no alternatives here. Search the directory for tools that do the same job.',
     });
-  });
-});
-
-describe('bundleSummary', () => {
-  it('counts each way to connect, leaving out the empty ones', () => {
-    expect(bundleSummary({ config: 2, guide: 1, other: 1 })).toBe(
-      '2 in the config, 1 to set up from its guide and 1 without an MCP server'
-    );
-    expect(bundleSummary({ config: 3, guide: 0, other: 0 })).toBe('3 in the config');
-    expect(bundleSummary({ config: 0, guide: 2, other: 1 })).toBe('2 to set up from their guides and 1 without an MCP server');
   });
 });
 

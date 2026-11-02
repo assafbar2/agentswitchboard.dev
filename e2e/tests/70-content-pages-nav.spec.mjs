@@ -224,15 +224,17 @@ test.describe('content pages', () => {
     const agentPages = [];
     for (const p of CONTENT_PAGES) {
       await page.goto(p.path);
+      const site = new URL(page.url()).host;
       const hrefs = await page.getByRole('main').locator('a[href]').evaluateAll((els) => els.map((e) => e.href));
       for (const h of hrefs) {
         const u = new URL(h);
-        if (u.host !== 'agentswitchboard.dev') continue;
+        if (u.host !== 'agentswitchboard.dev' && u.host !== site) continue;
         if (u.pathname.startsWith('/agents/')) {
           if (!agentPages.includes(u.pathname)) agentPages.push(u.pathname);
           continue;
         }
-        seen.add(u.pathname);
+        // An API answer depends on its query: /api/compare and /api/bundle without one are a 400.
+        seen.add(u.pathname.startsWith('/api/') ? `${u.pathname}${u.search}` : u.pathname);
       }
     }
     expect(agentPages.length).toBeGreaterThan(0);
