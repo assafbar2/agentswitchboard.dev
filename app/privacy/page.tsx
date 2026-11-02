@@ -21,7 +21,7 @@ export default function PrivacyPage() {
     <div className="container-wide section">
       <div className="max-w-2xl mx-auto py-12">
         <h1 className="text-3xl font-bold tracking-tight mb-2">Privacy</h1>
-        <p className="text-sm text-[var(--text-muted)] mono mb-10">Last updated: October 2026</p>
+        <p className="text-sm text-[var(--text-muted)] mono mb-10">Last updated: November 2026</p>
 
         <div className="space-y-8 text-[var(--text-secondary)] leading-relaxed">
           <section>
@@ -54,6 +54,52 @@ export default function PrivacyPage() {
               or curl. The route, tool name, and client type may also be recorded as a Vercel
               Analytics event. No cookies are set or read.
             </p>
+            <p className="mt-3">
+              The caller&apos;s IP address is used in memory to apply rate limits and is processed
+              by Vercel as part of serving the request; Agent Switchboard does not store it in its
+              own logs. Server errors are reported to Sentry with the request details needed to fix
+              them.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2">
+              What the MCP server receives from assistants
+            </h2>
+            <p>
+              When you use Agent Switchboard through Claude, ChatGPT, Grok, Cursor, or another
+              assistant, the server receives only the arguments the assistant sends to a tool, such
+              as search words, a category, or a listing slug. It never receives your conversation,
+              chat history, memory, or files, and it does not ask for them. Search arguments are
+              used to answer the request and are not kept with any identifier. There are no user
+              profiles.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2">
+              Why it is used
+            </h2>
+            <p>
+              To answer your request, to keep the service running and protected from abuse, to
+              review listing submissions, and to see which parts of the directory are used so we
+              know what to improve. Data is never sold, used for advertising, or used to build
+              profiles of people.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2">
+              How long it is kept
+            </h2>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>Server request logs: as long as Vercel keeps runtime logs for the project, at most 30 days.</li>
+              <li>Error reports in Sentry: at most 90 days.</li>
+              <li>Aggregate analytics (counts by page, tool, and client type): kept in Vercel Analytics and Umami; they contain no names, email addresses, or stored IP addresses.</li>
+              <li>Submission issues on GitHub: public until the maintainer deletes them, which we do on request.</li>
+              <li>A submitter&apos;s email address: kept in the maintainer&apos;s inbox only while it is needed to follow up, and deleted on request.</li>
+              <li>Rate-limit counters: in memory, cleared within an hour.</li>
+            </ul>
           </section>
 
           <section>
@@ -79,10 +125,12 @@ export default function PrivacyPage() {
               Hosting and third parties
             </h2>
             <p>
-              The site is hosted on Vercel, which processes request logs as part of serving traffic.
-              Submissions are filed on GitHub, and the submitter&apos;s email is delivered through
-              AgentMail, which hosts the maintainer&apos;s inbox. Listings link out to third-party
-              products; once you follow a link, that site&apos;s own privacy policy applies.
+              The only recipients are the service providers that run the site: Vercel (hosting,
+              request logs, and Vercel Analytics), Umami (cookieless page analytics), Sentry (error
+              reports), GitHub (submission issues, which are public), and AgentMail (the
+              maintainer&apos;s inbox, which receives a submitter&apos;s email address). Listings
+              link out to third-party products; once you follow a link, that site&apos;s own privacy
+              policy applies.
             </p>
           </section>
 
@@ -91,8 +139,9 @@ export default function PrivacyPage() {
               Connectors and automated clients
             </h2>
             <p>
-              The catalog API is public and unauthenticated. Assistants and connector platforms
-              (including Meta Muse) can search listings without a Switchboard account or API key.
+              The catalog API and MCP server are public and unauthenticated. Assistants and
+              connector platforms (including Claude, ChatGPT, Grok, and Meta Muse) can search
+              listings without a Switchboard account or API key.
               Switchboard does not receive a password or token when someone uses that connector,
               because none exist. Those calls are counted as described under what is collected, and
               their request logs are processed like any other visit (see hosting above).
@@ -101,10 +150,12 @@ export default function PrivacyPage() {
 
           <section>
             <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2">
-              Questions or removal
+              Your choices, questions, or removal
             </h2>
             <p>
-              Email{' '}
+              You can use the whole directory without giving any personal information. To have a
+              submission issue or your email address deleted, or to ask what we hold about you,
+              email{' '}
               <a href={`mailto:${EMAIL}`} className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2 mono">
                 {EMAIL}
               </a>{' '}

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { clientIp, fixedWindowLimiter } from '@/lib/rate-limit';
+import { clientIp, fixedWindowLimiter, inCidr, isAssistantPlatformIp } from '@/lib/rate-limit';
 
 describe('fixedWindowLimiter', () => {
   it('allows up to the limit in a window, then reports when to retry', () => {
@@ -36,5 +36,27 @@ describe('clientIp', () => {
   it('falls back to x-real-ip, then "unknown"', () => {
     expect(clientIp({ 'x-real-ip': '198.51.100.2' })).toBe('198.51.100.2');
     expect(clientIp({})).toBe('unknown');
+  });
+});
+
+describe('inCidr', () => {
+  it('matches addresses inside the block, edges included', () => {
+    expect(inCidr('160.79.104.0', '160.79.104.0/21')).toBe(true);
+    expect(inCidr('160.79.111.255', '160.79.104.0/21')).toBe(true);
+    expect(inCidr('160.79.112.0', '160.79.104.0/21')).toBe(false);
+    expect(inCidr('160.79.103.255', '160.79.104.0/21')).toBe(false);
+  });
+
+  it('is false for IPv6, junk, and bad blocks', () => {
+    expect(inCidr('2001:db8::1', '160.79.104.0/21')).toBe(false);
+    expect(inCidr('unknown', '160.79.104.0/21')).toBe(false);
+    expect(inCidr('160.79.104.1', '160.79.104.0/33')).toBe(false);
+  });
+});
+
+describe('isAssistantPlatformIp', () => {
+  it("knows Anthropic's outbound range and nothing else", () => {
+    expect(isAssistantPlatformIp('160.79.105.20')).toBe(true);
+    expect(isAssistantPlatformIp('203.0.113.7')).toBe(false);
   });
 });

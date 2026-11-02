@@ -64,7 +64,8 @@ export const SUBMIT_LISTING_DESCRIPTION =
   'that the maintainer reviews by hand; it does not publish anything. Use it only when the user ' +
   'asks to submit or list a product, after you show them the name, URL, and description you will send ' +
   'and they agree. Call search_agents first: if the product is already listed, tell the user instead. ' +
-  `Limited to ${SUBMIT_LIMITS.perIpPerHour} submissions per hour per caller and one per URL per day.`;
+  `Limited to ${SUBMIT_LIMITS.perIpPerHour} submissions per hour per caller and one per URL per day. ` +
+  'Not safe to retry blindly: each call that returns status "filed" opens a new issue.';
 
 export const submitListingOutput = {
   status: z.enum(['filed', 'already_listed', 'rate_limited', 'unavailable']),
@@ -109,7 +110,7 @@ export function composeAsk(input: SubmitListingInput): string {
 
 function result(output: Output, isError = false) {
   return {
-    content: [{ type: 'text' as const, text: JSON.stringify(output, null, 2) }],
+    content: [{ type: 'text' as const, text: JSON.stringify(output) }],
     structuredContent: output,
     ...(isError ? { isError: true } : {}),
   };

@@ -22,7 +22,7 @@ export default function TermsPage() {
     <div className="container-wide section">
       <div className="max-w-2xl mx-auto py-12">
         <h1 className="text-3xl font-bold tracking-tight mb-2">Terms of Use</h1>
-        <p className="text-sm text-[var(--text-muted)] mono mb-10">Last updated: September 2026</p>
+        <p className="text-sm text-[var(--text-muted)] mono mb-10">Last updated: November 2026</p>
 
         <div className="space-y-8 text-[var(--text-secondary)] leading-relaxed">
           <section>
@@ -58,7 +58,8 @@ export default function TermsPage() {
               /api/mcp) are public and require no account or API key. They are read-only, except
               the MCP <code className="mono text-sm">submit_listing</code> tool, which files a
               public suggestion for review like the submit form. You may call them
-              from your own applications and from assistant platforms (including Meta Muse) under
+              from your own applications and from assistant platforms (including Claude, ChatGPT, Grok,
+              and Meta Muse) under
               ordinary fair use. Do not attempt to overload, scrape around published rate-friendly
               caches, or present the directory as your own catalog without attribution.
             </p>
