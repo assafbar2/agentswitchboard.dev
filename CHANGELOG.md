@@ -7,7 +7,7 @@ Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes 
 ## [2.7.1] - 2026-11-02 - Vendor MCP servers
 
 ### Directory
-- 15 listings now carry their vendor's own MCP setup, each copied from the vendor's docs: hosted MCP addresses for Lovable, Replit Agent, v0, Hex, Runway, Zoom, Grafana, Honeycomb, Airtable, Xero and AgentMail, and the MCP access method with its setup guide for Snowflake Cortex and Databricks AI, whose addresses are per account. Gmail MCP and Google Sheets MCP now point at Google's official remote MCP servers (Developer Preview) instead of Smithery's, and are Official.
+- 15 listings now carry their vendor's own MCP setup, each copied from the vendor's docs: hosted MCP addresses for Lovable, Replit Agent, v0, Hex, Runway, Zoom, Grafana, Honeycomb, Airtable, Xero and AgentMail, and the MCP access method with its setup guide for Snowflake Cortex and Databricks AI, whose addresses are per account. Gmail MCP and Google Sheets MCP now point at Google's official remote MCP servers (Developer Preview) instead of Smithery's, and are Official. ([#315](https://github.com/assafbar2/agentswitchboard.dev/pull/315))
 
 ## [2.7.0] - 2026-11-02 - The Switchboard
 
