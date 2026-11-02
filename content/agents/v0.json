@@ -2,7 +2,7 @@
   "id": "v0",
   "name": "v0",
   "slug": "v0",
-  "description": "Vercel's generative UI agent that turns prompts into working React and Next.js interfaces, with iterative refinement and direct deploy.",
+  "description": "Vercel's generative UI agent that turns prompts into working React and Next.js interfaces and deploys them. Its MCP server signs in with your v0 account; the v0 API takes an API key.",
   "providerName": "Vercel",
   "providerUrl": "https://vercel.com",
   "agentUrl": "https://v0.app",
@@ -18,7 +18,7 @@
     "prototyping"
   ],
   "skills": [],
-  "authType": "apiKey",
+  "authType": "oauth2",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
   "quickstartUrl": "https://v0.app/docs/api/v1/quickstart",
@@ -34,6 +34,6 @@
     "mcp"
   ],
   "createdAt": "2026-08-24T19:48:52.207Z",
-  "updatedAt": "2026-11-02T21:56:01.783Z",
+  "updatedAt": "2026-11-02T22:24:00.176Z",
   "mcpEndpoint": "https://v0.app/api/mcp"
 }

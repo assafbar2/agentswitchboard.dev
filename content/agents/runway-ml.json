@@ -2,7 +2,7 @@
   "id": "1bUDeo2Y7qIyfpxo0tLM89",
   "name": "Runway ML",
   "slug": "runway-ml",
-  "description": "AI-powered creative tools for video generation, image editing, and motion design — includes Gen-3 Alpha for text-to-video.",
+  "description": "AI creative tools for video generation, image editing, and motion design. Its MCP server signs in with your Runway account; the developer API takes an API key.",
   "providerName": "Runway",
   "providerUrl": "https://runway.com/",
   "agentUrl": "https://runway.com/",
@@ -15,7 +15,7 @@
     "creative"
   ],
   "skills": [],
-  "authType": "apiKey",
+  "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
   "quickstartUrl": "https://docs.dev.runwayml.com/guides/using-the-api/",
@@ -31,6 +31,6 @@
     "mcp"
   ],
   "createdAt": "2026-03-22T09:52:44.755Z",
-  "updatedAt": "2026-11-02T21:56:03.108Z",
+  "updatedAt": "2026-11-02T22:24:01.514Z",
   "mcpEndpoint": "https://mcp.runwayml.com/mcp"
 }
