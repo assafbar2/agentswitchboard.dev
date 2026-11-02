@@ -1,9 +1,10 @@
 /**
  * Shared shapes and HTTP helpers for the public catalog REST API.
  * Used by GET /api/agents, GET /api/agents/[slug], GET /api/categories,
- * GET /api/stacks and GET /api/tasks, and — for the label definitions and access-method input
- * rules — by the MCP server (/api/mcp), WebMCP and the agent docs, so they
- * cannot drift apart. WebMCP runs in the browser: import only types from
+ * GET /api/stacks, GET /api/tasks and the decision endpoints (GET /api/compare,
+ * GET /api/agents/[slug]/alternatives, GET /api/bundle), and — for the label
+ * definitions, tool wording and access-method input rules — by the MCP server
+ * (/api/mcp), WebMCP and the agent docs, so they cannot drift apart. WebMCP runs in the browser: import only types from
  * modules that read files.
  */
 
@@ -87,8 +88,45 @@ export const SORT_INPUT =
 export const TASK_INPUT =
   'Task slug, e.g. "query-a-database": only the listings that do that job, best fit first. GET https://agentswitchboard.dev/api/tasks lists the tasks';
 
+export const SINCE_INPUT =
+  'Only listings added to the directory on or after this day: a date (YYYY-MM-DD), or a number of days back with today included ("7" is the last 7 days). Add sort "newest" to list the newest first';
+
 export function unknownTaskMessage(slug: string): string {
   return `No task with slug "${slug}". GET /api/tasks lists every task.`;
+}
+
+// ── Decision tools ──────────────────────────────────────────────────
+// compare_agents, alternatives_to and connect_bundle, worded once for the MCP
+// server, WebMCP and the manifests. lib/decide.ts builds their answers.
+
+export const COMPARE_AGENTS_DESCRIPTION =
+  "Put 2 or 3 listings side by side, as the site's /compare page does. For each listing: the facts that set it apart from the others " +
+  '("Only one with a CLI", "No auth required", "Most skills (12)"). Then one row per field, with each listing\'s value by slug: ' +
+  'what it is, provider, official vendor, verified, access, auth, MCP server, CLI install, API base URL, skills, streaming, push, categories, tags, listed since. ' +
+  'A row where every listing agrees has same: true. Facts from the listings\' own data, never a verdict. ' +
+  'A curated comparison of the same listings adds its intro line. Unknown or repeated slugs, and any past 3, are left out with a note.';
+
+export const COMPARE_SLUGS_INPUT = 'Listing slugs to compare, in column order: 2 or 3, e.g. ["deepgram", "assemblyai"]';
+
+export const ALTERNATIVES_TO_DESCRIPTION =
+  "Listings that could stand in for one listing, strongest first, as on its /agents/<slug>/alternatives page. " +
+  "Each alternative is in the listing's main category, offers at least one of its access methods, and overlaps on what it does " +
+  '(shared skills and tags, rarer ones counting for more). Each comes with why: the access methods both offer and what they have in common. ' +
+  'Up to 8. Fewer, or none, rather than a weak match. Also returns a link comparing the listing with its top two alternatives.';
+
+export const BUNDLE_SLUGS_INPUT = 'Listing slugs, in the order to list them: 1 to 10, e.g. a stack\'s items';
+
+export const CONNECT_BUNDLE_DESCRIPTION =
+  'One MCP client config to paste ({"mcpServers": …}, as Cursor and other MCP clients read it) for up to 10 listings, ' +
+  'and how each one connects. A listing is in the config when its own docs give a hosted server address or a local command. ' +
+  "An MCP server whose docs give neither comes with its setup guide, and setupPrompt asks a coding agent to set all of those up. " +
+  'A listing without an MCP server comes with its CLI install command, API address or docs. ' +
+  'Also returns a claude mcp add command for each server in the config, for Claude Code, and the /stack link for the listings. ' +
+  "Nothing is guessed: every address and command is copied from the vendor's docs, as on the listing's page.";
+
+/** A listing in a decision tool's answer: the search-result fields and its auth type. */
+export function decisionAgent(a: Agent) {
+  return { ...summarizeAgent(a), authType: a.authType };
 }
 
 export const CORS_GET = {

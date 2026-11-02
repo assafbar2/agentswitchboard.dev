@@ -12,7 +12,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { cache } from 'react';
-import { COMPARE_MAX } from './compare-link';
+import { COMPARE_MAX, COMPARE_QUERY_KEYS } from './compare-link';
 import { getAlternatives } from './related';
 import { ACCESS_METHOD_LABELS, ALL_ACCESS_METHODS } from './search';
 import type { Agent } from './types';
@@ -34,13 +34,10 @@ export interface CompareSelection {
 
 const SLUG = /^[a-z0-9][a-z0-9-]{0,80}$/;
 
-/** a, b and c are the columns; d to f are read too, so a longer link can say what it left out. */
-const QUERY_KEYS = ['a', 'b', 'c', 'd', 'e', 'f'];
-
 /** The slugs a /compare query names, in column order, repeated keys included. */
 export function requestedSlugs(query: URLSearchParams | Record<string, string | string[] | undefined>): string[] {
   const values = (key: string) => (query instanceof URLSearchParams ? query.getAll(key) : [query[key] ?? []].flat());
-  return QUERY_KEYS.flatMap(values).slice(0, 2 * COMPARE_MAX);
+  return COMPARE_QUERY_KEYS.flatMap(values).slice(0, 2 * COMPARE_MAX);
 }
 
 /**

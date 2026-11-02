@@ -111,9 +111,13 @@ export default async function ForAgentsPage() {
             Connect directly and query the catalog with native tools —{' '}
             <code className="font-bold">search_agents</code>,{' '}
             <code className="font-bold">get_agent</code>,{' '}
-            <code className="font-bold">list_categories</code> — and suggest a
-            listing with <code className="font-bold">submit_listing</code> (files a
-            public GitHub issue for human review; publishes nothing):
+            <code className="font-bold">list_categories</code> — help a user
+            choose with <code className="font-bold">compare_agents</code>,{' '}
+            <code className="font-bold">alternatives_to</code> and{' '}
+            <code className="font-bold">connect_bundle</code> (one MCP client config
+            for up to {MY_STACK_MAX} listings), and suggest a listing with{' '}
+            <code className="font-bold">submit_listing</code> (files a public GitHub
+            issue for human review; publishes nothing):
           </p>
           <pre className="rounded-none border-2 border-[var(--dir-ink)]! bg-[var(--dir-paper)] p-4 text-xs overflow-x-auto">
 {`{
@@ -138,13 +142,13 @@ export default async function ForAgentsPage() {
         <section className="space-y-2" id="webmcp">
           <h2 className="dir-bar">## In-browser tools (WebMCP)</h2>
           <p>
-            If you are viewing this page in a browser, the same three tools are
+            If you are viewing this page in a browser, the six read tools are
             registered on{' '}
             <code className="font-bold">document.modelContext</code>{' '}
             (W3C WebMCP API, polyfilled). Call them directly — no scraping, no setup.
-            They self-register on page load and call the REST API below, so matches
-            and their order are the same as the remote server&apos;s; result objects
-            use the REST field names.
+            They self-register on page load and call the REST API below, so answers
+            and their order are the same as the remote server&apos;s; search and
+            listing objects use the REST field names.
           </p>
           <ul className="space-y-1 pl-4">
             <li>
@@ -169,19 +173,30 @@ export default async function ForAgentsPage() {
           </p>
           <pre className="rounded-none border-2 border-[var(--dir-ink)]! bg-[var(--dir-paper)] p-4 text-xs overflow-x-auto">
 {`GET /api/agents?q=<text>&task=<slug>&category=<slug>&access=<method>
-               &official=true&verified=true&auth=<type>&sort=<order>
-               &limit=<n>&offset=<n>
+               &official=true&verified=true&auth=<type>&since=<day|days>
+               &sort=<order>&limit=<n>&offset=<n>
 GET /api/agents/<slug>
+GET /api/agents/<slug>/alternatives
 GET /api/categories
+GET /api/compare?a=<slug>&b=<slug>&c=<slug>
+GET /api/bundle?items=<slug>,<slug>
 GET /api/stacks
 GET /api/stacks/<slug>
 GET /api/tasks
 GET /api/tasks/<slug>
 
-→ search: { total, offset, limit, agents: [
+→ search: { total, offset, limit, since?, agents: [
      { name, slug, url, iconUrl, description, provider, categories,
        accessMethods, verified, official, featured }
    ] }
+→ compare: { title, url, intro, agents: [ { …the search fields,
+       authType, setsApart } ], rows: [ { key, label, same,
+       values: { <slug>: value } } ], notes }
+→ alternatives: { agent, total, url, compareUrl, basis, alternatives: [
+     { …the search fields, authType, sharedAccess, inCommon, why } ] }
+→ bundle: { summary, stackUrl, config: { mcpServers }, claudeCode,
+       setupPrompt, items: [ { …the search fields, authType, how,
+       server, docsUrl, note } ], notes }
 → stacks: { total, stackOfTheWeek, stacks: [
      { slug, title, promise, week, url,
        items: [ { …the search fields, authType, why } ] }
@@ -227,6 +242,12 @@ GET /api/tasks/<slug>
               any of them)
             </li>
             <li>
+              <span className="font-bold">since</span> — listings added on or after
+              a day: a date (<code className="font-bold">YYYY-MM-DD</code>) or a
+              number of days back, today included (<code className="font-bold">7</code>{' '}
+              is the last 7 days); the response echoes the first day kept
+            </li>
+            <li>
               <span className="font-bold">limit</span> — 1–50 (default 10);{' '}
               <span className="font-bold">offset</span> — for paging;{' '}
               <code className="font-bold">total</code> is the full match count
@@ -265,6 +286,22 @@ GET /api/tasks/<slug>
             {' · '}
             <EndpointLink href="/api/agents?task=query-a-database&access=mcp&limit=5" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
               /api/agents?task=query-a-database&amp;access=mcp&amp;limit=5
+            </EndpointLink>
+            {' · '}
+            <EndpointLink href="/api/agents?since=7&sort=newest" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
+              /api/agents?since=7&amp;sort=newest
+            </EndpointLink>
+            {' · '}
+            <EndpointLink href="/api/compare?a=deepgram&b=assemblyai" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
+              /api/compare?a=deepgram&amp;b=assemblyai
+            </EndpointLink>
+            {' · '}
+            <EndpointLink href="/api/agents/deepgram/alternatives" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
+              /api/agents/deepgram/alternatives
+            </EndpointLink>
+            {' · '}
+            <EndpointLink href="/api/bundle?items=linear,sentry-mcp,playwright-mcp,postgres-mcp-pro" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2 break-all">
+              /api/bundle?items=linear,sentry-mcp,playwright-mcp,postgres-mcp-pro
             </EndpointLink>
             {' · '}
             <EndpointLink href="/openapi.json" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
@@ -335,7 +372,8 @@ GET /api/tasks/<slug>
             <li>
               <span className="font-bold">→ Alternatives to a listing:</span>{' '}
               <code className="font-bold">https://agentswitchboard.dev/agents/&lt;slug&gt;/alternatives</code>, for
-              listings with at least {MIN_ALTERNATIVES}, each with what it has in common
+              listings with at least {MIN_ALTERNATIVES}, each with what it has in common; as JSON at{' '}
+              <code className="font-bold">GET /api/agents/&lt;slug&gt;/alternatives</code>
             </li>
             <li>
               <span className="font-bold">→ Stacks, tools that work together for one job:</span>{' '}
@@ -352,6 +390,8 @@ GET /api/tasks/<slug>
               <Link href="/my-stack" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
                 My stack
               </Link>
+              ; <code className="font-bold break-all">GET /api/bundle?items=&lt;slug&gt;,&lt;slug&gt;</code> gives one
+              MCP client config for the same listings
             </li>
             <li>
               <span className="font-bold">→ Tasks, to start from the job (&quot;query a database&quot;):</span>{' '}
@@ -368,6 +408,7 @@ GET /api/tasks/<slug>
               <Link href="/compare" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
                 https://agentswitchboard.dev/compare
               </Link>
+              ; as JSON at <code className="font-bold">GET /api/compare</code> with the same parameters
             </li>
             <li>
               <span className="font-bold">→ Plain-language guide:</span>{' '}

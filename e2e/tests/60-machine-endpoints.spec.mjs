@@ -2,14 +2,35 @@
 // agents.json, REST API, skill.md, robots, sitemap, .well-known, openapi, MCP.
 // GET only, plus JSON-RPC POSTs to /api/mcp (read-only tools, and submit_listing
 // only on paths that return before an issue is filed).
+import * as fs from 'fs';
 import { test, expect } from './fixtures.mjs';
 
+const BASE = process.env.E2E_BASE_URL || 'https://agentswitchboard.dev';
+const ORIGIN = 'https://agentswitchboard.dev';
 const UA = 'Mozilla/5.0 asb-e2e (machine endpoint tests)';
 const H = { 'user-agent': UA };
 const REAL_SLUG = 'playwright-mcp';
 // status: "archived" in content/agents/*.json at HEAD
 const ARCHIVED_SLUGS = ['midjourney', 'blender-mcp', 'smithery', 'framelink', 'headlong'];
 const MCP_HEADERS = { ...H, 'content-type': 'application/json', accept: 'application/json, text/event-stream' };
+const READ_TOOLS = ['alternatives_to', 'compare_agents', 'connect_bundle', 'get_agent', 'list_categories', 'search_agents'];
+
+const content = (file) => JSON.parse(fs.readFileSync(new URL(`../../content/${file}`, import.meta.url), 'utf8'));
+const CATALOG = (await (await fetch(`${BASE}/agents.json`, { headers: H })).json()).agents;
+const sitemapXml = await (await fetch(`${BASE}/sitemap.xml`, { headers: H })).text();
+const pick = (found, what) => {
+  if (!found) throw new Error(`no published listing ${what}`);
+  return found;
+};
+const CURATED = content('comparisons.json')[0];
+const WITH_ALTERNATIVES = pick(sitemapXml.match(/\/agents\/([a-z0-9-]+)\/alternatives<\/loc>/)?.[1], 'with an alternatives page');
+const hasMcp = (a) => a.accessMethods.includes('mcp');
+const HOSTED = pick(CATALOG.find((a) => hasMcp(a) && a.mcpEndpoint), 'with an mcpEndpoint');
+const LOCAL = pick(CATALOG.find((a) => hasMcp(a) && a.mcpCommand && !a.mcpEndpoint), 'with only an mcpCommand');
+const GUIDED = pick(CATALOG.find((a) => hasMcp(a) && !a.mcpEndpoint && !a.mcpCommand), 'with an MCP server and no address or command');
+const NO_MCP = pick(CATALOG.find((a) => !hasMcp(a)), 'without an MCP server');
+const BUNDLE = [GUIDED, HOSTED, NO_MCP, LOCAL];
+const compareQuery = (slugs) => slugs.map((slug, i) => `${'abc'[i]}=${slug}`).join('&');
 
 async function getJson(request, path) {
   const res = await request.get(path, { headers: H });
@@ -56,7 +77,9 @@ test.describe('text docs', () => {
     const body = await res.text();
     expect(body).toMatch(/^# Agent Switchboard/);
     expect(body).toContain('https://agentswitchboard.dev/api/mcp');
-    expect(body).toContain('Tools: search_agents, get_agent, list_categories, submit_listing');
+    expect(body).toContain(
+      'Tools: search_agents, get_agent, list_categories, compare_agents, alternatives_to, connect_bundle, submit_listing'
+    );
   });
 
   test('/llms.txt agent and category counts match the live API', async ({ request }) => {
@@ -247,13 +270,135 @@ test.describe('catalog JSON', () => {
     expect(sum).toBeGreaterThanOrEqual(catalog.total);
   });
 
-  for (const path of ['/api/agents', '/api/categories', `/api/agents/${REAL_SLUG}`, '/api/stacks', '/api/tasks', '/agents.json', '/index.md']) {
+  for (const path of [
+    '/api/agents',
+    '/api/categories',
+    `/api/agents/${REAL_SLUG}`,
+    '/api/stacks',
+    '/api/tasks',
+    `/api/compare?${compareQuery(CURATED.items)}`,
+    `/api/agents/${WITH_ALTERNATIVES}/alternatives`,
+    `/api/bundle?items=${HOSTED.slug}`,
+    '/agents.json',
+    '/index.md',
+  ]) {
     test(`CORS: ${path} allows any origin`, async ({ request }) => {
       const res = await request.get(path, { headers: { ...H, origin: 'https://example.com' } });
       expect(res.status()).toBe(200);
       expect(res.headers()['access-control-allow-origin']).toBe('*');
     });
   }
+});
+
+test.describe('decision endpoints', () => {
+  test('/api/agents?since= keeps the listings added on or after that day, and says which day', async ({ request }) => {
+    const { body: week } = await getJson(request, '/api/agents?since=7&sort=newest&limit=50');
+    expect(week.since).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    const added = (a) => (a.createdAt ?? '').slice(0, 10);
+    expect(week.total).toBe(CATALOG.filter((a) => added(a) >= week.since).length);
+    const bySlug = new Map(CATALOG.map((a) => [a.slug, a]));
+    for (const a of week.agents) expect(added(bySlug.get(a.slug)) >= week.since, a.slug).toBe(true);
+
+    const { body: dated } = await getJson(request, `/api/agents?since=${week.since}&limit=1`);
+    expect(dated.since).toBe(week.since);
+    expect(dated.total).toBe(week.total);
+    const { body: plain } = await getJson(request, '/api/agents?limit=1');
+    expect(plain).not.toHaveProperty('since');
+  });
+
+  test('/api/agents with a since that is neither a day nor a count is a 400', async ({ request }) => {
+    for (const since of ['last-week', '2026-02-30', '0']) {
+      const res = await request.get(`/api/agents?since=${since}`, { headers: H });
+      expect(res.status(), since).toBe(400);
+      expect((await res.json()).error, since).toBe('invalid_since');
+    }
+  });
+
+  test('/api/compare answers with the compare page, each value by slug', async ({ request }) => {
+    const { body } = await getJson(request, `/api/compare?${compareQuery(CURATED.items)}`);
+    expect(body.url).toBe(`${ORIGIN}/compare/${CURATED.items.join('-vs-')}`);
+    expect(body.intro).toBe(CURATED.intro);
+    expect(body.agents.map((a) => a.slug)).toEqual(CURATED.items);
+    for (const a of body.agents) {
+      expect(typeof a.authType, a.slug).toBe('string');
+      expect(Array.isArray(a.setsApart), a.slug).toBe(true);
+    }
+    expect(body.rows.length).toBeGreaterThan(5);
+    for (const row of body.rows) {
+      expect(Object.keys(row.values), row.key).toEqual(CURATED.items);
+      expect(typeof row.same, row.key).toBe('boolean');
+    }
+    expect(body.notes).toEqual([]);
+
+    const { body: mixed } = await getJson(request, `/api/compare?a=${CURATED.items[0]}&b=${REAL_SLUG}&c=not-a-real-agent-asb-e2e`);
+    expect(mixed.url).toBe(`${ORIGIN}/compare?a=${CURATED.items[0]}&b=${REAL_SLUG}`);
+    expect(mixed.intro).toBeNull();
+    expect(mixed.notes).toEqual(['“not-a-real-agent-asb-e2e” isn’t a listing in the directory, so it is left out.']);
+  });
+
+  test('/api/compare with one listing is a 400 that names listings to put beside it', async ({ request }) => {
+    const res = await request.get(`/api/compare?a=${CURATED.items[0]}`, { headers: H });
+    expect(res.status()).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe('too_few_listings');
+    expect(body.message).toMatch(/^Name 2 or 3 listings to compare; only .+ was found\. Listings to put beside it: /);
+    expect(body.suggestions.length).toBeGreaterThan(0);
+    expect(body.suggestions.map((a) => a.slug)).not.toContain(CURATED.items[0]);
+  });
+
+  test('/api/agents/<slug>/alternatives lists its alternatives with why, and links its page', async ({ request }) => {
+    const { body } = await getJson(request, `/api/agents/${WITH_ALTERNATIVES}/alternatives`);
+    expect(body.agent.slug).toBe(WITH_ALTERNATIVES);
+    expect(body.url).toBe(`${ORIGIN}/agents/${WITH_ALTERNATIVES}/alternatives`);
+    expect(body.total).toBeGreaterThanOrEqual(3);
+    expect(body.alternatives).toHaveLength(Math.min(body.total, 8));
+    const [first, second] = body.alternatives.map((a) => a.slug);
+    expect(body.compareUrl).toBe(`${ORIGIN}/compare?a=${WITH_ALTERNATIVES}&b=${first}&c=${second}`);
+    for (const alt of body.alternatives) {
+      expect(alt.why, alt.slug).toMatch(/^Both offer .+\. In common: .+\.$/);
+      expect(alt.sharedAccess.length, alt.slug).toBeGreaterThan(0);
+    }
+    const { body: two } = await getJson(request, `/api/agents/${WITH_ALTERNATIVES}/alternatives?limit=2`);
+    expect(two.alternatives.map((a) => a.slug)).toEqual([first, second]);
+    expect(two.total).toBe(body.total);
+  });
+
+  test('/api/agents/<slug>/alternatives is a 404 for an unknown or archived listing', async ({ request }) => {
+    const unknown = await request.get('/api/agents/definitely-not-a-real-agent-asb-e2e/alternatives', { headers: H });
+    expect(unknown.status()).toBe(404);
+    expect((await unknown.json()).error).toBe('not_found');
+    const archived = await request.get(`/api/agents/${ARCHIVED_SLUGS[0]}/alternatives`, { headers: H });
+    expect(archived.status()).toBe(404);
+    expect((await archived.json()).message).toContain('is no longer listed in the directory');
+  });
+
+  test('/api/bundle makes one MCP config of the listings that have an address or command', async ({ request }) => {
+    const slugs = BUNDLE.map((a) => a.slug);
+    const { body } = await getJson(request, `/api/bundle?items=${slugs.join(',')},not-a-real-agent-asb-e2e`);
+    expect(body.summary).toBe('2 in the config, 1 to set up from its guide and 1 without an MCP server');
+    expect(body.stackUrl).toBe(`${ORIGIN}/stack?items=${slugs.join(',')}`);
+    expect(body.items.map((i) => [i.slug, i.how])).toEqual([
+      [GUIDED.slug, 'guide'],
+      [HOSTED.slug, 'config'],
+      [NO_MCP.slug, 'other'],
+      [LOCAL.slug, 'config'],
+    ]);
+    expect(Object.keys(body.config.mcpServers)).toEqual([HOSTED.slug, LOCAL.slug]);
+    expect(body.config.mcpServers[HOSTED.slug]).toEqual({ url: HOSTED.mcpEndpoint });
+    const [command, ...args] = LOCAL.mcpCommand.trim().split(/\s+/);
+    expect(body.config.mcpServers[LOCAL.slug]).toEqual({ command, args });
+    expect(body.claudeCode).toHaveLength(2);
+    expect(body.setupPrompt).toContain(GUIDED.name);
+    expect(body.notes).toEqual(['“not-a-real-agent-asb-e2e” isn’t a listing in the directory, so it is left out.']);
+  });
+
+  test('/api/bundle with no listing in the directory is a 400', async ({ request }) => {
+    const res = await request.get(`/api/bundle?items=not-a-real-agent-asb-e2e,${ARCHIVED_SLUGS[0]}`, { headers: H });
+    expect(res.status()).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe('no_listings');
+    expect(body.notes).toHaveLength(2);
+  });
 });
 
 test.describe('crawler files', () => {
@@ -307,25 +452,38 @@ test.describe('crawler files', () => {
 });
 
 test.describe('manifests', () => {
-  test('/.well-known/mcp.json names the remote endpoint and the four tools', async ({ request }) => {
+  test('/.well-known/mcp.json names the remote endpoint and the seven tools', async ({ request }) => {
     const { res, body } = await getJson(request, '/.well-known/mcp.json');
     expect(res.headers()['content-type']).toMatch(/json/);
     expect(body.remotes).toContainEqual({ type: 'streamable-http', url: 'https://agentswitchboard.dev/api/mcp' });
-    expect(body.tools.map((t) => t.name).sort()).toEqual(['get_agent', 'list_categories', 'search_agents', 'submit_listing']);
+    expect(body.tools.map((t) => t.name).sort()).toEqual([...READ_TOOLS, 'submit_listing'].sort());
   });
 
   test('/.well-known/webmcp.json declares the document.modelContext tools', async ({ request }) => {
     const { body } = await getJson(request, '/.well-known/webmcp.json');
     expect(body.surface).toBe('document.modelContext');
     expect(body.remote.url).toBe('https://agentswitchboard.dev/api/mcp');
-    expect(body.tools.map((t) => t.name).sort()).toEqual(['get_agent', 'list_categories', 'search_agents']);
+    expect(body.tools.map((t) => t.name).sort()).toEqual(READ_TOOLS);
   });
 
   test('/openapi.json is OpenAPI 3.1 covering the REST paths, with CORS', async ({ request }) => {
     const { res, body } = await getJson(request, '/openapi.json');
     expect(res.headers()['access-control-allow-origin']).toBe('*');
     expect(body.openapi).toMatch(/^3\.1/);
-    for (const p of ['/api/agents', '/api/agents/{slug}', '/api/categories', '/api/stacks', '/api/stacks/{slug}', '/api/tasks', '/api/tasks/{slug}', '/agents.json', '/api/mcp']) {
+    for (const p of [
+      '/api/agents',
+      '/api/agents/{slug}',
+      '/api/agents/{slug}/alternatives',
+      '/api/categories',
+      '/api/compare',
+      '/api/bundle',
+      '/api/stacks',
+      '/api/stacks/{slug}',
+      '/api/tasks',
+      '/api/tasks/{slug}',
+      '/agents.json',
+      '/api/mcp',
+    ]) {
       expect(Object.keys(body.paths)).toContain(p);
     }
   });
@@ -352,25 +510,27 @@ test.describe('MCP server /api/mcp', () => {
     expect(body.result.serverInfo.version).toBeTruthy();
     expect(body.result.capabilities.tools).toBeTruthy();
     expect(body.result.instructions).toContain('submit_listing');
+    expect(body.result.instructions).toContain('connect_bundle');
   });
 
-  test('tools/list lists the three read tools and submit_listing', async ({ request }) => {
+  test('tools/list lists the six read tools and submit_listing', async ({ request }) => {
     const body = await mcp(request, 'tools/list');
     expect(body.error).toBeUndefined();
     const names = body.result.tools.map((t) => t.name).sort();
-    expect(names).toEqual(['get_agent', 'list_categories', 'search_agents', 'submit_listing']);
+    expect(names).toEqual([...READ_TOOLS, 'submit_listing'].sort());
     for (const t of body.result.tools) {
       expect(t.annotations?.readOnlyHint, `${t.name} readOnlyHint`).toBe(t.name !== 'submit_listing');
     }
     const search = body.result.tools.find((t) => t.name === 'search_agents');
     expect(Object.keys(search.inputSchema.properties)).toEqual(
-      expect.arrayContaining(['query', 'task', 'category', 'access', 'official', 'verified', 'auth', 'sort', 'limit', 'offset'])
+      expect.arrayContaining(['query', 'task', 'category', 'access', 'official', 'verified', 'auth', 'since', 'sort', 'limit', 'offset'])
     );
   });
 
-  test('the manifests list the live search_agents inputs and server version', async ({ request }) => {
+  test("the manifests list each live tool's inputs and the server version", async ({ request }) => {
     const listed = await mcp(request, 'tools/list');
-    const live = listed.result.tools.find((t) => t.name === 'search_agents');
+    const inputs = (tool) => Object.keys(tool.inputSchema.properties ?? {}).sort();
+    const live = new Map(listed.result.tools.map((t) => [t.name, inputs(t)]));
     const init = await mcp(request, 'initialize', {
       protocolVersion: '2025-03-26',
       capabilities: {},
@@ -378,8 +538,7 @@ test.describe('MCP server /api/mcp', () => {
     });
     for (const path of ['/.well-known/mcp.json', '/.well-known/webmcp.json']) {
       const { body } = await getJson(request, path);
-      const tool = body.tools.find((t) => t.name === 'search_agents');
-      expect(Object.keys(tool.inputSchema.properties).sort(), path).toEqual(Object.keys(live.inputSchema.properties).sort());
+      for (const tool of body.tools) expect(inputs(tool), `${path} ${tool.name}`).toEqual(live.get(tool.name));
       expect(body.version, `${path} version`).toBe(init.result.serverInfo.version);
     }
   });
@@ -478,5 +637,55 @@ test.describe('MCP server /api/mcp', () => {
     expect(data.categories.map((c) => [c.slug, c.agentCount])).toEqual(
       body.categories.map((c) => [c.slug, c.agentCount])
     );
+  });
+
+  test('search_agents takes since like GET /api/agents, as a count or a day', async ({ request }) => {
+    const result = await callTool(request, 'search_agents', { since: 30, sort: 'newest', limit: 10 });
+    expect(result.isError).toBeFalsy();
+    const { body } = await getJson(request, '/api/agents?since=30&sort=newest&limit=10');
+    expect(result.structuredContent.since).toBe(body.since);
+    expect(result.structuredContent.total).toBe(body.total);
+    expect(result.structuredContent.agents.map((a) => a.slug)).toEqual(body.agents.map((a) => a.slug));
+    const dated = await callTool(request, 'search_agents', { since: body.since, limit: 1 });
+    expect(dated.structuredContent.total).toBe(body.total);
+
+    const invalid = await callTool(request, 'search_agents', { since: 'last-week' });
+    expect(invalid.isError).toBe(true);
+    expect(invalid.content[0].text).toContain('since must be a date (YYYY-MM-DD) or a number of days');
+  });
+
+  test('compare_agents answers as GET /api/compare does, and refuses a single listing', async ({ request }) => {
+    const result = await callTool(request, 'compare_agents', { slugs: CURATED.items });
+    expect(result.isError).toBeFalsy();
+    const { body } = await getJson(request, `/api/compare?${compareQuery(CURATED.items)}`);
+    expect(result.structuredContent).toEqual(body);
+
+    const one = await callTool(request, 'compare_agents', { slugs: [CURATED.items[0]] });
+    expect(one.isError).toBe(true);
+    expect(one.content[0].text).toMatch(/^Name 2 or 3 listings to compare; only .+ was found\. Listings to put beside it: /);
+  });
+
+  test('alternatives_to answers as GET /api/agents/<slug>/alternatives does', async ({ request }) => {
+    const result = await callTool(request, 'alternatives_to', { slug: WITH_ALTERNATIVES, limit: 3 });
+    expect(result.isError).toBeFalsy();
+    const { body } = await getJson(request, `/api/agents/${WITH_ALTERNATIVES}/alternatives?limit=3`);
+    expect(result.structuredContent).toEqual(body);
+    expect(body.alternatives).toHaveLength(3);
+
+    const unknown = await callTool(request, 'alternatives_to', { slug: 'definitely-not-a-real-agent-asb-e2e' });
+    expect(unknown.isError).toBe(true);
+    expect(unknown.content[0].text).toContain('No agent with slug');
+  });
+
+  test('connect_bundle answers as GET /api/bundle does, and refuses a list with no listing', async ({ request }) => {
+    const slugs = BUNDLE.map((a) => a.slug);
+    const result = await callTool(request, 'connect_bundle', { slugs });
+    expect(result.isError).toBeFalsy();
+    const { body } = await getJson(request, `/api/bundle?items=${slugs.join(',')}`);
+    expect(result.structuredContent).toEqual(body);
+
+    const none = await callTool(request, 'connect_bundle', { slugs: ['definitely-not-a-real-agent-asb-e2e'] });
+    expect(none.isError).toBe(true);
+    expect(none.content[0].text).toMatch(/^Name 1 to 10 listings by slug\./);
   });
 });

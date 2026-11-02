@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
   "name": "io.github.assafbar2/agentswitchboard",
   "description": "Search a curated directory of AI agents, MCP servers, and agentic tools, and suggest new listings. Use it to find out whether an agent already exists for a job, which access methods it offers (API, MCP, CLI, browser extension), and where its homepage is.",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "websiteUrl": "https://agentswitchboard.dev",
   "repository": {
     "url": "https://github.com/assafbar2/agentswitchboard.dev",
@@ -69,6 +69,10 @@
             },
             "description": "Only listings with one of these auth types: none (no key or sign-in needed), apiKey, oauth2, bearer. A listing has one auth type, so several mean any of them"
           },
+          "since": {
+            "type": "string",
+            "description": "Only listings added to the directory on or after this day: a date (YYYY-MM-DD), or a number of days back with today included (\"7\" is the last 7 days). Add sort \"newest\" to list the newest first"
+          },
           "sort": {
             "type": "string",
             "enum": [
@@ -124,6 +128,79 @@
         "$schema": "http://json-schema.org/draft-07/schema#",
         "type": "object",
         "properties": {}
+      }
+    },
+    {
+      "name": "compare_agents",
+      "title": "Compare Agents",
+      "description": "Put 2 or 3 listings side by side, as the site's /compare page does. For each listing: the facts that set it apart from the others (\"Only one with a CLI\", \"No auth required\", \"Most skills (12)\"). Then one row per field, with each listing's value by slug: what it is, provider, official vendor, verified, access, auth, MCP server, CLI install, API base URL, skills, streaming, push, categories, tags, listed since. A row where every listing agrees has same: true. Facts from the listings' own data, never a verdict. A curated comparison of the same listings adds its intro line. Unknown or repeated slugs, and any past 3, are left out with a note.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "slugs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "maxItems": 6,
+            "description": "Listing slugs to compare, in column order: 2 or 3, e.g. [\"deepgram\", \"assemblyai\"]"
+          }
+        },
+        "required": [
+          "slugs"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "alternatives_to",
+      "title": "Alternatives To",
+      "description": "Listings that could stand in for one listing, strongest first, as on its /agents/<slug>/alternatives page. Each alternative is in the listing's main category, offers at least one of its access methods, and overlaps on what it does (shared skills and tags, rarer ones counting for more). Each comes with why: the access methods both offer and what they have in common. Up to 8. Fewer, or none, rather than a weak match. Also returns a link comparing the listing with its top two alternatives.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": "string",
+            "description": "Agent slug, e.g. \"deepgram\""
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 8,
+            "description": "Most alternatives to return (1–8, default 8)"
+          }
+        },
+        "required": [
+          "slug"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "connect_bundle",
+      "title": "Connect Bundle",
+      "description": "One MCP client config to paste ({\"mcpServers\": …}, as Cursor and other MCP clients read it) for up to 10 listings, and how each one connects. A listing is in the config when its own docs give a hosted server address or a local command. An MCP server whose docs give neither comes with its setup guide, and setupPrompt asks a coding agent to set all of those up. A listing without an MCP server comes with its CLI install command, API address or docs. Also returns a claude mcp add command for each server in the config, for Claude Code, and the /stack link for the listings. Nothing is guessed: every address and command is copied from the vendor's docs, as on the listing's page.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "slugs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "maxItems": 30,
+            "description": "Listing slugs, in the order to list them: 1 to 10, e.g. a stack's items"
+          }
+        },
+        "required": [
+          "slugs"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
       }
     },
     {

@@ -21,12 +21,14 @@ export interface CatalogFilter {
   verified?: boolean;
   /** Auth types to keep. A listing has exactly one, so several mean any of them. */
   auth?: readonly string[];
+  /** Only listings added on or after this UTC day (YYYY-MM-DD), from parseSince. */
+  since?: string;
 }
 
-/** Category / Official / vendor / Verified / auth narrowing, applied before text search. */
+/** Category / Official / vendor / Verified / auth / added-since narrowing, applied before text search. */
 export function filterAgents(
   agents: Agent[],
-  { category, official, vendor, verified, auth }: CatalogFilter
+  { category, official, vendor, verified, auth, since }: CatalogFilter
 ): Agent[] {
   return agents.filter(
     (a) =>
@@ -34,8 +36,38 @@ export function filterAgents(
       (!official || a.official) &&
       (!vendor || a.officialVendor?.slug === vendor) &&
       (!verified || a.verified) &&
-      (!auth?.length || auth.includes(a.authType))
+      (!auth?.length || auth.includes(a.authType)) &&
+      (!since || (a.createdAt ?? '').slice(0, 10) >= since)
   );
+}
+
+/** The most days back a `since` count can go. */
+export const SINCE_MAX_DAYS = 3650;
+
+const DAY_MS = 86_400_000;
+
+/**
+ * A `since` input as the first UTC day it keeps (YYYY-MM-DD), or null when it
+ * is neither a day nor a count. A day is YYYY-MM-DD, or an ISO timestamp whose
+ * day is used. A count is a number of days back, today included, so "1" is
+ * today and "7" the last seven days ("7d" and "7 days" too).
+ */
+export function parseSince(raw: string | number, now: number = Date.now()): string | null {
+  const value = String(raw).trim().toLowerCase();
+  const count = /^(\d{1,5})\s*(?:d|days?)?$/.exec(value);
+  if (count) {
+    const days = Number(count[1]);
+    return days >= 1 && days <= SINCE_MAX_DAYS ? new Date(now - (days - 1) * DAY_MS).toISOString().slice(0, 10) : null;
+  }
+  const day = /^(\d{4}-\d{2}-\d{2})(?:t\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?(?:z|[+-]\d{2}:?\d{2})?)?$/.exec(value)?.[1];
+  if (!day) return null;
+  const time = Date.parse(`${day}T00:00:00Z`);
+  // Date.parse rolls 2026-02-30 over to March 2; only a real calendar day comes back unchanged.
+  return Number.isNaN(time) || new Date(time).toISOString().slice(0, 10) !== day ? null : day;
+}
+
+export function invalidSinceMessage(raw: string | number): string {
+  return `since must be a date (YYYY-MM-DD) or a number of days from 1 to ${SINCE_MAX_DAYS}, such as 7; got "${String(raw).slice(0, 40)}".`;
 }
 
 // ── Sorting ─────────────────────────────────────────────────────────

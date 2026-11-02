@@ -11,7 +11,7 @@ import type { Agent } from './types';
 import { pluralize } from './utils';
 
 /** Most slugs read from one link; the rest are ignored. */
-const REQUESTED_MAX = 3 * MY_STACK_MAX;
+export const REQUESTED_MAX = 3 * MY_STACK_MAX;
 
 /** A named slug the page leaves out, and why. */
 export interface SharedStackNote {

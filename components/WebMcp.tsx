@@ -5,15 +5,17 @@
  *
  * Registers the catalog's tools on `document.modelContext` (W3C WebMCP API,
  * polyfilled for browsers without native support) so an AI agent looking at
- * the page in a browser can call search_agents / get_agent / list_categories
- * directly, without scraping the DOM.
+ * the page in a browser can call search_agents, get_agent, list_categories,
+ * compare_agents, alternatives_to and connect_bundle directly, without
+ * scraping the DOM.
  *
  * Each tool calls the public REST API (/api/agents, /api/agents/{slug},
- * /api/categories). That runs the same filter and ranking code as the remote
- * MCP server at /api/mcp, so matches and their order are the same; result
- * objects use the REST field names (see /openapi.json), which differ from the
- * remote MCP's in a few places. Keep /.well-known/webmcp.json in step with the
- * declarations below.
+ * /api/categories, /api/compare, /api/agents/{slug}/alternatives,
+ * /api/bundle). That runs the same code as the remote MCP server at /api/mcp,
+ * so answers and their order are the same; search and listing objects use the
+ * REST field names (see /openapi.json), which differ from the remote MCP's in
+ * a few places. Keep /.well-known/webmcp.json in step with the declarations
+ * below.
  *
  * Every call is counted as a Vercel Analytics event (`webmcp_call`), fire and
  * forget: analytics can never fail or delay a tool.
@@ -25,18 +27,27 @@
 import { useEffect } from 'react';
 import { track } from '@vercel/analytics';
 import { VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
+import { COMPARE_QUERY_KEYS, compareQuery } from '@/lib/compare-link';
 import {
   ACCESS_METHOD_INPUTS,
+  ALTERNATIVES_TO_DESCRIPTION,
   AUTH_INPUT,
+  BUNDLE_SLUGS_INPUT,
+  COMPARE_AGENTS_DESCRIPTION,
+  COMPARE_SLUGS_INPUT,
+  CONNECT_BUNDLE_DESCRIPTION,
   FEATURED_DEFINITION,
   MAX_LIMIT,
   OFFICIAL_DEFINITION,
+  SINCE_INPUT,
   SORT_INPUT,
   TASK_INPUT,
   VERIFIED_INPUT,
   unknownTaskMessage,
 } from '@/lib/public-api';
-import { AUTH_TYPES, SORT_ORDERS } from '@/lib/search';
+import { MAX_ALTERNATIVES } from '@/lib/related';
+import { AUTH_TYPES, SORT_ORDERS, invalidSinceMessage } from '@/lib/search';
+import { REQUESTED_MAX } from '@/lib/shared-stack';
 
 type ToolResult = {
   content: { type: 'text'; text: string }[];
@@ -91,6 +102,14 @@ async function getJson(path: string): Promise<{ status: number; body: Record<str
   return { status: res.status, body };
 }
 
+/** GET a decision endpoint: its answer as the result, and a request it refuses as the remote MCP's tool error. */
+async function decide(name: string, path: string): Promise<ToolResult> {
+  const { status, body } = await getJson(path);
+  if (status === 200 && body) return asResult(body);
+  const message = status === 400 || status === 404 ? body?.message : undefined;
+  return asError(typeof message === 'string' ? message : `${name} failed (HTTP ${status}).`);
+}
+
 function countCall(tool: string): void {
   try {
     track('webmcp_call', { tool });
@@ -132,6 +151,13 @@ const summaryProps = {
   accessMethods: { type: 'array', items: { type: 'string' } },
   ...labelProps,
 };
+
+const stringList = { type: 'array', items: { type: 'string' } };
+
+// A listing in compare_agents, alternatives_to and connect_bundle (lib/public-api.ts decisionAgent).
+const decisionProps = { ...summaryProps, authType: { type: 'string' } };
+
+const leftOut = { ...stringList, description: 'Named listings that were left out, and why' };
 
 export function WebMcp() {
   useEffect(() => {
@@ -175,6 +201,7 @@ export function WebMcp() {
                 },
                 verified: { type: 'boolean', description: VERIFIED_INPUT },
                 auth: { type: 'array', items: { type: 'string', enum: AUTH_TYPES }, description: AUTH_INPUT },
+                since: { type: 'string', description: SINCE_INPUT },
                 sort: { type: 'string', enum: SORT_ORDERS, description: SORT_INPUT },
                 limit: {
                   type: 'integer',
@@ -198,6 +225,7 @@ export function WebMcp() {
                 total: { type: 'integer', description: 'Total matches before paging' },
                 offset: { type: 'integer' },
                 limit: { type: 'integer' },
+                since: { type: 'string', description: 'With since: the first day kept (YYYY-MM-DD, UTC)' },
                 agents: { type: 'array', items: { type: 'object', properties: summaryProps } },
               },
             },
@@ -219,12 +247,16 @@ export function WebMcp() {
               if (input.verified === true) params.set('verified', 'true');
               const auth = strings(input.auth);
               if (auth.length > 0) params.set('auth', auth.join(','));
+              // A number of days may come as a number, as the remote MCP accepts.
+              const since = typeof input.since === 'number' ? String(input.since) : str(input.since);
+              if (since) params.set('since', since);
               const sort = str(input.sort);
               if (sort) params.set('sort', sort);
               if (limit !== undefined) params.set('limit', String(limit));
               if (offset !== undefined) params.set('offset', String(offset));
               const { status, body } = await getJson(`/api/agents?${params}`);
               if (status === 400 && body?.error === 'unknown_task') return asError(unknownTaskMessage(task));
+              if (status === 400 && body?.error === 'invalid_since') return asError(invalidSinceMessage(since));
               if (status !== 200 || !body) return asError(`search_agents failed (HTTP ${status}).`);
               return asResult(body);
             }),
@@ -331,6 +363,176 @@ export function WebMcp() {
               const { status, body } = await getJson('/api/categories');
               if (status !== 200 || !body) return asError(`list_categories failed (HTTP ${status}).`);
               return asResult(body);
+            }),
+          },
+          { signal: controller.signal }
+        );
+
+        await mc.registerTool(
+          {
+            name: 'compare_agents',
+            description: COMPARE_AGENTS_DESCRIPTION,
+            inputSchema: {
+              type: 'object',
+              properties: {
+                slugs: { ...stringList, minItems: 1, maxItems: COMPARE_QUERY_KEYS.length, description: COMPARE_SLUGS_INPUT },
+              },
+              required: ['slugs'],
+            },
+            // GET /api/compare (lib/decide.ts compareDecision).
+            outputSchema: {
+              type: 'object',
+              required: ['title', 'url', 'intro', 'agents', 'rows', 'notes'],
+              properties: {
+                title: { type: 'string' },
+                url: { type: 'string', description: 'The comparison on the site' },
+                intro: {
+                  type: ['string', 'null'],
+                  description: "A curated comparison's editorial line; null for any other mix",
+                },
+                agents: {
+                  type: 'array',
+                  items: { type: 'object', properties: { ...decisionProps, setsApart: stringList } },
+                },
+                rows: {
+                  type: 'array',
+                  items: {
+                    type: 'object',
+                    properties: {
+                      key: { type: 'string' },
+                      label: { type: 'string' },
+                      same: { type: 'boolean', description: 'Every listing has the same value' },
+                      values: {
+                        type: 'object',
+                        description:
+                          "Each listing's value, by slug: a line of text, a list, or { code, note } for a command or address from its docs",
+                      },
+                    },
+                  },
+                },
+                notes: leftOut,
+              },
+            },
+            annotations: { readOnlyHint: true },
+            execute: tool('compare_agents', async (input) =>
+              decide('compare_agents', `/api/compare?${compareQuery(strings(input.slugs), COMPARE_QUERY_KEYS.length)}`)
+            ),
+          },
+          { signal: controller.signal }
+        );
+
+        await mc.registerTool(
+          {
+            name: 'alternatives_to',
+            description: ALTERNATIVES_TO_DESCRIPTION,
+            inputSchema: {
+              type: 'object',
+              properties: {
+                slug: { type: 'string', description: 'Agent slug, e.g. "deepgram"' },
+                limit: {
+                  type: 'integer',
+                  minimum: 1,
+                  maximum: MAX_ALTERNATIVES,
+                  description: `Most alternatives to return (1–${MAX_ALTERNATIVES}, default ${MAX_ALTERNATIVES})`,
+                },
+              },
+              required: ['slug'],
+            },
+            // GET /api/agents/{slug}/alternatives (lib/decide.ts alternativesDecision).
+            outputSchema: {
+              type: 'object',
+              required: ['agent', 'total', 'url', 'compareUrl', 'basis', 'alternatives'],
+              properties: {
+                agent: { type: 'object', properties: decisionProps },
+                total: { type: 'integer', description: `How many alternatives it has, up to ${MAX_ALTERNATIVES}` },
+                url: { type: ['string', 'null'], description: 'Its alternatives page; null when it has too few for one' },
+                compareUrl: {
+                  type: ['string', 'null'],
+                  description: 'The listing side by side with its top two alternatives',
+                },
+                basis: { type: 'string', description: 'What every alternative has in common with the listing' },
+                alternatives: {
+                  type: 'array',
+                  items: {
+                    type: 'object',
+                    properties: {
+                      ...decisionProps,
+                      sharedAccess: { ...stringList, description: 'Access methods both offer' },
+                      inCommon: { ...stringList, description: 'Skills and tags both have, rarest first' },
+                      why: { type: 'string' },
+                    },
+                  },
+                },
+              },
+            },
+            annotations: { readOnlyHint: true },
+            execute: tool('alternatives_to', async (input) => {
+              const slug = str(input.slug).toLowerCase();
+              if (!slug) return asError('alternatives_to needs the slug of a listing, e.g. "deepgram".');
+              const limit = num(input.limit);
+              const query = limit !== undefined ? `?limit=${limit}` : '';
+              return decide('alternatives_to', `/api/agents/${encodeURIComponent(slug)}/alternatives${query}`);
+            }),
+          },
+          { signal: controller.signal }
+        );
+
+        await mc.registerTool(
+          {
+            name: 'connect_bundle',
+            description: CONNECT_BUNDLE_DESCRIPTION,
+            inputSchema: {
+              type: 'object',
+              properties: {
+                slugs: { ...stringList, minItems: 1, maxItems: REQUESTED_MAX, description: BUNDLE_SLUGS_INPUT },
+              },
+              required: ['slugs'],
+            },
+            // GET /api/bundle (lib/decide.ts bundleDecision).
+            outputSchema: {
+              type: 'object',
+              required: ['summary', 'stackUrl', 'config', 'claudeCode', 'setupPrompt', 'items', 'notes'],
+              properties: {
+                summary: {
+                  type: 'string',
+                  description: 'How many are in the config, to set up from a guide, and without an MCP server',
+                },
+                stackUrl: { type: 'string', description: 'These listings as a shared stack on the site' },
+                config: {
+                  type: ['object', 'null'],
+                  description:
+                    'The MCP client config to paste, {"mcpServers": {<slug>: {url} or {command, args}}}; null when no listing has an address or command to copy',
+                },
+                claudeCode: { ...stringList, description: 'A claude mcp add command for each server in the config' },
+                setupPrompt: {
+                  type: ['string', 'null'],
+                  description: 'For a coding agent: set up each MCP server that has only a setup guide',
+                },
+                items: {
+                  type: 'array',
+                  items: {
+                    type: 'object',
+                    properties: {
+                      ...decisionProps,
+                      how: {
+                        type: 'string',
+                        enum: ['config', 'guide', 'other'],
+                        description:
+                          'config: in the config; guide: an MCP server to set up from its guide; other: no MCP server',
+                      },
+                      server: { type: ['object', 'null'], description: 'Its entry in the config, under its slug' },
+                      docsUrl: { type: 'string', description: 'Its setup instructions' },
+                      note: { type: 'string', description: 'How it connects' },
+                    },
+                  },
+                },
+                notes: leftOut,
+              },
+            },
+            annotations: { readOnlyHint: true },
+            execute: tool('connect_bundle', async (input) => {
+              const items = strings(input.slugs).map(encodeURIComponent).join(',');
+              return decide('connect_bundle', `/api/bundle?items=${items}`);
             }),
           },
           { signal: controller.signal }

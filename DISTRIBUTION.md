@@ -3,7 +3,7 @@
 Where the Agent Switchboard MCP server is listed, and how to update each channel.
 
 The server: remote streamable-HTTP at `https://agentswitchboard.dev/api/mcp` (no auth).
-Tools: `search_agents`, `get_agent`, `list_categories`, `submit_listing`.
+Tools: `search_agents`, `get_agent`, `list_categories`, `compare_agents`, `alternatives_to`, `connect_bundle`, `submit_listing`.
 User-facing setup steps per assistant: [/connect](https://agentswitchboard.dev/connect).
 
 | Channel | Status | Listing | Notes |

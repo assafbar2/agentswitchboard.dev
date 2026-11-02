@@ -30,7 +30,11 @@ check('server instructions', (client.getInstructions() ?? '').includes('submit_l
 
 const { tools } = await client.listTools();
 const names = tools.map((t) => t.name).sort();
-check('tools/list', names.join(',') === 'get_agent,list_categories,search_agents,submit_listing', names.join(', '));
+check(
+  'tools/list',
+  names.join(',') === 'alternatives_to,compare_agents,connect_bundle,get_agent,list_categories,search_agents,submit_listing',
+  names.join(', ')
+);
 for (const t of tools) {
   check(`${t.name} readOnlyHint`, t.annotations?.readOnlyHint === (t.name !== 'submit_listing'));
 }
@@ -59,6 +63,35 @@ check('get_agent', detail.structuredContent?.slug === 'playwright-mcp', detail.s
 
 const missing = await client.callTool({ name: 'get_agent', arguments: { slug: 'no-such-agent-asb' } });
 check('get_agent unknown slug is a tool error', missing.isError === true);
+
+const recent = await client.callTool({ name: 'search_agents', arguments: { since: 30, sort: 'newest', limit: 5 } });
+check(
+  'search_agents since (a number of days)',
+  !recent.isError && /^\d{4}-\d{2}-\d{2}$/.test(recent.structuredContent?.since ?? ''),
+  `since ${recent.structuredContent?.since}, total ${recent.structuredContent?.total}`
+);
+const badSince = await client.callTool({ name: 'search_agents', arguments: { since: 'last week' } });
+check('search_agents invalid since is a tool error', badSince.isError === true);
+
+const compared = await client.callTool({ name: 'compare_agents', arguments: { slugs: ['deepgram', 'assemblyai'] } });
+check(
+  'compare_agents',
+  compared.structuredContent?.agents?.length === 2 && compared.structuredContent.rows.length > 0,
+  compared.structuredContent?.title
+);
+const alone = await client.callTool({ name: 'compare_agents', arguments: { slugs: ['deepgram'] } });
+check('compare_agents with one listing is a tool error', alone.isError === true);
+
+const alternatives = await client.callTool({ name: 'alternatives_to', arguments: { slug: 'deepgram', limit: 3 } });
+const alts = alternatives.structuredContent?.alternatives ?? [];
+check('alternatives_to', alts.length > 0 && alts.length <= 3, `${alternatives.structuredContent?.total} alternatives`);
+
+const bundle = await client.callTool({
+  name: 'connect_bundle',
+  arguments: { slugs: ['linear', 'playwright-mcp', 'postgres-mcp-pro', 'deepgram'] },
+});
+const servers = Object.keys(bundle.structuredContent?.config?.mcpServers ?? {});
+check('connect_bundle', servers.includes('linear') && servers.includes('playwright-mcp'), bundle.structuredContent?.summary);
 
 const dup = await client.callTool({
   name: 'submit_listing',

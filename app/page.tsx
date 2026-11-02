@@ -225,7 +225,7 @@ export default async function HomePage() {
                 connect your agent → agentswitchboard.dev/api/mcp
               </span>
               <span className="mono text-[13px] text-[var(--dir-muted)] sm:ml-auto">
-                search_agents · get_agent · list_categories
+                search_agents · compare_agents · alternatives_to · connect_bundle
               </span>
             </Link>
             <Link
@@ -468,7 +468,7 @@ export default async function HomePage() {
             </div>
             <div className="agent-row">
               <span className="agent-accent">/api/mcp</span>
-              <span className="agent-dim">MCP server · search_agents, get_agent, list_categories</span>
+              <span className="agent-dim">MCP server · search_agents, get_agent, list_categories, compare_agents, alternatives_to, connect_bundle</span>
               <span className="agent-dim">streamable-http · no auth</span>
             </div>
             <div className="agent-row">
