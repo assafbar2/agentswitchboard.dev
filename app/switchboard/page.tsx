@@ -124,6 +124,7 @@ export default async function SwitchboardPage() {
                   <span className="agent-dim">
                     {jack.provider}
                     {jack.official ? ' · official' : ''}
+                    {jack.sponsored ? ' · sponsored' : ''}
                     {jack.lit ? ' · lit' : ''}
                   </span>
                   <span className="agent-dim">{jack.access.join(' ')}</span>

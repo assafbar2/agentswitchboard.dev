@@ -40,7 +40,7 @@
   "supportsPushNotifications": false,
   "status": "published",
   "featured": true,
-  "sponsorLabel": "Sponsored",
+  "sponsored": true,
   "verified": true,
   "tier": "free",
   "discoveredBy": "manual",
@@ -48,5 +48,5 @@
     "mcp"
   ],
   "createdAt": "2026-10-28T05:55:51.221Z",
-  "updatedAt": "2026-10-28T05:55:51.221Z"
+  "updatedAt": "2026-11-02T22:00:00.000Z"
 }

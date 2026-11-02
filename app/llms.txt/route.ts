@@ -5,7 +5,7 @@ import { curatedComparisons } from '@/lib/compare';
 import { COMPARE_MAX } from '@/lib/compare-link';
 import { getDropSchedule } from '@/lib/drops';
 import { isNew, NEW_DAYS, newSince } from '@/lib/freshness';
-import { FEATURED_DEFINITION, OFFICIAL_DEFINITION } from '@/lib/public-api';
+import { FEATURED_DEFINITION, OFFICIAL_DEFINITION, SPONSORED_DEFINITION } from '@/lib/public-api';
 import { OPERATOR_ALTERNATIVES } from '@/lib/operator';
 import { MIN_ALTERNATIVES } from '@/lib/related';
 import { OPERATOR_EXAMPLES, PARTS_MAX } from '@/lib/request-parts';
@@ -56,6 +56,8 @@ The \`verified\`, \`official\` and \`featured\` flags in search and detail resul
 - ${VERIFIED_DEFINITION}
 - ${OFFICIAL_DEFINITION}
 - ${FEATURED_DEFINITION}
+
+On the website, the REST API and /agents.json, a \`sponsored\` flag also marks paid placements. ${SPONSORED_DEFINITION}
 
 ## How to use this directory
 

@@ -173,7 +173,8 @@ test.describe('drop page details', () => {
     await expect(agentView).toBeVisible();
     await expect(agentView).toContainText(`/drops/${LATEST}`);
     const list = await itemList(page);
-    await expect(agentView.locator('a[href^="/agents/"]')).toHaveCount(list.numberOfItems);
+    // The latest drop also lists the Sponsored slot (16-sponsored.spec.mjs), which isn't an addition.
+    await expect(agentView.locator('a[href^="/agents/"]:not([data-sponsored-slot] a)')).toHaveCount(list.numberOfItems);
   });
 
   test('no app console errors on /drops and the latest drop', async ({ page }) => {

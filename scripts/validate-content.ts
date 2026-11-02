@@ -92,7 +92,7 @@ const AgentSchema = z
     verified: z.boolean(),
     official: z.boolean().optional(),
     referralUrl: z.string().optional(),
-    sponsorLabel: z.string().optional(),
+    sponsored: z.boolean().optional(),
     tier: z.enum(['free', 'premium']),
     discoveredBy: z.enum(['manual', 'worker']),
     workerSource: z.string().optional(),
@@ -454,6 +454,7 @@ function main() {
   let errors = official.errors;
   const slugs = new Set<string>();
   const published = new Set<string>();
+  const sponsored = new Set<string>();
   const updatedAt = new Map<string, string>();
   const listings: Agent[] = [];
   // Rule 2 (CONTRIBUTING): one listing per product, not per endpoint. No cap —
@@ -516,6 +517,7 @@ function main() {
       errors++;
     }
     if (result.data.status === 'published') published.add(slug);
+    if (result.data.sponsored) sponsored.add(slug);
     if (result.data.status === 'published') {
       listings.push(asListing(result.data));
       const prov = result.data.providerName;
@@ -564,6 +566,11 @@ function main() {
           for (const p of placements as string[]) {
             if (!published.has(p)) {
               console.log(`❌ content/site.json: homepageFeatured "${p}" is not a published agent`);
+              errors++;
+            } else if (sponsored.has(p)) {
+              console.log(
+                `❌ content/site.json: homepageFeatured "${p}" is sponsored; it shows in the Sponsored slot, not the editor's picks`
+              );
               errors++;
             }
           }

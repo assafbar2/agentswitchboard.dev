@@ -80,7 +80,12 @@ export interface Agent {
   /** The vendor behind an official listing, resolved from its agentUrl. */
   officialVendor?: { slug: string; name: string };
   referralUrl?: string;
-  sponsorLabel?: string;
+  /**
+   * A paid placement, set only by the maintainer. It labels the listing
+   * Sponsored and puts it in the Sponsored slot on the homepage and the latest
+   * drop page; nothing that ranks or picks listings reads it.
+   */
+  sponsored?: boolean;
   tier: 'free' | 'premium';
   discoveredBy: 'manual' | 'worker';
   workerSource?: string;

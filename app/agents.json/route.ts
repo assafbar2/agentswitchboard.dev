@@ -3,7 +3,7 @@ import { getEveryAgent } from '@/lib/catalog';
 import { BASE_URL } from '@/lib/env';
 import { absoluteIconUrl } from '@/lib/icons';
 import { logConsumer } from '@/lib/log';
-import { FEATURED_DEFINITION, OFFICIAL_DEFINITION, howToUseFields } from '@/lib/public-api';
+import { FEATURED_DEFINITION, OFFICIAL_DEFINITION, SPONSORED_DEFINITION, howToUseFields } from '@/lib/public-api';
 import { NextResponse } from 'next/server';
 
 export async function GET(req: Request) {
@@ -27,6 +27,7 @@ export async function GET(req: Request) {
     officialVendor: a.officialVendor?.name ?? null,
     // Featured listings sort first in this file's order, so callers see why.
     featured: a.featured === true,
+    sponsored: a.sponsored === true,
     tier: a.tier,
     createdAt: a.createdAt ?? null,
     updatedAt: a.updatedAt ?? null,
@@ -38,7 +39,7 @@ export async function GET(req: Request) {
       source: 'Agent Switchboard — https://agentswitchboard.dev',
       description:
         'Machine-readable catalog of every published Agent Switchboard listing (AI agents, MCP servers and agentic tools), featured first, then A→Z. Filter by categories or accessMethods to find the right tool. ' +
-        `Flags: ${VERIFIED_DEFINITION} ${OFFICIAL_DEFINITION} ${FEATURED_DEFINITION}`,
+        `Flags: ${VERIFIED_DEFINITION} ${OFFICIAL_DEFINITION} ${FEATURED_DEFINITION} ${SPONSORED_DEFINITION}`,
       generated: new Date().toISOString(),
       total: catalog.length,
       agents: catalog,

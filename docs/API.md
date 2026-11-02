@@ -63,7 +63,8 @@ handshake (e.g. wiring into a connector platform).
       "accessMethods": ["mcp"],
       "verified": false,
       "official": false,
-      "featured": false
+      "featured": false,
+      "sponsored": false
     }
     // …
   ]
@@ -457,13 +458,14 @@ official domain or GitHub org (Notion's own Notion MCP, not a community
 "Notion MCP"). The vendor must be publicly traded, a frontier AI lab, or valued
 around $1B+ (or a wholly owned subsidiary of one).
 
-It is factual, not paid, and independent of the other two flags:
+It is factual, not paid, and independent of the other flags:
 
 | Field | Meaning | Set by |
 |---|---|---|
 | `verified` | Code-backed checks pass: URLs load, access method declared, linked repo live | monthly sweep |
 | `official` | First-party product of a vendor in [`content/official-vendors.json`](../content/official-vendors.json) | maintainers, with evidence; CI checks the `agentUrl` is on that vendor's official sources |
-| `featured` | Editorial or commercial placement | maintainers only |
+| `featured` | Editorial placement; sorts first when there is no search text | maintainers only |
+| `sponsored` | Paid placement: a Sponsored label and a spot in the Sponsored slot on the homepage and the latest drop page. Never changes ranking, tasks, alternatives, compare or the Operator. In REST and `/agents.json` only, never in MCP or WebMCP results or the decision endpoints | maintainers only |
 
 On the website: the **Official** filter on [`/browse?official=1`](https://agentswitchboard.dev/browse?official=1)
 combines with **Verified**, **No auth needed**, categories and access methods.

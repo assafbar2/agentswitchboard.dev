@@ -7,7 +7,7 @@ import { getDropSchedule } from '@/lib/drops';
 import { BASE_URL } from '@/lib/env';
 import { isNew, NEW_DAYS, newSince } from '@/lib/freshness';
 import { OPERATOR_ALTERNATIVES } from '@/lib/operator';
-import { FEATURED_DEFINITION, OFFICIAL_DEFINITION } from '@/lib/public-api';
+import { FEATURED_DEFINITION, OFFICIAL_DEFINITION, SPONSORED_DEFINITION } from '@/lib/public-api';
 import { OPERATOR_EXAMPLES, PARTS_MAX } from '@/lib/request-parts';
 import { MY_STACK_MAX } from '@/lib/stack-link';
 import { getStacks, stackOfTheWeek } from '@/lib/stacks';
@@ -69,6 +69,8 @@ The \`verified\`, \`official\` and \`featured\` flags in search and detail resul
 - ${VERIFIED_DEFINITION}
 - ${OFFICIAL_DEFINITION}
 - ${FEATURED_DEFINITION}
+
+On the website, the REST API and /agents.json, a \`sponsored\` flag also marks paid placements. ${SPONSORED_DEFINITION}
 
 ## What to use
 

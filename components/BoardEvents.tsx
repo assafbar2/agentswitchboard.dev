@@ -29,6 +29,7 @@ interface Jack {
   access: string[];
   official: boolean;
   lit: boolean;
+  sponsored: boolean;
 }
 
 const noopSubscribe = () => () => {};
@@ -45,6 +46,7 @@ function read(a: SVGAElement): Jack {
     access: (a.dataset.m ?? '').split(' ').filter(Boolean),
     official: a.classList.contains('o'),
     lit: a.classList.contains('l'),
+    sponsored: a.hasAttribute('data-s'),
   };
 }
 
@@ -117,6 +119,7 @@ export function BoardEvents({
               <strong className="font-extrabold">{jack.name}</strong> by {jack.provider}
               {jack.access.length > 0 && ` · ${jack.access.map((m) => ACCESS_METHOD_LABELS[m] ?? m).join(' · ')}`}
               {jack.official && ' · Official'}
+              {jack.sponsored && ' · Sponsored'}
               {jack.lit && ` · in ${dropName}`}
             </p>
             <a

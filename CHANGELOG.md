@@ -4,6 +4,21 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
+## [2.8.0] - 2026-11-02 - Sponsored
+
+### Highlights
+- See which listings are paid placements: each says Sponsored wherever it shows, and paying never moves a listing in search, tasks or the Operator. [Try it](https://agentswitchboard.dev/about#sponsored)
+
+### Added
+- A Sponsored label for paid placements, starting with AgentMail, Agent Switchboard and Barnir Hired. A sponsored listing says Sponsored on its card everywhere, from /browse to task, stack and drop pages; on its own page, with a line saying the placement never changes where it ranks; in compare; in the Switchboard's readout; and in the text-only views. The homepage has a Sponsored slot, boxed in ink apart from the editor's picks, and so does the latest drop page. [/about](https://agentswitchboard.dev/about#sponsored) says what Sponsored means: a paid placement, reviewed first, that never changes search results or their order, tasks, alternatives, compare or the Operator, and is separate from Featured, Official and Verified. ([#318](https://github.com/assafbar2/agentswitchboard.dev/pull/318))
+- `sponsored` on every listing in the REST API and [/agents.json](https://agentswitchboard.dev/agents.json), described in llms.txt, index.md, /for-agents and skill.md. MCP tool results never carry it, and neither do the decision endpoints they share; the OpenAPI document is now version 1.10.0. ([#318](https://github.com/assafbar2/agentswitchboard.dev/pull/318))
+
+### Changed
+- The homepage's editor's picks no longer include paid placements: AgentMail and Barnir Hired moved to the Sponsored slot, and here.now is now the Editor's Pick. ([#318](https://github.com/assafbar2/agentswitchboard.dev/pull/318))
+
+### Removed
+- The free-text `sponsorLabel` field. `"sponsored": true` is now the only paid label, and the Editor's Pick label comes from the homepage picks alone. ([#318](https://github.com/assafbar2/agentswitchboard.dev/pull/318))
+
 ## [2.7.5] - 2026-11-02 - Organic answers for assistants
 
 ### Changed

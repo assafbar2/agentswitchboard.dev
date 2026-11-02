@@ -3,6 +3,8 @@ import type { Metadata, ResolvingMetadata } from 'next';
 import { pageMetadata } from '@/lib/metadata';
 import { getAgentCount, getUniqueProviderCount } from '@/lib/catalog';
 import { VerifiedBadge, VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
+import { SponsoredBadge } from '@/components/SponsoredBadge';
+import { SPONSORED_DEFINITION } from '@/lib/public-api';
 
 export function generateMetadata(_props: unknown, parent: ResolvingMetadata): Promise<Metadata> {
   return pageMetadata(
@@ -101,6 +103,26 @@ export default async function AboutPage() {
             <p className="mt-3">
               Every entry is reviewed before it&rsquo;s listed, but not every listing carries the
               label: a listing without it hasn&rsquo;t passed the check yet, or no longer does.
+            </p>
+          </section>
+
+          <section id="sponsored" className="scroll-mt-20">
+            <h2 className="dir-bar mb-3">Sponsored</h2>
+            <p className="mb-3">
+              <SponsoredBadge />
+            </p>
+            <p>{SPONSORED_DEFINITION}</p>
+            <p className="mt-3">
+              Only a listing that already meets the acceptance rules can be sponsored, and each one is
+              reviewed before the label goes on. The label shows wherever the listing does, so a paid
+              placement is never mistaken for an editor&rsquo;s pick. The REST API and /agents.json carry{' '}
+              <code className="mono text-sm">sponsored: true</code> too; results in AI assistants, through the
+              MCP server, never mention sponsorship. To sponsor a
+              listing, see{' '}
+              <Link href="/advertise" className="font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2">
+                Advertise
+              </Link>
+              .
             </p>
           </section>
 

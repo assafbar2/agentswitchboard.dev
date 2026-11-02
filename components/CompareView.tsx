@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { AgentIcon } from '@/components/AgentIcon';
+import { SponsoredBadge } from '@/components/SponsoredBadge';
 import { CompareEvents } from '@/components/CompareEvents';
 import { CopyButton } from '@/components/CopyButton';
 import {
@@ -100,6 +101,11 @@ function CompareTable({ agents }: { agents: Agent[] }) {
                   <span className="min-w-0 text-[19px] font-extrabold leading-tight wrap-break-word group-hover:underline">{a.name}</span>
                 </Link>
                 <span className="mt-1 block text-[15px] font-semibold text-[var(--dir-muted)]">by {a.providerName}</span>
+                {a.sponsored && (
+                  <span className="mt-1 block">
+                    <SponsoredBadge />
+                  </span>
+                )}
                 <Link href={without(a.slug)} className={`${LINK} mt-1 inline-block text-[14px]`}>
                   Remove<span className="sr-only"> {a.name} from this comparison</span>
                 </Link>
