@@ -1,6 +1,62 @@
 [
   {
     "action": "updated",
+    "slug": "runway-ml",
+    "name": "Runway ML",
+    "note": "description updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "runway-ml",
+    "name": "Runway ML",
+    "note": "authType updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "hex",
+    "name": "Hex",
+    "note": "description updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "hex",
+    "name": "Hex",
+    "note": "authType updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "v0",
+    "name": "v0",
+    "note": "description updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "v0",
+    "name": "v0",
+    "note": "authType updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "lovable",
+    "name": "Lovable",
+    "note": "description updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "lovable",
+    "name": "Lovable",
+    "note": "authType updated",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
     "slug": "google-sheets-mcp",
     "name": "Google Sheets MCP",
     "note": "tags updated",
