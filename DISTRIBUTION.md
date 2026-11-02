@@ -12,7 +12,7 @@ User-facing setup steps per assistant: [/connect](https://agentswitchboard.dev/c
 | awesome-mcp-servers | ⏳ PR open | [punkpeye/awesome-mcp-servers#10771](https://github.com/punkpeye/awesome-mcp-servers/pull/10771) | Badge + Dockerfile requirements met; waits on Glama score + maintainer merge |
 | Glama servers | ⏳ Submitted 2026-07-23 | `glama.ai/mcp/servers/assafbar2/agentswitchboard.dev` | Checks build the repo Dockerfile: start + introspection |
 | Glama connectors | ◻ Not yet listed | glama.ai/mcp/connectors | Optional: submit the hosted endpoint URL |
-| Grok / Grok Bot | ◻ No directory to list in | — | Users add it by URL (grok.com/connectors → Custom, or ask a Bot); steps on /connect |
+| Grok / Grok Bot | ◻ Not in Grok's connector list | — | Grok has a curated list of brand connectors (44 on 2026-11-02) with no public submission route; users add it by URL (grok.com/connectors → Custom, or ask a Bot); steps on /connect |
 | Claude | ◻ Not in the Connectors Directory | — | Custom connector by URL works today; /connect has a prefilled install link |
 | ChatGPT | ◻ Not listed | — | Custom MCP plugin by URL (Plugins → Add custom MCP server) |
 

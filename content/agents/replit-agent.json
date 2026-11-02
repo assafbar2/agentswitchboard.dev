@@ -47,9 +47,11 @@
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
-    "cli",
-    "api"
+    "api",
+    "mcp",
+    "cli"
   ],
   "createdAt": "2026-08-15T07:16:38.695Z",
-  "updatedAt": "2026-11-02T07:34:56.527Z"
+  "updatedAt": "2026-11-02T21:56:01.131Z",
+  "mcpEndpoint": "https://mcp.replit.com/server/mcp"
 }
