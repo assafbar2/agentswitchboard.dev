@@ -4,7 +4,7 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
-## [2.7.1] - 2026-11-02 - Ready for the connector directories
+## [2.7.2] - 2026-11-02 - Ready for the connector directories
 
 ### Changed
 - The MCP server meets the Claude Connectors Directory and ChatGPT plugin directory rules: every tool carries its title and explicit read-only, destructive and open-world hints, `submit_listing` is marked destructive so assistants ask before each public issue it files, its description says a retry files again, and tool results are compact JSON, so they cost fewer tokens. ([#316](https://github.com/assafbar2/agentswitchboard.dev/pull/316))
@@ -13,6 +13,11 @@ Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes 
 
 ### Added
 - `/.well-known/openai-apps-challenge` serves the token OpenAI's plugin portal asks for to verify the domain, from the `OPENAI_APPS_CHALLENGE` setting. ([#316](https://github.com/assafbar2/agentswitchboard.dev/pull/316))
+
+## [2.7.1] - 2026-11-02 - Vendor MCP servers
+
+### Directory
+- 15 listings now carry their vendor's own MCP setup, each copied from the vendor's docs: hosted MCP addresses for Lovable, Replit Agent, v0, Hex, Runway, Zoom, Grafana, Honeycomb, Airtable, Xero and AgentMail, and the MCP access method with its setup guide for Snowflake Cortex and Databricks AI, whose addresses are per account. Gmail MCP and Google Sheets MCP now point at Google's official remote MCP servers (Developer Preview) instead of Smithery's, and are Official. ([#315](https://github.com/assafbar2/agentswitchboard.dev/pull/315))
 
 ## [2.7.0] - 2026-11-02 - The Switchboard
 

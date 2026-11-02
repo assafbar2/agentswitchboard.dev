@@ -22,7 +22,7 @@
     "type": "brew",
     "command": "brew install snowflake-cli"
   },
-  "quickstartUrl": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-rest-api",
+  "quickstartUrl": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -31,8 +31,9 @@
   "discoveredBy": "manual",
   "accessMethods": [
     "api",
+    "mcp",
     "cli"
   ],
   "createdAt": "2026-03-22T09:51:32.939Z",
-  "updatedAt": "2026-11-02T07:34:56.527Z"
+  "updatedAt": "2026-11-02T21:56:04.450Z"
 }

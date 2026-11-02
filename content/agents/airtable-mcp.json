@@ -47,5 +47,6 @@
     "mcp"
   ],
   "createdAt": "2026-06-07T17:51:27.702Z",
-  "updatedAt": "2026-10-31T07:10:44.958Z"
+  "updatedAt": "2026-11-02T21:56:06.181Z",
+  "mcpEndpoint": "https://mcp.airtable.com/mcp"
 }

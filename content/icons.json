@@ -1248,8 +1248,8 @@
     "source": "https://cdn.prod.website-files.com/6127a84dfe068e153ef20572/67189bfac8da27b3a70ddd93_256%20x%20256%20Glean%20Favicon.png"
   },
   "gmail-mcp": {
-    "v": "93bf5448",
-    "source": "https://smithery.ai/icons/icon-512.png"
+    "v": "cde5bed7",
+    "source": "https://developers.google.com/_pwa/developers/icons/icon-512x512.png"
   },
   "gocardless-mcp": {
     "v": "963121ab",
@@ -1312,8 +1312,8 @@
     "source": "https://mcp-toolbox.dev/favicons/android-192x192.png"
   },
   "google-sheets-mcp": {
-    "v": "93bf5448",
-    "source": "https://smithery.ai/icons/icon-512.png"
+    "v": "cde5bed7",
+    "source": "https://developers.google.com/_pwa/developers/icons/icon-512x512.png"
   },
   "google-workspace-cli": {
     "v": "b71c886d",
