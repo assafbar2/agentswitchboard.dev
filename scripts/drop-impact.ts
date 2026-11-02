@@ -110,7 +110,7 @@ async function main() {
   const after = await snapshot();
   process.stdout.write(
     impactReport(before, after, {
-      base: `${base} (${sha})`,
+      base: /^[0-9a-f]{4,40}$/i.test(base) ? sha : `${base} (${sha})`,
       minAlternatives: MIN_ALTERNATIVES,
       relatedSize: MAX_RELATED,
       taskPageSize: TASK_PAGE_SIZE,
