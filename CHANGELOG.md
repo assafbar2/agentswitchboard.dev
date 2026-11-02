@@ -7,12 +7,12 @@ Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes 
 ## [2.7.1] - 2026-11-02 - Ready for the connector directories
 
 ### Changed
-- The MCP server meets the Claude Connectors Directory and ChatGPT plugin directory rules: every tool carries its title and explicit read-only, destructive and open-world hints, `submit_listing` is marked destructive so assistants ask before each public issue it files, its description says a retry files again, and tool results are compact JSON, so they cost fewer tokens. (PR_LINK)
-- The MCP endpoint answers CORS preflights for any origin, so browser-based MCP clients can call it, and Claude's published outbound range gets a larger per-IP budget, since every Claude user of the connector shares those addresses. (PR_LINK)
-- The [privacy page](https://agentswitchboard.dev/privacy) now says what the MCP server receives from assistants (tool arguments only, never your conversation), why data is used, how long each kind is kept, and every provider that receives it. [/connect](https://agentswitchboard.dev/connect#troubleshooting) has a troubleshooting section. (PR_LINK)
+- The MCP server meets the Claude Connectors Directory and ChatGPT plugin directory rules: every tool carries its title and explicit read-only, destructive and open-world hints, `submit_listing` is marked destructive so assistants ask before each public issue it files, its description says a retry files again, and tool results are compact JSON, so they cost fewer tokens. ([#316](https://github.com/assafbar2/agentswitchboard.dev/pull/316))
+- The MCP endpoint answers CORS preflights for any origin, so browser-based MCP clients can call it, and Claude's published outbound range gets a larger per-IP budget, since every Claude user of the connector shares those addresses. ([#316](https://github.com/assafbar2/agentswitchboard.dev/pull/316))
+- The [privacy page](https://agentswitchboard.dev/privacy) now says what the MCP server receives from assistants (tool arguments only, never your conversation), why data is used, how long each kind is kept, and every provider that receives it. [/connect](https://agentswitchboard.dev/connect#troubleshooting) has a troubleshooting section. ([#316](https://github.com/assafbar2/agentswitchboard.dev/pull/316))
 
 ### Added
-- `/.well-known/openai-apps-challenge` serves the token OpenAI's plugin portal asks for to verify the domain, from the `OPENAI_APPS_CHALLENGE` setting. (PR_LINK)
+- `/.well-known/openai-apps-challenge` serves the token OpenAI's plugin portal asks for to verify the domain, from the `OPENAI_APPS_CHALLENGE` setting. ([#316](https://github.com/assafbar2/agentswitchboard.dev/pull/316))
 
 ## [2.7.0] - 2026-11-02 - The Switchboard
 
