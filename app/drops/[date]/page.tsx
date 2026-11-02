@@ -134,6 +134,13 @@ export default async function DropPage({ params }: Props) {
                 <AgentCard key={agent.slug} agent={agent} markNew={false} />
               ))}
             </div>
+            {!newer && listed.length > 0 && (
+              <p className="mt-4 text-[16px] font-bold">
+                <Link href="/switchboard?week=1" className="text-[var(--dir-ink)] no-underline hover:underline">
+                  See them lit on the Switchboard<span aria-hidden="true"> →</span>
+                </Link>
+              </p>
+            )}
             {gone.length > 0 && (
               <p className="mt-3 text-[15px] text-[var(--dir-muted)]">
                 Since removed from the directory: {joinList(gone.map((g) => g.name))}.
@@ -217,6 +224,13 @@ export default async function DropPage({ params }: Props) {
                   <span className="agent-dim">{item.date}</span>
                 </div>
               ))}
+              {!newer && listed.length > 0 && (
+                <Link href="/switchboard" className="agent-row no-underline hover:underline">
+                  <span className="agent-accent">/switchboard</span>
+                  <span className="agent-dim">every listing on one board, these {listed.length} lit</span>
+                  <span className="agent-dim" />
+                </Link>
+              )}
             </>
           )}
 

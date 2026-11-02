@@ -9,6 +9,7 @@
  */
 
 import { createHash } from 'crypto';
+import { panelCode, type Board } from './board';
 import type { Release } from './changelog';
 import { pairPath } from './compare';
 import { compareQuery } from './compare-link';
@@ -27,7 +28,7 @@ import { formatDay, joinList, pluralize } from './utils';
  * Hash of lib/og.tsx and assets/fonts/, so a redesigned card gets new URLs.
  * lib/share-cards.test.ts prints the new value whenever either changes.
  */
-export const CARD_DESIGN = '457160ab';
+export const CARD_DESIGN = '145196b1';
 
 export const CARD_SIZE = { width: 1200, height: 630 } as const;
 
@@ -156,6 +157,16 @@ export interface ComparisonsCard {
   comparisons: number;
   /** Their listings' icons, in the file's order, each image once. */
   icons: string[];
+}
+
+export interface BoardCard {
+  listings: number;
+  official: number;
+  lit: number;
+  /** The newest drop, whose additions are lit, as the page shows it: "Oct 31, 2026". */
+  drop: string | null;
+  /** Each panel's jacks, as lib/board.ts panelCode writes them. */
+  panels: string[];
 }
 
 /** An entry for Metadata openGraph.images; twitter:image copies it. */
@@ -331,6 +342,16 @@ export function comparisonsCard(comparisons: Agent[][]): ComparisonsCard {
   return { comparisons: comparisons.length, icons: distinctIcons(comparisons.flat()).slice(0, COMPARISON_ICONS) };
 }
 
+export function boardCard(board: Board): BoardCard {
+  return {
+    listings: board.listings,
+    official: board.official,
+    lit: board.lit,
+    drop: board.drop ? formatDay(board.drop) : null,
+    panels: board.panels.map(panelCode),
+  };
+}
+
 export function siteCardImage(card: SiteCard): ShareImage {
   return shareImage('/card.png', card, 'Agent Switchboard — AI Agent Directory');
 }
@@ -408,6 +429,11 @@ export function comparisonsCardImage(card: ComparisonsCard): ShareImage {
   return shareImage('/compare/card.png', card, 'Compare AI tools side by side on Agent Switchboard');
 }
 
+export function boardCardImage(card: BoardCard): ShareImage {
+  const lit = card.drop && card.lit > 0 ? `, the ${card.lit} from the ${card.drop} drop lit` : '';
+  return shareImage('/switchboard/card.png', card, `All ${card.listings} listings on Agent Switchboard as jacks on one board${lit}`);
+}
+
 function shareImage(
   path: string,
   card:
@@ -423,7 +449,8 @@ function shareImage(
     | TaskCard
     | TasksCard
     | CompareCard
-    | ComparisonsCard,
+    | ComparisonsCard
+    | BoardCard,
   alt: string
 ): ShareImage {
   const v = createHash('sha1').update(JSON.stringify([CARD_DESIGN, card])).digest('hex').slice(0, 8);

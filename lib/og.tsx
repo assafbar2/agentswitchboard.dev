@@ -11,9 +11,11 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { ImageResponse } from 'next/og';
 import type { ReactElement, ReactNode } from 'react';
+import { cardBoard } from './board';
 import {
   CARD_SIZE,
   type AlternativesCard,
+  type BoardCard,
   type CategoryCard,
   type CompareCard,
   type ComparisonsCard,
@@ -377,6 +379,48 @@ export async function renderComparisonsCard(card: ComparisonsCard): Promise<Imag
       text="What each does, how you connect it, what it needs to sign in, and its skills, from each listing's own data."
       icons={await Promise.all(card.icons.map(iconSrc))}
     />
+  );
+}
+
+/** The space under the board card's title line, inside the frame's padding. */
+const BOARD_AREA = { width: 1072, height: 318 };
+
+export async function renderBoardCard(card: BoardCard): Promise<ImageResponse> {
+  const { pitch, jacks } = cardBoard(card.panels, BOARD_AREA.width, BOARD_AREA.height);
+  const r = (pitch * 0.34).toFixed(1);
+  const circles = jacks
+    .map(({ x, y, official, lit }) => {
+      const fill = lit ? YELLOW : official ? INK : PAPER;
+      return `<circle cx="${x}" cy="${y}" r="${r}" fill="${fill}"${official && lit ? ` stroke-width="${(pitch * 0.2).toFixed(1)}"` : ''}/>`;
+    })
+    .join('');
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${BOARD_AREA.width}" height="${BOARD_AREA.height}"><g stroke="${INK}" stroke-width="${(pitch * 0.1).toFixed(1)}">${circles}</g></svg>`;
+  const legend = [
+    { fill: PAPER, label: 'Listing' },
+    { fill: INK, label: `${formatNumber(card.official)} official` },
+    ...(card.drop && card.lit > 0 ? [{ fill: YELLOW, label: `${formatNumber(card.lit)} new in the ${card.drop} drop` }] : []),
+  ];
+  return render(
+    <Frame
+      kicker="The Switchboard"
+      footer={legend.map(({ fill, label }) => (
+        <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 10, marginRight: 16, fontSize: 24, fontWeight: 600 }}>
+          <div style={{ display: 'flex', width: 20, height: 20, borderRadius: 10, background: fill, border: `2px solid ${INK}` }} />
+          {label}
+        </div>
+      ))}
+    >
+      <div style={{ display: 'flex', fontSize: 40, fontWeight: 800, lineHeight: 1, letterSpacing: '-0.01em' }}>
+        {`${formatNumber(card.listings)} AI agents, MCP servers and tools on one board`}
+      </div>
+      <img
+        src={`data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}`}
+        alt=""
+        width={BOARD_AREA.width}
+        height={BOARD_AREA.height}
+        style={{ marginTop: 24 }}
+      />
+    </Frame>
   );
 }
 

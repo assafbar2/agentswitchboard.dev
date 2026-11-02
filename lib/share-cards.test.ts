@@ -5,6 +5,8 @@ import { describe, it, expect } from 'vitest';
 import type { Drop, DropItem } from './drops';
 import type { NewGroup } from './freshness';
 import {
+  boardCard,
+  boardCardImage,
   CARD_DESIGN,
   categoryCard,
   categoryCardImage,
@@ -350,5 +352,34 @@ describe('sharedStackCard', () => {
     expect(sharedStackCardImage(['plain'], '', sharedStackCard('', [plain])).alt).toBe(
       'A shared stack: a stack of 1 tool, shared on Agent Switchboard'
     );
+  });
+});
+
+describe('boardCard', () => {
+  const jack = (slug: string, official: boolean, lit: boolean) => ({ slug, name: slug, provider: slug, access: [], official, lit });
+  const board = {
+    panels: [
+      { slug: 'a', name: 'A', jacks: [jack('one', true, false), jack('two', false, true)] },
+      { slug: 'b', name: 'B', jacks: [jack('three', false, false)] },
+    ],
+    drop: '2026-10-31',
+    listings: 3,
+    official: 1,
+    lit: 1,
+  };
+
+  it("counts the board and codes each panel's jacks, so a jack that changes changes the card's URL", () => {
+    expect(boardCard(board)).toEqual({ listings: 3, official: 1, lit: 1, drop: 'Oct 31, 2026', panels: ['ol', '-'] });
+    const lit = boardCardImage(boardCard(board)).url;
+    const unlit = boardCardImage(boardCard({ ...board, panels: [{ ...board.panels[0], jacks: [jack('one', true, false)] }, board.panels[1]] })).url;
+    expect(lit).toMatch(/^\/switchboard\/card\.png\?v=[0-9a-f]{8}$/);
+    expect(unlit).not.toBe(lit);
+  });
+
+  it('says what the board shows, and what is lit', () => {
+    expect(boardCardImage(boardCard(board)).alt).toBe(
+      'All 3 listings on Agent Switchboard as jacks on one board, the 1 from the Oct 31, 2026 drop lit'
+    );
+    expect(boardCardImage(boardCard({ ...board, drop: null, lit: 0 })).alt).toBe('All 3 listings on Agent Switchboard as jacks on one board');
   });
 });

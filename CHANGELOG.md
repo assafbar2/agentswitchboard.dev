@@ -4,6 +4,16 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
+## [2.7.0] - 2026-11-02 - The Switchboard
+
+### Highlights
+- See every listing in the directory on one board, a jack for each in its category's panel, and point at one to see what it is. [Try it](https://agentswitchboard.dev/switchboard)
+- Light up only the newest drop's listings on the board, and share the whole board as one image. [Try it](https://agentswitchboard.dev/switchboard?week=1)
+
+### Added
+- The Switchboard: [/switchboard](https://agentswitchboard.dev/switchboard) shows every listing in the directory as a jack on one board, in a panel for its category, oldest first. Official listings are filled in, and the newest drop's additions are lit, lighting up one after another as the page opens unless your device asks for reduced motion. On November 2 that is 900 listings in 22 panels, 328 of them Official and 59 lit from the October 31 drop. Point at a jack, or reach it with the keyboard, to see its name, who makes it and how it can be used, with a link to open it; on a phone, the first tap on a jack shows it and the second opens it. Show one category, or only the newest drop's listings: the address keeps the choice (`/switchboard?category=security&week=1`), so a view can be linked. With JavaScript off, the whole board shows and every jack is a link, and the text-only view lists every jack, panel by panel. The newest drop's page links its listings lit on the board, and the footer, llms.txt, index.md and /for-agents link the board. ([#312](https://github.com/assafbar2/agentswitchboard.dev/pull/312))
+- The board as one image, [/switchboard/card.png](https://agentswitchboard.dev/switchboard/card.png): every listing as a jack, the newest drop's lit, in a 1200×630 PNG. It is the page's share card, the page offers it as a download, and it is redrawn with every drop. ([#312](https://github.com/assafbar2/agentswitchboard.dev/pull/312))
+
 ## [2.6.0] - 2026-11-02 - Assistants
 
 ### Highlights

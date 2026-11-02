@@ -412,6 +412,20 @@ GET /api/tasks/<slug>
               ; as JSON at <code className="font-bold">GET /api/compare</code> with the same parameters
             </li>
             <li>
+              <span className="font-bold">→ Every listing on one board:</span>{' '}
+              <Link href="/switchboard" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
+                https://agentswitchboard.dev/switchboard
+              </Link>
+              , a jack per listing in a panel per category, Official ones filled in and the latest drop&apos;s lit; the
+              board as one image at{' '}
+              <EndpointLink
+                href="/switchboard/card.png"
+                className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2"
+              >
+                /switchboard/card.png
+              </EndpointLink>
+            </li>
+            <li>
               <span className="font-bold">→ Plain-language guide:</span>{' '}
               <a href="/llms.txt" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
                 https://agentswitchboard.dev/llms.txt
