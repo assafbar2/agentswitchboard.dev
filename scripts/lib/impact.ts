@@ -71,6 +71,13 @@ function plural(n: number, one: string, many = `${one}s`): string {
   return `${n} ${n === 1 ? one : many}`;
 }
 
+/** "7th", not "#7": in a PR description GitHub links #7 to issue 7. */
+function ordinal(n: number): string {
+  const teen = n % 100 >= 11 && n % 100 <= 13;
+  const suffix: Record<number, string> = { 1: 'st', 2: 'nd', 3: 'rd' };
+  return `${n}${teen ? 'th' : (suffix[n % 10] ?? 'th')}`;
+}
+
 function sameList(a: string[], b: string[]): boolean {
   return a.length === b.length && a.every((s, i) => s === b[i]);
 }
@@ -113,7 +120,7 @@ export function impactReport(before: Snapshot, after: Snapshot, opts: ReportOpti
       else if (shown.length > 0) {
         tasks = shown
           .slice(0, 3)
-          .map((f) => `${f.label} (#${f.rank})`)
+          .map((f) => `${f.label} (${ordinal(f.rank)})`)
           .join(', ');
         if (shown.length > 3) tasks += ` and ${shown.length - 3} more`;
         if (below > 0) tasks += `; fits ${below} more outside ${top}`;

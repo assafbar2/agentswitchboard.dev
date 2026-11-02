@@ -51,7 +51,7 @@ describe('impactReport', () => {
     const report = impactReport(before(), after, OPTS);
     expect(report).toContain('2 listings added, 1 archived, 0 edited.');
     expect(report).toContain('| `echo` | none | none | 3, page | no | setup guide |');
-    expect(report).toContain('| `foxtrot` | query a database (#1) | 2 | 1 | yes | MCP address |');
+    expect(report).toContain('| `foxtrot` | query a database (1st) | 2 | 1 | yes | MCP address |');
     expect(report).toContain('- Fits no task (1): `echo`.');
     expect(report).toContain('- Skills but no Try this first prompts (1): `echo`.');
     expect(report).toContain('- No icon (1): `echo`.');
@@ -78,7 +78,7 @@ describe('impactReport', () => {
       { slug: 'query', label: 'query a database', fits: ['alpha', 'echo', 'beta'] },
       { slug: 'search', label: 'search the web', fits: ['alpha', 'beta', 'echo'] },
     ];
-    expect(impactReport(before(), after, OPTS)).toContain('| `echo` | query a database (#2); fits 1 more outside the top 2 |');
+    expect(impactReport(before(), after, OPTS)).toContain('| `echo` | query a database (2nd); fits 1 more outside the top 2 |');
 
     after.tasks = [{ slug: 'query', label: 'query a database', fits: ['alpha', 'beta', 'echo'] }];
     expect(impactReport(before(), after, OPTS)).toContain('| `echo` | fits 1, outside its top 2 |');
