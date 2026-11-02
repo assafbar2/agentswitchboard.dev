@@ -50,6 +50,11 @@
   "authType": "oauth2",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "binary",
+    "command": "curl -fsSL https://antigravity.google/cli/install.sh | bash"
+  },
+  "quickstartUrl": "https://antigravity.google/download",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -60,5 +65,5 @@
     "cli"
   ],
   "createdAt": "2026-10-17T09:03:45.905Z",
-  "updatedAt": "2026-10-17T09:03:45.905Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

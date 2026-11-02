@@ -170,5 +170,14 @@ describe('howToUseProblems', () => {
     expect(howToUseProblems({ ...ok, install: { type: 'brew', command: 'npm install -g example' } })).toEqual([
       'install.command "npm install -g example" doesn\'t look like a brew install',
     ]);
+    expect(howToUseProblems({ ...ok, install: { type: 'npm', command: 'npx @example/cli@latest install' } })).toEqual([]);
+    expect(howToUseProblems({ ...ok, install: { type: 'pip', command: 'uvx example-cli setup' } })).toEqual([]);
+  });
+
+  it('takes an installer piped in by process substitution, but no other angle brackets', () => {
+    expect(howToUseProblems({ ...ok, install: { type: 'binary', command: 'bash <(curl -sL cli.example.com)' } })).toEqual([]);
+    expect(howToUseProblems({ ...ok, install: { type: 'binary', command: 'curl -sL https://example.com/<os>.sh | sh' } })[0]).toMatch(
+      /placeholder/
+    );
   });
 });

@@ -37,6 +37,9 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://api.fabric.microsoft.com/v1/mcp/powerbi/authoring",
+  "mcpCommand": "npx -y @microsoft/powerbi-modeling-mcp@latest --start",
+  "quickstartUrl": "https://learn.microsoft.com/en-us/power-bi/developer/mcp/power-bi-authoring-mcp",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -47,5 +50,5 @@
     "mcp"
   ],
   "createdAt": "2026-09-02T07:21:11.725Z",
-  "updatedAt": "2026-09-02T07:21:11.725Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

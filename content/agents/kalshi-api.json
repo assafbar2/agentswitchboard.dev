@@ -20,6 +20,8 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://docs.kalshi.com/getting_started/making_your_first_request",
+  "apiBaseUrl": "https://external-api.kalshi.com/trade-api/v2",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -30,5 +32,5 @@
     "api"
   ],
   "createdAt": "2026-03-22T20:14:06.871Z",
-  "updatedAt": "2026-03-22T20:14:06.871Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

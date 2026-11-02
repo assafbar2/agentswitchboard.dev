@@ -22,7 +22,7 @@
     "type": "brew",
     "command": "brew install --cask microsoft/foundry/devpack && foundry-devpack install"
   },
-  "quickstartUrl": "https://learn.microsoft.com/en-us/azure/foundry/how-to/develop/install-cli-sdk",
+  "quickstartUrl": "https://learn.microsoft.com/en-us/azure/foundry/quickstarts/get-started-code",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -35,5 +35,5 @@
     "cli"
   ],
   "createdAt": "2026-03-22T09:53:23.610Z",
-  "updatedAt": "2026-11-02T07:11:18.425Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

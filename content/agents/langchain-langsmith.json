@@ -19,7 +19,12 @@
   "supportsStreaming": false,
   "supportsPushNotifications": false,
   "mcpEndpoint": "https://api.smith.langchain.com/mcp",
-  "quickstartUrl": "https://docs.langchain.com/langsmith/langsmith-remote-mcp",
+  "install": {
+    "type": "binary",
+    "command": "curl -fsSL https://cli.langsmith.com/install.sh | sh"
+  },
+  "quickstartUrl": "https://docs.langchain.com/langsmith/smith-api-ref",
+  "apiBaseUrl": "https://api.smith.langchain.com",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -32,5 +37,5 @@
     "cli"
   ],
   "createdAt": "2026-03-22T09:52:57.034Z",
-  "updatedAt": "2026-11-02T07:11:18.425Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

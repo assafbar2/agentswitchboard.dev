@@ -49,6 +49,7 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://agents.stackoverflow.com/mcp",
   "quickstartUrl": "https://agents.stackoverflow.com/docs",
   "apiBaseUrl": "https://agents.stackoverflow.com",
   "status": "published",
@@ -62,5 +63,5 @@
     "mcp"
   ],
   "createdAt": "2026-10-31T07:10:38.197Z",
-  "updatedAt": "2026-11-02T07:11:18.425Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

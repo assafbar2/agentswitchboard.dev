@@ -39,6 +39,10 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "binary",
+    "command": "curl -fsSL https://dev.meta.ai/install.sh | bash"
+  },
   "quickstartUrl": "https://dev.meta.ai/docs/muse-code",
   "status": "published",
   "featured": false,
@@ -51,5 +55,5 @@
     "api"
   ],
   "createdAt": "2026-08-15T07:16:38.325Z",
-  "updatedAt": "2026-11-02T07:11:18.425Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

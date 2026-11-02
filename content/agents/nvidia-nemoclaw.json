@@ -49,6 +49,11 @@
   "authType": "none",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "binary",
+    "command": "curl -fsSL https://www.nvidia.com/nemoclaw.sh | bash"
+  },
+  "quickstartUrl": "https://docs.nvidia.com/nemoclaw/latest/user-guide/openclaw/get-started/quickstart",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -59,5 +64,5 @@
     "cli"
   ],
   "createdAt": "2026-03-31T00:56:26.007Z",
-  "updatedAt": "2026-07-10T21:06:42.827Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

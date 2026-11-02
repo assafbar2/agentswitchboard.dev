@@ -24,7 +24,7 @@
     "type": "npm",
     "command": "npm install @agent-tars/cli@latest -g"
   },
-  "quickstartUrl": "https://github.com/bytedance/UI-TARS-desktop#quick-start",
+  "quickstartUrl": "https://github.com/bytedance/UI-TARS-desktop/blob/main/docs/quick-start.md",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -36,5 +36,5 @@
     "api"
   ],
   "createdAt": "2026-08-11T00:40:13.000Z",
-  "updatedAt": "2026-11-02T07:11:18.425Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

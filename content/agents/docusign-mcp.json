@@ -42,6 +42,8 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.docusign.com/mcp",
+  "quickstartUrl": "https://developers.docusign.com/platform/mcp-server/",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -52,5 +54,5 @@
     "mcp"
   ],
   "createdAt": "2026-10-04T17:55:56.181Z",
-  "updatedAt": "2026-10-04T17:55:56.181Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

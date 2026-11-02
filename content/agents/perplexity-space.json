@@ -44,6 +44,7 @@
   "authType": "bearer",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://space.docs.perplexity.ai/guide/first-sandbox.html",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -55,5 +56,5 @@
     "cli"
   ],
   "createdAt": "2026-10-17T09:03:45.939Z",
-  "updatedAt": "2026-10-17T09:03:45.939Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

@@ -38,6 +38,10 @@
   "authType": "oauth2",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npm install -g @google/gemini-cli"
+  },
   "status": "published",
   "featured": false,
   "verified": true,
@@ -49,5 +53,5 @@
     "mcp"
   ],
   "createdAt": "2026-04-25T19:06:53.752Z",
-  "updatedAt": "2026-07-10T21:06:06.874Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

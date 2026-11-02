@@ -47,6 +47,11 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npm i -g @langfuse/cli"
+  },
+  "quickstartUrl": "https://langfuse.com/docs/api-and-data-platform/features/public-api",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -58,5 +63,5 @@
     "cli"
   ],
   "createdAt": "2026-04-08T07:17:22.657Z",
-  "updatedAt": "2026-07-10T21:06:26.835Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

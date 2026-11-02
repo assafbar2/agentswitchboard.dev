@@ -51,6 +51,10 @@
   "supportsStreaming": true,
   "supportsPushNotifications": false,
   "mcpCommand": "uvx strands-agents-mcp-server",
+  "install": {
+    "type": "npm",
+    "command": "npm install -g @strands-agents/cli"
+  },
   "quickstartUrl": "https://strandsagents.com/docs/user-guide/sdk/quickstart/overview/",
   "status": "published",
   "featured": false,
@@ -64,5 +68,5 @@
     "mcp"
   ],
   "createdAt": "2026-08-01T04:31:32.808Z",
-  "updatedAt": "2026-11-02T07:11:18.425Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

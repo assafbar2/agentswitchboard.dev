@@ -50,6 +50,8 @@
   "authType": "bearer",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://developers.cloudflare.com/workers-ai/get-started/rest-api/",
+  "apiBaseUrl": "https://api.cloudflare.com/client/v4",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -60,5 +62,5 @@
     "api"
   ],
   "createdAt": "2026-10-31T07:10:38.137Z",
-  "updatedAt": "2026-10-31T07:10:38.137Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

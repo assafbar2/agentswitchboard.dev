@@ -49,6 +49,7 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://learn.microsoft.com/en-us/power-apps/maker/data-platform/data-platform-mcp-vscode",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -60,5 +61,5 @@
     "cli"
   ],
   "createdAt": "2026-10-31T07:10:38.149Z",
-  "updatedAt": "2026-10-31T07:10:38.149Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

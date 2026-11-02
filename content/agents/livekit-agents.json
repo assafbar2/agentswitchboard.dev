@@ -38,6 +38,10 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "brew",
+    "command": "brew install livekit-cli"
+  },
   "quickstartUrl": "https://docs.livekit.io/agents/start/voice-ai/",
   "status": "published",
   "featured": false,
@@ -50,5 +54,5 @@
     "cli"
   ],
   "createdAt": "2026-07-06T07:04:24.418Z",
-  "updatedAt": "2026-11-02T07:11:18.425Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

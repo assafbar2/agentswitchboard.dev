@@ -48,6 +48,11 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "binary",
+    "command": "curl -fsSL https://filecdn.minimax.chat/public/install.sh | bash"
+  },
+  "quickstartUrl": "https://agent.minimax.io/docs/cli/quick-start",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -58,5 +63,5 @@
     "cli"
   ],
   "createdAt": "2026-10-17T09:03:45.929Z",
-  "updatedAt": "2026-10-17T09:03:45.929Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

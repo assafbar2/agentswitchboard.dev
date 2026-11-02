@@ -44,6 +44,11 @@
   "authType": "none",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "binary",
+    "command": "curl -fsSL https://mimo.xiaomi.com/install | bash"
+  },
+  "quickstartUrl": "https://github.com/XiaomiMiMo/MiMo-Code#quick-start",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -54,5 +59,5 @@
     "cli"
   ],
   "createdAt": "2026-10-04T17:55:56.142Z",
-  "updatedAt": "2026-10-04T17:55:56.142Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

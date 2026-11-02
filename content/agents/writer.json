@@ -50,6 +50,9 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://api.writer.com/v1/mcp",
+  "quickstartUrl": "https://dev.writer.com/home/quickstart",
+  "apiBaseUrl": "https://api.writer.com",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -61,5 +64,5 @@
     "mcp"
   ],
   "createdAt": "2026-10-31T07:10:38.200Z",
-  "updatedAt": "2026-10-31T07:10:38.200Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

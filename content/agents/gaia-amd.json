@@ -44,7 +44,11 @@
   "authType": "none",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
-  "quickstartUrl": "https://amd-gaia.ai/docs/guides/mcp/agent-ui",
+  "install": {
+    "type": "binary",
+    "command": "curl -fsSL https://amd-gaia.ai/install.sh | sh"
+  },
+  "quickstartUrl": "https://amd-gaia.ai/docs/sdk/infrastructure/api-server",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -57,5 +61,5 @@
     "cli"
   ],
   "createdAt": "2026-04-25T18:49:57.941Z",
-  "updatedAt": "2026-11-02T07:11:18.425Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

@@ -20,6 +20,10 @@
   "supportsStreaming": false,
   "supportsPushNotifications": false,
   "mcpCommand": "npx -y snyk@latest mcp -t stdio",
+  "install": {
+    "type": "npm",
+    "command": "npm install snyk -g"
+  },
   "quickstartUrl": "https://docs.snyk.io/developer-tools/snyk-api/rest-api/about-the-rest-api",
   "apiBaseUrl": "https://api.snyk.io/rest",
   "status": "published",
@@ -34,5 +38,5 @@
     "cli"
   ],
   "createdAt": "2026-03-22T09:53:14.468Z",
-  "updatedAt": "2026-11-02T07:11:18.425Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

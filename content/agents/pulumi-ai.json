@@ -18,6 +18,13 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.ai.pulumi.com/mcp",
+  "install": {
+    "type": "brew",
+    "command": "brew install pulumi/tap/pulumi"
+  },
+  "quickstartUrl": "https://www.pulumi.com/docs/reference/cloud-rest-api/",
+  "apiBaseUrl": "https://api.pulumi.com",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -30,5 +37,5 @@
     "cli"
   ],
   "createdAt": "2026-03-22T09:52:54.039Z",
-  "updatedAt": "2026-03-22T09:52:54.039Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

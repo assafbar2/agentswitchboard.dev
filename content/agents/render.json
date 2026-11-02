@@ -19,6 +19,14 @@
   "authType": "bearer",
   "supportsStreaming": false,
   "supportsPushNotifications": true,
+  "mcpEndpoint": "https://mcp.render.com/mcp",
+  "mcpCommand": "docker run -i --rm -e RENDER_API_KEY -v render-mcp-server-config:/config ghcr.io/render-oss/render-mcp-server",
+  "install": {
+    "type": "brew",
+    "command": "brew install render"
+  },
+  "quickstartUrl": "https://render.com/docs/api",
+  "apiBaseUrl": "https://api.render.com/v1",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -31,5 +39,5 @@
     "mcp"
   ],
   "createdAt": "2026-08-24T19:48:52.219Z",
-  "updatedAt": "2026-10-10T20:55:07.749Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

@@ -48,6 +48,7 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://developers.cloudflare.com/agents/getting-started/quick-start/",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -60,5 +61,5 @@
     "cli"
   ],
   "createdAt": "2026-04-25T18:49:51.317Z",
-  "updatedAt": "2026-07-10T21:05:53.017Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

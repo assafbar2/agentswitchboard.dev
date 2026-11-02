@@ -38,6 +38,11 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "pip",
+    "command": "pip install google-adk"
+  },
+  "quickstartUrl": "https://adk.dev/get-started/python/",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -49,5 +54,5 @@
     "api"
   ],
   "createdAt": "2026-07-06T07:04:17.444Z",
-  "updatedAt": "2026-09-25T23:53:35.242Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

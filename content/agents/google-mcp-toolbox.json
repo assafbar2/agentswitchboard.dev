@@ -40,7 +40,11 @@
   "supportsStreaming": false,
   "supportsPushNotifications": false,
   "mcpCommand": "npx -y @toolbox-sdk/server --prebuilt=postgres --stdio",
-  "quickstartUrl": "https://github.com/googleapis/mcp-toolbox",
+  "install": {
+    "type": "brew",
+    "command": "brew install mcp-toolbox"
+  },
+  "quickstartUrl": "https://mcp-toolbox.dev/documentation/getting-started/",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -52,5 +56,5 @@
     "cli"
   ],
   "createdAt": "2026-05-13T16:56:42.425Z",
-  "updatedAt": "2026-11-02T07:11:18.425Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

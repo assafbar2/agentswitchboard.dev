@@ -49,6 +49,10 @@
   "authType": "none",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "brew",
+    "command": "brew install docker-agent"
+  },
   "quickstartUrl": "https://docs.docker.com/ai/docker-agent/features/api-server/",
   "status": "published",
   "featured": false,
@@ -62,5 +66,5 @@
     "api"
   ],
   "createdAt": "2026-10-10T21:22:01.463Z",
-  "updatedAt": "2026-11-02T07:11:18.425Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

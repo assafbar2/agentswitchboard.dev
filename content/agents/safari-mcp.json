@@ -39,6 +39,7 @@
   "authType": "none",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://webkit.org/blog/18136/introducing-the-safari-mcp-server-for-web-developers/",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -49,5 +50,5 @@
     "mcp"
   ],
   "createdAt": "2026-07-06T07:04:00.503Z",
-  "updatedAt": "2026-07-06T07:04:00.503Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

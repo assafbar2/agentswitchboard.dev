@@ -50,6 +50,8 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://cloud.baidu.com/doc/qianfan-api/s/3m7of64lb",
+  "apiBaseUrl": "https://qianfan.baidubce.com/v2",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -60,5 +62,5 @@
     "api"
   ],
   "createdAt": "2026-10-17T09:03:45.934Z",
-  "updatedAt": "2026-10-17T09:03:45.934Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

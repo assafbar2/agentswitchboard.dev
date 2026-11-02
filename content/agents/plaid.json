@@ -18,6 +18,8 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://plaid.com/docs/quickstart/",
+  "apiBaseUrl": "https://production.plaid.com",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -28,5 +30,5 @@
     "api"
   ],
   "createdAt": "2026-03-22T09:51:54.824Z",
-  "updatedAt": "2026-03-22T09:51:54.824Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

@@ -173,11 +173,11 @@ const PLACEHOLDER =
 // Plain words only, so commandConfig can split it and nothing runs but the command.
 const MCP_COMMAND = /^(?:npx|uvx|bunx|docker|pipx) [\w@/.:=+-]+(?: [\w@/.:=+-]+)*$/;
 const INSTALL_COMMAND: Record<AgentInstall['type'], RegExp> = {
-  npm: /^(?:npm|pnpm|yarn|bun) /,
-  pip: /^(?:pip3?|pipx|uv|python3? -m pip) /,
+  npm: /^(?:npm|npx|pnpm|yarn|bun|bunx) /,
+  pip: /^(?:pip3?|pipx|uvx?|python3? -m pip) /,
   brew: /^brew /,
   docker: /^docker /,
-  binary: /^(?:curl|wget|irm|iwr|powershell) /,
+  binary: /^(?:curl|wget|irm|iwr|powershell|(?:ba|z)?sh <\(curl) /,
 };
 
 /** What's wrong with a listing's Use it now fields, for scripts/validate-content.ts. */
@@ -209,7 +209,9 @@ export function howToUseProblems(
   if (agent.install !== undefined) {
     needs('install', 'cli');
     const { type, command } = agent.install;
-    if (/\n/.test(command) || PLACEHOLDER.test(command)) problems.push(`install.command "${command}" must be one line with no placeholders`);
+    // Process substitution, as in bash <(curl …), is not a placeholder.
+    const placeholder = PLACEHOLDER.test(command.replace(/ <\(/g, ' ('));
+    if (/\n/.test(command) || placeholder) problems.push(`install.command "${command}" must be one line with no placeholders`);
     if (!INSTALL_COMMAND[type].test(command)) problems.push(`install.command "${command}" doesn't look like a ${type} install`);
   }
   return problems;

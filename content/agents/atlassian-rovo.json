@@ -20,7 +20,7 @@
   "supportsStreaming": false,
   "supportsPushNotifications": false,
   "mcpEndpoint": "https://mcp.atlassian.com/v2/mcp",
-  "quickstartUrl": "https://support.atlassian.com/rovo/docs/install-and-run-rovo-dev-cli-on-your-device/",
+  "quickstartUrl": "https://developer.atlassian.com/platform/forge/build-a-hello-world-rovo-agent/",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -33,5 +33,5 @@
     "cli"
   ],
   "createdAt": "2026-03-22T09:53:29.215Z",
-  "updatedAt": "2026-11-02T07:11:18.425Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

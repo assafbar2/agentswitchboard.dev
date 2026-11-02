@@ -18,6 +18,10 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://api.you.com/mcp",
+  "mcpCommand": "npx @youdotcom-oss/mcp",
+  "quickstartUrl": "https://you.com/docs/guides/search/quickstart",
+  "apiBaseUrl": "https://ydc-index.io",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -29,5 +33,5 @@
     "mcp"
   ],
   "createdAt": "2026-03-22T09:53:02.835Z",
-  "updatedAt": "2026-09-25T23:53:44.460Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

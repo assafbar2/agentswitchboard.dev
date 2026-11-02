@@ -48,7 +48,7 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
-  "quickstartUrl": "https://microsoft.github.io/autogen/stable/user-guide/agentchat-user-guide/installation.html",
+  "quickstartUrl": "https://microsoft.github.io/autogen/stable/user-guide/agentchat-user-guide/quickstart.html",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -60,5 +60,5 @@
     "cli"
   ],
   "createdAt": "2026-04-13T21:38:23.692Z",
-  "updatedAt": "2026-11-02T07:11:18.425Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

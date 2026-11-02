@@ -39,6 +39,11 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "pip",
+    "command": "pip install promptflow promptflow-tools"
+  },
+  "quickstartUrl": "https://microsoft.github.io/promptflow/how-to-guides/quick-start.html",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -50,5 +55,5 @@
     "cli"
   ],
   "createdAt": "2026-09-13T20:13:54.415Z",
-  "updatedAt": "2026-09-13T20:13:54.415Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

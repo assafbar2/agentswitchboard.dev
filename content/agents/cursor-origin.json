@@ -21,6 +21,12 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": true,
+  "install": {
+    "type": "binary",
+    "command": "curl -fsSL https://downloads.cursor.com/origin/install.sh | sh"
+  },
+  "quickstartUrl": "https://cursor.com/docs/api/origin",
+  "apiBaseUrl": "https://api.cursor.com/v1/origin",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -32,5 +38,5 @@
     "cli"
   ],
   "createdAt": "2026-08-24T19:48:52.194Z",
-  "updatedAt": "2026-08-24T19:48:52.194Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

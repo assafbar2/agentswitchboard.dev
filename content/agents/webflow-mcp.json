@@ -22,7 +22,8 @@
   "supportsPushNotifications": false,
   "mcpEndpoint": "https://mcp.webflow.com/mcp",
   "mcpCommand": "npx -y webflow-mcp-server@latest",
-  "quickstartUrl": "https://developers.webflow.com/mcp/reference/getting-started",
+  "quickstartUrl": "https://developers.webflow.com/mcp/reference/overview",
+  "apiBaseUrl": "https://api.webflow.com/v2",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -34,5 +35,5 @@
     "api"
   ],
   "createdAt": "2026-08-11T00:40:13.010Z",
-  "updatedAt": "2026-11-02T07:11:18.425Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

@@ -38,7 +38,11 @@
   "authType": "none",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
-  "quickstartUrl": "https://github.com/huggingface/funes/blob/main/docs/add.md",
+  "install": {
+    "type": "binary",
+    "command": "curl -fsSL \"https://huggingface.co/buckets/huggingface/funes/resolve/install.sh?src=readme\" | sh"
+  },
+  "quickstartUrl": "https://github.com/huggingface/funes#get-funes",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -50,5 +54,5 @@
     "mcp"
   ],
   "createdAt": "2026-09-13T20:13:54.426Z",
-  "updatedAt": "2026-11-02T07:11:18.425Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

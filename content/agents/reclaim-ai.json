@@ -17,6 +17,8 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.reclaim.ai",
+  "quickstartUrl": "https://help.reclaim.ai/en/articles/17507556-mcp-overview-use-reclaim-in-your-ai-tools",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -29,5 +31,5 @@
     "browser-extension"
   ],
   "createdAt": "2026-03-22T09:53:12.830Z",
-  "updatedAt": "2026-03-22T09:53:12.830Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

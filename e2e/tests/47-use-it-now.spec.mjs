@@ -131,7 +131,9 @@ test.describe('copying', () => {
   test('copies the client config as shown and counts useit_copy', async ({ page }) => {
     const rec = await apiRecord(page.request, HOSTED);
     await openHydrated(page, `/agents/${HOSTED}`);
-    const button = part(page, 'Connect it over MCP').getByRole('button', { name: 'Copy the MCP client config' });
+    // Found by position: the button's name changes to "Copied…" on click.
+    const button = part(page, 'Connect it over MCP').getByRole('button').first();
+    await expect(button).toHaveAccessibleName('Copy the MCP client config');
     await button.click();
     await expect(button).toHaveText(/Copied/);
     expect(JSON.parse(await page.evaluate(() => navigator.clipboard.readText()))).toEqual(rec.useItNow.mcp.clientConfig);

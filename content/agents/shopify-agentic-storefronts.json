@@ -49,6 +49,7 @@
   "authType": "oauth2",
   "supportsStreaming": true,
   "supportsPushNotifications": true,
+  "mcpEndpoint": "https://catalog.shopify.com/api/ucp/mcp",
   "quickstartUrl": "https://shopify.dev/docs/agents/get-started/quickstart",
   "status": "published",
   "featured": false,
@@ -61,5 +62,5 @@
     "mcp"
   ],
   "createdAt": "2026-03-31T00:56:27.374Z",
-  "updatedAt": "2026-11-02T07:11:18.425Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }
