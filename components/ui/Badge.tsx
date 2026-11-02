@@ -5,8 +5,9 @@ type Variant = 'default' | 'accent' | 'blue' | 'amber' | 'sponsor' | 'rose' | 'o
 /**
  * Square directory tags: small uppercase labels with a 1px rule, no tints or
  * glows. Yellow is a fill only (amber = featured), always with --dir-on-yellow
- * text, so it reads in both themes. Paid placements get the solid ink `sponsor`
- * tag so the disclosure never blends into the editorial labels.
+ * text, so it reads in both themes. Only paid placements get the solid ink
+ * `sponsor` tag (components/SponsoredBadge.tsx), so the disclosure never blends
+ * into the editorial labels.
  */
 const variantStyles: Record<Variant, string> = {
   default: 'bg-transparent text-[var(--dir-ink)] border-[var(--dir-ink)]!',
@@ -22,13 +23,16 @@ export function Badge({
   children,
   variant = 'default',
   className = '',
+  title,
 }: {
   children: ReactNode;
   variant?: Variant;
   className?: string;
+  title?: string;
 }) {
   return (
     <span
+      title={title}
       className={`inline-flex items-center gap-1 rounded-none border px-1.5 py-px text-[11px] font-bold uppercase leading-4 tracking-[0.08em] ${variantStyles[variant]} ${className}`}
     >
       {children}

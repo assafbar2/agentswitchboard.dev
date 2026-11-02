@@ -2,6 +2,7 @@ import { getAgentBySlug, getEveryAgent } from '@/lib/catalog';
 import { Badge } from '@/components/ui/Badge';
 import { OfficialBadge } from '@/components/ui/OfficialBadge';
 import { AccessMethodBadges } from '@/components/ui/AccessMethodBadges';
+import { SponsoredBadge } from '@/components/SponsoredBadge';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
 import { AgentCard } from '@/components/AgentCard';
 import { AgentIcon } from '@/components/AgentIcon';
@@ -115,6 +116,7 @@ export default async function AgentPage({
     ['push', agent.supportsPushNotifications ? 'true' : 'false'],
     ['verified', agent.verified ? 'true' : 'false'],
     ['official', agent.officialVendor ? `true · ${agent.officialVendor.name}` : 'false'],
+    ['sponsored', agent.sponsored ? 'true · paid placement, never changes ranking' : 'false'],
     ['tags', agent.tags.join(', ') || '—'],
   ];
 
@@ -144,14 +146,30 @@ export default async function AgentPage({
                 </a>
                 {agent.version && <span className="ml-2">v{agent.version}</span>}
               </p>
-              {(agent.verified || agent.official || agent.featured || agent.sponsorLabel || agent.tier === 'premium') && (
+              {(agent.sponsored ||
+                agent.verified ||
+                agent.official ||
+                agent.featured ||
+                agent.tier === 'premium') && (
                 <div className="flex items-center gap-1.5 flex-wrap mt-3">
+                  {agent.sponsored && <SponsoredBadge />}
                   {agent.verified && <VerifiedBadge size="md" />}
                   <OfficialBadge agent={agent} />
-                  {agent.sponsorLabel && <Badge variant="sponsor">{agent.sponsorLabel}</Badge>}
                   {agent.featured && <Badge variant="amber">Featured</Badge>}
                   {agent.tier === 'premium' && <Badge variant="amber">Premium</Badge>}
                 </div>
+              )}
+              {agent.sponsored && (
+                <p className="text-sm text-[var(--dir-muted)] mt-2">
+                  Sponsored: a paid placement. It never changes where this listing ranks in search, tasks or
+                  alternatives.{' '}
+                  <Link
+                    href="/about#sponsored"
+                    className="font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2"
+                  >
+                    What Sponsored means
+                  </Link>
+                </p>
               )}
               {agent.officialVendor && (
                 <p className="text-sm text-[var(--dir-muted)] mt-2">

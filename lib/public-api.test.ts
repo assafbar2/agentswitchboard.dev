@@ -5,6 +5,7 @@ import {
   normalizeAuthTypes,
   summarizeAgent,
   detailAgent,
+  decisionAgent,
   summarizeCategory,
   summarizeStack,
   summarizeTask,
@@ -103,6 +104,16 @@ describe('summarizeAgent', () => {
     const withIcon = summarizeAgent(makeAgent({ iconUrl: '/icons/agentmail.png?v=aca5768d' }));
     expect(withIcon.iconUrl).toBe('https://agentswitchboard.dev/icons/agentmail.png?v=aca5768d');
     expect(summarizeAgent(makeAgent()).iconUrl).toBeNull();
+  });
+
+  it('says whether the listing is a paid placement, false when unset', () => {
+    expect(summarizeAgent(makeAgent()).sponsored).toBe(false);
+    expect(summarizeAgent(makeAgent({ sponsored: true })).sponsored).toBe(true);
+    expect(detailAgent(makeAgent({ sponsored: true })).sponsored).toBe(true);
+  });
+
+  it('leaves the flag out of decision answers, which MCP tools return too', () => {
+    expect(decisionAgent(makeAgent({ sponsored: true }))).not.toHaveProperty('sponsored');
   });
 });
 

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { AgentIcon } from '@/components/AgentIcon';
 import { OfficialBadge } from '@/components/ui/OfficialBadge';
+import { SponsoredBadge } from '@/components/SponsoredBadge';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
 import { ACCESS_METHOD_LABELS } from '@/lib/search';
 import type { Agent, AgentLabel } from '@/lib/types';
@@ -28,8 +29,6 @@ export function FeaturedAgentCard({
   index?: number;
 }) {
   const labelText = label ? LABEL_TEXT[label] : undefined;
-  // A paid listing always discloses it, next to whatever placement label it has.
-  const sponsorText = agent.sponsorLabel;
   const access = agent.accessMethods.map((m) => ACCESS_METHOD_LABELS[m] ?? m).join(' · ');
 
   return (
@@ -51,11 +50,7 @@ export function FeaturedAgentCard({
             {labelText}
           </span>
         )}
-        {sponsorText && (
-          <span className={`${TAG} bg-[var(--dir-ink)] text-[var(--dir-paper)]`}>
-            {sponsorText}
-          </span>
-        )}
+        {agent.sponsored && <SponsoredBadge />}
         {agent.verified && <VerifiedBadge />}
         <OfficialBadge agent={agent} />
         <span>by {agent.providerName}</span>

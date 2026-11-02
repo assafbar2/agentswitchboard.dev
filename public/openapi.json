@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Agent Switchboard Directory API",
-    "version": "1.9.0",
+    "version": "1.10.0",
     "summary": "Read-only catalog of AI agents, MCP servers, and agentic developer tools.",
     "description": "Agent Switchboard is a public discovery directory. Use this API to answer questions like 'is there an agent that does X?' or 'which listed products expose an MCP server?'. There is no authentication, no user account, and no write access. This API does not proxy the underlying products — it only returns Switchboard listings. For interactive tool-shaped access, an MCP server is also available at /api/mcp. Listing data returned by this API is licensed CC BY-NC 4.0 (attribution required; commercial reuse needs a license: https://agentswitchboard.dev/contact). The API definition itself is MIT.",
     "contact": {
@@ -141,7 +141,8 @@
                           "accessMethods": ["api", "mcp", "cli"],
                           "verified": true,
                           "official": false,
-                          "featured": true
+                          "featured": true,
+                          "sponsored": true
                         }
                       ]
                     }
@@ -165,7 +166,7 @@
       "get": {
         "operationId": "getAgent",
         "summary": "Get one agent by slug",
-        "description": "Full listing for a published agent: the searchAgents fields (including `verified`, `official` and `featured`) plus skills, auth type, provider homepage, tags, streaming and push flags. Use a `slug` returned by searchAgents. Unpublished or unknown slugs return 404.",
+        "description": "Full listing for a published agent: the searchAgents fields (including `verified`, `official`, `featured` and `sponsored`) plus skills, auth type, provider homepage, tags, streaming and push flags. Use a `slug` returned by searchAgents. Unpublished or unknown slugs return 404.",
         "tags": ["catalog"],
         "parameters": [
           {
@@ -546,7 +547,8 @@
           },
           "verified": { "type": "boolean", "description": "Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working." },
           "official": { "type": "boolean", "description": "First-party listing from a major vendor (publicly traded, frontier AI lab, or ~$1B+), published under the vendor's official domain or GitHub org. Factual, not paid; separate from verified and featured." },
-          "featured": { "type": "boolean", "description": "Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order." }
+          "featured": { "type": "boolean", "description": "Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order." },
+          "sponsored": { "type": "boolean", "description": "Sponsored: a paid placement, approved by the maintainer. It shows a Sponsored label and a spot in the Sponsored slot on the homepage and the latest drop page. It never changes search results or their order, tasks, alternatives, compare or the Operator, never appears in AI-assistant (MCP) results, and is separate from Featured, Official and Verified." }
         }
       },
       "AgentDetail": {
@@ -844,6 +846,7 @@
           "official",
           "officialVendor",
           "featured",
+          "sponsored",
           "tier",
           "createdAt",
           "updatedAt"
@@ -871,6 +874,7 @@
           "official": { "type": "boolean", "description": "First-party listing from a major vendor (publicly traded, frontier AI lab, or ~$1B+), published under the vendor's official domain or GitHub org. Factual, not paid; separate from verified and featured." },
           "officialVendor": { "type": ["string", "null"] },
           "featured": { "type": "boolean", "description": "Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order." },
+          "sponsored": { "type": "boolean", "description": "Sponsored: a paid placement, approved by the maintainer. It shows a Sponsored label and a spot in the Sponsored slot on the homepage and the latest drop page. It never changes search results or their order, tasks, alternatives, compare or the Operator, never appears in AI-assistant (MCP) results, and is separate from Featured, Official and Verified." },
           "tier": { "type": ["string", "null"] },
           "createdAt": { "type": ["string", "null"], "format": "date-time" },
           "updatedAt": { "type": ["string", "null"], "format": "date-time" },
@@ -882,7 +886,7 @@
         }
       },
       "DecisionAgent": {
-        "description": "A listing in a comparison, an alternatives list or a bundle: the searchAgents fields and its auth type.",
+        "description": "A listing in a comparison, an alternatives list or a bundle: the searchAgents fields except `sponsored`, and its auth type. These answers are the MCP tools' answers too, which never carry sponsorship.",
         "allOf": [
           { "$ref": "#/components/schemas/AgentSummary" },
           {

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { AgentIcon } from '@/components/AgentIcon';
 import { Badge } from '@/components/ui/Badge';
 import { OfficialBadge } from '@/components/ui/OfficialBadge';
+import { SponsoredBadge } from '@/components/SponsoredBadge';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
 import { isNew } from '@/lib/freshness';
 import { ACCESS_METHOD_LABELS } from '@/lib/search';
@@ -26,7 +27,7 @@ export type AgentCardData = Pick<
   | 'official'
   | 'officialVendor'
   | 'featured'
-  | 'sponsorLabel'
+  | 'sponsored'
   | 'tier'
   | 'accessMethods'
   | 'authType'
@@ -53,7 +54,12 @@ export function AgentCard({ agent, why, markNew = true }: { agent: AgentCardData
   const categories = agent.categories.slice(0, 2).map((c) => c.name).join(', ');
   const fresh = markNew && isNew(agent.createdAt);
   const hasLabels =
-    agent.verified || agent.official || agent.featured || agent.sponsorLabel || agent.tier === 'premium' || fresh;
+    agent.sponsored ||
+    agent.verified ||
+    agent.official ||
+    agent.featured ||
+    agent.tier === 'premium' ||
+    fresh;
 
   // A directory entry: icon, bold name, dotted leader, access methods
   // right-aligned, the one-line description beneath, then provider and the
@@ -85,9 +91,9 @@ export function AgentCard({ agent, why, markNew = true }: { agent: AgentCardData
         <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-[13px] leading-5 text-[var(--dir-muted)]">
           {hasLabels && (
             <span className="flex flex-wrap items-center gap-1">
+              {agent.sponsored && <SponsoredBadge />}
               {agent.verified && <VerifiedBadge />}
               <OfficialBadge agent={agent} />
-              {agent.sponsorLabel && <Badge variant="sponsor">{agent.sponsorLabel}</Badge>}
               {agent.featured && <Badge variant="amber">Featured</Badge>}
               {agent.tier === 'premium' && <Badge variant="amber">Premium</Badge>}
               {fresh && <span className="new-tag">New</span>}

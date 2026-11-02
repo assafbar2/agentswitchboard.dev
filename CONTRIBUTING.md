@@ -118,9 +118,19 @@ load, you declare an access method, and any linked GitHub repo is live (not
 archived, pushed within 12 months). It's re-checked monthly and drops if the
 product stops meeting that bar. `featured` is maintainer-only.
 
+`"sponsored": true` marks a **paid placement** and is maintainer-only, set
+after the maintainer approves the sponsor. The listing must already meet
+every rule above. It shows a **Sponsored** label wherever the listing appears
+and a spot in the Sponsored slot on the homepage and the latest drop page;
+it never changes search ranking, tasks, alternatives, compare or the Operator,
+it never appears in MCP or WebMCP tool results, and it is separate from `featured`,
+`official` and `verified`. It is the only paid label; the homepage's
+editor's picks (`homepageFeatured` in `content/site.json`) never include a
+sponsored listing, and CI enforces that.
+
 Paid placement never reaches AI assistants. The MCP server and the WebMCP tools
 are always organic: they rank by relevance or A→Z and never return or rank by
-`featured`, `sponsored`, `sponsorLabel` or `tier`, because the Claude and ChatGPT
+`featured`, `sponsored` or `tier`, because the Claude and ChatGPT
 connector directories forbid ads and paid placement. See [DISTRIBUTION.md](DISTRIBUTION.md).
 
 ## Official listings

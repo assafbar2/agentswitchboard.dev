@@ -150,7 +150,7 @@ test('non-official listing has no Official badge or vendor line', async ({ page 
 });
 
 test('sponsored listing (Barnir Hired) discloses its sponsor label on its page', async ({ page }) => {
-  // content/agents/barnir-hired.json carries "sponsorLabel": "Sponsored".
+  // content/agents/barnir-hired.json carries "sponsored": true.
   await page.goto('/agents/barnir-hired');
   const header = listing(page).getByRole('heading', { level: 1 }).locator('..');
   await expect(header.getByText('Sponsored', { exact: true })).toBeVisible();

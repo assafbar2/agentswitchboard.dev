@@ -12,6 +12,7 @@ import {
 import { getReleases, highlightedReleases } from '@/lib/changelog';
 import { dropAdditions, dropHighlights, getDropSchedule } from '@/lib/drops';
 import { isNew, NEW_DAYS, newSince } from '@/lib/freshness';
+import { sponsoredAgents } from '@/lib/homepage';
 import { inlineMarkdownToText } from '@/lib/inline-markdown';
 import { OPERATOR_EXAMPLES, operatorHref } from '@/lib/request-parts';
 import { taskMatches } from '@/lib/search';
@@ -26,6 +27,7 @@ import { OperatorBox, OperatorEvents } from '@/components/OperatorBox';
 import { EndpointLink } from '@/components/EndpointLink';
 import { Highlights } from '@/components/Highlights';
 import { FeaturedAgentCard } from '@/components/FeaturedAgentCard';
+import { SponsoredSlot } from '@/components/SponsoredSlot';
 import { CategoryCard } from '@/components/CategoryCard';
 import { OfficialPlatforms } from '@/components/OfficialPlatforms';
 import { JsonLd } from '@/components/JsonLd';
@@ -67,6 +69,7 @@ export default async function HomePage() {
   const newCount = catalog.filter((a) => isNew(a.createdAt, since)).length;
   const [latestRelease] = highlightedReleases(getReleases());
   const releaseIsNew = !!latestRelease && latestRelease.date >= since;
+  const sponsored = sponsoredAgents(catalog);
   const weekStack = stackOfTheWeek(getStacks());
   const weekEntries = weekStack ? stackEntries(weekStack, catalog) : [];
   const tasks = getTasks();
@@ -311,6 +314,8 @@ export default async function HomePage() {
               </section>
             )}
 
+            <SponsoredSlot agents={sponsored} className="mb-6" />
+
             <section aria-labelledby="browse-categories" className="mb-6">
               <div className="break-inside-avoid">
                 <div className="dir-bar flex items-baseline gap-1.5">
@@ -463,11 +468,26 @@ export default async function HomePage() {
           {homepageAgents.length > 0 && (
             <div className="mb-8">
               <div className="agent-section-title">featured</div>
-              {homepageAgents.map(({ agent }) => (
+              {homepageAgents.map(({ agent, label }) => (
                 <Link key={agent.id} href={`/agents/${agent.slug}`} className="agent-row no-underline hover:underline">
                   <span className="agent-accent">
                     {agent.slug}
-                    {agent.sponsorLabel && <span className="agent-dim"> ({agent.sponsorLabel.toLowerCase()})</span>}
+                    {label === 'editors-pick' && <span className="agent-dim"> (editor&apos;s pick)</span>}
+                  </span>
+                  <span className="agent-dim">{agent.categories[0]?.slug ?? '—'}</span>
+                  <span className="agent-dim">{agent.accessMethods.join('+') || '—'}</span>
+                </Link>
+              ))}
+            </div>
+          )}
+
+          {sponsored.length > 0 && (
+            <div className="mb-8" data-sponsored-slot="">
+              <div className="agent-section-title">sponsored · paid placements, never change search results</div>
+              {sponsored.map((agent) => (
+                <Link key={agent.id} href={`/agents/${agent.slug}`} className="agent-row no-underline hover:underline">
+                  <span className="agent-accent">
+                    {agent.slug} <span className="agent-dim">(sponsored)</span>
                   </span>
                   <span className="agent-dim">{agent.categories[0]?.slug ?? '—'}</span>
                   <span className="agent-dim">{agent.accessMethods.join('+') || '—'}</span>

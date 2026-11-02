@@ -37,6 +37,7 @@ export function BoardPanels({ board, id }: { board: Board; id: string }) {
                     className={jackClass(jack)}
                     data-p={jack.provider}
                     data-m={jack.access.join(' ')}
+                    data-s={jack.sponsored ? '' : undefined}
                   >
                     <title>{jack.name}</title>
                     <circle cx={x} cy={y} r={JACK_RADIUS} style={delay ? { animationDelay: `${delay}ms` } : undefined} />

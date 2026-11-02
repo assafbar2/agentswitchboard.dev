@@ -7,7 +7,7 @@ import { getEveryAgent } from '@/lib/catalog';
 import { COMPARE_MAX } from '@/lib/compare-link';
 import { NEW_DAYS } from '@/lib/freshness';
 import { OPERATOR_ALTERNATIVES } from '@/lib/operator';
-import { FEATURED_DEFINITION, OFFICIAL_DEFINITION } from '@/lib/public-api';
+import { FEATURED_DEFINITION, OFFICIAL_DEFINITION, SPONSORED_DEFINITION } from '@/lib/public-api';
 import { MIN_ALTERNATIVES } from '@/lib/related';
 import { PARTS_MAX } from '@/lib/request-parts';
 import { MY_STACK_MAX } from '@/lib/stack-link';
@@ -104,6 +104,10 @@ export default async function ForAgentsPage() {
             <li>{OFFICIAL_DEFINITION}</li>
             <li>{FEATURED_DEFINITION}</li>
           </ul>
+          <p>
+            On the website, the REST API and <code className="font-bold">/agents.json</code>, a{' '}
+            <code className="font-bold">sponsored</code> flag also marks paid placements. {SPONSORED_DEFINITION}
+          </p>
         </section>
 
         {/* MCP server */}

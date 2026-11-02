@@ -212,15 +212,16 @@ test.describe('homepage — listings', () => {
     await page.goto('/');
     const hrefs = await human(page).locator('section[aria-labelledby="top-agents"] a[href^="/agents/"]')
       .evaluateAll((els) => els.map((e) => e.getAttribute('href').replace('/agents/', '')));
-    expect(hrefs).toEqual(placements.slice(0, 6));
+    // The newest additions fill whatever slots the placements leave.
+    expect(hrefs.slice(0, placements.length)).toEqual(placements.slice(0, 6));
   });
 
-  // content/agents/barnir-hired.json: featured: true, sponsorLabel "Sponsored"
-  // (commit eae35d6: "Featured as a paid placement, disclosed with a Sponsored label").
-  test('Barnir Hired appears as a featured listing with its Sponsored label', async ({ page }) => {
+  // content/agents/barnir-hired.json: featured and sponsored. Paid placements
+  // sit in the Sponsored slot (16-sponsored.spec.mjs), never in Top Agents.
+  test('Barnir Hired appears in the Sponsored slot with its Sponsored label', async ({ page }) => {
     await page.goto('/');
-    const row = human(page).locator('section[aria-labelledby="top-agents"] a[href="/agents/barnir-hired"]');
-    await expect(row, 'Barnir Hired row in Top Agents').toBeVisible();
+    const row = human(page).locator('[data-sponsored-slot] a[href="/agents/barnir-hired"]');
+    await expect(row, 'Barnir Hired row in the Sponsored slot').toBeVisible();
     await expect(row.getByText('Sponsored', { exact: true })).toBeVisible();
   });
 

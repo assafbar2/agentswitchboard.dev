@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { AgentCard } from '@/components/AgentCard';
 import { JsonLd } from '@/components/JsonLd';
+import { SponsoredSlot } from '@/components/SponsoredSlot';
 import { StackCallout } from '@/components/StackCallout';
 import { getEveryAgent } from '@/lib/catalog';
 import {
@@ -14,6 +15,7 @@ import {
   getDropSchedule,
   type DropItem,
 } from '@/lib/drops';
+import { sponsoredAgents } from '@/lib/homepage';
 import { pageMetadata } from '@/lib/metadata';
 import { dropCard, dropCardImage } from '@/lib/share-cards';
 import { getStacks, stackEntries, stackForDrop } from '@/lib/stacks';
@@ -58,6 +60,8 @@ export default async function DropPage({ params }: Props) {
   const listedSlugs = new Set(catalog.map((a) => a.slug));
   const { listed, gone } = dropAdditions(drop, catalog);
   const official = listed.filter((a) => a.official);
+  // Only the latest drop carries the paid slot; older drops stay as they were published.
+  const sponsored = newer ? [] : sponsoredAgents(catalog);
   const vendors = [...new Set(official.map((a) => a.officialVendor?.name ?? a.providerName))];
   const stack = stackForDrop(getStacks(), drop.date);
   const stackItems = stack ? stackEntries(stack, catalog) : [];
@@ -149,6 +153,8 @@ export default async function DropPage({ params }: Props) {
           </section>
         )}
 
+        <SponsoredSlot agents={sponsored} className="mb-10 max-w-xl" />
+
         {drop.updated.length > 0 && (
           <ChangeList id="updated" heading="Updated" items={drop.updated} listedSlugs={listedSlugs} />
         )}
@@ -213,6 +219,7 @@ export default async function DropPage({ params }: Props) {
                   <span className="agent-dim">
                     {agent.providerName}
                     {agent.official ? ' · official' : ''}
+                    {agent.sponsored ? ' · sponsored' : ''}
                   </span>
                   <span className="agent-dim">{agent.accessMethods.join('+') || '—'}</span>
                 </Link>
@@ -232,6 +239,19 @@ export default async function DropPage({ params }: Props) {
                 </Link>
               )}
             </>
+          )}
+
+          {sponsored.length > 0 && (
+            <div data-sponsored-slot="">
+              <div className="agent-section-title">sponsored · paid placements, never change search results</div>
+              {sponsored.map((agent) => (
+                <Link key={agent.slug} href={`/agents/${agent.slug}`} className="agent-row no-underline hover:underline">
+                  <span className="agent-accent">{agent.slug}</span>
+                  <span className="agent-dim">{agent.providerName} · sponsored</span>
+                  <span className="agent-dim">{agent.accessMethods.join('+') || '—'}</span>
+                </Link>
+              ))}
+            </div>
           )}
 
           {(['updated', 'removed'] as const).map(

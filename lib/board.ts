@@ -22,6 +22,8 @@ export interface BoardJack {
   official: boolean;
   /** Added in the newest drop. */
   lit: boolean;
+  /** A paid placement; the readout says so, the board draws it like any other jack. */
+  sponsored?: boolean;
 }
 
 export interface BoardPanel {
@@ -62,6 +64,7 @@ export function boardOf(catalog: readonly Agent[], categories: readonly Category
         access: agent.accessMethods,
         official: agent.official,
         lit: added.has(agent.slug),
+        ...(agent.sponsored ? { sponsored: true } : {}),
       }));
     return [{ slug: category.slug, name: category.name, jacks }];
   });

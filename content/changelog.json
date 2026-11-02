@@ -1,6 +1,34 @@
 [
   {
     "action": "updated",
+    "slug": "agentmail",
+    "name": "AgentMail",
+    "note": "Sponsored placement, labelled Sponsored; no longer marked Editor's Pick",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "agentswitchboard",
+    "name": "Agent Switchboard",
+    "note": "Sponsored placement, labelled Sponsored",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "barnir-hired",
+    "name": "Barnir Hired",
+    "note": "Sponsored placement, now set by the sponsored flag",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
+    "slug": "here-now",
+    "name": "here.now",
+    "note": "Editor's Pick label now comes from the homepage picks",
+    "date": "2026-11-02"
+  },
+  {
+    "action": "updated",
     "slug": "runway-ml",
     "name": "Runway ML",
     "note": "description updated",

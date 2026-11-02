@@ -152,6 +152,7 @@ export default async function NewPage() {
                   <span className="agent-dim">
                     {agent.providerName}
                     {agent.official ? ' · official' : ''}
+                    {agent.sponsored ? ' · sponsored' : ''}
                   </span>
                   <span className="agent-dim">{agent.createdAt?.slice(0, 10)}</span>
                 </Link>

@@ -31,6 +31,10 @@ export const FEATURED_DEFINITION =
   'Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order. ' +
   'The MCP server and WebMCP ignore it: their results are organic and leave the flag out.';
 
+/** What `sponsored: true` means. Mirrors /about#sponsored and CONTRIBUTING.md. */
+export const SPONSORED_DEFINITION =
+  'Sponsored: a paid placement, approved by the maintainer. It shows a Sponsored label and a spot in the Sponsored slot on the homepage and the latest drop page. It never changes search results or their order, tasks, alternatives, compare or the Operator, never appears in AI-assistant (MCP) results, and is separate from Featured, Official and Verified.';
+
 // ── Access-method input ─────────────────────────────────────────────
 
 /** Accepted spellings that map onto a canonical access method. */
@@ -125,9 +129,14 @@ export const CONNECT_BUNDLE_DESCRIPTION =
   'Also returns a claude mcp add command for each server in the config, for Claude Code, and the /stack link for the listings. ' +
   "Nothing is guessed: every address and command is copied from the vendor's docs, as on the listing's page.";
 
-/** A listing in a decision tool's answer: the search-result fields and its auth type. */
+/**
+ * A listing in a decision tool's answer: the search-result fields and its auth
+ * type. The MCP server returns these too, and connector directories reject
+ * sponsored placements in tool output, so they never carry `sponsored`.
+ */
 export function decisionAgent(a: Agent) {
-  return { ...summarizeAgent(a), authType: a.authType };
+  const { sponsored, ...card } = summarizeAgent(a);
+  return { ...card, authType: a.authType };
 }
 
 export const CORS_GET = {
@@ -183,6 +192,7 @@ export function summarizeAgent(a: Agent) {
     official: a.official,
     // Featured listings sort first in the default order, so callers see why.
     featured: a.featured === true,
+    sponsored: a.sponsored === true,
   };
 }
 
