@@ -327,13 +327,13 @@ export default function ConnectPage() {
             <ul className="list-disc pl-5 space-y-2">
               <li>
                 <strong>The app can&rsquo;t connect.</strong> Check the address ends in{' '}
-                <code className="mono text-sm">/api/mcp</code> and authentication is set to none. Opening
-                it in a browser shows &ldquo;Method not allowed&rdquo;: that is expected, because MCP
+                <code className="mono text-sm">/api/mcp</code>{' '}
+                and authentication is set to none. Opening it in a browser shows &ldquo;Method not allowed&rdquo;: that is expected, because MCP
                 clients send POST requests.
               </li>
               <li>
-                <strong>The assistant doesn&rsquo;t use it.</strong> Make sure the connector is turned on
-                for the chat, or name it: &ldquo;Use Agent Switchboard to find&hellip;&rdquo;.
+                <strong>The assistant doesn&rsquo;t use it.</strong>{' '}
+                Make sure the connector is turned on for the chat, or name it: &ldquo;Use Agent Switchboard to find&hellip;&rdquo;.
               </li>
               <li>
                 <strong>&ldquo;No agent with slug&rdquo;.</strong> Slugs come from search results; ask
