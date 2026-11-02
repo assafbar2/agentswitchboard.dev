@@ -1,5 +1,6 @@
 import { VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 import { getEveryAgent, getAllCategories } from '@/lib/catalog';
+import { getReleases, highlightedReleases } from '@/lib/changelog';
 import { curatedComparisons } from '@/lib/compare';
 import { COMPARE_MAX } from '@/lib/compare-link';
 import { getDropSchedule } from '@/lib/drops';
@@ -20,10 +21,14 @@ export async function GET() {
   const categoryLines = categories.map((c) => `- ${c.slug}: ${c.name}`).join('\n');
   const latestDrop = getDropSchedule().drops[0];
   const dropLine = latestDrop
-    ? `\n- What's new, batch by batch: https://agentswitchboard.dev/drops (latest: https://agentswitchboard.dev/drops/${latestDrop.date}, ${latestDrop.added.length} added)`
+    ? `\n- Weekly drops, the new listings batch by batch: https://agentswitchboard.dev/drops (latest: https://agentswitchboard.dev/drops/${latestDrop.date}, ${latestDrop.added.length} added)`
     : '';
   const since = newSince();
   const newCount = agents.filter((a) => isNew(a.createdAt, since)).length;
+  const [release] = highlightedReleases(getReleases());
+  const releaseLine = release
+    ? `\n- What's new on the site, release by release, each feature with the page to try it: https://agentswitchboard.dev/whats-new (latest: ${release.version} ${release.title}, ${release.date}). Every release and weekly drop as a feed: https://agentswitchboard.dev/feed.xml (RSS) or https://agentswitchboard.dev/atom.xml (Atom)`
+    : '';
   const stacks = getStacks();
   const week = stackOfTheWeek(stacks);
   const weekLine = week ? `; stack of the week: https://agentswitchboard.dev/stacks/${week.slug}` : '';
@@ -55,7 +60,7 @@ The \`verified\`, \`official\` and \`featured\` flags in search and detail resul
 - Full machine-readable catalog (JSON): https://agentswitchboard.dev/agents.json
 - Browse by category: https://agentswitchboard.dev/categories
 - Search and filter: https://agentswitchboard.dev/browse${dropLine}
-- New listings, everything added in the last ${NEW_DAYS} days: https://agentswitchboard.dev/new (${newCount} since ${since}, grouped by drop)
+- New listings, everything added in the last ${NEW_DAYS} days: https://agentswitchboard.dev/new (${newCount} since ${since}, grouped by drop)${releaseLine}
 - Alternatives to a listing: https://agentswitchboard.dev/agents/<slug>/alternatives (listings with at least ${MIN_ALTERNATIVES}; each says what it has in common)
 - Stacks, tools that work together for one job: https://agentswitchboard.dev/stacks (${stacks.length} stacks, each tool with why it is there${weekLine})
 - Tasks, to start from the job ("query a database"): https://agentswitchboard.dev/tasks (${getTasks().length} tasks, each with the listings that fit it, best first; /browse?task=<slug> filters them)

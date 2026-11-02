@@ -201,7 +201,7 @@ const ComparisonSchema = z
  * keyed by drop date: a key that is not a drop would never be shown.
  * Returns the drops and a violation count.
  */
-function checkChangelogAndDrops(): { drops: Drop[]; errors: number } {
+function checkChangelogAndDrops(updatedAt: Map<string, string>): { drops: Drop[]; errors: number } {
   let raw: unknown;
   try {
     raw = JSON.parse(fs.readFileSync(path.join(CONTENT, 'changelog.json'), 'utf8'));
@@ -215,6 +215,7 @@ function checkChangelogAndDrops(): { drops: Drop[]; errors: number } {
     }
     return { drops: [], errors: log.error.issues.length };
   }
+  let errors = checkUpdatedAt(updatedAt, log.data);
 
   const dropsFile = path.join(CONTENT, 'drops.json');
   let intros: Record<string, { intro: string }> = {};
@@ -224,21 +225,20 @@ function checkChangelogAndDrops(): { drops: Drop[]; errors: number } {
       parsed = JSON.parse(fs.readFileSync(dropsFile, 'utf8'));
     } catch (e) {
       console.log(`❌ content/drops.json: invalid JSON — ${(e as Error).message}`);
-      return { drops: [], errors: 1 };
+      return { drops: [], errors: errors + 1 };
     }
     const result = z.record(z.string(), DropIntroSchema).safeParse(parsed);
     if (!result.success) {
       for (const issue of result.error.issues) {
         console.log(`❌ content/drops.json: ${issue.path.join('.')}: ${issue.message}`);
       }
-      return { drops: [], errors: result.error.issues.length };
+      return { drops: [], errors: errors + result.error.issues.length };
     }
     intros = result.data;
   }
 
   const { drops } = groupDrops(log.data, intros);
   const dates = new Set(drops.map((d) => d.date));
-  let errors = 0;
   for (const date of Object.keys(intros)) {
     if (!dates.has(date)) {
       console.log(
@@ -248,6 +248,27 @@ function checkChangelogAndDrops(): { drops: Drop[]; errors: number } {
     }
   }
   return { drops, errors };
+}
+
+/**
+ * A listing edited by hand rather than with scripts/cms.ts can keep its old
+ * updatedAt, which the API and agents.json report as when it last changed:
+ * it must be no older than the listing's latest entry in the change log.
+ */
+function checkUpdatedAt(updatedAt: Map<string, string>, log: z.infer<typeof ChangelogEntrySchema>[]): number {
+  const latest = new Map<string, string>();
+  for (const e of log) if (e.date > (latest.get(e.slug) ?? '')) latest.set(e.slug, e.date);
+  let errors = 0;
+  for (const [slug, date] of latest) {
+    const at = updatedAt.get(slug)?.slice(0, 10);
+    if (at !== undefined && at < date) {
+      console.log(
+        `❌ content/agents/${slug}.json: updatedAt ${at} is older than its ${date} entry in content/changelog.json; set it to when the listing changed`
+      );
+      errors++;
+    }
+  }
+  return errors;
 }
 
 /**
@@ -433,6 +454,7 @@ function main() {
   let errors = official.errors;
   const slugs = new Set<string>();
   const published = new Set<string>();
+  const updatedAt = new Map<string, string>();
   const listings: Agent[] = [];
   // Rule 2 (CONTRIBUTING): one listing per product, not per endpoint. No cap —
   // a vendor with many real products earns many entries — but large clusters are
@@ -488,6 +510,7 @@ function main() {
       errors++;
     }
     slugs.add(slug);
+    updatedAt.set(slug, result.data.updatedAt);
     for (const problem of howToUseProblems(result.data)) {
       console.log(`❌ ${file}: ${problem}`);
       errors++;
@@ -571,7 +594,7 @@ function main() {
 
   const icons = checkIcons(slugs);
   errors += icons.errors;
-  const drops = checkChangelogAndDrops();
+  const drops = checkChangelogAndDrops(updatedAt);
   errors += drops.errors;
   const stacks = checkStacks(published, drops.drops);
   errors += stacks.errors;

@@ -17,7 +17,7 @@ const HEADER_NAV = [
 // components/Footer.tsx footerLinks
 const FOOTER_GROUPS = {
   Directory: ['/browse', '/categories', '/tasks', '/drops', '/new', '/stacks', '/compare', '/submit'],
-  Resources: ['/for-agents#mcp', '/connect', '/for-agents', '/changelog', '/pro', '/advertise'],
+  Resources: ['/for-agents#mcp', '/connect', '/for-agents', '/whats-new', '/changelog', '/feed.xml', '/pro', '/advertise'],
   Company: ['/about', '/contact', 'https://github.com/assafbar2/agentswitchboard.dev', '/privacy', '/terms', '/disclaimer'],
 };
 
@@ -238,7 +238,7 @@ test.describe('content pages', () => {
     expect(agentPages.length).toBeGreaterThan(0);
     agentPages.slice(0, 5).forEach((a) => seen.add(a));
     expect(seen.size).toBeGreaterThan(5);
-    expect(seen.size).toBeLessThan(60);
+    expect(seen.size).toBeLessThan(80);
     const bad = [];
     for (const path of seen) {
       const s = await getStatus(page, path);

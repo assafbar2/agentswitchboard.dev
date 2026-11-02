@@ -25,6 +25,7 @@ import {
   type StacksCard,
   type TaskCard,
   type TasksCard,
+  type WhatsNewCard,
 } from './share-cards';
 import { formatNumber, joinList, pluralize } from './utils';
 
@@ -176,6 +177,26 @@ export async function renderNewCard(card: NewCard): Promise<ImageResponse> {
       text={names}
       icons={await Promise.all(card.icons.map(iconSrc))}
     />
+  );
+}
+
+export async function renderWhatsNewCard(card: WhatsNewCard): Promise<ImageResponse> {
+  return render(
+    <Frame kicker={`What's new · ${card.date}`}>
+      <div style={{ display: 'block', lineClamp: 1, fontSize: 88, fontWeight: 800, lineHeight: 1, letterSpacing: '-0.02em' }}>
+        {`${card.version} · ${card.title}`}
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginTop: 32 }}>
+        {card.lines.map((line, i) => (
+          <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 18 }}>
+            <div
+              style={{ display: 'flex', flexShrink: 0, width: 16, height: 16, marginTop: 11, background: YELLOW, border: `3px solid ${INK}` }}
+            />
+            <div style={{ display: 'block', lineClamp: 2, fontSize: 30, fontWeight: 600, lineHeight: 1.25 }}>{line}</div>
+          </div>
+        ))}
+      </div>
+    </Frame>
   );
 }
 
