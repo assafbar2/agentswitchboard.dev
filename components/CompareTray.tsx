@@ -21,6 +21,7 @@ import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { AgentIcon } from '@/components/AgentIcon';
 import { count } from '@/lib/analytics';
 import { COMPARE_MAX, compareHref } from '@/lib/compare-link';
+import { pageKind } from '@/lib/page-kind';
 
 interface Picked {
   slug: string;
@@ -87,14 +88,6 @@ function subscribe(onChange: () => void) {
     window.removeEventListener('storage', onStorage);
     window.removeEventListener(CHANGE, onChange);
   };
-}
-
-/** Where a pick came from, for compare_add. On a listing page the cards are its related listings. */
-function pageKind(pathname: string): string {
-  if (pathname === '/') return 'home';
-  const [first, slug, sub] = pathname.split('/').slice(1);
-  if (first === 'agents' && slug) return sub === 'alternatives' ? 'alternatives' : 'related';
-  return ['browse', 'categories', 'stacks', 'tasks', 'drops'].includes(first) ? first : 'other';
 }
 
 const onComparePage = (pathname: string) => pathname === '/compare' || pathname.startsWith('/compare/');

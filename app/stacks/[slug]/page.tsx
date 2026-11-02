@@ -4,8 +4,11 @@ import type { Metadata, ResolvingMetadata } from 'next';
 import { AgentCard } from '@/components/AgentCard';
 import { EndpointLink } from '@/components/EndpointLink';
 import { JsonLd } from '@/components/JsonLd';
+import { SaveStack } from '@/components/SaveStack';
 import { StackEvents } from '@/components/StackEvents';
 import { getEveryAgent } from '@/lib/catalog';
+import { COMPARE_MAX, compareHref } from '@/lib/compare-link';
+import { smallIconPath } from '@/lib/icons';
 import { pageMetadata } from '@/lib/metadata';
 import { ACCESS_METHOD_LABELS } from '@/lib/search';
 import { stackCard, stackCardImage } from '@/lib/share-cards';
@@ -63,6 +66,10 @@ export default async function StackPage({ params }: Props) {
   const order = stacksInOrder(getStacks());
   const next = order.length > 1 ? order[(order.findIndex((s) => s.slug === stack.slug) + 1) % order.length] : null;
   const tools = `${entries.length} ${pluralize(entries.length, 'tool')}`;
+  const compared = entries.slice(0, COMPARE_MAX).map((e) => e.agent.slug);
+  const compareLabel =
+    compared.length === entries.length ? (entries.length === 2 ? 'Compare both' : 'Compare all 3') : `Compare the first ${COMPARE_MAX}`;
+  const items = entries.map(({ agent: a }) => ({ slug: a.slug, name: a.name, icon: a.iconUrl ? smallIconPath(a.iconUrl) : null }));
 
   const listSchema = {
     '@context': 'https://schema.org',
@@ -126,6 +133,22 @@ export default async function StackPage({ params }: Props) {
             </StackEvents>
           </section>
 
+          <section aria-labelledby="use-this-stack" className="mt-10">
+            <h2 id="use-this-stack" className="dir-bar">
+              Use this stack
+            </h2>
+            {compared.length > 1 && (
+              <Link href={compareHref(compared)} className="dir-row">
+                <span className="dir-row-name">{compareLabel}</span>
+                <span className="dir-row-leader" aria-hidden="true" />
+                <span className="dir-row-meta" aria-hidden="true">
+                  Side by side →
+                </span>
+              </Link>
+            )}
+            <SaveStack items={items} title={stack.title} from="stacks" />
+          </section>
+
           <nav
             aria-label="More stacks"
             className="mt-10 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 border-t-[3px] border-[var(--dir-ink)]! pt-4 text-[16px] font-bold"
@@ -164,6 +187,13 @@ export default async function StackPage({ params }: Props) {
           ))}
 
           <div className="agent-section-title">more</div>
+          {compared.length > 1 && (
+            <Link href={compareHref(compared)} className="agent-row agent-row-stack no-underline hover:underline">
+              <span className="agent-accent">{compareHref(compared)}</span>
+              <span className="agent-dim">{compareLabel.toLowerCase()} side by side</span>
+              <span className="agent-dim" />
+            </Link>
+          )}
           {stack.week && (
             <Link href={`/drops/${stack.week}`} className="agent-row no-underline hover:underline">
               <span className="agent-accent">/drops/{stack.week}</span>

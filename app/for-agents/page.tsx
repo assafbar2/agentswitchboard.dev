@@ -8,6 +8,7 @@ import { COMPARE_MAX } from '@/lib/compare-link';
 import { NEW_DAYS } from '@/lib/freshness';
 import { FEATURED_DEFINITION, OFFICIAL_DEFINITION } from '@/lib/public-api';
 import { MIN_ALTERNATIVES } from '@/lib/related';
+import { MY_STACK_MAX } from '@/lib/stack-link';
 import type { Agent } from '@/lib/types';
 
 export function generateMetadata(_props: unknown, parent: ResolvingMetadata): Promise<Metadata> {
@@ -343,6 +344,14 @@ GET /api/tasks/<slug>
               </Link>
               , each tool with why it is in the stack; as JSON at{' '}
               <code className="font-bold">GET /api/stacks</code>
+            </li>
+            <li>
+              <span className="font-bold">→ A stack of your own to hand a user:</span>{' '}
+              <code className="font-bold break-all">https://agentswitchboard.dev/stack?items=&lt;slug&gt;,&lt;slug&gt;&amp;title=&lt;title&gt;</code>
+              , up to {MY_STACK_MAX} listings in your order, as a page they can open, compare and copy to{' '}
+              <Link href="/my-stack" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
+                My stack
+              </Link>
             </li>
             <li>
               <span className="font-bold">→ Tasks, to start from the job (&quot;query a database&quot;):</span>{' '}

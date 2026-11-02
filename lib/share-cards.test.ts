@@ -20,6 +20,8 @@ import {
   newCard,
   newCardImage,
   sampleIcons,
+  sharedStackCard,
+  sharedStackCardImage,
   siteCard,
   siteCardImage,
   taskCard,
@@ -322,5 +324,31 @@ describe('compareCard and comparisonsCard', () => {
       icons: ['/icons/gmail.png?v=aaaa0001', '/icons/agentmail.png?v=aca5768d', '/icons/slack.png?v=cccc0001'],
     });
     expect(comparisonsCardImage(card).url).toMatch(/^\/compare\/card\.png\?v=[0-9a-f]{8}$/);
+  });
+});
+
+describe('sharedStackCard', () => {
+  const plain = makeAgent({ slug: 'plain', name: 'Plain', iconUrl: undefined, accessMethods: ['cli'] });
+
+  it("is titled as shared, and promises the stack's listing names", () => {
+    expect(sharedStackCard('Mail tools', [makeAgent(), plain])).toEqual({
+      title: 'Mail tools',
+      promise: 'AgentMail and Plain',
+      week: null,
+      shared: true,
+      tools: 2,
+      access: ['API', 'MCP', 'CLI', 'Extension'],
+      icons: ['/icons/agentmail.png?v=aca5768d'],
+    });
+    expect(sharedStackCard('', [plain]).title).toBe('A shared stack');
+  });
+
+  it('is drawn at the link of the same listings and title, and says how many tools', () => {
+    const image = sharedStackCardImage(['agentmail', 'plain'], 'Mail tools', sharedStackCard('Mail tools', [makeAgent(), plain]));
+    expect(image.url).toMatch(/^\/stack\/card\.png\?items=agentmail,plain&title=Mail%20tools&v=[0-9a-f]{8}$/);
+    expect(image.alt).toBe('Mail tools: a stack of 2 tools, shared on Agent Switchboard');
+    expect(sharedStackCardImage(['plain'], '', sharedStackCard('', [plain])).alt).toBe(
+      'A shared stack: a stack of 1 tool, shared on Agent Switchboard'
+    );
   });
 });

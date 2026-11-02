@@ -40,10 +40,10 @@ export type AgentCardData = Pick<
 /**
  * `why` adds a closing line saying why the listing is shown here. A listing
  * added in the last 30 days (lib/freshness.ts) is tagged New, unless the list
- * already says when it was added (`markNew={false}`). The Compare toggle sits
- * beside the link, since a button can't go inside one;
- * components/CompareTray.tsx shows it and reads the name and icon from the
- * card.
+ * already says when it was added (`markNew={false}`). The Compare and My stack
+ * toggles sit beside the link, since a button can't go inside one;
+ * components/CompareTray.tsx and components/MyStackClient.tsx show them and
+ * read the name and icon from the card.
  */
 export function AgentCard({ agent, why, markNew = true }: { agent: AgentCardData; why?: string; markNew?: boolean }) {
   const skillCount = agent.skills.length;
@@ -109,6 +109,7 @@ export function AgentCard({ agent, why, markNew = true }: { agent: AgentCardData
       <button type="button" data-cmp={agent.slug} aria-label={`Compare ${agent.name}`} className="cmp-toggle">
         Compare
       </button>
+      <button type="button" data-stk={agent.slug} aria-label={`Add ${agent.name} to My stack`} className="stk-toggle" />
     </div>
   );
 }
