@@ -15,6 +15,8 @@ import {
   CARD_SIZE,
   type AlternativesCard,
   type CategoryCard,
+  type CompareCard,
+  type ComparisonsCard,
   type DropCard,
   type ListingCard,
   type SiteCard,
@@ -270,6 +272,81 @@ export async function renderTasksCard(card: TasksCard): Promise<ImageResponse> {
       icons={await Promise.all(card.icons.map(iconSrc))}
     />
   );
+}
+
+export async function renderCompareCard(card: CompareCard): Promise<ImageResponse> {
+  const icons = await Promise.all(card.columns.map((c) => (c.icon ? iconSrc(c.icon) : null)));
+  const three = card.columns.length > 2;
+  return render(
+    <Frame kicker="Compare">
+      <div style={{ display: 'flex', flex: 1, paddingBottom: 28 }}>
+        {card.columns.map((column, i) => (
+          <div key={i} style={{ display: 'flex', flex: 1, minWidth: 0 }}>
+            {i > 0 && (
+              <div style={{ display: 'flex', alignItems: 'center', padding: '0 22px', fontSize: 34, fontWeight: 800, color: MUTED }}>
+                vs
+              </div>
+            )}
+            <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minWidth: 0 }}>
+              <Icon src={icons[i]} name={column.name} size={three ? 96 : 120} />
+              <div
+                style={{
+                  display: 'block',
+                  lineClamp: 2,
+                  marginTop: 22,
+                  fontSize: compareNameSize(column.name, three),
+                  fontWeight: 800,
+                  lineHeight: 1,
+                  letterSpacing: '-0.02em',
+                }}
+              >
+                {column.name}
+              </div>
+              <div style={{ display: 'block', lineClamp: 1, marginTop: 10, fontSize: 26, fontWeight: 600, color: MUTED }}>
+                {`by ${column.provider}`}
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 'auto' }}>
+                {column.access.map((label) => (
+                  <div
+                    key={label}
+                    style={{
+                      display: 'flex',
+                      padding: '6px 12px',
+                      background: YELLOW,
+                      fontSize: 20,
+                      fontWeight: 800,
+                      letterSpacing: '0.08em',
+                      textTransform: 'uppercase',
+                    }}
+                  >
+                    {label}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Frame>
+  );
+}
+
+export async function renderComparisonsCard(card: ComparisonsCard): Promise<ImageResponse> {
+  return render(
+    <Headline
+      kicker="Compare"
+      title="Compare AI tools"
+      counts={`Up to 3 side by side · ${formatNumber(card.comparisons)} curated ${pluralize(card.comparisons, 'comparison')}`}
+      text="What each does, how you connect it, what it needs to sign in, and its skills, from each listing's own data."
+      icons={await Promise.all(card.icons.map(iconSrc))}
+    />
+  );
+}
+
+/** Three columns leave about 300px for a name, two about 470px; each name gets two lines. */
+function compareNameSize(name: string, three: boolean): number {
+  if (three) return name.length <= 14 ? 48 : 40;
+  return name.length <= 20 ? 60 : 50;
 }
 
 /** A title, a bold count line, a muted line of up to two rows, and a row of icons along the bottom. */

@@ -4,6 +4,7 @@ import { pageMetadata } from '@/lib/metadata';
 import { EndpointLink } from '@/components/EndpointLink';
 import { VerifiedBadge, VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 import { getEveryAgent } from '@/lib/catalog';
+import { COMPARE_MAX } from '@/lib/compare-link';
 import { FEATURED_DEFINITION, OFFICIAL_DEFINITION } from '@/lib/public-api';
 import { MIN_ALTERNATIVES } from '@/lib/related';
 import type { Agent } from '@/lib/types';
@@ -326,6 +327,14 @@ GET /api/tasks/<slug>
               </Link>
               , each with the listings that fit it, best first, and why; as JSON at{' '}
               <code className="font-bold">GET /api/tasks</code>
+            </li>
+            <li>
+              <span className="font-bold">→ Compare up to {COMPARE_MAX} listings side by side:</span>{' '}
+              <code className="font-bold">https://agentswitchboard.dev/compare?a=&lt;slug&gt;&amp;b=&lt;slug&gt;&amp;c=&lt;slug&gt;</code>
+              , with what sets each apart; curated comparisons are listed at{' '}
+              <Link href="/compare" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
+                https://agentswitchboard.dev/compare
+              </Link>
             </li>
             <li>
               <span className="font-bold">→ Plain-language guide:</span>{' '}

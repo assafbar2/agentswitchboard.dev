@@ -1,5 +1,7 @@
 import { VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 import { getEveryAgent, getAllCategories } from '@/lib/catalog';
+import { curatedComparisons } from '@/lib/compare';
+import { COMPARE_MAX } from '@/lib/compare-link';
 import { getDropSchedule } from '@/lib/drops';
 import { FEATURED_DEFINITION, OFFICIAL_DEFINITION } from '@/lib/public-api';
 import { MIN_ALTERNATIVES } from '@/lib/related';
@@ -22,6 +24,7 @@ export async function GET() {
   const stacks = getStacks();
   const week = stackOfTheWeek(stacks);
   const weekLine = week ? `; stack of the week: https://agentswitchboard.dev/stacks/${week.slug}` : '';
+  const comparisons = curatedComparisons(agents);
 
   const body = `# Agent Switchboard
 
@@ -52,6 +55,7 @@ The \`verified\`, \`official\` and \`featured\` flags in search and detail resul
 - Alternatives to a listing: https://agentswitchboard.dev/agents/<slug>/alternatives (listings with at least ${MIN_ALTERNATIVES}; each says what it has in common)
 - Stacks, tools that work together for one job: https://agentswitchboard.dev/stacks (${stacks.length} stacks, each tool with why it is there${weekLine})
 - Tasks, to start from the job ("query a database"): https://agentswitchboard.dev/tasks (${getTasks().length} tasks, each with the listings that fit it, best first; /browse?task=<slug> filters them)
+- Compare up to ${COMPARE_MAX} listings side by side: https://agentswitchboard.dev/compare?a=<slug>&b=<slug>&c=<slug> (what each does, access, auth, how to connect it, skills; ${comparisons.length} curated comparisons are listed at https://agentswitchboard.dev/compare)
 
 For a job rather than a product name, GET /api/tasks lists the tasks, and
 GET /api/agents?task=<slug> (or \`task\` on the \`search_agents\` MCP tool) returns

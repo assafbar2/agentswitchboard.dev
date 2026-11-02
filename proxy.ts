@@ -1,9 +1,14 @@
 import { NextResponse, type NextRequest } from 'next/server';
+import comparisons from '@/content/comparisons.json';
+import { COMPARE_MAX, compareQuery } from '@/lib/compare-link';
 import { EDGE_LOGGED_HEADER, logEdgeDoc } from '@/lib/log';
+
+const CURATED = new Set(comparisons.map((c) => c.items.join('-vs-')));
+const SLUG = /^[a-z0-9][a-z0-9-]{0,80}$/;
 
 /**
  * Runs before routing (Next 16 renamed the `middleware` convention to
- * `proxy`). Two jobs, both narrow:
+ * `proxy`). Three jobs, all narrow:
  *
  * 1. Markdown content negotiation for the homepage. Any request for `/` that
  *    does not explicitly prefer text/markdown falls straight through to the
@@ -15,9 +20,26 @@ import { EDGE_LOGGED_HEADER, logEdgeDoc } from '@/lib/log';
  *    route code does not run per request and cannot log them. The proxy sees
  *    every hit: it logs one line synchronously, leaves the analytics event to
  *    after(), and never changes the response, so caching is unaffected.
+ *
+ * 3. A /compare/<a>-vs-<b> address that is not a curated comparison (typed by
+ *    hand, or no longer curated) goes to its /compare link, which renders any
+ *    mix. The pair page builds only the curated ones, so an arbitrary address
+ *    never reaches the page cache.
  */
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  if (pathname.startsWith('/compare/')) {
+    const pair = pathname.slice('/compare/'.length);
+    const slugs = pair.split('-vs-');
+    if (CURATED.has(pair) || slugs.length < 2 || slugs.length > COMPARE_MAX || !slugs.every((s) => SLUG.test(s))) {
+      return NextResponse.next();
+    }
+    const target = request.nextUrl.clone();
+    target.pathname = '/compare';
+    target.search = compareQuery(slugs);
+    return NextResponse.redirect(target);
+  }
 
   if (pathname === '/') {
     const accept = request.headers.get('accept') ?? '';
@@ -55,5 +77,6 @@ export const config = {
     '/SKILL.md',
     '/openapi.json',
     '/.well-known/:path*',
+    '/compare/:pair',
   ],
 };

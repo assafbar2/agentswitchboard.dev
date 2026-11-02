@@ -6,7 +6,10 @@ import { VerifiedBadge } from '@/components/VerifiedBadge';
 import { AgentCard } from '@/components/AgentCard';
 import { AgentIcon } from '@/components/AgentIcon';
 import { JsonLd } from '@/components/JsonLd';
+import { CompareWith } from '@/components/CompareWith';
 import { UseItNow } from '@/components/UseItNow';
+import { comparisonsWith, curatedComparisons } from '@/lib/compare';
+import { COMPARE_MAX, compareHref } from '@/lib/compare-link';
 import { alternativesPage, getRelatedAgents } from '@/lib/related';
 import { tryThis } from '@/lib/try-this';
 import { howToUse, howToUseRows } from '@/lib/use-it-now';
@@ -76,6 +79,9 @@ export default async function AgentPage({
   const tryFirst = tryThis(agent);
   const use = howToUse(agent);
   const useRows = howToUseRows(use);
+  const compareTop = related.slice(0, COMPARE_MAX - 1);
+  const compareTopHref = compareHref([agent.slug, ...compareTop.map((a) => a.slug)]);
+  const comparisons = comparisonsWith(agent.slug, curatedComparisons(allAgents));
 
   // No `offers`: the catalog has no pricing data, and "no auth" does not mean
   // free (paid products such as Midjourney list authType "none").
@@ -164,6 +170,8 @@ export default async function AgentPage({
           <p className="text-lg leading-relaxed mb-8">{agent.description}</p>
 
           <UseItNow agent={agent} tryThis={tryFirst} use={use} />
+
+          <CompareWith agent={agent} top={compareTop} comparisons={comparisons} />
 
           {/* Facts: how you reach it, how it authenticates, what it does, as a
               ruled definition list (label, dotted leader, value). */}
@@ -338,6 +346,26 @@ export default async function AgentPage({
                 <span className="agent-dim">{alternatives.length} listed</span>
                 <span className="agent-dim">{alternatives.slice(0, 3).map((a) => a.agent.slug).join(', ')}</span>
               </Link>
+            </>
+          )}
+
+          {(compareTop.length > 0 || comparisons.length > 0) && (
+            <>
+              <div className="agent-section-title">compare</div>
+              {compareTop.length > 0 && (
+                <Link href={compareTopHref} className="agent-row no-underline hover:underline">
+                  <span className="agent-accent break-all">{compareTopHref}</span>
+                  <span className="agent-dim">with {compareTop.map((a) => a.slug).join(', ')}</span>
+                  <span />
+                </Link>
+              )}
+              {comparisons.map((c) => (
+                <Link key={c.slug} href={`/compare/${c.slug}`} className="agent-row no-underline hover:underline">
+                  <span className="agent-accent break-all">/compare/{c.slug}</span>
+                  <span className="agent-dim">curated comparison</span>
+                  <span />
+                </Link>
+              ))}
             </>
           )}
 

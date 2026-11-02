@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import { JetBrains_Mono, Inter, Barlow_Semi_Condensed } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
+import { CompareTray } from '@/components/CompareTray';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { WebMcp } from '@/components/WebMcp';
@@ -96,6 +97,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <CompareTray />
         <WebMcp />
         {umamiWebsiteId ? (
           <Script

@@ -1,5 +1,7 @@
 import { VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 import { getEveryAgent, getAllCategories } from '@/lib/catalog';
+import { curatedComparisons } from '@/lib/compare';
+import { COMPARE_MAX } from '@/lib/compare-link';
 import { getDropSchedule } from '@/lib/drops';
 import { BASE_URL } from '@/lib/env';
 import { FEATURED_DEFINITION, OFFICIAL_DEFINITION } from '@/lib/public-api';
@@ -38,6 +40,10 @@ export async function GET() {
     weekStack ? `; the stack of the week is [/stacks/${weekStack.slug}](${BASE_URL}/stacks/${weekStack.slug})` : ''
   }. JSON: \`/api/stacks\`.`;
   const taskLine = `\n- [/tasks](${BASE_URL}/tasks) — ${getTasks().length} tasks, to start from the job ("query a database"): each lists the listings that fit it, best first, with why. JSON: \`/api/tasks\`; filter one with \`/api/agents?task={slug}\`.`;
+  const comparisons = curatedComparisons(agents);
+  const compareLine = `\n- [/compare](${BASE_URL}/compare) — up to ${COMPARE_MAX} listings side by side at \`/compare?a={slug}&b={slug}&c={slug}\`: what each does, access, auth, how to connect it, skills. ${comparisons.length} curated comparisons${
+    comparisons[0] ? `, such as [/compare/${comparisons[0].slug}](${BASE_URL}/compare/${comparisons[0].slug})` : ''
+  }.`;
 
   const body = `# Agent Switchboard
 
@@ -57,7 +63,7 @@ The \`verified\`, \`official\` and \`featured\` flags in search and detail resul
 - [/.well-known/mcp.json](${BASE_URL}/.well-known/mcp.json) — MCP server manifest.
 - [/agents.json](${BASE_URL}/agents.json) — the entire catalog as one large JSON file, no auth. Use it for bulk or offline work; search for everything else.
 - [/llms.txt](${BASE_URL}/llms.txt) — plain-language site guide.
-- [/for-agents](${BASE_URL}/for-agents) — how to use all of the above.${dropLine}${stackLine}${taskLine}
+- [/for-agents](${BASE_URL}/for-agents) — how to use all of the above.${dropLine}${stackLine}${taskLine}${compareLine}
 
 ## When to use this site
 
@@ -69,7 +75,7 @@ ${categories.map((c) => `- ${c.name} (\`${c.slug}\`)`).join('\n')}
 
 ## Pages
 
-- [Browse](${BASE_URL}/browse) · [Categories](${BASE_URL}/categories) · [Tasks](${BASE_URL}/tasks) · [Weekly drops](${BASE_URL}/drops) · [Stacks](${BASE_URL}/stacks) · [Submit an agent](${BASE_URL}/submit)
+- [Browse](${BASE_URL}/browse) · [Categories](${BASE_URL}/categories) · [Tasks](${BASE_URL}/tasks) · [Weekly drops](${BASE_URL}/drops) · [Stacks](${BASE_URL}/stacks) · [Compare](${BASE_URL}/compare) · [Submit an agent](${BASE_URL}/submit)
 - [About](${BASE_URL}/about) · [Contact](${BASE_URL}/contact) · [Privacy](${BASE_URL}/privacy) · [Terms of Use](${BASE_URL}/terms) · [Disclaimer](${BASE_URL}/disclaimer)
 
 Contact: barnir@agentmail.to

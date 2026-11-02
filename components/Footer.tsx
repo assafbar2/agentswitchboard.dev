@@ -12,6 +12,7 @@ const footerLinks = [
       { href: '/tasks', label: 'Tasks' },
       { href: '/drops', label: 'Weekly Drops' },
       { href: '/stacks', label: 'Stacks' },
+      { href: '/compare', label: 'Compare' },
       { href: '/submit', label: 'List Your Agent' },
     ],
   },

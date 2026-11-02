@@ -35,7 +35,12 @@ export type AgentCardData = Pick<
   skills: readonly unknown[];
 };
 
-/** `why` adds a closing line saying why the listing is shown here. */
+/**
+ * `why` adds a closing line saying why the listing is shown here. The
+ * Compare toggle sits beside the link, since a button can't go inside one;
+ * components/CompareTray.tsx shows it and reads the name and icon from the
+ * card.
+ */
 export function AgentCard({ agent, why }: { agent: AgentCardData; why?: string }) {
   const skillCount = agent.skills.length;
   const auth = agent.authType === 'none' ? 'No auth' : authTypeLabel(agent.authType);
@@ -48,50 +53,55 @@ export function AgentCard({ agent, why }: { agent: AgentCardData; why?: string }
   // right-aligned, the one-line description beneath, then provider and the
   // small labels.
   return (
-    <Link
-      href={`/agents/${agent.slug}`}
-      className="group block min-w-0 border-b border-[var(--dir-rule)]! px-0.5 py-3 font-[family-name:var(--font-display)] text-[var(--dir-ink)] no-underline hover:no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--dir-ink)]"
-    >
-      <div className="flex min-w-0 items-baseline gap-1.5">
-        <AgentIcon name={agent.name} iconUrl={agent.iconUrl} className="mr-0.5 self-start" />
-        <h3 className="min-w-0 wrap-break-word text-[17px] font-bold leading-snug group-hover:underline">
-          {agent.name}
-        </h3>
-        <span
-          aria-hidden="true"
-          className="min-w-4 flex-1 -translate-y-1 border-b-2 border-dotted border-[var(--dir-leader)]!"
-        />
-        <span className="shrink-0 whitespace-nowrap text-sm font-semibold tracking-[0.06em]">
-          {access || '—'}
-        </span>
-      </div>
-
-      <p className="mt-0.5 line-clamp-2 text-[15px] leading-snug text-[var(--dir-muted)] sm:line-clamp-1">
-        {truncate(agent.description, 120)}
-      </p>
-
-      <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-[13px] leading-5 text-[var(--dir-muted)]">
-        {hasLabels && (
-          <span className="flex flex-wrap items-center gap-1">
-            {agent.verified && <VerifiedBadge />}
-            <OfficialBadge agent={agent} />
-            {agent.sponsorLabel && <Badge variant="sponsor">{agent.sponsorLabel}</Badge>}
-            {agent.featured && <Badge variant="amber">Featured</Badge>}
-            {agent.tier === 'premium' && <Badge variant="amber">Premium</Badge>}
+    <div className="cmp-card relative min-w-0">
+      <Link
+        href={`/agents/${agent.slug}`}
+        className="group block min-w-0 border-b border-[var(--dir-rule)]! px-0.5 py-3 font-[family-name:var(--font-display)] text-[var(--dir-ink)] no-underline hover:no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--dir-ink)]"
+      >
+        <div className="flex min-w-0 items-baseline gap-1.5">
+          <AgentIcon name={agent.name} iconUrl={agent.iconUrl} className="mr-0.5 self-start" />
+          <h3 className="min-w-0 wrap-break-word text-[17px] font-bold leading-snug group-hover:underline">
+            {agent.name}
+          </h3>
+          <span
+            aria-hidden="true"
+            className="min-w-4 flex-1 -translate-y-1 border-b-2 border-dotted border-[var(--dir-leader)]!"
+          />
+          <span className="shrink-0 whitespace-nowrap text-sm font-semibold tracking-[0.06em]">
+            {access || '—'}
           </span>
-        )}
-        <span className="min-w-0 wrap-break-word">
-          {`by ${agent.providerName}`}
-          {categories && ` · ${categories}`}
-          {` · ${meta}`}
-        </span>
-      </div>
+        </div>
 
-      {why && (
-        <p className="mt-1.5 text-[15px] leading-snug">
-          <span className="dir-label text-[13px]">Why</span> {why}
+        <p className="mt-0.5 line-clamp-2 text-[15px] leading-snug text-[var(--dir-muted)] sm:line-clamp-1">
+          {truncate(agent.description, 120)}
         </p>
-      )}
-    </Link>
+
+        <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-[13px] leading-5 text-[var(--dir-muted)]">
+          {hasLabels && (
+            <span className="flex flex-wrap items-center gap-1">
+              {agent.verified && <VerifiedBadge />}
+              <OfficialBadge agent={agent} />
+              {agent.sponsorLabel && <Badge variant="sponsor">{agent.sponsorLabel}</Badge>}
+              {agent.featured && <Badge variant="amber">Featured</Badge>}
+              {agent.tier === 'premium' && <Badge variant="amber">Premium</Badge>}
+            </span>
+          )}
+          <span className="min-w-0 wrap-break-word">
+            {`by ${agent.providerName}`}
+            {categories && ` · ${categories}`}
+            {` · ${meta}`}
+          </span>
+        </div>
+
+        {why && (
+          <p className="mt-1.5 text-[15px] leading-snug">
+            <span className="dir-label text-[13px]">Why</span> {why}
+          </p>
+        )}
+      </Link>
+      <button type="button" data-cmp={agent.slug} aria-label={`Compare ${agent.name}`} className="cmp-toggle">
+        Compare
+      </button>
+    </div>
   );
 }

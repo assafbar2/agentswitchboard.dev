@@ -7,6 +7,11 @@ import {
   CARD_DESIGN,
   categoryCard,
   categoryCardImage,
+  compareCard,
+  compareCardImage,
+  comparisonCardImage,
+  comparisonsCard,
+  comparisonsCardImage,
   dropCard,
   dropCardImage,
   listingCard,
@@ -226,5 +231,36 @@ describe('taskCard and tasksCard', () => {
     expect(card).toEqual({ tasks: 2, tools: 5, icons: ['/icons/gmail.png?v=aaaa0001', '/icons/agentmail.png?v=aca5768d'] });
     expect(tasksCardImage(card).url).toMatch(/^\/tasks\/card\.png\?v=[0-9a-f]{8}$/);
     expect(tasksCardImage(card).alt).toBe('2 tasks, each with the AI tools that do it, on Agent Switchboard');
+  });
+});
+
+describe('compareCard and comparisonsCard', () => {
+  const plain = makeAgent({ slug: 'plain', name: 'Plain', providerName: 'Plain Co', iconUrl: undefined, accessMethods: ['cli'] });
+
+  it("shows each column's name, provider, icon and access, in column order", () => {
+    expect(compareCard([makeAgent(), plain])).toEqual({
+      columns: [
+        { name: 'AgentMail', provider: 'AgentMail', icon: '/icons/agentmail.png?v=aca5768d', access: ['API', 'MCP', 'Extension'] },
+        { name: 'Plain', provider: 'Plain Co', icon: null, access: ['CLI'] },
+      ],
+    });
+    const curated = comparisonCardImage(['agentmail', 'plain'], compareCard([makeAgent(), plain]));
+    expect(curated.url).toMatch(/^\/compare\/agentmail-vs-plain\/card\.png\?v=[0-9a-f]{8}$/);
+    expect(curated.alt).toBe('AgentMail vs Plain, side by side on Agent Switchboard');
+    const other = compareCardImage(['agentmail', 'plain'], compareCard([makeAgent(), plain]));
+    expect(other.url).toMatch(/^\/compare\/card\.png\?a=agentmail&b=plain&v=[0-9a-f]{8}$/);
+    expect(other.alt).toBe(curated.alt);
+  });
+
+  it('counts the curated comparisons and shows their icons in order, each image once', () => {
+    const card = comparisonsCard([
+      [official('gmail', 'Google', 'aaaa0001'), makeAgent()],
+      [makeAgent(), plain, official('slack', 'Slack', 'cccc0001')],
+    ]);
+    expect(card).toEqual({
+      comparisons: 2,
+      icons: ['/icons/gmail.png?v=aaaa0001', '/icons/agentmail.png?v=aca5768d', '/icons/slack.png?v=cccc0001'],
+    });
+    expect(comparisonsCardImage(card).url).toMatch(/^\/compare\/card\.png\?v=[0-9a-f]{8}$/);
   });
 });

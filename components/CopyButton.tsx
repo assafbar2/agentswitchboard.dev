@@ -32,7 +32,7 @@ export function CopyButton({
   what: string;
   /** Analytics event counted on each copy. */
   event: string;
-  data?: Record<string, string>;
+  data?: Record<string, string | number | boolean>;
 }) {
   const available = useSyncExternalStore(noopSubscribe, hasClipboard, () => false);
   const [state, setState] = useState<keyof typeof LABELS>('idle');
