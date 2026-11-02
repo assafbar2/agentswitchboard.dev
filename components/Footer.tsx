@@ -14,6 +14,7 @@ const footerLinks = [
       { href: '/drops', label: 'Weekly Drops' },
       { href: '/new', label: 'New Listings' },
       { href: '/stacks', label: 'Stacks' },
+      { href: '/my-stack', label: 'My Stack' },
       { href: '/compare', label: 'Compare' },
       { href: '/submit', label: 'List Your Agent' },
     ],

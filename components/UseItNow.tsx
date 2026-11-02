@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { CopyButton } from '@/components/CopyButton';
+import { MyStackToggle } from '@/components/MyStackToggle';
 import { PART_HEADING, TryThisFirst } from '@/components/TryThisFirst';
 import { UseItEvents } from '@/components/UseItEvents';
 import type { TryThis } from '@/lib/try-this';
@@ -65,21 +66,27 @@ function Docs({ url, method, guide }: { url: string; method: string; guide: bool
   );
 }
 
+/** Whether UseItNow has anything to show. */
+export function hasUseItNow(tryThis: TryThis | null, { mcp, cli, api, extension }: UseItNowData): boolean {
+  return Boolean(tryThis || mcp || cli || api || extension);
+}
+
 /**
- * "Use it now", under a listing's description: its Try this first prompts,
- * then one part per access method, all from lib/use-it-now.ts.
+ * "Use it now", under a listing's description: the My stack toggle, its Try
+ * this first prompts, then one part per access method, all from
+ * lib/use-it-now.ts.
  */
 export function UseItNow({
   agent,
   tryThis,
   use,
 }: {
-  agent: Pick<Agent, 'slug' | 'name' | 'providerName' | 'authType' | 'quickstartUrl'>;
+  agent: Pick<Agent, 'slug' | 'name' | 'iconUrl' | 'providerName' | 'authType' | 'quickstartUrl'>;
   tryThis: TryThis | null;
   use: UseItNowData;
 }) {
   const { mcp, cli, api, extension } = use;
-  if (!tryThis && !mcp && !cli && !api && !extension) return null;
+  if (!hasUseItNow(tryThis, use)) return null;
   const { slug } = agent;
   const guide = Boolean(agent.quickstartUrl);
   const signIn = agent.authType !== 'none' && (
@@ -93,6 +100,7 @@ export function UseItNow({
       <h2 id="use-it-now" className="dir-bar">
         Use it now
       </h2>
+      <MyStackToggle agent={agent} className="pt-4" />
       <UseItEvents slug={slug}>
         <div className="pt-4">
           {tryThis && <TryThisFirst slug={slug} tryThis={tryThis} />}

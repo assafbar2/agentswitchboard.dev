@@ -240,7 +240,7 @@ export async function renderStackCard(card: StackCard): Promise<ImageResponse> {
   const counts = `${formatNumber(card.tools)} ${pluralize(card.tools, 'tool')}${card.week ? ` · ${card.week}` : ''}`;
   return render(
     <Frame
-      kicker={card.week ? 'Stack of the week' : 'Stack'}
+      kicker={card.shared ? 'Shared stack' : card.week ? 'Stack of the week' : 'Stack'}
       footer={card.access.length > 0 ? <Tags labels={card.access} /> : null}
     >
       <div

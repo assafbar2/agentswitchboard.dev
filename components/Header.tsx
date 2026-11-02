@@ -2,10 +2,11 @@
 
 import Link from 'next/link';
 import { useId, useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Layers, Menu, X } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { ViewModeToggle } from '@/components/ViewModeToggle';
 import { AgentBar } from '@/components/AgentBar';
+import { useMyStack } from '@/lib/my-stack';
 
 const navLinks = [
   { href: '/browse', label: 'Browse' },
@@ -35,6 +36,7 @@ const navLinkClass =
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const kept = useMyStack().items.length;
 
   return (
     <>
@@ -60,8 +62,21 @@ export function Header() {
             ))}
           </nav>
 
-          {/* View toggle, theme, mobile menu */}
+          {/* My stack, view toggle, theme, mobile menu */}
           <div className="ml-auto flex items-center gap-3 pl-3 pr-4 sm:pr-6 xl:pr-10">
+            {/* Once something is in My stack. On a phone it is in the menu;
+                at lg, beside the nav, only the icon and count fit. */}
+            {kept > 0 && (
+              <Link
+                href="/my-stack"
+                aria-label={`My stack: ${kept} ${kept === 1 ? 'listing' : 'listings'}`}
+                className={`${navLinkClass} hidden min-h-11 items-center gap-1.5 whitespace-nowrap text-[17px] font-semibold sm:inline-flex`}
+              >
+                <Layers aria-hidden="true" className="h-5 w-5 shrink-0" />
+                <span className="lg:hidden xl:inline">My stack ·</span>
+                <span>{kept}</span>
+              </Link>
+            )}
             {/* Segmented view toggle. Below lg it lives in the mobile menu
                 instead, so it never shows twice. */}
             <LabelledViewModeToggle className="hidden lg:block" />
@@ -94,6 +109,15 @@ export function Header() {
                   {link.label}
                 </Link>
               ))}
+              {kept > 0 && (
+                <Link
+                  href="/my-stack"
+                  onClick={() => setMobileOpen(false)}
+                  className={`${navLinkClass} flex min-h-11 items-center border-b border-[var(--dir-rule)] px-1 text-[17px] font-semibold`}
+                >
+                  My stack · {kept}
+                </Link>
+              )}
               {/* View toggle in mobile menu */}
               <div className="mt-4">
                 <LabelledViewModeToggle toggleClassName="w-full [&>button]:flex-1 [&>button]:justify-center" />

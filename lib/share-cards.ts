@@ -17,16 +17,17 @@ import type { NewGroup } from './freshness';
 import { inlineMarkdownToText } from './inline-markdown';
 import type { Alternative } from './related';
 import { ACCESS_METHOD_LABELS } from './search';
+import { stackQuery, UNTITLED_STACK } from './stack-link';
 import { stackAccessMethods, type Stack, type StackEntry } from './stacks';
 import { taskTitle, type Task } from './tasks';
 import type { Agent, Category } from './types';
-import { formatDay } from './utils';
+import { formatDay, joinList, pluralize } from './utils';
 
 /**
  * Hash of lib/og.tsx and assets/fonts/, so a redesigned card gets new URLs.
  * lib/share-cards.test.ts prints the new value whenever either changes.
  */
-export const CARD_DESIGN = '8f42b104';
+export const CARD_DESIGN = '457160ab';
 
 export const CARD_SIZE = { width: 1200, height: 630 } as const;
 
@@ -106,9 +107,12 @@ export interface AlternativesCard {
 
 export interface StackCard {
   title: string;
+  /** A curated stack's promise; a shared stack's listing names. */
   promise: string;
   /** As the page shows it, for a stack of the week: "Oct 31, 2026". */
   week: string | null;
+  /** Made by a visitor on My stack and shared as a /stack link, not curated. */
+  shared: boolean;
   tools: number;
   /** Display labels of every access method in the stack, in the site's order. */
   access: string[];
@@ -259,9 +263,23 @@ export function stackCard(stack: Stack, entries: StackEntry[]): StackCard {
     title: stack.title,
     promise: stack.promise,
     week: stack.week ? formatDay(stack.week) : null,
+    shared: false,
     tools: entries.length,
     access: stackAccessMethods(entries).map((m) => ACCESS_METHOD_LABELS[m]),
     icons: distinctIcons(entries.map((e) => e.agent)),
+  };
+}
+
+/** A shared stack's card: `title` as lib/shared-stack.ts cleans it, `agents` its listings still in the directory. */
+export function sharedStackCard(title: string, agents: Agent[]): StackCard {
+  return {
+    title: title || UNTITLED_STACK,
+    promise: joinList(agents.map((a) => a.name)),
+    week: null,
+    shared: true,
+    tools: agents.length,
+    access: stackAccessMethods(agents.map((agent) => ({ agent, why: '' }))).map((m) => ACCESS_METHOD_LABELS[m]),
+    icons: distinctIcons(agents),
   };
 }
 
@@ -351,6 +369,15 @@ export function alternativesCardImage(slug: string, card: AlternativesCard): Sha
 
 export function stackCardImage(slug: string, card: StackCard): ShareImage {
   return shareImage(`/stacks/${slug}/card.png`, card, `${card.title}: a stack of ${card.tools} tools on Agent Switchboard`);
+}
+
+/** Drawn when asked for at /stack/card.png?items=…&title=…, like any other mix on /compare. */
+export function sharedStackCardImage(slugs: readonly string[], title: string, card: StackCard): ShareImage {
+  return shareImage(
+    `/stack/card.png?${stackQuery(slugs, title)}`,
+    card,
+    `${card.title}: a stack of ${card.tools} ${pluralize(card.tools, 'tool')}, shared on Agent Switchboard`
+  );
 }
 
 export function stacksCardImage(card: StacksCard): ShareImage {

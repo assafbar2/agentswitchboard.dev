@@ -7,7 +7,8 @@ import { AgentCard } from '@/components/AgentCard';
 import { AgentIcon } from '@/components/AgentIcon';
 import { JsonLd } from '@/components/JsonLd';
 import { CompareWith } from '@/components/CompareWith';
-import { UseItNow } from '@/components/UseItNow';
+import { MyStackToggle } from '@/components/MyStackToggle';
+import { hasUseItNow, UseItNow } from '@/components/UseItNow';
 import { comparisonsWith, curatedComparisons } from '@/lib/compare';
 import { COMPARE_MAX, compareHref } from '@/lib/compare-link';
 import { alternativesPage, getRelatedAgents } from '@/lib/related';
@@ -169,7 +170,11 @@ export default async function AgentPage({
           {/* Description */}
           <p className="text-lg leading-relaxed mb-8">{agent.description}</p>
 
-          <UseItNow agent={agent} tryThis={tryFirst} use={use} />
+          {hasUseItNow(tryFirst, use) ? (
+            <UseItNow agent={agent} tryThis={tryFirst} use={use} />
+          ) : (
+            <MyStackToggle agent={agent} className="mb-10" />
+          )}
 
           <CompareWith agent={agent} top={compareTop} comparisons={comparisons} />
 

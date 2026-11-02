@@ -182,8 +182,7 @@ export default async function ChangelogPage() {
           <div className="mb-6">
             <div className="agent-accent text-base font-bold mb-1">/changelog</div>
             <div className="agent-dim text-xs">
-              {releases.length} releases · {entries.length} directory entries · newest first · source: CHANGELOG.md ·
-              each release&apos;s highlights, with the page to try each: /whats-new
+              {`${releases.length} releases · ${entries.length} directory entries · newest first · source: CHANGELOG.md · each release's highlights, with the page to try each: /whats-new`}
             </div>
           </div>
           <div className="agent-section-title">releases</div>

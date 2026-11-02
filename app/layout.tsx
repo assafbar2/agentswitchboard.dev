@@ -5,6 +5,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { CompareTray } from '@/components/CompareTray';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { MyStackClient } from '@/components/MyStackClient';
 import { WebMcp } from '@/components/WebMcp';
 import { getAllCategories, getEveryAgent } from '@/lib/catalog';
 import { siteCard, siteCardImage } from '@/lib/share-cards';
@@ -100,6 +101,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <CompareTray />
+        <MyStackClient />
         <WebMcp />
         {umamiWebsiteId ? (
           <Script

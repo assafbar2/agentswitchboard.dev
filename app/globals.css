@@ -545,6 +545,141 @@ body {
     display: none;
   }
 
+  /* "My stack" (components/MyStackClient.tsx): hidden until its script marks
+     the page ready, like Compare. On a card it is an icon-only square in the
+     bottom-right corner, with Compare moved left of it and its name shown as a
+     tooltip; the icon is a mask, so the card markup stays a bare button. */
+  .stk-toggle {
+    --stk-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z'/%3E%3Cpath d='M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 .82.18M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l2.12-.96M16 17h6M19 14v6'/%3E%3C/svg%3E");
+    --stk-icon-in: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z'/%3E%3Cpath d='M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 .82.18M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l1.1-.5M15.5 17.5l2 2 4.5-4.5'/%3E%3C/svg%3E");
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 28px;
+    height: 28px;
+    border: 2px solid var(--dir-ink);
+    background: var(--dir-paper);
+    color: var(--dir-ink);
+    cursor: pointer;
+  }
+
+  html[data-stk-ready] .stk-toggle {
+    display: inline-flex;
+  }
+
+  .stk-toggle::before {
+    content: '';
+    flex: none;
+    width: 16px;
+    height: 16px;
+    background: currentColor;
+    -webkit-mask: var(--stk-icon) center / contain no-repeat;
+    mask: var(--stk-icon) center / contain no-repeat;
+  }
+
+  .stk-toggle[aria-pressed='true'] {
+    background: var(--dir-yellow);
+    color: var(--dir-on-yellow);
+  }
+
+  .stk-toggle[aria-pressed='true']::before {
+    -webkit-mask-image: var(--stk-icon-in);
+    mask-image: var(--stk-icon-in);
+  }
+
+  .stk-toggle:hover {
+    background: var(--dir-yellow);
+    color: var(--dir-on-yellow);
+  }
+
+  .stk-toggle:focus-visible {
+    outline: 2px solid var(--dir-ink);
+    outline-offset: 2px;
+  }
+
+  .cmp-card > .stk-toggle {
+    position: absolute;
+    right: 2px;
+    bottom: 8px;
+  }
+
+  html[data-stk-ready] .cmp-card > .cmp-toggle {
+    right: 36px;
+  }
+
+  html[data-stk-ready] .cmp-card > a > :last-child {
+    padding-right: 2.5rem;
+  }
+
+  html[data-cmp-ready][data-stk-ready] .cmp-card > a > :last-child {
+    padding-right: 8.75rem;
+  }
+
+  .cmp-card > .stk-toggle:hover::after,
+  .cmp-card > .stk-toggle:focus-visible::after {
+    content: attr(aria-label);
+    position: absolute;
+    right: -2px;
+    bottom: calc(100% + 6px);
+    z-index: 2;
+    width: max-content;
+    max-width: 16rem;
+    padding: 4px 8px;
+    background: var(--dir-ink);
+    color: var(--dir-paper);
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.25;
+    text-align: left;
+    pointer-events: none;
+  }
+
+  .cmp-card > .stk-toggle[aria-pressed='true']:hover::after,
+  .cmp-card > .stk-toggle[aria-pressed='true']:focus-visible::after {
+    content: 'In My stack · press to take it out';
+  }
+
+  /* The listing page's toggle, in Use it now: button size, with its name. */
+  .stk-toggle.stk-toggle-lg {
+    width: auto;
+    height: auto;
+    min-height: 40px;
+    padding: 0 12px;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  html:not([data-stk-ready]) .stk-needs-js {
+    display: none;
+  }
+
+  /* What a toggle just did, shown for a moment above the compare tray. */
+  .stk-note {
+    position: fixed;
+    left: 50%;
+    bottom: calc(var(--cmp-tray-h, 0px) + 16px);
+    z-index: 45;
+    width: max-content;
+    max-width: calc(100vw - 32px);
+    transform: translateX(-50%);
+    padding: 10px 14px;
+    border: 2px solid var(--dir-ink);
+    background: var(--dir-ink);
+    color: var(--dir-paper);
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.3;
+    pointer-events: none;
+  }
+
   /* The compare table (components/CompareView.tsx). On a phone the columns
      scroll sideways under the row labels, which stay put. */
   .cmp-table {
