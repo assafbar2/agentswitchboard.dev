@@ -380,13 +380,14 @@ GET /api/tasks/<slug>
               <Link href="/stacks" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
                 https://agentswitchboard.dev/stacks
               </Link>
-              , each tool with why it is in the stack; as JSON at{' '}
-              <code className="font-bold">GET /api/stacks</code>
+              , each tool with why it is in the stack, and how to connect them all; as JSON at{' '}
+              <code className="font-bold">GET /api/stacks</code>, each stack with the{' '}
+              <code className="font-bold">GET /api/bundle</code> call for its listings
             </li>
             <li>
               <span className="font-bold">→ A stack of your own to hand a user:</span>{' '}
               <code className="font-bold break-all">https://agentswitchboard.dev/stack?items=&lt;slug&gt;,&lt;slug&gt;&amp;title=&lt;title&gt;</code>
-              , up to {MY_STACK_MAX} listings in your order, as a page they can open, compare and copy to{' '}
+              , up to {MY_STACK_MAX} listings in your order, as a page they can open, compare, connect and copy to{' '}
               <Link href="/my-stack" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
                 My stack
               </Link>

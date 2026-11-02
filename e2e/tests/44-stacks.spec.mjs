@@ -65,6 +65,7 @@ test.describe('GET /api/stacks', () => {
     expect(WEEK.week).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     for (const s of STACKS) {
       expect(s.url).toBe(`${ORIGIN}/stacks/${s.slug}`);
+      expect(s.bundleUrl).toBe(`${ORIGIN}/api/bundle?items=${s.items.map((i) => i.slug).join(',')}`);
       expect(s.title, s.slug).not.toBe('');
       expect(s.promise, s.slug).not.toBe('');
       expect(s.items.length, s.slug).toBeGreaterThanOrEqual(2);
@@ -182,6 +183,92 @@ test.describe('every stack page', () => {
       else await expect(drop).toHaveCount(0);
     });
   }
+});
+
+test.describe('Connect them all', () => {
+  const bundleOf = async (request, stack) => (await request.get(stack.bundleUrl.replace(ORIGIN, ''), { headers: UA })).json();
+  const connect = (page) => human(page).getByRole('region', { name: 'Connect them all' });
+  const links = (group) => group.locator('li > a:first-child').evaluateAll((els) => els.map((e) => e.getAttribute('href')));
+
+  for (const stack of STACKS) {
+    test(`/stacks/${stack.slug}: the bundle GET /api/bundle gives, grouped by what to do with each listing`, async ({ page }) => {
+      const bundle = await bundleOf(page.request, stack);
+      expect(bundle.items.map((i) => i.slug)).toEqual(stack.items.map((i) => i.slug));
+      await page.goto(`/stacks/${stack.slug}`);
+      const section = connect(page);
+      await expect(section).toHaveAttribute('id', 'connect');
+      await expect(section.locator(':scope > p').first()).toHaveText(`${bundle.summary}.`);
+      const href = (how) => bundle.items.filter((i) => i.how === how).map((i) => `/agents/${i.slug}`);
+
+      const config = section.getByRole('region', { name: 'In the config' });
+      if (bundle.config) {
+        const hosted = Object.values(bundle.config.mcpServers).some((s) => s.url);
+        await expect(config.locator('.dir-label').first()).toHaveText(hosted ? 'Cursor and other MCP clients' : 'Cursor, Claude Desktop and other MCP clients');
+        expect(JSON.parse(await config.locator('pre').first().textContent())).toEqual(bundle.config);
+        if (bundle.claudeCode.length > 0) await expect(config.locator('pre').nth(1)).toHaveText(bundle.claudeCode.join('\n'));
+        expect(await links(config)).toEqual(href('config'));
+      } else {
+        await expect(config).toHaveCount(0);
+      }
+
+      const guides = section.getByRole('region', { name: /^From (its guide|their guides)$/ });
+      if (bundle.setupPrompt) {
+        await expect(guides.getByText(bundle.setupPrompt, { exact: true })).toHaveCount(1);
+        expect(await links(guides)).toEqual(href('guide'));
+      } else {
+        await expect(guides).toHaveCount(0);
+      }
+
+      const rest = section.getByRole('region', { name: /^Use (it|them) another way$/ });
+      if (href('other').length > 0) expect(await links(rest)).toEqual(href('other'));
+      else await expect(rest).toHaveCount(0);
+
+      for (const item of bundle.items) {
+        const row = section.locator('li', { has: page.locator(`a[href="/agents/${item.slug}"]`) });
+        if (item.how !== 'guide') await expect(row).toContainText(item.note);
+        await expect(row.locator(`a[href="${item.docsUrl}"]`)).toHaveCount(1);
+      }
+    });
+  }
+
+  test('the text-only view says how each listing connects and links the bundle as JSON', async ({ page }) => {
+    const bundle = await bundleOf(page.request, WEEK);
+    await page.addInitScript(() => { try { localStorage.setItem('viewMode', 'agent'); } catch {} });
+    await page.goto(`/stacks/${WEEK.slug}`);
+    const agentView = page.locator('.agent-only');
+    await expect(agentView.locator('.agent-section-title', { hasText: 'connect them all' })).toHaveText(`connect them all · ${bundle.summary}`);
+    for (const item of bundle.items) {
+      const row = agentView.locator('div.agent-row', { has: page.locator('.agent-accent', { hasText: new RegExp(`^${escapeRe(item.slug)}$`) }) });
+      await expect(row.locator('span').nth(1)).toHaveText(item.how);
+      if (item.server) await expect(row.locator('span').nth(2)).toHaveText(item.server.url ?? [item.server.command, ...item.server.args].join(' '));
+      else await expect(row.locator('span').nth(2)).toHaveText(`${item.note} ${item.docsUrl}`);
+    }
+    await expect(agentView.locator(`a[href="${WEEK.bundleUrl.replace(ORIGIN, '')}"]`)).toHaveCount(1);
+  });
+
+  test.describe('copying', () => {
+    test.use({ permissions: ['clipboard-read', 'clipboard-write'] });
+
+    test('copies the config and the setup prompt, counting stack_bundle_export', async ({ page }) => {
+      const bundles = await Promise.all(STACKS.map((s) => bundleOf(page.request, s)));
+      const at = bundles.findIndex((b) => b.config && b.setupPrompt);
+      test.skip(at < 0, 'no stack has both a config and a setup prompt');
+      const [stack, bundle] = [STACKS[at], bundles[at]];
+      await page.goto(`/stacks/${stack.slug}`);
+      await expect(page.locator('html')).toHaveAttribute('data-stk-ready', '');
+      const servers = Object.keys(bundle.config.mcpServers).length;
+      const base = { from: 'stacks', stack: stack.slug, items: bundle.items.length, servers };
+
+      await connect(page).getByRole('button', { name: 'Copy the MCP client config for this stack' }).click();
+      expect(JSON.parse(await page.evaluate(() => navigator.clipboard.readText()))).toEqual(bundle.config);
+      await connect(page).getByRole('button', { name: 'Copy the setup prompt for this stack' }).click();
+      expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(bundle.setupPrompt);
+      expect(await events(page, 'stack_bundle_export')).toEqual([
+        { ...base, what: 'mcp-config' },
+        { ...base, what: 'setup-prompt' },
+      ]);
+    });
+  });
 });
 
 test.describe('stack page details', () => {

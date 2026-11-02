@@ -47,9 +47,9 @@ export async function GET() {
     ? `\n- [/whats-new](${BASE_URL}/whats-new) — what you can do on the site that you couldn't before, release by release, each feature with the page to try it; the latest is ${release.version} ${release.title} (${release.date}). Every release and weekly drop as a feed: [/feed.xml](${BASE_URL}/feed.xml) (RSS) or [/atom.xml](${BASE_URL}/atom.xml) (Atom).`
     : '';
   const weekStack = stackOfTheWeek(getStacks());
-  const stackLine = `\n- [/stacks](${BASE_URL}/stacks) — tools that work together for one job, each with why it is there${
+  const stackLine = `\n- [/stacks](${BASE_URL}/stacks) — tools that work together for one job, each with why it is there, and how to connect them all${
     weekStack ? `; the stack of the week is [/stacks/${weekStack.slug}](${BASE_URL}/stacks/${weekStack.slug})` : ''
-  }. JSON: \`/api/stacks\`. To hand a user a stack of your own: \`/stack?items={slug},{slug}&title={title}\`, up to ${MY_STACK_MAX} listings in your order, as a page they can open, compare and copy to [/my-stack](${BASE_URL}/my-stack).`;
+  }. JSON: \`/api/stacks\`, each stack with its \`bundleUrl\`. To hand a user a stack of your own: \`/stack?items={slug},{slug}&title={title}\`, up to ${MY_STACK_MAX} listings in your order, as a page they can open, compare, connect and copy to [/my-stack](${BASE_URL}/my-stack).`;
   const taskLine = `\n- [/tasks](${BASE_URL}/tasks) — ${getTasks().length} tasks, to start from the job ("query a database"): each lists the listings that fit it, best first, with why. JSON: \`/api/tasks\`; filter one with \`/api/agents?task={slug}\`.`;
   const comparisons = curatedComparisons(agents);
   const compareLine = `\n- [/compare](${BASE_URL}/compare) — up to ${COMPARE_MAX} listings side by side at \`/compare?a={slug}&b={slug}&c={slug}\`: what each does, access, auth, how to connect it, skills. ${comparisons.length} curated comparisons${

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { bundleItem, bundleNotes, connectBundle } from './bundle';
+import { bundleItem, bundleNotes, bundleSummary, connectBundle, type BundleHow } from './bundle';
 import { sharedStack } from './shared-stack';
 import { MY_STACK_MAX } from './stack-link';
 import type { Agent } from './types';
@@ -124,6 +124,18 @@ describe('connectBundle', () => {
     const bundle = connectBundle([guided, cli]);
     expect(bundle.config).toBeNull();
     expect(bundle.claudeCode).toEqual([]);
+  });
+});
+
+describe('bundleSummary', () => {
+  const items = (...hows: BundleHow[]) => hows.map((how) => ({ how }));
+
+  it('counts each way to connect, leaving out the empty ones', () => {
+    expect(bundleSummary(items('config', 'guide', 'config', 'other'))).toBe(
+      '2 in the config, 1 to set up from its guide and 1 without an MCP server'
+    );
+    expect(bundleSummary(items('config', 'config', 'config'))).toBe('3 in the config');
+    expect(bundleSummary(items('guide', 'other', 'guide'))).toBe('2 to set up from their guides and 1 without an MCP server');
   });
 });
 

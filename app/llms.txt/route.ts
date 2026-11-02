@@ -63,8 +63,8 @@ The \`verified\`, \`official\` and \`featured\` flags in search and detail resul
 - Search and filter: https://agentswitchboard.dev/browse${dropLine}
 - New listings, everything added in the last ${NEW_DAYS} days: https://agentswitchboard.dev/new (${newCount} since ${since}, grouped by drop)${releaseLine}
 - Alternatives to a listing: https://agentswitchboard.dev/agents/<slug>/alternatives (listings with at least ${MIN_ALTERNATIVES}; each says what it has in common)
-- Stacks, tools that work together for one job: https://agentswitchboard.dev/stacks (${stacks.length} stacks, each tool with why it is there${weekLine})
-- A stack of your own to hand a user: https://agentswitchboard.dev/stack?items=<slug>,<slug>&title=<title> (up to ${MY_STACK_MAX} listings in your order, as a page they can open, compare and copy to My stack at https://agentswitchboard.dev/my-stack)
+- Stacks, tools that work together for one job: https://agentswitchboard.dev/stacks (${stacks.length} stacks, each tool with why it is there, and how to connect them all${weekLine})
+- A stack of your own to hand a user: https://agentswitchboard.dev/stack?items=<slug>,<slug>&title=<title> (up to ${MY_STACK_MAX} listings in your order, as a page they can open, compare, connect and copy to My stack at https://agentswitchboard.dev/my-stack)
 - Tasks, to start from the job ("query a database"): https://agentswitchboard.dev/tasks (${getTasks().length} tasks, each with the listings that fit it, best first; /browse?task=<slug> filters them)
 - Compare up to ${COMPARE_MAX} listings side by side: https://agentswitchboard.dev/compare?a=<slug>&b=<slug>&c=<slug> (what each does, access, auth, how to connect it, skills; ${comparisons.length} curated comparisons are listed at https://agentswitchboard.dev/compare)
 

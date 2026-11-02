@@ -2,7 +2,7 @@
  * One stack by slug.
  *
  *   GET /api/stacks/<slug>
- *   → { slug, title, promise, week, url, items }, as in GET /api/stacks
+ *   → { slug, title, promise, week, url, bundleUrl, items }, as in GET /api/stacks
  *
  * Read-only, no auth, open CORS. 404 when the slug is unknown.
  */

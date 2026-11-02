@@ -229,7 +229,10 @@ export function summarizeCategory(c: Category) {
   };
 }
 
-/** A stack for GET /api/stacks and /api/stacks/{slug}: its listings in order, each with why it is there. */
+/**
+ * A stack for GET /api/stacks and /api/stacks/{slug}: its listings in order,
+ * each with why it is there, and the GET /api/bundle call that connects them.
+ */
 export function summarizeStack(stack: Stack, entries: StackEntry[]) {
   return {
     slug: stack.slug,
@@ -237,6 +240,7 @@ export function summarizeStack(stack: Stack, entries: StackEntry[]) {
     promise: stack.promise,
     week: stack.week ?? null,
     url: `${BASE_URL}/stacks/${stack.slug}`,
+    bundleUrl: `${BASE_URL}/api/bundle?items=${entries.map((e) => e.agent.slug).join(',')}`,
     items: entries.map(({ agent, why }) => ({ ...summarizeAgent(agent), authType: agent.authType, why })),
   };
 }

@@ -1,9 +1,11 @@
 import Link from 'next/link';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { AgentCard } from '@/components/AgentCard';
+import { ConnectStack, ConnectStackRows } from '@/components/ConnectStack';
 import { CopyButton } from '@/components/CopyButton';
 import { JsonLd } from '@/components/JsonLd';
 import { SaveStack } from '@/components/SaveStack';
+import { connectBundle } from '@/lib/bundle';
 import { getEveryAgent, getRetiredListings } from '@/lib/catalog';
 import { COMPARE_MAX, compareHref } from '@/lib/compare-link';
 import { smallIconPath } from '@/lib/icons';
@@ -68,6 +70,7 @@ export default async function SharedStackPage({ searchParams }: Props) {
   const items = agents.map((a) => ({ slug: a.slug, name: a.name, icon: a.iconUrl ? smallIconPath(a.iconUrl) : null }));
   const notes = [...stack.notes.map(sharedStackNoteText), ...(stack.extra > 0 ? [extraText(stack.extra)] : [])];
   const tools = `${agents.length} ${pluralize(agents.length, 'tool')}`;
+  const bundle = agents.length > 0 ? connectBundle(agents) : null;
   const lead =
     stack.entries.length > 0
       ? 'Put together by whoever shared this link, from listings in the directory. The link holds the whole stack: Agent Switchboard keeps no copy, and didn’t pick these.'
@@ -163,6 +166,8 @@ export default async function SharedStackPage({ searchParams }: Props) {
             </section>
           )}
 
+          {bundle && <ConnectStack bundle={bundle} from="stack" />}
+
           <nav
             aria-label="More stacks"
             className="mt-10 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 border-t-[3px] border-[var(--dir-ink)]! pt-4 text-[16px] font-bold"
@@ -232,6 +237,8 @@ export default async function SharedStackPage({ searchParams }: Props) {
               ))}
             </>
           )}
+
+          {bundle && <ConnectStackRows bundle={bundle} />}
 
           <div className="agent-section-title">more</div>
           {compared.length > 1 && (

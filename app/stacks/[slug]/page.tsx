@@ -2,10 +2,12 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { AgentCard } from '@/components/AgentCard';
+import { ConnectStack, ConnectStackRows } from '@/components/ConnectStack';
 import { EndpointLink } from '@/components/EndpointLink';
 import { JsonLd } from '@/components/JsonLd';
 import { SaveStack } from '@/components/SaveStack';
 import { StackEvents } from '@/components/StackEvents';
+import { connectBundle } from '@/lib/bundle';
 import { getEveryAgent } from '@/lib/catalog';
 import { COMPARE_MAX, compareHref } from '@/lib/compare-link';
 import { smallIconPath } from '@/lib/icons';
@@ -70,6 +72,7 @@ export default async function StackPage({ params }: Props) {
   const compareLabel =
     compared.length === entries.length ? (entries.length === 2 ? 'Compare both' : 'Compare all 3') : `Compare the first ${COMPARE_MAX}`;
   const items = entries.map(({ agent: a }) => ({ slug: a.slug, name: a.name, icon: a.iconUrl ? smallIconPath(a.iconUrl) : null }));
+  const bundle = connectBundle(entries.map((e) => e.agent));
 
   const listSchema = {
     '@context': 'https://schema.org',
@@ -149,6 +152,8 @@ export default async function StackPage({ params }: Props) {
             <SaveStack items={items} title={stack.title} from="stacks" />
           </section>
 
+          <ConnectStack bundle={bundle} from="stacks" stack={stack.slug} />
+
           <nav
             aria-label="More stacks"
             className="mt-10 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 border-t-[3px] border-[var(--dir-ink)]! pt-4 text-[16px] font-bold"
@@ -185,6 +190,8 @@ export default async function StackPage({ params }: Props) {
               <span className="agent-dim">{why}</span>
             </Link>
           ))}
+
+          <ConnectStackRows bundle={bundle} />
 
           <div className="agent-section-title">more</div>
           {compared.length > 1 && (

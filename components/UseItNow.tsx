@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
-import { CopyButton } from '@/components/CopyButton';
+import { CopyBlock } from '@/components/CopyBlock';
 import { MyStackToggle } from '@/components/MyStackToggle';
 import { PART_HEADING, TryThisFirst } from '@/components/TryThisFirst';
 import { UseItEvents } from '@/components/UseItEvents';
@@ -11,9 +11,8 @@ import { INSTALL_LABELS, displayUrl, type UseItNow as UseItNowData } from '@/lib
 const LINK = 'font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2';
 const ADD =
   'inline-flex min-h-10 items-center rounded-none border-2 border-[var(--dir-ink)]! bg-[var(--dir-paper)] px-3 text-sm font-extrabold uppercase tracking-[0.06em] text-[var(--dir-ink)] no-underline hover:bg-[var(--dir-yellow)] hover:text-[var(--dir-on-yellow)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--dir-ink)]';
-const BOX = 'mt-1 rounded-none border-2 border-[var(--dir-ink)]! bg-[var(--dir-paper)] p-3';
 
-function Part({ id, title, children }: { id: string; title: string; children: ReactNode }) {
+export function Part({ id, title, children }: { id: string; title: string; children: ReactNode }) {
   return (
     <section aria-labelledby={id} className="mt-6 border-t border-[var(--dir-rule)]! pt-4 first:mt-0 first:border-t-0 first:pt-0">
       <h3 id={id} className={PART_HEADING}>
@@ -24,14 +23,10 @@ function Part({ id, title, children }: { id: string; title: string; children: Re
   );
 }
 
-/** A label and its copy button over the text it copies, shown in full so nothing needs JavaScript. */
 function Copyable({
-  label,
-  text,
-  what,
   slug,
   kind,
-  prose = false,
+  ...block
 }: {
   label: string;
   text: string;
@@ -40,19 +35,7 @@ function Copyable({
   kind: string;
   prose?: boolean;
 }) {
-  return (
-    <div className="mt-3">
-      <div className="flex min-h-10 items-center justify-between gap-3">
-        <span className="dir-label min-w-0 text-[var(--dir-muted)]">{label}</span>
-        <CopyButton text={text} what={what} event="useit_copy" data={{ slug, what: kind }} />
-      </div>
-      {prose ? (
-        <p className={`${BOX} text-[16px] font-semibold leading-snug wrap-break-word`}>{text}</p>
-      ) : (
-        <pre className={`${BOX} mono overflow-x-auto text-[13px] leading-relaxed`}>{text}</pre>
-      )}
-    </div>
-  );
+  return <CopyBlock {...block} event="useit_copy" data={{ slug, what: kind }} />;
 }
 
 function Docs({ url, method, guide }: { url: string; method: string; guide: boolean }) {
