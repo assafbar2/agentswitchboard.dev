@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { matchTask, rankTasks, TASK_MATCH_MIN, type TaskTerms } from './task-match';
+import { matchTask, namedKeywords, ownWords, rankTasks, TASK_MATCH_MIN, type TaskTerms } from './task-match';
 import { getTasks } from './tasks';
 
 const tasks = getTasks();
@@ -26,6 +26,7 @@ describe('matchTask, against content/tasks.json', () => {
     ['read my email', 'send-and-read-email'],
     ['Send EMAILS!', 'send-and-read-email'],
     ['query postgres', 'query-a-database'],
+    ['a postgres mcp server', 'query-a-database'],
     ['chat with my db', 'query-a-database'],
     ['scrape amazon prices', 'scrape-websites'],
     ['search the internet', 'search-the-web'],
@@ -133,5 +134,23 @@ describe('scoring', () => {
     const db = task('db', 'query data', ['database']);
     expect(matchTask('my db', [db])?.slug).toBe('db');
     expect(matchTask('the DB', [db])?.slug).toBe('db');
+  });
+});
+
+describe('ownWords and namedKeywords', () => {
+  const chat = task('chat', 'work in Slack or Teams', ['slack', 'microsoft teams', 'discord']);
+  const scan = task('scan', 'scan code for vulnerabilities', ['vulnerability', 'secrets', 'security scan']);
+
+  it("reads a label's lowercase words as the job and its capitalized ones as products", () => {
+    expect(ownWords(chat)).toEqual(['work']);
+    expect(ownWords(scan)).toEqual(['scan', 'code', 'vulnerabilities']);
+  });
+
+  it('lists the keywords the text names, but those the label says', () => {
+    expect(namedKeywords('ping me on Discord and Slack', chat)).toEqual(['slack', 'discord']);
+    expect(namedKeywords('post in Microsoft Teams', chat)).toEqual(['microsoft teams']);
+    expect(namedKeywords('find vulnerabilities and secrets', scan)).toEqual(['secrets']);
+    expect(namedKeywords('run a security scan', scan)).toEqual(['security scan']);
+    expect(namedKeywords('read email', chat)).toEqual([]);
   });
 });

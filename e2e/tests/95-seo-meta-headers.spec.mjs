@@ -33,6 +33,7 @@ const PAGES = [
   { path: '/new', canonical: `${ORIGIN}/new`, card: '/new/card.png' },
   { path: '/whats-new', canonical: `${ORIGIN}/whats-new`, card: '/whats-new/card.png' },
   { path: '/switchboard', canonical: `${ORIGIN}/switchboard`, card: '/switchboard/card.png' },
+  { path: '/operator', canonical: `${ORIGIN}/operator`, card: '/operator/card.png' },
 ];
 
 const escape = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');

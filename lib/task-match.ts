@@ -26,11 +26,15 @@ export const TASK_MATCH_MIN = 2;
 // Built with new RegExp so the 'u'-flag syntax isn't checked against the ES2017 target.
 const WORD = new RegExp('[\\p{L}\\p{N}]+', 'gu');
 
-/** Words that pick no task. "I need an agent to…" already says the last five. */
+/**
+ * Words that pick no task. "I need an agent to…" already says agent, AI and
+ * bot, and "tool" or "server" could be any listing; "server" would otherwise
+ * read as the "serverless" of hosting.
+ */
 const FILLER = new Set([
   'a', 'an', 'the', 'and', 'or', 'to', 'of', 'for', 'with', 'in', 'on', 'at', 'by', 'from', 'into',
   'my', 'our', 'your', 'their', 'me', 'us', 'i', 'it', 'its', 'this', 'that', 'some', 'all', 'any',
-  'agent', 'agents', 'ai', 'bot', 'bots',
+  'agent', 'agents', 'ai', 'bot', 'bots', 'tool', 'tools', 'server', 'servers',
 ]);
 
 /** Everyday words for the ones task labels and keywords use. */
@@ -60,7 +64,7 @@ const ALIASES = new Map([
 ]);
 
 /** Lowercased words that can pick a task, in order, with ALIASES applied. */
-function wordsOf(text: string): string[] {
+export function wordsOf(text: string): string[] {
   return (text.toLowerCase().match(WORD) ?? []).map((w) => ALIASES.get(w) ?? w).filter((w) => !FILLER.has(w));
 }
 
@@ -83,7 +87,7 @@ function stem(word: string): string {
  * "email", "coding" and "code", or "transcription" and "transcribe", which
  * share all but their last two letters (at least five).
  */
-function sameWord(a: string, b: string): boolean {
+export function sameWord(a: string, b: string): boolean {
   if (a === b) return true;
   const x = stem(a);
   const y = stem(b);
@@ -101,6 +105,8 @@ interface Keyword {
 
 interface Prepared {
   label: string[];
+  /** The label's lowercase words, which say what the job is; its capitalized ones name products. */
+  own: string[];
   keywords: Keyword[];
 }
 
@@ -111,6 +117,14 @@ function prepare(task: TaskTerms): Prepared {
   if (!prepared) {
     prepared = {
       label: [...new Set(wordsOf(task.label))],
+      own: [
+        ...new Set(
+          task.label
+            .split(/\s+/)
+            .filter((w) => /^[a-z]/.test(w))
+            .flatMap(wordsOf)
+        ),
+      ],
       keywords: task.keywords
         .map((k) => ({ words: wordsOf(k), ordered: /\bto\b/i.test(k) }))
         .filter((k) => k.words.length > 0),
@@ -139,6 +153,24 @@ function scoreOf(text: string[], task: TaskTerms): number {
   const inLabel = label.map((w) => text.findIndex((t) => sameWord(t, w))).filter((at) => at >= 0);
   const labelOnly = new Set(inLabel.filter((at) => !inKeywords.has(at))).size;
   return inKeywords.size * 2 + labelOnly + (label.length > 0 && inLabel.length === label.length ? 3 : 0);
+}
+
+/** The words of `task`'s label that say what the job is, the lowercase ones: in "work in Slack or Teams", "work". */
+export function ownWords(task: TaskTerms): string[] {
+  return prepare(task).own;
+}
+
+/**
+ * The keywords of `task` that `text` names, each as its words, but those
+ * its label already says: for "scan code for vulnerabilities", "secrets"
+ * and not "vulnerability".
+ */
+export function namedKeywords(text: string, task: TaskTerms): string[] {
+  const words = wordsOf(text);
+  const { own, keywords } = prepare(task);
+  return keywords
+    .filter((k) => !k.words.every((w) => own.some((o) => sameWord(o, w))) && keywordAt(k, words))
+    .map((k) => k.words.join(' '));
 }
 
 /** The tasks `text` names at all, highest score first; equal scores keep the order of `tasks`. */
