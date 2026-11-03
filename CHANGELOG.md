@@ -4,6 +4,12 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
+## [2.8.6] - 2026-11-03 - Sitemap dates
+
+### Changed
+- The sitemap dates each page by its content: a listing by the day its file last changed; a category, alternatives, task, stack or comparison page by the newest listing it shows; the changelog and [/whats-new](https://agentswitchboard.dev/whats-new) by the latest release; and the drops by the latest drop. A page with nothing to date it by, such as [/about](https://agentswitchboard.dev/about), carries no date. Until now every page carried the time the sitemap was built, every deploy and again every hour, so a crawler that trusts the date fetched the whole site again each time. The sitemap is now built once per deploy. ([#326](https://github.com/assafbar2/agentswitchboard.dev/pull/326))
+- robots.txt closes every share card to crawlers other than link previews, not only the compare, stack and Operator ones, and a crawler that ignores it on any card is turned away. People, link previews and assistants fetching a page for someone get every card as before. ([#326](https://github.com/assafbar2/agentswitchboard.dev/pull/326))
+
 ## [2.8.5] - 2026-11-03 - Lighter pages
 
 ### Changed

@@ -1,7 +1,7 @@
 // What Vercel's edge adds in front of the app, so these run only against a
 // deployment: HSTS, the http:// and www redirects on the production domain,
-// and the vercel.json routes that turn crawlers away from query pages and the
-// share cards drawn for them (app/robots.ts already asks them to stay off).
+// and the vercel.json routes that turn crawlers away from query pages and share
+// cards (app/robots.ts already asks them to stay off).
 // Read-only: GETs only.
 import { test, expect } from './fixtures.mjs';
 import { ON_PRODUCTION, ON_VERCEL, PRODUCTION } from '../target.mjs';
@@ -21,6 +21,19 @@ const FETCHED_FOR_PEOPLE = {
 };
 const MIX = 'a=linear&b=sentry-mcp';
 const QUERY_PAGES = [`/compare?${MIX}`, '/stack?items=linear,sentry-mcp', '/operator?q=track+bugs'];
+const CARDS = [
+  '/card.png',
+  '/agents/linear/card.png',
+  '/agents/livekit-agents/alternatives/card.png',
+  '/categories/language/card.png',
+  '/drops/2026-10-31/card.png',
+  '/stacks/card.png',
+  '/tasks/card.png',
+  '/switchboard/card.png',
+  '/new/card.png',
+  '/whats-new/card.png',
+  `/compare/card.png?${MIX}`,
+];
 
 const status = async (page, path, ua) => (await page.request.get(path, { headers: { 'user-agent': ua }, maxRedirects: 0 })).status();
 
@@ -51,7 +64,7 @@ test('www host either redirects to the apex or canonicalises to it', async ({ pa
   }
 });
 
-test.describe('vercel.json turns crawlers away from query pages', () => {
+test.describe('vercel.json turns crawlers away from query pages and share cards', () => {
   for (const path of QUERY_PAGES) {
     test(`${path} is denied to a crawler and served to a browser`, async ({ page }) => {
       expect(await status(page, path, CRAWLERS.PerplexityBot)).toBe(403);
@@ -72,8 +85,11 @@ test.describe('vercel.json turns crawlers away from query pages', () => {
     }
   });
 
-  test('the dynamic share card is denied to a crawler', async ({ page }) => {
-    expect(await status(page, `/compare/card.png?${MIX}`, CRAWLERS.PerplexityBot)).toBe(403);
+  test('every kind of share card is denied to a crawler and served to a person or a link preview', async ({ page }) => {
+    for (const path of CARDS) {
+      expect.soft(await status(page, path, CRAWLERS.PerplexityBot), `PerplexityBot ${path}`).toBe(403);
+      for (const [name, ua] of Object.entries(FETCHED_FOR_PEOPLE)) expect.soft(await status(page, path, ua), `${name} ${path}`).toBe(200);
+    }
   });
 
   test('a crawler still gets the bare pages, a listing and the catalog API', async ({ page }) => {

@@ -4,10 +4,16 @@ import type { MetadataRoute } from 'next';
  * Pages that a query turns into a new page, rendered per request, whose links
  * lead to more of them: a crawler that follows /compare?a=…&b=… mixes never
  * runs out. Crawlers get the bare pages; vercel.json turns away the ones that
- * ignore this. The dynamic share cards are left out for the same reason.
+ * ignore this.
  */
 export const QUERY_PAGES = ['/browse?', '/compare?', '/stack?', '/operator?'];
-const DYNAMIC_CARDS = ['/compare/card.png', '/stack/card.png', '/operator/card.png'];
+
+/**
+ * Every page's share card (lib/share-cards.ts). Only the preview a shared link
+ * gets shows one, so link previews fetch them and crawlers stay off; vercel.json
+ * turns away the crawlers that ignore this.
+ */
+const SHARE_CARDS = ['/card.png', '/*/card.png'];
 
 /** Fetch a page when someone shares a link to it, query and card included. */
 export const LINK_PREVIEW_BOTS = [
@@ -35,7 +41,7 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: '*',
         allow: '/',
         // Public catalog APIs must stay crawlable (Muse review fetches them).
-        disallow: ['/_next/', ...QUERY_PAGES, ...DYNAMIC_CARDS],
+        disallow: ['/_next/', ...QUERY_PAGES, ...SHARE_CARDS],
         crawlDelay: 5,
       },
       { userAgent: LINK_PREVIEW_BOTS, allow: '/', disallow: ['/_next/'] },

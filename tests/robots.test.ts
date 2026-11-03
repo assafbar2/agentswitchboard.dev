@@ -1,3 +1,4 @@
+import * as fs from 'fs';
 import { describe, expect, it } from 'vitest';
 import robots, { LINK_PREVIEW_BOTS, SEO_TOOL_BOTS } from '@/app/robots';
 import sitemap from '@/app/sitemap';
@@ -21,12 +22,29 @@ function groupFor(bot: string): Group {
   return named ?? groups().find((g) => list(g.userAgent).includes('*'))!;
 }
 
-/** Longest matching rule wins, and Allow wins a tie. None of the rules use * or $. */
+/** A rule matches a path that starts with it, * standing for any characters and a final $ for the end (section 2.2.3). */
+const matches = (rule: string, url: string) => {
+  const end = rule.endsWith('$');
+  const pattern = (end ? rule.slice(0, -1) : rule)
+    .split('*')
+    .map((part) => part.replace(/[.+?^${}()|[\]\\]/g, '\\$&'))
+    .join('.*');
+  return new RegExp(`^${pattern}${end ? '$' : ''}`).test(url);
+};
+
+/** Longest matching rule wins, and Allow wins a tie. */
 function allowed(bot: string, url: string): boolean {
   const g = groupFor(bot);
-  const longest = (rules: string[]) => Math.max(-1, ...rules.filter((r) => url.startsWith(r)).map((r) => r.length));
+  const longest = (rules: string[]) => Math.max(-1, ...rules.filter((r) => matches(r, url)).map((r) => r.length));
   return longest(list(g.allow)) >= longest(list(g.disallow));
 }
+
+const SAMPLE_PARAMS: Record<string, string> = { slug: 'agentmail', pair: 'claude-code-vs-codex-cli', date: '2026-10-31' };
+
+/** A URL for each card.png route under app/, its params filled in. */
+const CARD_URLS = (fs.readdirSync('app', { recursive: true }) as string[])
+  .filter((file) => /(^|\/)card\.png\/route\.tsx?$/.test(file))
+  .map((file) => `/${file.replace(/\/?route\.tsx?$/, '')}`.replace(/\[(\w+)\]/g, (_, param) => SAMPLE_PARAMS[param]));
 
 describe('robots.txt', () => {
   it('lets crawlers reach every page in the sitemap', async () => {
@@ -38,7 +56,12 @@ describe('robots.txt', () => {
     expect(paths.filter((p) => !allowed('ClaudeBot', p))).toEqual([]);
   });
 
-  it('keeps crawlers out of query pages and dynamic share cards, but not the bare pages', () => {
+  it('finds every share card route', () => {
+    expect(CARD_URLS.length).toBeGreaterThanOrEqual(16);
+    expect(CARD_URLS).toEqual(expect.arrayContaining(['/card.png', '/agents/agentmail/card.png', '/agents/agentmail/alternatives/card.png']));
+  });
+
+  it('keeps crawlers out of query pages and every share card, but not the pages', () => {
     const closed = [
       compareHref(['claude-code', 'codex-cli']),
       '/compare/card.png?a=claude-code&b=codex-cli',
@@ -48,17 +71,19 @@ describe('robots.txt', () => {
       '/operator/card.png?q=read+my+email',
       '/browse?task=query-a-database',
       '/browse?q=postgres',
+      '/card.png?v=1a2b3c4d',
+      ...CARD_URLS,
     ];
     for (const url of closed) expect(allowed('PerplexityBot', url), url).toBe(false);
-    for (const url of ['/browse', '/compare', '/operator', '/stacks', '/stacks/research-analyst', '/compare/claude-code-vs-codex-cli/card.png', '/agents/agentmail/card.png']) {
-      expect(allowed('PerplexityBot', url), url).toBe(true);
-    }
+    const open = ['/', '/browse', '/compare', '/operator', '/stacks', '/stacks/research-analyst', '/compare/claude-code-vs-codex-cli', '/agents/agentmail', '/agents/agentmail/alternatives', '/icons/agentmail.png'];
+    for (const url of open) expect(allowed('PerplexityBot', url), url).toBe(true);
   });
 
-  it('lets link previews fetch a shared query page and its card', () => {
+  it('lets link previews fetch a shared query page and every card', () => {
     for (const bot of LINK_PREVIEW_BOTS) {
       expect(allowed(bot, compareHref(['claude-code', 'codex-cli'])), bot).toBe(true);
       expect(allowed(bot, '/stack/card.png?items=agentmail,bigquery'), bot).toBe(true);
+      for (const url of CARD_URLS) expect(allowed(bot, url), `${bot} ${url}`).toBe(true);
       expect(allowed(bot, '/_next/static/chunks/x.js'), bot).toBe(false);
     }
   });
@@ -94,8 +119,13 @@ describe('vercel.json deny rules', () => {
     new RegExp(`^${conds.find((c) => c.type === 'header' && c.key === 'user-agent')!.value}$`);
   const denied = (route: (typeof rules)[number], ua: string) => userAgent(route.has).test(ua) && !userAgent(route.missing).test(ua);
 
-  it('cover each query page and dynamic card that robots.txt closes', () => {
-    expect(rules.map((r) => r.src)).toEqual(['^/(?:compare|stack|operator)/card\\.png$', '^/compare$', '^/stack$', '^/operator$']);
+  it('cover each query page and every share card that robots.txt closes', () => {
+    expect(rules.map((r) => r.src)).toEqual(['^/(?:.+/)?card\\.png$', '^/compare$', '^/stack$', '^/operator$']);
+    const cards = new RegExp(rules[0].src);
+    for (const url of CARD_URLS) expect(cards.test(url), url).toBe(true);
+    for (const url of ['/', '/agents/agentmail', '/agents/agentmail/alternatives', '/icons/agentmail.png', '/agents/scorecard.png']) {
+      expect(cards.test(url), url).toBe(false);
+    }
   });
 
   it('turn away crawlers, not people, assistants fetching for them, or link previews', () => {
