@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { FeaturedAgentCard } from '@/components/FeaturedAgentCard';
 import type { Agent } from '@/lib/types';
 

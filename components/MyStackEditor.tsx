@@ -9,7 +9,7 @@
 
 /* eslint-disable @next/next/no-img-element -- the small icon file the card itself shows. */
 
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { ChevronDown, ChevronUp, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { AgentIcon } from '@/components/AgentIcon';

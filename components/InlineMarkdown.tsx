@@ -1,11 +1,10 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import type { ReactNode } from 'react';
 import { INLINE_TOKEN } from '@/lib/inline-markdown';
 
 const SITE = 'https://agentswitchboard.dev';
 
-const linkClass =
-  'font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2';
+const linkClass = 'inline-link';
 
 /**
  * Renders one line of inline Markdown. Links to this site become client-side

@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { InlineMarkdown } from '@/components/InlineMarkdown';
 import { WhatsNewEvents } from '@/components/WhatsNewEvents';
 import { releaseAnchor, type Release } from '@/lib/changelog';

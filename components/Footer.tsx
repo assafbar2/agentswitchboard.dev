@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { EndpointLink } from '@/components/EndpointLink';
 import { getSiteSettings } from '@/lib/catalog';
 
@@ -46,9 +46,6 @@ const footerLinks = [
   },
 ];
 
-const linkClass =
-  'text-[var(--dir-ink)] decoration-2 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-[var(--dir-ink)]';
-
 export async function Footer() {
   const settings = await getSiteSettings();
   return (
@@ -68,26 +65,21 @@ export async function Footer() {
             </p>
           </div>
 
-          {/* Link groups */}
+          {/* Link groups, styled from the list (.foot-links in globals.css) */}
           {footerLinks.map((group) => (
             <div key={group.title}>
-              <h2 className="dir-label mb-2 border-b-[3px] border-[var(--dir-ink)] pb-1.5 text-sm font-bold uppercase tracking-[0.12em] text-[var(--dir-ink)]">
-                {group.title}
-              </h2>
-              <ul>
+              <h2 className="dir-label foot-title">{group.title}</h2>
+              <ul className="foot-links">
                 {group.links.map((link) => (
-                  <li key={link.href} className="border-b border-[var(--dir-rule)]">
+                  <li key={link.href}>
                     {'endpoint' in link && link.endpoint ? (
-                      <EndpointLink href={link.href} className={`${linkClass} block py-1.5 text-base font-semibold`}>
-                        {link.label}
-                      </EndpointLink>
+                      <EndpointLink href={link.href}>{link.label}</EndpointLink>
                     ) : (
                       <Link
                         href={link.href}
                         {...('external' in link && link.external
                           ? { target: '_blank', rel: 'noopener noreferrer' }
                           : {})}
-                        className={`${linkClass} block py-1.5 text-base font-semibold`}
                       >
                         {link.label}
                       </Link>
@@ -105,10 +97,10 @@ export async function Footer() {
             &copy; {new Date().getFullYear()} Agent Switchboard. All rights reserved.
           </p>
           <p className="flex items-center gap-4 text-sm">
-            <Link href="/privacy" className={linkClass}>
+            <Link href="/privacy" className="dir-link">
               Privacy
             </Link>
-            <Link href="/terms" className={linkClass}>
+            <Link href="/terms" className="dir-link">
               Terms of Use
             </Link>
           </p>

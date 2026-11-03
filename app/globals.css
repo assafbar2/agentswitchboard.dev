@@ -472,6 +472,182 @@ body {
     text-transform: uppercase;
   }
 
+  /* Markup a page repeats: listing cards (components/AgentCard.tsx) and their
+     tags, the footer's links, the rows of the directory log on /changelog. A
+     page's HTML and its RSC payload each carry every class name, and a
+     category page repeats a card hundreds of times, so each pattern is a short
+     name here instead of its utilities in the markup. */
+  .dir-card {
+    @apply block min-w-0 border-b border-[var(--dir-rule)]! px-0.5 py-3 font-[family-name:var(--font-display)] text-[var(--dir-ink)] no-underline hover:no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--dir-ink)];
+  }
+
+  .dir-card-head {
+    @apply flex min-w-0 items-baseline gap-1.5;
+  }
+
+  .dir-card-head > .agent-icon {
+    @apply mr-0.5 self-start;
+  }
+
+  .dir-card-name {
+    @apply min-w-0 wrap-break-word text-[17px] font-bold leading-snug;
+  }
+
+  @media (hover: hover) {
+    .dir-card:hover .dir-card-name {
+      text-decoration-line: underline;
+    }
+  }
+
+  .dir-card-access {
+    @apply shrink-0 whitespace-nowrap text-sm font-semibold tracking-[0.06em];
+  }
+
+  .dir-card-desc {
+    @apply mt-0.5 line-clamp-2 text-[15px] leading-snug text-[var(--dir-muted)] sm:line-clamp-1;
+  }
+
+  .dir-card-meta {
+    @apply mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-[13px] leading-5 text-[var(--dir-muted)];
+  }
+
+  .dir-card-tags {
+    @apply flex flex-wrap items-center gap-1;
+  }
+
+  .dir-card-by {
+    @apply min-w-0 wrap-break-word;
+  }
+
+  .dir-card-why {
+    @apply mt-1.5 text-[15px] leading-snug;
+  }
+
+  /* Square directory tags (components/ui/Badge.tsx). */
+  .tag {
+    @apply inline-flex items-center gap-1 rounded-none border px-1.5 py-px text-[11px] font-bold uppercase leading-4 tracking-[0.08em];
+  }
+
+  .tag-default,
+  .tag-accent {
+    @apply bg-transparent text-[var(--dir-ink)] border-[var(--dir-ink)]!;
+  }
+
+  .tag-blue {
+    @apply bg-[var(--dir-paper)] text-[var(--dir-ink)] border-[var(--dir-ink)]!;
+  }
+
+  .tag-amber {
+    @apply bg-[var(--dir-yellow)] text-[var(--dir-on-yellow)] border-[var(--dir-ink)]!;
+  }
+
+  .tag-sponsor {
+    @apply bg-[var(--dir-ink)] text-[var(--dir-paper)] border-[var(--dir-ink)]!;
+  }
+
+  .tag-rose {
+    @apply bg-transparent text-[var(--rose)] border-current!;
+  }
+
+  .tag-outline {
+    @apply bg-transparent text-[var(--dir-muted)] border-[var(--dir-rule)]!;
+  }
+
+  /* The Verified tag (components/VerifiedBadge.tsx), on its own
+     --verified-* colours. Its icon and Official's are masks, as on
+     .stk-toggle, so neither tag repeats an inline SVG. */
+  .verified-tag {
+    --tag-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z'/%3E%3Cpath d='m9 12 2 2 4-4'/%3E%3C/svg%3E");
+    @apply inline-flex shrink-0 items-center gap-1 rounded-none border border-[var(--dir-ink)]! px-1.5 py-px text-[11px] font-bold uppercase leading-4 tracking-[0.08em] text-[var(--verified-fg)] bg-[var(--verified-bg)];
+  }
+
+  .verified-tag-md {
+    @apply px-2 py-0.5 text-xs leading-4;
+  }
+
+  .official-tag {
+    --tag-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 12h4M10 8h4M14 21v-3a2 2 0 0 0-4 0v3M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16'/%3E%3C/svg%3E");
+  }
+
+  .verified-tag::before,
+  .official-tag::before {
+    content: '';
+    flex: none;
+    width: 0.75rem;
+    height: 0.75rem;
+    background: currentColor;
+    -webkit-mask: var(--tag-icon) center / contain no-repeat;
+    mask: var(--tag-icon) center / contain no-repeat;
+  }
+
+  .verified-tag-md::before {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  /* Links: the header's and footer's, and those inside running text. */
+  .dir-link,
+  .foot-links a {
+    @apply text-[var(--dir-ink)] decoration-2 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-[var(--dir-ink)];
+  }
+
+  .inline-link {
+    @apply font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2;
+  }
+
+  /* The footer's link groups (components/Footer.tsx); after .dir-label,
+     which their headings also carry. */
+  .foot-title {
+    @apply mb-2 border-b-[3px] border-[var(--dir-ink)] pb-1.5 text-sm font-bold uppercase tracking-[0.12em] text-[var(--dir-ink)];
+  }
+
+  .foot-links > li {
+    @apply border-b border-[var(--dir-rule)];
+  }
+
+  .foot-links a {
+    @apply block py-1.5 text-base font-semibold;
+  }
+
+  /* The directory log on /changelog: name, dotted leader, action and date. */
+  .log > li {
+    @apply border-b border-[var(--dir-rule)]! py-3;
+  }
+
+  .log-row {
+    @apply flex min-w-0 items-baseline gap-1.5;
+  }
+
+  .log-name {
+    @apply min-w-0 wrap-break-word text-[17px] font-bold leading-snug;
+  }
+
+  a.log-name {
+    @apply text-[var(--dir-ink)] no-underline hover:underline;
+  }
+
+  .log-when {
+    @apply flex shrink-0 items-baseline gap-2 whitespace-nowrap;
+  }
+
+  .log-date {
+    @apply text-sm font-semibold text-[var(--dir-muted)];
+  }
+
+  .log-note {
+    @apply mt-0.5 text-[15px] text-[var(--dir-muted)];
+  }
+
+  /* A thumb tab on the category rail (components/CategoryRail.tsx); the
+     current category's is yellow. */
+  .rail-tab {
+    @apply flex min-h-[56px] items-center justify-center border-b border-l-[3px] border-[var(--dir-ink)]! bg-[var(--dir-paper)] px-1 text-center text-[12px] font-extrabold uppercase leading-[1.05] tracking-[0.02em] text-[var(--dir-ink)] no-underline hyphens-auto [overflow-wrap:anywhere] hover:bg-[var(--dir-yellow)] hover:text-[var(--dir-on-yellow)] focus-visible:bg-[var(--dir-yellow)] focus-visible:text-[var(--dir-on-yellow)];
+  }
+
+  .rail-tab[aria-current='page'] {
+    @apply bg-[var(--dir-yellow)] text-[var(--dir-on-yellow)];
+  }
+
   /* "+ Compare" (components/CompareTray.tsx). Every card renders one, but
      it does nothing without the tray's script, so it stays hidden until the
      tray marks the page ready. On a card it sits in the bottom-right corner,

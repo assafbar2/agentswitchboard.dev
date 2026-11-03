@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { compareTitle, type CuratedComparison } from '@/lib/compare';
 import { COMPARE_MAX, compareHref } from '@/lib/compare-link';
 import { smallIconPath } from '@/lib/icons';

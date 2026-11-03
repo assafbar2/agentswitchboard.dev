@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { X } from 'lucide-react';
 import { AgentCard } from '@/components/AgentCard';
 import { FILTER_BASE, FILTER_OFF } from '@/components/filter-chip';

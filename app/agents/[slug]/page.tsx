@@ -20,7 +20,7 @@ import { listingCard, listingCardImage } from '@/lib/share-cards';
 import { notFound } from 'next/navigation';
 import { ExternalLink } from 'lucide-react';
 import { authTypeLabel, pluralize } from '@/lib/utils';
-import Link from 'next/link';
+import Link from '@/components/Link';
 import type { Metadata } from 'next';
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev';
@@ -202,7 +202,7 @@ export default async function AgentPage({
             <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-1 border-b border-[var(--dir-rule)]! py-2.5">
               <dt className="flex min-w-0 flex-1 items-baseline gap-1.5">
                 <span className="dir-label shrink-0">Access</span>
-                <span aria-hidden="true" className="min-w-4 flex-1 -translate-y-1 border-b-2 border-dotted border-[var(--dir-leader)]!" />
+                <span aria-hidden="true" className="dir-row-leader" />
               </dt>
               <dd className="flex justify-end">
                 {agent.accessMethods.length > 0 ? (
@@ -215,7 +215,7 @@ export default async function AgentPage({
             <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-1 border-b border-[var(--dir-rule)]! py-2.5">
               <dt className="flex min-w-0 flex-1 items-baseline gap-1.5">
                 <span className="dir-label shrink-0">Auth</span>
-                <span aria-hidden="true" className="min-w-4 flex-1 -translate-y-1 border-b-2 border-dotted border-[var(--dir-leader)]!" />
+                <span aria-hidden="true" className="dir-row-leader" />
               </dt>
               <dd className="font-bold">{authTypeLabel(agent.authType)}</dd>
             </div>
@@ -223,7 +223,7 @@ export default async function AgentPage({
               <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-1 border-b border-[var(--dir-rule)]! py-2.5">
                 <dt className="flex min-w-0 flex-1 items-baseline gap-1.5">
                   <span className="dir-label shrink-0">{pluralize(skillCount, 'Skill')}</span>
-                  <span aria-hidden="true" className="min-w-4 flex-1 -translate-y-1 border-b-2 border-dotted border-[var(--dir-leader)]!" />
+                  <span aria-hidden="true" className="dir-row-leader" />
                 </dt>
                 <dd className="font-bold">{skillCount}</dd>
               </div>

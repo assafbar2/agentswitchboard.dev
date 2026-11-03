@@ -9,7 +9,7 @@
  * JavaScript, like the toggles.
  */
 
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { count } from '@/lib/analytics';

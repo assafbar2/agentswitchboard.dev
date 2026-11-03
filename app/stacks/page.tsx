@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { AgentIcon } from '@/components/AgentIcon';
 import { JsonLd } from '@/components/JsonLd';
@@ -133,10 +133,7 @@ function StackRow({ stack, entries }: Row) {
           <span className="min-w-0 wrap-break-word text-[19px] font-extrabold leading-snug group-hover:underline">
             {stack.title}
           </span>
-          <span
-            aria-hidden="true"
-            className="min-w-4 flex-1 -translate-y-1 border-b-2 border-dotted border-[var(--dir-leader)]!"
-          />
+          <span aria-hidden="true" className="dir-row-leader" />
           <span className="shrink-0 whitespace-nowrap text-[15px] font-bold">
             {entries.length} {pluralize(entries.length, 'tool')}
           </span>

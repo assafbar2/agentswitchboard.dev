@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { CategoryRail } from '@/components/CategoryRail';
 import { Suspense } from 'react';
 import { getAllCategories, getEveryAgent, loadOfficialVendors } from '@/lib/catalog';

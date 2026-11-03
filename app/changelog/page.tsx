@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { Suspense } from 'react';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { pageMetadata } from '@/lib/metadata';
@@ -27,8 +27,7 @@ export function generateMetadata(_props: unknown, parent: ResolvingMetadata): Pr
 
 const GITHUB_CHANGELOG = 'https://github.com/assafbar2/agentswitchboard.dev/blob/main/CHANGELOG.md';
 
-const inlineLink =
-  'font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2';
+const inlineLink = 'inline-link';
 
 const LOG_LIST_ID = 'directory-log';
 
@@ -95,10 +94,7 @@ export default async function ChangelogPage() {
                     </a>
                     <span className="font-bold"> · {release.title}</span>
                   </h3>
-                  <span
-                    aria-hidden="true"
-                    className="min-w-4 flex-1 -translate-y-1 border-b-2 border-dotted border-[var(--dir-leader)]!"
-                  />
+                  <span aria-hidden="true" className="dir-row-leader" />
                   <time dateTime={release.date} className="shrink-0 whitespace-nowrap text-sm font-semibold text-[var(--dir-muted)]">
                     {formatDay(release.date)}
                   </time>
@@ -138,37 +134,28 @@ export default async function ChangelogPage() {
             <Suspense>
               <ChangelogFilters listId={LOG_LIST_ID} categories={categories} counts={counts} />
             </Suspense>
-            <ul id={LOG_LIST_ID}>
+            <ul id={LOG_LIST_ID} className="log">
               {entries.map((e, i) => (
                 <li
                   key={`${e.slug}-${e.action}-${i}`}
                   data-action={e.action}
                   data-cats={categoriesOf(e.slug).join(' ') || undefined}
-                  className="border-b border-[var(--dir-rule)]! py-3"
                 >
-                  <div className="flex min-w-0 items-baseline gap-1.5">
+                  <div className="log-row">
                     {e.action === 'removed' ? (
-                      <span className="min-w-0 wrap-break-word text-[17px] font-bold leading-snug">
-                        {e.name}
-                      </span>
+                      <span className="log-name">{e.name}</span>
                     ) : (
-                      <Link
-                        href={`/agents/${e.slug}`}
-                        className="min-w-0 wrap-break-word text-[17px] font-bold leading-snug text-[var(--dir-ink)] no-underline hover:underline"
-                      >
+                      <Link href={`/agents/${e.slug}`} className="log-name">
                         {e.name}
                       </Link>
                     )}
-                    <span
-                      aria-hidden="true"
-                      className="min-w-4 flex-1 -translate-y-1 border-b-2 border-dotted border-[var(--dir-leader)]!"
-                    />
-                    <span className="flex shrink-0 items-baseline gap-2 whitespace-nowrap">
+                    <span aria-hidden="true" className="dir-row-leader" />
+                    <span className="log-when">
                       <span className="dir-label">{e.action}</span>
-                      {e.date && <span className="text-sm font-semibold text-[var(--dir-muted)]">{e.date}</span>}
+                      {e.date && <span className="log-date">{e.date}</span>}
                     </span>
                   </div>
-                  {e.note && <p className="text-[15px] text-[var(--dir-muted)] mt-0.5">{e.note}</p>}
+                  {e.note && <p className="log-note">{e.note}</p>}
                 </li>
               ))}
             </ul>

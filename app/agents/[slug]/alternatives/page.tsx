@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { notFound } from 'next/navigation';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { AgentCard } from '@/components/AgentCard';
@@ -101,10 +101,7 @@ export default async function AlternativesPage({ params }: Props) {
               <AgentIcon name={agent.name} iconUrl={agent.iconUrl} lazy={false} className="mr-0.5 self-center" />
               <span className="min-w-0 truncate text-[17px] font-bold group-hover:underline">{agent.name}</span>
               <span className="hidden shrink-0 text-[15px] text-[var(--dir-muted)] sm:inline">by {agent.providerName}</span>
-              <span
-                aria-hidden="true"
-                className="min-w-4 flex-1 -translate-y-1 border-b-2 border-dotted border-[var(--dir-leader)]!"
-              />
+              <span aria-hidden="true" className="dir-row-leader" />
               <span className="shrink-0 whitespace-nowrap text-sm font-semibold tracking-[0.06em]">
                 {agent.accessMethods.map(label).join(' · ')}
               </span>

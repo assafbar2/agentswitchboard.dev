@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { JACK_PITCH, JACK_RADIUS, jackCenter, lightDelay, panelSize, type Board, type BoardJack } from '@/lib/board';
 
 const jackClass = (jack: BoardJack) => [jack.official && 'o', jack.lit && 'l'].filter(Boolean).join(' ') || undefined;
