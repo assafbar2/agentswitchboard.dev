@@ -2,7 +2,8 @@ import type { NextRequest } from 'next/server';
 import { getEveryAgent } from '@/lib/catalog';
 import { curatedComparisons, requestedSlugs, selectCompared } from '@/lib/compare';
 import { renderCompareCard, renderComparisonsCard } from '@/lib/og';
-import { compareCard, comparisonsCard } from '@/lib/share-cards';
+import { redirectToCanonicalCard } from '@/lib/card-route';
+import { compareCard, compareCardImage, comparisonsCard, comparisonsCardImage } from '@/lib/share-cards';
 
 /**
  * Drawn on request and kept only by the CDN, never in the build's cache: there
@@ -17,11 +18,17 @@ export async function GET(request: NextRequest) {
   const requested = requestedSlugs(request.nextUrl.searchParams);
   let card: Response;
   if (requested.length === 0) {
-    card = await renderComparisonsCard(comparisonsCard(curatedComparisons(catalog).map((c) => c.agents)));
+    const data = comparisonsCard(curatedComparisons(catalog).map((c) => c.agents));
+    const redirect = redirectToCanonicalCard(request, comparisonsCardImage(data).url);
+    if (redirect) return redirect;
+    card = await renderComparisonsCard(data);
   } else {
     const { agents } = selectCompared(requested, catalog, new Map());
     if (agents.length < 2) return new Response('Not found', { status: 404 });
-    card = await renderCompareCard(compareCard(agents));
+    const data = compareCard(agents);
+    const redirect = redirectToCanonicalCard(request, compareCardImage(agents.map((a) => a.slug), data).url);
+    if (redirect) return redirect;
+    card = await renderCompareCard(data);
   }
   card.headers.set('Cache-Control', CDN_CACHE);
   return card;

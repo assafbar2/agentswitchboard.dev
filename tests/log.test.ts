@@ -228,6 +228,13 @@ describe('logConsumer', () => {
     expect(mocks.track).not.toHaveBeenCalled();
   });
 
+  it('logs crawler reads but sends no event for them', async () => {
+    logConsumer('/api/agents', request({ 'user-agent': UA.claudeBot }));
+    await runAfterTasks();
+    expect(consumerLines()).toMatchObject([{ route: '/api/agents', client: 'crawler' }]);
+    expect(mocks.track).not.toHaveBeenCalled();
+  });
+
   it('marks our own test traffic in the log and sends no event for it', async () => {
     logConsumer('/api/mcp', request({ 'user-agent': 'Mozilla/5.0 asb-e2e (live smoke tests)' }), { method: 'tools/list' });
     logConsumer('/api/agents', request({ 'user-agent': UA.curl, 'x-asb-e2e': '1' }));

@@ -57,6 +57,8 @@ describe('inCidr', () => {
 describe('isAssistantPlatformIp', () => {
   it("knows Anthropic's outbound range and nothing else", () => {
     expect(isAssistantPlatformIp('160.79.105.20')).toBe(true);
+    // Anthropic's second published outbound range.
+    expect(isAssistantPlatformIp('153.61.215.9')).toBe(true);
     expect(isAssistantPlatformIp('203.0.113.7')).toBe(false);
   });
 });

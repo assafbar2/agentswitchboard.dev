@@ -190,6 +190,8 @@ function record(
   // our own test traffic and MCP session plumbing (initialize, notifications,
   // tools/list: most of the MCP traffic) are not worth a billed event each.
   if (test || extra.method === 'rate_limited') return;
+  // Crawlers re-read the machine docs constantly; the log line counts them.
+  if (client === 'crawler') return;
   if (surfaceFor(route) === 'mcp' && extra.method !== 'tools/call') return;
   scheduleTrack({ client, call: clip(toolFor(extra) || route) }, sessionHeaders(req));
 }

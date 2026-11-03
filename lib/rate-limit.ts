@@ -71,14 +71,14 @@ export function clientIp(headers: HeaderSource): string {
 }
 
 /**
- * Anthropic's published outbound range for MCP tool calls, stable and
+ * Anthropic's published outbound ranges for MCP tool calls, stable and
  * announced before it changes: https://platform.claude.com/docs/en/api/ip-addresses.
  * Every Claude user of a directory-listed connector arrives from these
  * addresses, so they get a larger per-IP budget than a single client.
  * OpenAI's ChatGPT ranges are hundreds of small prefixes that change without
  * a schedule, so they are not listed here.
  */
-export const ASSISTANT_PLATFORM_CIDRS = ['160.79.104.0/21'] as const;
+export const ASSISTANT_PLATFORM_CIDRS = ['160.79.104.0/21', '153.61.208.0/20'] as const;
 
 function ipv4ToInt(ip: string): number | null {
   const parts = ip.split('.');
