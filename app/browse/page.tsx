@@ -29,15 +29,23 @@ import type { Metadata, ResolvingMetadata } from 'next';
 import { pageMetadata } from '@/lib/metadata';
 import { getTask, getTasks, taskExplanation, taskTitle } from '@/lib/tasks';
 
+/** Query values as Next passes them: a repeated key (?q=a&q=b) arrives as an array. */
+type RawParams = Record<string, string | string[] | undefined>;
+
+/** One value per key, the first when a key repeats (as URLSearchParams.get does). */
+function firstValues(raw: RawParams): Record<string, string | undefined> {
+  return Object.fromEntries(Object.entries(raw).map(([k, v]) => [k, Array.isArray(v) ? v[0] : v]));
+}
+
 /** A ?task= slug, any case; an unknown one is no task, so a stale link still lists everything. */
 const taskOf = (raw: string | undefined) => (raw ? getTask(raw.trim().toLowerCase()) : null);
 
 export async function generateMetadata({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string; task?: string }>;
+  searchParams: Promise<RawParams>;
 }, parent: ResolvingMetadata): Promise<Metadata> {
-  const { q: rawQ, task: taskParam } = await searchParams;
+  const { q: rawQ, task: taskParam } = firstValues(await searchParams);
   const q = clampQuery(rawQ);
   const task = taskOf(taskParam);
   return pageMetadata(
@@ -56,19 +64,9 @@ export async function generateMetadata({
 export default async function BrowsePage({
   searchParams,
 }: {
-  searchParams: Promise<{
-    q?: string;
-    task?: string;
-    access?: string;
-    category?: string;
-    official?: string;
-    vendor?: string;
-    verified?: string;
-    auth?: string;
-    sort?: string;
-  }>;
+  searchParams: Promise<RawParams>;
 }) {
-  const { q, task: taskParam, access, category, official, vendor, verified, auth, sort } = await searchParams;
+  const { q, task: taskParam, access, category, official, vendor, verified, auth, sort } = firstValues(await searchParams);
   const query = clampQuery(q);
   const task = taskOf(taskParam);
   // Same parsing as /api/agents: aliases map to their method and unknown values

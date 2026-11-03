@@ -2,12 +2,15 @@ import { VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 import { getEveryAgent } from '@/lib/catalog';
 import { BASE_URL } from '@/lib/env';
 import { absoluteIconUrl } from '@/lib/icons';
-import { logConsumer } from '@/lib/log';
 import { FEATURED_DEFINITION, OFFICIAL_DEFINITION, SPONSORED_DEFINITION, howToUseFields } from '@/lib/public-api';
 import { NextResponse } from 'next/server';
 
-export async function GET(req: Request) {
-  logConsumer('/agents.json', req);
+// Built once per deploy and served from the CDN whatever the query string, like
+// /llms.txt. proxy.ts counts every read at the edge, so nothing here reads the
+// request (which would make the route render per request).
+export const dynamic = 'force-static';
+
+export async function GET() {
   const agents = await getEveryAgent();
 
   const catalog = agents.map((a) => ({
@@ -40,6 +43,7 @@ export async function GET(req: Request) {
       description:
         'Machine-readable catalog of every published Agent Switchboard listing (AI agents, MCP servers and agentic tools), featured first, then A→Z. Filter by categories or accessMethods to find the right tool. ' +
         `Flags: ${VERIFIED_DEFINITION} ${OFFICIAL_DEFINITION} ${FEATURED_DEFINITION} ${SPONSORED_DEFINITION}`,
+      // Build time: the catalog only changes with a deploy.
       generated: new Date().toISOString(),
       total: catalog.length,
       agents: catalog,

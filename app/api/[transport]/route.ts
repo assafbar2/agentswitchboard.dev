@@ -523,8 +523,15 @@ const handler = createMcpHandler(
   {
     basePath: '/api',
     maxDuration: 60,
+    // Streamable HTTP only. The legacy SSE transport (/api/sse, /api/message)
+    // needs Redis, which this deployment has none of: without this, a request
+    // there hangs until the function times out.
+    disableSse: true,
   }
 );
+
+// The Vercel function limit; mcp-handler's maxDuration above does not set it.
+export const maxDuration = 60;
 
 // Wrap the handler to log consumers: UA + JSON-RPC method + tool called.
 // Vercel log explorer: filter `asb_consumer` to see who uses the catalog.
@@ -533,6 +540,13 @@ async function loggedHandler(req: Request): Promise<Response> {
 }
 
 async function limitedHandler(req: Request): Promise<Response> {
+  // [transport] catches every /api/<x> without its own route. Only /api/mcp is
+  // served; anything else (scanners probing /api/graphql, the disabled SSE
+  // paths) is a 404, not logged or counted as an MCP call.
+  if (new URL(req.url).pathname !== '/api/mcp') {
+    return jsonRpcError(404, -32601, 'Not found. The MCP endpoint is /api/mcp.');
+  }
+
   const ip = clientIp(req.headers);
   const limited = (isAssistantPlatformIp(ip) ? platformLimiter : requestLimiter).take(ip);
   if (!limited.ok) {

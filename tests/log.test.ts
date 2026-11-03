@@ -61,10 +61,10 @@ describe('bucketClient', () => {
   it.each<[string, string | null | undefined, ClientBucket]>([
     ['Claude-User', UA.claudeUser, 'claude'],
     ['Claude Code', UA.claudeCode, 'claude'],
-    ['ClaudeBot', UA.claudeBot, 'claude'],
+    ['ClaudeBot (crawler)', UA.claudeBot, 'crawler'],
     ['ChatGPT-User', UA.chatgptUser, 'chatgpt-openai'],
     ['OpenAI MCP client', UA.openaiMcp, 'chatgpt-openai'],
-    ['OAI-SearchBot', UA.oaiSearch, 'chatgpt-openai'],
+    ['OAI-SearchBot (crawler)', UA.oaiSearch, 'crawler'],
     ['Grok connector', 'grok-mcp-client/1.0', 'grok'],
     ['xAI API', 'xai-mcp/2.1 (+https://x.ai)', 'grok'],
     ['Cursor', UA.cursor, 'cursor'],
@@ -80,7 +80,9 @@ describe('bucketClient', () => {
     ['curl', UA.curl, 'curl'],
     ['Chrome', UA.chrome, 'browser'],
     ['Firefox', UA.firefox, 'browser'],
-    ['Googlebot', UA.googlebot, 'other'],
+    ['Googlebot', UA.googlebot, 'crawler'],
+    ['PerplexityBot', 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)', 'crawler'],
+    ['GoogleOther', 'Mozilla/5.0 (compatible; GoogleOther)', 'crawler'],
     ['headless Chrome', UA.headless, 'other'],
     ['Go', UA.go, 'other'],
     ['empty', '', 'other'],
@@ -207,15 +209,16 @@ describe('logConsumer', () => {
     );
   });
 
-  it('uses the JSON-RPC method when no tool was called, else the route', async () => {
+  it('sends MCP events for tool calls only, and the route for REST calls', async () => {
+    logConsumer('/api/mcp', request({ 'user-agent': UA.node }), { method: 'initialize' });
+    logConsumer('/api/mcp', request({ 'user-agent': UA.node }), { method: 'notifications/initialized' });
     logConsumer('/api/mcp', request({ 'user-agent': UA.node }), { method: 'tools/list' });
     logConsumer('/api/agents', request({ 'user-agent': UA.curl }), { q: 'postgres' });
     await runAfterTasks();
 
-    expect(mocks.track.mock.calls.map(([, props]) => props)).toEqual([
-      { client: 'node', call: 'tools/list' },
-      { client: 'curl', call: '/api/agents' },
-    ]);
+    // Every request is still logged; only the tool-less MCP plumbing skips the event.
+    expect(consumerLines()).toHaveLength(4);
+    expect(mocks.track.mock.calls.map(([, props]) => props)).toEqual([{ client: 'curl', call: '/api/agents' }]);
   });
 
   it('logs rate-limited calls but sends no event for them', async () => {
@@ -235,7 +238,8 @@ describe('logConsumer', () => {
 
   it('keeps every event value within the 255-character limit, with at most 2 properties', async () => {
     logConsumer('/api/mcp/' + 'r'.repeat(400), request({ 'user-agent': 'x'.repeat(1000) }), {
-      method: 'm'.repeat(1000),
+      method: 'tools/call',
+      tool: 'm'.repeat(1000),
     });
     await runAfterTasks();
 
@@ -343,7 +347,17 @@ describe('proxy', () => {
     expect(unstable_doesMiddlewareMatch({ config: proxyConfig, url })).toBe(true);
   });
 
-  it.each(['/browse', '/agents/cursor', '/api/agents', '/api/mcp', '/privacy'])(
+  it('serves a bare /browse from its prerendered copy, and leaves query views alone', () => {
+    const bare = proxy(proxyRequest('/browse', { headers: { 'user-agent': UA.chrome } }));
+    expect(isRewrite(bare)).toBe(true);
+    expect(getRewrittenUrl(bare)).toBe('https://agentswitchboard.dev/browse/all');
+
+    const query = proxy(proxyRequest('/browse?q=postgres', { headers: { 'user-agent': UA.chrome } }));
+    expect(isRewrite(query)).toBe(false);
+    expect(consumerLines()).toHaveLength(0);
+  });
+
+  it.each(['/agents/cursor', '/api/agents', '/api/mcp', '/privacy'])(
     'does not run for %s',
     (url) => {
       expect(unstable_doesMiddlewareMatch({ config: proxyConfig, url })).toBe(false);

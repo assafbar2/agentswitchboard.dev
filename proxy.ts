@@ -8,7 +8,7 @@ const SLUG = /^[a-z0-9][a-z0-9-]{0,80}$/;
 
 /**
  * Runs before routing (Next 16 renamed the `middleware` convention to
- * `proxy`). Three jobs, all narrow:
+ * `proxy`). Four jobs, all narrow:
  *
  * 1. Markdown content negotiation for the homepage. Any request for `/` that
  *    does not explicitly prefer text/markdown falls straight through to the
@@ -25,6 +25,10 @@ const SLUG = /^[a-z0-9][a-z0-9-]{0,80}$/;
  *    hand, or no longer curated) goes to its /compare link, which renders any
  *    mix. The pair page builds only the curated ones, so an arbitrary address
  *    never reaches the page cache.
+ *
+ * 4. A bare /browse (no query) is served from its prerendered copy at
+ *    /browse/all, so the full 900-listing page comes from the CDN. Any query
+ *    falls through to the per-request /browse.
  */
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -39,6 +43,10 @@ export function proxy(request: NextRequest) {
     target.pathname = '/compare';
     target.search = compareQuery(slugs);
     return NextResponse.redirect(target);
+  }
+
+  if (pathname === '/browse') {
+    return request.nextUrl.search ? NextResponse.next() : NextResponse.rewrite(new URL('/browse/all', request.url));
   }
 
   if (pathname === '/') {
@@ -80,5 +88,6 @@ export const config = {
     '/atom.xml',
     '/.well-known/:path*',
     '/compare/:pair',
+    '/browse',
   ],
 };
