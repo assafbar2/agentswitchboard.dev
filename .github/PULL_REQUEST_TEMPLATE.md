@@ -21,3 +21,4 @@
 - [ ] Any Use it now field is copied from the product's own docs, with no placeholders
 - [ ] For vendor submissions: `"verified": false` (maintainers verify & flip)
 - [ ] `official` left unset (maintainers set it; if you think it applies, link the evidence above. See CONTRIBUTING.md → Official listings)
+- [ ] Listing and catalog changes are contributed under CC BY-NC 4.0 (see LICENSE-DATA); code under MIT
