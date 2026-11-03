@@ -37,7 +37,8 @@ export async function generateMetadata({
 }: {
   searchParams: Promise<{ q?: string; task?: string }>;
 }, parent: ResolvingMetadata): Promise<Metadata> {
-  const { q, task: taskParam } = await searchParams;
+  const { q: rawQ, task: taskParam } = await searchParams;
+  const q = clampQuery(rawQ);
   const task = taskOf(taskParam);
   return pageMetadata(
     {
