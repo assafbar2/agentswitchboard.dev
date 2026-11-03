@@ -1,0 +1,48 @@
+Catalog Data License — CC BY-NC 4.0
+
+Copyright (c) 2026 Assaf Barnir (Agent Switchboard)
+
+The Agent Switchboard catalog data is licensed under the Creative Commons
+Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0).
+
+Legal code (the license itself):
+https://creativecommons.org/licenses/by-nc/4.0/legalcode
+Summary: https://creativecommons.org/licenses/by-nc/4.0/
+
+WHAT THIS COVERS
+
+- The catalog files in content/, including every listing in
+  content/agents/*.json.
+- The same data as agentswitchboard.dev publishes it: /agents.json, the REST
+  API under /api/ (for example GET /api/agents), the MCP server at /api/mcp,
+  and every other machine-readable export of the catalog.
+
+The code that builds and serves the site is licensed separately under the MIT
+License (see LICENSE). Listed products, their names and logos remain the
+property of their providers; this license covers the catalog compilation and
+its descriptive metadata, not the linked products.
+
+IN PLAIN TERMS
+
+This summary is not a substitute for the legal code above.
+
+You may share (copy and redistribute) and adapt (remix, transform and build
+upon) the catalog data, on these conditions:
+
+- Attribution: credit Agent Switchboard (https://agentswitchboard.dev), link
+  to this license, and indicate if you made changes, in any reasonable manner
+  but not in a way that suggests Agent Switchboard endorses you or your use.
+- NonCommercial: do not use the data for commercial purposes. Commercial reuse
+  (for example, redistributing the catalog in a paid product or building a
+  competing directory) requires a separate license:
+  https://agentswitchboard.dev/contact
+
+CONTRIBUTIONS
+
+Listings and corrections submitted to the catalog, by pull request, the
+submit form or the MCP submit_listing tool, are contributed under CC BY-NC 4.0.
+
+EARLIER VERSIONS
+
+Catalog content published up to and including commit 820a452 (2026-09-25) was
+released under CC BY 4.0, and those versions remain available under CC BY 4.0.

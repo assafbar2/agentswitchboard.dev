@@ -4,6 +4,11 @@ The catalog is maintained **in the open**: every agent in the directory is a
 JSON file in [`content/agents/`](content/agents/). Corrections and new
 listings happen via pull request — CI validates, a human maintainer merges.
 
+**Licensing.** Listings and corrections (anything under `content/`) are
+contributed under [CC BY-NC 4.0](LICENSE-DATA), the catalog's data license,
+whether they arrive by pull request, the submit form or the MCP
+`submit_listing` tool. Code contributions are under [MIT](LICENSE).
+
 ## Submit a new agent
 
 1. Fork the repo

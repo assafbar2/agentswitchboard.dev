@@ -4,6 +4,11 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
+## [2.8.1] - 2026-11-02 - Code and data licenses
+
+### Changed
+- The licenses now say the same thing everywhere: the code is MIT, and the catalog data, every listing in `content/agents/*.json` and the same data at /agents.json, the REST API and the MCP server, is CC BY-NC 4.0, in a new `LICENSE-DATA` file. The MIT `LICENSE` notes that it covers the code, [/terms](https://agentswitchboard.dev/terms) has a Licenses section with the same wording, and the README, CONTRIBUTING and the pull request template say submitted listings are contributed under CC BY-NC 4.0. ([#321](https://github.com/assafbar2/agentswitchboard.dev/pull/321))
+
 ## [2.8.0] - 2026-11-02 - Sponsored
 
 ### Highlights

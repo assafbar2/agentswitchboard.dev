@@ -69,16 +69,37 @@ export default function TermsPage() {
             <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2">Listings</h2>
             <p>
               Inclusion is not an endorsement. Features, pricing, and access methods of listed
-              products can change without notice. Always confirm details with the provider. Catalog
-              data is also available under{' '}
+              products can change without notice. Always confirm details with the provider.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2">Licenses</h2>
+            <p>
+              The catalog data (the listings in <code className="mono text-sm">content/agents/*.json</code>{' '}
+              and the rest of <code className="mono text-sm">content/</code>, and the same data at
+              /agents.json, the REST API and the MCP server) is licensed under{' '}
               <a
-                href="https://github.com/assafbar2/agentswitchboard.dev/blob/main/content/LICENSE.md"
+                href="https://github.com/assafbar2/agentswitchboard.dev/blob/main/LICENSE-DATA"
                 className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2"
               >
                 CC BY-NC 4.0
-              </a>{' '}
-              for non-commercial use with attribution to Agent Switchboard; commercial reuse
-              requires a license (contact us). Site code is MIT.
+              </a>
+              : you may share and adapt it for non-commercial purposes with attribution to Agent
+              Switchboard; commercial reuse requires a separate license (
+              <Link href="/contact" className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2">
+                contact us
+              </Link>
+              ). Listings you submit, by pull request, the submit form or the MCP{' '}
+              <code className="mono text-sm">submit_listing</code> tool, are contributed under CC
+              BY-NC 4.0. The site code is licensed under the{' '}
+              <a
+                href="https://github.com/assafbar2/agentswitchboard.dev/blob/main/LICENSE"
+                className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2"
+              >
+                MIT License
+              </a>
+              . Catalog versions published up to 2026-09-25 remain available under CC BY 4.0.
             </p>
           </section>
 
