@@ -4,6 +4,14 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
+## [2.8.5] - 2026-11-03 - Lighter pages
+
+### Changed
+- Pages are lighter and load less in the background. A link now loads the page behind it when you point at it, tab to it or touch it, instead of every link on screen loading its page as soon as it shows, and the markup that cards, badges, the footer and the changelog repeat is carried by short shared classes. A listing page is about 30% smaller and a category page about half its old size; nothing looks different. ([#325](https://github.com/assafbar2/agentswitchboard.dev/pull/325))
+- Crawlers get the plain [/browse](https://agentswitchboard.dev/browse), [/compare](https://agentswitchboard.dev/compare) and [/operator](https://agentswitchboard.dev/operator) pages, not the endless mixes a query makes of them. robots.txt closes those queries, shared stack links and their share cards to crawlers other than link previews, asks crawlers to wait five seconds between requests, and closes the site to SEO-tool crawlers; a crawler that ignores it on a compare, stack or Operator query or its card is turned away. People, link previews and assistants fetching a page for someone get every page as before. ([#325](https://github.com/assafbar2/agentswitchboard.dev/pull/325))
+- Category pages' structured data names and links each listing without repeating its description. ([#325](https://github.com/assafbar2/agentswitchboard.dev/pull/325))
+- The e2e checks run against a local production build by default. Against a deployment only the smoke and edge checks run, unless `E2E_FULL=1`, since every request to a deployment counts toward its usage. ([#325](https://github.com/assafbar2/agentswitchboard.dev/pull/325))
+
 ## [2.8.4] - 2026-11-03 - MIT license text
 
 ### Fixed
