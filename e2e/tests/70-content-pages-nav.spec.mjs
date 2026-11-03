@@ -17,7 +17,7 @@ const HEADER_NAV = [
 // components/Footer.tsx footerLinks
 const FOOTER_GROUPS = {
   Directory: ['/browse', '/categories', '/tasks', '/drops', '/new', '/stacks', '/my-stack', '/compare', '/switchboard', '/operator', '/submit'],
-  Resources: ['/for-agents#mcp', '/connect', '/for-agents', '/whats-new', '/changelog', '/feed.xml', '/pro', '/advertise'],
+  Resources: ['/for-agents#mcp', '/connect', '/for-agents', '/whats-new', '/changelog', '/feed.xml', '/advertise'],
   Company: ['/about', '/contact', 'https://github.com/assafbar2/agentswitchboard.dev', '/privacy', '/terms', '/disclaimer'],
 };
 
@@ -32,7 +32,6 @@ const CONTENT_PAGES = [
   { path: '/terms', title: 'Terms of Use', h1: 'Terms of Use' },
   { path: '/disclaimer', title: 'Disclaimer', h1: 'Disclaimer' },
   { path: '/advertise', title: 'Advertise', h1: 'Advertise with Us' },
-  { path: '/pro', title: 'Pro Access', h1: 'Pro Access' },
   { path: '/submit', title: 'List Your Agent', h1: 'List Your Agent' },
 ];
 
