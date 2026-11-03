@@ -4,8 +4,8 @@
 // listing in a stack is checked against its own API record.
 // Read-only: only GETs (via fetch at collection time, page.goto and page.request).
 import { test, expect } from './fixtures.mjs';
+import { BASE } from '../target.mjs';
 
-const BASE = process.env.E2E_BASE_URL || 'https://agentswitchboard.dev';
 const ORIGIN = 'https://agentswitchboard.dev';
 const UA = { 'user-agent': 'asb-e2e (stacks)' };
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];

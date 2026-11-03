@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { useId, useState } from 'react';
 import { Layers, Menu, X } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
@@ -31,8 +31,7 @@ function LabelledViewModeToggle({ className, toggleClassName }: { className?: st
   );
 }
 
-const navLinkClass =
-  'text-[var(--dir-ink)] decoration-2 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-[var(--dir-ink)]';
+const navLinkClass = 'dir-link';
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);

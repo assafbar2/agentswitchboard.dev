@@ -6,8 +6,8 @@
 // view, the page without JavaScript and on a phone, and the links to it.
 // Read-only: GETs only; Add all writes My stack, in the browser's localStorage.
 import { test, expect } from './fixtures.mjs';
+import { BASE } from '../target.mjs';
 
-const BASE = process.env.E2E_BASE_URL || 'https://agentswitchboard.dev';
 const ORIGIN = 'https://agentswitchboard.dev';
 const UA = { 'user-agent': 'asb-e2e (operator)' };
 // lib/request-parts.ts OPERATOR_EXAMPLES, PARTS_MAX, REQUEST_MAX; lib/operator.ts OPERATOR_ALTERNATIVES

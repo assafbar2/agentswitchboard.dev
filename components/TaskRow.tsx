@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { AgentIcon } from '@/components/AgentIcon';
 import type { Task } from '@/lib/tasks';
 import type { Agent } from '@/lib/types';
@@ -16,10 +16,7 @@ export function TaskRow({ task, fits }: { task: Task; fits: Agent[] }) {
           <span className="min-w-0 wrap-break-word text-[19px] font-extrabold leading-snug group-hover:underline">
             {task.label}
           </span>
-          <span
-            aria-hidden="true"
-            className="min-w-4 flex-1 -translate-y-1 border-b-2 border-dotted border-[var(--dir-leader)]!"
-          />
+          <span aria-hidden="true" className="dir-row-leader" />
           <span className="shrink-0 whitespace-nowrap text-[15px] font-bold">
             {fits.length} {pluralize(fits.length, 'tool')}
           </span>

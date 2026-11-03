@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { notFound } from 'next/navigation';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { AgentCard } from '@/components/AgentCard';
@@ -326,10 +326,7 @@ function ChangeList({
                 ) : (
                   <span className="min-w-0 wrap-break-word text-[17px] font-bold leading-snug">{item.name}</span>
                 )}
-                <span
-                  aria-hidden="true"
-                  className="min-w-4 flex-1 -translate-y-1 border-b-2 border-dotted border-[var(--dir-leader)]!"
-                />
+                <span aria-hidden="true" className="dir-row-leader" />
                 <time dateTime={item.date} className="shrink-0 whitespace-nowrap text-sm font-semibold text-[var(--dir-muted)]">
                   {formatDay(item.date)}
                 </time>

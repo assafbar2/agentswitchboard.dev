@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { MyStackEditor } from '@/components/MyStackEditor';
 import { pageMetadata } from '@/lib/metadata';

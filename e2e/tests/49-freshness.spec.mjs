@@ -5,8 +5,8 @@
 // counting from the day the deployment was built; lib/log-filter.ts filters.
 // Read-only: only GETs (via fetch at collection time, page.goto and page.request).
 import { test, expect } from './fixtures.mjs';
+import { BASE } from '../target.mjs';
 
-const BASE = process.env.E2E_BASE_URL || 'https://agentswitchboard.dev';
 const ORIGIN = 'https://agentswitchboard.dev';
 const UA = { 'user-agent': 'asb-e2e (live freshness tests)' };
 

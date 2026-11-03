@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { CategoryRail } from '@/components/CategoryRail';
 import { getCategoryBySlug, getAllCategories, getEveryAgent } from '@/lib/catalog';
 import { categoryCard, categoryCardImage } from '@/lib/share-cards';
@@ -84,7 +84,6 @@ export default async function CategoryPage({
       position: i + 1,
       name: agent.name,
       url: `${BASE_URL}/agents/${agent.slug}`,
-      description: agent.description,
     })),
   };
 

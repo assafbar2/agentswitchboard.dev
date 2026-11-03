@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { AgentIcon } from '@/components/AgentIcon';
 import { SponsoredBadge } from '@/components/SponsoredBadge';
 import { CompareEvents } from '@/components/CompareEvents';

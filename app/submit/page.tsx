@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { FileJson } from 'lucide-react';
 import { SubmitForm } from '@/components/SubmitForm';
 import { VerifiedBadge } from '@/components/VerifiedBadge';

@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { Fragment } from 'react';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { AgentCard } from '@/components/AgentCard';

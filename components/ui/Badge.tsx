@@ -7,18 +7,9 @@ type Variant = 'default' | 'accent' | 'blue' | 'amber' | 'sponsor' | 'rose' | 'o
  * glows. Yellow is a fill only (amber = featured), always with --dir-on-yellow
  * text, so it reads in both themes. Only paid placements get the solid ink
  * `sponsor` tag (components/SponsoredBadge.tsx), so the disclosure never blends
- * into the editorial labels.
+ * into the editorial labels. The styles are .tag and .tag-<variant> in
+ * globals.css.
  */
-const variantStyles: Record<Variant, string> = {
-  default: 'bg-transparent text-[var(--dir-ink)] border-[var(--dir-ink)]!',
-  accent: 'bg-transparent text-[var(--dir-ink)] border-[var(--dir-ink)]!',
-  blue: 'bg-[var(--dir-paper)] text-[var(--dir-ink)] border-[var(--dir-ink)]!',
-  amber: 'bg-[var(--dir-yellow)] text-[var(--dir-on-yellow)] border-[var(--dir-ink)]!',
-  sponsor: 'bg-[var(--dir-ink)] text-[var(--dir-paper)] border-[var(--dir-ink)]!',
-  rose: 'bg-transparent text-[var(--rose)] border-current!',
-  outline: 'bg-transparent text-[var(--dir-muted)] border-[var(--dir-rule)]!',
-};
-
 export function Badge({
   children,
   variant = 'default',
@@ -31,10 +22,7 @@ export function Badge({
   title?: string;
 }) {
   return (
-    <span
-      title={title}
-      className={`inline-flex items-center gap-1 rounded-none border px-1.5 py-px text-[11px] font-bold uppercase leading-4 tracking-[0.08em] ${variantStyles[variant]} ${className}`}
-    >
+    <span title={title} className={className ? `tag tag-${variant} ${className}` : `tag tag-${variant}`}>
       {children}
     </span>
   );

@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { CategoryRail } from '@/components/CategoryRail';
 import { getAllCategories } from '@/lib/catalog';
 import { CategoryIcon } from '@/components/ui/CategoryIcon';
@@ -48,10 +48,7 @@ export default async function CategoriesPage() {
                       <CategoryIcon name={cat.icon} className="w-4 h-4 shrink-0" />
                       <span className="min-w-0 wrap-break-word">{cat.name}</span>
                     </span>
-                    <span
-                      aria-hidden="true"
-                      className="min-w-4 flex-1 -translate-y-1 border-b-2 border-dotted border-[var(--dir-leader)]!"
-                    />
+                    <span aria-hidden="true" className="dir-row-leader" />
                     {count !== undefined && (
                       <span className="shrink-0 whitespace-nowrap text-sm font-semibold tracking-[0.06em]">
                         {count} listing{count !== 1 ? 's' : ''}

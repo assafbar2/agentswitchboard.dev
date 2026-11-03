@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { TaskEvents } from '@/components/TaskEvents';
 import type { Task } from '@/lib/tasks';
 

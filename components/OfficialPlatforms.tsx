@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import type { OfficialGroup } from '@/lib/official';
 import { ACCESS_METHOD_LABELS } from '@/lib/search';
 import type { Agent } from '@/lib/types';

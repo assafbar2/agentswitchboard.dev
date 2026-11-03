@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { AgentViewButton } from '@/components/ViewModeToggle';
 import type { Category } from '@/lib/types';
 
@@ -48,11 +48,7 @@ export function CategoryRail({
                   aria-label={cat.name}
                   aria-current={active ? 'page' : undefined}
                   title={cat.name}
-                  className={`flex min-h-[56px] items-center justify-center border-b border-l-[3px] border-[var(--dir-ink)]! px-1 text-center text-[12px] font-extrabold uppercase leading-[1.05] tracking-[0.02em] no-underline hyphens-auto [overflow-wrap:anywhere] hover:bg-[var(--dir-yellow)] hover:text-[var(--dir-on-yellow)] focus-visible:bg-[var(--dir-yellow)] focus-visible:text-[var(--dir-on-yellow)] ${
-                    active
-                      ? 'bg-[var(--dir-yellow)] text-[var(--dir-on-yellow)]'
-                      : 'bg-[var(--dir-paper)] text-[var(--dir-ink)]'
-                  }`}
+                  className="rail-tab"
                 >
                   {railLabel(cat.name)}
                 </Link>

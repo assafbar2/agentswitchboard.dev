@@ -273,10 +273,11 @@ test.describe('homepage — health', () => {
   test('every unique internal link on the page answers GET without 4xx/5xx', async ({ page }) => {
     test.setTimeout(240_000);
     await page.goto('/');
+    const site = new URL(page.url()).host;
     const hrefs = await page.locator('a[href]').evaluateAll((els) => els.map((e) => e.href));
     const internal = [...new Set(hrefs
       .map((h) => new URL(h))
-      .filter((u) => u.host === 'agentswitchboard.dev')
+      .filter((u) => u.host === site)
       .map((u) => u.pathname + u.search))];
     expect(internal.length).toBeGreaterThan(20);
     const bad = [];

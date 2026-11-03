@@ -4,8 +4,8 @@
 // Read-only: GETs only; the tray keeps its picks in the browser's localStorage.
 import * as fs from 'fs';
 import { test, expect } from './fixtures.mjs';
+import { BASE } from '../target.mjs';
 
-const BASE = process.env.E2E_BASE_URL || 'https://agentswitchboard.dev';
 const ORIGIN = 'https://agentswitchboard.dev';
 const UA = { 'user-agent': 'asb-e2e (compare)' };
 const MAX = 3;

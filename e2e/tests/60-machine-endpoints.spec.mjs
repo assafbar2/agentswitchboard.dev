@@ -4,8 +4,8 @@
 // only on paths that return before an issue is filed).
 import * as fs from 'fs';
 import { test, expect } from './fixtures.mjs';
+import { BASE } from '../target.mjs';
 
-const BASE = process.env.E2E_BASE_URL || 'https://agentswitchboard.dev';
 const ORIGIN = 'https://agentswitchboard.dev';
 const UA = 'Mozilla/5.0 asb-e2e (machine endpoint tests)';
 const H = { 'user-agent': UA };
@@ -414,6 +414,21 @@ test.describe('crawler files', () => {
     expect(body).toMatch(/Allow: \/\s/);
     expect(body).toMatch(/Disallow: \/_next\//);
     expect(body).toContain('Sitemap: https://agentswitchboard.dev/sitemap.xml');
+  });
+
+  test('/robots.txt closes query pages and their cards to crawlers, not to link previews, and shuts out SEO tools', async ({ request }) => {
+    const body = await (await request.get('/robots.txt', { headers: H })).text();
+    const groups = body.split(/\n\s*\n/).map((g) => ({
+      agents: [...g.matchAll(/^User-Agent: (.+)$/gim)].map((m) => m[1].trim()),
+      disallow: [...g.matchAll(/^Disallow: (.+)$/gim)].map((m) => m[1].trim()),
+    }));
+    const group = (ua) => groups.find((g) => g.agents.includes(ua));
+    expect(group('*').disallow).toEqual(
+      expect.arrayContaining(['/browse?', '/compare?', '/stack?', '/operator?', '/compare/card.png', '/stack/card.png', '/operator/card.png']),
+    );
+    expect(group('*').disallow).not.toContain('/browse');
+    expect(group('Twitterbot').disallow).toEqual(['/_next/']);
+    expect(group('AhrefsBot').disallow).toEqual(['/']);
   });
 
   test('/sitemap.xml lists every listing and category page', async ({ request }) => {

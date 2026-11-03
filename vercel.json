@@ -1,0 +1,80 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "routes": [
+    {
+      "src": "^/(?:compare|stack|operator)/card\\.png$",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[Bb]ot|[Cc]rawl|[Ss]pider|[Ss]lurp|GoogleOther|meta-externalagent|meta-webindexer|Barkrowler|Scrapy).*"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:Twitterbot|facebookexternalhit|LinkedInBot|Slackbot|Discordbot|TelegramBot|WhatsApp|redditbot|Pinterestbot|Embedly|Iframely|ChatGPT-User|Perplexity-User|Claude-User|MistralAI-User).*"
+        }
+      ],
+      "mitigate": { "action": "deny" }
+    },
+    {
+      "src": "^/compare$",
+      "has": [
+        { "type": "query", "key": "a" },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[Bb]ot|[Cc]rawl|[Ss]pider|[Ss]lurp|GoogleOther|meta-externalagent|meta-webindexer|Barkrowler|Scrapy).*"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:Twitterbot|facebookexternalhit|LinkedInBot|Slackbot|Discordbot|TelegramBot|WhatsApp|redditbot|Pinterestbot|Embedly|Iframely|ChatGPT-User|Perplexity-User|Claude-User|MistralAI-User).*"
+        }
+      ],
+      "mitigate": { "action": "deny" }
+    },
+    {
+      "src": "^/stack$",
+      "has": [
+        { "type": "query", "key": "items" },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[Bb]ot|[Cc]rawl|[Ss]pider|[Ss]lurp|GoogleOther|meta-externalagent|meta-webindexer|Barkrowler|Scrapy).*"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:Twitterbot|facebookexternalhit|LinkedInBot|Slackbot|Discordbot|TelegramBot|WhatsApp|redditbot|Pinterestbot|Embedly|Iframely|ChatGPT-User|Perplexity-User|Claude-User|MistralAI-User).*"
+        }
+      ],
+      "mitigate": { "action": "deny" }
+    },
+    {
+      "src": "^/operator$",
+      "has": [
+        { "type": "query", "key": "q" },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[Bb]ot|[Cc]rawl|[Ss]pider|[Ss]lurp|GoogleOther|meta-externalagent|meta-webindexer|Barkrowler|Scrapy).*"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:Twitterbot|facebookexternalhit|LinkedInBot|Slackbot|Discordbot|TelegramBot|WhatsApp|redditbot|Pinterestbot|Embedly|Iframely|ChatGPT-User|Perplexity-User|Claude-User|MistralAI-User).*"
+        }
+      ],
+      "mitigate": { "action": "deny" }
+    }
+  ]
+}

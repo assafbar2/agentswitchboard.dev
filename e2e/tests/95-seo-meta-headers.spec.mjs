@@ -288,13 +288,6 @@ test('HTML pages answer text/html; charset=utf-8', async ({ page }) => {
   }
 });
 
-test('HSTS is set with max-age of at least one year', async ({ page }) => {
-  const res = await page.request.get('/', { headers: UA });
-  const hsts = res.headers()['strict-transport-security'];
-  expect(hsts).toBeTruthy();
-  expect(Number(hsts.match(/max-age=(\d+)/)[1])).toBeGreaterThanOrEqual(31536000);
-});
-
 test('/ HTML response carries Vary: Accept (next.config.ts headers + proxy.ts)', async ({ page }) => {
     // Known gap: Vercel's prerendered HTML drops Vary: Accept (see next.config.ts).
     // Marked as expected to fail, so it flags the day the header comes through.
@@ -342,24 +335,7 @@ test('robots.txt allows crawling and points at the absolute sitemap', async ({ p
 });
 
 // ---------- transport ----------
-test('http:// permanently redirects to https:// on the same path', async ({ page }) => {
-  const res = await page.request.get('http://agentswitchboard.dev/about', { headers: UA, maxRedirects: 0 });
-  expect([301, 308]).toContain(res.status());
-  expect(res.headers()['location']).toBe('https://agentswitchboard.dev/about');
-});
-
-test('www host either redirects to the apex or canonicalises to it', async ({ page }) => {
-  const res = await page.request.get('https://www.agentswitchboard.dev/about', { headers: UA, maxRedirects: 0 });
-  const status = res.status();
-  test.info().annotations.push({ type: 'www behaviour', description: `status ${status} location ${res.headers()['location'] || '-'}` });
-  if (status >= 300 && status < 400) {
-    expect(res.headers()['location']).toMatch(/^https:\/\/agentswitchboard\.dev\/about$/);
-  } else {
-    expect(status).toBe(200);
-    expect(head(await res.text()).canonical).toBe('https://agentswitchboard.dev/about');
-  }
-});
-
+// HSTS and the http:// and www redirects come from Vercel's edge: 05-edge.spec.mjs.
 test('home responds in under 3s', async ({ page }) => {
   const t0 = Date.now();
   const res = await page.request.get('/', { headers: UA });

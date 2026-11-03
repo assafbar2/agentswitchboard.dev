@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { AgentCard } from '@/components/AgentCard';
 import { ConnectStack, ConnectStackRows } from '@/components/ConnectStack';

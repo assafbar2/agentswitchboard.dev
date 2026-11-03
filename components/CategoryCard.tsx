@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { CategoryIcon } from '@/components/ui/CategoryIcon';
 import type { Category } from '@/lib/types';
 

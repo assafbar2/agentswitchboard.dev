@@ -9,7 +9,7 @@
  */
 
 import { Fragment, useId, useMemo, useState, type FormEvent } from 'react';
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { useRouter } from 'next/navigation';
 import { count } from '@/lib/analytics';
 import { browseHref } from '@/lib/search';
