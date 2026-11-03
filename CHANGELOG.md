@@ -4,6 +4,11 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
+## [2.8.4] - 2026-11-03 - MIT license text
+
+### Fixed
+- `LICENSE` is the standard MIT text again, without the scope note, so GitHub recognises the repository as MIT. The scope stays in `LICENSE-DATA`, `content/LICENSE.md` and the README. ([#324](https://github.com/assafbar2/agentswitchboard.dev/pull/324))
+
 ## [2.8.3] - 2026-11-03 - Advertise
 
 ### Changed
