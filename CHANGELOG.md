@@ -4,6 +4,11 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
+## [2.8.7] - 2026-11-03 - Submissions in the weekly drop
+
+### Changed
+- [/submit](https://agentswitchboard.dev/submit) and `CONTRIBUTING.md` say how a submission is decided now. Every one, whether it comes by pull request, the form or the MCP `submit_listing` tool, is reviewed weekly, oldest first, and the decision is posted on its issue or pull request. An accepted listing or correction goes live in the next weekly drop, which credits the pull request it came from, and that pull request is closed with a link to the listing instead of being merged. ([#327](https://github.com/assafbar2/agentswitchboard.dev/pull/327))
+
 ## [2.8.6] - 2026-11-03 - Sitemap dates
 
 ### Changed
