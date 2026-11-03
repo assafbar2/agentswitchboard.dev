@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from 'next/server';
 import comparisons from '@/content/comparisons.json';
 import { COMPARE_MAX, compareQuery } from '@/lib/compare-link';
 import { EDGE_LOGGED_HEADER, logEdgeDoc } from '@/lib/log';
+import { isQueryPage, readsQuery } from '@/lib/query-pages';
 
 const CURATED = new Set(comparisons.map((c) => c.items.join('-vs-')));
 const SLUG = /^[a-z0-9][a-z0-9-]{0,80}$/;
@@ -26,9 +27,10 @@ const SLUG = /^[a-z0-9][a-z0-9-]{0,80}$/;
  *    mix. The pair page builds only the curated ones, so an arbitrary address
  *    never reaches the page cache.
  *
- * 4. A bare /browse (no query) is served from its prerendered copy at
- *    /browse/all, so the full 900-listing page comes from the CDN. Any query
- *    falls through to the per-request /browse.
+ * 4. /browse, /compare, /stack and /operator render per request from their
+ *    query. A request with none of the keys the page reads (bare, or only
+ *    tracking tags such as utm_* or fbclid) is served from the page's
+ *    prerendered copy at <page>/all, so it comes from the CDN.
  */
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -45,8 +47,10 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(target);
   }
 
-  if (pathname === '/browse') {
-    return request.nextUrl.search ? NextResponse.next() : NextResponse.rewrite(new URL('/browse/all', request.url));
+  if (isQueryPage(pathname)) {
+    return readsQuery(pathname, request.nextUrl.searchParams)
+      ? NextResponse.next()
+      : NextResponse.rewrite(new URL(`${pathname}/all`, request.url));
   }
 
   if (pathname === '/') {
@@ -86,8 +90,15 @@ export const config = {
     '/openapi.json',
     '/feed.xml',
     '/atom.xml',
-    '/.well-known/:path*',
+    // Only the files that exist: a probe for any other /.well-known path is a
+    // plain 404, not counted as a machine-doc read.
+    '/.well-known/mcp.json',
+    '/.well-known/webmcp.json',
+    '/.well-known/openai-apps-challenge',
     '/compare/:pair',
     '/browse',
+    '/compare',
+    '/stack',
+    '/operator',
   ],
 };

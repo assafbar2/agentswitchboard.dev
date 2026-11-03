@@ -11,6 +11,7 @@
  * a placement field.
  */
 import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
+import { MCP_TOOL_NAMES } from '@/lib/mcp-tools';
 
 const placement = vi.hoisted(() => ({ on: false }));
 
@@ -173,6 +174,8 @@ describe('AI-assistant surfaces are organic', () => {
   it('the MCP tool list names no placement field and promises no placement order', async () => {
     const { result } = await rpc('tools/list');
     expect(result.tools).toHaveLength(7);
+    // The logger's allow-list of tool names (lib/mcp-tools.ts) matches what is registered.
+    expect(result.tools.map((t: { name: string }) => t.name).sort()).toEqual([...MCP_TOOL_NAMES].sort());
     for (const tool of result.tools) {
       expect(placementKeys(tool.outputSchema ?? {}), tool.name).toEqual([]);
       expect(JSON.stringify(tool.outputSchema ?? {}), tool.name).not.toMatch(/"(featured|sponsored|sponsorLabel)"/);

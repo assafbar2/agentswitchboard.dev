@@ -6,6 +6,7 @@ import { compareHref } from '@/lib/compare-link';
 import { operatorHref } from '@/lib/request-parts';
 import { stackHref } from '@/lib/stack-link';
 import vercel from '@/vercel.json';
+import { QUERY_PAGE_KEYS } from '@/lib/query-pages';
 
 type Group = { userAgent?: string | string[]; allow?: string | string[]; disallow?: string | string[] };
 
@@ -132,7 +133,7 @@ describe('vercel.json deny rules', () => {
     const keys = rules
       .filter((r) => r.src === '^/browse$')
       .map((r) => r.has.find((c) => c.type === 'query')?.key);
-    expect(keys.sort()).toEqual(['access', 'auth', 'category', 'official', 'q', 'sort', 'task', 'vendor', 'verified']);
+    expect(keys.sort()).toEqual([...QUERY_PAGE_KEYS['/browse']].sort());
   });
 
   it('turn away crawlers, not people, assistants fetching for them, or link previews', () => {

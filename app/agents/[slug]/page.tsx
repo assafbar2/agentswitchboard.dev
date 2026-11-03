@@ -25,6 +25,10 @@ import type { Metadata } from 'next';
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev';
 
+// The catalog changes only with a deploy: an unknown slug is the static 404,
+// not a render per request.
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const agents = await getEveryAgent();
   return agents.map((a) => ({ slug: a.slug }));

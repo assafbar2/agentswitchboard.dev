@@ -45,6 +45,7 @@ import {
 } from '@/lib/public-api';
 import { clientIp, fixedWindowLimiter, isAssistantPlatformIp } from '@/lib/rate-limit';
 import { MAX_ALTERNATIVES } from '@/lib/related';
+import { MCP_TOOL_NAMES } from '@/lib/mcp-tools';
 import {
   AUTH_TYPES,
   MAX_QUERY_LENGTH,
@@ -569,7 +570,10 @@ async function limitedHandler(req: Request): Promise<Response> {
     try {
       const body = JSON.parse(text);
       method = body?.method;
-      if (method === 'tools/call') tool = body?.params?.name;
+      if (method === 'tools/call') {
+        const name = body?.params?.name;
+        tool = typeof name === 'string' && MCP_TOOL_NAMES.has(name) ? name : 'unknown_tool';
+      }
     } catch {
       // non-JSON body — log without method detail
     }

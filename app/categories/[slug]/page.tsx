@@ -15,6 +15,10 @@ const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.de
 const headerLink =
   'inline-flex min-h-11 items-center gap-1.5 rounded-none border-2 border-[var(--dir-ink)]! px-3 text-sm font-bold uppercase tracking-[0.06em] text-[var(--dir-ink)] no-underline hover:bg-[var(--dir-rule)] hover:no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--dir-ink)]';
 
+// The catalog changes only with a deploy: an unknown slug is the static 404,
+// not a render per request.
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const categories = await getAllCategories();
   return categories.map((cat) => ({ slug: cat.slug }));

@@ -2,8 +2,9 @@ import type { Metadata, ResolvingMetadata } from 'next';
 import BrowsePage, { generateMetadata as browseMetadata } from '../page';
 
 /**
- * The unfiltered /browse, prerendered once per deploy. proxy.ts rewrites a bare
- * /browse (no query) here, so the full listing (the heaviest page on the site)
+ * The unfiltered /browse, prerendered once per deploy. proxy.ts rewrites a
+ * /browse request that carries none of the keys the page reads
+ * (lib/query-pages.ts) here, so the full listing (the heaviest page on the site)
  * is served from the CDN instead of rendering on every visit. Filtered and
  * search views still render per request at /browse. Its canonical is /browse.
  */

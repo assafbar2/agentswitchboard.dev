@@ -357,6 +357,29 @@ describe('proxy', () => {
     expect(consumerLines()).toHaveLength(0);
   });
 
+  it.each([
+    ['/browse?utm_source=x&fbclid=y', '/browse/all'],
+    ['/compare', '/compare/all'],
+    ['/compare?ref=newsletter', '/compare/all'],
+    ['/stack', '/stack/all'],
+    ['/operator?gclid=z', '/operator/all'],
+  ])('serves %s from its prerendered copy', (url, target) => {
+    const res = proxy(proxyRequest(url, { headers: { 'user-agent': UA.chrome } }));
+    expect(isRewrite(res)).toBe(true);
+    expect(new URL(getRewrittenUrl(res)!).pathname).toBe(target);
+  });
+
+  it.each(['/compare?a=claude-code&b=cursor', '/compare?b=cursor', '/stack?items=agentmail', '/stack?title=x', '/operator?q=send+email'])(
+    'renders %s per request',
+    (url) => {
+      expect(isRewrite(proxy(proxyRequest(url, { headers: { 'user-agent': UA.chrome } })))).toBe(false);
+    }
+  );
+
+  it('does not run for /.well-known paths that do not exist', () => {
+    expect(unstable_doesMiddlewareMatch({ config: proxyConfig, url: '/.well-known/agent-card.json' })).toBe(false);
+  });
+
   it.each(['/agents/cursor', '/api/agents', '/api/mcp', '/privacy'])(
     'does not run for %s',
     (url) => {
