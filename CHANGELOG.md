@@ -4,6 +4,11 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
+## [2.8.2] - 2026-11-03 - Cursor plugin
+
+### Added
+- A Cursor plugin for the Cursor Marketplace: [plugins/agent-switchboard](https://github.com/assafbar2/agentswitchboard.dev/tree/main/plugins/agent-switchboard) adds the Agent Switchboard MCP server to Cursor in one install, with no account or key. Until the marketplace lists it, add the server by URL as [/connect](https://agentswitchboard.dev/connect) shows. ([#322](https://github.com/assafbar2/agentswitchboard.dev/pull/322))
+
 ## [2.8.1] - 2026-11-02 - Code and data licenses
 
 ### Changed

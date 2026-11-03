@@ -25,7 +25,7 @@ or a placement-dependent order reaches either surface.
 | Claude Connectors Directory | ◻ Ready to submit | — | Assaf submits at claude.ai/directory/manage (paid Claude plan). Custom connector by URL works today; /connect has a prefilled install link |
 | ChatGPT plugin directory | ◻ Ready to submit | — | Assaf uploads a plugin ZIP at platform.openai.com (verified identity) and sets `OPENAI_APPS_CHALLENGE` in Vercel for domain verification. Custom MCP plugin by URL works today |
 | GitHub MCP Registry (github.com/mcp, VS Code) | ◻ Not listed | — | Curated from the official registry by manual onboarding: request in github/github-mcp-server discussions or partnerships@github.com |
-| Cursor Marketplace | ◻ Not listed | — | Public repo with a Cursor plugin manifest, submitted at cursor.com/marketplace/publish (manual review) |
+| Cursor Marketplace | ◻ Ready to submit | [plugins/agent-switchboard](plugins/agent-switchboard) | Assaf applies at cursor.com/marketplace/publish (Cursor sign-in) with this repo's URL; Cursor reviews it by hand |
 | Smithery | ◻ Not listed | — | Publish the hosted URL at smithery.ai/new (Smithery account) |
 | Microsoft 365 Copilot connectors | ◻ Not listed | — | Partner Center, verified publisher; every tool needs a title and `readOnlyHint` (already set) |
 
@@ -49,6 +49,15 @@ curl -s -X POST http://localhost:3100/api/mcp \
   -H "Content-Type: application/json" -H "Accept: application/json, text/event-stream" \
   -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-03-26","capabilities":{},"clientInfo":{"name":"check","version":"1.0"}}}'
 ```
+
+**Cursor Marketplace**: the plugin lives in [plugins/agent-switchboard](plugins/agent-switchboard)
+(Cursor Plugin format: `.cursor-plugin/plugin.json`, `mcp.json`, `assets/logo.svg`, `README.md`),
+registered by [.cursor-plugin/marketplace.json](.cursor-plugin/marketplace.json) at the repo root.
+Cursor reviews every update before it ships, so bump `version` in the plugin's `plugin.json` when
+its files change. [tests/cursor-plugin.test.ts](tests/cursor-plugin.test.ts) checks it against
+Cursor's submission checklist and keeps its README's tool list, MCP URL and logo in step with the
+server. To try it in Cursor, copy the folder to `~/.cursor/plugins/local/agent-switchboard`,
+run Developer: Reload Window, and check Customize for the `agent-switchboard` MCP server.
 
 **awesome-mcp-servers**: the listing line lives in their README (Search & Data Extraction
 section) with a Glama score badge. Edit via PR only.
