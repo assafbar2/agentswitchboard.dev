@@ -30,7 +30,6 @@ const footerLinks = [
       { href: '/whats-new', label: "What's New" },
       { href: '/changelog', label: 'Changelog' },
       { href: '/feed.xml', label: 'RSS Feed', endpoint: true },
-      { href: '/pro', label: 'Pro Access' },
       { href: '/advertise', label: 'Advertise' },
     ],
   },

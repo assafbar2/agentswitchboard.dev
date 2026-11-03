@@ -23,6 +23,8 @@ const nextConfig: NextConfig = {
       { source: "/TOS", destination: "/terms", permanent: true },
       // The site card's URL before per-page share cards (lib/share-cards.ts).
       { source: "/opengraph-image", destination: "/card.png", permanent: true },
+      // Pro Access was a placeholder; paid placement is a Sponsored slot.
+      { source: "/pro", destination: "/advertise", permanent: true },
     ];
   },
   async rewrites() {

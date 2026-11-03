@@ -1,6 +1,8 @@
 // Sponsored listings: the label wherever a listing appears, the Sponsored slot
-// on the homepage and the latest drop page, and `sponsored` on every machine
-// surface. The listings come from content/agents/*.json ("sponsored": true).
+// on the homepage and the latest drop page, and `sponsored` in REST and
+// /agents.json but never in MCP results. The listings come from
+// content/agents/*.json ("sponsored": true). /advertise is how a sponsor asks
+// for a slot.
 import { readdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { test, expect } from './fixtures.mjs';
@@ -180,5 +182,48 @@ test.describe('machine surfaces expose the flag and nothing more', () => {
     expect(llms).toContain('a `sponsored` flag also marks paid placements. Sponsored: a paid placement');
     await page.goto('/for-agents');
     await expect(page.locator('main')).toContainText('Sponsored: a paid placement');
+  });
+});
+
+test.describe('/advertise, the manual sponsor flow', () => {
+  test('says where a slot shows, what it never changes, and that it never reaches AI assistants', async ({ page }) => {
+    await page.goto('/advertise');
+    const main = page.locator('main');
+    await expect(main.getByRole('heading', { level: 1 })).toHaveText('Advertise with Us');
+    const what = main.locator('section[aria-labelledby="what"]');
+    await expect(what.getByText('Sponsored', { exact: true })).toBeVisible();
+    await expect(what.getByRole('link', { name: 'homepage' })).toHaveAttribute('href', '/');
+    await expect(what.getByRole('link', { name: 'weekly drop' })).toHaveAttribute('href', '/drops');
+    const never = main.locator('section[aria-labelledby="never"]');
+    await expect(never).toContainText('Search results or their order, tasks, alternatives, compare or the Operator');
+    await expect(never).toContainText('sponsorship never appears in those results');
+    await expect(never.getByRole('link', { name: 'What Sponsored means' })).toHaveAttribute('href', '/about#sponsored');
+    await expect(main.locator('section[aria-labelledby="qualifies"]')).toContainText('Verified checks');
+  });
+
+  test('lists fixed packages, priced on request, with no way to pay on the page', async ({ page }) => {
+    await page.goto('/advertise');
+    const packages = page.locator('main [data-sponsor-packages] > li');
+    await expect(packages).toHaveCount(3);
+    await expect(packages.getByRole('heading', { level: 3 })).toHaveText(['1 week', '4 weeks', '12 weeks']);
+    for (let i = 0; i < 3; i++) await expect(packages.nth(i)).toContainText('Contact for pricing');
+    await expect(page.locator('main')).not.toContainText('$');
+    expect(await page.locator('main a[href*="stripe"], main a[href*="buy."], main form, main button').count()).toBe(0);
+  });
+
+  test('"Request a slot" opens a prefilled email to the maintainer', async ({ page }) => {
+    await page.goto('/advertise');
+    const href = await page.getByRole('link', { name: /Request a slot/ }).getAttribute('href');
+    const url = new URL(href);
+    expect(url.protocol).toBe('mailto:');
+    expect(url.pathname).toBe('barnir@agentmail.to');
+    expect(url.searchParams.get('subject')).toBe('Sponsored slot request — Agent Switchboard');
+    expect(url.searchParams.get('body')).toContain('Package (1 week, 4 weeks, 12 weeks):');
+  });
+
+  test('/pro redirects to /advertise', async ({ request }) => {
+    const res = await request.get('/pro', { headers: UA, maxRedirects: 0 });
+    expect(res.status()).toBe(308);
+    expect(res.headers().location).toMatch(/\/advertise$/);
   });
 });
