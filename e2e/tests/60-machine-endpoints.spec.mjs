@@ -416,7 +416,7 @@ test.describe('crawler files', () => {
     expect(body).toContain('Sitemap: https://agentswitchboard.dev/sitemap.xml');
   });
 
-  test('/robots.txt closes query pages and their cards to crawlers, not to link previews, and shuts out SEO tools', async ({ request }) => {
+  test('/robots.txt closes query pages and share cards to crawlers, not to link previews, and shuts out SEO tools', async ({ request }) => {
     const body = await (await request.get('/robots.txt', { headers: H })).text();
     const groups = body.split(/\n\s*\n/).map((g) => ({
       agents: [...g.matchAll(/^User-Agent: (.+)$/gim)].map((m) => m[1].trim()),
@@ -424,7 +424,7 @@ test.describe('crawler files', () => {
     }));
     const group = (ua) => groups.find((g) => g.agents.includes(ua));
     expect(group('*').disallow).toEqual(
-      expect.arrayContaining(['/browse?', '/compare?', '/stack?', '/operator?', '/compare/card.png', '/stack/card.png', '/operator/card.png']),
+      expect.arrayContaining(['/browse?', '/compare?', '/stack?', '/operator?', '/card.png', '/*/card.png']),
     );
     expect(group('*').disallow).not.toContain('/browse');
     expect(group('Twitterbot').disallow).toEqual(['/_next/']);
@@ -453,6 +453,16 @@ test.describe('crawler files', () => {
     expect(catLocs.length).toBe(cats.categories.length);
     expect(locs).toContain(`https://agentswitchboard.dev/agents/${REAL_SLUG}`);
     expect(locs.filter((u) => ARCHIVED_SLUGS.some((s) => u.endsWith(`/agents/${s}`)))).toEqual([]);
+  });
+
+  test('/sitemap.xml dates each listing by its updatedAt, never the build', async ({ request }) => {
+    const xml = await (await request.get('/sitemap.xml', { headers: H })).text();
+    const lastmod = new Map([...xml.matchAll(/<loc>([^<]+)<\/loc>\s*(?:<lastmod>([^<]+)<\/lastmod>)?/g)].map((m) => [m[1], m[2]]));
+    for (const a of CATALOG) {
+      expect(lastmod.get(`https://agentswitchboard.dev/agents/${a.slug}`), a.slug).toBe(new Date(a.updatedAt ?? a.createdAt).toISOString());
+    }
+    expect(lastmod.has('https://agentswitchboard.dev/about')).toBe(true);
+    expect(lastmod.get('https://agentswitchboard.dev/about')).toBeUndefined();
   });
 
   test('10 sitemap URLs spread across the file all return 200', async ({ request }) => {

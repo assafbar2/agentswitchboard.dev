@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "routes": [
     {
-      "src": "^/(?:compare|stack|operator)/card\\.png$",
+      "src": "^/(?:.+/)?card\\.png$",
       "has": [
         {
           "type": "header",
