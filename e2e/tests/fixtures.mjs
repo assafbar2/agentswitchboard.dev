@@ -1,4 +1,4 @@
-// Shared guard for every live test: the site is production, so nothing a test
+// Shared guard for every test: the target can be production, so nothing a test
 // does may write. Only GET/HEAD reach the site, plus JSON-RPC POSTs to
 // /api/mcp (read-only tools). Analytics beacons are dropped so the run does
 // not show up as visitors. Every blocked write is recorded on `blocked`.

@@ -72,7 +72,7 @@ test.describe('header navigation', () => {
   test('logo link returns to the homepage', async ({ page }) => {
     await page.goto('/privacy');
     await page.getByRole('banner').getByRole('link', { name: BRAND, exact: true }).click();
-    await expect(page).toHaveURL(/agentswitchboard\.dev\/$/);
+    await expect(page).toHaveURL('/');
     await expect(page.getByRole('heading', { level: 1 })).toContainText('Every AI Agent Worth Knowing');
   });
 
@@ -206,11 +206,12 @@ test.describe('content pages', () => {
     const insecure = [];
     for (const p of CONTENT_PAGES) {
       await page.goto(p.path);
+      const site = new URL(page.url()).host;
       const hrefs = await page.locator('a[href]').evaluateAll((els) => els.map((e) => e.href));
       for (const h of hrefs) {
         if (/^(mailto:|tel:|javascript:)/.test(h)) continue;
         const u = new URL(h);
-        if (u.protocol !== 'https:') insecure.push(`${p.path}: ${h}`);
+        if (u.host !== site && u.protocol !== 'https:') insecure.push(`${p.path}: ${h}`);
       }
     }
     expect(insecure).toEqual([]);
@@ -283,7 +284,7 @@ test.describe('404 page', () => {
   test('404 page "Back to home" link goes home', async ({ page }) => {
     await page.goto('/definitely-not-a-page-asb-e2e-7f3k');
     await page.getByRole('main').getByRole('link', { name: 'Back to home' }).click();
-    await expect(page).toHaveURL(/agentswitchboard\.dev\/$/);
+    await expect(page).toHaveURL('/');
     await expect(page.getByRole('heading', { level: 1 })).toContainText('Every AI Agent Worth Knowing');
   });
 

@@ -3,8 +3,8 @@
 // listing's API record so the page, REST and MCP say the same thing.
 // Read-only: GETs, plus get_agent over /api/mcp.
 import { test, expect } from './fixtures.mjs';
+import { BASE } from '../target.mjs';
 
-const BASE = process.env.E2E_BASE_URL || 'https://agentswitchboard.dev';
 const UA = { 'user-agent': 'asb-e2e (use-it-now)' };
 
 const catalog = (await (await fetch(`${BASE}/agents.json`, { headers: UA })).json()).agents;

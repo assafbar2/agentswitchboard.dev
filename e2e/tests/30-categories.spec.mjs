@@ -2,8 +2,8 @@
 // thumb-index rail, the 404 for unknown slugs, and listing links.
 // Read-only: only GETs (via fetch at collection time, page.goto and page.request).
 import { test, expect } from './fixtures.mjs';
+import { BASE, PRODUCTION } from '../target.mjs';
 
-const BASE = process.env.E2E_BASE_URL || 'https://agentswitchboard.dev';
 const UA = { 'user-agent': 'asb-e2e (live categories tests)' };
 
 // The real category list drives the parametrized tests (GET only).
@@ -123,7 +123,7 @@ test.describe('category page details', () => {
     await page.goto(`/categories/${small.slug}`);
     await expect(page.locator('h1').locator('xpath=following-sibling::span[1]')).toHaveText(`· ${small.agentCount}`);
     await expect(page).toHaveTitle(new RegExp(`^${small.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')} AI Agents`));
-    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `${BASE}/categories/${small.slug}`);
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `${PRODUCTION}/categories/${small.slug}`);
   });
 
   test('ItemList JSON-LD numberOfItems equals the API count', async ({ page }) => {
