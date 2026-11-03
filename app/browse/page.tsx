@@ -12,6 +12,7 @@ import {
   sortAgents,
   type BreakdownKey,
   type BrowseState,
+  clampQuery,
 } from '@/lib/search';
 import { normalizeAccessMethods, normalizeAuthTypes } from '@/lib/public-api';
 import { recover } from '@/lib/recovery';
@@ -67,7 +68,7 @@ export default async function BrowsePage({
   }>;
 }) {
   const { q, task: taskParam, access, category, official, vendor, verified, auth, sort } = await searchParams;
-  const query = q?.trim() ?? '';
+  const query = clampQuery(q);
   const task = taskOf(taskParam);
   // Same parsing as /api/agents: aliases map to their method and unknown values
   // are dropped, so a stale or mistyped link never empties the directory.

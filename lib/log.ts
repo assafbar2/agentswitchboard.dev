@@ -5,9 +5,9 @@
  * and which MCP tools they call.
  *
  * That log line is the always-on record. Each call also sends an
- * `agent_call` custom event to Vercel Analytics, scheduled with after() so it
- * never delays the response. Custom events are only stored on Vercel's Pro and
- * Enterprise plans: on Hobby they are dropped, and the log line is all there is.
+ * `agent_call` custom event to Vercel Analytics ({ client, call }), scheduled
+ * with after() so it never delays the response. Events are billed on Pro, so
+ * rate-limited requests and our own test traffic get the log line only.
  *
  * Machine docs that are served statically (llms.txt, index.md, openapi.json,
  * /.well-known/*, …) never run route code per request, so proxy.ts counts
@@ -121,9 +121,21 @@ function analyticsEndpointConfigured(): boolean {
   return Boolean(process.env.VERCEL_WEB_ANALYTICS_ENDPOINT || process.env.VERCEL_URL);
 }
 
-/** Sends the agent_call event after the response. Never throws, never rejects. */
+/**
+ * Our own checks (the e2e suite in e2e/ and audit scripts) tag their requests.
+ * They are logged with `test: true` but never sent as billed analytics events.
+ */
+export function isOwnTestTraffic(req: Request): boolean {
+  return req.headers.has('x-asb-e2e') || /\basb-(?:e2e|audit|verify)\b/i.test(req.headers.get('user-agent') ?? '');
+}
+
+/**
+ * Sends the agent_call event after the response. Never throws, never rejects.
+ * Two properties only, because Pro keeps two per custom event: the client and
+ * what it called (the MCP tool or JSON-RPC method, else the route).
+ */
 function scheduleTrack(
-  properties: { surface: Surface; route: string; tool: string; client: ClientBucket },
+  properties: { client: ClientBucket; call: string },
   headers: Record<string, string>
 ): void {
   if (!analyticsEndpointConfigured()) return;
@@ -146,12 +158,12 @@ function scheduleTrack(
 
 function record(
   route: string,
-  surface: Surface,
   req: Request,
   extra: Record<string, unknown>
 ): void {
   const ua = req.headers.get('user-agent');
   const client = bucketClient(ua);
+  const test = isOwnTestTraffic(req);
 
   try {
     console.log(
@@ -161,6 +173,7 @@ function record(
         ua: ua ?? 'unknown',
         client,
         referer: req.headers.get('referer') ?? undefined,
+        ...(test ? { test: true } : {}),
         ...extra,
       })
     );
@@ -168,10 +181,10 @@ function record(
     // logging must never break the request
   }
 
-  scheduleTrack(
-    { surface, route: clip(route), tool: clip(toolFor(extra)), client },
-    sessionHeaders(req)
-  );
+  // The log line above is the full record. Rejected (rate-limited) requests
+  // and our own test traffic are not worth a billed event each.
+  if (test || extra.method === 'rate_limited') return;
+  scheduleTrack({ client, call: clip(toolFor(extra) || route) }, sessionHeaders(req));
 }
 
 /**
@@ -188,7 +201,7 @@ export function logConsumer(
     const surface = surfaceFor(route);
     // proxy.ts already counted this machine-doc request.
     if (surface === 'doc' && req.headers.get(EDGE_LOGGED_HEADER) !== null) return;
-    record(route, surface, req, extra);
+    record(route, req, extra);
   } catch {
     // logging must never break the request
   }
@@ -205,7 +218,7 @@ export function logEdgeDoc(
 ): void {
   try {
     if (isRouterFetch(req)) return;
-    record(route, 'doc', req, extra);
+    record(route, req, extra);
   } catch {
     // logging must never break the request
   }

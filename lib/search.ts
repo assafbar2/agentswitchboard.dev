@@ -483,12 +483,24 @@ export function scoreAgent(agent: Agent, query: string): number {
   return scoreParsed(agent, parseQuery(query), []);
 }
 
+/**
+ * Longest search text acted on. Real searches are a few words; the cap keeps a
+ * pasted essay or a junk-filled URL from costing seconds of CPU (the no-results
+ * recovery on /browse retries every word and respelling).
+ */
+export const MAX_QUERY_LENGTH = 200;
+
+/** Trimmed search text, cut to MAX_QUERY_LENGTH. */
+export function clampQuery(raw: string | null | undefined): string {
+  return (raw ?? '').trim().slice(0, MAX_QUERY_LENGTH).trim();
+}
+
 export function searchAgents(
   agents: Agent[],
   query: string,
   filterAccessMethods?: string[]
 ): Agent[] {
-  const parsed = parseQuery(query);
+  const parsed = parseQuery(clampQuery(query));
   // Chip filters (strict) and access words in the query combine (AND).
   const chips = [
     ...new Set((filterAccessMethods ?? []).map((m) => accessAlias(m.toLowerCase()) ?? m)),

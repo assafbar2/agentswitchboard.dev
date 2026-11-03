@@ -120,12 +120,19 @@ describe('vercel.json deny rules', () => {
   const denied = (route: (typeof rules)[number], ua: string) => userAgent(route.has).test(ua) && !userAgent(route.missing).test(ua);
 
   it('cover each query page and every share card that robots.txt closes', () => {
-    expect(rules.map((r) => r.src)).toEqual(['^/(?:.+/)?card\\.png$', '^/compare$', '^/stack$', '^/operator$']);
+    expect([...new Set(rules.map((r) => r.src))]).toEqual(['^/(?:.+/)?card\\.png$', '^/compare$', '^/stack$', '^/operator$', '^/browse$']);
     const cards = new RegExp(rules[0].src);
     for (const url of CARD_URLS) expect(cards.test(url), url).toBe(true);
     for (const url of ['/', '/agents/agentmail', '/agents/agentmail/alternatives', '/icons/agentmail.png', '/agents/scorecard.png']) {
       expect(cards.test(url), url).toBe(false);
     }
+  });
+
+  it('cover every query key /browse reads, one rule each (a rule matches one key)', () => {
+    const keys = rules
+      .filter((r) => r.src === '^/browse$')
+      .map((r) => r.has.find((c) => c.type === 'query')?.key);
+    expect(keys.sort()).toEqual(['access', 'auth', 'category', 'official', 'q', 'sort', 'task', 'vendor', 'verified']);
   });
 
   it('turn away crawlers, not people, assistants fetching for them, or link previews', () => {

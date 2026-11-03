@@ -47,7 +47,9 @@ import { clientIp, fixedWindowLimiter, isAssistantPlatformIp } from '@/lib/rate-
 import { MAX_ALTERNATIVES } from '@/lib/related';
 import {
   AUTH_TYPES,
+  MAX_QUERY_LENGTH,
   SORT_ORDERS,
+  clampQuery,
   filterAgents,
   invalidSinceMessage,
   parseSince,
@@ -221,7 +223,7 @@ const handler = createMcpHandler(
         inputSchema: {
           query: z
             .string()
-            .describe('Free-text search over name, description, skills, categories, tags, and provider')
+            .describe(`Free-text search over name, description, skills, categories, tags, and provider (up to ${MAX_QUERY_LENGTH} characters; longer text is cut)`)
             .optional(),
           task: z.string().describe(TASK_INPUT).optional(),
           category: z.string().describe('Category slug, e.g. "code-devtools", "voice-messaging"').optional(),
@@ -278,7 +280,7 @@ const handler = createMcpHandler(
           since: firstDay ?? undefined,
         });
         const matches = sortAgents(
-          searchAgents(agents, query ?? '', access ? normalizeAccessMethods(access) : undefined),
+          searchAgents(agents, clampQuery(query), access ? normalizeAccessMethods(access) : undefined),
           sort ?? 'relevance'
         );
         const start = offset ?? 0;

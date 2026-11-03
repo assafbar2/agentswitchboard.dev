@@ -202,35 +202,50 @@ describe('logConsumer', () => {
     expect(mocks.track).toHaveBeenCalledTimes(1);
     expect(mocks.track).toHaveBeenCalledWith(
       'agent_call',
-      { surface: 'mcp', route: '/api/mcp', tool: 'search_agents', client: 'cursor' },
+      { client: 'cursor', call: 'search_agents' },
       { headers: { 'user-agent': UA.cursor, 'x-forwarded-for': '203.0.113.7' } }
     );
   });
 
-  it('uses the JSON-RPC method as the tool when no tool was called, else an empty string', async () => {
+  it('uses the JSON-RPC method when no tool was called, else the route', async () => {
     logConsumer('/api/mcp', request({ 'user-agent': UA.node }), { method: 'tools/list' });
     logConsumer('/api/agents', request({ 'user-agent': UA.curl }), { q: 'postgres' });
     await runAfterTasks();
 
     expect(mocks.track.mock.calls.map(([, props]) => props)).toEqual([
-      { surface: 'mcp', route: '/api/mcp', tool: 'tools/list', client: 'node' },
-      { surface: 'rest', route: '/api/agents', tool: '', client: 'curl' },
+      { client: 'node', call: 'tools/list' },
+      { client: 'curl', call: '/api/agents' },
     ]);
   });
 
-  it('keeps every event value within the 255-character limit, with at most 4 properties', async () => {
+  it('logs rate-limited calls but sends no event for them', async () => {
+    logConsumer('/api/mcp', request({ 'user-agent': UA.node }), { method: 'rate_limited' });
+    await runAfterTasks();
+    expect(consumerLines()).toMatchObject([{ route: '/api/mcp', method: 'rate_limited' }]);
+    expect(mocks.track).not.toHaveBeenCalled();
+  });
+
+  it('marks our own test traffic in the log and sends no event for it', async () => {
+    logConsumer('/api/mcp', request({ 'user-agent': 'Mozilla/5.0 asb-e2e (live smoke tests)' }), { method: 'tools/list' });
+    logConsumer('/api/agents', request({ 'user-agent': UA.curl, 'x-asb-e2e': '1' }));
+    await runAfterTasks();
+    expect(consumerLines()).toMatchObject([{ test: true }, { test: true }]);
+    expect(mocks.track).not.toHaveBeenCalled();
+  });
+
+  it('keeps every event value within the 255-character limit, with at most 2 properties', async () => {
     logConsumer('/api/mcp/' + 'r'.repeat(400), request({ 'user-agent': 'x'.repeat(1000) }), {
       method: 'm'.repeat(1000),
     });
     await runAfterTasks();
 
     const [, props] = mocks.track.mock.calls[0] as [string, Record<string, unknown>];
-    expect(Object.keys(props).length).toBeLessThanOrEqual(4);
+    expect(Object.keys(props).length).toBeLessThanOrEqual(2);
     for (const value of Object.values(props)) {
       expect(typeof value).toBe('string');
       expect((value as string).length).toBeLessThanOrEqual(MAX_EVENT_VALUE_LENGTH);
     }
-    expect(props.tool).toBe('m'.repeat(MAX_EVENT_VALUE_LENGTH));
+    expect(props.call).toBe('m'.repeat(MAX_EVENT_VALUE_LENGTH));
   });
 
   it('never throws or rejects when track() rejects', async () => {
@@ -348,7 +363,7 @@ describe('proxy', () => {
     await runAfterTasks();
     expect(mocks.track).toHaveBeenCalledWith(
       'agent_call',
-      { surface: 'doc', route: '/', tool: '', client: 'claude' },
+      { client: 'claude', call: '/' },
       expect.anything()
     );
   });
@@ -377,7 +392,7 @@ describe('proxy', () => {
     await runAfterTasks();
     expect(mocks.track).toHaveBeenCalledWith(
       'agent_call',
-      { surface: 'doc', route: '/llms.txt', tool: '', client: 'python' },
+      { client: 'python', call: '/llms.txt' },
       { headers: { 'user-agent': UA.httpx } }
     );
   });

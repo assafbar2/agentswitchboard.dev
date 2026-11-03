@@ -32,6 +32,7 @@
 import { getEveryAgent } from '@/lib/catalog';
 import { organicOrder, wantsOrganic } from '@/lib/organic';
 import {
+  clampQuery,
   filterAgents,
   invalidSinceMessage,
   parseFlag,
@@ -59,7 +60,7 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(req: Request): Promise<Response> {
   const { searchParams } = new URL(req.url);
-  const q = (searchParams.get('q') ?? '').trim();
+  const q = clampQuery(searchParams.get('q'));
   const taskSlug = (searchParams.get('task') ?? '').trim().toLowerCase();
   const category = (searchParams.get('category') ?? '').trim();
   const official = parseFlag(searchParams.get('official'));

@@ -1,5 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import {
+  MAX_QUERY_LENGTH,
+  clampQuery,
   breakdownLine,
   browseMatches,
   browseStateHref,
@@ -95,6 +97,14 @@ describe('scoreAgent', () => {
       skills: [{ id: 'x', name: undefined as unknown as string, description: undefined as unknown as string }],
     });
     expect(() => scoreAgent(agent, 'anything')).not.toThrow();
+  });
+});
+
+describe('clampQuery', () => {
+  it('trims and cuts search text to MAX_QUERY_LENGTH', () => {
+    expect(clampQuery('  postgres mcp  ')).toBe('postgres mcp');
+    expect(clampQuery(undefined)).toBe('');
+    expect(clampQuery('word '.repeat(2000)).length).toBeLessThanOrEqual(MAX_QUERY_LENGTH);
   });
 });
 
