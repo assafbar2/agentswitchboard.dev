@@ -106,8 +106,9 @@ export default function SubmitPage() {
             Add one file —{' '}
             <span className="mono font-semibold">content/agents/&lt;your-slug&gt;.json</span>{' '}
             — and CI validates it against the quality bar. It then gets the same
-            review as a form submission; if it&rsquo;s accepted, we merge it.
-            Merge = live.
+            review as a form submission. If it&rsquo;s accepted, the listing goes
+            live in the next weekly drop, which credits your pull request, and we
+            close the pull request with a link to the listing.
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
             <a

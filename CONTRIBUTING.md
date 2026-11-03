@@ -1,8 +1,13 @@
 # Contributing to Agent Switchboard
 
 The catalog is maintained **in the open**: every agent in the directory is a
-JSON file in [`content/agents/`](content/agents/). Corrections and new
-listings happen via pull request — CI validates, a human maintainer merges.
+JSON file in [`content/agents/`](content/agents/). New listings and
+corrections come in by pull request, the [submit form](https://agentswitchboard.dev/submit)
+or the MCP `submit_listing` tool. CI validates pull requests, and a maintainer
+reviews every submission weekly, oldest first, and posts the decision on its
+issue or pull request. Accepted listings and corrections go live in the weekly
+drop, which credits your pull request; the pull request is then closed with a
+link to the listing, not merged.
 
 **Licensing.** Listings and corrections (anything under `content/`) are
 contributed under [CC BY-NC 4.0](LICENSE-DATA), the catalog's data license,
@@ -118,7 +123,7 @@ excellently built and still be declined. (Link exchanges and guest-post swaps
 are declined under the same principle.)
 
 Vendors submitting their own product: set `"verified": false` — maintainers
-verify before merge and flip it. **Verified** means we checked it works: your URLs
+check it before it ships and set it to `true` when it passes. **Verified** means we checked it works: your URLs
 load, you declare an access method, and any linked GitHub repo is live (not
 archived, pushed within 12 months). It's re-checked monthly and drops if the
 product stops meeting that bar. `featured` is maintainer-only.
@@ -178,7 +183,8 @@ evidence and a maintainer's approval.
 ## Fix an existing entry
 
 Dead link, renamed product, new access method? Edit the entry's JSON file,
-add an `updated` line to the changelog, open a PR. These merge fast.
+add an `updated` line to the changelog, open a PR. Corrections go live in the
+next weekly drop, like new listings.
 
 ## Not a developer?
 
