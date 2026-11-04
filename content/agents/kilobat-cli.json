@@ -1,0 +1,53 @@
+{
+  "id": "kilobat-cli",
+  "slug": "kilobat-cli",
+  "name": "Kilobat CLI",
+  "description": "Diagnose failed host and API connections on a Mac through a CLI or local MCP server, with JSON results for coding agents.",
+  "longDescription": "GPL-3.0-only CLI for macOS 14+. Inspect DNS, connection failures, Wi-Fi, latency and traffic from the local Mac. Homebrew builds from source and requires Xcode 16+. Some per-network data and Wi-Fi names depend on permissions and the separate proprietary desktop app. Some commands change settings; clients control permission prompts.",
+  "providerName": "Philip Seifi",
+  "providerUrl": "https://github.com/seifip",
+  "agentUrl": "https://github.com/seifip/kilobat-cli",
+  "categories": [
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "macos",
+    "network-diagnostics",
+    "dns",
+    "wifi",
+    "json-output",
+    "local-mcp"
+  ],
+  "skills": [
+    {
+      "id": "diagnose-host-connection",
+      "name": "Diagnose host connections",
+      "description": "Inspect connection layers for a failing host or API on the local Mac and return structured results for troubleshooting."
+    },
+    {
+      "id": "inspect-network-status",
+      "name": "Inspect network status",
+      "description": "Read local traffic, Wi-Fi, latency and DNS information to help explain the connection available to a coding agent."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "brew",
+    "command": "brew install seifip/kilobat/kilobat"
+  },
+  "quickstartUrl": "https://github.com/seifip/kilobat-cli#use-with-ai-agents-mcp",
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-11-04T19:37:29.562450Z",
+  "updatedAt": "2026-11-04T19:37:29.562450Z"
+}

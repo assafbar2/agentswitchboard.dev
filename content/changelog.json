@@ -1,5 +1,11 @@
 [
   {
+    "action": "added",
+    "slug": "kilobat-cli",
+    "name": "Kilobat CLI",
+    "date": "2026-11-04"
+  },
+  {
     "action": "updated",
     "slug": "agentmail",
     "name": "AgentMail",
