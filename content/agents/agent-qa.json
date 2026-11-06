@@ -1,0 +1,60 @@
+{
+  "id": "agent-qa",
+  "name": "agent-qa",
+  "slug": "agent-qa",
+  "description": "Tests web, Android, and iOS apps from plain-language steps for software teams and coding agents, with persistent memory and validated self-improvement.",
+  "providerName": "vostride",
+  "providerUrl": "https://vostride.com",
+  "agentUrl": "https://vostride.com/docs/agent-qa/mcp",
+  "categories": [
+    "code-devtools",
+    "browser-computer"
+  ],
+  "tags": [
+    "qa-testing",
+    "web-testing",
+    "android-testing",
+    "ios-testing",
+    "regression-testing",
+    "persistent-memory",
+    "mcp-server",
+    "self-improvement"
+  ],
+  "skills": [
+    {
+      "id": "plain-language-testing",
+      "name": "Plain Language Testing",
+      "description": "Run user journeys against web, Android, and iOS interfaces from plain-language test steps, retaining evidence for each step."
+    },
+    {
+      "id": "persistent-test-memory",
+      "name": "Persistent Test Memory",
+      "description": "Store learned product facts and working procedures as reviewable files, then retrieve relevant knowledge for future test runs."
+    },
+    {
+      "id": "validated-self-improvement",
+      "name": "Validated Self Improvement",
+      "description": "Check lessons from completed runs before applying them, retire outdated knowledge, and incorporate feedback on test verdicts."
+    },
+    {
+      "id": "coding-agent-integration",
+      "name": "Coding Agent Integration",
+      "description": "Let MCP clients author and execute tests, inspect run evidence, correct verdicts, and manage knowledge in the local project."
+    }
+  ],
+  "authType": "none",
+  "authInstructions": "The local MCP server uses no tokens. Test execution requires a configured model provider or supported subscription authentication; provider charges may apply.",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-25T21:56:30Z",
+  "updatedAt": "2026-10-25T21:56:30Z"
+}
