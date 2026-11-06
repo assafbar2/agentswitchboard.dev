@@ -1,5 +1,11 @@
 [
   {
+    "action": "added",
+    "slug": "firedrill",
+    "name": "Firedrill",
+    "date": "2026-10-20"
+  },
+  {
     "action": "updated",
     "slug": "agentmail",
     "name": "AgentMail",
