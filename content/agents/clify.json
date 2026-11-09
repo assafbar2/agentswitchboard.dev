@@ -1,0 +1,62 @@
+{
+  "id": "clify",
+  "name": "Clify",
+  "slug": "clify",
+  "description": "Calls 135 public websites — package registries, weather, transit, government and science data — as typed JSON commands over a keyless hosted MCP server covering 1,619 verified commands.",
+  "providerName": "Helios One Oy",
+  "providerUrl": "https://heliosone.fi",
+  "version": "0.3.0",
+  "agentUrl": "https://bold-cloud-h4u6s.run.mcp-use.com/mcp",
+  "categories": [
+    "research",
+    "infrastructure"
+  ],
+  "tags": [
+    "mcp-server",
+    "public-apis",
+    "package-registry",
+    "open-data",
+    "weather-data",
+    "transit-data"
+  ],
+  "skills": [
+    {
+      "id": "site-catalogue-search",
+      "name": "Site Catalogue Search",
+      "description": "Searches the catalogue of 135 covered websites by keyword so an agent can find which site handles a given lookup."
+    },
+    {
+      "id": "command-schema-lookup",
+      "name": "Command Schema Lookup",
+      "description": "Lists a site's commands with required params, allowed values and defaults so a call can be formed correctly first time."
+    },
+    {
+      "id": "typed-command-call",
+      "name": "Typed Command Call",
+      "description": "Calls one command of a site and returns JSON; field and limit args trim the payload, and writes need confirm:true."
+    },
+    {
+      "id": "package-registry-lookup",
+      "name": "Package Registry Lookup",
+      "description": "Dedicated calls for crates.io crate details and PyPI package metadata, returning version, downloads and install info."
+    },
+    {
+      "id": "reference-search",
+      "name": "Wikipedia And HN Search",
+      "description": "Dedicated calls for Wikipedia article summaries and Hacker News story or comment search through hn.algolia.com."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

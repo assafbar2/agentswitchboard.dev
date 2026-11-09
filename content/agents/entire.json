@@ -1,0 +1,62 @@
+{
+  "id": "entire",
+  "name": "Entire",
+  "slug": "entire",
+  "description": "Captures coding-agent sessions as checkpoints linked to commits and hosts Git repos with eval-scored Trail reviews, for teams shipping code with agents, via the entire CLI.",
+  "providerName": "Entire",
+  "providerUrl": "https://entire.com",
+  "agentUrl": "https://entire.com",
+  "categories": [
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "git-forge",
+    "git-hosting",
+    "agent-sessions",
+    "checkpoints",
+    "code-review",
+    "evals",
+    "coding-agents"
+  ],
+  "skills": [
+    {
+      "id": "session-checkpoints",
+      "name": "Session Checkpoints",
+      "description": "Captures the prompts, transcript, and files touched for each commit with agent work, stored as Git refs beside the code."
+    },
+    {
+      "id": "trails",
+      "name": "Trails",
+      "description": "Follows a change from intent to merge, with findings from review agents that score every push."
+    },
+    {
+      "id": "distributed-git-hosting",
+      "name": "Distributed Git Hosting",
+      "description": "Hosts Entire-native repositories or mirrors GitHub ones on clusters in several regions for data residency."
+    },
+    {
+      "id": "session-search",
+      "name": "Session Search",
+      "description": "Runs hybrid semantic and keyword search over checkpoints, commits, and sessions."
+    },
+    {
+      "id": "session-resume",
+      "name": "Session Resume",
+      "description": "Restores a branch's agent sessions so you can continue the work in your agent."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-31T07:10:38.173Z",
+  "updatedAt": "2026-10-31T07:10:38.173Z"
+}

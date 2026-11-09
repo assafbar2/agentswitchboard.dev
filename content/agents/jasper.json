@@ -19,9 +19,12 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://developers.jasper.ai/docs/getting-started-1",
+  "apiBaseUrl": "https://api.jasper.ai/v1",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -29,5 +32,5 @@
     "browser-extension"
   ],
   "createdAt": "2026-03-22T09:52:36.333Z",
-  "updatedAt": "2026-03-22T09:52:36.333Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

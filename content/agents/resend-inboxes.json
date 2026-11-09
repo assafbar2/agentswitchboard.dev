@@ -1,0 +1,63 @@
+{
+  "id": "resend-inboxes",
+  "name": "Resend Inboxes",
+  "slug": "resend-inboxes",
+  "description": "Hosts threaded email inboxes on your domains so agents can receive, search, label, and draft replies, with a built-in triage agent, via Resend's API, SDKs, CLI, and remote MCP.",
+  "providerName": "Resend",
+  "providerUrl": "https://resend.com",
+  "agentUrl": "https://resend.com/products/inboxes",
+  "categories": [
+    "communication"
+  ],
+  "tags": [
+    "resend",
+    "email-inbox",
+    "inbound-email",
+    "shared-inbox",
+    "email-threads",
+    "email-triage",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "threads",
+      "name": "Threads",
+      "description": "Lists, searches, and reads inbox threads, marks them read, and moves them between inbox, archive, spam, and trash."
+    },
+    {
+      "id": "drafts",
+      "name": "Drafts",
+      "description": "Creates, updates, and sends draft emails from a dedicated inbox address that recipients can reply to."
+    },
+    {
+      "id": "labels",
+      "name": "Labels",
+      "description": "Creates inbox labels and applies or removes them on threads to organize conversations."
+    },
+    {
+      "id": "reply-forward",
+      "name": "Reply and Forward",
+      "description": "Replies to received emails in the same thread or forwards them to another address."
+    },
+    {
+      "id": "inbox-agent",
+      "name": "Inbox Agent",
+      "description": "Triages each new email using your instructions and saves replies and forwards as drafts for a teammate to review."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-10-31T07:10:38.206Z",
+  "updatedAt": "2026-10-31T07:10:38.206Z"
+}

@@ -1,0 +1,56 @@
+{
+  "id": "formio-mcp",
+  "name": "Form.io MCP Server",
+  "slug": "formio-mcp",
+  "description": "Gives AI coding agents governed access to forms, roles, actions, and project templates in a self-hosted Form.io Enterprise deployment through the open-source @formio/mcp server.",
+  "providerName": "Form.io",
+  "providerUrl": "https://form.io",
+  "agentUrl": "https://github.com/formio/ai",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "form-builder",
+    "low-code",
+    "self-hosted",
+    "rbac",
+    "open-source",
+    "local-mcp",
+    "formio"
+  ],
+  "skills": [
+    {
+      "id": "form-management",
+      "name": "Form Management",
+      "description": "Creates, fetches, lists, and updates form definitions, with draft, publish, and revert on revision-licensed deployments."
+    },
+    {
+      "id": "roles",
+      "name": "Role Management",
+      "description": "Creates, lists, and updates project roles."
+    },
+    {
+      "id": "form-actions",
+      "name": "Form Actions",
+      "description": "Lists action types and attaches, updates, or removes actions such as email, webhooks, and role assignment."
+    },
+    {
+      "id": "project-templates",
+      "name": "Project Templates",
+      "description": "Exports a project's roles, resources, forms, and actions as JSON and imports templates additively."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.534Z",
+  "updatedAt": "2026-10-10T21:22:01.534Z"
+}

@@ -5,17 +5,37 @@
  * Runs in CI on every PR; a bad entry physically cannot merge.
  *
  * Run: npx tsx scripts/validate-content.ts
+ *      npx tsx scripts/validate-content.ts --official-candidates
+ *        (also lists unflagged entries whose agentUrl is on an official vendor source)
  * Exit 1 on any violation.
  */
 
+import * as crypto from 'crypto';
 import * as fs from 'fs';
 import * as path from 'path';
 import { z } from 'zod';
+import { COMPARISON_INTRO_MAX, COMPARISON_INTRO_MIN, comparisonProblems, pairUnsafeSlugs } from '../lib/compare';
+import { COMPARE_MAX } from '../lib/compare-link';
+import { DROP_INTRO_MAX, groupDrops, type Drop } from '../lib/drops';
+import { registryProblems, vendorsForUrl, type OfficialVendor } from '../lib/official';
+import {
+  STACK_MAX_ITEMS,
+  STACK_MIN_ITEMS,
+  STACK_PROMISE_MAX,
+  STACK_TITLE_MAX,
+  STACK_WHY_MAX,
+  stackProblems,
+} from '../lib/stacks';
+import { TASK_BLURB_MAX, TASK_LABEL_MAX, TASK_MAX_KEYWORDS, TASK_MIN_KEYWORDS, taskProblems } from '../lib/tasks';
+import { INSTALL_TYPES, type Agent, type Category } from '../lib/types';
+import { USE_IT_COMMAND_MAX, howToUseProblems } from '../lib/use-it-now';
 
 const CONTENT = path.resolve(process.cwd(), 'content');
+const ICONS = path.resolve(process.cwd(), 'public', 'icons');
 
-const categories = JSON.parse(fs.readFileSync(path.join(CONTENT, 'categories.json'), 'utf8'));
-const validCategorySlugs = new Set<string>(categories.map((c: { slug: string }) => c.slug));
+const categories: Category[] = JSON.parse(fs.readFileSync(path.join(CONTENT, 'categories.json'), 'utf8'));
+const validCategorySlugs = new Set<string>(categories.map((c) => c.slug));
+const categoryBySlug = new Map(categories.map((c) => [c.slug, c]));
 
 const GENERIC_TAGS = new Set(['ai', 'tool', 'tools', 'automation', 'agent', 'agents']);
 const SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
@@ -57,13 +77,22 @@ const AgentSchema = z
     integrationGuide: z.unknown().optional(),
     supportsStreaming: z.boolean(),
     supportsPushNotifications: z.boolean(),
+    mcpEndpoint: z.string().url().startsWith('https://').optional(),
+    mcpCommand: z.string().max(USE_IT_COMMAND_MAX).optional(),
+    install: z
+      .object({ type: z.enum(INSTALL_TYPES), command: z.string().min(5).max(USE_IT_COMMAND_MAX) })
+      .strict()
+      .optional(),
+    quickstartUrl: z.string().url().startsWith('https://').optional(),
+    apiBaseUrl: z.string().url().startsWith('https://').optional(),
     iconUrl: z.string().url().optional(),
     status: z.enum(['published', 'draft', 'archived']),
     featured: z.boolean(),
     featuredUntil: z.string().optional(),
     verified: z.boolean(),
+    official: z.boolean().optional(),
     referralUrl: z.string().optional(),
-    sponsorLabel: z.string().optional(),
+    sponsored: z.boolean().optional(),
     tier: z.enum(['free', 'premium']),
     discoveredBy: z.enum(['manual', 'worker']),
     workerSource: z.string().optional(),
@@ -73,12 +102,369 @@ const AgentSchema = z
   })
   .strict();
 
+/** A valid listing as the site ranks it, with its categories as objects. */
+function asListing(data: z.infer<typeof AgentSchema>): Agent {
+  return {
+    ...data,
+    longDescription: undefined,
+    authInstructions: undefined,
+    integrationGuide: undefined,
+    skills: data.skills.map(({ id, name, description }) => ({ id, name, description })),
+    official: data.official ?? false,
+    categories: data.categories.map((slug) => categoryBySlug.get(slug)!),
+  };
+}
+
+const SOURCE = /^[a-z0-9.-]+\.[a-z0-9-]+(\/[a-z0-9._-]+)?$/;
+
+const OfficialVendorSchema = z
+  .object({
+    slug: z.string().regex(SLUG, 'vendor slug must be kebab-case'),
+    name: z.string().min(1),
+    basis: z.enum(['public', 'frontier-lab', 'valuation', 'market-leader', 'subsidiary']),
+    evidence: z.string().min(5, 'evidence must say why the vendor qualifies'),
+    parent: z.string().optional(),
+    sources: z
+      .array(z.string().regex(SOURCE, 'source must be a lowercase host or host/org, no scheme'))
+      .min(1),
+  })
+  .strict();
+
+const ChangelogEntrySchema = z
+  .object({
+    action: z.enum(['added', 'updated', 'removed']),
+    slug: z.string().regex(SLUG, 'slug must be kebab-case'),
+    name: z.string().min(1),
+    note: z.string().nullable().optional(),
+    date: z
+      .string()
+      .regex(/^\d{4}-\d{2}-\d{2}$/, 'date must be YYYY-MM-DD')
+      .refine((d) => !Number.isNaN(Date.parse(d)), 'not a calendar date'),
+  })
+  .strict();
+
+const DropIntroSchema = z.object({ intro: z.string().min(1).max(DROP_INTRO_MAX) }).strict();
+
+const StackSchema = z
+  .object({
+    slug: z.string().regex(SLUG, 'slug must be kebab-case'),
+    title: z.string().min(1).max(STACK_TITLE_MAX),
+    promise: z.string().min(1).max(STACK_PROMISE_MAX),
+    week: z
+      .string()
+      .regex(/^\d{4}-\d{2}-\d{2}$/, 'week must be YYYY-MM-DD')
+      .optional(),
+    items: z
+      .array(
+        z
+          .object({
+            slug: z.string().regex(SLUG, 'slug must be kebab-case'),
+            why: z.string().min(1).max(STACK_WHY_MAX),
+          })
+          .strict()
+      )
+      .min(STACK_MIN_ITEMS)
+      .max(STACK_MAX_ITEMS),
+  })
+  .strict();
+
+const TaskSchema = z
+  .object({
+    slug: z.string().regex(SLUG, 'slug must be kebab-case'),
+    label: z
+      .string()
+      .min(1)
+      .max(TASK_LABEL_MAX)
+      .regex(/^[a-z]/, 'label must start lowercase: it reads after "I need to"'),
+    blurb: z.string().min(1).max(TASK_BLURB_MAX),
+    categories: z
+      .array(z.string().refine((s) => validCategorySlugs.has(s), (s) => ({ message: `unknown category "${s}"` })))
+      .min(1),
+    access: z.array(z.enum(['api', 'mcp', 'cli', 'browser-extension'])).min(1),
+    keywords: z
+      .array(z.string().min(2).regex(/^[^A-Z]+$/, 'keywords are lowercase'))
+      .min(TASK_MIN_KEYWORDS)
+      .max(TASK_MAX_KEYWORDS),
+  })
+  .strict();
+
+const ComparisonSchema = z
+  .object({
+    items: z.array(z.string().regex(SLUG, 'slug must be kebab-case')).min(2).max(COMPARE_MAX),
+    intro: z.string().min(COMPARISON_INTRO_MIN).max(COMPARISON_INTRO_MAX),
+  })
+  .strict();
+
+/**
+ * content/changelog.json is grouped into the drop pages by date (lib/drops.ts),
+ * so every entry needs a real one. content/drops.json adds optional intros,
+ * keyed by drop date: a key that is not a drop would never be shown.
+ * Returns the drops and a violation count.
+ */
+function checkChangelogAndDrops(updatedAt: Map<string, string>): { drops: Drop[]; errors: number } {
+  let raw: unknown;
+  try {
+    raw = JSON.parse(fs.readFileSync(path.join(CONTENT, 'changelog.json'), 'utf8'));
+  } catch {
+    return { drops: [], errors: 0 }; // reported with the other auxiliary files
+  }
+  const log = z.array(ChangelogEntrySchema).safeParse(raw);
+  if (!log.success) {
+    for (const issue of log.error.issues) {
+      console.log(`❌ content/changelog.json: entry ${issue.path.join('.')}: ${issue.message}`);
+    }
+    return { drops: [], errors: log.error.issues.length };
+  }
+  let errors = checkUpdatedAt(updatedAt, log.data);
+
+  const dropsFile = path.join(CONTENT, 'drops.json');
+  let intros: Record<string, { intro: string }> = {};
+  if (fs.existsSync(dropsFile)) {
+    let parsed: unknown;
+    try {
+      parsed = JSON.parse(fs.readFileSync(dropsFile, 'utf8'));
+    } catch (e) {
+      console.log(`❌ content/drops.json: invalid JSON — ${(e as Error).message}`);
+      return { drops: [], errors: errors + 1 };
+    }
+    const result = z.record(z.string(), DropIntroSchema).safeParse(parsed);
+    if (!result.success) {
+      for (const issue of result.error.issues) {
+        console.log(`❌ content/drops.json: ${issue.path.join('.')}: ${issue.message}`);
+      }
+      return { drops: [], errors: errors + result.error.issues.length };
+    }
+    intros = result.data;
+  }
+
+  const { drops } = groupDrops(log.data, intros);
+  const dates = new Set(drops.map((d) => d.date));
+  for (const date of Object.keys(intros)) {
+    if (!dates.has(date)) {
+      console.log(
+        `❌ content/drops.json: "${date}" is not a drop; drops are named by their first batch day in content/changelog.json (lib/drops.ts)`
+      );
+      errors++;
+    }
+  }
+  return { drops, errors };
+}
+
+/**
+ * A listing edited by hand rather than with scripts/cms.ts can keep its old
+ * updatedAt, which the API and agents.json report as when it last changed:
+ * it must be no older than the listing's latest entry in the change log.
+ */
+function checkUpdatedAt(updatedAt: Map<string, string>, log: z.infer<typeof ChangelogEntrySchema>[]): number {
+  const latest = new Map<string, string>();
+  for (const e of log) if (e.date > (latest.get(e.slug) ?? '')) latest.set(e.slug, e.date);
+  let errors = 0;
+  for (const [slug, date] of latest) {
+    const at = updatedAt.get(slug)?.slice(0, 10);
+    if (at !== undefined && at < date) {
+      console.log(
+        `❌ content/agents/${slug}.json: updatedAt ${at} is older than its ${date} entry in content/changelog.json; set it to when the listing changed`
+      );
+      errors++;
+    }
+  }
+  return errors;
+}
+
+/**
+ * content/stacks.json (lib/stacks.ts): each stack's shape, then stackProblems
+ * against the published listings and the drops.
+ */
+function checkStacks(published: Set<string>, drops: Drop[]): { stacks: number; errors: number } {
+  const file = path.join(CONTENT, 'stacks.json');
+  if (!fs.existsSync(file)) return { stacks: 0, errors: 0 };
+  let raw: unknown;
+  try {
+    raw = JSON.parse(fs.readFileSync(file, 'utf8'));
+  } catch (e) {
+    console.log(`❌ content/stacks.json: invalid JSON — ${(e as Error).message}`);
+    return { stacks: 0, errors: 1 };
+  }
+  const result = z.array(StackSchema).safeParse(raw);
+  if (!result.success) {
+    for (const issue of result.error.issues) {
+      console.log(`❌ content/stacks.json: ${issue.path.join('.')}: ${issue.message}`);
+    }
+    return { stacks: 0, errors: result.error.issues.length };
+  }
+  const problems = stackProblems(result.data, published, drops);
+  for (const problem of problems) console.log(`❌ content/stacks.json: ${problem}`);
+  return { stacks: result.data.length, errors: problems.length };
+}
+
+/**
+ * content/tasks.json (lib/tasks.ts): each task's shape, then taskProblems
+ * against the published listings, ranked as the site ranks them.
+ */
+function checkTasks(published: Agent[]): { tasks: number; errors: number } {
+  const file = path.join(CONTENT, 'tasks.json');
+  if (!fs.existsSync(file)) return { tasks: 0, errors: 0 };
+  let raw: unknown;
+  try {
+    raw = JSON.parse(fs.readFileSync(file, 'utf8'));
+  } catch (e) {
+    console.log(`❌ content/tasks.json: invalid JSON — ${(e as Error).message}`);
+    return { tasks: 0, errors: 1 };
+  }
+  const result = z.array(TaskSchema).safeParse(raw);
+  if (!result.success) {
+    for (const issue of result.error.issues) {
+      console.log(`❌ content/tasks.json: ${issue.path.join('.')}: ${issue.message}`);
+    }
+    return { tasks: 0, errors: result.error.issues.length };
+  }
+  const problems = taskProblems(result.data, published);
+  for (const problem of problems) console.log(`❌ content/tasks.json: ${problem}`);
+  return { tasks: result.data.length, errors: problems.length };
+}
+
+/**
+ * content/comparisons.json (lib/compare.ts): each comparison's shape, then
+ * comparisonProblems against the published listings. Every listing slug is
+ * checked too: /compare/<a>-vs-<b> splits on "-vs-", so no slug may contain it.
+ */
+function checkComparisons(published: Agent[], slugs: Set<string>): { comparisons: number; errors: number } {
+  let errors = 0;
+  for (const slug of pairUnsafeSlugs([...slugs].map((s) => ({ slug: s })))) {
+    console.log(`❌ ${slug}.json: slug contains "-vs-", which a /compare/<a>-vs-<b> address uses to separate listings`);
+    errors++;
+  }
+  const file = path.join(CONTENT, 'comparisons.json');
+  if (!fs.existsSync(file)) return { comparisons: 0, errors };
+  let raw: unknown;
+  try {
+    raw = JSON.parse(fs.readFileSync(file, 'utf8'));
+  } catch (e) {
+    console.log(`❌ content/comparisons.json: invalid JSON — ${(e as Error).message}`);
+    return { comparisons: 0, errors: errors + 1 };
+  }
+  const result = z.array(ComparisonSchema).safeParse(raw);
+  if (!result.success) {
+    for (const issue of result.error.issues) {
+      console.log(`❌ content/comparisons.json: ${issue.path.join('.')}: ${issue.message}`);
+    }
+    return { comparisons: 0, errors: errors + result.error.issues.length };
+  }
+  const problems = comparisonProblems(result.data, published);
+  for (const problem of problems) console.log(`❌ content/comparisons.json: ${problem}`);
+  return { comparisons: result.data.length, errors: errors + problems.length };
+}
+
+const IconRecordSchema = z
+  .object({
+    v: z.string().regex(/^[0-9a-f]{8}$/, 'v must be 8 lowercase hex chars'),
+    source: z.string().url(),
+    px: z.number().int().positive().optional(),
+  })
+  .strict();
+
+/**
+ * Check content/icons.json against public/icons/ (scripts/fetch-icons.ts
+ * writes both). Every record needs its 128px and 48px PNGs and a `v` that is
+ * still the 128px file's hash, since `v` is what tells caches the image
+ * changed. Returns the slugs that have an icon and a violation count.
+ */
+function checkIcons(listings: Set<string>): { slugs: Set<string>; errors: number } {
+  const p = path.join(CONTENT, 'icons.json');
+  if (!fs.existsSync(p)) return { slugs: new Set(), errors: 0 };
+  let raw: unknown;
+  try {
+    raw = JSON.parse(fs.readFileSync(p, 'utf8'));
+  } catch (e) {
+    console.log(`❌ content/icons.json: invalid JSON — ${(e as Error).message}`);
+    return { slugs: new Set(), errors: 1 };
+  }
+  const result = z.record(z.string(), IconRecordSchema).safeParse(raw);
+  if (!result.success) {
+    for (const issue of result.error.issues) {
+      console.log(`❌ content/icons.json: ${issue.path.join('.')}: ${issue.message}`);
+    }
+    return { slugs: new Set(), errors: result.error.issues.length };
+  }
+
+  const manifest = result.data;
+  let errors = 0;
+  for (const [slug, record] of Object.entries(manifest)) {
+    if (!listings.has(slug)) {
+      console.log(`❌ content/icons.json: "${slug}" is not a listing`);
+      errors++;
+      continue;
+    }
+    const files = [path.join(ICONS, `${slug}.png`), path.join(ICONS, 'sm', `${slug}.png`)];
+    const missing = files.filter((f) => !fs.existsSync(f));
+    if (missing.length > 0) {
+      console.log(`❌ content/icons.json: "${slug}" has no ${missing.map((f) => path.relative(process.cwd(), f)).join(' or ')}`);
+      errors++;
+      continue;
+    }
+    const hash = crypto.createHash('sha1').update(fs.readFileSync(files[0])).digest('hex').slice(0, 8);
+    if (record.v !== hash) {
+      console.log(
+        `❌ content/icons.json: "${slug}" has v "${record.v}" but its PNG hashes to "${hash}"; rerun npx tsx scripts/fetch-icons.ts ${slug}`
+      );
+      errors++;
+    }
+  }
+  for (const dir of [ICONS, path.join(ICONS, 'sm')]) {
+    if (!fs.existsSync(dir)) continue;
+    for (const file of fs.readdirSync(dir)) {
+      if (file.endsWith('.png') && !manifest[file.slice(0, -'.png'.length)]) {
+        console.log(`❌ ${path.relative(process.cwd(), path.join(dir, file))}: not in content/icons.json`);
+        errors++;
+      }
+    }
+  }
+  return { slugs: new Set(Object.keys(manifest)), errors };
+}
+
+/** Parse and check content/official-vendors.json; returns the vendors and a violation count. */
+function loadOfficialVendors(): { vendors: OfficialVendor[]; errors: number } {
+  const p = path.join(CONTENT, 'official-vendors.json');
+  let raw: unknown;
+  try {
+    raw = JSON.parse(fs.readFileSync(p, 'utf8'));
+  } catch (e) {
+    console.log(`❌ content/official-vendors.json: ${(e as Error).message}`);
+    return { vendors: [], errors: 1 };
+  }
+  const result = z.array(OfficialVendorSchema).safeParse(raw);
+  if (!result.success) {
+    for (const issue of result.error.issues) {
+      console.log(`❌ content/official-vendors.json: ${issue.path.join('.')}: ${issue.message}`);
+    }
+    return { vendors: [], errors: result.error.issues.length };
+  }
+  const problems = registryProblems(result.data);
+  for (const problem of problems) console.log(`❌ content/official-vendors.json: ${problem}`);
+  return { vendors: result.data, errors: problems.length };
+}
+
 function main() {
+  const listCandidates = process.argv.includes('--official-candidates');
+  const official = loadOfficialVendors();
+  const candidates: string[] = [];
+  let flagged = 0;
   const dir = path.join(CONTENT, 'agents');
   const files = fs.readdirSync(dir).filter((f) => f.endsWith('.json'));
-  let errors = 0;
+  let errors = official.errors;
   const slugs = new Set<string>();
   const published = new Set<string>();
+  const sponsored = new Set<string>();
+  const updatedAt = new Map<string, string>();
+  const listings: Agent[] = [];
+  // Rule 2 (CONTRIBUTING): one listing per product, not per endpoint. No cap —
+  // a vendor with many real products earns many entries — but large clusters are
+  // where suite-splitting hides, so surface them for a human to eyeball.
+  const byProvider = new Map<string, string[]>();
+  // Two published listings pointing at the same agentUrl are usually one product
+  // listed twice (the fx / fx-agent case). Monorepos legitimately host several
+  // products at one URL, so this is advisory, not a violation.
+  const byAgentUrl = new Map<string, string[]>();
 
   // Auxiliary content files aren't schema-validated, but they ARE parsed at
   // build time (e.g. /changelog does JSON.parse on changelog.json). A syntax
@@ -125,7 +511,46 @@ function main() {
       errors++;
     }
     slugs.add(slug);
+    updatedAt.set(slug, result.data.updatedAt);
+    for (const problem of howToUseProblems(result.data)) {
+      console.log(`❌ ${file}: ${problem}`);
+      errors++;
+    }
     if (result.data.status === 'published') published.add(slug);
+    if (result.data.sponsored) sponsored.add(slug);
+    if (result.data.status === 'published') {
+      listings.push(asListing(result.data));
+      const prov = result.data.providerName;
+      byProvider.set(prov, [...(byProvider.get(prov) ?? []), slug]);
+      const url = result.data.agentUrl.replace(/\/+$/, '').toLowerCase();
+      byAgentUrl.set(url, [...(byAgentUrl.get(url) ?? []), slug]);
+    }
+
+    // Official needs evidence: the product URL must sit on exactly one
+    // registered vendor's official domain or GitHub org.
+    const vendors = vendorsForUrl(result.data.agentUrl, official.vendors);
+    if (result.data.official) {
+      flagged++;
+      if (vendors.length === 0) {
+        console.log(
+          `❌ ${file}: official: true but agentUrl ${result.data.agentUrl} is not on a source in content/official-vendors.json`
+        );
+        errors++;
+      } else if (vendors.length > 1) {
+        console.log(`❌ ${file}: agentUrl matches several official vendors (${vendors.map((v) => v.slug).join(', ')})`);
+        errors++;
+      }
+    } else if (vendors.length === 1 && result.data.status === 'published') {
+      candidates.push(`${slug} (${vendors[0].slug})`);
+    }
+  }
+
+  if (listCandidates) {
+    console.log(
+      candidates.length
+        ? `ℹ️  ${candidates.length} unflagged entr${candidates.length === 1 ? 'y' : 'ies'} on an official vendor source — review against the criteria:\n   ${candidates.join('\n   ')}`
+        : 'ℹ️  no unflagged entries on official vendor sources'
+    );
   }
 
   // Homepage placements must point at published agents, or the slot silently disappears.
@@ -142,6 +567,11 @@ function main() {
             if (!published.has(p)) {
               console.log(`❌ content/site.json: homepageFeatured "${p}" is not a published agent`);
               errors++;
+            } else if (sponsored.has(p)) {
+              console.log(
+                `❌ content/site.json: homepageFeatured "${p}" is sponsored; it shows in the Sponsored slot, not the editor's picks`
+              );
+              errors++;
             }
           }
         }
@@ -151,8 +581,46 @@ function main() {
     }
   }
 
+  const clusters = [...byProvider.entries()]
+    .filter(([, slugs]) => slugs.length >= 4)
+    .sort((a, b) => b[1].length - a[1].length);
+  if (clusters.length) {
+    console.log(
+      `ℹ️  ${clusters.length} provider(s) with 4+ listings — check none is one product split across endpoints (CONTRIBUTING rule 2):\n   ` +
+        clusters.map(([p, s2]) => `${p} (${s2.length}): ${s2.slice(0, 6).join(', ')}${s2.length > 6 ? ', …' : ''}`).join('\n   ')
+    );
+  }
+
+  const sharedUrls = [...byAgentUrl.entries()].filter(([, slugs]) => slugs.length > 1);
+  if (sharedUrls.length) {
+    console.log(
+      `ℹ️  ${sharedUrls.length} agentUrl(s) shared by more than one published listing — confirm each is a separate product, not a duplicate:\n   ` +
+        sharedUrls.map(([u, s2]) => `${u}: ${s2.join(', ')}`).join('\n   ')
+    );
+  }
+
+  const icons = checkIcons(slugs);
+  errors += icons.errors;
+  const drops = checkChangelogAndDrops(updatedAt);
+  errors += drops.errors;
+  const stacks = checkStacks(published, drops.drops);
+  errors += stacks.errors;
+  const tasks = checkTasks(listings);
+  errors += tasks.errors;
+  const comparisons = checkComparisons(listings, slugs);
+  errors += comparisons.errors;
+  const iconless = [...published].filter((s) => !icons.slugs.has(s)).sort();
+  if (iconless.length) {
+    console.log(
+      `ℹ️  ${iconless.length} published listing(s) without an icon show their initial instead; npx tsx scripts/fetch-icons.ts retries them:\n   ` +
+        `${iconless.slice(0, 12).join(', ')}${iconless.length > 12 ? ', …' : ''}`
+    );
+  }
+
   if (errors === 0) {
-    console.log(`✅ content valid: ${files.length} agents, ${validCategorySlugs.size} categories, 0 violations`);
+    console.log(
+      `✅ content valid: ${files.length} agents (${flagged} official, ${official.vendors.length} vendors), ${validCategorySlugs.size} categories, ${icons.slugs.size} icons, ${drops.drops.length} drops, ${stacks.stacks} stacks, ${tasks.tasks} tasks, ${comparisons.comparisons} comparisons, 0 violations`
+    );
   } else {
     console.log(`\n❌ ${errors} violation(s) across content/ — fix before merging.`);
     process.exit(1);

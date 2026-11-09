@@ -48,14 +48,16 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://docs.flowiseai.com/api-reference",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "api"
   ],
   "createdAt": "2026-04-13T21:38:25.053Z",
-  "updatedAt": "2026-06-15T03:15:49.940Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

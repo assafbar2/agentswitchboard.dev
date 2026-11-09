@@ -46,14 +46,20 @@
   "authType": "none",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "pip",
+    "command": "pip install qwenpaw"
+  },
+  "quickstartUrl": "https://qwenpaw.agentscope.io/docs/quickstart/",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "cli"
   ],
   "createdAt": "2026-10-04T17:55:56.204Z",
-  "updatedAt": "2026-10-04T17:55:56.204Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

@@ -18,9 +18,15 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npm install -g @n8n/cli"
+  },
+  "quickstartUrl": "https://docs.n8n.io/connect/n8n-api",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -29,5 +35,5 @@
     "cli"
   ],
   "createdAt": "2026-03-22T09:53:11.353Z",
-  "updatedAt": "2026-03-22T09:53:11.353Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

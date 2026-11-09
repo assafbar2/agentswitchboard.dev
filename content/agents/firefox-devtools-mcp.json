@@ -45,9 +45,12 @@
   "authType": "none",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpCommand": "npx -y @mozilla/firefox-devtools-mcp@latest --headless --viewport 1280x720",
+  "quickstartUrl": "https://github.com/mozilla/firefox-devtools-mcp#install-and-use-with-claude-code-or-codex-npx",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -55,5 +58,5 @@
     "cli"
   ],
   "createdAt": "2026-09-25T22:20:34.454Z",
-  "updatedAt": "2026-09-25T22:20:34.454Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

@@ -1,0 +1,63 @@
+{
+  "id": "concat",
+  "name": "Concat",
+  "slug": "concat",
+  "description": "Edits video locally with captions, keyframes, effects, and 4K export for creators, and lets AI agents cut, caption, and export projects via its built-in MCP server.",
+  "providerName": "Standalones",
+  "providerUrl": "https://standalones.org",
+  "agentUrl": "https://concat.standalones.org",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "video-editing",
+    "capcut-alternative",
+    "auto-captions",
+    "keyframes",
+    "mcp-server",
+    "local-first",
+    "desktop-app",
+    "rust"
+  ],
+  "skills": [
+    {
+      "id": "projects-media",
+      "name": "Projects and Media",
+      "description": "Creates, opens, saves, and closes projects, and probes and imports media."
+    },
+    {
+      "id": "timeline-editing",
+      "name": "Timeline Editing",
+      "description": "Adds, trims, splits, moves, and re-speeds clips, with masks and stabilization, as undoable edit commands."
+    },
+    {
+      "id": "titles-captions",
+      "name": "Titles and Captions",
+      "description": "Adds titles with per-word styling and adds captions to the timeline."
+    },
+    {
+      "id": "keyframes-effects",
+      "name": "Keyframes and Effects",
+      "description": "Sets and clears keyframes, applies effect layers, and instantiates templates."
+    },
+    {
+      "id": "export-preview",
+      "name": "Export and Frame Preview",
+      "description": "Runs exports with progress and returns the composited frame as an image so the agent can look at its work."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-10-31T07:10:38.167Z",
+  "updatedAt": "2026-10-31T07:10:38.167Z"
+}

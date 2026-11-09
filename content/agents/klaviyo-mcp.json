@@ -44,14 +44,18 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.klaviyo.com/mcp",
+  "mcpCommand": "uvx klaviyo-mcp-server@latest",
+  "quickstartUrl": "https://developers.klaviyo.com/en/docs/connect_to_the_klaviyo_mcp_server",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "mcp"
   ],
   "createdAt": "2026-10-04T17:55:56.174Z",
-  "updatedAt": "2026-10-04T17:55:56.174Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

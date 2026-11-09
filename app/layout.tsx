@@ -1,10 +1,14 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
-import { JetBrains_Mono, Inter } from 'next/font/google';
-import { Analytics } from '@vercel/analytics/react';
+import { JetBrains_Mono, Inter, Barlow_Semi_Condensed } from 'next/font/google';
+import { CompareTray } from '@/components/CompareTray';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { MyStackClient } from '@/components/MyStackClient';
+import { SiteAnalytics } from '@/components/SiteAnalytics';
 import { WebMcp } from '@/components/WebMcp';
+import { getAllCategories, getEveryAgent } from '@/lib/catalog';
+import { siteCard, siteCardImage } from '@/lib/share-cards';
 import './globals.css';
 
 const jetbrainsMono = JetBrains_Mono({
@@ -13,41 +17,54 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
+// Inter is only a fallback in the --font-sans stack now, so it is not
+// preloaded; Barlow Semi Condensed carries display and body text.
 const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],
   display: 'swap',
+  preload: false,
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: 'Agent Switchboard — AI Agent Directory',
-    template: '%s | Agent Switchboard',
-  },
-  description:
-    'Browse, compare, and integrate AI agents with real API, MCP, and CLI access. The curated directory for developers building on the agentic web.',
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev'
-  ),
-  // NOTE: no global `alternates.canonical` here — a root-level canonical is
-  // inherited by every page that doesn't override it, telling search engines
-  // all pages are duplicates of the homepage. Each page sets its own.
-  openGraph: {
-    type: 'website',
-    siteName: 'Agent Switchboard',
-    title: 'Agent Switchboard — AI Agent Directory',
+const barlow = Barlow_Semi_Condensed({
+  variable: '--font-barlow',
+  weight: ['400', '500', '600', '700', '800'],
+  subsets: ['latin'],
+  display: 'swap',
+});
+
+export async function generateMetadata(): Promise<Metadata> {
+  const [agents, categories] = await Promise.all([getEveryAgent(), getAllCategories()]);
+  return {
+    title: {
+      default: 'Agent Switchboard — AI Agent Directory',
+      template: '%s | Agent Switchboard',
+    },
     description:
       'Browse, compare, and integrate AI agents with real API, MCP, and CLI access. The curated directory for developers building on the agentic web.',
-    images: [{ url: 'https://agentswitchboard.dev/opengraph-image', width: 1200, height: 630, alt: 'Agent Switchboard — AI Agent Directory' }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Agent Switchboard — AI Agent Directory',
-    description:
-      'Browse, compare, and integrate AI agents with real API, MCP, and CLI access.',
-    images: ['https://agentswitchboard.dev/opengraph-image'],
-  },
-};
+    metadataBase: new URL(
+      process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev'
+    ),
+    // NOTE: no global `alternates.canonical` here — a root-level canonical is
+    // inherited by every page that doesn't override it, telling search engines
+    // all pages are duplicates of the homepage. Each page sets its own.
+    openGraph: {
+      type: 'website',
+      siteName: 'Agent Switchboard',
+      title: 'Agent Switchboard — AI Agent Directory',
+      description:
+        'Browse, compare, and integrate AI agents with real API, MCP, and CLI access. The curated directory for developers building on the agentic web.',
+      // Pages without their own card carry this over; twitter:image copies it.
+      images: [siteCardImage(siteCard(agents, categories))],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Agent Switchboard — AI Agent Directory',
+      description:
+        'Browse, compare, and integrate AI agents with real API, MCP, and CLI access.',
+    },
+  };
+}
 
 export default function RootLayout({
   children,
@@ -59,35 +76,33 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${jetbrainsMono.variable} ${inter.variable} h-full light`}
+      className={`${jetbrainsMono.variable} ${inter.variable} ${barlow.variable} h-full light`}
       suppressHydrationWarning
     >
-      {/* Prevent flash: SSR defaults to light; remove class only if user saved dark */}
+      {/* Prevent flash: SSR defaults to light and the human view; apply a saved
+          dark theme or agent view before first paint. */}
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.classList.remove('light');}catch(e){}})();`,
+            __html: `(function(){try{var d=document.documentElement;if(localStorage.getItem('theme')==='dark')d.classList.remove('light');if(localStorage.getItem('viewMode')==='agent')d.setAttribute('data-view','agent');}catch(e){}})();`,
           }}
         />
         {/* Machine-readable agent context */}
         <link rel="alternate" type="application/json" href="/agents.json" title="Agent Catalog — Agent Switchboard" />
         <link rel="alternate" type="text/markdown" href="/index.md" title="Agent Switchboard — Markdown" />
+        <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Agent Switchboard: releases and weekly drops" />
+        <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Agent Switchboard: releases and weekly drops" />
         <link rel="ai-index" href="/for-agents" />
       </head>
       <body className="min-h-full flex flex-col antialiased">
+        {/* First: React runs earlier siblings' effects first, and track() drops events sent before this sets up its queue. */}
+        <SiteAnalytics />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <CompareTray />
+        <MyStackClient />
         <WebMcp />
-        <Analytics />
-        {/* Google Analytics — loaded after hydration to keep it off the critical path */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-YF8BJ449WX"
-          strategy="afterInteractive"
-        />
-        <Script id="ga-init" strategy="afterInteractive">
-          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-YF8BJ449WX');`}
-        </Script>
         {umamiWebsiteId ? (
           <Script
             src="https://cloud.umami.is/script.js"

@@ -1,0 +1,61 @@
+{
+  "id": "geardex",
+  "name": "GearDex",
+  "slug": "geardex",
+  "description": "Tracks camera gear inventory, shoot plans, maintenance and lending for photographers, with a scoped Studio REST API of 35 operations over gear, shoots, analytics and bookings, plus signed webhooks.",
+  "providerName": "GearDex",
+  "providerUrl": "https://geardex.app",
+  "agentUrl": "https://www.geardex.app/api-docs",
+  "categories": [
+    "content-media",
+    "data-analytics"
+  ],
+  "tags": [
+    "photography",
+    "camera-gear",
+    "inventory-tracking",
+    "rest-api",
+    "webhooks",
+    "equipment-lending"
+  ],
+  "skills": [
+    {
+      "id": "gear-inventory",
+      "name": "Gear Inventory",
+      "description": "Create, list and update camera gear records through the Studio API's Gear endpoints, including documents attached to each item."
+    },
+    {
+      "id": "shoot-planning",
+      "name": "Shoot Planning",
+      "description": "Read and manage shoot plans via the Shoots endpoints, covering the gear assigned to each scheduled production."
+    },
+    {
+      "id": "maintenance-tracking",
+      "name": "Maintenance Tracking",
+      "description": "Log and query servicing and repair history for tracked gear through the Maintenance endpoints of the Studio API."
+    },
+    {
+      "id": "gear-analytics",
+      "name": "Gear Analytics",
+      "description": "Pull usage and cost analytics over tracked gear and shoots from the Studio API's Analytics endpoints."
+    },
+    {
+      "id": "lending-and-bookings",
+      "name": "Lending And Bookings",
+      "description": "Track lent-out equipment and booking records using the Lending and Bookings endpoints of the Studio API."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

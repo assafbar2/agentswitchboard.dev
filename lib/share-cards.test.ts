@@ -1,0 +1,432 @@
+import { createHash } from 'crypto';
+import * as fs from 'fs';
+import * as path from 'path';
+import { describe, it, expect } from 'vitest';
+import type { Drop, DropItem } from './drops';
+import type { NewGroup } from './freshness';
+import {
+  boardCard,
+  boardCardImage,
+  CARD_DESIGN,
+  categoryCard,
+  categoryCardImage,
+  compareCard,
+  compareCardImage,
+  comparisonCardImage,
+  comparisonsCard,
+  comparisonsCardImage,
+  dropCard,
+  dropCardImage,
+  listingCard,
+  listingCardImage,
+  newCard,
+  newCardImage,
+  operatorCard,
+  operatorCardImage,
+  sampleIcons,
+  sharedStackCard,
+  sharedStackCardImage,
+  siteCard,
+  siteCardImage,
+  taskCard,
+  taskCardImage,
+  tasksCard,
+  tasksCardImage,
+  whatsNewCard,
+  whatsNewCardImage,
+} from './share-cards';
+import type { Task } from './tasks';
+import type { Agent, Category } from './types';
+
+const category: Category = {
+  id: 'c1',
+  name: 'Infrastructure & Ops',
+  slug: 'infrastructure',
+  description: 'Deploy and run things.',
+  sortOrder: 1,
+};
+
+function makeAgent(overrides: Partial<Agent> = {}): Agent {
+  return {
+    id: 'id-1',
+    name: 'AgentMail',
+    slug: 'agentmail',
+    description: 'Email inbox API built for AI agents.',
+    providerName: 'AgentMail',
+    providerUrl: 'https://agentmail.to',
+    agentUrl: 'https://agentmail.to',
+    categories: [category],
+    tags: [],
+    skills: [],
+    authType: 'apiKey',
+    supportsStreaming: false,
+    supportsPushNotifications: false,
+    status: 'published',
+    featured: false,
+    verified: true,
+    official: false,
+    tier: 'free',
+    discoveredBy: 'manual',
+    accessMethods: ['api', 'mcp', 'browser-extension'],
+    iconUrl: '/icons/agentmail.png?v=aca5768d',
+    ...overrides,
+  };
+}
+
+/** An official listing of `vendor` whose icon has content hash `v`. */
+function official(slug: string, vendor: string, v: string): Agent {
+  return makeAgent({
+    slug,
+    name: slug,
+    providerName: vendor,
+    official: true,
+    officialVendor: { slug: vendor.toLowerCase(), name: vendor },
+    iconUrl: `/icons/${slug}.png?v=${v}`,
+  });
+}
+
+describe('CARD_DESIGN', () => {
+  it('is the hash of lib/og.tsx and assets/fonts, so a new look gets new card URLs', () => {
+    const hash = createHash('sha1');
+    hash.update(fs.readFileSync(path.join('lib', 'og.tsx'), 'utf8').replace(/\r\n/g, '\n'));
+    for (const file of fs.readdirSync(path.join('assets', 'fonts')).sort()) {
+      hash.update(fs.readFileSync(path.join('assets', 'fonts', file)));
+    }
+    expect(
+      CARD_DESIGN,
+      'The card renderer or its fonts changed: set CARD_DESIGN in lib/share-cards.ts to the expected value'
+    ).toBe(hash.digest('hex').slice(0, 8));
+  });
+});
+
+describe('listingCard', () => {
+  it('carries display labels, the primary category and the icon path', () => {
+    expect(listingCard(makeAgent())).toEqual({
+      name: 'AgentMail',
+      provider: 'AgentMail',
+      official: false,
+      verified: true,
+      access: ['API', 'MCP', 'Extension'],
+      category: 'Infrastructure & Ops',
+      description: 'Email inbox API built for AI agents.',
+      icon: '/icons/agentmail.png?v=aca5768d',
+    });
+  });
+
+  it('has no category or icon when the listing has none', () => {
+    const card = listingCard(makeAgent({ categories: [], iconUrl: undefined }));
+    expect(card.category).toBeNull();
+    expect(card.icon).toBeNull();
+  });
+});
+
+describe('card images', () => {
+  it('serve each page its own versioned 1200x630 PNG', () => {
+    const image = listingCardImage('agentmail', listingCard(makeAgent()));
+    expect(image.url).toMatch(/^\/agents\/agentmail\/card\.png\?v=[0-9a-f]{8}$/);
+    expect(image).toMatchObject({ width: 1200, height: 630, type: 'image/png' });
+    expect(image.alt).toBe('AgentMail by AgentMail, on Agent Switchboard');
+
+    const cat = categoryCardImage('infrastructure', categoryCard(category, [makeAgent()], [makeAgent()]));
+    expect(cat.url).toMatch(/^\/categories\/infrastructure\/card\.png\?v=[0-9a-f]{8}$/);
+    expect(siteCardImage(siteCard([makeAgent()], [category])).url).toMatch(/^\/card\.png\?v=[0-9a-f]{8}$/);
+  });
+
+  it('change URL when what the card shows changes, and only then', () => {
+    const url = (a: Agent) => listingCardImage(a.slug, listingCard(a)).url;
+    expect(url(makeAgent())).toBe(url(makeAgent({ tags: ['email'], updatedAt: '2026-11-01' })));
+    expect(url(makeAgent())).not.toBe(url(makeAgent({ description: 'Inboxes for agents.' })));
+    expect(url(makeAgent())).not.toBe(url(makeAgent({ iconUrl: '/icons/agentmail.png?v=0123abcd' })));
+  });
+});
+
+describe('dropCard', () => {
+  const item = (slug: string): DropItem => ({ slug, name: slug, date: '2026-10-31', notes: [] });
+  const catalog = [
+    official('big-1', 'Big', 'bbbb0001'),
+    official('big-2', 'Big', 'bbbb0002'),
+    makeAgent({ slug: 'indie', name: 'Indie', providerName: 'Indie', iconUrl: '/icons/indie.png?v=cccc0001' }),
+  ];
+  const drop: Drop = {
+    date: '2026-10-31',
+    days: ['2026-10-31'],
+    added: [item('big-1'), item('big-2'), item('indie'), item('since-removed')],
+    updated: [item('agentmail')],
+    removed: [],
+  };
+
+  it('counts every addition but names, counts Official and shows icons for those still listed', () => {
+    expect(dropCard(drop, catalog)).toEqual({
+      date: 'Oct 31, 2026',
+      added: 4,
+      official: 2,
+      updated: 1,
+      names: ['big-1', 'Indie', 'big-2'],
+      icons: ['/icons/big-1.png?v=bbbb0001', '/icons/indie.png?v=cccc0001'],
+    });
+  });
+
+  it('is served at its own versioned card URL', () => {
+    const image = dropCardImage('2026-10-31', dropCard(drop, catalog));
+    expect(image.url).toMatch(/^\/drops\/2026-10-31\/card\.png\?v=[0-9a-f]{8}$/);
+    expect(image.alt).toBe('The Oct 31, 2026 drop on Agent Switchboard: 4 listings added, 1 updated');
+  });
+});
+
+describe('newCard', () => {
+  const catalog = [
+    official('big-1', 'Big', 'bbbb0001'),
+    official('big-2', 'Big', 'bbbb0002'),
+    makeAgent({ slug: 'indie', name: 'Indie', providerName: 'Indie', iconUrl: '/icons/indie.png?v=cccc0001' }),
+  ];
+  const groups: NewGroup[] = [
+    { drop: null, agents: [catalog[2]] },
+    { drop: { date: '2026-10-31', days: ['2026-10-31'], added: [], updated: [], removed: [] }, agents: catalog.slice(0, 2) },
+  ];
+
+  it('counts every new listing and names the biggest vendors first, one per provider before repeats', () => {
+    expect(newCard(groups, '2026-10-04', catalog)).toEqual({
+      added: 3,
+      official: 2,
+      since: 'Oct 4, 2026',
+      names: ['big-1', 'Indie', 'big-2'],
+      icons: ['/icons/big-1.png?v=bbbb0001', '/icons/indie.png?v=cccc0001'],
+    });
+  });
+
+  it('is served at its own versioned card URL', () => {
+    const image = newCardImage(newCard(groups, '2026-10-04', catalog));
+    expect(image.url).toMatch(/^\/new\/card\.png\?v=[0-9a-f]{8}$/);
+    expect(image.alt).toBe('3 listings added to Agent Switchboard since Oct 4, 2026');
+  });
+});
+
+describe('whatsNewCard', () => {
+  const release = {
+    version: '2.5.0',
+    date: '2026-11-02',
+    title: 'Come back',
+    highlights: ['See what is `new`.', 'Filter the [log](https://agentswitchboard.dev/changelog).', 'Follow.', 'Fourth.'].map(
+      (text) => ({ text, tryIt: '/new' })
+    ),
+    sections: [],
+  };
+
+  it("shows the release and its first three highlights as plain text", () => {
+    expect(whatsNewCard(release)).toEqual({
+      version: '2.5.0',
+      title: 'Come back',
+      date: 'Nov 2, 2026',
+      lines: ['See what is new.', 'Filter the log.', 'Follow.'],
+    });
+  });
+
+  it('is served at its own versioned card URL', () => {
+    const image = whatsNewCardImage(whatsNewCard(release));
+    expect(image.url).toMatch(/^\/whats-new\/card\.png\?v=[0-9a-f]{8}$/);
+    expect(image.alt).toBe("What's new on Agent Switchboard: 2.5.0, Come back");
+  });
+});
+
+describe('sampleIcons', () => {
+  const catalog = [
+    official('small-1', 'Small', 'aaaa0001'),
+    official('big-product', 'Big', 'bbbb0001'),
+    official('big-logo-1', 'Big', 'bbbb0002'),
+    official('big-logo-2', 'Big', 'bbbb0002'),
+    makeAgent({ slug: 'indie', providerName: 'Indie', iconUrl: '/icons/indie.png?v=cccc0001' }),
+    makeAgent({ slug: 'no-icon', providerName: 'Plain', iconUrl: undefined }),
+  ];
+
+  it('shows the biggest vendors first, then the rest in catalog order, one icon each', () => {
+    expect(sampleIcons(catalog, catalog, 10)).toEqual([
+      '/icons/big-logo-1.png?v=bbbb0002',
+      '/icons/small-1.png?v=aaaa0001',
+      '/icons/indie.png?v=cccc0001',
+    ]);
+  });
+
+  it("uses the image most of a provider's listings share", () => {
+    const [big] = sampleIcons(catalog, catalog, 1);
+    expect(big).toBe('/icons/big-logo-1.png?v=bbbb0002');
+  });
+
+  it('ranks vendors by their size in the whole catalog, not just in the sample', () => {
+    const sample = [catalog[0], catalog[1]];
+    expect(sampleIcons(sample, catalog, 10)).toEqual(['/icons/big-product.png?v=bbbb0001', '/icons/small-1.png?v=aaaa0001']);
+  });
+
+  it('never repeats an image, and stops at n', () => {
+    const twins = [official('one', 'One', 'dddd0001'), official('two', 'Two', 'dddd0001')];
+    expect(sampleIcons(twins, twins, 10)).toEqual(['/icons/one.png?v=dddd0001']);
+    expect(sampleIcons(catalog, catalog, 2)).toHaveLength(2);
+  });
+});
+
+describe('taskCard and tasksCard', () => {
+  const task: Task = {
+    slug: 'send-and-read-email',
+    label: 'send and read email',
+    blurb: 'Give an agent an inbox.',
+    keywords: ['email', 'inbox', 'smtp'],
+    categories: ['infrastructure'],
+    access: ['api'],
+  };
+  const fits = [
+    official('gmail', 'Google', 'aaaa0001'),
+    makeAgent({ slug: 'agentmail' }),
+    official('gmail-mcp', 'Google', 'aaaa0001'),
+    makeAgent({ slug: 'plain', iconUrl: undefined }),
+  ];
+
+  it('shows the job, how many tools do it, and their icons best first, each image once', () => {
+    expect(taskCard(task, fits)).toEqual({
+      title: 'I need to send and read email',
+      blurb: 'Give an agent an inbox.',
+      tools: 4,
+      official: 2,
+      icons: ['/icons/gmail.png?v=aaaa0001', '/icons/agentmail.png?v=aca5768d'],
+    });
+    const image = taskCardImage('send-and-read-email', taskCard(task, fits));
+    expect(image.url).toMatch(/^\/tasks\/send-and-read-email\/card\.png\?v=[0-9a-f]{8}$/);
+    expect(image.alt).toBe('I need to send and read email: 4 tools that do it, on Agent Switchboard');
+  });
+
+  it("counts each tool once across tasks and shows each task's best fit", () => {
+    const card = tasksCard([{ fits }, { fits: [makeAgent({ slug: 'agentmail' }), official('slack', 'Slack', 'cccc0001')] }]);
+    expect(card).toEqual({ tasks: 2, tools: 5, icons: ['/icons/gmail.png?v=aaaa0001', '/icons/agentmail.png?v=aca5768d'] });
+    expect(tasksCardImage(card).url).toMatch(/^\/tasks\/card\.png\?v=[0-9a-f]{8}$/);
+    expect(tasksCardImage(card).alt).toBe('2 tasks, each with the AI tools that do it, on Agent Switchboard');
+  });
+});
+
+describe('compareCard and comparisonsCard', () => {
+  const plain = makeAgent({ slug: 'plain', name: 'Plain', providerName: 'Plain Co', iconUrl: undefined, accessMethods: ['cli'] });
+
+  it("shows each column's name, provider, icon and access, in column order", () => {
+    expect(compareCard([makeAgent(), plain])).toEqual({
+      columns: [
+        { name: 'AgentMail', provider: 'AgentMail', icon: '/icons/agentmail.png?v=aca5768d', access: ['API', 'MCP', 'Extension'] },
+        { name: 'Plain', provider: 'Plain Co', icon: null, access: ['CLI'] },
+      ],
+    });
+    const curated = comparisonCardImage(['agentmail', 'plain'], compareCard([makeAgent(), plain]));
+    expect(curated.url).toMatch(/^\/compare\/agentmail-vs-plain\/card\.png\?v=[0-9a-f]{8}$/);
+    expect(curated.alt).toBe('AgentMail vs Plain, side by side on Agent Switchboard');
+    const other = compareCardImage(['agentmail', 'plain'], compareCard([makeAgent(), plain]));
+    expect(other.url).toMatch(/^\/compare\/card\.png\?a=agentmail&b=plain&v=[0-9a-f]{8}$/);
+    expect(other.alt).toBe(curated.alt);
+  });
+
+  it('counts the curated comparisons and shows their icons in order, each image once', () => {
+    const card = comparisonsCard([
+      [official('gmail', 'Google', 'aaaa0001'), makeAgent()],
+      [makeAgent(), plain, official('slack', 'Slack', 'cccc0001')],
+    ]);
+    expect(card).toEqual({
+      comparisons: 2,
+      icons: ['/icons/gmail.png?v=aaaa0001', '/icons/agentmail.png?v=aca5768d', '/icons/slack.png?v=cccc0001'],
+    });
+    expect(comparisonsCardImage(card).url).toMatch(/^\/compare\/card\.png\?v=[0-9a-f]{8}$/);
+  });
+});
+
+describe('sharedStackCard', () => {
+  const plain = makeAgent({ slug: 'plain', name: 'Plain', iconUrl: undefined, accessMethods: ['cli'] });
+
+  it("is titled as shared, and promises the stack's listing names", () => {
+    expect(sharedStackCard('Mail tools', [makeAgent(), plain])).toEqual({
+      title: 'Mail tools',
+      promise: 'AgentMail and Plain',
+      week: null,
+      shared: true,
+      tools: 2,
+      access: ['API', 'MCP', 'CLI', 'Extension'],
+      icons: ['/icons/agentmail.png?v=aca5768d'],
+    });
+    expect(sharedStackCard('', [plain]).title).toBe('A shared stack');
+  });
+
+  it('is drawn at the link of the same listings and title, and says how many tools', () => {
+    const image = sharedStackCardImage(['agentmail', 'plain'], 'Mail tools', sharedStackCard('Mail tools', [makeAgent(), plain]));
+    expect(image.url).toMatch(/^\/stack\/card\.png\?items=agentmail,plain&title=Mail%20tools&v=[0-9a-f]{8}$/);
+    expect(image.alt).toBe('Mail tools: a stack of 2 tools, shared on Agent Switchboard');
+    expect(sharedStackCardImage(['plain'], '', sharedStackCard('', [plain])).alt).toBe(
+      'A shared stack: a stack of 1 tool, shared on Agent Switchboard'
+    );
+  });
+});
+
+describe('boardCard', () => {
+  const jack = (slug: string, official: boolean, lit: boolean) => ({ slug, name: slug, provider: slug, access: [], official, lit });
+  const board = {
+    panels: [
+      { slug: 'a', name: 'A', jacks: [jack('one', true, false), jack('two', false, true)] },
+      { slug: 'b', name: 'B', jacks: [jack('three', false, false)] },
+    ],
+    drop: '2026-10-31',
+    listings: 3,
+    official: 1,
+    lit: 1,
+  };
+
+  it("counts the board and codes each panel's jacks, so a jack that changes changes the card's URL", () => {
+    expect(boardCard(board)).toEqual({ listings: 3, official: 1, lit: 1, drop: 'Oct 31, 2026', panels: ['ol', '-'] });
+    const lit = boardCardImage(boardCard(board)).url;
+    const unlit = boardCardImage(boardCard({ ...board, panels: [{ ...board.panels[0], jacks: [jack('one', true, false)] }, board.panels[1]] })).url;
+    expect(lit).toMatch(/^\/switchboard\/card\.png\?v=[0-9a-f]{8}$/);
+    expect(unlit).not.toBe(lit);
+  });
+
+  it('says what the board shows, and what is lit', () => {
+    expect(boardCardImage(boardCard(board)).alt).toBe(
+      'All 3 listings on Agent Switchboard as jacks on one board, the 1 from the Oct 31, 2026 drop lit'
+    );
+    expect(boardCardImage(boardCard({ ...board, drop: null, lit: 0 })).alt).toBe('All 3 listings on Agent Switchboard as jacks on one board');
+  });
+});
+
+describe('operatorCard', () => {
+  const task = (label: string): Task => ({ slug: label, label, blurb: '', categories: [], access: [], keywords: [] });
+  const mail = makeAgent();
+  const plain = makeAgent({ slug: 'plain', name: 'Plain', iconUrl: undefined });
+  const part = (text: string, label: string | null, pick: Agent | null) => ({
+    text,
+    task: label ? task(label) : null,
+    nearest: [],
+    fits: pick ? 5 : 0,
+    pick,
+    alternatives: [],
+    named: [],
+    met: [],
+    unmet: [],
+    why: null,
+  });
+  const operator = {
+    request: 'send email, read my inbox, zzz, run a cli',
+    parts: [part('send email', 'send and read email', mail), part('zzz', null, null), part('run a cli', 'run commands', plain)],
+    stack: [mail, plain],
+    extra: 0,
+    cut: false,
+  };
+
+  it("names the stack and its parts' tasks, never the request", () => {
+    expect(operatorCard(operator, false)).toEqual({
+      example: null,
+      names: ['AgentMail', 'Plain'],
+      jobs: 2,
+      tasks: ['Send and read email', 'Run commands'],
+      icons: ['/icons/agentmail.png?v=aca5768d'],
+    });
+    expect(operatorCard(operator, true).example).toBe(operator.request);
+  });
+
+  it("is drawn at the request's own link, or /operator's without one", () => {
+    const image = operatorCardImage(' send  email, run a cli ', operatorCard(operator, false));
+    expect(image.url).toMatch(/^\/operator\/card\.png\?q=send\+email,\+run\+a\+cli&v=[0-9a-f]{8}$/);
+    expect(image.alt).toBe('AgentMail and Plain: 2 tools for 2 jobs, from the Operator on Agent Switchboard');
+    const example = operatorCardImage(null, operatorCard(operator, true));
+    expect(example.url).toMatch(/^\/operator\/card\.png\?v=[0-9a-f]{8}$/);
+    expect(example.alt).toBe(`Ask the switchboard: “${operator.request}” put through to AgentMail and Plain, on Agent Switchboard`);
+  });
+});

@@ -39,9 +39,15 @@
   "authType": "oauth2",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "binary",
+    "command": "curl -fsSL https://app.factory.ai/cli | sh"
+  },
+  "quickstartUrl": "https://docs.factory.com/droid-cli/quickstart",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -49,5 +55,5 @@
     "mcp"
   ],
   "createdAt": "2026-08-15T07:16:38.703Z",
-  "updatedAt": "2026-10-04T17:52:58.682Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

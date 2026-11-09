@@ -1,0 +1,62 @@
+{
+  "id": "keboola-mcp",
+  "name": "Keboola MCP Server",
+  "slug": "keboola-mcp",
+  "description": "Lets AI agents query Keboola storage, build SQL transformations, run jobs, and manage flows and data apps in a Keboola project over a hosted OAuth or local MCP server.",
+  "providerName": "Keboola",
+  "providerUrl": "https://www.keboola.com",
+  "agentUrl": "https://help.keboola.com/ai/mcp-server/",
+  "categories": [
+    "data-analytics",
+    "infrastructure"
+  ],
+  "tags": [
+    "data-pipelines",
+    "sql-transformations",
+    "data-platform",
+    "etl",
+    "remote-mcp",
+    "official-mcp",
+    "keboola"
+  ],
+  "skills": [
+    {
+      "id": "storage-query",
+      "name": "Storage Query",
+      "description": "Queries tables directly and reads or updates table and bucket descriptions in project storage."
+    },
+    {
+      "id": "sql-transformations",
+      "name": "SQL Transformations",
+      "description": "Creates SQL transformations from natural-language descriptions."
+    },
+    {
+      "id": "jobs",
+      "name": "Job Runs",
+      "description": "Runs components and transformations and retrieves job execution details."
+    },
+    {
+      "id": "flows",
+      "name": "Flow Building",
+      "description": "Builds and manages Conditional Flows and Orchestrator Flows for pipelines."
+    },
+    {
+      "id": "dev-branches",
+      "name": "Development Branches",
+      "description": "Scopes every operation to a selected development branch so changes stay out of production."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.529Z",
+  "updatedAt": "2026-10-10T21:22:01.529Z"
+}

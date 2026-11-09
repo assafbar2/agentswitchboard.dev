@@ -43,14 +43,18 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.brightdata.com/mcp",
+  "mcpCommand": "npx @brightdata/mcp",
+  "quickstartUrl": "https://docs.brightdata.com/products/mcp-server/remote/quickstart",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "mcp"
   ],
   "createdAt": "2026-04-25T19:07:07.049Z",
-  "updatedAt": "2026-04-25T19:07:07.049Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

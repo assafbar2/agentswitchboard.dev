@@ -1,0 +1,51 @@
+{
+  "id": "jevgrep",
+  "name": "jevgrep",
+  "slug": "jevgrep",
+  "description": "Finds the files and source excerpts relevant to a plain-language question about a repository, giving coding agents a starting point before they edit.",
+  "providerName": "David Zhang",
+  "providerUrl": "https://github.com/dzhng",
+  "agentUrl": "https://github.com/dzhng/jevgrep",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "code-search",
+    "semantic-search",
+    "context-retrieval",
+    "codebase-navigation",
+    "cli",
+    "npm",
+    "swe-bench"
+  ],
+  "skills": [
+    {
+      "id": "code-relevance-search",
+      "name": "Code Relevance Search",
+      "description": "Answers a repository question with relevant files, reading leads, and verbatim source excerpts with line references on stdout."
+    },
+    {
+      "id": "skill-install",
+      "name": "Agent Skill Install",
+      "description": "Installs the jevgrep skill into detected coding agents such as Claude Code, Codex and OpenCode, per project or globally."
+    },
+    {
+      "id": "search-scope-preview",
+      "name": "Search Scope Preview",
+      "description": "Counts the files a search under a root may read, grouped by top-level directory, with no provider key or network call."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-17T09:03:45.940Z",
+  "updatedAt": "2026-10-17T09:03:45.940Z"
+}

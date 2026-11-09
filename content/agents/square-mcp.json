@@ -37,9 +37,14 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.squareup.com/mcp",
+  "mcpCommand": "npx square-mcp-server start",
+  "quickstartUrl": "https://developer.squareup.com/docs/mcp",
+  "apiBaseUrl": "https://connect.squareup.com/v2",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -47,5 +52,5 @@
     "api"
   ],
   "createdAt": "2026-09-02T07:21:11.745Z",
-  "updatedAt": "2026-09-02T07:21:11.745Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

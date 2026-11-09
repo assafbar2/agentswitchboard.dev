@@ -37,9 +37,16 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "mcpCommand": "uvx awslabs.amazon-bedrock-agentcore-mcp-server@latest",
+  "install": {
+    "type": "npm",
+    "command": "npm install -g @aws/agentcore"
+  },
+  "quickstartUrl": "https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/runtime-get-started-cli.html",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -48,5 +55,5 @@
     "cli"
   ],
   "createdAt": "2026-05-22T08:28:09.641Z",
-  "updatedAt": "2026-05-22T08:28:09.641Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

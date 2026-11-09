@@ -1,67 +1,165 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import Link from 'next/link';
-import { PlusCircle, MinusCircle, RefreshCw } from 'lucide-react';
-import type { Metadata } from 'next';
+import Link from '@/components/Link';
+import { Suspense } from 'react';
+import type { Metadata, ResolvingMetadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
+import { getAllCategories, getListingCategories } from '@/lib/catalog';
+import { getReleases, releaseAnchor } from '@/lib/changelog';
+import { NEW_DAYS } from '@/lib/freshness';
+import { inlineMarkdownToText } from '@/lib/inline-markdown';
+import { logCounts } from '@/lib/log-filter';
+import { ChangelogFilters } from '@/components/ChangelogFilters';
+import { InlineMarkdown } from '@/components/InlineMarkdown';
+import { formatDay } from '@/lib/utils';
+import type { ChangelogEntry } from '@/lib/types';
 
-export const metadata: Metadata = {
-  title: 'Changelog',
-  description: 'Every addition, removal, and correction to the Agent Switchboard directory.',
-  alternates: { canonical: '/changelog' },
-};
-
-interface ChangelogEntry {
-  action: 'added' | 'removed' | 'updated';
-  slug: string;
-  name: string;
-  note?: string;
-  date?: string;
+export function generateMetadata(_props: unknown, parent: ResolvingMetadata): Promise<Metadata> {
+  return pageMetadata(
+    {
+      title: 'Changelog',
+      description: 'Every Agent Switchboard release, and every addition, removal, and correction to the directory.',
+      path: '/changelog',
+    },
+    parent
+  );
 }
 
-const ICONS = {
-  added: <PlusCircle className="w-4 h-4 text-[var(--accent)]" />,
-  removed: <MinusCircle className="w-4 h-4 text-[var(--rose)]" />,
-  updated: <RefreshCw className="w-4 h-4 text-[var(--blue)]" />,
-};
+const GITHUB_CHANGELOG = 'https://github.com/assafbar2/agentswitchboard.dev/blob/main/CHANGELOG.md';
 
-export default function ChangelogPage() {
+const inlineLink = 'inline-link';
+
+const LOG_LIST_ID = 'directory-log';
+
+export default async function ChangelogPage() {
   const raw = fs.readFileSync(path.join(process.cwd(), 'content', 'changelog.json'), 'utf8');
   const entries: ChangelogEntry[] = JSON.parse(raw);
+  const releases = getReleases();
+  const listingCategories = await getListingCategories();
+  const categoriesOf = (slug: string) => listingCategories.get(slug) ?? [];
+  const counts = logCounts(entries, categoriesOf);
+  const categories = (await getAllCategories())
+    .filter((c) => counts[c.slug])
+    .map((c) => ({ slug: c.slug, name: c.name }));
 
   return (
     <>
       {/* ── Human view ─────────────────────────────────────────────── */}
-      <div className="human-only container-wide section">
+      <div className="human-only container-wide section font-[family-name:var(--font-display)] text-[var(--dir-ink)]">
         <div className="max-w-2xl mx-auto">
-          <div className="mb-10">
-            <h1 className="text-3xl font-bold tracking-tight mb-2">Changelog</h1>
-            <p className="text-[var(--text-secondary)]">
-              Every addition, removal, and correction — the directory is
-              maintained in the open.
+          <div className="mb-6 pb-6 border-b-[3px] border-[var(--dir-ink)]!">
+            <h1 className="text-4xl sm:text-5xl font-extrabold leading-[0.95] tracking-[-0.02em] mb-3">Changelog</h1>
+            <p className="text-lg text-[var(--dir-muted)]">
+              Every release of the site, then every addition, removal, and correction to the directory —
+              maintained in the open. The release notes are also on GitHub as{' '}
+              <a href={GITHUB_CHANGELOG} target="_blank" rel="noopener noreferrer" className={inlineLink}>
+                CHANGELOG.md
+              </a>
+              .
+            </p>
+            <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[15px] font-semibold">
+              <a href="#releases" className={inlineLink}>
+                Site releases
+              </a>
+              <a href="#directory-changes" className={inlineLink}>
+                Directory changes
+              </a>
+              <Link href="/whats-new" className={inlineLink}>
+                What&apos;s new
+              </Link>
+              <Link href="/drops" className={inlineLink}>
+                Weekly drops
+              </Link>
+              <Link href="/new" className={inlineLink}>
+                New listings
+              </Link>
             </p>
           </div>
 
-          <div className="space-y-3">
-            {entries.map((e, i) => (
-              <div key={`${e.slug}-${e.action}-${i}`} className="card p-4 flex items-start gap-3">
-                <div className="mt-0.5">{ICONS[e.action]}</div>
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2 flex-wrap">
+          {/* Releases: version and title, dotted leader, date; then the notes by section */}
+          <section aria-labelledby="releases" className="mb-14">
+            <h2 id="releases" className="dir-bar scroll-mt-24">
+              Site releases <span className="dir-bar-count">· {releases.length}</span>
+            </h2>
+            {releases.map((release) => (
+              <article
+                key={release.version}
+                id={releaseAnchor(release.version)}
+                className="scroll-mt-24 border-b border-[var(--dir-rule)]! py-5"
+              >
+                <div className="flex min-w-0 items-baseline gap-1.5">
+                  <h3 className="min-w-0 wrap-break-word text-[20px] font-extrabold leading-snug">
+                    <a href={`#${releaseAnchor(release.version)}`} className="text-[var(--dir-ink)] no-underline hover:underline">
+                      {release.version}
+                    </a>
+                    <span className="font-bold"> · {release.title}</span>
+                  </h3>
+                  <span aria-hidden="true" className="dir-row-leader" />
+                  <time dateTime={release.date} className="shrink-0 whitespace-nowrap text-sm font-semibold text-[var(--dir-muted)]">
+                    {formatDay(release.date)}
+                  </time>
+                </div>
+                {release.sections.map((section) => (
+                  <div key={section.name} className="mt-3">
+                    <h4 className="dir-label text-[var(--dir-muted)]">{section.name}</h4>
+                    <ul className="mt-1 list-disc space-y-1 pl-5 text-[16px] leading-snug marker:text-[var(--dir-muted)]">
+                      {section.items.map((item, i) => (
+                        <li key={i}>
+                          <InlineMarkdown text={item} />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </article>
+            ))}
+          </section>
+
+          {/* Directory changes: one ruled entry per change, name, dotted leader, action and date */}
+          <section aria-labelledby="directory-changes">
+            <h2 id="directory-changes" className="dir-bar scroll-mt-24">
+              Directory changes <span className="dir-bar-count">· {entries.length}</span>
+            </h2>
+            <p className="mt-2 text-[15px] text-[var(--dir-muted)]">
+              The same changes, batch by batch with icons and one-liners, are on{' '}
+              <Link href="/drops" className={inlineLink}>
+                the weekly drops
+              </Link>
+              , and the listings added in the last {NEW_DAYS} days on{' '}
+              <Link href="/new" className={inlineLink}>
+                New listings
+              </Link>
+              .
+            </p>
+            <Suspense>
+              <ChangelogFilters listId={LOG_LIST_ID} categories={categories} counts={counts} />
+            </Suspense>
+            <ul id={LOG_LIST_ID} className="log">
+              {entries.map((e, i) => (
+                <li
+                  key={`${e.slug}-${e.action}-${i}`}
+                  data-action={e.action}
+                  data-cats={categoriesOf(e.slug).join(' ') || undefined}
+                >
+                  <div className="log-row">
                     {e.action === 'removed' ? (
-                      <span className="mono text-sm font-semibold">{e.name}</span>
+                      <span className="log-name">{e.name}</span>
                     ) : (
-                      <Link href={`/agents/${e.slug}`} className="mono text-sm font-semibold hover:text-[var(--accent)] transition-colors">
+                      <Link href={`/agents/${e.slug}`} className="log-name">
                         {e.name}
                       </Link>
                     )}
-                    <span className="text-xs uppercase tracking-wider text-[var(--text-muted)]">{e.action}</span>
-                    {e.date && <span className="mono text-xs text-[var(--text-muted)]">{e.date}</span>}
+                    <span aria-hidden="true" className="dir-row-leader" />
+                    <span className="log-when">
+                      <span className="dir-label">{e.action}</span>
+                      {e.date && <span className="log-date">{e.date}</span>}
+                    </span>
                   </div>
-                  {e.note && <p className="text-sm text-[var(--text-secondary)] mt-1">{e.note}</p>}
-                </div>
-              </div>
-            ))}
-          </div>
+                  {e.note && <p className="log-note">{e.note}</p>}
+                </li>
+              ))}
+            </ul>
+          </section>
         </div>
       </div>
 
@@ -70,9 +168,28 @@ export default function ChangelogPage() {
         <div className="container-wide py-10 max-w-4xl">
           <div className="mb-6">
             <div className="agent-accent text-base font-bold mb-1">/changelog</div>
-            <div className="agent-dim text-xs">{entries.length} entries · newest first</div>
+            <div className="agent-dim text-xs">
+              {`${releases.length} releases · ${entries.length} directory entries · newest first · source: CHANGELOG.md · each release's highlights, with the page to try each: /whats-new`}
+            </div>
           </div>
-          <div className="agent-section-title">entries</div>
+          <div className="agent-section-title">releases</div>
+          {releases.map((release) => (
+            <div key={release.version} className="mb-3">
+              <div className="agent-row">
+                <span className="agent-accent">{release.version}</span>
+                <span className="agent-dim">{release.title}</span>
+                <span className="agent-dim">{release.date}</span>
+              </div>
+              {release.sections.flatMap((section) =>
+                section.items.map((item, i) => (
+                  <div key={`${section.name}-${i}`} className="agent-dim text-xs leading-relaxed pl-4">
+                    {section.name.toLowerCase()}: {inlineMarkdownToText(item)}
+                  </div>
+                ))
+              )}
+            </div>
+          ))}
+          <div className="agent-section-title">directory entries</div>
           {entries.map((e, i) => (
             <div key={`${e.slug}-${e.action}-${i}`} className="agent-row">
               <span className="agent-accent">{e.action}</span>

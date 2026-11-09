@@ -1,0 +1,73 @@
+{
+  "id": "cosvoice",
+  "name": "CosVoice",
+  "slug": "cosvoice",
+  "description": "Provisions a dedicated US phone number and email address for an AI agent over MCP: place and answer calls, send texts and email, book by phone, and get a transcript and summary of each call.",
+  "providerName": "CosVoice",
+  "providerUrl": "https://cosvoice.com",
+  "version": "1.0.0",
+  "agentUrl": "https://cosvoice.com/docs",
+  "categories": [
+    "voice-messaging",
+    "communication"
+  ],
+  "tags": [
+    "mcp",
+    "phone-calls",
+    "sms",
+    "email",
+    "voice",
+    "phone-number",
+    "webhooks"
+  ],
+  "skills": [
+    {
+      "id": "phone-line-provisioning",
+      "name": "Phone Line Provisioning",
+      "description": "Search available US numbers and provision a dedicated line for an agent via search_numbers, create_line, and get_line."
+    },
+    {
+      "id": "outbound-calling",
+      "name": "Place and Track Calls",
+      "description": "Place calls with place_call, then retrieve records, transcripts, and summaries through get_call, list_calls, and annotate_call."
+    },
+    {
+      "id": "reservation-booking",
+      "name": "Phone Reservations",
+      "description": "Book reservations over the phone with book_reservation and review existing ones with list_reservations."
+    },
+    {
+      "id": "text-messaging",
+      "name": "Text Messaging",
+      "description": "Send SMS with send_text and read inbound and outbound messages on the line with list_messages."
+    },
+    {
+      "id": "email-handling",
+      "name": "Email Handling",
+      "description": "Send, read, and forward mail for the agent's address via send_email, list_emails, get_email, and forward_email."
+    },
+    {
+      "id": "contact-management",
+      "name": "Contact Management",
+      "description": "Maintain the line's address book using list_contacts, add_contact, and remove_contact."
+    },
+    {
+      "id": "event-notifications",
+      "name": "Event Notifications",
+      "description": "Register callbacks with set_webhook and set_bot_push, and review past events through list_history and recent_activity."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

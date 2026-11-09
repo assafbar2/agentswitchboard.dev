@@ -1,0 +1,69 @@
+{
+  "id": "whooshly",
+  "name": "Whooshly",
+  "slug": "whooshly",
+  "description": "Creates short links, dynamic QR codes, UTM templates, vCards and landing pages, and reads click and scan analytics via an OAuth-gated MCP server, a bearer-token REST API and a Chrome extension.",
+  "providerName": "KMF Ventures LLC",
+  "providerUrl": "https://whooshly.co",
+  "agentUrl": "https://whooshly.co/mcp",
+  "categories": [
+    "sales-marketing",
+    "content-media"
+  ],
+  "tags": [
+    "short-links",
+    "qr-codes",
+    "utm-builder",
+    "link-analytics",
+    "digital-business-cards",
+    "landing-pages",
+    "chrome-extension"
+  ],
+  "skills": [
+    {
+      "id": "short-link-management",
+      "name": "Short Link Management",
+      "description": "Creates and updates branded short links with custom slugs and titles through the /api/links endpoints."
+    },
+    {
+      "id": "link-click-analytics",
+      "name": "Link Click Analytics",
+      "description": "Reads click and scan counts for an individual short link from the /api/links/{id}/stats endpoint."
+    },
+    {
+      "id": "dynamic-qr-codes",
+      "name": "Dynamic QR Codes",
+      "description": "Generates dynamic QR codes via /api/qr and returns a scannable image whose destination can be changed after printing."
+    },
+    {
+      "id": "utm-templates",
+      "name": "UTM Templates",
+      "description": "Builds and lists reusable UTM templates through /api/utm so campaign source, medium and campaign tags stay consistent."
+    },
+    {
+      "id": "digital-business-cards",
+      "name": "Digital Business Cards",
+      "description": "Creates shareable vCard digital business cards with name, title, email and phone through the /api/vcard endpoint."
+    },
+    {
+      "id": "landing-pages",
+      "name": "Landing Pages",
+      "description": "Creates and updates hosted landing pages with headlines and lead-capture forms through the /api/pages endpoints."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api",
+    "browser-extension"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

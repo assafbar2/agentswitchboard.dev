@@ -1,12 +1,23 @@
-import Link from 'next/link';
-import { getCategoryBySlug, getAllCategories } from '@/lib/catalog';
+import Link from '@/components/Link';
+import { CategoryRail } from '@/components/CategoryRail';
+import { getCategoryBySlug, getAllCategories, getEveryAgent } from '@/lib/catalog';
+import { categoryCard, categoryCardImage } from '@/lib/share-cards';
 import { AgentCard } from '@/components/AgentCard';
 import { CategoryIcon } from '@/components/ui/CategoryIcon';
 import { JsonLd } from '@/components/JsonLd';
+import { isNew, NEW_DAYS, newSince } from '@/lib/freshness';
 import { notFound } from 'next/navigation';
+import { Building2 } from 'lucide-react';
 import type { Metadata } from 'next';
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev';
+
+const headerLink =
+  'inline-flex min-h-11 items-center gap-1.5 rounded-none border-2 border-[var(--dir-ink)]! px-3 text-sm font-bold uppercase tracking-[0.06em] text-[var(--dir-ink)] no-underline hover:bg-[var(--dir-rule)] hover:no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--dir-ink)]';
+
+// The catalog changes only with a deploy: an unknown slug is the static 404,
+// not a render per request.
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const categories = await getAllCategories();
@@ -19,10 +30,10 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const result = await getCategoryBySlug(slug);
+  const [result, catalog] = await Promise.all([getCategoryBySlug(slug), getEveryAgent()]);
   if (!result) return { title: 'Category Not Found' };
 
-  const { category } = result;
+  const { category, agents } = result;
   const url = `${BASE_URL}/categories/${slug}`;
   const title = `${category.name} AI Agents`;
   const description =
@@ -39,6 +50,8 @@ export async function generateMetadata({
       url,
       type: 'website',
       siteName: 'Agent Switchboard',
+      // twitter:image copies it.
+      images: [categoryCardImage(slug, categoryCard(category, agents, catalog))],
     },
     twitter: {
       card: 'summary_large_image',
@@ -54,10 +67,13 @@ export default async function CategoryPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const result = await getCategoryBySlug(slug);
+  const [result, categories] = await Promise.all([getCategoryBySlug(slug), getAllCategories()]);
   if (!result) notFound();
 
   const { category, agents } = result;
+  const officialCount = agents.filter((a) => a.official).length;
+  const since = newSince();
+  const newCount = agents.filter((a) => isNew(a.createdAt, since)).length;
   const url = `${BASE_URL}/categories/${slug}`;
 
   const listSchema = {
@@ -72,38 +88,69 @@ export default async function CategoryPage({
       position: i + 1,
       name: agent.name,
       url: `${BASE_URL}/agents/${agent.slug}`,
-      description: agent.description,
     })),
   };
 
   return (
     <>
       {/* ── Human view ─────────────────────────────────────────────── */}
-      <div className="human-only container-wide section">
+      {/* .human-only sets display:block unlayered, so the flex row is its own element. */}
+      <div className="human-only">
+      <div className="lg:flex">
+        <div className="container-wide section min-w-0 flex-1 font-[family-name:var(--font-display)] text-[var(--dir-ink)]">
         <JsonLd schema={listSchema} />
-        <div className="mb-10 flex items-center gap-3">
-          <span className="text-[var(--text-secondary)]">
+        {/* Section header bar: yellow fill, ink text, the listing count beside the title */}
+        <div className="mb-3 flex flex-wrap items-baseline gap-x-3 gap-y-1 bg-[var(--dir-yellow)] px-3 py-2 text-[var(--dir-on-yellow)]">
+          <span className="hidden sm:block shrink-0 self-center" aria-hidden="true">
             <CategoryIcon name={category.icon} className="w-7 h-7" />
           </span>
-          <div>
-            <h1 className="text-3xl font-bold tracking-tight">{category.name}</h1>
-            {category.description && (
-              <p className="text-[var(--text-secondary)] mt-1">{category.description}</p>
-            )}
-          </div>
+          <h1 className="min-w-0 wrap-break-word text-3xl sm:text-4xl font-extrabold uppercase leading-none tracking-[0.02em]">
+            {category.name}
+          </h1>
+          <span className="text-xl sm:text-2xl font-semibold leading-none">
+            · {agents.length}
+          </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="mb-6 flex flex-wrap items-start gap-3 border-b-[3px] border-[var(--dir-ink)]! pb-4">
+          {/* Grows on wide screens; on phones the official link wraps below */}
+          {category.description && (
+            <p className="min-w-0 flex-1 basis-60 text-lg text-[var(--dir-muted)]">{category.description}</p>
+          )}
+          {(newCount > 0 || officialCount > 0) && (
+            <div className="flex flex-wrap gap-2 sm:ml-auto">
+              {newCount > 0 && (
+                <Link href={`/browse?category=${category.slug}&sort=newest`} className={headerLink}>
+                  {newCount} new in {NEW_DAYS} days
+                </Link>
+              )}
+              {officialCount > 0 && (
+                <Link href={`/browse?official=1&category=${category.slug}`} className={headerLink}>
+                  <Building2 className="w-3.5 h-3.5" aria-hidden />
+                  {officialCount} official
+                </Link>
+              )}
+            </div>
+          )}
+        </div>
+
+        {/* The card titles are h3s; this keeps the outline h1 > h2 > h3. */}
+        <h2 className="sr-only">Listings</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10">
           {agents.map((agent) => (
             <AgentCard key={agent.id} agent={agent} />
           ))}
         </div>
 
         {agents.length === 0 && (
-          <p className="text-center text-[var(--text-muted)] py-20">
+          <p className="text-[var(--dir-muted)] py-16">
             No agents in this category yet.
           </p>
         )}
+      </div>
+
+        <CategoryRail categories={categories} activeSlug={slug} />
+      </div>
       </div>
 
       {/* ── Agent view ─────────────────────────────────────────────── */}
@@ -115,6 +162,7 @@ export default async function CategoryPage({
             <div className="agent-accent text-base font-bold mb-1">{category.slug}</div>
             <div className="agent-dim text-xs">
               {category.name} · {agents.length} agent{agents.length !== 1 ? 's' : ''}
+              {newCount > 0 && ` · ${newCount} new in ${NEW_DAYS} days`}
               {category.description && ` · ${category.description}`}
             </div>
           </div>
@@ -126,7 +174,7 @@ export default async function CategoryPage({
                 <Link
                   key={agent.id}
                   href={`/agents/${agent.slug}`}
-                  className="agent-row hover:opacity-80 transition-opacity no-underline"
+                  className="agent-row no-underline hover:underline"
                 >
                   <span className="agent-accent">{agent.slug}</span>
                   <span className="agent-dim">{agent.providerName}</span>

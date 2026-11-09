@@ -19,9 +19,12 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.atlassian.com/v2/mcp",
+  "quickstartUrl": "https://developer.atlassian.com/platform/forge/build-a-hello-world-rovo-agent/",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -30,5 +33,5 @@
     "cli"
   ],
   "createdAt": "2026-03-22T09:53:29.215Z",
-  "updatedAt": "2026-03-22T09:53:29.215Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

@@ -44,14 +44,20 @@
   "authType": "none",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npm install @agent-tars/cli@latest -g"
+  },
+  "quickstartUrl": "https://github.com/bytedance/UI-TARS-desktop",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "cli"
   ],
   "createdAt": "2026-05-06T23:49:27.335Z",
-  "updatedAt": "2026-05-06T23:49:27.335Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

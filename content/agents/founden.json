@@ -1,0 +1,56 @@
+{
+  "id": "founden",
+  "name": "Founden",
+  "slug": "founden",
+  "description": "Builds and deploys a running company from a plain-language prompt — website, user app with sign-in, and back office — through a documented 4-endpoint REST API that returns a live preview URL.",
+  "providerName": "O-mega Enterprise",
+  "providerUrl": "https://o-mega.ai",
+  "agentUrl": "https://founden.ai/docs/api",
+  "categories": [
+    "autonomous-agents",
+    "code-devtools"
+  ],
+  "tags": [
+    "prompt-to-app",
+    "app-generation",
+    "website-builder",
+    "rest-api",
+    "deployment",
+    "preview-url"
+  ],
+  "skills": [
+    {
+      "id": "start-build",
+      "name": "Start Build",
+      "description": "Starts a build from a plain-language prompt via POST /v1/builds and returns an execution_id for the running job."
+    },
+    {
+      "id": "build-status",
+      "name": "Build Status",
+      "description": "Polls GET /v1/builds/{execution_id} for the current build status and the live preview URL once it is ready."
+    },
+    {
+      "id": "message-build",
+      "name": "Message Running Build",
+      "description": "Sends a follow-up instruction to a running build through POST /v1/builds/{execution_id}/message."
+    },
+    {
+      "id": "stop-build",
+      "name": "Stop Build",
+      "description": "Stops a running build with POST /v1/builds/{execution_id}/stop, ending metered compute for that execution."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

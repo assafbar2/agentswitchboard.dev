@@ -43,9 +43,11 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://github.com/TencentCloud/TencentDB-Agent-Memory#quick-start",
   "status": "published",
   "featured": true,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -53,5 +55,5 @@
     "mcp"
   ],
   "createdAt": "2026-09-13T20:13:54.423Z",
-  "updatedAt": "2026-09-13T20:13:54.423Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

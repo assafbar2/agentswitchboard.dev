@@ -40,9 +40,12 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://developers.notion.com/guides/agent-skills/overview",
+  "apiBaseUrl": "https://api.notion.com",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -50,5 +53,5 @@
     "cli"
   ],
   "createdAt": "2026-09-18T22:02:13.793Z",
-  "updatedAt": "2026-09-25T23:53:39.858Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

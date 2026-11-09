@@ -1,0 +1,62 @@
+{
+  "id": "trendradar",
+  "name": "TrendRadar",
+  "slug": "trendradar",
+  "description": "Aggregates trending lists from 11 mainstream platforms and RSS feeds, filters them by keyword, pushes digests to chat and email channels, and exposes the data to AI clients over MCP.",
+  "providerName": "sansan0",
+  "providerUrl": "https://github.com/sansan0",
+  "agentUrl": "https://trendradar.sandev.cc",
+  "categories": [
+    "research",
+    "data-analytics"
+  ],
+  "tags": [
+    "trending-news",
+    "rss",
+    "keyword-monitoring",
+    "news-digest",
+    "self-hosted",
+    "mcp-server",
+    "docker"
+  ],
+  "skills": [
+    {
+      "id": "hot-list-aggregation",
+      "name": "Trending List Aggregation",
+      "description": "Collects hot lists from 11 platforms such as Zhihu, Weibo, Douyin, and Bilibili, plus custom platforms."
+    },
+    {
+      "id": "rss-feeds",
+      "name": "RSS Feed Monitoring",
+      "description": "Crawls RSS and Atom feeds with the same keyword grouping and freshness filtering as trending lists."
+    },
+    {
+      "id": "push-modes",
+      "name": "Push Modes",
+      "description": "Sends daily summary, current ranking, or incremental-only digests on a per-day schedule."
+    },
+    {
+      "id": "mcp-analysis",
+      "name": "MCP Analysis",
+      "description": "Lets MCP clients query and analyze the locally accumulated news data in natural language."
+    },
+    {
+      "id": "multi-channel-push",
+      "name": "Multi-Channel Push",
+      "description": "Pushes AI-generated content to Feishu, DingTalk, Telegram, email, and other channels in one call."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.485Z",
+  "updatedAt": "2026-10-10T21:22:01.485Z"
+}

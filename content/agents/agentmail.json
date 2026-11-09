@@ -57,7 +57,7 @@
   "featured": true,
   "featuredUntil": "2026-12-31",
   "verified": true,
-  "sponsorLabel": "⭐ Editor's Pick",
+  "sponsored": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -66,5 +66,6 @@
     "cli"
   ],
   "createdAt": "2026-03-21T00:30:02.863Z",
-  "updatedAt": "2026-04-13T21:37:25.534Z"
+  "updatedAt": "2026-11-02T22:00:00.000Z",
+  "mcpEndpoint": "https://mcp.agentmail.to/mcp"
 }

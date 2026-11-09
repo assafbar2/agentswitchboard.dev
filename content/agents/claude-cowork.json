@@ -39,14 +39,16 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": true,
+  "quickstartUrl": "https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "api"
   ],
   "createdAt": "2026-08-29T07:32:33.888Z",
-  "updatedAt": "2026-08-29T07:32:33.888Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

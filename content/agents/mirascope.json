@@ -1,0 +1,56 @@
+{
+  "id": "mirascope",
+  "name": "Mirascope",
+  "slug": "mirascope",
+  "description": "Calls any frontier LLM through one Python or TypeScript interface with decorators for structured output, tools, agents, and streaming, for developers building LLM applications.",
+  "providerName": "Mirascope",
+  "providerUrl": "https://mirascope.com",
+  "agentUrl": "https://mirascope.com",
+  "categories": [
+    "orchestration"
+  ],
+  "tags": [
+    "python",
+    "typescript",
+    "llm-library",
+    "structured-output",
+    "tool-calling",
+    "provider-agnostic",
+    "pydantic"
+  ],
+  "skills": [
+    {
+      "id": "llm-calls",
+      "name": "Unified LLM Calls",
+      "description": "Calls models from any supported provider through one decorator-based interface."
+    },
+    {
+      "id": "structured-output",
+      "name": "Structured Output",
+      "description": "Parses model responses into Pydantic models via a format argument."
+    },
+    {
+      "id": "tools-and-agents",
+      "name": "Tools and Agents",
+      "description": "Defines tools as decorated functions and runs agent loops that execute tool calls and resume."
+    },
+    {
+      "id": "streaming",
+      "name": "Streaming",
+      "description": "Streams model responses as they are generated."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-10T21:22:01.513Z",
+  "updatedAt": "2026-10-10T21:22:01.513Z"
+}

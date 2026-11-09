@@ -1,0 +1,104 @@
+import { NextResponse, type NextRequest } from 'next/server';
+import comparisons from '@/content/comparisons.json';
+import { COMPARE_MAX, compareQuery } from '@/lib/compare-link';
+import { EDGE_LOGGED_HEADER, logEdgeDoc } from '@/lib/log';
+import { isQueryPage, readsQuery } from '@/lib/query-pages';
+
+const CURATED = new Set(comparisons.map((c) => c.items.join('-vs-')));
+const SLUG = /^[a-z0-9][a-z0-9-]{0,80}$/;
+
+/**
+ * Runs before routing (Next 16 renamed the `middleware` convention to
+ * `proxy`). Four jobs, all narrow:
+ *
+ * 1. Markdown content negotiation for the homepage. Any request for `/` that
+ *    does not explicitly prefer text/markdown falls straight through to the
+ *    normal HTML response. The only unconditional change is the Vary header,
+ *    which is required once one URL can answer in two formats — without it a
+ *    CDN can hand an agent the cached HTML, or a browser the cached Markdown.
+ *
+ * 2. Counting machine-doc reads. These docs are static or CDN-cached, so their
+ *    route code does not run per request and cannot log them. The proxy sees
+ *    every hit: it logs one line synchronously, leaves the analytics event to
+ *    after(), and never changes the response, so caching is unaffected.
+ *
+ * 3. A /compare/<a>-vs-<b> address that is not a curated comparison (typed by
+ *    hand, or no longer curated) goes to its /compare link, which renders any
+ *    mix. The pair page builds only the curated ones, so an arbitrary address
+ *    never reaches the page cache.
+ *
+ * 4. /browse, /compare, /stack and /operator render per request from their
+ *    query. A request with none of the keys the page reads (bare, or only
+ *    tracking tags such as utm_* or fbclid) is served from the page's
+ *    prerendered copy at <page>/all, so it comes from the CDN.
+ */
+export function proxy(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  if (pathname.startsWith('/compare/')) {
+    const pair = pathname.slice('/compare/'.length);
+    const slugs = pair.split('-vs-');
+    if (CURATED.has(pair) || slugs.length < 2 || slugs.length > COMPARE_MAX || !slugs.every((s) => SLUG.test(s))) {
+      return NextResponse.next();
+    }
+    const target = request.nextUrl.clone();
+    target.pathname = '/compare';
+    target.search = compareQuery(slugs);
+    return NextResponse.redirect(target);
+  }
+
+  if (isQueryPage(pathname)) {
+    return readsQuery(pathname, request.nextUrl.searchParams)
+      ? NextResponse.next()
+      : NextResponse.rewrite(new URL(`${pathname}/all`, request.url));
+  }
+
+  if (pathname === '/') {
+    const accept = request.headers.get('accept') ?? '';
+    const wantsMarkdown =
+      accept.includes('text/markdown') && !accept.includes('text/html');
+
+    const response = wantsMarkdown
+      ? NextResponse.rewrite(new URL('/index.md', request.url))
+      : NextResponse.next();
+
+    response.headers.set('Vary', 'Accept, Accept-Encoding');
+    if (wantsMarkdown && request.method === 'GET') logEdgeDoc('/', request);
+    return response;
+  }
+
+  // Count reads only: CORS preflights and HEAD checks are not consumption.
+  if (request.method !== 'GET') return NextResponse.next();
+
+  logEdgeDoc(pathname, request);
+
+  // Tell a route handler behind this (e.g. /agents.json) that the hit is
+  // already counted. Upstream request headers only; the response is untouched.
+  const forwarded = new Headers(request.headers);
+  forwarded.set(EDGE_LOGGED_HEADER, '1');
+  return NextResponse.next({ request: { headers: forwarded } });
+}
+
+export const config = {
+  matcher: [
+    '/',
+    '/llms.txt',
+    '/agents.json',
+    '/index.md',
+    '/skill.md',
+    '/SKILL.md',
+    '/openapi.json',
+    '/feed.xml',
+    '/atom.xml',
+    // Only the files that exist: a probe for any other /.well-known path is a
+    // plain 404, not counted as a machine-doc read.
+    '/.well-known/mcp.json',
+    '/.well-known/webmcp.json',
+    '/.well-known/openai-apps-challenge',
+    '/compare/:pair',
+    '/browse',
+    '/compare',
+    '/stack',
+    '/operator',
+  ],
+};

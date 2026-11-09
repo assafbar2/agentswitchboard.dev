@@ -35,3 +35,6 @@ jobs:
       # Content lives in the repo — full production build needs no secrets.
       - name: Build
         run: npm run build
+
+      - name: Check Try it links
+        run: npx tsx scripts/check-try-links.ts

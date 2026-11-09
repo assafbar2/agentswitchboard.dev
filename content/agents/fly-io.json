@@ -1,0 +1,63 @@
+{
+  "id": "fly-io",
+  "name": "Fly.io",
+  "slug": "fly-io",
+  "description": "Deploys and runs apps on Fly Machines through the Machines REST API, the flyctl CLI, and a flyctl MCP server, for developers and agents managing app infrastructure.",
+  "providerName": "Fly.io",
+  "providerUrl": "https://fly.io",
+  "agentUrl": "https://docs.fly.io",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "fly-machines",
+    "flyctl",
+    "app-hosting",
+    "machines-api",
+    "managed-postgres",
+    "volumes",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "fly-launch",
+      "name": "Fly Launch",
+      "description": "Configures and deploys an app from source with fly launch."
+    },
+    {
+      "id": "machines-api",
+      "name": "Machines API",
+      "description": "Creates, starts, stops, and manages Fly Machines, apps, volumes, and certificates over REST."
+    },
+    {
+      "id": "volumes",
+      "name": "Fly Volumes",
+      "description": "Attaches persistent storage volumes to Fly Machines."
+    },
+    {
+      "id": "managed-postgres",
+      "name": "Managed Postgres",
+      "description": "Creates and connects to Fly Managed Postgres clusters."
+    },
+    {
+      "id": "flyctl-mcp",
+      "name": "flyctl MCP Server",
+      "description": "Exposes apps, certs, logs, machines, orgs, secrets, status, and volumes commands to MCP clients via fly mcp server."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.475Z",
+  "updatedAt": "2026-10-10T21:22:01.475Z"
+}

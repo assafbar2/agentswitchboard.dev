@@ -44,14 +44,16 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://github.com/openai/symphony/blob/main/elixir/README.md",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "cli"
   ],
   "createdAt": "2026-10-04T17:55:56.156Z",
-  "updatedAt": "2026-10-04T17:55:56.156Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

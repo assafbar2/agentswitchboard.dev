@@ -1,0 +1,58 @@
+{
+  "id": "somark-oxr",
+  "name": "OXR (SoMark)",
+  "slug": "somark-oxr",
+  "description": "Parses PDFs and document images into Markdown or JSON with layout coordinates, tables, formulas and handwriting, via a self-hosted or free API. For agents and document pipelines.",
+  "providerName": "SoMark",
+  "providerUrl": "https://somark.ai",
+  "agentUrl": "https://somark.ai/oxr",
+  "categories": [
+    "data-analytics",
+    "research"
+  ],
+  "tags": [
+    "document-parsing",
+    "ocr",
+    "pdf-to-markdown",
+    "layout-analysis",
+    "table-extraction",
+    "open-weights",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "document-parsing",
+      "name": "Document parsing",
+      "description": "Turns PDFs and document images into Markdown or JSON output, with layout coordinates included."
+    },
+    {
+      "id": "layout-elements",
+      "name": "Layout element recognition",
+      "description": "Recognizes 13 document element types with bounding boxes and reading order."
+    },
+    {
+      "id": "table-parsing",
+      "name": "Table parsing",
+      "description": "Extracts tables, including complex ones, as HTML or Markdown."
+    },
+    {
+      "id": "formula-recognition",
+      "name": "Formula recognition",
+      "description": "Converts formulas and chemical equations in documents into LaTeX."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-10-31T07:10:38.179Z",
+  "updatedAt": "2026-10-31T07:10:38.179Z"
+}

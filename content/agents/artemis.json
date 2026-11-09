@@ -40,14 +40,16 @@
   "authType": "none",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://github.com/google/artemis#quick-start",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "cli"
   ],
   "createdAt": "2026-09-18T22:02:13.781Z",
-  "updatedAt": "2026-09-18T22:02:13.781Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

@@ -1,0 +1,28 @@
+{
+  "id": "threadkeep",
+  "name": "ThreadKeep",
+  "slug": "threadkeep",
+  "description": "Saves an agent task's goal, decisions and next action as durable checkpoints over MCP, so work can be recovered and resumed in a fresh session.",
+  "providerName": "Interesting Concepts",
+  "providerUrl": "https://getthreadkeep.io",
+  "version": "1.2.0",
+  "agentUrl": "https://getthreadkeep.io/api/threadkeep-mcp",
+  "categories": ["memory-state", "infrastructure", "orchestration"],
+  "tags": ["checkpoints", "task-state", "session-recovery", "persistence", "mcp"],
+  "skills": [
+    { "id": "save-checkpoint", "name": "Save Checkpoint", "description": "Records a task's goal, decisions made so far and the next action as a durable checkpoint an agent can return to." },
+    { "id": "resume-task", "name": "Resume Task", "description": "Restores a saved checkpoint into a fresh session so a new agent run can continue the work without losing context." },
+    { "id": "list-plans", "name": "List Plans", "description": "Lists stored plans and checkpoints available to the caller, with public discovery kept separate from privileged writes." }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": ["mcp", "api"],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:41:29.000Z"
+}

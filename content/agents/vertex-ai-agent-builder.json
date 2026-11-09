@@ -1,11 +1,11 @@
 {
   "id": "6w7NQ8p1uBiNiDNnG0MseZ",
-  "name": "Vertex AI Agent Builder",
+  "name": "Gemini Enterprise Agent Platform",
   "slug": "vertex-ai-agent-builder",
   "description": "Google Cloud's platform for building AI agents with grounding, tool use, and multi-turn conversation — supports A2A protocol natively.",
   "providerName": "Google Cloud",
   "providerUrl": "https://cloud.google.com",
-  "agentUrl": "https://cloud.google.com/products/agent-builder",
+  "agentUrl": "https://cloud.google.com/products/gemini-enterprise-agent-platform",
   "categories": [
     "infrastructure"
   ],
@@ -17,9 +17,15 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "pip",
+    "command": "uvx google-agents-cli setup"
+  },
+  "quickstartUrl": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/reference/rest",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -28,5 +34,5 @@
     "cli"
   ],
   "createdAt": "2026-03-22T09:53:22.254Z",
-  "updatedAt": "2026-03-22T09:53:22.254Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

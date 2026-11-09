@@ -20,14 +20,16 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://docs.tabnine.com/main/administering-tabnine/managing-your-team/tabnine-apis",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "api"
   ],
   "createdAt": "2026-08-24T19:48:52.212Z",
-  "updatedAt": "2026-08-24T19:48:52.212Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

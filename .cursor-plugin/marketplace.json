@@ -1,0 +1,18 @@
+{
+  "name": "agent-switchboard",
+  "owner": {
+    "name": "Agent Switchboard",
+    "email": "barnir@agentmail.to"
+  },
+  "metadata": {
+    "description": "The Agent Switchboard plugin for Cursor: search a curated directory of AI agents, MCP servers and agentic tools from the agent.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "agent-switchboard",
+      "source": "./plugins/agent-switchboard",
+      "description": "Search a curated directory of AI agents, MCP servers and agentic tools, compare them, find alternatives, and build one MCP config for several."
+    }
+  ]
+}

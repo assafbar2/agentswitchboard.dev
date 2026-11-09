@@ -1,0 +1,62 @@
+{
+  "id": "moli",
+  "name": "Moli",
+  "slug": "moli",
+  "description": "Fetches, extracts, and automates web pages in an open-source Rust headless browser that outputs Markdown or semantic trees and serves CDP and WebDriver, for agents reading the web.",
+  "providerName": "Lexmount",
+  "providerUrl": "https://github.com/lexmount",
+  "agentUrl": "https://github.com/lexmount/moli",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "headless-browser",
+    "rust",
+    "cdp",
+    "webdriver-bidi",
+    "web-extraction",
+    "markdown-output",
+    "playwright-compatible"
+  ],
+  "skills": [
+    {
+      "id": "page-extraction",
+      "name": "Page Extraction",
+      "description": "Renders a page as HTML, Markdown, JSON, or a compact semantic tree with moli fetch."
+    },
+    {
+      "id": "visual-capture",
+      "name": "Screenshots and PDF",
+      "description": "Writes viewport or full-page PNGs and paginated PDFs when on-demand layout is enabled."
+    },
+    {
+      "id": "page-interaction",
+      "name": "Scripted Interaction",
+      "description": "Runs a JavaScript expression with --eval before exporting the resulting page."
+    },
+    {
+      "id": "automation-server",
+      "name": "Automation Server",
+      "description": "Serves CDP, WebDriver Classic, and WebDriver BiDi from one endpoint with moli serve, usable from Playwright."
+    },
+    {
+      "id": "operational-controls",
+      "name": "Operational Controls",
+      "description": "Configures profiles, cookies, proxies, resource policies, timeouts, and private-network policy."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-10-10T21:22:01.488Z",
+  "updatedAt": "2026-10-10T21:22:01.488Z"
+}

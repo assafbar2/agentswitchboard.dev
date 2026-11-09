@@ -1,0 +1,149 @@
+[
+  {
+    "slug": "iphone-and-android-apps",
+    "title": "Ship iPhone and Android apps from one coding agent",
+    "promise": "Build, run and test on both platforms from Claude Code or Codex, starting with Apple's Xcode MCP and Google's Android CLI.",
+    "week": "2026-10-31",
+    "items": [
+      {
+        "slug": "xcode-mcp",
+        "why": "Lets Claude Code or Codex modify and build the project you have open in Xcode, through Xcode's own MCP server."
+      },
+      {
+        "slug": "iphone-use",
+        "why": "Tests the build on a real iPhone over USB: opens the app, reads the screen, taps, swipes and types."
+      },
+      {
+        "slug": "android-cli",
+        "why": "Covers Android from one command line: sets up the SDK, scaffolds the project, and builds and runs it on a device or emulator."
+      },
+      {
+        "slug": "stack-overflow-for-agents",
+        "why": "When a build breaks, finds fixes other agents have validated, and reports back whether the fix worked."
+      }
+    ]
+  },
+  {
+    "slug": "research-analyst",
+    "title": "A research analyst in five tools",
+    "promise": "Search the web and the literature, read what you find, run the numbers and write it up.",
+    "items": [
+      {
+        "slug": "parallel-web",
+        "why": "Runs plain-language web searches and deep research tasks that come back ranked, structured and cited."
+      },
+      {
+        "slug": "semantic-scholar-mcp",
+        "why": "Finds the papers: searches Semantic Scholar, arXiv and PubMed, follows citations and pulls open-access full text. No API key."
+      },
+      {
+        "slug": "docling",
+        "why": "Reads the PDFs, Word, PowerPoint and Excel files you collect, keeping tables and reading order, and hands them over as Markdown."
+      },
+      {
+        "slug": "e2b",
+        "why": "Runs the analysis code in an isolated cloud sandbox, in Python, JavaScript or shell."
+      },
+      {
+        "slug": "notion-mcp",
+        "why": "Writes up the findings as Notion pages and database entries your team can read."
+      }
+    ]
+  },
+  {
+    "slug": "no-key-mcp-starter-pack",
+    "title": "No-key MCP starter pack",
+    "promise": "Six MCP servers that need no account or API key: a browser, current docs, real code examples, file conversion, spreadsheets and diagrams.",
+    "items": [
+      {
+        "slug": "playwright-mcp",
+        "why": "Drives a browser through accessibility snapshots, so your assistant can navigate, click and fill forms without a vision model."
+      },
+      {
+        "slug": "context7",
+        "why": "Puts current, version-specific library docs and examples into the context, instead of what the model remembers."
+      },
+      {
+        "slug": "vercel-grep-mcp",
+        "why": "Shows how an API is used in practice, searching millions of public GitHub repositories by literal string or regex."
+      },
+      {
+        "slug": "markitdown",
+        "why": "Turns PDFs, Office files, images and audio into Markdown your assistant can read."
+      },
+      {
+        "slug": "excel-mcp-server",
+        "why": "Creates, reads and edits Excel workbooks, with formulas, formatting and charts, without Excel installed."
+      },
+      {
+        "slug": "drawio-mcp",
+        "why": "Draws architecture and flow diagrams from XML, CSV or Mermaid, and opens them in the draw.io editor."
+      }
+    ]
+  },
+  {
+    "slug": "coding-agent-team",
+    "title": "Run a team of coding agents",
+    "promise": "Keep several coding agents working at once: see which need you, keep their work apart, hand off between them and review before you push.",
+    "items": [
+      {
+        "slug": "corgi",
+        "why": "Shows which of your Claude Code, Codex, Pi or OpenCode sessions are working, finished or waiting for you, in one terminal."
+      },
+      {
+        "slug": "container-use",
+        "why": "Gives each agent its own container on its own git branch, so they can work in parallel without conflicts."
+      },
+      {
+        "slug": "ai-memory",
+        "why": "Passes work from one agent to the next with a handoff that says where it stopped, what failed and what is still open."
+      },
+      {
+        "slug": "openqodex",
+        "why": "Reviews each agent's changes before you push, with scanners and a separate Claude Code or Codex reviewer."
+      }
+    ]
+  },
+  {
+    "slug": "realtime-voice-agent",
+    "title": "A realtime voice agent",
+    "promise": "The four parts of an agent you talk to: a realtime framework, speech recognition, a fast model and a voice.",
+    "items": [
+      {
+        "slug": "livekit-agents",
+        "why": "Runs the conversation: streams audio over WebRTC, detects when the speaker is done, and chains speech-to-text, the model and text-to-speech."
+      },
+      {
+        "slug": "deepgram",
+        "why": "Hears the user, with real-time streaming transcription and speaker diarization."
+      },
+      {
+        "slug": "cerebras-inference",
+        "why": "Thinks fast: serves open-weight models such as Qwen and GPT OSS through an OpenAI-compatible API, built for very fast inference."
+      },
+      {
+        "slug": "cartesia",
+        "why": "Answers out loud with low-latency text-to-speech, in a custom voice cloned from a short sample."
+      }
+    ]
+  },
+  {
+    "slug": "agents-in-production",
+    "title": "Watch your agents in production",
+    "promise": "Trace every call, see what each request costs, and send the errors back to your coding agent.",
+    "items": [
+      {
+        "slug": "arize-phoenix",
+        "why": "Traces every LLM, retriever and tool call on OpenTelemetry and scores them with LLM-as-judge evaluations. Runs locally."
+      },
+      {
+        "slug": "helicone",
+        "why": "Logs each request's prompt, cost and latency through a one-line proxy, and caches repeated completions to cut spend."
+      },
+      {
+        "slug": "sentry-mcp",
+        "why": "Brings production errors back to your coding agent: issues, stack traces, distributed traces and Sentry's root-cause analysis."
+      }
+    ]
+  }
+]

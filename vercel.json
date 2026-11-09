@@ -1,0 +1,318 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "git": {
+    "deploymentEnabled": {
+      "cursor/**": false
+    }
+  },
+  "routes": [
+    {
+      "src": "^/(?:.+/)?card\\.png$",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[Bb]ot|[Cc]rawl|[Ss]pider|[Ss]lurp|GoogleOther|meta-externalagent|meta-webindexer|Barkrowler|Scrapy).*"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:Twitterbot|facebookexternalhit|LinkedInBot|Slackbot|Discordbot|TelegramBot|WhatsApp|redditbot|Pinterestbot|Embedly|Iframely|ChatGPT-User|Perplexity-User|Claude-User|MistralAI-User).*"
+        }
+      ],
+      "mitigate": {
+        "action": "deny"
+      }
+    },
+    {
+      "src": "^/compare$",
+      "has": [
+        {
+          "type": "query",
+          "key": "a"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[Bb]ot|[Cc]rawl|[Ss]pider|[Ss]lurp|GoogleOther|meta-externalagent|meta-webindexer|Barkrowler|Scrapy).*"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:Twitterbot|facebookexternalhit|LinkedInBot|Slackbot|Discordbot|TelegramBot|WhatsApp|redditbot|Pinterestbot|Embedly|Iframely|ChatGPT-User|Perplexity-User|Claude-User|MistralAI-User).*"
+        }
+      ],
+      "mitigate": {
+        "action": "deny"
+      }
+    },
+    {
+      "src": "^/stack$",
+      "has": [
+        {
+          "type": "query",
+          "key": "items"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[Bb]ot|[Cc]rawl|[Ss]pider|[Ss]lurp|GoogleOther|meta-externalagent|meta-webindexer|Barkrowler|Scrapy).*"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:Twitterbot|facebookexternalhit|LinkedInBot|Slackbot|Discordbot|TelegramBot|WhatsApp|redditbot|Pinterestbot|Embedly|Iframely|ChatGPT-User|Perplexity-User|Claude-User|MistralAI-User).*"
+        }
+      ],
+      "mitigate": {
+        "action": "deny"
+      }
+    },
+    {
+      "src": "^/operator$",
+      "has": [
+        {
+          "type": "query",
+          "key": "q"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[Bb]ot|[Cc]rawl|[Ss]pider|[Ss]lurp|GoogleOther|meta-externalagent|meta-webindexer|Barkrowler|Scrapy).*"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:Twitterbot|facebookexternalhit|LinkedInBot|Slackbot|Discordbot|TelegramBot|WhatsApp|redditbot|Pinterestbot|Embedly|Iframely|ChatGPT-User|Perplexity-User|Claude-User|MistralAI-User).*"
+        }
+      ],
+      "mitigate": {
+        "action": "deny"
+      }
+    },
+    {
+      "src": "^/browse$",
+      "has": [
+        {
+          "type": "query",
+          "key": "q"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[Bb]ot|[Cc]rawl|[Ss]pider|[Ss]lurp|GoogleOther|meta-externalagent|meta-webindexer|Barkrowler|Scrapy).*"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:Twitterbot|facebookexternalhit|LinkedInBot|Slackbot|Discordbot|TelegramBot|WhatsApp|redditbot|Pinterestbot|Embedly|Iframely|ChatGPT-User|Perplexity-User|Claude-User|MistralAI-User).*"
+        }
+      ],
+      "mitigate": {
+        "action": "deny"
+      }
+    },
+    {
+      "src": "^/browse$",
+      "has": [
+        {
+          "type": "query",
+          "key": "task"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[Bb]ot|[Cc]rawl|[Ss]pider|[Ss]lurp|GoogleOther|meta-externalagent|meta-webindexer|Barkrowler|Scrapy).*"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:Twitterbot|facebookexternalhit|LinkedInBot|Slackbot|Discordbot|TelegramBot|WhatsApp|redditbot|Pinterestbot|Embedly|Iframely|ChatGPT-User|Perplexity-User|Claude-User|MistralAI-User).*"
+        }
+      ],
+      "mitigate": {
+        "action": "deny"
+      }
+    },
+    {
+      "src": "^/browse$",
+      "has": [
+        {
+          "type": "query",
+          "key": "category"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[Bb]ot|[Cc]rawl|[Ss]pider|[Ss]lurp|GoogleOther|meta-externalagent|meta-webindexer|Barkrowler|Scrapy).*"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:Twitterbot|facebookexternalhit|LinkedInBot|Slackbot|Discordbot|TelegramBot|WhatsApp|redditbot|Pinterestbot|Embedly|Iframely|ChatGPT-User|Perplexity-User|Claude-User|MistralAI-User).*"
+        }
+      ],
+      "mitigate": {
+        "action": "deny"
+      }
+    },
+    {
+      "src": "^/browse$",
+      "has": [
+        {
+          "type": "query",
+          "key": "access"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[Bb]ot|[Cc]rawl|[Ss]pider|[Ss]lurp|GoogleOther|meta-externalagent|meta-webindexer|Barkrowler|Scrapy).*"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:Twitterbot|facebookexternalhit|LinkedInBot|Slackbot|Discordbot|TelegramBot|WhatsApp|redditbot|Pinterestbot|Embedly|Iframely|ChatGPT-User|Perplexity-User|Claude-User|MistralAI-User).*"
+        }
+      ],
+      "mitigate": {
+        "action": "deny"
+      }
+    },
+    {
+      "src": "^/browse$",
+      "has": [
+        {
+          "type": "query",
+          "key": "official"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[Bb]ot|[Cc]rawl|[Ss]pider|[Ss]lurp|GoogleOther|meta-externalagent|meta-webindexer|Barkrowler|Scrapy).*"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:Twitterbot|facebookexternalhit|LinkedInBot|Slackbot|Discordbot|TelegramBot|WhatsApp|redditbot|Pinterestbot|Embedly|Iframely|ChatGPT-User|Perplexity-User|Claude-User|MistralAI-User).*"
+        }
+      ],
+      "mitigate": {
+        "action": "deny"
+      }
+    },
+    {
+      "src": "^/browse$",
+      "has": [
+        {
+          "type": "query",
+          "key": "vendor"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[Bb]ot|[Cc]rawl|[Ss]pider|[Ss]lurp|GoogleOther|meta-externalagent|meta-webindexer|Barkrowler|Scrapy).*"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:Twitterbot|facebookexternalhit|LinkedInBot|Slackbot|Discordbot|TelegramBot|WhatsApp|redditbot|Pinterestbot|Embedly|Iframely|ChatGPT-User|Perplexity-User|Claude-User|MistralAI-User).*"
+        }
+      ],
+      "mitigate": {
+        "action": "deny"
+      }
+    },
+    {
+      "src": "^/browse$",
+      "has": [
+        {
+          "type": "query",
+          "key": "verified"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[Bb]ot|[Cc]rawl|[Ss]pider|[Ss]lurp|GoogleOther|meta-externalagent|meta-webindexer|Barkrowler|Scrapy).*"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:Twitterbot|facebookexternalhit|LinkedInBot|Slackbot|Discordbot|TelegramBot|WhatsApp|redditbot|Pinterestbot|Embedly|Iframely|ChatGPT-User|Perplexity-User|Claude-User|MistralAI-User).*"
+        }
+      ],
+      "mitigate": {
+        "action": "deny"
+      }
+    },
+    {
+      "src": "^/browse$",
+      "has": [
+        {
+          "type": "query",
+          "key": "auth"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[Bb]ot|[Cc]rawl|[Ss]pider|[Ss]lurp|GoogleOther|meta-externalagent|meta-webindexer|Barkrowler|Scrapy).*"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:Twitterbot|facebookexternalhit|LinkedInBot|Slackbot|Discordbot|TelegramBot|WhatsApp|redditbot|Pinterestbot|Embedly|Iframely|ChatGPT-User|Perplexity-User|Claude-User|MistralAI-User).*"
+        }
+      ],
+      "mitigate": {
+        "action": "deny"
+      }
+    },
+    {
+      "src": "^/browse$",
+      "has": [
+        {
+          "type": "query",
+          "key": "sort"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[Bb]ot|[Cc]rawl|[Ss]pider|[Ss]lurp|GoogleOther|meta-externalagent|meta-webindexer|Barkrowler|Scrapy).*"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:Twitterbot|facebookexternalhit|LinkedInBot|Slackbot|Discordbot|TelegramBot|WhatsApp|redditbot|Pinterestbot|Embedly|Iframely|ChatGPT-User|Perplexity-User|Claude-User|MistralAI-User).*"
+        }
+      ],
+      "mitigate": {
+        "action": "deny"
+      }
+    }
+  ]
+}

@@ -2,11 +2,12 @@
   "id": "33RfrxIpWdpxyocMUOtpu9",
   "name": "Manufact",
   "slug": "manufact",
-  "description": "Builds, tests, and deploys MCP servers and apps to ChatGPT, Claude, and Gemini. Full-stack framework on the mcp-use SDK (TS/Python) plus cloud hosting with GitHub-based deploys.",
+  "description": "Hosts, deploys and monitors MCP servers and MCP apps in production, with GitHub-based deploys. The managed cloud from the makers of the open-source mcp-use framework.",
   "providerName": "Manufact",
   "providerUrl": "https://manufact.com",
   "agentUrl": "https://manufact.com",
   "categories": [
+    "infrastructure",
     "code-devtools"
   ],
   "tags": [
@@ -49,5 +50,5 @@
     "mcp"
   ],
   "createdAt": "2026-07-06T07:04:01.764Z",
-  "updatedAt": "2026-07-06T07:04:01.764Z"
+  "updatedAt": "2026-10-28T05:55:51.221Z"
 }

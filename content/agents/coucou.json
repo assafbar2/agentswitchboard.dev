@@ -1,0 +1,56 @@
+{
+  "id": "coucou",
+  "name": "Coucou",
+  "slug": "coucou",
+  "description": "Monitors Claude Code, Codex, Cursor and other coding-agent sessions from a desktop notch or phone, so developers can approve permissions and answer questions.",
+  "providerName": "Louis Raillé",
+  "providerUrl": "https://louisraille.fr",
+  "agentUrl": "https://louis-cfm.github.io/coucou/",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "session-monitoring",
+    "permission-approvals",
+    "claude-code",
+    "desktop-app",
+    "mobile-companion",
+    "hooks",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "session-monitoring",
+      "name": "Session Monitoring",
+      "description": "Shows each coding-agent session live, including the files it reads and edits, the commands it runs, and per-file diffs."
+    },
+    {
+      "id": "permission-approvals",
+      "name": "Permission Approvals",
+      "description": "Surfaces Claude Code permission requests with Allow, Deny or Always on the desktop island, the iPhone Lock Screen, or Android."
+    },
+    {
+      "id": "question-answering",
+      "name": "Question Answering",
+      "description": "Displays Claude Code AskUserQuestion prompts with their choices so you can answer from the island instead of the terminal."
+    },
+    {
+      "id": "custom-agent-hooks",
+      "name": "Custom Agent Hooks",
+      "description": "Accepts hook events from any agent through the coucou-hook relay with an --agent flag, giving that agent its own pill."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-17T09:03:45.936Z",
+  "updatedAt": "2026-10-17T09:03:45.936Z"
+}

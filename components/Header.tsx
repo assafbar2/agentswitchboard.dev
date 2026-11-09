@@ -1,85 +1,133 @@
 'use client';
 
-import Link from 'next/link';
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import Link from '@/components/Link';
+import { useId, useState } from 'react';
+import { Layers, Menu, X } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { ViewModeToggle } from '@/components/ViewModeToggle';
+import { AgentBar } from '@/components/AgentBar';
+import { useMyStack } from '@/lib/my-stack';
 
 const navLinks = [
   { href: '/browse', label: 'Browse' },
   { href: '/categories', label: 'Categories' },
+  { href: '/for-agents', label: 'For agents' },
   { href: '/submit', label: 'List Your Agent' },
 ];
 
+const VIEW_MODE_HINT =
+  'Switch how pages are shown. For Humans is the normal site; For Agents shows a compact plain-text version of each page, for AI agents and LLM tools. Your choice is remembered in this browser.';
+
+/** The view toggle with a name and an explanation, for hover and for screen readers. */
+function LabelledViewModeToggle({ className, toggleClassName }: { className?: string; toggleClassName?: string }) {
+  const hintId = useId();
+  return (
+    <div role="group" aria-label="Page view" aria-describedby={hintId} title={VIEW_MODE_HINT} className={className}>
+      <span id={hintId} className="sr-only">
+        {VIEW_MODE_HINT}
+      </span>
+      <ViewModeToggle className={toggleClassName} />
+    </div>
+  );
+}
+
+const navLinkClass = 'dir-link';
+
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const kept = useMyStack().items.length;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--bg-primary)]/80 backdrop-blur-xl">
-      <div className="container-wide flex h-16 items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <span className="relative flex h-3 w-3">
-            <span className="absolute inset-0 rounded-full bg-[var(--accent)] animate-pulse-glow" />
-            <span className="relative rounded-full h-3 w-3 bg-[var(--accent)]" />
-          </span>
-          <span className="mono text-lg font-bold tracking-tight text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">
-            switchboard
-          </span>
-        </Link>
+    <>
+      {/* Agent entry: the first thing on every page, in human and agent view. */}
+      <AgentBar />
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-1">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="px-3.5 py-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors rounded-lg hover:bg-white/[0.03]"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-
-        {/* CTA + mobile toggle */}
-        <div className="flex items-center gap-3">
-          {/* Segmented view toggle — replaces Activate Pro */}
-          <ViewModeToggle className="hidden sm:flex" />
-
-          <ThemeToggle />
-
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            aria-label="Toggle menu"
+      <header className="sticky top-0 z-50 border-b-[3px] border-[var(--dir-ink)] bg-[var(--dir-paper)] font-[family-name:var(--font-display)] text-[var(--dir-ink)]">
+        <div className="flex h-16 items-stretch">
+          {/* Logo block */}
+          <Link
+            href="/"
+            className="flex shrink-0 items-center bg-[var(--dir-yellow)] px-4 text-xl font-extrabold tracking-[-0.01em] text-[var(--dir-on-yellow)] no-underline hover:underline focus-visible:outline focus-visible:outline-[3px] focus-visible:-outline-offset-[6px] focus-visible:outline-[var(--dir-on-yellow)] sm:px-6 sm:text-2xl lg:px-6 xl:px-10"
           >
-            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
-        </div>
-      </div>
+            Agent Switchboard
+          </Link>
 
-      {/* Mobile nav */}
-      {mobileOpen && (
-        <nav className="md:hidden border-t border-[var(--border)] bg-[var(--bg-primary)]">
-          <div className="container-wide py-4 flex flex-col gap-1">
+          {/* Desktop nav — from lg up; four links plus the toggle don't fit at md. */}
+          <nav aria-label="Main" className="hidden items-center gap-5 px-6 text-[17px] font-semibold lg:flex xl:gap-[30px] xl:px-10">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="px-3 py-2.5 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] rounded-lg hover:bg-white/[0.03]"
-              >
+              <Link key={link.href} href={link.href} className={`${navLinkClass} inline-flex min-h-11 items-center whitespace-nowrap`}>
                 {link.label}
               </Link>
             ))}
-            {/* View toggle in mobile menu */}
-            <div className="mt-3 pt-3 border-t border-[var(--border)]">
-              <ViewModeToggle className="w-full justify-center" />
-            </div>
+          </nav>
+
+          {/* My stack, view toggle, theme, mobile menu */}
+          <div className="ml-auto flex items-center gap-3 pl-3 pr-4 sm:pr-6 xl:pr-10">
+            {/* Once something is in My stack. On a phone it is in the menu;
+                at lg, beside the nav, only the icon and count fit. */}
+            {kept > 0 && (
+              <Link
+                href="/my-stack"
+                aria-label={`My stack: ${kept} ${kept === 1 ? 'listing' : 'listings'}`}
+                className={`${navLinkClass} hidden min-h-11 items-center gap-1.5 whitespace-nowrap text-[17px] font-semibold sm:inline-flex`}
+              >
+                <Layers aria-hidden="true" className="h-5 w-5 shrink-0" />
+                <span className="lg:hidden xl:inline">My stack ·</span>
+                <span>{kept}</span>
+              </Link>
+            )}
+            {/* Segmented view toggle. Below lg it lives in the mobile menu
+                instead, so it never shows twice. */}
+            <LabelledViewModeToggle className="hidden lg:block" />
+
+            <ThemeToggle />
+
+            <button
+              type="button"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="inline-flex h-11 w-11 items-center justify-center border-[3px] border-[var(--dir-ink)] text-[var(--dir-ink)] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-[var(--dir-ink)] lg:hidden"
+              aria-label="Toggle menu"
+              aria-expanded={mobileOpen}
+            >
+              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
           </div>
-        </nav>
-      )}
-    </header>
+        </div>
+
+        {/* Mobile nav */}
+        {mobileOpen && (
+          <nav aria-label="Main" className="border-t-[3px] border-[var(--dir-ink)] bg-[var(--dir-paper)] lg:hidden">
+            <div className="flex flex-col px-4 py-3 sm:px-6">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={`${navLinkClass} flex min-h-11 items-center border-b border-[var(--dir-rule)] px-1 text-[17px] font-semibold`}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              {kept > 0 && (
+                <Link
+                  href="/my-stack"
+                  onClick={() => setMobileOpen(false)}
+                  className={`${navLinkClass} flex min-h-11 items-center border-b border-[var(--dir-rule)] px-1 text-[17px] font-semibold`}
+                >
+                  My stack · {kept}
+                </Link>
+              )}
+              {/* View toggle in mobile menu */}
+              <div className="mt-4">
+                <LabelledViewModeToggle toggleClassName="w-full [&>button]:flex-1 [&>button]:justify-center" />
+                <p aria-hidden="true" className="mt-2 px-1 text-sm text-[var(--dir-muted)]">
+                  For Agents shows a compact plain-text version of each page.
+                </p>
+              </div>
+            </div>
+          </nav>
+        )}
+      </header>
+    </>
   );
 }

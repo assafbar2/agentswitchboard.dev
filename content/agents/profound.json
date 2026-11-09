@@ -40,9 +40,13 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.tryprofound.com/mcp",
+  "quickstartUrl": "https://docs.tryprofound.com/rest-api/introduction",
+  "apiBaseUrl": "https://api.tryprofound.com",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -50,5 +54,5 @@
     "mcp"
   ],
   "createdAt": "2026-09-18T22:02:13.790Z",
-  "updatedAt": "2026-09-18T22:02:13.790Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

@@ -18,15 +18,22 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "brew",
+    "command": "brew install snowflake-cli"
+  },
+  "quickstartUrl": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "api",
+    "mcp",
     "cli"
   ],
   "createdAt": "2026-03-22T09:51:32.939Z",
-  "updatedAt": "2026-03-22T09:51:32.939Z"
+  "updatedAt": "2026-11-02T21:56:04.450Z"
 }

@@ -1,0 +1,52 @@
+{
+  "id": "weave",
+  "name": "weave",
+  "slug": "weave",
+  "description": "Resolves Git merge conflicts at the level of functions, classes, and keys instead of lines, through a merge driver, CLI, and MCP server, for teams merging parallel agent branches.",
+  "providerName": "Ataraxy Labs",
+  "providerUrl": "https://ataraxy-labs.com",
+  "agentUrl": "https://ataraxy-labs.github.io/weave/",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "git",
+    "merge-driver",
+    "semantic-merge",
+    "tree-sitter",
+    "merge-conflicts",
+    "rust-cli",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "entity-merge",
+      "name": "Entity-Level Merge",
+      "description": "Merges code by parsed functions, classes, and keys so parallel edits to different entities no longer conflict."
+    },
+    {
+      "id": "weave-land",
+      "name": "Verified Landing",
+      "description": "Merges a branch, checks the result for structural problems, and optionally runs a verify command before publishing."
+    },
+    {
+      "id": "conflict-explain",
+      "name": "Conflict Explain and Check",
+      "description": "Explains each conflicted hunk with the reason it was refused and verifies the working tree against the three merge stages."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.517Z",
+  "updatedAt": "2026-10-10T21:22:01.517Z"
+}

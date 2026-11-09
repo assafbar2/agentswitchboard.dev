@@ -39,9 +39,11 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://github.com/coinbase/agentkit#-quickstart",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -49,5 +51,5 @@
     "mcp"
   ],
   "createdAt": "2026-08-15T07:16:38.720Z",
-  "updatedAt": "2026-09-25T23:53:45.072Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

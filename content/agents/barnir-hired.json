@@ -1,0 +1,52 @@
+{
+  "id": "barnir-hired",
+  "name": "Barnir Hired",
+  "slug": "barnir-hired",
+  "description": "Read-only MCP guidance on technical go-to-market job fit: lists six roles, from Solutions Architect to Forward Deployed Engineer, and explains what each needs. The full CV analysis is a paid web app.",
+  "providerName": "Barnir Hired",
+  "providerUrl": "https://barnirhired.com",
+  "version": "1.0.0",
+  "agentUrl": "https://barnirhired.com/api/mcp",
+  "categories": [
+    "productivity",
+    "research"
+  ],
+  "tags": [
+    "career",
+    "job-fit",
+    "technical-gtm",
+    "solutions-engineering",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "list-roles",
+      "name": "List Roles",
+      "description": "Lists the six technical go-to-market roles covered, such as Solutions Architect, Sales Engineer and Forward Deployed Engineer."
+    },
+    {
+      "id": "get-role-guidance",
+      "name": "Role Guidance",
+      "description": "Returns what a given role involves and what hiring teams look for, as read-only guidance for one role slug."
+    },
+    {
+      "id": "how-it-works",
+      "name": "How It Works",
+      "description": "Explains how the paid CV and job-description analysis works, without running it or touching any CV data."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": true,
+  "sponsored": true,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-28T05:55:51.221Z",
+  "updatedAt": "2026-11-02T22:00:00.000Z"
+}

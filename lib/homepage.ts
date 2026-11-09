@@ -7,14 +7,16 @@ export const HOMEPAGE_SLOTS = 6;
  * slug list) is set, those published agents fill the slots in that order and
  * the first is the Editor's Pick. Otherwise featured agents (unexpired
  * `featuredUntil`) fill them, newest first. Remaining slots go to the newest
- * additions.
+ * additions. Sponsored listings never fill these slots: they have their own
+ * (sponsoredAgents), so a paid placement is never shown as an editor's pick.
  */
 export function pickHomepageAgents(
-  agents: Agent[],
+  catalog: Agent[],
   placements: string[] | undefined,
   now: string,
   slots = HOMEPAGE_SLOTS
 ): HomepageAgent[] {
+  const agents = catalog.filter((a) => !a.sponsored);
   const live = (a: Agent) => !a.featuredUntil || a.featuredUntil >= now;
   const bySlug = new Map(agents.map((a) => [a.slug, a]));
 
@@ -37,4 +39,9 @@ export function pickHomepageAgents(
     .map((agent) => ({ agent, label: 'new' as const }));
 
   return [...featured, ...newest];
+}
+
+/** The Sponsored slot on the homepage and the latest drop page: every sponsored listing, A→Z. */
+export function sponsoredAgents(catalog: readonly Agent[]): Agent[] {
+  return catalog.filter((a) => a.sponsored).sort((a, b) => a.name.localeCompare(b.name));
 }

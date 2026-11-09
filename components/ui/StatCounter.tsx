@@ -10,12 +10,10 @@ export function StatCounter({ value, label, delay = 0 }: StatCounterProps) {
       className="text-center animate-fade-in"
       style={{ animationDelay: `${delay}ms` }}
     >
-      <div className="mono text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-1">
+      <div className="font-[family-name:var(--font-display)] text-3xl sm:text-4xl font-extrabold tracking-tight text-[var(--dir-ink)] mb-1">
         {value}
       </div>
-      <div className="text-sm text-[var(--text-tertiary)] uppercase tracking-wider">
-        {label}
-      </div>
+      <div className="dir-label text-[var(--dir-muted)]">{label}</div>
     </div>
   );
 }

@@ -39,9 +39,12 @@
   "authType": "bearer",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpCommand": "uvx dbt-mcp",
+  "quickstartUrl": "https://docs.getdbt.com/docs/dbt-ai/setup-local-mcp",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -49,5 +52,5 @@
     "cli"
   ],
   "createdAt": "2026-08-15T07:16:38.711Z",
-  "updatedAt": "2026-08-15T07:16:38.711Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

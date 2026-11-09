@@ -1,10 +1,16 @@
-import type { Metadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
-  title: 'Disclaimer',
-  description: 'Legal disclaimer for Agent Switchboard.',
-  alternates: { canonical: '/disclaimer' },
-};
+export function generateMetadata(_props: unknown, parent: ResolvingMetadata): Promise<Metadata> {
+  return pageMetadata(
+    {
+      title: 'Disclaimer',
+      description: 'Legal disclaimer for Agent Switchboard.',
+      path: '/disclaimer',
+    },
+    parent
+  );
+}
 
 export default function DisclaimerPage() {
   return (
@@ -81,7 +87,7 @@ export default function DisclaimerPage() {
               Questions about this disclaimer?{' '}
               <a
                 href="mailto:barnir@agentmail.to?subject=Question about Agent Switchboard"
-                className="text-[var(--accent)] hover:underline"
+                className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2"
               >
                 barnir@agentmail.to
               </a>

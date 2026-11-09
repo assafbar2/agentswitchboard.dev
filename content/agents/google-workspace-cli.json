@@ -43,14 +43,20 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npm install -g @googleworkspace/cli"
+  },
+  "quickstartUrl": "https://github.com/googleworkspace/cli#installation",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "cli"
   ],
   "createdAt": "2026-04-25T19:07:20.238Z",
-  "updatedAt": "2026-04-25T19:07:20.238Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

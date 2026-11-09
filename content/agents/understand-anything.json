@@ -1,0 +1,62 @@
+{
+  "id": "understand-anything",
+  "name": "Understand-Anything",
+  "slug": "understand-anything",
+  "description": "Builds an explorable knowledge graph of a codebase with a multi-agent pipeline, then answers questions, maps diff impact, and writes onboarding guides inside coding agents.",
+  "providerName": "Egonex AI",
+  "providerUrl": "https://egonex.ai",
+  "agentUrl": "https://understand-anything.com/",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "code-knowledge-graph",
+    "codebase-onboarding",
+    "claude-code-plugin",
+    "codex",
+    "impact-analysis",
+    "interactive-dashboard",
+    "semantic-search",
+    "multi-agent-pipeline"
+  ],
+  "skills": [
+    {
+      "id": "understand",
+      "name": "Build Knowledge Graph",
+      "description": "Scans a project and builds a graph of every file, function, class, and dependency, re-analyzing only changed files on later runs."
+    },
+    {
+      "id": "understand-chat",
+      "name": "Ask the Codebase",
+      "description": "Answers natural-language questions about the codebase using the generated knowledge graph."
+    },
+    {
+      "id": "understand-diff",
+      "name": "Diff Impact Analysis",
+      "description": "Shows which parts of the system your current changes affect before you commit."
+    },
+    {
+      "id": "understand-onboard",
+      "name": "Onboarding Guide",
+      "description": "Generates an onboarding guide for new team members from the analyzed codebase."
+    },
+    {
+      "id": "understand-domain",
+      "name": "Domain Extraction",
+      "description": "Extracts business domains, flows, and steps and maps them to the code that implements them."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-31T07:10:38.127Z",
+  "updatedAt": "2026-10-31T07:10:38.127Z"
+}

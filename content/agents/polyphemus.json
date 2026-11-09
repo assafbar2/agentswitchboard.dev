@@ -1,0 +1,67 @@
+{
+  "id": "polyphemus",
+  "name": "Polyphemus (Eye.Art)",
+  "slug": "polyphemus",
+  "description": "Generates and edits images, icons, and editable SVG from natural language or page code (HTML/CSS/JSX/TSX) via a no-key MCP server and REST API; async raster jobs return a pollable job id.",
+  "providerName": "Shelled AI",
+  "providerUrl": "https://shelled.ai",
+  "agentUrl": "https://eye.art/polyphemus/api",
+  "categories": [
+    "content-media",
+    "code-devtools"
+  ],
+  "tags": [
+    "image-generation",
+    "svg",
+    "icons",
+    "image-editing",
+    "openapi",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "make-image",
+      "name": "Generate Images",
+      "description": "Creates raster images from a natural-language prompt; long jobs return a job id to poll (eye_art_make_image)."
+    },
+    {
+      "id": "make-svg",
+      "name": "Generate Editable SVG",
+      "description": "Returns real editable SVG source for a described graphic or icon, verified to emit image/svg+xml markup (eye_art_make_svg)."
+    },
+    {
+      "id": "edit-image",
+      "name": "Edit Existing Images",
+      "description": "Applies prompt-driven edits to an image already produced or supplied in the session (eye_art_edit_image)."
+    },
+    {
+      "id": "prompt-ideas",
+      "name": "Suggest Prompt Ideas",
+      "description": "Returns generated prompt suggestions with title, prompt text and corpus mix for image or SVG requests (eye_art_prompt_ideas)."
+    },
+    {
+      "id": "image-status",
+      "name": "Poll Job Status",
+      "description": "Checks the state of an asynchronous image job by its id until the result is complete (eye_art_image_status)."
+    },
+    {
+      "id": "manage-conversations",
+      "name": "Manage Conversations",
+      "description": "Creates sessions and lists, fetches, displays or deletes prior image conversations and their creations."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

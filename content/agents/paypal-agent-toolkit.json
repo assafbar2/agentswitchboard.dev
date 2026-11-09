@@ -37,9 +37,14 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.paypal.com/http",
+  "mcpCommand": "npx -y @paypal/mcp --tools=all",
+  "quickstartUrl": "https://developer.paypal.com/api/rest/",
+  "apiBaseUrl": "https://api-m.paypal.com",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -47,5 +52,5 @@
     "api"
   ],
   "createdAt": "2026-09-02T07:21:11.746Z",
-  "updatedAt": "2026-09-02T07:21:11.746Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

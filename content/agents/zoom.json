@@ -20,14 +20,19 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": true,
+  "quickstartUrl": "https://developers.zoom.us/docs/api/using-zoom-apis/",
+  "apiBaseUrl": "https://api.zoom.us/v2/",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
-    "api"
+    "api",
+    "mcp"
   ],
   "createdAt": "2026-08-24T19:48:52.216Z",
-  "updatedAt": "2026-09-25T23:55:08.008Z"
+  "updatedAt": "2026-11-02T21:56:03.770Z",
+  "mcpEndpoint": "https://mcp.zoom.us/mcp/zoom/streamable"
 }

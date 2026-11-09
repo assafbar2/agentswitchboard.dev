@@ -1,0 +1,62 @@
+{
+  "id": "agentlas-os",
+  "name": "Agentlas OS",
+  "slug": "agentlas-os",
+  "description": "Keeps specialist agents in a local-first hub and spins up a temporary orchestrator per task, staffing it from local, cloud, and hub agents via CLI or a stdio MCP server.",
+  "providerName": "Agentlas",
+  "providerUrl": "https://agentlas.cloud",
+  "agentUrl": "https://github.com/agentlas-ai/Agentlas-OS",
+  "categories": [
+    "orchestration"
+  ],
+  "tags": [
+    "multi-model-orchestration",
+    "local-first",
+    "orchestrator",
+    "capability-search",
+    "byom",
+    "stdio-mcp",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "workforce-staffing",
+      "name": "Workforce Staffing",
+      "description": "Searches local, owner cloud, and public hub menus for candidate roles; the calling model makes the staffing decision."
+    },
+    {
+      "id": "execution-prep",
+      "name": "Execution Preparation",
+      "description": "Fetches bring-your-own-model runtime bundles for an accepted roster, pinning release and content hashes."
+    },
+    {
+      "id": "tool-search",
+      "name": "Tool Search",
+      "description": "Finds the specific tool for a one-sentence action across installed servers, with read-only and destructive hints."
+    },
+    {
+      "id": "plugin-resolution",
+      "name": "Plugin Resolution",
+      "description": "Matches a missing capability against installed plugins and the hub catalog without installing anything."
+    },
+    {
+      "id": "context-map",
+      "name": "Context Map",
+      "description": "Locates code, slices references, and traces changed files or symbols through reverse references and dependencies."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.541Z",
+  "updatedAt": "2026-10-10T21:22:01.541Z"
+}

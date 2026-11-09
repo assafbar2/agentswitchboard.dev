@@ -1,0 +1,62 @@
+{
+  "id": "planetscale-mcp",
+  "name": "PlanetScale MCP",
+  "slug": "planetscale-mcp",
+  "description": "Connects AI agents to PlanetScale databases to inspect branches and schema, run read or write SQL, and pull query Insights, for teams on PlanetScale Vitess or Postgres.",
+  "providerName": "PlanetScale",
+  "providerUrl": "https://planetscale.com",
+  "agentUrl": "https://planetscale.com/docs/mcp-server",
+  "categories": [
+    "infrastructure",
+    "data-analytics"
+  ],
+  "tags": [
+    "planetscale",
+    "postgres",
+    "vitess",
+    "sql",
+    "schema-inspection",
+    "query-insights",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "branch-schema-inspection",
+      "name": "Branch Schema Inspection",
+      "description": "Lists organizations, databases, and branches, and returns the schema of a chosen database branch."
+    },
+    {
+      "id": "sql-query-execution",
+      "name": "SQL Query Execution",
+      "description": "Runs read-only SQL against a replica or primary, or write and DDL queries when the granted scope allows them."
+    },
+    {
+      "id": "query-insights",
+      "name": "Query Insights",
+      "description": "Returns query performance insights and infrastructure metrics such as CPU, memory, replication lag, and connections."
+    },
+    {
+      "id": "schema-recommendations",
+      "name": "Schema Recommendations",
+      "description": "Lists schema recommendations such as adding or removing indexes and preventing primary key exhaustion."
+    },
+    {
+      "id": "query-error-analysis",
+      "name": "Query Error Analysis",
+      "description": "Groups failing queries by error fingerprint and lists the individual failed executions behind each pattern."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-31T07:10:38.214Z",
+  "updatedAt": "2026-10-31T07:10:38.214Z"
+}

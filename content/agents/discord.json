@@ -19,14 +19,17 @@
   "authType": "bearer",
   "supportsStreaming": true,
   "supportsPushNotifications": true,
+  "quickstartUrl": "https://docs.discord.com/developers/reference",
+  "apiBaseUrl": "https://discord.com/api",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "api"
   ],
   "createdAt": "2026-08-24T19:48:52.221Z",
-  "updatedAt": "2026-09-25T23:53:33.704Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

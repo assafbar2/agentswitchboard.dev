@@ -21,14 +21,17 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://developers.notion.com/workers/get-started/quickstart",
+  "apiBaseUrl": "https://api.notion.com",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "api"
   ],
   "createdAt": "2026-05-22T07:35:23.992Z",
-  "updatedAt": "2026-05-22T07:35:23.992Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

@@ -1,0 +1,57 @@
+{
+  "id": "flyte",
+  "name": "Flyte",
+  "slug": "flyte",
+  "description": "Orchestrates ML pipelines, model serving, and agent workloads as durable tasks written in pure Python, with the flyte SDK and CLI, for teams running AI workloads at scale.",
+  "providerName": "Flyte",
+  "providerUrl": "https://flyte.org",
+  "agentUrl": "https://flyte.org",
+  "categories": [
+    "orchestration",
+    "infrastructure"
+  ],
+  "tags": [
+    "workflow-orchestration",
+    "python-sdk",
+    "ml-pipelines",
+    "model-serving",
+    "durable-execution",
+    "data-pipelines"
+  ],
+  "skills": [
+    {
+      "id": "python-tasks",
+      "name": "Python Tasks",
+      "description": "Defines tasks and task environments in pure Python and runs them with flyte.run or flyte run."
+    },
+    {
+      "id": "model-serving",
+      "name": "Model Serving",
+      "description": "Serves FastAPI apps and models with flyte serve."
+    },
+    {
+      "id": "devbox",
+      "name": "Local Devbox",
+      "description": "Runs Flyte 2 locally in a devbox or GitHub Codespaces."
+    },
+    {
+      "id": "local-tui",
+      "name": "Local Development TUI",
+      "description": "Adds a terminal UI for local development with flyte[tui]."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-10-10T21:22:01.494Z",
+  "updatedAt": "2026-10-10T21:22:01.494Z"
+}

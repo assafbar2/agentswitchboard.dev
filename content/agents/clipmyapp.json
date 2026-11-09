@@ -1,0 +1,67 @@
+{
+  "id": "clipmyapp",
+  "name": "ClipMyApp",
+  "slug": "clipmyapp",
+  "description": "Turns app screen recordings into short videos, memes, and carousels; MCP server and REST API let assistants create, edit, approve, and schedule posts behind a human review step.",
+  "providerName": "Linkintel Inc.",
+  "providerUrl": "https://clipmyapp.com",
+  "agentUrl": "https://clipmyapp.com/mcp",
+  "categories": [
+    "content-media",
+    "sales-marketing"
+  ],
+  "tags": [
+    "screen-recording",
+    "short-form-video",
+    "social-media",
+    "mcp",
+    "rest-api",
+    "content-scheduling"
+  ],
+  "skills": [
+    {
+      "id": "generate-posts",
+      "name": "Generate Posts",
+      "description": "Turns a recording into short videos, memes, and carousels via generate_posts, using project hooks, memes, and audio tracks."
+    },
+    {
+      "id": "edit-drafts",
+      "name": "Edit Drafts",
+      "description": "Applies exact edits to generated drafts and writes or updates your own posts with edit_post, write_own_post, and update_own_post."
+    },
+    {
+      "id": "review-approval",
+      "name": "Review And Approval",
+      "description": "Routes drafts through a human review step with approve_post, reject_post, and rewrite_finished_post before anything publishes."
+    },
+    {
+      "id": "schedule-publishing",
+      "name": "Schedule Publishing",
+      "description": "Schedules approved posts to connected social accounts with schedule_post, bulk_schedule_posts, and cancel_scheduled_post."
+    },
+    {
+      "id": "media-import",
+      "name": "Media Import",
+      "description": "Brings in source footage by URL or direct upload using import_media_from_url, start_media_upload, and complete_media_upload."
+    },
+    {
+      "id": "account-inspection",
+      "name": "Account Inspection",
+      "description": "Reads projects, recordings, calendar, publishing rules, and analytics through list_projects, get_calendar, and get_analytics."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

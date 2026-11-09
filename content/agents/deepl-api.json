@@ -18,9 +18,11 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://developers.deepl.com/docs/getting-started/quickstart",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -28,5 +30,5 @@
     "cli"
   ],
   "createdAt": "2026-03-22T09:51:27.895Z",
-  "updatedAt": "2026-03-22T09:51:27.895Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

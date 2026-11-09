@@ -37,9 +37,11 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://github.com/bytedance/deer-flow/blob/main/backend/docs/API.md",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -47,5 +49,5 @@
     "cli"
   ],
   "createdAt": "2026-05-22T08:27:57.485Z",
-  "updatedAt": "2026-05-22T08:27:57.485Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

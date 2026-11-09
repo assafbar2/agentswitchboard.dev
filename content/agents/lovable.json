@@ -2,7 +2,7 @@
   "id": "lovable",
   "name": "Lovable",
   "slug": "lovable",
-  "description": "Prompt-to-app builder that generates full-stack web applications with database, auth, and deploy wired up from a natural-language brief.",
+  "description": "Prompt-to-app builder that generates full-stack web apps with database, auth, and deploy wired up. Its MCP server signs in with your Lovable account; its REST API takes an API key.",
   "providerName": "Lovable",
   "providerUrl": "https://lovable.dev",
   "agentUrl": "https://docs.lovable.dev",
@@ -16,17 +16,22 @@
     "prototyping"
   ],
   "skills": [],
-  "authType": "apiKey",
+  "authType": "oauth2",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://docs.lovable.dev/api-reference/introduction",
+  "apiBaseUrl": "https://api.lovable.dev",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
-    "api"
+    "api",
+    "mcp"
   ],
   "createdAt": "2026-08-24T19:48:52.210Z",
-  "updatedAt": "2026-08-24T19:48:52.210Z"
+  "updatedAt": "2026-11-02T22:23:59.503Z",
+  "mcpEndpoint": "https://mcp.lovable.dev"
 }

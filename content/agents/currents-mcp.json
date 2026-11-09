@@ -1,0 +1,61 @@
+{
+  "id": "currents-mcp",
+  "name": "Currents MCP Server",
+  "slug": "currents-mcp",
+  "description": "Lets coding agents read Currents CI test results, including runs, failures with evidence, and flaky or slow tests, then quarantine tests, file Jira issues, or cancel runs.",
+  "providerName": "Currents",
+  "providerUrl": "https://currents.dev",
+  "agentUrl": "https://docs.currents.dev/ai/mcp-server",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "test-results",
+    "flaky-tests",
+    "ci-cd",
+    "test-analytics",
+    "remote-mcp",
+    "official-mcp",
+    "currents"
+  ],
+  "skills": [
+    {
+      "id": "failure-triage",
+      "name": "Run Failure Triage",
+      "description": "Lists runs and reads failed tests with their evidence and history so an agent can diagnose and fix CI failures."
+    },
+    {
+      "id": "flaky-slow-tests",
+      "name": "Flaky And Slow Test Ranking",
+      "description": "Ranks flaky tests, slow spec files, and recurring errors across a project from Currents analytics."
+    },
+    {
+      "id": "test-actions",
+      "name": "Test Quarantine Actions",
+      "description": "Creates, updates, enables, or disables Currents actions such as quarantining a test."
+    },
+    {
+      "id": "jira-issues",
+      "name": "Jira Issue Filing",
+      "description": "Opens or links Jira issues for failing tests in the Jira instance connected to Currents."
+    },
+    {
+      "id": "run-control",
+      "name": "Run Control",
+      "description": "Cancels, resets, or deletes recorded runs, including cancelling runs started from GitHub CI."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.522Z",
+  "updatedAt": "2026-10-10T21:22:01.522Z"
+}

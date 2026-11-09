@@ -19,9 +19,15 @@
   "authType": "bearer",
   "supportsStreaming": false,
   "supportsPushNotifications": true,
+  "install": {
+    "type": "npm",
+    "command": "npm install -g contentful-cli"
+  },
+  "quickstartUrl": "https://github.com/contentful/contentful-cli",
   "status": "published",
   "featured": false,
-  "verified": false,
+  "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -29,5 +35,5 @@
     "cli"
   ],
   "createdAt": "2026-08-24T19:48:52.217Z",
-  "updatedAt": "2026-08-24T19:48:52.217Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

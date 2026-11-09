@@ -1,0 +1,60 @@
+{
+  "id": "ankimcp",
+  "name": "AnkiMCP",
+  "slug": "ankimcp",
+  "description": "Lets AI assistants review due Anki cards, create and edit notes, decks, media, and note types, and sync with AnkiWeb through a local MCP server, for learners who study with Anki.",
+  "providerName": "AnkiMCP.ai",
+  "providerUrl": "https://ankimcp.ai",
+  "agentUrl": "https://ankimcp.ai",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "anki",
+    "flashcards",
+    "spaced-repetition",
+    "studying",
+    "mcp-server",
+    "npm"
+  ],
+  "skills": [
+    {
+      "id": "review-study",
+      "name": "Review and Study",
+      "description": "Fetches due cards, presents them, records Again/Hard/Good/Easy ratings, and syncs with AnkiWeb."
+    },
+    {
+      "id": "note-management",
+      "name": "Note Management",
+      "description": "Searches, creates, updates, and deletes notes, with confirmation required before deletion."
+    },
+    {
+      "id": "deck-management",
+      "name": "Deck Management",
+      "description": "Lists, creates, and inspects decks with study-queue statistics and moves cards between decks."
+    },
+    {
+      "id": "media-management",
+      "name": "Media Management",
+      "description": "Stores, retrieves, and deletes media files referenced by notes, including local files and URLs."
+    },
+    {
+      "id": "note-type-management",
+      "name": "Note Type Management",
+      "description": "Creates note types and updates their templates and styling, such as right-to-left card CSS."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.521Z",
+  "updatedAt": "2026-10-10T21:22:01.521Z"
+}

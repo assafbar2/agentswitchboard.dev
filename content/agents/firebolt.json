@@ -18,9 +18,15 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "binary",
+    "command": "curl -fsSL https://get.firebolt.io/ | bash"
+  },
+  "quickstartUrl": "https://docs.firebolt.io/guides/developing-with-firebolt/using-the-api",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -28,5 +34,5 @@
     "cli"
   ],
   "createdAt": "2026-03-22T09:51:37.805Z",
-  "updatedAt": "2026-03-22T09:51:37.805Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

@@ -2,10 +2,10 @@
   "id": "6PwbRql90wwO8OkXbOcGGq",
   "name": "Gmail MCP",
   "slug": "gmail-mcp",
-  "description": "Manages Gmail end-to-end via MCP — send, draft, reply, and search messages, organize with labels, retrieve contacts, and handle attachments.",
-  "providerName": "Smithery",
-  "providerUrl": "https://smithery.ai",
-  "agentUrl": "https://smithery.ai/server/gmail",
+  "description": "Google's official remote MCP server for Gmail, in Developer Preview: searches and reads threads, creates and lists drafts, and adds or removes labels with the user's own permissions.",
+  "providerName": "Google",
+  "providerUrl": "https://developers.google.com/workspace",
+  "agentUrl": "https://developers.google.com/workspace/gmail/api/guides/configure-mcp-server",
   "categories": [
     "communication"
   ],
@@ -15,24 +15,24 @@
     "google",
     "oauth2",
     "inbox-management",
-    "contacts",
-    "attachments"
+    "email-drafts",
+    "labels"
   ],
   "skills": [
     {
-      "id": "email-management",
-      "name": "Email Management",
-      "description": "Fetches, searches, sends, drafts, and deletes Gmail messages using natural language or Gmail query syntax filters."
+      "id": "thread-search",
+      "name": "Thread Search",
+      "description": "Searches Gmail threads and retrieves a full thread with its messages."
+    },
+    {
+      "id": "draft-creation",
+      "name": "Draft Creation",
+      "description": "Creates draft emails and lists the drafts already in the mailbox."
     },
     {
       "id": "label-organization",
       "name": "Label Organization",
-      "description": "Creates, modifies, and applies Gmail labels to messages and threads for inbox organization and filtering."
-    },
-    {
-      "id": "contact-retrieval",
-      "name": "Contact Retrieval",
-      "description": "Looks up and retrieves Google Contacts to autofill email recipients and keep people data in sync with Gmail."
+      "description": "Lists Gmail labels and adds or removes them on messages and threads."
     }
   ],
   "authType": "oauth2",
@@ -47,5 +47,7 @@
     "mcp"
   ],
   "createdAt": "2026-06-07T17:51:18.750Z",
-  "updatedAt": "2026-06-07T17:51:18.750Z"
+  "updatedAt": "2026-11-02T21:56:34.774Z",
+  "mcpEndpoint": "https://gmailmcp.googleapis.com/mcp/v1",
+  "official": true
 }

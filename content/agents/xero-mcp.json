@@ -2,7 +2,7 @@
   "id": "xero-mcp",
   "name": "Xero MCP",
   "slug": "xero-mcp",
-  "description": "Connects agents to Xero accounting through a local npm MCP server to list and create invoices, contacts, payments, and journals, and to pull financial reports.",
+  "description": "Connects agents to Xero accounting through Xero's hosted remote MCP server or a local npm server to list and create invoices, contacts, payments, and journals, and pull financial reports.",
   "providerName": "Xero",
   "providerUrl": "https://developer.xero.com",
   "agentUrl": "https://github.com/XeroAPI/xero-mcp-server",
@@ -48,14 +48,18 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpCommand": "npx -y @xeroapi/xero-mcp-server@latest",
+  "quickstartUrl": "https://github.com/XeroAPI/xero-mcp-server",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "mcp"
   ],
   "createdAt": "2026-10-04T17:55:56.168Z",
-  "updatedAt": "2026-10-04T17:55:56.168Z"
+  "updatedAt": "2026-11-02T21:56:32.142Z",
+  "mcpEndpoint": "https://api.xero.com/mcp/v1"
 }

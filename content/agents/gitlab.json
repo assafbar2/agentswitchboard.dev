@@ -20,9 +20,16 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": true,
+  "install": {
+    "type": "brew",
+    "command": "brew install glab"
+  },
+  "quickstartUrl": "https://docs.gitlab.com/api/rest/",
+  "apiBaseUrl": "https://gitlab.com/api/v4",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -30,5 +37,5 @@
     "cli"
   ],
   "createdAt": "2026-08-24T19:48:52.215Z",
-  "updatedAt": "2026-08-24T19:48:52.215Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

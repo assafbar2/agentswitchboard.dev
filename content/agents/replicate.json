@@ -19,9 +19,12 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://replicate.com/docs/reference/http",
+  "apiBaseUrl": "https://api.replicate.com/v1",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -29,5 +32,5 @@
     "cli"
   ],
   "createdAt": "2026-03-22T09:52:46.361Z",
-  "updatedAt": "2026-03-22T09:52:46.361Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

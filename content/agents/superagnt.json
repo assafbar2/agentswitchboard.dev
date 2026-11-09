@@ -1,0 +1,64 @@
+{
+  "id": "superagnt",
+  "name": "superagnt_",
+  "slug": "superagnt",
+  "description": "Connects agents to social, web, SEO and lead-enrichment data across 10 platforms and 262 REST endpoints, reachable over one streamable-HTTP MCP server or a keyed REST API.",
+  "providerName": "agntdata, inc.",
+  "providerUrl": "https://superagnt.com",
+  "agentUrl": "https://superagnt.com/docs",
+  "categories": [
+    "data-analytics",
+    "sales-marketing",
+    "research"
+  ],
+  "tags": [
+    "social-data",
+    "lead-enrichment",
+    "web-scraping",
+    "seo",
+    "email-finder",
+    "mcp-server",
+    "rest-api"
+  ],
+  "skills": [
+    {
+      "id": "linkedin-data",
+      "name": "LinkedIn Data",
+      "description": "Pulls LinkedIn profiles, companies, jobs, posts and search results through 51 endpoints for sales research and recruiting."
+    },
+    {
+      "id": "social-data",
+      "name": "Social Platform Data",
+      "description": "Reads X, Instagram, TikTok, YouTube, Reddit and Facebook profiles, posts, comments and search results in one shared response shape."
+    },
+    {
+      "id": "lead-enrichment",
+      "name": "Lead Enrichment",
+      "description": "Finds and verifies work emails and enriches people and company records, running cheaper sources first until the requested fields are filled."
+    },
+    {
+      "id": "web-scraping",
+      "name": "Web Scraping",
+      "description": "Scrapes any page to clean markdown or structured JSON, searches the web with full page content, and maps a site's URLs."
+    },
+    {
+      "id": "seo-data",
+      "name": "SEO Data",
+      "description": "Returns live Google SERP results, keyword research, competitor and backlink gaps, and page audits across 22 endpoints."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

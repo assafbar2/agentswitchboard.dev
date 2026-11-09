@@ -1,0 +1,23 @@
+{
+  "id": "arvow",
+  "name": "Arvow",
+  "slug": "arvow",
+  "description": "AI SEO agents for keyword research, content generation and publishing, reachable through a documented REST API (OpenAPI 3.1, 40 paths) and an OAuth-gated MCP endpoint.",
+  "providerName": "Arvow",
+  "providerUrl": "https://arvow.com",
+  "agentUrl": "https://arvow.com/mcp",
+  "categories": ["sales-marketing", "content-media", "research"],
+  "tags": ["seo", "content-generation", "keyword-research", "openapi", "marketing"],
+  "skills": [],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": ["api", "mcp"],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

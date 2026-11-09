@@ -1,0 +1,65 @@
+{
+  "id": "agor",
+  "name": "Agor",
+  "slug": "agor",
+  "description": "Runs multiplayer spatial boards where teams and coding agents share git branches, sessions, and dev environments, with scheduling and a built-in MCP server, for software teams.",
+  "providerName": "Preset",
+  "providerUrl": "https://preset.io/",
+  "agentUrl": "https://agor.live",
+  "categories": [
+    "orchestration",
+    "productivity"
+  ],
+  "tags": [
+    "multiplayer",
+    "coding-agents",
+    "git-branches",
+    "claude-code",
+    "codex",
+    "mcp-server",
+    "self-hosted",
+    "rbac"
+  ],
+  "skills": [
+    {
+      "id": "boards-and-zones",
+      "name": "Boards and Zones",
+      "description": "Organizes branches and agent sessions on a live 2D canvas where dropping a branch into a zone fires a templated prompt."
+    },
+    {
+      "id": "session-trees",
+      "name": "Session Trees",
+      "description": "Forks sessions to explore alternatives and spawns subsessions for focused subtasks, across interchangeable agent runtimes."
+    },
+    {
+      "id": "scheduler",
+      "name": "Scheduler",
+      "description": "Triggers templated prompts on cron-style schedules for standups, audits, and teammate heartbeats."
+    },
+    {
+      "id": "agor-mcp",
+      "name": "Agor MCP Server",
+      "description": "Lets agents introspect and drive sessions, branches, and boards through a built-in MCP server with scoped tokens."
+    },
+    {
+      "id": "message-gateway",
+      "name": "Message Gateway",
+      "description": "Lets people work with AI teammates from Slack and GitHub without opening the board."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-10T21:22:01.516Z",
+  "updatedAt": "2026-10-10T21:22:01.516Z"
+}

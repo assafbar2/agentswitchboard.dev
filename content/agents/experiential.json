@@ -4,8 +4,8 @@
   "slug": "experiential",
   "description": "Routes requests across closed, open-source, local, and custom models behind one OpenRouter-compatible gateway, turning accumulated usage into a better-tuned model.",
   "providerName": "Experiential Labs",
-  "providerUrl": "https://github.com/experientiallabs",
-  "agentUrl": "https://github.com/experientiallabs/experiential",
+  "providerUrl": "https://www.experientiallabs.ai",
+  "agentUrl": "https://www.experientiallabs.ai/",
   "categories": [
     "infrastructure",
     "orchestration"
@@ -48,5 +48,5 @@
     "cli"
   ],
   "createdAt": "2026-09-02T07:21:11.721Z",
-  "updatedAt": "2026-09-02T07:21:11.721Z"
+  "updatedAt": "2026-10-17T09:03:55.500Z"
 }

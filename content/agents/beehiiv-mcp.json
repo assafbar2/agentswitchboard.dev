@@ -1,0 +1,62 @@
+{
+  "id": "beehiiv-mcp",
+  "name": "beehiiv MCP",
+  "slug": "beehiiv-mcp",
+  "description": "Lets newsletter operators manage beehiiv posts, podcasts, communities, subscribers, automations, and analytics from Claude, ChatGPT, or Cursor over a hosted OAuth MCP server.",
+  "providerName": "beehiiv",
+  "providerUrl": "https://www.beehiiv.com",
+  "agentUrl": "https://www.beehiiv.com/features/mcp",
+  "categories": [
+    "content-media",
+    "sales-marketing"
+  ],
+  "tags": [
+    "newsletters",
+    "email-publishing",
+    "subscriber-management",
+    "creator-economy",
+    "remote-mcp",
+    "official-mcp",
+    "beehiiv"
+  ],
+  "skills": [
+    {
+      "id": "post-drafting",
+      "name": "Post Drafting",
+      "description": "Drafts, edits, and duplicates posts and templates and reads post stats, clicks, and comments; sending stays manual."
+    },
+    {
+      "id": "audience",
+      "name": "Audience Management",
+      "description": "Manages subscriptions, segments, tags, custom fields, newsletter lists, and signup flows."
+    },
+    {
+      "id": "podcasts",
+      "name": "Podcast Publishing",
+      "description": "Creates shows and episodes, uploads audio, schedules episodes, and reads transcripts and episode stats."
+    },
+    {
+      "id": "journeys",
+      "name": "Automation Journeys",
+      "description": "Builds journeys, triggers, and automation emails with A/B variants; activation stays a human step."
+    },
+    {
+      "id": "analytics",
+      "name": "Publication Analytics",
+      "description": "Reads publication and website analytics, post and podcast stats, poll and survey responses, and earnings."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.530Z",
+  "updatedAt": "2026-10-10T21:22:01.530Z"
+}

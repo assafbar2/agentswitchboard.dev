@@ -1,0 +1,56 @@
+{
+  "id": "llm-space",
+  "name": "LLM Space",
+  "slug": "llm-space",
+  "description": "Prototypes, traces, replays, and evaluates LLM agents in a local macOS desktop app, and exports threads as runnable LangGraph agents, for agent builders.",
+  "providerName": "DeerFlow",
+  "providerUrl": "https://github.com/deer-flow",
+  "agentUrl": "https://deer-flow.github.io/llm-space/",
+  "categories": [
+    "code-devtools",
+    "orchestration"
+  ],
+  "tags": [
+    "agent-debugging",
+    "tracing",
+    "prompt-engineering",
+    "evaluation",
+    "desktop-app",
+    "macos",
+    "langgraph",
+    "mcp-client"
+  ],
+  "skills": [
+    {
+      "id": "agent-tracing",
+      "name": "Agent Run Tracing",
+      "description": "Shows every model call and tool run inside the agent loop as it happens."
+    },
+    {
+      "id": "replay-debugging",
+      "name": "Replay Debugging",
+      "description": "Replays a run from history and steps through it to locate failures."
+    },
+    {
+      "id": "agent-evaluation",
+      "name": "Agent Evaluation",
+      "description": "Measures agent performance across runs."
+    },
+    {
+      "id": "langgraph-export",
+      "name": "LangGraph Project Generation",
+      "description": "Turns a thread into a runnable LangGraph agent project."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [],
+  "createdAt": "2026-10-10T21:22:01.505Z",
+  "updatedAt": "2026-10-10T21:22:01.505Z"
+}

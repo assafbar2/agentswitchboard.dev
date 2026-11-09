@@ -1,0 +1,74 @@
+{
+  "id": "vidmoat",
+  "name": "Vidmoat",
+  "slug": "vidmoat",
+  "description": "Edits video programmatically from agents over a remote MCP server and a REST v1 API: import media, run timeline commands, preview frames, transcribe and render MP4s. OAuth or Bearer key required.",
+  "providerName": "Buzz Innovations Ltd",
+  "providerUrl": "https://www.vidmoat.com",
+  "version": "v1",
+  "agentUrl": "https://developer.vidmoat.com/developer/docs/api",
+  "categories": [
+    "content-media",
+    "voice-messaging"
+  ],
+  "tags": [
+    "video-editing",
+    "video-rendering",
+    "text-to-speech",
+    "transcription",
+    "stock-media",
+    "mcp-server",
+    "media-processing"
+  ],
+  "skills": [
+    {
+      "id": "project-commands",
+      "name": "Project Commands",
+      "description": "Applies and validates timeline edit commands against a project document via POST /projects/{id}/commands and /projects/{id}/validate, using the schema at /schema/commands."
+    },
+    {
+      "id": "render-and-preview",
+      "name": "Render and Preview",
+      "description": "Queues MP4 renders via POST /renders, polls job progress at /renders/{id}, and fetches still preview frames from /projects/{id}/preview."
+    },
+    {
+      "id": "media-library",
+      "name": "Media Library",
+      "description": "Uploads files, imports media from a URL and searches the stock library through /media/uploads, /media/import and /stock/search."
+    },
+    {
+      "id": "transcription",
+      "name": "Transcription",
+      "description": "Transcribes uploaded audio and video via POST /ai/transcriptions, returning a job polled at /ai/jobs/{id}."
+    },
+    {
+      "id": "speech-generation",
+      "name": "Speech Generation",
+      "description": "Creates and manages personal voice profiles under /speech/voices and generates narration at /speech/generations, with audio downloads per generation."
+    },
+    {
+      "id": "generative-media",
+      "name": "Generative Media",
+      "description": "Generates images, stickers, video and animated stills via /ai/images, /ai/stickers, /ai/videos and /ai/live-images."
+    },
+    {
+      "id": "editing-agent",
+      "name": "Editing Agent",
+      "description": "Runs Vidmoat's own editing agent over a project via POST /ai/agent, which applies edit commands to the timeline on the caller's behalf."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

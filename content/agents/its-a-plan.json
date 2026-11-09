@@ -1,0 +1,64 @@
+{
+  "id": "its-a-plan",
+  "name": "It's a Plan",
+  "slug": "its-a-plan",
+  "description": "Runs a self-hosted issue tracker where AI agents take issues as teammates, with a REST API, MCP server, webhooks and a runner for Claude Code and Codex. For teams sharing work with agents.",
+  "providerName": "croffasia",
+  "providerUrl": "https://github.com/croffasia",
+  "agentUrl": "https://itsaplan.dev",
+  "categories": [
+    "productivity",
+    "orchestration"
+  ],
+  "tags": [
+    "issue-tracker",
+    "project-management",
+    "linear-alternative",
+    "mcp-server",
+    "self-hosted",
+    "coding-agents",
+    "webhooks"
+  ],
+  "skills": [
+    {
+      "id": "agent-teammates",
+      "name": "Agents as teammates",
+      "description": "Adds agents as project members with roles, permissions and assigned issues on the shared board."
+    },
+    {
+      "id": "external-agent-runner",
+      "name": "External agent runner",
+      "description": "Hands each task to Claude Code, Codex, Copilot CLI, opencode or any stdin command on your machine."
+    },
+    {
+      "id": "triggered-runs",
+      "name": "Triggered runs",
+      "description": "Starts an agent run on an @mention, an assignment, or a schedule."
+    },
+    {
+      "id": "pull-request-linking",
+      "name": "Pull request linking",
+      "description": "Links pull requests from GitHub, GitLab, Gitea, Forgejo and Bitbucket and moves the issue as they open and merge."
+    },
+    {
+      "id": "signed-webhooks",
+      "name": "Outgoing webhooks",
+      "description": "Sends signed event payloads with retries and a delivery log."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-31T07:10:38.183Z",
+  "updatedAt": "2026-10-31T07:10:38.183Z"
+}

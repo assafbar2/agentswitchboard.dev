@@ -1,0 +1,63 @@
+{
+  "id": "openstatus",
+  "name": "openstatus",
+  "slug": "openstatus",
+  "description": "Runs status pages, uptime checks from 28 regions, and incident response as code, operable by agents through an MCP server, a --json CLI, Terraform, and a typed API.",
+  "providerName": "OpenStatus",
+  "providerUrl": "https://www.openstatus.dev",
+  "agentUrl": "https://openstatus.dev",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "status-page",
+    "uptime-monitoring",
+    "incident-response",
+    "terraform",
+    "monitoring-as-code",
+    "mcp-server",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "status-pages",
+      "name": "Status Pages",
+      "description": "Publishes status pages with custom domains, maintenance windows, and email and RSS subscriber notices."
+    },
+    {
+      "id": "uptime-monitoring",
+      "name": "Uptime Monitoring",
+      "description": "Checks servers, websites, and APIs from 28 regions and alerts via Slack, PagerDuty, email, and more."
+    },
+    {
+      "id": "incident-response",
+      "name": "Incident Response",
+      "description": "Declares, updates, and resolves incidents with severity, commander, and timeline from the dashboard or Slack."
+    },
+    {
+      "id": "monitoring-as-code",
+      "name": "Monitoring as Code",
+      "description": "Declares monitors, notifications, and status pages in YAML or Terraform and applies them from the CLI or CI."
+    },
+    {
+      "id": "mcp-server",
+      "name": "MCP Server",
+      "description": "Connects Claude, ChatGPT, Cursor, or any MCP client to the workspace with the same API key."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.492Z",
+  "updatedAt": "2026-10-10T21:22:01.492Z"
+}

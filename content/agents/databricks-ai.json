@@ -18,15 +18,22 @@
   "authType": "bearer",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "brew",
+    "command": "brew install databricks/tap/databricks"
+  },
+  "quickstartUrl": "https://docs.databricks.com/aws/en/agents/mcp-tools/managed-mcp",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "api",
+    "mcp",
     "cli"
   ],
   "createdAt": "2026-03-22T09:51:34.586Z",
-  "updatedAt": "2026-03-22T09:51:34.586Z"
+  "updatedAt": "2026-11-02T21:56:05.130Z"
 }

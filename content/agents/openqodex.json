@@ -1,0 +1,63 @@
+{
+  "id": "openqodex",
+  "name": "OpenQodex",
+  "slug": "openqodex",
+  "description": "Reviews coding-agent changes before you push, using scanners plus a separate Claude Code or Codex reviewer, and gives agents a code-graph MCP server. For developers using coding agents.",
+  "providerName": "Qodex",
+  "providerUrl": "https://qodex.ai",
+  "agentUrl": "https://openqodex.com",
+  "categories": [
+    "code-devtools",
+    "security"
+  ],
+  "tags": [
+    "code-review",
+    "pre-push",
+    "static-analysis",
+    "coding-agents",
+    "mcp-server",
+    "github-action",
+    "claude-code"
+  ],
+  "skills": [
+    {
+      "id": "change-review",
+      "name": "Change review",
+      "description": "Reviews unpushed and uncommitted changes, a branch or a pull request, and prints a verdict with findings."
+    },
+    {
+      "id": "push-gate",
+      "name": "Push gate",
+      "description": "Hooks that check for a passing review before git push, warning by default and blocking at a set severity."
+    },
+    {
+      "id": "code-graph",
+      "name": "Code graph",
+      "description": "Answers questions about the code, such as who calls a function, through a local MCP server."
+    },
+    {
+      "id": "dependency-advisories",
+      "name": "Dependency advisories",
+      "description": "Checks every supported lockfile against osv.dev at each review and names fixed versions."
+    },
+    {
+      "id": "pull-request-action",
+      "name": "GitHub Action",
+      "description": "Runs the full review on a pull request when given an Anthropic API key, or scanners only without one."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-10-31T07:10:38.186Z",
+  "updatedAt": "2026-10-31T07:10:38.186Z"
+}

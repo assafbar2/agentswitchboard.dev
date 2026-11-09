@@ -1,0 +1,306 @@
+[
+  {
+    "slug": "write-and-fix-code",
+    "label": "write and fix code",
+    "blurb": "Coding agents and AI editors that write, edit and debug code in your terminal, editor or browser.",
+    "categories": ["code-devtools"],
+    "access": ["cli", "browser-extension"],
+    "keywords": ["agentic coding", "pair programmer", "code editor", "edit code", "terminal agent"]
+  },
+  {
+    "slug": "query-a-database",
+    "label": "query a database",
+    "blurb": "Ask Postgres, MySQL, MongoDB and other databases questions, run SQL and manage schemas from an agent.",
+    "categories": ["data-analytics", "infrastructure", "code-devtools"],
+    "access": ["mcp"],
+    "keywords": ["database", "sql", "postgres", "mongodb"]
+  },
+  {
+    "slug": "search-the-web",
+    "label": "search the web",
+    "blurb": "Search APIs that give an agent fresh web results, with sources, to answer from.",
+    "categories": ["research", "browser-computer"],
+    "access": ["api", "mcp"],
+    "keywords": ["web search", "search engine", "serp", "search api"]
+  },
+  {
+    "slug": "scrape-websites",
+    "label": "scrape websites",
+    "blurb": "Crawl sites and turn pages into clean text or structured data an agent can use.",
+    "categories": ["browser-computer", "data-analytics", "research"],
+    "access": ["api", "mcp"],
+    "keywords": ["scrape", "scraping", "crawl", "web data"]
+  },
+  {
+    "slug": "automate-a-browser",
+    "label": "automate a browser",
+    "blurb": "Let an agent open pages, click, type and fill in forms in a real or headless browser.",
+    "categories": ["browser-computer"],
+    "access": ["mcp", "api"],
+    "keywords": ["browser automation", "playwright", "puppeteer", "headless", "browser"]
+  },
+  {
+    "slug": "send-and-read-email",
+    "label": "send and read email",
+    "blurb": "Give an agent an inbox, or access to yours, to read, search, draft and send email.",
+    "categories": ["communication", "productivity"],
+    "access": ["mcp", "api"],
+    "keywords": ["email", "inbox", "gmail", "smtp", "mailbox"]
+  },
+  {
+    "slug": "work-with-github",
+    "label": "work with GitHub",
+    "blurb": "Read and change repositories, issues and pull requests on GitHub from an agent.",
+    "categories": ["code-devtools"],
+    "access": ["mcp", "cli"],
+    "keywords": ["github", "pull request", "github issues", "repositories"]
+  },
+  {
+    "slug": "read-pdfs-and-documents",
+    "label": "read PDFs and documents",
+    "blurb": "Turn PDFs, scans and Office files into text, tables and structured data.",
+    "categories": ["research", "data-analytics", "content-media"],
+    "access": ["api", "mcp"],
+    "keywords": ["pdf", "ocr", "document parsing", "documents"]
+  },
+  {
+    "slug": "search-my-documents",
+    "label": "search my documents",
+    "blurb": "Index your own files and notes so an agent can find and cite what's in them (RAG).",
+    "categories": ["vector-databases", "research", "memory-state"],
+    "access": ["api", "mcp"],
+    "keywords": ["rag", "retrieval", "vector search", "embeddings", "knowledge base"]
+  },
+  {
+    "slug": "give-an-agent-memory",
+    "label": "give an agent long-term memory",
+    "blurb": "Memory layers that let an agent keep what it learned from one session to the next.",
+    "categories": ["memory-state"],
+    "access": ["api", "mcp"],
+    "keywords": ["long-term memory", "agent memory", "persistent memory", "memory layer", "knowledge graph"]
+  },
+  {
+    "slug": "run-code-in-a-sandbox",
+    "label": "run code in a sandbox",
+    "blurb": "Run code an agent writes in an isolated container or microVM, away from your machine.",
+    "categories": ["infrastructure", "code-devtools"],
+    "access": ["api"],
+    "keywords": ["sandbox", "code execution", "isolated", "microvm"]
+  },
+  {
+    "slug": "build-a-voice-agent",
+    "label": "build a voice agent",
+    "blurb": "Speech-to-text, text-to-speech and real-time frameworks for agents you talk to.",
+    "categories": ["voice-messaging"],
+    "access": ["api"],
+    "keywords": ["voice agent", "voice ai", "text-to-speech", "speech-to-text", "realtime voice"]
+  },
+  {
+    "slug": "make-phone-calls",
+    "label": "make and answer phone calls",
+    "blurb": "Put an agent on the phone to make and answer calls, on phone numbers of its own.",
+    "categories": ["voice-messaging", "customer-support", "sales-marketing", "communication"],
+    "access": ["api", "mcp"],
+    "keywords": ["phone calls", "phone agent", "telephony", "voice calls", "outbound call"]
+  },
+  {
+    "slug": "transcribe-audio",
+    "label": "transcribe audio",
+    "blurb": "Turn recordings, meetings and live audio into text.",
+    "categories": ["voice-messaging", "language"],
+    "access": ["api"],
+    "keywords": ["transcription", "transcribe", "speech-to-text", "speech recognition"]
+  },
+  {
+    "slug": "generate-images",
+    "label": "generate images",
+    "blurb": "Create and edit images from text prompts through an API or MCP server.",
+    "categories": ["content-media"],
+    "access": ["api", "mcp"],
+    "keywords": ["image generation", "text-to-image", "generate images", "image editing"]
+  },
+  {
+    "slug": "make-videos",
+    "label": "make videos",
+    "blurb": "Generate, edit and caption videos, including talking avatars.",
+    "categories": ["content-media"],
+    "access": ["api"],
+    "keywords": ["video generation", "generate video", "avatar video", "video editing"]
+  },
+  {
+    "slug": "work-in-slack-or-teams",
+    "label": "work in Slack or Teams",
+    "blurb": "Agents that work inside Slack, Microsoft Teams or Discord: read channels, answer and post.",
+    "categories": ["communication", "productivity"],
+    "access": ["mcp", "api"],
+    "keywords": ["slack", "microsoft teams", "discord"]
+  },
+  {
+    "slug": "schedule-meetings",
+    "label": "schedule meetings",
+    "blurb": "Read calendars, find a time and book meetings.",
+    "categories": ["scheduling", "productivity"],
+    "access": ["mcp", "api"],
+    "keywords": ["calendar", "meetings", "scheduling", "book meetings"]
+  },
+  {
+    "slug": "work-in-notion-and-docs",
+    "label": "work in Notion, Confluence or Drive",
+    "blurb": "Search, read and edit pages and files in Notion, Confluence, Google Drive, Dropbox or Obsidian.",
+    "categories": ["productivity", "research", "scheduling"],
+    "access": ["mcp"],
+    "keywords": ["notion", "confluence", "google drive", "dropbox", "obsidian"]
+  },
+  {
+    "slug": "manage-tickets",
+    "label": "manage tickets in Jira or Linear",
+    "blurb": "Create, update and triage issues in Jira, Linear, Asana and other trackers.",
+    "categories": ["productivity", "code-devtools", "scheduling"],
+    "access": ["mcp"],
+    "keywords": ["jira", "linear", "asana", "issue tracking", "project management"]
+  },
+  {
+    "slug": "review-code",
+    "label": "review code",
+    "blurb": "Review pull requests and code changes automatically before they merge.",
+    "categories": ["code-devtools"],
+    "access": ["api", "cli"],
+    "keywords": ["code review", "review pull requests", "pr review"]
+  },
+  {
+    "slug": "deploy-an-app",
+    "label": "deploy and host an app",
+    "blurb": "Deploy and host apps, APIs, models and MCP servers from an agent or the command line.",
+    "categories": ["infrastructure"],
+    "access": ["mcp", "cli"],
+    "keywords": ["deploy", "hosting", "serverless", "web apps"]
+  },
+  {
+    "slug": "monitor-apps-in-production",
+    "label": "monitor apps in production",
+    "blurb": "Query logs, errors, metrics and incidents from your monitoring tools.",
+    "categories": ["infrastructure", "code-devtools"],
+    "access": ["mcp", "api"],
+    "keywords": ["monitoring", "observability", "error tracking", "incidents", "alerts"]
+  },
+  {
+    "slug": "evaluate-agents",
+    "label": "test and evaluate agents",
+    "blurb": "Trace, test and score LLM apps and agents before and after they ship.",
+    "categories": ["infrastructure", "code-devtools", "orchestration"],
+    "access": ["api"],
+    "keywords": ["evals", "evaluation", "llm observability", "tracing", "prompt testing"]
+  },
+  {
+    "slug": "build-a-team-of-agents",
+    "label": "build a team of agents",
+    "blurb": "Frameworks for building several agents that plan and work together.",
+    "categories": ["orchestration", "autonomous-agents"],
+    "access": ["api"],
+    "keywords": ["multi-agent", "agent framework", "agent orchestration", "crew"]
+  },
+  {
+    "slug": "automate-workflows",
+    "label": "automate workflows between apps",
+    "blurb": "Connect apps and automate multi-step workflows with n8n, Zapier, Pipedream and others.",
+    "categories": ["scheduling", "orchestration", "productivity"],
+    "access": ["api", "mcp"],
+    "keywords": ["workflow automation", "zapier", "n8n", "integrations"]
+  },
+  {
+    "slug": "control-a-computer",
+    "label": "control a desktop computer",
+    "blurb": "Agents that see the screen and work the mouse and keyboard on a desktop, the way a person does.",
+    "categories": ["browser-computer"],
+    "access": ["api", "mcp"],
+    "keywords": ["computer use", "desktop", "mouse", "screen"]
+  },
+  {
+    "slug": "take-payments",
+    "label": "take payments",
+    "blurb": "Charge customers, send invoices and manage billing with Stripe, PayPal, Square and others.",
+    "categories": ["commerce-payments", "finance"],
+    "access": ["api", "mcp"],
+    "keywords": ["payments", "checkout", "invoices", "billing", "stripe"]
+  },
+  {
+    "slug": "find-sales-leads",
+    "label": "find and enrich sales leads",
+    "blurb": "Find prospects, enrich contacts and run outreach from your CRM.",
+    "categories": ["sales-marketing"],
+    "access": ["api", "mcp"],
+    "keywords": ["leads", "crm", "prospecting", "enrichment", "outreach"]
+  },
+  {
+    "slug": "answer-customer-support",
+    "label": "answer customer support",
+    "blurb": "AI agents that resolve customer questions across chat, email and help desks.",
+    "categories": ["customer-support"],
+    "access": ["api"],
+    "keywords": ["customer support", "helpdesk", "support tickets", "zendesk", "intercom"]
+  },
+  {
+    "slug": "manage-social-media",
+    "label": "manage social media",
+    "blurb": "Post, schedule and track what's said on X, LinkedIn, Instagram and other networks.",
+    "categories": ["sales-marketing", "content-media", "communication"],
+    "access": ["api", "mcp"],
+    "keywords": ["social media", "twitter", "linkedin", "instagram", "schedule posts"]
+  },
+  {
+    "slug": "track-markets",
+    "label": "track stocks and crypto",
+    "blurb": "Market data, portfolios and trading for stocks, crypto and prediction markets.",
+    "categories": ["finance", "prediction-markets"],
+    "access": ["api", "mcp"],
+    "keywords": ["stocks", "trading", "crypto", "market data", "portfolio"]
+  },
+  {
+    "slug": "analyze-spreadsheets",
+    "label": "analyze spreadsheets",
+    "blurb": "Read, edit and analyze Excel files, Google Sheets and CSVs.",
+    "categories": ["data-analytics", "productivity"],
+    "access": ["mcp", "api", "cli"],
+    "keywords": ["spreadsheet", "excel", "csv", "google sheets", "data analysis"]
+  },
+  {
+    "slug": "scan-for-vulnerabilities",
+    "label": "scan code for vulnerabilities",
+    "blurb": "Find vulnerabilities, leaked secrets and security holes in code, servers and apps.",
+    "categories": ["security"],
+    "access": ["cli", "mcp"],
+    "keywords": ["vulnerability", "security scan", "sast", "secrets", "pentest"]
+  },
+  {
+    "slug": "turn-designs-into-code",
+    "label": "turn designs into code",
+    "blurb": "Give coding agents your Figma and Canva designs to build from.",
+    "categories": ["code-devtools", "content-media"],
+    "access": ["mcp"],
+    "keywords": ["figma", "design to code", "ui design", "designs"]
+  },
+  {
+    "slug": "translate-text",
+    "label": "translate text",
+    "blurb": "Translate text, documents and apps into other languages.",
+    "categories": ["language"],
+    "access": ["api"],
+    "keywords": ["translation", "translate", "localization"]
+  },
+  {
+    "slug": "manage-cloud-infrastructure",
+    "label": "manage AWS, Azure or Google Cloud",
+    "blurb": "Manage AWS, Azure and Google Cloud resources, and Terraform, from an agent.",
+    "categories": ["infrastructure"],
+    "access": ["mcp", "cli"],
+    "keywords": ["aws", "azure", "google cloud", "terraform"]
+  },
+  {
+    "slug": "review-contracts",
+    "label": "review contracts and legal documents",
+    "blurb": "Legal AI for contracts, case law and compliance.",
+    "categories": ["legal", "security"],
+    "access": ["api"],
+    "keywords": ["legal", "contracts", "case law", "compliance"]
+  }
+]

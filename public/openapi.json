@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Agent Switchboard Directory API",
-    "version": "1.1.0",
-    "summary": "Read-only catalog of vetted AI agents, MCP servers, and agentic developer tools.",
+    "version": "1.10.0",
+    "summary": "Read-only catalog of AI agents, MCP servers, and agentic developer tools.",
     "description": "Agent Switchboard is a public discovery directory. Use this API to answer questions like 'is there an agent that does X?' or 'which listed products expose an MCP server?'. There is no authentication, no user account, and no write access. This API does not proxy the underlying products — it only returns Switchboard listings. For interactive tool-shaped access, an MCP server is also available at /api/mcp. Listing data returned by this API is licensed CC BY-NC 4.0 (attribution required; commercial reuse needs a license: https://agentswitchboard.dev/contact). The API definition itself is MIT.",
     "contact": {
       "name": "Barnir",
@@ -29,7 +29,7 @@
       "get": {
         "operationId": "searchAgents",
         "summary": "Search published agents",
-        "description": "Relevance-ranked search over name, description, skills, categories, tags, and provider. Empty `q` lists published agents in catalog order. Filter by category slug and/or access methods. Paginate with `total` + `offset` + `limit`.",
+        "description": "Relevance-ranked search over name, description, skills, categories, tags, and provider. Empty `q` lists published agents in catalog order: featured first, then A→Z. With `q`, results are ranked by relevance and equal scores keep that featured-first order. `sort` can order them by newest, most skills, or name instead. Filter by task, category slug, access methods, `official`, `verified`, `auth`, and/or `since` (when a listing was added). With a `task` and no `q`, results are best fit first. Paginate with `total` + `offset` + `limit`.",
         "tags": ["catalog"],
         "parameters": [
           {
@@ -38,6 +38,13 @@
             "required": false,
             "description": "Free-text query. Empty string or omitted = no text filter.",
             "schema": { "type": "string", "examples": ["email", "browser automation"] }
+          },
+          {
+            "name": "task",
+            "in": "query",
+            "required": false,
+            "description": "Task slug from GET /api/tasks, e.g. `query-a-database`: keeps only the listings that do that job, best fit first. Case-insensitive. An unknown slug returns 400 with `error: \"unknown_task\"`.",
+            "schema": { "type": "string", "examples": ["query-a-database", "transcribe-audio"] }
           },
           {
             "name": "category",
@@ -50,8 +57,50 @@
             "name": "access",
             "in": "query",
             "required": false,
-            "description": "One or more of `api`, `mcp`, `cli`, `browser-extension`. Comma-separate to require all (`access=api,mcp`). Unknown values are ignored.",
-            "schema": { "type": "string", "examples": ["mcp", "api,mcp"] }
+            "description": "One or more of `api`, `mcp`, `cli`, `browser-extension`. `extension` is accepted as an alias of `browser-extension`. Case-insensitive. Comma-separate to require all (`access=api,mcp`). Unknown values are ignored.",
+            "schema": { "type": "string", "examples": ["mcp", "api,mcp", "extension"] }
+          },
+          {
+            "name": "official",
+            "in": "query",
+            "required": false,
+            "description": "`true` (or `1`, `yes`) returns only first-party listings from major vendors; any other value applies no filter. Combines with `category`, `access`, and `q`.",
+            "schema": { "type": "boolean", "examples": [true] }
+          },
+          {
+            "name": "verified",
+            "in": "query",
+            "required": false,
+            "description": "`true` (or `1`, `yes`) returns only Verified listings: checked to work, re-checked monthly. Any other value applies no filter.",
+            "schema": { "type": "boolean", "examples": [true] }
+          },
+          {
+            "name": "auth",
+            "in": "query",
+            "required": false,
+            "description": "Only listings with this auth type: `none` (no key or sign-in needed), `apiKey`, `oauth2`, or `bearer`. Case-insensitive. A listing has one auth type, so comma-separated values mean any of them (`auth=none,apiKey`). Unknown values are ignored.",
+            "schema": { "type": "string", "examples": ["none", "none,apiKey"] }
+          },
+          {
+            "name": "since",
+            "in": "query",
+            "required": false,
+            "description": "Only listings added to the directory on or after this day (UTC): a date, `YYYY-MM-DD` (a full timestamp counts by its day), or a number of days back with today included (`since=7` is the last 7 days, `since=1` today), from 1 to 3650. The response echoes the first day kept as `since`. Anything else returns 400 with `error: \"invalid_since\"`. Add `sort=newest` to list the newest first.",
+            "schema": { "type": "string", "examples": ["7", "2026-10-01"] }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "description": "Result order. `relevance` (default): with `q`, best match first; without, best fit first for a `task`, else featured first, then A→Z. `newest`: most recently added first. `skills`: most skills first. `name`: A→Z. Ties keep the default order. Unknown values mean `relevance`.",
+            "schema": { "type": "string", "enum": ["relevance", "newest", "skills", "name"], "default": "relevance" }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "description": "`organic`: ignore featured placement, so the default order and ties are A→Z. WebMCP uses it.",
+            "schema": { "type": "string", "enum": ["organic"] }
           },
           {
             "name": "limit",
@@ -85,16 +134,28 @@
                           "name": "AgentMail",
                           "slug": "agentmail",
                           "url": "https://agentswitchboard.dev/agents/agentmail",
+                          "iconUrl": "https://agentswitchboard.dev/icons/agentmail.png?v=aca5768d",
                           "description": "Email inbox API built for AI agents.",
                           "provider": "AgentMail",
                           "categories": ["infrastructure", "code-devtools"],
                           "accessMethods": ["api", "mcp", "cli"],
-                          "verified": true
+                          "verified": true,
+                          "official": false,
+                          "featured": true,
+                          "sponsored": true
                         }
                       ]
                     }
                   }
                 }
+              }
+            }
+          },
+          "400": {
+            "description": "`task` is not a task slug from GET /api/tasks (`error: \"unknown_task\"`), or `since` is neither a date nor a number of days (`error: \"invalid_since\"`).",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
               }
             }
           }
@@ -105,7 +166,7 @@
       "get": {
         "operationId": "getAgent",
         "summary": "Get one agent by slug",
-        "description": "Full listing for a published agent: skills, auth type, provider homepage, tags, streaming and push flags. Use a `slug` returned by searchAgents. Unpublished or unknown slugs return 404.",
+        "description": "Full listing for a published agent: the searchAgents fields (including `verified`, `official`, `featured` and `sponsored`) plus skills, auth type, provider homepage, tags, streaming and push flags. Use a `slug` returned by searchAgents. Unpublished or unknown slugs return 404.",
         "tags": ["catalog"],
         "parameters": [
           {
@@ -122,6 +183,55 @@
             "content": {
               "application/json": {
                 "schema": { "$ref": "#/components/schemas/AgentDetail" }
+              }
+            }
+          },
+          "404": {
+            "description": "No published agent with that slug.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/agents/{slug}/alternatives": {
+      "get": {
+        "operationId": "getAlternatives",
+        "summary": "Listings that could stand in for one",
+        "description": "The listings that could stand in for one, strongest match first, as its page /agents/{slug}/alternatives lists them. Each is in the listing's main category, offers at least one of its access methods, and overlaps on what it does (shared skills and tags, rarer ones counting for more), and says why. Up to 8; fewer, or none, rather than a weak match. A listing gets an alternatives page (`url`) only with at least 3. Unknown or no-longer-listed slugs return 404.",
+        "tags": ["catalog"],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "description": "Stable listing identifier, e.g. `deepgram`.",
+            "schema": { "type": "string", "examples": ["deepgram"] }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Most alternatives to return. Clamped to 1–8. Default 8.",
+            "schema": { "type": "integer", "minimum": 1, "maximum": 8, "default": 8 }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "description": "`organic`: break score ties A→Z instead of featured first. WebMCP uses it.",
+            "schema": { "type": "string", "enum": ["organic"] }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The listing and its alternatives.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AlternativesResult" }
               }
             }
           },
@@ -154,11 +264,183 @@
         }
       }
     },
+    "/api/stacks": {
+      "get": {
+        "operationId": "listStacks",
+        "summary": "List stacks",
+        "description": "Stacks are editor-picked sets of listings that together do one job, each listing with why it is in the stack. In the order /stacks shows them: the stack of the week first. `stackOfTheWeek` is the slug of the newest stack tied to a weekly drop.",
+        "tags": ["catalog"],
+        "responses": {
+          "200": {
+            "description": "Every stack, the stack of the week first.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/StackList" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/stacks/{slug}": {
+      "get": {
+        "operationId": "getStack",
+        "summary": "Get one stack by slug",
+        "description": "One stack with its listings in order, each with why it is in the stack. Use a `slug` returned by listStacks. Unknown slugs return 404.",
+        "tags": ["catalog"],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "description": "Stable stack identifier, e.g. `research-analyst`.",
+            "schema": { "type": "string", "examples": ["research-analyst"] }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The stack.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Stack" }
+              }
+            }
+          },
+          "404": {
+            "description": "No stack with that slug.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tasks": {
+      "get": {
+        "operationId": "listTasks",
+        "summary": "List tasks",
+        "description": "Tasks are jobs (\"query a database\", \"transcribe audio\"), each with how many listings do it. Use a task's `slug` as the `task` parameter on searchAgents to filter and page those listings, best fit first, or call getTask for its best fits with why each one fits. In the order /tasks shows them.",
+        "tags": ["catalog"],
+        "responses": {
+          "200": {
+            "description": "Every task.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/TaskList" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tasks/{slug}": {
+      "get": {
+        "operationId": "getTask",
+        "summary": "Get one task by slug",
+        "description": "One task with every listing that does it, best fit first, each with the skill that does the job when it has one. Also the slugs of related tasks and of stacks that use its listings. Use a `slug` returned by listTasks. Unknown slugs return 404.",
+        "tags": ["catalog"],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "description": "Stable task identifier, e.g. `query-a-database`.",
+            "schema": { "type": "string", "examples": ["query-a-database"] }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The task.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/TaskDetail" }
+              }
+            }
+          },
+          "404": {
+            "description": "No task with that slug.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/compare": {
+      "get": {
+        "operationId": "compareAgents",
+        "summary": "Put 2 or 3 listings side by side",
+        "description": "The comparison /compare shows, as data: for each listing, the facts that set it apart from the others (\"Only one with a CLI\", \"No auth required\", \"Most skills (12)\"), then one row per field with each listing's value by slug. A row where every listing agrees has `same: true`. Facts from the listings' own data, never a verdict. The same parameters as a /compare link: `a`, `b` and `c` are the columns, in order. Unknown or repeated slugs, and any past three (`d` to `f` are read so they can be named), are left out with a note in `notes`. Fewer than two listings found returns 400 with listings to put beside the one found.",
+        "tags": ["catalog"],
+        "parameters": [
+          { "name": "a", "in": "query", "required": true, "description": "First listing's slug.", "schema": { "type": "string", "examples": ["deepgram"] } },
+          { "name": "b", "in": "query", "required": true, "description": "Second listing's slug.", "schema": { "type": "string", "examples": ["assemblyai"] } },
+          { "name": "c", "in": "query", "required": false, "description": "Third listing's slug.", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "The comparison.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CompareResult" }
+              }
+            }
+          },
+          "400": {
+            "description": "Fewer than two of the named listings are in the directory (`error: \"too_few_listings\"`).",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CompareRefusal" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/bundle": {
+      "get": {
+        "operationId": "connectBundle",
+        "summary": "One MCP client config for several listings",
+        "description": "One MCP client config to paste (`{\"mcpServers\": …}`, as Cursor and other MCP clients read it) for up to 10 listings, and how each one connects. A listing is in the config when its own docs give a hosted server address or a local command. An MCP server whose docs give neither comes with its setup guide, and `setupPrompt` asks a coding agent to set all of those up. A listing without an MCP server comes with its CLI install command, API address or docs. Also returns a `claude mcp add` command for each server in the config, for Claude Code, and the /stack link for the listings. Nothing is guessed: every address and command is copied from the vendor's docs, as on the listing's page. The same `items` as a /stack link. Unknown or repeated slugs, listings no longer listed and any past ten are left out with a note in `notes`; none found returns 400.",
+        "tags": ["catalog"],
+        "parameters": [
+          {
+            "name": "items",
+            "in": "query",
+            "required": true,
+            "description": "Listing slugs, comma-separated, in the order to list them: 1 to 10.",
+            "schema": { "type": "string", "examples": ["linear,sentry-mcp,playwright-mcp,postgres-mcp-pro"] }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The bundle.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/BundleResult" }
+              }
+            }
+          },
+          "400": {
+            "description": "None of the named listings is in the directory (`error: \"no_listings\"`).",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/BundleRefusal" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/agents.json": {
       "get": {
         "operationId": "listAgents",
         "summary": "Fetch the full agent catalog",
-        "description": "Returns every published agent in one document. Filter client-side on `categories` or `accessMethods`. Prefer GET /api/agents for targeted search. The payload is cached for five minutes at the edge.",
+        "description": "Returns every published agent in one document, featured first, then A→Z. Filter client-side on `categories` or `accessMethods`. Prefer GET /api/agents for targeted search. The payload is cached for five minutes at the edge.",
         "tags": ["catalog"],
         "responses": {
           "200": {
@@ -176,7 +458,7 @@
       "post": {
         "operationId": "mcpTransport",
         "summary": "Model Context Protocol endpoint (streamable HTTP)",
-        "description": "Speaks MCP over streamable HTTP. Exposes three tools: `search_agents`, `get_agent`, and `list_categories`. This is a JSON-RPC transport, not a REST resource. REST clients should call /api/agents instead.",
+        "description": "Speaks MCP over streamable HTTP. Exposes seven tools: `search_agents`, `get_agent`, `list_categories`, `compare_agents`, `alternatives_to`, `connect_bundle`, and `submit_listing`, which files a listing suggestion for human review. This is a JSON-RPC transport, not a REST resource. REST clients should call /api/agents, /api/compare, /api/agents/{slug}/alternatives and /api/bundle instead.",
         "tags": ["mcp"],
         "requestBody": {
           "required": true,
@@ -214,6 +496,7 @@
           "total": { "type": "integer", "description": "Full match count before paging." },
           "offset": { "type": "integer" },
           "limit": { "type": "integer" },
+          "since": { "type": "string", "format": "date", "description": "With `since`: the first day kept (UTC)." },
           "agents": {
             "type": "array",
             "items": { "$ref": "#/components/schemas/AgentSummary" }
@@ -226,11 +509,14 @@
           "name",
           "slug",
           "url",
+          "iconUrl",
           "description",
           "provider",
           "categories",
           "accessMethods",
-          "verified"
+          "verified",
+          "official",
+          "featured"
         ],
         "properties": {
           "name": { "type": "string" },
@@ -243,6 +529,11 @@
             "format": "uri",
             "description": "Human listing page on Agent Switchboard."
           },
+          "iconUrl": {
+            "type": ["string", "null"],
+            "format": "uri",
+            "description": "Absolute URL of the listing's 128px PNG icon, served by Agent Switchboard; null when it has none."
+          },
           "description": { "type": "string" },
           "provider": { "type": ["string", "null"] },
           "categories": { "type": "array", "items": { "type": "string" } },
@@ -254,7 +545,10 @@
             },
             "description": "How the listed product can be reached."
           },
-          "verified": { "type": "boolean" }
+          "verified": { "type": "boolean", "description": "Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working." },
+          "official": { "type": "boolean", "description": "First-party listing from a major vendor (publicly traded, frontier AI lab, or ~$1B+), published under the vendor's official domain or GitHub org. Factual, not paid; separate from verified and featured." },
+          "featured": { "type": "boolean", "description": "Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order." },
+          "sponsored": { "type": "boolean", "description": "Sponsored: a paid placement, approved by the maintainer. It shows a Sponsored label and a spot in the Sponsored slot on the homepage and the latest drop page. It never changes search results or their order, tasks, alternatives, compare or the Operator, never appears in AI-assistant (MCP) results, and is separate from Featured, Official and Verified." }
         }
       },
       "AgentDetail": {
@@ -263,6 +557,10 @@
           {
             "type": "object",
             "properties": {
+              "officialVendor": {
+                "type": ["string", "null"],
+                "description": "Vendor behind an official listing, e.g. `Notion`; null when not official."
+              },
               "homepage": { "type": ["string", "null"], "format": "uri" },
               "providerUrl": { "type": ["string", "null"], "format": "uri" },
               "authType": {
@@ -279,7 +577,20 @@
               "supportsPushNotifications": { "type": "boolean" },
               "tier": { "type": ["string", "null"] },
               "createdAt": { "type": ["string", "null"], "format": "date-time" },
-              "updatedAt": { "type": ["string", "null"], "format": "date-time" }
+              "updatedAt": { "type": ["string", "null"], "format": "date-time" },
+              "mcpEndpoint": {
+                "type": ["string", "null"],
+                "format": "uri",
+                "description": "The vendor's hosted MCP server address, from its docs; null when they give none."
+              },
+              "mcpCommand": {
+                "type": ["string", "null"],
+                "description": "The command that runs its MCP server locally, e.g. `npx -y @playwright/mcp@latest`; null when its docs give none."
+              },
+              "install": { "oneOf": [{ "$ref": "#/components/schemas/AgentInstall" }, { "type": "null" }] },
+              "quickstartUrl": { "type": ["string", "null"], "format": "uri", "description": "The vendor's setup or getting-started page." },
+              "apiBaseUrl": { "type": ["string", "null"], "format": "uri", "description": "Base URL of the vendor's public API." },
+              "useItNow": { "$ref": "#/components/schemas/UseItNow" }
             }
           }
         ]
@@ -291,6 +602,60 @@
           "id": { "type": "string" },
           "name": { "type": "string" },
           "description": { "type": "string" }
+        }
+      },
+      "AgentInstall": {
+        "type": "object",
+        "description": "The command that installs its CLI, from the vendor's docs.",
+        "required": ["type", "command"],
+        "properties": {
+          "type": { "type": "string", "enum": ["npm", "pip", "brew", "docker", "binary"] },
+          "command": { "type": "string" }
+        }
+      },
+      "UseItNow": {
+        "type": "object",
+        "description": "How to start using it, per access method, as the listing page's Use it now panel shows it. Commands and addresses come from the vendor's own docs; when there are none, docsUrl is where its instructions are. A part is null when the listing lacks that access method.",
+        "properties": {
+          "tryThisFirst": {
+            "type": ["object", "null"],
+            "properties": {
+              "lead": { "type": "string" },
+              "prompts": {
+                "type": "array",
+                "items": { "type": "object", "properties": { "skill": { "type": "string" }, "text": { "type": "string" } } }
+              }
+            }
+          },
+          "mcp": {
+            "type": ["object", "null"],
+            "properties": {
+              "endpoint": { "type": ["string", "null"] },
+              "command": { "type": ["string", "null"] },
+              "clientConfig": { "type": ["object", "null"], "description": "`{\"mcpServers\": {...}}` for Cursor and other MCP clients." },
+              "cursorInstallUrl": { "type": ["string", "null"] },
+              "claudeConnectorUrl": { "type": ["string", "null"] },
+              "claudeCodeCommand": { "type": ["string", "null"] },
+              "setupPrompt": { "type": "string" },
+              "docsUrl": { "type": "string", "format": "uri" }
+            }
+          },
+          "cli": {
+            "type": ["object", "null"],
+            "properties": {
+              "install": { "oneOf": [{ "$ref": "#/components/schemas/AgentInstall" }, { "type": "null" }] },
+              "docsUrl": { "type": "string", "format": "uri" }
+            }
+          },
+          "api": {
+            "type": ["object", "null"],
+            "properties": {
+              "baseUrl": { "type": ["string", "null"] },
+              "auth": { "type": "string", "description": "How the API authenticates, in plain words." },
+              "docsUrl": { "type": "string", "format": "uri" }
+            }
+          },
+          "extension": { "type": ["object", "null"], "properties": { "url": { "type": "string", "format": "uri" } } }
         }
       },
       "CategoryList": {
@@ -313,6 +678,145 @@
           "agentCount": { "type": "integer" }
         }
       },
+      "StackList": {
+        "type": "object",
+        "required": ["total", "stackOfTheWeek", "stacks"],
+        "properties": {
+          "total": { "type": "integer" },
+          "stackOfTheWeek": {
+            "type": ["string", "null"],
+            "description": "Slug of the stack of the week: the newest stack tied to a weekly drop."
+          },
+          "stacks": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Stack" }
+          }
+        }
+      },
+      "Stack": {
+        "type": "object",
+        "required": ["slug", "title", "promise", "week", "url", "bundleUrl", "items"],
+        "properties": {
+          "slug": { "type": "string", "description": "Stable identifier. Pass to GET /api/stacks/{slug}." },
+          "title": { "type": "string" },
+          "promise": { "type": "string", "description": "One line on what the stack gets done." },
+          "week": {
+            "type": ["string", "null"],
+            "format": "date",
+            "description": "For a stack of the week, the date of its weekly drop (its page is /drops/{week}); null otherwise."
+          },
+          "url": { "type": "string", "format": "uri", "description": "Human stack page on Agent Switchboard." },
+          "bundleUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "GET /api/bundle for the stack's listings: one MCP client config to paste, and how to connect the rest."
+          },
+          "items": {
+            "type": "array",
+            "description": "The stack's listings, in order.",
+            "items": { "$ref": "#/components/schemas/StackItem" }
+          }
+        }
+      },
+      "StackItem": {
+        "allOf": [
+          { "$ref": "#/components/schemas/AgentSummary" },
+          {
+            "type": "object",
+            "required": ["authType", "why"],
+            "properties": {
+              "authType": {
+                "type": "string",
+                "enum": ["apiKey", "oauth2", "bearer", "none"],
+                "description": "How the listed product authenticates. Not used by this API."
+              },
+              "why": { "type": "string", "description": "What this listing does for the stack's job." }
+            }
+          }
+        ]
+      },
+      "TaskList": {
+        "type": "object",
+        "required": ["total", "tasks"],
+        "properties": {
+          "total": { "type": "integer" },
+          "tasks": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Task" }
+          }
+        }
+      },
+      "Task": {
+        "type": "object",
+        "required": ["slug", "label", "blurb", "keywords", "categories", "access", "count", "official", "url", "browseUrl", "agentsUrl"],
+        "properties": {
+          "slug": { "type": "string", "description": "Stable identifier. Pass as `task` to GET /api/agents, or to GET /api/tasks/{slug}." },
+          "label": { "type": "string", "description": "The job, worded to follow \"I need to\", e.g. \"query a database\"." },
+          "blurb": { "type": "string", "description": "One line on what the task covers." },
+          "keywords": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "The words and phrases listings are matched on, in their name, description, tags and skills."
+          },
+          "categories": { "type": "array", "items": { "type": "string" }, "description": "Category slugs whose matching listings rank higher." },
+          "access": {
+            "type": "array",
+            "items": { "type": "string", "enum": ["api", "mcp", "cli", "browser-extension"] },
+            "description": "Access methods whose matching listings rank higher."
+          },
+          "count": { "type": "integer", "description": "How many listings fit the task." },
+          "official": { "type": "integer", "description": "How many of those are official listings." },
+          "url": { "type": "string", "format": "uri", "description": "Human task page on Agent Switchboard." },
+          "browseUrl": { "type": "string", "format": "uri", "description": "/browse filtered to the task, where more filters can be added." },
+          "agentsUrl": { "type": "string", "format": "uri", "description": "GET /api/agents filtered to the task." }
+        }
+      },
+      "TaskDetail": {
+        "allOf": [
+          { "$ref": "#/components/schemas/Task" },
+          {
+            "type": "object",
+            "required": ["agents", "relatedTasks", "stacks"],
+            "properties": {
+              "agents": {
+                "type": "array",
+                "description": "Every listing that fits the task, best fit first.",
+                "items": { "$ref": "#/components/schemas/TaskAgent" }
+              },
+              "relatedTasks": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "Slugs of tasks that share listings or categories with this one, closest first."
+              },
+              "stacks": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "Slugs of stacks that include listings that fit this task, most shared first."
+              }
+            }
+          }
+        ]
+      },
+      "TaskAgent": {
+        "allOf": [
+          { "$ref": "#/components/schemas/AgentSummary" },
+          {
+            "type": "object",
+            "required": ["authType", "why"],
+            "properties": {
+              "authType": {
+                "type": "string",
+                "enum": ["apiKey", "oauth2", "bearer", "none"],
+                "description": "How the listed product authenticates. Not used by this API."
+              },
+              "why": {
+                "type": ["string", "null"],
+                "description": "The listing's own skill that does the job; null when it fits by its name, description or tags."
+              }
+            }
+          }
+        ]
+      },
       "Catalog": {
         "type": "object",
         "required": ["source", "total", "agents"],
@@ -326,23 +830,274 @@
       },
       "CatalogAgent": {
         "type": "object",
-        "required": ["name", "slug", "url", "description", "categories"],
+        "required": [
+          "name",
+          "slug",
+          "url",
+          "iconUrl",
+          "homepage",
+          "provider",
+          "providerUrl",
+          "description",
+          "categories",
+          "accessMethods",
+          "tags",
+          "verified",
+          "official",
+          "officialVendor",
+          "featured",
+          "sponsored",
+          "tier",
+          "createdAt",
+          "updatedAt"
+        ],
         "properties": {
           "name": { "type": "string" },
           "slug": { "type": "string" },
           "url": { "type": "string", "format": "uri" },
+          "iconUrl": {
+            "type": ["string", "null"],
+            "format": "uri",
+            "description": "Absolute URL of the listing's 128px PNG icon, served by Agent Switchboard; null when it has none."
+          },
           "homepage": { "type": ["string", "null"], "format": "uri" },
           "provider": { "type": ["string", "null"] },
           "providerUrl": { "type": ["string", "null"], "format": "uri" },
           "description": { "type": "string" },
           "categories": { "type": "array", "items": { "type": "string" } },
-          "accessMethods": { "type": "array", "items": { "type": "string" } },
+          "accessMethods": {
+            "type": "array",
+            "items": { "type": "string", "enum": ["api", "mcp", "cli", "browser-extension"] }
+          },
           "tags": { "type": "array", "items": { "type": "string" } },
-          "verified": { "type": "boolean" },
+          "verified": { "type": "boolean", "description": "Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working." },
+          "official": { "type": "boolean", "description": "First-party listing from a major vendor (publicly traded, frontier AI lab, or ~$1B+), published under the vendor's official domain or GitHub org. Factual, not paid; separate from verified and featured." },
+          "officialVendor": { "type": ["string", "null"] },
+          "featured": { "type": "boolean", "description": "Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order." },
+          "sponsored": { "type": "boolean", "description": "Sponsored: a paid placement, approved by the maintainer. It shows a Sponsored label and a spot in the Sponsored slot on the homepage and the latest drop page. It never changes search results or their order, tasks, alternatives, compare or the Operator, never appears in AI-assistant (MCP) results, and is separate from Featured, Official and Verified." },
           "tier": { "type": ["string", "null"] },
           "createdAt": { "type": ["string", "null"], "format": "date-time" },
-          "updatedAt": { "type": ["string", "null"], "format": "date-time" }
+          "updatedAt": { "type": ["string", "null"], "format": "date-time" },
+          "mcpEndpoint": { "type": ["string", "null"], "format": "uri", "description": "The vendor's hosted MCP server address, from its docs." },
+          "mcpCommand": { "type": ["string", "null"], "description": "The command that runs its MCP server locally." },
+          "install": { "oneOf": [{ "$ref": "#/components/schemas/AgentInstall" }, { "type": "null" }] },
+          "quickstartUrl": { "type": ["string", "null"], "format": "uri", "description": "The vendor's setup or getting-started page." },
+          "apiBaseUrl": { "type": ["string", "null"], "format": "uri", "description": "Base URL of the vendor's public API." }
         }
+      },
+      "DecisionAgent": {
+        "description": "A listing in a comparison, an alternatives list or a bundle: the searchAgents fields except `sponsored`, and its auth type. These answers are the MCP tools' answers too, which never carry sponsorship.",
+        "allOf": [
+          { "$ref": "#/components/schemas/AgentSummary" },
+          {
+            "type": "object",
+            "required": ["authType"],
+            "properties": {
+              "authType": {
+                "type": "string",
+                "enum": ["apiKey", "oauth2", "bearer", "none"],
+                "description": "How the listed product authenticates. Not used by this API."
+              }
+            }
+          }
+        ]
+      },
+      "CompareResult": {
+        "type": "object",
+        "required": ["title", "url", "intro", "agents", "rows", "notes"],
+        "properties": {
+          "title": { "type": "string", "examples": ["Deepgram vs AssemblyAI"] },
+          "url": { "type": "string", "format": "uri", "description": "The comparison on Agent Switchboard: a curated comparison's own page, else /compare with the same listings." },
+          "intro": { "type": ["string", "null"], "description": "A curated comparison's line on what the listings share and where they differ; null for any other mix." },
+          "agents": {
+            "type": "array",
+            "description": "The listings, in column order.",
+            "items": {
+              "allOf": [
+                { "$ref": "#/components/schemas/DecisionAgent" },
+                {
+                  "type": "object",
+                  "required": ["setsApart"],
+                  "properties": {
+                    "setsApart": {
+                      "type": "array",
+                      "items": { "type": "string" },
+                      "description": "Up to 4 facts that set this listing apart from the others, e.g. \"Only one with a CLI\"."
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "rows": { "type": "array", "items": { "$ref": "#/components/schemas/CompareRow" } },
+          "notes": { "type": "array", "items": { "type": "string" }, "description": "Named listings that were left out, and why." }
+        }
+      },
+      "CompareRow": {
+        "type": "object",
+        "required": ["key", "label", "same", "values"],
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "description, provider, official, verified, access, auth, mcp, cli, api, skills, streaming, push, categories, tags or added. The mcp, cli and api rows appear only when a listing has that access method.",
+            "examples": ["auth"]
+          },
+          "label": { "type": "string", "examples": ["Auth"] },
+          "same": { "type": "boolean", "description": "Every listing has the same value." },
+          "values": {
+            "type": "object",
+            "description": "Each listing's value, by slug.",
+            "additionalProperties": {
+              "oneOf": [
+                { "type": "string" },
+                { "type": "array", "items": { "type": "string" } },
+                { "$ref": "#/components/schemas/CompareCode" }
+              ]
+            }
+          }
+        }
+      },
+      "CompareCode": {
+        "type": "object",
+        "description": "A command or address from the listing's docs, with what it is.",
+        "required": ["code"],
+        "properties": {
+          "code": { "type": "string", "examples": ["https://mcp.linear.app/mcp"] },
+          "note": { "type": "string", "examples": ["Hosted"] }
+        }
+      },
+      "CompareRefusal": {
+        "allOf": [
+          { "$ref": "#/components/schemas/Error" },
+          {
+            "type": "object",
+            "required": ["notes", "suggestions"],
+            "properties": {
+              "notes": { "type": "array", "items": { "type": "string" } },
+              "suggestions": {
+                "type": "array",
+                "description": "Listings to put beside the one found: its closest alternatives.",
+                "items": { "$ref": "#/components/schemas/DecisionAgent" }
+              }
+            }
+          }
+        ]
+      },
+      "AlternativesResult": {
+        "type": "object",
+        "required": ["agent", "total", "url", "compareUrl", "basis", "alternatives"],
+        "properties": {
+          "agent": { "$ref": "#/components/schemas/DecisionAgent" },
+          "total": { "type": "integer", "description": "How many alternatives it has, up to 8, before `limit`." },
+          "url": { "type": ["string", "null"], "format": "uri", "description": "Its alternatives page; null when it has fewer than 3." },
+          "compareUrl": { "type": ["string", "null"], "format": "uri", "description": "The listing side by side with its top two alternatives; null when it has none." },
+          "basis": { "type": "string", "description": "What every alternative has in common with the listing, in a sentence." },
+          "alternatives": {
+            "type": "array",
+            "description": "Strongest match first.",
+            "items": { "$ref": "#/components/schemas/Alternative" }
+          }
+        }
+      },
+      "Alternative": {
+        "allOf": [
+          { "$ref": "#/components/schemas/DecisionAgent" },
+          {
+            "type": "object",
+            "required": ["sharedAccess", "inCommon", "why"],
+            "properties": {
+              "sharedAccess": {
+                "type": "array",
+                "items": { "type": "string", "enum": ["api", "mcp", "cli", "browser-extension"] },
+                "description": "Access methods both offer."
+              },
+              "inCommon": { "type": "array", "items": { "type": "string" }, "description": "Skills and tags both have, rarest first." },
+              "why": { "type": "string", "examples": ["Both offer API. In common: audio, speech to text, transcription."] }
+            }
+          }
+        ]
+      },
+      "McpServer": {
+        "description": "One server in an MCP client config: a hosted address, or a local command.",
+        "oneOf": [
+          {
+            "type": "object",
+            "required": ["url"],
+            "properties": { "url": { "type": "string", "format": "uri" } }
+          },
+          {
+            "type": "object",
+            "required": ["command", "args"],
+            "properties": { "command": { "type": "string" }, "args": { "type": "array", "items": { "type": "string" } } }
+          }
+        ]
+      },
+      "BundleResult": {
+        "type": "object",
+        "required": ["summary", "stackUrl", "config", "claudeCode", "setupPrompt", "items", "notes"],
+        "properties": {
+          "summary": { "type": "string", "examples": ["3 in the config and 1 to set up from its guide"] },
+          "stackUrl": { "type": "string", "format": "uri", "description": "These listings as a shared stack on Agent Switchboard." },
+          "config": {
+            "type": ["object", "null"],
+            "description": "The MCP client config to paste; null when no listing has an address or command to copy.",
+            "required": ["mcpServers"],
+            "properties": {
+              "mcpServers": {
+                "type": "object",
+                "description": "One server per listing in the config, under its slug.",
+                "additionalProperties": { "$ref": "#/components/schemas/McpServer" }
+              }
+            }
+          },
+          "claudeCode": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "A `claude mcp add` command for each server in the config, for Claude Code."
+          },
+          "setupPrompt": {
+            "type": ["string", "null"],
+            "description": "For a coding agent: set up each MCP server whose docs give no address or command, from its setup guide. Null when there are none."
+          },
+          "items": {
+            "type": "array",
+            "description": "Every listing named, in order.",
+            "items": { "$ref": "#/components/schemas/BundleItem" }
+          },
+          "notes": { "type": "array", "items": { "type": "string" }, "description": "Named listings that were left out, and why." }
+        }
+      },
+      "BundleItem": {
+        "allOf": [
+          { "$ref": "#/components/schemas/DecisionAgent" },
+          {
+            "type": "object",
+            "required": ["how", "server", "docsUrl", "note"],
+            "properties": {
+              "how": {
+                "type": "string",
+                "enum": ["config", "guide", "other"],
+                "description": "`config`: in the config. `guide`: an MCP server to set up from its guide. `other`: no MCP server, so its CLI, API or extension."
+              },
+              "server": {
+                "oneOf": [{ "$ref": "#/components/schemas/McpServer" }, { "type": "null" }],
+                "description": "Its entry in the config; null unless `how` is `config`."
+              },
+              "docsUrl": { "type": "string", "format": "uri", "description": "Its own setup instructions." },
+              "note": { "type": "string", "description": "How it connects, in a sentence or two.", "examples": ["Hosted by Linear. You sign in with Linear when you first connect."] }
+            }
+          }
+        ]
+      },
+      "BundleRefusal": {
+        "allOf": [
+          { "$ref": "#/components/schemas/Error" },
+          {
+            "type": "object",
+            "required": ["notes"],
+            "properties": { "notes": { "type": "array", "items": { "type": "string" } } }
+          }
+        ]
       },
       "Error": {
         "type": "object",

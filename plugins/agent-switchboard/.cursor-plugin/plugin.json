@@ -1,0 +1,15 @@
+{
+  "name": "agent-switchboard",
+  "displayName": "Agent Switchboard",
+  "version": "1.0.0",
+  "description": "Search a curated directory of AI agents, MCP servers and agentic tools, compare them, find alternatives, and build one MCP config for several.",
+  "author": {
+    "name": "Agent Switchboard",
+    "email": "barnir@agentmail.to"
+  },
+  "homepage": "https://agentswitchboard.dev",
+  "repository": "https://github.com/assafbar2/agentswitchboard.dev",
+  "license": "MIT",
+  "keywords": ["mcp", "mcp-servers", "ai-agents", "directory", "search", "developer-tools"],
+  "logo": "assets/logo.svg"
+}

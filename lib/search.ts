@@ -10,64 +10,489 @@ export const ACCESS_METHOD_LABELS: Record<string, string> = {
 
 export const ALL_ACCESS_METHODS = Object.keys(ACCESS_METHOD_LABELS);
 
+/** Every auth type a listing can declare (Agent.authType). */
+export const AUTH_TYPES = ['none', 'apiKey', 'oauth2', 'bearer'] as const;
+
+export interface CatalogFilter {
+  category?: string;
+  official?: boolean;
+  /** Official vendor slug (content/official-vendors.json); implies official. */
+  vendor?: string;
+  verified?: boolean;
+  /** Auth types to keep. A listing has exactly one, so several mean any of them. */
+  auth?: readonly string[];
+  /** Only listings added on or after this UTC day (YYYY-MM-DD), from parseSince. */
+  since?: string;
+}
+
+/** Category / Official / vendor / Verified / auth / added-since narrowing, applied before text search. */
+export function filterAgents(
+  agents: Agent[],
+  { category, official, vendor, verified, auth, since }: CatalogFilter
+): Agent[] {
+  return agents.filter(
+    (a) =>
+      (!category || a.categories.some((c) => c.slug === category)) &&
+      (!official || a.official) &&
+      (!vendor || a.officialVendor?.slug === vendor) &&
+      (!verified || a.verified) &&
+      (!auth?.length || auth.includes(a.authType)) &&
+      (!since || (a.createdAt ?? '').slice(0, 10) >= since)
+  );
+}
+
+/** The most days back a `since` count can go. */
+export const SINCE_MAX_DAYS = 3650;
+
+const DAY_MS = 86_400_000;
+
 /**
- * Score an agent against a search query.
- * Higher = more relevant.
- *
- * Priority:
- *  100 — exact name match
- *   80 — name contains query
- *   60 — description contains query
- *   40 — skill name/description contains query
- *   20 — category name contains query
- *   15 — access method match (e.g. "mcp", "cli")
- *   10 — tags contain query
- *    5 — provider name contains query
+ * A `since` input as the first UTC day it keeps (YYYY-MM-DD), or null when it
+ * is neither a day nor a count. A day is YYYY-MM-DD, or an ISO timestamp whose
+ * day is used. A count is a number of days back, today included, so "1" is
+ * today and "7" the last seven days ("7d" and "7 days" too).
  */
-export function scoreAgent(agent: Agent, query: string): number {
-  const q = query.toLowerCase().trim();
-  if (!q) return 1;
-
-  let score = 0;
-  const name = agent.name.toLowerCase();
-  const description = agent.description.toLowerCase();
-
-  // Name
-  if (name === q) score += 100;
-  else if (name.startsWith(q)) score += 90;
-  else if (name.includes(q)) score += 80;
-
-  // Description
-  if (description.includes(q)) score += 60;
-
-  // Skills — name and description (guard against string-form skills)
-  for (const skill of agent.skills) {
-    if (skill?.name?.toLowerCase().includes(q)) score += 40;
-    if (skill?.description?.toLowerCase().includes(q)) score += 20;
+export function parseSince(raw: string | number, now: number = Date.now()): string | null {
+  const value = String(raw).trim().toLowerCase();
+  const count = /^(\d{1,5})\s*(?:d|days?)?$/.exec(value);
+  if (count) {
+    const days = Number(count[1]);
+    return days >= 1 && days <= SINCE_MAX_DAYS ? new Date(now - (days - 1) * DAY_MS).toISOString().slice(0, 10) : null;
   }
+  const day = /^(\d{4}-\d{2}-\d{2})(?:t\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?(?:z|[+-]\d{2}:?\d{2})?)?$/.exec(value)?.[1];
+  if (!day) return null;
+  const time = Date.parse(`${day}T00:00:00Z`);
+  // Date.parse rolls 2026-02-30 over to March 2; only a real calendar day comes back unchanged.
+  return Number.isNaN(time) || new Date(time).toISOString().slice(0, 10) !== day ? null : day;
+}
 
-  // Categories
-  for (const cat of agent.categories) {
-    if (cat.name.toLowerCase().includes(q)) score += 20;
-    if (cat.slug.includes(q)) score += 10;
+export function invalidSinceMessage(raw: string | number): string {
+  return `since must be a date (YYYY-MM-DD) or a number of days from 1 to ${SINCE_MAX_DAYS}, such as 7; got "${String(raw).slice(0, 40)}".`;
+}
+
+// ── Sorting ─────────────────────────────────────────────────────────
+
+/**
+ * Result orders. `relevance`, the default, is the order searchAgents returns:
+ * best match first with search text, the catalog order (featured, then A→Z)
+ * without. The others sort stably, so ties keep that order.
+ */
+export const SORT_ORDERS = ['relevance', 'newest', 'skills', 'name'] as const;
+export type SortOrder = (typeof SORT_ORDERS)[number];
+
+/** A `sort` parameter; anything else is the default, `relevance`. */
+export function parseSort(raw: string | null | undefined): SortOrder {
+  const value = raw?.trim().toLowerCase();
+  return SORT_ORDERS.find((s) => s === value) ?? 'relevance';
+}
+
+const addedAt = (a: Agent) => Date.parse(a.createdAt ?? '') || 0;
+const skillCount = (a: Agent) => a.skills?.length ?? 0;
+
+/** `agents` in `sort` order: newest added, most skills, or A→Z. `relevance` keeps the given order. */
+export function sortAgents(agents: Agent[], sort: SortOrder): Agent[] {
+  switch (sort) {
+    case 'newest':
+      return [...agents].sort((a, b) => addedAt(b) - addedAt(a));
+    case 'skills':
+      return [...agents].sort((a, b) => skillCount(b) - skillCount(a));
+    case 'name':
+      return [...agents].sort((a, b) => a.name.localeCompare(b.name));
+    default:
+      return agents;
   }
+}
 
-  // Access methods (search "mcp" finds all MCP agents, etc.)
-  for (const method of agent.accessMethods) {
-    if (method.toLowerCase().includes(q) || q.includes(method.toLowerCase())) {
-      score += 15;
+// ── Result breakdown ───────────────────────────────────────────────
+
+/** The /browse filter chips a breakdown counts. */
+export type BreakdownKey = 'official' | 'verified' | 'no-auth' | AccessMethod;
+
+export interface BreakdownItem {
+  key: BreakdownKey;
+  label: string;
+  count: number;
+}
+
+const BREAKDOWN: { key: BreakdownKey; label: string; keeps: (a: Agent) => boolean }[] = [
+  { key: 'official', label: 'Official', keeps: (a) => a.official },
+  { key: 'verified', label: 'Verified', keeps: (a) => a.verified },
+  { key: 'no-auth', label: 'No auth needed', keeps: (a) => a.authType === 'none' },
+  ...ALL_ACCESS_METHODS.map((m) => ({
+    key: m as AccessMethod,
+    label: ACCESS_METHOD_LABELS[m],
+    keeps: (a: Agent) => a.accessMethods.includes(m as AccessMethod),
+  })),
+];
+
+/**
+ * How many of `agents` each filter chip would keep, in the chips' order.
+ * Chips already applied (`applied`) and zero counts are left out.
+ */
+export function resultBreakdown(agents: Agent[], applied: ReadonlySet<BreakdownKey> = new Set()): BreakdownItem[] {
+  return BREAKDOWN.filter(({ key }) => !applied.has(key))
+    .map(({ key, label, keeps }) => ({ key, label, count: agents.filter(keeps).length }))
+    .filter(({ count }) => count > 0);
+}
+
+/**
+ * A breakdown as /browse shows it under `total` results: "6 Official · all
+ * Verified · 15 MCP". A chip that would keep every result says "all".
+ */
+export function breakdownLine(items: BreakdownItem[], total: number): string {
+  return items.map(({ label, count }) => `${count === total ? 'all' : count} ${label}`).join(' · ');
+}
+
+/** Query-string flag parsing: "1", "true", "yes" (any case) mean on. */
+export function parseFlag(raw: string | null | undefined): boolean {
+  return !!raw && ['1', 'true', 'yes'].includes(raw.trim().toLowerCase());
+}
+
+/**
+ * The /browse URL for a submitted search. Params already in `current`
+ * (filters and sort) are kept, so a search never clears them. Pass '' as
+ * `current` to start a fresh search.
+ */
+export function browseHref(query: string, current: string | URLSearchParams = ''): string {
+  const params = new URLSearchParams(current);
+  const q = query.trim();
+  if (q) params.set('q', q);
+  else params.delete('q');
+  const qs = params.toString();
+  return qs ? `/browse?${qs}` : '/browse';
+}
+
+/** What a /browse view asks for, parsed from its URL. */
+export interface BrowseState {
+  query: string;
+  /** ?task=<slug>, resolved. An unknown slug is no task. */
+  task?: TaskQuery;
+  category: string;
+  /** ?official=1. A vendor implies it without it. */
+  official: boolean;
+  vendor: string;
+  verified: boolean;
+  auth: string[];
+  access: string[];
+}
+
+/**
+ * The listings a /browse view shows, before sorting. A task picks its
+ * listings from all of `agents` before the filters apply, so a filter keeps
+ * the same listings the breakdown line counted for it.
+ */
+export function browseMatches(agents: Agent[], state: BrowseState): Agent[] {
+  const narrowed = filterAgents(state.task ? taskMatches(agents, state.task) : agents, {
+    category: state.category,
+    official: state.official || !!state.vendor,
+    vendor: state.vendor,
+    verified: state.verified,
+    auth: state.auth,
+  });
+  return searchAgents(narrowed, state.query, state.access.length > 0 ? state.access : undefined);
+}
+
+/** The /browse URL for `state`, written the way the filters write it. */
+export function browseStateHref(state: BrowseState, sort: SortOrder = 'relevance'): string {
+  const params = new URLSearchParams();
+  if (state.task) params.set('task', state.task.slug);
+  if (state.query) params.set('q', state.query);
+  if (state.category) params.set('category', state.category);
+  if (state.official) params.set('official', '1');
+  if (state.vendor) params.set('vendor', state.vendor);
+  if (state.verified) params.set('verified', '1');
+  if (state.auth.length > 0) params.set('auth', state.auth.join(','));
+  if (state.access.length > 0) params.set('access', state.access.join(','));
+  if (sort !== 'relevance') params.set('sort', sort);
+  const qs = params.toString();
+  return qs ? `/browse?${qs}` : '/browse';
+}
+
+// ── Query parsing ───────────────────────────────────────────────────
+
+type AccessMethod = Agent['accessMethods'][number];
+
+/**
+ * Query words that name an access method. A query word that equals one of
+ * these exactly is a filter, not a text match, so "capital" and "climate"
+ * never match because they contain "api" or "cli". Unlike a chip, the word
+ * also lets through a listing whose name has it as a whole word, so
+ * "mcp python" finds the MCP Python SDK, whose access is API and CLI.
+ */
+const ACCESS_ALIASES: Record<string, AccessMethod> = {
+  mcp: 'mcp',
+  api: 'api',
+  cli: 'cli',
+  extension: 'browser-extension',
+  'browser-extension': 'browser-extension',
+};
+
+/** Own keys only, so "constructor" is a search word, not an access method. */
+export function accessAlias(word: string): AccessMethod | undefined {
+  return Object.prototype.hasOwnProperty.call(ACCESS_ALIASES, word) ? ACCESS_ALIASES[word] : undefined;
+}
+
+/** Filler words in natural queries ("an mcp server for postgres"). */
+const STOPWORDS = new Set([
+  'a', 'an', 'the', 'for', 'with', 'to', 'of', 'and',
+  'server', 'servers', 'tool', 'tools',
+]);
+
+/** Each word in a group also matches listings that use another word in it. */
+const SYNONYM_GROUPS = [
+  ['postgres', 'postgresql', 'pg'],
+  ['kubernetes', 'k8s'],
+  ['github', 'gh'],
+  ['javascript', 'js'],
+  ['typescript', 'ts'],
+];
+
+/**
+ * One-way expansions: the word also matches listings that use any of these,
+ * but not the reverse, so "sql" finds MySQL and SQLite tools while "mysql"
+ * does not find SQLite ones. ("sql" alone only matches at a word start, which
+ * misses "MySQL" and "NoSQL" in descriptions.)
+ */
+const EXPANSIONS: Record<string, string[]> = {
+  sql: ['mysql', 'postgresql', 'sqlite', 'nosql', 'mssql'],
+};
+
+const SYNONYMS = new Map<string, string[]>(
+  SYNONYM_GROUPS.flatMap((group) => group.map((word): [string, string[]] => [word, group]))
+);
+for (const [word, more] of Object.entries(EXPANSIONS)) {
+  SYNONYMS.set(word, [...new Set([...(SYNONYMS.get(word) ?? [word]), ...more])]);
+}
+
+// Letters and digits in any script are word characters. Built with
+// new RegExp so the 'u'-flag syntax isn't checked against the ES2017 target.
+const NOT_WORD = '[^\\p{L}\\p{N}]';
+const EDGE_JUNK = new RegExp('^[^\\p{L}\\p{N}]+|[^\\p{L}\\p{N}+#]+$', 'gu');
+
+/**
+ * One spelling a query word can match. Words of 4+ letters match anywhere,
+ * so "postgres" finds "PostgreSQL" and "mail" finds "email". Shorter words
+ * need word boundaries, or "ts" would match "agents" and "pg" "upgrade":
+ * 1–2 letters must be a whole word, 3 must start a word. Names are often
+ * run together ("PaddleOCR", "AgentMail"), so in a name 3 letters may
+ * match anywhere.
+ */
+interface Variant {
+  word: string;
+  test: (text: string, inName?: boolean) => boolean;
+}
+
+function makeVariant(word: string): Variant {
+  if (word.length >= 4) return { word, test: (text) => text.includes(word) };
+  const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const end = word.length <= 2 ? `(?=${NOT_WORD}|$)` : '';
+  const re = new RegExp(`(?:^|${NOT_WORD})${escaped}${end}`, 'u');
+  return {
+    word,
+    test: (text, inName) => (inName && word.length === 3 ? text.includes(word) : re.test(text)),
+  };
+}
+
+/** Matches `word` as a whole word: no letter or digit right before or after it. */
+function wholeWord(word: string): RegExp {
+  const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`(?:^|${NOT_WORD})${escaped}(?=${NOT_WORD}|$)`, 'u');
+}
+
+/** An access method named in the query, with the query words that named it. */
+interface QueryAccess {
+  method: AccessMethod;
+  /** The naming words as whole words, for the name check. */
+  inName: RegExp[];
+}
+
+interface ParsedQuery {
+  /** The whole query, lowercased, with single spaces. */
+  phrase: string;
+  /** Number of distinct words in the query, filters and stopwords included. */
+  wordCount: number;
+  /** Words left after filters and stopwords, each with its synonyms. Every one must match. */
+  terms: Variant[][];
+  /**
+   * Access methods named in the query. A listing passes each one if it has
+   * the method or its name contains the word as a whole word.
+   */
+  access: QueryAccess[];
+}
+
+/** The distinct words of a lowercased query, edge punctuation trimmed. */
+function splitPhrase(phrase: string): string[] {
+  return [
+    ...new Set(
+      phrase
+        .split(/[\s,;|]+/)
+        .map((w) => w.replace(EDGE_JUNK, ''))
+        .filter(Boolean)
+    ),
+  ];
+}
+
+/**
+ * The words of `query` that narrow a search, lowercased, in order and once
+ * each: access-method words and everything that is not a stopword.
+ */
+export function narrowingWords(query: string): string[] {
+  return splitPhrase(query.toLowerCase()).filter((w) => accessAlias(w) || !STOPWORDS.has(w));
+}
+
+function parseQuery(query: string): ParsedQuery {
+  const phrase = query.toLowerCase().trim().replace(/\s+/g, ' ');
+  const words = splitPhrase(phrase);
+
+  const access: QueryAccess[] = [];
+  const kept: string[] = [];
+  const dropped: string[] = [];
+  for (const w of words) {
+    const method = accessAlias(w);
+    if (method) {
+      const seen = access.find((a) => a.method === method);
+      if (seen) seen.inName.push(wholeWord(w));
+      else access.push({ method, inName: [wholeWord(w)] });
+    } else if (STOPWORDS.has(w)) {
+      dropped.push(w);
+    } else {
+      kept.push(w);
     }
   }
 
-  // Tags
-  for (const tag of agent.tags) {
-    if (tag.toLowerCase().includes(q)) score += 10;
+  // A query of nothing but filler ("tools") still searches for its words;
+  // one with no word characters at all ("!!") searches for the raw text.
+  let textWords = kept;
+  if (textWords.length === 0 && access.length === 0) {
+    textWords = dropped.length > 0 ? dropped : phrase ? [phrase] : [];
   }
 
-  // Provider
-  if (agent.providerName.toLowerCase().includes(q)) score += 5;
+  return {
+    phrase,
+    wordCount: words.length,
+    terms: textWords.map((w) => (SYNONYMS.get(w) ?? [w]).map(makeVariant)),
+    access,
+  };
+}
+
+// ── Scoring ─────────────────────────────────────────────────────────
+
+/** Lowercased searchable text of one listing. */
+interface Haystack {
+  name: string;
+  description: string;
+  skillNames: string[];
+  skillDescriptions: string[];
+  categoryNames: string[];
+  categorySlugs: string[];
+  tags: string[];
+  provider: string;
+}
+
+function haystackOf(agent: Agent): Haystack {
+  const lower = (s: unknown) => (typeof s === 'string' ? s.toLowerCase() : '');
+  // Guard against legacy string-form skills and missing fields.
+  const skills = (agent.skills ?? []).filter((s) => s && typeof s === 'object');
+  return {
+    name: lower(agent.name),
+    description: lower(agent.description),
+    skillNames: skills.map((s) => lower(s.name)).filter(Boolean),
+    skillDescriptions: skills.map((s) => lower(s.description)).filter(Boolean),
+    categoryNames: (agent.categories ?? []).map((c) => lower(c.name)),
+    categorySlugs: (agent.categories ?? []).map((c) => lower(c.slug)),
+    tags: (agent.tags ?? []).map(lower),
+    provider: lower(agent.providerName),
+  };
+}
+
+/**
+ * Score one query word (any of its synonyms). Each field counts once,
+ * however many skills or tags mention the word:
+ *  100 — name is the word, 90 — name starts with it, 80 — name contains it
+ *   60 — description
+ *   40 — a skill name, 20 — a skill description
+ *   20 — a category name, 10 — a category slug
+ *   10 — a tag
+ *    5 — provider name
+ */
+function scoreTerm(h: Haystack, variants: Variant[]): number {
+  const hit = (text: string, inName = false) => variants.some((v) => v.test(text, inName));
+  const hitAny = (texts: string[]) => texts.some((t) => hit(t));
+  let score = 0;
+
+  if (variants.some((v) => h.name === v.word)) score += 100;
+  else if (hit(h.name, true)) score += variants.some((v) => h.name.startsWith(v.word)) ? 90 : 80;
+
+  if (hit(h.description)) score += 60;
+  if (hitAny(h.skillNames)) score += 40;
+  if (hitAny(h.skillDescriptions)) score += 20;
+  if (hitAny(h.categoryNames)) score += 20;
+  if (hitAny(h.categorySlugs)) score += 10;
+  if (hitAny(h.tags)) score += 10;
+  if (hit(h.provider)) score += 5;
 
   return score;
+}
+
+/**
+ * `chips` are the access filters picked in the UI and are strict: the
+ * listing must have every one. Access words typed in the query are looser
+ * (see ParsedQuery.access).
+ */
+function scoreParsed(agent: Agent, parsed: ParsedQuery, chips: string[]): number {
+  const methods: string[] = agent.accessMethods ?? [];
+  if (!chips.every((m) => methods.includes(m))) return 0;
+  if (parsed.access.length > 0) {
+    const name = typeof agent.name === 'string' ? agent.name.toLowerCase() : '';
+    const passes = (a: QueryAccess) => methods.includes(a.method) || a.inName.some((re) => re.test(name));
+    if (!parsed.access.every(passes)) return 0;
+  }
+  if (parsed.terms.length === 0) return 1;
+
+  const h = haystackOf(agent);
+  let score = 0;
+  for (const variants of parsed.terms) {
+    const s = scoreTerm(h, variants);
+    if (s === 0) return 0; // every word must match somewhere
+    score += s;
+  }
+
+  // Multi-word queries: reward the whole phrase in the name ("postgres mcp pro").
+  if (parsed.wordCount > 1) {
+    if (h.name === parsed.phrase) score += 100;
+    else if (h.name.includes(parsed.phrase)) score += 50;
+  }
+  return score;
+}
+
+/**
+ * Score an agent against a search query. Higher = more relevant; 0 = no
+ * match; an empty query scores 1 (neutral).
+ *
+ * The query is split into words. A word that names an access method
+ * ("mcp", "api", "cli", "extension") is a filter: an agent scores 0 unless
+ * it has that method or its name contains the word as a whole word.
+ * Stopwords ("for", "server", "tools", ...) are dropped. Every remaining
+ * word, or one of its synonyms (postgres/postgresql/pg, k8s/kubernetes,
+ * gh/github, js/javascript, ts/typescript; "sql" also matches mysql,
+ * postgresql, sqlite, nosql and mssql), must match some field; the score is
+ * the sum of the per-word scores (see scoreTerm).
+ */
+export function scoreAgent(agent: Agent, query: string): number {
+  if (!query.trim()) return 1;
+  return scoreParsed(agent, parseQuery(query), []);
+}
+
+/**
+ * Longest search text acted on. Real searches are a few words; the cap keeps a
+ * pasted essay or a junk-filled URL from costing seconds of CPU (the no-results
+ * recovery on /browse retries every word and respelling).
+ */
+export const MAX_QUERY_LENGTH = 200;
+
+/** Trimmed search text, cut to MAX_QUERY_LENGTH. */
+export function clampQuery(raw: string | null | undefined): string {
+  return (raw ?? '').trim().slice(0, MAX_QUERY_LENGTH).trim();
 }
 
 export function searchAgents(
@@ -75,24 +500,153 @@ export function searchAgents(
   query: string,
   filterAccessMethods?: string[]
 ): Agent[] {
-  let results = agents;
+  const parsed = parseQuery(clampQuery(query));
+  // Chip filters (strict) and access words in the query combine (AND).
+  const chips = [
+    ...new Set((filterAccessMethods ?? []).map((m) => accessAlias(m.toLowerCase()) ?? m)),
+  ];
 
-  // Filter by access methods first
-  if (filterAccessMethods && filterAccessMethods.length > 0) {
-    results = results.filter((agent) =>
-      filterAccessMethods.every((method) =>
-        (agent.accessMethods as string[]).includes(method)
-      )
-    );
+  // Nothing to rank by: keep the incoming order.
+  if (parsed.terms.length === 0) {
+    return chips.length === 0 && parsed.access.length === 0
+      ? agents
+      : agents.filter((a) => scoreParsed(a, parsed, chips) > 0);
   }
 
-  // Then apply text search
-  const q = query.trim();
-  if (!q) return results;
-
-  return results
-    .map((agent) => ({ agent, score: scoreAgent(agent, q) }))
+  return agents
+    .map((agent) => ({ agent, score: scoreParsed(agent, parsed, chips) }))
     .filter(({ score }) => score > 0)
     .sort((a, b) => b.score - a.score)
     .map(({ agent }) => agent);
+}
+
+// ── Tasks ───────────────────────────────────────────────────────────
+
+/** What a task (content/tasks.json, lib/tasks.ts) asks the ranker for. */
+export interface TaskQuery {
+  slug: string;
+  /** Words and phrases its listings use. Each must match one field on its own. */
+  keywords: readonly string[];
+  /** Listings in these categories rank higher. */
+  categories: readonly string[];
+  /** Listings with one of these access methods rank higher. */
+  access: readonly string[];
+}
+
+/**
+ * Points a task keyword earns in each field of a listing, once per field.
+ * The description says what a listing is for, so it counts for more than a
+ * skill name; skill descriptions often name things a listing only touches.
+ * A listing in one of the task's categories gets the category bonus: it is
+ * what tells a search tool from a model API with a web search feature.
+ */
+const TASK_POINTS = {
+  name: 100,
+  exactName: 20,
+  description: 60,
+  tags: 50,
+  skillNames: 40,
+  skillDescriptions: 15,
+  category: 100,
+  access: 20,
+};
+
+/**
+ * The score a listing needs to fit a task. In one of the task's categories,
+ * a keyword in its name is enough, or one in its description and in one
+ * more field or with one of the task's access methods; outside them it
+ * takes about three fields, so a listing that mentions a keyword in passing
+ * is left out.
+ */
+export const TASK_MIN_SCORE = 170;
+
+const WORD_SPLIT = new RegExp(`${NOT_WORD}+`, 'u');
+
+/** Lowercased words of `text`, filler words left out unless there is nothing else. */
+function contentWords(text: string): string[] {
+  const all = text.toLowerCase().split(WORD_SPLIT).filter(Boolean);
+  const kept = all.filter((w) => !STOPWORDS.has(w));
+  return kept.length > 0 ? kept : all;
+}
+
+/**
+ * Tests for one task keyword against lowercased text, each word (or a
+ * synonym) by the rules for search words (makeVariant), filler words left
+ * out. `anywhere`: every word somewhere in the text, for names, tags and
+ * skill names. `phrase`: the words next to each other in order, for
+ * descriptions, where "search" and "api" far apart mean nothing; filler
+ * between them is skipped, so "text-to-speech" matches "text to speech".
+ */
+export function keywordMatcher(keyword: string): {
+  anywhere: (text: string, inName?: boolean) => boolean;
+  phrase: (text: string) => boolean;
+} {
+  const words = contentWords(keyword).map((w) => (SYNONYMS.get(w) ?? [w]).map(makeVariant));
+  const anywhere = (text: string, inName?: boolean) =>
+    words.length > 0 && words.every((variants) => variants.some((v) => v.test(text, inName)));
+  if (words.length <= 1) return { anywhere, phrase: (text) => anywhere(text) };
+  return {
+    anywhere,
+    phrase: (text) => {
+      const tokens = contentWords(text);
+      for (let i = 0; i + words.length <= tokens.length; i++) {
+        if (words.every((variants, j) => variants.some((v) => v.test(tokens[i + j])))) return true;
+      }
+      return false;
+    },
+  };
+}
+
+type Matcher = ReturnType<typeof keywordMatcher>;
+
+/**
+ * How well `agent` fits `task`. `points`: for each keyword, the points of
+ * every field that has it (see keywordMatcher; the tags count as one
+ * field). `score`: the points with the category and access bonuses, or 0
+ * without points.
+ */
+export function taskScore(agent: Agent, task: TaskQuery): { points: number; score: number } {
+  return scoreTask(haystackOf(agent), agent, task.keywords.map(keywordMatcher), task);
+}
+
+function scoreTask(h: Haystack, agent: Agent, matchers: Matcher[], task: TaskQuery): { points: number; score: number } {
+  const tags = h.tags.join(' ');
+  let points = 0;
+  task.keywords.forEach((keyword, i) => {
+    const { anywhere, phrase } = matchers[i];
+    if (anywhere(h.name, true)) points += TASK_POINTS.name + (h.name === keyword.toLowerCase() ? TASK_POINTS.exactName : 0);
+    if (phrase(h.description)) points += TASK_POINTS.description;
+    if (anywhere(tags)) points += TASK_POINTS.tags;
+    if (h.skillNames.some((s) => anywhere(s))) points += TASK_POINTS.skillNames;
+    if (h.skillDescriptions.some((s) => phrase(s))) points += TASK_POINTS.skillDescriptions;
+  });
+  if (points === 0) return { points, score: 0 };
+  let score = points;
+  if (h.categorySlugs.some((c) => task.categories.includes(c))) score += TASK_POINTS.category;
+  if ((agent.accessMethods ?? []).some((m) => task.access.includes(m))) score += TASK_POINTS.access;
+  return { points, score };
+}
+
+const taskResults = new WeakMap<Agent[], Map<string, Agent[]>>();
+
+/**
+ * The listings that fit `task`, best first; equal scores keep the incoming
+ * order. Remembered per catalog array, since /browse and its ways back ask
+ * for the same task many times.
+ */
+export function taskMatches(agents: Agent[], task: TaskQuery): Agent[] {
+  let byTask = taskResults.get(agents);
+  if (!byTask) taskResults.set(agents, (byTask = new Map()));
+  const key = JSON.stringify([task.slug, task.keywords, task.categories, task.access]);
+  const known = byTask.get(key);
+  if (known) return known;
+
+  const matchers = task.keywords.map(keywordMatcher);
+  const result = agents
+    .map((agent) => ({ agent, score: scoreTask(haystackOf(agent), agent, matchers, task).score }))
+    .filter(({ score }) => score >= TASK_MIN_SCORE)
+    .sort((a, b) => b.score - a.score)
+    .map(({ agent }) => agent);
+  byTask.set(key, result);
+  return result;
 }

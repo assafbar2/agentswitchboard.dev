@@ -1,0 +1,64 @@
+{
+  "id": "arcjet",
+  "name": "Arcjet",
+  "slug": "arcjet",
+  "description": "Secures AI agents and apps at runtime: detects prompt injection, enforces tool-call policies, redacts sensitive data, and blocks bots, through SDKs, an MCP server, and a CLI.",
+  "providerName": "Arcjet",
+  "providerUrl": "https://arcjet.com",
+  "agentUrl": "https://arcjet.com",
+  "categories": [
+    "security",
+    "infrastructure"
+  ],
+  "tags": [
+    "prompt-injection",
+    "agent-guardrails",
+    "policy-enforcement",
+    "bot-protection",
+    "rate-limiting",
+    "pii-redaction",
+    "rego"
+  ],
+  "skills": [
+    {
+      "id": "prompt-injection-detection",
+      "name": "Prompt Injection Detection",
+      "description": "Detects prompt injection attempts in prompts and untrusted input before an agent or model acts on them."
+    },
+    {
+      "id": "guard-policies",
+      "name": "Guard Policies",
+      "description": "Authorizes agent tool calls and actions against policies written in Rego, with drafting, validation, and test evaluation."
+    },
+    {
+      "id": "sensitive-info-detection",
+      "name": "Sensitive Info Detection",
+      "description": "Detects sensitive information such as PII in requests and agent traffic so it can be blocked or redacted."
+    },
+    {
+      "id": "bot-protection",
+      "name": "Bot Protection",
+      "description": "Identifies and blocks automated clients and abusive traffic on HTTP routes, API endpoints, and agent entry points."
+    },
+    {
+      "id": "request-investigation",
+      "name": "Request Investigation",
+      "description": "Explains why a request was allowed or denied and analyzes traffic, anomalies, and IP threat intelligence for a site."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-31T07:10:38.217Z",
+  "updatedAt": "2026-10-31T07:10:38.217Z"
+}

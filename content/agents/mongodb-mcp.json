@@ -38,14 +38,18 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.mongodb.com",
+  "mcpCommand": "npx -y mongodb-mcp-server@latest --readOnly",
+  "quickstartUrl": "https://www.mongodb.com/docs/mcp-server/get-started/",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "mcp"
   ],
   "createdAt": "2026-04-25T19:07:08.691Z",
-  "updatedAt": "2026-04-25T19:07:08.691Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

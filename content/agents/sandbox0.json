@@ -1,0 +1,28 @@
+{
+  "id": "sandbox0",
+  "name": "Sandbox0",
+  "slug": "sandbox0",
+  "description": "Runs agent-generated code in managed cloud sandboxes with pause/resume and persistent root filesystems, through an auth-gated REST API and a CLI.",
+  "providerName": "Sandbox0",
+  "providerUrl": "https://sandbox0.ai",
+  "version": "0.10.6",
+  "agentUrl": "https://sandbox0.ai/docs",
+  "categories": ["infrastructure", "code-devtools", "autonomous-agents"],
+  "tags": ["sandboxing", "code-execution", "cloud-runtime", "persistent-filesystem", "snapshots"],
+  "skills": [
+    { "id": "create-sandbox", "name": "Create Sandbox", "description": "Provisions an isolated cloud sandbox for running untrusted or agent-generated code via the REST API or CLI." },
+    { "id": "pause-resume", "name": "Pause and Resume", "description": "Pauses a running sandbox and resumes it later with its root filesystem state preserved across the gap." },
+    { "id": "manage-files", "name": "Manage Files", "description": "Reads and writes files inside a sandbox, backed by a persistent root filesystem across the sandbox lifecycle." }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": ["api", "cli"],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

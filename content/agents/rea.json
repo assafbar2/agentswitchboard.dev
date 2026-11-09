@@ -1,0 +1,63 @@
+{
+  "id": "rea",
+  "name": "REA (Reverse Engineer Anything)",
+  "slug": "rea",
+  "description": "Gives coding agents MCP and CLI reverse-engineering tools for native binaries, JavaScript and Electron apps, .NET assemblies, Android APKs, and websites, with evidence per finding.",
+  "providerName": "morluto",
+  "providerUrl": "https://github.com/morluto",
+  "agentUrl": "https://rea.tools",
+  "categories": [
+    "security",
+    "code-devtools"
+  ],
+  "tags": [
+    "reverse-engineering",
+    "binary-analysis",
+    "ghidra",
+    "hopper",
+    "electron",
+    "android-apk",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "native-binary-analysis",
+      "name": "Native Binary Analysis",
+      "description": "Returns pseudocode, assembly, strings, symbols, and references using Hopper, Ghidra, or IDA."
+    },
+    {
+      "id": "javascript-app-analysis",
+      "name": "JavaScript and Electron Analysis",
+      "description": "Maps modules, imports, source maps, routes, IPC, and native add-ons in JavaScript and Electron apps."
+    },
+    {
+      "id": "website-analysis",
+      "name": "Website Analysis",
+      "description": "Captures page structure, scripts, network observations, and screenshots with a Chrome-family browser."
+    },
+    {
+      "id": "android-apk-analysis",
+      "name": "Android APK Analysis",
+      "description": "Reads manifests, classes, and decompiled methods from APKs with headless JADX."
+    },
+    {
+      "id": "dotnet-analysis",
+      "name": ".NET Assembly Analysis",
+      "description": "Inspects .NET metadata, CIL instructions, and native dependencies statically."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-10-10T21:22:01.480Z",
+  "updatedAt": "2026-10-10T21:22:01.480Z"
+}

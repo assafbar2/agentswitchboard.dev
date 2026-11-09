@@ -20,9 +20,11 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://github.com/cloudflare/cloudflare-os#quick-start",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -30,5 +32,5 @@
     "cli"
   ],
   "createdAt": "2026-08-11T00:40:13.013Z",
-  "updatedAt": "2026-08-11T00:40:13.013Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

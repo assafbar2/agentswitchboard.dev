@@ -1,0 +1,57 @@
+{
+  "id": "openagent",
+  "name": "OpenAgent",
+  "slug": "openagent",
+  "description": "Self-hosts a personal AI assistant as a single binary that combines 30+ model providers, RAG knowledge bases, MCP tools, and browser and shell agents, for individuals and teams.",
+  "providerName": "OpenAgent AI",
+  "providerUrl": "https://github.com/the-open-agent",
+  "agentUrl": "https://openagentai.org",
+  "categories": [
+    "autonomous-agents"
+  ],
+  "tags": [
+    "self-hosted",
+    "personal-assistant",
+    "rag",
+    "knowledge-base",
+    "mcp-client",
+    "browser-use",
+    "single-binary",
+    "openai-compatible"
+  ],
+  "skills": [
+    {
+      "id": "rag-knowledge-base",
+      "name": "RAG Knowledge Base",
+      "description": "Ingests PDFs, Word, and Markdown files into embedded stores and retrieves relevant passages before each answer."
+    },
+    {
+      "id": "mcp-tools",
+      "name": "MCP Tool Servers",
+      "description": "Connects agents as an MCP client to any MCP server and routes the model's tool calls to it."
+    },
+    {
+      "id": "built-in-tools",
+      "name": "Built-In Agent Tools",
+      "description": "Attaches built-in web search, web browser, and shell tools to an agent for live browsing and command execution."
+    },
+    {
+      "id": "multi-provider-chat",
+      "name": "Multi-Provider Chat Assistants",
+      "description": "Builds chat assistants on any connected model provider, configured per store with its own system prompt."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-10T21:22:01.497Z",
+  "updatedAt": "2026-10-10T21:22:01.497Z"
+}

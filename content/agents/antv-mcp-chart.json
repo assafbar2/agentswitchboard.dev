@@ -38,14 +38,17 @@
   "authType": "none",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpCommand": "npx -y @antv/mcp-server-chart",
+  "quickstartUrl": "https://github.com/antvis/mcp-server-chart",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "mcp"
   ],
   "createdAt": "2026-09-13T20:13:54.418Z",
-  "updatedAt": "2026-09-13T20:13:54.418Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

@@ -42,14 +42,17 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.clickup.com/mcp",
+  "quickstartUrl": "https://developer.clickup.com/docs/connect-an-ai-assistant-to-clickups-mcp-server-1",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "mcp"
   ],
   "createdAt": "2026-10-04T17:55:56.177Z",
-  "updatedAt": "2026-10-04T17:55:56.177Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

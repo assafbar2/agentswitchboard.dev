@@ -44,9 +44,15 @@
   "authType": "none",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpCommand": "uvx --from paddleocr-mcp paddleocr_mcp",
+  "install": {
+    "type": "pip",
+    "command": "python -m pip install paddleocr"
+  },
   "status": "published",
   "featured": true,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -55,5 +61,5 @@
     "mcp"
   ],
   "createdAt": "2026-09-18T22:02:13.772Z",
-  "updatedAt": "2026-09-18T22:02:13.772Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

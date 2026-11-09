@@ -1,18 +1,23 @@
 'use server';
 
 /**
- * Submission form handler: files each submission as a GitHub issue on the
- * directory repo (label: "submission"), which notifies the maintainer.
- * Requires GITHUB_ISSUES_TOKEN in the environment (fine-grained token,
- * Issues: write). Without it, the form reports the email fallback.
+ * Submission form handler: validates the form, then files it through
+ * lib/submission.ts as a public GitHub issue (label: "submission"). The form
+ * requires an email so the maintainer can follow up; it is sent privately and
+ * never goes on the issue.
  */
 
-const REPO = 'assafbar2/agentswitchboard.dev';
+import { fileSubmission } from '@/lib/submission';
 
 export interface SubmitState {
   status: 'idle' | 'ok' | 'error';
   message: string;
+  /** The public GitHub issue for this submission, where the decision is posted. */
+  issueUrl?: string;
 }
+
+const OK_MESSAGE = 'Thanks! Your submission is filed as a public GitHub issue.';
+const USE_IT_MAX = 1000;
 
 export async function submitAgent(
   _prev: SubmitState,
@@ -20,10 +25,11 @@ export async function submitAgent(
 ): Promise<SubmitState> {
   // Honeypot: real users never fill this hidden field
   if (formData.get('website')) {
-    return { status: 'ok', message: 'Thanks! Your submission is in the review queue.' };
+    return { status: 'ok', message: OK_MESSAGE };
   }
 
   const ask = String(formData.get('ask') ?? '').trim();
+  const useIt = String(formData.get('useit') ?? '').trim();
   const email = String(formData.get('email') ?? '').trim();
 
   if (ask.length < 20) {
@@ -32,48 +38,23 @@ export async function submitAgent(
   if (ask.length > 4000) {
     return { status: 'error', message: 'Please keep it under 4000 characters.' };
   }
+  if (useIt.length > USE_IT_MAX) {
+    return { status: 'error', message: `Please keep how to start using it under ${USE_IT_MAX} characters.` };
+  }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return { status: 'error', message: 'Please provide a valid email so we can follow up.' };
   }
 
-  const token = process.env.GITHUB_ISSUES_TOKEN;
-  if (!token) {
+  const body = useIt ? `${ask}\n\nHow to start using it (from its docs):\n${useIt}` : ask;
+  const result = await fileSubmission({ ask: body, email, source: 'form' });
+  if (!result.ok) {
     return {
       status: 'error',
-      message: 'Submissions are briefly offline — email barnir@agentmail.to instead.',
+      message:
+        result.reason === 'not_configured'
+          ? 'Submissions are briefly offline — email barnir@agentmail.to instead.'
+          : 'Something went wrong filing the submission — email barnir@agentmail.to instead.',
     };
   }
-
-  const title = `Submission: ${ask.slice(0, 60).replace(/\s+/g, ' ')}${ask.length > 60 ? '…' : ''}`;
-  const body = [
-    '## Directory submission (via /submit form)',
-    '',
-    '**Ask:**',
-    '',
-    ask,
-    '',
-    `**Contact:** ${email}`,
-    '',
-    '---',
-    '_Review flow: verify endpoints & signals, then add via a content PR (see CONTRIBUTING.md)._',
-  ].join('\n');
-
-  const res = await fetch(`https://api.github.com/repos/${REPO}/issues`, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: 'application/vnd.github+json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ title, body, labels: ['submission'] }),
-  });
-
-  if (!res.ok) {
-    return {
-      status: 'error',
-      message: 'Something went wrong filing the submission — email barnir@agentmail.to instead.',
-    };
-  }
-
-  return { status: 'ok', message: 'Thanks! Your submission is in the review queue — we verify every entry before listing.' };
+  return { status: 'ok', message: OK_MESSAGE, issueUrl: result.issueUrl };
 }

@@ -1,0 +1,57 @@
+{
+  "id": "kaibanjs",
+  "name": "KaibanJS",
+  "slug": "kaibanjs",
+  "description": "Builds multi-agent systems in JavaScript with role-based agents, tasks, and teams that run on a Kanban-style board, for JavaScript and TypeScript developers.",
+  "providerName": "Kaiban",
+  "providerUrl": "https://www.kaiban.io",
+  "agentUrl": "https://www.kaibanjs.com/",
+  "categories": [
+    "orchestration"
+  ],
+  "tags": [
+    "javascript",
+    "typescript",
+    "multi-agent",
+    "kanban",
+    "react",
+    "llm-framework",
+    "workflow-orchestration"
+  ],
+  "skills": [
+    {
+      "id": "role-based-agents",
+      "name": "Role-Based Agents",
+      "description": "Defines agents with a name, role, goal, and background that loop on tasks until they reach a final answer."
+    },
+    {
+      "id": "teams-and-tasks",
+      "name": "Teams and Tasks",
+      "description": "Coordinates agents in a team that passes task results along and marks deliverables."
+    },
+    {
+      "id": "tool-integration",
+      "name": "Tool Integration",
+      "description": "Equips agents with tools such as web search to act beyond text generation."
+    },
+    {
+      "id": "workflow-driven-agent",
+      "name": "Workflow-Driven Agent",
+      "description": "Runs a predefined workflow inside an agent for deterministic multi-step execution."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-10-10T21:22:01.515Z",
+  "updatedAt": "2026-10-10T21:22:01.515Z"
+}

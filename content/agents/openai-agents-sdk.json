@@ -18,9 +18,11 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://openai.github.io/openai-agents-python/quickstart/",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -29,5 +31,5 @@
     "cli"
   ],
   "createdAt": "2026-03-22T09:53:19.712Z",
-  "updatedAt": "2026-03-22T16:40:27.529Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

@@ -11,7 +11,8 @@
  *   2. npx tsx scripts/weekly-drop.ts        (writes content/agents/*.json + changelog)
  *   3. git checkout scripts/weekly-drop.ts   (revert — this file never enters the drop diff)
  *   4. npx tsx scripts/validate-content.ts   (CI runs this too)
- *   5. git add content/ && commit "Weekly drop YYYY-MM-DD: added N, updated M, archived K",
+ *   5. npx tsx scripts/drop-impact.ts        (what the drop changes elsewhere, for the PR description)
+ *   6. git add content/ && commit "Weekly drop YYYY-MM-DD: added N, updated M, archived K",
  *      push the branch, open the PR
  *
  * Skills: optional, 0-5, only documented capabilities — empty beats invented.
@@ -21,11 +22,18 @@
  * Auth types: 'apiKey' | 'oauth2' | 'bearer' | 'none'
  * verified: true only after the run itself verified the URLs/endpoints.
  * featured: leave unset — Assaf's decision, never set by the weekly run.
+ * official: true only for a first-party listing whose agentUrl is on a vendor
+ *   source in content/official-vendors.json (validate-content enforces it).
+ * Use it now (optional): mcpEndpoint, mcpCommand, install, quickstartUrl and
+ *   apiBaseUrl, each copied from the product's own docs and found there word
+ *   for word. Leave a field out rather than guess it.
  * Valid category slugs: content/categories.json (or `npx tsx scripts/cms.ts categories`)
  */
 
 import * as fs from 'fs';
 import * as path from 'path';
+import { DROP_INTRO_MAX, groupDrops } from '../lib/drops';
+import type { AgentInstall } from '../lib/types';
 import { appendChangelog } from './lib/changelog';
 
 // ─── AGENTS TO ADD — edit this array, run, commit, then clear ────────────────
@@ -1020,8 +1028,20 @@ interface AgentInput {
   supportsPushNotifications?: boolean;
   featured?: boolean;
   verified?: boolean;
+  /** Only for first-party listings from a vendor in content/official-vendors.json. */
+  official?: boolean;
   wellKnownUrl?: string;
   skills?: AgentSkill[];
+  /** A hosted MCP server's address. Needs 'mcp' access. */
+  mcpEndpoint?: string;
+  /** A local MCP server's launch command: npx, uvx, bunx, docker or pipx. Needs 'mcp' access. */
+  mcpCommand?: string;
+  /** Needs 'cli' access. */
+  install?: AgentInstall;
+  /** The product's own setup guide. */
+  quickstartUrl?: string;
+  /** Needs 'api' access. */
+  apiBaseUrl?: string;
 }
 
 const CONTENT = path.resolve(process.cwd(), 'content');
@@ -1064,9 +1084,15 @@ function createAgent(agent: AgentInput, catSlugs: Set<string>): 'created' | 'ski
     authType: agent.authType ?? 'apiKey',
     supportsStreaming: agent.supportsStreaming ?? false,
     supportsPushNotifications: agent.supportsPushNotifications ?? false,
+    mcpEndpoint: agent.mcpEndpoint,
+    mcpCommand: agent.mcpCommand,
+    install: agent.install,
+    quickstartUrl: agent.quickstartUrl,
+    apiBaseUrl: agent.apiBaseUrl,
     status: 'published',
     featured: agent.featured ?? false,
     verified: agent.verified ?? false,
+    ...(agent.official ? { official: true } : {}),
     tier: 'free',
     discoveredBy: 'manual',
     accessMethods: agent.accessMethods ?? [],
@@ -1102,10 +1128,20 @@ function main() {
   if (created > 0) {
     console.log('\n📌 Next steps:');
     console.log('   1. git checkout scripts/weekly-drop.ts   (revert the pasted array)');
-    console.log('   2. npx tsx scripts/validate-content.ts');
-    console.log('   3. git add content/ && git commit -m "Weekly drop YYYY-MM-DD: added N, updated M, archived K"');
-    console.log('   4. git push -u origin HEAD and open a PR — never push to main');
+    console.log(`   2. ${dropIntroHint()}`);
+    console.log('   3. npx tsx scripts/validate-content.ts');
+    console.log('   4. npx tsx scripts/drop-impact.ts   (what the drop changes elsewhere, for the PR description)');
+    console.log('   5. git add content/ && git commit -m "Weekly drop YYYY-MM-DD: added N, updated M, archived K"');
+    console.log('   6. git push -u origin HEAD and open a PR — never push to main');
   }
+}
+
+/** Where this run's drop page intro goes: content/drops.json is keyed by the drop's first day, which may differ from the run's name. */
+function dropIntroHint(): string {
+  const log = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'content', 'changelog.json'), 'utf8'));
+  const { drops, pending } = groupDrops(log);
+  if (pending || !drops[0]) return 'Too small for its own drop page: it joins the next drop on /drops.';
+  return `Optional: a one-line intro for /drops/${drops[0].date}, in content/drops.json under "${drops[0].date}" (max ${DROP_INTRO_MAX} characters).`;
 }
 
 main();

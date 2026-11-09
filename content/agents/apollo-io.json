@@ -18,9 +18,12 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://docs.apollo.io/reference/apollo-api",
+  "apiBaseUrl": "https://api.apollo.io/api/v1",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -28,5 +31,5 @@
     "browser-extension"
   ],
   "createdAt": "2026-03-22T09:52:31.869Z",
-  "updatedAt": "2026-03-22T09:52:31.869Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

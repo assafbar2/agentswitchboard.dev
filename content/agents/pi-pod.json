@@ -1,0 +1,51 @@
+{
+  "id": "pi-pod",
+  "name": "pi pod",
+  "slug": "pi-pod",
+  "description": "Runs pi coding-agent sessions in isolated remote sandboxes on a server you host, and lets you attach from a terminal CLI or iOS and Android apps. For developers who self-host.",
+  "providerName": "pi pod",
+  "providerUrl": "https://github.com/pi-pod",
+  "agentUrl": "https://pipod.dev/",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "remote-sandboxes",
+    "pi-coding-agent",
+    "self-hosted",
+    "docker-compose",
+    "mobile-apps",
+    "oidc"
+  ],
+  "skills": [
+    {
+      "id": "remote-pods",
+      "name": "Remote pods",
+      "description": "Launches a pi session in a sandboxed pod for the current directory and attaches to it."
+    },
+    {
+      "id": "mobile-clients",
+      "name": "Phone apps",
+      "description": "Drives the same pod sessions from the iOS and Android apps over the server's gateway."
+    },
+    {
+      "id": "self-host-deploy",
+      "name": "Self-hosted deployment",
+      "description": "Installs and upgrades the server, sandbox service and Postgres as one Compose project."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-31T07:10:38.189Z",
+  "updatedAt": "2026-10-31T07:10:38.189Z"
+}

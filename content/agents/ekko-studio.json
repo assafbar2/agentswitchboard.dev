@@ -1,0 +1,64 @@
+{
+  "id": "ekko-studio",
+  "name": "Ekko Studio",
+  "slug": "ekko-studio",
+  "description": "Runs Hermes Agent, its own Ekko Agent, and 14 coding agents such as Claude Code and Codex in one local-first desktop or self-hosted workspace with chat and workflows.",
+  "providerName": "EKKOLearnAI",
+  "providerUrl": "https://github.com/EKKOLearnAI",
+  "agentUrl": "https://ekkostudio.xyz",
+  "categories": [
+    "orchestration",
+    "productivity"
+  ],
+  "tags": [
+    "multi-agent-workspace",
+    "coding-agents",
+    "hermes-agent",
+    "visual-workflows",
+    "group-chat",
+    "scheduled-jobs",
+    "desktop-app",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "multi-agent-chat",
+      "name": "Multi-Agent Chat",
+      "description": "Chats with the supported agents with streaming responses, tool traces, file previews, persistent sessions, and group-chat rooms."
+    },
+    {
+      "id": "visual-workflows",
+      "name": "Visual Workflows",
+      "description": "Builds executable agent workflows on a canvas with conditions, loops, approval gates, run budgets, and execution history."
+    },
+    {
+      "id": "coding-agent-manager",
+      "name": "Coding Agent Manager",
+      "description": "Detects, installs, configures, launches, and monitors 14 coding-agent CLIs, with a terminal, session history, and file diffs."
+    },
+    {
+      "id": "platform-channels",
+      "name": "Platform Channels",
+      "description": "Connects agents to 10 messaging platforms, including Telegram, Discord, Slack, WhatsApp, and Feishu."
+    },
+    {
+      "id": "scheduled-jobs",
+      "name": "Scheduled Jobs",
+      "description": "Creates, edits, pauses, resumes, and immediately triggers cron jobs."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-10-31T07:10:38.169Z",
+  "updatedAt": "2026-10-31T07:10:38.169Z"
+}

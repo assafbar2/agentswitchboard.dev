@@ -21,9 +21,15 @@
   "authType": "oauth2",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "binary",
+    "command": "curl -fsSL https://claude.ai/install.sh | bash"
+  },
+  "quickstartUrl": "https://code.claude.com/docs/en/quickstart",
   "status": "published",
   "featured": true,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -31,5 +37,5 @@
     "api"
   ],
   "createdAt": "2026-08-11T00:40:12.994Z",
-  "updatedAt": "2026-09-25T22:54:00.180Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

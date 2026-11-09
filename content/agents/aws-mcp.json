@@ -47,14 +47,16 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://github.com/awslabs/mcp",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "mcp"
   ],
   "createdAt": "2026-04-13T21:38:26.414Z",
-  "updatedAt": "2026-05-13T16:22:39.867Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

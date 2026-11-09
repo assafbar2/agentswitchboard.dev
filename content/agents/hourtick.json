@@ -1,0 +1,65 @@
+{
+  "id": "hourtick",
+  "name": "Hourtick",
+  "slug": "hourtick",
+  "description": "Tracks billable time, tasks and team chat for people and AI agents via an OAuth-gated MCP server and an OpenAPI 3.1 REST API; agents log their own hours and token costs.",
+  "providerName": "WeCode A/S",
+  "providerUrl": "https://hourtick.com",
+  "version": "1.5.0",
+  "agentUrl": "https://hourtick.com/developers",
+  "categories": [
+    "orchestration",
+    "finance",
+    "communication"
+  ],
+  "tags": [
+    "time-tracking",
+    "timesheets",
+    "invoicing",
+    "expense-tracking",
+    "remote-mcp",
+    "oauth2",
+    "team-chat"
+  ],
+  "skills": [
+    {
+      "id": "agent-delegation",
+      "name": "Agent Delegation",
+      "description": "Delegates work to other agents and waits for replies using agent_delegate, agent_wait_for_work, agent_await and agent_reply over the MCP server."
+    },
+    {
+      "id": "timesheet-logging",
+      "name": "Timesheet Logging",
+      "description": "Fills and reviews timesheets with fill_my_timesheet and get_my_day, and writes time entries through the /api/v1/time-entries REST endpoints."
+    },
+    {
+      "id": "expense-and-cost-reporting",
+      "name": "Expense & Cost Reporting",
+      "description": "Records expenses with log_expense and reports agent token spend with agent_report_usage, backed by the /expenses and /agent-costs endpoints."
+    },
+    {
+      "id": "invoicing",
+      "name": "Client Invoicing",
+      "description": "Previews and sends client invoices with preview_invoice and send_invoice, drawing on logged time entries and expenses."
+    },
+    {
+      "id": "reports-and-files",
+      "name": "Reports & Files",
+      "description": "Generates PDF reports with get_report_pdf, lists attachments with list_files and captures notes with create_note."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

@@ -1,0 +1,73 @@
+{
+  "id": "sniffington",
+  "name": "Sniffington",
+  "slug": "sniffington",
+  "description": "Monitors brand mentions across Reddit, X, LinkedIn and other platforms. Exposes mentions, briefs, analytics and reply drafting via an OAuth-gated MCP server, a REST API and an npm CLI.",
+  "providerName": "KMF Ventures LLC",
+  "providerUrl": "https://sniffington.com",
+  "agentUrl": "https://sniffington.com/agents",
+  "categories": [
+    "sales-marketing",
+    "research"
+  ],
+  "tags": [
+    "brand-monitoring",
+    "social-listening",
+    "reddit",
+    "competitor-tracking",
+    "share-of-voice",
+    "mcp"
+  ],
+  "skills": [
+    {
+      "id": "mention-monitoring",
+      "name": "Mention Monitoring",
+      "description": "List, filter, bulk-update and export brand mentions and pull a periodic brief via list_mentions, export_mentions and get_brief."
+    },
+    {
+      "id": "reply-drafting",
+      "name": "Reply Drafting",
+      "description": "Generate reply drafts for a mention, a Reddit comment or an outreach message with draft_reply, draft_reddit_comment and draft_outreach."
+    },
+    {
+      "id": "reddit-opportunities",
+      "name": "Reddit Opportunities",
+      "description": "Find subreddits and threads worth joining using find_reddit_opportunities, plan_reddit_post and build_reddit_strategy."
+    },
+    {
+      "id": "competitor-share-of-voice",
+      "name": "Competitor Share of Voice",
+      "description": "Track rivals and compute share of voice with list_competitors, competitor_brief, export_rival_card and get_share_of_voice."
+    },
+    {
+      "id": "mention-analytics",
+      "name": "Mention Analytics",
+      "description": "Query volume, breakdowns and overviews, including read-only SQL over workspace data, via get_analytics, get_volume and query_sql."
+    },
+    {
+      "id": "human-review-queue",
+      "name": "Human Review Queue",
+      "description": "Pull posts awaiting a human verdict with list_review_queue and record rulings through update_mention or update_account_post."
+    },
+    {
+      "id": "alerts-and-webhooks",
+      "name": "Alerts and Webhooks",
+      "description": "Create alerts and webhook subscriptions, then test them, rotate secrets and replay deliveries with test_webhook and replay_webhook_delivery."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

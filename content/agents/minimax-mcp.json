@@ -42,9 +42,12 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpCommand": "uvx minimax-mcp",
+  "quickstartUrl": "https://github.com/MiniMax-AI/MiniMax-MCP#quickstart-with-mcp-client",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -52,5 +55,5 @@
     "cli"
   ],
   "createdAt": "2026-06-07T17:51:14.397Z",
-  "updatedAt": "2026-06-07T17:51:14.397Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

@@ -45,7 +45,7 @@
       "description": "Runs a single research turn from a script or pipeline with openscience run, and continues the same session with the --continue flag."
     }
   ],
-  "authType": "none",
+  "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
   "status": "published",
@@ -58,5 +58,5 @@
     "api"
   ],
   "createdAt": "2026-10-04T17:55:56.124Z",
-  "updatedAt": "2026-10-04T17:55:56.124Z"
+  "updatedAt": "2026-10-10T20:55:09.336Z"
 }

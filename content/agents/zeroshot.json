@@ -1,0 +1,58 @@
+{
+  "id": "zeroshot",
+  "name": "Zeroshot",
+  "slug": "zeroshot",
+  "description": "Runs coding agents through a configurable graph of implementation, independent review and bounded repair, with parallel steps, reusable profiles, a local graph editor and SQLite run history.",
+  "providerName": "The Open Engine Company",
+  "providerUrl": "https://theopenengine.com",
+  "version": "10.17.0",
+  "agentUrl": "https://zeroshot.sh/docs",
+  "categories": [
+    "code-devtools",
+    "orchestration"
+  ],
+  "tags": [
+    "coding-agents",
+    "code-review",
+    "agent-orchestration",
+    "workflow-graph",
+    "cli",
+    "rust",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "run-agent-graph",
+      "name": "Run Agent Graph",
+      "description": "Execute a coding-agent graph with the run and plan commands, chaining implementation, review and repair steps with parallel execution."
+    },
+    {
+      "id": "reusable-profiles",
+      "name": "Reusable Profiles And Templates",
+      "description": "Define and reuse run configurations through the profile, template and target commands instead of rewriting graph setup per run."
+    },
+    {
+      "id": "run-history-resume",
+      "name": "Run History And Resume",
+      "description": "Inspect past runs with logs, watch and status, and continue interrupted work from stored checkpoints using resume and attach."
+    },
+    {
+      "id": "acp-delegation",
+      "name": "ACP Delegation",
+      "description": "Drive external coding agents over the Agent Client Protocol via the acp and delegation commands, including MCP setup for the agents it runs."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

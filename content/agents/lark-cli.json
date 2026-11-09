@@ -45,14 +45,20 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npx @larksuite/cli@latest install"
+  },
+  "quickstartUrl": "https://github.com/larksuite/cli#installation--quick-start",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "cli"
   ],
   "createdAt": "2026-10-04T17:55:56.138Z",
-  "updatedAt": "2026-10-04T17:55:56.138Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

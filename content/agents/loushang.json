@@ -1,0 +1,51 @@
+{
+  "id": "loushang",
+  "name": "Loushang",
+  "slug": "loushang",
+  "description": "Runs a terminal coding-agent workbench with model routing, resumable and forkable sessions, extensions, and method-guided delivery, plus a Python AI SDK, for software developers.",
+  "providerName": "Heng Zhou",
+  "providerUrl": "https://github.com/zhnt",
+  "agentUrl": "https://github.com/zhnt/loushang",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "coding-cli",
+    "terminal-workbench",
+    "model-routing",
+    "persistent-sessions",
+    "python-sdk",
+    "extensions"
+  ],
+  "skills": [
+    {
+      "id": "coding-sessions",
+      "name": "Persistent Coding Sessions",
+      "description": "Keeps durable coding sessions that can be resumed, forked, exported, and inspected."
+    },
+    {
+      "id": "project-extensions",
+      "name": "Project Extensions",
+      "description": "Loads project-level Python extensions that add hooks, tools, resources, commands, and flags."
+    },
+    {
+      "id": "ai-sdk",
+      "name": "Provider-Aware AI SDK",
+      "description": "Calls models through a registry-backed Python SDK with streaming events, tool calls, and cost helpers."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-10-10T21:22:01.508Z",
+  "updatedAt": "2026-10-10T21:22:01.508Z"
+}

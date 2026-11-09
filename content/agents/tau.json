@@ -39,9 +39,15 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "binary",
+    "command": "curl -LsSf https://twotimespi.dev/install.sh | sh"
+  },
+  "quickstartUrl": "https://github.com/huggingface/tau#quickstart",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -49,5 +55,5 @@
     "api"
   ],
   "createdAt": "2026-09-18T22:02:13.787Z",
-  "updatedAt": "2026-09-18T22:02:13.787Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

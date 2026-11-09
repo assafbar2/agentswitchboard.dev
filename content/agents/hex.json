@@ -2,7 +2,7 @@
   "id": "2MuQZ9Y9QQLRM0YggTzvc4",
   "name": "Hex",
   "slug": "hex",
-  "description": "Collaborative analytics platform with AI-assisted SQL, Python notebooks, and Magic AI that writes queries from natural language.",
+  "description": "Collaborative analytics platform with AI-assisted SQL, Python notebooks, and Magic AI. Its MCP server signs in with your Hex account; its REST API takes a personal or workspace token.",
   "providerName": "Hex",
   "providerUrl": "https://hex.tech",
   "agentUrl": "https://hex.tech/capability/ai/",
@@ -15,7 +15,7 @@
     "sql"
   ],
   "skills": [],
-  "authType": "apiKey",
+  "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
   "status": "published",
@@ -24,8 +24,10 @@
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
-    "api"
+    "api",
+    "mcp"
   ],
   "createdAt": "2026-03-22T09:51:36.334Z",
-  "updatedAt": "2026-03-22T16:47:07.551Z"
+  "updatedAt": "2026-11-02T22:24:00.852Z",
+  "mcpEndpoint": "https://app.hex.tech/mcp"
 }

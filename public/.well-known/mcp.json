@@ -1,8 +1,8 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
   "name": "io.github.assafbar2/agentswitchboard",
-  "description": "Search a curated directory of verified AI agents, MCP servers, and agentic tools. Use it to find out whether an agent already exists for a job, and how to reach it.",
-  "version": "1.0.0",
+  "description": "Search a curated directory of AI agents, MCP servers, and agentic tools, and suggest new listings. Use it to find out whether an agent already exists for a job, which access methods it offers (API, MCP, CLI, browser extension), and where its homepage is.",
+  "version": "1.8.0",
   "websiteUrl": "https://agentswitchboard.dev",
   "repository": {
     "url": "https://github.com/assafbar2/agentswitchboard.dev",
@@ -17,34 +17,257 @@
   "tools": [
     {
       "name": "search_agents",
-      "description": "Free-text and faceted search across the directory. Use this first when you do not already know an agent's slug.",
+      "title": "Search Agents",
+      "description": "Search the curated Agent Switchboard directory of AI agents, MCP servers, and agentic tools. Filter by task, category slug, access methods, official (first-party listings from major vendors), verified, and/or auth type; sort by relevance, newest, most skills, or name. Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working. Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified.",
       "inputSchema": {
         "type": "object",
         "properties": {
-          "query": { "type": "string", "description": "Free-text search over name, description, skills, and tags." },
-          "category": { "type": "string", "description": "Category slug, e.g. \"code-devtools\" or \"voice-messaging\"." },
-          "accessMethods": { "type": "array", "items": { "type": "string" }, "description": "Restrict to agents reachable a given way, e.g. mcp, api, cli." },
-          "limit": { "type": "integer", "minimum": 1, "maximum": 50, "default": 10 }
-        }
+          "query": {
+            "type": "string",
+            "description": "Free-text search over name, description, skills, categories, tags, and provider"
+          },
+          "task": {
+            "type": "string",
+            "description": "Task slug, e.g. \"query-a-database\": only the listings that do that job, best fit first. GET https://agentswitchboard.dev/api/tasks lists the tasks"
+          },
+          "category": {
+            "type": "string",
+            "description": "Category slug, e.g. \"code-devtools\", \"voice-messaging\""
+          },
+          "access": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "api",
+                "mcp",
+                "cli",
+                "browser-extension",
+                "extension"
+              ]
+            },
+            "description": "Require ALL of these access methods: api, mcp, cli, browser-extension (\"extension\" is accepted as an alias of browser-extension)"
+          },
+          "official": {
+            "type": "boolean",
+            "description": "Only first-party listings from major vendors (e.g. Notion's own Notion MCP)"
+          },
+          "verified": {
+            "type": "boolean",
+            "description": "Only Verified listings: checked to work, re-checked monthly"
+          },
+          "auth": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "none",
+                "apiKey",
+                "oauth2",
+                "bearer"
+              ]
+            },
+            "description": "Only listings with one of these auth types: none (no key or sign-in needed), apiKey, oauth2, bearer. A listing has one auth type, so several mean any of them"
+          },
+          "since": {
+            "type": "string",
+            "description": "Only listings added to the directory on or after this day: a date (YYYY-MM-DD), or a number of days back with today included (\"7\" is the last 7 days). Add sort \"newest\" to list the newest first"
+          },
+          "sort": {
+            "type": "string",
+            "enum": [
+              "relevance",
+              "newest",
+              "skills",
+              "name"
+            ],
+            "description": "Result order. relevance (default): best match first with search text; without it, best fit first for a task, else A→Z. newest: most recently added first. skills: most skills first. name: A→Z"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50,
+            "default": 10,
+            "description": "Max results per page (1–50)"
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 0,
+            "description": "Number of results to skip, for pagination"
+          }
+        },
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
       }
     },
     {
       "name": "get_agent",
-      "description": "Fetch one agent's full listing by slug, including access methods and provider links.",
+      "title": "Get Agent Details",
+      "description": "Full detail for one agent by slug: skills, auth, streaming/push support, tags, provider links, and useItNow: how to start using it (MCP client config, install command, API base URL, setup links). Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working. Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified.",
       "inputSchema": {
         "type": "object",
-        "required": ["slug"],
         "properties": {
-          "slug": { "type": "string", "description": "Agent slug, e.g. \"playwright-mcp\"." }
-        }
+          "slug": {
+            "type": "string",
+            "description": "Agent slug, e.g. \"playwright-mcp\""
+          }
+        },
+        "required": [
+          "slug"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
       }
     },
     {
       "name": "list_categories",
-      "description": "List every directory category with live agent counts. The returned slugs are valid inputs to search_agents.",
-      "inputSchema": { "type": "object", "properties": {} }
+      "title": "List Categories",
+      "description": "All directory categories with live agent counts. Slugs are valid inputs for search_agents.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "compare_agents",
+      "title": "Compare Agents",
+      "description": "Put 2 or 3 listings side by side, as the site's /compare page does. For each listing: the facts that set it apart from the others (\"Only one with a CLI\", \"No auth required\", \"Most skills (12)\"). Then one row per field, with each listing's value by slug: what it is, provider, official vendor, verified, access, auth, MCP server, CLI install, API base URL, skills, streaming, push, categories, tags, listed since. A row where every listing agrees has same: true. Facts from the listings' own data, never a verdict. A curated comparison of the same listings adds its intro line. Unknown or repeated slugs, and any past 3, are left out with a note.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "slugs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "maxItems": 6,
+            "description": "Listing slugs to compare, in column order: 2 or 3, e.g. [\"deepgram\", \"assemblyai\"]"
+          }
+        },
+        "required": [
+          "slugs"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "alternatives_to",
+      "title": "Alternatives To",
+      "description": "Listings that could stand in for one listing, strongest first, as on its /agents/<slug>/alternatives page. Each alternative is in the listing's main category, offers at least one of its access methods, and overlaps on what it does (shared skills and tags, rarer ones counting for more). Each comes with why: the access methods both offer and what they have in common. Up to 8. Fewer, or none, rather than a weak match. Also returns a link comparing the listing with its top two alternatives.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": "string",
+            "description": "Agent slug, e.g. \"deepgram\""
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 8,
+            "description": "Most alternatives to return (1–8, default 8)"
+          }
+        },
+        "required": [
+          "slug"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "connect_bundle",
+      "title": "Connect Bundle",
+      "description": "One MCP client config to paste ({\"mcpServers\": …}, as Cursor and other MCP clients read it) for up to 10 listings, and how each one connects. A listing is in the config when its own docs give a hosted server address or a local command. An MCP server whose docs give neither comes with its setup guide, and setupPrompt asks a coding agent to set all of those up. A listing without an MCP server comes with its CLI install command, API address or docs. Also returns a claude mcp add command for each server in the config, for Claude Code, and the /stack link for the listings. Nothing is guessed: every address and command is copied from the vendor's docs, as on the listing's page.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "slugs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "maxItems": 30,
+            "description": "Listing slugs, in the order to list them: 1 to 10, e.g. a stack's items"
+          }
+        },
+        "required": [
+          "slugs"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "submit_listing",
+      "title": "Submit a Listing",
+      "description": "Suggest a new listing for the Agent Switchboard directory. This opens a PUBLIC GitHub issue that the maintainer reviews by hand; it does not publish anything. Use it only when the user asks to submit or list a product, after you show them the name, URL, and description you will send and they agree. Call search_agents first: if the product is already listed, tell the user instead. Limited to 5 submissions per hour per caller and one per URL per day. Not safe to retry blindly: each call that returns status \"filed\" opens a new issue.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 100,
+            "description": "Product name, e.g. \"Acme MCP\""
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 500,
+            "description": "The product's own homepage, docs, or GitHub repo (https)"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 20,
+            "maxLength": 1500,
+            "description": "What it does and who it is for, in plain words (20–1500 characters)"
+          },
+          "access": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "api",
+                "mcp",
+                "cli",
+                "browser-extension"
+              ]
+            },
+            "maxItems": 4,
+            "description": "How agents reach it: api, mcp, cli, browser-extension"
+          },
+          "category": {
+            "type": "string",
+            "maxLength": 60,
+            "description": "Suggested category slug from list_categories"
+          },
+          "contact_email": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 200,
+            "description": "Optional. Sent privately to the maintainer for follow-up, never posted. Only include an address the user gave you for this purpose."
+          }
+        },
+        "required": [
+          "name",
+          "url",
+          "description"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
     }
   ],
-  "authentication": { "type": "none" },
-  "contact": { "email": "barnir@agentmail.to" }
+  "authentication": {
+    "type": "none"
+  },
+  "contact": {
+    "email": "barnir@agentmail.to"
+  }
 }

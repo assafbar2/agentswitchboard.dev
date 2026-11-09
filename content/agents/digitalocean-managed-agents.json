@@ -45,9 +45,16 @@
   "authType": "bearer",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "brew",
+    "command": "brew install doctl"
+  },
+  "quickstartUrl": "https://docs.digitalocean.com/products/managed-agents/agent-harness-runtime/reference/api/",
+  "apiBaseUrl": "https://api.digitalocean.com",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -56,5 +63,5 @@
     "mcp"
   ],
   "createdAt": "2026-09-25T22:20:34.447Z",
-  "updatedAt": "2026-09-25T22:20:34.447Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

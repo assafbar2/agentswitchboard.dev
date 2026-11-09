@@ -1,0 +1,62 @@
+{
+  "id": "praesidia",
+  "name": "Praesidia",
+  "slug": "praesidia",
+  "description": "Govern AI agent and MCP server access with runtime policy, approvals, guardrails and a signed audit trail, through a documented REST API and an auth-gated MCP endpoint.",
+  "providerName": "Squad Technology SRL",
+  "providerUrl": "https://praesidia.ai",
+  "agentUrl": "https://praesidia.ai/api-reference",
+  "categories": [
+    "security",
+    "infrastructure"
+  ],
+  "tags": [
+    "mcp-gateway",
+    "access-control",
+    "audit-trail",
+    "policy-enforcement",
+    "agent-identity",
+    "oauth2"
+  ],
+  "skills": [
+    {
+      "id": "agent-discovery",
+      "name": "Agent Discovery",
+      "description": "List registered agents and published agent templates through paginated discovery endpoints on the Praesidia REST API."
+    },
+    {
+      "id": "tool-policy-enforcement",
+      "name": "Tool Policy Enforcement",
+      "description": "Read and apply tool policies and guardrails that gate which actions a connected agent or MCP server may invoke."
+    },
+    {
+      "id": "approval-gating",
+      "name": "Approval Gating",
+      "description": "Inspect pending and resolved approval records for agent actions that require a human decision before they run."
+    },
+    {
+      "id": "audit-verification",
+      "name": "Audit Verification",
+      "description": "Verify signed audit records using the published SPKI signing keys, JWKS and did:web identity served at well-known endpoints."
+    },
+    {
+      "id": "mcp-invocation",
+      "name": "MCP Invocation",
+      "description": "Invoke governed agents, tools and workflows over the API-key-gated MCP endpoint under the mcp:invoke scope."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

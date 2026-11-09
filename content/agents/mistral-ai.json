@@ -39,14 +39,17 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://docs.mistral.ai/getting-started/quickstarts/developer/first-api-request",
+  "apiBaseUrl": "https://api.mistral.ai",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "api"
   ],
   "createdAt": "2026-08-15T07:16:38.661Z",
-  "updatedAt": "2026-08-15T07:16:38.661Z"
+  "updatedAt": "2026-11-02T07:11:18.425Z"
 }

@@ -20,9 +20,13 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://connect.patsnap.com/1458a4/mcp",
+  "quickstartUrl": "https://open.patsnap.com/devportal/guides/first-request",
+  "apiBaseUrl": "https://connect.patsnap.com",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -30,5 +34,5 @@
     "api"
   ],
   "createdAt": "2026-08-11T00:40:13.026Z",
-  "updatedAt": "2026-08-11T00:40:13.026Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

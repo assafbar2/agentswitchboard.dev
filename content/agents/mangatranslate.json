@@ -1,0 +1,51 @@
+{
+  "id": "mangatranslate",
+  "name": "MangaTranslate",
+  "slug": "mangatranslate",
+  "description": "Translates manga pages and PDFs through a credit-metered REST API: OCR, text removal, background repair and typesetting, submitted as tasks and polled for translated image URLs.",
+  "providerName": "Ficory LLC",
+  "providerUrl": "https://www.ficory.com",
+  "agentUrl": "https://www.mangatranslate.com/api-examples/",
+  "categories": [
+    "language",
+    "content-media"
+  ],
+  "tags": [
+    "manga",
+    "translation",
+    "ocr",
+    "typesetting",
+    "image-processing",
+    "rest-api"
+  ],
+  "skills": [
+    {
+      "id": "submit-translation",
+      "name": "Submit Translation",
+      "description": "Submits a manga page or PDF to POST /api/v1/api/translate with a source and target language, returning a task for the translation job."
+    },
+    {
+      "id": "task-status",
+      "name": "Task Status",
+      "description": "Polls GET /api/v1/api/tasks/{id} for job state and the resulting translated image URLs once processing finishes."
+    },
+    {
+      "id": "credit-balance",
+      "name": "Credit Balance",
+      "description": "Reads the remaining credit balance via GET /api/v1/api/credits before queuing billable translation work."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

@@ -39,14 +39,16 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://www.traceloop.com/docs/openllmetry/getting-started-python",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "api"
   ],
   "createdAt": "2026-09-18T22:02:13.781Z",
-  "updatedAt": "2026-09-18T22:02:13.781Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

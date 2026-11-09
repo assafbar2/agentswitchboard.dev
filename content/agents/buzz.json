@@ -38,9 +38,11 @@
   "authType": "none",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://github.com/block/buzz#quick-start",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -48,5 +50,5 @@
     "api"
   ],
   "createdAt": "2026-07-25T16:22:45.420Z",
-  "updatedAt": "2026-09-25T22:53:59.868Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

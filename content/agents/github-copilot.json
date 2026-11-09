@@ -18,9 +18,16 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npm install -g @github/copilot"
+  },
+  "quickstartUrl": "https://docs.github.com/en/rest/copilot",
+  "apiBaseUrl": "https://api.github.com",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -29,5 +36,5 @@
     "browser-extension"
   ],
   "createdAt": "2026-03-22T09:51:47.328Z",
-  "updatedAt": "2026-07-10T21:06:11.065Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

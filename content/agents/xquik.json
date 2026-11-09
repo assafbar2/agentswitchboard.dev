@@ -1,0 +1,69 @@
+{
+  "id": "xquik",
+  "name": "Xquik",
+  "slug": "xquik",
+  "description": "Search X (Twitter) posts, profiles and followers, run keyword and account monitors, and post or manage connected accounts through a 167-endpoint REST API and an OAuth-gated MCP server.",
+  "providerName": "Xquik",
+  "providerUrl": "https://xquik.com",
+  "agentUrl": "https://docs.xquik.com",
+  "categories": [
+    "research",
+    "data-analytics",
+    "sales-marketing"
+  ],
+  "tags": [
+    "x",
+    "twitter",
+    "social-media",
+    "rest-api",
+    "monitoring",
+    "mcp",
+    "oauth"
+  ],
+  "skills": [
+    {
+      "id": "post-search",
+      "name": "Post Search",
+      "description": "Searches X posts by keyword through /api/v1/x/tweets/search and returns matching posts for monitoring and analysis."
+    },
+    {
+      "id": "profile-lookup",
+      "name": "Profile Lookup",
+      "description": "Finds X accounts and checks follower relationships via the /api/v1/x/users/search and /api/v1/x/followers/check endpoints."
+    },
+    {
+      "id": "keyword-monitors",
+      "name": "Keyword Monitors",
+      "description": "Creates and manages standing keyword and account monitors through /api/v1/monitors so agents can track new posts over time."
+    },
+    {
+      "id": "account-actions",
+      "name": "Account Actions",
+      "description": "Likes posts, follows accounts and sends direct messages from a connected X account using the write endpoints under /api/v1/x."
+    },
+    {
+      "id": "bulk-extractions",
+      "name": "Bulk Extractions",
+      "description": "Runs and retrieves larger data extraction jobs through /api/v1/extractions for datasets bigger than a single search call."
+    },
+    {
+      "id": "api-execute",
+      "name": "API Execute",
+      "description": "Calls any documented Xquik REST endpoint from an MCP client through the server's execute tool, alongside docs, search and whoami."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

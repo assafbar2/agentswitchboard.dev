@@ -39,14 +39,18 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpCommand": "uvx mcp-grafana",
+  "quickstartUrl": "https://github.com/grafana/mcp-grafana",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "mcp"
   ],
   "createdAt": "2026-07-17T20:41:29.404Z",
-  "updatedAt": "2026-07-17T20:41:29.404Z"
+  "updatedAt": "2026-11-02T21:56:05.479Z",
+  "mcpEndpoint": "https://mcp.grafana.com/mcp"
 }

@@ -1,16 +1,33 @@
 import { getAgentBySlug, getEveryAgent } from '@/lib/catalog';
 import { Badge } from '@/components/ui/Badge';
+import { OfficialBadge } from '@/components/ui/OfficialBadge';
+import { AccessMethodBadges } from '@/components/ui/AccessMethodBadges';
+import { SponsoredBadge } from '@/components/SponsoredBadge';
+import { VerifiedBadge } from '@/components/VerifiedBadge';
 import { AgentCard } from '@/components/AgentCard';
+import { AgentIcon } from '@/components/AgentIcon';
 import { JsonLd } from '@/components/JsonLd';
-import { getRelatedAgents } from '@/lib/related';
+import { CompareWith } from '@/components/CompareWith';
+import { MyStackToggle } from '@/components/MyStackToggle';
+import { hasUseItNow, UseItNow } from '@/components/UseItNow';
+import { comparisonsWith, curatedComparisons } from '@/lib/compare';
+import { COMPARE_MAX, compareHref } from '@/lib/compare-link';
+import { alternativesPage, getRelatedAgents } from '@/lib/related';
+import { tryThis } from '@/lib/try-this';
+import { howToUse, howToUseRows } from '@/lib/use-it-now';
+import { absoluteIconUrl } from '@/lib/icons';
+import { listingCard, listingCardImage } from '@/lib/share-cards';
 import { notFound } from 'next/navigation';
-import { Verified, ExternalLink, Zap, Shield, Radio, Bell } from 'lucide-react';
-import { authTypeLabel } from '@/lib/utils';
-import Link from 'next/link';
-import Image from 'next/image';
+import { ExternalLink } from 'lucide-react';
+import { authTypeLabel, pluralize } from '@/lib/utils';
+import Link from '@/components/Link';
 import type { Metadata } from 'next';
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev';
+
+// The catalog changes only with a deploy: an unknown slug is the static 404,
+// not a render per request.
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const agents = await getEveryAgent();
@@ -40,13 +57,13 @@ export async function generateMetadata({
       url,
       type: 'website',
       siteName: 'Agent Switchboard',
-      images: [{ url: `${BASE_URL}/opengraph-image`, width: 1200, height: 630, alt: ogTitle }],
+      // twitter:image copies it.
+      images: [listingCardImage(slug, listingCard(agent))],
     },
     twitter: {
       card: 'summary_large_image',
       title: ogTitle,
       description: agent.description,
-      images: [`${BASE_URL}/opengraph-image`],
     },
   };
 }
@@ -64,13 +81,23 @@ export default async function AgentPage({
   if (!agent) notFound();
 
   const related = getRelatedAgents(agent, allAgents);
+  const alternatives = alternativesPage(agent, allAgents);
+  const tryFirst = tryThis(agent);
+  const use = howToUse(agent);
+  const useRows = howToUseRows(use);
+  const compareTop = related.slice(0, COMPARE_MAX - 1);
+  const compareTopHref = compareHref([agent.slug, ...compareTop.map((a) => a.slug)]);
+  const comparisons = comparisonsWith(agent.slug, curatedComparisons(allAgents));
 
+  // No `offers`: the catalog has no pricing data, and "no auth" does not mean
+  // free (paid products such as Midjourney list authType "none").
   const agentSchema = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: agent.name,
     description: agent.description,
     url: agent.agentUrl,
+    ...(agent.iconUrl && { image: absoluteIconUrl(agent.iconUrl, BASE_URL) }),
     applicationCategory: 'DeveloperApplication',
     operatingSystem: 'Cloud',
     provider: {
@@ -78,10 +105,9 @@ export default async function AgentPage({
       name: agent.providerName,
       url: agent.providerUrl,
     },
-    ...(agent.authType === 'none'
-      ? { offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } }
-      : {}),
   };
+
+  const skillCount = agent.skills.length;
 
   const fields: [string, string][] = [
     ['name', agent.name],
@@ -93,90 +119,140 @@ export default async function AgentPage({
     ['streaming', agent.supportsStreaming ? 'true' : 'false'],
     ['push', agent.supportsPushNotifications ? 'true' : 'false'],
     ['verified', agent.verified ? 'true' : 'false'],
+    ['official', agent.officialVendor ? `true · ${agent.officialVendor.name}` : 'false'],
+    ['sponsored', agent.sponsored ? 'true · paid placement, never changes ranking' : 'false'],
     ['tags', agent.tags.join(', ') || '—'],
   ];
 
   return (
     <>
       {/* ── Human view ─────────────────────────────────────────────── */}
-      <div className="human-only container-wide section">
+      <div className="human-only container-wide section font-[family-name:var(--font-display)] text-[var(--dir-ink)]">
         <JsonLd schema={agentSchema} />
         <div className="max-w-3xl mx-auto">
-          {/* Header */}
-          <div className="flex items-start gap-4 mb-8">
-            {agent.iconUrl ? (
-              <Image src={agent.iconUrl} alt="" width={56} height={56} className="w-14 h-14 rounded-xl bg-white/5" />
-            ) : (
-              <div className="w-14 h-14 rounded-xl bg-[var(--accent-subtle)] flex items-center justify-center">
-                <span className="mono text-2xl text-[var(--accent)] font-bold">{agent.name[0]}</span>
-              </div>
-            )}
+          {/* Header: a directory entry. Name, provider, then the small labels,
+              closed off by the heavy ink rule. */}
+          <div className="flex items-start gap-4 mb-6 pb-5 border-b-[3px] border-[var(--dir-ink)]!">
+            <AgentIcon name={agent.name} iconUrl={agent.iconUrl} size={56} lazy={false} />
             <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2 flex-wrap">
-                <h1 className="text-2xl font-bold tracking-tight">{agent.name}</h1>
-                {agent.verified && <Verified className="w-5 h-5 text-[var(--accent)]" />}
-                {agent.featured && <Badge variant="amber">Featured</Badge>}
-                {agent.tier === 'premium' && <Badge variant="amber">Premium</Badge>}
-              </div>
-              <p className="text-sm text-[var(--text-muted)] mt-1">
+              <h1 className="text-4xl sm:text-5xl font-extrabold leading-[0.95] tracking-[-0.02em] wrap-break-word">
+                {agent.name}
+              </h1>
+              <p className="text-lg font-semibold text-[var(--dir-muted)] mt-2">
                 by{' '}
-                <a href={agent.providerUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--text-secondary)] transition-colors">
+                <a
+                  href={agent.providerUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2"
+                >
                   {agent.providerName}
                 </a>
                 {agent.version && <span className="ml-2">v{agent.version}</span>}
               </p>
+              {(agent.sponsored ||
+                agent.verified ||
+                agent.official ||
+                agent.featured ||
+                agent.tier === 'premium') && (
+                <div className="flex items-center gap-1.5 flex-wrap mt-3">
+                  {agent.sponsored && <SponsoredBadge />}
+                  {agent.verified && <VerifiedBadge size="md" />}
+                  <OfficialBadge agent={agent} />
+                  {agent.featured && <Badge variant="amber">Featured</Badge>}
+                  {agent.tier === 'premium' && <Badge variant="amber">Premium</Badge>}
+                </div>
+              )}
+              {agent.sponsored && (
+                <p className="text-sm text-[var(--dir-muted)] mt-2">
+                  Sponsored: a paid placement. It never changes where this listing ranks in search, tasks or
+                  alternatives.{' '}
+                  <Link
+                    href="/about#sponsored"
+                    className="font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2"
+                  >
+                    What Sponsored means
+                  </Link>
+                </p>
+              )}
+              {agent.officialVendor && (
+                <p className="text-sm text-[var(--dir-muted)] mt-2">
+                  Official listing: built and published by {agent.officialVendor.name}.{' '}
+                  <Link
+                    href={`/browse?official=1&vendor=${agent.officialVendor.slug}`}
+                    className="font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2"
+                  >
+                    More from {agent.officialVendor.name}
+                  </Link>
+                </p>
+              )}
             </div>
           </div>
 
           {/* Description */}
-          <p className="text-[var(--text-secondary)] leading-relaxed mb-8">{agent.description}</p>
+          <p className="text-lg leading-relaxed mb-8">{agent.description}</p>
 
-          {/* Meta cards */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
-            <div className="card p-3 text-center">
-              <Zap className="w-4 h-4 mx-auto mb-1 text-[var(--accent)]" />
-              <div className="mono text-lg font-bold">{agent.skills.length}</div>
-              <div className="text-xs text-[var(--text-muted)]">Skills</div>
+          {hasUseItNow(tryFirst, use) ? (
+            <UseItNow agent={agent} tryThis={tryFirst} use={use} />
+          ) : (
+            <MyStackToggle agent={agent} className="mb-10" />
+          )}
+
+          <CompareWith agent={agent} top={compareTop} comparisons={comparisons} />
+
+          {/* Facts: how you reach it, how it authenticates, what it does, as a
+              ruled definition list (label, dotted leader, value). */}
+          <dl className="mb-10 border-t-[3px] border-[var(--dir-ink)]!">
+            <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-1 border-b border-[var(--dir-rule)]! py-2.5">
+              <dt className="flex min-w-0 flex-1 items-baseline gap-1.5">
+                <span className="dir-label shrink-0">Access</span>
+                <span aria-hidden="true" className="dir-row-leader" />
+              </dt>
+              <dd className="flex justify-end">
+                {agent.accessMethods.length > 0 ? (
+                  <AccessMethodBadges methods={agent.accessMethods} size="md" />
+                ) : (
+                  <span className="font-bold">Not listed</span>
+                )}
+              </dd>
             </div>
-            <div className="card p-3 text-center">
-              <Shield className="w-4 h-4 mx-auto mb-1 text-[var(--blue)]" />
-              <div className="mono text-sm font-bold">{authTypeLabel(agent.authType)}</div>
-              <div className="text-xs text-[var(--text-muted)]">Auth</div>
+            <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-1 border-b border-[var(--dir-rule)]! py-2.5">
+              <dt className="flex min-w-0 flex-1 items-baseline gap-1.5">
+                <span className="dir-label shrink-0">Auth</span>
+                <span aria-hidden="true" className="dir-row-leader" />
+              </dt>
+              <dd className="font-bold">{authTypeLabel(agent.authType)}</dd>
             </div>
-            <div className="card p-3 text-center">
-              <Radio className="w-4 h-4 mx-auto mb-1 text-[var(--amber)]" />
-              <div className="mono text-sm font-bold">{agent.supportsStreaming ? 'Yes' : 'No'}</div>
-              <div className="text-xs text-[var(--text-muted)]">Streaming</div>
-            </div>
-            <div className="card p-3 text-center">
-              <Bell className="w-4 h-4 mx-auto mb-1 text-[var(--rose)]" />
-              <div className="mono text-sm font-bold">{agent.supportsPushNotifications ? 'Yes' : 'No'}</div>
-              <div className="text-xs text-[var(--text-muted)]">Push</div>
-            </div>
-          </div>
+            {skillCount > 0 && (
+              <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-1 border-b border-[var(--dir-rule)]! py-2.5">
+                <dt className="flex min-w-0 flex-1 items-baseline gap-1.5">
+                  <span className="dir-label shrink-0">{pluralize(skillCount, 'Skill')}</span>
+                  <span aria-hidden="true" className="dir-row-leader" />
+                </dt>
+                <dd className="font-bold">{skillCount}</dd>
+              </div>
+            )}
+          </dl>
 
           {/* Skills */}
           {agent.skills.length > 0 && (
-            <div className="mb-8">
-              <h2 className="text-lg font-semibold mb-4">Skills</h2>
-              <div className="space-y-3">
+            <div className="mb-10">
+              <h2 className="dir-bar mb-1">Skills</h2>
+              <ul>
                 {agent.skills.map((skill) => (
-                  <div key={skill.id} className="card p-4">
-                    <div className="flex items-center gap-2 mb-1">
-                      <Zap className="w-3.5 h-3.5 text-[var(--accent)]" />
-                      <h3 className="mono text-sm font-semibold">{skill.name}</h3>
-                    </div>
-                    <p className="text-sm text-[var(--text-secondary)]">{skill.description}</p>
-                  </div>
+                  <li key={skill.id} className="border-b border-[var(--dir-rule)]! py-3">
+                    <h3 className="text-[17px] font-bold leading-snug">{skill.name}</h3>
+                    <p className="text-[var(--dir-muted)] mt-0.5">{skill.description}</p>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           )}
 
           {/* Categories & Tags */}
           <div className="flex flex-wrap gap-2 mb-8">
             {agent.categories.map((cat) => (
-              <Link key={cat.id} href={`/categories/${cat.slug}`}>
+              <Link key={cat.id} href={`/categories/${cat.slug}`} className="no-underline hover:underline">
                 <Badge variant="default">{cat.name}</Badge>
               </Link>
             ))}
@@ -190,20 +266,27 @@ export default async function AgentPage({
             href={agent.agentUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--accent)] text-[var(--bg-primary)] font-medium text-sm hover:opacity-90 transition-opacity"
+            className="inline-flex min-h-11 items-center gap-2 rounded-none border-2 border-[var(--dir-ink)]! bg-[var(--dir-yellow)] px-5 text-lg font-extrabold tracking-[0.02em] text-[var(--dir-on-yellow)] no-underline hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--dir-ink)]"
           >
-            Visit Agent <ExternalLink className="w-4 h-4" />
+            Visit Agent <ExternalLink aria-hidden="true" className="w-4 h-4" />
           </a>
 
           {/* Related Agents */}
           {related.length > 0 && (
-            <div className="mt-16 pt-8 border-t border-[var(--border)]">
-              <h2 className="text-lg font-semibold mb-4">Related Agents</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="mt-16">
+              <h2 className="dir-bar mb-1">Related Agents</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10">
                 {related.map((r) => (
                   <AgentCard key={r.id} agent={r} />
                 ))}
               </div>
+              {alternatives && (
+                <Link href={`/agents/${agent.slug}/alternatives`} className="dir-row mt-2">
+                  <span className="dir-row-name">See {alternatives.length} alternatives</span>
+                  <span className="dir-row-leader" aria-hidden="true" />
+                  <span className="dir-row-meta" aria-hidden="true">→</span>
+                </Link>
+              )}
             </div>
           )}
         </div>
@@ -218,6 +301,41 @@ export default async function AgentPage({
             <div className="agent-accent text-base font-bold mb-1">{agent.slug}</div>
             <div className="agent-dim text-xs leading-relaxed mt-1">{agent.description}</div>
           </div>
+
+          {tryFirst && (
+            <>
+              <div className="agent-section-title">try this first</div>
+              <div className="agent-dim text-xs">{tryFirst.lead}</div>
+              {tryFirst.prompts.map((prompt) => (
+                <div key={prompt.skillId} className="agent-row">
+                  <span className="agent-accent">{prompt.text}</span>
+                  <span className="agent-dim">{prompt.skillId}</span>
+                  <span />
+                </div>
+              ))}
+            </>
+          )}
+
+          {useRows.length > 0 && (
+            <>
+              <div className="agent-section-title">use it now</div>
+              {useRows.map(([key, value]) => (
+                <div key={key} className="agent-row">
+                  <span className="agent-accent break-all">
+                    {/^https?:\/\//.test(value) ? (
+                      <a href={value} rel="noopener noreferrer" className="hover:opacity-80">
+                        {value}
+                      </a>
+                    ) : (
+                      value
+                    )}
+                  </span>
+                  <span className="agent-dim">{key}</span>
+                  <span />
+                </div>
+              ))}
+            </>
+          )}
 
           {/* Fields */}
           <div className="agent-section-title">fields</div>
@@ -243,6 +361,37 @@ export default async function AgentPage({
                       : skill.description}
                   </span>
                 </div>
+              ))}
+            </>
+          )}
+
+          {alternatives && (
+            <>
+              <div className="agent-section-title">alternatives</div>
+              <Link href={`/agents/${agent.slug}/alternatives`} className="agent-row no-underline hover:underline">
+                <span className="agent-accent">/agents/{agent.slug}/alternatives</span>
+                <span className="agent-dim">{alternatives.length} listed</span>
+                <span className="agent-dim">{alternatives.slice(0, 3).map((a) => a.agent.slug).join(', ')}</span>
+              </Link>
+            </>
+          )}
+
+          {(compareTop.length > 0 || comparisons.length > 0) && (
+            <>
+              <div className="agent-section-title">compare</div>
+              {compareTop.length > 0 && (
+                <Link href={compareTopHref} className="agent-row no-underline hover:underline">
+                  <span className="agent-accent break-all">{compareTopHref}</span>
+                  <span className="agent-dim">with {compareTop.map((a) => a.slug).join(', ')}</span>
+                  <span />
+                </Link>
+              )}
+              {comparisons.map((c) => (
+                <Link key={c.slug} href={`/compare/${c.slug}`} className="agent-row no-underline hover:underline">
+                  <span className="agent-accent break-all">/compare/{c.slug}</span>
+                  <span className="agent-dim">curated comparison</span>
+                  <span />
+                </Link>
               ))}
             </>
           )}

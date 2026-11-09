@@ -37,9 +37,12 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.gong.io/mcp",
+  "quickstartUrl": "https://help.gong.io/apidocs/introduction-2",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -47,5 +50,5 @@
     "api"
   ],
   "createdAt": "2026-09-02T07:21:11.745Z",
-  "updatedAt": "2026-09-02T07:21:11.745Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

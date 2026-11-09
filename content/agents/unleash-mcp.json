@@ -1,0 +1,56 @@
+{
+  "id": "unleash-mcp",
+  "name": "Unleash MCP Server",
+  "slug": "unleash-mcp",
+  "description": "Helps coding agents decide when a change needs a feature flag, then create, wrap, roll out, and clean up Unleash flags through a local npx or instance-hosted MCP server.",
+  "providerName": "Unleash",
+  "providerUrl": "https://www.getunleash.io",
+  "agentUrl": "https://docs.getunleash.io/integrate/mcp",
+  "categories": [
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "feature-flags",
+    "progressive-delivery",
+    "rollouts",
+    "feature-toggles",
+    "official-mcp",
+    "unleash"
+  ],
+  "skills": [
+    {
+      "id": "flag-evaluation",
+      "name": "Flag Need Evaluation",
+      "description": "Scores a code change for risk with evaluate_change and detects existing flags to avoid duplicates."
+    },
+    {
+      "id": "flag-creation",
+      "name": "Flag Creation And Wrapping",
+      "description": "Creates a typed, validated flag and generates language-specific code to wrap the change."
+    },
+    {
+      "id": "rollout-management",
+      "name": "Rollout Management",
+      "description": "Reads flag state, sets rollout strategies, and toggles flags per environment."
+    },
+    {
+      "id": "flag-cleanup",
+      "name": "Flag Cleanup",
+      "description": "Generates instructions for safely removing a flag from the codebase after rollout."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.531Z",
+  "updatedAt": "2026-10-10T21:22:01.531Z"
+}

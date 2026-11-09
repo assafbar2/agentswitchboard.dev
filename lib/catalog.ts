@@ -4,13 +4,15 @@
  * Reads the directory's content from checked-in files:
  *   content/agents/<slug>.json   one file per agent (source of truth)
  *   content/categories.json      category definitions, ordered
+ *   content/icons.json           fetched icons (see lib/icons.ts)
  *   content/site.json            site settings
  *
  * The public API and its semantics are byte-compatible with the previous
  * Contentful layer (lib/contentful.ts, removed in the git-cms migration):
  * same Agent/Category types, same ordering (featured first, then name),
  * same published-status filter. All reads are wrapped in React cache()
- * so a render shares one filesystem pass.
+ * so a render shares one filesystem pass, and a production process loads
+ * the catalog once (see `once`).
  *
  * Editing content = editing files + committing. Validation is enforced
  * by scripts/validate-content.ts in CI.
@@ -20,36 +22,79 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { cache } from 'react';
 import { pickHomepageAgents } from './homepage';
-import type { Agent, Category, HomepageAgent, SiteSettings } from './types';
+import { iconPath, type IconRecord } from './icons';
+import { groupOfficialAgents, vendorForUrl, type OfficialGroup, type OfficialVendor } from './official';
+import type { Agent, Category, ChangelogEntry, HomepageAgent, SiteSettings } from './types';
 
 const CONTENT_DIR = path.join(process.cwd(), 'content');
 
 // ── Raw file loading ────────────────────────────────────────────────
 
+/**
+ * Most agent files open at once, across the whole process. The catalog is
+ * ~850 files; opening them all together (plus categories.json once per file,
+ * as this loader used to) needed ~1,700 descriptors at peak and failed with
+ * EMFILE under the 1,024 a serverless function gets — /index.md returned 500.
+ * The limit is shared, so concurrent requests that each load the catalog
+ * (React cache() does not dedupe inside route handlers) stay bounded too.
+ */
+export const MAX_CONCURRENT_READS = 32;
+
+let activeReads = 0;
+const waitingReads: (() => void)[] = [];
+
+/** Read one UTF-8 file, never more than MAX_CONCURRENT_READS at once. */
+async function readFileBounded(file: string): Promise<string> {
+  if (activeReads >= MAX_CONCURRENT_READS) {
+    // Woken by a finishing read, which hands its slot straight over.
+    await new Promise<void>((resolve) => waitingReads.push(resolve));
+  } else {
+    activeReads++;
+  }
+  try {
+    return await fs.promises.readFile(file, 'utf8');
+  } finally {
+    const next = waitingReads.shift();
+    if (next) next();
+    else activeReads--;
+  }
+}
+
 const loadAllAgentsRaw = cache(async (): Promise<Agent[]> => {
   const dir = path.join(CONTENT_DIR, 'agents');
-  const files = await fs.promises.readdir(dir);
+  const files = (await fs.promises.readdir(dir)).filter((f) => f.endsWith('.json'));
+  // Categories, vendors and icons are shared by every agent: load each once per pass.
+  const [cats, vendors, icons] = await Promise.all([loadCategoriesRaw(), loadOfficialVendors(), loadIcons()]);
+  // categories are stored as slugs; hydrate to Category objects
+  const bySlug = new Map(cats.map((c) => [c.slug, c]));
+  // Promise.all keeps readdir order regardless of which read finishes first.
   const agents = await Promise.all(
-    files
-      .filter((f) => f.endsWith('.json'))
-      .map(async (f) => {
-        const raw = await fs.promises.readFile(path.join(dir, f), 'utf8');
-        const data = JSON.parse(raw);
-        // categories are stored as slugs; hydrate to Category objects
-        const cats = await loadCategoriesRaw();
-        const bySlug = new Map(cats.map((c) => [c.slug, c]));
-        return {
-          ...data,
-          categories: (data.categories ?? [])
-            .map((slug: string) => bySlug.get(slug))
-            .filter(Boolean),
-          tags: data.tags ?? [],
-          skills: data.skills ?? [],
-          accessMethods: data.accessMethods ?? [],
-        } as Agent;
-      })
+    files.map(async (f) => {
+      const raw = await readFileBounded(path.join(dir, f));
+      const data = JSON.parse(raw);
+      // validate-content guarantees an official entry resolves to one vendor.
+      const vendor = data.official ? vendorForUrl(data.agentUrl, vendors) : null;
+      return {
+        ...data,
+        categories: (data.categories ?? [])
+          .map((slug: string) => bySlug.get(slug))
+          .filter(Boolean),
+        tags: data.tags ?? [],
+        skills: data.skills ?? [],
+        accessMethods: data.accessMethods ?? [],
+        official: !!vendor,
+        officialVendor: vendor ? { slug: vendor.slug, name: vendor.name } : undefined,
+        // A listing file's own iconUrl only feeds scripts/fetch-icons.ts.
+        iconUrl: icons[data.slug] ? iconPath(data.slug, icons[data.slug]) : undefined,
+      } as Agent;
+    })
   );
   return agents;
+});
+
+const loadIcons = cache(async (): Promise<Record<string, IconRecord>> => {
+  const raw = await fs.promises.readFile(path.join(CONTENT_DIR, 'icons.json'), 'utf8');
+  return JSON.parse(raw) as Record<string, IconRecord>;
 });
 
 const loadCategoriesRaw = cache(async (): Promise<Category[]> => {
@@ -57,18 +102,74 @@ const loadCategoriesRaw = cache(async (): Promise<Category[]> => {
   return JSON.parse(raw) as Category[];
 });
 
+export const loadOfficialVendors = cache(async (): Promise<OfficialVendor[]> => {
+  const raw = await fs.promises.readFile(path.join(CONTENT_DIR, 'official-vendors.json'), 'utf8');
+  return JSON.parse(raw) as OfficialVendor[];
+});
+
+/**
+ * In production the content files cannot change under the process, so one
+ * load serves every render in it. React cache() lasts a single render, and
+ * `next build` prerenders thousands of pages and cards that each need the
+ * whole catalog. Development loads per render so content edits show up.
+ * Callers share the result: never mutate what it returns.
+ */
+function once<T>(load: () => Promise<T>): () => Promise<T> {
+  if (process.env.NODE_ENV !== 'production') return load;
+  let loaded: Promise<T> | undefined;
+  return () =>
+    (loaded ??= load().catch((error) => {
+      loaded = undefined;
+      throw error;
+    }));
+}
+
 // ── Public API ──────────────────────────────────────────────────────
 
 /** Every published agent, featured first then A→Z (the canonical order). */
-export const getEveryAgent = cache(async (): Promise<Agent[]> => {
-  const agents = await loadAllAgentsRaw();
-  return agents
-    .filter((a) => a.status === 'published')
-    .sort(
-      (a, b) =>
-        Number(b.featured) - Number(a.featured) || a.name.localeCompare(b.name)
-    );
-});
+export const getEveryAgent = cache(
+  once(async (): Promise<Agent[]> => {
+    const agents = await loadAllAgentsRaw();
+    return agents
+      .filter((a) => a.status === 'published')
+      .sort(
+        (a, b) =>
+          Number(b.featured) - Number(a.featured) || a.name.localeCompare(b.name)
+      );
+  })
+);
+
+/**
+ * Listings the directory had and no longer lists, slug → name: archived
+ * files, and removals in content/changelog.json whose file is gone. Lets an
+ * old link say what it pointed at.
+ */
+export const getRetiredListings = cache(
+  once(async (): Promise<Map<string, string>> => {
+    const [agents, raw] = await Promise.all([
+      loadAllAgentsRaw(),
+      fs.promises.readFile(path.join(CONTENT_DIR, 'changelog.json'), 'utf8'),
+    ]);
+    const listed = new Set(agents.filter((a) => a.status === 'published').map((a) => a.slug));
+    const retired = new Map<string, string>();
+    for (const a of agents) if (a.status === 'archived') retired.set(a.slug, a.name);
+    for (const e of JSON.parse(raw) as ChangelogEntry[]) {
+      if (e.action === 'removed' && !listed.has(e.slug) && !retired.has(e.slug)) retired.set(e.slug, e.name);
+    }
+    return retired;
+  })
+);
+
+/**
+ * Every listing file's category slugs, archived ones too, so the change log
+ * can filter an entry by category after its listing has left.
+ */
+export const getListingCategories = cache(
+  once(
+    async (): Promise<Map<string, string[]>> =>
+      new Map((await loadAllAgentsRaw()).map((a) => [a.slug, a.categories.map((c) => c.slug)]))
+  )
+);
 
 export async function getAgentBySlug(slug: string): Promise<Agent | null> {
   const agents = await getEveryAgent();
@@ -113,6 +214,11 @@ export async function getCategoryBySlug(
 export async function getHomepageAgents(): Promise<HomepageAgent[]> {
   const [agents, settings] = await Promise.all([getEveryAgent(), getSiteSettings()]);
   return pickHomepageAgents(agents, settings?.homepageFeatured, new Date().toISOString());
+}
+
+/** Official listings grouped by vendor, largest vendor first. */
+export async function getOfficialGroups(): Promise<OfficialGroup[]> {
+  return groupOfficialAgents(await getEveryAgent());
 }
 
 export async function getSiteSettings(): Promise<SiteSettings | null> {

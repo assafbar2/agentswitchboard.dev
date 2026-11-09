@@ -46,12 +46,11 @@
   "featured": true,
   "featuredUntil": "2026-12-31",
   "verified": true,
-  "sponsorLabel": "⭐ Editor's Pick",
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
     "api"
   ],
   "createdAt": "2026-03-22T06:44:08.446Z",
-  "updatedAt": "2026-04-13T21:37:26.305Z"
+  "updatedAt": "2026-11-02T22:00:00.000Z"
 }

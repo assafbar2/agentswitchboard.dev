@@ -39,9 +39,15 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "pip",
+    "command": "uv pip install langflow"
+  },
+  "quickstartUrl": "https://docs.langflow.org/api-reference-api-examples",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -50,5 +56,5 @@
     "cli"
   ],
   "createdAt": "2026-05-13T16:56:25.717Z",
-  "updatedAt": "2026-06-15T03:15:51.723Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

@@ -38,9 +38,15 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npm install -g genkit-cli"
+  },
+  "quickstartUrl": "https://genkit.dev/docs/js/get-started/",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -48,5 +54,5 @@
     "cli"
   ],
   "createdAt": "2026-07-25T16:22:45.430Z",
-  "updatedAt": "2026-09-25T23:53:29.340Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

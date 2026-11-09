@@ -1,0 +1,62 @@
+{
+  "id": "nolizi-calendar",
+  "name": "Nolizi Calendar",
+  "slug": "nolizi-calendar",
+  "description": "Books meetings through a hosted MCP server and owner-authenticated REST API: list event types, check live availability, create, verify and cancel bookings. Beta.",
+  "providerName": "Nolizi",
+  "providerUrl": "https://nolizi.com",
+  "version": "0.10.5",
+  "agentUrl": "https://calendar.nolizi.com/agents.md",
+  "categories": [
+    "scheduling"
+  ],
+  "tags": [
+    "calendar",
+    "booking",
+    "meetings",
+    "mcp",
+    "rest-api",
+    "availability"
+  ],
+  "skills": [
+    {
+      "id": "list-event-types",
+      "name": "List Event Types",
+      "description": "Lists the account owner bookable event types and their slugs via the list_event_types tool or GET /api/v1/event-types."
+    },
+    {
+      "id": "check-availability",
+      "name": "Check Availability",
+      "description": "Returns live open start/end slots for a chosen event type via list_available_slots or GET /api/v1/slots."
+    },
+    {
+      "id": "create-booking",
+      "name": "Create Booking",
+      "description": "Books a confirmed slot with attendee name, email and timezone via create_booking or POST /api/v1/bookings."
+    },
+    {
+      "id": "list-upcoming-bookings",
+      "name": "List Upcoming Bookings",
+      "description": "Lists upcoming bookings via list_upcoming_bookings or GET /api/v1/bookings, used to verify a booking receipt."
+    },
+    {
+      "id": "cancel-booking",
+      "name": "Cancel Booking",
+      "description": "Cancels an existing booking by its authorized booking ID via cancel_booking or the bookings cancel endpoint."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

@@ -3,23 +3,231 @@
  * One JSON line per request → queryable in Vercel's log explorer
  * (filter on `asb_consumer`) to see who consumes the catalog, how often,
  * and which MCP tools they call.
+ *
+ * That log line is the always-on record. Each call also sends an
+ * `agent_call` custom event to Vercel Analytics ({ client, call }), scheduled
+ * with after() so it never delays the response. Events are billed on Pro, so
+ * rate-limited requests and our own test traffic get the log line only.
+ *
+ * Machine docs that are served statically (llms.txt, index.md, openapi.json,
+ * /.well-known/*, …) never run route code per request, so proxy.ts counts
+ * those at the edge with logEdgeDoc().
  */
 
+import { after } from 'next/server';
+import { track } from '@vercel/analytics/server';
+
+export type Surface = 'mcp' | 'rest' | 'doc';
+
+export type ClientBucket =
+  | 'crawler'
+  | 'claude'
+  | 'cursor'
+  | 'chatgpt-openai'
+  | 'grok'
+  | 'windsurf'
+  | 'vscode'
+  | 'mcp-remote'
+  | 'python'
+  | 'node'
+  | 'curl'
+  | 'browser'
+  | 'other';
+
+/** Vercel Analytics rejects custom-event property values longer than this. */
+export const MAX_EVENT_VALUE_LENGTH = 255;
+
+/**
+ * Request header proxy.ts sets on a machine-doc request it has already
+ * counted, so a route handler behind it (e.g. /agents.json) does not count
+ * the same request twice. Only honoured for doc routes: the proxy always sets
+ * it there, so a client cannot use it to hide API or MCP calls.
+ */
+export const EDGE_LOGGED_HEADER = 'x-asb-edge-logged';
+
+/**
+ * Next's client router sends `RSC: 1` on its own fetches: prefetching a
+ * <Link> in view, and client-side navigation. Neither is a consumer. When the
+ * target is not a page, the browser then loads it normally, and that request
+ * is the one counted.
+ */
+function isRouterFetch(req: Request): boolean {
+  return req.headers.get('rsc') === '1';
+}
+
+/** First match wins, so specific clients come before generic runtimes. */
+const CLIENT_PATTERNS: ReadonlyArray<readonly [ClientBucket, RegExp]> = [
+  // Indexing crawlers (ClaudeBot, GPTBot, PerplexityBot, Googlebot…) before the
+  // vendor buckets, so "claude" means Claude acting for someone, not its crawler.
+  // Assistants fetching for a person (Claude-User, ChatGPT-User) are not bots.
+  ['crawler', /[a-z]bot\b|crawl|spider|slurp|GoogleOther|meta-externalagent/i],
+  ['claude', /claude|anthropic/i],
+  ['chatgpt-openai', /chatgpt|openai|gptbot|oai-searchbot/i],
+  ['grok', /grok|\bxai\b/i],
+  ['cursor', /cursor/i],
+  ['windsurf', /windsurf|codeium/i],
+  // VS Code's Electron UA carries `Code/1.x`; capitalised, so `claude-code/` is not it.
+  ['vscode', /vscode|visual studio code|\bCode\/\d/],
+  ['mcp-remote', /mcp-remote/i],
+  ['python', /python|httpx|aiohttp/i],
+  ['node', /^node(?:\/|$)|node-fetch|undici|axios/i],
+  ['curl', /^curl\//i],
+];
+
+/** Crawlers and headless automation also send `Mozilla/5.0`: not a person in a browser. */
+const NOT_A_BROWSER = /bot\b|crawl|spider|slurp|headless/i;
+
+/** Buckets a user-agent string into a coarse client type. */
+export function bucketClient(userAgent: string | null | undefined): ClientBucket {
+  const ua = (userAgent ?? '').trim();
+  if (!ua) return 'other';
+  for (const [bucket, pattern] of CLIENT_PATTERNS) {
+    if (pattern.test(ua)) return bucket;
+  }
+  if (/^Mozilla\/5\.0/.test(ua) && !NOT_A_BROWSER.test(ua)) return 'browser';
+  return 'other';
+}
+
+/** Which consumer surface a logged route belongs to. */
+export function surfaceFor(route: string): Surface {
+  if (route === '/api/mcp' || route.startsWith('/api/mcp/')) return 'mcp';
+  if (route.startsWith('/api/')) return 'rest';
+  return 'doc';
+}
+
+function clip(value: string): string {
+  return value.length > MAX_EVENT_VALUE_LENGTH ? value.slice(0, MAX_EVENT_VALUE_LENGTH) : value;
+}
+
+function nonEmptyString(value: unknown): string | undefined {
+  return typeof value === 'string' && value !== '' ? value : undefined;
+}
+
+/** The JSON-RPC tool name for tools/call, else the JSON-RPC method, else ''. */
+function toolFor(extra: Record<string, unknown>): string {
+  return nonEmptyString(extra.tool) ?? nonEmptyString(extra.method) ?? '';
+}
+
+/**
+ * The request headers track() reads to attribute an event (user-agent,
+ * client IP, referer). Cookies and credentials are deliberately not passed.
+ */
+function sessionHeaders(req: Request): Record<string, string> {
+  const headers: Record<string, string> = {};
+  for (const name of ['user-agent', 'x-forwarded-for', 'referer']) {
+    const value = req.headers.get(name);
+    if (value) headers[name] = value;
+  }
+  return headers;
+}
+
+/** track() only has somewhere to send events on Vercel; elsewhere it just logs noise. */
+function analyticsEndpointConfigured(): boolean {
+  return Boolean(process.env.VERCEL_WEB_ANALYTICS_ENDPOINT || process.env.VERCEL_URL);
+}
+
+/**
+ * Our own checks (the e2e suite in e2e/ and audit scripts) tag their requests.
+ * They are logged with `test: true` but never sent as billed analytics events.
+ */
+export function isOwnTestTraffic(req: Request): boolean {
+  return req.headers.has('x-asb-e2e') || /\basb-(?:e2e|audit|verify)\b/i.test(req.headers.get('user-agent') ?? '');
+}
+
+/**
+ * Sends the agent_call event after the response. Never throws, never rejects.
+ * Two properties only, because Pro keeps two per custom event: the client and
+ * what it called (the MCP tool or JSON-RPC method, else the route).
+ */
+function scheduleTrack(
+  properties: { client: ClientBucket; call: string },
+  headers: Record<string, string>
+): void {
+  if (!analyticsEndpointConfigured()) return;
+
+  const send = async (): Promise<void> => {
+    try {
+      await track('agent_call', properties, { headers });
+    } catch {
+      // analytics must never break the request
+    }
+  };
+
+  try {
+    after(send);
+  } catch {
+    // after() throws outside a request scope: send without it, fire-and-forget.
+    send().catch(() => {});
+  }
+}
+
+function record(
+  route: string,
+  req: Request,
+  extra: Record<string, unknown>
+): void {
+  const ua = req.headers.get('user-agent');
+  const client = bucketClient(ua);
+  const test = isOwnTestTraffic(req);
+
+  try {
+    console.log(
+      JSON.stringify({
+        asb_consumer: true,
+        route,
+        ua: ua ?? 'unknown',
+        client,
+        referer: req.headers.get('referer') ?? undefined,
+        ...(test ? { test: true } : {}),
+        ...extra,
+      })
+    );
+  } catch {
+    // logging must never break the request
+  }
+
+  // The log line above is the full record. Rejected (rate-limited) requests,
+  // our own test traffic and MCP session plumbing (initialize, notifications,
+  // tools/list: most of the MCP traffic) are not worth a billed event each.
+  if (test || extra.method === 'rate_limited') return;
+  // Crawlers re-read the machine docs constantly; the log line counts them.
+  if (client === 'crawler') return;
+  if (surfaceFor(route) === 'mcp' && extra.method !== 'tools/call') return;
+  scheduleTrack({ client, call: clip(toolFor(extra) || route) }, sessionHeaders(req));
+}
+
+/**
+ * Logs one machine-consumer request from a route handler. Synchronous for
+ * callers and never throws.
+ */
 export function logConsumer(
   route: string,
   req: Request,
   extra: Record<string, unknown> = {}
 ): void {
   try {
-    console.log(
-      JSON.stringify({
-        asb_consumer: true,
-        route,
-        ua: req.headers.get('user-agent') ?? 'unknown',
-        referer: req.headers.get('referer') ?? undefined,
-        ...extra,
-      })
-    );
+    if (isRouterFetch(req)) return;
+    const surface = surfaceFor(route);
+    // proxy.ts already counted this machine-doc request.
+    if (surface === 'doc' && req.headers.get(EDGE_LOGGED_HEADER) !== null) return;
+    record(route, req, extra);
+  } catch {
+    // logging must never break the request
+  }
+}
+
+/**
+ * Logs one machine-doc request from proxy.ts, which sees every hit including
+ * the ones served from cache. Synchronous and never throws.
+ */
+export function logEdgeDoc(
+  route: string,
+  req: Request,
+  extra: Record<string, unknown> = {}
+): void {
+  try {
+    if (isRouterFetch(req)) return;
+    record(route, req, extra);
   } catch {
     // logging must never break the request
   }

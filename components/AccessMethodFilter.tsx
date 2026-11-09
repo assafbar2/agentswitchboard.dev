@@ -2,15 +2,9 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
+import { count } from '@/lib/analytics';
 import { ACCESS_METHOD_LABELS } from '@/lib/search';
-
-const methodColors: Record<string, string> = {
-  api: 'border-[var(--blue)]/30 text-[var(--blue)] bg-[var(--blue-glow)]',
-  mcp: 'border-[var(--accent)]/30 text-[var(--accent)] bg-[var(--accent-subtle)]',
-  cli: 'border-[var(--amber)]/30 text-[var(--amber)] bg-[var(--amber-glow)]',
-  'browser-extension':
-    'border-[var(--rose)]/30 text-[var(--rose)] bg-[var(--rose-glow)]',
-};
+import { FILTER_BASE, FILTER_OFF, FILTER_ON } from '@/components/filter-chip';
 
 export function AccessMethodFilter() {
   const router = useRouter();
@@ -20,9 +14,9 @@ export function AccessMethodFilter() {
   const toggle = useCallback(
     (method: string) => {
       const params = new URLSearchParams(searchParams.toString());
-      const filters = activeFilters.includes(method)
-        ? activeFilters.filter((m) => m !== method)
-        : [...activeFilters, method];
+      const wasOn = activeFilters.includes(method);
+      const filters = wasOn ? activeFilters.filter((m) => m !== method) : [...activeFilters, method];
+      count('filter_change', { filter: 'access', value: method, state: wasOn ? 'off' : 'on' });
 
       if (filters.length > 0) {
         params.set('access', filters.join(','));
@@ -42,12 +36,10 @@ export function AccessMethodFilter() {
         return (
           <button
             key={key}
+            type="button"
+            aria-pressed={active}
             onClick={() => toggle(key)}
-            className={`px-3 py-1.5 text-xs mono font-medium rounded-lg border transition-all ${
-              active
-                ? methodColors[key]
-                : 'border-[var(--border)] text-[var(--text-muted)] bg-transparent hover:border-[var(--border-accent)] hover:text-[var(--text-secondary)]'
-            }`}
+            className={`${FILTER_BASE} ${active ? FILTER_ON : FILTER_OFF}`}
           >
             {label}
           </button>

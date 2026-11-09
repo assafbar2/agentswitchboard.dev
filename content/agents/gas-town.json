@@ -4,7 +4,7 @@
   "slug": "gas-town",
   "description": "Coordinates 20 to 30 coding agents such as Claude Code, Codex, and Copilot across git repos, keeping work state in git-backed hooks and a Beads issue ledger.",
   "providerName": "Gas Town Hall",
-  "providerUrl": "https://gascity.com",
+  "providerUrl": "https://github.com/gastownhall",
   "agentUrl": "https://github.com/gastownhall/gastown",
   "categories": [
     "orchestration",
@@ -58,5 +58,5 @@
     "cli"
   ],
   "createdAt": "2026-10-04T17:55:56.159Z",
-  "updatedAt": "2026-10-04T17:55:56.159Z"
+  "updatedAt": "2026-10-10T20:55:09.019Z"
 }

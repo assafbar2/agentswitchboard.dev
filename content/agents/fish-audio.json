@@ -1,0 +1,61 @@
+{
+  "id": "fish-audio",
+  "name": "Fish Audio",
+  "slug": "fish-audio",
+  "description": "Generates speech, clones voices and transcribes audio through REST and WebSocket APIs backed by open-weight models, for developers building voice apps and phone agents.",
+  "providerName": "Fish Audio",
+  "providerUrl": "https://fish.audio",
+  "agentUrl": "https://fish.audio",
+  "categories": [
+    "voice-messaging",
+    "content-media"
+  ],
+  "tags": [
+    "text-to-speech",
+    "voice-cloning",
+    "speech-to-text",
+    "voice-design",
+    "websocket-streaming",
+    "open-weights"
+  ],
+  "skills": [
+    {
+      "id": "text-to-speech",
+      "name": "Text to Speech",
+      "description": "Converts text to speech with emotion tags and fine-grained pronunciation control, over REST or real-time WebSocket."
+    },
+    {
+      "id": "voice-cloning",
+      "name": "Voice Cloning",
+      "description": "Creates reusable custom voice models from reference audio."
+    },
+    {
+      "id": "speech-to-text",
+      "name": "Speech to Text",
+      "description": "Transcribes audio, including multi-speaker conversations with speaker turns."
+    },
+    {
+      "id": "voice-design",
+      "name": "Voice Design",
+      "description": "Generates candidate voices from a natural-language prompt."
+    },
+    {
+      "id": "voice-agent-platform",
+      "name": "Voice Agent Platform",
+      "description": "Builds voice agents with knowledge bases, webhook tools and phone numbers, deployable via web SDK or widget."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-17T09:03:45.930Z",
+  "updatedAt": "2026-10-17T09:03:45.930Z"
+}

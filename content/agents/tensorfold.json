@@ -1,0 +1,52 @@
+{
+  "id": "tensorfold",
+  "name": "TensorFold",
+  "slug": "tensorfold",
+  "description": "Serves local language models from a native Zig binary on Apple Silicon and NVIDIA GPUs with OpenAI- and Anthropic-compatible APIs, for developers running models on their own hardware.",
+  "providerName": "ashhart",
+  "providerUrl": "https://github.com/ashhart",
+  "agentUrl": "https://tensorfold.dev",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "local-inference",
+    "apple-silicon",
+    "cuda",
+    "openai-compatible",
+    "zig",
+    "llm-serving",
+    "speculative-decoding"
+  ],
+  "skills": [
+    {
+      "id": "compatible-serving",
+      "name": "OpenAI and Anthropic Compatible Serving",
+      "description": "Serves chat completions, completions, Responses, and Anthropic Messages endpoints from a local /v1 API."
+    },
+    {
+      "id": "model-pull",
+      "name": "Verified Model Downloads",
+      "description": "Downloads qualified checkpoints into the Hugging Face cache with resumable, checksum-verified transfers."
+    },
+    {
+      "id": "context-compaction",
+      "name": "Context Compaction",
+      "description": "Compacts overflowing conversations into a memory note while keeping the system prompt and recent turns verbatim."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-10-10T21:22:01.518Z",
+  "updatedAt": "2026-10-10T21:22:01.518Z"
+}

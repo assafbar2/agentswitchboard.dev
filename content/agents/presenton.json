@@ -1,0 +1,64 @@
+{
+  "id": "presenton",
+  "name": "Presenton",
+  "slug": "presenton",
+  "description": "Generates editable PPTX and PDF presentations from prompts, documents, or your own templates for teams and developers, via a self-hosted app, REST API, or MCP server.",
+  "providerName": "Presenton",
+  "providerUrl": "https://presenton.ai",
+  "agentUrl": "https://presenton.ai",
+  "categories": [
+    "content-media",
+    "productivity"
+  ],
+  "tags": [
+    "presentation-generator",
+    "slide-decks",
+    "pptx-export",
+    "custom-templates",
+    "mcp-server",
+    "bring-your-own-key",
+    "self-hosted",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "presentation-generation",
+      "name": "Presentation Generation",
+      "description": "Creates presentations from a prompt or uploaded documents, in Standard or Smart mode."
+    },
+    {
+      "id": "template-from-pptx",
+      "name": "Template from PowerPoint",
+      "description": "Turns an existing PowerPoint design and its fonts into a reusable presentation template."
+    },
+    {
+      "id": "custom-templates",
+      "name": "Custom Templates and Themes",
+      "description": "Builds presentation designs with HTML and Tailwind CSS."
+    },
+    {
+      "id": "ai-slide-editing",
+      "name": "AI Slide Editing",
+      "description": "Edits the active slide or a selected element from a focused prompt to the built-in AI assistant."
+    },
+    {
+      "id": "pptx-pdf-export",
+      "name": "PPTX and PDF Export",
+      "description": "Exports fully editable PowerPoint (PPTX) and PDF decks."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-10-31T07:10:38.170Z",
+  "updatedAt": "2026-10-31T07:10:38.170Z"
+}

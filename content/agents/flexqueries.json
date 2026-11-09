@@ -1,0 +1,68 @@
+{
+  "id": "flexqueries",
+  "name": "FlexQueries",
+  "slug": "flexqueries",
+  "description": "Research keywords, SERPs, backlinks, competitors, rankings, site audits and AI visibility via a hosted OAuth MCP server and a 134-endpoint REST API, billed as pay-as-you-go prepaid credits.",
+  "providerName": "FlexQueries",
+  "providerUrl": "https://flexqueries.com",
+  "version": "v1",
+  "agentUrl": "https://flexqueries.com/docs",
+  "categories": [
+    "sales-marketing",
+    "research"
+  ],
+  "tags": [
+    "seo",
+    "keyword-research",
+    "serp-data",
+    "backlinks",
+    "rank-tracking",
+    "site-audit"
+  ],
+  "skills": [
+    {
+      "id": "ai-mode-serps",
+      "name": "AI Mode SERPs",
+      "description": "Fetch AI Mode search results for a tracked project through the /projects/{project_id}/serps/ai-mode endpoint."
+    },
+    {
+      "id": "keyword-page-gap",
+      "name": "Keyword Page Gap",
+      "description": "Compare keyword coverage between pages using the /keywords/page-gap endpoint of the v1 REST API."
+    },
+    {
+      "id": "backlink-networks",
+      "name": "Backlink Networks",
+      "description": "Retrieve backlink network data for a domain through the /backlinks/networks endpoint."
+    },
+    {
+      "id": "domain-intelligence",
+      "name": "Domain Intelligence",
+      "description": "Pull domain-level search intelligence through the /domains/intelligence endpoint."
+    },
+    {
+      "id": "local-profile",
+      "name": "Local Business Profile",
+      "description": "Look up local business profile and listing data through the /local/profile endpoint."
+    },
+    {
+      "id": "amazon-research",
+      "name": "Amazon Marketplace Research",
+      "description": "Run Amazon keyword and product research queries through the /amazon/research endpoint."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

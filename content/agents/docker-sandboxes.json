@@ -21,9 +21,16 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "brew",
+    "command": "brew trust docker/tap && brew install docker/tap/sbx"
+  },
+  "quickstartUrl": "https://docs.docker.com/ai/sandboxes-api/",
+  "apiBaseUrl": "https://connect.docker.com/sandboxes",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -31,5 +38,5 @@
     "cli"
   ],
   "createdAt": "2026-08-11T00:40:12.996Z",
-  "updatedAt": "2026-08-11T00:40:12.996Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

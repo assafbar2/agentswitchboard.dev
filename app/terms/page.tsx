@@ -1,12 +1,19 @@
-import Link from 'next/link';
-import type { Metadata } from 'next';
+import Link from '@/components/Link';
+import type { Metadata, ResolvingMetadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
+import { EndpointLink } from '@/components/EndpointLink';
 
-export const metadata: Metadata = {
-  title: 'Terms of Use',
-  description:
-    'Terms for using Agent Switchboard, including the public catalog API and connectors that call it.',
-  alternates: { canonical: '/terms' },
-};
+export function generateMetadata(_props: unknown, parent: ResolvingMetadata): Promise<Metadata> {
+  return pageMetadata(
+    {
+      title: 'Terms of Use',
+      description:
+        'Terms for using Agent Switchboard, including the public catalog API and connectors that call it.',
+      path: '/terms',
+    },
+    parent
+  );
+}
 
 const EMAIL = 'barnir@agentmail.to';
 
@@ -15,7 +22,7 @@ export default function TermsPage() {
     <div className="container-wide section">
       <div className="max-w-2xl mx-auto py-12">
         <h1 className="text-3xl font-bold tracking-tight mb-2">Terms of Use</h1>
-        <p className="text-sm text-[var(--text-muted)] mono mb-10">Last updated: September 2026</p>
+        <p className="text-sm text-[var(--text-muted)] mono mb-10">Last updated: November 2026</p>
 
         <div className="space-y-8 text-[var(--text-secondary)] leading-relaxed">
           <section>
@@ -44,12 +51,15 @@ export default function TermsPage() {
             </h2>
             <p>
               The catalog endpoints (including{' '}
-              <Link href="/api/agents" className="text-[var(--accent)] hover:underline">
+              <EndpointLink href="/api/agents" className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 GET /api/agents
-              </Link>
+              </EndpointLink>
               , GET /api/agents/&#123;slug&#125;, GET /api/categories, GET /agents.json, and POST
-              /api/mcp) are public, read-only, and require no account or API key. You may call them
-              from your own applications and from assistant platforms (including Meta Muse) under
+              /api/mcp) are public and require no account or API key. They are read-only, except
+              the MCP <code className="mono text-sm">submit_listing</code> tool, which files a
+              public suggestion for review like the submit form. You may call them
+              from your own applications and from assistant platforms (including Claude, ChatGPT, Grok,
+              and Meta Muse) under
               ordinary fair use. Do not attempt to overload, scrape around published rate-friendly
               caches, or present the directory as your own catalog without attribution.
             </p>
@@ -59,16 +69,37 @@ export default function TermsPage() {
             <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2">Listings</h2>
             <p>
               Inclusion is not an endorsement. Features, pricing, and access methods of listed
-              products can change without notice. Always confirm details with the provider. Catalog
-              data is also available under{' '}
+              products can change without notice. Always confirm details with the provider.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2">Licenses</h2>
+            <p>
+              The catalog data (the listings in <code className="mono text-sm">content/agents/*.json</code>{' '}
+              and the rest of <code className="mono text-sm">content/</code>, and the same data at
+              /agents.json, the REST API and the MCP server) is licensed under{' '}
               <a
-                href="https://github.com/assafbar2/agentswitchboard.dev/blob/main/content/LICENSE.md"
-                className="text-[var(--accent)] hover:underline"
+                href="https://github.com/assafbar2/agentswitchboard.dev/blob/main/LICENSE-DATA"
+                className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2"
               >
                 CC BY-NC 4.0
-              </a>{' '}
-              for non-commercial use with attribution to Agent Switchboard; commercial reuse
-              requires a license (contact us). Site code is MIT.
+              </a>
+              : you may share and adapt it for non-commercial purposes with attribution to Agent
+              Switchboard; commercial reuse requires a separate license (
+              <Link href="/contact" className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2">
+                contact us
+              </Link>
+              ). Listings you submit, by pull request, the submit form or the MCP{' '}
+              <code className="mono text-sm">submit_listing</code> tool, are contributed under CC
+              BY-NC 4.0. The site code is licensed under the{' '}
+              <a
+                href="https://github.com/assafbar2/agentswitchboard.dev/blob/main/LICENSE"
+                className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2"
+              >
+                MIT License
+              </a>
+              . Catalog versions published up to 2026-09-25 remain available under CC BY 4.0.
             </p>
           </section>
 
@@ -92,7 +123,7 @@ export default function TermsPage() {
               The service is provided as is. To the fullest extent permitted by law, Agent
               Switchboard and its operators are not liable for indirect, incidental, or
               consequential damages, or for reliance on a listing or search result. See also the{' '}
-              <Link href="/disclaimer" className="text-[var(--accent)] hover:underline">
+              <Link href="/disclaimer" className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 disclaimer
               </Link>
               .
@@ -111,11 +142,11 @@ export default function TermsPage() {
             <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2">Contact</h2>
             <p>
               Questions:{' '}
-              <a href={`mailto:${EMAIL}`} className="text-[var(--accent)] hover:underline mono">
+              <a href={`mailto:${EMAIL}`} className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2 mono">
                 {EMAIL}
               </a>
               . Privacy practices are described on the{' '}
-              <Link href="/privacy" className="text-[var(--accent)] hover:underline">
+              <Link href="/privacy" className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 privacy page
               </Link>
               .

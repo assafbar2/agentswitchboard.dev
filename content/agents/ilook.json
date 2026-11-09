@@ -1,0 +1,81 @@
+{
+  "id": "ilook",
+  "name": "iLook",
+  "slug": "ilook",
+  "description": "Scores user-submitted face photos over REST and MCP, returning face shape, facial symmetry, Golden Ratio phi, and 13 focused appearance measurements as versioned JSON with stable error codes.",
+  "providerName": "Arctan Technologies Private Limited",
+  "providerUrl": "https://www.ilook.fit/",
+  "agentUrl": "https://www.ilook.fit/api/docs",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "face-analysis",
+    "computer-vision",
+    "image-analysis",
+    "facial-symmetry",
+    "golden-ratio",
+    "styling"
+  ],
+  "skills": [
+    {
+      "id": "score-face",
+      "name": "Score Face",
+      "description": "Returns an overall 0-100 face score with five named subscores and a confidence value for one submitted adult photo."
+    },
+    {
+      "id": "analyze-face-shape",
+      "name": "Analyze Face Shape",
+      "description": "Identifies the visible face shape from outline cues in a single photo via the analyze_face_shape tool."
+    },
+    {
+      "id": "analyze-facial-symmetry",
+      "name": "Analyze Facial Symmetry",
+      "description": "Measures visible left-right facial balance in the submitted frame via the analyze_facial_symmetry tool."
+    },
+    {
+      "id": "analyze-golden-ratio-face",
+      "name": "Analyze Golden Ratio",
+      "description": "Reports an approximate Golden Ratio phi score and proportion context via the analyze_golden_ratio_face tool."
+    },
+    {
+      "id": "calculate-facial-ratios",
+      "name": "Calculate Facial Ratios",
+      "description": "Computes supported visible facial proportion measurements from one photo via the calculate_facial_ratios tool."
+    },
+    {
+      "id": "detect-eye-shape",
+      "name": "Detect Eye Shape",
+      "description": "Reads visible eye opening and framing, plus eye-corner tilt cues from the companion analyze_canthal_tilt tool."
+    },
+    {
+      "id": "rate-jawline",
+      "name": "Rate Jawline",
+      "description": "Describes lower-face definition and taper from a single photo via the rate_jawline tool."
+    },
+    {
+      "id": "analyze-skin-appearance",
+      "name": "Analyze Skin Appearance",
+      "description": "Reviews visible skin texture and lighting effects in the submitted photo via the analyze_skin_appearance tool."
+    },
+    {
+      "id": "find-hairstyle-direction",
+      "name": "Find Hairstyle Direction",
+      "description": "Suggests face-shape-aware hair framing and clothing color directions via find_hairstyle_direction and analyze_color_palette."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

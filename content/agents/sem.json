@@ -1,0 +1,57 @@
+{
+  "id": "sem",
+  "name": "sem",
+  "slug": "sem",
+  "description": "Shows Git changes as entity-level diffs of functions, classes, and methods, with impact analysis, entity history, and an MCP server, for developers and coding agents reviewing code.",
+  "providerName": "Ataraxy Labs",
+  "providerUrl": "https://ataraxy-labs.com",
+  "agentUrl": "https://ataraxy-labs.github.io/sem/",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "semantic-diff",
+    "git",
+    "tree-sitter",
+    "code-review",
+    "impact-analysis",
+    "rust-cli",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "entity-diff",
+      "name": "Entity-Level Diff",
+      "description": "Diffs working changes, commits, or ranges by function, class, and method instead of lines, with JSON and Markdown output."
+    },
+    {
+      "id": "impact-analysis",
+      "name": "Impact Analysis",
+      "description": "Lists the dependencies, dependents, and tests affected by changing a given entity."
+    },
+    {
+      "id": "entity-history",
+      "name": "Entity History and Blame",
+      "description": "Traces an entity's change history, per-entity blame, hotspots, and co-change pairs across the repo."
+    },
+    {
+      "id": "entity-search",
+      "name": "Entity Search",
+      "description": "Finds functions, classes, and methods by name with their callers, references, and surrounding context."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.499Z",
+  "updatedAt": "2026-10-10T21:22:01.499Z"
+}

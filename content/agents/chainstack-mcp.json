@@ -1,0 +1,61 @@
+{
+  "id": "chainstack-mcp",
+  "name": "Chainstack MCP Server",
+  "slug": "chainstack-mcp",
+  "description": "Lets AI agents deploy and manage Chainstack blockchain nodes and projects, search Chainstack docs, check platform status, and request testnet faucet funds over a hosted MCP server.",
+  "providerName": "Chainstack",
+  "providerUrl": "https://chainstack.com",
+  "agentUrl": "https://docs.chainstack.com/docs/chainstack-mcp-server",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "blockchain-nodes",
+    "rpc-endpoints",
+    "web3",
+    "testnet-faucet",
+    "remote-mcp",
+    "official-mcp",
+    "chainstack"
+  ],
+  "skills": [
+    {
+      "id": "node-deployment",
+      "name": "Node Deployment",
+      "description": "Lists deployment options and creates, renames, inspects, or deletes blockchain nodes with their RPC endpoints."
+    },
+    {
+      "id": "project-management",
+      "name": "Project Management",
+      "description": "Creates, lists, updates, and deletes Chainstack projects in an organization."
+    },
+    {
+      "id": "testnet-funds",
+      "name": "Testnet Faucet",
+      "description": "Tops up a testnet address from the Chainstack faucet on networks such as Sepolia, Base Sepolia, and Solana devnet."
+    },
+    {
+      "id": "docs-search",
+      "name": "Docs Search",
+      "description": "Searches Chainstack documentation for RPC methods and guides and fetches full pages without an API key."
+    },
+    {
+      "id": "status-pricing",
+      "name": "Status And Pricing",
+      "description": "Checks platform status and incidents and fetches a live pricing snapshot."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.536Z",
+  "updatedAt": "2026-10-10T21:22:01.536Z"
+}

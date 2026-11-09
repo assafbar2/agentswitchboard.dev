@@ -1,0 +1,63 @@
+{
+  "id": "repowise",
+  "name": "Repowise",
+  "slug": "repowise",
+  "description": "Indexes a codebase's graph, git history, docs, and decisions locally and serves ten MCP tools plus a dashboard, so coding agents can answer questions and assess change risk.",
+  "providerName": "Repowise",
+  "providerUrl": "https://repowise.dev",
+  "agentUrl": "https://repowise.dev",
+  "categories": [
+    "code-devtools",
+    "memory-state"
+  ],
+  "tags": [
+    "code-intelligence",
+    "codebase-index",
+    "git-history",
+    "change-risk",
+    "dead-code",
+    "mcp-server",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "get-overview",
+      "name": "Repository Overview",
+      "description": "Summarizes architecture, module map, entry points, and git health."
+    },
+    {
+      "id": "get-answer",
+      "name": "Cited Answers",
+      "description": "Answers a question with hybrid retrieval, graph expansion, and citations."
+    },
+    {
+      "id": "get-change-risk",
+      "name": "Change Risk",
+      "description": "Reports what a commit, range, or uncommitted change made worse and which tests touch it."
+    },
+    {
+      "id": "get-why",
+      "name": "Architectural Decisions",
+      "description": "Returns architectural decisions with verbatim evidence, falling back to git history."
+    },
+    {
+      "id": "get-dead-code",
+      "name": "Dead Code",
+      "description": "Lists unreachable code by confidence tier."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.490Z",
+  "updatedAt": "2026-10-10T21:22:01.490Z"
+}

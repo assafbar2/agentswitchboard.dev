@@ -17,9 +17,13 @@
   "authType": "oauth2",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.zapier.com/api/v1/connect",
+  "quickstartUrl": "https://docs.zapier.com/api-reference/overview",
+  "apiBaseUrl": "https://api.zapier.com",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -28,5 +32,5 @@
     "browser-extension"
   ],
   "createdAt": "2026-03-22T09:53:07.137Z",
-  "updatedAt": "2026-07-10T21:07:25.079Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

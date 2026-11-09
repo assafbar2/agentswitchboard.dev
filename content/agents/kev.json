@@ -1,0 +1,62 @@
+{
+  "id": "kev",
+  "name": "Kev",
+  "slug": "kev",
+  "description": "Answers yes/no, multiple-choice, and rating questions about text with calibrated probabilities, for developers self-hosting a Jev-compatible decision API.",
+  "providerName": "Jared Palmer",
+  "providerUrl": "https://github.com/jaredpalmer",
+  "agentUrl": "https://github.com/jaredpalmer/kev",
+  "categories": [
+    "language",
+    "infrastructure"
+  ],
+  "tags": [
+    "decision-models",
+    "text-classification",
+    "calibrated-probabilities",
+    "self-hosted",
+    "open-weights",
+    "fine-tuning",
+    "qwen"
+  ],
+  "skills": [
+    {
+      "id": "multi-question-decisions",
+      "name": "Multi-Question Decisions",
+      "description": "Answers noul (yes/no), choice, and score questions about one text in a single request, each with probabilities."
+    },
+    {
+      "id": "jev-compatible-api",
+      "name": "Jev-Compatible API",
+      "description": "Serves the System One API so the TypeSafe Python SDK works against a Kev server unchanged."
+    },
+    {
+      "id": "long-documents",
+      "name": "Long Documents",
+      "description": "Accepts documents of up to 65,536 tokens on CUDA GPUs or on Apple Silicon through MLX."
+    },
+    {
+      "id": "fine-tuning",
+      "name": "Fine-Tuning",
+      "description": "Fine-tunes a released checkpoint on your labelled examples, by hand or with the kev-finetune coding-agent skill on Modal."
+    },
+    {
+      "id": "endpoint-deploy",
+      "name": "Endpoint Deploy",
+      "description": "Deploys an HTTPS endpoint on Modal with one command, behind a bearer key, scaling to zero when idle."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-17T09:03:45.917Z",
+  "updatedAt": "2026-10-17T09:03:45.917Z"
+}

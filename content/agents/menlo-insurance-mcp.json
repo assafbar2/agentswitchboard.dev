@@ -1,0 +1,62 @@
+{
+  "id": "menlo-insurance-mcp",
+  "name": "Menlo Insurance MCP",
+  "slug": "menlo-insurance-mcp",
+  "description": "Lists Menlo property and casualty insurance products and quote links over MCP without auth, then continues one OAuth-authorized quote application and attaches supporting documents.",
+  "providerName": "Menlo Insurance Services",
+  "providerUrl": "https://www.menloinsurance.com",
+  "version": "0.4.0",
+  "agentUrl": "https://www.menloinsurance.com/ai-assistants",
+  "categories": [
+    "finance",
+    "customer-support"
+  ],
+  "tags": [
+    "insurance",
+    "property-casualty",
+    "insurance-quotes",
+    "brokerage",
+    "underwriting",
+    "oauth2"
+  ],
+  "skills": [
+    {
+      "id": "product-catalog",
+      "name": "Product Catalog",
+      "description": "Lists Menlo insurance products with labels, available states, and quote URLs via list_products and get_quote_link, no authentication required."
+    },
+    {
+      "id": "quote-application",
+      "name": "Quote Application",
+      "description": "Starts and advances an insurance application through start_quote, get_current_page, and answer_quote_page, one page of questions at a time."
+    },
+    {
+      "id": "application-review",
+      "name": "Application Review",
+      "description": "Reviews a completed application with review_quote_application and sends it to the brokerage via submit_quote_request."
+    },
+    {
+      "id": "carrier-followups",
+      "name": "Carrier Follow-Ups",
+      "description": "Tracks quote progress with get_quote_status and resolves underwriter questions through get_missing_questions and answer_additional_questions."
+    },
+    {
+      "id": "document-attachment",
+      "name": "Document Attachment",
+      "description": "Attaches supporting files to an in-progress quote with attach_quote_document and reads the linked profile via get_connected_quote_profile."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-25T01:16:46.687Z"
+}

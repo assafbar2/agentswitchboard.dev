@@ -47,9 +47,13 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpCommand": "npx -y @brave/brave-search-mcp-server --transport stdio",
+  "quickstartUrl": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
+  "apiBaseUrl": "https://api.search.brave.com/res/v1",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -57,5 +61,5 @@
     "api"
   ],
   "createdAt": "2026-04-13T21:38:19.598Z",
-  "updatedAt": "2026-04-13T21:38:19.598Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

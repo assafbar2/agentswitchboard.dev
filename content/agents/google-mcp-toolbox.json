@@ -39,9 +39,16 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpCommand": "npx -y @toolbox-sdk/server --prebuilt=postgres --stdio",
+  "install": {
+    "type": "brew",
+    "command": "brew install mcp-toolbox"
+  },
+  "quickstartUrl": "https://mcp-toolbox.dev/documentation/getting-started/",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -49,5 +56,5 @@
     "cli"
   ],
   "createdAt": "2026-05-13T16:56:42.425Z",
-  "updatedAt": "2026-09-25T23:53:29.654Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

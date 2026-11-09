@@ -1,8 +1,18 @@
 # Contributing to Agent Switchboard
 
 The catalog is maintained **in the open**: every agent in the directory is a
-JSON file in [`content/agents/`](content/agents/). Corrections and new
-listings happen via pull request — CI validates, a human maintainer merges.
+JSON file in [`content/agents/`](content/agents/). New listings and
+corrections come in by pull request, the [submit form](https://agentswitchboard.dev/submit)
+or the MCP `submit_listing` tool. CI validates pull requests, and a maintainer
+reviews every submission weekly, oldest first, and posts the decision on its
+issue or pull request. Accepted listings and corrections go live in the weekly
+drop, which credits your pull request; the pull request is then closed with a
+link to the listing, not merged.
+
+**Licensing.** Listings and corrections (anything under `content/`) are
+contributed under [CC BY-NC 4.0](LICENSE-DATA), the catalog's data license,
+whether they arrive by pull request, the submit form or the MCP
+`submit_listing` tool. Code contributions are under [MIT](LICENSE).
 
 ## Submit a new agent
 
@@ -37,6 +47,21 @@ listings happen via pull request — CI validates, a human maintainer merges.
 }
 ```
 
+   Optional, for the listing page's **Use it now** panel. Add one only when
+   your own docs print it, and never a placeholder:
+
+   ```json
+   "mcpEndpoint": "https://mcp.example.com/mcp",
+   "mcpCommand": "npx -y @example/mcp-server",
+   "install": { "type": "npm", "command": "npm install -g @example/cli" },
+   "quickstartUrl": "https://docs.example.com/quickstart",
+   "apiBaseUrl": "https://api.example.com/v1"
+   ```
+
+   `mcpEndpoint` is your hosted MCP server, the same address for every user;
+   `mcpCommand` runs it locally (npx, uvx, bunx, docker or pipx, plain
+   arguments only). `install.type` is `npm`, `pip`, `brew`, `docker` or
+   `binary` (an install script). Each needs the matching access method.
 3. Add a line to `content/changelog.json` (top of the array):
    `{ "action": "added", "slug": "your-slug", "name": "Official Product Name" }`
 4. Run `npx tsx scripts/validate-content.ts` locally (CI runs it too)
@@ -57,16 +82,109 @@ We are curators, not collectors. Listings need:
 - ✅ Genuine adoption or traction signals (stars, registry listings, funding, community discussion — or, for vendors submitting their own product, endpoints we can verify live)
 - ❌ No vaporware, GPT wrappers, dead links, or pure self-promo
 
+### Three rules for the close calls
+
+**Competitors are welcome.** This is not a one-per-category list. If five
+companies build agent email APIs, all five can list and compete on execution.
+The rules below are about something else: whether an entry is its own product,
+and whether it earns exactly one slot.
+
+**1. Own substance, not pass-through.** A listing has to bring something of its
+own — its own implementation, data, model, or execution. A service whose value
+is entirely another vendor's, re-exposed behind a new key, is not a listing.
+In practice this means OpenAI-compatible gateways and model resellers are
+declined by default: what the agent actually receives is the upstream
+provider's product. The carve-out is a capability of their own we can verify —
+a model nobody else serves, enforceable zero-data-retention, or routing
+intelligence that *chooses between* providers rather than reselling one.
+Competing implementations of the same idea are fine. Wrappers are not.
+
+**2. One listing per product, not per endpoint.** A vendor may hold as many
+listings as it has genuinely separate products — separately named, separately
+usable, the kind of thing someone searches for by name. A suite of micro-tools
+sharing one brand is a single listing, and the pieces belong in `skills`, which
+is exactly what that field is for. There is no cap: a vendor with eight real
+products gets eight entries.
+
+**3. Aggregators: one per operator, and the access must be substantive.** When
+a listing's value is collected third-party data (job boards, directories,
+feeds), we list at most one entry per operator, and the programmatic access
+must be keyless or trivially obtainable and return real data at useful scale.
+Data a provider computes itself is first-party, not aggregation, and this rule
+does not apply to it.
+
+**4. No competing directories.** We do not list catalogs, directories, plugin
+indexes or listing services whose product is an index of other people's tools —
+including ones that reach the catalog as a well-built MCP server. The agent
+asking us a question is already in a directory; routing it into a rival index
+is not an answer, and reciprocal indexing turns curation into link trading.
+This is a flat no, not a quality judgement: a competing directory can be
+excellently built and still be declined. (Link exchanges and guest-post swaps
+are declined under the same principle.)
+
 Vendors submitting their own product: set `"verified": false` — maintainers
-verify before merge and flip it. **Verified** means we checked it works: your URLs
+check it before it ships and set it to `true` when it passes. **Verified** means we checked it works: your URLs
 load, you declare an access method, and any linked GitHub repo is live (not
 archived, pushed within 12 months). It's re-checked monthly and drops if the
 product stops meeting that bar. `featured` is maintainer-only.
 
+`"sponsored": true` marks a **paid placement** and is maintainer-only, set
+after the maintainer approves the sponsor. The listing must already meet
+every rule above. It shows a **Sponsored** label wherever the listing appears
+and a spot in the Sponsored slot on the homepage and the latest drop page;
+it never changes search ranking, tasks, alternatives, compare or the Operator,
+it never appears in MCP or WebMCP tool results, and it is separate from `featured`,
+`official` and `verified`. It is the only paid label; the homepage's
+editor's picks (`homepageFeatured` in `content/site.json`) never include a
+sponsored listing, and CI enforces that.
+
+Paid placement never reaches AI assistants. The MCP server and the WebMCP tools
+are always organic: they rank by relevance or A→Z and never return or rank by
+`featured`, `sponsored` or `tier`, because the Claude and ChatGPT
+connector directories forbid ads and paid placement. See [DISTRIBUTION.md](DISTRIBUTION.md).
+
+## Official listings
+
+`"official": true` puts an **Official** badge on a listing and includes it in
+the Official filter and the homepage's Official platforms section. It is a
+fact about who publishes the product, not a paid placement, and it is separate
+from `verified` (code-backed checks) and `featured` (maintainer placement).
+
+A listing is Official only if **both** hold:
+
+1. **First-party.** The listed product is built and published by the company
+   that owns the brand or platform, and its `agentUrl` is on that company's
+   official domain or GitHub org. A community-built "Notion MCP" doesn't count;
+   Notion's own does. Wrappers re-hosted on registries (Smithery, Glama, npm)
+   don't count either.
+2. **Major vendor.** The company is publicly traded, a frontier AI lab, valued
+   around $1B or more in a reported round, or the clear commercial leader in
+   its category. A wholly owned subsidiary or acquired brand of such a company
+   counts (Slack, GitHub, HashiCorp).
+
+Not Official, even when the product is the canonical one: projects governed by
+foundations or standards bodies (the MCP SDKs, A2A), university labs, and
+personal repos of well-known people.
+
+**Evidence is enforced in CI.** Every vendor is listed in
+[`content/official-vendors.json`](content/official-vendors.json) with why it
+qualifies (`basis`, `evidence`) and the official `sources` its products ship
+from (`"notion.com"` covers subdomains; `"github.com/makenotion"` covers one
+org). `validate-content.ts` rejects `"official": true` unless the entry's
+`agentUrl` sits on exactly one vendor's sources.
+
+**Don't self-assign it.** Leave `official` out of new submissions, including
+for your own product. Maintainers set it during review. If you think a listing
+qualifies, say so in the PR and link the evidence: the vendor's own page or
+repo for the product, and a public source for the listing, valuation, or
+ownership. A PR that adds a vendor to `official-vendors.json` needs the same
+evidence and a maintainer's approval.
+
 ## Fix an existing entry
 
 Dead link, renamed product, new access method? Edit the entry's JSON file,
-add an `updated` line to the changelog, open a PR. These merge fast.
+add an `updated` line to the changelog, open a PR. Corrections go live in the
+next weekly drop, like new listings.
 
 ## Not a developer?
 

@@ -33,7 +33,7 @@ export default function Error({
         )}
         <button
           onClick={() => unstable_retry()}
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--accent)] text-[var(--bg-primary)] font-medium text-sm hover:opacity-90 transition-opacity"
+          className="inline-flex min-h-11 items-center justify-center gap-2 bg-[var(--dir-yellow)] px-6 text-[17px] font-extrabold text-[var(--dir-on-yellow)] no-underline hover:underline cursor-pointer [font-family:var(--font-display)]"
         >
           Try again
         </button>

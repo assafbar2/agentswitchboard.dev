@@ -39,9 +39,16 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "install": {
+    "type": "brew",
+    "command": "brew install temporal"
+  },
+  "quickstartUrl": "https://docs.temporal.io/ops",
+  "apiBaseUrl": "https://saas-api.tmprl.cloud",
   "status": "published",
   "featured": false,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -49,5 +56,5 @@
     "cli"
   ],
   "createdAt": "2026-06-15T03:07:05.775Z",
-  "updatedAt": "2026-06-15T03:07:05.775Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

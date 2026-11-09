@@ -1,0 +1,58 @@
+{
+  "id": "intentkit",
+  "name": "IntentKit",
+  "slug": "intentkit",
+  "description": "Runs a self-hosted cluster of collaborating AI agents that chat on Telegram, Slack, and Lark, act on schedules, and expose per-agent APIs, for teams wanting cloud-native agents.",
+  "providerName": "Crestal Network",
+  "providerUrl": "https://crestal.network",
+  "agentUrl": "https://intentcat.com/docs",
+  "categories": [
+    "autonomous-agents",
+    "orchestration"
+  ],
+  "tags": [
+    "self-hosted",
+    "multi-agent",
+    "agent-cluster",
+    "telegram-bot",
+    "slack-bot",
+    "web3",
+    "langgraph",
+    "python"
+  ],
+  "skills": [
+    {
+      "id": "multi-agent-collaboration",
+      "name": "Multi-Agent Collaboration",
+      "description": "Lets agents in the cluster invoke each other so several agents can split and hand off work as a team."
+    },
+    {
+      "id": "scheduled-autonomy",
+      "name": "Scheduled Autonomous Tasks",
+      "description": "Runs agent tasks autonomously on a schedule through a dedicated autonomous runner and scheduler service."
+    },
+    {
+      "id": "chat-channels",
+      "name": "Chat Channel Integrations",
+      "description": "Connects agents to users through built-in Telegram, Slack, and Lark channel adapters."
+    },
+    {
+      "id": "agent-api",
+      "name": "Per-Agent API",
+      "description": "Exposes each agent through built-in HTTP endpoints, with optional SSE streaming of chat responses."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-10T21:22:01.496Z",
+  "updatedAt": "2026-10-10T21:22:01.496Z"
+}

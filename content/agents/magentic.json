@@ -1,0 +1,56 @@
+{
+  "id": "magentic",
+  "name": "magentic",
+  "slug": "magentic",
+  "description": "Turns LLM prompts into typed Python functions with decorators for structured output, function calling, and streaming across OpenAI, Anthropic, and Ollama, for Python developers.",
+  "providerName": "Jack Collins",
+  "providerUrl": "https://github.com/jackmpcollins",
+  "agentUrl": "https://magentic.dev/",
+  "categories": [
+    "orchestration"
+  ],
+  "tags": [
+    "python",
+    "structured-output",
+    "pydantic",
+    "function-calling",
+    "prompt-decorators",
+    "streaming",
+    "llm-library"
+  ],
+  "skills": [
+    {
+      "id": "structured-outputs",
+      "name": "Structured Outputs",
+      "description": "Returns Pydantic models and other typed values from prompt-decorated functions based on the return annotation."
+    },
+    {
+      "id": "function-calling",
+      "name": "Function Calling",
+      "description": "Lets the LLM choose Python functions to call and resolves chains of calls automatically with @prompt_chain."
+    },
+    {
+      "id": "streaming",
+      "name": "Streaming",
+      "description": "Streams text and structured objects as they are generated, including concurrent streams and async variants."
+    },
+    {
+      "id": "chat-prompting",
+      "name": "Chat Prompting",
+      "description": "Builds prompts from system, user, and assistant message templates for few-shot and multi-turn calls."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-10T21:22:01.503Z",
+  "updatedAt": "2026-10-10T21:22:01.503Z"
+}

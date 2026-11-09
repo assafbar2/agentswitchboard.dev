@@ -21,6 +21,30 @@ const eslintConfig = defineConfig([
       "@typescript-eslint/no-unused-vars": "off",
     },
   },
+  {
+    ignores: ["components/Link.tsx"],
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          paths: [
+            {
+              name: "next/link",
+              message: "Use @/components/Link: next/link prefetches every link that scrolls into view.",
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    // Playwright fixtures hand values on with a `use()` callback, which the
+    // React hooks rule mistakes for React's use().
+    files: ["e2e/**"],
+    rules: { "react-hooks/rules-of-hooks": "off" },
+  },
+  // Playwright run output.
+  globalIgnores(["e2e/test-results/**", "e2e/results/**"]),
 ]);
 
 export default eslintConfig;

@@ -1,6 +1,30 @@
 import { describe, it, expect } from 'vitest';
-import { scoreAgent, searchAgents } from './search';
-import type { Agent } from './types';
+import {
+  MAX_QUERY_LENGTH,
+  clampQuery,
+  breakdownLine,
+  browseMatches,
+  browseStateHref,
+  filterAgents,
+  invalidSinceMessage,
+  keywordMatcher,
+  narrowingWords,
+  parseFlag,
+  parseSince,
+  parseSort,
+  SINCE_MAX_DAYS,
+  resultBreakdown,
+  scoreAgent,
+  searchAgents,
+  sortAgents,
+  taskMatches,
+  taskScore,
+  TASK_MIN_SCORE,
+  type BreakdownKey,
+  type BrowseState,
+  type TaskQuery,
+} from './search';
+import type { Agent, Category } from './types';
 
 function makeAgent(overrides: Partial<Agent> = {}): Agent {
   return {
@@ -20,6 +44,7 @@ function makeAgent(overrides: Partial<Agent> = {}): Agent {
     status: 'published',
     featured: false,
     verified: false,
+    official: false,
     tier: 'free',
     discoveredBy: 'manual',
     accessMethods: [],
@@ -75,6 +100,14 @@ describe('scoreAgent', () => {
   });
 });
 
+describe('clampQuery', () => {
+  it('trims and cuts search text to MAX_QUERY_LENGTH', () => {
+    expect(clampQuery('  postgres mcp  ')).toBe('postgres mcp');
+    expect(clampQuery(undefined)).toBe('');
+    expect(clampQuery('word '.repeat(2000)).length).toBeLessThanOrEqual(MAX_QUERY_LENGTH);
+  });
+});
+
 describe('searchAgents', () => {
   const agents = [
     makeAgent({ name: 'Alpha', slug: 'alpha', accessMethods: ['api'] }),
@@ -106,5 +139,287 @@ describe('searchAgents', () => {
     const results = searchAgents(agents, 'alpha', ['mcp']);
     expect(results).toHaveLength(1);
     expect(results[0].slug).toBe('gamma');
+  });
+});
+
+describe('filterAgents', () => {
+  const code = { id: 'c', name: 'Code', slug: 'code-devtools', sortOrder: 1 };
+  const data = { id: 'd', name: 'Data', slug: 'data-analytics', sortOrder: 2 };
+  const google = { slug: 'google', name: 'Google' };
+  const agents = [
+    makeAgent({ slug: 'gemini-cli', categories: [code], official: true, officialVendor: google }),
+    makeAgent({ slug: 'bigquery', categories: [data], official: true, officialVendor: google }),
+    makeAgent({ slug: 'community-gemini', categories: [code] }),
+  ];
+  const slugs = (list: Agent[]) => list.map((a) => a.slug);
+
+  it('keeps everything with no filter', () => {
+    expect(filterAgents(agents, {})).toHaveLength(3);
+  });
+
+  it('narrows to official listings', () => {
+    expect(slugs(filterAgents(agents, { official: true }))).toEqual(['gemini-cli', 'bigquery']);
+  });
+
+  it('combines official with a category', () => {
+    expect(slugs(filterAgents(agents, { official: true, category: 'code-devtools' }))).toEqual(['gemini-cli']);
+  });
+
+  it('narrows to one vendor', () => {
+    expect(slugs(filterAgents(agents, { vendor: 'google', category: 'data-analytics' }))).toEqual(['bigquery']);
+  });
+
+  it('narrows to Verified listings and to auth types', () => {
+    const more = [
+      makeAgent({ slug: 'open', verified: true, authType: 'none' }),
+      makeAgent({ slug: 'keyed', verified: true, authType: 'apiKey' }),
+      makeAgent({ slug: 'unchecked', verified: false, authType: 'none' }),
+    ];
+    expect(slugs(filterAgents(more, { verified: true }))).toEqual(['open', 'keyed']);
+    expect(slugs(filterAgents(more, { auth: ['none'] }))).toEqual(['open', 'unchecked']);
+    expect(slugs(filterAgents(more, { auth: ['none', 'apiKey'], verified: true }))).toEqual(['open', 'keyed']);
+    expect(filterAgents(more, { auth: [] })).toHaveLength(3);
+  });
+
+  it('keeps listings added on or after the since day, and none without an added date', () => {
+    const dated = [
+      makeAgent({ slug: 'before', createdAt: '2026-10-26T23:59:59Z' }),
+      makeAgent({ slug: 'on', createdAt: '2026-10-27T00:00:00Z' }),
+      makeAgent({ slug: 'after', createdAt: '2026-11-02T09:00:00Z' }),
+      makeAgent({ slug: 'undated' }),
+    ];
+    expect(slugs(filterAgents(dated, { since: '2026-10-27' }))).toEqual(['on', 'after']);
+    expect(filterAgents(dated, { since: '' })).toHaveLength(4);
+  });
+});
+
+describe('parseSince', () => {
+  const now = Date.UTC(2026, 10, 2, 16, 30);
+
+  it('reads a date, or a timestamp by its day', () => {
+    expect(parseSince('2026-10-01', now)).toBe('2026-10-01');
+    expect(parseSince(' 2026-10-01T12:30:00Z ', now)).toBe('2026-10-01');
+    expect(parseSince('2026-10-01T08:00+02:00', now)).toBe('2026-10-01');
+  });
+
+  it('counts days back with today included', () => {
+    expect(parseSince('1', now)).toBe('2026-11-02');
+    expect(parseSince('7', now)).toBe('2026-10-27');
+    expect(parseSince(7, now)).toBe('2026-10-27');
+    expect(parseSince('7d', now)).toBe('2026-10-27');
+    expect(parseSince('7 days', now)).toBe('2026-10-27');
+    expect(parseSince(String(SINCE_MAX_DAYS), now)).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+  });
+
+  it('refuses anything that is not a calendar day or a count of days in range', () => {
+    for (const bad of ['', '0', String(SINCE_MAX_DAYS + 1), '-7', '7.5', 'last week', '2026-02-30', '2026-13-01', '2026-1-1', '20261001']) {
+      expect(parseSince(bad, now), bad).toBeNull();
+    }
+  });
+
+  it('says what it accepts, quoting a short part of the value', () => {
+    expect(invalidSinceMessage('last week')).toBe(
+      `since must be a date (YYYY-MM-DD) or a number of days from 1 to ${SINCE_MAX_DAYS}, such as 7; got "last week".`
+    );
+    expect(invalidSinceMessage('x'.repeat(100))).toContain(`got "${'x'.repeat(40)}".`);
+  });
+});
+
+describe('sortAgents', () => {
+  const agents = [
+    makeAgent({ name: 'Beta', slug: 'beta', createdAt: '2026-05-01T00:00:00.000Z', skills: [] }),
+    makeAgent({
+      name: 'alpha',
+      slug: 'alpha',
+      createdAt: '2026-10-30T00:00:00Z',
+      skills: [{ id: 'a', name: 'A', description: '' }],
+    }),
+    makeAgent({ name: 'Gamma', slug: 'gamma', createdAt: undefined, skills: [] }),
+    makeAgent({
+      name: 'Delta',
+      slug: 'delta',
+      createdAt: '2026-08-01T00:00:00.000Z',
+      skills: [{ id: 'a', name: 'A', description: '' }],
+    }),
+  ];
+  const order = (sort: Parameters<typeof sortAgents>[1]) => sortAgents(agents, sort).map((a) => a.slug);
+
+  it('relevance keeps the incoming order', () => {
+    expect(order('relevance')).toEqual(['beta', 'alpha', 'gamma', 'delta']);
+  });
+
+  it('newest puts the latest additions first and undated listings last', () => {
+    expect(order('newest')).toEqual(['alpha', 'delta', 'beta', 'gamma']);
+  });
+
+  it('skills puts most skills first, ties in the incoming order', () => {
+    expect(order('skills')).toEqual(['alpha', 'delta', 'beta', 'gamma']);
+  });
+
+  it('name sorts A→Z regardless of case', () => {
+    expect(order('name')).toEqual(['alpha', 'beta', 'delta', 'gamma']);
+  });
+
+  it('never reorders the array it was given', () => {
+    sortAgents(agents, 'name');
+    expect(agents.map((a) => a.slug)).toEqual(['beta', 'alpha', 'gamma', 'delta']);
+  });
+});
+
+describe('parseSort', () => {
+  it('accepts the four orders in any case and defaults to relevance', () => {
+    expect(['newest', ' Skills', 'NAME', 'relevance'].map(parseSort)).toEqual(['newest', 'skills', 'name', 'relevance']);
+    expect(['', 'oldest', 'constructor', null, undefined].map(parseSort)).toEqual(Array(5).fill('relevance'));
+  });
+});
+
+describe('resultBreakdown', () => {
+  const agents = [
+    makeAgent({ official: true, verified: true, authType: 'none', accessMethods: ['mcp'] }),
+    makeAgent({ verified: true, authType: 'apiKey', accessMethods: ['api', 'mcp'] }),
+    makeAgent({ verified: true, authType: 'oauth2', accessMethods: ['api'] }),
+  ];
+  const line = (applied?: Set<BreakdownKey>) =>
+    resultBreakdown(agents, applied).map(({ label, count }) => `${count} ${label}`);
+
+  it('counts what each chip would keep, in chip order, without zeros', () => {
+    expect(line()).toEqual(['1 Official', '3 Verified', '1 No auth needed', '2 API', '2 MCP']);
+  });
+
+  it('leaves out chips that are already applied', () => {
+    expect(line(new Set(['verified', 'mcp']))).toEqual(['1 Official', '1 No auth needed', '2 API']);
+  });
+
+  it('is empty for no results', () => {
+    expect(resultBreakdown([])).toEqual([]);
+  });
+});
+
+describe('breakdownLine', () => {
+  it('joins the counts and says "all" for a chip that keeps every result', () => {
+    const items = resultBreakdown([
+      makeAgent({ official: true, verified: true, accessMethods: ['mcp'] }),
+      makeAgent({ verified: true, authType: 'apiKey', accessMethods: ['mcp', 'cli'] }),
+    ]);
+    expect(breakdownLine(items, 2)).toBe('1 Official · all Verified · 1 No auth needed · all MCP · 1 CLI');
+  });
+});
+
+describe('parseFlag', () => {
+  it('accepts 1/true/yes and rejects everything else', () => {
+    expect(['1', 'true', 'TRUE', 'yes'].map(parseFlag)).toEqual([true, true, true, true]);
+    expect(['0', 'false', '', 'no'].map(parseFlag)).toEqual([false, false, false, false]);
+    expect(parseFlag(null)).toBe(false);
+  });
+});
+
+describe('narrowingWords', () => {
+  it('keeps access words and drops filler, lowercased, in order and once each', () => {
+    expect(narrowingWords('An MCP server for Postgres, postgres!')).toEqual(['mcp', 'postgres']);
+    expect(narrowingWords('the tools')).toEqual([]);
+    expect(narrowingWords('  ')).toEqual([]);
+  });
+});
+
+describe('browseMatches and browseStateHref', () => {
+  const google = { slug: 'google', name: 'Google' };
+  const agents = [
+    makeAgent({ slug: 'gemini-cli', name: 'Gemini CLI', official: true, officialVendor: google, accessMethods: ['cli'] }),
+    makeAgent({ slug: 'gemini-mcp', name: 'Gemini MCP', accessMethods: ['mcp'], verified: true }),
+  ];
+  const none: BrowseState = { query: '', category: '', official: false, vendor: '', verified: false, auth: [], access: [] };
+  const slugs = (state: BrowseState) => browseMatches(agents, state).map((a) => a.slug);
+
+  it('applies the filters, then the search; a vendor implies Official', () => {
+    expect(slugs({ ...none, query: 'gemini' })).toEqual(['gemini-cli', 'gemini-mcp']);
+    expect(slugs({ ...none, query: 'gemini', vendor: 'google' })).toEqual(['gemini-cli']);
+    expect(slugs({ ...none, query: 'gemini', access: ['mcp'] })).toEqual(['gemini-mcp']);
+    expect(slugs({ ...none, verified: true, auth: ['apiKey'] })).toEqual([]);
+  });
+
+  it('writes a view as the filters do, without empty or default parameters', () => {
+    const all: BrowseState = { query: 'postgres mcp', category: 'data-analytics', official: true, vendor: 'google', verified: true, auth: ['none'], access: ['mcp', 'cli'] };
+    expect(browseStateHref(all, 'newest')).toBe(
+      '/browse?q=postgres+mcp&category=data-analytics&official=1&vendor=google&verified=1&auth=none&access=mcp%2Ccli&sort=newest'
+    );
+    expect(browseStateHref(none)).toBe('/browse');
+    expect(browseStateHref(none, 'relevance')).toBe('/browse');
+  });
+});
+
+describe('keywordMatcher', () => {
+  it('anywhere: every word of the keyword somewhere in the text, in any order', () => {
+    const { anywhere } = keywordMatcher('phone calls');
+    expect(anywhere('calls over the phone')).toBe(true);
+    expect(anywhere('phone numbers')).toBe(false);
+  });
+
+  it('phrase: the words next to each other, filler between them skipped', () => {
+    const { phrase } = keywordMatcher('text to speech');
+    expect(phrase('natural text-to-speech voices')).toBe(true);
+    expect(phrase('speech recognition for any text')).toBe(false);
+    expect(keywordMatcher('phone calls').phrase('make and answer phone calls')).toBe(true);
+    expect(keywordMatcher('phone calls').phrase('calls over the phone')).toBe(false);
+  });
+
+  it('takes the synonyms and word rules of search', () => {
+    expect(keywordMatcher('postgres').anywhere('a postgresql client')).toBe(true);
+    expect(keywordMatcher('sql').anywhere('a mysql client')).toBe(true);
+    expect(keywordMatcher('sql').anywhere('dbsql')).toBe(false);
+    expect(keywordMatcher('sql').anywhere('dbsql', true)).toBe(true);
+  });
+});
+
+describe('taskScore and taskMatches', () => {
+  const data: Category = { id: 'c1', name: 'Data', slug: 'data', description: '', sortOrder: 1 };
+  const task: TaskQuery = { slug: 'query-data', keywords: ['database'], categories: ['data'], access: ['mcp'] };
+
+  it('adds the points of every field with a keyword, and the bonuses only when there are points', () => {
+    expect(taskScore(makeAgent({ name: 'Database' }), task)).toEqual({ points: 120, score: 120 });
+    const fields = makeAgent({
+      description: 'A database for agents.',
+      tags: ['database'],
+      skills: [{ id: 's1', name: 'Query database', description: 'Run a query against a database' }],
+    });
+    expect(taskScore(fields, task)).toEqual({ points: 60 + 50 + 40 + 15, score: 165 });
+    const bonus = makeAgent({ description: 'A database.', categories: [data], accessMethods: ['mcp'] });
+    expect(taskScore(bonus, task)).toEqual({ points: 60, score: 180 });
+    expect(taskScore(makeAgent({ categories: [data], accessMethods: ['mcp'] }), task)).toEqual({ points: 0, score: 0 });
+  });
+
+  const agents = [
+    makeAgent({ slug: 'in-passing', description: 'Mentions a database once.' }),
+    makeAgent({ slug: 'in-category', description: 'A database.', categories: [data], accessMethods: ['mcp'] }),
+    makeAgent({ slug: 'named', name: 'Database Kit', categories: [data] }),
+    makeAgent({ slug: 'named-too', name: 'Database Box', categories: [data] }),
+    makeAgent({ slug: 'everywhere', name: 'Database', description: 'A database.', tags: ['database'] }),
+    makeAgent({ slug: 'unrelated', name: 'Mailer', categories: [data], accessMethods: ['mcp'] }),
+  ];
+
+  it(`keeps listings scoring ${TASK_MIN_SCORE} or more, best first, equal scores in the incoming order`, () => {
+    expect(taskMatches(agents, task).map((a) => a.slug)).toEqual(['everywhere', 'named', 'named-too', 'in-category']);
+  });
+
+  it('remembers the result per catalog and task', () => {
+    const first = taskMatches(agents, task);
+    expect(taskMatches(agents, { ...task })).toBe(first);
+    expect(taskMatches([...agents], task)).not.toBe(first);
+    expect(taskMatches(agents, { ...task, keywords: ['mailer'] }).map((a) => a.slug)).toEqual(['unrelated']);
+  });
+
+  const none: BrowseState = { query: '', category: '', official: false, vendor: '', verified: false, auth: [], access: [] };
+
+  it('on /browse, picks the task listings first, then filters and searches them', () => {
+    const slugs = (state: BrowseState) => browseMatches(agents, state).map((a) => a.slug);
+    expect(slugs({ ...none, task })).toEqual(['everywhere', 'named', 'named-too', 'in-category']);
+    expect(slugs({ ...none, task, access: ['mcp'] })).toEqual(['in-category']);
+    expect(slugs({ ...none, task, query: 'kit' })).toEqual(['named']);
+  });
+
+  it('writes the task first in a /browse URL', () => {
+    expect(browseStateHref({ ...none, task })).toBe('/browse?task=query-data');
+    expect(browseStateHref({ ...none, task, query: 'kit', access: ['mcp'] }, 'newest')).toBe(
+      '/browse?task=query-data&q=kit&access=mcp&sort=newest'
+    );
   });
 });

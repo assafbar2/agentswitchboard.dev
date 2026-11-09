@@ -48,9 +48,12 @@
   "authType": "none",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "mcpCommand": "npx @playwright/mcp@latest",
+  "quickstartUrl": "https://github.com/microsoft/playwright-mcp#getting-started",
   "status": "published",
   "featured": true,
   "verified": true,
+  "official": true,
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
@@ -58,5 +61,5 @@
     "cli"
   ],
   "createdAt": "2026-04-09T07:36:52.137Z",
-  "updatedAt": "2026-04-09T07:36:52.137Z"
+  "updatedAt": "2026-11-02T07:34:56.527Z"
 }

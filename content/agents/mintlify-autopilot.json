@@ -1,0 +1,62 @@
+{
+  "id": "mintlify-autopilot",
+  "name": "Mintlify Autopilot",
+  "slug": "mintlify-autopilot",
+  "description": "Opens pull requests that update your Mintlify docs when merged code changes and runs a daily quality check, for teams that ship docs alongside code. Beta, Pro and Enterprise plans.",
+  "providerName": "Mintlify",
+  "providerUrl": "https://www.mintlify.com",
+  "agentUrl": "https://www.mintlify.com/docs/autopilot",
+  "categories": [
+    "code-devtools",
+    "content-media"
+  ],
+  "tags": [
+    "documentation",
+    "docs-as-code",
+    "pull-requests",
+    "background-agent",
+    "github",
+    "gitlab",
+    "technical-writing"
+  ],
+  "skills": [
+    {
+      "id": "code-change-doc-updates",
+      "name": "Code-Change Doc Updates",
+      "description": "Detects merged code changes in connected repositories and opens pull requests that update the affected documentation."
+    },
+    {
+      "id": "daily-quality-check",
+      "name": "Daily Quality Check",
+      "description": "Runs a once-daily maintenance check over your documentation and proposes fixes as pull requests for your team to review."
+    },
+    {
+      "id": "feature-launch-tracking",
+      "name": "Feature Launch Tracking",
+      "description": "Tracks launches that span several pull requests, opens the docs pull request as a draft, and keeps it current as code merges."
+    },
+    {
+      "id": "review-comment-follow-up",
+      "name": "Review Comment Follow-up",
+      "description": "Reads GitHub review comments on its pull requests, pushes the requested changes to the same branch, and replies in the thread."
+    },
+    {
+      "id": "integration-triggered-runs",
+      "name": "Integration-Triggered Runs",
+      "description": "Runs when an event happens in a connected integration, such as a new Linear issue or an updated Jira issue."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-10-31T07:10:38.208Z",
+  "updatedAt": "2026-10-31T07:10:38.208Z"
+}

@@ -1,0 +1,61 @@
+{
+  "id": "teamwork-mcp",
+  "name": "Teamwork.com MCP Server",
+  "slug": "teamwork-mcp",
+  "description": "Lets AI tools manage Teamwork.com projects, tasks, time logs, people, help desk tickets, and Spaces pages via a hosted MCP server with role-scoped endpoints.",
+  "providerName": "Teamwork.com",
+  "providerUrl": "https://www.teamwork.com",
+  "agentUrl": "https://github.com/teamwork/mcp",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "project-management",
+    "task-management",
+    "time-tracking",
+    "help-desk",
+    "remote-mcp",
+    "official-mcp",
+    "teamwork"
+  ],
+  "skills": [
+    {
+      "id": "projects-tasks",
+      "name": "Projects And Tasks",
+      "description": "Reads, creates, and updates projects, tasks, tags, milestones, and people in Teamwork.com Projects."
+    },
+    {
+      "id": "time-tracking",
+      "name": "Time Tracking",
+      "description": "Logs time, runs and pauses timers, and summarizes timelogs for budget reporting."
+    },
+    {
+      "id": "desk-tickets",
+      "name": "Help Desk Tickets",
+      "description": "Works with Teamwork Desk tickets, customers, and help docs."
+    },
+    {
+      "id": "spaces-pages",
+      "name": "Spaces Pages",
+      "description": "Reads and edits Teamwork Spaces spaces and pages."
+    },
+    {
+      "id": "profile-endpoints",
+      "name": "Role Profile Endpoints",
+      "description": "Offers project-manager, support, analyst, knowledge-manager, and ops endpoints that expose only matching tools."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-10-10T21:22:01.532Z",
+  "updatedAt": "2026-10-10T21:22:01.532Z"
+}
