@@ -10,5 +10,7 @@ export default defineConfig({
   test: {
     include: ['lib/**/*.test.ts', 'app/**/*.test.ts', 'tests/**/*.test.ts'],
     environment: 'node',
+    // Catalog-wide checks walk every listing and task; on shared CI runners one takes several seconds.
+    testTimeout: 15_000,
   },
 });
