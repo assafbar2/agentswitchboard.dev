@@ -1,0 +1,68 @@
+{
+  "id": "testmu-ai-browser-cloud",
+  "name": "TestMu AI Browser Cloud",
+  "slug": "testmu-ai-browser-cloud",
+  "description": "Gives AI agents real cloud Chrome browsers with best-effort stealth, session persistence, a localhost tunnel and session replay. Playwright, Puppeteer and Selenium scripts connect too.",
+  "providerName": "TestMu AI",
+  "providerUrl": "https://www.testmuai.com",
+  "agentUrl": "https://www.testmuai.com/browser-cloud/",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "cloud-browser",
+    "headless-browser",
+    "browser-infrastructure",
+    "playwright",
+    "puppeteer",
+    "selenium",
+    "session-replay",
+    "testmu-ai"
+  ],
+  "skills": [
+    {
+      "id": "cloud-browser-sessions",
+      "name": "Cloud Browser Sessions",
+      "description": "Starts real, full-featured cloud Chrome sessions for an agent to work on live pages, then releases each session when it is done."
+    },
+    {
+      "id": "stealth-mode",
+      "name": "Best-Effort Stealth",
+      "description": "Applies best-effort fingerprint masking and ad blocking so agents move through the live web with fewer blocks."
+    },
+    {
+      "id": "session-persistence",
+      "name": "Session Persistence",
+      "description": "Keeps browser session state across runs through persistence and profiles, so agents do not start from scratch each time."
+    },
+    {
+      "id": "localhost-tunnel",
+      "name": "Localhost Tunnel",
+      "description": "Reaches localhost and private apps from cloud sessions through the built-in TestMu AI Tunnel."
+    },
+    {
+      "id": "session-replay",
+      "name": "Session Replay",
+      "description": "Records video, console and network logs with replay for every session, so a failed agent run can be debugged."
+    },
+    {
+      "id": "framework-connect",
+      "name": "Framework Connect",
+      "description": "Connects existing Playwright, Puppeteer and Selenium scripts to the same cloud sessions that agents use through the SDK."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://www.testmuai.com/support/docs/browser-cloud-sdk-setup/",
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-11-10T00:00:00Z",
+  "updatedAt": "2026-11-10T00:00:00Z"
+}

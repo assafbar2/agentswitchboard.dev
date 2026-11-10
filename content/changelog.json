@@ -1,5 +1,29 @@
 [
   {
+    "action": "added",
+    "slug": "testmu-ai-mcp-server",
+    "name": "TestMu AI MCP Server",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "kane-cli",
+    "name": "Kane CLI",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "testmu-ai-browser-cloud",
+    "name": "TestMu AI Browser Cloud",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "rook-cli",
+    "name": "Rook CLI",
+    "date": "2026-11-10"
+  },
+  {
     "action": "removed",
     "slug": "clify",
     "name": "Clify",

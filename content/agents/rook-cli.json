@@ -1,0 +1,67 @@
+{
+  "id": "rook-cli",
+  "name": "Rook CLI",
+  "slug": "rook-cli",
+  "description": "Tests, evaluates, red-teams and regression-checks AI agents you own from the terminal: it derives scenarios, runs them against the agent and grades the evidence. By TestMu AI.",
+  "providerName": "TestMu AI",
+  "providerUrl": "https://www.testmuai.com",
+  "agentUrl": "https://www.testmuai.com/rook-cli/",
+  "categories": [
+    "code-devtools",
+    "security"
+  ],
+  "tags": [
+    "agent-testing",
+    "agent-evaluation",
+    "red-teaming",
+    "regression-testing",
+    "agent-assurance",
+    "llm-evaluation",
+    "testmu-ai"
+  ],
+  "skills": [
+    {
+      "id": "discover-agent",
+      "name": "Agent Discovery",
+      "description": "Explores an agent from its source, requirements or MCP servers to learn which tools it has before any test is written."
+    },
+    {
+      "id": "generate-scenarios",
+      "name": "Scenario Generation",
+      "description": "Derives test scenarios and invocation profiles for the agent under test, for review before anything runs."
+    },
+    {
+      "id": "run-and-grade",
+      "name": "Run and Grade",
+      "description": "Invokes the target agent, grades the evidence, and separates Pass, Fail and Unable to Verify results."
+    },
+    {
+      "id": "headless-ci",
+      "name": "Headless CI Runs",
+      "description": "Runs every step headless in CI with LT_USERNAME and LT_ACCESS_KEY from secrets, with tool grants passed up front."
+    },
+    {
+      "id": "saved-results",
+      "name": "Saved Results",
+      "description": "Reads and explains saved Rook results without starting setup, a new run or paid analysis."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npm install -g @testmuai/rook@latest"
+  },
+  "quickstartUrl": "https://www.testmuai.com/support/docs/agent-assurance-quickstart/",
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "premium",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-11-10T00:00:00Z",
+  "updatedAt": "2026-11-10T00:00:00Z"
+}

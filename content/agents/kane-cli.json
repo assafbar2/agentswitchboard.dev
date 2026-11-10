@@ -1,0 +1,72 @@
+{
+  "id": "kane-cli",
+  "name": "Kane CLI",
+  "slug": "kane-cli",
+  "description": "Generates and runs end-to-end tests from a PRD or a natural language description on Chrome, Android and iOS, with evidence packs and coverage for CI gates. For developers and coding agents.",
+  "providerName": "TestMu AI",
+  "providerUrl": "https://www.testmuai.com",
+  "agentUrl": "https://www.testmuai.com/kane-cli/",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "kane-cli",
+    "testmu-ai",
+    "end-to-end-testing",
+    "e2e-testing",
+    "natural-language-tests",
+    "mobile-app-testing",
+    "test-evidence",
+    "coding-agents"
+  ],
+  "skills": [
+    {
+      "id": "generate-tests",
+      "name": "Requirement-Linked Tests",
+      "description": "Turns a PRD, spec or description into use-cases, acceptance criteria, scenarios and runnable _test.md tests through its assurance commands."
+    },
+    {
+      "id": "web-and-mobile-runs",
+      "name": "Web and Mobile Runs",
+      "description": "Runs tests on desktop Chrome by default, on Android emulators and iOS simulators, and on real Android and iOS devices in the TestMu AI cloud."
+    },
+    {
+      "id": "evidence-and-coverage",
+      "name": "Evidence and Coverage",
+      "description": "Seals an evidence pack for every run and measures coverage against acceptance criteria with kane-cli cover."
+    },
+    {
+      "id": "ci-quality-gates",
+      "name": "CI Quality Gates",
+      "description": "Judges an evidence pack against a policy of quality gates with kane-cli evidence verdict to pass or fail a CI run."
+    },
+    {
+      "id": "agent-mode",
+      "name": "Agent Mode Output",
+      "description": "Streams NDJSON output in --agent mode so coding agents can parse results, inspect logs and save replayable test files."
+    },
+    {
+      "id": "shared-test-manager-projects",
+      "name": "Shared Test Projects",
+      "description": "Links a folder to a shared Test Manager project so a team sees the same use-cases, tests, cases and coverage."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npm install -g @testmuai/kane-cli"
+  },
+  "quickstartUrl": "https://www.testmuai.com/docs/kane-cli-quickstart",
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-11-10T00:00:00Z",
+  "updatedAt": "2026-11-10T00:00:00Z"
+}

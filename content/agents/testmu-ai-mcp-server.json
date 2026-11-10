@@ -1,0 +1,69 @@
+{
+  "id": "testmu-ai-mcp-server",
+  "name": "TestMu AI MCP Server",
+  "slug": "testmu-ai-mcp-server",
+  "description": "Runs, debugs and triages tests on the TestMu AI cloud from any MCP client: HyperExecute jobs, automation failures, SmartUI visual diffs, accessibility checks and Test Manager.",
+  "providerName": "TestMu AI",
+  "providerUrl": "https://www.testmuai.com",
+  "agentUrl": "https://www.testmuai.com/support/docs/testmu-mcp-server/",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "testmu-ai",
+    "lambdatest",
+    "test-orchestration",
+    "test-triage",
+    "visual-regression",
+    "accessibility-testing",
+    "test-management",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "hyperexecute-orchestration",
+      "name": "HyperExecute Orchestration",
+      "description": "Generates HyperExecute YAML and test runner commands, triggers jobs and reports their status, with no manual YAML authoring."
+    },
+    {
+      "id": "automation-triage",
+      "name": "Automation Failure Triage",
+      "description": "Pulls execution details, command, network and console logs for failed automation tests into one place for root-cause analysis."
+    },
+    {
+      "id": "native-app-automation",
+      "name": "Native App Triage",
+      "description": "Triages and debugs native mobile app tests, and drives real or virtual devices live through the Appium MCP server."
+    },
+    {
+      "id": "smartui-visual-diffs",
+      "name": "SmartUI Visual Diffs",
+      "description": "Explains visual regressions from any SmartUI comparison run as natural-language summaries of pixel, layout, DOM and perceptual differences."
+    },
+    {
+      "id": "accessibility-checks",
+      "name": "Accessibility Checks",
+      "description": "Runs accessibility checks on hosted URLs or local React apps and returns the violations with remediation guidance."
+    },
+    {
+      "id": "test-manager",
+      "name": "Test Manager Lifecycle",
+      "description": "Generates test cases with AI, builds configured test runs, records results in bulk, and tracks milestones and coverage."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.lambdatest.com/mcp",
+  "quickstartUrl": "https://www.testmuai.com/support/docs/testmu-mcp-server/",
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T00:00:00Z",
+  "updatedAt": "2026-11-10T00:00:00Z"
+}
