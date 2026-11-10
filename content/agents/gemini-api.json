@@ -5,7 +5,7 @@
   "description": "Serves Google's Gemini models through the Gemini Developer API and Gen AI SDKs, with function calling, structured output, Live API voice, and image generation, for developers.",
   "providerName": "Google",
   "providerUrl": "https://google.com",
-  "agentUrl": "https://ai.google.dev/gemini-api/docs",
+  "agentUrl": "https://aistudio.google.com/docs",
   "categories": [
     "language",
     "infrastructure"
@@ -49,7 +49,7 @@
   "authType": "apiKey",
   "supportsStreaming": true,
   "supportsPushNotifications": false,
-  "quickstartUrl": "https://ai.google.dev/gemini-api/docs/get-started",
+  "quickstartUrl": "https://aistudio.google.com/docs/get-started",
   "apiBaseUrl": "https://generativelanguage.googleapis.com",
   "status": "published",
   "featured": false,
@@ -61,5 +61,5 @@
     "api"
   ],
   "createdAt": "2026-10-10T21:22:01.460Z",
-  "updatedAt": "2026-11-02T07:34:56.527Z"
+  "updatedAt": "2026-11-10T06:50:40.828Z"
 }

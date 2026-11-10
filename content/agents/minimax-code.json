@@ -5,7 +5,7 @@
   "description": "Runs MiniMax's open-source coding agent in the terminal for developers, with an interactive TUI, headless mcode exec with JSON output for CI, and an ACP server for editors.",
   "providerName": "MiniMax AI",
   "providerUrl": "https://www.minimax.io",
-  "agentUrl": "https://agent.minimax.io/docs/cli/quick-start",
+  "agentUrl": "https://code.minimax.io/docs/cli/quick-start",
   "categories": [
     "code-devtools"
   ],
@@ -52,7 +52,7 @@
     "type": "binary",
     "command": "curl -fsSL https://filecdn.minimax.chat/public/install.sh | bash"
   },
-  "quickstartUrl": "https://agent.minimax.io/docs/cli/quick-start",
+  "quickstartUrl": "https://code.minimax.io/docs/cli/quick-start",
   "status": "published",
   "featured": false,
   "verified": true,
@@ -63,5 +63,5 @@
     "cli"
   ],
   "createdAt": "2026-10-17T09:03:45.929Z",
-  "updatedAt": "2026-11-02T07:34:56.527Z"
+  "updatedAt": "2026-11-10T06:50:41.602Z"
 }

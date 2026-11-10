@@ -5,7 +5,7 @@
   "description": "Gives agents persistent Linux computers with checkpoint and restore, per-Sprite HTTPS URLs, and credential-free connectors, via a CLI, REST API, SDKs, and remote MCP server.",
   "providerName": "Fly.io",
   "providerUrl": "https://fly.io",
-  "agentUrl": "https://sprites.dev",
+  "agentUrl": "https://fly.io/sprites/",
   "categories": [
     "browser-computer",
     "infrastructure"
@@ -60,5 +60,5 @@
     "mcp"
   ],
   "createdAt": "2026-10-10T21:22:01.477Z",
-  "updatedAt": "2026-10-10T21:22:01.477Z"
+  "updatedAt": "2026-11-10T06:50:40.071Z"
 }

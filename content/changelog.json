@@ -1,5 +1,171 @@
 [
   {
+    "action": "removed",
+    "slug": "jules",
+    "name": "Jules",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "removed",
+    "slug": "devika",
+    "name": "Devika",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "onyx",
+    "name": "Onyx",
+    "note": "official updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "portkey",
+    "name": "Portkey",
+    "note": "official updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "postgres-mcp-pro",
+    "name": "Postgres MCP Pro",
+    "note": "providerUrl updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "ifttt",
+    "name": "IFTTT MCP",
+    "note": "providerUrl updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "nightingale",
+    "name": "Nightingale",
+    "note": "agentUrl updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "minimax-code",
+    "name": "MiniMax Code",
+    "note": "quickstartUrl updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "minimax-code",
+    "name": "MiniMax Code",
+    "note": "agentUrl updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "gemini-api",
+    "name": "Gemini API",
+    "note": "quickstartUrl updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "gemini-api",
+    "name": "Gemini API",
+    "note": "agentUrl updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "fly-sprites",
+    "name": "Sprites (Fly.io)",
+    "note": "agentUrl updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "craft-agents",
+    "name": "Craft Agents",
+    "note": "agentUrl updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "context-mode",
+    "name": "context-mode",
+    "note": "providerUrl updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "catena-labs",
+    "name": "Catena Labs",
+    "note": "agentUrl updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "browser-harness",
+    "name": "Browser Harness",
+    "note": "agentUrl updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "superset-sh",
+    "name": "Paradev",
+    "note": "name updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "superset-sh",
+    "name": "Superset",
+    "note": "providerUrl updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "superset-sh",
+    "name": "Superset",
+    "note": "agentUrl updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "suna",
+    "name": "Kortix CompanyOS",
+    "note": "name updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "suna",
+    "name": "Suna",
+    "note": "agentUrl updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "agent-orchestrator",
+    "name": "Agent Orchestrator",
+    "note": "providerName updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "agent-orchestrator",
+    "name": "Agent Orchestrator",
+    "note": "agentUrl updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "oxylabs-mcp",
+    "name": "Oxylabs MCP",
+    "note": "agentUrl updated",
+    "date": "2026-11-10"
+  },
+  {
     "action": "updated",
     "slug": "semantic-scholar-mcp",
     "name": "Semantic Scholar MCP",
