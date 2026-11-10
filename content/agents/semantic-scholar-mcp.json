@@ -5,7 +5,7 @@
   "description": "Searches millions of academic papers on Semantic Scholar and arXiv with citation analysis and full-text PDF extraction. No API key required.",
   "providerName": "Community",
   "providerUrl": "https://www.semanticscholar.org",
-  "agentUrl": "https://smithery.ai/server/@hamid-vakilzadeh/mcpsemanticscholar",
+  "agentUrl": "https://github.com/hamid-vakilzadeh/AIRA-SemanticScholar",
   "categories": [
     "research"
   ],
@@ -47,5 +47,5 @@
     "mcp"
   ],
   "createdAt": "2026-06-07T17:51:24.021Z",
-  "updatedAt": "2026-06-07T17:51:24.021Z"
+  "updatedAt": "2026-11-10T06:39:42.247Z"
 }

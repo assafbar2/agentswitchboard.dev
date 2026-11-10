@@ -1,0 +1,59 @@
+{
+  "id": "fullstory-mcp",
+  "name": "Fullstory MCP",
+  "slug": "fullstory-mcp",
+  "description": "Ask questions of Fullstory behavioral data from Claude, ChatGPT, or Cursor: build funnels and segments, review sessions, and find where users struggle. For product teams.",
+  "providerName": "Fullstory",
+  "providerUrl": "https://www.fullstory.com",
+  "agentUrl": "https://help.fullstory.com/hc/en-us/articles/39130808411031-Fullstory-MCP",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "product-analytics",
+    "user-behavior",
+    "funnel-analysis",
+    "session-review",
+    "digital-experience",
+    "remote-mcp",
+    "fullstory"
+  ],
+  "skills": [
+    {
+      "id": "analytics",
+      "name": "Segments, Metrics, Funnels, Journeys",
+      "description": "Builds and computes segments, metrics, funnels, and journeys from natural-language questions, saving each result as a draft."
+    },
+    {
+      "id": "sessions",
+      "name": "Sessions Behind A Metric",
+      "description": "Pulls the real sessions behind any metric or segment and reads a full event transcript of what happened in each one."
+    },
+    {
+      "id": "session-review",
+      "name": "Agentic Session Review",
+      "description": "Inspects what a user actually saw at a given moment in a session, using rendered screenshots and accessibility snapshots."
+    },
+    {
+      "id": "storyai-opportunities",
+      "name": "StoryAI Opportunities",
+      "description": "Surfaces where users are struggling, ranked by impact, with frustration signals, errors, and regressions, and a bot flag."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://api.fullstory.com/mcp/fullstory",
+  "quickstartUrl": "https://developer.fullstory.com/mcp/client-setup/generic/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.253Z",
+  "updatedAt": "2026-11-10T06:38:22.253Z"
+}

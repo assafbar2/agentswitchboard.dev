@@ -1,0 +1,67 @@
+{
+  "id": "base44-mcp",
+  "name": "Base44 MCP",
+  "slug": "base44-mcp",
+  "description": "Creates and edits Base44 apps from ChatGPT, Claude, or Cursor: build projects from a prompt, edit code in the sandbox, query app data, and call the platform API.",
+  "providerName": "Base44",
+  "providerUrl": "https://base44.com",
+  "agentUrl": "https://docs.base44.com/developers/backend/overview/mcp-server",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "app-builder",
+    "cloud-sandbox",
+    "entity-schemas",
+    "app-deployment",
+    "base44-cli",
+    "hosted-mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "create-and-edit-projects",
+      "name": "Create and Edit Projects",
+      "description": "Creates a Base44 project from a text description and hands follow-up changes to the app editor's AI, on any branch."
+    },
+    {
+      "id": "sandbox-code-editing",
+      "name": "Sandbox Code Editing",
+      "description": "Reads, searches, writes, and edits files and runs shell commands in an app's cloud sandbox, then saves checkpoints."
+    },
+    {
+      "id": "entity-data",
+      "name": "Entity Data",
+      "description": "Defines entity schemas and queries, creates, and updates records in a Base44 project's entities."
+    },
+    {
+      "id": "platform-api",
+      "name": "Platform API Calls",
+      "description": "Finds and calls Base44 platform API operations for deploys, analytics, secrets, custom domains, and workflows."
+    },
+    {
+      "id": "connector-setup",
+      "name": "Connector Setup",
+      "description": "Lists a project's third-party connectors, shows which are connected, and starts a connection for one that isn't."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://app.base44.com/mcp",
+  "install": {
+    "type": "npm",
+    "command": "npm install -g base44@latest"
+  },
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-11-10T06:38:22.225Z",
+  "updatedAt": "2026-11-10T06:38:22.225Z"
+}

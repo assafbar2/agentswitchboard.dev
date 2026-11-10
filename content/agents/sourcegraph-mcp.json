@@ -1,0 +1,63 @@
+{
+  "id": "sourcegraph-mcp",
+  "name": "Sourcegraph MCP",
+  "slug": "sourcegraph-mcp",
+  "description": "Searches code, jumps to definitions and references, and reads files and commit history across your Sourcegraph instance's repositories, for coding agents on Enterprise plans.",
+  "providerName": "Sourcegraph",
+  "providerUrl": "https://sourcegraph.com",
+  "agentUrl": "https://sourcegraph.com/docs/api/mcp",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "code-search",
+    "semantic-code-search",
+    "code-navigation",
+    "find-references",
+    "commit-search",
+    "diff-search",
+    "deep-search"
+  ],
+  "skills": [
+    {
+      "id": "keyword-code-search",
+      "name": "Code Search",
+      "description": "Searches code across repositories by exact keyword or natural language, with repo, file, and revision filters."
+    },
+    {
+      "id": "code-navigation",
+      "name": "Go to Definition and References",
+      "description": "Finds a symbol's definition from a usage and lists every reference to it, across repositories with compiler-level accuracy."
+    },
+    {
+      "id": "commit-diff-search",
+      "name": "Commit and Diff Search",
+      "description": "Searches commit messages, authors, and code changes across repositories, and compares two revisions file by file."
+    },
+    {
+      "id": "read-repository-files",
+      "name": "Read Repository Files",
+      "description": "Reads file contents by line range and revision, lists directories, and finds repositories, branches, and tags by name."
+    },
+    {
+      "id": "deep-search",
+      "name": "Deep Search",
+      "description": "Answers complex codebase questions through Deep Search conversations and reads past Deep Search results back as context."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://sourcegraph.com/docs/api/mcp/client-integrations",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.208Z",
+  "updatedAt": "2026-11-10T06:38:22.208Z"
+}

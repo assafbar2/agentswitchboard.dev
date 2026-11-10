@@ -1,0 +1,63 @@
+{
+  "id": "workato-mcp",
+  "name": "Workato Enterprise MCP",
+  "slug": "workato-mcp",
+  "description": "Turns Workato API collections, project assets, and proxied MCP servers into hosted MCP servers for Claude, ChatGPT, and Cursor, for enterprise integration teams.",
+  "providerName": "Workato",
+  "providerUrl": "https://www.workato.com",
+  "agentUrl": "https://docs.workato.com/en/mcp.html",
+  "categories": [
+    "orchestration"
+  ],
+  "tags": [
+    "ipaas",
+    "workflow-automation",
+    "enterprise-integration",
+    "hosted-mcp-server",
+    "api-collections",
+    "enterprise-search",
+    "verified-user-access"
+  ],
+  "skills": [
+    {
+      "id": "custom-mcp-servers",
+      "name": "Custom MCP Servers",
+      "description": "Builds hosted MCP servers from API collections, project assets, or proxied external MCP servers in Workato's AI Hub."
+    },
+    {
+      "id": "verified-user-access",
+      "name": "Verified User Access",
+      "description": "Runs tool calls with each end user's own credentials for systems like Salesforce or Snowflake, respecting their permissions."
+    },
+    {
+      "id": "enterprise-context-search",
+      "name": "Enterprise Context Search",
+      "description": "Searches connected data sources and knowledge bases with permission-aware results through the native Enterprise Context MCP server."
+    },
+    {
+      "id": "workspace-management",
+      "name": "Workspace Management",
+      "description": "Manages Workato workspace assets and projects from Claude Desktop, Cursor, or ChatGPT through the Developer API MCP server."
+    },
+    {
+      "id": "mcp-usage-dashboard",
+      "name": "MCP Usage Dashboard",
+      "description": "Tracks tool call volume, success rate, response time, errors, and estimated token usage across your Workato MCP servers."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://docs.workato.com/en/mcp/remote-mcp-servers",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.214Z",
+  "updatedAt": "2026-11-10T06:38:22.214Z"
+}

@@ -1,0 +1,69 @@
+{
+  "id": "vibe-trading",
+  "name": "Vibe-Trading",
+  "slug": "vibe-trading",
+  "description": "Turns finance questions into research reports, runnable backtests and paper portfolios for traders and quants, via CLI, web app, API or MCP, with live trades only within a set mandate.",
+  "providerName": "HKUDS",
+  "providerUrl": "https://github.com/HKUDS",
+  "agentUrl": "https://vibetrading.wiki/",
+  "categories": [
+    "finance",
+    "research"
+  ],
+  "tags": [
+    "backtesting",
+    "algorithmic-trading",
+    "quantitative-finance",
+    "paper-trading",
+    "stock-research",
+    "crypto",
+    "python"
+  ],
+  "skills": [
+    {
+      "id": "strategy-backtest",
+      "name": "Strategy Backtest",
+      "description": "Backtests a trading strategy described in plain English across equities, crypto and futures, and reports trades and drawdown."
+    },
+    {
+      "id": "market-research",
+      "name": "Market Research",
+      "description": "Researches SEC 13F holdings, ETF look-throughs and uploaded filings, and values companies with DCF and peer multiples."
+    },
+    {
+      "id": "alpha-benchmark",
+      "name": "Alpha Benchmark",
+      "description": "Benchmarks alpha factors from Qlib, Alpha101, GTJA and other libraries and checks whether results survive walk-forward tests."
+    },
+    {
+      "id": "paper-trading",
+      "name": "Paper Trading",
+      "description": "Advances a saved paper account one trading day at a time and reports fills, cash and NAV for the simulated portfolio."
+    },
+    {
+      "id": "research-swarm",
+      "name": "Research Swarm",
+      "description": "Runs preset research teams such as a bull-bear investment committee or quant desk and returns each worker's report."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "pip",
+    "command": "pip install vibe-trading-ai"
+  },
+  "quickstartUrl": "https://vibetrading.wiki/docs/latest/getting-started/quick-start",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.152Z",
+  "updatedAt": "2026-11-10T06:38:22.152Z"
+}

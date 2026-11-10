@@ -1,0 +1,62 @@
+{
+  "id": "tigris-mcp",
+  "name": "Tigris MCP",
+  "slug": "tigris-mcp",
+  "description": "Manages Tigris object storage from AI agents: create buckets, read and write objects, share presigned URLs, and snapshot or fork buckets. For developers storing app and agent data.",
+  "providerName": "Tigris Data",
+  "providerUrl": "https://www.tigrisdata.com",
+  "agentUrl": "https://www.tigrisdata.com/docs/mcp/",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "object-storage",
+    "s3-compatible",
+    "buckets",
+    "presigned-urls",
+    "bucket-snapshots",
+    "tigris"
+  ],
+  "skills": [
+    {
+      "id": "manage-buckets",
+      "name": "Manage Buckets",
+      "description": "Creates, lists, inspects and deletes Tigris buckets, including new buckets with snapshots enabled, from an agent session."
+    },
+    {
+      "id": "manage-objects",
+      "name": "Manage Objects",
+      "description": "Lists, reads, writes and deletes objects in a Tigris bucket and looks up their metadata, such as saving a summary file."
+    },
+    {
+      "id": "share-presigned-urls",
+      "name": "Share Presigned URLs",
+      "description": "Creates presigned URLs so a browser, a person or another system can download or upload an object without credentials."
+    },
+    {
+      "id": "agent-workspaces",
+      "name": "Agent Workspaces",
+      "description": "Creates a dedicated bucket for an agent with an optional expiry and scoped credentials, then tears it down when work is done."
+    },
+    {
+      "id": "checkpoints-forks",
+      "name": "Checkpoints & Forks",
+      "description": "Snapshots a bucket, restores a snapshot into an independent bucket, and creates copy-on-write forks for parallel agents."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.storage.dev/mcp",
+  "quickstartUrl": "https://www.tigrisdata.com/docs/mcp/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.324Z",
+  "updatedAt": "2026-11-10T06:38:22.324Z"
+}

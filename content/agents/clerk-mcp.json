@@ -1,0 +1,62 @@
+{
+  "id": "clerk-mcp",
+  "name": "Clerk MCP",
+  "slug": "clerk-mcp",
+  "description": "Manages Clerk authentication from AI agents: create and configure applications, list and create users, set up production instances, and fetch Clerk SDK snippets. For developers.",
+  "providerName": "Clerk",
+  "providerUrl": "https://clerk.com",
+  "agentUrl": "https://clerk.com/docs/guides/ai/mcp/clerk-mcp-server",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "authentication",
+    "user-management",
+    "auth-configuration",
+    "sdk-snippets",
+    "production-deploy",
+    "clerk"
+  ],
+  "skills": [
+    {
+      "id": "manage-applications",
+      "name": "Manage Applications",
+      "description": "Lists, inspects and creates Clerk applications in your workspace, returning each instance's publishable key."
+    },
+    {
+      "id": "instance-configuration",
+      "name": "Instance Configuration",
+      "description": "Reads, updates or replaces a Clerk instance's configuration and reads its schema, with a dry-run preview before changes."
+    },
+    {
+      "id": "manage-users",
+      "name": "Manage Users",
+      "description": "Finds users in a Clerk instance with filters, such as the most recent sign-ups, and creates new users in that instance."
+    },
+    {
+      "id": "production-setup",
+      "name": "Production Setup",
+      "description": "Creates a production instance from development, checks domain DNS records, and sets production OAuth provider credentials."
+    },
+    {
+      "id": "sdk-snippets",
+      "name": "SDK Snippets",
+      "description": "Fetches a Clerk SDK code snippet for a feature, or a bundle for a common setup such as b2b-saas or organizations."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.clerk.com/mcp",
+  "quickstartUrl": "https://clerk.com/docs/guides/ai/mcp/clerk-mcp-server",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.330Z",
+  "updatedAt": "2026-11-10T06:38:22.330Z"
+}

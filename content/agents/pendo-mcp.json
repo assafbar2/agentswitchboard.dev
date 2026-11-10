@@ -1,0 +1,64 @@
+{
+  "id": "pendo-mcp",
+  "name": "Pendo MCP",
+  "slug": "pendo-mcp",
+  "description": "Query Pendo product analytics, visitor and account data, and in-app guides from Claude, Cursor, or ChatGPT. For product and customer success teams.",
+  "providerName": "Pendo",
+  "providerUrl": "https://www.pendo.io",
+  "agentUrl": "https://support.pendo.io/hc/en-us/articles/51020341547419-Overview-of-the-Pendo-MCP-server",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "product-analytics",
+    "feature-adoption",
+    "in-app-guides",
+    "user-engagement",
+    "customer-success",
+    "remote-mcp",
+    "pendo"
+  ],
+  "skills": [
+    {
+      "id": "usage-analytics",
+      "name": "Page And Feature Usage",
+      "description": "Queries Page, Feature, and Track Event usage and runs event-level aggregation queries on recent usage in your Pendo apps."
+    },
+    {
+      "id": "visitors-accounts",
+      "name": "Visitor And Account Data",
+      "description": "Retrieves visitor and account metadata from Pendo and analyzes visitor activity and engagement patterns for a segment."
+    },
+    {
+      "id": "guides",
+      "name": "Guides, Surveys, And Ideas",
+      "description": "Searches for and retrieves Pendo guides, surveys, and ideas, so an agent can surface walkthrough links in its answers."
+    },
+    {
+      "id": "orchestrate",
+      "name": "Orchestrate Journeys",
+      "description": "Lists and retrieves Orchestrate journeys and emails, including their configuration, journey steps, and performance metrics."
+    },
+    {
+      "id": "write-actions",
+      "name": "Feedback And Segment Writes",
+      "description": "Creates feedback items and ideas and creates or updates segments, once a subscription admin turns on Pendo's write tools."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://app.pendo.io/mcp/v0/shttp",
+  "quickstartUrl": "https://support.pendo.io/hc/en-us/articles/41102236924955-Connect-to-the-Pendo-MCP-server",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.255Z",
+  "updatedAt": "2026-11-10T06:38:22.255Z"
+}

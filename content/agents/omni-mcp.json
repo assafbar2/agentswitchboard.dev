@@ -1,0 +1,65 @@
+{
+  "id": "omni-mcp",
+  "name": "Omni MCP",
+  "slug": "omni-mcp",
+  "description": "Query governed Omni semantic-layer metrics in plain English, search dashboards, and build Omni apps from Claude, ChatGPT, Cursor, or other MCP clients.",
+  "providerName": "Omni",
+  "providerUrl": "https://omni.co",
+  "agentUrl": "https://docs.omni.co/ai/mcp",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "semantic-layer",
+    "business-intelligence",
+    "natural-language-query",
+    "dashboards",
+    "data-exploration",
+    "remote-mcp",
+    "official-mcp",
+    "omni"
+  ],
+  "skills": [
+    {
+      "id": "natural-language-queries",
+      "name": "Natural Language Queries",
+      "description": "Picks an Omni model and topic, turns a plain-English question into a query, and returns results governed by the semantic layer."
+    },
+    {
+      "id": "analysis-jobs",
+      "name": "Multi-Step Analysis Jobs",
+      "description": "Submits askOmni analysis jobs, polls their status, and cancels them, for deeper questions that chain several queries together."
+    },
+    {
+      "id": "dashboard-search",
+      "name": "Dashboard Search And Export",
+      "description": "Searches saved dashboards and apps, runs the saved queries they contain, and downloads a dashboard as a PNG or PDF file."
+    },
+    {
+      "id": "app-building",
+      "name": "App Editing And Rendering",
+      "description": "Reads, edits, and publishes Omni app drafts and renders a saved, interactive app inline with live data in the chat."
+    },
+    {
+      "id": "docs-search",
+      "name": "Omni Docs Search",
+      "description": "Searches the official Omni documentation and returns answers with citations to how-do-I questions about using Omni."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://callbacks.omniapp.co/callback/mcp",
+  "quickstartUrl": "https://docs.omni.co/ai/mcp",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.236Z",
+  "updatedAt": "2026-11-10T06:38:22.236Z"
+}

@@ -1,0 +1,70 @@
+{
+  "id": "coinbase-for-agents",
+  "name": "Coinbase for Agents",
+  "slug": "coinbase-for-agents",
+  "description": "Trade crypto, equities and derivatives, check balances and pay for x402 data from your Coinbase account via Coinbase's remote MCP server or CLI, for traders.",
+  "providerName": "Coinbase",
+  "providerUrl": "https://www.coinbase.com",
+  "agentUrl": "https://docs.cdp.coinbase.com/ai-agents/coinbase-for-agents/coinbase-mcp",
+  "categories": [
+    "finance",
+    "commerce-payments"
+  ],
+  "tags": [
+    "coinbase",
+    "crypto-trading",
+    "stock-trading",
+    "portfolio-management",
+    "x402",
+    "remote-mcp",
+    "cli"
+  ],
+  "skills": [
+    {
+      "id": "market-data",
+      "name": "Market Data",
+      "description": "Fetches prices, 24-hour volume, order books, recent trades and OHLCV candles for products tradable on Coinbase."
+    },
+    {
+      "id": "place-orders",
+      "name": "Place Orders",
+      "description": "Previews, creates, edits and cancels market and limit orders, and lists orders and fills on your Coinbase account."
+    },
+    {
+      "id": "portfolios-balances",
+      "name": "Portfolios and Balances",
+      "description": "Lists account balances and portfolios, shows allocation and unrealized PnL, and moves funds between portfolios."
+    },
+    {
+      "id": "conversions",
+      "name": "Conversions",
+      "description": "Quotes and executes conversions between currencies on Coinbase, then checks the status of each conversion."
+    },
+    {
+      "id": "x402-payments",
+      "name": "x402 Payments",
+      "description": "Discovers curated x402 data services and pays for them from your Coinbase USDC balance, up to a payment ceiling."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://agents.coinbase.com/mcp",
+  "install": {
+    "type": "npm",
+    "command": "npm install -g @coinbase/coinbase-cli"
+  },
+  "quickstartUrl": "https://docs.cdp.coinbase.com/ai-agents/coinbase-for-agents/coinbase-mcp",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-11-10T06:38:22.189Z",
+  "updatedAt": "2026-11-10T06:38:22.189Z"
+}

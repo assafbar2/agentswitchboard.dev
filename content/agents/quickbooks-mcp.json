@@ -1,0 +1,57 @@
+{
+  "id": "quickbooks-mcp",
+  "name": "QuickBooks Online MCP Server",
+  "slug": "quickbooks-mcp",
+  "description": "Query and update QuickBooks Online invoices, customers, bills and financial reports from AI assistants with Intuit's local MCP server, for accountants and developers.",
+  "providerName": "Intuit",
+  "providerUrl": "https://www.intuit.com",
+  "agentUrl": "https://github.com/intuit/quickbooks-online-mcp-server",
+  "categories": [
+    "finance"
+  ],
+  "tags": [
+    "quickbooks",
+    "accounting",
+    "bookkeeping",
+    "invoicing",
+    "financial-reports",
+    "local-mcp"
+  ],
+  "skills": [
+    {
+      "id": "manage-entities",
+      "name": "Manage Entities",
+      "description": "Searches QuickBooks Online customers, invoices, bills, vendors and items, and creates, updates or deletes those records."
+    },
+    {
+      "id": "financial-reports",
+      "name": "Financial Reports",
+      "description": "Generates QuickBooks Online balance sheet, profit and loss, cash flow, trial balance and general ledger reports."
+    },
+    {
+      "id": "receivables-payables",
+      "name": "Receivables and Payables",
+      "description": "Pulls aged receivables and aged payables reports from QuickBooks Online to show which customers owe and which bills are due."
+    },
+    {
+      "id": "invoice-pdf",
+      "name": "Invoice PDF",
+      "description": "Downloads a QuickBooks Online invoice as a PDF, returned inline as base64 or saved to a configured folder."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://github.com/intuit/quickbooks-online-mcp-server#quick-start",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.195Z",
+  "updatedAt": "2026-11-10T06:38:22.195Z"
+}

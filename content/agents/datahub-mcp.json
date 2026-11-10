@@ -1,0 +1,64 @@
+{
+  "id": "datahub-mcp",
+  "name": "DataHub MCP",
+  "slug": "datahub-mcp",
+  "description": "Searches a DataHub data catalog and returns lineage, schemas, owners and metadata to AI agents, plus real SQL queries for grounded query writing.",
+  "providerName": "DataHub",
+  "providerUrl": "https://datahub.com",
+  "agentUrl": "https://docs.datahub.com/docs/features/feature-guides/mcp",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "data-catalog",
+    "data-lineage",
+    "metadata",
+    "data-discovery",
+    "sql-generation",
+    "data-governance",
+    "datahub"
+  ],
+  "skills": [
+    {
+      "id": "search",
+      "name": "Search Catalog",
+      "description": "Searches the DataHub catalog with structured keyword syntax, boolean logic and filters to find tables, columns and dashboards."
+    },
+    {
+      "id": "get-lineage",
+      "name": "Get Lineage",
+      "description": "Retrieves upstream or downstream lineage for datasets, columns and dashboards, with filtering and hop control."
+    },
+    {
+      "id": "get-dataset-queries",
+      "name": "Get Dataset Queries",
+      "description": "Fetches real SQL queries that reference a dataset or column to show its joins, filters and aggregation patterns."
+    },
+    {
+      "id": "list-schema-fields",
+      "name": "List Schema Fields",
+      "description": "Lists a dataset's schema fields with keyword filtering and pagination, for exploring large schemas field by field."
+    },
+    {
+      "id": "update-metadata",
+      "name": "Update Metadata",
+      "description": "Adds or removes tags, glossary terms, owners and domains on entities and columns when mutation tools are enabled."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.datahub.com/mcp",
+  "mcpCommand": "uvx mcp-server-datahub@latest",
+  "quickstartUrl": "https://docs.datahub.com/docs/features/feature-guides/mcp",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.312Z",
+  "updatedAt": "2026-11-10T06:38:22.312Z"
+}

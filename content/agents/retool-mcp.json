@@ -1,0 +1,63 @@
+{
+  "id": "retool-mcp",
+  "name": "Retool MCP",
+  "slug": "retool-mcp",
+  "description": "Builds and inspects Retool apps, queries connected resources, and manages users, permissions, and audit logs from Claude, Cursor, or Codex, for Retool builders and admins.",
+  "providerName": "Retool",
+  "providerUrl": "https://retool.com",
+  "agentUrl": "https://docs.retool.com/org-users/guides/mcp",
+  "categories": [
+    "code-devtools",
+    "productivity"
+  ],
+  "tags": [
+    "app-builder",
+    "react-app-import",
+    "resource-queries",
+    "user-management",
+    "permission-groups",
+    "audit-logs"
+  ],
+  "skills": [
+    {
+      "id": "app-building",
+      "name": "App Building",
+      "description": "Starts or continues building Retool apps from your coding environment, imports existing React apps, and inspects existing apps."
+    },
+    {
+      "id": "resource-queries",
+      "name": "Resource Queries",
+      "description": "Writes queries against connected Retool resources for data analysis, and lists, creates, and inspects resource configurations."
+    },
+    {
+      "id": "user-administration",
+      "name": "User Administration",
+      "description": "Bulk-invites users, audits who has access, disables users, and resets two-factor authentication in your Retool organization."
+    },
+    {
+      "id": "permission-management",
+      "name": "Permission Management",
+      "description": "Creates permission groups and custom roles, and checks or changes who can access an app, resource, or workflow."
+    },
+    {
+      "id": "audit-log-investigation",
+      "name": "Audit Log Investigation",
+      "description": "Investigates Retool audit logs and reviews past and current agent activity, including cancelling a failed app build."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.retool.com/mcp",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.222Z",
+  "updatedAt": "2026-11-10T06:38:22.222Z"
+}

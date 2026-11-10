@@ -1,0 +1,66 @@
+{
+  "id": "harness-mcp",
+  "name": "Harness MCP",
+  "slug": "harness-mcp",
+  "description": "Run, debug and approve Harness CI/CD pipelines and manage services, environments and feature flags from AI agents via Harness's official MCP server, for DevOps teams.",
+  "providerName": "Harness",
+  "providerUrl": "https://www.harness.io",
+  "agentUrl": "https://developer.harness.io/harness-platform/use-harness-ai/connect-with-ai/index",
+  "categories": [
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "harness",
+    "ci-cd",
+    "pipelines",
+    "deployments",
+    "feature-flags",
+    "gitops",
+    "devops"
+  ],
+  "skills": [
+    {
+      "id": "list-get-resources",
+      "name": "List and Get Resources",
+      "description": "Lists, gets and searches Harness resources such as pipelines, services, environments, connectors and feature flags."
+    },
+    {
+      "id": "change-resources",
+      "name": "Create, Update and Delete",
+      "description": "Creates, updates and deletes Harness resources, including Git-backed pipelines, after the user confirms each change."
+    },
+    {
+      "id": "execute-actions",
+      "name": "Execute Actions",
+      "description": "Runs and retries pipelines, imports pipelines from Git, toggles feature flags and syncs GitOps applications."
+    },
+    {
+      "id": "diagnose-failures",
+      "name": "Diagnose Failures",
+      "description": "Diagnoses pipeline executions, connectors, delegates and GitOps apps, returning stage timing and failure details."
+    },
+    {
+      "id": "project-status",
+      "name": "Project Status",
+      "description": "Shows a real-time Harness project health dashboard with recent executions, failure rates and deep links."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.harness.io/mcp",
+  "mcpCommand": "npx harness-mcp-v2",
+  "quickstartUrl": "https://developer.harness.io/harness-platform/use-harness-ai/connect-with-ai/index",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.204Z",
+  "updatedAt": "2026-11-10T06:38:22.204Z"
+}

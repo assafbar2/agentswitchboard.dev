@@ -1,0 +1,64 @@
+{
+  "id": "granola-mcp",
+  "name": "Granola MCP",
+  "slug": "granola-mcp",
+  "description": "Search your Granola meeting notes and transcripts from Claude, ChatGPT, or Claude Code to find past discussions, action items, and decisions. For Granola users.",
+  "providerName": "Granola",
+  "providerUrl": "https://www.granola.ai",
+  "agentUrl": "https://docs.granola.ai/help-center/sharing/integrations/mcp",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "meeting-notes",
+    "search-meeting-notes",
+    "meeting-transcripts",
+    "action-items",
+    "note-taking",
+    "remote-mcp",
+    "granola"
+  ],
+  "skills": [
+    {
+      "id": "query-meetings",
+      "name": "Chat With Your Meetings",
+      "description": "Answers questions about your meeting history by chatting with Granola across the meeting notes your account can access."
+    },
+    {
+      "id": "list-meetings",
+      "name": "List Meetings",
+      "description": "Lists the meeting notes you can access with meeting ID, title, date, and attendees, and filters by folder on paid plans."
+    },
+    {
+      "id": "get-meetings",
+      "name": "Read Meeting Notes",
+      "description": "Reads meeting notes with attendees, private notes, and summarized notes, so an agent can pull out action items and decisions."
+    },
+    {
+      "id": "meeting-transcripts",
+      "name": "Meeting Transcripts",
+      "description": "Retrieves the raw transcript of a meeting so the agent can give specific quotes of what was said; paid plans only."
+    },
+    {
+      "id": "meeting-attachments",
+      "name": "Shared-Screen Screenshots",
+      "description": "Views screenshots of screens shared during a meeting, such as slides, charts, or code, to answer questions about them."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.granola.ai/mcp",
+  "quickstartUrl": "https://docs.granola.ai/help-center/sharing/integrations/mcp",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.261Z",
+  "updatedAt": "2026-11-10T06:38:22.261Z"
+}

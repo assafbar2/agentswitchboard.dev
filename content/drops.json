@@ -1,4 +1,7 @@
 {
+  "2026-11-10": {
+    "intro": "Google's Gemini Notebook API, Okta's MCP server and Coinbase for Agents lead 87 additions, 46 of them Official, alongside RTK, an open-source CLI that compresses command output for coding agents."
+  },
   "2026-10-31": {
     "intro": "Apple's Xcode MCP, Google's Android CLI and the Microsoft Copilot SDK headline the week, with Official MCP servers from Box, JFrog, New Relic and SAP."
   }

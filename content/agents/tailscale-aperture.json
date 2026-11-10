@@ -1,0 +1,65 @@
+{
+  "id": "tailscale-aperture",
+  "name": "Aperture by Tailscale",
+  "slug": "tailscale-aperture",
+  "description": "Routes LLM and MCP traffic from coding agents through a gateway in your Tailscale network, replacing shared API keys with tailnet identity and adding spending limits and logs.",
+  "providerName": "Tailscale",
+  "providerUrl": "https://tailscale.com",
+  "agentUrl": "https://tailscale.com/docs/aperture",
+  "categories": [
+    "infrastructure",
+    "security"
+  ],
+  "tags": [
+    "ai-gateway",
+    "llm-proxy",
+    "mcp-proxy",
+    "api-key-management",
+    "llm-spending-limits",
+    "tailnet",
+    "tailscale-ssh"
+  ],
+  "skills": [
+    {
+      "id": "llm-gateway",
+      "name": "LLM Gateway",
+      "description": "Routes requests from LLM clients to OpenAI, Anthropic, Google and other providers, injecting provider keys so users never handle shared API keys."
+    },
+    {
+      "id": "mcp-server-proxying",
+      "name": "MCP Server Proxying",
+      "description": "Aggregates tools and resources from remote MCP servers behind one /v1/mcp endpoint, with deny-by-default grants tied to Tailscale identity."
+    },
+    {
+      "id": "coding-agent-launcher",
+      "name": "Coding Agent Launcher",
+      "description": "Configures and launches coding agents such as Claude Code, Codex, Gemini CLI and OpenCode against the gateway with the alpha Aperture CLI."
+    },
+    {
+      "id": "tailnet-provisioning",
+      "name": "Tailnet Provisioning",
+      "description": "Joins a new application, service or machine to your tailnet through the built-in Tailnet connector, with an admin approving each new machine."
+    },
+    {
+      "id": "tailscale-ssh-commands",
+      "name": "Tailscale SSH Commands",
+      "description": "Discovers tailnet machines with Tailscale SSH enabled and runs shell commands on them through the built-in Tailscale SSH connector."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://tailscale.com/docs/aperture/get-started",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-11-10T06:38:22.340Z",
+  "updatedAt": "2026-11-10T06:38:22.340Z"
+}

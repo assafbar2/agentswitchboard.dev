@@ -23,6 +23,10 @@
     "v": "1f0724a6",
     "source": "https://www.google.com/s2/favicons?domain=ada.cx&sz=128"
   },
+  "adobe-analytics-mcp": {
+    "v": "709942ad",
+    "source": "https://github.com/AdobeDocs.png?size=256"
+  },
   "ag2": {
     "v": "bd9ddb2c",
     "source": "https://www.ag2.ai/faviconlight.svg"
@@ -30,6 +34,10 @@
   "agent-browser": {
     "v": "7f93989f",
     "source": "https://github.com/vercel-labs.png?size=256"
+  },
+  "agent-desktop": {
+    "v": "ae7c0ace",
+    "source": "https://py8fhxnkzwtsqdo9.public.blob.vercel-storage.com/front/favicon/vercel/android-chrome-512x512.png"
   },
   "agent-device": {
     "v": "4e8b8a78",
@@ -372,9 +380,21 @@
     "v": "b591ad38",
     "source": "https://bankr.bot/pwa-icon-512.png"
   },
+  "base44-mcp": {
+    "v": "85ec518e",
+    "source": "https://docs.base44.com/mintlify-assets/_mintlify/favicons/base44/nuCdY9ZGKAmI8mvz/_generated/favicon/android-chrome-192x192.png"
+  },
   "baseten": {
     "v": "40ffb50e",
     "source": "https://docs.baseten.co/mintlify-assets/_mintlify/favicons/baseten-preview/a_ByDgeELv6J0NXr/_generated/favicon/android-chrome-192x192.png"
+  },
+  "baseten-sandboxes": {
+    "v": "8f05e0fc",
+    "source": "https://www.datocms-assets.com/104802/1792619555-favicon.png"
+  },
+  "beacon": {
+    "v": "bc38184b",
+    "source": "https://beacon.sh/assets/brand/favicon.svg"
   },
   "beads": {
     "v": "78a74055",
@@ -383,6 +403,10 @@
   "bedrock-agentcore": {
     "v": "fd9c599f",
     "source": "https://aws.amazon.com/apple-touch-icon.png"
+  },
+  "better-stack-mcp": {
+    "v": "e7aaa67c",
+    "source": "https://betterstack.com/assets/favicon-64296699.png"
   },
   "bifrost": {
     "v": "201a4ab4",
@@ -403,6 +427,10 @@
   "bitfun": {
     "v": "d46c9a79",
     "source": "https://github.com/GCWing.png?size=256"
+  },
+  "bitrise-mcp": {
+    "v": "b1ba3ceb",
+    "source": "https://docs.bitrise.io/en/favicon.ico"
   },
   "bland-ai": {
     "v": "72e7a1a4",
@@ -464,6 +492,11 @@
     "v": "4dac6c54",
     "source": "https://github.com/browseros-ai.png?size=256"
   },
+  "browserstack-mcp": {
+    "v": "6cbe7ffe",
+    "source": "https://www.browserstack.com/favicon.ico",
+    "px": 48
+  },
   "buzz": {
     "v": "93c319b7",
     "source": "https://block.xyz/apple-touch-icon-reskin.png"
@@ -471,6 +504,10 @@
   "cal-com": {
     "v": "da690f85",
     "source": "https://cal.com/apple-touch-icon.png"
+  },
+  "calendly-mcp": {
+    "v": "2d2f2007",
+    "source": "https://developer.calendly.com/api/fern-docs/favicon.ico?v=f0506c95f38a"
   },
   "camel-ai": {
     "v": "f5c0e790",
@@ -499,6 +536,10 @@
   "catena-labs": {
     "v": "de8e25a6",
     "source": "https://docs.catena.com/favicon.svg"
+  },
+  "cdata-connect-ai": {
+    "v": "f3f0ba62",
+    "source": "https://docs.cloud.cdata.com/mintlify-assets/_mintlify/favicons/cdata/pcI126nHhhlf-ZsI/_generated/favicon/android-chrome-192x192.png"
   },
   "celigo-mcp": {
     "v": "e02b49da",
@@ -596,6 +637,10 @@
     "v": "4cdddea4",
     "source": "https://cdn.prod.website-files.com/61477f2c24a826836f969afe/6a3a92ab2ebcb50096cbd51a_dot-com_favicon_2026_512.png"
   },
+  "clerk-mcp": {
+    "v": "dc05ce17",
+    "source": "https://github.com/clerk.png?size=256"
+  },
   "clickhouse-mcp": {
     "v": "c8fe3c0d",
     "source": "https://clickhouse.com/docs/mintlify-assets/_mintlify/favicons/private-7c7dfe99/4UShO1VxIGDRhyfj/_generated/favicon/android-chrome-192x192.png"
@@ -612,6 +657,10 @@
     "v": "c9dd2b61",
     "source": "https://cline.bot/assets/branding/logos/cline-icon-dark.svg"
   },
+  "clio": {
+    "v": "f77dfff5",
+    "source": "https://www.google.com/s2/favicons?domain=help.clio.com&sz=128"
+  },
   "clipmyapp": {
     "v": "840303f4",
     "source": "https://clipmyapp.com/brand/icon-512.png"
@@ -619,6 +668,10 @@
   "clipto-mcp": {
     "v": "b5dfd737",
     "source": "https://cliptocdn.com/clipto-website-next/static/main/img/favicon/favicon-512x512.png"
+  },
+  "cloudbees-mcp": {
+    "v": "eb69eec2",
+    "source": "https://docs.cloudbees.com/android-chrome-512x512.png?v=2"
   },
   "cloudflare-agents-sdk": {
     "v": "7c4f193b",
@@ -663,6 +716,10 @@
   "cmux": {
     "v": "a1a28757",
     "source": "https://cmux.com/apple-icon.png?apple-icon.2ycvhapzlxf2q.png"
+  },
+  "cockroachdb-mcp": {
+    "v": "6b54d542",
+    "source": "https://docs.cockroachlabs.com/mintlify-assets/_mintlify/favicons/cockroachlabs/c9BlkJ0WBi2Ma7w-/_generated/favicon/android-chrome-192x192.png"
   },
   "code-graph-rag": {
     "v": "51711670",
@@ -709,9 +766,21 @@
     "v": "3a5985d8",
     "source": "https://www.coinbase.com/apple-touch-icon.png"
   },
+  "coinbase-for-agents": {
+    "v": "981c7a95",
+    "source": "https://docs.cdp.coinbase.com/mintlify-assets/_mintlify/favicons/coinbase-prod/c38WXP1QDRE4hnu6/_generated/favicon/android-chrome-192x192.png"
+  },
   "colibri": {
     "v": "326bd367",
     "source": "https://github.com/JustVugg.png?size=256"
+  },
+  "collibra-mcp": {
+    "v": "6c306da4",
+    "source": "https://www.collibra.com/astro-assets/favicons/favicon-512.png"
+  },
+  "commonly-ai": {
+    "v": "698e4a6a",
+    "source": "https://commonly.me/favicon.svg"
   },
   "composio": {
     "v": "2f7655c4",
@@ -733,6 +802,10 @@
     "v": "4756cbbe",
     "source": "https://www.google.com/s2/favicons?domain=contentful.com&sz=128"
   },
+  "contentsquare-mcp": {
+    "v": "2bb9141e",
+    "source": "https://contentsquare.com/favicons/android-chrome-512x512.png"
+  },
   "context-dev": {
     "v": "9cc9151e",
     "source": "https://www.context.dev/android-chrome-512x512.png"
@@ -749,6 +822,10 @@
     "v": "4ddea1de",
     "source": "https://continue.dev/icon-512.png"
   },
+  "convex-mcp": {
+    "v": "48602478",
+    "source": "https://github.com/convex.png?size=256"
+  },
   "copilot-sdk": {
     "v": "2a5f763b",
     "source": "https://github.githubassets.com/assets/app-icon-512-7f9c4ff2e960.png"
@@ -760,6 +837,10 @@
   "copilotkit": {
     "v": "2c9d35b1",
     "source": "https://github.com/copilotkit.png?size=256"
+  },
+  "coralogix-mcp": {
+    "v": "d7f06417",
+    "source": "https://www.google.com/s2/favicons?domain=coralogix.com&sz=128"
   },
   "corgi": {
     "v": "0b077181",
@@ -841,6 +922,10 @@
     "v": "8db0ad61",
     "source": "https://cursor.com/docs-static/icon-512x512.png"
   },
+  "dagster-mcp": {
+    "v": "f12e1caf",
+    "source": "https://github.com/dagster-io.png?size=256"
+  },
   "darkbloom": {
     "v": "39cca250",
     "source": "https://www.darkbloom.ai/favicon.svg"
@@ -852,6 +937,10 @@
   "datadog-llm-observability": {
     "v": "cb427b54",
     "source": "https://web-assets.dd-static.net/42588/1709904028-favicon.ico?auto=format&h=16&w=16"
+  },
+  "datahub-mcp": {
+    "v": "4d8fc507",
+    "source": "https://datahub.com/wp-content/uploads/2026/01/dataHub_symbol_color.svg"
   },
   "daytona": {
     "v": "30a2f192",
@@ -929,6 +1018,10 @@
     "v": "e94eac6d",
     "source": "https://www.digitalocean.com/_do-www-marketing/3ea1fb0a/_next/static/media/favicon.91372345.svg"
   },
+  "digitalocean-mcp": {
+    "v": "e94eac6d",
+    "source": "https://docs.digitalocean.com/favicon.svg"
+  },
   "discord": {
     "v": "76aab388",
     "source": "https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/6266bc493fb42d4e27bb8393_847541504914fd33810e70a0ea73177e.ico"
@@ -964,6 +1057,10 @@
   "drawio-mcp": {
     "v": "dae5c07e",
     "source": "https://github.com/jgraph.png?size=256"
+  },
+  "dremio-mcp": {
+    "v": "74aa2a93",
+    "source": "https://docs.dremio.com/images/Dremio-Logo_Narwhal-Only.png"
   },
   "dropbox-mcp": {
     "v": "3ffcd234",
@@ -1026,6 +1123,10 @@
     "v": "13644020",
     "source": "https://entire.com/favicon.svg"
   },
+  "esp32-iphone-agent": {
+    "v": "1856edc6",
+    "source": "https://handsy.tech/apple-touch-icon.png"
+  },
   "everos": {
     "v": "58cecf87",
     "source": "https://framerusercontent.com/images/gyZjg3KTW1aU7rDyZ8DLrTiXhk.png"
@@ -1033,6 +1134,10 @@
   "exa-ai": {
     "v": "337595cf",
     "source": "https://exa.ai/docs/mintlify-assets/_mintlify/favicons/exa-52/IXdJPX9fh2ANJEqv/_generated/favicon/android-chrome-192x192.png"
+  },
+  "excalidraw-mcp": {
+    "v": "7816e068",
+    "source": "https://excalidraw.com/android-chrome-192x192.png"
   },
   "excel-mcp-server": {
     "v": "20e195a8",
@@ -1155,6 +1260,10 @@
     "v": "0701a13e",
     "source": "https://founden.ai/images/founden/founden_orb_app_icon_v3.png"
   },
+  "framer-mcp": {
+    "v": "b5d1eaff",
+    "source": "https://framerusercontent.com/images/aXvo6HfUhqvR7oFjFL8b4AcyGfg.png"
+  },
   "freetoken": {
     "v": "a24bfd5f",
     "source": "https://www.flashml.ai/assets/f-icon.svg"
@@ -1171,6 +1280,10 @@
     "v": "c199c91f",
     "source": "https://github.com/fullselfbrowsing.png?size=256"
   },
+  "fullstory-mcp": {
+    "v": "fc92800d",
+    "source": "https://help.fullstory.com/hc/theming_assets/01K2Q41VM7ETEQHSWVXVGQTNR3"
+  },
   "funes": {
     "v": "cdb9e63c",
     "source": "https://huggingface.co/favicon.ico"
@@ -1186,6 +1299,10 @@
   "gaia-amd": {
     "v": "7283a9ef",
     "source": "https://amd-gaia.ai/favicon.ico"
+  },
+  "gamma-mcp": {
+    "v": "21415a50",
+    "source": "https://www.google.com/s2/favicons?domain=developers.gamma.app&sz=128"
   },
   "gas-town": {
     "v": "ce544fbd",
@@ -1207,9 +1324,17 @@
     "v": "bae4a0ed",
     "source": "https://github.com/google-gemini.png?size=256"
   },
+  "gemini-notebook-api": {
+    "v": "cde5bed7",
+    "source": "https://developers.google.com/_pwa/developers/icons/icon-512x512.png"
+  },
   "genkit": {
     "v": "8bfef480",
     "source": "https://github.com/genkit-ai.png?size=256"
+  },
+  "genoffice": {
+    "v": "3aabc357",
+    "source": "https://genoffice.ai/favicon.svg"
   },
   "geoloods": {
     "v": "f5cadb20",
@@ -1343,6 +1468,10 @@
     "v": "9048b990",
     "source": "https://trailhq.com/trail.png"
   },
+  "granola-mcp": {
+    "v": "26ee1ecb",
+    "source": "https://docs.granola.ai/mintlify-assets/_mintlify/favicons/granola-c3940166/URyIEqvb5Z22TCAJ/_generated/favicon/android-chrome-192x192.png"
+  },
   "graphify": {
     "v": "97095e6f",
     "source": "https://graphify.com/icon-circle-512.png"
@@ -1378,6 +1507,10 @@
   "harness-by-autonomous": {
     "v": "f1f1b41a",
     "source": "https://cdn.autonomous.ai/assets/icons/icon-512x512.png"
+  },
+  "harness-mcp": {
+    "v": "9bef3aa3",
+    "source": "https://cdn.prod.website-files.com/6222ca42ea87e1bd1aa1d10c/62245acc1b2f1040941f0d8f_webclip.png"
   },
   "harness2": {
     "v": "56042e72",
@@ -1463,6 +1596,10 @@
     "v": "441ac837",
     "source": "https://docs.honeycomb.io/mintlify-assets/_mintlify/favicons/honeycomb/7YUY9epdPvOVWjv6/_generated/favicon/android-chrome-192x192.png"
   },
+  "hootsuite-mcp": {
+    "v": "0f180074",
+    "source": "https://www.hootsuite.com/images/apple-touch-icon.png"
+  },
   "hourtick": {
     "v": "49fd1930",
     "source": "https://hourtick.com/icon.png"
@@ -1498,6 +1635,10 @@
   "hyperprobe": {
     "v": "36797b57",
     "source": "https://www.hyperprobe.co/favicon.svg"
+  },
+  "hyperresearch": {
+    "v": "c965a2dd",
+    "source": "https://hyperresearch.ai/apple-touch-icon.png"
   },
   "ibm-bob": {
     "v": "ffc1d96d",
@@ -1535,9 +1676,17 @@
     "v": "59693647",
     "source": "https://docs.getinboxzero.com/mintlify-assets/_mintlify/favicons/inboxzero/IQcRpnjUMR6zhHwi/_generated/favicon/android-chrome-192x192.png"
   },
+  "incident-io-mcp": {
+    "v": "e7b67ba9",
+    "source": "https://docs.incident.io/mintlify-assets/_mintlify/favicons/incidentio-18bb4170/YazI2mNDinjO9EIY/_generated/favicon/android-chrome-192x192.png"
+  },
   "inngest": {
     "v": "ad6e5247",
     "source": "https://www.inngest.com/favicon-june-2025-light.svg"
+  },
+  "instacart-mcp": {
+    "v": "5fc13176",
+    "source": "https://docs.instacart.com/img/favicon.ico"
   },
   "instructor": {
     "v": "52bd8c85",
@@ -1547,6 +1696,10 @@
   "intentkit": {
     "v": "761f6bd6",
     "source": "https://intentcat.com/docs/android-chrome-512x512.png"
+  },
+  "interactive-brokers-mcp": {
+    "v": "a6e5da36",
+    "source": "https://www.interactivebrokers.com/images/web/favicons/home-screen-icon-192x192.png"
   },
   "intercom-fin": {
     "v": "14995031",
@@ -1636,6 +1789,10 @@
   "keenable": {
     "v": "c7bb01f1",
     "source": "https://docs.keenable.ai/mintlify-assets/_mintlify/favicons/keenableai/EhqekAezIdslZ9aM/_generated/favicon/android-chrome-192x192.png"
+  },
+  "kernel": {
+    "v": "3887c9f0",
+    "source": "https://www.kernel.sh/web-app-manifest-512x512.png"
   },
   "kestra": {
     "v": "45f27e98",
@@ -1937,9 +2094,17 @@
     "v": "e1aeb734",
     "source": "https://www.medplum.com/img/logo-512x512.png"
   },
+  "meltwater-mcp": {
+    "v": "74552854",
+    "source": "https://www.meltwater.com/android-chrome-512x512.png?v=Nmb79JPw70"
+  },
   "mem0": {
     "v": "c0f192b5",
     "source": "https://docs.mem0.ai/mintlify-assets/_mintlify/favicons/mem0/d_RkXckv7cNYdok2/_generated/favicon/android-chrome-192x192.png"
+  },
+  "mempalace": {
+    "v": "c3a17e6f",
+    "source": "https://github.com/mempalace.png?size=256"
   },
   "menlo-insurance-mcp": {
     "v": "c709bef5",
@@ -1952,6 +2117,10 @@
   "meta-model-api": {
     "v": "8bdadce3",
     "source": "https://dev.meta.ai/favicon.ico?favicon.0__pei86aoyzg.ico"
+  },
+  "metabase-mcp": {
+    "v": "40e3b933",
+    "source": "https://www.metabase.com/docs/images/favicon.svg"
   },
   "metagpt": {
     "v": "8ac1fffc",
@@ -2046,6 +2215,10 @@
     "v": "7d809351",
     "source": "https://github.com/lexmount.png?size=256"
   },
+  "momentic": {
+    "v": "b82a6de6",
+    "source": "https://momentic.ai/images/apple-touch-icon.png"
+  },
   "monaco": {
     "v": "514a979b",
     "source": "https://www.monaco.com/apple-touch-icon.png"
@@ -2061,6 +2234,10 @@
   "monid-ai": {
     "v": "c598804d",
     "source": "https://monid.ai/favicon.svg"
+  },
+  "monte-carlo-mcp": {
+    "v": "dd8773cf",
+    "source": "https://docs.getmontecarlo.com/icon-512.png?v=9ec52f883d0c"
   },
   "motherduck-mcp": {
     "v": "a3822779",
@@ -2243,6 +2420,10 @@
     "v": "26658bb2",
     "source": "https://omp.sh/favicon.svg"
   },
+  "okta-mcp": {
+    "v": "867bc991",
+    "source": "https://github.com/okta.png?size=256"
+  },
   "ollama": {
     "v": "a6bb20cf",
     "source": "https://ollama.com/public/apple-touch-icon.png"
@@ -2375,6 +2556,10 @@
     "v": "c2044c3c",
     "source": "https://tinyhumans.ai/android-chrome-512x512.png"
   },
+  "openjarvis": {
+    "v": "37bffa9c",
+    "source": "https://github.com/open-jarvis.png?size=256"
+  },
   "openknowledge": {
     "v": "085d5b98",
     "source": "https://inkeep.com/icon.png?icon.25eb3e7e.png"
@@ -2386,6 +2571,10 @@
   "openmanus": {
     "v": "7d9d381a",
     "source": "https://github.com/FoundationAgents.png?size=256"
+  },
+  "openmausbot": {
+    "v": "b2d2918c",
+    "source": "https://mausbot.com/apple-icon.png?apple-icon.0ggjxf4-g1c84.png"
   },
   "openmetadata": {
     "v": "9122262e",
@@ -2455,6 +2644,10 @@
     "v": "3cab41dc",
     "source": "https://osaurus.ai/images/apple-touch-icon.png"
   },
+  "otter-mcp": {
+    "v": "6b79feb5",
+    "source": "https://www.google.com/s2/favicons?domain=help.otter.ai&sz=128"
+  },
   "outlines": {
     "v": "e8a85bca",
     "source": "https://dottxt.ai/favicon/web-app-manifest-512x512.png"
@@ -2505,6 +2698,10 @@
     "v": "2be9247c",
     "source": "https://www.palmier.io/icon.png"
   },
+  "pandadoc-mcp": {
+    "v": "338835ea",
+    "source": "https://developers.pandadoc.com/icon-512.png?v=b9ba294dfee0"
+  },
   "paperclip": {
     "v": "8c5e3659",
     "source": "https://paperclip.ing/favicon.svg"
@@ -2512,6 +2709,14 @@
   "parallel-web": {
     "v": "eb93951f",
     "source": "https://docs.parallel.ai/mintlify-assets/_mintlify/favicons/parallel-6fabab31-mtje7p526we/ZNRH8iM_vWv_wJYk/_generated/favicon/android-chrome-192x192.png"
+  },
+  "parlant": {
+    "v": "3b56e2de",
+    "source": "https://www.parlant.io/img/favicon-adaptive.svg"
+  },
+  "pascal-editor": {
+    "v": "17b75eff",
+    "source": "https://editor.pascal.app/icons/icon-512.png"
   },
   "paseo": {
     "v": "7c5e7280",
@@ -2524,6 +2729,10 @@
   "paypal-agent-toolkit": {
     "v": "50959bfa",
     "source": "https://www.paypalobjects.com/marketing/web/icons/monogram/pp258.png"
+  },
+  "pendo-mcp": {
+    "v": "ba057574",
+    "source": "https://support.pendo.io/hc/theming_assets/01JYHRK7GH5Y7MTXHANSPHETHW"
   },
   "pentagi": {
     "v": "b821acbb",
@@ -2605,6 +2814,10 @@
     "v": "134166c7",
     "source": "https://eye.art/shelled-icon-512.png"
   },
+  "pomerado": {
+    "v": "0e8753cf",
+    "source": "https://pomerado.ai/icon.svg?icon.0h2dwpaklmjt0.svg"
+  },
   "porkbun-mcp": {
     "v": "4ea843de",
     "source": "https://porkbun.com/favicon.ico"
@@ -2648,6 +2861,10 @@
   "praisonai": {
     "v": "21fee365",
     "source": "https://praison.ai/icons/android-chrome-512x512.png"
+  },
+  "prefect-mcp": {
+    "v": "dc590c8b",
+    "source": "https://www.prefect.io/docs/mintlify-assets/_mintlify/favicons/prefect-bd373955/QsizguCJ7nwtgDte/_generated/favicon/android-chrome-192x192.png"
   },
   "presenton": {
     "v": "664175cf",
@@ -2701,6 +2918,10 @@
     "v": "0bb7b6d3",
     "source": "https://qdrant.tech/images/android-chrome-512x512.png"
   },
+  "qlik-mcp": {
+    "v": "9726fd9f",
+    "source": "https://www.google.com/s2/favicons?domain=qlik.com&sz=128"
+  },
   "qm": {
     "v": "481e098e",
     "source": "https://github.com/yc-software.png?size=256"
@@ -2708,6 +2929,10 @@
   "qmd": {
     "v": "bb5319c1",
     "source": "https://github.com/tobi.png?size=256"
+  },
+  "quickbooks-mcp": {
+    "v": "d2a8b8ac",
+    "source": "https://github.com/intuit.png?size=256"
   },
   "qwen-code": {
     "v": "a51c5f5a",
@@ -2769,6 +2994,10 @@
     "v": "f3df18c4",
     "source": "https://render.com/icon.svg?icon.00d01gt742wgb.svg?dpl=5b9cb7cd9f"
   },
+  "render-sandboxes": {
+    "v": "f3df18c4",
+    "source": "https://render.com/icon.svg?icon.00d01gt742wgb.svg?dpl=53cb03f73ae6"
+  },
   "renoolab": {
     "v": "d6f1a1d3",
     "source": "https://renoolab.fr/favicon-192.png"
@@ -2801,6 +3030,10 @@
     "v": "25541240",
     "source": "https://cdn.prod.website-files.com/64ada0f2685b2d18caa5e699/69d7b35ce160f153aa823cf0_output-Retellai%20(2).png"
   },
+  "retool-mcp": {
+    "v": "3a7969fc",
+    "source": "https://docs.retool.com/apple-touch-icon.png"
+  },
   "retrace": {
     "v": "6c4a1a5c",
     "source": "https://retraceai.tech/icons/icon-512.png?v=2"
@@ -2808,6 +3041,10 @@
   "revdoku": {
     "v": "7616802b",
     "source": "https://revdoku.com/apple-touch-icon.png"
+  },
+  "ringcentral-mcp": {
+    "v": "5bd8e80a",
+    "source": "https://github.com/ringcentral.png?size=256"
   },
   "rival-ads": {
     "v": "1fbbe791",
@@ -2817,6 +3054,14 @@
     "v": "f478d08b",
     "source": "https://rivet.ironcladapp.com/img/favicon.png"
   },
+  "rivet-dev": {
+    "v": "89989bb0",
+    "source": "https://assets.rivet.dev/website/public/icons/android-chrome-512x512.png"
+  },
+  "robinhood-agent-trading": {
+    "v": "badc2b2c",
+    "source": "https://robinhood.com/us/en/rh_favicon_152.png?v=2024"
+  },
   "robylon": {
     "v": "4bfb4ca7",
     "source": "https://www.robylon.ai/assets/brand/touch-icon.png"
@@ -2825,6 +3070,10 @@
     "v": "537ab52d",
     "source": "https://roomote.dev/android-chrome-512x512.png"
   },
+  "rootly-mcp": {
+    "v": "ab1d9d17",
+    "source": "https://docs.rootly.com/mintlify-assets/_mintlify/favicons/rootly/aIfj4fuxsr9m1Efg/_generated/favicon/android-chrome-192x192.png"
+  },
   "rowboat": {
     "v": "5931d898",
     "source": "https://github.com/rowboatlabs.png?size=256"
@@ -2832,6 +3081,10 @@
   "rox-ai": {
     "v": "d395d20b",
     "source": "https://framerusercontent.com/images/C9L707945yj2i8QJMA00h1vPjyc.png"
+  },
+  "rtk": {
+    "v": "97bb38d0",
+    "source": "https://www.rtk-ai.app/brand/favicon/favicon-192.png"
   },
   "runpod": {
     "v": "c7184932",
@@ -2882,6 +3135,10 @@
   "sarvam-ai": {
     "v": "9abd46a4",
     "source": "https://docs.sarvam.ai/api/fern-docs/favicon.ico"
+  },
+  "scalable-capital-mcp": {
+    "v": "ffb31f80",
+    "source": "https://ssp-assets.shelf-ssp-eu.com/5bc332f0-9873-415b-8d2b-2a4e1ae23d40/d8177c9a-5776-4850-bf87-e49d81c91a15/1J932z1KlSt8awXYxvuW_trAXRhLr4ZG.png"
   },
   "scrapegraphai": {
     "v": "e0c23238",
@@ -2951,9 +3208,17 @@
     "v": "01cc29b3",
     "source": "https://sierra.ai/icon.svg"
   },
+  "sigma-mcp": {
+    "v": "a05bf43a",
+    "source": "https://help.sigmacomputing.com/api/fern-docs/favicon.ico?v=be3db99738e5"
+  },
   "sim": {
     "v": "8efb4eea",
     "source": "https://www.sim.ai/favicon/android-chrome-512x512.png"
+  },
+  "sisense-mcp": {
+    "v": "229a9330",
+    "source": "https://www.sisense.com/wp-content/themes/sisense/assets/fav/android-icon-192x192.png"
   },
   "skaleagents": {
     "v": "7d252398",
@@ -3011,9 +3276,21 @@
     "v": "6cb35568",
     "source": "https://github.com/NVlabs.png?size=256"
   },
+  "solidcraft": {
+    "v": "6c463b38",
+    "source": "https://solidcraft.io/favicon-192.png"
+  },
   "somark-oxr": {
     "v": "1b796e88",
     "source": "https://somark.ai/favicon-light.svg"
+  },
+  "sourcegraph-mcp": {
+    "v": "7294e817",
+    "source": "https://sourcegraph.com/docs/icon.svg?icon.24pqlc06a_6hx.svg"
+  },
+  "sp-global-kensho-mcp": {
+    "v": "0677b39f",
+    "source": "https://www.google.com/s2/favicons?domain=spglobal.com&sz=128"
   },
   "spacebot": {
     "v": "45501746",
@@ -3047,9 +3324,17 @@
     "v": "4f0d1a7d",
     "source": "https://www.browserbase.com/favicon.svg"
   },
+  "starburst-mcp": {
+    "v": "43a6ed78",
+    "source": "https://www.starburst.io/favicon-d.png"
+  },
   "stash-memory": {
     "v": "d06456aa",
     "source": "https://github.com/alash3al.png?size=256"
+  },
+  "statsig-mcp": {
+    "v": "266b2458",
+    "source": "https://docs.statsig.com/images/favicon.svg"
   },
   "steel": {
     "v": "8f78cafe",
@@ -3139,6 +3424,10 @@
     "v": "6c54c963",
     "source": "https://www.google.com/s2/favicons?domain=docs.tabnine.com&sz=128"
   },
+  "tailscale-aperture": {
+    "v": "c24aedaf",
+    "source": "https://tailscale.com/favicon.svg"
+  },
   "tako": {
     "v": "f26086dc",
     "source": "https://tako.com/images/android-chrome-512x512.png?v=2"
@@ -3203,6 +3492,18 @@
     "v": "b1ad9805",
     "source": "https://patrickchugh.github.io/terravision/assets/logo/favicon.ico"
   },
+  "testerarmy-e2e": {
+    "v": "6538ffad",
+    "source": "https://e2e.com/_next/static/immutable/media/favicon-light.2-q6f0nssinhj.svg"
+  },
+  "thoughtspot-mcp": {
+    "v": "a918fa77",
+    "source": "https://developers.thoughtspot.com/docs/icons/icon-512x512.png?v=9881abbc204e7b36414a7621edcb1d6a"
+  },
+  "tigris-mcp": {
+    "v": "dcd675c1",
+    "source": "https://github.com/tigrisdata.png?size=256"
+  },
   "tiingo-mcp": {
     "v": "34097b6d",
     "source": "https://www.tiingo.com/favicon.svg"
@@ -3211,9 +3512,17 @@
     "v": "5a1594d6",
     "source": "https://business-api.tiktok.com/portal/images/favicon.png"
   },
+  "tines-mcp": {
+    "v": "4cf6f171",
+    "source": "https://www.tines.com/v5-assets/favicon.png"
+  },
   "tiun": {
     "v": "02e1d3be",
     "source": "https://framerusercontent.com/images/bmFhdZpMljWwVglCkM6VL6nc4.png"
+  },
+  "todoist-mcp": {
+    "v": "fcd0a5c5",
+    "source": "https://www.todoist.com/static/android-chrome-256x256.png"
   },
   "together-ai": {
     "v": "6c6dd240",
@@ -3307,6 +3616,10 @@
     "v": "07b63658",
     "source": "https://unstructured.io/web-app-manifest-512x512.png"
   },
+  "upstash-mcp": {
+    "v": "eab8b2fb",
+    "source": "https://upstash.com/docs/_favicons/light-192.png"
+  },
   "upwork-mcp": {
     "v": "1f8c71b8",
     "source": "https://www.upwork.com/favicon.ico",
@@ -3368,6 +3681,10 @@
     "v": "1d11d93e",
     "source": "https://cloud.google.com/apple-touch-icon.png"
   },
+  "vibe-trading": {
+    "v": "98171231",
+    "source": "https://vibetrading.wiki/assets/icon.png"
+  },
   "vidmoat": {
     "v": "cb397da9",
     "source": "https://www.vidmoat.com/logo-512.png"
@@ -3428,6 +3745,10 @@
     "v": "7dbf33b5",
     "source": "https://github.com/WebMCP-org.png?size=256"
   },
+  "webull-mcp": {
+    "v": "25df969d",
+    "source": "https://developer.webull.com/apis/img/webull.ico"
+  },
   "weknora": {
     "v": "8859ab3f",
     "source": "https://github.com/Tencent.png?size=256"
@@ -3448,6 +3769,10 @@
     "v": "29fe78c0",
     "source": "https://www.windmill.dev/img/logo.svg"
   },
+  "wix-mcp": {
+    "v": "76f31dc9",
+    "source": "https://www.wix.com/favicon.ico"
+  },
   "wonderful-ai": {
     "v": "a9cc28a1",
     "source": "https://framerusercontent.com/images/RlVX2Ppi8NAkXgqwDa2IDocBnlI.png"
@@ -3455,6 +3780,11 @@
   "wordpress-mcp-adapter": {
     "v": "b42d0c9b",
     "source": "https://s.w.org/images/wmark.png"
+  },
+  "workato-mcp": {
+    "v": "b8f803a6",
+    "source": "https://docs.workato.com/favicon.png",
+    "px": 48
   },
   "workos-pipes": {
     "v": "dd76d883",
@@ -3557,6 +3887,10 @@
     "v": "bfab18bc",
     "source": "https://zeroshot.sh/docs/current/brand/oec-favicon.svg"
   },
+  "zillow-mcp": {
+    "v": "e1774f76",
+    "source": "https://www.zillow.com/apple-touch-icon.png"
+  },
   "zoom": {
     "v": "f57bde1e",
     "source": "https://developers.zoom.us/favicon.ico?favicon.1h7jbgtb7yhr-.ico"
@@ -3568,6 +3902,10 @@
   "zovo-invoice-mcp": {
     "v": "6b134331",
     "source": "https://mcp.zovo.one/favicon.ico"
+  },
+  "zscaler-mcp": {
+    "v": "26888376",
+    "source": "https://www.zscaler.com/favicons/apple-touch-icon.png"
   },
   "zvec": {
     "v": "163f757b",

@@ -1,0 +1,68 @@
+{
+  "id": "mempalace",
+  "name": "MemPalace",
+  "slug": "mempalace",
+  "description": "Stores conversation history and project files verbatim in a local, searchable memory palace and serves it to Claude Code, Codex, Cursor and other clients over MCP.",
+  "providerName": "MemPalace",
+  "providerUrl": "https://mempalaceofficial.com",
+  "agentUrl": "https://github.com/mempalace/mempalace",
+  "categories": [
+    "memory-state"
+  ],
+  "tags": [
+    "long-term-memory",
+    "semantic-search",
+    "knowledge-graph",
+    "conversation-history",
+    "local-first",
+    "chromadb",
+    "python"
+  ],
+  "skills": [
+    {
+      "id": "semantic-search",
+      "name": "Semantic Search",
+      "description": "Searches stored drawers by meaning and returns verbatim content with similarity scores, filtered by wing, room or date."
+    },
+    {
+      "id": "content-mining",
+      "name": "Content Mining",
+      "description": "Mines project files and Claude, ChatGPT or Slack conversation exports into wings and rooms for later recall."
+    },
+    {
+      "id": "knowledge-graph",
+      "name": "Knowledge Graph",
+      "description": "Adds, queries, invalidates and supersedes time-bounded entity facts in a local SQLite knowledge graph, with timelines."
+    },
+    {
+      "id": "agent-diaries",
+      "name": "Agent Diaries",
+      "description": "Writes and reads per-agent diary entries so each specialist agent keeps its own wing and history in the palace."
+    },
+    {
+      "id": "session-checkpoint",
+      "name": "Session Checkpoint",
+      "description": "Saves a whole session in one call, deduplicating each item, filing new drawers and writing a single diary entry."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpCommand": "docker run -i --rm -v mempalace-data:/data ghcr.io/mempalace/mempalace",
+  "install": {
+    "type": "pip",
+    "command": "pipx install mempalace"
+  },
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-11-10T06:38:22.144Z",
+  "updatedAt": "2026-11-10T06:38:22.144Z"
+}

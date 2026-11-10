@@ -1,0 +1,64 @@
+{
+  "id": "scalable-capital-mcp",
+  "name": "Scalable Capital MCP",
+  "slug": "scalable-capital-mcp",
+  "description": "Checks portfolios, quotes and transactions and places reviewed trades and savings plans in a Scalable Capital brokerage account from ChatGPT, Claude, Cursor or the Scalable CLI.",
+  "providerName": "Scalable Capital",
+  "providerUrl": "https://scalable.capital",
+  "agentUrl": "https://help.scalable.capital/en/agentic-investing-aac939f8/how-do-i-connect-to-scalable-mcp-75fc6a40",
+  "categories": [
+    "finance"
+  ],
+  "tags": [
+    "brokerage",
+    "portfolio-tracking",
+    "stock-trading",
+    "savings-plans",
+    "market-data",
+    "price-alerts",
+    "european-investing"
+  ],
+  "skills": [
+    {
+      "id": "portfolio-overview",
+      "name": "Portfolio Overview",
+      "description": "Retrieves the account profile, portfolio snapshots, holdings, cash and buying power, and transaction history for personal Broker accounts."
+    },
+    {
+      "id": "market-data",
+      "name": "Market Data",
+      "description": "Searches securities and derivatives and returns the latest quotes, chart data and security news in English or German."
+    },
+    {
+      "id": "reviewed-orders",
+      "name": "Reviewed Orders",
+      "description": "Prepares buy and sell order previews with costs and disclosures, then submits an order only after your fresh, explicit confirmation."
+    },
+    {
+      "id": "savings-plans",
+      "name": "Savings Plans",
+      "description": "Lists, previews, creates, updates and removes eligible savings plans, with a mandatory preview and explicit confirmation before submission."
+    },
+    {
+      "id": "watchlists-and-alerts",
+      "name": "Watchlists and Price Alerts",
+      "description": "Adds and removes watchlist items and creates or removes security and crypto price alerts, at the Limited or Full access level."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.scalable.capital/mcp",
+  "quickstartUrl": "https://help.scalable.capital/en/agentic-investing-aac939f8/how-do-i-connect-to-scalable-mcp-75fc6a40",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-11-10T06:38:22.347Z",
+  "updatedAt": "2026-11-10T06:38:22.347Z"
+}

@@ -1,0 +1,66 @@
+{
+  "id": "contentsquare-mcp",
+  "name": "Contentsquare MCP",
+  "slug": "contentsquare-mcp",
+  "description": "Analyze Contentsquare experience data from Claude, ChatGPT, or Copilot: site metrics, funnels, journeys, page performance, and errors. For digital and marketing teams.",
+  "providerName": "Contentsquare",
+  "providerUrl": "https://contentsquare.com",
+  "agentUrl": "https://support.contentsquare.com/hc/en-us/articles/52247834293905-Contentsquare-MCP-integration",
+  "categories": [
+    "data-analytics",
+    "sales-marketing"
+  ],
+  "tags": [
+    "digital-experience-analytics",
+    "web-analytics",
+    "funnel-analysis",
+    "customer-journey",
+    "conversion-rate",
+    "bounce-rate",
+    "remote-mcp",
+    "contentsquare"
+  ],
+  "skills": [
+    {
+      "id": "site-metrics",
+      "name": "Site And Page Metrics",
+      "description": "Computes site and page metrics such as bounce rate and activity rate, grouped and filtered by country, browser, or week."
+    },
+    {
+      "id": "funnels",
+      "name": "Funnel Analysis",
+      "description": "Analyzes conversion funnels to show conversion rates and where users drop off, for example in checkout or registration."
+    },
+    {
+      "id": "journeys",
+      "name": "Journey Analysis",
+      "description": "Maps the most common user paths through your site, such as how visitors navigate from the homepage to a purchase."
+    },
+    {
+      "id": "page-comparison",
+      "name": "Page Comparator",
+      "description": "Compares performance across pages and page groups, such as bounce rate on product pages versus listing pages for a segment."
+    },
+    {
+      "id": "error-analysis",
+      "name": "Error Analysis",
+      "description": "Finds the main errors impacting your website and measures their impact; this needs Contentsquare Experience Monitoring."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://api.contentsquare.com/mcp",
+  "quickstartUrl": "https://docs.contentsquare.com/en/mcp/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.257Z",
+  "updatedAt": "2026-11-10T06:38:22.257Z"
+}

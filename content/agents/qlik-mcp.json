@@ -1,0 +1,64 @@
+{
+  "id": "qlik-mcp",
+  "name": "Qlik MCP",
+  "slug": "qlik-mcp",
+  "description": "Explore Qlik Cloud apps, query chart data, build sheets and charts, and manage glossaries and data products from your LLM through Qlik's MCP server.",
+  "providerName": "Qlik",
+  "providerUrl": "https://www.qlik.com",
+  "agentUrl": "https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/QlikMCP/Qlik-MCP-server.htm",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "qlik-cloud",
+    "business-intelligence",
+    "data-exploration",
+    "business-glossary",
+    "data-products",
+    "dashboards",
+    "official-mcp",
+    "qlik"
+  ],
+  "skills": [
+    {
+      "id": "app-discovery",
+      "name": "App Discovery",
+      "description": "Searches Qlik Cloud apps, data products, and datasets and describes an app's fields, sheets, and data model before you query it."
+    },
+    {
+      "id": "data-exploration",
+      "name": "Data Exploration",
+      "description": "Queries chart data, searches fields, applies and clears selections, and analyzes the results like an analyst inside a Qlik app."
+    },
+    {
+      "id": "app-building",
+      "name": "Sheet And Chart Building",
+      "description": "Creates apps, sheets, charts, and master dimensions and measures in Qlik Cloud from prompts in your MCP client."
+    },
+    {
+      "id": "script-reloads",
+      "name": "Script And Reload Management",
+      "description": "Reads and updates app load scripts, starts and cancels reloads, and fetches reload status and logs for a Qlik app."
+    },
+    {
+      "id": "business-glossary",
+      "name": "Business Glossary Management",
+      "description": "Creates glossaries, categories, and terms, updates term status, and links glossary terms to data assets in Qlik Cloud."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/QlikMCP/Connecting-Qlik-MCP-server.htm",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.244Z",
+  "updatedAt": "2026-11-10T06:38:22.244Z"
+}

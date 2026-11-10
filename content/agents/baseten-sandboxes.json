@@ -1,0 +1,67 @@
+{
+  "id": "baseten-sandboxes",
+  "name": "Baseten Sandboxes",
+  "slug": "baseten-sandboxes",
+  "description": "Gives each user or project in an agentic app an isolated sandbox to run commands and edit files, through a management API, SDKs, the Baseten CLI, or a per-sandbox MCP server.",
+  "providerName": "Baseten",
+  "providerUrl": "https://www.baseten.co",
+  "agentUrl": "https://www.baseten.co/products/sandboxes",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "code-sandbox",
+    "code-execution",
+    "isolated-environments",
+    "run-commands",
+    "sandbox-previews",
+    "persistent-volumes",
+    "baseten"
+  ],
+  "skills": [
+    {
+      "id": "manage-sandboxes",
+      "name": "Manage Sandboxes",
+      "description": "Creates, lists, updates, and deletes sandboxes through the Management API, the SDKs, the Baseten CLI, or the dashboard."
+    },
+    {
+      "id": "run-commands",
+      "name": "Run Commands",
+      "description": "Runs commands and background processes in a sandbox, and reads, writes, and edits its files over the sandbox runtime API."
+    },
+    {
+      "id": "sandbox-mcp",
+      "name": "Sandbox MCP Server",
+      "description": "Serves an MCP server at each sandbox's URL, giving MCP clients ready-made tools for running commands and editing files."
+    },
+    {
+      "id": "sandbox-images",
+      "name": "Sandbox Images",
+      "description": "Builds versioned sandbox images from a Dockerfile, or starts sandboxes from built-in Baseten images such as Base Image."
+    },
+    {
+      "id": "previews-and-volumes",
+      "name": "Previews and Volumes",
+      "description": "Opens a sandboxed web app through a public or private HTTPS preview URL, and keeps files across sandboxes in volumes."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://docs.baseten.co/sandboxes/overview",
+  "apiBaseUrl": "https://api.baseten.co",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.182Z",
+  "updatedAt": "2026-11-10T06:38:22.182Z"
+}

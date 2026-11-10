@@ -1,0 +1,64 @@
+{
+  "id": "pandadoc-mcp",
+  "name": "PandaDoc MCP",
+  "slug": "pandadoc-mcp",
+  "description": "Creates, sends and tracks PandaDoc contracts, proposals and templates from your AI client, with signature status, reminders and document analytics.",
+  "providerName": "PandaDoc",
+  "providerUrl": "https://www.pandadoc.com/",
+  "agentUrl": "https://developers.pandadoc.com/docs/getting-started-with-mcp",
+  "categories": [
+    "sales-marketing",
+    "productivity"
+  ],
+  "tags": [
+    "pandadoc",
+    "e-signature",
+    "contracts",
+    "sales-proposals",
+    "document-templates",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "create-from-template",
+      "name": "Create Documents from Templates",
+      "description": "Creates PandaDoc documents such as NDAs, contracts and sales proposals with pricing tables from your existing templates."
+    },
+    {
+      "id": "track-signatures",
+      "name": "Track Signature Status",
+      "description": "Checks whether a document has been signed and finds all documents still waiting for signatures, with recipients and wait time."
+    },
+    {
+      "id": "send-reminders",
+      "name": "Send Documents and Reminders",
+      "description": "Sends documents to their recipients and sends reminder emails to recipients who haven't signed within a set number of days."
+    },
+    {
+      "id": "search-documents",
+      "name": "Search and Filter Documents",
+      "description": "Searches documents by full text and filters them by value, tag, status, expiry or signing date, like contracts signed last quarter."
+    },
+    {
+      "id": "document-analytics",
+      "name": "Document Analytics",
+      "description": "Reports document counts by status, completion rates and average signing time, and shows the full audit trail for a document."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.pandadoc.com/v1/mcp",
+  "quickstartUrl": "https://developers.pandadoc.com/docs/getting-started-with-mcp",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.270Z",
+  "updatedAt": "2026-11-10T06:38:22.270Z"
+}

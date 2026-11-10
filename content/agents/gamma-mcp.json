@@ -1,0 +1,66 @@
+{
+  "id": "gamma-mcp",
+  "name": "Gamma MCP",
+  "slug": "gamma-mcp",
+  "description": "Generate presentations, documents, webpages, and social posts in Gamma from an MCP client, then edit them and export to PDF, PPTX, or PNG. For anyone making decks.",
+  "providerName": "Gamma",
+  "providerUrl": "https://gamma.app",
+  "agentUrl": "https://developers.gamma.app/mcp/gamma-mcp-server",
+  "categories": [
+    "content-media",
+    "productivity"
+  ],
+  "tags": [
+    "create-presentations",
+    "generate-slides",
+    "pitch-decks",
+    "document-generation",
+    "export-pptx",
+    "webpage-builder",
+    "remote-mcp",
+    "gamma"
+  ],
+  "skills": [
+    {
+      "id": "generate",
+      "name": "Generate Gammas",
+      "description": "Generates presentations, documents, webpages, or social posts with control over tone, audience, images, themes, and layout."
+    },
+    {
+      "id": "generate-from-template",
+      "name": "Generate From A Template",
+      "description": "Creates a new gamma from an existing template, adapting its cards and layouts to new content, audience, topic, or use case."
+    },
+    {
+      "id": "edit-gamma",
+      "name": "Edit Existing Gammas",
+      "description": "Edits an existing gamma from a natural-language instruction, rewording, restructuring, adding, or removing content on a page."
+    },
+    {
+      "id": "export-gamma",
+      "name": "Export To PDF, PPTX, Or PNG",
+      "description": "Exports a gamma to PDF, PPTX, or PNG in the background and returns the download link once the export finishes."
+    },
+    {
+      "id": "search-read",
+      "name": "Search And Read Gammas",
+      "description": "Searches gammas by title and body text and reads the full content of a presentation or document from its file ID or URL."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.gamma.app/mcp",
+  "quickstartUrl": "https://developers.gamma.app/build-with-gamma/connect-your-own-agent",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.265Z",
+  "updatedAt": "2026-11-10T06:38:22.265Z"
+}

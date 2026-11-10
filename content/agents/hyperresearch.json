@@ -1,0 +1,68 @@
+{
+  "id": "hyperresearch",
+  "name": "Hyperresearch",
+  "slug": "hyperresearch",
+  "description": "Runs deep research on a question and returns a report with every citation checked, via a hosted API, a remote MCP server, or an open-source CLI for Claude Code and Codex.",
+  "providerName": "Hyperresearch",
+  "providerUrl": "https://hyperresearch.ai",
+  "agentUrl": "https://hyperresearch.ai",
+  "categories": [
+    "research",
+    "autonomous-agents"
+  ],
+  "tags": [
+    "deep-research",
+    "web-research",
+    "citation-verification",
+    "literature-review",
+    "research-reports",
+    "due-diligence",
+    "scholarly-search",
+    "claude-code"
+  ],
+  "skills": [
+    {
+      "id": "deep-research-run",
+      "name": "Deep Research Run",
+      "description": "Runs a multi-step research pipeline on one question and returns an adversarially reviewed report with full source provenance."
+    },
+    {
+      "id": "verify-citations",
+      "name": "Verify Citations",
+      "description": "Checks each citation in a document against its source and returns supported, partially supported, unsupported, or wrong-source verdicts."
+    },
+    {
+      "id": "search-vault",
+      "name": "Search the Vault",
+      "description": "Searches every source and note kept from past runs by full text or by meaning, so new research builds on what was already read."
+    },
+    {
+      "id": "scholarly-search",
+      "name": "Scholarly Search",
+      "description": "Searches OpenAlex, Crossref, CORE, ClinicalTrials.gov, SEC EDGAR, and FRED in one query and returns one deduplicated list."
+    },
+    {
+      "id": "open-access-full-text",
+      "name": "Open-Access Full Text",
+      "description": "Finds legal open-access copies of paywalled papers through Unpaywall, Europe PMC, and CORE and stores the full text in the vault."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": true,
+  "mcpEndpoint": "https://mcp.hyperresearch.ai/mcp",
+  "quickstartUrl": "https://hyperresearch.ai/docs/quickstart",
+  "apiBaseUrl": "https://api.hyperresearch.ai/v1",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-11-10T06:38:22.295Z",
+  "updatedAt": "2026-11-10T06:38:22.295Z"
+}

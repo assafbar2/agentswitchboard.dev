@@ -5,7 +5,7 @@
   "description": "Discovers and filters Polymarket prediction markets by tags, volume, and liquidity. Analyzes probabilities, market health, and tracks category trends.",
   "providerName": "Community",
   "providerUrl": "https://polymarket.com",
-  "agentUrl": "https://smithery.ai/server/@aryankeluskar/polymarket-mcp",
+  "agentUrl": "https://github.com/aryankeluskar/polymarket-mcp",
   "categories": [
     "finance"
   ],
@@ -47,5 +47,5 @@
     "mcp"
   ],
   "createdAt": "2026-06-07T17:51:30.461Z",
-  "updatedAt": "2026-06-07T17:51:30.461Z"
+  "updatedAt": "2026-11-10T06:39:41.842Z"
 }

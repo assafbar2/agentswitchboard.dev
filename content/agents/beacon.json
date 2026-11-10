@@ -1,0 +1,66 @@
+{
+  "id": "beacon",
+  "name": "Beacon",
+  "slug": "beacon",
+  "description": "Captures coding agent sessions from Claude Code, Cursor, Codex and 20+ other harnesses and turns them into shared memory that future agents can search over MCP.",
+  "providerName": "Asymptote Labs",
+  "providerUrl": "https://asymptotelabs.ai",
+  "agentUrl": "https://beacon.sh",
+  "categories": [
+    "memory-state",
+    "code-devtools"
+  ],
+  "tags": [
+    "agent-memory",
+    "coding-agents",
+    "session-history",
+    "claude-code",
+    "cursor",
+    "codex",
+    "opentelemetry",
+    "agent-observability"
+  ],
+  "skills": [
+    {
+      "id": "capture-sessions",
+      "name": "Capture Session History",
+      "description": "Captures prompts, responses, tool calls, commands, file edits, approvals, and token usage from 20+ coding agent harnesses."
+    },
+    {
+      "id": "search-activity",
+      "name": "Search Agent Activity",
+      "description": "Searches and summarizes captured agent sessions and events through the local Beacon MCP server, without touching the network."
+    },
+    {
+      "id": "recall-memory",
+      "name": "Recall Project Memory",
+      "description": "Retrieves reviewed project memory, such as workflows, corrections, and repo conventions, for the task an agent is working on."
+    },
+    {
+      "id": "browse-traces",
+      "name": "Browse Traces",
+      "description": "Opens a local terminal browser or web dashboard to replay sessions with event timelines, token usage, and file diffs."
+    },
+    {
+      "id": "forward-telemetry",
+      "name": "Forward Telemetry",
+      "description": "Forwards normalized agent session telemetry to Splunk, Datadog, Elastic, Microsoft Sentinel, S3, and other destinations."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.beacon.sh",
+  "quickstartUrl": "https://docs.beacon.sh/get-started/quickstart",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.297Z",
+  "updatedAt": "2026-11-10T06:38:22.297Z"
+}

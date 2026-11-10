@@ -1,0 +1,65 @@
+{
+  "id": "sisense-mcp",
+  "name": "Sisense MCP",
+  "slug": "sisense-mcp",
+  "description": "Explore Sisense data models, run natural-language queries, and build charts and draft dashboards from Claude, ChatGPT, or Cursor over Sisense's hosted MCP server.",
+  "providerName": "Sisense",
+  "providerUrl": "https://www.sisense.com",
+  "agentUrl": "https://docs.sisense.com/main/SisenseLinux/mcp-server.htm",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "embedded-analytics",
+    "business-intelligence",
+    "natural-language-query",
+    "charts",
+    "dashboards",
+    "remote-mcp",
+    "official-mcp",
+    "sisense"
+  ],
+  "skills": [
+    {
+      "id": "data-discovery",
+      "name": "Data Model Discovery",
+      "description": "Lists the data models and sources you can access and returns their tables, columns, relationships, and formulas."
+    },
+    {
+      "id": "natural-language-query",
+      "name": "Natural Language Queries",
+      "description": "Runs a natural-language query against a chosen Sisense data model, using your governed metrics and relationships."
+    },
+    {
+      "id": "chart-building",
+      "name": "Chart Building",
+      "description": "Builds line, bar, pie, or area charts from a query result and changes their type, sorting, styling, and trend or forecast lines."
+    },
+    {
+      "id": "draft-dashboards",
+      "name": "Draft Dashboards",
+      "description": "Creates or opens a dashboard as a chat draft and adds widgets, plain-language filters, and an AI summary without saving to Sisense."
+    },
+    {
+      "id": "pulse-runs",
+      "name": "Pulse Monitoring",
+      "description": "Lists Pulses and their run history and runs an existing Pulse on demand to check whether its alert condition is met."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.sisense.com/mcp",
+  "quickstartUrl": "https://docs.sisense.com/main/SisenseLinux/mcp-connect-ai-agent.htm",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.246Z",
+  "updatedAt": "2026-11-10T06:38:22.246Z"
+}

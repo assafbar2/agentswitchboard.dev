@@ -1,0 +1,64 @@
+{
+  "id": "dagster-mcp",
+  "name": "Dagster+ MCP",
+  "slug": "dagster-mcp",
+  "description": "Queries Dagster+ assets, runs and pipeline health through Dagster's hosted MCP server: read run logs, launch runs and manage alert policies. For data engineering teams.",
+  "providerName": "Dagster Labs",
+  "providerUrl": "https://dagster.io",
+  "agentUrl": "https://dagster.io/docs/getting-started/ai-tools/dagster-mcp",
+  "categories": [
+    "orchestration",
+    "data-analytics"
+  ],
+  "tags": [
+    "data-orchestration",
+    "data-pipelines",
+    "data-assets",
+    "pipeline-runs",
+    "run-logs",
+    "data-engineering",
+    "dagster"
+  ],
+  "skills": [
+    {
+      "id": "runs-logs",
+      "name": "Runs & Run Logs",
+      "description": "Views, launches and terminates Dagster+ runs and reads their run logs and Insights metrics to debug failing pipelines."
+    },
+    {
+      "id": "assets",
+      "name": "Assets",
+      "description": "Views Dagster+ assets with their Insights metrics, launches assets, and deletes assets in your Dagster+ deployment."
+    },
+    {
+      "id": "alert-policies",
+      "name": "Alert Policies",
+      "description": "Views, creates, updates and deletes alert policies in your Dagster+ deployment from inside an AI session."
+    },
+    {
+      "id": "dagster-issues",
+      "name": "Dagster+ Issues",
+      "description": "Views, creates and updates Dagster+ Issues so problems found in pipelines are tracked inside your deployment."
+    },
+    {
+      "id": "deployments",
+      "name": "Deployments",
+      "description": "Views Dagster+ deployments and their Insights metrics and deletes deployments you no longer need."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.agent.dagster.cloud/mcp",
+  "quickstartUrl": "https://dagster.io/docs/getting-started/ai-tools/dagster-mcp",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.332Z",
+  "updatedAt": "2026-11-10T06:38:22.332Z"
+}

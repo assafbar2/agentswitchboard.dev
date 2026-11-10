@@ -1,0 +1,63 @@
+{
+  "id": "genoffice",
+  "name": "GenOffice",
+  "slug": "genoffice",
+  "description": "Edits and creates Word, Excel, PowerPoint, and PDF files with AI in a free open-source desktop suite, with a CLI and MCP server so coding agents can produce real Office files.",
+  "providerName": "Genspark",
+  "providerUrl": "https://www.genspark.ai",
+  "agentUrl": "https://genoffice.ai/",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "office-suite",
+    "docx",
+    "xlsx",
+    "pptx",
+    "pdf-editing",
+    "slide-deck-generation",
+    "document-conversion",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "create-office-files",
+      "name": "Create Office Files",
+      "description": "Creates .docx, .xlsx, .pptx, and PDF files from Markdown, JSON tables, or page specs, keeping spreadsheet formulas live."
+    },
+    {
+      "id": "convert-documents",
+      "name": "Convert Documents",
+      "description": "Converts Markdown, HTML, Word, Excel, PowerPoint, PDF, and ODF files between formats on your machine, without uploading them."
+    },
+    {
+      "id": "build-slide-decks",
+      "name": "Build Slide Decks",
+      "description": "Builds a .pptx deck page by page from an outline and style sheet, then audits each slide for text overflow and overlap."
+    },
+    {
+      "id": "edit-word-documents",
+      "name": "Edit Word Documents",
+      "description": "Reads a .docx by block range and applies edits in place, or compares two versions and writes the changes as tracked revisions."
+    },
+    {
+      "id": "render-pages",
+      "name": "Render Pages",
+      "description": "Renders every page or slide of a document to PNG so an agent can look at what it made before handing the file back."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.174Z",
+  "updatedAt": "2026-11-10T06:38:22.174Z"
+}

@@ -1,0 +1,62 @@
+{
+  "id": "better-stack-mcp",
+  "name": "Better Stack MCP",
+  "slug": "better-stack-mcp",
+  "description": "Connects AI assistants to Better Stack: check uptime monitors, manage incidents and on-call, and query logs, metrics and traces. For SRE and DevOps teams.",
+  "providerName": "Better Stack",
+  "providerUrl": "https://betterstack.com",
+  "agentUrl": "https://betterstack.com/docs/getting-started/integrations/mcp/",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "uptime-monitoring",
+    "incident-management",
+    "on-call",
+    "log-management",
+    "observability",
+    "better-stack"
+  ],
+  "skills": [
+    {
+      "id": "monitors-heartbeats",
+      "name": "Monitors & Heartbeats",
+      "description": "Lists monitors and heartbeats, checks their availability and response times, and creates, updates, pauses or removes them."
+    },
+    {
+      "id": "manage-incidents",
+      "name": "Manage Incidents",
+      "description": "Creates, acknowledges, escalates, resolves and reopens incidents, and reads timelines and adds comments along the way."
+    },
+    {
+      "id": "oncall-escalation-policies",
+      "name": "On-Call & Escalation Policies",
+      "description": "Shows who is on call for a calendar, lists upcoming shifts and rotations, and adds or removes escalation policy step members."
+    },
+    {
+      "id": "query-telemetry",
+      "name": "Query Telemetry",
+      "description": "Queries logs, traces, errors and metrics in Better Stack and runs the queries to investigate production problems."
+    },
+    {
+      "id": "search-docs",
+      "name": "Search Docs",
+      "description": "Searches Better Stack documentation and returns the contents of relevant articles directly in the conversation."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.betterstack.com",
+  "quickstartUrl": "https://betterstack.com/docs/getting-started/integrations/mcp/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.328Z",
+  "updatedAt": "2026-11-10T06:38:22.328Z"
+}

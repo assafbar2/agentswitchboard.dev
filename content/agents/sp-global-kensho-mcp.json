@@ -1,0 +1,68 @@
+{
+  "id": "sp-global-kensho-mcp",
+  "name": "S&P Global (Kensho) MCP",
+  "slug": "sp-global-kensho-mcp",
+  "description": "Query S&P Global datasets such as Capital IQ financials, market data, and earnings call transcripts in natural language. For finance teams and analysts.",
+  "providerName": "S&P Global (Kensho)",
+  "providerUrl": "https://www.spglobal.com",
+  "agentUrl": "https://docs.kensho.com/llmreadyapi/mcp",
+  "categories": [
+    "finance",
+    "research"
+  ],
+  "tags": [
+    "financial-data",
+    "capital-iq",
+    "company-financials",
+    "earnings-call-transcripts",
+    "market-data",
+    "stock-prices",
+    "remote-mcp",
+    "sp-global"
+  ],
+  "skills": [
+    {
+      "id": "financial-statements",
+      "name": "Financial Statements",
+      "description": "Fetches company financial statements and individual line items from S&P Capital IQ Financials for a company and period."
+    },
+    {
+      "id": "prices-market-caps",
+      "name": "Prices And Market Caps",
+      "description": "Retrieves historical prices and market capitalization for a company's trading items, plus its ISIN and CUSIP identifiers."
+    },
+    {
+      "id": "earnings-transcripts",
+      "name": "Earnings And Transcripts",
+      "description": "Gets a company's earnings dates and earnings calls and fetches their transcripts from S&P Global's earnings call data."
+    },
+    {
+      "id": "competitors-relationships",
+      "name": "Competitors And Relationships",
+      "description": "Finds a company's competitors and the companies linked to it by business relationship in S&P Global's datasets."
+    },
+    {
+      "id": "company-screening",
+      "name": "Company Screening",
+      "description": "Lists companies by industry code, GICS code, simple industry, or location to build peer sets and screens for research."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://kfinance.kensho.com/integrations/mcp",
+  "quickstartUrl": "https://docs.kensho.com/llmreadyapi/mcp/custom",
+  "apiBaseUrl": "https://kfinance.kensho.com",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-11-10T06:38:22.259Z",
+  "updatedAt": "2026-11-10T06:38:22.259Z"
+}

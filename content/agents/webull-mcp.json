@@ -1,0 +1,64 @@
+{
+  "id": "webull-mcp",
+  "name": "Webull MCP",
+  "slug": "webull-mcp",
+  "description": "Connects AI clients to your Webull account for real-time market data, balances, positions and order history, and creates order instructions you confirm in Webull.",
+  "providerName": "Webull",
+  "providerUrl": "https://www.webull.com/",
+  "agentUrl": "https://developer.webull.com/apis/docs/AI-friendly-Resources/mcp",
+  "categories": [
+    "finance"
+  ],
+  "tags": [
+    "webull",
+    "brokerage",
+    "stock-quotes",
+    "market-data",
+    "options-data",
+    "order-instructions"
+  ],
+  "skills": [
+    {
+      "id": "market-data",
+      "name": "Market Data",
+      "description": "Gets real-time snapshots, quotes, ticks and historical bars for stocks, options, futures, crypto and event contracts."
+    },
+    {
+      "id": "account-positions",
+      "name": "Accounts and Positions",
+      "description": "Gets your authorized Webull accounts, balances, buying power and current positions, plus open orders and order history."
+    },
+    {
+      "id": "fundamentals-news",
+      "name": "Fundamentals and News",
+      "description": "Gets company profiles, analyst ratings, financial statements, SEC filings, insider and 13F data, and US market news."
+    },
+    {
+      "id": "watchlists",
+      "name": "Manage Watchlists",
+      "description": "Creates, updates and deletes Webull watchlists and adds or removes symbols in them."
+    },
+    {
+      "id": "order-instructions",
+      "name": "Create Order Instructions",
+      "description": "Creates stock, option, futures, crypto and algo order instructions that you confirm in the Webull app or desktop before they run."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://api.webull.com/mcp",
+  "mcpCommand": "uvx webull-openapi-mcp serve",
+  "quickstartUrl": "https://developer.webull.com/apis/docs/AI-friendly-Resources/mcp/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.278Z",
+  "updatedAt": "2026-11-10T06:38:22.278Z"
+}

@@ -1,0 +1,64 @@
+{
+  "id": "todoist-mcp",
+  "name": "Todoist MCP",
+  "slug": "todoist-mcp",
+  "description": "Manages Todoist tasks and projects from AI assistants: add, find, reschedule and complete tasks through Todoist's hosted MCP server with OAuth.",
+  "providerName": "Todoist",
+  "providerUrl": "https://www.todoist.com",
+  "agentUrl": "https://developer.todoist.com/",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "todoist",
+    "task-management",
+    "to-do-list",
+    "project-management",
+    "remote-mcp",
+    "productivity-stats"
+  ],
+  "skills": [
+    {
+      "id": "add-tasks",
+      "name": "Add Tasks",
+      "description": "Adds one or more Todoist tasks to a project, section or parent task, with assignment to project collaborators."
+    },
+    {
+      "id": "find-tasks",
+      "name": "Find Tasks",
+      "description": "Finds tasks by text, project, section, label, assignee or a raw Todoist filter string, including saved filters."
+    },
+    {
+      "id": "find-tasks-by-date",
+      "name": "Find Tasks by Date",
+      "description": "Gets tasks due in a date range, with 'today' including overdue items, for daily reviews and planning."
+    },
+    {
+      "id": "reschedule-tasks",
+      "name": "Reschedule Tasks",
+      "description": "Reschedules Todoist tasks to new dates while preserving their recurring schedules instead of wiping them."
+    },
+    {
+      "id": "productivity-stats",
+      "name": "Productivity Stats",
+      "description": "Gets productivity statistics: daily and weekly completion breakdowns, goal streaks, karma score and trends."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://ai.todoist.net/mcp",
+  "quickstartUrl": "https://developer.todoist.com/api/v1/#tag/Todoist-MCP",
+  "apiBaseUrl": "https://api.todoist.com/api/v1",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-11-10T06:38:22.309Z",
+  "updatedAt": "2026-11-10T06:38:22.309Z"
+}

@@ -1,6 +1,563 @@
 [
   {
     "action": "updated",
+    "slug": "semantic-scholar-mcp",
+    "name": "Semantic Scholar MCP",
+    "note": "agentUrl updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "polymarket-mcp",
+    "name": "Polymarket MCP",
+    "note": "agentUrl updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "pipedream-mcp",
+    "name": "Pipedream MCP",
+    "note": "agentUrl updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "onesignal-mcp",
+    "name": "OneSignal MCP",
+    "note": "agentUrl updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "assemblyai",
+    "name": "AssemblyAI",
+    "note": "accessMethods updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "scalable-capital-mcp",
+    "name": "Scalable Capital MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "meltwater-mcp",
+    "name": "Meltwater MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "hootsuite-mcp",
+    "name": "Hootsuite MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "tailscale-aperture",
+    "name": "Aperture by Tailscale",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "otter-mcp",
+    "name": "Otter.ai MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "cdata-connect-ai",
+    "name": "CData Connect AI",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "statsig-mcp",
+    "name": "Statsig MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "dagster-mcp",
+    "name": "Dagster+ MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "clerk-mcp",
+    "name": "Clerk MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "better-stack-mcp",
+    "name": "Better Stack MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "incident-io-mcp",
+    "name": "incident.io MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "tigris-mcp",
+    "name": "Tigris MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "momentic",
+    "name": "Momentic",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "bitrise-mcp",
+    "name": "Bitrise MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "rootly-mcp",
+    "name": "Rootly MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "prefect-mcp",
+    "name": "Prefect MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "upstash-mcp",
+    "name": "Upstash MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "datahub-mcp",
+    "name": "DataHub MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "todoist-mcp",
+    "name": "Todoist MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "atticus",
+    "name": "Atticus",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "kernel",
+    "name": "Kernel",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "commonly-ai",
+    "name": "Commonly AI",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "pomerado",
+    "name": "Pomerado",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "turnstone",
+    "name": "Turnstone",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "beacon",
+    "name": "Beacon",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "hyperresearch",
+    "name": "Hyperresearch",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "esp32-iphone-agent",
+    "name": "ESP32 iPhone Agent (Handsy)",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "excalidraw-mcp",
+    "name": "Excalidraw MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "rivet-dev",
+    "name": "Rivet",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "framer-mcp",
+    "name": "Framer MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "clio",
+    "name": "Clio MCP (Clio Work connector)",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "instacart-mcp",
+    "name": "Instacart MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "zillow-mcp",
+    "name": "Zillow MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "webull-mcp",
+    "name": "Webull MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "interactive-brokers-mcp",
+    "name": "Interactive Brokers MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "robinhood-agent-trading",
+    "name": "Robinhood Agent Trading MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "ringcentral-mcp",
+    "name": "RingCentral MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "pandadoc-mcp",
+    "name": "PandaDoc MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "wix-mcp",
+    "name": "Wix MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "gamma-mcp",
+    "name": "Gamma MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "calendly-mcp",
+    "name": "Calendly MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "granola-mcp",
+    "name": "Granola MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "sp-global-kensho-mcp",
+    "name": "S&P Global (Kensho) MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "contentsquare-mcp",
+    "name": "Contentsquare MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "pendo-mcp",
+    "name": "Pendo MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "fullstory-mcp",
+    "name": "Fullstory MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "dremio-mcp",
+    "name": "Dremio MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "starburst-mcp",
+    "name": "Starburst MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "sisense-mcp",
+    "name": "Sisense MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "qlik-mcp",
+    "name": "Qlik MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "sigma-mcp",
+    "name": "Sigma MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "thoughtspot-mcp",
+    "name": "ThoughtSpot MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "omni-mcp",
+    "name": "Omni MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "collibra-mcp",
+    "name": "Collibra MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "monte-carlo-mcp",
+    "name": "Monte Carlo MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "cockroachdb-mcp",
+    "name": "CockroachDB MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "base44-mcp",
+    "name": "Base44 MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "retool-mcp",
+    "name": "Retool MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "cloudbees-mcp",
+    "name": "CloudBees Unify MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "tines-mcp",
+    "name": "Tines MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "workato-mcp",
+    "name": "Workato Enterprise MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "zscaler-mcp",
+    "name": "Zscaler MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "sourcegraph-mcp",
+    "name": "Sourcegraph MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "browserstack-mcp",
+    "name": "BrowserStack MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "harness-mcp",
+    "name": "Harness MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "coralogix-mcp",
+    "name": "Coralogix MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "adobe-analytics-mcp",
+    "name": "Adobe Analytics MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "quickbooks-mcp",
+    "name": "QuickBooks Online MCP Server",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "agent-desktop",
+    "name": "agent-desktop",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "coinbase-for-agents",
+    "name": "Coinbase for Agents",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "okta-mcp",
+    "name": "Okta MCP Server",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "gemini-notebook-api",
+    "name": "Gemini Notebook API",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "baseten-sandboxes",
+    "name": "Baseten Sandboxes",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "render-sandboxes",
+    "name": "Render Sandboxes",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "digitalocean-mcp",
+    "name": "DigitalOcean MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "genoffice",
+    "name": "GenOffice",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "convex-mcp",
+    "name": "Convex MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "testerarmy-e2e",
+    "name": "e2e",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "openjarvis",
+    "name": "OpenJarvis",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "solidcraft",
+    "name": "SolidCraft",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "openmausbot",
+    "name": "OpenMausBot",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "parlant",
+    "name": "Parlant",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "pascal-editor",
+    "name": "Pascal Editor",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "vibe-trading",
+    "name": "Vibe-Trading",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "metabase-mcp",
+    "name": "Metabase MCP",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "mempalace",
+    "name": "MemPalace",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "rtk",
+    "name": "RTK",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
     "slug": "agentmail",
     "name": "AgentMail",
     "note": "Sponsored placement, labelled Sponsored; no longer marked Editor's Pick",

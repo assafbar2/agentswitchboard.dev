@@ -1,0 +1,63 @@
+{
+  "id": "clio",
+  "name": "Clio MCP (Clio Work connector)",
+  "slug": "clio",
+  "description": "Connects Claude and Codex to Clio Work so lawyers can do legal research, review documents, draft memos and motions, and pull Clio Manage matter records.",
+  "providerName": "Clio",
+  "providerUrl": "https://www.clio.com",
+  "agentUrl": "https://help.clio.com/hc/en-us/articles/57881711703451-Use-Clio-Work-in-Claude-and-Codex",
+  "categories": [
+    "legal",
+    "research"
+  ],
+  "tags": [
+    "legal-research",
+    "legal-drafting",
+    "law-firms",
+    "matter-management",
+    "court-filings",
+    "case-law",
+    "claude-connector"
+  ],
+  "skills": [
+    {
+      "id": "legal-research",
+      "name": "Legal Research",
+      "description": "Researches a legal question with the firm's legal sources and returns the answer with links to the underlying authority."
+    },
+    {
+      "id": "draft-legal-documents",
+      "name": "Draft Legal Documents",
+      "description": "Drafts first versions of memos, letters, clauses, motions, and other legal documents using the matter's context in Clio Work."
+    },
+    {
+      "id": "matter-context",
+      "name": "Matter Context",
+      "description": "Pulls matter documents, correspondence, deadlines, and history, plus Clio Manage and Clio Grow records when the firm subscribes."
+    },
+    {
+      "id": "legal-analysis",
+      "name": "Legal Analysis",
+      "description": "Analyzes the strengths, weaknesses, risks, and counterarguments of a legal position and returns the sources behind it."
+    },
+    {
+      "id": "court-filings",
+      "name": "Court Filings",
+      "description": "Retrieves court filings and procedural history for US matters so the analysis reflects what has happened in court."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.284Z",
+  "updatedAt": "2026-11-10T06:38:22.284Z"
+}

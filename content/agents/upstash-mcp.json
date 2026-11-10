@@ -1,0 +1,64 @@
+{
+  "id": "upstash-mcp",
+  "name": "Upstash MCP",
+  "slug": "upstash-mcp",
+  "description": "Manages Upstash Redis, Vector, Search, QStash and Workflow resources from AI agents: create databases, run Redis commands and read usage stats.",
+  "providerName": "Upstash",
+  "providerUrl": "https://upstash.com",
+  "agentUrl": "https://upstash.com/docs/agent-resources/mcp",
+  "categories": [
+    "infrastructure",
+    "vector-databases"
+  ],
+  "tags": [
+    "redis",
+    "serverless-redis",
+    "vector-database",
+    "qstash",
+    "message-queue",
+    "database-management",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "redis-databases",
+      "name": "Redis Databases",
+      "description": "Creates, lists, backs up and deletes Upstash Redis databases, and changes their plans, budgets and read regions."
+    },
+    {
+      "id": "run-redis-commands",
+      "name": "Run Redis Commands",
+      "description": "Runs Redis commands over the REST API against an Upstash database, one command at a time or as a pipeline."
+    },
+    {
+      "id": "redis-stats",
+      "name": "Redis Stats",
+      "description": "Reads Redis throughput, latency, data size, hits and misses, and per-region insights to diagnose a database."
+    },
+    {
+      "id": "qstash-messages",
+      "name": "QStash Messages",
+      "description": "Publishes QStash messages, manages schedules, and reads delivery logs and the dead-letter queue."
+    },
+    {
+      "id": "vector-indexes",
+      "name": "Vector Indexes",
+      "description": "Creates and inspects Upstash Vector indexes and Search databases, fetching documents and per-namespace stats."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.upstash.com/mcp",
+  "quickstartUrl": "https://upstash.com/docs/agent-resources/mcp",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.314Z",
+  "updatedAt": "2026-11-10T06:38:22.314Z"
+}

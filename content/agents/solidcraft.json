@@ -1,0 +1,67 @@
+{
+  "id": "solidcraft",
+  "name": "SolidCraft",
+  "slug": "solidcraft",
+  "description": "Models parametric 3D parts in a desktop or browser CAD app with sketches, constraints and a feature timeline, and lets agents design through its built-in MCP server.",
+  "providerName": "Tangency Labs",
+  "providerUrl": "https://github.com/tangency-labs",
+  "agentUrl": "https://solidcraft.io",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "cad",
+    "parametric-modeling",
+    "3d-modeling",
+    "mechanical-design",
+    "step-files",
+    "stl",
+    "rust"
+  ],
+  "skills": [
+    {
+      "id": "run-commands",
+      "name": "Run Commands",
+      "description": "Runs any SolidCraft engine command with JSON parameters, from sketches and extrudes to fillets, or a batch with rollback."
+    },
+    {
+      "id": "set-parameter",
+      "name": "Set Parameter",
+      "description": "Creates or changes a user parameter and recomputes the design, or tries parameter values and reports the effect."
+    },
+    {
+      "id": "measure",
+      "name": "Measure",
+      "description": "Measures bodies for area, bounding box, volume, centre of mass and mass, plus distances and angles between items."
+    },
+    {
+      "id": "screenshot-compare",
+      "name": "Screenshot and Compare",
+      "description": "Captures a screenshot from a named view or camera and compares the model's outline against a reference picture."
+    },
+    {
+      "id": "export",
+      "name": "Export",
+      "description": "Exports bodies from the current design to STEP, IGES, 3MF, STL, OBJ or URDF files at a path the agent may write."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "brew",
+    "command": "brew install --cask tangency-labs/tap/solidcraft"
+  },
+  "quickstartUrl": "https://docs.solidcraft.io/guide/getting-started.html",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.163Z",
+  "updatedAt": "2026-11-10T06:38:22.163Z"
+}

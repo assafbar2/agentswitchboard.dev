@@ -1,0 +1,71 @@
+{
+  "id": "momentic",
+  "name": "Momentic",
+  "slug": "momentic",
+  "description": "Tests web, iOS and Android apps with AI: write, run and repair end-to-end tests as YAML in your repo from the CLI or a coding agent over MCP. For engineering and QA teams.",
+  "providerName": "Momentic",
+  "providerUrl": "https://momentic.ai",
+  "agentUrl": "https://momentic.ai",
+  "categories": [
+    "code-devtools",
+    "browser-computer"
+  ],
+  "tags": [
+    "end-to-end-testing",
+    "qa-testing",
+    "regression-testing",
+    "web-testing",
+    "mobile-testing",
+    "yaml-tests",
+    "momentic"
+  ],
+  "skills": [
+    {
+      "id": "write-tests",
+      "name": "Write Tests",
+      "description": "Writes Momentic end-to-end tests as YAML files in your repository from a coding agent, guided by the momentic-test skill."
+    },
+    {
+      "id": "preview-run-steps",
+      "name": "Preview & Run Steps",
+      "description": "Previews and runs test steps in a live browser or device session and returns screenshots so the agent can check each step."
+    },
+    {
+      "id": "repair-failing-tests",
+      "name": "Repair Failing Tests",
+      "description": "Reads a structured failure with the failed step, screenshot and trace, then fixes the test file and runs it again."
+    },
+    {
+      "id": "inspect-past-runs",
+      "name": "Inspect Past Runs",
+      "description": "Downloads and inspects artifacts from past Momentic runs, including test steps and step results, to debug earlier failures."
+    },
+    {
+      "id": "search-docs",
+      "name": "Search Docs",
+      "description": "Searches the Momentic docs for step options, CLI flags and configuration keys and returns the matching sections with links."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.momentic.ai",
+  "install": {
+    "type": "npm",
+    "command": "npm install --save-dev momentic"
+  },
+  "quickstartUrl": "https://momentic.ai/docs/quickstart/web",
+  "apiBaseUrl": "https://api.momentic.ai",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-11-10T06:38:22.321Z",
+  "updatedAt": "2026-11-10T06:38:22.321Z"
+}

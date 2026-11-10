@@ -1,0 +1,69 @@
+{
+  "id": "agent-desktop",
+  "name": "agent-desktop",
+  "slug": "agent-desktop",
+  "description": "Control macOS, Windows and Linux desktop apps from AI agents through the OS accessibility tree, with a JSON CLI, MCP server and C library for computer-use builders.",
+  "providerName": "Vercel",
+  "providerUrl": "https://vercel.com",
+  "agentUrl": "https://github.com/vercel-labs/agent-desktop",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "computer-use",
+    "desktop-automation",
+    "accessibility-tree",
+    "macos",
+    "windows",
+    "linux",
+    "local-mcp",
+    "cli"
+  ],
+  "skills": [
+    {
+      "id": "accessibility-snapshot",
+      "name": "Accessibility Snapshot",
+      "description": "Reads a desktop app's accessibility tree and returns it as JSON, with a ref for every element the agent can act on."
+    },
+    {
+      "id": "act-on-elements",
+      "name": "Act on Elements",
+      "description": "Clicks, types, selects, toggles and scrolls UI elements by ref, headless by default without moving the pointer."
+    },
+    {
+      "id": "manage-apps-windows",
+      "name": "Apps and Windows",
+      "description": "Launches and closes apps, lists windows and displays, and focuses, resizes, moves, minimizes or maximizes windows."
+    },
+    {
+      "id": "clipboard-notifications",
+      "name": "Clipboard and Notifications",
+      "description": "Reads, sets and clears the clipboard, and lists, dismisses or triggers actions on desktop notifications."
+    },
+    {
+      "id": "mcp-server",
+      "name": "MCP Server",
+      "description": "Serves every agent-desktop command as an MCP tool over stdio and returns each command's JSON envelope."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npm install -g agent-desktop"
+  },
+  "quickstartUrl": "https://github.com/vercel-labs/agent-desktop#quick-start",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.192Z",
+  "updatedAt": "2026-11-10T06:38:22.192Z"
+}

@@ -1,0 +1,67 @@
+{
+  "id": "rtk",
+  "name": "RTK",
+  "slug": "rtk",
+  "description": "Filters and compresses shell command output such as git, test runs and builds before a coding agent reads it, via hooks for Claude Code, Cursor, Codex and Gemini CLI.",
+  "providerName": "RTK AI Labs",
+  "providerUrl": "https://www.rtk-ai.app",
+  "agentUrl": "https://www.rtk-ai.app",
+  "categories": [
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "context-compression",
+    "shell-output",
+    "token-usage",
+    "claude-code",
+    "git",
+    "rust",
+    "command-filtering"
+  ],
+  "skills": [
+    {
+      "id": "git-output-compaction",
+      "name": "Git Output Compaction",
+      "description": "Rewrites git status, diff and log output into compact summaries grouped by state, keeping hash, author and subject only."
+    },
+    {
+      "id": "test-failure-filtering",
+      "name": "Test Failure Filtering",
+      "description": "Filters cargo test, npm test, pytest and go test output down to failures, collapsing passing tests into a single count."
+    },
+    {
+      "id": "agent-hook-setup",
+      "name": "Agent Hook Setup",
+      "description": "Installs a hook with rtk init that rewrites an agent's shell commands to rtk equivalents in Claude Code, Cursor, Codex and more."
+    },
+    {
+      "id": "output-analytics",
+      "name": "Output Analytics",
+      "description": "Reports how much command output was filtered with rtk gain, as summaries, daily breakdowns, ASCII graphs or JSON exports."
+    },
+    {
+      "id": "api-traffic-proxy",
+      "name": "API Traffic Proxy",
+      "description": "Runs the optional rtk-proxy daemon, which compresses an agent's provider-API payloads before forwarding them to the model provider."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "brew",
+    "command": "brew install rtk-ai/tap/rtk"
+  },
+  "quickstartUrl": "https://www.rtk-ai.app/docs/getting-started/quick-start/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-11-10T06:38:22.141Z",
+  "updatedAt": "2026-11-10T06:38:22.141Z"
+}

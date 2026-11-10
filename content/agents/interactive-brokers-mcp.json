@@ -1,0 +1,63 @@
+{
+  "id": "interactive-brokers-mcp",
+  "name": "Interactive Brokers MCP",
+  "slug": "interactive-brokers-mcp",
+  "description": "Connects ChatGPT, Claude and other MCP clients to your IBKR account to research markets, analyze positions and prepare trade instructions you review.",
+  "providerName": "Interactive Brokers",
+  "providerUrl": "https://www.interactivebrokers.com/",
+  "agentUrl": "https://www.interactivebrokers.com/en/trading/ai-integrations.php",
+  "categories": [
+    "finance"
+  ],
+  "tags": [
+    "interactive-brokers",
+    "brokerage",
+    "portfolio-analysis",
+    "market-research",
+    "trade-instructions",
+    "watchlists"
+  ],
+  "skills": [
+    {
+      "id": "research-markets",
+      "name": "Research Markets",
+      "description": "Researches opportunities across 75,000+ stocks, options and ETFs in 175+ global markets, such as comparing two companies' margins."
+    },
+    {
+      "id": "analyze-portfolio",
+      "name": "Analyze Portfolio",
+      "description": "Analyzes your authorized positions, balances, activity, sector and currency exposures, and unrealized gains and losses."
+    },
+    {
+      "id": "monitor-orders",
+      "name": "Monitor Watchlists and Orders",
+      "description": "Reviews your watchlists and Price Alerts, shows the status of open orders and lists which of today's orders filled."
+    },
+    {
+      "id": "prepare-trade-instructions",
+      "name": "Prepare Trade Instructions",
+      "description": "Creates buy or sell trade instructions that you review, modify or decline before submitting the order yourself on IBKR."
+    },
+    {
+      "id": "autonomous-trading",
+      "name": "Autonomous Trading",
+      "description": "Executes supported stock and equity option trades on criteria you set, within a funded AI Partition, for eligible clients who opt in."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://api.ibkr.com/v1/api/mcp-public",
+  "quickstartUrl": "https://www.interactivebrokers.com/en/trading/ai-integrations.php",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.276Z",
+  "updatedAt": "2026-11-10T06:38:22.276Z"
+}

@@ -1,0 +1,66 @@
+{
+  "id": "pomerado",
+  "name": "Pomerado",
+  "slug": "pomerado",
+  "description": "Builds MCP tools for websites, including sites without an API, from a plain-language task, so agents can search, fill forms and book on real sites.",
+  "providerName": "Pomerado",
+  "providerUrl": "https://pomerado.ai",
+  "agentUrl": "https://pomerado.ai",
+  "categories": [
+    "browser-computer",
+    "infrastructure"
+  ],
+  "tags": [
+    "web-automation",
+    "website-to-mcp",
+    "browser-automation",
+    "form-filling",
+    "saved-logins",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "find-website-tool",
+      "name": "Find Website Tool",
+      "description": "Searches Pomerado's catalog for a ready-made tool that does a task on a website, by task, by site or both."
+    },
+    {
+      "id": "run-website-tool",
+      "name": "Run Website Tool",
+      "description": "Runs a website tool once with its input and returns a validated result through a job you can follow, answer or cancel."
+    },
+    {
+      "id": "build-website-tool",
+      "name": "Build Website Tool",
+      "description": "Builds a new read or write tool for a website from a plain-language task when no existing tool covers it."
+    },
+    {
+      "id": "saved-logins",
+      "name": "Saved Logins and 2FA",
+      "description": "Signs in to websites with saved logins and finishes two-step sign-in with an authenticator key, recovery codes or a phone number."
+    },
+    {
+      "id": "job-webhooks",
+      "name": "Job Webhooks",
+      "description": "Sends a signed request to your server when a job asks a question or finishes, for backends calling the REST API."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.pomerado.ai/mcp",
+  "quickstartUrl": "https://docs.pomerado.ai/quickstart/connect",
+  "apiBaseUrl": "https://api.pomerado.ai/v1",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-11-10T06:38:22.301Z",
+  "updatedAt": "2026-11-10T06:38:22.301Z"
+}

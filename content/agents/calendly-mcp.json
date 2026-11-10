@@ -1,0 +1,64 @@
+{
+  "id": "calendly-mcp",
+  "name": "Calendly MCP",
+  "slug": "calendly-mcp",
+  "description": "Book meetings, find open slots, share scheduling links, and cancel events in Calendly from any MCP client. For people and teams who schedule with Calendly.",
+  "providerName": "Calendly",
+  "providerUrl": "https://calendly.com",
+  "agentUrl": "https://developer.calendly.com/docs/mcp/calendly-mcp-server",
+  "categories": [
+    "scheduling"
+  ],
+  "tags": [
+    "schedule-meetings",
+    "book-meetings",
+    "meeting-availability",
+    "scheduling-links",
+    "calendar",
+    "remote-mcp",
+    "calendly"
+  ],
+  "skills": [
+    {
+      "id": "event-types",
+      "name": "Event Types And Links",
+      "description": "Lists your Calendly event types and returns the scheduling link for one, such as your 30-minute coaching session."
+    },
+    {
+      "id": "find-open-slots",
+      "name": "Find Open Slots",
+      "description": "Finds open time slots for an event type over a date range, such as available times next week for a 30-minute session."
+    },
+    {
+      "id": "book-meeting",
+      "name": "Book A Meeting",
+      "description": "Books a meeting with an invitee at a chosen time by creating a scheduled event in Calendly, for example this Thursday at 2 PM."
+    },
+    {
+      "id": "cancel-event",
+      "name": "Cancel An Event",
+      "description": "Cancels a scheduled Calendly event that you describe in plain language, such as your 2 PM coaching session."
+    },
+    {
+      "id": "availability-links",
+      "name": "Availability And One-Time Links",
+      "description": "Updates the days you are available for an event type and generates single-use scheduling links to send to an invitee."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.calendly.com",
+  "quickstartUrl": "https://developer.calendly.com/docs/mcp/calendly-mcp-server",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.263Z",
+  "updatedAt": "2026-11-10T06:38:22.263Z"
+}

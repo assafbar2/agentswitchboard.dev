@@ -1,0 +1,62 @@
+{
+  "id": "bitrise-mcp",
+  "name": "Bitrise MCP",
+  "slug": "bitrise-mcp",
+  "description": "Connects AI clients to Bitrise mobile CI/CD: troubleshoot failed builds from logs, trigger builds and pipelines, and manage apps, artifacts and workspaces. For mobile dev teams.",
+  "providerName": "Bitrise",
+  "providerUrl": "https://bitrise.io",
+  "agentUrl": "https://docs.bitrise.io/en/bitrise-platform/ai/bitrise-mcp",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "mobile-ci-cd",
+    "build-logs",
+    "ios",
+    "android",
+    "release-management",
+    "bitrise"
+  ],
+  "skills": [
+    {
+      "id": "troubleshoot-builds",
+      "name": "Troubleshoot Failed Builds",
+      "description": "Fetches the build log, steps and test results of a Bitrise build so the assistant can explain why it failed and what to fix."
+    },
+    {
+      "id": "trigger-builds",
+      "name": "Trigger Builds & Pipelines",
+      "description": "Triggers, aborts and rebuilds Bitrise builds and pipelines for an app, choosing the branch and pipeline to run."
+    },
+    {
+      "id": "manage-workflow-config",
+      "name": "Manage bitrise.yml",
+      "description": "Reads, validates and updates an app's bitrise.yml configuration and searches Steps and their inputs to improve workflows."
+    },
+    {
+      "id": "manage-artifacts",
+      "name": "Manage Artifacts & Testers",
+      "description": "Lists and inspects build artifacts and manages installable artifacts, tester groups and testers for release distribution."
+    },
+    {
+      "id": "manage-workspace-members",
+      "name": "Manage Workspace Members",
+      "description": "Invites members to a Bitrise workspace, adds them to groups and replaces group roles to handle project permissions."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.bitrise.io",
+  "quickstartUrl": "https://docs.bitrise.io/en/bitrise-platform/ai/bitrise-mcp",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.319Z",
+  "updatedAt": "2026-11-10T06:38:22.319Z"
+}

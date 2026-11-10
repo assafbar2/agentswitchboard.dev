@@ -1,0 +1,65 @@
+{
+  "id": "browserstack-mcp",
+  "name": "BrowserStack MCP",
+  "slug": "browserstack-mcp",
+  "description": "Run manual and automated tests on real devices and browsers, scan for accessibility issues and manage test cases from AI agents via BrowserStack's MCP server, for QA teams.",
+  "providerName": "BrowserStack",
+  "providerUrl": "https://www.browserstack.com",
+  "agentUrl": "https://www.browserstack.com/docs/browserstack-mcp-server",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "browserstack",
+    "cross-browser-testing",
+    "real-device-testing",
+    "test-automation",
+    "accessibility-testing",
+    "test-management",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "manual-testing",
+      "name": "Manual Testing",
+      "description": "Opens mobile apps and websites on BrowserStack's real devices and browsers for manual testing, including sites on localhost."
+    },
+    {
+      "id": "automated-tests",
+      "name": "Automated Tests",
+      "description": "Runs Playwright, Selenium, Jest and other automated test suites on BrowserStack and helps debug and fix failures."
+    },
+    {
+      "id": "accessibility-scans",
+      "name": "Accessibility Scans",
+      "description": "Scans local or production websites for accessibility issues and suggests fixes for WCAG and ADA compliance."
+    },
+    {
+      "id": "test-management",
+      "name": "Test Management",
+      "description": "Creates projects, folders, test cases and test runs in BrowserStack Test Management and updates test results."
+    },
+    {
+      "id": "load-testing",
+      "name": "Load Testing",
+      "description": "Finds and runs load tests, reads results and AI Insights, compares two runs and checks VU-hour quota before a big run."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.browserstack.com/mcp",
+  "mcpCommand": "npx -y @browserstack/mcp-server@latest",
+  "quickstartUrl": "https://www.browserstack.com/docs/browserstack-mcp-server/get-started/remote-mcp-server",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.206Z",
+  "updatedAt": "2026-11-10T06:38:22.206Z"
+}
