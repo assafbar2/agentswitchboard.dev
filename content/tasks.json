@@ -168,12 +168,36 @@
     "keywords": ["code review", "review pull requests", "pr review"]
   },
   {
+    "slug": "test-web-and-mobile-apps",
+    "label": "test web and mobile apps",
+    "blurb": "End-to-end testing tools that write, run and fix tests for your web and mobile apps.",
+    "categories": ["code-devtools", "browser-computer"],
+    "access": ["cli", "mcp", "api"],
+    "keywords": ["end-to-end testing", "e2e tests", "test automation", "cross-browser testing", "flaky tests"]
+  },
+  {
     "slug": "deploy-an-app",
     "label": "deploy and host an app",
     "blurb": "Deploy and host apps, APIs, models and MCP servers from an agent or the command line.",
     "categories": ["infrastructure"],
     "access": ["mcp", "cli"],
     "keywords": ["deploy", "hosting", "serverless", "web apps"]
+  },
+  {
+    "slug": "build-websites-and-internal-apps",
+    "label": "build websites and internal apps",
+    "blurb": "Website builders and internal-tool platforms your agent can use to build, edit and publish sites and apps.",
+    "categories": ["code-devtools", "content-media", "productivity"],
+    "access": ["mcp", "api"],
+    "keywords": ["website builder", "site builder", "internal tools", "app builder", "site management"]
+  },
+  {
+    "slug": "run-ci-cd-pipelines",
+    "label": "run CI/CD pipelines",
+    "blurb": "CI/CD platforms your agent can use to start builds, read pipeline logs and see why a run failed.",
+    "categories": ["code-devtools", "infrastructure"],
+    "access": ["mcp", "api", "cli"],
+    "keywords": ["ci/cd", "build failures", "build status", "trigger builds"]
   },
   {
     "slug": "monitor-apps-in-production",
@@ -264,6 +288,30 @@
     "keywords": ["spreadsheet", "excel", "csv", "google sheets", "data analysis"]
   },
   {
+    "slug": "analyze-product-usage",
+    "label": "analyze product usage",
+    "blurb": "Product analytics, session replay and experiment tools your agent can ask about funnels, events and user behavior.",
+    "categories": ["data-analytics"],
+    "access": ["mcp", "api"],
+    "keywords": ["product analytics", "web analytics", "session replay", "user behavior", "a/b testing"]
+  },
+  {
+    "slug": "query-bi-dashboards",
+    "label": "query BI dashboards",
+    "blurb": "Business intelligence tools whose dashboards, metrics and semantic models your agent can query in plain words.",
+    "categories": ["data-analytics"],
+    "access": ["mcp", "api"],
+    "keywords": ["business intelligence", "bi", "semantic layer", "data visualization", "analytics dashboards"]
+  },
+  {
+    "slug": "manage-data-pipelines",
+    "label": "manage data pipelines and catalogs",
+    "blurb": "Orchestrators, catalogs and data observability tools that run pipelines, trace lineage and say whether data is healthy.",
+    "categories": ["data-analytics", "orchestration"],
+    "access": ["mcp", "api"],
+    "keywords": ["data pipelines", "data catalog", "data lineage", "data orchestration", "data quality"]
+  },
+  {
     "slug": "scan-for-vulnerabilities",
     "label": "scan code for vulnerabilities",
     "blurb": "Find vulnerabilities, leaked secrets and security holes in code, servers and apps.",
@@ -272,12 +320,28 @@
     "keywords": ["vulnerability", "security scan", "sast", "secrets", "pentest"]
   },
   {
+    "slug": "secure-identity-and-access",
+    "label": "secure identity and network access",
+    "blurb": "Identity, sign-in and zero-trust tools your agent can use to manage users, sessions and who reaches what.",
+    "categories": ["security"],
+    "access": ["mcp", "api"],
+    "keywords": ["identity management", "authentication", "sso", "zero trust", "network security"]
+  },
+  {
     "slug": "turn-designs-into-code",
     "label": "turn designs into code",
     "blurb": "Give coding agents your Figma and Canva designs to build from.",
     "categories": ["code-devtools", "content-media"],
     "access": ["mcp"],
     "keywords": ["figma", "design to code", "ui design", "designs"]
+  },
+  {
+    "slug": "draw-diagrams-and-3d",
+    "label": "draw diagrams and 3D models",
+    "blurb": "Whiteboards, diagram editors and 3D and CAD tools your agent can draw in, from flowcharts to building models.",
+    "categories": ["content-media", "productivity"],
+    "access": ["mcp", "cli"],
+    "keywords": ["diagrams", "whiteboard", "flowcharts", "3d", "cad"]
   },
   {
     "slug": "translate-text",
@@ -302,5 +366,13 @@
     "categories": ["legal", "security"],
     "access": ["api"],
     "keywords": ["legal", "contracts", "case law", "compliance"]
+  },
+  {
+    "slug": "create-and-sign-documents",
+    "label": "create and sign documents",
+    "blurb": "Document and e-signature tools that draft proposals and contracts, send them for signature and track their status.",
+    "categories": ["productivity", "legal", "sales-marketing"],
+    "access": ["mcp", "api"],
+    "keywords": ["e-signature", "signatures", "sales proposals", "docusign", "document templates"]
   }
 ]

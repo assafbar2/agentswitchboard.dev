@@ -2,7 +2,7 @@
   "id": "tailscale-aperture",
   "name": "Aperture by Tailscale",
   "slug": "tailscale-aperture",
-  "description": "Routes LLM and MCP traffic from coding agents through a gateway in your Tailscale network, replacing shared API keys with tailnet identity and adding spending limits and logs.",
+  "description": "Routes LLM and MCP traffic from coding agents through a gateway in your Tailscale network, with authentication by tailnet identity instead of shared API keys, plus spending limits and logs.",
   "providerName": "Tailscale",
   "providerUrl": "https://tailscale.com",
   "agentUrl": "https://tailscale.com/docs/aperture",
@@ -61,5 +61,5 @@
     "cli"
   ],
   "createdAt": "2026-11-10T06:38:22.340Z",
-  "updatedAt": "2026-11-10T06:38:22.340Z"
+  "updatedAt": "2026-11-10T07:27:01.406Z"
 }

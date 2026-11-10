@@ -4,6 +4,19 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
+## [2.9.0] - 2026-11-10 - Nine more tasks
+
+### Highlights
+- Find the tools for product analytics, BI dashboards and data pipelines: ask about funnels and session replays, query dashboards and semantic models, or run pipelines and trace lineage. [Try it](https://agentswitchboard.dev/tasks/analyze-product-usage)
+- Run CI/CD and end-to-end tests from an agent: start builds, read why a run failed, and write and fix tests for web and mobile apps. [Try it](https://agentswitchboard.dev/tasks/run-ci-cd-pipelines)
+- Build sites and internal apps, draw diagrams and 3D models, send documents for signature, and manage sign-in and zero-trust access. [Try it](https://agentswitchboard.dev/tasks/build-websites-and-internal-apps)
+
+### Added
+- Nine tasks on [/tasks](https://agentswitchboard.dev/tasks), 47 in all: analyze product usage, query BI dashboards, manage data pipelines and catalogs, run CI/CD pipelines, test web and mobile apps, secure identity and network access, create and sign documents, draw diagrams and 3D models, and build websites and internal apps. Each has its own page, share card and `GET /api/tasks/<slug>`, appears on /browse as `?task=`, and is what the homepage's "I need an agent to…" box opens when you name it ("query BI dashboards", "e-signature"). Together they fit 76 listings: 27 of the 33 from the Nov 6 drop that fit no task until now, such as Pendo, ThoughtSpot, Dagster, Bitrise, Momentic, Okta, PandaDoc, Excalidraw and Retool, and 49 already in the directory, such as PostHog, Tableau, CircleCI, BrowserStack, DocuSign, Miro and Webflow. ([#371](https://github.com/assafbar2/agentswitchboard.dev/pull/371))
+
+### Directory
+- Aperture by Tailscale's description says it authenticates users by their tailnet identity, as Tailscale's docs say, so it fits secure identity and network access. ([#371](https://github.com/assafbar2/agentswitchboard.dev/pull/371))
+
 ## [2.8.7] - 2026-11-03 - Submissions in the weekly drop
 
 ### Changed
