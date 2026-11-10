@@ -55,8 +55,9 @@
   "tier": "free",
   "discoveredBy": "manual",
   "accessMethods": [
+    "api",
     "mcp"
   ],
   "createdAt": "2026-10-24T00:00:00.000Z",
-  "updatedAt": "2026-10-25T01:16:46.687Z"
+  "updatedAt": "2026-11-10T07:10:48.607Z"
 }
