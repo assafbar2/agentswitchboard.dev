@@ -1,5 +1,11 @@
 [
   {
+    "action": "removed",
+    "slug": "clify",
+    "name": "Clify",
+    "date": "2026-11-10"
+  },
+  {
     "action": "updated",
     "slug": "tailscale-aperture",
     "name": "Aperture by Tailscale",
