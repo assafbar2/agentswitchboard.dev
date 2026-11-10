@@ -1,0 +1,63 @@
+{
+  "id": "rootly-mcp",
+  "name": "Rootly MCP",
+  "slug": "rootly-mcp",
+  "description": "Connects AI assistants and IDEs to Rootly incident management: query and update incidents, alerts and on-call schedules, and find similar past incidents. For SRE and on-call teams.",
+  "providerName": "Rootly",
+  "providerUrl": "https://rootly.com",
+  "agentUrl": "https://docs.rootly.com/integrations/mcp-server",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "incident-management",
+    "incident-response",
+    "on-call",
+    "alerting",
+    "sre",
+    "rootly"
+  ],
+  "skills": [
+    {
+      "id": "incident-alert-response",
+      "name": "Incident & Alert Response",
+      "description": "Finds and updates incidents and alerts and looks up who is on call, using Rootly's core everyday incident response tools."
+    },
+    {
+      "id": "find-related-incidents",
+      "name": "Find Related Incidents",
+      "description": "Finds historically similar past incidents using TF-IDF similarity analysis so responders can reuse what worked before."
+    },
+    {
+      "id": "suggest-solutions",
+      "name": "Suggest Solutions",
+      "description": "Suggests actionable next steps for an open incident by mining the resolutions recorded on past Rootly incidents."
+    },
+    {
+      "id": "oncall-handoff-summary",
+      "name": "On-Call Handoff Summary",
+      "description": "Summarizes the current and next on-call responders plus incidents during their shifts, with optional regional filtering."
+    },
+    {
+      "id": "oncall-shift-metrics",
+      "name": "On-Call Shift Metrics",
+      "description": "Reports on-call shift counts, hours and days grouped by user, team or schedule to review responder workload."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.rootly.com/mcp",
+  "mcpCommand": "uvx --from rootly-mcp-server rootly-mcp-server",
+  "quickstartUrl": "https://docs.rootly.com/integrations/mcp-server",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.318Z",
+  "updatedAt": "2026-11-10T06:38:22.318Z"
+}

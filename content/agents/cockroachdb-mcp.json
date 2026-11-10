@@ -1,0 +1,63 @@
+{
+  "id": "cockroachdb-mcp",
+  "name": "CockroachDB MCP",
+  "slug": "cockroachdb-mcp",
+  "description": "Queries CockroachDB clusters in plain language: explore schemas, run SELECTs, explain plans, and opt in to writes, via a local server or the CockroachDB Cloud endpoint.",
+  "providerName": "Cockroach Labs",
+  "providerUrl": "https://www.cockroachlabs.com",
+  "agentUrl": "https://docs.cockroachlabs.com/docs/stable/cockroachdb-mcp-server",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "cockroachdb",
+    "sql-database",
+    "run-sql-queries",
+    "schema-inspection",
+    "query-plans",
+    "cockroachdb-cloud"
+  ],
+  "skills": [
+    {
+      "id": "schema-exploration",
+      "name": "Schema Exploration",
+      "description": "Lists databases, tables, and SQL users, and returns a table's schema with its columns and indexes from a live cluster."
+    },
+    {
+      "id": "read-queries",
+      "name": "Read Queries",
+      "description": "Executes SELECT and SHOW statements and returns EXPLAIN plans, with every SQL session forced read-only by default."
+    },
+    {
+      "id": "cluster-inspection",
+      "name": "Cluster Inspection",
+      "description": "Returns cluster identity and version, lists nodes with liveness and locality, and shows in-flight SQL statements."
+    },
+    {
+      "id": "opt-in-writes",
+      "name": "Opt-in Writes",
+      "description": "Creates databases and tables and inserts, updates, or deletes rows once write tools are enabled, with WHERE required."
+    },
+    {
+      "id": "cloud-cluster-access",
+      "name": "Cloud Cluster Access",
+      "description": "Connects to every cluster in a CockroachDB Cloud organization over OAuth or an API key, or scopes a connection to one cluster."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://cockroachlabs.cloud/mcp",
+  "quickstartUrl": "https://docs.cockroachlabs.com/docs/stable/install-cockroachdb-mcp-server",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.228Z",
+  "updatedAt": "2026-11-10T06:38:22.228Z"
+}

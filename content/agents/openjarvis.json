@@ -1,0 +1,67 @@
+{
+  "id": "openjarvis",
+  "name": "OpenJarvis",
+  "slug": "openjarvis",
+  "description": "Runs local-first personal AI agents on your own hardware, with a jarvis CLI, starter presets, installable skills, and an OpenAI-compatible local API for developers.",
+  "providerName": "OpenJarvis",
+  "providerUrl": "https://openjarvis.stanford.edu/",
+  "agentUrl": "https://openjarvis.stanford.edu/",
+  "categories": [
+    "autonomous-agents"
+  ],
+  "tags": [
+    "local-llm",
+    "personal-assistant",
+    "local-first",
+    "ollama",
+    "openai-compatible-api",
+    "deep-research",
+    "daily-briefing",
+    "python"
+  ],
+  "skills": [
+    {
+      "id": "local-api-server",
+      "name": "Local API Server",
+      "description": "Serves an OpenAI-compatible chat completions API from your machine with jarvis serve, streaming responses to any OpenAI client."
+    },
+    {
+      "id": "deep-research",
+      "name": "Deep Research",
+      "description": "Researches a question in multiple hops across the web and your local documents, then answers with citations."
+    },
+    {
+      "id": "morning-digest",
+      "name": "Morning Digest",
+      "description": "Builds a scheduled daily briefing from your email, calendar, health data, and news, and reads it aloud with text-to-speech."
+    },
+    {
+      "id": "skill-install",
+      "name": "Skill Install",
+      "description": "Installs agent skills from Hermes Agent, OpenClaw, or any GitHub repo, then optimizes them against your local trace history."
+    },
+    {
+      "id": "mcp-tools",
+      "name": "External MCP Tools",
+      "description": "Connects external MCP servers such as GitHub, Slack, or a filesystem server as agent tools with jarvis add or config.toml."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "binary",
+    "command": "curl -fsSL open-jarvis.github.io/OpenJarvis/install.sh | bash"
+  },
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-11-10T06:38:22.166Z",
+  "updatedAt": "2026-11-10T06:38:22.166Z"
+}

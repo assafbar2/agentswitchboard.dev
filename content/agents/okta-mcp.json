@@ -1,0 +1,64 @@
+{
+  "id": "okta-mcp",
+  "name": "Okta MCP Server",
+  "slug": "okta-mcp",
+  "description": "Manage Okta users, groups, apps, policies and system logs from AI agents with Okta's official self-hosted MCP server, built for identity and IT admins.",
+  "providerName": "Okta",
+  "providerUrl": "https://www.okta.com",
+  "agentUrl": "https://github.com/okta/okta-mcp-server",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "okta",
+    "identity-management",
+    "user-provisioning",
+    "access-policies",
+    "sso",
+    "audit-logs",
+    "local-mcp"
+  ],
+  "skills": [
+    {
+      "id": "manage-users",
+      "name": "Manage Users",
+      "description": "Lists, creates, updates, deactivates and deletes Okta users, and shows which groups each user belongs to."
+    },
+    {
+      "id": "manage-groups",
+      "name": "Manage Groups",
+      "description": "Creates, updates and deletes Okta groups, adds or removes members, and lists the apps assigned to a group."
+    },
+    {
+      "id": "manage-applications",
+      "name": "Manage Applications",
+      "description": "Creates, updates, activates and deactivates Okta applications, and installs apps from the Okta Integration Network catalog."
+    },
+    {
+      "id": "manage-policies",
+      "name": "Manage Policies",
+      "description": "Lists, creates and updates Okta policies and policy rules, including password, MFA and device assurance policies."
+    },
+    {
+      "id": "read-system-logs",
+      "name": "Read System Logs",
+      "description": "Retrieves Okta system logs so an agent can review login attempts, failed sign-ins and authentication events."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpCommand": "uvx okta-mcp-server",
+  "quickstartUrl": "https://github.com/okta/okta-mcp-server#-getting-started",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.187Z",
+  "updatedAt": "2026-11-10T06:38:22.187Z"
+}

@@ -1,0 +1,63 @@
+{
+  "id": "metabase-mcp",
+  "name": "Metabase MCP",
+  "slug": "metabase-mcp",
+  "description": "Connects Claude, Cursor and other MCP clients to your Metabase so analysts can search dashboards, query data with SQL or Metabase's query language, and chart results.",
+  "providerName": "Metabase",
+  "providerUrl": "https://www.metabase.com",
+  "agentUrl": "https://www.metabase.com/docs/latest/ai/mcp",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "business-intelligence",
+    "sql",
+    "dashboards",
+    "data-visualization",
+    "query-database",
+    "metabase",
+    "oauth2",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "content-search",
+      "name": "Content Search",
+      "description": "Searches and browses Metabase collections, questions, dashboards, models and metrics, scoped to the connecting user's permissions."
+    },
+    {
+      "id": "execute-query",
+      "name": "Execute Query",
+      "description": "Runs queries in Metabase's query language for counts, sums, grouping, filters and joins against connected databases."
+    },
+    {
+      "id": "execute-sql",
+      "name": "Execute SQL",
+      "description": "Writes and runs raw SQL on connected databases for window functions, CTEs and engine-specific functions."
+    },
+    {
+      "id": "visualize-query",
+      "name": "Visualize Query",
+      "description": "Renders a query result as an inline bar, line or table chart that clients such as Claude can display and drill into."
+    },
+    {
+      "id": "content-write",
+      "name": "Content Write",
+      "description": "Creates and edits Metabase questions, dashboards and documents, and sets up scheduled alerts to email or Slack."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://www.metabase.com/docs/latest/ai/mcp",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.148Z",
+  "updatedAt": "2026-11-10T06:38:22.148Z"
+}

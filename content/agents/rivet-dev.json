@@ -1,0 +1,67 @@
+{
+  "id": "rivet-dev",
+  "name": "Rivet",
+  "slug": "rivet-dev",
+  "description": "Runs stateful AI agents, workflows, and sandboxed code as Rivet Actors with SQLite storage on S3, for developers building durable agent backends at scale.",
+  "providerName": "Rivet",
+  "providerUrl": "https://rivet.dev",
+  "agentUrl": "https://rivet.dev",
+  "categories": [
+    "orchestration",
+    "infrastructure"
+  ],
+  "tags": [
+    "actors",
+    "durable-agents",
+    "stateful-backend",
+    "sqlite",
+    "workflows",
+    "websockets",
+    "self-hosted",
+    "typescript-sdk"
+  ],
+  "skills": [
+    {
+      "id": "durable-actors",
+      "name": "Durable Actors",
+      "description": "Creates long-lived actors with in-memory state, a per-actor SQLite database, WebSockets, and scheduling, one per agent, user, or session."
+    },
+    {
+      "id": "workflows",
+      "name": "Workflows",
+      "description": "Runs multi-step operations on actors that replay from where they stopped instead of starting over after a restart."
+    },
+    {
+      "id": "agentos-sandbox",
+      "name": "agentOS Sandbox",
+      "description": "Runs the code an agent writes in a Linux-compatible JS and Python sandbox with control over network, filesystem, and resource limits."
+    },
+    {
+      "id": "manage-actors-mcp",
+      "name": "Manage Actors over MCP",
+      "description": "Lists running actors, calls actor actions, and opens the Actor Inspector from an MCP client through Rivet's hosted MCP server."
+    },
+    {
+      "id": "realtime-broadcast",
+      "name": "Realtime Broadcasts",
+      "description": "Broadcasts events to every connected client over WebSockets, such as streaming model tokens to all users of one agent."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.rivet.dev/mcp",
+  "mcpCommand": "npx -y @rivet-dev/mcp --target local",
+  "quickstartUrl": "https://rivet.dev/docs",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.289Z",
+  "updatedAt": "2026-11-10T06:38:22.289Z"
+}

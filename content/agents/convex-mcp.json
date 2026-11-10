@@ -1,0 +1,64 @@
+{
+  "id": "convex-mcp",
+  "name": "Convex MCP",
+  "slug": "convex-mcp",
+  "description": "Connects coding agents to Convex deployments over MCP to browse tables and schemas, run read-only queries and functions, read logs, and manage environment variables.",
+  "providerName": "Convex",
+  "providerUrl": "https://www.convex.dev",
+  "agentUrl": "https://docs.convex.dev/ai/convex-mcp-server",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "convex",
+    "backend-database",
+    "query-database",
+    "database-schema",
+    "function-logs",
+    "environment-variables",
+    "local-mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "inspect-tables",
+      "name": "Inspect Tables",
+      "description": "Lists a deployment's tables with their declared and inferred schemas, and pages through the documents in any table."
+    },
+    {
+      "id": "run-oneoff-query",
+      "name": "Read-Only Queries",
+      "description": "Runs sandboxed read-only JavaScript queries against a deployment's data without being able to modify the database."
+    },
+    {
+      "id": "run-functions",
+      "name": "Run Functions",
+      "description": "Executes deployed Convex functions with given arguments, and returns the type, visibility, and interface of every function."
+    },
+    {
+      "id": "logs-and-insights",
+      "name": "Logs and Insights",
+      "description": "Fetches recent function execution logs and 72-hour health insights on OCC conflicts and resource limit issues."
+    },
+    {
+      "id": "environment-variables",
+      "name": "Environment Variables",
+      "description": "Lists, reads, sets, and removes a Convex deployment's environment variables from the agent's MCP client."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpCommand": "npx -y convex@latest mcp start",
+  "quickstartUrl": "https://docs.convex.dev/ai/convex-mcp-server",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.171Z",
+  "updatedAt": "2026-11-10T06:38:22.171Z"
+}

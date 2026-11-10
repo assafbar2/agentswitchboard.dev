@@ -1,0 +1,58 @@
+{
+  "id": "tines-mcp",
+  "name": "Tines MCP",
+  "slug": "tines-mcp",
+  "description": "Builds and edits Tines stories from Cursor, Claude Code, or ChatGPT through your tenant's MCP server, and publishes your own stories as custom MCP tools.",
+  "providerName": "Tines",
+  "providerUrl": "https://www.tines.com",
+  "agentUrl": "https://www.tines.com/stories/docs/mcp-server/",
+  "categories": [
+    "orchestration",
+    "security"
+  ],
+  "tags": [
+    "tines-stories",
+    "workflow-automation",
+    "security-workflows",
+    "workflow-builder",
+    "story-authoring",
+    "custom-mcp-server",
+    "audit-logs"
+  ],
+  "skills": [
+    {
+      "id": "story-authoring",
+      "name": "Story Authoring",
+      "description": "Creates and modifies Tines stories from plain-language requests, such as adding an HTTP action that opens a Jira issue."
+    },
+    {
+      "id": "validate-and-run",
+      "name": "Validate and Run Actions",
+      "description": "Reads current story contents, validates changes, and runs actions where your Tines permissions allow it."
+    },
+    {
+      "id": "custom-mcp-servers",
+      "name": "Custom MCP Servers",
+      "description": "Publishes your own Tines stories as remote MCP tools, protected by a secret, a Tines API key, or tenant membership."
+    },
+    {
+      "id": "audited-tool-use",
+      "name": "Audited Tool Use",
+      "description": "Records every MCP tool use in Tines audit logs as MCP activity so admins can review what a client changed."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.217Z",
+  "updatedAt": "2026-11-10T06:38:22.217Z"
+}

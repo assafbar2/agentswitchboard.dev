@@ -1,0 +1,60 @@
+{
+  "id": "wix-mcp",
+  "name": "Wix MCP",
+  "slug": "wix-mcp",
+  "description": "Builds and manages Wix sites from your AI agent: searches Wix docs, writes Wix API and SDK code, and runs site actions for stores, bookings and contacts.",
+  "providerName": "Wix",
+  "providerUrl": "https://www.wix.com/",
+  "agentUrl": "https://dev.wix.com/docs/overview/ai-the-wix-platform/the-wix-mcp",
+  "categories": [
+    "content-media",
+    "commerce-payments"
+  ],
+  "tags": [
+    "wix",
+    "website-builder",
+    "ecommerce-store",
+    "site-management",
+    "headless-cms",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "search-docs",
+      "name": "Search Wix Docs",
+      "description": "Searches Wix developer documentation and pulls full articles or API method schemas, such as a method's exact parameters."
+    },
+    {
+      "id": "write-wix-code",
+      "name": "Write Wix Code",
+      "description": "Generates REST or SDK code against Wix APIs, such as code that registers visitors for an event in a headless project."
+    },
+    {
+      "id": "call-site-apis",
+      "name": "Call Site APIs",
+      "description": "Performs real actions on a Wix site, like applying a discount to store products, adding a bookings staff member or emailing a contact."
+    },
+    {
+      "id": "manage-sites",
+      "name": "Manage Sites and Projects",
+      "description": "Creates and publishes Wix sites, installs business solutions and scaffolds new headless projects from account-level actions."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.wix.com/mcp",
+  "mcpCommand": "npx -y @wix/mcp-remote@latest https://mcp.wix.com/mcp",
+  "quickstartUrl": "https://dev.wix.com/docs/overview/ai-the-wix-platform/the-wix-mcp",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.268Z",
+  "updatedAt": "2026-11-10T06:38:22.268Z"
+}

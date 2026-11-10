@@ -1,0 +1,65 @@
+{
+  "id": "openmausbot",
+  "name": "OpenMausBot",
+  "slug": "openmausbot",
+  "description": "Runs a team of Claude, Codex or Grok CLI bots in a local-first chat app, each with its own model, computer and connected apps, for people who want an open Grok Bot alternative.",
+  "providerName": "MausBot",
+  "providerUrl": "https://mausbot.com",
+  "agentUrl": "https://mausbot.com/",
+  "categories": [
+    "autonomous-agents",
+    "orchestration"
+  ],
+  "tags": [
+    "multi-agent",
+    "multi-bot",
+    "claude-code",
+    "codex",
+    "desktop-app",
+    "computer-use",
+    "local-first",
+    "composio"
+  ],
+  "skills": [
+    {
+      "id": "create-bot",
+      "name": "Create Bot",
+      "description": "Creates and configures bots, channels and task conversations, including bot profiles and the model each bot runs."
+    },
+    {
+      "id": "send-work",
+      "name": "Send Work",
+      "description": "Sends work to a bot or channel and waits for the conversation to settle, need input, fail, stall or time out."
+    },
+    {
+      "id": "search-transcripts",
+      "name": "Search Transcripts",
+      "description": "Searches local transcripts and reads bounded message pages for bots and channels without returning screenshot pixels."
+    },
+    {
+      "id": "switch-model",
+      "name": "Switch Model",
+      "description": "Lists configured model instances and switches an idle bot to an exact available Claude, Codex or Grok model."
+    },
+    {
+      "id": "headless-run",
+      "name": "Headless Run",
+      "description": "Applies a team from a YAML file and runs a bot job from scripts or CI with openmausbot run, exporting what it made."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-11-10T06:38:22.160Z",
+  "updatedAt": "2026-11-10T06:38:22.160Z"
+}

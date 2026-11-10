@@ -1,0 +1,64 @@
+{
+  "id": "collibra-mcp",
+  "name": "Collibra MCP",
+  "slug": "collibra-mcp",
+  "description": "Search the Collibra data catalog and business glossary, trace data lineage, and look up governed asset details from AI assistants over Collibra's MCP server.",
+  "providerName": "Collibra",
+  "providerUrl": "https://www.collibra.com",
+  "agentUrl": "https://productresources.collibra.com/docs/collibra/latest/Content/ModelContextProtocol/co_mcp.htm",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "data-catalog",
+    "data-governance",
+    "business-glossary",
+    "data-lineage",
+    "metadata-search",
+    "data-contracts",
+    "official-mcp",
+    "collibra"
+  ],
+  "skills": [
+    {
+      "id": "data-asset-discovery",
+      "name": "Data Asset Discovery",
+      "description": "Answers natural-language questions about available data assets and runs wildcard keyword searches across the Collibra catalog."
+    },
+    {
+      "id": "business-glossary",
+      "name": "Business Glossary Search",
+      "description": "Answers questions about business terms and definitions and traces a term back to its connected physical data assets."
+    },
+    {
+      "id": "technical-lineage",
+      "name": "Technical Lineage",
+      "description": "Gets upstream sources and downstream consumers for a data entity and returns the logic of individual data transformations."
+    },
+    {
+      "id": "asset-editing",
+      "name": "Asset Creation And Editing",
+      "description": "Creates assets of any type and edits attributes, relations, tags, and steward or owner responsibilities on existing assets."
+    },
+    {
+      "id": "data-contracts",
+      "name": "Data Contracts",
+      "description": "Lists data contracts, initializes new contract assets, and downloads or uploads contract manifests for data product ports."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://productresources.collibra.com/docs/collibra/latest/Content/ModelContextProtocol/co_integrating-with-collibra-mcp.htm",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.233Z",
+  "updatedAt": "2026-11-10T06:38:22.233Z"
+}

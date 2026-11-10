@@ -1,0 +1,64 @@
+{
+  "id": "dremio-mcp",
+  "name": "Dremio MCP",
+  "slug": "dremio-mcp",
+  "description": "Query Dremio lakehouse data in plain language from Claude, ChatGPT, or your own agent: run SQL, read schemas and lineage, and review failed jobs. For data teams.",
+  "providerName": "Dremio",
+  "providerUrl": "https://www.dremio.com",
+  "agentUrl": "https://docs.dremio.com/cloud/sonar/mcp-server",
+  "categories": [
+    "data-analytics",
+    "infrastructure"
+  ],
+  "tags": [
+    "query-lakehouse",
+    "run-sql",
+    "table-schema",
+    "data-lineage",
+    "semantic-layer",
+    "remote-mcp",
+    "dremio"
+  ],
+  "skills": [
+    {
+      "id": "run-sql",
+      "name": "Run SQL Queries",
+      "description": "Runs SELECT queries on your Dremio cluster and returns the results to the agent for analysis and follow-up questions."
+    },
+    {
+      "id": "table-schema",
+      "name": "Table Schemas",
+      "description": "Retrieves the schema of Dremio tables and views so the agent knows the columns and types before writing SQL against them."
+    },
+    {
+      "id": "table-lineage",
+      "name": "Table And View Lineage",
+      "description": "Finds the lineage of a Dremio table or view, so the agent can trace which datasets it is built from before using it."
+    },
+    {
+      "id": "semantic-search",
+      "name": "Semantic Search",
+      "description": "Searches across the Dremio cluster semantically to find relevant datasets; it must be enabled in the server's config file."
+    },
+    {
+      "id": "job-analysis",
+      "name": "Failed Jobs And Usage Reports",
+      "description": "Analyzes failed and canceled Dremio jobs from the past 7 days and builds usage reports grouped by engines or projects."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://docs.dremio.com/cloud/sonar/mcp-server/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.251Z",
+  "updatedAt": "2026-11-10T06:38:22.251Z"
+}

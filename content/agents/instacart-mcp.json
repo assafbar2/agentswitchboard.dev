@@ -1,0 +1,48 @@
+{
+  "id": "instacart-mcp",
+  "name": "Instacart MCP",
+  "slug": "instacart-mcp",
+  "description": "Creates Instacart recipe pages and grocery shopping lists from your AI agent through the Instacart Developer Platform MCP, for developers with an API key.",
+  "providerName": "Instacart",
+  "providerUrl": "https://www.instacart.com/",
+  "agentUrl": "https://docs.instacart.com/developer_platform_api/guide/tutorials/mcp",
+  "categories": [
+    "commerce-payments"
+  ],
+  "tags": [
+    "instacart",
+    "grocery-shopping",
+    "shopping-list",
+    "recipes",
+    "meal-planning",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "create-recipe",
+      "name": "Create Recipe Page",
+      "description": "Creates an Instacart recipe page with ingredients, instructions and measurements through the create-recipe tool."
+    },
+    {
+      "id": "create-shopping-list",
+      "name": "Create Shopping List",
+      "description": "Generates an Instacart shopping list page for grocery items, for example from a meal plan, through the create-shopping-list tool."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.instacart.com/mcp",
+  "quickstartUrl": "https://docs.instacart.com/developer_platform_api/guide/tutorials/mcp",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.282Z",
+  "updatedAt": "2026-11-10T06:38:22.282Z"
+}

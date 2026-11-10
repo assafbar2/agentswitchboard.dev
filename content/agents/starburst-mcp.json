@@ -1,0 +1,55 @@
+{
+  "id": "starburst-mcp",
+  "name": "Starburst MCP",
+  "slug": "starburst-mcp",
+  "description": "Query Starburst Galaxy clusters and catalogs with read-only SQL and explore schemas from Claude, Cline, GitHub Copilot, or other MCP clients over a hosted server.",
+  "providerName": "Starburst",
+  "providerUrl": "https://www.starburst.io",
+  "agentUrl": "https://docs.starburst.io/starburst-galaxy/starburst-ai/mcp-server.html",
+  "categories": [
+    "data-analytics",
+    "infrastructure"
+  ],
+  "tags": [
+    "trino",
+    "sql-query",
+    "starburst-galaxy",
+    "schema-discovery",
+    "data-exploration",
+    "remote-mcp",
+    "official-mcp",
+    "starburst"
+  ],
+  "skills": [
+    {
+      "id": "catalog-discovery",
+      "name": "Cluster And Catalog Discovery",
+      "description": "Discovers the Galaxy clusters, catalogs, schemas, and tables your role can access so an assistant understands your data layout."
+    },
+    {
+      "id": "read-only-sql",
+      "name": "Read-Only SQL Queries",
+      "description": "Runs read-only SELECT, SHOW, and EXPLAIN statements against your Galaxy data through natural language, capped at 100KB of results."
+    },
+    {
+      "id": "schema-docs",
+      "name": "Schema Documentation",
+      "description": "Generates documentation for data schemas, table structures, and catalog contents in Starburst Galaxy from plain-language requests."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://docs.starburst.io/starburst-galaxy/starburst-ai/mcp-server.html",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.249Z",
+  "updatedAt": "2026-11-10T06:38:22.249Z"
+}

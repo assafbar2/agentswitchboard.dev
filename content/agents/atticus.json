@@ -1,0 +1,62 @@
+{
+  "id": "atticus",
+  "name": "Atticus",
+  "slug": "atticus",
+  "description": "Controls your Mac by voice: hold a hotkey, say a task, and it moves windows, finds files, reads your screen and works in Chrome, on your Claude plan.",
+  "providerName": "SaarthurR",
+  "providerUrl": "https://github.com/SaarthurR",
+  "agentUrl": "https://saarthurr.github.io/atticus-mac/",
+  "categories": [
+    "voice-messaging",
+    "browser-computer",
+    "productivity"
+  ],
+  "tags": [
+    "voice-control",
+    "macos",
+    "voice-assistant",
+    "computer-use",
+    "dictation",
+    "desktop-automation",
+    "meeting-notes"
+  ],
+  "skills": [
+    {
+      "id": "window-control",
+      "name": "Window Control",
+      "description": "Opens apps and arranges windows across displays from a spoken request, with instant commands that skip the AI."
+    },
+    {
+      "id": "file-search",
+      "name": "File Search",
+      "description": "Searches your files by what's inside them and opens the match on your other screen, from one spoken request."
+    },
+    {
+      "id": "screen-reading",
+      "name": "Screen Reading",
+      "description": "Reads what is on your screen to answer questions, and lights up the exact spot when you ask where to click."
+    },
+    {
+      "id": "dictation",
+      "name": "Dictation",
+      "description": "Types dictated words into any text field, with an optional AI clean-up pass that drops fillers and fixes mishearings."
+    },
+    {
+      "id": "meeting-copilot",
+      "name": "Meeting Copilot",
+      "description": "Answers questions and takes notes during calls, saving transcripts and recaps locally on your Mac."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://github.com/SaarthurR/atticus-mac#install",
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [],
+  "createdAt": "2026-11-10T06:38:22.308Z",
+  "updatedAt": "2026-11-10T06:38:22.308Z"
+}

@@ -1,0 +1,64 @@
+{
+  "id": "prefect-mcp",
+  "name": "Prefect MCP",
+  "slug": "prefect-mcp",
+  "description": "Inspects and debugs Prefect flows, deployments, flow runs, work pools and logs from AI assistants, read-only, and looks up current Prefect docs.",
+  "providerName": "Prefect",
+  "providerUrl": "https://www.prefect.io",
+  "agentUrl": "https://www.prefect.io/docs/v3/how-to-guides/ai/use-prefect-mcp-server",
+  "categories": [
+    "orchestration",
+    "data-analytics"
+  ],
+  "tags": [
+    "prefect",
+    "workflow-orchestration",
+    "data-pipelines",
+    "flow-runs",
+    "pipeline-monitoring",
+    "debugging",
+    "python"
+  ],
+  "skills": [
+    {
+      "id": "query-runs",
+      "name": "Query Runs",
+      "description": "Queries deployments, flow runs, task runs and work pools with filtering, plus dashboard overviews of run statistics."
+    },
+    {
+      "id": "flow-run-logs",
+      "name": "Flow Run Logs",
+      "description": "Retrieves detailed execution logs from Prefect flow runs so an assistant can see what happened and why it failed."
+    },
+    {
+      "id": "debug-failures",
+      "name": "Debug Failures",
+      "description": "Diagnoses failed flow runs and deployment issues, including concurrency problems, to find root causes of failures."
+    },
+    {
+      "id": "docs-proxy",
+      "name": "Docs Proxy",
+      "description": "Looks up current Prefect documentation and the right prefect CLI commands through a built-in docs proxy."
+    },
+    {
+      "id": "review-automations",
+      "name": "Review Automations",
+      "description": "Reviews Prefect automations and their configurations, and tracks events across your workflow ecosystem."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpCommand": "uvx --from prefect-mcp prefect-mcp-server",
+  "quickstartUrl": "https://www.prefect.io/docs/v3/how-to-guides/ai/use-prefect-mcp-server",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.316Z",
+  "updatedAt": "2026-11-10T06:38:22.316Z"
+}

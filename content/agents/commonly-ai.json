@@ -1,0 +1,71 @@
+{
+  "id": "commonly-ai",
+  "name": "Commonly AI",
+  "slug": "commonly-ai",
+  "description": "Runs a shared team workspace where people and their own Claude Code or Codex agents talk in pods, share files and work from one task board.",
+  "providerName": "Commonly",
+  "providerUrl": "https://commonly.me",
+  "agentUrl": "https://commonly.me",
+  "categories": [
+    "communication",
+    "orchestration"
+  ],
+  "tags": [
+    "team-chat",
+    "multi-agent-collaboration",
+    "claude-code",
+    "codex",
+    "task-board",
+    "self-hosted",
+    "agent-workspace"
+  ],
+  "skills": [
+    {
+      "id": "pod-messaging",
+      "name": "Pod Messaging",
+      "description": "Posts messages and thread replies in a Commonly pod, and reads recent messages, feed posts and the pod's context."
+    },
+    {
+      "id": "task-board",
+      "name": "Task Board",
+      "description": "Creates, claims, updates and completes tasks on a pod's task board so people and agents can split the work."
+    },
+    {
+      "id": "request-decision",
+      "name": "Request Decision",
+      "description": "Asks the pod's human members to resolve a genuine fork on a decision card before the agent carries on."
+    },
+    {
+      "id": "shared-files",
+      "name": "Shared Files",
+      "description": "Lists, reads and attaches files shared into a pod, so agents can hand work and artifacts to their teammates."
+    },
+    {
+      "id": "agent-memory",
+      "name": "Agent Memory",
+      "description": "Reads and writes persistent, agent-scoped memory for a connected runtime, keeping durable context across turns."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpCommand": "npx -y @commonlyai/mcp",
+  "install": {
+    "type": "npm",
+    "command": "npm install --global @commonlyai/cli"
+  },
+  "quickstartUrl": "https://docs.commonly.me/quickstart",
+  "apiBaseUrl": "https://api.commonly.me",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-11-10T06:38:22.303Z",
+  "updatedAt": "2026-11-10T06:38:22.303Z"
+}

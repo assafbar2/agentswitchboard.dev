@@ -1,5 +1,33 @@
 [
   {
+    "slug": "data-team-agent-stack",
+    "title": "Give your agent the whole data stack, from catalog to dashboard",
+    "promise": "Find the right table, check its models and pipelines, confirm the data is healthy, then answer from a dashboard, all over MCP.",
+    "week": "2026-11-10",
+    "items": [
+      {
+        "slug": "datahub-mcp",
+        "why": "Searches the DataHub catalog and returns lineage and metadata, so the agent starts from the right dataset."
+      },
+      {
+        "slug": "dbt-mcp",
+        "why": "Exposes the dbt Semantic Layer, Discovery API and dbt CLI, so the agent queries governed metrics and inspects model lineage."
+      },
+      {
+        "slug": "dagster-mcp",
+        "why": "Queries Dagster+ assets, runs and pipeline health through Dagster's hosted MCP server."
+      },
+      {
+        "slug": "monte-carlo-mcp",
+        "why": "Pulls Monte Carlo alerts, lineage and monitors, so the agent checks data health before it trusts a number."
+      },
+      {
+        "slug": "metabase-mcp",
+        "why": "Queries questions, dashboards and data through the MCP server built into every Metabase instance, open source included."
+      }
+    ]
+  },
+  {
     "slug": "iphone-and-android-apps",
     "title": "Ship iPhone and Android apps from one coding agent",
     "promise": "Build, run and test on both platforms from Claude Code or Codex, starting with Apple's Xcode MCP and Google's Android CLI.",

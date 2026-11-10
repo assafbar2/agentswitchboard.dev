@@ -1,0 +1,63 @@
+{
+  "id": "cdata-connect-ai",
+  "name": "CData Connect AI",
+  "slug": "cdata-connect-ai",
+  "description": "Queries and updates data in hundreds of SaaS apps and databases with SQL through one hosted MCP server, for agents in Claude, Copilot Studio, n8n and other MCP clients.",
+  "providerName": "CData Software",
+  "providerUrl": "https://www.cdata.com",
+  "agentUrl": "https://docs.cloud.cdata.com/en/API/MCP",
+  "categories": [
+    "data-analytics",
+    "infrastructure"
+  ],
+  "tags": [
+    "sql-query",
+    "query-saas-data",
+    "database-connectors",
+    "data-connectivity",
+    "mcp-gateway",
+    "enterprise-data"
+  ],
+  "skills": [
+    {
+      "id": "dataset-search",
+      "name": "Dataset Search",
+      "description": "Searches datasets and fields that match a natural-language question, returning fully qualified names, field descriptions and join hints."
+    },
+    {
+      "id": "metadata-browsing",
+      "name": "Metadata Browsing",
+      "description": "Lists connections, schemas, tables and columns with getCatalogs, getSchemas, getTables and getColumns to map a data source before querying it."
+    },
+    {
+      "id": "sql-queries",
+      "name": "SQL Queries",
+      "description": "Runs SELECT queries against connected data sources with queryData and returns CSV results, using fully qualified [Catalog].[Schema].[Table] names."
+    },
+    {
+      "id": "row-writes",
+      "name": "Row Inserts and Updates",
+      "description": "Inserts and updates rows in a connected table with execute_insert and execute_update; the ops URL parameter can hide both for read-only use."
+    },
+    {
+      "id": "stored-procedures",
+      "name": "Stored Procedures",
+      "description": "Lists stored procedures and their parameters, then executes them for a chosen catalog and schema with getProcedures and executeProcedure."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.cloud.cdata.com/mcp",
+  "quickstartUrl": "https://docs.cloud.cdata.com/en/Quick-Start-Guide",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.336Z",
+  "updatedAt": "2026-11-10T06:38:22.336Z"
+}

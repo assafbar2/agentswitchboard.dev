@@ -1,0 +1,58 @@
+{
+  "id": "excalidraw-mcp",
+  "name": "Excalidraw MCP",
+  "slug": "excalidraw-mcp",
+  "description": "Draws hand-drawn Excalidraw diagrams right in the chat for Claude, ChatGPT, VS Code and other MCP Apps clients, so you can sketch architecture diagrams and edit them.",
+  "providerName": "Excalidraw",
+  "providerUrl": "https://excalidraw.com",
+  "agentUrl": "https://github.com/excalidraw/excalidraw-mcp",
+  "categories": [
+    "content-media",
+    "productivity"
+  ],
+  "tags": [
+    "diagrams",
+    "whiteboard",
+    "architecture-diagrams",
+    "excalidraw",
+    "mcp-apps",
+    "visualization",
+    "drawing"
+  ],
+  "skills": [
+    {
+      "id": "draw-diagram",
+      "name": "Draw Diagram",
+      "description": "Renders a hand-drawn diagram from Excalidraw elements with streaming draw-on animations and smooth viewport camera control."
+    },
+    {
+      "id": "edit-fullscreen",
+      "name": "Edit Diagrams Fullscreen",
+      "description": "Opens the diagram in an interactive fullscreen Excalidraw editor so shapes and labels can be adjusted by hand in the chat."
+    },
+    {
+      "id": "export-to-excalidraw",
+      "name": "Export to excalidraw.com",
+      "description": "Uploads the diagram to excalidraw.com and returns a shareable URL for viewing or further editing in the browser."
+    },
+    {
+      "id": "checkpoint-restore",
+      "name": "Checkpoint and Restore",
+      "description": "Saves the user-edited diagram as a checkpoint and restores it later, so iterative edits build on the latest version."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.excalidraw.com",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.291Z",
+  "updatedAt": "2026-11-10T06:38:22.291Z"
+}

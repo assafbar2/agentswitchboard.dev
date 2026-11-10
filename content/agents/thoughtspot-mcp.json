@@ -1,0 +1,60 @@
+{
+  "id": "thoughtspot-mcp",
+  "name": "ThoughtSpot MCP",
+  "slug": "thoughtspot-mcp",
+  "description": "Ask ThoughtSpot analytics questions in natural language, build Liveboards, and read the data behind saved answers from Claude, ChatGPT, Gemini, or custom MCP clients.",
+  "providerName": "ThoughtSpot",
+  "providerUrl": "https://www.thoughtspot.com",
+  "agentUrl": "https://developers.thoughtspot.com/docs/mcp-integration",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "business-intelligence",
+    "natural-language-query",
+    "liveboards",
+    "dashboards",
+    "semantic-layer",
+    "remote-mcp",
+    "official-mcp",
+    "thoughtspot"
+  ],
+  "skills": [
+    {
+      "id": "analysis-sessions",
+      "name": "Spotter Analysis Sessions",
+      "description": "Creates a stateful Spotter analysis session, sends questions with extra context, and polls for streamed answers and follow-ups."
+    },
+    {
+      "id": "dashboard-building",
+      "name": "Dashboard Building",
+      "description": "Creates dashboards from answers in the conversation and rearranges, restyles, or adds charts, text, and tabs on existing ones."
+    },
+    {
+      "id": "content-search",
+      "name": "Content Search",
+      "description": "Searches existing ThoughtSpot content by name, author, tag, or type and reads the data behind saved Answers and Liveboards."
+    },
+    {
+      "id": "org-switching",
+      "name": "Org Switching",
+      "description": "Lists the ThoughtSpot Orgs a user can access over OAuth and switches the session to a different Org when the user asks."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://agent.thoughtspot.app/mcp",
+  "quickstartUrl": "https://developers.thoughtspot.com/docs/connect-mcp-server-to-clients",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.238Z",
+  "updatedAt": "2026-11-10T06:38:22.238Z"
+}

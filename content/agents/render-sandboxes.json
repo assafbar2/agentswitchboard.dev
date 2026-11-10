@@ -1,0 +1,65 @@
+{
+  "id": "render-sandboxes",
+  "name": "Render Sandboxes",
+  "slug": "render-sandboxes",
+  "description": "Creates ephemeral, isolated sandboxes where AI agents run untrusted code, execute commands, and transfer files, via the Render CLI or TypeScript and Python SDKs. Public beta.",
+  "providerName": "Render",
+  "providerUrl": "https://render.com",
+  "agentUrl": "https://render.com/sandboxes",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "code-sandbox",
+    "run-untrusted-code",
+    "code-execution",
+    "ephemeral-environments",
+    "sandbox-snapshots",
+    "code-interpreter",
+    "render"
+  ],
+  "skills": [
+    {
+      "id": "create-sandbox",
+      "name": "Create Sandbox",
+      "description": "Creates a sandbox with a chosen compute plan, runtime and idle timeouts, environment variables, and outbound network rules."
+    },
+    {
+      "id": "execute-commands",
+      "name": "Execute Commands",
+      "description": "Executes shell commands and agent-generated code inside a sandbox and streams back their output and exit code."
+    },
+    {
+      "id": "file-transfer",
+      "name": "File Transfer",
+      "description": "Uploads code and files into a sandbox and downloads the output it produces, including entire directories."
+    },
+    {
+      "id": "snapshots",
+      "name": "Snapshots",
+      "description": "Captures a sandbox's filesystem or running processes as a snapshot and restores that state into a new sandbox."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "brew",
+    "command": "brew install render"
+  },
+  "quickstartUrl": "https://render.com/docs/sandboxes",
+  "apiBaseUrl": "https://api.render.com",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-11-10T06:38:22.179Z",
+  "updatedAt": "2026-11-10T06:38:22.179Z"
+}

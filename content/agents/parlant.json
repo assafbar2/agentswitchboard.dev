@@ -1,0 +1,67 @@
+{
+  "id": "parlant",
+  "name": "Parlant",
+  "slug": "parlant",
+  "description": "Builds customer-facing chat agents in Python that follow your policies, approved wording and tool rules, for CX teams who want support bots on their own code and models.",
+  "providerName": "Emcie",
+  "providerUrl": "https://www.emcie.co",
+  "agentUrl": "https://www.parlant.io",
+  "categories": [
+    "customer-support"
+  ],
+  "tags": [
+    "customer-service",
+    "support-chatbot",
+    "policy-guardrails",
+    "human-handoff",
+    "python-sdk",
+    "llm-framework",
+    "chat-widget"
+  ],
+  "skills": [
+    {
+      "id": "policies",
+      "name": "Policies",
+      "description": "Defines plain-language policies that the engine brings into a conversation only when they apply, with the tools each may use."
+    },
+    {
+      "id": "canned-responses",
+      "name": "Canned Responses",
+      "description": "Adds approved wording examples that the agent adapts to each conversation when a policy calls for exact phrasing."
+    },
+    {
+      "id": "tool-and-message-review",
+      "name": "Tool and Message Review",
+      "description": "Checks actions such as refunds before they run and reviews replies before they are sent to the customer."
+    },
+    {
+      "id": "human-handoff",
+      "name": "Human Handoff",
+      "description": "Hands a live conversation from the agent to your human team in the same chat widget on your website or app."
+    },
+    {
+      "id": "simulated-tests",
+      "name": "Simulated Tests",
+      "description": "Runs simulated test conversations with personas and links each reply to the policies and tool calls behind it."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "pip",
+    "command": "pip install parlant"
+  },
+  "quickstartUrl": "https://www.parlant.io/docs/quickstart/installation",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-11-10T06:38:22.157Z",
+  "updatedAt": "2026-11-10T06:38:22.157Z"
+}

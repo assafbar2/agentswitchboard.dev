@@ -1,0 +1,63 @@
+{
+  "id": "gemini-notebook-api",
+  "name": "Gemini Notebook API",
+  "slug": "gemini-notebook-api",
+  "description": "Creates and manages Gemini notebooks and ingests web pages, YouTube videos, text, and Markdown as sources, via a REST API and remote MCP server. Public Preview.",
+  "providerName": "Google",
+  "providerUrl": "https://developers.google.com",
+  "agentUrl": "https://developers.google.com/notebook/docs",
+  "categories": [
+    "research",
+    "productivity"
+  ],
+  "tags": [
+    "gemini-notebook",
+    "research-notebooks",
+    "ingest-web-pages",
+    "youtube-sources",
+    "knowledge-sources",
+    "rest-api",
+    "remote-mcp",
+    "google"
+  ],
+  "skills": [
+    {
+      "id": "manage-notebooks",
+      "name": "Manage Notebooks",
+      "description": "Creates, gets, lists, and renames Gemini notebooks, filtering the list by whether the caller owns each notebook."
+    },
+    {
+      "id": "add-sources",
+      "name": "Add Sources",
+      "description": "Ingests a public web page, a captioned YouTube video, or plain text or Markdown up to 500,000 words into a notebook."
+    },
+    {
+      "id": "track-sources",
+      "name": "Track Sources",
+      "description": "Lists a notebook's sources and gets each source's metadata and processing state: processing, active, or failed."
+    },
+    {
+      "id": "notebook-mcp",
+      "name": "Notebook MCP Server",
+      "description": "Connects coding agents and IDEs to seven notebook and source tools over a remote Streamable HTTP MCP endpoint."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://notebook.googleapis.com/mcp",
+  "quickstartUrl": "https://developers.google.com/notebook/docs/quickstart",
+  "apiBaseUrl": "https://notebook.googleapis.com/v1",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.184Z",
+  "updatedAt": "2026-11-10T06:38:22.184Z"
+}

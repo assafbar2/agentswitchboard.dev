@@ -1,0 +1,63 @@
+{
+  "id": "statsig-mcp",
+  "name": "Statsig MCP",
+  "slug": "statsig-mcp",
+  "description": "Manages Statsig feature gates, experiments, dynamic configs and metrics from Cursor, Claude Code or Codex, so engineers can clean up stale flags and run A/B tests from chat.",
+  "providerName": "Statsig",
+  "providerUrl": "https://www.statsig.com",
+  "agentUrl": "https://docs.statsig.com/integrations/mcp/overview",
+  "categories": [
+    "data-analytics",
+    "code-devtools"
+  ],
+  "tags": [
+    "feature-flags",
+    "feature-gates",
+    "ab-testing",
+    "experimentation",
+    "product-analytics",
+    "stale-flag-cleanup"
+  ],
+  "skills": [
+    {
+      "id": "feature-gates",
+      "name": "Feature Gates",
+      "description": "Lists, inspects, creates and updates feature gates with gate_read, gate_create and gate_update, so agents can find and remove stale gates."
+    },
+    {
+      "id": "experiments",
+      "name": "Experiments",
+      "description": "Lists, inspects, creates and updates A/B experiments with experiment_read, experiment_create and experiment_update, under project review rules."
+    },
+    {
+      "id": "dynamic-configs",
+      "name": "Dynamic Configs",
+      "description": "Reads, creates and replaces dynamic configs with dynamic_config_read, dynamic_config_create and dynamic_config_update, given write access."
+    },
+    {
+      "id": "metrics-and-logs",
+      "name": "Metrics and Logs",
+      "description": "Inspects metrics, metric sources, audit logs and Logs Explorer data with metric_read and log_read to summarize console information in the IDE."
+    },
+    {
+      "id": "operation-discovery",
+      "name": "Operation Discovery",
+      "description": "Finds and runs further operations such as layers, segments, holdouts and dashboards through discover_tools, api_read, api_write and api_destructive."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://api.statsig.com/v3/mcp",
+  "quickstartUrl": "https://docs.statsig.com/integrations/mcp/manual-setup",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.334Z",
+  "updatedAt": "2026-11-10T06:38:22.334Z"
+}

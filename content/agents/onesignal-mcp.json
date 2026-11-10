@@ -5,7 +5,7 @@
   "description": "Official OneSignal MCP — send push notifications, email, and SMS, manage audience segments, check delivery stats, and update messaging templates.",
   "providerName": "OneSignal",
   "providerUrl": "https://onesignal.com",
-  "agentUrl": "https://smithery.ai/server/@onesignal/onesignal",
+  "agentUrl": "https://smithery.ai/servers/onesignal/onesignal",
   "categories": [
     "communication"
   ],
@@ -46,5 +46,5 @@
     "mcp"
   ],
   "createdAt": "2026-06-07T17:51:17.452Z",
-  "updatedAt": "2026-06-07T17:51:17.452Z"
+  "updatedAt": "2026-11-10T06:39:41.044Z"
 }

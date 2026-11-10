@@ -1,0 +1,63 @@
+{
+  "id": "pascal-editor",
+  "name": "Pascal Editor",
+  "slug": "pascal-editor",
+  "description": "Models 3D buildings with rooms, walls, roofs and furniture in the browser or locally, and lets architects connect Claude Code, Cursor or Codex to edit scenes over MCP.",
+  "providerName": "Pascal",
+  "providerUrl": "https://pascal.app",
+  "agentUrl": "https://editor.pascal.app",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "3d-modeling",
+    "architecture",
+    "bim",
+    "building-design",
+    "cad",
+    "interior-design",
+    "webgpu"
+  ],
+  "skills": [
+    {
+      "id": "room-modeling",
+      "name": "Room Modeling",
+      "description": "Creates rooms, walls, doors, windows, stairs and roofs in a building scene with semantic tools such as create_room and add_door."
+    },
+    {
+      "id": "furnish-room",
+      "name": "Furnish Room",
+      "description": "Furnishes a room with catalog items placed on floors, walls or ceilings, with collision checks and measurements."
+    },
+    {
+      "id": "view-scene",
+      "name": "View Scene",
+      "description": "Returns a picture of the project from a chosen view, including an eye-level view from inside a room, on the hosted server."
+    },
+    {
+      "id": "verify-and-save",
+      "name": "Verify and Save",
+      "description": "Validates the scene with verify_scene, saves it with save_scene and reports version status with get_project_status."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://editor.pascal.app/api/mcp",
+  "install": {
+    "type": "npm",
+    "command": "npm install --global @pascal-app/cli"
+  },
+  "quickstartUrl": "https://editor.pascal.app/docs/developers/local-editor",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.154Z",
+  "updatedAt": "2026-11-10T06:38:22.154Z"
+}

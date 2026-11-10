@@ -1,0 +1,64 @@
+{
+  "id": "hootsuite-mcp",
+  "name": "Hootsuite MCP",
+  "slug": "hootsuite-mcp",
+  "description": "Drafts social posts, triages the social inbox, and tracks brand mentions and sentiment in Hootsuite from ChatGPT, Claude, Copilot or Gemini, for social media teams.",
+  "providerName": "Hootsuite",
+  "providerUrl": "https://www.hootsuite.com",
+  "agentUrl": "https://www.hootsuite.com/integrations/mcp",
+  "categories": [
+    "sales-marketing",
+    "content-media"
+  ],
+  "tags": [
+    "social-media-management",
+    "draft-social-posts",
+    "social-listening",
+    "brand-sentiment",
+    "social-inbox",
+    "social-analytics",
+    "employee-advocacy"
+  ],
+  "skills": [
+    {
+      "id": "perch-drafts",
+      "name": "Post Drafting (Perch)",
+      "description": "Creates and updates social post drafts, uploads media and places drafts on the Planner calendar; a person still publishes them in Hootsuite."
+    },
+    {
+      "id": "perch-analytics",
+      "name": "Social Analytics (Perch)",
+      "description": "Queries social performance metrics such as impressions, engagement and follower growth across connected profiles through the Perch analytics tools."
+    },
+    {
+      "id": "nest-inbox",
+      "name": "Inbox Triage (Nest)",
+      "description": "Lists inbox conversations, posts and comments, then assigns owners, adds internal notes, tags topics and changes status; it cannot send replies."
+    },
+    {
+      "id": "lumen-listening",
+      "name": "Social Listening (Lumen)",
+      "description": "Searches brand and keyword mentions, tracks sentiment, volume and trends, and finds top influencers for topics in your Lumen projects."
+    },
+    {
+      "id": "parliament-advocacy",
+      "name": "Employee Advocacy (Parliament)",
+      "description": "Creates and manages advocacy posts and drafts, and shares approved content from the curated library to an advocate's own social profiles."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.hootsuite.com/perch",
+  "quickstartUrl": "https://www.hootsuite.com/integrations/mcp",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.343Z",
+  "updatedAt": "2026-11-10T06:38:22.343Z"
+}

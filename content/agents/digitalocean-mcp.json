@@ -1,0 +1,67 @@
+{
+  "id": "digitalocean-mcp",
+  "name": "DigitalOcean MCP",
+  "slug": "digitalocean-mcp",
+  "description": "Manages DigitalOcean apps, Droplets, Kubernetes clusters, databases, and storage from MCP clients, through a hosted router endpoint or a local npx server, for cloud developers.",
+  "providerName": "DigitalOcean",
+  "providerUrl": "https://www.digitalocean.com",
+  "agentUrl": "https://docs.digitalocean.com/reference/mcp/",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "digitalocean",
+    "cloud-infrastructure",
+    "app-platform",
+    "droplets",
+    "kubernetes",
+    "managed-databases",
+    "deploy-apps",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "mcp-router",
+      "name": "MCP Router",
+      "description": "Finds the right tool across every DigitalOcean MCP service from a natural-language query, then fetches its schema and runs it."
+    },
+    {
+      "id": "app-platform",
+      "name": "App Platform",
+      "description": "Manages DigitalOcean App Platform applications from an MCP client, including their deployments and configurations."
+    },
+    {
+      "id": "droplets",
+      "name": "Droplets",
+      "description": "Creates, resizes, snapshots, and monitors Droplet virtual machines on DigitalOcean from an MCP client."
+    },
+    {
+      "id": "kubernetes",
+      "name": "Kubernetes",
+      "description": "Manages DigitalOcean Kubernetes (DOKS) clusters and their node pools through the doks MCP service."
+    },
+    {
+      "id": "managed-databases",
+      "name": "Managed Databases",
+      "description": "Provisions, manages, and monitors managed database clusters such as Postgres, MySQL, and Redis on DigitalOcean."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.digitalocean.com/mcp",
+  "mcpCommand": "npx -y @digitalocean/mcp",
+  "quickstartUrl": "https://docs.digitalocean.com/reference/mcp/configure-mcp/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.177Z",
+  "updatedAt": "2026-11-10T06:38:22.177Z"
+}

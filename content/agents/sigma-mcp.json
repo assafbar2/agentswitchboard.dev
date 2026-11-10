@@ -1,0 +1,64 @@
+{
+  "id": "sigma-mcp",
+  "name": "Sigma MCP",
+  "slug": "sigma-mcp",
+  "description": "Search, explore, and query Sigma workbooks, data models, and warehouse tables in plain English, build workbooks, and call Sigma agents from MCP clients.",
+  "providerName": "Sigma Computing",
+  "providerUrl": "https://www.sigmacomputing.com",
+  "agentUrl": "https://help.sigmacomputing.com/docs/use-sigma-mcp-server",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "business-intelligence",
+    "workbooks",
+    "data-warehouse",
+    "natural-language-query",
+    "dashboards",
+    "remote-mcp",
+    "official-mcp",
+    "sigma"
+  ],
+  "skills": [
+    {
+      "id": "data-search",
+      "name": "Data Search",
+      "description": "Searches your Sigma organization for workbooks, data models, warehouse tables, and elements by name, type, owner, or connection."
+    },
+    {
+      "id": "source-exploration",
+      "name": "Data Source Exploration",
+      "description": "Describes the columns, data types, definitions, and keys of a Sigma data source so you can confirm it fits your analysis."
+    },
+    {
+      "id": "data-analysis",
+      "name": "Natural Language Analysis",
+      "description": "Queries connections, data models, and workbooks without SQL and reports any workbook filters or controls that shaped the answer."
+    },
+    {
+      "id": "workbook-building",
+      "name": "Workbook Building",
+      "description": "Builds new Sigma workbooks from a description, edits existing ones, and returns a link plus screenshots of pages or elements."
+    },
+    {
+      "id": "sigma-agents",
+      "name": "Sigma Agent Calls",
+      "description": "Lists the Sigma agents in a workbook and chats with a chosen agent to forecast, summarize, or update data on your behalf."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://help.sigmacomputing.com/docs/use-sigma-mcp-server",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.241Z",
+  "updatedAt": "2026-11-10T06:38:22.241Z"
+}

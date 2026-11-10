@@ -1,0 +1,63 @@
+{
+  "id": "adobe-analytics-mcp",
+  "name": "Adobe Analytics MCP",
+  "slug": "adobe-analytics-mcp",
+  "description": "Run Adobe Analytics and Customer Journey Analytics reports, find metrics and build segments from Claude, ChatGPT or Cursor via Adobe-hosted MCP servers, for analysts.",
+  "providerName": "Adobe",
+  "providerUrl": "https://www.adobe.com",
+  "agentUrl": "https://developer.adobe.com/analytics-mcp/docs/",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "adobe-analytics",
+    "customer-journey-analytics",
+    "web-analytics",
+    "segments",
+    "reporting",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "run-report",
+      "name": "Run Report",
+      "description": "Runs Adobe Analytics or Customer Journey Analytics reports on chosen dimensions and metrics for a report suite or data view."
+    },
+    {
+      "id": "find-components",
+      "name": "Find Components",
+      "description": "Finds report suites, data views, dimensions, metrics, segments, date ranges and Workspace projects by name."
+    },
+    {
+      "id": "build-segments",
+      "name": "Build Segments",
+      "description": "Creates or updates segments, calculated metrics and date ranges in Adobe Analytics or Customer Journey Analytics."
+    },
+    {
+      "id": "component-usage",
+      "name": "Component Usage",
+      "description": "Lists where a component is used, what it is frequently used with, and similar components, to help tidy up reporting."
+    },
+    {
+      "id": "workspace-projects",
+      "name": "Workspace Projects",
+      "description": "Describes, creates and updates Analysis Workspace projects from natural-language requests in an MCP client."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://aa-mcp.adobe.io/mcp",
+  "quickstartUrl": "https://developer.adobe.com/analytics-mcp/docs/guides/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.198Z",
+  "updatedAt": "2026-11-10T06:38:22.198Z"
+}

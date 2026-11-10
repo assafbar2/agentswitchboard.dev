@@ -1,0 +1,65 @@
+{
+  "id": "monte-carlo-mcp",
+  "name": "Monte Carlo MCP",
+  "slug": "monte-carlo-mcp",
+  "description": "Triage data quality alerts, trace table lineage, and create monitors in Monte Carlo data observability from Claude, Cursor, or any OAuth-capable MCP client.",
+  "providerName": "Monte Carlo",
+  "providerUrl": "https://montecarlo.ai",
+  "agentUrl": "https://docs.getmontecarlo.com/docs/mcp-server",
+  "categories": [
+    "data-analytics"
+  ],
+  "tags": [
+    "data-observability",
+    "data-quality",
+    "data-lineage",
+    "incident-triage",
+    "data-monitoring",
+    "remote-mcp",
+    "official-mcp",
+    "monte-carlo"
+  ],
+  "skills": [
+    {
+      "id": "alert-triage",
+      "name": "Alert Triage",
+      "description": "Lists recent Monte Carlo alerts, assesses each one, and updates their status so you know which data incidents to review first."
+    },
+    {
+      "id": "asset-health",
+      "name": "Table Health And Lineage",
+      "description": "Searches tables, reports a table's current health, and walks its upstream lineage dependencies before you query or change it."
+    },
+    {
+      "id": "coverage-gaps",
+      "name": "Monitor Coverage Gaps",
+      "description": "Finds critical tables in a use case that have no monitors and drafts or updates table monitors to close those gaps."
+    },
+    {
+      "id": "agent-monitoring",
+      "name": "AI Agent Monitoring",
+      "description": "Reads AI agent metadata and traces and creates agent metric monitors to track the performance and reliability of your agents."
+    },
+    {
+      "id": "guided-prompts",
+      "name": "Guided Incident Prompts",
+      "description": "Runs ready-made prompts such as mc-triage and mc-incident-response that chain Monte Carlo tools from triage to root cause."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.getmontecarlo.com/mcp",
+  "quickstartUrl": "https://docs.getmontecarlo.com/docs/mcp-server",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.231Z",
+  "updatedAt": "2026-11-10T06:38:22.231Z"
+}

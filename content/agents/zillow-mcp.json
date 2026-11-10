@@ -1,0 +1,61 @@
+{
+  "id": "zillow-mcp",
+  "name": "Zillow MCP",
+  "slug": "zillow-mcp",
+  "description": "Searches Zillow for-sale, rental and off-market homes, compares neighborhoods, checks Zestimates and estimates affordability in Claude and ChatGPT, with no login.",
+  "providerName": "Zillow",
+  "providerUrl": "https://www.zillow.com/",
+  "agentUrl": "https://www.zillow.com/connect-claude-to-zillow/",
+  "categories": [
+    "research"
+  ],
+  "tags": [
+    "zillow",
+    "real-estate",
+    "home-search",
+    "rental-listings",
+    "zestimate",
+    "mortgage-calculator"
+  ],
+  "skills": [
+    {
+      "id": "search-homes",
+      "name": "Search Homes",
+      "description": "Searches for-sale, for-rent and recently sold Zillow listings with the full Zillow filter set, like 3-bedroom homes under $600K."
+    },
+    {
+      "id": "compare-neighborhoods",
+      "name": "Compare Neighborhoods",
+      "description": "Compares U.S. cities or neighborhoods side by side, with for-sale and for-rent listing counts for each."
+    },
+    {
+      "id": "estimate-affordability",
+      "name": "Estimate Affordability",
+      "description": "Estimates the home price you can afford and breaks down a monthly payment at today's mortgage rates, including taxes, PMI and HOA."
+    },
+    {
+      "id": "property-details",
+      "name": "Look Up a Property",
+      "description": "Gets full details for a specific off-market home, including address, features, photos and property history."
+    },
+    {
+      "id": "check-zestimate",
+      "name": "Check a Zestimate",
+      "description": "Gets a home's current Zestimate with its sale range and comparables, its Rent Zestimate, and how its Zestimate changed over time."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.280Z",
+  "updatedAt": "2026-11-10T06:38:22.280Z"
+}

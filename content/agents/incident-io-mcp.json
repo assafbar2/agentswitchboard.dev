@@ -1,0 +1,63 @@
+{
+  "id": "incident-io-mcp",
+  "name": "incident.io MCP",
+  "slug": "incident-io-mcp",
+  "description": "Connects AI assistants to incident.io: query and manage incidents, analyze alert noise, check who's on call and handle escalations. For on-call and incident response teams.",
+  "providerName": "incident.io",
+  "providerUrl": "https://incident.io",
+  "agentUrl": "https://docs.incident.io/ai/remote-mcp",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "incident-management",
+    "on-call",
+    "alert-noise",
+    "escalations",
+    "post-mortems",
+    "status-pages",
+    "incident-io"
+  ],
+  "skills": [
+    {
+      "id": "incident-stats",
+      "name": "Incident Analysis",
+      "description": "Analyzes incident history grouped by severity, team, alert source and other dimensions, with responder workload breakdowns."
+    },
+    {
+      "id": "alert-noise-analysis",
+      "name": "Alert Noise Analysis",
+      "description": "Analyzes alerts by source, priority and time period to show which ones turn into real incidents and which are noise."
+    },
+    {
+      "id": "oncall-escalations",
+      "name": "On-Call & Escalations",
+      "description": "Checks who is on call, acknowledges pages, changes on-call cover and sets maintenance windows to hold back paging."
+    },
+    {
+      "id": "manage-incidents",
+      "name": "Manage Incidents",
+      "description": "Creates and updates incidents, adds actions and follow-ups, merges duplicates and drafts status page updates for review."
+    },
+    {
+      "id": "investigations",
+      "name": "Investigations & Post-mortems",
+      "description": "Retrieves AI investigation findings and post-mortems for an incident, and starts or steers an investigation with new facts."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.incident.io/mcp",
+  "quickstartUrl": "https://docs.incident.io/ai/remote-mcp",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.326Z",
+  "updatedAt": "2026-11-10T06:38:22.326Z"
+}

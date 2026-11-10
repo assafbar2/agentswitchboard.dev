@@ -1,0 +1,51 @@
+{
+  "id": "otter-mcp",
+  "name": "Otter.ai MCP",
+  "slug": "otter-mcp",
+  "description": "Searches and fetches your Otter.ai meeting transcripts from Claude, ChatGPT, Cursor or Perplexity, so you can summarize meetings and pull past decisions without copy-paste.",
+  "providerName": "Otter.ai",
+  "providerUrl": "https://otter.ai",
+  "agentUrl": "https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+  "categories": [
+    "productivity",
+    "voice-messaging"
+  ],
+  "tags": [
+    "meeting-transcripts",
+    "search-meetings",
+    "meeting-notes",
+    "meeting-summaries",
+    "transcription",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "search",
+      "name": "Meeting Search",
+      "description": "Searches meetings you captured in Otter or that teammates shared with you, and returns an overview of the matching conversations."
+    },
+    {
+      "id": "fetch",
+      "name": "Transcript Fetch",
+      "description": "Retrieves the full speech transcript of a meeting or conversation, including from a shared Otter conversation URL, for summaries and analysis."
+    },
+    {
+      "id": "get-user-info",
+      "name": "User Info",
+      "description": "Returns the authenticated Otter user's name and email address, so the assistant knows whose meetings and conversations it is reading."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.338Z",
+  "updatedAt": "2026-11-10T06:38:22.338Z"
+}

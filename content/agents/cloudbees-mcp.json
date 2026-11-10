@@ -1,0 +1,64 @@
+{
+  "id": "cloudbees-mcp",
+  "name": "CloudBees Unify MCP",
+  "slug": "cloudbees-mcp",
+  "description": "Checks builds, triggers workflows, triages security findings, and manages feature flags in CloudBees Unify from AI coding clients, for DevOps and platform teams.",
+  "providerName": "CloudBees",
+  "providerUrl": "https://www.cloudbees.com",
+  "agentUrl": "https://docs.cloudbees.com/docs/cloudbees-unify/latest/unify-ai/explanation/understanding-the-mcp-server",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "ci-cd",
+    "build-status",
+    "workflow-runs",
+    "security-findings",
+    "feature-flags",
+    "devops",
+    "hosted-mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "component-management",
+      "name": "Component Management",
+      "description": "Creates, lists, searches, and deletes CloudBees Unify components so agents can organize services without the dashboard."
+    },
+    {
+      "id": "workflow-operations",
+      "name": "Workflow Operations",
+      "description": "Lists, validates, updates, and triggers CloudBees Unify workflows, and checks the status and logs of recent builds."
+    },
+    {
+      "id": "security-findings",
+      "name": "Security Findings",
+      "description": "Investigates security findings, issues, and reports from CloudBees Unify to summarize the vulnerabilities found in a build."
+    },
+    {
+      "id": "ci-controllers",
+      "name": "CI Controller Insights",
+      "description": "Lists connected CI controllers and retrieves their reports so engineers can inspect CI health from their IDE."
+    },
+    {
+      "id": "feature-flags",
+      "name": "Feature Flag Configuration",
+      "description": "Manages feature flag configurations, such as enabling a flag for a staging environment, within the user's RBAC roles."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.cloudbees.io/v1/mcp",
+  "quickstartUrl": "https://docs.cloudbees.com/docs/cloudbees-unify/latest/unify-ai/tutorials/get-started-with-the-mcp-server",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.219Z",
+  "updatedAt": "2026-11-10T06:38:22.219Z"
+}

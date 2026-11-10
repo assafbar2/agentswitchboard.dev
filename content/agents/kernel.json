@@ -1,0 +1,71 @@
+{
+  "id": "kernel",
+  "name": "Kernel",
+  "slug": "kernel",
+  "description": "Runs cloud Chromium browsers for AI agents, with stealth, proxies, managed auth and replays, driven by Playwright, CDP, the REST API, CLI or hosted MCP.",
+  "providerName": "Kernel",
+  "providerUrl": "https://www.kernel.sh",
+  "agentUrl": "https://kernel.sh",
+  "categories": [
+    "browser-computer",
+    "infrastructure"
+  ],
+  "tags": [
+    "cloud-browser",
+    "headless-browser",
+    "browser-automation",
+    "playwright",
+    "web-scraping",
+    "stealth-browsing",
+    "browser-infrastructure"
+  ],
+  "skills": [
+    {
+      "id": "manage-browsers",
+      "name": "Manage Browsers",
+      "description": "Creates, lists, gets and deletes cloud browser sessions, with headless, stealth, profile, proxy and viewport options."
+    },
+    {
+      "id": "execute-playwright-code",
+      "name": "Execute Playwright Code",
+      "description": "Runs Playwright TypeScript code against a Kernel browser session to automate clicks, form fills and page reads."
+    },
+    {
+      "id": "computer-action",
+      "name": "Computer Action",
+      "description": "Sends mouse, keyboard and screenshot controls to a browser session, for computer-use agents that act on pixels."
+    },
+    {
+      "id": "manage-profiles",
+      "name": "Manage Profiles",
+      "description": "Saves and reuses browser profiles with cookies and logins, so agents stay signed in to sites across sessions."
+    },
+    {
+      "id": "manage-replays",
+      "name": "Manage Replays",
+      "description": "Starts, stops and lists video replay recordings of a browser session, for reviewing and debugging agent runs."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.onkernel.com/mcp",
+  "install": {
+    "type": "brew",
+    "command": "brew install kernel/tap/kernel"
+  },
+  "quickstartUrl": "https://www.kernel.sh/docs/start/quickstart",
+  "apiBaseUrl": "https://api.onkernel.com",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-11-10T06:38:22.306Z",
+  "updatedAt": "2026-11-10T06:38:22.306Z"
+}

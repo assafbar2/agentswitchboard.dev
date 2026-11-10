@@ -1,0 +1,65 @@
+{
+  "id": "testerarmy-e2e",
+  "name": "e2e",
+  "slug": "testerarmy-e2e",
+  "description": "Runs end-to-end tests for web, iOS, and Android apps where an agent follows natural-language steps, then replays verified steps without model calls. For developers and coding agents.",
+  "providerName": "e2e",
+  "providerUrl": "https://e2e.com",
+  "agentUrl": "https://e2e.com",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "end-to-end-testing",
+    "e2e-testing",
+    "natural-language-tests",
+    "mobile-app-testing",
+    "playwright",
+    "visual-regression-testing",
+    "qa-testing",
+    "typescript"
+  ],
+  "skills": [
+    {
+      "id": "agent-steps",
+      "name": "Agent Steps",
+      "description": "Drives the app toward a natural-language goal with agent.act and checks the outcome with agent.assert inside a normal test."
+    },
+    {
+      "id": "step-caching",
+      "name": "Step Caching",
+      "description": "Replays recorded agent actions on later runs with no model calls, and lets the agent take over again when the app changes."
+    },
+    {
+      "id": "explore",
+      "name": "Exploratory Testing",
+      "description": "Explores an app from a goal without a test file, planning and performing steps, then reports the bugs it finds."
+    },
+    {
+      "id": "live-app-session",
+      "name": "Live App Session",
+      "description": "Opens a live web, iOS, or Android session for a coding agent over MCP to act on the app, check locators, run tests, and record video."
+    },
+    {
+      "id": "visual-comparison",
+      "name": "Visual Comparison",
+      "description": "Compares the whole screen or one element against a stored screenshot on web, iOS, and Android in the same test."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpCommand": "npx e2e mcp",
+  "quickstartUrl": "https://e2e.com/docs/quickstart",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.168Z",
+  "updatedAt": "2026-11-10T06:38:22.168Z"
+}

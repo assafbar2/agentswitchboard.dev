@@ -1,0 +1,64 @@
+{
+  "id": "zscaler-mcp",
+  "name": "Zscaler MCP",
+  "slug": "zscaler-mcp",
+  "description": "Queries and manages Zscaler ZIA, ZPA, ZDX and other Zero Trust services from AI clients, read-only by default, for security and network admins.",
+  "providerName": "Zscaler",
+  "providerUrl": "https://www.zscaler.com",
+  "agentUrl": "https://github.com/zscaler/zscaler-mcp-server",
+  "categories": [
+    "security"
+  ],
+  "tags": [
+    "zero-trust",
+    "zscaler-internet-access",
+    "zscaler-private-access",
+    "firewall-rules",
+    "url-filtering",
+    "network-security",
+    "digital-experience-monitoring"
+  ],
+  "skills": [
+    {
+      "id": "zia-policies",
+      "name": "ZIA Policy Management",
+      "description": "Lists and, once write tools are allowlisted, changes Zscaler Internet Access firewall rules, URL filtering, and rule labels."
+    },
+    {
+      "id": "zpa-app-segments",
+      "name": "ZPA Application Access",
+      "description": "Lists and manages Zscaler Private Access application segments and segment groups that control private app access."
+    },
+    {
+      "id": "zdx-monitoring",
+      "name": "ZDX Digital Experience",
+      "description": "Retrieves Zscaler Digital Experience monitoring and analytics data so agents can investigate end-user experience issues."
+    },
+    {
+      "id": "z-insights",
+      "name": "Z-Insights Analytics",
+      "description": "Queries Z-Insights analytics on web traffic, cyber incidents, and shadow IT across your Zscaler tenant."
+    },
+    {
+      "id": "guarded-writes",
+      "name": "Guarded Write Operations",
+      "description": "Keeps the server read-only until write tools are allowlisted, and confirms every delete with a human prompt or signed token."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpCommand": "uvx zscaler-mcp",
+  "quickstartUrl": "https://github.com/zscaler/zscaler-mcp-server#installation--setup",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.211Z",
+  "updatedAt": "2026-11-10T06:38:22.211Z"
+}

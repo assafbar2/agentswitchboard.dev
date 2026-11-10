@@ -1,0 +1,65 @@
+{
+  "id": "coralogix-mcp",
+  "name": "Coralogix MCP",
+  "slug": "coralogix-mcp",
+  "description": "Query Coralogix logs, metrics and traces with DataPrime and PromQL, and manage alerts and dashboards, from AI agents via a remote MCP server, for SRE and on-call teams.",
+  "providerName": "Coralogix",
+  "providerUrl": "https://coralogix.com",
+  "agentUrl": "https://coralogix.com/docs/user-guides/mcp-server/overview",
+  "categories": [
+    "infrastructure",
+    "data-analytics"
+  ],
+  "tags": [
+    "coralogix",
+    "observability",
+    "log-search",
+    "metrics",
+    "distributed-tracing",
+    "alerting",
+    "promql",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "query-dataprime",
+      "name": "Query with DataPrime",
+      "description": "Runs DataPrime queries over Coralogix logs, metrics and traces to investigate issues and perform root cause analysis."
+    },
+    {
+      "id": "query-metrics",
+      "name": "Query Metrics",
+      "description": "Runs PromQL instant and range queries on Coralogix metrics, and searches metric labels and relevant metrics."
+    },
+    {
+      "id": "manage-alerts",
+      "name": "Manage Alerts",
+      "description": "Creates, updates and deletes Coralogix alerts and parsing rules, and exports them as Terraform, Kubernetes YAML or OpenAPI."
+    },
+    {
+      "id": "manage-dashboards",
+      "name": "Manage Dashboards",
+      "description": "Searches, creates and updates Coralogix custom dashboards and dashboard folders from an AI agent session."
+    },
+    {
+      "id": "ask-olly",
+      "name": "Ask Olly",
+      "description": "Sends natural-language investigation requests to Olly, Coralogix's observability agent, once Olly tools are enabled."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://coralogix.com/docs/user-guides/mcp-server/setup/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.201Z",
+  "updatedAt": "2026-11-10T06:38:22.201Z"
+}

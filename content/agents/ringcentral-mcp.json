@@ -1,0 +1,64 @@
+{
+  "id": "ringcentral-mcp",
+  "name": "RingCentral MCP",
+  "slug": "ringcentral-mcp",
+  "description": "Connects ChatGPT, Claude and other MCP clients to RingCentral call logs, AI call notes, SMS, voicemail, fax and team chat, for RingEX business phone users.",
+  "providerName": "RingCentral",
+  "providerUrl": "https://www.ringcentral.com/",
+  "agentUrl": "https://developers.ringcentral.com/mcp/",
+  "categories": [
+    "communication",
+    "voice-messaging"
+  ],
+  "tags": [
+    "ringcentral",
+    "business-phone",
+    "call-logs",
+    "send-sms",
+    "voicemail",
+    "team-chat"
+  ],
+  "skills": [
+    {
+      "id": "call-activity",
+      "name": "Call Activity",
+      "description": "Gets your recent and missed calls, returned calls, connected-call time and outstanding callbacks for a set time window."
+    },
+    {
+      "id": "call-insights",
+      "name": "Call Notes and Transcripts",
+      "description": "Gets AI notes and transcript text for one call and searches your calls by person, topic and date window."
+    },
+    {
+      "id": "communication-inbox",
+      "name": "SMS, Voicemail and Fax Inbox",
+      "description": "Gets your SMS, voicemail and fax records for a date window, newest first, and reads one message including voicemail transcription."
+    },
+    {
+      "id": "send-sms",
+      "name": "Send SMS",
+      "description": "Sends one SMS from a phone number you own, after the client shows the sender, recipient and exact text and you approve it."
+    },
+    {
+      "id": "team-chat",
+      "name": "Team Chat",
+      "description": "Reads Team Chat chats, posts, notes, tasks and events, and sends posts with optional file attachments to a chat or a person."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.labs.ringcentral.com/ringex/phone",
+  "quickstartUrl": "https://developers.ringcentral.com/mcp/servers/ringex-phone-setup/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.272Z",
+  "updatedAt": "2026-11-10T06:38:22.272Z"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "meltwater-mcp",
+  "name": "Meltwater MCP",
+  "slug": "meltwater-mcp",
+  "description": "Answers questions about news coverage, social media trends and brand sentiment with Meltwater's Mira assistant over MCP, for PR, comms and marketing teams with Meltwater API access.",
+  "providerName": "Meltwater",
+  "providerUrl": "https://www.meltwater.com",
+  "agentUrl": "https://developer.meltwater.com/docs/meltwater-api/mira-api/mcp-server/",
+  "categories": [
+    "sales-marketing",
+    "research"
+  ],
+  "tags": [
+    "media-monitoring",
+    "news-search",
+    "social-listening",
+    "brand-sentiment",
+    "competitive-analysis",
+    "pr-analytics"
+  ],
+  "skills": [
+    {
+      "id": "ask",
+      "name": "Ask Mira",
+      "description": "Answers natural-language questions about news stories, social media trends, brand sentiment and competitors using Meltwater's Mira assistant."
+    },
+    {
+      "id": "list-projects",
+      "name": "List Mira Projects",
+      "description": "Lists Mira API projects with their IDs, so the ask tool can tailor its answers to a chosen project's system prompt."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://api.meltwater.com/mcp",
+  "quickstartUrl": "https://developer.meltwater.com/guides/mira-api/mcp-server/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.345Z",
+  "updatedAt": "2026-11-10T06:38:22.345Z"
+}

@@ -1,0 +1,58 @@
+{
+  "id": "robinhood-agent-trading",
+  "name": "Robinhood Agent Trading MCP",
+  "slug": "robinhood-agent-trading",
+  "description": "Connects an external AI agent to Robinhood to read portfolio, balance and order data and place trades only in a dedicated Robinhood Agentic account.",
+  "providerName": "Robinhood",
+  "providerUrl": "https://robinhood.com/",
+  "agentUrl": "https://robinhood.com/us/en/support/articles/onboarding-an-external-agent/",
+  "categories": [
+    "finance"
+  ],
+  "tags": [
+    "robinhood",
+    "brokerage",
+    "stock-trading",
+    "portfolio-data",
+    "options-trading",
+    "crypto-trading"
+  ],
+  "skills": [
+    {
+      "id": "account-portfolio",
+      "name": "Account and Portfolio",
+      "description": "Answers questions about your portfolio value, buying power, positions, balances and account information across your Robinhood accounts."
+    },
+    {
+      "id": "order-history",
+      "name": "Transactions and Orders",
+      "description": "Reads details of your transactions, including your order history, across all your Robinhood accounts."
+    },
+    {
+      "id": "place-orders",
+      "name": "Place Orders",
+      "description": "Places equities, options and crypto orders with the available order types, only in your dedicated Robinhood Agentic account."
+    },
+    {
+      "id": "market-data-watchlists",
+      "name": "Market Data and Watchlists",
+      "description": "Gets market data such as recent quotes for tickers and works with your Robinhood watchlists through the watchlist tools."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://agent.robinhood.com/mcp/trading",
+  "quickstartUrl": "https://robinhood.com/us/en/support/articles/onboarding-an-external-agent/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.274Z",
+  "updatedAt": "2026-11-10T06:38:22.274Z"
+}

@@ -1,0 +1,69 @@
+{
+  "id": "turnstone",
+  "name": "Turnstone",
+  "slug": "turnstone",
+  "description": "Runs tool-using AI agents on your own hardware with shell, file, search, and web tools, judge-graded approvals, and a cluster dashboard, using the models you choose.",
+  "providerName": "Turnstone Labs",
+  "providerUrl": "https://github.com/turnstonelabs",
+  "agentUrl": "https://github.com/turnstonelabs/turnstone",
+  "categories": [
+    "orchestration",
+    "autonomous-agents"
+  ],
+  "tags": [
+    "self-hosted",
+    "agent-orchestration",
+    "local-llm",
+    "multi-agent",
+    "tool-calling",
+    "workstreams",
+    "mcp-client",
+    "python"
+  ],
+  "skills": [
+    {
+      "id": "built-in-tools",
+      "name": "Built-in Agent Tools",
+      "description": "Runs shell commands, reads and edits files, searches, and fetches web pages as model tools, with approval before each call runs."
+    },
+    {
+      "id": "intent-validation",
+      "name": "Intent Validation",
+      "description": "Grades every tool call with an LLM judge running your model, giving a risk assessment and evidence before the call runs."
+    },
+    {
+      "id": "parallel-workstreams",
+      "name": "Parallel Workstreams",
+      "description": "Runs parallel agent workstreams across cluster nodes, routed by the console's rendezvous proxy and shown on a live dashboard."
+    },
+    {
+      "id": "connect-mcp",
+      "name": "Connect MCP Servers",
+      "description": "Connects external MCP tool servers with native deferred tool loading, or BM25 tool search as a fallback for other models."
+    },
+    {
+      "id": "chat-channels",
+      "name": "Discord and Slack Channels",
+      "description": "Routes conversations from Discord and Slack to agent workstreams through the Turnstone channel gateway and its adapters."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "pip",
+    "command": "pip install turnstone"
+  },
+  "quickstartUrl": "https://github.com/turnstonelabs/turnstone/blob/main/QUICKSTART.md",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-11-10T06:38:22.299Z",
+  "updatedAt": "2026-11-10T06:38:22.299Z"
+}

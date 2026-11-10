@@ -1,0 +1,62 @@
+{
+  "id": "esp32-iphone-agent",
+  "name": "ESP32 iPhone Agent (Handsy)",
+  "slug": "esp32-iphone-agent",
+  "description": "Controls a real iPhone through a $7 ESP32 board, so an AI vision model can tap, swipe, and type in any iOS app from an iPhone app, a CLI, or an MCP server.",
+  "providerName": "Handsy AI",
+  "providerUrl": "https://handsy.tech",
+  "agentUrl": "https://handsy.tech",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "iphone-automation",
+    "ios",
+    "mobile-automation",
+    "esp32",
+    "phone-control",
+    "vision-model",
+    "hardware"
+  ],
+  "skills": [
+    {
+      "id": "screenshot",
+      "name": "Screenshot the iPhone",
+      "description": "Captures the current iPhone screen from the board's AirPlay mirror so a vision model can decide on the next action."
+    },
+    {
+      "id": "tap-swipe",
+      "name": "Tap and Swipe",
+      "description": "Taps, long-presses, and swipes on the iPhone screen through the board's USB mouse, with AssistiveTouch turning clicks into taps."
+    },
+    {
+      "id": "type-text",
+      "name": "Type Text and Press Keys",
+      "description": "Types text and presses keys and buttons on the iPhone through the board's USB keyboard; keyboard input from the CLI is ASCII only."
+    },
+    {
+      "id": "run-replay",
+      "name": "Replay Runs",
+      "description": "Replays a finished run step by step on the phone with the taps and swipes drawn on top, and exports the trace for review."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npm install -g esp32agent"
+  },
+  "quickstartUrl": "https://handsy.tech/docs/cli",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-11-10T06:38:22.293Z",
+  "updatedAt": "2026-11-10T06:38:22.293Z"
+}

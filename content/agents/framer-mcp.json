@@ -1,0 +1,71 @@
+{
+  "id": "framer-mcp",
+  "name": "Framer MCP",
+  "slug": "framer-mcp",
+  "description": "Connects Claude, Codex, Cursor and other MCP clients to Framer so designers and marketers can build website pages, manage CMS content, and publish sites.",
+  "providerName": "Framer",
+  "providerUrl": "https://www.framer.com",
+  "agentUrl": "https://www.framer.com/mcp/",
+  "categories": [
+    "content-media",
+    "code-devtools"
+  ],
+  "tags": [
+    "website-builder",
+    "web-design",
+    "cms",
+    "landing-pages",
+    "site-migration",
+    "seo-audit",
+    "no-code"
+  ],
+  "skills": [
+    {
+      "id": "build-pages",
+      "name": "Build and Edit Pages",
+      "description": "Creates new pages and updates existing layouts across desktop, tablet, and phone breakpoints, reusing the project's styles and components."
+    },
+    {
+      "id": "manage-cms",
+      "name": "Manage CMS Content",
+      "description": "Creates CMS collections and items, updates structured content, and imports content from sources the AI client can access."
+    },
+    {
+      "id": "migrate-site",
+      "name": "Migrate a Site",
+      "description": "Rebuilds a page or a full site in Framer using an existing website as the reference, ready to review and refine on the canvas."
+    },
+    {
+      "id": "review-seo",
+      "name": "Review SEO",
+      "description": "Inspects metadata, headings, alt text, page structure, and content issues to review a Framer site's SEO and quality."
+    },
+    {
+      "id": "branch-review",
+      "name": "Work on a Branch",
+      "description": "Creates a Framer branch and makes changes there, so they can be reviewed before merging or publishing to the live site."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.framer.com/mcp",
+  "install": {
+    "type": "npm",
+    "command": "npx @framer/agent setup"
+  },
+  "quickstartUrl": "https://www.framer.com/help/articles/getting-started-with-framer-mcp/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-11-10T06:38:22.287Z",
+  "updatedAt": "2026-11-10T06:38:22.287Z"
+}
