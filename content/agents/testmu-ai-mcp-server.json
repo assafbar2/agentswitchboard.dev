@@ -33,7 +33,7 @@
     {
       "id": "native-app-automation",
       "name": "Native App Triage",
-      "description": "Triages and debugs native mobile app tests, and drives real or virtual devices live through the Appium MCP server."
+      "description": "Triages and debugs native mobile app automation tests on real and virtual devices, pulling the failure details for a test's TestID."
     },
     {
       "id": "smartui-visual-diffs",
