@@ -4,7 +4,7 @@
   "slug": "postgres-mcp-pro",
   "description": "Connects agents to Postgres over MCP with configurable read or write access plus index tuning, EXPLAIN plan analysis and database health checks.",
   "providerName": "Crystal DBA",
-  "providerUrl": "https://www.crystaldba.ai",
+  "providerUrl": "https://github.com/crystaldba",
   "agentUrl": "https://github.com/crystaldba/postgres-mcp",
   "categories": [
     "data-analytics",
@@ -47,5 +47,5 @@
     "mcp"
   ],
   "createdAt": "2026-07-25T16:22:45.431Z",
-  "updatedAt": "2026-07-25T16:22:45.431Z"
+  "updatedAt": "2026-11-10T06:50:42.729Z"
 }

@@ -5,7 +5,7 @@
   "description": "Runs multiple agent sessions in a desktop workspace for knowledge workers, connecting MCP servers, REST APIs, and local files without config files.",
   "providerName": "Craft",
   "providerUrl": "https://www.craft.do",
-  "agentUrl": "https://agents.craft.do",
+  "agentUrl": "https://thecraftagents.com",
   "categories": [
     "autonomous-agents",
     "productivity"
@@ -58,5 +58,5 @@
     "cli"
   ],
   "createdAt": "2026-10-17T09:03:45.919Z",
-  "updatedAt": "2026-10-17T09:03:45.919Z"
+  "updatedAt": "2026-11-10T06:50:39.683Z"
 }

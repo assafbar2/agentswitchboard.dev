@@ -5,7 +5,7 @@
   "description": "Gives AI agents regulated financial identity, custody, and payment rails across fiat and stablecoins, built on the open Agent Commerce Kit standard.",
   "providerName": "Catena Labs",
   "providerUrl": "https://catena.com",
-  "agentUrl": "https://app.catena.com/docs",
+  "agentUrl": "https://docs.catena.com/",
   "categories": [
     "finance",
     "commerce-payments",
@@ -51,5 +51,5 @@
     "cli"
   ],
   "createdAt": "2026-09-18T22:02:13.790Z",
-  "updatedAt": "2026-09-18T22:02:13.790Z"
+  "updatedAt": "2026-11-10T06:50:38.903Z"
 }

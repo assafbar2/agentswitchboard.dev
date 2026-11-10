@@ -21,7 +21,7 @@
   "supportsPushNotifications": true,
   "quickstartUrl": "https://developers.google.com/jules/api",
   "apiBaseUrl": "https://jules.googleapis.com",
-  "status": "published",
+  "status": "archived",
   "featured": false,
   "verified": true,
   "official": true,
@@ -31,5 +31,5 @@
     "api"
   ],
   "createdAt": "2026-08-24T19:48:52.208Z",
-  "updatedAt": "2026-11-02T07:34:56.527Z"
+  "updatedAt": "2026-11-10T06:51:06.951Z"
 }

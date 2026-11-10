@@ -1,11 +1,11 @@
 {
   "id": "superset-sh",
-  "name": "Superset",
+  "name": "Paradev",
   "slug": "superset-sh",
   "description": "Runs hundreds of coding agents in parallel from a terminal-first IDE, isolating each in its own git worktree so concurrent work never collides.",
   "providerName": "Superset Inc.",
-  "providerUrl": "https://superset.sh",
-  "agentUrl": "https://github.com/superset-sh/superset",
+  "providerUrl": "https://paradev.com",
+  "agentUrl": "https://github.com/ParadevAI/Paradev",
   "categories": [
     "code-devtools",
     "orchestration"
@@ -48,5 +48,5 @@
     "cli"
   ],
   "createdAt": "2026-09-18T22:02:13.779Z",
-  "updatedAt": "2026-09-18T22:02:13.779Z"
+  "updatedAt": "2026-11-10T06:50:38.084Z"
 }

@@ -5,7 +5,7 @@
   "description": "Evaluates alert rules over metrics, logs, and SQL sources and routes notifications for SRE teams, with a built-in AI agent and an MCP endpoint.",
   "providerName": "CCF Open Source",
   "providerUrl": "https://github.com/ccfos",
-  "agentUrl": "https://n9e.github.io",
+  "agentUrl": "https://n9e.io/",
   "categories": [
     "infrastructure"
   ],
@@ -58,5 +58,5 @@
     "api"
   ],
   "createdAt": "2026-10-17T09:03:45.916Z",
-  "updatedAt": "2026-10-17T09:03:45.916Z"
+  "updatedAt": "2026-11-10T06:50:41.979Z"
 }

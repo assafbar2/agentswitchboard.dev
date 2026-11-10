@@ -1,11 +1,11 @@
 {
   "id": "1GhhDnVNoXNBmpCn7W9sCK",
-  "name": "Suna",
+  "name": "Kortix CompanyOS",
   "slug": "suna",
   "description": "Open-source generalist AI agent that browses the web, manages files, runs shell commands, and deploys apps from natural-language tasks. Self-hostable, by Kortix. 20k+ GitHub stars.",
   "providerName": "Kortix",
   "providerUrl": "https://kortix.com/",
-  "agentUrl": "https://github.com/kortix-ai/suna",
+  "agentUrl": "https://github.com/kortix-ai/CompanyOS",
   "categories": [
     "orchestration",
     "autonomous-agents"
@@ -48,5 +48,5 @@
     "api"
   ],
   "createdAt": "2026-07-17T20:41:26.391Z",
-  "updatedAt": "2026-09-25T23:53:42.312Z"
+  "updatedAt": "2026-11-10T06:50:36.903Z"
 }

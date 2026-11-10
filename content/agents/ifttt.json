@@ -4,7 +4,7 @@
   "slug": "ifttt",
   "description": "Lets AI assistants run actions, query live data, and create Applets across the services connected to an IFTTT account, from Slack to smart-home devices, via a first-party remote MCP server.",
   "providerName": "IFTTT",
-  "providerUrl": "https://ifttt.com",
+  "providerUrl": "https://ifttt.ai/",
   "agentUrl": "https://ifttt.com/mcp",
   "categories": [
     "orchestration",
@@ -58,5 +58,5 @@
     "mcp"
   ],
   "createdAt": "2026-10-31T07:10:38.220Z",
-  "updatedAt": "2026-10-31T07:10:38.220Z"
+  "updatedAt": "2026-11-10T06:50:42.355Z"
 }
