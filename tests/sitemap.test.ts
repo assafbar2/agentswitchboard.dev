@@ -1,4 +1,5 @@
-import { describe, expect, it } from 'vitest';
+import type { MetadataRoute } from 'next';
+import { beforeAll, describe, expect, it } from 'vitest';
 import sitemap from '@/app/sitemap';
 import { getEveryAgent } from '@/lib/catalog';
 import { getReleases } from '@/lib/changelog';
@@ -9,8 +10,13 @@ const pathOf = (url: string) => new URL(url).pathname;
 const time = (date: string | Date) => new Date(date).getTime();
 
 describe('sitemap lastmod', () => {
+  let entries: MetadataRoute.Sitemap;
+  beforeAll(async () => {
+    entries = await sitemap();
+  });
+
   it('dates each listing by its own file', async () => {
-    const byPath = new Map((await sitemap()).map((e) => [pathOf(e.url), e]));
+    const byPath = new Map(entries.map((e) => [pathOf(e.url), e]));
     for (const agent of await getEveryAgent()) {
       const date = agent.updatedAt ?? agent.createdAt;
       expect(byPath.get(`/agents/${agent.slug}`)?.lastModified, agent.slug).toEqual(date ? new Date(date) : undefined);
@@ -26,7 +32,7 @@ describe('sitemap lastmod', () => {
       ...getStacks().map((s) => s.week),
     ];
     const known = new Set(dates.flatMap((d) => (d ? [time(d)] : [])));
-    const dated = (await sitemap()).filter((e) => e.lastModified !== undefined);
+    const dated = entries.filter((e) => e.lastModified !== undefined);
     expect(dated.length).toBeGreaterThan(1000);
     for (const { url, lastModified } of dated) expect(known.has(time(lastModified!)), url).toBe(true);
   });
@@ -36,12 +42,12 @@ describe('sitemap lastmod', () => {
     const slug = agents[0].categories[0].slug;
     const members = agents.filter((a) => a.categories.some((c) => c.slug === slug));
     const latest = Math.max(...members.map((a) => time(a.updatedAt ?? a.createdAt!)));
-    const entry = (await sitemap()).find((e) => pathOf(e.url) === `/categories/${slug}`);
+    const entry = entries.find((e) => pathOf(e.url) === `/categories/${slug}`);
     expect(entry?.lastModified).toEqual(new Date(latest));
   });
 
   it('leaves lastmod off the pages no content dates', async () => {
-    const byPath = new Map((await sitemap()).map((e) => [pathOf(e.url), e]));
+    const byPath = new Map(entries.map((e) => [pathOf(e.url), e]));
     for (const path of ['/about', '/terms', '/privacy', '/operator', '/skill.md']) {
       expect(byPath.get(path), path).toBeDefined();
       expect(byPath.get(path)?.lastModified, path).toBeUndefined();

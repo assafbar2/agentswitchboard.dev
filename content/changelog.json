@@ -1,6 +1,13 @@
 [
   {
     "action": "updated",
+    "slug": "tailscale-aperture",
+    "name": "Aperture by Tailscale",
+    "note": "description updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
     "slug": "clify",
     "name": "Clify",
     "note": "accessMethods updated",

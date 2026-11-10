@@ -72,6 +72,7 @@ describe('rankTasks', () => {
   it('lists every task the text names, highest score first, ties in task order', () => {
     expect(rankTasks('build an agent', tasks).map(({ task: t, score }) => [t.slug, score])).toEqual([
       ['build-a-voice-agent', 1],
+      ['build-websites-and-internal-apps', 1],
       ['build-a-team-of-agents', 1],
     ]);
     const [first, second] = rankTasks('speech to text', tasks);

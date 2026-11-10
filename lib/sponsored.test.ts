@@ -30,18 +30,25 @@ describe('sponsored never changes what ranks or picks listings', () => {
     }
   });
 
-  it('every task, the alternatives to each sponsored listing, and the Operator', async () => {
-    const catalog = await getEveryAgent();
-    const other = flipped(catalog);
-    for (const task of getTasks()) {
-      expect(slugs(taskMatches(other, task)), task.slug).toEqual(slugs(taskMatches(catalog, task)));
-    }
+  const both = getEveryAgent().then((catalog) => [catalog, flipped(catalog)] as const);
+
+  it.each(getTasks().map((task) => [task.slug, task] as const))('the task %s', async (_, task) => {
+    const [catalog, other] = await both;
+    expect(slugs(taskMatches(other, task))).toEqual(slugs(taskMatches(catalog, task)));
+  });
+
+  it('the alternatives to each sponsored listing', async () => {
+    const [catalog, other] = await both;
     for (const agent of sponsoredAgents(catalog)) {
       const twin = other.find((a) => a.slug === agent.slug)!;
       expect(getAlternatives(twin, other).map((a) => a.agent.slug)).toEqual(
         getAlternatives(agent, catalog).map((a) => a.agent.slug)
       );
     }
+  });
+
+  it('the Operator', async () => {
+    const [catalog, other] = await both;
     for (const request of OPERATOR_EXAMPLES) {
       const picks = (c: Agent[]) => putThrough(request, getTasks(), c).parts.map((p) => p.pick?.slug ?? null);
       expect(picks(other), request).toEqual(picks(catalog));
