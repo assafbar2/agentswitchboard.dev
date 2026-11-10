@@ -1,5 +1,25 @@
 [
   {
+    "action": "updated",
+    "slug": "clify",
+    "name": "Clify",
+    "note": "accessMethods updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "updated",
+    "slug": "screenpipe",
+    "name": "Screenpipe",
+    "note": "accessMethods updated",
+    "date": "2026-11-10"
+  },
+  {
+    "action": "added",
+    "slug": "sage-agent-platform",
+    "name": "Sage",
+    "date": "2026-11-10"
+  },
+  {
     "action": "removed",
     "slug": "jules",
     "name": "Jules",

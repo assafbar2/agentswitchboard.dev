@@ -1,0 +1,65 @@
+{
+  "id": "sage-agent-platform",
+  "name": "Sage",
+  "slug": "sage-agent-platform",
+  "description": "Runs, evaluates and improves AI agents from task feedback, keeping each version with its evidence, via a desktop app, a self-hosted server API or a Python SDK.",
+  "providerName": "ZHangZHengEric",
+  "providerUrl": "https://github.com/ZHangZHengEric",
+  "agentUrl": "https://github.com/ZHangZHengEric/Sage",
+  "categories": [
+    "orchestration",
+    "infrastructure"
+  ],
+  "tags": [
+    "agent-harness",
+    "agent-evaluation",
+    "self-improving-agents",
+    "multi-agent",
+    "python-sdk",
+    "self-hosted",
+    "a2a",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "rsi-runs",
+      "name": "Improve agents with RSI",
+      "description": "Runs an agent on a goal or curated usage history, grades each run with an independent evaluator and keeps tuned versions for you to adopt."
+    },
+    {
+      "id": "agent-packages",
+      "name": "Package agent versions",
+      "description": "Defines an agent's instructions, Skills, tools and resources in sage.yaml and keeps each candidate version with its diff and evaluation record."
+    },
+    {
+      "id": "tools-skills-mcp",
+      "name": "Compose tools and MCP",
+      "description": "Combines native tools, reusable Skills and MCP services in one agent, with the host managing authorization and tool policies."
+    },
+    {
+      "id": "stateful-sessions",
+      "name": "Pause and resume runs",
+      "description": "Persists sessions, streams output, and pauses a run for human input or approval before resuming it."
+    },
+    {
+      "id": "a2a-server",
+      "name": "Serve agents over A2A",
+      "description": "Answers other agents over the A2A protocol at /a2a/v1 and serves an Agent Card, with Bearer API keys scoped to read or invoke."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://github.com/ZHangZHengEric/Sage/blob/main/app/v2/server/README.md",
+  "iconUrl": "https://raw.githubusercontent.com/ZHangZHengEric/Sage/main/app/v2/desktop/assets/brand/sage_logo.png",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-11-10T07:10:47.672Z",
+  "updatedAt": "2026-11-10T07:10:47.672Z"
+}

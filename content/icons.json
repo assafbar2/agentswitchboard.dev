@@ -3102,6 +3102,10 @@
     "v": "cb5ec314",
     "source": "https://safeweave.dev/icon.svg"
   },
+  "sage-agent-platform": {
+    "v": "2366d7a4",
+    "source": "https://raw.githubusercontent.com/ZHangZHengEric/Sage/main/app/v2/desktop/assets/brand/sage_logo.png"
+  },
   "sakana-fugu": {
     "v": "56b14010",
     "source": "https://sakana.ai/favicon.ico",
