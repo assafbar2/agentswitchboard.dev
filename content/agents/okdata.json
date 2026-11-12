@@ -1,0 +1,66 @@
+{
+  "id": "okdata",
+  "name": "okdata",
+  "slug": "okdata",
+  "description": "Fetches public data from 17 social and content platforms, including Douyin, Xiaohongshu, WeChat, TikTok, X and YouTube, for AI agents over an API or a remote MCP server, paid per call.",
+  "providerName": "okdata",
+  "providerUrl": "https://okdata.online",
+  "agentUrl": "https://okdata.online/mcp/",
+  "categories": [
+    "data-analytics",
+    "sales-marketing"
+  ],
+  "tags": [
+    "social-media-data",
+    "douyin",
+    "xiaohongshu",
+    "wechat",
+    "tiktok",
+    "remote-mcp",
+    "pay-per-call"
+  ],
+  "skills": [
+    {
+      "id": "find-endpoints",
+      "name": "Find Endpoints",
+      "description": "Finds the endpoint for a need described in plain English or Chinese among 214, with its price and a ready-made call; free and needs no key."
+    },
+    {
+      "id": "describe-endpoints",
+      "name": "Describe Endpoints",
+      "description": "Returns the parameters, examples, paging, returned fields and the most one call can cost for up to five endpoints; free and needs no key."
+    },
+    {
+      "id": "fetch-platform-data",
+      "name": "Fetch Platform Data",
+      "description": "Fetches one page of public data, such as videos, notes, comments, profiles or articles, from one endpoint, charged per call; failed calls are free."
+    },
+    {
+      "id": "read-long-results",
+      "name": "Read Long Results",
+      "description": "Returns the rest of a result that was cut to fit, or the same result with other fields, without fetching again or charging."
+    },
+    {
+      "id": "check-balance-and-usage",
+      "name": "Check Balance and Usage",
+      "description": "Reports the balance, spending limits, per-call receipts and usage by day or endpoint for the account behind the key."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://api.okdata.online/mcp",
+  "quickstartUrl": "https://okdata.online/docs/quickstart/",
+  "apiBaseUrl": "https://api.okdata.online",
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-11-13T00:00:00Z",
+  "updatedAt": "2026-11-13T00:00:00Z"
+}
