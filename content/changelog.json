@@ -1,5 +1,11 @@
 [
   {
+    "action": "added",
+    "slug": "orivale-web-intel",
+    "name": "Orivale Web & On-Chain Intelligence",
+    "date": "2026-11-12"
+  },
+  {
     "action": "removed",
     "slug": "clify",
     "name": "Clify",

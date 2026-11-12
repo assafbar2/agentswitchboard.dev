@@ -1,0 +1,56 @@
+{
+  "id": "orivale-web-intel",
+  "name": "Orivale Web & On-Chain Intelligence",
+  "slug": "orivale-web-intel",
+  "description": "Extracts clean RAG Markdown, enriches B2B domain buying signals, analyzes Shopify SKU pricing, and audits Base smart contracts via hosted MCP and keyless x402 APIs.",
+  "providerName": "Orivale",
+  "providerUrl": "https://github.com/tapirro/orivale-agent-mcp",
+  "agentUrl": "https://ori.mantissa.id/.well-known/x402",
+  "categories": ["data-analytics", "sales-marketing", "finance"],
+  "tags": [
+    "web-extraction",
+    "markdown-rag",
+    "lead-enrichment",
+    "shopify-pricing",
+    "smart-contract-audit",
+    "x402-usdc",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "clean-markdown-rag",
+      "name": "Clean Markdown Extractor",
+      "description": "Strips scripts, navigation, and clutter from any public URL into structured RAG Markdown and pricing entities."
+    },
+    {
+      "id": "b2b-domain-enrich",
+      "name": "B2B Signal Enricher",
+      "description": "Detects company tech-stack signals, hiring indicators, ICP fit score, and generates personalized outbound icebreakers."
+    },
+    {
+      "id": "shopify-competitor-pricing",
+      "name": "Shopify Competitor Analyzer",
+      "description": "Audits live Shopify storefront SKU pricing distributions, discount markdown shares, and actionable ad counter-angles."
+    },
+    {
+      "id": "base-contract-audit",
+      "name": "Base Contract Auditor",
+      "description": "Verifies Base Mainnet smart-contract bytecode, transaction nonce liveness, and USDC relayer balances in one call."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://ori.mantissa.id/mcp",
+  "mcpCommand": "uvx --from git+https://github.com/tapirro/orivale-agent-mcp orivale-mcp",
+  "quickstartUrl": "https://github.com/tapirro/orivale-agent-mcp",
+  "apiBaseUrl": "https://ori.mantissa.id/v1/x402",
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": ["mcp", "api"],
+  "createdAt": "2026-11-12T00:00:00Z",
+  "updatedAt": "2026-11-12T00:00:00Z"
+}
