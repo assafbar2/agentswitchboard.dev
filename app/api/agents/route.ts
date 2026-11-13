@@ -45,6 +45,7 @@ import {
   taskMatches,
 } from '@/lib/search';
 import { getTask } from '@/lib/tasks';
+import { logZeroResults } from '@/lib/leads';
 import { logConsumer } from '@/lib/log';
 import { restRateLimit } from '@/lib/rest-rate-limit';
 import {
@@ -124,6 +125,16 @@ export async function GET(req: Request): Promise<Response> {
     since: since ?? undefined,
   });
   const matches = sortAgents(searchAgents(agents, q, access.length > 0 ? access : undefined), sort);
+  logZeroResults('rest', req.headers, matches.length, {
+    q,
+    task: task?.slug,
+    category,
+    access: access.join('+') || undefined,
+    official,
+    verified,
+    auth: auth.join('|') || undefined,
+    since: since ?? undefined,
+  });
   const results = matches.slice(offset, offset + limit);
 
   return jsonResponse({

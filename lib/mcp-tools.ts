@@ -12,4 +12,5 @@ export const MCP_TOOL_NAMES: ReadonlySet<string> = new Set([
   'alternatives_to',
   'connect_bundle',
   'submit_listing',
+  'request_missing_tool',
 ]);

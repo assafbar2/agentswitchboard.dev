@@ -3,6 +3,8 @@
 Agent Switchboard is machine-consumable four ways. All of them are **read-only,
 need no authentication, are CORS-open, and read the same cached catalog**
 ([`lib/catalog.ts`](../lib/catalog.ts)), so results always match the website.
+The two exceptions are writes that publish nothing: a listing suggestion
+(`submit_listing`) and a [missing-tool request](#rest-missing-tool--post-apimissing-tool).
 
 | Surface | Best for | Endpoint |
 |---|---|---|
@@ -14,6 +16,7 @@ need no authentication, are CORS-open, and read the same cached catalog**
 | **REST compare** | 2 or 3 listings side by side | `GET /api/compare` |
 | **REST alternatives** | listings that could stand in for one | `GET /api/agents/{slug}/alternatives` |
 | **REST connect bundle** | one MCP client config for several listings | `GET /api/bundle` |
+| **REST missing tool** | saying nothing in the directory does a job | `POST /api/missing-tool` |
 | **MCP server** | MCP clients (Grok, Claude, ChatGPT, Cursor, …) | `POST /api/mcp` |
 | **WebMCP** | agents viewing the page in a browser | `document.modelContext` |
 | **Catalog dump** | bulk / offline indexing | `GET /agents.json` (index) → `GET /catalog/{n}.json` |
@@ -390,6 +393,40 @@ note; none found is a `400` with `{ "error": "no_listings", "message", "notes" }
 
 ---
 
+## REST missing tool — `POST /api/missing-tool`
+
+Tell the maintainer that the directory has nothing for a job, after a search
+found nothing that fits: the plain-HTTP twin of the MCP `request_missing_tool`
+tool. It is recorded privately for the weekly review, which uses these
+requests to decide what to look for and add. Nothing is published, no issue is
+opened, and there is no reply.
+
+```bash
+curl -X POST "https://agentswitchboard.dev/api/missing-tool" \
+  -H 'content-type: application/json' \
+  -d '{"need": "file expense reports in Expensify", "tried": "expensify", "access": ["mcp"]}'
+```
+
+| Field | | |
+|---|---|---|
+| `need` | required | The job no listing does, 10–500 characters. Describe the job, not the user |
+| `tried` | optional | The search words that found nothing, up to 200 characters |
+| `category` | optional | The closest category slug |
+| `access` | optional | `api`, `mcp`, `cli`, `browser-extension` |
+
+`202 { "status": "recorded", "message" }` when it is recorded; `400
+{ "error": "invalid_request", "message" }` for a body that is not JSON, a
+missing or short `need`, or an unknown field; `429 { "status": "rate_limited",
+"message" }` with `Retry-After` past 10 per caller IP per hour. Email addresses
+and phone numbers are removed before it is recorded, and the record keeps no IP
+address. Never cached; CORS-open.
+
+A search that matches no listing at all, on `GET /api/agents`, MCP
+`search_agents` or [/browse](https://agentswitchboard.dev/browse), is recorded
+the same way with its words and filters.
+
+---
+
 ## MCP server — `POST /api/mcp`
 
 Streamable HTTP MCP endpoint. Point any MCP client at it:
@@ -415,22 +452,34 @@ Stdio-only clients: `npx -y mcp-remote https://agentswitchboard.dev/api/mcp`
 | `alternatives_to` | `slug` (required), `limit?` (1–8) | as [`GET /api/agents/{slug}/alternatives`](#rest-alternatives--get-apiagentsslugalternatives) |
 | `connect_bundle` | `slugs` (1 to 10, required) | as [`GET /api/bundle`](#rest-connect-bundle--get-apibundle): `{ summary, stackUrl, config, claudeCode, setupPrompt, items[], notes }` |
 | `submit_listing` | `name`, `url`, `description` (required); `access?`, `category?`, `contact_email?` | `{ status, message, issueUrl?, existingSlug? }` |
+| `request_missing_tool` | `need` (10–500 characters, required); `tried?`, `category?`, `access?` (enum[]) | `{ status, message }`, as [`POST /api/missing-tool`](#rest-missing-tool--post-apimissing-tool) |
 
 All tools declare an `outputSchema` and return `structuredContent`. Results are organic: they never list featured listings first, and they leave out `featured` and any other placement field. The six
 read tools are annotated `readOnlyHint: true`, `destructiveHint: false`;
 `submit_listing` is `readOnlyHint: false`, `destructiveHint: true` (it posts a public
-issue the user can't take back), so clients ask before each call. Every tool also
+issue the user can't take back), so clients ask before each call.
+`request_missing_tool` is `readOnlyHint: false`, `destructiveHint: false`,
+`openWorldHint: false`: it records a private note and changes nothing public. Every tool also
 carries its `title` in `annotations`. A request a decision tool can't
 answer (fewer than two listings to compare, an unknown slug, no listing in a
 bundle) is a tool error whose message says what to do next.
 
-`submit_listing` is the only write. It files a **public GitHub issue** through
+`submit_listing` files a **public GitHub issue** through
 the same path as the [/submit](https://agentswitchboard.dev/submit) form and
 publishes nothing: the maintainer reviews every issue by hand. `status` is
 `filed`, `already_listed` (the URL matches a listing's homepage; nothing is
 filed), `rate_limited`, or `unavailable`. `contact_email` is optional and goes
 privately to the maintainer, never onto the issue. Limits: 5 per caller IP per
 hour, one per URL per day.
+
+`request_missing_tool` says the directory has nothing for a job, after a
+search found nothing that fits. It is recorded privately for the weekly
+review, which uses these requests to decide what to look for and add; nothing
+is published, no issue is opened, and there is no reply. Describe the job,
+not the user: email addresses and phone numbers are removed before it is
+recorded. `status` is `recorded` or `rate_limited` (10 per caller IP per hour).
+A `search_agents` call that matches no listing is recorded the same way, with
+its words and filters.
 
 **Rate limits.** 300 requests per minute per IP (HTTP 429 with `Retry-After`
 past that), 3,000 per IP from Anthropic's published outbound ranges

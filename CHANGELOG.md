@@ -4,13 +4,21 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
-## [2.9.5] - 2026-11-13 - Task pages and the Operator rank on fit alone
+## [2.9.6] - 2026-11-13 - Task pages and the Operator rank on fit alone
 
 ### Highlights
 - Every task page and every Operator stack now ranks tools on how well they fit the job and nothing else: a Featured or Sponsored listing never moves up, even on a tie, the same as the MCP server and recommend answer. [Try it](https://agentswitchboard.dev/tasks)
 
 ### Changed
 - [/tasks](https://agentswitchboard.dev/tasks), each task page, [/operator](https://agentswitchboard.dev/operator) and their share cards rank best fit first and A→Z on a tie, instead of putting featured listings first among equals. `GET /api/tasks` and `GET /api/tasks/<slug>` list the same way as the pages. Sponsored slots stay where they were, set apart and labeled on the homepage and the latest weekly drop, as [/advertise](https://agentswitchboard.dev/advertise) describes.
+
+## [2.9.5] - 2026-11-13 - Missing-tool requests
+
+### Added
+- An assistant can tell us the directory has nothing for a job: the MCP tool `request_missing_tool` and `POST /api/missing-tool` take the job in plain words (`need`), and optionally the search that found nothing, a category and the access it needs. The request is recorded privately for the weekly review, which uses it to decide what to look for and add; nothing is published, no issue is opened, and there is no reply. Email addresses and phone numbers are removed first, and each caller can send 10 an hour. The MCP server is version 1.9.0, with eight tools, and [/openapi.json](https://agentswitchboard.dev/openapi.json) is version 1.13.0. ([#404](https://github.com/assafbar2/agentswitchboard.dev/pull/404))
+
+### Changed
+- A search that finds no listing at all, on [/browse](https://agentswitchboard.dev/browse), `GET /api/agents` or the MCP `search_agents` tool, is recorded with its words and filters, without the IP address, for the weekly review. [/privacy](https://agentswitchboard.dev/privacy) says so. Search results are unchanged. ([#404](https://github.com/assafbar2/agentswitchboard.dev/pull/404))
 
 ## [2.9.4] - 2026-11-13 - No-auth tools in the downloadable catalog
 
