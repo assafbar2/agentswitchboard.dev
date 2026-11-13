@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Agent Switchboard Directory API",
-    "version": "1.11.0",
+    "version": "1.12.0",
     "summary": "Read-only catalog of AI agents, MCP servers, and agentic developer tools.",
     "description": "Agent Switchboard is a public discovery directory. Use this API to answer questions like 'is there an agent that does X?' or 'which listed products expose an MCP server?'. There is no authentication, no user account, and no write access. The /api/ endpoints allow 120 requests per minute per IP and answer 429 with Retry-After past that; cached responses do not count, and /api/mcp has its own limits. This API does not proxy the underlying products — it only returns Switchboard listings. For interactive tool-shaped access, an MCP server is also available at /api/mcp. Listing data returned by this API is licensed CC BY-NC 4.0 (attribution required; commercial reuse needs a license: https://agentswitchboard.dev/contact). The API definition itself is MIT.",
     "contact": {
@@ -458,7 +458,7 @@
       "get": {
         "operationId": "listAgents",
         "summary": "Index of the agent catalog",
-        "description": "A small index: the total, and the URLs of the static pages (`/catalog/{page}.json`, up to 50 listings each, featured first, then A→Z) that together hold every published agent, plus the REST search and MCP endpoints. No single request returns the whole catalog. Prefer GET /api/agents for targeted search. Built once per deploy; cached for five minutes at the edge.",
+        "description": "A small index: the total, and the URLs of the static pages (`/catalog/{page}.json`, up to 50 listings each, featured first, then A→Z) that together hold every published agent, plus the REST search and MCP endpoints. No single request returns the whole catalog. Prefer GET /api/agents for targeted search. Built once per deploy, so it and the pages change only with a release; a deploy replaces them at the edge.",
         "tags": ["catalog"],
         "responses": {
           "200": {
@@ -476,7 +476,7 @@
       "get": {
         "operationId": "listAgentsPage",
         "summary": "One page of the agent catalog",
-        "description": "Up to 50 published agents with every catalog field, in the order of the index at /agents.json. `next` links the following page and is null on the last. A page past the last is a 404.",
+        "description": "Up to 50 published agents with every catalog field, including `authType` (skills are in GET /api/agents/{slug}), in the order of the index at /agents.json. `next` links the following page and is null on the last. A page past the last is a 404.",
         "tags": ["catalog"],
         "parameters": [
           {
@@ -944,6 +944,7 @@
           "description",
           "categories",
           "accessMethods",
+          "authType",
           "tags",
           "verified",
           "official",
@@ -971,6 +972,11 @@
           "accessMethods": {
             "type": "array",
             "items": { "type": "string", "enum": ["api", "mcp", "cli", "browser-extension"] }
+          },
+          "authType": {
+            "type": "string",
+            "enum": ["apiKey", "oauth2", "bearer", "none"],
+            "description": "How the listed product authenticates. `none` needs no key or sign-in, as the site's No auth needed filter and `auth=none` keep."
           },
           "tags": { "type": "array", "items": { "type": "string" } },
           "verified": { "type": "boolean", "description": "Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working." },
