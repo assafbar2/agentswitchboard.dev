@@ -1,5 +1,46 @@
 [
   {
+    "action": "updated",
+    "slug": "codeium-windsurf",
+    "name": "Devin Desktop",
+    "note": "tags updated",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "updated",
+    "slug": "codeium-windsurf",
+    "name": "Devin Desktop",
+    "note": "description updated",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "updated",
+    "slug": "codeium-windsurf",
+    "name": "Devin Desktop",
+    "note": "providerUrl updated",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "updated",
+    "slug": "codeium-windsurf",
+    "name": "Devin Desktop",
+    "note": "providerName updated",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "updated",
+    "slug": "codeium-windsurf",
+    "name": "Devin Desktop",
+    "note": "name updated",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "removed",
+    "slug": "zcode",
+    "name": "ZCode",
+    "date": "2026-11-13"
+  },
+  {
     "action": "removed",
     "slug": "youtube-mcp",
     "name": "YouTube MCP",

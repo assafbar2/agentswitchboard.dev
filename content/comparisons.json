@@ -1,7 +1,7 @@
 [
   {
     "items": ["github-copilot", "cursor", "codeium-windsurf"],
-    "intro": "Three AI coding assistants, each an official listing. Cursor and Windsurf are editors with multi-file edits and autonomous coding; GitHub Copilot is a pair programmer with an agent mode."
+    "intro": "Three AI coding assistants, each an official listing. Cursor and Devin Desktop (formerly Windsurf) are editors with multi-file edits and autonomous coding; GitHub Copilot is a pair programmer with an agent mode."
   },
   {
     "items": ["langgraph", "crewai", "autogen"],
