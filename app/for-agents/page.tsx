@@ -144,7 +144,9 @@ export default async function ForAgentsPage() {
             <code className="font-bold">connect_bundle</code> (one MCP client config
             for up to {MY_STACK_MAX} listings), and suggest a listing with{' '}
             <code className="font-bold">submit_listing</code> (files a public GitHub
-            issue for human review; publishes nothing):
+            issue for human review; publishes nothing). When nothing fits a job,{' '}
+            <code className="font-bold">request_missing_tool</code> tells the
+            maintainer privately what was missing:
           </p>
           <pre className="rounded-none border-2 border-[var(--dir-ink)]! bg-[var(--dir-paper)] p-4 text-xs overflow-x-auto">
 {`{
