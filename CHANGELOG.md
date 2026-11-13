@@ -4,6 +4,14 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
+## [2.10.0] - 2026-11-13 - Every task page compares its top tools
+
+### Highlights
+- See the top tools for a job side by side before you pick one: each task page opens with a table of its six best fits, with how you reach each one, how it signs in, who makes it, whether it is Verified, and when its listing last changed, plus a config that connects the top three at once. [Try it](https://agentswitchboard.dev/tasks/query-a-database)
+
+### Added
+- A "Compared" table atop all 47 [task pages](https://agentswitchboard.dev/tasks): the first six best fits in the order the page already ranks them, by how well they match the task, with nothing featured or sponsored moved up. Each row gives the tool with what it is best for and a "Pick it if…" line read from its own access facts, its access methods, its sign-in, its maker and whether it is Official, whether it is Verified, and the day its listing last changed. Above the table is the day of the newest change to any of the six, so the date moves only when one of them does. Under it, a link compares the top three on /compare, and an MCP client config connects them. The agent view lists the same six with the same facts.
+
 ## [2.9.6] - 2026-11-13 - GPT Pilot archived
 
 ### Highlights
