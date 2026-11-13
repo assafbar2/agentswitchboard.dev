@@ -30,20 +30,25 @@ export const LINK_PREVIEW_BOTS = [
   'Iframely',
 ];
 
+/**
+ * AI search crawlers and the fetchers assistants send for one person's ask.
+ * They put pages in AI answers with a link back, so they get the same rules
+ * as everyone without the crawl delay. Training crawlers (GPTBot, ClaudeBot,
+ * Google-Extended, CCBot) stay under `*`.
+ */
+export const AI_SEARCH_BOTS = ['OAI-SearchBot', 'ChatGPT-User', 'Claude-SearchBot', 'Claude-User', 'PerplexityBot', 'Perplexity-User'];
+
 /** SEO-tool crawlers: they index the site for their own products and send no visitors. */
 export const SEO_TOOL_BOTS = ['AhrefsBot', 'SemrushBot', 'MJ12bot', 'DotBot', 'BLEXBot', 'DataForSeoBot', 'Barkrowler', 'serpstatbot'];
 
 export default function robots(): MetadataRoute.Robots {
   const base = process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev';
+  // Public catalog APIs must stay crawlable (Muse review fetches them).
+  const closed = ['/_next/', ...QUERY_PAGES, ...SHARE_CARDS];
   return {
     rules: [
-      {
-        userAgent: '*',
-        allow: '/',
-        // Public catalog APIs must stay crawlable (Muse review fetches them).
-        disallow: ['/_next/', ...QUERY_PAGES, ...SHARE_CARDS],
-        crawlDelay: 5,
-      },
+      { userAgent: '*', allow: '/', disallow: closed, crawlDelay: 5 },
+      { userAgent: AI_SEARCH_BOTS, allow: '/', disallow: closed },
       { userAgent: LINK_PREVIEW_BOTS, allow: '/', disallow: ['/_next/'] },
       { userAgent: SEO_TOOL_BOTS, disallow: '/' },
     ],

@@ -10,6 +10,7 @@ import { TaskRow } from '@/components/TaskRow';
 import { getAllCategories, getEveryAgent } from '@/lib/catalog';
 import { pageMetadata } from '@/lib/metadata';
 import { taskMatches } from '@/lib/search';
+import { answerDate, taskAnswer } from '@/lib/task-answers';
 import { taskCard, taskCardImage } from '@/lib/share-cards';
 import { getStacks, stacksInOrder } from '@/lib/stacks';
 import {
@@ -54,6 +55,7 @@ export async function generateMetadata({ params }: Props, parent: ResolvingMetad
       description: `${task.blurb} ${fits.length} tools do it, including ${joinList(fits.slice(0, 3).map((a) => a.name))}.`,
       path: `/tasks/${task.slug}`,
       image: taskCardImage(task.slug, taskCard(task, fits)),
+      markdown: `/tasks/${task.slug}.md`,
     },
     parent
   );
@@ -77,6 +79,7 @@ export default async function TaskPage({ params }: Props) {
   const next = tasks[(tasks.findIndex((t) => t.slug === task.slug) + 1) % tasks.length];
   const browse = `/browse?task=${task.slug}`;
   const tools = `${fits.length} ${pluralize(fits.length, 'tool')}`;
+  const answer = taskAnswer(task, catalog);
 
   const listSchema = {
     '@context': 'https://schema.org',
@@ -117,6 +120,30 @@ export default async function TaskPage({ params }: Props) {
             </p>
             <p className="mt-1 text-[15px] text-[var(--dir-muted)]">{taskExplanation(task, categoryName)}</p>
           </div>
+
+          <section aria-labelledby="answer" className="mb-8">
+            <h2 id="answer" className="sr-only">
+              The short answer
+            </h2>
+            <p className="text-[19px] font-bold leading-snug">{answer.lead}</p>
+            <dl className="mt-3 text-[15px]">
+              {answer.quick.map((q) => (
+                <div key={q.question} className="mt-2">
+                  <dt className="font-bold">{q.question}</dt>
+                  <dd className="text-[var(--dir-muted)]">{q.answer}</dd>
+                </div>
+              ))}
+            </dl>
+            {answer.updated && (
+              <p className="mt-3 text-[13px] text-[var(--dir-muted)]">
+                Updated <time dateTime={answer.updated}>{answerDate(answer.updated)}</time> with the{' '}
+                <Link href={`/drops/${answer.updated}`} className={inlineLink}>
+                  weekly drop
+                </Link>
+                . Ranked by how well each listing matches the task, never by payment.
+              </p>
+            )}
+          </section>
 
           <TaskEvents task={task.slug} from="task-page">
             <section aria-labelledby="best-fits">
@@ -243,6 +270,15 @@ export default async function TaskPage({ params }: Props) {
               categories: {task.categories.join(', ')} · access: {task.access.join('+')}
             </div>
             <div className="agent-dim text-xs mt-1">{task.blurb}</div>
+            <div className="text-xs mt-2">{answer.lead}</div>
+            {answer.quick.map((q) => (
+              <div key={q.question} className="agent-dim text-xs mt-1">
+                {q.question} {q.answer}
+              </div>
+            ))}
+            <div className="agent-dim text-xs mt-1">
+              Markdown: /tasks/{task.slug}.md{answer.updated ? ` · updated ${answer.updated}` : ''}
+            </div>
           </div>
 
           <div className="agent-section-title">best fits</div>
