@@ -8,7 +8,7 @@ import { COMPARE_QUERY_KEYS } from './compare-link';
  * Kept free of imports beyond compare-link so the proxy stays small.
  */
 export const QUERY_PAGE_KEYS = {
-  '/browse': ['q', 'task', 'category', 'access', 'official', 'vendor', 'verified', 'auth', 'sort'],
+  '/browse': ['q', 'task', 'category', 'access', 'official', 'vendor', 'verified', 'auth', 'sort', 'page'],
   '/compare': COMPARE_QUERY_KEYS,
   '/stack': ['items', 'title'],
   '/operator': ['q'],

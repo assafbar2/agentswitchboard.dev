@@ -461,8 +461,10 @@ GET /api/tasks/<slug>
             To start from a job, pass a task slug from{' '}
             <code className="font-bold">GET /api/tasks</code> as{' '}
             <code className="font-bold">task</code> to either.{' '}
-            <code className="font-bold">/agents.json</code> is the whole catalog
-            in one large file — use it for bulk or offline work, filtering on{' '}
+            <code className="font-bold">/agents.json</code> indexes the whole
+            catalog in pages of up to 50 (<code className="font-bold">/catalog/1.json</code>{' '}
+            and on, each with <code className="font-bold">next</code>) — use them for bulk or
+            offline work, filtering on{' '}
             <code className="font-bold">accessMethods</code> or{' '}
             <code className="font-bold">categories</code>.
           </p>

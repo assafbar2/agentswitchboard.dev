@@ -55,7 +55,7 @@ export default function NotFound() {
               <a href="/agents.json" className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 /agents.json
               </a>{' '}
-              — the full catalog as JSON
+              — the catalog as JSON, in pages of 50
             </li>
             <li>
               <a href="/openapi.json" className="text-[var(--accent)] underline decoration-1 underline-offset-2 hover:decoration-2">

@@ -2,6 +2,8 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { test, expect } from './fixtures.mjs';
+import { BASE } from '../target.mjs';
+import { loadCatalog } from '../catalog.mjs';
 
 // Repo root, for comparing the live site against the content it was built from.
 const REPO = fileURLToPath(new URL('../..', import.meta.url));
@@ -14,12 +16,6 @@ const VENDORS_SHOWN = 12; // components/OfficialPlatforms.tsx
 
 const meta = (page, sel) => page.locator(sel).first().getAttribute('content');
 const human = (page) => page.locator('main .human-only');
-
-async function getJson(page, path) {
-  const res = await page.request.get(path, { headers: UA });
-  expect(res.status(), `${path} status`).toBe(200);
-  return res.json();
-}
 
 test.describe('homepage — head metadata', () => {
   test('has the site title and a meta description', async ({ page }) => {
@@ -65,8 +61,8 @@ test.describe('homepage — hero', () => {
     await expect(hero.getByText(/Browse, compare, and integrate verified AI agents with real API, MCP, and CLI access/)).toBeVisible();
   });
 
-  test('hero stats match /agents.json and the category list', async ({ page }) => {
-    const data = await getJson(page, '/agents.json');
+  test('hero stats match the /agents.json catalog and the category list', async ({ page }) => {
+    const data = await loadCatalog(BASE, UA);
     await page.goto('/');
     const stat = (label) => human(page).locator('dl div').filter({ has: page.locator('dt', { hasText: new RegExp(`^${label}$`) }) }).locator('dd');
     await expect(stat('Agents')).toHaveText(String(data.total));
@@ -192,7 +188,7 @@ test.describe('homepage — thumb-index rail (1440)', () => {
 
 test.describe('homepage — listings', () => {
   test('Top Agents rows link to real listing pages and match the count', async ({ page }) => {
-    const data = await getJson(page, '/agents.json');
+    const data = await loadCatalog(BASE, UA);
     const slugs = new Set(data.agents.map((a) => a.slug));
     await page.goto('/');
     const section = human(page).locator('section[aria-labelledby="top-agents"]');
@@ -236,14 +232,14 @@ test.describe('homepage — listings', () => {
 });
 
 test.describe('homepage — official platforms', () => {
-  async function officialFromApi(page) {
-    const data = await getJson(page, '/agents.json');
+  async function officialFromCatalog() {
+    const data = await loadCatalog(BASE, UA);
     const official = data.agents.filter((a) => a.official && a.officialVendor);
     return { vendors: new Set(official.map((a) => a.officialVendor)), total: new Set(official.map((a) => a.slug)).size };
   }
 
   test('"Plus N more vendors" N = vendor groups minus those shown', async ({ page }) => {
-    const { vendors, total } = await officialFromApi(page);
+    const { vendors, total } = await officialFromCatalog();
     await page.goto('/');
     const section = human(page).locator('section[aria-labelledby="official-platforms"]');
     const shownGroups = section.locator('h3');
@@ -257,7 +253,7 @@ test.describe('homepage — official platforms', () => {
   });
 
   test('section header counts match the API and vendor links resolve', async ({ page }) => {
-    const { vendors, total } = await officialFromApi(page);
+    const { vendors, total } = await officialFromCatalog();
     await page.goto('/');
     const section = human(page).locator('section[aria-labelledby="official-platforms"]');
     await expect(section.getByText(`from ${vendors.size} major vendors`)).toBeVisible();

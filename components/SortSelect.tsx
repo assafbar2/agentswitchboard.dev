@@ -19,6 +19,7 @@ export function SortSelect({ hasQuery }: { hasQuery: boolean }) {
   function change(value: SortOrder) {
     count('sort_change', { sort: value });
     const params = new URLSearchParams(searchParams.toString());
+    params.delete('page');
     if (value === 'relevance') params.delete('sort');
     else params.set('sort', value);
     const qs = params.toString();

@@ -14,6 +14,7 @@ export function AccessMethodFilter() {
   const toggle = useCallback(
     (method: string) => {
       const params = new URLSearchParams(searchParams.toString());
+      params.delete('page');
       const wasOn = activeFilters.includes(method);
       const filters = wasOn ? activeFilters.filter((m) => m !== method) : [...activeFilters, method];
       count('filter_change', { filter: 'access', value: method, state: wasOn ? 'off' : 'on' });
