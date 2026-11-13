@@ -12,6 +12,7 @@
 
 import { getEveryAgent } from '@/lib/catalog';
 import { logConsumer } from '@/lib/log';
+import { restRateLimit } from '@/lib/rest-rate-limit';
 import { corsPreflight, jsonResponse, summarizeTask } from '@/lib/public-api';
 import { taskMatches } from '@/lib/search';
 import { getTasks } from '@/lib/tasks';
@@ -19,6 +20,8 @@ import { getTasks } from '@/lib/tasks';
 export const dynamic = 'force-dynamic';
 
 export async function GET(req: Request): Promise<Response> {
+  const limited = restRateLimit('/api/tasks', req);
+  if (limited) return limited;
   logConsumer('/api/tasks', req);
   const tasks = getTasks();
   const catalog = await getEveryAgent();

@@ -4,6 +4,11 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
+## [2.9.2] - 2026-11-13 - A rate limit on the REST API
+
+### Changed
+- The REST API (every `/api/` endpoint except `/api/mcp`) allows 120 requests per minute per IP. Past that it answers HTTP 429 with a `Retry-After` header and a JSON error (`{ "error": "rate_limited", "message", "retryAfterSeconds" }`) until the minute is up. Answers served from the CDN cache do not count, the static catalog pages (`/catalog/<n>.json`) are not limited, and the MCP server keeps its own limits. [docs/API.md](https://github.com/assafbar2/agentswitchboard.dev/blob/main/docs/API.md) and [/openapi.json](https://agentswitchboard.dev/openapi.json) (now version 1.11.0) describe the 429.
+
 ## [2.9.1] - 2026-11-13 - The catalog in pages
 
 ### Changed

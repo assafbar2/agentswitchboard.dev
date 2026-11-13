@@ -16,11 +16,14 @@ import { getEveryAgent, getRetiredListings } from '@/lib/catalog';
 import { requestedSlugs } from '@/lib/compare';
 import { compareDecision } from '@/lib/decide';
 import { logConsumer } from '@/lib/log';
+import { restRateLimit } from '@/lib/rest-rate-limit';
 import { corsPreflight, jsonResponse } from '@/lib/public-api';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET(req: Request): Promise<Response> {
+  const limited = restRateLimit('/api/compare', req);
+  if (limited) return limited;
   const { searchParams } = new URL(req.url);
   const requested = requestedSlugs(searchParams);
   logConsumer('/api/compare', req, { slugs: requested.join(',') || undefined });
