@@ -4,7 +4,7 @@
   "slug": "northstar-trustrail-acceptance-checker",
   "description": "Checks two OpenAPI 3.0 specs for breaking changes, flagging removed paths, newly required parameters and type changes as a pass/fail verdict over keyless REST or MCP.",
   "providerName": "northstar-trustrail",
-  "providerUrl": "https://github.com/northstar-trustrail",
+  "providerUrl": "https://northstar-trustrail-checker.northstar-trustrail.workers.dev",
   "version": "0.2.0",
   "agentUrl": "https://northstar-trustrail-checker.northstar-trustrail.workers.dev/agent-card.json",
   "categories": [
@@ -39,5 +39,5 @@
     "mcp"
   ],
   "createdAt": "2026-10-24T00:00:00.000Z",
-  "updatedAt": "2026-10-25T01:16:46.687Z"
+  "updatedAt": "2026-11-13T12:20:01.320Z"
 }

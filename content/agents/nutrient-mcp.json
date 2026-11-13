@@ -1,0 +1,64 @@
+{
+  "id": "nutrient-mcp",
+  "name": "Nutrient MCP",
+  "slug": "nutrient-mcp",
+  "description": "Extracts fields, parses to Markdown, classifies, converts, signs and redacts PDFs and documents for AI agents through Nutrient's hosted MCP server.",
+  "providerName": "Nutrient",
+  "providerUrl": "https://www.nutrient.io",
+  "agentUrl": "https://www.nutrient.io/api/mcp-server-pdf-automation-llm/",
+  "categories": [
+    "productivity",
+    "content-media"
+  ],
+  "tags": [
+    "pdf-processing",
+    "document-extraction",
+    "pdf-to-markdown",
+    "ocr",
+    "pdf-redaction",
+    "digital-signatures",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "extract-fields",
+      "name": "Extract Document Fields",
+      "description": "Extracts the fields you describe in plain words from invoices, claims and other documents, with citations and confidence."
+    },
+    {
+      "id": "parse-markdown",
+      "name": "Parse to Markdown",
+      "description": "Turns PDFs, scans and images into Markdown and tables that an agent can read and reason over."
+    },
+    {
+      "id": "classify-documents",
+      "name": "Classify Documents",
+      "description": "Sorts documents by type, such as invoice, contract or claim, so an agent can route them to the right workflow."
+    },
+    {
+      "id": "convert-edit-pdf",
+      "name": "Convert and Edit PDFs",
+      "description": "Converts Office files to PDF, runs OCR, merges, rotates and watermarks pages, and creates PDF/A or PDF/UA files."
+    },
+    {
+      "id": "sign-redact",
+      "name": "Sign and Redact",
+      "description": "Adds a digital signature to a PDF, or finds and removes personal data with AI-assisted redaction."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.nutrient.io/mcp",
+  "quickstartUrl": "https://www.nutrient.io/api/mcp-server-pdf-automation-llm/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-13T12:18:30.892Z",
+  "updatedAt": "2026-11-13T12:18:30.892Z"
+}

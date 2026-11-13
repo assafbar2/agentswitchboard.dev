@@ -1,0 +1,59 @@
+{
+  "id": "tidb",
+  "name": "TiDB",
+  "slug": "tidb",
+  "description": "Queries and updates TiDB, a distributed SQL database with vector search, from MCP clients: run SQL, switch databases and manage users in plain language.",
+  "providerName": "PingCAP",
+  "providerUrl": "https://www.pingcap.com",
+  "agentUrl": "https://docs.pingcap.com/ai/tidb-mcp-server/",
+  "categories": [
+    "vector-databases",
+    "infrastructure",
+    "memory-state"
+  ],
+  "tags": [
+    "distributed-sql",
+    "mysql-compatible",
+    "vector-search",
+    "query-database",
+    "text-to-sql",
+    "tidb-cloud",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "query-sql",
+      "name": "Run Read-Only SQL",
+      "description": "Runs read-only SQL queries against a TiDB database from natural-language requests in Cursor, Claude Desktop or another MCP client."
+    },
+    {
+      "id": "execute-sql",
+      "name": "Execute SQL Statements",
+      "description": "Executes DML or DDL statements, singly or as a batch, to change TiDB tables and the data stored in them."
+    },
+    {
+      "id": "browse-schema",
+      "name": "Browse Databases and Tables",
+      "description": "Lists the databases and tables in a TiDB Cloud Starter instance and switches the active database for later queries."
+    },
+    {
+      "id": "manage-users",
+      "name": "Manage Database Users",
+      "description": "Creates and removes TiDB database users with a username and password directly from an MCP client conversation."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://docs.pingcap.com/ai/tidb-mcp-server/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-13T12:18:30.792Z",
+  "updatedAt": "2026-11-13T12:18:30.792Z"
+}

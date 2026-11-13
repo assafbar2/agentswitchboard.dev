@@ -1,0 +1,50 @@
+{
+  "id": "openoutreach",
+  "name": "OpenOutreach",
+  "slug": "openoutreach",
+  "description": "Find B2B leads that fit your product description, explain why each one fits, export a CSV and email them from your own mailbox, with a self-hosted CLI and a Claude Code plugin.",
+  "providerName": "OpenOutreach",
+  "providerUrl": "https://openoutreach.app",
+  "agentUrl": "https://openoutreach.app",
+  "categories": [
+    "sales-marketing"
+  ],
+  "tags": [
+    "lead-generation",
+    "b2b-prospecting",
+    "cold-email",
+    "ideal-customer-profile",
+    "email-finder",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "find-leads",
+      "name": "Find Leads",
+      "description": "Finds qualified leads that match your product and target market and prints them as CSV with the reason each one fits."
+    },
+    {
+      "id": "find-emails",
+      "name": "Find Work Emails",
+      "description": "Buys a verified work email address for each qualified lead from the email-finder provider, one credit per address."
+    },
+    {
+      "id": "send-outreach",
+      "name": "Send Outreach",
+      "description": "Writes and sends opening emails to stored leads from your own mailbox until the requested number of conversations open."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-11-13T12:18:30.858Z",
+  "updatedAt": "2026-11-13T12:18:30.858Z"
+}

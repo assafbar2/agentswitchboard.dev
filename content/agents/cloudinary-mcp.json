@@ -1,0 +1,61 @@
+{
+  "id": "cloudinary-mcp",
+  "name": "Cloudinary MCP Servers",
+  "slug": "cloudinary-mcp",
+  "description": "Upload, search, transform and analyze images and video in Cloudinary from coding agents, and manage presets and structured metadata, through Cloudinary's MCP servers.",
+  "providerName": "Cloudinary",
+  "providerUrl": "https://cloudinary.com",
+  "agentUrl": "https://cloudinary.com/documentation/cloudinary_llm_mcp",
+  "categories": [
+    "content-media",
+    "infrastructure"
+  ],
+  "tags": [
+    "image-upload",
+    "video-transformation",
+    "digital-asset-management",
+    "image-tagging",
+    "content-moderation",
+    "media-metadata",
+    "cloudinary",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "asset-management",
+      "name": "Asset Management",
+      "description": "Uploads, searches, renames and deletes images, videos and raw files, and builds transformation URLs and derived assets."
+    },
+    {
+      "id": "environment-config",
+      "name": "Environment Config",
+      "description": "Manages upload presets, upload mappings, named transformations, webhook notifications and streaming profiles in a product environment."
+    },
+    {
+      "id": "structured-metadata",
+      "name": "Structured Metadata",
+      "description": "Defines and manages structured metadata fields, their values and conditional metadata rules for media assets."
+    },
+    {
+      "id": "content-analysis",
+      "name": "Content Analysis",
+      "description": "Runs AI content analysis on assets for automatic tagging, moderation, safety checks, object detection and recognition."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://asset-management.mcp.cloudinary.com/mcp",
+  "quickstartUrl": "https://cloudinary.com/documentation/cloudinary_llm_mcp",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-13T12:18:30.831Z",
+  "updatedAt": "2026-11-13T12:18:30.831Z"
+}

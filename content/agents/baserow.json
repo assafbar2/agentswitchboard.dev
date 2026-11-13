@@ -1,0 +1,55 @@
+{
+  "id": "baserow",
+  "name": "Baserow MCP",
+  "slug": "baserow",
+  "description": "Search, read, create, update and delete rows in Baserow databases from ChatGPT, Claude, Cursor or Windsurf through Baserow's built-in MCP server, with read-only defaults.",
+  "providerName": "Baserow",
+  "providerUrl": "https://baserow.io",
+  "agentUrl": "https://baserow.io/user-docs/mcp-server",
+  "categories": [
+    "data-analytics",
+    "productivity"
+  ],
+  "tags": [
+    "no-code-database",
+    "airtable-alternative",
+    "database-records",
+    "table-schema",
+    "open-source",
+    "self-hosted",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "table-schemas",
+      "name": "Table Schemas",
+      "description": "Discovers databases and tables in a workspace and retrieves table schemas and field definitions."
+    },
+    {
+      "id": "search-rows",
+      "name": "Search Rows",
+      "description": "Searches, retrieves and paginates through table rows, for example to find overdue projects or matching customers."
+    },
+    {
+      "id": "manage-rows",
+      "name": "Manage Rows",
+      "description": "Creates, updates and deletes rows when granted; deleted rows go to Baserow's trash and can be restored for three days."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://api.baserow.io/mcp",
+  "quickstartUrl": "https://baserow.io/user-docs/mcp-server",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-11-13T12:18:30.852Z",
+  "updatedAt": "2026-11-13T12:18:30.852Z"
+}

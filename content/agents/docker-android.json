@@ -1,0 +1,68 @@
+{
+  "id": "docker-android",
+  "name": "docker-android",
+  "slug": "docker-android",
+  "description": "Runs Android emulators in Docker for app development and UI testing, with noVNC viewing, Appium support and a beta MCP server for agent control.",
+  "providerName": "budtmo",
+  "providerUrl": "https://github.com/budtmo",
+  "agentUrl": "https://github.com/budtmo/docker-android",
+  "categories": [
+    "browser-computer",
+    "infrastructure"
+  ],
+  "tags": [
+    "android-emulator",
+    "docker",
+    "mobile-testing",
+    "appium",
+    "novnc",
+    "ui-testing",
+    "adb"
+  ],
+  "skills": [
+    {
+      "id": "run-emulator",
+      "name": "Run Android Emulator",
+      "description": "Runs Android 9 to 14 emulators in Docker with device profiles and skins such as Samsung Galaxy S10 and Nexus 5."
+    },
+    {
+      "id": "view-in-browser",
+      "name": "View in Browser",
+      "description": "Shows the running emulator in a browser through noVNC on port 6080, with container logs shareable from a web UI."
+    },
+    {
+      "id": "ui-testing",
+      "name": "Run UI Tests",
+      "description": "Runs unit and UI tests against the emulator with Appium, Espresso and other frameworks, including from Jenkins pipelines."
+    },
+    {
+      "id": "mcp-control",
+      "name": "Control via MCP",
+      "description": "Opens apps, visits URLs, presses buttons and reads the current window on the emulator through the beta HTTP MCP server."
+    },
+    {
+      "id": "adb-connect",
+      "name": "Remote adb Control",
+      "description": "Connects to the emulator from outside the container with adb connect to install, debug and drive apps from the host."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "docker",
+    "command": "docker run -d -p 6080:6080 -e EMULATOR_DEVICE=\"Samsung Galaxy S10\" -e WEB_VNC=true --device /dev/kvm --name android-container budtmo/docker-android:emulator_11.0"
+  },
+  "quickstartUrl": "https://github.com/budtmo/docker-android#quick-start",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-11-13T12:18:30.803Z",
+  "updatedAt": "2026-11-13T12:18:30.803Z"
+}
