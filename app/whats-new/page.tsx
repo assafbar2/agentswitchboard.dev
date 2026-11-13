@@ -4,11 +4,15 @@ import type { Metadata, ResolvingMetadata } from 'next';
 import { CopyButton } from '@/components/CopyButton';
 import { EndpointLink } from '@/components/EndpointLink';
 import { Highlights } from '@/components/Highlights';
-import { getReleases, highlightedReleases, releaseAnchor } from '@/lib/changelog';
+import { getEveryAgent } from '@/lib/catalog';
+import { getReleases, highlightedReleases } from '@/lib/changelog';
+import { getDropSchedule } from '@/lib/drops';
 import { inlineMarkdownToText } from '@/lib/inline-markdown';
 import { pageMetadata } from '@/lib/metadata';
 import { whatsNewCard, whatsNewCardImage } from '@/lib/share-cards';
+import { getStacks } from '@/lib/stacks';
 import { formatDay } from '@/lib/utils';
+import { highlightRows, whatsNewEntries } from '@/lib/whats-new';
 
 const SITE = 'https://agentswitchboard.dev';
 
@@ -18,7 +22,7 @@ const FEEDS = [
 ] as const;
 
 const DESCRIPTION =
-  "What you can do on Agent Switchboard that you couldn't before, release by release, each with a link to try it.";
+  "What you can do on Agent Switchboard that you couldn't before, release by release and drop by drop, each with a link to try it.";
 
 export async function generateMetadata(_props: unknown, parent: ResolvingMetadata): Promise<Metadata> {
   const [latest] = highlightedReleases(getReleases());
@@ -36,10 +40,11 @@ export async function generateMetadata(_props: unknown, parent: ResolvingMetadat
 const inlineLink =
   'font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2';
 
-export default function WhatsNewPage() {
+export default async function WhatsNewPage() {
   const releases = highlightedReleases(getReleases());
   if (releases.length === 0) notFound();
   const oldest = releases[releases.length - 1];
+  const entries = whatsNewEntries(releases, getDropSchedule().drops, getStacks(), await getEveryAgent());
 
   return (
     <>
@@ -51,8 +56,8 @@ export default function WhatsNewPage() {
               What&apos;s new
             </h1>
             <p className="text-lg text-[var(--dir-muted)]">
-              What you can do on the site that you couldn&apos;t before, newest release first, each with a link to try
-              it. The listings added lately are on{' '}
+              What you can do on the site that you couldn&apos;t before, and what each weekly drop added, newest
+              first, each with a link to try it. The listings added lately are on{' '}
               <Link href="/new" className={inlineLink}>
                 New listings
               </Link>
@@ -63,9 +68,9 @@ export default function WhatsNewPage() {
               .
             </p>
             <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[15px] font-semibold">
-              {releases.map((r) => (
-                <a key={r.version} href={`#${releaseAnchor(r.version)}`} className={inlineLink}>
-                  {r.version}
+              {entries.map((e) => (
+                <a key={e.id} href={`#${e.anchor}`} className={inlineLink}>
+                  {e.kind === 'release' ? e.label : formatDay(e.date).replace(/, \d{4}$/, '')}
                 </a>
               ))}
               <a href="#follow" className={inlineLink}>
@@ -74,25 +79,22 @@ export default function WhatsNewPage() {
             </p>
           </div>
 
-          {releases.map((release) => {
-            const anchor = releaseAnchor(release.version);
-            return (
-              <section key={release.version} aria-labelledby={anchor} className="mb-10">
-                <h2 id={anchor} className="dir-bar scroll-mt-24">
-                  {release.version} · {release.title}{' '}
-                  <span className="dir-bar-count">
-                    · <time dateTime={release.date}>{formatDay(release.date)}</time>
-                  </span>
-                </h2>
-                <Highlights release={release} from="whats-new" />
-                <p className="mt-2 text-[15px]">
-                  <Link href={`/changelog#${anchor}`} className={inlineLink}>
-                    All the notes for {release.version}
-                  </Link>
-                </p>
-              </section>
-            );
-          })}
+          {entries.map((entry) => (
+            <section key={entry.id} aria-labelledby={entry.anchor} className="mb-10">
+              <h2 id={entry.anchor} className="dir-bar scroll-mt-24">
+                {entry.label} · {entry.title}{' '}
+                <span className="dir-bar-count">
+                  · <time dateTime={entry.date}>{formatDay(entry.date)}</time>
+                </span>
+              </h2>
+              <Highlights rows={highlightRows([entry])} from="whats-new" />
+              <p className="mt-2 text-[15px]">
+                <Link href={entry.more.href} className={inlineLink}>
+                  {entry.more.label}
+                </Link>
+              </p>
+            </section>
+          ))}
 
           <section aria-labelledby="follow" className="mb-10">
             <h2 id="follow" className="dir-bar scroll-mt-24">
@@ -133,17 +135,17 @@ export default function WhatsNewPage() {
           <div className="mb-6">
             <div className="agent-accent text-base font-bold mb-1">/whats-new</div>
             <div className="agent-dim text-xs">
-              what you can do on the site that you couldn&apos;t before, release by release since {oldest.version} ·
-              each line is a feature and the page to try it
+              what you can do on the site that you couldn&apos;t before, release by release since {oldest.version},
+              and each weekly drop · each line is a feature and the page to try it
             </div>
           </div>
 
-          {releases.map((release) => (
-            <div key={release.version}>
+          {entries.map((entry) => (
+            <div key={entry.id}>
               <div className="agent-section-title">
-                {release.version} · {release.title} · {release.date}
+                {entry.label} · {entry.title} · {entry.date}
               </div>
-              {release.highlights.map((h, i) => (
+              {entry.highlights.map((h, i) => (
                 <Link key={i} href={h.tryIt} className="agent-row agent-row-stack no-underline hover:underline">
                   <span className="agent-accent">{h.tryIt}</span>
                   <span className="agent-dim">{inlineMarkdownToText(h.text)}</span>

@@ -1,7 +1,7 @@
-// What's new: /whats-new (each release's highlights from CHANGELOG.md, each
-// with a Try it link), the homepage block that shows the newest release's
-// highlights for 30 days after it, and the feeds of every release and weekly
-// drop at /feed.xml (RSS) and /atom.xml (Atom).
+// What's new: /whats-new (each release's highlights from CHANGELOG.md and each
+// weekly drop's, each with a Try it link), the homepage block that shows the
+// newest highlights of the last 30 days, and the feeds of every release and
+// weekly drop at /feed.xml (RSS) and /atom.xml (Atom).
 // Read-only: only GETs (via fetch at collection time, page.goto and page.request).
 import { test, expect } from './fixtures.mjs';
 import { BASE } from '../target.mjs';
@@ -13,7 +13,7 @@ const MAX_HIGHLIGHTS = 5;
 const MAX_ENTRIES = 30;
 
 // The first of the 30 days that count as new, as /new states it: the homepage
-// shows a release's highlights while the release is no older than that.
+// shows the highlights of releases and drops no older than that.
 const NEW_HTML = await (await fetch(`${BASE}/new`, { headers: UA })).text();
 const SINCE = NEW_HTML.match(/<time datetime="(\d{4}-\d{2}-\d{2})"/i)?.[1];
 
@@ -59,6 +59,22 @@ async function releasesOn(page) {
     });
   }
   return releases;
+}
+
+/** Every release and drop /whats-new shows, newest first. */
+async function entriesOn(page) {
+  const sections = human(page).locator('section[aria-labelledby^="v"], section[aria-labelledby^="drop-"]');
+  const entries = [];
+  for (const section of await sections.all()) {
+    entries.push({
+      anchor: await section.getAttribute('aria-labelledby'),
+      heading: (await section.getByRole('heading', { level: 2 }).textContent()).replace(/\s+/g, ' ').trim(),
+      date: await section.locator('h2 time').getAttribute('datetime'),
+      highlights: await highlightsIn(section.locator('ul')),
+      more: await section.locator(':scope > p a').getAttribute('href'),
+    });
+  }
+  return entries;
 }
 
 function compareVersions(a, b) {
@@ -131,8 +147,25 @@ test.describe('/whats-new', () => {
     expect(versions.at(-1)).toBe(FIRST_VERSION);
     expect([...versions].sort(compareVersions).reverse()).toEqual(versions);
     expect(releases.map((r) => r.date)).toEqual(releases.map((r) => r.date).sort().reverse());
+    const entries = await entriesOn(page);
+    expect(entries.map((e) => e.date)).toEqual(entries.map((e) => e.date).sort().reverse());
     const jumps = await human(page).locator('h1 ~ p a[href^="#"]').evaluateAll((els) => els.map((e) => e.getAttribute('href')));
-    expect(jumps).toEqual([...releases.map((r) => `#${r.anchor}`), '#follow']);
+    expect(jumps).toEqual([...entries.map((e) => `#${e.anchor}`), '#follow']);
+  });
+
+  test("lists the newest drop: what it added, linking the drop, and its stack of the week", async ({ page }) => {
+    const drops = await (await page.request.get('/drops', { headers: UA })).text();
+    const date = drops.match(/href="\/drops\/(\d{4}-\d{2}-\d{2})"/)?.[1];
+    await page.goto('/whats-new');
+    const entry = (await entriesOn(page)).find((e) => e.anchor === `drop-${date}`);
+    expect(entry, `the ${date} drop is on /whats-new`).toBeTruthy();
+    expect(entry.heading).toMatch(/^Weekly drop · \S.* · [A-Z][a-z]{2} \d{1,2}, \d{4}$/);
+    expect(entry.date).toBe(date);
+    expect(entry.highlights[0].href).toBe(`/drops/${date}`);
+    expect(entry.highlights[0].text).toMatch(/^[\d,]+ (AI agents? added|listings? updated|listings? removed)/);
+    for (const h of entry.highlights) expect(h.release).toBe(`drop-${date}`);
+    if (entry.highlights[1]) expect(entry.highlights[1].href).toMatch(/^\/stacks\/[a-z0-9-]+$/);
+    expect(entry.more).toBe(`/drops/${date}`);
   });
 
   test(`each release has 1 to ${MAX_HIGHLIGHTS} highlights, each with a Try it link that names it, and links its notes`, async ({ page }) => {
@@ -153,7 +186,7 @@ test.describe('/whats-new', () => {
 
   test('every Try it link opens a page, and any part of the page it points to is on it', async ({ page }) => {
     await page.goto('/whats-new');
-    const hrefs = [...new Set((await releasesOn(page)).flatMap((r) => r.highlights.map((h) => h.href)))];
+    const hrefs = [...new Set((await entriesOn(page)).flatMap((e) => e.highlights.map((h) => h.href)))];
     const bad = [];
     for (const href of hrefs) {
       const url = new URL(href, ORIGIN);
@@ -216,7 +249,7 @@ test.describe('/whats-new', () => {
 
   test('text-only view lists every highlight with the page to try it, then the feeds', async ({ page }) => {
     await page.goto('/whats-new');
-    const releases = await releasesOn(page);
+    const releases = await entriesOn(page);
     await page.addInitScript(() => { try { localStorage.setItem('viewMode', 'agent'); } catch {} });
     await page.goto('/whats-new');
     const agentView = page.locator('.agent-only');
@@ -234,25 +267,25 @@ test.describe('/whats-new', () => {
 });
 
 test.describe('homepage', () => {
-  test(`shows the newest release's highlights while it is new (since ${SINCE}), then one line`, async ({ page }) => {
+  test(`shows the newest highlights of releases and drops since ${SINCE}, dated by the newest, else one line`, async ({ page }) => {
     expect(SINCE).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     await page.goto('/whats-new');
-    const [newest] = await releasesOn(page);
+    const entries = await entriesOn(page);
+    const [newest] = entries;
     await page.goto('/');
     const block = human(page).locator('section[aria-labelledby="whats-new"]');
     const drop = human(page).locator('a[href^="/drops/20"]').first();
     if (newest.date >= SINCE) {
-      await expect(block.getByRole('heading', { level: 2 })).toHaveText(
-        new RegExp(`^What's new · ${escapeRe(newest.version)} \\S.* · [A-Z][a-z]{2} \\d{1,2}, \\d{4}$`)
-      );
-      expect(await highlightsIn(block.locator('ul'))).toEqual(newest.highlights);
+      await expect(block.getByRole('heading', { level: 2 })).toHaveText(`What's new · ${newest.heading.split(' · ').at(-1)}`);
+      const fresh = entries.filter((e) => e.date >= SINCE).flatMap((e) => e.highlights);
+      expect(await highlightsIn(block.locator('ul'))).toEqual(fresh.slice(0, MAX_HIGHLIGHTS));
       await expect(block.locator('a[href="/whats-new"]')).toContainText('Everything new on the site');
       expect((await block.boundingBox()).y, 'above the latest drop').toBeLessThan((await drop.boundingBox()).y);
     } else {
       await expect(block).toHaveCount(0);
       const row = human(page).locator('a.dir-row[href="/whats-new"]');
       await expect(row).toContainText("What's new on the site");
-      await expect(row).toContainText(`${newest.version} · `);
+      await expect(row).toContainText(newest.heading.split(' · ').at(-1));
       expect((await row.boundingBox()).y, 'above the latest drop').toBeLessThan((await drop.boundingBox()).y);
     }
   });
@@ -260,7 +293,7 @@ test.describe('homepage', () => {
   test('a Try it link there counts whats_new_try_click from the homepage', async ({ page }) => {
     await openHydrated(page, '/');
     const links = human(page).locator('section[aria-labelledby="whats-new"] a[data-try]');
-    test.skip((await links.count()) === 0, 'the newest release is more than 30 days old');
+    test.skip((await links.count()) === 0, 'nothing on What\'s new is from the last 30 days');
     const [target] = await highlightsIn(human(page).locator('section[aria-labelledby="whats-new"] ul'));
     await links.first().click();
     await expect(page).toHaveURL(new RegExp(`${escapeRe(target.href.split('#')[0])}(#.*)?$`));
@@ -395,7 +428,7 @@ test.describe('on a phone', () => {
       const [sw, cw] = await page.evaluate(() => [document.documentElement.scrollWidth, document.documentElement.clientWidth]);
       expect(sw).toBeLessThanOrEqual(cw + 1);
       const heights = await human(page).locator('a[data-try]').evaluateAll((els) => els.map((e) => e.getBoundingClientRect().height));
-      test.skip(path === '/' && heights.length === 0, 'the newest release is more than 30 days old');
+      test.skip(path === '/' && heights.length === 0, 'nothing on What\'s new is from the last 30 days');
       expect(heights.length).toBeGreaterThan(0);
       expect(Math.min(...heights)).toBeGreaterThanOrEqual(44);
     });
