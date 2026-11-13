@@ -1,5 +1,12 @@
 [
   {
+    "action": "removed",
+    "slug": "gpt-pilot",
+    "name": "GPT Pilot",
+    "note": "Its GitHub repo (Pythagora-io/gpt-pilot) carried credential-stealing malware from August 2025 until it was removed on June 11, 2026, and the project is unmaintained",
+    "date": "2026-11-13"
+  },
+  {
     "action": "added",
     "slug": "treg",
     "name": "treg",
