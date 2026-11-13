@@ -43,7 +43,7 @@ OpenAPI: [`/openapi.json`](https://agentswitchboard.dev/openapi.json).
 Connector skill: [`/skill.md`](https://agentswitchboard.dev/skill.md).
 
 Also machine-readable: [`/agents.json`](https://agentswitchboard.dev/agents.json)
-(full catalog, CORS-open), in-browser tools via WebMCP (`document.modelContext`),
+(an index of the full catalog in pages of 50, CORS-open), in-browser tools via WebMCP (`document.modelContext`),
 and an agent-optimized view on every page (the "For Agents" toggle).
 
 **Full API reference: [docs/API.md](docs/API.md)** — REST search/detail/categories, compare, alternatives and the connect bundle, MCP, WebMCP, and the catalog dump.

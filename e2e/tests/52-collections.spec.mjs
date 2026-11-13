@@ -6,12 +6,13 @@
 import * as fs from 'fs';
 import { test, expect } from './fixtures.mjs';
 import { BASE } from '../target.mjs';
+import { loadCatalog } from '../catalog.mjs';
 
 const ORIGIN = 'https://agentswitchboard.dev';
 const UA = { 'user-agent': 'asb-e2e (collections)' };
 const MAX = 10;
 
-const catalog = (await (await fetch(`${BASE}/agents.json`, { headers: UA })).json()).agents;
+const catalog = (await loadCatalog(BASE, UA)).agents;
 const bySlug = new Map(catalog.map((a) => [a.slug, a]));
 const name = (slug) => bySlug.get(slug).name;
 const content = (file) => JSON.parse(fs.readFileSync(new URL(`../../content/${file}`, import.meta.url), 'utf8'));

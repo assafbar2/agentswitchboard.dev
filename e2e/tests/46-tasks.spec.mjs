@@ -432,7 +432,8 @@ test.describe('/browse?task=', () => {
     const mcp = await json(request, `/api/agents?task=${SAMPLE.slug}&access=mcp&limit=50`);
     await page.goto(`/browse?task=${SAMPLE.slug}&access=mcp`);
     await expect(countBar(page)).toHaveText(fitLine(mcp.total));
-    expect(await hrefs(cards(page))).toEqual(mcp.agents.map((a) => `/agents/${a.slug}`));
+    // The API answers at most 50; the page shows up to 60.
+    expect((await hrefs(cards(page))).slice(0, mcp.agents.length)).toEqual(mcp.agents.map((a) => `/agents/${a.slug}`));
     await expect(banner(page).getByRole('link', { name: 'Remove task' })).toHaveAttribute('href', '/browse?access=mcp');
 
     await human(page).getByRole('button', { name: 'Official' }).click();

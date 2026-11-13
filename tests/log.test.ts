@@ -344,6 +344,7 @@ describe('proxy', () => {
     '/',
     '/llms.txt',
     '/agents.json',
+    '/catalog/3.json',
     '/index.md',
     '/skill.md',
     '/SKILL.md',
@@ -439,6 +440,12 @@ describe('proxy', () => {
       { client: 'python', call: '/llms.txt' },
       { headers: { 'user-agent': UA.httpx } }
     );
+  });
+
+  it('counts every catalog page under one route', () => {
+    proxy(proxyRequest('/catalog/1.json', { headers: { 'user-agent': UA.curl } }));
+    proxy(proxyRequest('/catalog/12.json', { headers: { 'user-agent': UA.curl } }));
+    expect(consumerLines().map((l) => l.route)).toEqual(['/catalog/[page].json', '/catalog/[page].json']);
   });
 
   it('does not count CORS preflights or HEAD checks', () => {

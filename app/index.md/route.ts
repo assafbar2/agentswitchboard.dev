@@ -79,7 +79,7 @@ On the website, the REST API and /agents.json, a \`sponsored\` flag also marks p
 - To help a user choose and set up: \`/api/compare?a={slug}&b={slug}&c={slug}\` puts 2 or 3 listings side by side; \`/api/agents/{slug}/alternatives\` lists the ones that could stand in for one, each with why; \`/api/bundle?items={slug},{slug}\` gives one MCP client config for up to ${MY_STACK_MAX} listings, and how to connect the rest. The MCP tools \`compare_agents\`, \`alternatives_to\` and \`connect_bundle\` return the same.
 - [/openapi.json](${BASE_URL}/openapi.json) — OpenAPI 3.1 description of the HTTP surface.
 - [/.well-known/mcp.json](${BASE_URL}/.well-known/mcp.json) — MCP server manifest.
-- [/agents.json](${BASE_URL}/agents.json) — the entire catalog as one large JSON file, no auth. Use it for bulk or offline work; search for everything else.
+- [/agents.json](${BASE_URL}/agents.json) — index of the whole catalog, no auth: it links JSON pages of up to 50 listings (\`/catalog/1.json\` and on, each with \`next\`). Use them for bulk or offline work; search for everything else.
 - [/llms.txt](${BASE_URL}/llms.txt) — plain-language site guide.
 - [/for-agents](${BASE_URL}/for-agents) — how to use all of the above.${dropLine}${newLine}${releaseLine}${stackLine}${taskLine}${compareLine}${boardLine}${operatorLine}
 

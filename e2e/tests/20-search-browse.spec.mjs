@@ -730,17 +730,43 @@ test.describe('category counts and the rail', () => {
 });
 
 test.describe('listing completeness', () => {
-  test('unfiltered /browse renders every agent (no pagination), matching the API total', async ({ page }) => {
+  test('unfiltered /browse pages through every agent once, 60 a page, matching the API total', async ({ page }) => {
     await page.goto('/browse');
     const total = await apiTotal(page, {});
     await expect(countBar(page)).toHaveText(`${total} agents listed`);
-    await expect(cards(page)).toHaveCount(total);
+    const pages = Math.ceil(total / 60);
+    const pager = human(page).getByRole('navigation', { name: 'Result pages' });
+    await expect(pager).toContainText(`Page 1 of ${pages} · 1–60 of ${total}`);
+    await expect(pager.getByRole('link', { name: /Previous/ })).toHaveCount(0);
+    const seen = [];
+    for (let n = 1; n <= pages; n++) {
+      if (n > 1) await page.goto(`/browse?page=${n}`);
+      await expect(countBar(page)).toHaveText(`${total} agents listed`);
+      const hrefs = await cardHrefs(page);
+      expect(hrefs.length, `page ${n}`).toBe(n < pages ? 60 : total - 60 * (pages - 1));
+      seen.push(...hrefs);
+    }
+    await expect(pager.getByRole('link', { name: /Next/ })).toHaveCount(0);
+    await expect(pager.getByRole('link', { name: /Previous/ })).toHaveAttribute('href', pages > 2 ? `/browse?page=${pages - 1}` : '/browse');
+    expect(new Set(seen).size).toBe(total);
   });
 
-  test('rendered card count equals the count bar for a filtered view', async ({ page }) => {
-    await page.goto('/browse?access=browser-extension');
+  test('a filtered view shows its first 60 cards and pages on with its filters', async ({ page }) => {
+    await page.goto('/browse?verified=1&sort=newest');
     const n = await shownCount(page);
-    await expect(cards(page)).toHaveCount(n);
+    await expect(cards(page)).toHaveCount(Math.min(n, 60));
+    test.skip(n <= 60, 'one page only');
+    const next = human(page).getByRole('navigation', { name: 'Result pages' }).getByRole('link', { name: /Next/ });
+    await expect(next).toHaveAttribute('href', '/browse?verified=1&sort=newest&page=2');
+    await next.click();
+    await expect(page).toHaveURL(/page=2/);
+    expect(await shownCount(page)).toBe(n);
+  });
+
+  test('a filter chip on a later page goes back to page 1', async ({ page }) => {
+    await page.goto('/browse?page=3');
+    await human(page).getByRole('button', { name: 'Verified', exact: true }).click();
+    await expect(page).toHaveURL(/\/browse\?verified=1$/);
   });
 
   test('back navigation restores the previous query in the box and results', async ({ page }) => {

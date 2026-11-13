@@ -6,11 +6,12 @@
 // Read-only: only GETs (via fetch at collection time, page.goto and page.request).
 import { test, expect } from './fixtures.mjs';
 import { BASE } from '../target.mjs';
+import { loadCatalog } from '../catalog.mjs';
 
 const ORIGIN = 'https://agentswitchboard.dev';
 const UA = { 'user-agent': 'asb-e2e (live freshness tests)' };
 
-const CATALOG = (await (await fetch(`${BASE}/agents.json`, { headers: UA })).json()).agents;
+const CATALOG = (await loadCatalog(BASE, UA)).agents;
 const NEW_HTML = await (await fetch(`${BASE}/new`, { headers: UA })).text();
 // The window's first day, as /new states it in its intro.
 const SINCE = NEW_HTML.match(/<time datetime="(\d{4}-\d{2}-\d{2})"/i)?.[1];
@@ -122,13 +123,16 @@ test.describe('/new', () => {
 });
 
 test.describe('the New tag on listing cards', () => {
-  test('on /browse, every listing added since the first day is tagged New and no other is', async ({ page }) => {
-    await page.goto('/browse?sort=newest');
-    const cards = await human(page).locator('.cmp-card').evaluateAll((els) =>
-      els.map((el) => ({
-        slug: el.querySelector('a[href^="/agents/"]').getAttribute('href').replace('/agents/', ''),
-        tagged: !!el.querySelector('.new-tag'),
-      })));
+  test('on /browse, page by page, every listing added since the first day is tagged New and no other is', async ({ page }) => {
+    const cards = [];
+    for (let n = 1; n <= Math.ceil(CATALOG.length / 60); n++) {
+      await page.goto(`/browse?sort=newest&page=${n}`);
+      cards.push(...(await human(page).locator('.cmp-card').evaluateAll((els) =>
+        els.map((el) => ({
+          slug: el.querySelector('a[href^="/agents/"]').getAttribute('href').replace('/agents/', ''),
+          tagged: !!el.querySelector('.new-tag'),
+        })))));
+    }
     expect(cards.length).toBe(CATALOG.length);
     const wrong = cards.filter((c) => c.tagged !== NEW_SLUGS.has(c.slug)).map((c) => `${c.slug}: ${c.tagged ? 'tagged' : 'not tagged'}`);
     expect(wrong).toEqual([]);

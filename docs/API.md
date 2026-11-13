@@ -16,7 +16,7 @@ need no authentication, are CORS-open, and read the same cached catalog**
 | **REST connect bundle** | one MCP client config for several listings | `GET /api/bundle` |
 | **MCP server** | MCP clients (Grok, Claude, ChatGPT, Cursor, …) | `POST /api/mcp` |
 | **WebMCP** | agents viewing the page in a browser | `document.modelContext` |
-| **Catalog dump** | bulk / offline indexing | `GET /agents.json` |
+| **Catalog dump** | bulk / offline indexing | `GET /agents.json` (index) → `GET /catalog/{n}.json` |
 
 Base URL: `https://agentswitchboard.dev`
 
@@ -75,8 +75,8 @@ handshake (e.g. wiring into a connector platform).
 
 Paginate with `total` + `offset` + `limit`, `page`, or by following `next`:
 the same query one page on (as `offset`), or `null` when this page is the
-last. A page holds at most 50 listings; for the whole catalog in one request,
-read [`/agents.json`](#catalog-dump--get-agentsjson). `Cache-Control` is
+last. A page holds at most 50 listings; for bulk work, read the
+[catalog dump](#catalog-dump--get-agentsjson). `Cache-Control` is
 `s-maxage=300, stale-while-revalidate=600`. With `since`, the response also
 has `since`: the first day kept (`YYYY-MM-DD`, UTC), so `since=7` says which
 days it covered.
@@ -442,9 +442,49 @@ Static declaration: [`/.well-known/webmcp.json`](https://agentswitchboard.dev/.w
 
 ## Catalog dump — `GET /agents.json`
 
-The entire catalog as one JSON document, CORS-open, for bulk indexing.
-Filter client-side on `accessMethods`, `categories`, and `official`. Each
-agent carries `official`, `officialVendor` and `iconUrl`.
+A small index of the catalog, CORS-open, for bulk indexing. No single request
+returns the whole catalog: the listings are in static pages of at most 50 at
+`/catalog/{n}.json`, featured first, then A→Z, built once per deploy.
+
+```jsonc
+// GET /agents.json
+{
+  "source": "Agent Switchboard — https://agentswitchboard.dev",
+  "description": "…what the flags mean…",
+  "schemaVersion": 2,          // 1 was the single-file dump (until 2.9.1)
+  "generated": "2026-11-13T12:00:00.000Z",
+  "total": 985,
+  "pageSize": 50,
+  "pageCount": 20,
+  "pages": ["https://agentswitchboard.dev/catalog/1.json", "…", "https://agentswitchboard.dev/catalog/20.json"],
+  "search": {
+    "rest": "https://agentswitchboard.dev/api/agents?limit=50&page=1",
+    "mcp": "https://agentswitchboard.dev/api/mcp",
+    "openapi": "https://agentswitchboard.dev/openapi.json",
+    "docs": "https://agentswitchboard.dev/llms.txt"
+  }
+}
+
+// GET /catalog/1.json
+{
+  "schemaVersion": 2,
+  "index": "https://agentswitchboard.dev/agents.json",
+  "total": 985, "pageSize": 50, "page": 1, "pageCount": 20, "offset": 0,
+  "prev": null,
+  "next": "https://agentswitchboard.dev/catalog/2.json", // null on the last page
+  "agents": [ /* up to 50 listings */ ]
+}
+```
+
+Fetch `pages` in order, or follow `next` from page 1. Any other file under
+`/catalog/` is a 404. Each listing carries the full set of fields: `url`,
+`iconUrl`, `homepage`, `provider`, `providerUrl`, `description`, `categories`,
+`accessMethods`, `tags`, `verified`, `official`, `officialVendor`, `featured`,
+`sponsored`, `tier`, `createdAt`, `updatedAt`, and the Use it now fields
+(`mcpEndpoint`, `mcpCommand`, `install`, `quickstartUrl`, `apiBaseUrl` when the
+listing has them). Filter client-side on `accessMethods`, `categories` and
+`official`. To find tools for a job, search with
+[`GET /api/agents`](#rest-search--get-apiagents) or the MCP server instead.
 
 ---
 

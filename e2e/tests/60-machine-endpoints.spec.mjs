@@ -5,6 +5,7 @@
 import * as fs from 'fs';
 import { test, expect } from './fixtures.mjs';
 import { BASE } from '../target.mjs';
+import { loadCatalog } from '../catalog.mjs';
 
 const ORIGIN = 'https://agentswitchboard.dev';
 const UA = 'Mozilla/5.0 asb-e2e (machine endpoint tests)';
@@ -16,7 +17,7 @@ const MCP_HEADERS = { ...H, 'content-type': 'application/json', accept: 'applica
 const READ_TOOLS = ['alternatives_to', 'compare_agents', 'connect_bundle', 'get_agent', 'list_categories', 'search_agents'];
 
 const content = (file) => JSON.parse(fs.readFileSync(new URL(`../../content/${file}`, import.meta.url), 'utf8'));
-const CATALOG = (await (await fetch(`${BASE}/agents.json`, { headers: H })).json()).agents;
+const CATALOG = (await loadCatalog(BASE, H)).agents;
 const sitemapXml = await (await fetch(`${BASE}/sitemap.xml`, { headers: H })).text();
 const pick = (found, what) => {
   if (!found) throw new Error(`no published listing ${what}`);
@@ -149,21 +150,34 @@ test.describe('text docs', () => {
 });
 
 test.describe('catalog JSON', () => {
-  test('/agents.json is valid JSON whose total matches its list and /api/agents', async ({ request }) => {
-    const { res, body } = await getJson(request, '/agents.json');
+  test('/agents.json is a small index whose pages hold the catalog once, at most 50 each', async ({ request }) => {
+    const { res, body: index } = await getJson(request, '/agents.json');
     expect(res.headers()['content-type']).toMatch(/application\/json/);
-    expect(Array.isArray(body.agents)).toBe(true);
-    expect(body.total).toBe(body.agents.length);
-    expect(body.total).toBeGreaterThan(100);
+    expect(index.agents, 'no listings in the index').toBeUndefined();
+    expect(index.total).toBeGreaterThan(100);
+    expect(index.pages).toHaveLength(Math.ceil(index.total / 50));
+    expect(index.search.mcp).toBe('https://agentswitchboard.dev/api/mcp');
     const { body: api } = await getJson(request, '/api/agents?limit=1');
-    expect(api.total).toBe(body.total);
-    const slugs = new Set(body.agents.map((a) => a.slug));
-    expect(slugs.size, 'slugs are unique').toBe(body.agents.length);
+    expect(api.total).toBe(index.total);
+    const slugs = [];
+    for (const [i, url] of index.pages.entries()) {
+      const { body: page } = await getJson(request, new URL(url).pathname);
+      expect(page.page).toBe(i + 1);
+      expect(page.agents.length).toBeLessThanOrEqual(50);
+      expect(page.next).toBe(index.pages[i + 1] ?? null);
+      slugs.push(...page.agents.map((a) => a.slug));
+    }
+    expect(slugs).toHaveLength(index.total);
+    expect(new Set(slugs).size, 'slugs are unique').toBe(index.total);
   });
 
-  test('/agents.json leaves out archived listings', async ({ request }) => {
-    const { body } = await getJson(request, '/agents.json');
-    const slugs = new Set(body.agents.map((a) => a.slug));
+  test('a catalog page past the last is a 404', async ({ request }) => {
+    const { body: index } = await getJson(request, '/agents.json');
+    expect((await request.get(`/catalog/${index.pages.length + 1}.json`, { headers: H })).status()).toBe(404);
+  });
+
+  test('the catalog leaves out archived listings', async () => {
+    const slugs = new Set(CATALOG.map((a) => a.slug));
     expect(ARCHIVED_SLUGS.filter((s) => slugs.has(s))).toEqual([]);
   });
 
@@ -283,6 +297,7 @@ test.describe('catalog JSON', () => {
     `/api/agents/${WITH_ALTERNATIVES}/alternatives`,
     `/api/bundle?items=${HOSTED.slug}`,
     '/agents.json',
+    '/catalog/1.json',
     '/index.md',
   ]) {
     test(`CORS: ${path} allows any origin`, async ({ request }) => {
@@ -510,6 +525,7 @@ test.describe('manifests', () => {
       '/api/tasks',
       '/api/tasks/{slug}',
       '/agents.json',
+      '/catalog/{page}.json',
       '/api/mcp',
     ]) {
       expect(Object.keys(body.paths)).toContain(p);

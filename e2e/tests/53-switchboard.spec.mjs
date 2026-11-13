@@ -6,6 +6,7 @@
 // Read-only: GETs only.
 import { test, expect } from './fixtures.mjs';
 import { BASE } from '../target.mjs';
+import { loadCatalog } from '../catalog.mjs';
 
 const ORIGIN = 'https://agentswitchboard.dev';
 const UA = { 'user-agent': 'asb-e2e (switchboard)' };
@@ -13,7 +14,7 @@ const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', '
 const ACCESS = { api: 'API', mcp: 'MCP', cli: 'CLI', 'browser-extension': 'Extension' };
 
 const get = (path) => fetch(`${BASE}${path}`, { headers: UA });
-const { total, agents: catalog } = await (await get('/agents.json')).json();
+const { total, agents: catalog } = await loadCatalog(BASE, UA);
 const { categories } = await (await get('/api/categories')).json();
 const sitemap = await (await get('/sitemap.xml')).text();
 const LATEST = [...sitemap.matchAll(/\/drops\/(\d{4}-\d{2}-\d{2})<\/loc>/g)].map((m) => m[1]).sort().reverse()[0];

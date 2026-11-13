@@ -1,7 +1,8 @@
 /**
  * check-links.ts — link-rot sweep over the live catalog.
  *
- * Fetches agents.json and probes every agentUrl + providerUrl.
+ * Reads the catalog (the agents.json index and every page it links) and
+ * probes every agentUrl + providerUrl.
  * Classification is deliberately conservative to avoid false alarms:
  *   DEAD — 404/410, DNS failure, or connection refused (page is gone)
  *   WARN — 403/429/5xx/timeouts (likely bot-blocking or flakiness, not rot)
@@ -28,6 +29,22 @@ interface Result {
   slugs: string[];
   status: number | string;
   verdict: Verdict;
+}
+
+type CatalogAgent = { slug: string; homepage?: string; providerUrl?: string };
+
+/** Every listing: the index links pages of 50; a deploy from before the split has them inline. */
+async function loadCatalog(): Promise<{ generated?: string; agents: CatalogAgent[] }> {
+  const get = async (url: string) => {
+    const res = await fetch(url, { headers: { 'User-Agent': UA } });
+    if (!res.ok) throw new Error(`${url}: HTTP ${res.status}`);
+    return res.json();
+  };
+  const index = await get(CATALOG_URL);
+  if (Array.isArray(index.agents)) return index;
+  const pages: { agents: CatalogAgent[] }[] = [];
+  for (const url of index.pages as string[]) pages.push(await get(url));
+  return { generated: index.generated, agents: pages.flatMap((p) => p.agents) };
 }
 
 async function probe(url: string): Promise<{ status: number | string; verdict: Verdict }> {
@@ -60,8 +77,8 @@ async function probe(url: string): Promise<{ status: number | string; verdict: V
 
 async function main() {
   const md = process.argv.includes('--md');
-  const catalog = await fetch(CATALOG_URL).then((r) => r.json());
-  const agents: { slug: string; homepage?: string; providerUrl?: string }[] = catalog.agents;
+  const catalog = await loadCatalog();
+  const agents = catalog.agents;
 
   // Dedupe URLs, remembering which agents reference each
   const urlMap = new Map<string, Set<string>>();

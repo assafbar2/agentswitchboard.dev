@@ -1,8 +1,15 @@
-import { VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 import { getEveryAgent } from '@/lib/catalog';
+import {
+  CATALOG_FLAGS,
+  CATALOG_HEADERS,
+  CATALOG_PAGE_SIZE,
+  CATALOG_SCHEMA_VERSION,
+  CATALOG_SOURCE,
+  catalogPageCount,
+  catalogPageUrl,
+} from '@/lib/catalog-dump';
 import { BASE_URL } from '@/lib/env';
-import { absoluteIconUrl } from '@/lib/icons';
-import { FEATURED_DEFINITION, OFFICIAL_DEFINITION, SPONSORED_DEFINITION, howToUseFields } from '@/lib/public-api';
+import { MAX_LIMIT } from '@/lib/public-api';
 import { NextResponse } from 'next/server';
 
 // Built once per deploy and served from the CDN whatever the query string, like
@@ -11,49 +18,31 @@ import { NextResponse } from 'next/server';
 export const dynamic = 'force-static';
 
 export async function GET() {
-  const agents = await getEveryAgent();
-
-  const catalog = agents.map((a) => ({
-    name: a.name,
-    slug: a.slug,
-    url: `${BASE_URL}/agents/${a.slug}`,
-    iconUrl: absoluteIconUrl(a.iconUrl),
-    homepage: a.agentUrl ?? null,
-    provider: a.providerName ?? null,
-    providerUrl: a.providerUrl ?? null,
-    description: a.description,
-    categories: a.categories.map((c) => c.slug),
-    accessMethods: a.accessMethods ?? [],
-    tags: a.tags ?? [],
-    verified: a.verified,
-    official: a.official,
-    officialVendor: a.officialVendor?.name ?? null,
-    // Featured listings sort first in this file's order, so callers see why.
-    featured: a.featured === true,
-    sponsored: a.sponsored === true,
-    tier: a.tier,
-    createdAt: a.createdAt ?? null,
-    updatedAt: a.updatedAt ?? null,
-    ...howToUseFields(a),
-  }));
+  const total = (await getEveryAgent()).length;
+  const pageCount = catalogPageCount(total);
 
   return NextResponse.json(
     {
-      source: 'Agent Switchboard — https://agentswitchboard.dev',
+      source: CATALOG_SOURCE,
       description:
-        'Machine-readable catalog of every published Agent Switchboard listing (AI agents, MCP servers and agentic tools), featured first, then A→Z. Filter by categories or accessMethods to find the right tool. ' +
-        `Flags: ${VERIFIED_DEFINITION} ${OFFICIAL_DEFINITION} ${FEATURED_DEFINITION} ${SPONSORED_DEFINITION}`,
+        'Index of the machine-readable Agent Switchboard catalog (AI agents, MCP servers and agentic tools). ' +
+        `The listings are in ${pageCount} static pages of up to ${CATALOG_PAGE_SIZE}, featured first, then A→Z: fetch the URLs in \`pages\` in order, or follow each page's \`next\`. ` +
+        'To find tools for a job, search instead: GET /api/agents (filters, `page` and `next`) or the MCP server. ' +
+        CATALOG_FLAGS,
+      schemaVersion: CATALOG_SCHEMA_VERSION,
       // Build time: the catalog only changes with a deploy.
       generated: new Date().toISOString(),
-      total: catalog.length,
-      agents: catalog,
-    },
-    {
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600',
+      total,
+      pageSize: CATALOG_PAGE_SIZE,
+      pageCount,
+      pages: Array.from({ length: pageCount }, (_, i) => catalogPageUrl(i + 1)),
+      search: {
+        rest: `${BASE_URL}/api/agents?limit=${MAX_LIMIT}&page=1`,
+        mcp: `${BASE_URL}/api/mcp`,
+        openapi: `${BASE_URL}/openapi.json`,
+        docs: `${BASE_URL}/llms.txt`,
       },
-    }
+    },
+    { headers: CATALOG_HEADERS }
   );
 }
