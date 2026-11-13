@@ -6,8 +6,10 @@ import { AgentIcon } from '@/components/AgentIcon';
 import { EndpointLink } from '@/components/EndpointLink';
 import { JsonLd } from '@/components/JsonLd';
 import { TaskEvents } from '@/components/TaskEvents';
+import { TaskComparison } from '@/components/TaskComparison';
 import { TaskRow } from '@/components/TaskRow';
 import { getAllCategories, getEveryAgent } from '@/lib/catalog';
+import { builtDay } from '@/lib/freshness';
 import { pageMetadata } from '@/lib/metadata';
 import { taskMatches } from '@/lib/search';
 import { taskCard, taskCardImage } from '@/lib/share-cards';
@@ -119,6 +121,8 @@ export default async function TaskPage({ params }: Props) {
           </div>
 
           <TaskEvents task={task.slug} from="task-page">
+            <TaskComparison task={task} rows={best} comparedOn={builtDay()} />
+
             <section aria-labelledby="best-fits">
               <h2 id="best-fits" className="dir-bar">
                 Best fits <span className="dir-bar-count">· {best.length}</span>
