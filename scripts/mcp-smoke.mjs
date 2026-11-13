@@ -32,7 +32,7 @@ const { tools } = await client.listTools();
 const names = tools.map((t) => t.name).sort();
 check(
   'tools/list',
-  names.join(',') === 'alternatives_to,compare_agents,connect_bundle,get_agent,list_categories,request_missing_tool,search_agents,submit_listing',
+  names.join(',') === 'alternatives_to,compare_agents,connect_bundle,get_agent,list_categories,recommend,request_missing_tool,search_agents,submit_listing',
   names.join(', ')
 );
 for (const t of tools) {
@@ -123,6 +123,10 @@ const bundle = await client.callTool({
 });
 const servers = Object.keys(bundle.structuredContent?.config?.mcpServers ?? {});
 check('connect_bundle', servers.includes('linear') && servers.includes('playwright-mcp'), bundle.structuredContent?.summary);
+
+const recommend = await client.callTool({ name: 'recommend', arguments: { need: 'read my Notion and query Postgres' } });
+const picks = recommend.structuredContent?.recommendations ?? [];
+check('recommend', picks.length === 2 && picks.every((r) => r.pick?.slug && r.nextStep?.url), picks.map((r) => r.pick?.slug).join(', '));
 
 const dup = await client.callTool({
   name: 'submit_listing',

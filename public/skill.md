@@ -39,6 +39,7 @@ Prefer REST. OpenAPI: https://agentswitchboard.dev/openapi.json
 6. `GET /api/compare?a={slug}&b={slug}` (add `&c={slug}` for a third) to put listings side by side: what sets each apart (`setsApart`), then one row per field with each listing's value by slug.
 7. `GET /api/agents/{slug}/alternatives` for listings that could stand in for one, strongest first, each with a `why` line.
 8. `GET /api/bundle?items={slug},{slug}` (up to 10) for one MCP client config to paste (`config`, `{"mcpServers": …}`), and how each listing connects (`items[].how` and `note`).
+9. `GET /api/recommend?need={the need, in a sentence}` when the user wants one tool for a job: one pick for each need it names (`recommendations[].pick`), why it fits, the next step to start using it (`nextStep`: the MCP config to paste when the vendor's docs give one, else its guide or docs) and two alternatives. `answer` says it in plain sentences. Write the need yourself from what the user said; never include names, emails or phone numbers. A need that matches no task is HTTP 404 `{ "error": "no_match" }` with the closest tasks.
 
 Query notes:
 
@@ -54,7 +55,7 @@ Unknown slugs return HTTP 404 `{ "error": "not_found", "message": "…" }`. Sear
 
 Bulk dump: `GET /agents.json` is an index linking pages of up to 50 listings (`/catalog/1.json` and on, each with `next`). Prefer search for user questions.
 
-Optional MCP (only if the client speaks MCP, not required): `POST https://agentswitchboard.dev/api/mcp` with tools `search_agents` (the same filters, `since` and `sort`), `get_agent`, `list_categories`, `compare_agents`, `alternatives_to` and `connect_bundle` (the same answers as the compare, alternatives and bundle endpoints).
+Optional MCP (only if the client speaks MCP, not required): `POST https://agentswitchboard.dev/api/mcp` with tools `search_agents` (the same filters, `since` and `sort`), `get_agent`, `list_categories`, `compare_agents`, `alternatives_to`, `connect_bundle` and `recommend` (the same answers as the compare, alternatives, bundle and recommend endpoints).
 
 ## How to answer the user
 

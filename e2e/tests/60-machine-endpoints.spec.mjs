@@ -14,7 +14,7 @@ const REAL_SLUG = 'playwright-mcp';
 // status: "archived" in content/agents/*.json at HEAD
 const ARCHIVED_SLUGS = ['midjourney', 'blender-mcp', 'smithery', 'framelink', 'headlong'];
 const MCP_HEADERS = { ...H, 'content-type': 'application/json', accept: 'application/json, text/event-stream' };
-const READ_TOOLS = ['alternatives_to', 'compare_agents', 'connect_bundle', 'get_agent', 'list_categories', 'search_agents'];
+const READ_TOOLS = ['alternatives_to', 'compare_agents', 'connect_bundle', 'get_agent', 'list_categories', 'recommend', 'search_agents'];
 
 const content = (file) => JSON.parse(fs.readFileSync(new URL(`../../content/${file}`, import.meta.url), 'utf8'));
 const CATALOG = (await loadCatalog(BASE, H)).agents;
@@ -82,7 +82,7 @@ test.describe('text docs', () => {
     expect(body).toMatch(/^# Agent Switchboard/);
     expect(body).toContain('https://agentswitchboard.dev/api/mcp');
     expect(body).toContain(
-      'Tools: search_agents, get_agent, list_categories, compare_agents, alternatives_to, connect_bundle, submit_listing'
+      'Tools: search_agents, get_agent, list_categories, compare_agents, alternatives_to, connect_bundle, recommend, submit_listing'
     );
     expect(body).toContain('request_missing_tool');
   });
@@ -418,6 +418,27 @@ test.describe('decision endpoints', () => {
     expect(body.error).toBe('no_listings');
     expect(body.notes).toHaveLength(2);
   });
+
+  test('/api/recommend gives one pick per need, with the next step and two alternatives', async ({ request }) => {
+    const { body } = await getJson(request, '/api/recommend?need=read+my+Notion+and+query+Postgres');
+    expect(body.recommendations.map((r) => r.task.slug)).toEqual(['work-in-notion-and-docs', 'query-a-database']);
+    for (const r of body.recommendations) {
+      expect(r.pick.slug).toBeTruthy();
+      expect(['config', 'guide', 'other']).toContain(r.nextStep.how);
+      expect(r.nextStep.url).toMatch(/^https?:\/\//);
+      expect(r.alternatives.length).toBeLessThanOrEqual(2);
+    }
+    expect(body.answer.split('\n')).toHaveLength(2);
+    expect(body.stackUrl).toMatch(new RegExp(`^${ORIGIN}/stack\\?items=`));
+    expect(JSON.stringify(body)).not.toMatch(/"(featured|sponsored|sponsorLabel|tier)"/);
+  });
+
+  test('/api/recommend refuses no need and a need no task matches', async ({ request }) => {
+    expect((await request.get('/api/recommend', { headers: H })).status()).toBe(400);
+    const res = await request.get('/api/recommend?need=make+me+a+sandwich', { headers: H });
+    expect(res.status()).toBe(404);
+    expect((await res.json()).error).toBe('no_match');
+  });
 });
 
 test.describe('crawler files', () => {
@@ -496,7 +517,7 @@ test.describe('crawler files', () => {
 });
 
 test.describe('manifests', () => {
-  test('/.well-known/mcp.json names the remote endpoint and the eight tools', async ({ request }) => {
+  test('/.well-known/mcp.json names the remote endpoint and the nine tools', async ({ request }) => {
     const { res, body } = await getJson(request, '/.well-known/mcp.json');
     expect(res.headers()['content-type']).toMatch(/json/);
     expect(body.remotes).toContainEqual({ type: 'streamable-http', url: 'https://agentswitchboard.dev/api/mcp' });
@@ -558,7 +579,7 @@ test.describe('MCP server /api/mcp', () => {
     expect(body.result.instructions).toContain('connect_bundle');
   });
 
-  test('tools/list lists the six read tools, submit_listing and request_missing_tool', async ({ request }) => {
+  test('tools/list lists the seven read tools, submit_listing and request_missing_tool', async ({ request }) => {
     const body = await mcp(request, 'tools/list');
     expect(body.error).toBeUndefined();
     const names = body.result.tools.map((t) => t.name).sort();
