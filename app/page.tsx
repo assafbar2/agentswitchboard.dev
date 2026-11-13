@@ -9,7 +9,7 @@ import {
   getOfficialGroups,
   getEveryAgent,
 } from '@/lib/catalog';
-import { getReleases, highlightedReleases } from '@/lib/changelog';
+import { getReleases } from '@/lib/changelog';
 import { dropAdditions, dropHighlights, getDropSchedule } from '@/lib/drops';
 import { isNew, NEW_DAYS, newSince } from '@/lib/freshness';
 import { sponsoredAgents } from '@/lib/homepage';
@@ -18,6 +18,7 @@ import { OPERATOR_EXAMPLES, operatorHref } from '@/lib/request-parts';
 import { taskMatches } from '@/lib/search';
 import { getStacks, stackEntries, stackOfTheWeek } from '@/lib/stacks';
 import { getTasks } from '@/lib/tasks';
+import { homepageHighlights, whatsNewEntries } from '@/lib/whats-new';
 import { formatDay, formatNumber, joinList, pluralize } from '@/lib/utils';
 import { IconCallout } from '@/components/IconCallout';
 import { StackCallout } from '@/components/StackCallout';
@@ -67,8 +68,9 @@ export default async function HomePage() {
   const latestOfficial = latestAdded.filter((a) => a.official).length;
   const since = newSince();
   const newCount = catalog.filter((a) => isNew(a.createdAt, since)).length;
-  const [latestRelease] = highlightedReleases(getReleases());
-  const releaseIsNew = !!latestRelease && latestRelease.date >= since;
+  const whatsNew = whatsNewEntries(getReleases(), getDropSchedule().drops, getStacks(), catalog);
+  const [latestNews] = whatsNew;
+  const newsRows = homepageHighlights(whatsNew, since);
   const sponsored = sponsoredAgents(catalog);
   const weekStack = stackOfTheWeek(getStacks());
   const weekEntries = weekStack ? stackEntries(weekStack, catalog) : [];
@@ -213,16 +215,13 @@ export default async function HomePage() {
         {/* ── What's new, latest drop, stack of the week, MCP and Grok Bot callouts ── */}
         <section className="pt-5">
           <div className="container-wide">
-            {latestRelease &&
-              (releaseIsNew ? (
+            {latestNews &&
+              (newsRows.length > 0 ? (
                 <section aria-labelledby="whats-new" className="mb-5">
                   <h2 id="whats-new" className="dir-bar">
-                    What&apos;s new{' '}
-                    <span className="dir-bar-count">
-                      · {latestRelease.version} {latestRelease.title} · {formatDay(latestRelease.date)}
-                    </span>
+                    What&apos;s new <span className="dir-bar-count">· {formatDay(latestNews.date)}</span>
                   </h2>
-                  <Highlights release={latestRelease} from="home" />
+                  <Highlights rows={newsRows} from="home" />
                   <Link href="/whats-new" className="dir-row">
                     <span className="dir-row-name">Everything new on the site</span>
                     <span className="dir-row-leader" aria-hidden="true" />
@@ -236,7 +235,8 @@ export default async function HomePage() {
                   <span className="dir-row-name">What&apos;s new on the site</span>
                   <span className="dir-row-leader" aria-hidden="true" />
                   <span className="dir-row-meta">
-                    {latestRelease.version} · {formatDay(latestRelease.date)}
+                    {latestNews.kind === 'release' ? `${latestNews.label} · ` : ''}
+                    {formatDay(latestNews.date)}
                   </span>
                 </Link>
               ))}
@@ -385,22 +385,21 @@ export default async function HomePage() {
             </div>
           </div>
 
-          {latestRelease && (
+          {latestNews && (
             <div className="mb-8">
               <div className="agent-section-title">
-                what&apos;s new · {latestRelease.version} {latestRelease.title} · {latestRelease.date}
+                what&apos;s new · {latestNews.label} {latestNews.title} · {latestNews.date}
               </div>
-              {releaseIsNew &&
-                latestRelease.highlights.map((h, i) => (
-                  <Link key={i} href={h.tryIt} className="agent-row agent-row-stack no-underline hover:underline">
-                    <span className="agent-accent">{h.tryIt}</span>
-                    <span className="agent-dim">{inlineMarkdownToText(h.text)}</span>
-                    <span className="agent-dim" />
-                  </Link>
-                ))}
+              {newsRows.map(({ highlight: h, id }) => (
+                <Link key={id} href={h.tryIt} className="agent-row agent-row-stack no-underline hover:underline">
+                  <span className="agent-accent">{h.tryIt}</span>
+                  <span className="agent-dim">{inlineMarkdownToText(h.text)}</span>
+                  <span className="agent-dim" />
+                </Link>
+              ))}
               <Link href="/whats-new" className="agent-row no-underline hover:underline">
                 <span className="agent-accent">/whats-new</span>
-                <span className="agent-dim">every release&apos;s highlights, each with the page to try it</span>
+                <span className="agent-dim">every release&apos;s and weekly drop&apos;s highlights, each with the page to try it</span>
                 <span className="agent-dim">rss: /feed.xml · atom: /atom.xml</span>
               </Link>
             </div>

@@ -14,11 +14,16 @@ export type ReleaseSectionName = (typeof RELEASE_SECTIONS)[number];
 
 /**
  * Every x.y.0 release from this version on opens with a "### Highlights" list:
- * one line per feature, each ending in a Try it link. A patch release may have
- * one too. /whats-new, the homepage and the feeds show those; /changelog shows
- * the sections below them.
+ * one line per feature, each ending in a Try it link. /whats-new, the homepage
+ * and the feeds show those; /changelog shows the sections below them.
  */
 export const HIGHLIGHTS_SINCE = '2.2.0';
+/**
+ * From this version on, patch releases need highlights too: a release
+ * without them never reaches /whats-new or the homepage, so What's new would
+ * fall behind what shipped.
+ */
+export const EVERY_RELEASE_HIGHLIGHTS_SINCE = '2.9.1';
 /** So the homepage's What's new block stays a glance. */
 export const MAX_HIGHLIGHTS = 5;
 
@@ -135,8 +140,12 @@ export function changelogProblems(releases: Release[]): string[] {
       problems.push(`${r.version}: every release and section needs at least one bullet`);
     }
     const isPatch = r.version.split('.')[2] !== '0';
-    if (!isPatch && compareVersions(r.version, HIGHLIGHTS_SINCE) >= 0 && r.highlights.length === 0) {
-      problems.push(`${r.version}: every x.y.0 release from ${HIGHLIGHTS_SINCE} on opens with "### ${HIGHLIGHTS}"`);
+    if (r.highlights.length === 0) {
+      if (compareVersions(r.version, EVERY_RELEASE_HIGHLIGHTS_SINCE) >= 0) {
+        problems.push(`${r.version}: every release from ${EVERY_RELEASE_HIGHLIGHTS_SINCE} on opens with "### ${HIGHLIGHTS}"`);
+      } else if (!isPatch && compareVersions(r.version, HIGHLIGHTS_SINCE) >= 0) {
+        problems.push(`${r.version}: every x.y.0 release from ${HIGHLIGHTS_SINCE} on opens with "### ${HIGHLIGHTS}"`);
+      }
     }
     if (r.highlights.length > MAX_HIGHLIGHTS) {
       problems.push(`${r.version}: ${r.highlights.length} highlights; keep it to ${MAX_HIGHLIGHTS}`);

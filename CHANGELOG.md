@@ -4,7 +4,24 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
+## [2.9.2] - 2026-11-13 - What's new keeps up
+
+### Highlights
+- See every weekly drop on What's new beside the site's releases: what it added, updated and removed, and its stack of the week, each with a link to try it. The Nov 13 drop added 56 agents, and its stack ships a web app with your agent. [Try it](https://agentswitchboard.dev/whats-new#drop-2026-11-13)
+
+### Changed
+- [/whats-new](https://agentswitchboard.dev/whats-new) lists each weekly drop as well as each release, newest first. A drop's highlights are written from the same data as its page on [/drops](https://agentswitchboard.dev/drops): one line on what it added, updated and removed, linking the drop, and one on its stack of the week, linking the stack. So a drop is on What's new as soon as it merges, with nothing written by hand. The homepage's What's new block shows the newest highlights from the last 30 days, releases and drops together, up to five, and is dated by the newest of them. Until now both showed only releases with highlights, so after the 2.9.1 release and the Nov 13 drop the homepage still said Nov 10. ([#PRNUM](https://github.com/assafbar2/agentswitchboard.dev/pull/PRNUM))
+- Every release from 2.9.1 on, patch releases too, opens with its highlights, and CI fails a release without them, so What's new never falls behind what ships. 2.9.1 has its highlights now. ([#PRNUM](https://github.com/assafbar2/agentswitchboard.dev/pull/PRNUM))
+- [/for-agents](https://agentswitchboard.dev/for-agents#rest) shows `page` and `next` in the REST search, as `GET /api/agents` answers since 2.9.1. ([#PRNUM](https://github.com/assafbar2/agentswitchboard.dev/pull/PRNUM))
+
+### Directory
+- The [Nov 13 drop](https://agentswitchboard.dev/drops/2026-11-13): 56 listings added, 14 of them Official, 2 updated and 1 archived, with [Ship a web app with your agent](https://agentswitchboard.dev/stacks/ship-a-web-app-with-your-agent) as the stack of the week. ([#395](https://github.com/assafbar2/agentswitchboard.dev/pull/395))
+
 ## [2.9.1] - 2026-11-13 - The catalog in pages
+
+### Highlights
+- Page through the directory: [/browse](https://agentswitchboard.dev/browse) and every filtered or search view of it show 60 listings a page, with Previous and Next, so it opens and scrolls faster on a phone. [Try it](https://agentswitchboard.dev/browse?page=2)
+- Read the whole catalog in pages: /agents.json is a small index that links static pages of up to 50 listings (`/catalog/1.json` and on, each with `next`), and `GET /api/agents` takes `page` and answers with `next`. [Try it](https://agentswitchboard.dev/for-agents#rest)
 
 ### Changed
 - [/browse](https://agentswitchboard.dev/browse) and every filtered or search view of it show 60 listings a page, with Previous and Next links and "Page 2 of 17 · 61–120 of 985" under the cards; later pages are `?page=2` and on. The count above the cards, the filters, the sort and the agent view are as before, and changing a filter, the sort or the search goes back to page 1. A page is about 290 KB of HTML instead of 3.6 MB, so the directory opens and scrolls faster on a phone. Crawlers are kept off `?page=` like every other key the page reads. ([#394](https://github.com/assafbar2/agentswitchboard.dev/pull/394))

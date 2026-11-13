@@ -2,7 +2,7 @@
 
 /**
  * Counts `whats_new_try_click` when a highlight's Try it link is opened, with
- * the release and the page it leads to. One listener for the list keeps the
+ * the release (or "drop-YYYY-MM-DD") and the page it leads to. One listener for the list keeps the
  * highlights server-rendered.
  */
 

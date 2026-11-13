@@ -180,7 +180,7 @@ export default async function ForAgentsPage() {
           <pre className="rounded-none border-2 border-[var(--dir-ink)]! bg-[var(--dir-paper)] p-4 text-xs overflow-x-auto">
 {`GET /api/agents?q=<text>&task=<slug>&category=<slug>&access=<method>
                &official=true&verified=true&auth=<type>&since=<day|days>
-               &sort=<order>&limit=<n>&offset=<n>
+               &sort=<order>&limit=<n>&offset=<n>&page=<n>
 GET /api/agents/<slug>
 GET /api/agents/<slug>/alternatives
 GET /api/categories
@@ -191,7 +191,7 @@ GET /api/stacks/<slug>
 GET /api/tasks
 GET /api/tasks/<slug>
 
-→ search: { total, offset, limit, since?, agents: [
+→ search: { total, offset, limit, since?, next, agents: [
      { name, slug, url, iconUrl, description, provider, categories,
        accessMethods, verified, official, featured }
    ] }
