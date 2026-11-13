@@ -18,10 +18,14 @@ export const CATALOG_SOURCE = 'Agent Switchboard — https://agentswitchboard.de
 
 export const CATALOG_FLAGS = `Flags: ${VERIFIED_DEFINITION} ${OFFICIAL_DEFINITION} ${FEATURED_DEFINITION} ${SPONSORED_DEFINITION}`;
 
+/**
+ * The index and pages change only when a release deploys, and a deploy replaces
+ * them in Vercel's CDN. Other caches keep a copy at most a day, browsers an hour.
+ */
 export const CATALOG_HEADERS = {
   'Content-Type': 'application/json',
   'Access-Control-Allow-Origin': '*',
-  'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600',
+  'Cache-Control': 'public, max-age=3600, s-maxage=86400',
 };
 
 export const catalogPageUrl = (page: number) => `${BASE_URL}/catalog/${page}.json`;
@@ -48,6 +52,7 @@ export function catalogEntry(a: Agent) {
     description: a.description,
     categories: a.categories.map((c) => c.slug),
     accessMethods: a.accessMethods ?? [],
+    authType: a.authType,
     tags: a.tags ?? [],
     verified: a.verified,
     official: a.official,
