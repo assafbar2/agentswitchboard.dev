@@ -175,7 +175,8 @@ export default async function ForAgentsPage() {
           <h2 className="dir-bar">## Plain REST search</h2>
           <p>
             A simple parameterized GET for wiring tools that want plain HTTP
-            rather than an MCP handshake. Read-only, no auth, open CORS:
+            rather than an MCP handshake. Read-only, no auth, open CORS, up to 120
+            requests a minute per IP (then HTTP 429 with <code className="font-bold">Retry-After</code>):
           </p>
           <pre className="rounded-none border-2 border-[var(--dir-ink)]! bg-[var(--dir-paper)] p-4 text-xs overflow-x-auto">
 {`GET /api/agents?q=<text>&task=<slug>&category=<slug>&access=<method>

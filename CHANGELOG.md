@@ -4,7 +4,7 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
-## [2.9.2] - 2026-11-13 - What's new keeps up
+## [2.9.3] - 2026-11-13 - What's new keeps up
 
 ### Highlights
 - See every weekly drop on What's new beside the site's releases: what it added, updated and removed, and its stack of the week, each with a link to try it. The Nov 13 drop added 56 agents, and its stack ships a web app with your agent. [Try it](https://agentswitchboard.dev/whats-new#drop-2026-11-13)
@@ -15,8 +15,17 @@ Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes 
 - [/for-agents](https://agentswitchboard.dev/for-agents#rest) shows `page` and `next` in the REST search, as `GET /api/agents` answers since 2.9.1. ([#PRNUM](https://github.com/assafbar2/agentswitchboard.dev/pull/PRNUM))
 
 ### Directory
-- The [Nov 13 drop](https://agentswitchboard.dev/drops/2026-11-13): 56 listings added, 14 of them Official, 2 updated and 1 archived, with [Ship a web app with your agent](https://agentswitchboard.dev/stacks/ship-a-web-app-with-your-agent) as the stack of the week. ([#395](https://github.com/assafbar2/agentswitchboard.dev/pull/395))
-- [elizaOS](https://agentswitchboard.dev/agents/eliza), [GPT Pilot](https://agentswitchboard.dev/agents/gpt-pilot) and [MobileBuildMCP](https://agentswitchboard.dev/agents/xcodebuild-mcp) go by their projects' own names. Corrected the same day, they count among the Nov 13 drop's updates, which come to 5. ([#390](https://github.com/assafbar2/agentswitchboard.dev/pull/390))
+- The [Nov 13 drop](https://agentswitchboard.dev/drops/2026-11-13): the weekly run added 56 listings, 14 of them Official, updated 2 and archived 1, with [Ship a web app with your agent](https://agentswitchboard.dev/stacks/ship-a-web-app-with-your-agent) as the stack of the week. With the same day's corrections below, the drop comes to 56 added, 6 updated and 2 archived. ([#395](https://github.com/assafbar2/agentswitchboard.dev/pull/395))
+- [elizaOS](https://agentswitchboard.dev/agents/eliza), [GPT Pilot](https://agentswitchboard.dev/agents/gpt-pilot) and [MobileBuildMCP](https://agentswitchboard.dev/agents/xcodebuild-mcp) go by their projects' own names. Corrected the same day, they count among the Nov 13 drop's updates. ([#390](https://github.com/assafbar2/agentswitchboard.dev/pull/390))
+- [Windsurf is Devin Desktop](https://agentswitchboard.dev/agents/codeium-windsurf) now, by Cognition AI, and its listing and comparison say "formerly Windsurf". ZCode is archived while a privacy report on it is unresolved. Both count in the Nov 13 drop. ([#398](https://github.com/assafbar2/agentswitchboard.dev/pull/398))
+
+## [2.9.2] - 2026-11-13 - A rate limit on the REST API
+
+### Highlights
+- Call the REST API knowing its limit: 120 requests a minute per IP, then HTTP 429 with a `Retry-After` header until the minute is up. Cached answers, the static catalog pages and the MCP server don't count toward it. [Try it](https://agentswitchboard.dev/for-agents#rest)
+
+### Changed
+- The REST API (every `/api/` endpoint except `/api/mcp`) allows 120 requests per minute per IP. Past that it answers HTTP 429 with a `Retry-After` header and a JSON error (`{ "error": "rate_limited", "message", "retryAfterSeconds" }`) until the minute is up. Answers served from the CDN cache do not count, the static catalog pages (`/catalog/<n>.json`) are not limited, and the MCP server keeps its own limits. [docs/API.md](https://github.com/assafbar2/agentswitchboard.dev/blob/main/docs/API.md) and [/openapi.json](https://agentswitchboard.dev/openapi.json) (now version 1.11.0) describe the 429.
 
 ## [2.9.1] - 2026-11-13 - The catalog in pages
 

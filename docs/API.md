@@ -20,6 +20,23 @@ need no authentication, are CORS-open, and read the same cached catalog**
 
 Base URL: `https://agentswitchboard.dev`
 
+**Rate limits.** The REST endpoints (every `/api/` route except `/api/mcp`)
+allow 120 requests per minute per IP. Past that they answer HTTP 429 with a
+`Retry-After` header (seconds until the window resets) and a JSON body:
+
+```jsonc
+{
+  "error": "rate_limited",
+  "message": "Rate limit exceeded: 120 requests per minute per IP. Retry after 42 seconds.",
+  "retryAfterSeconds": 42
+}
+```
+
+Successful answers are CDN-cached for 5 minutes (`s-maxage=300`), and a repeat
+served from that cache does not count. Wait `Retry-After` seconds before
+retrying; for bulk reads, use the static catalog pages (`/catalog/{n}.json`),
+which are not limited. The MCP server has its own limits ([below](#mcp-server--post-apimcp)).
+
 ---
 
 ## REST search — `GET /api/agents`
@@ -415,8 +432,8 @@ privately to the maintainer, never onto the issue. Limits: 5 per caller IP per
 hour, one per URL per day.
 
 **Rate limits.** 300 requests per minute per IP (HTTP 429 with `Retry-After`
-past that), 3,000 per IP from Anthropic's published outbound range
-(`160.79.104.0/21`), and a 64 KB request body cap. The endpoint answers CORS
+past that), 3,000 per IP from Anthropic's published outbound ranges
+(`160.79.104.0/21`, `153.61.208.0/20`), and a 64 KB request body cap. The endpoint answers CORS
 preflights for any origin. Assistant platforms call from shared
 server IPs, so back off and retry on 429.
 

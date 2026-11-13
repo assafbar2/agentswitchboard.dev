@@ -11,12 +11,15 @@
 
 import { getEveryAgent } from '@/lib/catalog';
 import { logConsumer } from '@/lib/log';
+import { restRateLimit } from '@/lib/rest-rate-limit';
 import { corsPreflight, jsonResponse, summarizeStack } from '@/lib/public-api';
 import { getStacks, stackEntries, stackOfTheWeek, stacksInOrder } from '@/lib/stacks';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET(req: Request): Promise<Response> {
+  const limited = restRateLimit('/api/stacks', req);
+  if (limited) return limited;
   logConsumer('/api/stacks', req);
   const stacks = getStacks();
   const catalog = await getEveryAgent();

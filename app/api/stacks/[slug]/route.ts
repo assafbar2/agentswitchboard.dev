@@ -9,6 +9,7 @@
 
 import { getEveryAgent } from '@/lib/catalog';
 import { logConsumer } from '@/lib/log';
+import { restRateLimit } from '@/lib/rest-rate-limit';
 import { corsPreflight, jsonResponse, summarizeStack } from '@/lib/public-api';
 import { getStack, stackEntries } from '@/lib/stacks';
 
@@ -18,6 +19,8 @@ export async function GET(
   req: Request,
   context: { params: Promise<{ slug: string }> }
 ): Promise<Response> {
+  const limited = restRateLimit('/api/stacks/[slug]', req);
+  if (limited) return limited;
   const { slug } = await context.params;
   logConsumer('/api/stacks/[slug]', req, { slug });
 
