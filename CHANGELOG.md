@@ -47,7 +47,7 @@ Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes 
 ## [2.10.1] - 2026-11-13 - What's new keeps up
 
 ### Highlights
-- See every weekly drop on What's new beside the site's releases: what it added, updated and removed, and its stack of the week, each with a link to try it. The Nov 13 drop added 56 agents, and its stack ships a web app with your agent. [Try it](https://agentswitchboard.dev/whats-new#drop-2026-11-13)
+- See every weekly drop on What's new beside the site's releases: what it added, updated and removed, and its stack of the week, each with a link to try it. [Try it](https://agentswitchboard.dev/whats-new#drop-2026-11-13)
 
 ### Changed
 - [/whats-new](https://agentswitchboard.dev/whats-new) lists each weekly drop as well as each release, newest first. A drop's highlights are written from the same data as its page on [/drops](https://agentswitchboard.dev/drops): one line on what it added, updated and removed, linking the drop, and one on its stack of the week, linking the stack. So a drop is on What's new as soon as it merges, with nothing written by hand. The homepage's What's new block shows the newest highlights from the last 30 days, releases and drops together, up to five, and is dated by the newest of them. Until now both showed only releases with highlights, so after the 2.9.1 release and the Nov 13 drop the homepage still said Nov 10. ([#402](https://github.com/assafbar2/agentswitchboard.dev/pull/402))

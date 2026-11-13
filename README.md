@@ -34,23 +34,35 @@ Setup for Grok, Grok Bot, the xAI API, Claude, and ChatGPT:
 Prefer plain HTTP? There's a REST search too:
 
 ```bash
-curl "https://agentswitchboard.dev/api/agents?q=video&access=mcp&limit=5"
+curl "https://agentswitchboard.dev/api/agents?q=video&access=mcp&auth=none&limit=5"
 curl "https://agentswitchboard.dev/api/agents/agentmail"
 curl "https://agentswitchboard.dev/api/categories"
 curl "https://agentswitchboard.dev/api/compare?a=deepgram&b=assemblyai"
 curl "https://agentswitchboard.dev/api/bundle?items=linear,sentry-mcp,playwright-mcp"
+curl "https://agentswitchboard.dev/api/recommend?need=read+my+Gmail+and+query+Postgres"
 curl -X POST "https://agentswitchboard.dev/api/missing-tool" -H 'content-type: application/json' \
   -d '{"need": "file expense reports in Expensify", "tried": "expensify"}'
 ```
+
+The REST API allows 120 requests a minute per IP, then answers HTTP 429 with
+`Retry-After`; answers from the CDN cache, the static catalog pages and the MCP
+server don't count toward it.
 
 OpenAPI: [`/openapi.json`](https://agentswitchboard.dev/openapi.json).
 Connector skill: [`/skill.md`](https://agentswitchboard.dev/skill.md).
 
 Also machine-readable: [`/agents.json`](https://agentswitchboard.dev/agents.json)
-(an index of the full catalog in pages of 50, CORS-open), in-browser tools via WebMCP (`document.modelContext`),
-and an agent-optimized view on every page (the "For Agents" toggle).
+(an index of the full catalog in pages of 50, each listing with its `authType`, CORS-open), a Markdown
+twin of every task page at `/tasks/<slug>.md` (its dated answer and best fits), in-browser tools via WebMCP
+(`document.modelContext`), and an agent-optimized view on every page (the "For Agents" toggle).
 
-**Full API reference: [docs/API.md](docs/API.md)** — REST search/detail/categories, compare, alternatives and the connect bundle, MCP, WebMCP, and the catalog dump.
+**Full API reference: [docs/API.md](docs/API.md)** — REST search/detail/categories, compare, alternatives, the connect bundle, recommend and missing-tool requests, rate limits, MCP, WebMCP, and the catalog dump.
+
+**Ranked on fit alone.** The task pages (each opens with a dated answer and a table
+comparing its six best fits), the [Operator](https://agentswitchboard.dev/operator),
+`recommend` and the MCP server rank listings by how well they fit the job; Featured or
+Sponsored never moves one up there. The one paid placement is the labeled Sponsored slot on the
+homepage and that week's drop page, from $29 a week ([/advertise](https://agentswitchboard.dev/advertise)).
 
 ## 🗂 Git-as-CMS
 
