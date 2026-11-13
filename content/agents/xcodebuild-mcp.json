@@ -1,6 +1,6 @@
 {
   "id": "xcodebuild-mcp",
-  "name": "XcodeBuildMCP",
+  "name": "MobileBuildMCP",
   "slug": "xcodebuild-mcp",
   "description": "Gives coding agents control of Xcode builds, tests, simulators, and physical devices for iOS and macOS, through an MCP server or a matching command-line interface.",
   "providerName": "Sentry",
@@ -66,5 +66,5 @@
     "cli"
   ],
   "createdAt": "2026-08-01T04:31:32.810Z",
-  "updatedAt": "2026-11-02T07:11:18.425Z"
+  "updatedAt": "2026-11-13T09:01:58.165Z"
 }

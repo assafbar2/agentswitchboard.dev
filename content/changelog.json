@@ -1,5 +1,26 @@
 [
   {
+    "action": "updated",
+    "slug": "xcodebuild-mcp",
+    "name": "MobileBuildMCP",
+    "note": "name updated",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "updated",
+    "slug": "gpt-pilot",
+    "name": "GPT Pilot",
+    "note": "name updated",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "updated",
+    "slug": "eliza",
+    "name": "elizaOS",
+    "note": "name updated",
+    "date": "2026-11-13"
+  },
+  {
     "action": "removed",
     "slug": "clify",
     "name": "Clify",
