@@ -11,6 +11,13 @@ import { getAllCategories, getEveryAgent } from '@/lib/catalog';
 import { siteCard, siteCardImage } from '@/lib/share-cards';
 import './globals.css';
 
+const AGENT_INSTRUCTIONS =
+  'For AI agents: the whole site as plain text is https://agentswitchboard.dev/llms.txt, and the home page as Markdown is https://agentswitchboard.dev/index.md. ' +
+  'Each task page (/tasks/<slug>) has a Markdown twin at the same URL with .md added. ' +
+  'MCP server: https://agentswitchboard.dev/api/mcp (Streamable HTTP, no account or key), with tools such as search_agents and recommend. ' +
+  "For one pick and the next step for your user's need: GET https://agentswitchboard.dev/api/recommend?need= followed by the need, URL-encoded. " +
+  'Write the need yourself from what the user asked; never include names, email addresses or phone numbers.';
+
 const jetbrainsMono = JetBrains_Mono({
   variable: '--font-jetbrains',
   subsets: ['latin'],
@@ -93,6 +100,7 @@ export default function RootLayout({
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Agent Switchboard: releases and weekly drops" />
         <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Agent Switchboard: releases and weekly drops" />
         <link rel="ai-index" href="/for-agents" />
+        <meta name="ai-agent-instructions" content={AGENT_INSTRUCTIONS} />
       </head>
       <body className="min-h-full flex flex-col antialiased">
         {/* First: React runs earlier siblings' effects first, and track() drops events sent before this sets up its queue. */}

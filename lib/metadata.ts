@@ -17,12 +17,15 @@ export async function pageMetadata(
     description,
     path,
     image,
+    markdown,
     ...rest
   }: Omit<Metadata, 'title' | 'description' | 'alternates'> & {
     title: string;
     description: string;
     path: string;
     image?: ShareImage;
+    /** The page's Markdown twin, linked as rel="alternate" type="text/markdown". */
+    markdown?: string;
   },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
@@ -32,7 +35,7 @@ export async function pageMetadata(
     ...rest,
     title,
     description,
-    alternates: { canonical: path },
+    alternates: { canonical: path, ...(markdown && { types: { 'text/markdown': markdown } }) },
     openGraph: { type: 'website', siteName: SITE_NAME, title: shareTitle, description, url: path, images },
     twitter: { card: 'summary_large_image', title: shareTitle, description },
   };
