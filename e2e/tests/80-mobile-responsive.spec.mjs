@@ -13,6 +13,7 @@ const KEY_PAGES = [
   '/agents/claude-code',
   '/agents/cursor',
   '/agents/hronaut',
+  '/tasks/query-a-database',
   '/for-agents',
   '/submit',
 ];

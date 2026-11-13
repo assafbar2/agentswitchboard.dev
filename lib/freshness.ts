@@ -17,11 +17,6 @@ const ISO_DAY = /^\d{4}-\d{2}-\d{2}/;
 /** When the deployment was built (next.config.ts inlines BUILD_TIME); now, in tests and scripts. */
 const builtAt = () => Number(process.env.BUILD_TIME) || Date.now();
 
-/** The UTC day the deployment was built, as "2026-11-13". */
-export function builtDay(now: number = builtAt()): string {
-  return new Date(now).toISOString().slice(0, 10);
-}
-
 /** The first UTC day that still counts as new: today and the NEW_DAYS - 1 days before it. */
 export function newSince(now: number = builtAt()): string {
   return new Date(now - (NEW_DAYS - 1) * DAY_MS).toISOString().slice(0, 10);

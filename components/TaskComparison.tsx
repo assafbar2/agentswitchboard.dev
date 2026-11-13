@@ -4,12 +4,10 @@ import { CopyBlock } from '@/components/CopyBlock';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
 import { connectBundle } from '@/lib/bundle';
 import { compareHref } from '@/lib/compare-link';
+import { BUNDLE_SIZE, COMPARISON_SIZE, bestFor, comparedAsOf, pickIf } from '@/lib/task-comparison';
 import type { Task } from '@/lib/tasks';
 import type { Agent } from '@/lib/types';
 import { formatDay } from '@/lib/utils';
-
-export const COMPARISON_SIZE = 6;
-const BUNDLE_SIZE = 3;
 
 const ACCESS: Record<string, string> = {
   api: 'API',
@@ -24,32 +22,15 @@ const SIGN_IN: Record<Agent['authType'], string> = {
   oauth2: 'Sign in (OAuth)',
 };
 
-/** What a row is best for: the skill named in its why-it-fits line, without the description. */
-function bestFor(why: string | null, agent: Agent): string {
-  const skill = why?.split(':')[0]?.trim();
-  if (skill && skill.length <= 48) return skill;
-  return agent.tags[0] ?? agent.categories[0]?.name ?? '';
-}
-
-function pickIf(agent: Agent): string {
-  if (agent.official && agent.mcpEndpoint) return "you want the vendor's own hosted server";
-  if (agent.official) return "you want the vendor's own tool";
-  if (agent.authType === 'none') return 'you want to try it with no sign-up';
-  if (agent.mcpEndpoint) return 'you want a hosted MCP, nothing to install';
-  if (agent.accessMethods.includes('cli')) return 'you work from a terminal';
-  return 'you are building on its API';
-}
-
 export function TaskComparison({
   task,
   rows,
-  comparedOn,
 }: {
   task: Task;
   rows: { agent: Agent; why: string | null }[];
-  comparedOn: string;
 }) {
   const top = rows.slice(0, COMPARISON_SIZE);
+  const asOf = comparedAsOf(top.map((r) => r.agent));
   const bundle = connectBundle(top.slice(0, BUNDLE_SIZE).map((r) => r.agent));
   const bundleNames = top.slice(0, BUNDLE_SIZE).map((r) => r.agent.slug);
 
@@ -59,7 +40,12 @@ export function TaskComparison({
         Compared <span className="dir-bar-count">· top {top.length}</span>
       </h2>
       <p className="mt-2 text-[15px] text-[var(--dir-muted)]">
-        Checked against each listing on <strong className="text-[var(--dir-ink)]">{formatDay(comparedOn)}</strong>.
+        {asOf && (
+          <>
+            As of <strong className="text-[var(--dir-ink)]">{formatDay(asOf)}</strong>, the last change to any of
+            these listings.{' '}
+          </>
+        )}
         Verified means its URLs load and its access answers; we recheck every month.
       </p>
 
@@ -67,7 +53,7 @@ export function TaskComparison({
         <table className="w-full border-collapse text-left text-[15px]">
           <thead>
             <tr className="border-b-2 border-[var(--dir-ink)]! text-[13px] uppercase tracking-[0.08em]">
-              <th className="py-2 pr-3 font-bold">Tool</th>
+              <th className="min-w-44 py-2 pr-3 font-bold">Tool</th>
               <th className="py-2 pr-3 font-bold">Access</th>
               <th className="py-2 pr-3 font-bold">Sign-in</th>
               <th className="py-2 pr-3 font-bold">Maker</th>
