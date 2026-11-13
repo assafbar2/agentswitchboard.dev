@@ -13,6 +13,8 @@ const CATEGORIES = JSON.parse(readFileSync(`${REPO}/content/categories.json`, 'u
   .sort((a, b) => a.sortOrder - b.sortOrder)
   .map(({ name, slug }) => ({ name, slug }));
 const VENDORS_SHOWN = 12; // components/OfficialPlatforms.tsx
+const AGENT_PROMPT = // lib/agent-prompt.ts
+  'Read https://agentswitchboard.dev/skill.md and use Agent Switchboard to find the right agents and tools for my tasks.';
 
 const meta = (page, sel) => page.locator(sel).first().getAttribute('content');
 const human = (page) => page.locator('main .human-only');
@@ -59,6 +61,14 @@ test.describe('homepage — hero', () => {
     const hero = human(page).locator('section').first();
     await expect(hero.getByText('The directory for the agentic web', { exact: true })).toBeVisible();
     await expect(hero.getByText(/Browse, compare, and integrate verified AI agents with real API, MCP, and CLI access/)).toBeVisible();
+  });
+
+  test('shows the line to paste into an agent, in both views', async ({ page }) => {
+    await page.goto('/');
+    const box = human(page).locator('section[aria-labelledby="give-this-to-your-agent"]');
+    await expect(box.getByRole('heading', { level: 2 })).toHaveText('Give this to your agent');
+    await expect(box.locator('p').last()).toHaveText(AGENT_PROMPT);
+    await expect(page.locator('main .agent-only')).toContainText(AGENT_PROMPT);
   });
 
   test('hero stats match the /agents.json catalog and the category list', async ({ page }) => {
