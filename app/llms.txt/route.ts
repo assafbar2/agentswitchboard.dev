@@ -84,7 +84,8 @@ from major vendors, e.g. Notion's own Notion MCP; \`verified=true\` for Verified
 \`since=<YYYY-MM-DD>\`; \`sort=newest\` for the latest additions first).
 /agents.json indexes the whole catalog: it links static pages of up to 50 listings
 (/catalog/1.json, /catalog/2.json, …; each has \`next\`). Use them for bulk or offline
-work, filtering on \`accessMethods\`, \`categories\` and \`official\`.
+work, filtering on \`accessMethods\`, \`categories\`, \`authType\` (\`none\` for no key or
+sign-in) and \`official\`.
 
 To help a user choose and set up:
 - Compare 2 or 3 listings, the facts that set each apart and one row per field: the
@@ -100,7 +101,7 @@ To help a user choose and set up:
 - Remote MCP (Streamable HTTP, no auth): https://agentswitchboard.dev/api/mcp
 - Stdio-only clients: npx -y mcp-remote https://agentswitchboard.dev/api/mcp
 - Server manifest: https://agentswitchboard.dev/.well-known/mcp.json
-- Tools: search_agents, get_agent, list_categories, compare_agents, alternatives_to, connect_bundle, submit_listing (files a public GitHub issue for human review; publishes nothing)
+- Tools: search_agents, get_agent, list_categories, compare_agents, alternatives_to, connect_bundle, submit_listing (files a public GitHub issue for human review; publishes nothing), request_missing_tool (tells the maintainer privately that nothing fits a job; also POST /api/missing-tool)
 - Connect it to Grok, Grok Bot, the xAI API, Claude, or ChatGPT: https://agentswitchboard.dev/connect
 - Plain REST search (no MCP handshake needed): GET /api/agents?q=&task=&category=&access=&official=&verified=&auth=&since=&sort=&limit=&offset=&page=
 - REST detail: GET /api/agents/{slug}

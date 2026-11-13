@@ -53,6 +53,21 @@ describe('/agents.json and /catalog/<n>.json', () => {
     for (const key of ['url', 'iconUrl', 'homepage', 'providerUrl', 'tags', 'officialVendor', 'sponsored', 'createdAt', 'updatedAt']) {
       expect(first).toHaveProperty(key);
     }
+    expect(first).not.toHaveProperty('skills');
+  });
+
+  it('every listing carries its auth type, so no-auth tools can be picked out', async () => {
+    const { pages } = await (await indexGET()).json();
+    const listings = (await Promise.all(pages.map(async (url: string) => (await (await pageAt(pathOf(url))).json()).agents))).flat();
+    const byAuth = new Map((await getEveryAgent()).map((a) => [a.slug, a.authType]));
+    for (const a of listings) expect(a.authType, a.slug).toBe(byAuth.get(a.slug));
+    expect(listings.some((a: { authType: string }) => a.authType === 'none')).toBe(true);
+  });
+
+  it('is cached until the next release, not for five minutes', async () => {
+    for (const res of [await indexGET(), await pageAt('1.json')]) {
+      expect(res.headers.get('cache-control')).toBe('public, max-age=3600, s-maxage=86400');
+    }
   });
 
   it('any other file is a 404', async () => {

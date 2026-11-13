@@ -3,6 +3,8 @@
 Agent Switchboard is machine-consumable four ways. All of them are **read-only,
 need no authentication, are CORS-open, and read the same cached catalog**
 ([`lib/catalog.ts`](../lib/catalog.ts)), so results always match the website.
+The two exceptions are writes that publish nothing: a listing suggestion
+(`submit_listing`) and a [missing-tool request](#rest-missing-tool--post-apimissing-tool).
 
 | Surface | Best for | Endpoint |
 |---|---|---|
@@ -14,11 +16,29 @@ need no authentication, are CORS-open, and read the same cached catalog**
 | **REST compare** | 2 or 3 listings side by side | `GET /api/compare` |
 | **REST alternatives** | listings that could stand in for one | `GET /api/agents/{slug}/alternatives` |
 | **REST connect bundle** | one MCP client config for several listings | `GET /api/bundle` |
+| **REST missing tool** | saying nothing in the directory does a job | `POST /api/missing-tool` |
 | **MCP server** | MCP clients (Grok, Claude, ChatGPT, Cursor, …) | `POST /api/mcp` |
 | **WebMCP** | agents viewing the page in a browser | `document.modelContext` |
 | **Catalog dump** | bulk / offline indexing | `GET /agents.json` (index) → `GET /catalog/{n}.json` |
 
 Base URL: `https://agentswitchboard.dev`
+
+**Rate limits.** The REST endpoints (every `/api/` route except `/api/mcp`)
+allow 120 requests per minute per IP. Past that they answer HTTP 429 with a
+`Retry-After` header (seconds until the window resets) and a JSON body:
+
+```jsonc
+{
+  "error": "rate_limited",
+  "message": "Rate limit exceeded: 120 requests per minute per IP. Retry after 42 seconds.",
+  "retryAfterSeconds": 42
+}
+```
+
+Successful answers are CDN-cached for 5 minutes (`s-maxage=300`), and a repeat
+served from that cache does not count. Wait `Retry-After` seconds before
+retrying; for bulk reads, use the static catalog pages (`/catalog/{n}.json`),
+which are not limited. The MCP server has its own limits ([below](#mcp-server--post-apimcp)).
 
 ---
 
@@ -372,6 +392,40 @@ note; none found is a `400` with `{ "error": "no_listings", "message", "notes" }
 
 ---
 
+## REST missing tool — `POST /api/missing-tool`
+
+Tell the maintainer that the directory has nothing for a job, after a search
+found nothing that fits: the plain-HTTP twin of the MCP `request_missing_tool`
+tool. It is recorded privately for the weekly review, which uses these
+requests to decide what to look for and add. Nothing is published, no issue is
+opened, and there is no reply.
+
+```bash
+curl -X POST "https://agentswitchboard.dev/api/missing-tool" \
+  -H 'content-type: application/json' \
+  -d '{"need": "file expense reports in Expensify", "tried": "expensify", "access": ["mcp"]}'
+```
+
+| Field | | |
+|---|---|---|
+| `need` | required | The job no listing does, 10–500 characters. Describe the job, not the user |
+| `tried` | optional | The search words that found nothing, up to 200 characters |
+| `category` | optional | The closest category slug |
+| `access` | optional | `api`, `mcp`, `cli`, `browser-extension` |
+
+`202 { "status": "recorded", "message" }` when it is recorded; `400
+{ "error": "invalid_request", "message" }` for a body that is not JSON, a
+missing or short `need`, or an unknown field; `429 { "status": "rate_limited",
+"message" }` with `Retry-After` past 10 per caller IP per hour. Email addresses
+and phone numbers are removed before it is recorded, and the record keeps no IP
+address. Never cached; CORS-open.
+
+A search that matches no listing at all, on `GET /api/agents`, MCP
+`search_agents` or [/browse](https://agentswitchboard.dev/browse), is recorded
+the same way with its words and filters.
+
+---
+
 ## MCP server — `POST /api/mcp`
 
 Streamable HTTP MCP endpoint. Point any MCP client at it:
@@ -397,16 +451,19 @@ Stdio-only clients: `npx -y mcp-remote https://agentswitchboard.dev/api/mcp`
 | `alternatives_to` | `slug` (required), `limit?` (1–8) | as [`GET /api/agents/{slug}/alternatives`](#rest-alternatives--get-apiagentsslugalternatives) |
 | `connect_bundle` | `slugs` (1 to 10, required) | as [`GET /api/bundle`](#rest-connect-bundle--get-apibundle): `{ summary, stackUrl, config, claudeCode, setupPrompt, items[], notes }` |
 | `submit_listing` | `name`, `url`, `description` (required); `access?`, `category?`, `contact_email?` | `{ status, message, issueUrl?, existingSlug? }` |
+| `request_missing_tool` | `need` (10–500 characters, required); `tried?`, `category?`, `access?` (enum[]) | `{ status, message }`, as [`POST /api/missing-tool`](#rest-missing-tool--post-apimissing-tool) |
 
 All tools declare an `outputSchema` and return `structuredContent`. Results are organic: they never list featured listings first, and they leave out `featured` and any other placement field. The six
 read tools are annotated `readOnlyHint: true`, `destructiveHint: false`;
 `submit_listing` is `readOnlyHint: false`, `destructiveHint: true` (it posts a public
-issue the user can't take back), so clients ask before each call. Every tool also
+issue the user can't take back), so clients ask before each call.
+`request_missing_tool` is `readOnlyHint: false`, `destructiveHint: false`,
+`openWorldHint: false`: it records a private note and changes nothing public. Every tool also
 carries its `title` in `annotations`. A request a decision tool can't
 answer (fewer than two listings to compare, an unknown slug, no listing in a
 bundle) is a tool error whose message says what to do next.
 
-`submit_listing` is the only write. It files a **public GitHub issue** through
+`submit_listing` files a **public GitHub issue** through
 the same path as the [/submit](https://agentswitchboard.dev/submit) form and
 publishes nothing: the maintainer reviews every issue by hand. `status` is
 `filed`, `already_listed` (the URL matches a listing's homepage; nothing is
@@ -414,9 +471,18 @@ filed), `rate_limited`, or `unavailable`. `contact_email` is optional and goes
 privately to the maintainer, never onto the issue. Limits: 5 per caller IP per
 hour, one per URL per day.
 
+`request_missing_tool` says the directory has nothing for a job, after a
+search found nothing that fits. It is recorded privately for the weekly
+review, which uses these requests to decide what to look for and add; nothing
+is published, no issue is opened, and there is no reply. Describe the job,
+not the user: email addresses and phone numbers are removed before it is
+recorded. `status` is `recorded` or `rate_limited` (10 per caller IP per hour).
+A `search_agents` call that matches no listing is recorded the same way, with
+its words and filters.
+
 **Rate limits.** 300 requests per minute per IP (HTTP 429 with `Retry-After`
-past that), 3,000 per IP from Anthropic's published outbound range
-(`160.79.104.0/21`), and a 64 KB request body cap. The endpoint answers CORS
+past that), 3,000 per IP from Anthropic's published outbound ranges
+(`160.79.104.0/21`, `153.61.208.0/20`), and a 64 KB request body cap. The endpoint answers CORS
 preflights for any origin. Assistant platforms call from shared
 server IPs, so back off and retry on 429.
 
@@ -477,14 +543,46 @@ returns the whole catalog: the listings are in static pages of at most 50 at
 ```
 
 Fetch `pages` in order, or follow `next` from page 1. Any other file under
-`/catalog/` is a 404. Each listing carries the full set of fields: `url`,
-`iconUrl`, `homepage`, `provider`, `providerUrl`, `description`, `categories`,
-`accessMethods`, `tags`, `verified`, `official`, `officialVendor`, `featured`,
-`sponsored`, `tier`, `createdAt`, `updatedAt`, and the Use it now fields
-(`mcpEndpoint`, `mcpCommand`, `install`, `quickstartUrl`, `apiBaseUrl` when the
-listing has them). Filter client-side on `accessMethods`, `categories` and
-`official`. To find tools for a job, search with
-[`GET /api/agents`](#rest-search--get-apiagents) or the MCP server instead.
+`/catalog/` is a 404. The index and the pages change only when a release
+deploys: `Cache-Control` is `public, max-age=3600, s-maxage=86400`, and a
+deploy replaces them at the edge straight away.
+
+Each listing in `agents` carries every one of these fields, `null` (or `[]`)
+when the listing has no value:
+
+| Field | Type | Meaning |
+|---|---|---|
+| `name` | string | Display name. |
+| `slug` | string | Stable ID; `GET /api/agents/{slug}` has the full listing, with skills. |
+| `url` | string | The listing's page on this site. |
+| `iconUrl` | string \| null | 128px PNG served by Agent Switchboard (see [REST search](#rest-search--get-apiagents)). |
+| `homepage` | string \| null | The product's own site. |
+| `provider` | string \| null | Who makes it. |
+| `providerUrl` | string \| null | The provider's site. |
+| `description` | string | One or two sentences on what it does. |
+| `categories` | string[] | Category slugs (`GET /api/categories`). |
+| `accessMethods` | string[] | `api`, `mcp`, `cli`, `browser-extension`. |
+| `authType` | string | How the product authenticates: `none` (no key or sign-in), `apiKey`, `bearer` or `oauth2`. The site's "No auth needed" filter and `auth=none` keep `none`. |
+| `tags` | string[] | Free-form tags. |
+| `verified` | boolean | We checked it works: its URLs load and its declared access responds. Re-checked monthly. |
+| `official` | boolean | See [Official listings](#official-listings). |
+| `officialVendor` | string \| null | The vendor's name when `official`. |
+| `featured` | boolean | Sorts first in the catalog order; set by the maintainer. |
+| `sponsored` | boolean | A paid placement; never changes the order. |
+| `tier` | string | `free` or `premium`. |
+| `createdAt` | string \| null | When it was listed (ISO 8601). |
+| `updatedAt` | string \| null | When the listing last changed (ISO 8601). |
+| `mcpEndpoint` | string \| null | The vendor's hosted MCP server address, from its docs. |
+| `mcpCommand` | string \| null | The command that runs its MCP server locally. |
+| `install` | object \| null | The CLI install command from the vendor's docs: `{ "type": "npm" \| "pip" \| "brew" \| "docker" \| "binary", "command" }`. |
+| `quickstartUrl` | string \| null | The vendor's setup or getting-started page. |
+| `apiBaseUrl` | string \| null | Base URL of the vendor's public API. |
+
+Skills are not in the pages, to keep them small: read them from
+`GET /api/agents/{slug}` or the MCP `get_agent` tool. Filter client-side on
+`accessMethods`, `categories`, `authType` and `official`. To find tools for a
+job, search with [`GET /api/agents`](#rest-search--get-apiagents) or the MCP
+server instead.
 
 ---
 

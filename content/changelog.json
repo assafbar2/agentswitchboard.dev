@@ -1,6 +1,81 @@
 [
   {
     "action": "removed",
+    "slug": "gpt-pilot",
+    "name": "GPT Pilot",
+    "note": "Its GitHub repo (Pythagora-io/gpt-pilot) carried credential-stealing malware from August 2025 until it was removed on June 11, 2026, and the project is unmaintained",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "treg",
+    "name": "treg",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "updated",
+    "slug": "codeium-windsurf",
+    "name": "Devin Desktop",
+    "note": "tags updated",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "updated",
+    "slug": "codeium-windsurf",
+    "name": "Devin Desktop",
+    "note": "description updated",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "updated",
+    "slug": "codeium-windsurf",
+    "name": "Devin Desktop",
+    "note": "providerUrl updated",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "updated",
+    "slug": "codeium-windsurf",
+    "name": "Devin Desktop",
+    "note": "providerName updated",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "updated",
+    "slug": "codeium-windsurf",
+    "name": "Devin Desktop",
+    "note": "name updated",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "removed",
+    "slug": "zcode",
+    "name": "ZCode",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "updated",
+    "slug": "xcodebuild-mcp",
+    "name": "MobileBuildMCP",
+    "note": "name updated",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "updated",
+    "slug": "gpt-pilot",
+    "name": "GPT Pilot",
+    "note": "name updated",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "updated",
+    "slug": "eliza",
+    "name": "elizaOS",
+    "note": "name updated",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "removed",
     "slug": "youtube-mcp",
     "name": "YouTube MCP",
     "date": "2026-11-13"

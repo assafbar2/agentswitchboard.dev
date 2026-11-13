@@ -44,7 +44,7 @@
   "supportsStreaming": false,
   "supportsPushNotifications": false,
   "quickstartUrl": "https://zcode.z.ai/en/docs/install",
-  "status": "published",
+  "status": "archived",
   "featured": false,
   "verified": true,
   "official": true,
@@ -54,5 +54,5 @@
     "cli"
   ],
   "createdAt": "2026-09-25T22:20:34.465Z",
-  "updatedAt": "2026-11-02T07:34:56.527Z"
+  "updatedAt": "2026-11-13T13:28:45.171Z"
 }

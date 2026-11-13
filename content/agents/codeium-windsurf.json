@@ -1,10 +1,10 @@
 {
   "id": "2wLsEerngQkX2FREBmlEaZ",
-  "name": "Codeium / Windsurf",
+  "name": "Devin Desktop",
   "slug": "codeium-windsurf",
-  "description": "AI code acceleration platform with Windsurf Editor, offering agentic flows, multi-file edits, and Cascade for autonomous coding.",
-  "providerName": "Codeium",
-  "providerUrl": "https://devin.ai/desktop",
+  "description": "Agent command center and code editor from Cognition, formerly Windsurf, that runs local and cloud agents side by side, with the Cascade agent, multi-file edits, and an enterprise API.",
+  "providerName": "Cognition AI",
+  "providerUrl": "https://cognition.com/",
   "agentUrl": "https://devin.ai/desktop",
   "categories": [
     "code-devtools"
@@ -12,7 +12,9 @@
   "tags": [
     "ide",
     "code-completion",
-    "ai-assistant"
+    "ai-assistant",
+    "agent-command-center",
+    "windsurf"
   ],
   "skills": [],
   "authType": "apiKey",
@@ -31,5 +33,5 @@
     "browser-extension"
   ],
   "createdAt": "2026-03-22T09:51:50.205Z",
-  "updatedAt": "2026-11-02T07:34:56.527Z"
+  "updatedAt": "2026-11-13T13:28:47.291Z"
 }

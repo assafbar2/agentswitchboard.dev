@@ -15,6 +15,7 @@
 import { getEveryAgent, getRetiredListings } from '@/lib/catalog';
 import { alternativesDecision } from '@/lib/decide';
 import { logConsumer } from '@/lib/log';
+import { restRateLimit } from '@/lib/rest-rate-limit';
 import { clampInt, corsPreflight, jsonResponse } from '@/lib/public-api';
 import { organicOrder, wantsOrganic } from '@/lib/organic';
 import { MAX_ALTERNATIVES } from '@/lib/related';
@@ -22,6 +23,8 @@ import { MAX_ALTERNATIVES } from '@/lib/related';
 export const dynamic = 'force-dynamic';
 
 export async function GET(req: Request, context: { params: Promise<{ slug: string }> }): Promise<Response> {
+  const limited = restRateLimit('/api/agents/[slug]/alternatives', req);
+  if (limited) return limited;
   const { slug } = await context.params;
   const { searchParams } = new URL(req.url);
   const limit = clampInt(searchParams.get('limit'), MAX_ALTERNATIVES, 1, MAX_ALTERNATIVES);
