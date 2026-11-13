@@ -543,14 +543,46 @@ returns the whole catalog: the listings are in static pages of at most 50 at
 ```
 
 Fetch `pages` in order, or follow `next` from page 1. Any other file under
-`/catalog/` is a 404. Each listing carries the full set of fields: `url`,
-`iconUrl`, `homepage`, `provider`, `providerUrl`, `description`, `categories`,
-`accessMethods`, `tags`, `verified`, `official`, `officialVendor`, `featured`,
-`sponsored`, `tier`, `createdAt`, `updatedAt`, and the Use it now fields
-(`mcpEndpoint`, `mcpCommand`, `install`, `quickstartUrl`, `apiBaseUrl` when the
-listing has them). Filter client-side on `accessMethods`, `categories` and
-`official`. To find tools for a job, search with
-[`GET /api/agents`](#rest-search--get-apiagents) or the MCP server instead.
+`/catalog/` is a 404. The index and the pages change only when a release
+deploys: `Cache-Control` is `public, max-age=3600, s-maxage=86400`, and a
+deploy replaces them at the edge straight away.
+
+Each listing in `agents` carries every one of these fields, `null` (or `[]`)
+when the listing has no value:
+
+| Field | Type | Meaning |
+|---|---|---|
+| `name` | string | Display name. |
+| `slug` | string | Stable ID; `GET /api/agents/{slug}` has the full listing, with skills. |
+| `url` | string | The listing's page on this site. |
+| `iconUrl` | string \| null | 128px PNG served by Agent Switchboard (see [REST search](#rest-search--get-apiagents)). |
+| `homepage` | string \| null | The product's own site. |
+| `provider` | string \| null | Who makes it. |
+| `providerUrl` | string \| null | The provider's site. |
+| `description` | string | One or two sentences on what it does. |
+| `categories` | string[] | Category slugs (`GET /api/categories`). |
+| `accessMethods` | string[] | `api`, `mcp`, `cli`, `browser-extension`. |
+| `authType` | string | How the product authenticates: `none` (no key or sign-in), `apiKey`, `bearer` or `oauth2`. The site's "No auth needed" filter and `auth=none` keep `none`. |
+| `tags` | string[] | Free-form tags. |
+| `verified` | boolean | We checked it works: its URLs load and its declared access responds. Re-checked monthly. |
+| `official` | boolean | See [Official listings](#official-listings). |
+| `officialVendor` | string \| null | The vendor's name when `official`. |
+| `featured` | boolean | Sorts first in the catalog order; set by the maintainer. |
+| `sponsored` | boolean | A paid placement; never changes the order. |
+| `tier` | string | `free` or `premium`. |
+| `createdAt` | string \| null | When it was listed (ISO 8601). |
+| `updatedAt` | string \| null | When the listing last changed (ISO 8601). |
+| `mcpEndpoint` | string \| null | The vendor's hosted MCP server address, from its docs. |
+| `mcpCommand` | string \| null | The command that runs its MCP server locally. |
+| `install` | object \| null | The CLI install command from the vendor's docs: `{ "type": "npm" \| "pip" \| "brew" \| "docker" \| "binary", "command" }`. |
+| `quickstartUrl` | string \| null | The vendor's setup or getting-started page. |
+| `apiBaseUrl` | string \| null | Base URL of the vendor's public API. |
+
+Skills are not in the pages, to keep them small: read them from
+`GET /api/agents/{slug}` or the MCP `get_agent` tool. Filter client-side on
+`accessMethods`, `categories`, `authType` and `official`. To find tools for a
+job, search with [`GET /api/agents`](#rest-search--get-apiagents) or the MCP
+server instead.
 
 ---
 
