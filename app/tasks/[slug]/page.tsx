@@ -6,11 +6,13 @@ import { AgentIcon } from '@/components/AgentIcon';
 import { EndpointLink } from '@/components/EndpointLink';
 import { JsonLd } from '@/components/JsonLd';
 import { TaskEvents } from '@/components/TaskEvents';
+import { TaskComparison } from '@/components/TaskComparison';
 import { TaskRow } from '@/components/TaskRow';
 import { getAllCategories, getEveryAgent } from '@/lib/catalog';
 import { pageMetadata } from '@/lib/metadata';
 import { taskMatches } from '@/lib/search';
 import { taskCard, taskCardImage } from '@/lib/share-cards';
+import { COMPARISON_SIZE, comparedAsOf } from '@/lib/task-comparison';
 import { getStacks, stacksInOrder } from '@/lib/stacks';
 import {
   TASK_OFFICIAL_SIZE,
@@ -70,6 +72,8 @@ export default async function TaskPage({ params }: Props) {
   const categoryName = (slug: string) => categories.find((c) => c.slug === slug)?.name ?? slug;
 
   const best = fits.slice(0, TASK_PAGE_SIZE).map((agent) => ({ agent, why: whyItFits(agent, task) }));
+  const compared = best.slice(0, COMPARISON_SIZE).map(({ agent }) => agent);
+  const comparedOn = comparedAsOf(compared);
   const official = fits.filter((a) => a.official);
   const tasks = getTasks();
   const related = relatedTasks(task, tasks, catalog).map((t) => ({ task: t, fits: taskMatches(catalog, t) }));
@@ -119,6 +123,8 @@ export default async function TaskPage({ params }: Props) {
           </div>
 
           <TaskEvents task={task.slug} from="task-page">
+            <TaskComparison task={task} rows={best} />
+
             <section aria-labelledby="best-fits">
               <h2 id="best-fits" className="dir-bar">
                 Best fits <span className="dir-bar-count">· {best.length}</span>
@@ -244,6 +250,19 @@ export default async function TaskPage({ params }: Props) {
             </div>
             <div className="agent-dim text-xs mt-1">{task.blurb}</div>
           </div>
+
+          <div className="agent-section-title">compared{comparedOn && ` · as of ${comparedOn}`}</div>
+          {compared.map((agent) => (
+            <Link key={agent.id} href={`/agents/${agent.slug}`} className="agent-row no-underline hover:underline">
+              <span className="agent-accent">{agent.slug}</span>
+              <span className="agent-dim">
+                {agent.accessMethods.join('+')} · auth: {agent.authType}
+                {agent.official && ' · official'}
+                {agent.verified && ' · verified'}
+              </span>
+              <span className="agent-dim">updated {agent.updatedAt?.slice(0, 10) ?? '–'}</span>
+            </Link>
+          ))}
 
           <div className="agent-section-title">best fits</div>
           {best.map(({ agent, why }) => (

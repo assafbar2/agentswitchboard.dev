@@ -5,6 +5,8 @@ import { test, expect } from './fixtures.mjs';
 
 const UA = { 'user-agent': 'asb-e2e (content-pages-nav)' };
 const BRAND = 'Agent Switchboard';
+const AGENT_PROMPT = // lib/agent-prompt.ts
+  'Read https://agentswitchboard.dev/skill.md and use Agent Switchboard to find the right agents and tools for my tasks.';
 
 // components/Header.tsx navLinks
 const HEADER_NAV = [
@@ -158,6 +160,14 @@ test.describe('content pages', () => {
     await expect(cfg).toContainText('"mcpServers"');
     await expect(cfg).toContainText('"url": "https://agentswitchboard.dev/api/mcp"');
     await expect(mcp).toContainText('npx -y mcp-remote https://agentswitchboard.dev/api/mcp');
+  });
+
+  test('/for-agents#paste shows the line to paste into an agent, and its skill.md answers', async ({ page }) => {
+    await page.goto('/for-agents#paste');
+    const section = page.locator('section#paste');
+    await expect(section.getByRole('heading', { level: 2 })).toContainText('Give this to your agent');
+    await expect(section.locator('p').last()).toHaveText(AGENT_PROMPT);
+    expect((await page.request.get('/skill.md')).status()).toBe(200);
   });
 
   test('/connect#grok-bot explains the one-time setup, @bot tagging, and where answers land', async ({ page }) => {

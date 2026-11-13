@@ -55,6 +55,15 @@ export default function PrivacyPage() {
               Analytics event. No cookies are set or read.
             </p>
             <p className="mt-3">
+              When a search on <span className="mono">/browse</span>, the API, or the MCP server finds
+              no listing at all, the words and filters of that search are written to the server log
+              with the coarse client type, but without your IP address or anything else that
+              identifies you, and kept for at most 30 days. So is a missing-tool request (the MCP{' '}
+              <span className="mono">request_missing_tool</span> tool or{' '}
+              <span className="mono">POST /api/missing-tool</span>), with email addresses and phone
+              numbers removed. We read them to decide what to add to the directory.
+            </p>
+            <p className="mt-3">
               The caller&apos;s IP address is used in memory to apply rate limits and is processed
               by Vercel as part of serving the request; Agent Switchboard does not store it in its
               own logs. Server errors are reported to Sentry with the request details needed to fix

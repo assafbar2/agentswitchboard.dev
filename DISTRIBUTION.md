@@ -3,7 +3,7 @@
 Where the Agent Switchboard MCP server is listed, and how to update each channel.
 
 The server: remote streamable-HTTP at `https://agentswitchboard.dev/api/mcp` (no auth).
-Tools: `search_agents`, `get_agent`, `list_categories`, `compare_agents`, `alternatives_to`, `connect_bundle`, `recommend`, `submit_listing`.
+Tools: `search_agents`, `get_agent`, `list_categories`, `compare_agents`, `alternatives_to`, `connect_bundle`, `recommend`, `submit_listing`, `request_missing_tool`.
 User-facing setup steps per assistant: [/connect](https://agentswitchboard.dev/connect).
 
 **AI-assistant surfaces are always organic.** The MCP server and the WebMCP tools rank by

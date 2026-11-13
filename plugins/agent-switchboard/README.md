@@ -20,8 +20,9 @@ no account, API key or configuration. In approval prompts it appears as
 | `connect_bundle` | One MCP client config for up to 10 listings, and how to connect the rest |
 | `recommend` | One pick for what you need, said in a sentence, with why it fits, the next step and two alternatives |
 | `submit_listing` | Suggests a missing product by filing a public GitHub issue for human review. It publishes nothing. It is marked destructive, so clients ask before calling it |
+| `request_missing_tool` | Says privately that nothing in the directory does a job, for the weekly review. It publishes nothing |
 
-Every tool except `submit_listing` is read-only.
+Every tool except `submit_listing` and `request_missing_tool` is read-only.
 
 ## Try it
 

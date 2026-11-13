@@ -10,6 +10,7 @@
 
 import { getAgentBySlug } from '@/lib/catalog';
 import { logConsumer } from '@/lib/log';
+import { restRateLimit } from '@/lib/rest-rate-limit';
 import { corsPreflight, jsonResponse, detailAgent } from '@/lib/public-api';
 
 export const dynamic = 'force-dynamic';
@@ -18,6 +19,8 @@ export async function GET(
   req: Request,
   context: { params: Promise<{ slug: string }> }
 ): Promise<Response> {
+  const limited = restRateLimit('/api/agents/[slug]', req);
+  if (limited) return limited;
   const { slug } = await context.params;
   logConsumer('/api/agents/[slug]', req, { slug });
 

@@ -32,17 +32,17 @@ const { tools } = await client.listTools();
 const names = tools.map((t) => t.name).sort();
 check(
   'tools/list',
-  names.join(',') === 'alternatives_to,compare_agents,connect_bundle,get_agent,list_categories,recommend,search_agents,submit_listing',
+  names.join(',') === 'alternatives_to,compare_agents,connect_bundle,get_agent,list_categories,recommend,request_missing_tool,search_agents,submit_listing',
   names.join(', ')
 );
 for (const t of tools) {
-  const write = t.name === 'submit_listing';
+  const write = t.name === 'submit_listing' || t.name === 'request_missing_tool';
   const a = t.annotations ?? {};
   check(`${t.name} readOnlyHint`, a.readOnlyHint === !write);
   // Claude and ChatGPT directory review: a title, and every hint an explicit boolean.
   check(
     `${t.name} directory annotations`,
-    Boolean(t.title) && a.title === t.title && a.destructiveHint === write && typeof a.openWorldHint === 'boolean',
+    Boolean(t.title) && a.title === t.title && a.destructiveHint === (t.name === 'submit_listing') && typeof a.openWorldHint === 'boolean',
     `destructiveHint ${a.destructiveHint}, openWorldHint ${a.openWorldHint}`
   );
 }

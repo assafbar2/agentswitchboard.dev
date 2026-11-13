@@ -2,6 +2,8 @@ import Link from '@/components/Link';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { pageMetadata } from '@/lib/metadata';
 import { EndpointLink } from '@/components/EndpointLink';
+import { CopyBlock } from '@/components/CopyBlock';
+import { AGENT_PROMPT } from '@/lib/agent-prompt';
 import { VerifiedBadge, VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 import { getEveryAgent } from '@/lib/catalog';
 import { COMPARE_MAX } from '@/lib/compare-link';
@@ -76,6 +78,25 @@ export default async function ForAgentsPage() {
           </p>
         </div>
 
+        <section className="space-y-2" id="paste">
+          <h2 className="dir-bar">## Give this to your agent</h2>
+          <p>
+            A person can start with one line pasted into any agent. It points the agent at{' '}
+            <EndpointLink href="/skill.md" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
+              /skill.md
+            </EndpointLink>
+            , the guide to searching this directory, with no key or sign-up:
+          </p>
+          <CopyBlock
+            label="One line to paste"
+            text={AGENT_PROMPT}
+            what="the line for your agent"
+            event="agent_prompt_copy"
+            data={{ from: 'for-agents' }}
+            prose
+          />
+        </section>
+
         {/* What this is */}
         <section className="space-y-2">
           <h2 className="dir-bar">## What this site is</h2>
@@ -124,7 +145,9 @@ export default async function ForAgentsPage() {
             <code className="font-bold">connect_bundle</code> (one MCP client config
             for up to {MY_STACK_MAX} listings), and suggest a listing with{' '}
             <code className="font-bold">submit_listing</code> (files a public GitHub
-            issue for human review; publishes nothing):
+            issue for human review; publishes nothing). When nothing fits a job,{' '}
+            <code className="font-bold">request_missing_tool</code> tells the
+            maintainer privately what was missing:
           </p>
           <pre className="rounded-none border-2 border-[var(--dir-ink)]! bg-[var(--dir-paper)] p-4 text-xs overflow-x-auto">
 {`{
@@ -149,7 +172,7 @@ export default async function ForAgentsPage() {
         <section className="space-y-2" id="webmcp">
           <h2 className="dir-bar">## In-browser tools (WebMCP)</h2>
           <p>
-            If you are viewing this page in a browser, the six read tools are
+            If you are viewing this page in a browser, the seven read tools are
             registered on{' '}
             <code className="font-bold">document.modelContext</code>{' '}
             (W3C WebMCP API, polyfilled). Call them directly — no scraping, no setup.
@@ -467,8 +490,9 @@ GET /api/tasks/<slug>
             catalog in pages of up to 50 (<code className="font-bold">/catalog/1.json</code>{' '}
             and on, each with <code className="font-bold">next</code>) — use them for bulk or
             offline work, filtering on{' '}
-            <code className="font-bold">accessMethods</code> or{' '}
-            <code className="font-bold">categories</code>.
+            <code className="font-bold">accessMethods</code>,{' '}
+            <code className="font-bold">categories</code> or{' '}
+            <code className="font-bold">authType</code>.
           </p>
         </section>
 

@@ -1,8 +1,8 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
   "name": "io.github.assafbar2/agentswitchboard",
-  "description": "Search a curated directory of AI agents, MCP servers, and agentic tools, and suggest new listings. Use it to find out whether an agent already exists for a job, which access methods it offers (API, MCP, CLI, browser extension), and where its homepage is.",
-  "version": "1.9.0",
+  "description": "Search a curated directory of AI agents, MCP servers, and agentic tools, suggest new listings, and say privately when nothing fits a job. Use it to find out whether an agent already exists for a job, which access methods it offers (API, MCP, CLI, browser extension), and where its homepage is.",
+  "version": "1.10.0",
   "websiteUrl": "https://agentswitchboard.dev",
   "repository": {
     "url": "https://github.com/assafbar2/agentswitchboard.dev",
@@ -278,6 +278,51 @@
           "name",
           "url",
           "description"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "request_missing_tool",
+      "title": "Request a Missing Tool",
+      "description": "Tell the Agent Switchboard maintainer that the directory has nothing for a job. Use it after search_agents (and a task or category, if one fits) found nothing that does what the user needs. The request is recorded privately and read in the weekly review, which uses requests to decide what to look for and add; nothing is published, no issue is opened, and there is no reply. Describe the job, never the user: no names, emails, company details or conversation. Limited to 10 requests per hour per caller.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "need": {
+            "type": "string",
+            "minLength": 10,
+            "maxLength": 500,
+            "description": "The job no listing does, in plain words (10–500 characters), e.g. \"an MCP server that files expense reports in Expensify\". Describe the job, not the user."
+          },
+          "tried": {
+            "type": "string",
+            "maxLength": 200,
+            "description": "The search words that found nothing, if any"
+          },
+          "category": {
+            "type": "string",
+            "maxLength": 60,
+            "description": "Closest category slug from list_categories, if any"
+          },
+          "access": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "api",
+                "mcp",
+                "cli",
+                "browser-extension"
+              ]
+            },
+            "maxItems": 4,
+            "description": "How the agent needs to reach it: api, mcp, cli, browser-extension"
+          }
+        },
+        "required": [
+          "need"
         ],
         "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"

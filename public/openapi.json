@@ -2,9 +2,9 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Agent Switchboard Directory API",
-    "version": "1.10.0",
+    "version": "1.14.0",
     "summary": "Read-only catalog of AI agents, MCP servers, and agentic developer tools.",
-    "description": "Agent Switchboard is a public discovery directory. Use this API to answer questions like 'is there an agent that does X?' or 'which listed products expose an MCP server?'. There is no authentication, no user account, and no write access. This API does not proxy the underlying products — it only returns Switchboard listings. For interactive tool-shaped access, an MCP server is also available at /api/mcp. Listing data returned by this API is licensed CC BY-NC 4.0 (attribution required; commercial reuse needs a license: https://agentswitchboard.dev/contact). The API definition itself is MIT.",
+    "description": "Agent Switchboard is a public discovery directory. Use this API to answer questions like 'is there an agent that does X?' or 'which listed products expose an MCP server?'. There is no authentication and no user account. The one write, POST /api/missing-tool, publishes nothing: it privately tells the maintainer that no listing does a job. The /api/ endpoints allow 120 requests per minute per IP and answer 429 with Retry-After past that; cached responses do not count, and /api/mcp has its own limits. This API does not proxy the underlying products — it only returns Switchboard listings. For interactive tool-shaped access, an MCP server is also available at /api/mcp. Listing data returned by this API is licensed CC BY-NC 4.0 (attribution required; commercial reuse needs a license: https://agentswitchboard.dev/contact). The API definition itself is MIT.",
     "contact": {
       "name": "Barnir",
       "email": "barnir@agentmail.to",
@@ -21,7 +21,8 @@
   },
   "tags": [
     { "name": "catalog", "description": "Search and fetch directory listings." },
-    { "name": "mcp", "description": "Optional Model Context Protocol transport. Not required for REST clients." }
+    { "name": "mcp", "description": "Optional Model Context Protocol transport. Not required for REST clients." },
+    { "name": "feedback", "description": "Telling the maintainer what the directory is missing." }
   ],
   "security": [],
   "paths": {
@@ -125,6 +126,7 @@
           }
         ],
         "responses": {
+          "429": { "$ref": "#/components/responses/RateLimited" },
           "200": {
             "description": "A page of matching agents.",
             "content": {
@@ -186,6 +188,7 @@
           }
         ],
         "responses": {
+          "429": { "$ref": "#/components/responses/RateLimited" },
           "200": {
             "description": "The listing.",
             "content": {
@@ -235,6 +238,7 @@
           }
         ],
         "responses": {
+          "429": { "$ref": "#/components/responses/RateLimited" },
           "200": {
             "description": "The listing and its alternatives.",
             "content": {
@@ -261,6 +265,7 @@
         "description": "Every category with a live count of published agents. Use `slug` as the `category` query parameter on searchAgents.",
         "tags": ["catalog"],
         "responses": {
+          "429": { "$ref": "#/components/responses/RateLimited" },
           "200": {
             "description": "Categories in display order.",
             "content": {
@@ -279,6 +284,7 @@
         "description": "Stacks are editor-picked sets of listings that together do one job, each listing with why it is in the stack. In the order /stacks shows them: the stack of the week first. `stackOfTheWeek` is the slug of the newest stack tied to a weekly drop.",
         "tags": ["catalog"],
         "responses": {
+          "429": { "$ref": "#/components/responses/RateLimited" },
           "200": {
             "description": "Every stack, the stack of the week first.",
             "content": {
@@ -306,6 +312,7 @@
           }
         ],
         "responses": {
+          "429": { "$ref": "#/components/responses/RateLimited" },
           "200": {
             "description": "The stack.",
             "content": {
@@ -332,6 +339,7 @@
         "description": "Tasks are jobs (\"query a database\", \"transcribe audio\"), each with how many listings do it. Use a task's `slug` as the `task` parameter on searchAgents to filter and page those listings, best fit first, or call getTask for its best fits with why each one fits. In the order /tasks shows them.",
         "tags": ["catalog"],
         "responses": {
+          "429": { "$ref": "#/components/responses/RateLimited" },
           "200": {
             "description": "Every task.",
             "content": {
@@ -359,6 +367,7 @@
           }
         ],
         "responses": {
+          "429": { "$ref": "#/components/responses/RateLimited" },
           "200": {
             "description": "The task.",
             "content": {
@@ -390,6 +399,7 @@
           { "name": "c", "in": "query", "required": false, "description": "Third listing's slug.", "schema": { "type": "string" } }
         ],
         "responses": {
+          "429": { "$ref": "#/components/responses/RateLimited" },
           "200": {
             "description": "The comparison.",
             "content": {
@@ -425,6 +435,7 @@
           }
         ],
         "responses": {
+          "429": { "$ref": "#/components/responses/RateLimited" },
           "200": {
             "description": "The bundle.",
             "content": {
@@ -487,11 +498,53 @@
         }
       }
     },
+    "/api/missing-tool": {
+      "post": {
+        "operationId": "requestMissingTool",
+        "summary": "Say that no listing does a job",
+        "description": "Tell the maintainer that the directory has nothing for a job, after a search found nothing that fits. Recorded privately for the weekly review, which uses these requests to decide what to look for and add. Nothing is published, no issue is opened, and there is no reply. Describe the job, not the user: email addresses and phone numbers are removed before it is recorded, and the record keeps no IP address. Limited to 10 per caller IP per hour. The same as the MCP tool request_missing_tool.",
+        "tags": ["feedback"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["need"],
+                "properties": {
+                  "need": { "type": "string", "minLength": 10, "maxLength": 500, "description": "The job no listing does, in plain words.", "examples": ["file expense reports in Expensify"] },
+                  "tried": { "type": "string", "maxLength": 200, "description": "The search words that found nothing." },
+                  "category": { "type": "string", "maxLength": 60, "description": "The closest category slug." },
+                  "access": {
+                    "type": "array",
+                    "maxItems": 4,
+                    "items": { "type": "string", "enum": ["api", "mcp", "cli", "browser-extension"] },
+                    "description": "How the agent needs to reach it."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": { "description": "Recorded.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/MissingToolResponse" } } } },
+          "400": {
+            "description": "The body is not JSON, need is missing or too short, or a field is unknown.",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } }
+          },
+          "429": {
+            "description": "Past 10 per caller IP per hour. Retry-After says when to try again.",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/MissingToolResponse" } } }
+          }
+        }
+      }
+    },
     "/agents.json": {
       "get": {
         "operationId": "listAgents",
         "summary": "Index of the agent catalog",
-        "description": "A small index: the total, and the URLs of the static pages (`/catalog/{page}.json`, up to 50 listings each, featured first, then A→Z) that together hold every published agent, plus the REST search and MCP endpoints. No single request returns the whole catalog. Prefer GET /api/agents for targeted search. Built once per deploy; cached for five minutes at the edge.",
+        "description": "A small index: the total, and the URLs of the static pages (`/catalog/{page}.json`, up to 50 listings each, featured first, then A→Z) that together hold every published agent, plus the REST search and MCP endpoints. No single request returns the whole catalog. Prefer GET /api/agents for targeted search. Built once per deploy, so it and the pages change only with a release; a deploy replaces them at the edge.",
         "tags": ["catalog"],
         "responses": {
           "200": {
@@ -509,7 +562,7 @@
       "get": {
         "operationId": "listAgentsPage",
         "summary": "One page of the agent catalog",
-        "description": "Up to 50 published agents with every catalog field, in the order of the index at /agents.json. `next` links the following page and is null on the last. A page past the last is a 404.",
+        "description": "Up to 50 published agents with every catalog field, including `authType` (skills are in GET /api/agents/{slug}), in the order of the index at /agents.json. `next` links the following page and is null on the last. A page past the last is a 404.",
         "tags": ["catalog"],
         "parameters": [
           {
@@ -537,7 +590,7 @@
       "post": {
         "operationId": "mcpTransport",
         "summary": "Model Context Protocol endpoint (streamable HTTP)",
-        "description": "Speaks MCP over streamable HTTP. Exposes eight tools: `search_agents`, `get_agent`, `list_categories`, `compare_agents`, `alternatives_to`, `connect_bundle`, `recommend`, and `submit_listing`, which files a listing suggestion for human review. This is a JSON-RPC transport, not a REST resource. REST clients should call /api/agents, /api/compare, /api/agents/{slug}/alternatives, /api/bundle and /api/recommend instead.",
+        "description": "Speaks MCP over streamable HTTP. Exposes nine tools: `search_agents`, `get_agent`, `list_categories`, `compare_agents`, `alternatives_to`, `connect_bundle`, `recommend`, `submit_listing`, which files a listing suggestion for human review, and `request_missing_tool`, which says privately that no listing does a job. This is a JSON-RPC transport, not a REST resource. REST clients should call /api/agents, /api/compare, /api/agents/{slug}/alternatives, /api/bundle and /api/recommend instead.",
         "tags": ["mcp"],
         "requestBody": {
           "required": true,
@@ -567,6 +620,27 @@
     }
   },
   "components": {
+    "responses": {
+      "RateLimited": {
+        "description": "Over 120 requests per minute from this IP. Wait `Retry-After` seconds, then retry.",
+        "headers": {
+          "Retry-After": {
+            "description": "Seconds until the caller's window resets.",
+            "schema": { "type": "integer", "minimum": 1 }
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/RateLimitError" },
+            "example": {
+              "error": "rate_limited",
+              "message": "Rate limit exceeded: 120 requests per minute per IP. Retry after 42 seconds.",
+              "retryAfterSeconds": 42
+            }
+          }
+        }
+      }
+    },
     "schemas": {
       "SearchResult": {
         "type": "object",
@@ -956,6 +1030,7 @@
           "description",
           "categories",
           "accessMethods",
+          "authType",
           "tags",
           "verified",
           "official",
@@ -983,6 +1058,11 @@
           "accessMethods": {
             "type": "array",
             "items": { "type": "string", "enum": ["api", "mcp", "cli", "browser-extension"] }
+          },
+          "authType": {
+            "type": "string",
+            "enum": ["apiKey", "oauth2", "bearer", "none"],
+            "description": "How the listed product authenticates. `none` needs no key or sign-in, as the site's No auth needed filter and `auth=none` keep."
           },
           "tags": { "type": "array", "items": { "type": "string" } },
           "verified": { "type": "boolean", "description": "Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working." },
@@ -1273,12 +1353,29 @@
           "url": { "type": "string", "format": "uri" }
         }
       },
+      "MissingToolResponse": {
+        "type": "object",
+        "required": ["status", "message"],
+        "properties": {
+          "status": { "type": "string", "enum": ["recorded", "rate_limited"] },
+          "message": { "type": "string" }
+        }
+      },
       "Error": {
         "type": "object",
         "required": ["error", "message"],
         "properties": {
           "error": { "type": "string", "examples": ["not_found"] },
           "message": { "type": "string" }
+        }
+      },
+      "RateLimitError": {
+        "type": "object",
+        "required": ["error", "message", "retryAfterSeconds"],
+        "properties": {
+          "error": { "type": "string", "const": "rate_limited" },
+          "message": { "type": "string" },
+          "retryAfterSeconds": { "type": "integer", "minimum": 1, "description": "Same as the Retry-After header." }
         }
       }
     }

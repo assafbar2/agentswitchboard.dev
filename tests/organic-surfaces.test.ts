@@ -179,7 +179,7 @@ describe('AI-assistant surfaces are organic', () => {
 
   it('the MCP tool list names no placement field and promises no placement order', async () => {
     const { result } = await rpc('tools/list');
-    expect(result.tools).toHaveLength(8);
+    expect(result.tools).toHaveLength(9);
     // The logger's allow-list of tool names (lib/mcp-tools.ts) matches what is registered.
     expect(result.tools.map((t: { name: string }) => t.name).sort()).toEqual([...MCP_TOOL_NAMES].sort());
     for (const tool of result.tools) {

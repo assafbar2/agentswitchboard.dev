@@ -8,8 +8,10 @@
  *
  * The read tools are views over the same cached catalog that powers the
  * site (lib/catalog.ts), so MCP results always match the web directory.
- * submit_listing is the one write: it files a public GitHub issue through
- * the same path as the /submit form (lib/mcp-submit.ts).
+ * submit_listing files a public GitHub issue through the same path as the
+ * /submit form (lib/mcp-submit.ts). request_missing_tool records a private
+ * lead line for the weekly run (lib/missing-tool.ts), as does a search_agents
+ * call that matches nothing (lib/leads.ts).
  */
 
 import { createMcpHandler } from 'mcp-handler';
@@ -20,6 +22,7 @@ import { COMPARE_QUERY_KEYS } from '@/lib/compare-link';
 import { alternativesDecision, bundleDecision, compareDecision, recommendDecision, type Decision } from '@/lib/decide';
 import { absoluteIconUrl } from '@/lib/icons';
 import { organicOrder, withoutPlacement } from '@/lib/organic';
+import { logZeroResults } from '@/lib/leads';
 import { logConsumer } from '@/lib/log';
 import {
   SUBMIT_LISTING_DESCRIPTION,
@@ -48,6 +51,12 @@ import {
 import { clientIp, fixedWindowLimiter, isAssistantPlatformIp } from '@/lib/rate-limit';
 import { MAX_ALTERNATIVES } from '@/lib/related';
 import { MCP_TOOL_NAMES } from '@/lib/mcp-tools';
+import {
+  MISSING_TOOL_DESCRIPTION,
+  missingToolInput,
+  missingToolOutput,
+  requestMissingTool,
+} from '@/lib/missing-tool';
 import {
   AUTH_TYPES,
   MAX_QUERY_LENGTH,
@@ -98,7 +107,8 @@ const INSTRUCTIONS =
   'To help a user choose: compare_agents puts 2 or 3 listings side by side, alternatives_to finds listings that could stand in for one, ' +
   'and connect_bundle turns up to 10 listings into one MCP client config to paste, with how to connect the rest. ' +
   'Each result\'s url is its listing page on the site. submit_listing only files a public suggestion for human review; ' +
-  'call it only when the user asks to list a product and has confirmed the details.';
+  'call it only when the user asks to list a product and has confirmed the details. ' +
+  'When nothing in the directory does the job, request_missing_tool tells the maintainer privately what was missing.';
 
 const SITE = 'https://agentswitchboard.dev';
 
@@ -260,7 +270,7 @@ const handler = createMcpHandler(
           agents: z.array(z.object(agentSummaryShape)),
         },
       },
-      async ({ query, task, category, access, official, verified, auth, since, sort, limit, offset }) => {
+      async ({ query, task, category, access, official, verified, auth, since, sort, limit, offset }, extra) => {
         const slug = task?.trim().toLowerCase();
         const picked = slug ? getTask(slug) : null;
         if (slug && !picked) {
@@ -287,6 +297,16 @@ const handler = createMcpHandler(
           searchAgents(agents, clampQuery(query), access ? normalizeAccessMethods(access) : undefined),
           sort ?? 'relevance'
         );
+        logZeroResults('mcp', extra.requestInfo?.headers ?? {}, matches.length, {
+          q: clampQuery(query),
+          task: picked?.slug,
+          category,
+          access: access ? normalizeAccessMethods(access).join('+') : undefined,
+          official,
+          verified,
+          auth: auth?.join('|'),
+          since: firstDay ?? undefined,
+        });
         const start = offset ?? 0;
         const size = limit ?? 10;
         const page = matches.slice(start, start + size);
@@ -567,9 +587,36 @@ const handler = createMcpHandler(
       },
       async (input, extra) => submitListing(input, extra.requestInfo?.headers ?? {})
     );
+
+    server.registerTool(
+      'request_missing_tool',
+      {
+        title: 'Request a Missing Tool',
+        description: MISSING_TOOL_DESCRIPTION,
+        // A private note for the maintainer: nothing public changes, and repeating it only adds a line.
+        annotations: {
+          title: 'Request a Missing Tool',
+          readOnlyHint: false,
+          destructiveHint: false,
+          idempotentHint: false,
+          openWorldHint: false,
+        },
+        inputSchema: missingToolInput,
+        outputSchema: missingToolOutput,
+      },
+      async (input, extra) => {
+        const outcome = requestMissingTool(input, 'mcp', extra.requestInfo?.headers ?? {});
+        const output = { status: outcome.status, message: outcome.message };
+        return {
+          content: [{ type: 'text' as const, text: JSON.stringify(output) }],
+          structuredContent: output,
+          ...(outcome.status === 'rate_limited' ? { isError: true } : {}),
+        };
+      }
+    );
   },
   {
-    serverInfo: { name: 'agentswitchboard', version: '1.9.0' },
+    serverInfo: { name: 'agentswitchboard', version: '1.10.0' },
     instructions: INSTRUCTIONS,
   },
   {

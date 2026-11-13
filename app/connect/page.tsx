@@ -69,6 +69,10 @@ const TOOLS: { name: string; does: string }[] = [
     does: 'One pick for what your user needs, said in a sentence, with why it fits, the next step to start using it and two alternatives.',
   },
   { name: 'submit_listing', does: 'Suggest a new listing. Opens a public GitHub issue for review; publishes nothing.' },
+  {
+    name: 'request_missing_tool',
+    does: 'Say that nothing in the directory does a job. Recorded privately for the weekly review; publishes nothing.',
+  },
 ];
 
 const GROK_BOT_PROMPTS = [
