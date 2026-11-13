@@ -1,0 +1,56 @@
+{
+  "id": "capgo",
+  "name": "Capgo",
+  "slug": "capgo",
+  "description": "Ships live over-the-air updates and native builds for Capacitor apps, with a hosted MCP server for managing channels, bundles and rollouts from chat.",
+  "providerName": "Capgo",
+  "providerUrl": "https://capgo.app",
+  "agentUrl": "https://capgo.app/",
+  "categories": [
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "capacitor",
+    "live-updates",
+    "over-the-air-updates",
+    "mobile-app-deployment",
+    "ios-builds",
+    "android-builds",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "manage-bundles",
+      "name": "Manage Apps and Bundles",
+      "description": "Lists your Capgo apps and uploaded bundles and moves a release channel to a new bundle from an AI assistant."
+    },
+    {
+      "id": "control-rollouts",
+      "name": "Control Rollouts",
+      "description": "Pauses a progressive rollout or checks update health for a channel before more devices receive the release."
+    },
+    {
+      "id": "build-logs",
+      "name": "Read Native Build Logs",
+      "description": "Reads iOS and Android native build logs from Capgo Builder so the assistant can diagnose failing builds."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://api.capgo.app/mcp",
+  "quickstartUrl": "https://capgo.app/docs/getting-started/quickstart/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-11-13T12:18:30.884Z",
+  "updatedAt": "2026-11-13T12:18:30.884Z"
+}

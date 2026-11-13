@@ -1,0 +1,57 @@
+{
+  "id": "rd-station-mcp",
+  "name": "RD Station MCP",
+  "slug": "rd-station-mcp",
+  "description": "Connects ChatGPT, Claude and other MCP clients to RD Station Marketing, CRM and Conversas to analyze campaigns, pipelines and support, and act on contacts.",
+  "providerName": "RD Station",
+  "providerUrl": "https://www.rdstation.com",
+  "agentUrl": "https://www.rdstation.com/inteligencia-artificial/mcp/",
+  "categories": [
+    "sales-marketing",
+    "customer-support"
+  ],
+  "tags": [
+    "crm",
+    "marketing-automation",
+    "sales-pipeline",
+    "lead-generation",
+    "customer-service",
+    "brazil",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "marketing-analysis",
+      "name": "Analyze Marketing",
+      "description": "Investigates campaigns, channels and conversions in RD Station Marketing to find what drives or blocks lead generation."
+    },
+    {
+      "id": "pipeline-analysis",
+      "name": "Analyze Sales Pipeline",
+      "description": "Analyzes the RD Station CRM pipeline and deal history to find loss patterns and stalled negotiations."
+    },
+    {
+      "id": "support-analysis",
+      "name": "Analyze Customer Service",
+      "description": "Relates conversation volume, channels and satisfaction in RD Station Conversas to explain the customer experience."
+    },
+    {
+      "id": "crm-actions",
+      "name": "Act on Contacts and Deals",
+      "description": "Creates contacts, moves deals and triggers automations in RD Station, within the account's permissions and after confirmation."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-13T12:18:30.898Z",
+  "updatedAt": "2026-11-13T12:18:30.898Z"
+}

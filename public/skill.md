@@ -52,7 +52,7 @@ Query notes:
 
 Unknown slugs return HTTP 404 `{ "error": "not_found", "message": "…" }`. Search again; do not retry the same slug.
 
-Bulk dump (large): `GET /agents.json`. Prefer search for user questions.
+Bulk dump: `GET /agents.json` is an index linking pages of up to 50 listings (`/catalog/1.json` and on, each with `next`). Prefer search for user questions.
 
 Optional MCP (only if the client speaks MCP, not required): `POST https://agentswitchboard.dev/api/mcp` with tools `search_agents` (the same filters, `since` and `sort`), `get_agent`, `list_categories`, `compare_agents`, `alternatives_to` and `connect_bundle` (the same answers as the compare, alternatives and bundle endpoints).
 

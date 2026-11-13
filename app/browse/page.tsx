@@ -6,7 +6,9 @@ import {
   breakdownLine,
   browseMatches,
   browseStateHref,
+  pageSlice,
   parseFlag,
+  parsePage,
   parseSort,
   resultBreakdown,
   sortAgents,
@@ -66,7 +68,7 @@ export default async function BrowsePage({
 }: {
   searchParams: Promise<RawParams>;
 }) {
-  const { q, task: taskParam, access, category, official, vendor, verified, auth, sort } = firstValues(await searchParams);
+  const { q, task: taskParam, access, category, official, vendor, verified, auth, sort, page } = firstValues(await searchParams);
   const query = clampQuery(q);
   const task = taskOf(taskParam);
   // Same parsing as /api/agents: aliases map to their method and unknown values
@@ -96,6 +98,8 @@ export default async function BrowsePage({
     access: accessFilters,
   };
   const agents = sortAgents(browseMatches(allAgents, state), sortOrder);
+  const shown = pageSlice(agents, parsePage(page));
+  const pageHref = (n: number) => browseStateHref(state, sortOrder, n);
   const recovery = agents.length === 0 ? recover(allAgents, state, categories, sortOrder) : undefined;
   const applied = new Set<BreakdownKey>(accessFilters as BreakdownKey[]);
   if (officialOnly) applied.add('official');
@@ -109,10 +113,35 @@ export default async function BrowsePage({
     !query && !task && !categoryFilter && !officialOnly && !verifiedOnly && authFilter.length === 0 && accessFilters.length === 0;
   const results = (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10">
-      {agents.map((agent) => (
+      {shown.items.map((agent) => (
         <AgentCard key={agent.id} agent={agent} />
       ))}
     </div>
+  );
+  const range = `${shown.start + 1}–${shown.start + shown.items.length} of ${agents.length}`;
+  const pager = shown.pages > 1 && (
+    <nav
+      aria-label="Result pages"
+      className="mt-8 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 border-t-[3px] border-[var(--dir-ink)]! pt-4 text-[16px] font-bold"
+    >
+      {shown.page > 1 ? (
+        <Link href={pageHref(shown.page - 1)} rel="prev" className="text-[var(--dir-ink)] no-underline hover:underline">
+          <span aria-hidden="true">← </span>Previous
+        </Link>
+      ) : (
+        <span />
+      )}
+      <span className="order-first w-full text-[var(--dir-muted)] font-normal sm:order-none sm:w-auto">
+        Page {shown.page} of {shown.pages} · {range}
+      </span>
+      {shown.page < shown.pages ? (
+        <Link href={pageHref(shown.page + 1)} rel="next" className="text-[var(--dir-ink)] no-underline hover:underline">
+          Next<span aria-hidden="true"> →</span>
+        </Link>
+      ) : (
+        <span />
+      )}
+    </nav>
   );
 
   return (
@@ -202,6 +231,7 @@ export default async function BrowsePage({
           ) : (
             results
           ))}
+        {pager}
         {recovery && (
           // Keyed by the view, so a client-side move to another empty view counts it again.
           <NoResults
@@ -237,6 +267,23 @@ export default async function BrowsePage({
               {accessFilters.length > 0 && ` · access: ${accessFilters.join('+')}`}
               {sortOrder !== 'relevance' && ` · sort: ${sortOrder}`}
             </div>
+            {shown.pages > 1 && (
+              <div className="agent-dim text-xs">
+                page {shown.page}/{shown.pages} · showing {range}
+                {shown.page > 1 && (
+                  <>
+                    {' · prev: '}
+                    <Link href={pageHref(shown.page - 1)} rel="prev">{pageHref(shown.page - 1)}</Link>
+                  </>
+                )}
+                {shown.page < shown.pages && (
+                  <>
+                    {' · next: '}
+                    <Link href={pageHref(shown.page + 1)} rel="next">{pageHref(shown.page + 1)}</Link>
+                  </>
+                )}
+              </div>
+            )}
             {breakdown.length > 0 && (
               <div className="agent-dim text-xs">
                 {breakdown.map(({ key, count }) => `${key}: ${count}`).join(' · ')}
@@ -254,7 +301,7 @@ export default async function BrowsePage({
           {agents.length > 0 && (
             <div>
               <div className="agent-section-title">results</div>
-              {agents.map((agent) => (
+              {shown.items.map((agent) => (
                 <Link
                   key={agent.id}
                   href={`/agents/${agent.slug}`}

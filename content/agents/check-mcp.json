@@ -1,0 +1,65 @@
+{
+  "id": "check-mcp",
+  "name": "Check MCP Server",
+  "slug": "check-mcp",
+  "description": "Runs payroll from AI clients on Check's payroll API: manages companies, employees, contractors, payrolls, taxes and payments through a hosted MCP server.",
+  "providerName": "Check",
+  "providerUrl": "https://www.checkhq.com",
+  "agentUrl": "https://docs.checkhq.com/docs/overview-1",
+  "categories": [
+    "finance"
+  ],
+  "tags": [
+    "payroll",
+    "payroll-api",
+    "employee-onboarding",
+    "payroll-taxes",
+    "contractor-payments",
+    "hr",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "payroll-operations",
+      "name": "Run Payroll",
+      "description": "Creates payrolls, adds earnings and deductions, previews totals and approves payroll runs through the Check API."
+    },
+    {
+      "id": "people-management",
+      "name": "Manage Employees and Contractors",
+      "description": "Creates, updates and views employees and 1099 contractors, including onboarding status and tax forms."
+    },
+    {
+      "id": "tax-compliance",
+      "name": "Manage Payroll Taxes",
+      "description": "Views and updates W-4 elections, state withholding, tax filings and exemptions for employees and companies."
+    },
+    {
+      "id": "payroll-reports",
+      "name": "Payroll Reports",
+      "description": "Generates payroll journals, tax summaries, employee rosters and payment reports from the account's data."
+    },
+    {
+      "id": "tool-discovery",
+      "name": "Search the Toolset",
+      "description": "Searches 270 tools across 18 toolsets by keyword and runs the right one, with read-only mode and toolset filtering."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.checkhq.com/check/mcp",
+  "quickstartUrl": "https://docs.checkhq.com/docs/hosted-remote",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-11-13T12:18:30.903Z",
+  "updatedAt": "2026-11-13T12:18:30.903Z"
+}

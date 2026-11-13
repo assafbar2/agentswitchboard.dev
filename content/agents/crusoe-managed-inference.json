@@ -1,0 +1,59 @@
+{
+  "id": "crusoe-managed-inference",
+  "name": "Crusoe Managed Inference",
+  "slug": "crusoe-managed-inference",
+  "description": "Run open-source and fine-tuned models through Crusoe Cloud's OpenAI-compatible inference API, on serverless per-token endpoints or dedicated self-serve deployments.",
+  "providerName": "Crusoe",
+  "providerUrl": "https://www.crusoe.ai",
+  "agentUrl": "https://docs.crusoe.ai/quickstart/getting-started-with-serverless-inference/",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "llm-inference",
+    "openai-compatible-api",
+    "serverless-inference",
+    "open-source-models",
+    "fine-tuning",
+    "gpu-cloud",
+    "crusoe"
+  ],
+  "skills": [
+    {
+      "id": "serverless-inference",
+      "name": "Serverless Inference",
+      "description": "Sends chat completion requests to hosted open-source models through an OpenAI-compatible API, billed per token."
+    },
+    {
+      "id": "self-serve-deployments",
+      "name": "Self-Serve Deployments",
+      "description": "Deploys dedicated inference endpoints with reserved GPUs, replica control and latency or throughput optimization profiles."
+    },
+    {
+      "id": "fine-tuning",
+      "name": "Serverless Fine-Tuning",
+      "description": "Trains LoRA adapters through Serverless Fine-Tuning and serves them on self-serve deployments alongside base models."
+    },
+    {
+      "id": "inference-metrics",
+      "name": "Inference Metrics",
+      "description": "Monitors Serverless Inference performance with built-in metrics and a Prometheus-compatible query API."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://docs.crusoe.ai/quickstart/getting-started-with-serverless-inference/",
+  "apiBaseUrl": "https://api.inference.crusoecloud.com/v1",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-11-13T12:18:30.844Z",
+  "updatedAt": "2026-11-13T12:18:30.844Z"
+}

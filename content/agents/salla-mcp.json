@@ -1,0 +1,36 @@
+{
+  "id": "salla-mcp",
+  "name": "Salla MCP",
+  "slug": "salla-mcp",
+  "description": "Lets Salla merchants manage their store's orders, products and stock from Claude, ChatGPT and other AI apps through Salla's official MCP server and API.",
+  "providerName": "Salla",
+  "providerUrl": "https://salla.com",
+  "agentUrl": "https://salla.com/en/tools/ai-prompts/connect-ai",
+  "categories": [
+    "commerce-payments"
+  ],
+  "tags": [
+    "ecommerce",
+    "online-store",
+    "order-management",
+    "inventory-management",
+    "saudi-arabia",
+    "merchant-api",
+    "mcp-server"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-11-13T12:18:30.899Z",
+  "updatedAt": "2026-11-13T12:18:30.899Z"
+}

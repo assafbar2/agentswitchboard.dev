@@ -62,7 +62,7 @@ On the website, the REST API and /agents.json, a \`sponsored\` flag also marks p
 ## How to use this directory
 
 - Full agent context (for agents): https://agentswitchboard.dev/for-agents
-- Full machine-readable catalog (JSON): https://agentswitchboard.dev/agents.json
+- Machine-readable catalog (JSON index, pages of 50): https://agentswitchboard.dev/agents.json
 - Browse by category: https://agentswitchboard.dev/categories
 - Search and filter: https://agentswitchboard.dev/browse${dropLine}
 - New listings, everything added in the last ${NEW_DAYS} days: https://agentswitchboard.dev/new (${newCount} since ${since}, grouped by drop)${releaseLine}
@@ -82,8 +82,9 @@ GET /api/agents?access=mcp&category=<slug> (add \`official=true\` for first-part
 from major vendors, e.g. Notion's own Notion MCP; \`verified=true\` for Verified ones;
 \`auth=none\` for no key or sign-in; \`since=7\` for what was added in the last 7 days, or
 \`since=<YYYY-MM-DD>\`; \`sort=newest\` for the latest additions first).
-/agents.json is the whole catalog in one large file; use it for bulk or offline work,
-filtering on \`accessMethods\`, \`categories\` and \`official\`.
+/agents.json indexes the whole catalog: it links static pages of up to 50 listings
+(/catalog/1.json, /catalog/2.json, …; each has \`next\`). Use them for bulk or offline
+work, filtering on \`accessMethods\`, \`categories\` and \`official\`.
 
 To help a user choose and set up:
 - Compare 2 or 3 listings, the facts that set each apart and one row per field: the
@@ -101,7 +102,7 @@ To help a user choose and set up:
 - Server manifest: https://agentswitchboard.dev/.well-known/mcp.json
 - Tools: search_agents, get_agent, list_categories, compare_agents, alternatives_to, connect_bundle, submit_listing (files a public GitHub issue for human review; publishes nothing)
 - Connect it to Grok, Grok Bot, the xAI API, Claude, or ChatGPT: https://agentswitchboard.dev/connect
-- Plain REST search (no MCP handshake needed): GET /api/agents?q=&task=&category=&access=&official=&verified=&auth=&since=&sort=&limit=&offset=
+- Plain REST search (no MCP handshake needed): GET /api/agents?q=&task=&category=&access=&official=&verified=&auth=&since=&sort=&limit=&offset=&page=
 - REST detail: GET /api/agents/{slug}
 - REST categories: GET /api/categories
 - REST stacks: GET /api/stacks, GET /api/stacks/{slug}

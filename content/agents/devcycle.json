@@ -1,0 +1,59 @@
+{
+  "id": "devcycle",
+  "name": "DevCycle",
+  "slug": "devcycle",
+  "description": "Creates, targets and cleans up feature flags from AI coding assistants through a hosted MCP server and CLI, with self-targeting overrides and usage analytics.",
+  "providerName": "DevCycle",
+  "providerUrl": "https://devcycle.com",
+  "agentUrl": "https://devcycle.com/",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "feature-flags",
+    "feature-management",
+    "flag-targeting",
+    "flag-cleanup",
+    "mcp-server",
+    "cli"
+  ],
+  "skills": [
+    {
+      "id": "feature-management",
+      "name": "Manage Feature Flags",
+      "description": "Creates, updates, enables and deletes feature flags and their variables, and cleans up flags that are no longer needed."
+    },
+    {
+      "id": "self-targeting",
+      "name": "Self-Targeting Overrides",
+      "description": "Sets and clears self-targeting overrides so a developer can test a flag variation without changing it for users."
+    },
+    {
+      "id": "flag-analytics",
+      "name": "Flag Evaluation Analytics",
+      "description": "Reports total evaluations per feature or project so the assistant can see which flags are in use and how often."
+    },
+    {
+      "id": "sdk-install",
+      "name": "SDK Install Guides",
+      "description": "Returns DevCycle SDK install guides and code examples for the project's language when wiring flags into code."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.devcycle.com/mcp",
+  "quickstartUrl": "https://docs.devcycle.com/cli-mcp/mcp-getting-started",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-11-13T12:18:30.886Z",
+  "updatedAt": "2026-11-13T12:18:30.886Z"
+}

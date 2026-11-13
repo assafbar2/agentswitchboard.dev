@@ -22,6 +22,362 @@
   },
   {
     "action": "removed",
+    "slug": "youtube-mcp",
+    "name": "YouTube MCP",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "updated",
+    "slug": "northstar-trustrail-acceptance-checker",
+    "name": "northstar-trustrail Acceptance Checker",
+    "note": "providerUrl updated",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "updated",
+    "slug": "bitfun",
+    "name": "BitFun",
+    "note": "agentUrl updated",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "cc-connect",
+    "name": "cc-connect",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "dexter",
+    "name": "Dexter",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "voicestudio",
+    "name": "VoiceStudio",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "check-mcp",
+    "name": "Check MCP Server",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "spacefast",
+    "name": "Spacefast",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "salla-mcp",
+    "name": "Salla MCP",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "rd-station-mcp",
+    "name": "RD Station MCP",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "moneytree-mcp",
+    "name": "Moneytree MCP",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "tomorrow-io-mcp",
+    "name": "Tomorrow.io MCP",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "nutrient-mcp",
+    "name": "Nutrient MCP",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "mintlify-admin-mcp",
+    "name": "Mintlify Admin MCP",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "files-com",
+    "name": "Files.com MCP",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "devcycle",
+    "name": "DevCycle",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "capgo",
+    "name": "Capgo",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "scrapingbee",
+    "name": "ScrapingBee",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "codesign",
+    "name": "CoDesign (IMG.LY)",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "prime-inference",
+    "name": "Prime Inference",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "agentrun",
+    "name": "AgentRun",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "git-ai",
+    "name": "git-ai (graft)",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "yogurt",
+    "name": "Yogurt",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "pandacode",
+    "name": "PandaCode",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "reason-network",
+    "name": "Reason Network",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "omnigraph",
+    "name": "Omnigraph",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "tdd-guard",
+    "name": "TDD Guard",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "nanomuse",
+    "name": "nanoMuse",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "chatollama",
+    "name": "ChatOllama",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "openoutreach",
+    "name": "OpenOutreach",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "harnessrouter",
+    "name": "HarnessRouter",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "earshot",
+    "name": "earshot",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "baserow",
+    "name": "Baserow MCP",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "modern-web-guidance",
+    "name": "Modern Web Guidance",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "orkas",
+    "name": "Orkas",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "openmotion",
+    "name": "OpenMotion (formerly html-anything)",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "crusoe-managed-inference",
+    "name": "Crusoe Managed Inference",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "squarespace-mcp",
+    "name": "Squarespace MCP",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "scandit-mcp",
+    "name": "Scandit MCP",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "opentext-sdp-mcp",
+    "name": "OpenText Software Delivery MCP",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "alchemy-mcp",
+    "name": "Alchemy MCP Server",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "productboard-mcp",
+    "name": "Productboard MCP Server",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "cloudinary-mcp",
+    "name": "Cloudinary MCP Servers",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "adobe-for-claude",
+    "name": "Adobe for Claude",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "twilio-mcp",
+    "name": "Twilio MCP and Skills",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "quicksand",
+    "name": "Quicksand",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "ace",
+    "name": "Ace",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "nod",
+    "name": "Nod",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "visio-mcp",
+    "name": "Microsoft Visio Desktop MCP Server",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "aws-emulator",
+    "name": "AWS Emulator",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "nginx-ui",
+    "name": "Nginx UI",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "horizon",
+    "name": "Horizon",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "docker-android",
+    "name": "docker-android",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "leon",
+    "name": "Leon",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "a2ui",
+    "name": "A2UI",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "teable",
+    "name": "Teable",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "tidb",
+    "name": "TiDB",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "reactive-resume",
+    "name": "Reactive Resume",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "added",
+    "slug": "atuin",
+    "name": "Atuin",
+    "date": "2026-11-13"
+  },
+  {
+    "action": "removed",
     "slug": "clify",
     "name": "Clify",
     "date": "2026-11-10"

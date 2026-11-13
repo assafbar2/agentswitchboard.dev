@@ -32,6 +32,7 @@ export function CatalogFilters({
   const update = useCallback(
     (changes: Record<string, string | null>) => {
       const params = new URLSearchParams(searchParams.toString());
+      params.delete('page');
       for (const [key, value] of Object.entries(changes)) {
         if (value) params.set(key, value);
         else params.delete(key);

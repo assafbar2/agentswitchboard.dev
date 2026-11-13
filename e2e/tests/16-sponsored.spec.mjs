@@ -6,6 +6,8 @@
 import { readdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { test, expect } from './fixtures.mjs';
+import { BASE } from '../target.mjs';
+import { loadCatalog } from '../catalog.mjs';
 
 const REPO = fileURLToPath(new URL('../..', import.meta.url));
 const UA = { 'user-agent': 'Mozilla/5.0 asb-e2e (sponsored)' };
@@ -149,11 +151,11 @@ test.describe('the label wherever the listing appears', () => {
 });
 
 test.describe('machine surfaces expose the flag and nothing more', () => {
-  test('/agents.json marks exactly the sponsored listings and defines the flag', async ({ request }) => {
-    const body = await getJson(request, '/agents.json');
-    expect(body.description).toContain('Sponsored: a paid placement');
-    for (const a of body.agents) expect(typeof a.sponsored, a.slug).toBe('boolean');
-    expect(body.agents.filter((a) => a.sponsored).map((a) => a.slug).sort()).toEqual([...SPONSORED_SLUGS].sort());
+  test('the /agents.json catalog marks exactly the sponsored listings and defines the flag', async () => {
+    const { index, agents } = await loadCatalog(BASE, UA);
+    expect(index.description).toContain('Sponsored: a paid placement');
+    for (const a of agents) expect(typeof a.sponsored, a.slug).toBe('boolean');
+    expect(agents.filter((a) => a.sponsored).map((a) => a.slug).sort()).toEqual([...SPONSORED_SLUGS].sort());
   });
 
   test('REST search and detail carry sponsored', async ({ request }) => {

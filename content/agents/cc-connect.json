@@ -1,0 +1,67 @@
+{
+  "id": "cc-connect",
+  "name": "cc-connect",
+  "slug": "cc-connect",
+  "description": "Bridges local coding agents like Claude Code, Codex and Gemini CLI to Slack, Telegram, Discord, Feishu, DingTalk, WeChat and other chat apps.",
+  "providerName": "chenhg5",
+  "providerUrl": "https://github.com/chenhg5",
+  "agentUrl": "https://github.com/chenhg5/cc-connect",
+  "categories": [
+    "communication",
+    "code-devtools"
+  ],
+  "tags": [
+    "chat-bridge",
+    "slack-bot",
+    "telegram-bot",
+    "feishu",
+    "claude-code",
+    "codex",
+    "remote-control"
+  ],
+  "skills": [
+    {
+      "id": "chat-bridge",
+      "name": "Bridge Agents to Chat",
+      "description": "Connects local agents such as Claude Code, Codex, Cursor Agent and Gemini CLI to 13 chat platforms, including Slack and Telegram."
+    },
+    {
+      "id": "chat-control",
+      "name": "Control from Chat",
+      "description": "Switches models, reasoning, permission modes, sessions and working directory with slash commands in the chat."
+    },
+    {
+      "id": "multi-bot-relay",
+      "name": "Multi-Bot Relay",
+      "description": "Binds several agent bots in one group chat so they can talk to each other, such as Claude and Gemini side by side."
+    },
+    {
+      "id": "scheduled-tasks",
+      "name": "Scheduled Tasks",
+      "description": "Sets up recurring agent jobs from natural language, such as summarizing GitHub trending every morning."
+    },
+    {
+      "id": "voice-images",
+      "name": "Voice and Images",
+      "description": "Accepts voice messages and screenshots in chat, handling speech-to-text, text-to-speech and image forwarding to the agent."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npm install -g cc-connect"
+  },
+  "quickstartUrl": "https://github.com/chenhg5/cc-connect#-quick-start",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-11-13T12:18:30.909Z",
+  "updatedAt": "2026-11-13T12:18:30.909Z"
+}

@@ -70,7 +70,8 @@ export function proxy(request: NextRequest) {
   // Count reads only: CORS preflights and HEAD checks are not consumption.
   if (request.method !== 'GET') return NextResponse.next();
 
-  logEdgeDoc(pathname, request);
+  // One label for every catalog page, as /api/agents/[slug] is for listings.
+  logEdgeDoc(pathname.startsWith('/catalog/') ? '/catalog/[page].json' : pathname, request);
 
   // Tell a route handler behind this (e.g. /agents.json) that the hit is
   // already counted. Upstream request headers only; the response is untouched.
@@ -84,6 +85,7 @@ export const config = {
     '/',
     '/llms.txt',
     '/agents.json',
+    '/catalog/:file',
     '/index.md',
     '/skill.md',
     '/SKILL.md',

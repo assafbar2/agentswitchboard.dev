@@ -313,6 +313,30 @@
       "mitigate": {
         "action": "deny"
       }
+    },
+    {
+      "src": "^/browse$",
+      "has": [
+        {
+          "type": "query",
+          "key": "page"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[Bb]ot|[Cc]rawl|[Ss]pider|[Ss]lurp|GoogleOther|meta-externalagent|meta-webindexer|Barkrowler|Scrapy).*"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:Twitterbot|facebookexternalhit|LinkedInBot|Slackbot|Discordbot|TelegramBot|WhatsApp|redditbot|Pinterestbot|Embedly|Iframely|ChatGPT-User|Perplexity-User|Claude-User|MistralAI-User).*"
+        }
+      ],
+      "mitigate": {
+        "action": "deny"
+      }
     }
   ]
 }

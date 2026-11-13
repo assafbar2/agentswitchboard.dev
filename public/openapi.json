@@ -29,7 +29,7 @@
       "get": {
         "operationId": "searchAgents",
         "summary": "Search published agents",
-        "description": "Relevance-ranked search over name, description, skills, categories, tags, and provider. Empty `q` lists published agents in catalog order: featured first, then A→Z. With `q`, results are ranked by relevance and equal scores keep that featured-first order. `sort` can order them by newest, most skills, or name instead. Filter by task, category slug, access methods, `official`, `verified`, `auth`, and/or `since` (when a listing was added). With a `task` and no `q`, results are best fit first. Paginate with `total` + `offset` + `limit`.",
+        "description": "Relevance-ranked search over name, description, skills, categories, tags, and provider. Empty `q` lists published agents in catalog order: featured first, then A→Z. With `q`, results are ranked by relevance and equal scores keep that featured-first order. `sort` can order them by newest, most skills, or name instead. Filter by task, category slug, access methods, `official`, `verified`, `auth`, and/or `since` (when a listing was added). With a `task` and no `q`, results are best fit first. Paginate with `total` + `offset` + `limit`, `page`, or by following `next`. A page holds at most 50 listings; for bulk work, read the /agents.json index and the /catalog pages it links.",
         "tags": ["catalog"],
         "parameters": [
           {
@@ -113,8 +113,15 @@
             "name": "offset",
             "in": "query",
             "required": false,
-            "description": "Number of matches to skip. Default 0.",
+            "description": "Number of matches to skip. Default 0. Wins over `page` when both are sent.",
             "schema": { "type": "integer", "minimum": 0, "default": 0 }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "Page number from 1, in steps of `limit`: `page=3&limit=20` is `offset=40`. Ignored when `offset` is sent. Default 1.",
+            "schema": { "type": "integer", "minimum": 1, "default": 1 }
           }
         ],
         "responses": {
@@ -129,6 +136,7 @@
                       "total": 1,
                       "offset": 0,
                       "limit": 10,
+                      "next": null,
                       "agents": [
                         {
                           "name": "AgentMail",
@@ -439,18 +447,46 @@
     "/agents.json": {
       "get": {
         "operationId": "listAgents",
-        "summary": "Fetch the full agent catalog",
-        "description": "Returns every published agent in one document, featured first, then A→Z. Filter client-side on `categories` or `accessMethods`. Prefer GET /api/agents for targeted search. The payload is cached for five minutes at the edge.",
+        "summary": "Index of the agent catalog",
+        "description": "A small index: the total, and the URLs of the static pages (`/catalog/{page}.json`, up to 50 listings each, featured first, then A→Z) that together hold every published agent, plus the REST search and MCP endpoints. No single request returns the whole catalog. Prefer GET /api/agents for targeted search. Built once per deploy; cached for five minutes at the edge.",
         "tags": ["catalog"],
         "responses": {
           "200": {
-            "description": "The full catalog.",
+            "description": "The catalog index.",
             "content": {
               "application/json": {
                 "schema": { "$ref": "#/components/schemas/Catalog" }
               }
             }
           }
+        }
+      }
+    },
+    "/catalog/{page}.json": {
+      "get": {
+        "operationId": "listAgentsPage",
+        "summary": "One page of the agent catalog",
+        "description": "Up to 50 published agents with every catalog field, in the order of the index at /agents.json. `next` links the following page and is null on the last. A page past the last is a 404.",
+        "tags": ["catalog"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "description": "Page number from 1, as listed in the index's `pages`.",
+            "schema": { "type": "integer", "minimum": 1 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "One page of the catalog.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CatalogPage" }
+              }
+            }
+          },
+          "404": { "description": "No such page." }
         }
       }
     },
@@ -497,6 +533,11 @@
           "offset": { "type": "integer" },
           "limit": { "type": "integer" },
           "since": { "type": "string", "format": "date", "description": "With `since`: the first day kept (UTC)." },
+          "next": {
+            "type": ["string", "null"],
+            "format": "uri",
+            "description": "The same query one page on (as `offset`), or null when this page is the last."
+          },
           "agents": {
             "type": "array",
             "items": { "$ref": "#/components/schemas/AgentSummary" }
@@ -819,13 +860,44 @@
       },
       "Catalog": {
         "type": "object",
-        "required": ["source", "total", "agents"],
+        "required": ["source", "schemaVersion", "total", "pageSize", "pageCount", "pages", "search"],
+        "properties": {
+          "source": { "type": "string" },
+          "description": { "type": "string", "description": "What the catalog is and what each flag means." },
+          "schemaVersion": { "type": "integer", "const": 2, "description": "1 was the single-file dump with every listing inline." },
+          "generated": { "type": "string", "format": "date-time" },
+          "total": { "type": "integer", "description": "Published listings across all pages." },
+          "pageSize": { "type": "integer", "const": 50 },
+          "pageCount": { "type": "integer" },
+          "pages": { "type": "array", "items": { "type": "string", "format": "uri" }, "description": "Every page URL, in order." },
+          "search": {
+            "type": "object",
+            "properties": {
+              "rest": { "type": "string", "format": "uri" },
+              "mcp": { "type": "string", "format": "uri" },
+              "openapi": { "type": "string", "format": "uri" },
+              "docs": { "type": "string", "format": "uri" }
+            }
+          }
+        }
+      },
+      "CatalogPage": {
+        "type": "object",
+        "required": ["schemaVersion", "index", "total", "pageSize", "page", "pageCount", "offset", "prev", "next", "agents"],
         "properties": {
           "source": { "type": "string" },
           "description": { "type": "string" },
+          "schemaVersion": { "type": "integer", "const": 2 },
           "generated": { "type": "string", "format": "date-time" },
+          "index": { "type": "string", "format": "uri" },
           "total": { "type": "integer" },
-          "agents": { "type": "array", "items": { "$ref": "#/components/schemas/CatalogAgent" } }
+          "pageSize": { "type": "integer", "const": 50 },
+          "page": { "type": "integer" },
+          "pageCount": { "type": "integer" },
+          "offset": { "type": "integer", "description": "Position of this page's first listing in the catalog, from 0." },
+          "prev": { "type": ["string", "null"], "format": "uri" },
+          "next": { "type": ["string", "null"], "format": "uri", "description": "The following page, or null on the last." },
+          "agents": { "type": "array", "maxItems": 50, "items": { "$ref": "#/components/schemas/CatalogAgent" } }
         }
       },
       "CatalogAgent": {

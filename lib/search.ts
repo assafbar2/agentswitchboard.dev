@@ -155,6 +155,7 @@ export function parseFlag(raw: string | null | undefined): boolean {
  */
 export function browseHref(query: string, current: string | URLSearchParams = ''): string {
   const params = new URLSearchParams(current);
+  params.delete('page');
   const q = query.trim();
   if (q) params.set('q', q);
   else params.delete('q');
@@ -193,7 +194,7 @@ export function browseMatches(agents: Agent[], state: BrowseState): Agent[] {
 }
 
 /** The /browse URL for `state`, written the way the filters write it. */
-export function browseStateHref(state: BrowseState, sort: SortOrder = 'relevance'): string {
+export function browseStateHref(state: BrowseState, sort: SortOrder = 'relevance', page = 1): string {
   const params = new URLSearchParams();
   if (state.task) params.set('task', state.task.slug);
   if (state.query) params.set('q', state.query);
@@ -204,8 +205,34 @@ export function browseStateHref(state: BrowseState, sort: SortOrder = 'relevance
   if (state.auth.length > 0) params.set('auth', state.auth.join(','));
   if (state.access.length > 0) params.set('access', state.access.join(','));
   if (sort !== 'relevance') params.set('sort', sort);
+  if (page > 1) params.set('page', String(page));
   const qs = params.toString();
   return qs ? `/browse?${qs}` : '/browse';
+}
+
+/** Cards per /browse page. Divides evenly into the two- and three-column grids. */
+export const BROWSE_PAGE_SIZE = 60;
+
+/** A ?page= value as a page number from 1. Anything but a positive whole number is page 1. */
+export function parsePage(raw: string | null | undefined): number {
+  const n = Number(raw?.trim());
+  return Number.isSafeInteger(n) && n >= 1 ? n : 1;
+}
+
+export interface PageSlice<T> {
+  /** The page shown: the one asked for, or the last page when it asked past the end. */
+  page: number;
+  pages: number;
+  /** Index of the first item shown, from 0. */
+  start: number;
+  items: T[];
+}
+
+export function pageSlice<T>(all: T[], page: number, size = BROWSE_PAGE_SIZE): PageSlice<T> {
+  const pages = Math.max(1, Math.ceil(all.length / size));
+  const shown = Math.min(page, pages);
+  const start = (shown - 1) * size;
+  return { page: shown, pages, start, items: all.slice(start, start + size) };
 }
 
 // ── Query parsing ───────────────────────────────────────────────────

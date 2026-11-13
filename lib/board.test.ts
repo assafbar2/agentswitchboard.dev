@@ -186,7 +186,12 @@ describe('the share card board', () => {
     const panels = board.panels.map(panelCode);
     const pitch = check(panels, 1072, 318);
     expect(pitch).toBeGreaterThanOrEqual(12);
-    expect(check(panels, 1072, 318 + pitch * 4)).toBeGreaterThan(pitch);
+    const next = pitch + 1;
+    const rows = Math.floor(318 / next);
+    const wider =
+      panels.reduce((sum, code) => sum + Math.ceil(code.length / rows) * next, 0) +
+      Math.round(next / 2) * (panels.length - 1);
+    expect(wider).toBeGreaterThan(1072);
 
     const { jacks } = cardBoard(panels, 1072, 318);
     let at = 0;

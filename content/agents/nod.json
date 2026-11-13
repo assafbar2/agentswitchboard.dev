@@ -1,0 +1,62 @@
+{
+  "id": "nod",
+  "name": "Nod",
+  "slug": "nod",
+  "description": "Runs errands on real websites and in Gmail, Calendar and Slack as n8n's open-source personal agent, with its own sandboxed computer and browser.",
+  "providerName": "n8n",
+  "providerUrl": "https://n8n.io",
+  "agentUrl": "https://nod.n8n.io",
+  "categories": [
+    "autonomous-agents",
+    "browser-computer"
+  ],
+  "tags": [
+    "personal-agent",
+    "web-errands",
+    "email-drafts",
+    "call-prep",
+    "approvals",
+    "self-hosted",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "call-briefs",
+      "name": "Call Briefs",
+      "description": "Writes a one-page brief for each call every morning from your email threads, calendar and the client's latest news."
+    },
+    {
+      "id": "drafts-with-approval",
+      "name": "Drafts With Approval",
+      "description": "Drafts the replies you owe from your own documents and sends them only after you approve each one."
+    },
+    {
+      "id": "web-errands",
+      "name": "Web Errands",
+      "description": "Completes web errands such as chasing invoices or cancelling trials in its own sandboxed browser and Linux workspace."
+    },
+    {
+      "id": "scheduled-checks",
+      "name": "Scheduled Page Checks",
+      "description": "Checks web pages on a schedule, such as a client's pricing page, and reports only when something changes."
+    },
+    {
+      "id": "visible-memory",
+      "name": "Visible Memory",
+      "description": "Remembers facts and preferences from your own messages, with every note visible, editable and forgettable."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://nod.n8n.io/docs/get-started/install-desktop/",
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [],
+  "createdAt": "2026-11-13T12:18:30.819Z",
+  "updatedAt": "2026-11-13T12:18:30.819Z"
+}

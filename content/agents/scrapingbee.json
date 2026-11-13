@@ -1,0 +1,64 @@
+{
+  "id": "scrapingbee",
+  "name": "ScrapingBee",
+  "slug": "scrapingbee",
+  "description": "Scrapes web pages to text, HTML or screenshots and pulls Google, Amazon, Walmart and YouTube results as JSON through a hosted MCP server and REST API.",
+  "providerName": "ScrapingBee",
+  "providerUrl": "https://www.scrapingbee.com",
+  "agentUrl": "https://www.scrapingbee.com/",
+  "categories": [
+    "browser-computer",
+    "research"
+  ],
+  "tags": [
+    "web-scraping",
+    "scrape-website",
+    "google-search-api",
+    "serp-api",
+    "amazon-scraper",
+    "screenshots",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "get-page-text",
+      "name": "Scrape Page Content",
+      "description": "Fetches a URL with JavaScript rendering and blocking handled, returning its content as text, markdown or rendered HTML."
+    },
+    {
+      "id": "extract-page-data",
+      "name": "Extract Page Data",
+      "description": "Extracts specific fields from a page with CSS or XPath selectors and returns them as structured data."
+    },
+    {
+      "id": "web-search",
+      "name": "Search the Web",
+      "description": "Runs fast web searches or full Google SERP queries for news, maps, shopping and images, returning clean JSON results."
+    },
+    {
+      "id": "ecommerce-data",
+      "name": "Amazon and Walmart Data",
+      "description": "Searches Amazon and Walmart and returns product details, pricing and seller offers by ASIN or product ID."
+    },
+    {
+      "id": "page-screenshot",
+      "name": "Capture Screenshots",
+      "description": "Captures a screenshot of any URL, or downloads a file such as a PDF or image from it, for the agent to use."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://mcp.scrapingbee.com/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-11-13T12:18:30.883Z",
+  "updatedAt": "2026-11-13T12:18:30.883Z"
+}

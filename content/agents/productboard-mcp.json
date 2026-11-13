@@ -1,0 +1,66 @@
+{
+  "id": "productboard-mcp",
+  "name": "Productboard MCP Server",
+  "slug": "productboard-mcp",
+  "description": "Find, read and update Productboard product specs from Claude, Claude Code or Cursor, post comments and update item status, over a hosted OAuth MCP server.",
+  "providerName": "Productboard",
+  "providerUrl": "https://www.productboard.com",
+  "agentUrl": "https://developer.productboard.com/reference/mcp-server",
+  "categories": [
+    "productivity",
+    "data-analytics"
+  ],
+  "tags": [
+    "product-management",
+    "product-specs",
+    "spec-driven-development",
+    "roadmaps",
+    "productboard",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "find-specs",
+      "name": "Find Specs",
+      "description": "Searches Productboard specs by initiative, feature or sub-feature name, by owner, or by tag, within the user's own permissions."
+    },
+    {
+      "id": "read-specs",
+      "name": "Read Specs",
+      "description": "Pulls the full, current content of any Productboard spec the signed-in user can access into the coding agent's context."
+    },
+    {
+      "id": "refine-specs",
+      "name": "Refine Specs",
+      "description": "Proposes and applies edits to spec content so Productboard stays current as implementation decisions get made."
+    },
+    {
+      "id": "spec-comments",
+      "name": "Spec Comments",
+      "description": "Reads and posts comments on a spec so clarifying questions reach the spec owner instead of getting buried in code."
+    },
+    {
+      "id": "report-progress",
+      "name": "Report Progress",
+      "description": "Updates a Productboard item's status to reflect where the implementation work stands, notifying teammates."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.productboard.com",
+  "quickstartUrl": "https://developer.productboard.com/reference/mcp-install",
+  "apiBaseUrl": "https://api.productboard.com/v2",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-11-13T12:18:30.834Z",
+  "updatedAt": "2026-11-13T12:18:30.834Z"
+}

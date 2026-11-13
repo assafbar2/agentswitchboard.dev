@@ -1,0 +1,58 @@
+{
+  "id": "scandit-mcp",
+  "name": "Scandit MCP",
+  "slug": "scandit-mcp",
+  "description": "Set up Scandit barcode and ID scanning in coding agents: sign in, provision trial license keys and write them into your project's .env through a hosted MCP server.",
+  "providerName": "Scandit",
+  "providerUrl": "https://www.scandit.com",
+  "agentUrl": "https://docs.scandit.com/sdks/web/agent-skills/scandit-mcp-installation-guide/",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "barcode-scanning",
+    "id-scanning",
+    "license-keys",
+    "sdk-setup",
+    "scandit",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "scanner-setup",
+      "name": "Scanner Setup",
+      "description": "Creates or reuses a trial subscription, project and license key for the chosen Scandit product and platforms in one idempotent call."
+    },
+    {
+      "id": "trial-keys",
+      "name": "Trial License Keys",
+      "description": "Adds or reuses an extra key on an existing trial for another app identifier, platform or web domain."
+    },
+    {
+      "id": "list-keys",
+      "name": "List License Keys",
+      "description": "Lists license keys across every subscription the account can access, as masked previews that never expose a usable key."
+    },
+    {
+      "id": "write-env",
+      "name": "Write Key to .env",
+      "description": "Returns a one-line command that writes a license key into the project's .env file without showing the key in the chat."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://ssl.scandit.com/mcp",
+  "quickstartUrl": "https://docs.scandit.com/sdks/web/agent-skills/scandit-mcp-installation-guide/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-13T12:18:30.841Z",
+  "updatedAt": "2026-11-13T12:18:30.841Z"
+}

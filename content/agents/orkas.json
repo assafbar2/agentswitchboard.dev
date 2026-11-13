@@ -1,0 +1,55 @@
+{
+  "id": "orkas",
+  "name": "Orkas",
+  "slug": "orkas",
+  "description": "Run a local desktop team of AI agents that plans projects, delegates to 16 specialists and drives Claude Code, Codex and OpenCode, for research, content, video and code.",
+  "providerName": "Orkas",
+  "providerUrl": "https://orkas.ai",
+  "agentUrl": "https://orkas.ai",
+  "categories": [
+    "orchestration",
+    "autonomous-agents"
+  ],
+  "tags": [
+    "multi-agent",
+    "desktop-app",
+    "local-first",
+    "claude-code",
+    "codex",
+    "scheduled-tasks",
+    "deep-research"
+  ],
+  "skills": [
+    {
+      "id": "commander",
+      "name": "Commander Delegation",
+      "description": "Breaks a goal into to-dos, hands parts to named specialist agents or isolated workers, and combines their results."
+    },
+    {
+      "id": "cli-agents",
+      "name": "Run Coding CLIs",
+      "description": "Runs installed Claude Code, Codex, OpenCode, OpenClaw and Hermes-Agent as local sessions under one shared plan."
+    },
+    {
+      "id": "scheduled-automations",
+      "name": "Scheduled Automations",
+      "description": "Runs any task hourly, daily, weekly or monthly on your computer, catching up the latest missed run when it wakes."
+    },
+    {
+      "id": "document-library",
+      "name": "Document Library",
+      "description": "Indexes your PDFs and documents locally and answers questions with citations back to the source passages."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [],
+  "createdAt": "2026-11-13T12:18:30.848Z",
+  "updatedAt": "2026-11-13T12:18:30.848Z"
+}

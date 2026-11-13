@@ -4,10 +4,11 @@
 // Read-only: GETs, plus get_agent over /api/mcp.
 import { test, expect } from './fixtures.mjs';
 import { BASE } from '../target.mjs';
+import { loadCatalog } from '../catalog.mjs';
 
 const UA = { 'user-agent': 'asb-e2e (use-it-now)' };
 
-const catalog = (await (await fetch(`${BASE}/agents.json`, { headers: UA })).json()).agents;
+const catalog = (await loadCatalog(BASE, UA)).agents;
 const has = (method) => (a) => a.accessMethods.includes(method);
 const pick = (list, what) => {
   if (!list[0]) throw new Error(`no published listing ${what}`);

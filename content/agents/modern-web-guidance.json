@@ -1,0 +1,57 @@
+{
+  "id": "modern-web-guidance",
+  "name": "Modern Web Guidance",
+  "slug": "modern-web-guidance",
+  "description": "Steer coding agents to modern HTML, CSS and JavaScript: search and retrieve curated web-platform guides and scan a codebase for legacy patterns, from Google Chrome.",
+  "providerName": "Google Chrome",
+  "providerUrl": "https://developer.chrome.com",
+  "agentUrl": "https://developer.chrome.com/docs/modern-web-guidance",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "web-platform",
+    "css",
+    "html",
+    "accessibility",
+    "web-performance",
+    "browser-compatibility",
+    "legacy-code",
+    "agent-skills"
+  ],
+  "skills": [
+    {
+      "id": "search-guides",
+      "name": "Search Guides",
+      "description": "Searches the curated web-platform guides by task description, such as animating a dialog modal backdrop."
+    },
+    {
+      "id": "retrieve-guide",
+      "name": "Retrieve Guide",
+      "description": "Retrieves a guide by ID and returns its expert-curated guidance and fallbacks straight into the agent's context."
+    },
+    {
+      "id": "legacy-scan",
+      "name": "Legacy Scan",
+      "description": "Scans a codebase for legacy patterns that modern browser APIs can replace, so the agent can modernize them."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npx modern-web-guidance@latest install"
+  },
+  "quickstartUrl": "https://developer.chrome.com/docs/modern-web-guidance",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-11-13T12:18:30.851Z",
+  "updatedAt": "2026-11-13T12:18:30.851Z"
+}

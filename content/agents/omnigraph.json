@@ -1,0 +1,70 @@
+{
+  "id": "omnigraph",
+  "name": "Omnigraph",
+  "slug": "omnigraph",
+  "description": "Stores agent memory in a typed, branchable graph database with graph, vector and full-text search in one query, served over CLI, HTTP and built-in MCP.",
+  "providerName": "ModernRelay",
+  "providerUrl": "https://github.com/ModernRelay",
+  "agentUrl": "https://www.omnigraph.dev",
+  "categories": [
+    "memory-state",
+    "vector-databases"
+  ],
+  "tags": [
+    "graph-database",
+    "agent-memory",
+    "knowledge-graph",
+    "vector-search",
+    "full-text-search",
+    "branching",
+    "mcp-server",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "typed-schema",
+      "name": "Typed Graph Schema",
+      "description": "Declares node and edge types, keys and constraints in .pg schemas and enforces them on every write agents make."
+    },
+    {
+      "id": "multimodal-retrieval",
+      "name": "Multimodal Retrieval",
+      "description": "Combines graph traversal, vector nearest-neighbour and full-text search with rank fusion in a single query for agent context."
+    },
+    {
+      "id": "graph-branching",
+      "name": "Branch and Merge",
+      "description": "Creates a branch per agent or task, then merges reviewed changes back with three-way merge and time travel across the graph."
+    },
+    {
+      "id": "built-in-mcp",
+      "name": "Built-in MCP Server",
+      "description": "Serves the graph's stored queries and mutations to MCP clients at the server's /mcp endpoint with bearer or OIDC auth."
+    },
+    {
+      "id": "cedar-policy",
+      "name": "Cedar Access Policy",
+      "description": "Checks every mutation against Cedar policies per graph or server-wide, with actors resolved server-side and audit tracking."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "brew",
+    "command": "brew install ModernRelay/tap/omnigraph"
+  },
+  "quickstartUrl": "https://www.omnigraph.dev/docs/getting-started/quickstart",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-11-13T12:18:30.867Z",
+  "updatedAt": "2026-11-13T12:18:30.867Z"
+}

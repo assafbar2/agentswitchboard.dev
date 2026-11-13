@@ -1,5 +1,33 @@
 [
   {
+    "slug": "ship-a-web-app-with-your-agent",
+    "title": "Build, test and ship a web app with your coding agent",
+    "promise": "Give the agent current web guidance, keep it test-first, test against local AWS and real browsers, then publish and roll back from the same session.",
+    "week": "2026-11-13",
+    "items": [
+      {
+        "slug": "modern-web-guidance",
+        "why": "Feeds the coding agent current web-platform guidance and scans for legacy patterns before it writes code."
+      },
+      {
+        "slug": "tdd-guard",
+        "why": "Claude Code hooks that make the agent write a failing test before it changes code."
+      },
+      {
+        "slug": "aws-emulator",
+        "why": "Runs AWS APIs locally, so the agent can test cloud code without an AWS account."
+      },
+      {
+        "slug": "browserstack-mcp",
+        "why": "Runs the tests on real devices and browsers on BrowserStack, straight from the agent."
+      },
+      {
+        "slug": "spacefast",
+        "why": "Publishes, versions and rolls back the site or app from the agent through its CLI or hosted MCP."
+      }
+    ]
+  },
+  {
     "slug": "data-team-agent-stack",
     "title": "Give your agent the whole data stack, from catalog to dashboard",
     "promise": "Find the right table, check its models and pipelines, confirm the data is healthy, then answer from a dashboard, all over MCP.",
