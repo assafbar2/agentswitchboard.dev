@@ -1,0 +1,62 @@
+{
+  "id": "codesign",
+  "name": "CoDesign (IMG.LY)",
+  "slug": "codesign",
+  "description": "Gives coding agents IMG.LY's design engine as a local MCP server to create and resize posters, social posts, videos and print-ready PDFs as editable layers.",
+  "providerName": "IMG.LY",
+  "providerUrl": "https://img.ly",
+  "agentUrl": "https://codesign.co/",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "graphic-design",
+    "social-media-graphics",
+    "print-pdf",
+    "video-editing",
+    "indesign-import",
+    "brand-kit",
+    "mcp-server",
+    "claude-code-plugin"
+  ],
+  "skills": [
+    {
+      "id": "resize-for-channels",
+      "name": "Resize for Every Channel",
+      "description": "Resizes one design into Instagram, Story, LinkedIn, X and other formats while keeping every layer editable."
+    },
+    {
+      "id": "import-design-files",
+      "name": "Import Design Files",
+      "description": "Opens InDesign, Photoshop, PowerPoint and PDF files with their layers intact so the agent can restyle and re-export them."
+    },
+    {
+      "id": "print-export",
+      "name": "Print-Ready Export",
+      "description": "Exports print PDFs with CMYK color and bleed, plus PNG, SVG, HTML, IDML, PSD and MP4 video for social channels."
+    },
+    {
+      "id": "localize-design",
+      "name": "Localize a Design",
+      "description": "Translates a design's text and reflows the layout to fit, including Arabic and other right-to-left scripts."
+    },
+    {
+      "id": "batch-from-csv",
+      "name": "Generate from CSV",
+      "description": "Creates one editable design per row of a CSV file from the same template, such as speaker cards or product tiles."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-13T12:18:30.880Z",
+  "updatedAt": "2026-11-13T12:18:30.880Z"
+}

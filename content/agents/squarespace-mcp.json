@@ -1,0 +1,54 @@
+{
+  "id": "squarespace-mcp",
+  "name": "Squarespace MCP",
+  "slug": "squarespace-mcp",
+  "description": "Brainstorm business names, check domain availability and pricing, and manage Squarespace store contacts, products and orders from Gemini, Claude or ChatGPT.",
+  "providerName": "Squarespace",
+  "providerUrl": "https://www.squarespace.com",
+  "agentUrl": "https://developers.squarespace.com/mcp/overview",
+  "categories": [
+    "commerce-payments"
+  ],
+  "tags": [
+    "domain-search",
+    "domain-availability",
+    "online-store",
+    "product-catalog",
+    "order-lookup",
+    "squarespace",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "domain-search",
+      "name": "Domain Search",
+      "description": "Brainstorms business names, checks domain availability and pricing, and returns a Squarespace checkout link to buy a domain."
+    },
+    {
+      "id": "commerce-products",
+      "name": "Products and Contacts",
+      "description": "Finds, creates and updates products and contacts on one of the user's Squarespace websites, with the user's own permissions."
+    },
+    {
+      "id": "order-lookup",
+      "name": "Order Lookup",
+      "description": "Looks up a website's orders read-only, for example to answer which orders still need shipping."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.squarespace.com/mcp",
+  "quickstartUrl": "https://developers.squarespace.com/mcp/connect-a-client",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-13T12:18:30.843Z",
+  "updatedAt": "2026-11-13T12:18:30.843Z"
+}

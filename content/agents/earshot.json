@@ -1,0 +1,67 @@
+{
+  "id": "earshot",
+  "name": "earshot",
+  "slug": "earshot",
+  "description": "Let coding agents hear audio: describe, match and find sounds, transcribe a film's soundtrack against its cuts, and make sound effects in code, as a local CLI and MCP server.",
+  "providerName": "Leonxlnx",
+  "providerUrl": "https://github.com/Leonxlnx",
+  "agentUrl": "https://github.com/Leonxlnx/earshot",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "audio-analysis",
+    "sound-effects",
+    "audio-tagging",
+    "sound-design",
+    "video-sound-sync",
+    "local-mcp",
+    "python"
+  ],
+  "skills": [
+    {
+      "id": "describe-match",
+      "name": "Describe and Match",
+      "description": "Describes what an audio file sounds like with calibrated tags and scores how well a text description fits it."
+    },
+    {
+      "id": "find-moments",
+      "name": "Find Moments",
+      "description": "Finds the best moments inside a long recording for a description and returns them as start and end trims."
+    },
+    {
+      "id": "timeline-critique",
+      "name": "Film Timeline",
+      "description": "Produces a listening transcript of a film with events, sections, loudness, beats and sync of sound to picture cuts."
+    },
+    {
+      "id": "forge-sounds",
+      "name": "Forge Sounds",
+      "description": "Makes a sound effect in code from a recipe and improves it by listening, scored against real reference recordings."
+    },
+    {
+      "id": "sfx-bank",
+      "name": "SFX Bank",
+      "description": "Renders sounds from a shipped bank of 252 effects, aimed at a moment in the picture by duration, apex and pitch."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "pip",
+    "command": "uv tool install \"earshot[mcp] @ git+https://github.com/Leonxlnx/earshot\""
+  },
+  "quickstartUrl": "https://github.com/Leonxlnx/earshot#install",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-11-13T12:18:30.854Z",
+  "updatedAt": "2026-11-13T12:18:30.854Z"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "chatollama",
+  "name": "ChatOllama",
+  "slug": "chatollama",
+  "description": "Self-host an AI chat workspace that connects local Ollama or hosted models to document knowledge bases with cited answers and to stdio or HTTP MCP tools.",
+  "providerName": "sugarforever",
+  "providerUrl": "https://github.com/sugarforever",
+  "agentUrl": "https://github.com/sugarforever/chat-ollama",
+  "categories": [
+    "autonomous-agents"
+  ],
+  "tags": [
+    "self-hosted-chat",
+    "ollama",
+    "knowledge-base",
+    "document-qa",
+    "mcp-client",
+    "openai-compatible",
+    "docker"
+  ],
+  "skills": [
+    {
+      "id": "knowledge-base",
+      "name": "Knowledge Bases",
+      "description": "Indexes PDF, Markdown and text documents into collections that the agent searches and cites in its answers."
+    },
+    {
+      "id": "mcp-tools",
+      "name": "MCP Tools",
+      "description": "Connects local stdio or remote Streamable HTTP MCP servers and makes their tools available in selected conversations."
+    },
+    {
+      "id": "model-switching",
+      "name": "Model Switching",
+      "description": "Switches provider and model inside a conversation while keeping its history, across API providers and subscriptions."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://github.com/sugarforever/chat-ollama#install-with-docker-compose",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-13T12:18:30.860Z",
+  "updatedAt": "2026-11-13T12:18:30.860Z"
+}

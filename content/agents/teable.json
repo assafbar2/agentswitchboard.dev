@@ -1,0 +1,60 @@
+{
+  "id": "teable",
+  "name": "Teable",
+  "slug": "teable",
+  "description": "Reads and updates records, tables, fields and views in Teable, a Postgres-backed AI spreadsheet, from Claude Code, Codex or Cursor via its hosted MCP server.",
+  "providerName": "Teable",
+  "providerUrl": "https://teable.ai",
+  "agentUrl": "https://teable.ai",
+  "categories": [
+    "data-analytics",
+    "productivity"
+  ],
+  "tags": [
+    "spreadsheet",
+    "no-code-database",
+    "postgresql",
+    "airtable-alternative",
+    "app-builder",
+    "records",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "read-write-records",
+      "name": "Read and Write Records",
+      "description": "Reads and writes Teable records from an MCP client, acting with the same permissions you hold in each project."
+    },
+    {
+      "id": "manage-tables",
+      "name": "Manage Tables and Views",
+      "description": "Creates tables, fields and views in Teable from plain-language requests in Claude Code, Codex, Cursor or claude.ai."
+    },
+    {
+      "id": "call-teable-api",
+      "name": "Call the Teable API",
+      "description": "Calls the Teable REST API with personal access tokens scoped to chosen spaces, projects and permissions, for CI and scripts."
+    },
+    {
+      "id": "build-apps",
+      "name": "Build Apps Locally",
+      "description": "Clones, edits, pushes and publishes App Builder apps from your computer through the Teable CLI and agent skill."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.teable.ai/mcp",
+  "quickstartUrl": "https://help.teable.ai/en/basic/ai/teable-skill",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-11-13T12:18:30.795Z",
+  "updatedAt": "2026-11-13T12:18:30.795Z"
+}

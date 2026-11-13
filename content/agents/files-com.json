@@ -1,0 +1,64 @@
+{
+  "id": "files-com",
+  "name": "Files.com MCP",
+  "slug": "files-com",
+  "description": "Lets local MCP clients upload, download, move and share files, manage users and read audit logs on a Files.com site through a Python stdio server.",
+  "providerName": "Files.com",
+  "providerUrl": "https://www.files.com",
+  "agentUrl": "https://developers.files.com/python-mcp/",
+  "categories": [
+    "infrastructure",
+    "productivity"
+  ],
+  "tags": [
+    "file-transfer",
+    "managed-file-transfer",
+    "sftp",
+    "file-sharing",
+    "cloud-storage",
+    "user-management",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "file-transfer",
+      "name": "Upload and Download Files",
+      "description": "Uploads and downloads files between your machine and Files.com, optionally limited to one local root directory."
+    },
+    {
+      "id": "file-operations",
+      "name": "Manage Files and Folders",
+      "description": "Creates folders and copies, moves, deletes, zips, unzips or GPG-encrypts files and folders on your Files.com site."
+    },
+    {
+      "id": "share-links",
+      "name": "Create Share Links",
+      "description": "Creates and updates share links with recipients and notifications, and lists who downloaded or registered for them."
+    },
+    {
+      "id": "user-accounts",
+      "name": "Manage Users and Groups",
+      "description": "Creates, updates and deletes users, groups and folder permissions on the site under your API key's permissions."
+    },
+    {
+      "id": "audit-logs",
+      "name": "Read Audit Logs",
+      "description": "Lists action, login, SFTP, FTP, automation and API request logs plus per-file, folder and user history."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://developers.files.com/python-mcp/overview/installation",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-11-13T12:18:30.888Z",
+  "updatedAt": "2026-11-13T12:18:30.888Z"
+}

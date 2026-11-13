@@ -1,0 +1,64 @@
+{
+  "id": "reactive-resume",
+  "name": "Reactive Resume",
+  "slug": "reactive-resume",
+  "description": "Builds and edits resumes, cover letters and job applications in an open-source resume builder that agents reach through its MCP server and REST API.",
+  "providerName": "Reactive Resume",
+  "providerUrl": "https://rxresu.me",
+  "agentUrl": "https://rxresu.me",
+  "categories": [
+    "productivity"
+  ],
+  "tags": [
+    "resume-builder",
+    "cover-letters",
+    "job-applications",
+    "job-search",
+    "resume-export",
+    "self-hosted",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "edit-resumes",
+      "name": "Edit Resumes",
+      "description": "Reads and edits resumes with JSON Patch, recording every AI change in version history so earlier versions can be restored."
+    },
+    {
+      "id": "export-resumes",
+      "name": "Export Resumes",
+      "description": "Exports resumes as PDF, DOCX, ODT, Markdown or JSON, and returns signed PDF download links that expire in 10 minutes."
+    },
+    {
+      "id": "write-cover-letters",
+      "name": "Write Cover Letters",
+      "description": "Creates, updates, duplicates and exports cover letters, optionally linked to a resume for its sender details and design."
+    },
+    {
+      "id": "track-applications",
+      "name": "Track Job Applications",
+      "description": "Tracks job applications by stage with contacts, notes, interviews and attached PDFs, and moves or imports them in bulk."
+    },
+    {
+      "id": "tailor-resume",
+      "name": "Tailor Resume to Job",
+      "description": "Tailors a private resume copy to a job posting and scores the match, using the AI provider you connected to your account."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://rxresu.me/mcp",
+  "quickstartUrl": "https://docs.rxresu.me/guides/using-the-mcp-server",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-11-13T12:18:30.789Z",
+  "updatedAt": "2026-11-13T12:18:30.789Z"
+}

@@ -1,0 +1,63 @@
+{
+  "id": "nginx-ui",
+  "name": "Nginx UI",
+  "slug": "nginx-ui",
+  "description": "Manages Nginx from a web UI and an MCP interface, so agents can edit config files, reload or restart Nginx, and check its status.",
+  "providerName": "Nginx UI",
+  "providerUrl": "https://nginxui.com",
+  "agentUrl": "https://nginxui.com",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "nginx",
+    "web-server",
+    "reverse-proxy",
+    "config-management",
+    "lets-encrypt",
+    "self-hosted",
+    "devops"
+  ],
+  "skills": [
+    {
+      "id": "manage-configs",
+      "name": "Manage Nginx Configs",
+      "description": "Lists, reads, creates, modifies and renames Nginx configuration files and directories through MCP tools for AI agents."
+    },
+    {
+      "id": "control-nginx",
+      "name": "Control Nginx Service",
+      "description": "Reloads or restarts Nginx and reports its running status from an MCP client, with no shell access to the server."
+    },
+    {
+      "id": "ssl-certificates",
+      "name": "Let's Encrypt Certificates",
+      "description": "Deploys Let's Encrypt certificates in one click and renews them automatically for the sites Nginx serves."
+    },
+    {
+      "id": "config-backups",
+      "name": "Config Backups",
+      "description": "Backs up configuration automatically after each change, with version comparison and one-step restore."
+    },
+    {
+      "id": "cluster-management",
+      "name": "Cluster Management",
+      "description": "Mirrors configuration operations to multiple Nginx nodes to manage multi-server environments from one panel."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://nginxui.com/guide/getting-started.html",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-11-13T12:18:30.809Z",
+  "updatedAt": "2026-11-13T12:18:30.809Z"
+}

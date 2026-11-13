@@ -1,0 +1,69 @@
+{
+  "id": "quicksand",
+  "name": "Quicksand",
+  "slug": "quicksand",
+  "description": "Launches, controls and snapshots QEMU virtual machines from async Python to sandbox AI agents, with Ubuntu and Alpine images and desktop control.",
+  "providerName": "Microsoft",
+  "providerUrl": "https://www.microsoft.com",
+  "agentUrl": "https://microsoft.github.io/quicksand/",
+  "categories": [
+    "infrastructure",
+    "security"
+  ],
+  "tags": [
+    "sandbox",
+    "qemu",
+    "virtual-machines",
+    "python-sdk",
+    "code-execution",
+    "computer-use",
+    "isolation"
+  ],
+  "skills": [
+    {
+      "id": "run-commands",
+      "name": "Run Sandboxed Commands",
+      "description": "Runs shell commands in network-isolated Ubuntu or Alpine QEMU VMs from async Python, with no root or Docker needed."
+    },
+    {
+      "id": "checkpoint-revert",
+      "name": "Checkpoint and Revert",
+      "description": "Checkpoints full VM state and reverts to it, or saves disk state to load later, even on another machine."
+    },
+    {
+      "id": "mounts-and-ports",
+      "name": "Mounts and Port Forwards",
+      "description": "Mounts host directories into a sandbox at boot or on the fly, and forwards TCP ports between host and guest."
+    },
+    {
+      "id": "control-desktop",
+      "name": "Control a Desktop",
+      "description": "Controls Xfce desktop VMs with screenshots, typed text, key presses and mouse clicks for computer-use agents."
+    },
+    {
+      "id": "guest-users",
+      "name": "Guest OS Users",
+      "description": "Creates separate Linux user accounts in one VM so several agents run commands with their own home directories."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "pip",
+    "command": "pip install 'quick-sandbox[qemu,alpine]'"
+  },
+  "quickstartUrl": "https://microsoft.github.io/quicksand/user-guide/01-installation.html",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-11-13T12:18:30.825Z",
+  "updatedAt": "2026-11-13T12:18:30.825Z"
+}

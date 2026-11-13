@@ -1,0 +1,66 @@
+{
+  "id": "pandacode",
+  "name": "PandaCode",
+  "slug": "pandacode",
+  "description": "Runs Claude Code, Codex, Copilot CLI and other coding-agent CLIs side by side in one desktop workspace with Git, a terminal, a browser and agent teams.",
+  "providerName": "aicodeking",
+  "providerUrl": "https://github.com/aicodeking",
+  "agentUrl": "https://github.com/aicodeking/pandacode",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "coding-agent-workspace",
+    "desktop-app",
+    "claude-code",
+    "codex",
+    "multi-agent",
+    "git-worktrees",
+    "agent-client-protocol"
+  ],
+  "skills": [
+    {
+      "id": "multi-harness",
+      "name": "Run Any Coding CLI",
+      "description": "Runs Claude Code, Codex, OpenCode, Copilot CLI, Cline and other agents per task, picking harness, model and reasoning effort."
+    },
+    {
+      "id": "agent-teams",
+      "name": "Agent Teams",
+      "description": "Splits work between an architect agent and parallel workers that mix harnesses and models and share a notes board."
+    },
+    {
+      "id": "turn-review",
+      "name": "Review Every Turn",
+      "description": "Saves each turn's file changes with unified or split diffs, per-task worktrees and a one-click local merge into main."
+    },
+    {
+      "id": "chat-bots",
+      "name": "Chat App Bots",
+      "description": "Puts an agent behind Telegram, Slack, Discord, WhatsApp or a local web chat, with each conversation running as a task."
+    },
+    {
+      "id": "cloud-agents",
+      "name": "Cloud Agent Runs",
+      "description": "Starts an agent on a machine in your own cloud account and brings its changes back to a local worktree when done."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "brew",
+    "command": "brew install --cask aicodeking/pandacode/pandacode"
+  },
+  "quickstartUrl": "https://github.com/aicodeking/pandacode#install",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-11-13T12:18:30.871Z",
+  "updatedAt": "2026-11-13T12:18:30.871Z"
+}

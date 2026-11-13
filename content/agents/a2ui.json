@@ -1,0 +1,58 @@
+{
+  "id": "a2ui",
+  "name": "A2UI",
+  "slug": "a2ui",
+  "description": "Renders agent responses as native interactive UI in web, mobile and Flutter apps, using the open A2UI protocol with renderer and agent SDKs.",
+  "providerName": "A2UI Project",
+  "providerUrl": "https://a2ui.org",
+  "agentUrl": "https://a2ui.org",
+  "categories": [
+    "code-devtools",
+    "orchestration"
+  ],
+  "tags": [
+    "generative-ui",
+    "agent-ui-protocol",
+    "react",
+    "flutter",
+    "swiftui",
+    "streaming-ui",
+    "open-standard"
+  ],
+  "skills": [
+    {
+      "id": "render-native-ui",
+      "name": "Render Native UI",
+      "description": "Renders agent-generated UI as native widgets in React, Angular, Lit, Flutter and SwiftUI apps, with no WebViews or HTML."
+    },
+    {
+      "id": "stream-ui",
+      "name": "Stream UI Updates",
+      "description": "Streams UI descriptions from agent to client for progressive rendering, while bound data updates locally as users interact."
+    },
+    {
+      "id": "component-catalog",
+      "name": "Component Catalog Guardrails",
+      "description": "Restricts what an agent can draw to a developer-defined component catalog and validates every message against a strict schema."
+    },
+    {
+      "id": "agent-sdk",
+      "name": "Agent SDKs",
+      "description": "Compiles model output into A2UI messages with Python, TypeScript and Dart agent SDKs that negotiate catalogs and generate prompts."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://a2ui.org/quickstart/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-11-13T12:18:30.797Z",
+  "updatedAt": "2026-11-13T12:18:30.797Z"
+}

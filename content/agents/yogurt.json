@@ -1,0 +1,58 @@
+{
+  "id": "yogurt",
+  "name": "Yogurt",
+  "slug": "yogurt",
+  "description": "Records and transcribes meetings locally without a bot, writes summaries with an on-device model, and lets AI assistants read notes via a local MCP server.",
+  "providerName": "Frigade",
+  "providerUrl": "https://frigade.com",
+  "agentUrl": "https://yogurt.so",
+  "categories": [
+    "productivity",
+    "memory-state"
+  ],
+  "tags": [
+    "meeting-notes",
+    "transcription",
+    "meeting-summaries",
+    "local-first",
+    "whisper",
+    "speech-to-text",
+    "mcp-server",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "live-transcription",
+      "name": "Live Transcription",
+      "description": "Transcribes microphone and call audio on your computer as you talk, in English or 99 languages in multi-language mode."
+    },
+    {
+      "id": "meeting-summaries",
+      "name": "Meeting Summaries",
+      "description": "Writes a summary of each meeting and your own notes with a local open-weight model, so nothing leaves the machine."
+    },
+    {
+      "id": "ask-across-meetings",
+      "name": "Ask Across Meetings",
+      "description": "Answers questions across all your recorded meetings and links each answer back to the transcript it came from."
+    },
+    {
+      "id": "local-mcp-access",
+      "name": "Read Notes over MCP",
+      "description": "Serves meetings, notes and transcripts read-only to an assistant app through a local MCP server you switch on."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-13T12:18:30.872Z",
+  "updatedAt": "2026-11-13T12:18:30.872Z"
+}

@@ -1,0 +1,66 @@
+{
+  "id": "alchemy-mcp",
+  "name": "Alchemy MCP Server",
+  "slug": "alchemy-mcp",
+  "description": "Query blockchain data from coding agents: token prices, NFTs, balances, transaction history, simulation and traces across 100+ chains via Alchemy's hosted MCP server.",
+  "providerName": "Alchemy",
+  "providerUrl": "https://www.alchemy.com",
+  "agentUrl": "https://www.alchemy.com/docs/alchemy-mcp-server",
+  "categories": [
+    "infrastructure",
+    "finance"
+  ],
+  "tags": [
+    "blockchain-data",
+    "ethereum-rpc",
+    "solana",
+    "nft-metadata",
+    "token-prices",
+    "transaction-simulation",
+    "web3",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "json-rpc",
+      "name": "Onchain JSON-RPC",
+      "description": "Calls standard EVM and Solana JSON-RPC methods such as balances, blocks and transactions on 100+ networks through an Alchemy app."
+    },
+    {
+      "id": "token-nft-data",
+      "name": "Token and NFT Data",
+      "description": "Fetches token balances, metadata, allowances, NFT metadata and multi-chain portfolio data through Alchemy's REST data APIs."
+    },
+    {
+      "id": "token-prices",
+      "name": "Token Prices",
+      "description": "Looks up current token prices by symbol or contract address and returns historical token prices."
+    },
+    {
+      "id": "simulation-tracing",
+      "name": "Simulation and Tracing",
+      "description": "Simulates transactions and bundles for asset changes and execution traces, and traces or debugs mined transactions and blocks."
+    },
+    {
+      "id": "app-management",
+      "name": "App Management",
+      "description": "Lists the user's Alchemy apps and selects one, caching its API key for the RPC and data tools in the session."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.alchemy.com/mcp",
+  "quickstartUrl": "https://www.alchemy.com/docs/alchemy-mcp-server",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-13T12:18:30.836Z",
+  "updatedAt": "2026-11-13T12:18:30.836Z"
+}

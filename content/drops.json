@@ -1,4 +1,7 @@
 {
+  "2026-11-13": {
+    "intro": "Microsoft's Quicksand and Visio MCP, GitHub Next's Ace, an AWS emulator and Twilio's MCP lead 56 additions, 14 of them Official, with Cloudinary, Alchemy, Squarespace and Crusoe new to the catalog, plus VoiceStudio, a local voice studio with an MCP server."
+  },
   "2026-11-10": {
     "intro": "Google's Gemini Notebook API, Okta's MCP server and Coinbase for Agents lead 88 additions, 46 of them Official, alongside RTK, an open-source CLI that compresses command output for coding agents."
   },

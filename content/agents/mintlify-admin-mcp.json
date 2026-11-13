@@ -1,0 +1,62 @@
+{
+  "id": "mintlify-admin-mcp",
+  "name": "Mintlify Admin MCP",
+  "slug": "mintlify-admin-mcp",
+  "description": "Lets Claude, ChatGPT and Cursor edit, restructure and publish Mintlify docs sites through pull requests, and manage settings and analytics via hosted MCP.",
+  "providerName": "Mintlify",
+  "providerUrl": "https://www.mintlify.com",
+  "agentUrl": "https://www.mintlify.com/docs/ai/mintlify-mcp",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "documentation",
+    "docs-as-code",
+    "technical-writing",
+    "pull-requests",
+    "docs-analytics",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "edit-pages",
+      "name": "Edit Docs Pages",
+      "description": "Reads, searches and edits MDX pages on a branch, landing changes as unpublished edits or as a pull request."
+    },
+    {
+      "id": "restructure-navigation",
+      "name": "Restructure Navigation",
+      "description": "Adds, renames, moves and deletes pages, groups, tabs and versions in the docs navigation tree and reports invalid states."
+    },
+    {
+      "id": "publish-changes",
+      "name": "Publish Changes",
+      "description": "Commits pending changes or merges a branch's pull request, then checks whether the deploy is live on the docs site."
+    },
+    {
+      "id": "review-comments",
+      "name": "Handle Comments and Reviews",
+      "description": "Reads, adds and resolves editor comments, suggests tracked edits, and requests or approves reviews before publishing."
+    },
+    {
+      "id": "docs-analytics",
+      "name": "Query Docs Analytics",
+      "description": "Reads page views, search quality, feedback and assistant chat reports, or runs read-only SQL on the site's analytics."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.mintlify.com",
+  "quickstartUrl": "https://www.mintlify.com/docs/ai/mintlify-mcp",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-13T12:18:30.890Z",
+  "updatedAt": "2026-11-13T12:18:30.890Z"
+}

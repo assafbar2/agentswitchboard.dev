@@ -1,0 +1,64 @@
+{
+  "id": "git-ai",
+  "name": "git-ai (graft)",
+  "slug": "git-ai",
+  "description": "Hosts Git repositories for fleets of coding agents, with sparse clones, server-side history, queue-free landing and conflict resolution via the graft CLI.",
+  "providerName": "feder-cr",
+  "providerUrl": "https://github.com/feder-cr",
+  "agentUrl": "https://github.com/feder-cr/git-ai",
+  "categories": [
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "git-server",
+    "version-control",
+    "sparse-checkout",
+    "merge-conflicts",
+    "coding-agents",
+    "self-hosted",
+    "grpc"
+  ],
+  "skills": [
+    {
+      "id": "sparse-clone",
+      "name": "Sparse Clone",
+      "description": "Fetches single objects and sparse trees so each agent materializes only the paths it needs with graft clone or graft sparse."
+    },
+    {
+      "id": "land-changes",
+      "name": "Land Without a Queue",
+      "description": "Rebases a change onto the current tip and lands it with compare-and-swap, batching concurrent lands on one branch."
+    },
+    {
+      "id": "conflict-resolution",
+      "name": "Automatic Conflict Resolution",
+      "description": "Resolves conflicting lands with an LLM or deterministic resolver and lands the result only if your verify command passes."
+    },
+    {
+      "id": "server-side-history",
+      "name": "Server-Side History",
+      "description": "Runs blame, path history, ancestry and code search on the server, caching results once per commit for every agent."
+    },
+    {
+      "id": "verify-and-revert",
+      "name": "Test and Revert Culprit",
+      "description": "Tests the branch tip after landing, bisects any failure and reverts the change that broke it with graft-verify."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://github.com/feder-cr/git-ai/blob/main/doc/graft/QUICKSTART.md",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-11-13T12:18:30.875Z",
+  "updatedAt": "2026-11-13T12:18:30.875Z"
+}

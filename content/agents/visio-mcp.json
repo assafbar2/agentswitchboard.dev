@@ -1,0 +1,64 @@
+{
+  "id": "visio-mcp",
+  "name": "Microsoft Visio Desktop MCP Server",
+  "slug": "visio-mcp",
+  "description": "Creates, reads, updates and validates native Visio diagrams from MCP clients through a local server that automates Visio Desktop on Windows.",
+  "providerName": "Microsoft",
+  "providerUrl": "https://www.microsoft.com",
+  "agentUrl": "https://microsoft.github.io/Visio-Desktop-MCP-Server/",
+  "categories": [
+    "productivity",
+    "content-media"
+  ],
+  "tags": [
+    "visio",
+    "diagrams",
+    "flowcharts",
+    "windows",
+    "microsoft-365",
+    "local-mcp",
+    "diagram-export"
+  ],
+  "skills": [
+    {
+      "id": "create-diagram",
+      "name": "Create Diagrams",
+      "description": "Creates native, editable Visio diagrams on an existing page from masters found in installed stencils and templates."
+    },
+    {
+      "id": "read-diagram",
+      "name": "Read Diagrams",
+      "description": "Reads shapes, connections and text from an open Visio drawing so an AI client can analyze or summarize it."
+    },
+    {
+      "id": "update-diagram",
+      "name": "Update Diagrams",
+      "description": "Applies ordered, focused edits to a Visio page and reports each failed, skipped or warned operation."
+    },
+    {
+      "id": "validate-diagram",
+      "name": "Validate Layout",
+      "description": "Checks a Visio page for supported visual defects before you share it, without fixing them or judging content."
+    },
+    {
+      "id": "manage-document",
+      "name": "Manage and Export Drawings",
+      "description": "Opens, creates and saves Visio drawings, manages pages and themes, and exports drawings as an image or PDF."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://microsoft.github.io/Visio-Desktop-MCP-Server/setup/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-13T12:18:30.816Z",
+  "updatedAt": "2026-11-13T12:18:30.816Z"
+}

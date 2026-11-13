@@ -1,0 +1,59 @@
+{
+  "id": "reason-network",
+  "name": "Reason Network",
+  "slug": "reason-network",
+  "description": "Lets coding agents on a team's computers find and message each other peer to peer, end-to-end encrypted, across Claude Code, Codex, Cursor and more.",
+  "providerName": "Reason Machines",
+  "providerUrl": "https://reasonmachines.com",
+  "agentUrl": "https://reasonmachines.com",
+  "categories": [
+    "orchestration",
+    "communication"
+  ],
+  "tags": [
+    "agent-to-agent-messaging",
+    "multi-agent",
+    "peer-to-peer",
+    "end-to-end-encryption",
+    "claude-code",
+    "codex",
+    "mcp-server",
+    "team-collaboration"
+  ],
+  "skills": [
+    {
+      "id": "list-team",
+      "name": "List Team Sessions",
+      "description": "Lists every teammate's coding-agent sessions with repo, branch, busy or idle state and what each one is doing right now."
+    },
+    {
+      "id": "send-message",
+      "name": "Message Another Agent",
+      "description": "Sends a message to a named agent session on any teammate's computer, optionally with up to 10 small text files attached."
+    },
+    {
+      "id": "message-status",
+      "name": "Track Message Status",
+      "description": "Reports whether outgoing messages were queued, accepted, handed to the agent or replied to, so agents don't resend them."
+    },
+    {
+      "id": "ask-user",
+      "name": "Ask for Approval",
+      "description": "Pops up an Approve or Deny prompt for the human when another agent asks for something only that person can sign off on."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-11-13T12:18:30.868Z",
+  "updatedAt": "2026-11-13T12:18:30.868Z"
+}

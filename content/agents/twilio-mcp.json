@@ -1,0 +1,65 @@
+{
+  "id": "twilio-mcp",
+  "name": "Twilio MCP and Skills",
+  "slug": "twilio-mcp",
+  "description": "Searches Twilio docs and API specifications from coding agents through a hosted MCP server, plus agent skills for SMS, Voice, Verify and SendGrid.",
+  "providerName": "Twilio",
+  "providerUrl": "https://www.twilio.com",
+  "agentUrl": "https://www.twilio.com/docs/ai/mcp",
+  "categories": [
+    "code-devtools",
+    "communication"
+  ],
+  "tags": [
+    "twilio",
+    "api-docs-search",
+    "sms",
+    "voice",
+    "sendgrid",
+    "agent-skills",
+    "openapi"
+  ],
+  "skills": [
+    {
+      "id": "search-docs",
+      "name": "Search Docs and APIs",
+      "description": "Searches Twilio, SendGrid and Segment docs and API operations by natural-language query, returning ranked results and IDs."
+    },
+    {
+      "id": "retrieve-schemas",
+      "name": "Retrieve API Schemas",
+      "description": "Retrieves full parameter and response schemas for chosen Twilio API operations so agents write exact requests."
+    },
+    {
+      "id": "product-planner",
+      "name": "Product Planner Skills",
+      "description": "Guides product choices, such as Twilio Verify versus a custom OTP, before code is written, through planner skills."
+    },
+    {
+      "id": "product-skills",
+      "name": "Product Skills",
+      "description": "Walks coding agents through sending SMS, verifying users with OTP codes and sending SendGrid email with Twilio."
+    },
+    {
+      "id": "guardrail-skills",
+      "name": "Guardrail Skills",
+      "description": "Applies security hardening, reliability and A2P 10DLC compliance patterns that keep Twilio integrations from failing."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.twilio.com/docs",
+  "quickstartUrl": "https://www.twilio.com/docs/ai/mcp",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-13T12:18:30.826Z",
+  "updatedAt": "2026-11-13T12:18:30.826Z"
+}

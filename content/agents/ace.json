@@ -1,0 +1,63 @@
+{
+  "id": "ace",
+  "name": "Ace",
+  "slug": "ace",
+  "description": "Gives teams a local, multiplayer coding workspace where people and agents share channels across machines on Tailscale and land work as pull requests.",
+  "providerName": "GitHub Next",
+  "providerUrl": "https://githubnext.com",
+  "agentUrl": "https://ace.githubnext.com",
+  "categories": [
+    "code-devtools",
+    "orchestration"
+  ],
+  "tags": [
+    "multiplayer-coding",
+    "coding-agents",
+    "git-worktrees",
+    "pull-requests",
+    "tailscale",
+    "team-collaboration",
+    "github-next"
+  ],
+  "skills": [
+    {
+      "id": "shared-channels",
+      "name": "Shared Channels",
+      "description": "Runs channels on your own machine where teammates and agents chat, join each other's work and drive agents together."
+    },
+    {
+      "id": "lanes",
+      "name": "Lanes as Pull Requests",
+      "description": "Runs each unit of work in its own Git worktree and branch, called a lane, that lands as a pull request."
+    },
+    {
+      "id": "local-tools",
+      "name": "Local Tools and Apps",
+      "description": "Runs agents with your shell, toolchains and signed-in CLIs such as Xcode, Bun, Docker and gh on your own Mac."
+    },
+    {
+      "id": "catch-up",
+      "name": "While You Were Away",
+      "description": "Summarizes who said what and what the agents finished in a channel while you were away from it."
+    },
+    {
+      "id": "cloud-channels",
+      "name": "Cloud Channels (Beta)",
+      "description": "Keeps a channel working in your team's own cloud account, in a Linux container, while every laptop is closed."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-11-13T12:18:30.821Z",
+  "updatedAt": "2026-11-13T12:18:30.821Z"
+}
