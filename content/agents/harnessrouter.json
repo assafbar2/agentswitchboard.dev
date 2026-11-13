@@ -1,0 +1,59 @@
+{
+  "id": "harnessrouter",
+  "name": "HarnessRouter",
+  "slug": "harnessrouter",
+  "description": "Run Codex, Claude Code, Hermes and 28 other agent harnesses behind one OpenAI Responses-compatible API, with sessions, files, streaming and shared memory; self-host or cloud.",
+  "providerName": "HarnessRouter",
+  "providerUrl": "https://harnessrouter.ai",
+  "agentUrl": "https://harnessrouter.ai",
+  "categories": [
+    "orchestration",
+    "memory-state"
+  ],
+  "tags": [
+    "agent-harness",
+    "responses-api",
+    "claude-code",
+    "codex",
+    "agent-memory",
+    "self-hosted",
+    "docker"
+  ],
+  "skills": [
+    {
+      "id": "run-tasks",
+      "name": "Run Harness Tasks",
+      "description": "Runs a task on a chosen harness through the Responses-compatible API, selecting it with metadata.harness_id."
+    },
+    {
+      "id": "idempotent-retries",
+      "name": "Idempotent Retries",
+      "description": "Returns the first result when a request is retried with the same Idempotency-Key, without running the task twice."
+    },
+    {
+      "id": "task-files",
+      "name": "Task Files",
+      "description": "Attaches files to a task so they land in the agent's working directory before every turn that carries them."
+    },
+    {
+      "id": "harness-memory",
+      "name": "Harness Memory",
+      "description": "Keeps long-term memory for each agent that loads at session start and can be shared by agents on different harnesses."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://harnessrouter.ai/docs",
+  "apiBaseUrl": "https://api.harnessrouter.ai/v1",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-11-13T12:18:30.856Z",
+  "updatedAt": "2026-11-13T12:18:30.856Z"
+}

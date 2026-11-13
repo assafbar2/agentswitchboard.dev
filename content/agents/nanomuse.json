@@ -1,0 +1,58 @@
+{
+  "id": "nanomuse",
+  "name": "nanoMuse",
+  "slug": "nanomuse",
+  "description": "Run an open-source personal agent on your phone, desktop and browser that does tasks across devices, asks before risky actions and remembers you, with a relay you can self-host.",
+  "providerName": "nanoMuse",
+  "providerUrl": "https://nanomuse.cn",
+  "agentUrl": "https://nanomuse.cn/",
+  "categories": [
+    "autonomous-agents",
+    "productivity"
+  ],
+  "tags": [
+    "personal-agent",
+    "phone-agent",
+    "computer-use",
+    "cross-device",
+    "self-hosted",
+    "telegram-bot",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "cross-device",
+      "name": "Cross-Device Tasks",
+      "description": "Sends a task from one device to another, such as from the phone to a Mac, with approvals returned to the device in hand."
+    },
+    {
+      "id": "hands",
+      "name": "Screen Hands",
+      "description": "Operates phone apps and computer windows through their screens for tasks that have no API, handing logins back to you."
+    },
+    {
+      "id": "routines",
+      "name": "Routines and Goals",
+      "description": "Checks goals on a schedule and runs routines while the app is closed, including a feed written each morning."
+    },
+    {
+      "id": "chat-apps",
+      "name": "Chat App Replies",
+      "description": "Answers in Feishu, DingTalk, WeCom and Telegram as the same agent with the same memory."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://nanomuse.cn/docs/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-13T12:18:30.862Z",
+  "updatedAt": "2026-11-13T12:18:30.862Z"
+}

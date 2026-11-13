@@ -1,0 +1,58 @@
+{
+  "id": "opentext-sdp-mcp",
+  "name": "OpenText Software Delivery MCP",
+  "slug": "opentext-sdp-mcp",
+  "description": "Search, create and update backlog items, defects and stories in OpenText ALM Octane and ValueEdge from AI coding tools, through the MCP server built into the product.",
+  "providerName": "OpenText",
+  "providerUrl": "https://www.opentext.com",
+  "agentUrl": "https://github.com/opentext/OpenText-Model-Context-Protocol-Server",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "alm-octane",
+    "valueedge",
+    "backlog-management",
+    "work-items",
+    "defect-tracking",
+    "agile-planning",
+    "opentext"
+  ],
+  "skills": [
+    {
+      "id": "query-entities",
+      "name": "Query Work Items",
+      "description": "Lists defects, stories and other entities with filtering, keyword search, sorting and pagination, or retrieves one by identifier."
+    },
+    {
+      "id": "create-entity",
+      "name": "Create Work Items",
+      "description": "Creates new entities such as user stories or defects in the workspace, scoped to the authenticated user's permissions."
+    },
+    {
+      "id": "update-entity",
+      "name": "Update Work Items",
+      "description": "Updates selected fields on an existing entity, for example adding acceptance criteria to a story's description."
+    },
+    {
+      "id": "explore-metadata",
+      "name": "Explore Metadata",
+      "description": "Lists entity types, their fields and field types, and the filter syntax and operators the workspace supports."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://github.com/opentext/OpenText-Model-Context-Protocol-Server/blob/main/README-Software-Delivery-Management.md",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-13T12:18:30.839Z",
+  "updatedAt": "2026-11-13T12:18:30.839Z"
+}

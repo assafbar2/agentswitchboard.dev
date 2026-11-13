@@ -1,0 +1,65 @@
+{
+  "id": "aws-emulator",
+  "name": "AWS Emulator",
+  "slug": "aws-emulator",
+  "description": "Emulates AWS APIs locally so developers and coding agents can test code against S3, DynamoDB and other services without an AWS account.",
+  "providerName": "Amazon Web Services",
+  "providerUrl": "https://aws.amazon.com",
+  "agentUrl": "https://docs.aws.amazon.com/emulator/latest/userguide/what-is-service.html",
+  "categories": [
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "aws",
+    "local-emulator",
+    "integration-testing",
+    "mock-aws",
+    "ci-testing",
+    "s3",
+    "dynamodb"
+  ],
+  "skills": [
+    {
+      "id": "emulate-aws-apis",
+      "name": "Emulate AWS APIs",
+      "description": "Serves a local AWS API endpoint so the AWS CLI and SDKs create and read emulated resources without an AWS account."
+    },
+    {
+      "id": "ci-testing",
+      "name": "Test in CI",
+      "description": "Runs integration tests against emulated AWS services in CI pipelines, with no AWS account and no AWS resources."
+    },
+    {
+      "id": "matching-errors",
+      "name": "AWS-Matching Errors",
+      "description": "Returns the same validation errors as AWS, such as DynamoDB table-name length checks, so failing tests look real."
+    },
+    {
+      "id": "embedded-rust",
+      "name": "Embedded Rust Mode",
+      "description": "Runs an isolated emulator in-process for each Rust test, wiring its HTTP client straight into the AWS SDK for Rust."
+    },
+    {
+      "id": "agent-skill",
+      "name": "Coding Agent Skill",
+      "description": "Installs an aws-emulator skill for Kiro, Cursor and Claude Code through the AWS CLI so agents set up the emulator."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://docs.aws.amazon.com/emulator/latest/userguide/getting-started-agent.html",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-11-13T12:18:30.814Z",
+  "updatedAt": "2026-11-13T12:18:30.814Z"
+}

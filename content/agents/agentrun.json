@@ -1,0 +1,64 @@
+{
+  "id": "agentrun",
+  "name": "AgentRun",
+  "slug": "agentrun",
+  "description": "Runs Claude Code, Codex, OpenCode or pi agents with durable execution, spend caps and approvals, and makes them learn notes and skills from each run.",
+  "providerName": "Parcha",
+  "providerUrl": "https://github.com/Parcha-ai",
+  "agentUrl": "https://agentrun.ai",
+  "categories": [
+    "orchestration"
+  ],
+  "tags": [
+    "agent-control-plane",
+    "durable-execution",
+    "self-improving-agents",
+    "workflows",
+    "claude-code",
+    "codex",
+    "self-hosted",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "agent-learning",
+      "name": "Learn From Each Run",
+      "description": "Keeps notes, skills and learned workflows an agent proposes after a run, checks and grades them, and commits the keepers."
+    },
+    {
+      "id": "durable-runs",
+      "name": "Durable Runs",
+      "description": "Stores every run so it carries on after a server restart, inside a sandbox, Linux desktop, Android phone or browser."
+    },
+    {
+      "id": "typed-workflows",
+      "name": "Typed Workflows",
+      "description": "Runs repeatable work as typed workflows of tool calls, model steps and scored decisions, falling back to an agent when unsure."
+    },
+    {
+      "id": "run-controls",
+      "name": "Approvals and Spend Caps",
+      "description": "Pauses runs for human answers and approvals, caps each run's cost, and shows every agent's runs and spend in one console."
+    },
+    {
+      "id": "agents-as-api",
+      "name": "Agents as an API",
+      "description": "Starts and waits on agent runs over HTTP or with the TypeScript and Python clients, using a server token for auth."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://agentrun.ai/docs/quickstart",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-11-13T12:18:30.876Z",
+  "updatedAt": "2026-11-13T12:18:30.876Z"
+}

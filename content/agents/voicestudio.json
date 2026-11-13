@@ -1,0 +1,70 @@
+{
+  "id": "voicestudio",
+  "name": "VoiceStudio",
+  "slug": "voicestudio",
+  "description": "Clones and designs voices, dubs videos, dictates and transcribes audio fully on your machine, with a local API and MCP server for AI agents.",
+  "providerName": "debpalash",
+  "providerUrl": "https://github.com/debpalash",
+  "agentUrl": "https://voicestudio.sh",
+  "categories": [
+    "voice-messaging",
+    "content-media"
+  ],
+  "tags": [
+    "voice-cloning",
+    "text-to-speech",
+    "video-dubbing",
+    "speech-to-text",
+    "dictation",
+    "local-first",
+    "mcp-server",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "generate-speech",
+      "name": "Generate Speech",
+      "description": "Turns text into speech in a chosen voice profile, returning WAV or Ogg/Opus audio inline or as a file."
+    },
+    {
+      "id": "clone-voice",
+      "name": "Clone a Voice",
+      "description": "Creates a reusable voice profile from a clean reference recording for later speech generation."
+    },
+    {
+      "id": "design-voice",
+      "name": "Design a Voice",
+      "description": "Creates a new voice from a text description of gender, age, pitch, style and accent, then saves it as a profile."
+    },
+    {
+      "id": "transcribe-audio",
+      "name": "Transcribe Audio",
+      "description": "Transcribes audio to text locally in 646 languages, from base64 input or a file under the configured base path."
+    },
+    {
+      "id": "dub-video",
+      "name": "Dub Videos",
+      "description": "Translates and dubs videos with speech timed to the original, including multi-speaker dubbing and export."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "binary",
+    "command": "curl -fsSL https://voicestudio.sh/install | sh"
+  },
+  "quickstartUrl": "https://github.com/debpalash/VoiceStudio#get-started",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-11-13T12:18:30.905Z",
+  "updatedAt": "2026-11-13T12:18:30.905Z"
+}

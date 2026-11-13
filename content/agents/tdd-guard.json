@@ -1,0 +1,62 @@
+{
+  "id": "tdd-guard",
+  "name": "TDD Guard",
+  "slug": "tdd-guard",
+  "description": "Enforces test-driven development in Claude Code by blocking edits that skip a failing test or over-implement, with lint-driven refactoring checks.",
+  "providerName": "nizos",
+  "providerUrl": "https://github.com/nizos",
+  "agentUrl": "https://github.com/nizos/tdd-guard",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "test-driven-development",
+    "claude-code",
+    "claude-code-hooks",
+    "claude-code-plugin",
+    "unit-testing",
+    "vitest",
+    "pytest",
+    "linting"
+  ],
+  "skills": [
+    {
+      "id": "test-first-enforcement",
+      "name": "Test-First Enforcement",
+      "description": "Blocks Claude Code from writing implementation code until a failing test exists, and explains what has to happen first."
+    },
+    {
+      "id": "minimal-implementation",
+      "name": "Minimal Implementation Check",
+      "description": "Rejects changes that implement more than the current failing test requires, keeping each step of the TDD cycle small."
+    },
+    {
+      "id": "lint-refactoring",
+      "name": "Lint-Driven Refactoring",
+      "description": "Runs your project's linting rules during the refactor phase so the agent cleans up code once the tests pass."
+    },
+    {
+      "id": "custom-tdd-rules",
+      "name": "Custom Validation Rules",
+      "description": "Applies your own TDD instructions, ignore patterns and choice of validation model to how the agent's edits are judged."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npm install -g tdd-guard"
+  },
+  "quickstartUrl": "https://github.com/nizos/tdd-guard#getting-started",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-11-13T12:18:30.864Z",
+  "updatedAt": "2026-11-13T12:18:30.864Z"
+}

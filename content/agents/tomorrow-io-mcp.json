@@ -1,0 +1,64 @@
+{
+  "id": "tomorrow-io-mcp",
+  "name": "Tomorrow.io MCP",
+  "slug": "tomorrow-io-mcp",
+  "description": "Gets real-time, forecast, historical and route weather data plus natural-language weather answers for AI agents through Tomorrow.io's hosted MCP server.",
+  "providerName": "Tomorrow.io",
+  "providerUrl": "https://www.tomorrow.io",
+  "agentUrl": "https://docs.tomorrow.io/reference/mcp",
+  "categories": [
+    "data-analytics",
+    "research"
+  ],
+  "tags": [
+    "weather-api",
+    "weather-forecast",
+    "historical-weather",
+    "climate-data",
+    "route-weather",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "realtime-weather",
+      "name": "Current Weather",
+      "description": "Returns current temperature, humidity, wind, precipitation, visibility and UV index for a coordinate or place name."
+    },
+    {
+      "id": "forecast-timeline",
+      "name": "Weather Forecast",
+      "description": "Retrieves a weather forecast timeline over a chosen time range for a location, such as rain over the next six hours."
+    },
+    {
+      "id": "historical-weather",
+      "name": "Historical Weather",
+      "description": "Looks up past observed weather and long-term climate normals for a location to compare against today."
+    },
+    {
+      "id": "route-weather-events",
+      "name": "Weather Events and Routes",
+      "description": "Builds condition-based weather event timelines for a place or along a route to flag weather risk."
+    },
+    {
+      "id": "ask-weather",
+      "name": "Ask About the Weather",
+      "description": "Answers free-text weather questions and writes weather summaries in natural language using Tomorrow.io's Gale AI."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://api.tomorrow.io/v4/tomorrow-weather/mcp",
+  "quickstartUrl": "https://docs.tomorrow.io/reference/mcp",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-11-13T12:18:30.894Z",
+  "updatedAt": "2026-11-13T12:18:30.894Z"
+}

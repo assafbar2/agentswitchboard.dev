@@ -1,0 +1,66 @@
+{
+  "id": "spacefast",
+  "name": "Spacefast",
+  "slug": "spacefast",
+  "description": "Publishes sites, apps and artifacts that AI agents build to a permanent URL with immutable versions and rollback, via CLI, REST API or hosted MCP.",
+  "providerName": "Automattic",
+  "providerUrl": "https://automattic.com",
+  "agentUrl": "https://spacefast.com",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "web-hosting",
+    "static-site-hosting",
+    "deploy-website",
+    "publish-app",
+    "version-rollback",
+    "custom-domains",
+    "mcp-server",
+    "cli"
+  ],
+  "skills": [
+    {
+      "id": "publish-site",
+      "name": "Publish a Site",
+      "description": "Publishes a folder, zip or index.html from an agent, curl or the CLI to a live URL, with no account for the first publish."
+    },
+    {
+      "id": "versions-rollback",
+      "name": "Versions and Rollback",
+      "description": "Creates an immutable version on every changed publish and restores any retained version without rebuilding."
+    },
+    {
+      "id": "private-sharing",
+      "name": "Private Sharing and Domains",
+      "description": "Shares a Space privately with scoped people and links, or moves it to a custom domain with automatic SSL."
+    },
+    {
+      "id": "server-code",
+      "name": "Run Server Code",
+      "description": "Runs Functions workers or a TypeScript app beside the Space's own MySQL database, with crons that call your site."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.spacefast.com",
+  "install": {
+    "type": "npm",
+    "command": "npm install -g spacefast"
+  },
+  "quickstartUrl": "https://spacefast.com/docs/cli/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-11-13T12:18:30.901Z",
+  "updatedAt": "2026-11-13T12:18:30.901Z"
+}

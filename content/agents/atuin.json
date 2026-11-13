@@ -1,0 +1,65 @@
+{
+  "id": "atuin",
+  "name": "Atuin",
+  "slug": "atuin",
+  "description": "Searches, syncs and resumes your shell history and coding-agent sessions across machines, with a built-in MCP server so agents can recall past work.",
+  "providerName": "Atuin",
+  "providerUrl": "https://atuin.sh",
+  "agentUrl": "https://atuin.sh",
+  "categories": [
+    "code-devtools",
+    "memory-state"
+  ],
+  "tags": [
+    "shell-history",
+    "agent-sessions",
+    "resume-session",
+    "terminal",
+    "encrypted-sync",
+    "claude-code",
+    "codex",
+    "self-hosted"
+  ],
+  "skills": [
+    {
+      "id": "search-shell-history",
+      "name": "Search Shell History",
+      "description": "Searches shell history by command, exit code, directory, host and time from a Ctrl-R pane or the atuin search CLI."
+    },
+    {
+      "id": "resume-agent-threads",
+      "name": "Resume Agent Threads",
+      "description": "Resumes or forks Claude Code and Codex sessions on another machine or in another agent harness with atuin resume."
+    },
+    {
+      "id": "search-agent-threads",
+      "name": "Search Agent Threads",
+      "description": "Searches past agent sessions captured on any of your machines with atuin threads search to find earlier work."
+    },
+    {
+      "id": "agent-history-mcp",
+      "name": "Agent History MCP",
+      "description": "Answers agent questions about earlier sessions and decisions through the built-in atuin mcp server for Claude Code and Codex."
+    },
+    {
+      "id": "encrypted-sync",
+      "name": "Encrypted Sync",
+      "description": "Syncs shell history and agent sessions across machines end-to-end encrypted, via Atuin's service or a self-hosted server."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://docs.atuin.sh/latest/guide/installation/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-11-13T12:18:30.784Z",
+  "updatedAt": "2026-11-13T12:18:30.784Z"
+}

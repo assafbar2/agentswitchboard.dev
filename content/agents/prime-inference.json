@@ -1,0 +1,62 @@
+{
+  "id": "prime-inference",
+  "name": "Prime Inference",
+  "slug": "prime-inference",
+  "description": "Serves hosted open models and gateway access to third-party models through one OpenAI-compatible API, with rerank and classify endpoints and a CLI.",
+  "providerName": "Prime Intellect",
+  "providerUrl": "https://www.primeintellect.ai",
+  "agentUrl": "https://www.primeintellect.ai/inference",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "llm-inference",
+    "openai-compatible-api",
+    "open-weight-models",
+    "model-gateway",
+    "chat-completions",
+    "reranking"
+  ],
+  "skills": [
+    {
+      "id": "chat-completions",
+      "name": "Chat Completions",
+      "description": "Sends OpenAI-style chat completion requests to hosted or gateway models by catalog ID with one Prime API key."
+    },
+    {
+      "id": "list-models",
+      "name": "List Models",
+      "description": "Lists available model IDs, serving type and pricing through the models endpoint or the prime inference models command."
+    },
+    {
+      "id": "rerank",
+      "name": "Rerank Results",
+      "description": "Orders search results by relevance to a query with the hosted Qwen3 Reranker through the Rerank API."
+    },
+    {
+      "id": "classify-evaluate",
+      "name": "Classify and Score",
+      "description": "Classifies and scores content with hosted evaluation models such as Clef through the Classify and Evaluations APIs."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "pip",
+    "command": "pip install prime"
+  },
+  "quickstartUrl": "https://docs.primeintellect.ai/inference/overview",
+  "apiBaseUrl": "https://api.pinference.ai/api/v1",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-11-13T12:18:30.878Z",
+  "updatedAt": "2026-11-13T12:18:30.878Z"
+}

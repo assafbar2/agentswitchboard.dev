@@ -1,0 +1,63 @@
+{
+  "id": "adobe-for-claude",
+  "name": "Adobe for Claude",
+  "slug": "adobe-for-claude",
+  "description": "Edits images, reviews PDFs, designs from Express templates and cuts video inside Claude, using Adobe's Photoshop, Lightroom, Acrobat and Premiere tools.",
+  "providerName": "Adobe",
+  "providerUrl": "https://www.adobe.com",
+  "agentUrl": "https://helpx.adobe.com/creative-cloud/apps/integration-with-other-apps/adobe-connectors/adobe-for-claude.html",
+  "categories": [
+    "content-media",
+    "productivity"
+  ],
+  "tags": [
+    "image-editing",
+    "pdf-editing",
+    "photoshop",
+    "acrobat",
+    "adobe-express",
+    "video-editing",
+    "claude-connector"
+  ],
+  "skills": [
+    {
+      "id": "review-pdfs",
+      "name": "Review and Refine PDFs",
+      "description": "Reviews PDFs with Acrobat inside Claude, organizing pages, redacting sensitive information and adding comments."
+    },
+    {
+      "id": "edit-images",
+      "name": "Edit Images",
+      "description": "Edits images with Photoshop and Lightroom: adjusts color and lighting, applies presets, removes backgrounds and crops."
+    },
+    {
+      "id": "express-designs",
+      "name": "Design From Templates",
+      "description": "Customizes Adobe Express templates such as brochures and covers in a live editor, then converts the design to PDF."
+    },
+    {
+      "id": "edit-video",
+      "name": "Edit Video",
+      "description": "Cuts event footage into highlight reels and resizes clips for Instagram Reels, TikTok and YouTube Shorts."
+    },
+    {
+      "id": "search-assets",
+      "name": "Search Creative Cloud Assets",
+      "description": "Searches Creative Cloud assets by subject, style, mood or content and organizes creative work from the chat."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-13T12:18:30.830Z",
+  "updatedAt": "2026-11-13T12:18:30.830Z"
+}

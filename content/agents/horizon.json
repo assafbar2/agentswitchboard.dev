@@ -1,0 +1,63 @@
+{
+  "id": "horizon",
+  "name": "Horizon",
+  "slug": "horizon",
+  "description": "Fetches, scores and summarizes news from RSS, Hacker News, Reddit, X and GitHub into daily AI briefings, run as a self-hosted CLI or MCP server.",
+  "providerName": "Thysrael",
+  "providerUrl": "https://www.horizon1123.top",
+  "agentUrl": "https://www.horizon1123.top",
+  "categories": [
+    "research",
+    "content-media"
+  ],
+  "tags": [
+    "news-aggregator",
+    "daily-briefing",
+    "summarize-news",
+    "rss",
+    "hacker-news",
+    "self-hosted",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "aggregate-sources",
+      "name": "Aggregate Sources",
+      "description": "Fetches and deduplicates items from RSS, Hacker News, Reddit, Telegram, X, GitHub and Google News into one run."
+    },
+    {
+      "id": "score-and-filter",
+      "name": "Score and Filter",
+      "description": "Scores each item with AI against profile rubrics and thresholds, then filters it and merges repeated stories."
+    },
+    {
+      "id": "daily-briefing",
+      "name": "Generate Daily Briefing",
+      "description": "Generates daily briefings in English and Chinese as Markdown, with summaries, background context and community discussion."
+    },
+    {
+      "id": "deliver-briefing",
+      "name": "Deliver Briefings",
+      "description": "Delivers briefings to a GitHub Pages site, email subscribers, WeChat, or Slack, Discord and Feishu webhooks."
+    },
+    {
+      "id": "mcp-pipeline",
+      "name": "Staged MCP Pipeline",
+      "description": "Runs the fetch, score, filter, enrich and summarize stages as separate MCP tools and reads artifacts from past runs."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-11-13T12:18:30.807Z",
+  "updatedAt": "2026-11-13T12:18:30.807Z"
+}

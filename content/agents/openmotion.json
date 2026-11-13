@@ -1,0 +1,62 @@
+{
+  "id": "openmotion",
+  "name": "OpenMotion (formerly html-anything)",
+  "slug": "openmotion",
+  "description": "Make motion videos with your coding agent: recreate reference clips, edit HTML scenes in a local studio and render MP4, with an MCP server, skills and 200+ templates.",
+  "providerName": "OpenDesign",
+  "providerUrl": "https://open-design.ai",
+  "agentUrl": "https://open-design.ai/motion/",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "video-generation",
+    "motion-graphics",
+    "html-video",
+    "video-editing",
+    "video-templates",
+    "product-demo-video",
+    "local-mcp"
+  ],
+  "skills": [
+    {
+      "id": "template-to-video",
+      "name": "Template to Video",
+      "description": "Finds a motion template in the local catalog, inspects its guide and creates an editable project copy for your content."
+    },
+    {
+      "id": "recreate-reference",
+      "name": "Recreate a Reference",
+      "description": "Reconstructs a reference video's shots, timing and transitions as an editable HTML project and compares the result."
+    },
+    {
+      "id": "director",
+      "name": "Original Films",
+      "description": "Plans original films covering narrative, movement and sound, and runs a creative review of the result."
+    },
+    {
+      "id": "production",
+      "name": "Edit and Export",
+      "description": "Makes scoped edits, previews and checks HTML scenes, troubleshoots issues and exports the finished video."
+    },
+    {
+      "id": "video-to-template",
+      "name": "Video to Template",
+      "description": "Turns a finished video project into a portable, reusable template with its Motion.md style guide."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-11-13T12:18:30.846Z",
+  "updatedAt": "2026-11-13T12:18:30.846Z"
+}

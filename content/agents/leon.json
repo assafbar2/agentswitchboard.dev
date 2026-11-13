@@ -1,0 +1,62 @@
+{
+  "id": "leon",
+  "name": "Leon",
+  "slug": "leon",
+  "description": "Runs an open-source personal AI assistant on your own machine that uses tools, layered memory and computer use to finish tasks with local or remote models.",
+  "providerName": "Leon AI",
+  "providerUrl": "https://getleon.ai",
+  "agentUrl": "https://getleon.ai",
+  "categories": [
+    "autonomous-agents",
+    "productivity"
+  ],
+  "tags": [
+    "personal-assistant",
+    "self-hosted",
+    "local-llm",
+    "computer-use",
+    "privacy",
+    "open-source",
+    "long-term-memory"
+  ],
+  "skills": [
+    {
+      "id": "execution-modes",
+      "name": "Smart, Controlled and Agent Modes",
+      "description": "Handles each goal in smart, controlled or agent mode, following deterministic native skills or planning step by step."
+    },
+    {
+      "id": "computer-use",
+      "name": "Computer Use",
+      "description": "Operates desktop and browser interfaces through progressively loaded computer use and verifies visual outcomes, locally or via Satellite."
+    },
+    {
+      "id": "layered-memory",
+      "name": "Layered Memory",
+      "description": "Remembers durable preferences, day-to-day context and recent discussion in layered memory so answers stay grounded."
+    },
+    {
+      "id": "agent-skills",
+      "name": "Native and Agent Skills",
+      "description": "Runs SKILL.md-backed agent skills alongside native skills built from actions, tools and functions for controlled tasks."
+    },
+    {
+      "id": "model-choice",
+      "name": "Local or Remote Models",
+      "description": "Switches between local and remote AI providers to balance privacy, control and capability for each task."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-11-13T12:18:30.802Z",
+  "updatedAt": "2026-11-13T12:18:30.802Z"
+}

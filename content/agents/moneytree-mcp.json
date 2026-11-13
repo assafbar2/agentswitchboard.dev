@@ -1,0 +1,63 @@
+{
+  "id": "moneytree-mcp",
+  "name": "Moneytree MCP",
+  "slug": "moneytree-mcp",
+  "description": "Lets ChatGPT and Claude read a Moneytree user's bank, card, points and investment accounts, transactions and spending insights in Japan, read-only.",
+  "providerName": "Moneytree",
+  "providerUrl": "https://getmoneytree.com",
+  "agentUrl": "https://mcp.getmoneytree.com/docs/",
+  "categories": [
+    "finance"
+  ],
+  "tags": [
+    "personal-finance",
+    "bank-transactions",
+    "account-balances",
+    "investment-portfolio",
+    "japan",
+    "open-banking",
+    "mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "list-accounts",
+      "name": "List Accounts and Balances",
+      "description": "Lists the user's connected bank, card and points accounts and their current balances across institutions."
+    },
+    {
+      "id": "list-transactions",
+      "name": "List Transactions",
+      "description": "Retrieves transaction history with categories so the assistant can answer questions like monthly spend at convenience stores."
+    },
+    {
+      "id": "list-investments",
+      "name": "List Investments",
+      "description": "Returns investment account balances and holdings so the assistant can analyze the user's portfolio."
+    },
+    {
+      "id": "unusual-transactions",
+      "name": "Flag Unusual Transactions",
+      "description": "Lists transactions Moneytree marks as unusual so the user can spot unexpected charges."
+    },
+    {
+      "id": "utilities-insights",
+      "name": "Utility Bill Insights",
+      "description": "Returns Moneytree's insights on utility bills so the assistant can explain spending trends and ways to save."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.getmoneytree.com/mcp",
+  "quickstartUrl": "https://mcp.getmoneytree.com/docs/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-13T12:18:30.895Z",
+  "updatedAt": "2026-11-13T12:18:30.895Z"
+}

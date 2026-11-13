@@ -1,0 +1,58 @@
+{
+  "id": "dexter",
+  "name": "Dexter",
+  "slug": "dexter",
+  "description": "Researches financial questions autonomously in the terminal: plans steps, pulls income statements, balance sheets and cash flows, and checks its own answers.",
+  "providerName": "virattt",
+  "providerUrl": "https://github.com/virattt",
+  "agentUrl": "https://github.com/virattt/dexter",
+  "categories": [
+    "finance",
+    "research",
+    "autonomous-agents"
+  ],
+  "tags": [
+    "financial-research",
+    "stock-analysis",
+    "financial-statements",
+    "market-data",
+    "terminal-agent",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "task-planning",
+      "name": "Research Planning",
+      "description": "Breaks a complex financial question into structured research steps before gathering any data."
+    },
+    {
+      "id": "financial-data",
+      "name": "Financial Statements",
+      "description": "Pulls income statements, balance sheets and cash flow statements from live market data to answer the question."
+    },
+    {
+      "id": "self-validation",
+      "name": "Self-Validation",
+      "description": "Checks its own work and iterates until the answer is complete, with loop detection and step limits to stop runaway runs."
+    },
+    {
+      "id": "whatsapp",
+      "name": "Use from WhatsApp",
+      "description": "Answers financial research questions sent over WhatsApp, as described in the project's WhatsApp setup guide."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://github.com/virattt/dexter#-how-to-install",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-11-13T12:18:30.907Z",
+  "updatedAt": "2026-11-13T12:18:30.907Z"
+}
