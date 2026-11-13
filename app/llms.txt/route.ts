@@ -88,6 +88,11 @@ work, filtering on \`accessMethods\`, \`categories\`, \`authType\` (\`none\` for
 sign-in) and \`official\`.
 
 To help a user choose and set up:
+- One recommendation for what your user needs, and the next step to start using it: the
+  \`recommend\` MCP tool, or GET /api/recommend?need=<the need, in a sentence>. Each need
+  it names gets one pick, why it fits, the next step (the MCP config to paste when the
+  vendor's docs give one) and two alternatives. Picked by fixed matching rules, not a
+  model or paid placement. Write the need yourself; never include names, emails or phones.
 - Compare 2 or 3 listings, the facts that set each apart and one row per field: the
   \`compare_agents\` MCP tool, or GET /api/compare?a=<slug>&b=<slug>&c=<slug>
 - Listings that could stand in for one, each with why: the \`alternatives_to\` MCP tool,
@@ -101,7 +106,7 @@ To help a user choose and set up:
 - Remote MCP (Streamable HTTP, no auth): https://agentswitchboard.dev/api/mcp
 - Stdio-only clients: npx -y mcp-remote https://agentswitchboard.dev/api/mcp
 - Server manifest: https://agentswitchboard.dev/.well-known/mcp.json
-- Tools: search_agents, get_agent, list_categories, compare_agents, alternatives_to, connect_bundle, submit_listing (files a public GitHub issue for human review; publishes nothing), request_missing_tool (tells the maintainer privately that nothing fits a job; also POST /api/missing-tool)
+- Tools: search_agents, get_agent, list_categories, compare_agents, alternatives_to, connect_bundle, recommend, submit_listing (files a public GitHub issue for human review; publishes nothing), request_missing_tool (tells the maintainer privately that nothing fits a job; also POST /api/missing-tool)
 - Connect it to Grok, Grok Bot, the xAI API, Claude, or ChatGPT: https://agentswitchboard.dev/connect
 - Plain REST search (no MCP handshake needed): GET /api/agents?q=&task=&category=&access=&official=&verified=&auth=&since=&sort=&limit=&offset=&page=
 - REST detail: GET /api/agents/{slug}
@@ -111,6 +116,7 @@ To help a user choose and set up:
 - REST compare: GET /api/compare?a={slug}&b={slug}&c={slug}
 - REST alternatives: GET /api/agents/{slug}/alternatives
 - REST connect bundle: GET /api/bundle?items={slug},{slug}
+- REST recommend: GET /api/recommend?need={the need, in a sentence}
 - OpenAPI: https://agentswitchboard.dev/openapi.json
 - Connector skill: https://agentswitchboard.dev/skill.md
 
@@ -122,7 +128,7 @@ instead of scraping the DOM. No setup: they self-register on page load.
 
 - Declaration: https://agentswitchboard.dev/.well-known/webmcp.json
 - Tools: search_agents, get_agent, list_categories, compare_agents, alternatives_to,
-  connect_bundle. They call the REST API above, so answers and their order are the
+  connect_bundle, recommend. They call the REST API above, so answers and their order are the
   same as the remote MCP's; search and listing objects use the REST field names (see
   the OpenAPI document).
 

@@ -138,8 +138,9 @@ export default async function ForAgentsPage() {
             Connect directly and query the catalog with native tools —{' '}
             <code className="font-bold">search_agents</code>,{' '}
             <code className="font-bold">get_agent</code>,{' '}
-            <code className="font-bold">list_categories</code> — help a user
-            choose with <code className="font-bold">compare_agents</code>,{' '}
+            <code className="font-bold">list_categories</code> — get one pick and
+            the next step for a need with <code className="font-bold">recommend</code>,
+            help a user choose with <code className="font-bold">compare_agents</code>,{' '}
             <code className="font-bold">alternatives_to</code> and{' '}
             <code className="font-bold">connect_bundle</code> (one MCP client config
             for up to {MY_STACK_MAX} listings), and suggest a listing with{' '}
@@ -171,7 +172,7 @@ export default async function ForAgentsPage() {
         <section className="space-y-2" id="webmcp">
           <h2 className="dir-bar">## In-browser tools (WebMCP)</h2>
           <p>
-            If you are viewing this page in a browser, the six read tools are
+            If you are viewing this page in a browser, the seven read tools are
             registered on{' '}
             <code className="font-bold">document.modelContext</code>{' '}
             (W3C WebMCP API, polyfilled). Call them directly — no scraping, no setup.
@@ -198,23 +199,25 @@ export default async function ForAgentsPage() {
           <h2 className="dir-bar">## Plain REST search</h2>
           <p>
             A simple parameterized GET for wiring tools that want plain HTTP
-            rather than an MCP handshake. Read-only, no auth, open CORS:
+            rather than an MCP handshake. Read-only, no auth, open CORS, up to 120
+            requests a minute per IP (then HTTP 429 with <code className="font-bold">Retry-After</code>):
           </p>
           <pre className="rounded-none border-2 border-[var(--dir-ink)]! bg-[var(--dir-paper)] p-4 text-xs overflow-x-auto">
 {`GET /api/agents?q=<text>&task=<slug>&category=<slug>&access=<method>
                &official=true&verified=true&auth=<type>&since=<day|days>
-               &sort=<order>&limit=<n>&offset=<n>
+               &sort=<order>&limit=<n>&offset=<n>&page=<n>
 GET /api/agents/<slug>
 GET /api/agents/<slug>/alternatives
 GET /api/categories
 GET /api/compare?a=<slug>&b=<slug>&c=<slug>
 GET /api/bundle?items=<slug>,<slug>
+GET /api/recommend?need=<the need, in a sentence>
 GET /api/stacks
 GET /api/stacks/<slug>
 GET /api/tasks
 GET /api/tasks/<slug>
 
-→ search: { total, offset, limit, since?, agents: [
+→ search: { total, offset, limit, since?, next, agents: [
      { name, slug, url, iconUrl, description, provider, categories,
        accessMethods, verified, official, featured }
    ] }

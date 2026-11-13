@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import {
   changelogProblems,
+  EVERY_RELEASE_HIGHLIGHTS_SINCE,
   getReleases,
   HIGHLIGHTS_SINCE,
   highlightedReleases,
@@ -101,15 +102,21 @@ describe('highlights', () => {
     expect(changelogProblems(parseChangelog(release(HIGHLIGHTS_SINCE, ['### Added', '- x'])))).toEqual([
       `${HIGHLIGHTS_SINCE}: every x.y.0 release from ${HIGHLIGHTS_SINCE} on opens with "### Highlights"`,
     ]);
-    expect(changelogProblems(parseChangelog(release('2.10.0', ['### Fixed', '- x'])))).toEqual([
-      `2.10.0: every x.y.0 release from ${HIGHLIGHTS_SINCE} on opens with "### Highlights"`,
-    ]);
     expect(changelogProblems(parseChangelog(release('2.1.9', ['### Added', '- x'])))).toEqual([]);
     expect(changelogProblems(parseChangelog(release('2.2.10', ['### Fixed', '- x'])))).toEqual([]);
     const many = Array.from({ length: MAX_HIGHLIGHTS + 1 }, (_, i) => highlight(`Thing ${i}.`));
     expect(changelogProblems(parseChangelog(release(HIGHLIGHTS_SINCE, ['### Highlights', ...many, '### Added', '- x'])))).toEqual([
       `${HIGHLIGHTS_SINCE}: ${MAX_HIGHLIGHTS + 1} highlights; keep it to ${MAX_HIGHLIGHTS}`,
     ]);
+  });
+
+  it(`are required on every release from ${EVERY_RELEASE_HIGHLIGHTS_SINCE} on, patches too`, () => {
+    for (const version of [EVERY_RELEASE_HIGHLIGHTS_SINCE, '2.9.7', '2.10.0', '3.0.1']) {
+      expect(changelogProblems(parseChangelog(release(version, ['### Fixed', '- x'])))).toEqual([
+        `${version}: every release from ${EVERY_RELEASE_HIGHLIGHTS_SINCE} on opens with "### Highlights"`,
+      ]);
+    }
+    expect(changelogProblems(parseChangelog(release('2.9.7', ['### Highlights', highlight('a'), '### Fixed', '- x'])))).toEqual([]);
   });
 
   it('leave out the releases without any', () => {

@@ -4,6 +4,41 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
+## [2.10.3] - 2026-11-13 - One pick for a need
+
+### Highlights
+- Ask for one tool for a job and get one pick, why it fits, the next step to start using it and two alternatives: say the need in a sentence to `GET /api/recommend` or the MCP and WebMCP tool `recommend`. [Try it](https://agentswitchboard.dev/for-agents#rest)
+
+### Added
+- `recommend`, as an MCP tool, a WebMCP tool and `GET /api/recommend?need=…`: for each need a request names, the Operator's pick, why it was picked, its skill that does the task, the next step (the MCP client config to paste when the vendor's docs give one, else its setup guide or docs) and two alternatives, plus a [/stack](https://agentswitchboard.dev/stack) link for two or more picks and the answer in plain sentences. The pick follows fixed rules, not a model, so the same need always gets the same answer, and featured or sponsored placement never changes it. A need that matches no task is a 404 that names the closest tasks. The route records only how many picks it made, never the need, and robots.txt keeps crawlers off it. ([#399](https://github.com/assafbar2/agentswitchboard.dev/pull/399))
+
+### Changed
+- The MCP server is version 1.10.0, with nine tools, `recommend` and `request_missing_tool` among them; WebMCP registers seven read tools. [/openapi.json](https://agentswitchboard.dev/openapi.json) is version 1.14.0, and [docs/API.md](https://github.com/assafbar2/agentswitchboard.dev/blob/main/docs/API.md), [/for-agents](https://agentswitchboard.dev/for-agents), [/connect](https://agentswitchboard.dev/connect), llms.txt and skill.md describe `recommend`. ([#399](https://github.com/assafbar2/agentswitchboard.dev/pull/399))
+
+## [2.10.2] - 2026-11-13 - Prices for the Sponsored slot
+
+### Highlights
+- Sponsor a listing from $29: one week of the homepage Sponsored slot and that week's drop page, $99 for four weeks, $249 for twelve. [Try it](https://agentswitchboard.dev/advertise)
+
+### Changed
+- The three packages on [/advertise](https://agentswitchboard.dev/advertise) show their prices, one payment each in US dollars, instead of "Contact for pricing": $29 for 1 week, $99 for 4 weeks and $249 for 12 weeks. Requesting a slot is unchanged: an email to barnir@agentmail.to, a review by the maintainer, then a Stripe payment link by email. Nothing is paid on the site.
+- /advertise says that the slot's three free launch listings, Agent Switchboard, AgentMail and Barnir Hired, come off the day the first paying sponsor goes live.
+
+## [2.10.1] - 2026-11-13 - What's new keeps up
+
+### Highlights
+- See every weekly drop on What's new beside the site's releases: what it added, updated and removed, and its stack of the week, each with a link to try it. The Nov 13 drop added 56 agents, and its stack ships a web app with your agent. [Try it](https://agentswitchboard.dev/whats-new#drop-2026-11-13)
+
+### Changed
+- [/whats-new](https://agentswitchboard.dev/whats-new) lists each weekly drop as well as each release, newest first. A drop's highlights are written from the same data as its page on [/drops](https://agentswitchboard.dev/drops): one line on what it added, updated and removed, linking the drop, and one on its stack of the week, linking the stack. So a drop is on What's new as soon as it merges, with nothing written by hand. The homepage's What's new block shows the newest highlights from the last 30 days, releases and drops together, up to five, and is dated by the newest of them. Until now both showed only releases with highlights, so after the 2.9.1 release and the Nov 13 drop the homepage still said Nov 10. ([#402](https://github.com/assafbar2/agentswitchboard.dev/pull/402))
+- Every release from 2.9.1 on, patch releases too, opens with its highlights, and CI fails a release without them, so What's new never falls behind what ships. 2.9.1 has its highlights now. ([#402](https://github.com/assafbar2/agentswitchboard.dev/pull/402))
+- [/for-agents](https://agentswitchboard.dev/for-agents#rest) shows `page` and `next` in the REST search, as `GET /api/agents` answers since 2.9.1. ([#402](https://github.com/assafbar2/agentswitchboard.dev/pull/402))
+
+### Directory
+- The [Nov 13 drop](https://agentswitchboard.dev/drops/2026-11-13): the weekly run added 56 listings, 14 of them Official, updated 2 and archived 1, with [Ship a web app with your agent](https://agentswitchboard.dev/stacks/ship-a-web-app-with-your-agent) as the stack of the week. With the same day's corrections below, the drop comes to 56 added, 6 updated and 2 archived. ([#395](https://github.com/assafbar2/agentswitchboard.dev/pull/395))
+- [elizaOS](https://agentswitchboard.dev/agents/eliza), [GPT Pilot](https://agentswitchboard.dev/agents/gpt-pilot) and [MobileBuildMCP](https://agentswitchboard.dev/agents/xcodebuild-mcp) go by their projects' own names. Corrected the same day, they count among the Nov 13 drop's updates. ([#390](https://github.com/assafbar2/agentswitchboard.dev/pull/390))
+- [Windsurf is Devin Desktop](https://agentswitchboard.dev/agents/codeium-windsurf) now, by Cognition AI, and its listing and comparison say "formerly Windsurf". ZCode is archived while a privacy report on it is unresolved. Both count in the Nov 13 drop. ([#398](https://github.com/assafbar2/agentswitchboard.dev/pull/398))
+
 ## [2.10.0] - 2026-11-13 - Every task page compares its top tools
 
 ### Highlights
@@ -21,6 +56,9 @@ Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes 
 - GPT Pilot (Pythagora) is archived. Its repo, [Pythagora-io/gpt-pilot](https://github.com/Pythagora-io/gpt-pilot), shipped a credential-stealing payload from August 2025 until Pythagora removed it on June 11, 2026 ([Pythagora-io/gpt-pilot#1183](https://github.com/Pythagora-io/gpt-pilot/pull/1183)), and nothing has been developed there since. It leaves search, its category, tasks and the Operator; shared stack and compare links show it as "no longer listed". ([#405](https://github.com/assafbar2/agentswitchboard.dev/pull/405))
 
 ## [2.9.5] - 2026-11-13 - Missing-tool requests
+
+### Highlights
+- Tell us when the directory has nothing for a job: your assistant can send the job in plain words with the MCP tool `request_missing_tool` or `POST /api/missing-tool`, and the weekly review uses it to decide what to add. [Try it](https://agentswitchboard.dev/for-agents)
 
 ### Added
 - An assistant can tell us the directory has nothing for a job: the MCP tool `request_missing_tool` and `POST /api/missing-tool` take the job in plain words (`need`), and optionally the search that found nothing, a category and the access it needs. The request is recorded privately for the weekly review, which uses it to decide what to look for and add; nothing is published, no issue is opened, and there is no reply. Email addresses and phone numbers are removed first, and each caller can send 10 an hour. The MCP server is version 1.9.0, with eight tools, and [/openapi.json](https://agentswitchboard.dev/openapi.json) is version 1.13.0. ([#404](https://github.com/assafbar2/agentswitchboard.dev/pull/404))
@@ -42,6 +80,9 @@ Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes 
 
 ## [2.9.3] - 2026-11-13 - One line for your agent
 
+### Highlights
+- Give your agent one line and it can search the whole directory, with no key or sign-up: copy it from the homepage or For Agents and paste it into any agent. [Try it](https://agentswitchboard.dev/for-agents#paste)
+
 ### Added
 - The homepage and [/for-agents](https://agentswitchboard.dev/for-agents#paste) show one line to paste into any agent, with a copy button: "Read https://agentswitchboard.dev/skill.md and use Agent Switchboard to find the right agents and tools for my tasks." The agent reads the connector guide at /skill.md and searches the directory from there, with no key or sign-up. The homepage's text-only view shows the same line. ([#400](https://github.com/assafbar2/agentswitchboard.dev/pull/400))
 
@@ -50,10 +91,17 @@ Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes 
 
 ## [2.9.2] - 2026-11-13 - A rate limit on the REST API
 
+### Highlights
+- Call the REST API knowing its limit: 120 requests a minute per IP, then HTTP 429 with a `Retry-After` header until the minute is up. Cached answers, the static catalog pages and the MCP server don't count toward it. [Try it](https://agentswitchboard.dev/for-agents#rest)
+
 ### Changed
 - The REST API (every `/api/` endpoint except `/api/mcp`) allows 120 requests per minute per IP. Past that it answers HTTP 429 with a `Retry-After` header and a JSON error (`{ "error": "rate_limited", "message", "retryAfterSeconds" }`) until the minute is up. Answers served from the CDN cache do not count, the static catalog pages (`/catalog/<n>.json`) are not limited, and the MCP server keeps its own limits. [docs/API.md](https://github.com/assafbar2/agentswitchboard.dev/blob/main/docs/API.md) and [/openapi.json](https://agentswitchboard.dev/openapi.json) (now version 1.11.0) describe the 429.
 
 ## [2.9.1] - 2026-11-13 - The catalog in pages
+
+### Highlights
+- Page through the directory: [/browse](https://agentswitchboard.dev/browse) and every filtered or search view of it show 60 listings a page, with Previous and Next, so it opens and scrolls faster on a phone. [Try it](https://agentswitchboard.dev/browse?page=2)
+- Read the whole catalog in pages: /agents.json is a small index that links static pages of up to 50 listings (`/catalog/1.json` and on, each with `next`), and `GET /api/agents` takes `page` and answers with `next`. [Try it](https://agentswitchboard.dev/for-agents#rest)
 
 ### Changed
 - [/browse](https://agentswitchboard.dev/browse) and every filtered or search view of it show 60 listings a page, with Previous and Next links and "Page 2 of 17 · 61–120 of 985" under the cards; later pages are `?page=2` and on. The count above the cards, the filters, the sort and the agent view are as before, and changing a filter, the sort or the search goes back to page 1. A page is about 290 KB of HTML instead of 3.6 MB, so the directory opens and scrolls faster on a phone. Crawlers are kept off `?page=` like every other key the page reads. ([#394](https://github.com/assafbar2/agentswitchboard.dev/pull/394))

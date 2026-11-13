@@ -1,7 +1,7 @@
 {
   "name": "io.github.assafbar2/agentswitchboard",
-  "description": "In-browser WebMCP tools for Agent Switchboard, registered on document.modelContext when the page loads. Same six read tools as the remote MCP server at /api/mcp: search_agents, get_agent, list_categories, compare_agents, alternatives_to and connect_bundle. They call the public REST API (/api/agents, /api/agents/{slug}, /api/categories, /api/compare, /api/agents/{slug}/alternatives, /api/bundle), so answers and their order are the same as the remote server's; result objects use the REST field names (see /openapi.json).",
-  "version": "1.9.0",
+  "description": "In-browser WebMCP tools for Agent Switchboard, registered on document.modelContext when the page loads. Same seven read tools as the remote MCP server at /api/mcp: search_agents, get_agent, list_categories, compare_agents, alternatives_to, connect_bundle and recommend. They call the public REST API (/api/agents, /api/agents/{slug}, /api/categories, /api/compare, /api/agents/{slug}/alternatives, /api/bundle, /api/recommend), so answers and their order are the same as the remote server's; result objects use the REST field names (see /openapi.json).",
+  "version": "1.10.0",
   "websiteUrl": "https://agentswitchboard.dev",
   "surface": "document.modelContext",
   "polyfill": "@mcp-b/webmcp-polyfill",
@@ -1012,6 +1012,218 @@
               "type": "string"
             },
             "description": "Named listings that were left out, and why"
+          }
+        }
+      }
+    },
+    {
+      "name": "recommend",
+      "description": "One recommendation for what your user needs, and the next step to start using it, as the site's Operator (/operator) picks it. Pass the need in a sentence you write yourself, e.g. \"query Postgres and send email\": each need it names gets one pick, why it fits, the next step (the MCP client config to paste when the vendor's docs give one, else its setup guide or docs) and two alternatives; two or more picks also come with a /stack link. Name a product to prefer the listings that mention it; say MCP, CLI, API, browser extension or official to narrow the pick. Picked by fixed matching rules, not a model, so the same need always gets the same answer. A need that matches no task is refused with the closest tasks. Never include names, email addresses or phone numbers.",
+      "annotations": {
+        "readOnlyHint": true
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "need": {
+            "type": "string",
+            "maxLength": 2000,
+            "description": "What the user needs, in a sentence or two, e.g. \"query Postgres and send email\" (up to 300 characters are read)"
+          }
+        },
+        "required": [
+          "need"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "required": [
+          "request",
+          "answer",
+          "recommendations",
+          "unmatched",
+          "stackUrl",
+          "operatorUrl",
+          "basis",
+          "notes"
+        ],
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The need as read"
+          },
+          "answer": {
+            "type": "string",
+            "description": "The recommendations in plain sentences, one line per need, ready to tell the user"
+          },
+          "recommendations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "need": {
+                  "type": "string",
+                  "description": "The user's words for this need"
+                },
+                "task": {
+                  "type": "object",
+                  "description": "The directory task it matched: slug, label, url"
+                },
+                "pick": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "slug": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "iconUrl": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "Absolute URL of the listing's 128px PNG icon, served by Agent Switchboard; null when it has none"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "provider": {
+                      "type": "string"
+                    },
+                    "categories": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "accessMethods": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "verified": {
+                      "type": "boolean",
+                      "description": "Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working."
+                    },
+                    "official": {
+                      "type": "boolean",
+                      "description": "Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified."
+                    },
+                    "authType": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "pickedBecause": {
+                  "type": "string"
+                },
+                "why": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "The skill of the pick that does the task"
+                },
+                "unmet": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "What the need asked for that no listing for the task has"
+                },
+                "nextStep": {
+                  "type": "object",
+                  "description": "how (config: paste server into an MCP client; guide: an MCP server to set up from url; other: no MCP server, start from url), label, url, server, note"
+                },
+                "alternatives": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "slug": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      },
+                      "iconUrl": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "description": "Absolute URL of the listing's 128px PNG icon, served by Agent Switchboard; null when it has none"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "provider": {
+                        "type": "string"
+                      },
+                      "categories": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "accessMethods": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "verified": {
+                        "type": "boolean",
+                        "description": "Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working."
+                      },
+                      "official": {
+                        "type": "boolean",
+                        "description": "Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified."
+                      },
+                      "authType": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "fits": {
+                  "type": "integer",
+                  "description": "How many listings do the task"
+                }
+              }
+            }
+          },
+          "unmatched": {
+            "type": "array",
+            "description": "Needs with no pick, and the tasks closest to them"
+          },
+          "stackUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Two or more picks as a shared stack on the site"
+          },
+          "operatorUrl": {
+            "type": "string",
+            "description": "The same request on the site"
+          },
+          "basis": {
+            "type": "string",
+            "description": "How the pick is made"
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }
