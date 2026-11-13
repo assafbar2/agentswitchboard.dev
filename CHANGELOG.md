@@ -4,13 +4,24 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
-## [2.10.3] - 2026-11-13 - Task pages and the Operator rank on fit alone
+## [2.10.4] - 2026-11-13 - Task pages and the Operator rank on fit alone
 
 ### Highlights
 - Every task page and every Operator stack now ranks tools on how well they fit the job and nothing else: a Featured or Sponsored listing never moves up, even on a tie, the same as the MCP server and recommend answer. [Try it](https://agentswitchboard.dev/tasks)
 
 ### Changed
 - [/tasks](https://agentswitchboard.dev/tasks), each task page, [/operator](https://agentswitchboard.dev/operator) and their share cards rank best fit first and A→Z on a tie, instead of putting featured listings first among equals. `GET /api/tasks` and `GET /api/tasks/<slug>` list the same way as the pages. Sponsored slots stay where they were, set apart and labeled on the homepage and the latest weekly drop, as [/advertise](https://agentswitchboard.dev/advertise) describes. ([#408](https://github.com/assafbar2/agentswitchboard.dev/pull/408))
+
+## [2.10.3] - 2026-11-13 - One pick for a need
+
+### Highlights
+- Ask for one tool for a job and get one pick, why it fits, the next step to start using it and two alternatives: say the need in a sentence to `GET /api/recommend` or the MCP and WebMCP tool `recommend`. [Try it](https://agentswitchboard.dev/for-agents#rest)
+
+### Added
+- `recommend`, as an MCP tool, a WebMCP tool and `GET /api/recommend?need=…`: for each need a request names, the Operator's pick, why it was picked, its skill that does the task, the next step (the MCP client config to paste when the vendor's docs give one, else its setup guide or docs) and two alternatives, plus a [/stack](https://agentswitchboard.dev/stack) link for two or more picks and the answer in plain sentences. The pick follows fixed rules, not a model, so the same need always gets the same answer, and featured or sponsored placement never changes it. A need that matches no task is a 404 that names the closest tasks. The route records only how many picks it made, never the need, and robots.txt keeps crawlers off it. ([#399](https://github.com/assafbar2/agentswitchboard.dev/pull/399))
+
+### Changed
+- The MCP server is version 1.10.0, with nine tools, `recommend` and `request_missing_tool` among them; WebMCP registers seven read tools. [/openapi.json](https://agentswitchboard.dev/openapi.json) is version 1.14.0, and [docs/API.md](https://github.com/assafbar2/agentswitchboard.dev/blob/main/docs/API.md), [/for-agents](https://agentswitchboard.dev/for-agents), [/connect](https://agentswitchboard.dev/connect), llms.txt and skill.md describe `recommend`. ([#399](https://github.com/assafbar2/agentswitchboard.dev/pull/399))
 
 ## [2.10.2] - 2026-11-13 - Prices for the Sponsored slot
 

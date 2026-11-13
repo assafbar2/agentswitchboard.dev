@@ -36,7 +36,8 @@ const XAI_API_EXAMPLE = `curl https://api.x.ai/v1/responses \\
       "server_label": "agentswitchboard",
       "allowed_tools": [
         "search_agents", "get_agent", "list_categories",
-        "compare_agents", "alternatives_to", "connect_bundle"
+        "compare_agents", "alternatives_to", "connect_bundle",
+        "recommend"
       ]
     }]
   }'`;
@@ -62,6 +63,10 @@ const TOOLS: { name: string; does: string }[] = [
   {
     name: 'connect_bundle',
     does: "One MCP client config to paste for up to 10 listings, copied from each vendor's docs, and how to connect the rest.",
+  },
+  {
+    name: 'recommend',
+    does: 'One pick for what your user needs, said in a sentence, with why it fits, the next step to start using it and two alternatives.',
   },
   { name: 'submit_listing', does: 'Suggest a new listing. Opens a public GitHub issue for review; publishes nothing.' },
   {

@@ -11,6 +11,7 @@ export const MCP_TOOL_NAMES: ReadonlySet<string> = new Set([
   'compare_agents',
   'alternatives_to',
   'connect_bundle',
+  'recommend',
   'submit_listing',
   'request_missing_tool',
 ]);

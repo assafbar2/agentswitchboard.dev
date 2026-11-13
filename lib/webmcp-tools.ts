@@ -1,11 +1,11 @@
 /**
  * The WebMCP tools that components/WebMcp.tsx registers on `document.modelContext`:
- * search_agents, get_agent, list_categories, compare_agents, alternatives_to and
- * connect_bundle.
+ * search_agents, get_agent, list_categories, compare_agents, alternatives_to,
+ * connect_bundle and recommend.
  *
  * Each tool calls the public REST API (/api/agents, /api/agents/{slug},
  * /api/categories, /api/compare, /api/agents/{slug}/alternatives,
- * /api/bundle). That runs the same code as the remote MCP server at /api/mcp,
+ * /api/bundle, /api/recommend). That runs the same code as the remote MCP server at /api/mcp,
  * so answers and their order are the same; search and listing objects use the
  * REST field names (see /openapi.json), which differ from the remote MCP's in
  * a few places. Results are organic, as on the remote MCP (lib/organic.ts):
@@ -30,6 +30,8 @@ import {
   CONNECT_BUNDLE_DESCRIPTION,
   MAX_LIMIT,
   OFFICIAL_DEFINITION,
+  RECOMMEND_DESCRIPTION,
+  RECOMMEND_NEED_INPUT,
   SINCE_INPUT,
   TASK_INPUT,
   VERIFIED_INPUT,
@@ -487,6 +489,61 @@ export const WEBMCP_TOOLS: WebMcpTool[] = [
     execute: tool('connect_bundle', async (input) => {
       const items = strings(input.slugs).map(encodeURIComponent).join(',');
       return decide('connect_bundle', `/api/bundle?items=${items}`);
+    }),
+  },
+  {
+    name: 'recommend',
+    description: RECOMMEND_DESCRIPTION,
+    inputSchema: {
+      type: 'object',
+      properties: {
+        need: { type: 'string', maxLength: 2000, description: RECOMMEND_NEED_INPUT },
+      },
+      required: ['need'],
+    },
+    // GET /api/recommend (lib/decide.ts recommendDecision).
+    outputSchema: {
+      type: 'object',
+      required: ['request', 'answer', 'recommendations', 'unmatched', 'stackUrl', 'operatorUrl', 'basis', 'notes'],
+      properties: {
+        request: { type: 'string', description: 'The need as read' },
+        answer: {
+          type: 'string',
+          description: 'The recommendations in plain sentences, one line per need, ready to tell the user',
+        },
+        recommendations: {
+          type: 'array',
+          items: {
+            type: 'object',
+            properties: {
+              need: { type: 'string', description: "The user's words for this need" },
+              task: { type: 'object', description: 'The directory task it matched: slug, label, url' },
+              pick: { type: 'object', properties: decisionProps },
+              pickedBecause: { type: 'string' },
+              why: { type: ['string', 'null'], description: 'The skill of the pick that does the task' },
+              unmet: { ...stringList, description: 'What the need asked for that no listing for the task has' },
+              nextStep: {
+                type: 'object',
+                description:
+                  'how (config: paste server into an MCP client; guide: an MCP server to set up from url; other: no MCP server, start from url), label, url, server, note',
+              },
+              alternatives: { type: 'array', items: { type: 'object', properties: decisionProps } },
+              fits: { type: 'integer', description: 'How many listings do the task' },
+            },
+          },
+        },
+        unmatched: { type: 'array', description: 'Needs with no pick, and the tasks closest to them' },
+        stackUrl: { type: ['string', 'null'], description: 'Two or more picks as a shared stack on the site' },
+        operatorUrl: { type: 'string', description: 'The same request on the site' },
+        basis: { type: 'string', description: 'How the pick is made' },
+        notes: stringList,
+      },
+    },
+    annotations: { readOnlyHint: true },
+    execute: tool('recommend', async (input) => {
+      const need = str(input.need);
+      if (!need) return asError('recommend needs what the user needs, in a sentence, e.g. "query Postgres and send email".');
+      return decide('recommend', `/api/recommend?need=${encodeURIComponent(need.slice(0, 2000))}`);
     }),
   },
 ];

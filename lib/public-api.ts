@@ -129,6 +129,17 @@ export const CONNECT_BUNDLE_DESCRIPTION =
   'Also returns a claude mcp add command for each server in the config, for Claude Code, and the /stack link for the listings. ' +
   "Nothing is guessed: every address and command is copied from the vendor's docs, as on the listing's page.";
 
+export const RECOMMEND_DESCRIPTION =
+  'One recommendation for what your user needs, and the next step to start using it, as the site\'s Operator (/operator) picks it. ' +
+  'Pass the need in a sentence you write yourself, e.g. "query Postgres and send email": each need it names gets one pick, why it fits, ' +
+  'the next step (the MCP client config to paste when the vendor\'s docs give one, else its setup guide or docs) and two alternatives; ' +
+  'two or more picks also come with a /stack link. Name a product to prefer the listings that mention it; say MCP, CLI, API, browser extension or official to narrow the pick. ' +
+  'Picked by fixed matching rules, not a model, so the same need always gets the same answer. A need that matches no task is refused with the closest tasks. ' +
+  'Never include names, email addresses or phone numbers.';
+
+export const RECOMMEND_NEED_INPUT =
+  "What the user needs, in a sentence or two, e.g. \"query Postgres and send email\" (up to 300 characters are read)";
+
 /**
  * A listing in a decision tool's answer: the search-result fields and its auth
  * type. The MCP server returns these too, and connector directories reject

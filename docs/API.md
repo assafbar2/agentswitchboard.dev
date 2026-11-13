@@ -16,6 +16,7 @@ The two exceptions are writes that publish nothing: a listing suggestion
 | **REST compare** | 2 or 3 listings side by side | `GET /api/compare` |
 | **REST alternatives** | listings that could stand in for one | `GET /api/agents/{slug}/alternatives` |
 | **REST connect bundle** | one MCP client config for several listings | `GET /api/bundle` |
+| **REST recommend** | one pick and the next step for a need, in a sentence | `GET /api/recommend` |
 | **REST missing tool** | saying nothing in the directory does a job | `POST /api/missing-tool` |
 | **MCP server** | MCP clients (Grok, Claude, ChatGPT, Cursor, …) | `POST /api/mcp` |
 | **WebMCP** | agents viewing the page in a browser | `document.modelContext` |
@@ -393,6 +394,58 @@ note; none found is a `400` with `{ "error": "no_listings", "message", "notes" }
 
 ---
 
+## REST recommend — `GET /api/recommend`
+
+One recommendation for what a user needs, and the next step to start using it:
+the [Operator](https://agentswitchboard.dev/operator)'s pick for each need the
+request names. Write the need yourself from what the user said; never include
+names, email addresses or phone numbers. Up to 300 characters are read.
+
+```bash
+curl "https://agentswitchboard.dev/api/recommend?need=read+my+Gmail+and+query+Postgres"
+```
+
+```jsonc
+{
+  "request": "read my Gmail and query Postgres",
+  "answer": "For “read my Gmail”: Gmail MCP (https://agentswitchboard.dev/agents/gmail-mcp). Picked because it mentions “Gmail”. … Next step: Add its MCP server to your MCP client: https://developers.google.com/… Alternatives: …\nFor “query Postgres”: …",
+  "recommendations": [
+    {
+      "need": "read my Gmail",
+      "task": { "slug": "send-and-read-email", "label": "send and read email", "url": "https://agentswitchboard.dev/tasks/send-and-read-email" },
+      "pick": { /* …REST search fields and authType */ },
+      "pickedBecause": "Picked because it mentions “Gmail”.",
+      "why": "…the pick's skill that does the task",
+      "unmet": [],
+      "nextStep": {
+        "how": "config", // config | guide | other, as in GET /api/bundle
+        "label": "Add its MCP server to your MCP client",
+        "url": "https://developers.google.com/workspace/gmail/api/guides/configure-mcp-server",
+        "server": { "url": "https://gmailmcp.googleapis.com/mcp/v1" },
+        "note": "Hosted by Google. You sign in with Google when you first connect."
+      },
+      "alternatives": [ /* two listings, as pick */ ],
+      "fits": 24
+    }
+    // …one per need
+  ],
+  "unmatched": [],          // needs with no pick: { need, nearestTasks[] }
+  "stackUrl": "https://agentswitchboard.dev/stack?items=gmail-mcp,postgres-mcp-pro", // null for one pick
+  "operatorUrl": "https://agentswitchboard.dev/operator?q=read+my+Gmail+and+query+Postgres",
+  "basis": "Picked by the directory’s own matching rules, …",
+  "notes": []
+}
+```
+
+Each need is matched to one of the [tasks](https://agentswitchboard.dev/tasks);
+among the task's listings, those that mention what the need names come first,
+then Official ones, then the task's best fits. Saying MCP, CLI, API, browser
+extension or official in the need narrows the pick. No model, so the same need
+always gets the same answer, and placement never changes it: the catalog is read
+in organic order and the answer carries no placement field. No need is a `400`
+with `{ "error": "no_need" }`; a need that matches no task is a `404` with
+`{ "error": "no_match", "message", "unmatched" }`, naming the closest tasks.
+
 ## REST missing tool — `POST /api/missing-tool`
 
 Tell the maintainer that the directory has nothing for a job, after a search
@@ -451,10 +504,11 @@ Stdio-only clients: `npx -y mcp-remote https://agentswitchboard.dev/api/mcp`
 | `compare_agents` | `slugs` (2 or 3, required) | as [`GET /api/compare`](#rest-compare--get-apicompare): `{ title, url, intro, agents[], rows[], notes }` |
 | `alternatives_to` | `slug` (required), `limit?` (1–8) | as [`GET /api/agents/{slug}/alternatives`](#rest-alternatives--get-apiagentsslugalternatives) |
 | `connect_bundle` | `slugs` (1 to 10, required) | as [`GET /api/bundle`](#rest-connect-bundle--get-apibundle): `{ summary, stackUrl, config, claudeCode, setupPrompt, items[], notes }` |
+| `recommend` | `need` (required) | as [`GET /api/recommend`](#rest-recommend--get-apirecommend): `{ request, answer, recommendations[], unmatched, stackUrl, operatorUrl, basis, notes }` |
 | `submit_listing` | `name`, `url`, `description` (required); `access?`, `category?`, `contact_email?` | `{ status, message, issueUrl?, existingSlug? }` |
 | `request_missing_tool` | `need` (10–500 characters, required); `tried?`, `category?`, `access?` (enum[]) | `{ status, message }`, as [`POST /api/missing-tool`](#rest-missing-tool--post-apimissing-tool) |
 
-All tools declare an `outputSchema` and return `structuredContent`. Results are organic: they never list featured listings first, and they leave out `featured` and any other placement field. The six
+All tools declare an `outputSchema` and return `structuredContent`. Results are organic: they never list featured listings first, and they leave out `featured` and any other placement field. The seven
 read tools are annotated `readOnlyHint: true`, `destructiveHint: false`;
 `submit_listing` is `readOnlyHint: false`, `destructiveHint: true` (it posts a public
 issue the user can't take back), so clients ask before each call.
@@ -496,8 +550,9 @@ Discovery manifest: [`/.well-known/mcp.json`](https://agentswitchboard.dev/.well
 
 ## WebMCP — `document.modelContext`
 
-Every page registers the same six read tools (`search_agents`, `get_agent`,
-`list_categories`, `compare_agents`, `alternatives_to`, `connect_bundle`) on
+Every page registers the same seven read tools (`search_agents`, `get_agent`,
+`list_categories`, `compare_agents`, `alternatives_to`, `connect_bundle`,
+`recommend`) on
 the W3C WebMCP API (polyfilled), so an agent viewing the site in a browser can
 call them directly instead of scraping the DOM. They call the REST endpoints
 above, so answers match the MCP server's. Progressive enhancement — a silent
