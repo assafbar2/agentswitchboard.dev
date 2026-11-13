@@ -101,7 +101,7 @@ To help a user choose and set up:
 - Server manifest: https://agentswitchboard.dev/.well-known/mcp.json
 - Tools: search_agents, get_agent, list_categories, compare_agents, alternatives_to, connect_bundle, submit_listing (files a public GitHub issue for human review; publishes nothing)
 - Connect it to Grok, Grok Bot, the xAI API, Claude, or ChatGPT: https://agentswitchboard.dev/connect
-- Plain REST search (no MCP handshake needed): GET /api/agents?q=&task=&category=&access=&official=&verified=&auth=&since=&sort=&limit=&offset=
+- Plain REST search (no MCP handshake needed): GET /api/agents?q=&task=&category=&access=&official=&verified=&auth=&since=&sort=&limit=&offset=&page=
 - REST detail: GET /api/agents/{slug}
 - REST categories: GET /api/categories
 - REST stacks: GET /api/stacks, GET /api/stacks/{slug}

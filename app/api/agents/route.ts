@@ -5,8 +5,8 @@
  *
  *   GET /api/agents?q=<text>&task=<slug>&category=<slug>&access=<method>
  *                  &official=true&verified=true&auth=<type>&since=<day|days>
- *                  &sort=<order>&order=organic&limit=<n>&offset=<n>
- *   → { total, offset, limit, since?, agents: [ { name, slug, url, iconUrl,
+ *                  &sort=<order>&order=organic&limit=<n>&offset=<n>&page=<n>
+ *   → { total, offset, limit, since?, next, agents: [ { name, slug, url, iconUrl,
  *                                          description, provider, categories,
  *                                          accessMethods, verified, official,
  *                                          featured } ] }
@@ -24,6 +24,8 @@
  * FEATURED_DEFINITION in lib/public-api.ts) — or newest, skills (most
  * first), name (A→Z). `order=organic` ignores featured, so ties and the
  * no-`q` order are A→Z (lib/organic.ts); WebMCP asks for it.
+ * Paging: `page` (from 1) steps `offset` by `limit`; `offset` wins when both
+ * are sent. `next` is the URL of the following page, null on the last one.
  *
  * Read-only, no auth, open CORS. Same cached catalog (lib/catalog.ts) as the
  * site and the MCP server, so results always match the web directory.
@@ -58,6 +60,17 @@ import {
 
 export const dynamic = 'force-dynamic';
 
+const MAX_PAGE = 1_000_000;
+
+/** The same request one page on, as `offset` (which wins over `page`). */
+function nextPageUrl(requestUrl: string, offset: number, limit: number): string {
+  const url = new URL(requestUrl);
+  url.searchParams.delete('page');
+  url.searchParams.set('limit', String(limit));
+  url.searchParams.set('offset', String(offset));
+  return url.toString();
+}
+
 export async function GET(req: Request): Promise<Response> {
   const { searchParams } = new URL(req.url);
   const q = clampQuery(searchParams.get('q'));
@@ -73,7 +86,10 @@ export async function GET(req: Request): Promise<Response> {
   const sinceRaw = (searchParams.get('since') ?? '').trim();
   const since = sinceRaw ? parseSince(sinceRaw) : null;
   const limit = clampInt(searchParams.get('limit'), DEFAULT_LIMIT, 1, MAX_LIMIT);
-  const offset = clampInt(searchParams.get('offset'), 0, 0, Number.MAX_SAFE_INTEGER);
+  const page = clampInt(searchParams.get('page'), 1, 1, MAX_PAGE);
+  const offset = searchParams.has('offset')
+    ? clampInt(searchParams.get('offset'), 0, 0, Number.MAX_SAFE_INTEGER)
+    : (page - 1) * limit;
 
   logConsumer('/api/agents', req, {
     q,
@@ -105,14 +121,15 @@ export async function GET(req: Request): Promise<Response> {
     since: since ?? undefined,
   });
   const matches = sortAgents(searchAgents(agents, q, access.length > 0 ? access : undefined), sort);
-  const page = matches.slice(offset, offset + limit);
+  const results = matches.slice(offset, offset + limit);
 
   return jsonResponse({
     total: matches.length,
     offset,
     limit,
     ...(since && { since }),
-    agents: page.map(summarizeAgent),
+    next: offset + limit < matches.length ? nextPageUrl(req.url, offset + limit, limit) : null,
+    agents: results.map(summarizeAgent),
   });
 }
 

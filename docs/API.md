@@ -42,7 +42,8 @@ handshake (e.g. wiring into a connector platform).
 | `sort` | string | `relevance` | `relevance`: best match first with `q`; without it, best fit first with a `task`, else featured then A→Z. `newest`: most recently added first. `skills`: most skills first. `name`: A→Z. Ties keep the `relevance` order; unknown values mean `relevance`. |
 | `order` | string | — | `organic` ignores featured placement: the default order and ties become A→Z. The MCP server and WebMCP always list this way. |
 | `limit` | integer | `10` | Clamped to `1..50`. |
-| `offset` | integer | `0` | Number of results to skip, for pagination. |
+| `offset` | integer | `0` | Number of results to skip, for pagination. Wins over `page` when both are sent. |
+| `page` | integer | `1` | Page number from 1, in steps of `limit`: `page=3&limit=20` is `offset=40`. |
 
 ### Response
 
@@ -51,6 +52,7 @@ handshake (e.g. wiring into a connector platform).
   "total": 568,      // full match count, before limit/offset
   "offset": 0,
   "limit": 10,
+  "next": "https://agentswitchboard.dev/api/agents?limit=10&offset=10", // null on the last page
   "agents": [
     {
       "name": "YouTube MCP",
@@ -71,7 +73,10 @@ handshake (e.g. wiring into a connector platform).
 }
 ```
 
-Paginate with `total` + `offset` + `limit`. `Cache-Control` is
+Paginate with `total` + `offset` + `limit`, `page`, or by following `next`:
+the same query one page on (as `offset`), or `null` when this page is the
+last. A page holds at most 50 listings; for the whole catalog in one request,
+read [`/agents.json`](#catalog-dump--get-agentsjson). `Cache-Control` is
 `s-maxage=300, stale-while-revalidate=600`. With `since`, the response also
 has `since`: the first day kept (`YYYY-MM-DD`, UTC), so `since=7` says which
 days it covered.
@@ -91,7 +96,7 @@ Connector skill: [`/skill.md`](https://agentswitchboard.dev/skill.md).
 curl "https://agentswitchboard.dev/api/agents?q=video&limit=5"
 
 # MCP-accessible agents in a category, second page
-curl "https://agentswitchboard.dev/api/agents?access=mcp&category=code-devtools&limit=20&offset=20"
+curl "https://agentswitchboard.dev/api/agents?access=mcp&category=code-devtools&limit=20&page=2"
 
 # Vendors' own first-party tools in a category
 curl "https://agentswitchboard.dev/api/agents?official=true&category=code-devtools"

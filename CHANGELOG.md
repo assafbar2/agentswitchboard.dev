@@ -4,6 +4,12 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
+## [2.9.1] - 2026-11-13 - Browse in pages
+
+### Changed
+- [/browse](https://agentswitchboard.dev/browse) and every filtered or search view of it show 60 listings a page, with Previous and Next links and "Page 2 of 17 · 61–120 of 985" under the cards; later pages are `?page=2` and on. The count above the cards, the filters, the sort and the agent view are as before, and changing a filter, the sort or the search goes back to page 1. A page is about 290 KB of HTML instead of 3.6 MB, so the directory opens and scrolls faster on a phone. Crawlers are kept off `?page=` like every other key the page reads. (#PR)
+- `GET /api/agents` takes `page` (from 1, in steps of `limit`) as well as `offset`, and its answer adds `next`: the same query one page on, or `null` on the last page. The page size is unchanged (10 by default, up to 50), and so is every listing in `agents`. (#PR)
+
 ## [2.9.0] - 2026-11-10 - Nine more tasks
 
 ### Highlights

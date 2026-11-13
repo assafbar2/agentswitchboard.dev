@@ -29,7 +29,7 @@
       "get": {
         "operationId": "searchAgents",
         "summary": "Search published agents",
-        "description": "Relevance-ranked search over name, description, skills, categories, tags, and provider. Empty `q` lists published agents in catalog order: featured first, then A→Z. With `q`, results are ranked by relevance and equal scores keep that featured-first order. `sort` can order them by newest, most skills, or name instead. Filter by task, category slug, access methods, `official`, `verified`, `auth`, and/or `since` (when a listing was added). With a `task` and no `q`, results are best fit first. Paginate with `total` + `offset` + `limit`.",
+        "description": "Relevance-ranked search over name, description, skills, categories, tags, and provider. Empty `q` lists published agents in catalog order: featured first, then A→Z. With `q`, results are ranked by relevance and equal scores keep that featured-first order. `sort` can order them by newest, most skills, or name instead. Filter by task, category slug, access methods, `official`, `verified`, `auth`, and/or `since` (when a listing was added). With a `task` and no `q`, results are best fit first. Paginate with `total` + `offset` + `limit`, `page`, or by following `next`. A page holds at most 50 listings; /agents.json has the whole catalog in one file.",
         "tags": ["catalog"],
         "parameters": [
           {
@@ -113,8 +113,15 @@
             "name": "offset",
             "in": "query",
             "required": false,
-            "description": "Number of matches to skip. Default 0.",
+            "description": "Number of matches to skip. Default 0. Wins over `page` when both are sent.",
             "schema": { "type": "integer", "minimum": 0, "default": 0 }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "Page number from 1, in steps of `limit`: `page=3&limit=20` is `offset=40`. Ignored when `offset` is sent. Default 1.",
+            "schema": { "type": "integer", "minimum": 1, "default": 1 }
           }
         ],
         "responses": {
@@ -129,6 +136,7 @@
                       "total": 1,
                       "offset": 0,
                       "limit": 10,
+                      "next": null,
                       "agents": [
                         {
                           "name": "AgentMail",
@@ -497,6 +505,11 @@
           "offset": { "type": "integer" },
           "limit": { "type": "integer" },
           "since": { "type": "string", "format": "date", "description": "With `since`: the first day kept (UTC)." },
+          "next": {
+            "type": ["string", "null"],
+            "format": "uri",
+            "description": "The same query one page on (as `offset`), or null when this page is the last."
+          },
           "agents": {
             "type": "array",
             "items": { "$ref": "#/components/schemas/AgentSummary" }

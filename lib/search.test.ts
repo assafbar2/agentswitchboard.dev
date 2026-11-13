@@ -4,12 +4,16 @@ import {
   clampQuery,
   breakdownLine,
   browseMatches,
+  browseHref,
   browseStateHref,
+  BROWSE_PAGE_SIZE,
   filterAgents,
   invalidSinceMessage,
   keywordMatcher,
   narrowingWords,
+  pageSlice,
   parseFlag,
+  parsePage,
   parseSince,
   parseSort,
   SINCE_MAX_DAYS,
@@ -344,6 +348,45 @@ describe('browseMatches and browseStateHref', () => {
     );
     expect(browseStateHref(none)).toBe('/browse');
     expect(browseStateHref(none, 'relevance')).toBe('/browse');
+  });
+
+  it('adds ?page= after the view, and leaves it off for page 1', () => {
+    expect(browseStateHref(none, 'relevance', 1)).toBe('/browse');
+    expect(browseStateHref(none, 'relevance', 3)).toBe('/browse?page=3');
+    expect(browseStateHref({ ...none, verified: true }, 'newest', 2)).toBe('/browse?verified=1&sort=newest&page=2');
+  });
+
+  it('a new search starts again at page 1', () => {
+    expect(browseHref('postgres', 'access=mcp&page=4')).toBe('/browse?access=mcp&q=postgres');
+    expect(browseHref('', 'page=2')).toBe('/browse');
+  });
+});
+
+describe('parsePage and pageSlice', () => {
+  it('reads a positive whole number, else page 1', () => {
+    expect(parsePage('3')).toBe(3);
+    expect(parsePage(' 2 ')).toBe(2);
+    for (const raw of [undefined, null, '', '0', '-1', '1.5', 'two', '1e400', '99999999999999999999']) {
+      expect(parsePage(raw), String(raw)).toBe(1);
+    }
+  });
+
+  const items = Array.from({ length: 130 }, (_, i) => i);
+
+  it('cuts the list into pages of BROWSE_PAGE_SIZE', () => {
+    expect(BROWSE_PAGE_SIZE).toBeGreaterThanOrEqual(60);
+    expect(BROWSE_PAGE_SIZE).toBeLessThanOrEqual(100);
+    const first = pageSlice(items, 1, 60);
+    expect(first).toMatchObject({ page: 1, pages: 3, start: 0 });
+    expect(first.items).toHaveLength(60);
+    const last = pageSlice(items, 3, 60);
+    expect(last).toMatchObject({ page: 3, pages: 3, start: 120 });
+    expect(last.items).toEqual(items.slice(120));
+  });
+
+  it('shows the last page for a page past the end, and one empty page for no items', () => {
+    expect(pageSlice(items, 99, 60)).toMatchObject({ page: 3, start: 120 });
+    expect(pageSlice([], 5, 60)).toEqual({ page: 1, pages: 1, start: 0, items: [] });
   });
 });
 
