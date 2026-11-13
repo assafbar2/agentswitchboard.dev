@@ -18,28 +18,28 @@ export function generateMetadata(_props: unknown, parent: ResolvingMetadata): Pr
 const SPONSOR_EMAIL = 'barnir@agentmail.to';
 
 /**
- * The packages on offer. `price` stays null, shown as "Contact for pricing",
- * until the maintainer confirms one; payment is a Stripe Payment Link sent by
- * email after a request is approved, never a button on this page.
+ * The packages on offer, in US dollars, paid once per term. Payment is a Stripe
+ * Payment Link sent by email after a request is approved, never a button on
+ * this page.
  */
-const SPONSOR_PACKAGES: readonly { id: string; name: string; includes: readonly string[]; price: string | null }[] = [
+const SPONSOR_PACKAGES: readonly { id: string; name: string; includes: readonly string[]; price: string }[] = [
   {
     id: '1-week',
     name: '1 week',
     includes: ['The homepage Sponsored slot for 7 days', "That week's drop page", 'The Sponsored label for the term'],
-    price: null,
+    price: '$29',
   },
   {
     id: '4-weeks',
     name: '4 weeks',
     includes: ['The homepage Sponsored slot for 28 days', 'Four weekly drop pages', 'The Sponsored label for the term'],
-    price: null,
+    price: '$99',
   },
   {
     id: '12-weeks',
     name: '12 weeks',
     includes: ['The homepage Sponsored slot for 84 days', 'Twelve weekly drop pages', 'The Sponsored label for the term'],
-    price: null,
+    price: '$249',
   },
 ];
 
@@ -122,10 +122,18 @@ export default function AdvertisePage() {
                       <li key={line}>{line}</li>
                     ))}
                   </ul>
-                  <p className="mt-3 font-bold">{p.price ?? 'Contact for pricing'}</p>
+                  <p className="mt-3">
+                    <span className="text-2xl font-extrabold">{p.price}</span>{' '}
+                    <span className="text-[15px] text-[var(--dir-muted)]">one payment</span>
+                  </p>
                 </li>
               ))}
             </ul>
+            <p className="mt-4 text-[15px] text-[var(--dir-muted)]">
+              Prices in US dollars. Until the first paid term starts, the slot shows three launch listings for free:
+              Agent Switchboard, AgentMail and Barnir Hired. All three come off the day the first paying sponsor goes
+              live.
+            </p>
           </section>
 
           <section aria-labelledby="qualifies">
@@ -149,7 +157,7 @@ export default function AdvertisePage() {
             </h2>
             <ol className="list-decimal space-y-1 pl-6">
               <li>Request a slot by email with your listing and the package you want.</li>
-              <li>The maintainer reviews the listing and replies with the price and a start week.</li>
+              <li>The maintainer reviews the listing and replies with a start week.</li>
               <li>Once approved, you get a Stripe payment link by email. Nothing is paid on this site.</li>
               <li>The slot goes live after payment and comes off when the term ends.</li>
             </ol>
