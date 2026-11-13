@@ -1,5 +1,11 @@
 [
   {
+    "action": "added",
+    "slug": "treg",
+    "name": "treg",
+    "date": "2026-11-13"
+  },
+  {
     "action": "removed",
     "slug": "youtube-mcp",
     "name": "YouTube MCP",
