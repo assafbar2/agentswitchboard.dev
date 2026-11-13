@@ -28,6 +28,8 @@ import { TaskBanner } from '@/components/TaskBanner';
 import { TaskChips } from '@/components/TaskChips';
 import { TaskEvents } from '@/components/TaskEvents';
 import type { Metadata, ResolvingMetadata } from 'next';
+import { headers } from 'next/headers';
+import { logZeroResults } from '@/lib/leads';
 import { pageMetadata } from '@/lib/metadata';
 import { getTask, getTasks, taskExplanation, taskTitle } from '@/lib/tasks';
 
@@ -101,6 +103,22 @@ export default async function BrowsePage({
   const shown = pageSlice(agents, parsePage(page));
   const pageHref = (n: number) => browseStateHref(state, sortOrder, n);
   const recovery = agents.length === 0 ? recover(allAgents, state, categories, sortOrder) : undefined;
+  if (agents.length === 0) {
+    const requestHeaders = await headers();
+    // A router prefetch is not a search someone ran; the navigation that follows is.
+    if (!requestHeaders.get('next-router-prefetch')) {
+      logZeroResults('site', requestHeaders, 0, {
+        q: query,
+        task: task?.slug,
+        category: categoryFilter,
+        vendor: vendorFilter,
+        access: accessFilters.join('+'),
+        official: parseFlag(official),
+        verified: verifiedOnly,
+        auth: authFilter.join('|'),
+      });
+    }
+  }
   const applied = new Set<BreakdownKey>(accessFilters as BreakdownKey[]);
   if (officialOnly) applied.add('official');
   if (verifiedOnly) applied.add('verified');

@@ -64,6 +64,10 @@ const TOOLS: { name: string; does: string }[] = [
     does: "One MCP client config to paste for up to 10 listings, copied from each vendor's docs, and how to connect the rest.",
   },
   { name: 'submit_listing', does: 'Suggest a new listing. Opens a public GitHub issue for review; publishes nothing.' },
+  {
+    name: 'request_missing_tool',
+    does: 'Say that nothing in the directory does a job. Recorded privately for the weekly review; publishes nothing.',
+  },
 ];
 
 const GROK_BOT_PROMPTS = [

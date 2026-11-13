@@ -2,9 +2,9 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Agent Switchboard Directory API",
-    "version": "1.12.0",
+    "version": "1.13.0",
     "summary": "Read-only catalog of AI agents, MCP servers, and agentic developer tools.",
-    "description": "Agent Switchboard is a public discovery directory. Use this API to answer questions like 'is there an agent that does X?' or 'which listed products expose an MCP server?'. There is no authentication, no user account, and no write access. The /api/ endpoints allow 120 requests per minute per IP and answer 429 with Retry-After past that; cached responses do not count, and /api/mcp has its own limits. This API does not proxy the underlying products — it only returns Switchboard listings. For interactive tool-shaped access, an MCP server is also available at /api/mcp. Listing data returned by this API is licensed CC BY-NC 4.0 (attribution required; commercial reuse needs a license: https://agentswitchboard.dev/contact). The API definition itself is MIT.",
+    "description": "Agent Switchboard is a public discovery directory. Use this API to answer questions like 'is there an agent that does X?' or 'which listed products expose an MCP server?'. There is no authentication and no user account. The one write, POST /api/missing-tool, publishes nothing: it privately tells the maintainer that no listing does a job. The /api/ endpoints allow 120 requests per minute per IP and answer 429 with Retry-After past that; cached responses do not count, and /api/mcp has its own limits. This API does not proxy the underlying products — it only returns Switchboard listings. For interactive tool-shaped access, an MCP server is also available at /api/mcp. Listing data returned by this API is licensed CC BY-NC 4.0 (attribution required; commercial reuse needs a license: https://agentswitchboard.dev/contact). The API definition itself is MIT.",
     "contact": {
       "name": "Barnir",
       "email": "barnir@agentmail.to",
@@ -21,7 +21,8 @@
   },
   "tags": [
     { "name": "catalog", "description": "Search and fetch directory listings." },
-    { "name": "mcp", "description": "Optional Model Context Protocol transport. Not required for REST clients." }
+    { "name": "mcp", "description": "Optional Model Context Protocol transport. Not required for REST clients." },
+    { "name": "feedback", "description": "Telling the maintainer what the directory is missing." }
   ],
   "security": [],
   "paths": {
@@ -454,6 +455,48 @@
         }
       }
     },
+    "/api/missing-tool": {
+      "post": {
+        "operationId": "requestMissingTool",
+        "summary": "Say that no listing does a job",
+        "description": "Tell the maintainer that the directory has nothing for a job, after a search found nothing that fits. Recorded privately for the weekly review, which uses these requests to decide what to look for and add. Nothing is published, no issue is opened, and there is no reply. Describe the job, not the user: email addresses and phone numbers are removed before it is recorded, and the record keeps no IP address. Limited to 10 per caller IP per hour. The same as the MCP tool request_missing_tool.",
+        "tags": ["feedback"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["need"],
+                "properties": {
+                  "need": { "type": "string", "minLength": 10, "maxLength": 500, "description": "The job no listing does, in plain words.", "examples": ["file expense reports in Expensify"] },
+                  "tried": { "type": "string", "maxLength": 200, "description": "The search words that found nothing." },
+                  "category": { "type": "string", "maxLength": 60, "description": "The closest category slug." },
+                  "access": {
+                    "type": "array",
+                    "maxItems": 4,
+                    "items": { "type": "string", "enum": ["api", "mcp", "cli", "browser-extension"] },
+                    "description": "How the agent needs to reach it."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": { "description": "Recorded.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/MissingToolResponse" } } } },
+          "400": {
+            "description": "The body is not JSON, need is missing or too short, or a field is unknown.",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } }
+          },
+          "429": {
+            "description": "Past 10 per caller IP per hour. Retry-After says when to try again.",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/MissingToolResponse" } } }
+          }
+        }
+      }
+    },
     "/agents.json": {
       "get": {
         "operationId": "listAgents",
@@ -504,7 +547,7 @@
       "post": {
         "operationId": "mcpTransport",
         "summary": "Model Context Protocol endpoint (streamable HTTP)",
-        "description": "Speaks MCP over streamable HTTP. Exposes seven tools: `search_agents`, `get_agent`, `list_categories`, `compare_agents`, `alternatives_to`, `connect_bundle`, and `submit_listing`, which files a listing suggestion for human review. This is a JSON-RPC transport, not a REST resource. REST clients should call /api/agents, /api/compare, /api/agents/{slug}/alternatives and /api/bundle instead.",
+        "description": "Speaks MCP over streamable HTTP. Exposes eight tools: `search_agents`, `get_agent`, `list_categories`, `compare_agents`, `alternatives_to`, `connect_bundle`, `submit_listing`, which files a listing suggestion for human review, and `request_missing_tool`, which says privately that no listing does a job. This is a JSON-RPC transport, not a REST resource. REST clients should call /api/agents, /api/compare, /api/agents/{slug}/alternatives and /api/bundle instead.",
         "tags": ["mcp"],
         "requestBody": {
           "required": true,
@@ -1207,6 +1250,14 @@
             "properties": { "notes": { "type": "array", "items": { "type": "string" } } }
           }
         ]
+      },
+      "MissingToolResponse": {
+        "type": "object",
+        "required": ["status", "message"],
+        "properties": {
+          "status": { "type": "string", "enum": ["recorded", "rate_limited"] },
+          "message": { "type": "string" }
+        }
       },
       "Error": {
         "type": "object",

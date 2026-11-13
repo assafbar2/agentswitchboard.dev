@@ -4,7 +4,7 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
-## [2.9.5] - 2026-11-13 - What's new keeps up
+## [2.9.6] - 2026-11-13 - What's new keeps up
 
 ### Highlights
 - See every weekly drop on What's new beside the site's releases: what it added, updated and removed, and its stack of the week, each with a link to try it. The Nov 13 drop added 56 agents, and its stack ships a web app with your agent. [Try it](https://agentswitchboard.dev/whats-new#drop-2026-11-13)
@@ -18,6 +18,17 @@ Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes 
 - The [Nov 13 drop](https://agentswitchboard.dev/drops/2026-11-13): the weekly run added 56 listings, 14 of them Official, updated 2 and archived 1, with [Ship a web app with your agent](https://agentswitchboard.dev/stacks/ship-a-web-app-with-your-agent) as the stack of the week. With the same day's corrections below, the drop comes to 56 added, 6 updated and 2 archived. ([#395](https://github.com/assafbar2/agentswitchboard.dev/pull/395))
 - [elizaOS](https://agentswitchboard.dev/agents/eliza), [GPT Pilot](https://agentswitchboard.dev/agents/gpt-pilot) and [MobileBuildMCP](https://agentswitchboard.dev/agents/xcodebuild-mcp) go by their projects' own names. Corrected the same day, they count among the Nov 13 drop's updates. ([#390](https://github.com/assafbar2/agentswitchboard.dev/pull/390))
 - [Windsurf is Devin Desktop](https://agentswitchboard.dev/agents/codeium-windsurf) now, by Cognition AI, and its listing and comparison say "formerly Windsurf". ZCode is archived while a privacy report on it is unresolved. Both count in the Nov 13 drop. ([#398](https://github.com/assafbar2/agentswitchboard.dev/pull/398))
+
+## [2.9.5] - 2026-11-13 - Missing-tool requests
+
+### Highlights
+- Tell us when the directory has nothing for a job: your assistant can send the job in plain words with the MCP tool `request_missing_tool` or `POST /api/missing-tool`, and the weekly review uses it to decide what to add. [Try it](https://agentswitchboard.dev/for-agents)
+
+### Added
+- An assistant can tell us the directory has nothing for a job: the MCP tool `request_missing_tool` and `POST /api/missing-tool` take the job in plain words (`need`), and optionally the search that found nothing, a category and the access it needs. The request is recorded privately for the weekly review, which uses it to decide what to look for and add; nothing is published, no issue is opened, and there is no reply. Email addresses and phone numbers are removed first, and each caller can send 10 an hour. The MCP server is version 1.9.0, with eight tools, and [/openapi.json](https://agentswitchboard.dev/openapi.json) is version 1.13.0. ([#404](https://github.com/assafbar2/agentswitchboard.dev/pull/404))
+
+### Changed
+- A search that finds no listing at all, on [/browse](https://agentswitchboard.dev/browse), `GET /api/agents` or the MCP `search_agents` tool, is recorded with its words and filters, without the IP address, for the weekly review. [/privacy](https://agentswitchboard.dev/privacy) says so. Search results are unchanged. ([#404](https://github.com/assafbar2/agentswitchboard.dev/pull/404))
 
 ## [2.9.4] - 2026-11-13 - No-auth tools in the downloadable catalog
 
