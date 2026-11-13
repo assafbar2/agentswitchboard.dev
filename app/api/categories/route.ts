@@ -8,11 +8,14 @@
 
 import { getAllCategories } from '@/lib/catalog';
 import { logConsumer } from '@/lib/log';
+import { restRateLimit } from '@/lib/rest-rate-limit';
 import { corsPreflight, jsonResponse, summarizeCategory } from '@/lib/public-api';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET(req: Request): Promise<Response> {
+  const limited = restRateLimit('/api/categories', req);
+  if (limited) return limited;
   logConsumer('/api/categories', req);
   const categories = await getAllCategories();
   return jsonResponse({

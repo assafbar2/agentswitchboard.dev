@@ -1,5 +1,6 @@
 /**
- * In-memory fixed-window rate limits for the public MCP endpoint.
+ * In-memory fixed-window rate limits for the public MCP endpoint and the
+ * REST API (lib/rest-rate-limit.ts).
  *
  * Counts live in one server instance's memory, so on Vercel each instance
  * keeps its own window and a cold start resets it. That bounds a single

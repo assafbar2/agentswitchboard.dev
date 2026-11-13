@@ -46,6 +46,7 @@ import {
 } from '@/lib/search';
 import { getTask } from '@/lib/tasks';
 import { logConsumer } from '@/lib/log';
+import { restRateLimit } from '@/lib/rest-rate-limit';
 import {
   corsPreflight,
   jsonResponse,
@@ -72,6 +73,8 @@ function nextPageUrl(requestUrl: string, offset: number, limit: number): string 
 }
 
 export async function GET(req: Request): Promise<Response> {
+  const limited = restRateLimit('/api/agents', req);
+  if (limited) return limited;
   const { searchParams } = new URL(req.url);
   const q = clampQuery(searchParams.get('q'));
   const taskSlug = (searchParams.get('task') ?? '').trim().toLowerCase();
