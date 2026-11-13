@@ -71,7 +71,7 @@ async function entriesOn(page) {
       heading: (await section.getByRole('heading', { level: 2 }).textContent()).replace(/\s+/g, ' ').trim(),
       date: await section.locator('h2 time').getAttribute('datetime'),
       highlights: await highlightsIn(section.locator('ul')),
-      more: await section.locator('ul ~ p a').getAttribute('href'),
+      more: await section.locator(':scope > p a').getAttribute('href'),
     });
   }
   return entries;

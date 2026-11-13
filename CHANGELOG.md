@@ -16,6 +16,7 @@ Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes 
 
 ### Directory
 - The [Nov 13 drop](https://agentswitchboard.dev/drops/2026-11-13): 56 listings added, 14 of them Official, 2 updated and 1 archived, with [Ship a web app with your agent](https://agentswitchboard.dev/stacks/ship-a-web-app-with-your-agent) as the stack of the week. ([#395](https://github.com/assafbar2/agentswitchboard.dev/pull/395))
+- [elizaOS](https://agentswitchboard.dev/agents/eliza), [GPT Pilot](https://agentswitchboard.dev/agents/gpt-pilot) and [MobileBuildMCP](https://agentswitchboard.dev/agents/xcodebuild-mcp) go by their projects' own names. Corrected the same day, they count among the Nov 13 drop's updates, which come to 5. ([#390](https://github.com/assafbar2/agentswitchboard.dev/pull/390))
 
 ## [2.9.1] - 2026-11-13 - The catalog in pages
 
