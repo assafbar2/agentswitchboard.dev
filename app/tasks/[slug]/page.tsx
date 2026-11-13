@@ -8,7 +8,7 @@ import { JsonLd } from '@/components/JsonLd';
 import { TaskEvents } from '@/components/TaskEvents';
 import { TaskComparison } from '@/components/TaskComparison';
 import { TaskRow } from '@/components/TaskRow';
-import { getAllCategories, getEveryAgent } from '@/lib/catalog';
+import { getAllCategories, getOrganicAgents } from '@/lib/catalog';
 import { pageMetadata } from '@/lib/metadata';
 import { taskMatches } from '@/lib/search';
 import { answerDate, taskAnswer } from '@/lib/task-answers';
@@ -43,7 +43,7 @@ interface Props {
 async function load(slug: string) {
   const task = getTask(slug);
   if (!task) return null;
-  const catalog = await getEveryAgent();
+  const catalog = await getOrganicAgents();
   return { task, catalog, fits: taskMatches(catalog, task) };
 }
 

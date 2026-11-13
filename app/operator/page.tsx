@@ -8,7 +8,7 @@ import { CopyButton } from '@/components/CopyButton';
 import { OperatorBox, OperatorEvents } from '@/components/OperatorBox';
 import { SaveStack } from '@/components/SaveStack';
 import { connectBundle } from '@/lib/bundle';
-import { getEveryAgent } from '@/lib/catalog';
+import { getOrganicAgents } from '@/lib/catalog';
 import { compareHref } from '@/lib/compare-link';
 import { smallIconPath } from '@/lib/icons';
 import { pageMetadata } from '@/lib/metadata';
@@ -29,7 +29,7 @@ interface Props {
 }
 
 async function load(searchParams: Props['searchParams']) {
-  const [query, catalog] = await Promise.all([searchParams, getEveryAgent()]);
+  const [query, catalog] = await Promise.all([searchParams, getOrganicAgents()]);
   const tasks = getTasks();
   const raw = [query.q].flat()[0];
   const asked = cleanRequest(raw).text;

@@ -3,7 +3,7 @@ import type { Metadata, ResolvingMetadata } from 'next';
 import { JsonLd } from '@/components/JsonLd';
 import { TaskEvents } from '@/components/TaskEvents';
 import { TaskRow } from '@/components/TaskRow';
-import { getEveryAgent } from '@/lib/catalog';
+import { getOrganicAgents } from '@/lib/catalog';
 import { pageMetadata } from '@/lib/metadata';
 import { taskMatches } from '@/lib/search';
 import { tasksCard, tasksCardImage } from '@/lib/share-cards';
@@ -18,7 +18,7 @@ interface Row {
 }
 
 async function rows(): Promise<Row[]> {
-  const catalog = await getEveryAgent();
+  const catalog = await getOrganicAgents();
   return getTasks().map((task) => ({ task, fits: taskMatches(catalog, task) }));
 }
 

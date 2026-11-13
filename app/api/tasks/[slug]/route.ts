@@ -10,7 +10,7 @@
  * no auth, open CORS. 404 when the slug is unknown.
  */
 
-import { getEveryAgent } from '@/lib/catalog';
+import { getOrganicAgents } from '@/lib/catalog';
 import { logConsumer } from '@/lib/log';
 import { restRateLimit } from '@/lib/rest-rate-limit';
 import { corsPreflight, detailTask, jsonResponse, unknownTaskMessage } from '@/lib/public-api';
@@ -34,7 +34,7 @@ export async function GET(
     return jsonResponse({ error: 'not_found', message: unknownTaskMessage(slug) }, 404);
   }
 
-  const catalog = await getEveryAgent();
+  const catalog = await getOrganicAgents();
   const fits = taskMatches(catalog, task);
   return jsonResponse(
     detailTask(
