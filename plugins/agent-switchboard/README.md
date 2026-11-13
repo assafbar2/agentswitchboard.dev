@@ -18,6 +18,7 @@ no account, API key or configuration. In approval prompts it appears as
 | `compare_agents` | Two or three listings side by side |
 | `alternatives_to` | Listings that could stand in for one, with what each has in common |
 | `connect_bundle` | One MCP client config for up to 10 listings, and how to connect the rest |
+| `recommend` | One pick for what you need, said in a sentence, with why it fits, the next step and two alternatives |
 | `submit_listing` | Suggests a missing product by filing a public GitHub issue for human review. It publishes nothing. It is marked destructive, so clients ask before calling it |
 
 Every tool except `submit_listing` is read-only.

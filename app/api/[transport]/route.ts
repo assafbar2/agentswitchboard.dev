@@ -17,7 +17,7 @@ import { z } from 'zod';
 import { VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 import { getEveryAgent, getAllCategories, getRetiredListings } from '@/lib/catalog';
 import { COMPARE_QUERY_KEYS } from '@/lib/compare-link';
-import { alternativesDecision, bundleDecision, compareDecision, type Decision } from '@/lib/decide';
+import { alternativesDecision, bundleDecision, compareDecision, recommendDecision, type Decision } from '@/lib/decide';
 import { absoluteIconUrl } from '@/lib/icons';
 import { organicOrder, withoutPlacement } from '@/lib/organic';
 import { logConsumer } from '@/lib/log';
@@ -36,6 +36,8 @@ import {
   COMPARE_SLUGS_INPUT,
   CONNECT_BUNDLE_DESCRIPTION,
   OFFICIAL_DEFINITION,
+  RECOMMEND_DESCRIPTION,
+  RECOMMEND_NEED_INPUT,
   SINCE_INPUT,
   TASK_INPUT,
   VERIFIED_INPUT,
@@ -90,6 +92,7 @@ const CORS = {
 
 const INSTRUCTIONS =
   'Agent Switchboard is a curated directory of AI agents, MCP servers, and agentic tools. ' +
+  'When the user wants one tool for a job, recommend takes their need in a sentence and returns one pick, why, the next step to start using it and two alternatives. ' +
   'Use search_agents to find tools for a job (pick a task such as "query-a-database", or filter by category, access method, official, verified, or auth type; ' +
   'since keeps what was added lately; sort by newest or most skills), get_agent for one listing, and list_categories for valid category slugs. ' +
   'To help a user choose: compare_agents puts 2 or 3 listings side by side, alternatives_to finds listings that could stand in for one, ' +
@@ -505,6 +508,54 @@ const handler = createMcpHandler(
     );
 
     server.registerTool(
+      'recommend',
+      {
+        title: 'Recommend',
+        description: RECOMMEND_DESCRIPTION,
+        annotations: readOnly('Recommend'),
+        inputSchema: {
+          need: z.string().max(2000).describe(RECOMMEND_NEED_INPUT),
+        },
+        outputSchema: {
+          request: z.string().describe('The need as read'),
+          answer: z.string().describe('The recommendations in plain sentences, one line per need, ready to tell the user'),
+          recommendations: z.array(
+            z.object({
+              need: z.string().describe("The user's words for this need"),
+              task: z.object({ slug: z.string(), label: z.string(), url: z.string() }).describe('The directory task it matched'),
+              pick: z.object(decisionAgentShape),
+              pickedBecause: z.string(),
+              why: z.string().nullable().describe('The skill of the pick that does the task'),
+              unmet: z.array(z.string()).describe('What the need asked for that no listing for the task has'),
+              nextStep: z.object({
+                how: z
+                  .enum(['config', 'guide', 'other'])
+                  .describe('config: paste server into an MCP client; guide: an MCP server to set up from url; other: no MCP server, start from url'),
+                label: z.string(),
+                url: z.string().describe("The vendor's setup instructions"),
+                server: mcpServerShape.nullable().describe('With how config: its entry for mcpServers'),
+                note: z.string().describe('How it connects'),
+              }),
+              alternatives: z.array(z.object(decisionAgentShape)),
+              fits: z.number().int().describe('How many listings do the task'),
+            })
+          ),
+          unmatched: z
+            .array(z.object({ need: z.string(), nearestTasks: z.array(z.object({ slug: z.string(), label: z.string(), url: z.string() })) }))
+            .describe('Needs with no pick, and the tasks closest to them'),
+          stackUrl: z.string().nullable().describe('Two or more picks as a shared stack on the site'),
+          operatorUrl: z.string().describe('The same request on the site'),
+          basis: z.string().describe('How the pick is made'),
+          notes: z.array(z.string()),
+        },
+      },
+      async ({ need }) => {
+        const catalog = await organicCatalog();
+        return decisionResult(recommendDecision(need, getTasks(), catalog));
+      }
+    );
+
+    server.registerTool(
       'submit_listing',
       {
         title: 'Submit a Listing',
@@ -518,7 +569,7 @@ const handler = createMcpHandler(
     );
   },
   {
-    serverInfo: { name: 'agentswitchboard', version: '1.8.0' },
+    serverInfo: { name: 'agentswitchboard', version: '1.9.0' },
     instructions: INSTRUCTIONS,
   },
   {

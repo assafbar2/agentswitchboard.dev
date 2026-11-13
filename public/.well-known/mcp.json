@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
   "name": "io.github.assafbar2/agentswitchboard",
   "description": "Search a curated directory of AI agents, MCP servers, and agentic tools, and suggest new listings. Use it to find out whether an agent already exists for a job, which access methods it offers (API, MCP, CLI, browser extension), and where its homepage is.",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "websiteUrl": "https://agentswitchboard.dev",
   "repository": {
     "url": "https://github.com/assafbar2/agentswitchboard.dev",
@@ -198,6 +198,26 @@
         },
         "required": [
           "slugs"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "recommend",
+      "title": "Recommend",
+      "description": "One recommendation for what your user needs, and the next step to start using it, as the site's Operator (/operator) picks it. Pass the need in a sentence you write yourself, e.g. \"query Postgres and send email\": each need it names gets one pick, why it fits, the next step (the MCP client config to paste when the vendor's docs give one, else its setup guide or docs) and two alternatives; two or more picks also come with a /stack link. Name a product to prefer the listings that mention it; say MCP, CLI, API, browser extension or official to narrow the pick. Picked by fixed matching rules, not a model, so the same need always gets the same answer. A need that matches no task is refused with the closest tasks. Never include names, email addresses or phone numbers.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "need": {
+            "type": "string",
+            "maxLength": 2000,
+            "description": "What the user needs, in a sentence or two, e.g. \"query Postgres and send email\" (up to 300 characters are read)"
+          }
+        },
+        "required": [
+          "need"
         ],
         "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"

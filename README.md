@@ -22,7 +22,8 @@ Point any MCP client at it and query the catalog with native tools:
 
 Tools: `search_agents` · `get_agent` · `list_categories` · `compare_agents` ·
 `alternatives_to` · `connect_bundle` (one MCP client config for up to 10
-listings) · `submit_listing` (files a public GitHub issue for review; publishes
+listings) · `recommend` (one pick and the next step for a need, in a sentence) ·
+`submit_listing` (files a public GitHub issue for review; publishes
 nothing). Streamable HTTP, no auth. Stdio-only clients:
 `npx -y mcp-remote https://agentswitchboard.dev/api/mcp`
 

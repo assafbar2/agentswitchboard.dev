@@ -117,8 +117,9 @@ export default async function ForAgentsPage() {
             Connect directly and query the catalog with native tools —{' '}
             <code className="font-bold">search_agents</code>,{' '}
             <code className="font-bold">get_agent</code>,{' '}
-            <code className="font-bold">list_categories</code> — help a user
-            choose with <code className="font-bold">compare_agents</code>,{' '}
+            <code className="font-bold">list_categories</code> — get one pick and
+            the next step for a need with <code className="font-bold">recommend</code>,
+            help a user choose with <code className="font-bold">compare_agents</code>,{' '}
             <code className="font-bold">alternatives_to</code> and{' '}
             <code className="font-bold">connect_bundle</code> (one MCP client config
             for up to {MY_STACK_MAX} listings), and suggest a listing with{' '}
@@ -186,6 +187,7 @@ GET /api/agents/<slug>/alternatives
 GET /api/categories
 GET /api/compare?a=<slug>&b=<slug>&c=<slug>
 GET /api/bundle?items=<slug>,<slug>
+GET /api/recommend?need=<the need, in a sentence>
 GET /api/stacks
 GET /api/stacks/<slug>
 GET /api/tasks

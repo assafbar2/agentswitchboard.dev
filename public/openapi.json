@@ -444,6 +444,49 @@
         }
       }
     },
+    "/api/recommend": {
+      "get": {
+        "operationId": "recommend",
+        "summary": "One pick and the next step for what a user needs",
+        "description": "One recommendation for what a user needs, and the next step to start using it, as the site's Operator (/operator) picks it. Each need the request names gets one pick, why it fits, the next step (the MCP client config to paste when the vendor's docs give one, else its setup guide or docs) and two alternatives; two or more picks also come with a /stack link. Picked by fixed matching rules, not a model: each need is matched to a task, then the task's listings that mention what the need names come first, then Official ones, then the task's best fits. Saying MCP, CLI, API, browser extension or official in the need narrows the pick. The catalog is read in organic order and the answer carries no placement field. Write the need yourself; never include names, email addresses or phone numbers.",
+        "tags": ["catalog"],
+        "parameters": [
+          {
+            "name": "need",
+            "in": "query",
+            "required": true,
+            "description": "What the user needs, in a sentence or two. Up to 300 characters are read.",
+            "schema": { "type": "string", "examples": ["read my Gmail and query Postgres"] }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The recommendations.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/RecommendResult" }
+              }
+            }
+          },
+          "400": {
+            "description": "No need given (`error: \"no_need\"`).",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          },
+          "404": {
+            "description": "No task in the directory matches the need (`error: \"no_match\"`); `unmatched` names the closest tasks.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/agents.json": {
       "get": {
         "operationId": "listAgents",
@@ -494,7 +537,7 @@
       "post": {
         "operationId": "mcpTransport",
         "summary": "Model Context Protocol endpoint (streamable HTTP)",
-        "description": "Speaks MCP over streamable HTTP. Exposes seven tools: `search_agents`, `get_agent`, `list_categories`, `compare_agents`, `alternatives_to`, `connect_bundle`, and `submit_listing`, which files a listing suggestion for human review. This is a JSON-RPC transport, not a REST resource. REST clients should call /api/agents, /api/compare, /api/agents/{slug}/alternatives and /api/bundle instead.",
+        "description": "Speaks MCP over streamable HTTP. Exposes eight tools: `search_agents`, `get_agent`, `list_categories`, `compare_agents`, `alternatives_to`, `connect_bundle`, `recommend`, and `submit_listing`, which files a listing suggestion for human review. This is a JSON-RPC transport, not a REST resource. REST clients should call /api/agents, /api/compare, /api/agents/{slug}/alternatives, /api/bundle and /api/recommend instead.",
         "tags": ["mcp"],
         "requestBody": {
           "required": true,
@@ -1170,6 +1213,65 @@
             "properties": { "notes": { "type": "array", "items": { "type": "string" } } }
           }
         ]
+      },
+      "RecommendResult": {
+        "type": "object",
+        "required": ["request", "answer", "recommendations", "unmatched", "stackUrl", "operatorUrl", "basis", "notes"],
+        "properties": {
+          "request": { "type": "string", "description": "The need as read." },
+          "answer": { "type": "string", "description": "The recommendations in plain sentences, one line per need, ready to tell the user." },
+          "recommendations": { "type": "array", "items": { "$ref": "#/components/schemas/Recommendation" } },
+          "unmatched": {
+            "type": "array",
+            "description": "Needs with no pick, and the tasks closest to them.",
+            "items": {
+              "type": "object",
+              "required": ["need", "nearestTasks"],
+              "properties": {
+                "need": { "type": "string" },
+                "nearestTasks": { "type": "array", "items": { "$ref": "#/components/schemas/TaskRef" } }
+              }
+            }
+          },
+          "stackUrl": { "type": ["string", "null"], "format": "uri", "description": "Two or more picks as a shared stack on Agent Switchboard; null for one." },
+          "operatorUrl": { "type": "string", "format": "uri", "description": "The same request on the site's Operator page." },
+          "basis": { "type": "string", "description": "How the pick is made." },
+          "notes": { "type": "array", "items": { "type": "string" }, "description": "What of the request was not read." }
+        }
+      },
+      "Recommendation": {
+        "type": "object",
+        "required": ["need", "task", "pick", "pickedBecause", "why", "unmet", "nextStep", "alternatives", "fits"],
+        "properties": {
+          "need": { "type": "string", "description": "The user's words for this need." },
+          "task": { "$ref": "#/components/schemas/TaskRef" },
+          "pick": { "$ref": "#/components/schemas/DecisionAgent" },
+          "pickedBecause": { "type": "string", "examples": ["Picked because it mentions “Gmail”."] },
+          "why": { "type": ["string", "null"], "description": "The pick's skill that does the task." },
+          "unmet": { "type": "array", "items": { "type": "string" }, "description": "What the need asked for that no listing for the task has." },
+          "nextStep": {
+            "type": "object",
+            "required": ["how", "label", "url", "server", "note"],
+            "properties": {
+              "how": { "type": "string", "enum": ["config", "guide", "other"], "description": "config: paste server into an MCP client; guide: an MCP server to set up from url; other: no MCP server, start from url." },
+              "label": { "type": "string", "examples": ["Add its MCP server to your MCP client"] },
+              "url": { "type": "string", "format": "uri", "description": "The vendor's setup instructions." },
+              "server": { "oneOf": [{ "$ref": "#/components/schemas/McpServer" }, { "type": "null" }], "description": "With how config: its entry for mcpServers." },
+              "note": { "type": "string", "description": "How it connects." }
+            }
+          },
+          "alternatives": { "type": "array", "items": { "$ref": "#/components/schemas/DecisionAgent" } },
+          "fits": { "type": "integer", "description": "How many listings do the task." }
+        }
+      },
+      "TaskRef": {
+        "type": "object",
+        "required": ["slug", "label", "url"],
+        "properties": {
+          "slug": { "type": "string", "examples": ["query-a-database"] },
+          "label": { "type": "string", "examples": ["query a database"] },
+          "url": { "type": "string", "format": "uri" }
+        }
       },
       "Error": {
         "type": "object",

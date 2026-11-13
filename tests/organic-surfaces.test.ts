@@ -47,6 +47,7 @@ const alternativesRoute = await import('@/app/api/agents/[slug]/alternatives/rou
 const categoriesRoute = await import('@/app/api/categories/route');
 const compareRoute = await import('@/app/api/compare/route');
 const bundleRoute = await import('@/app/api/bundle/route');
+const recommendRoute = await import('@/app/api/recommend/route');
 
 const PLACEMENT_KEY = /^(featured|featuredUntil|sponsored|sponsorLabel|tier)$/;
 
@@ -78,6 +79,10 @@ const CALLS: [string, Record<string, unknown>][] = [
   ['alternatives_to', { slug: 'pinecone' }],
   ['alternatives_to', { slug: 'playwright-mcp' }],
   ['connect_bundle', { slugs: ['playwright-mcp', 'github-mcp', 'notion-mcp', 'cursor'] }],
+  ['recommend', { need: 'read my Notion, file Linear tickets, ping me on Slack' }],
+  ['recommend', { need: 'query Postgres and send email' }],
+  ['recommend', { need: 'write and fix code' }],
+  ['recommend', { need: 'an official MCP to browse the web' }],
 ];
 
 let rpcId = 0;
@@ -119,6 +124,7 @@ async function restFetch(input: string | URL | Request): Promise<Response> {
   if (p === '/api/categories') return categoriesRoute.GET(req);
   if (p === '/api/compare') return compareRoute.GET(req);
   if (p === '/api/bundle') return bundleRoute.GET(req);
+  if (p === '/api/recommend') return recommendRoute.GET(req);
   throw new Error(`WebMCP fetched an unexpected path: ${p}`);
 }
 
@@ -173,7 +179,7 @@ describe('AI-assistant surfaces are organic', () => {
 
   it('the MCP tool list names no placement field and promises no placement order', async () => {
     const { result } = await rpc('tools/list');
-    expect(result.tools).toHaveLength(7);
+    expect(result.tools).toHaveLength(8);
     // The logger's allow-list of tool names (lib/mcp-tools.ts) matches what is registered.
     expect(result.tools.map((t: { name: string }) => t.name).sort()).toEqual([...MCP_TOOL_NAMES].sort());
     for (const tool of result.tools) {
@@ -186,7 +192,7 @@ describe('AI-assistant surfaces are organic', () => {
 
   it('the WebMCP tool declarations name no placement field and promise no placement order', () => {
     expect(WEBMCP_TOOLS.map((t) => t.name).sort()).toEqual(
-      ['alternatives_to', 'compare_agents', 'connect_bundle', 'get_agent', 'list_categories', 'search_agents']
+      ['alternatives_to', 'compare_agents', 'connect_bundle', 'get_agent', 'list_categories', 'recommend', 'search_agents']
     );
     for (const tool of WEBMCP_TOOLS) {
       expect(JSON.stringify(tool.outputSchema ?? {}), tool.name).not.toMatch(/"(featured|featuredUntil|sponsored|sponsorLabel|tier)"/);

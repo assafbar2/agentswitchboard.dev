@@ -1,11 +1,16 @@
 import { describe, expect, it } from 'vitest';
+import { bundleItem } from './bundle';
 import { getEveryAgent } from './catalog';
 import { compareRows, compareSuggestions, compareTitle, curatedComparisons, factLines, pairPath } from './compare';
 import { compareHref } from './compare-link';
-import { alternativesDecision, bundleDecision, compareDecision } from './decide';
+import { alternativesDecision, bundleDecision, compareDecision, RECOMMEND_BASIS, recommendDecision } from './decide';
 import { BASE_URL } from './env';
+import { putThrough } from './operator';
+import { organicOrder } from './organic';
 import { alternativeWhy, getAlternatives, MAX_ALTERNATIVES, MIN_ALTERNATIVES } from './related';
+import { operatorHref } from './request-parts';
 import { MY_STACK_MAX, stackHref } from './stack-link';
+import { getTasks } from './tasks';
 import type { Agent } from './types';
 
 function listing(slug: string, overrides: Partial<Agent> = {}): Agent {
@@ -254,5 +259,45 @@ describe('bundleDecision', () => {
       error: 'no_listings',
       message: 'Name 1 to 10 listings by slug. Search the directory for their slugs first.',
     });
+  });
+});
+
+describe('recommendDecision', () => {
+  const organic = async () => organicOrder(await getEveryAgent());
+
+  it("gives the Operator's pick for each need, with why, the next step and two alternatives", async () => {
+    const catalog = await organic();
+    const need = 'read my Notion, file Linear tickets, ping me on Slack';
+    const put = putThrough(need, getTasks(), catalog);
+    const answer = body(recommendDecision(need, getTasks(), catalog));
+    expect(answer.recommendations.map((r) => r.pick.slug)).toEqual(put.parts.map((p) => p.pick!.slug));
+    expect(answer.recommendations.map((r) => r.alternatives.map((a) => a.slug))).toEqual(
+      put.parts.map((p) => p.alternatives.map((a) => a.slug))
+    );
+    expect(answer.recommendations.map((r) => r.task.slug)).toEqual(put.parts.map((p) => p.task!.slug));
+    expect(answer.stackUrl).toBe(`${BASE_URL}${stackHref(put.stack.map((a) => a.slug))}`);
+    expect(answer.operatorUrl).toBe(`${BASE_URL}${operatorHref(need)}`);
+    expect(answer.basis).toBe(RECOMMEND_BASIS);
+    expect(answer.unmatched).toEqual([]);
+    expect(answer.answer.split('\n')).toHaveLength(put.parts.length);
+    expect(answer.answer).toContain(`${answer.recommendations[0].pick.name} (${answer.recommendations[0].pick.url})`);
+  });
+
+  it("makes the next step the pick's MCP config when its docs give one, else its guide or docs", async () => {
+    const catalog = await organic();
+    const answer = body(recommendDecision('read my Gmail, query Postgres, write and fix code', getTasks(), catalog));
+    for (const r of answer.recommendations) {
+      const item = bundleItem(catalog.find((a) => a.slug === r.pick.slug)!);
+      expect(r.nextStep).toMatchObject({ how: item.how, url: item.docsUrl, server: item.server, note: item.note });
+    }
+    expect(answer.recommendations.some((r) => r.nextStep.how === 'config' && r.nextStep.server)).toBe(true);
+  });
+
+  it('refuses no need, and a need that matches no task, with the closest tasks', async () => {
+    const catalog = await organic();
+    expect(recommendDecision('   ', getTasks(), catalog)).toMatchObject({ ok: false, status: 400, error: 'no_need' });
+    const none = recommendDecision('make me a sandwich', getTasks(), catalog);
+    expect(none).toMatchObject({ ok: false, status: 404, error: 'no_match' });
+    expect(!none.ok && none.message).toMatch(/^No task in the directory matches "make me a sandwich", so there is no pick\./);
   });
 });
