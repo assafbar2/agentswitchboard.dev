@@ -48,6 +48,12 @@ const sortMenu = (page) => human(page).getByLabel('Sort');
 const banner = (page) => human(page).locator('section[aria-label="Task"]');
 const indexRows = (page) => human(page).locator('section[aria-labelledby="i-need-to"] li > a');
 const bestFits = (page) => human(page).locator('section[aria-labelledby="best-fits"]');
+// lib/task-comparison.ts, components/TaskComparison.tsx
+const COMPARISON_SIZE = 6;
+// /browse shows 60 listings a page
+const BROWSE_PAGE = 60;
+const SIGN_IN = { none: 'None', apiKey: 'API key', bearer: 'Token', oauth2: 'Sign in (OAuth)' };
+const comparison = (page) => human(page).locator('section[aria-labelledby="comparison"]');
 
 // components/TaskChips.tsx TASK_CHIPS, components/TaskSearch.tsx
 const CHIPS = 8;
@@ -315,6 +321,14 @@ test.describe('every task page', () => {
       await expect(human(page)).toContainText(task.official > 0 ? `${tools(task.count)} · ${task.official} official` : tools(task.count));
       await expect(human(page)).toContainText(explanation(task));
 
+      const compared = agents.slice(0, COMPARISON_SIZE);
+      await expect(comparison(page).locator('#comparison')).toHaveText(`Compared · top ${compared.length}`);
+      expect(await hrefs(comparison(page).locator('tbody tr td:first-child a'))).toEqual(compared.map((a) => `/agents/${a.slug}`));
+      for (const [i, a] of compared.entries()) {
+        await expect(comparison(page).locator('tbody tr').nth(i).locator('td').nth(2)).toHaveText(SIGN_IN[a.authType]);
+      }
+      expect(await hrefs(comparison(page).locator('a[href^="/compare"]'))).toHaveLength(1);
+
       const best = agents.slice(0, PAGE_SIZE);
       await expect(bestFits(page).locator('#best-fits')).toHaveText(`Best fits · ${best.length}`);
       const fits = bestFits(page).locator('ol > li > .cmp-card > a');
@@ -395,9 +409,12 @@ test.describe('task page details', () => {
     const agentView = page.locator('.agent-only');
     await expect(agentView).toBeVisible();
     await expect(agentView).toContainText(`/tasks/${SAMPLE.slug}`);
+    const compared = best.slice(0, COMPARISON_SIZE);
     const listed = agentView.locator('a.agent-row[href^="/agents/"]');
-    expect(await hrefs(listed)).toEqual(best.map((a) => `/agents/${a.slug}`));
-    for (const [i, a] of best.entries()) await expect(listed.nth(i)).toContainText(a.why ?? a.description);
+    expect(await hrefs(listed)).toEqual([...compared, ...best].map((a) => `/agents/${a.slug}`));
+    await expect(agentView).toContainText('compared · as of ');
+    for (const [i, a] of compared.entries()) await expect(listed.nth(i)).toContainText(`auth: ${a.authType}`);
+    for (const [i, a] of best.entries()) await expect(listed.nth(compared.length + i)).toContainText(a.why ?? a.description);
     await expect(agentView.locator(`a[href="/api/tasks/${SAMPLE.slug}"]`)).toHaveCount(1);
     await expect(agentView.locator(`a[href="/browse?task=${SAMPLE.slug}"]`)).toHaveCount(1);
   });
@@ -423,7 +440,7 @@ test.describe('/browse?task=', () => {
     await expect(banner(page).getByRole('link', { name: 'About this task →' })).toHaveAttribute('href', `/tasks/${SAMPLE.slug}`);
     await expect(banner(page).getByRole('link', { name: 'Remove task' })).toHaveAttribute('href', '/browse');
     await expect(countBar(page)).toHaveText(fitLine(SAMPLE.count));
-    expect(await hrefs(cards(page))).toEqual(agents.map((a) => `/agents/${a.slug}`));
+    expect(await hrefs(cards(page))).toEqual(agents.slice(0, BROWSE_PAGE).map((a) => `/agents/${a.slug}`));
     await expect(sortMenu(page)).toHaveValue('relevance');
     await expect(sortMenu(page).locator('option[value="relevance"]')).toHaveText('Best match');
   });
