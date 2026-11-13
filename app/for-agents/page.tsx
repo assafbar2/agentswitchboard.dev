@@ -486,8 +486,9 @@ GET /api/tasks/<slug>
             catalog in pages of up to 50 (<code className="font-bold">/catalog/1.json</code>{' '}
             and on, each with <code className="font-bold">next</code>) — use them for bulk or
             offline work, filtering on{' '}
-            <code className="font-bold">accessMethods</code> or{' '}
-            <code className="font-bold">categories</code>.
+            <code className="font-bold">accessMethods</code>,{' '}
+            <code className="font-bold">categories</code> or{' '}
+            <code className="font-bold">authType</code>.
           </p>
         </section>
 

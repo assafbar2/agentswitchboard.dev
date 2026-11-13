@@ -84,7 +84,8 @@ from major vendors, e.g. Notion's own Notion MCP; \`verified=true\` for Verified
 \`since=<YYYY-MM-DD>\`; \`sort=newest\` for the latest additions first).
 /agents.json indexes the whole catalog: it links static pages of up to 50 listings
 (/catalog/1.json, /catalog/2.json, …; each has \`next\`). Use them for bulk or offline
-work, filtering on \`accessMethods\`, \`categories\` and \`official\`.
+work, filtering on \`accessMethods\`, \`categories\`, \`authType\` (\`none\` for no key or
+sign-in) and \`official\`.
 
 To help a user choose and set up:
 - Compare 2 or 3 listings, the facts that set each apart and one row per field: the
