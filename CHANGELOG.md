@@ -4,13 +4,21 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
-## [2.9.6] - 2026-11-13 - Task pages and the Operator rank on fit alone
+## [2.9.7] - 2026-11-13 - Task pages and the Operator rank on fit alone
 
 ### Highlights
 - Every task page and every Operator stack now ranks tools on how well they fit the job and nothing else: a Featured or Sponsored listing never moves up, even on a tie, the same as the MCP server and recommend answer. [Try it](https://agentswitchboard.dev/tasks)
 
 ### Changed
 - [/tasks](https://agentswitchboard.dev/tasks), each task page, [/operator](https://agentswitchboard.dev/operator) and their share cards rank best fit first and A→Z on a tie, instead of putting featured listings first among equals. `GET /api/tasks` and `GET /api/tasks/<slug>` list the same way as the pages. Sponsored slots stay where they were, set apart and labeled on the homepage and the latest weekly drop, as [/advertise](https://agentswitchboard.dev/advertise) describes. ([#408](https://github.com/assafbar2/agentswitchboard.dev/pull/408))
+
+## [2.9.6] - 2026-11-13 - GPT Pilot archived
+
+### Highlights
+- See why GPT Pilot is no longer listed: its GitHub repo carried credential-stealing malware from August 2025 until June 11, 2026, and the project is unmaintained. [Try it](https://agentswitchboard.dev/changelog?action=removed&category=code-devtools#directory-changes)
+
+### Directory
+- GPT Pilot (Pythagora) is archived. Its repo, [Pythagora-io/gpt-pilot](https://github.com/Pythagora-io/gpt-pilot), shipped a credential-stealing payload from August 2025 until Pythagora removed it on June 11, 2026 ([Pythagora-io/gpt-pilot#1183](https://github.com/Pythagora-io/gpt-pilot/pull/1183)), and nothing has been developed there since. It leaves search, its category, tasks and the Operator; shared stack and compare links show it as "no longer listed". ([#405](https://github.com/assafbar2/agentswitchboard.dev/pull/405))
 
 ## [2.9.5] - 2026-11-13 - Missing-tool requests
 
