@@ -4,13 +4,22 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
-## [2.10.2] - 2026-11-13 - Task pages and the Operator rank on fit alone
+## [2.10.3] - 2026-11-13 - Task pages and the Operator rank on fit alone
 
 ### Highlights
 - Every task page and every Operator stack now ranks tools on how well they fit the job and nothing else: a Featured or Sponsored listing never moves up, even on a tie, the same as the MCP server and recommend answer. [Try it](https://agentswitchboard.dev/tasks)
 
 ### Changed
 - [/tasks](https://agentswitchboard.dev/tasks), each task page, [/operator](https://agentswitchboard.dev/operator) and their share cards rank best fit first and A→Z on a tie, instead of putting featured listings first among equals. `GET /api/tasks` and `GET /api/tasks/<slug>` list the same way as the pages. Sponsored slots stay where they were, set apart and labeled on the homepage and the latest weekly drop, as [/advertise](https://agentswitchboard.dev/advertise) describes. ([#408](https://github.com/assafbar2/agentswitchboard.dev/pull/408))
+
+## [2.10.2] - 2026-11-13 - Prices for the Sponsored slot
+
+### Highlights
+- Sponsor a listing from $29: one week of the homepage Sponsored slot and that week's drop page, $99 for four weeks, $249 for twelve. [Try it](https://agentswitchboard.dev/advertise)
+
+### Changed
+- The three packages on [/advertise](https://agentswitchboard.dev/advertise) show their prices, one payment each in US dollars, instead of "Contact for pricing": $29 for 1 week, $99 for 4 weeks and $249 for 12 weeks. Requesting a slot is unchanged: an email to barnir@agentmail.to, a review by the maintainer, then a Stripe payment link by email. Nothing is paid on the site.
+- /advertise says that the slot's three free launch listings, Agent Switchboard, AgentMail and Barnir Hired, come off the day the first paying sponsor goes live.
 
 ## [2.10.1] - 2026-11-13 - What's new keeps up
 
