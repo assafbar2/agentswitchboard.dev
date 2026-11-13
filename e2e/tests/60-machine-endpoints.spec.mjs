@@ -84,6 +84,7 @@ test.describe('text docs', () => {
     expect(body).toContain(
       'Tools: search_agents, get_agent, list_categories, compare_agents, alternatives_to, connect_bundle, submit_listing'
     );
+    expect(body).toContain('request_missing_tool');
   });
 
   test('/llms.txt agent and category counts match the live API', async ({ request }) => {
@@ -495,11 +496,11 @@ test.describe('crawler files', () => {
 });
 
 test.describe('manifests', () => {
-  test('/.well-known/mcp.json names the remote endpoint and the seven tools', async ({ request }) => {
+  test('/.well-known/mcp.json names the remote endpoint and the eight tools', async ({ request }) => {
     const { res, body } = await getJson(request, '/.well-known/mcp.json');
     expect(res.headers()['content-type']).toMatch(/json/);
     expect(body.remotes).toContainEqual({ type: 'streamable-http', url: 'https://agentswitchboard.dev/api/mcp' });
-    expect(body.tools.map((t) => t.name).sort()).toEqual([...READ_TOOLS, 'submit_listing'].sort());
+    expect(body.tools.map((t) => t.name).sort()).toEqual([...READ_TOOLS, 'submit_listing', 'request_missing_tool'].sort());
   });
 
   test('/.well-known/webmcp.json declares the document.modelContext tools', async ({ request }) => {
@@ -557,13 +558,13 @@ test.describe('MCP server /api/mcp', () => {
     expect(body.result.instructions).toContain('connect_bundle');
   });
 
-  test('tools/list lists the six read tools and submit_listing', async ({ request }) => {
+  test('tools/list lists the six read tools, submit_listing and request_missing_tool', async ({ request }) => {
     const body = await mcp(request, 'tools/list');
     expect(body.error).toBeUndefined();
     const names = body.result.tools.map((t) => t.name).sort();
-    expect(names).toEqual([...READ_TOOLS, 'submit_listing'].sort());
+    expect(names).toEqual([...READ_TOOLS, 'submit_listing', 'request_missing_tool'].sort());
     for (const t of body.result.tools) {
-      expect(t.annotations?.readOnlyHint, `${t.name} readOnlyHint`).toBe(t.name !== 'submit_listing');
+      expect(t.annotations?.readOnlyHint, `${t.name} readOnlyHint`).toBe(READ_TOOLS.includes(t.name));
     }
     const search = body.result.tools.find((t) => t.name === 'search_agents');
     expect(Object.keys(search.inputSchema.properties)).toEqual(

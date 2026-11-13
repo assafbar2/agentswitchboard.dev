@@ -100,7 +100,7 @@ To help a user choose and set up:
 - Remote MCP (Streamable HTTP, no auth): https://agentswitchboard.dev/api/mcp
 - Stdio-only clients: npx -y mcp-remote https://agentswitchboard.dev/api/mcp
 - Server manifest: https://agentswitchboard.dev/.well-known/mcp.json
-- Tools: search_agents, get_agent, list_categories, compare_agents, alternatives_to, connect_bundle, submit_listing (files a public GitHub issue for human review; publishes nothing)
+- Tools: search_agents, get_agent, list_categories, compare_agents, alternatives_to, connect_bundle, submit_listing (files a public GitHub issue for human review; publishes nothing), request_missing_tool (tells the maintainer privately that nothing fits a job; also POST /api/missing-tool)
 - Connect it to Grok, Grok Bot, the xAI API, Claude, or ChatGPT: https://agentswitchboard.dev/connect
 - Plain REST search (no MCP handshake needed): GET /api/agents?q=&task=&category=&access=&official=&verified=&auth=&since=&sort=&limit=&offset=&page=
 - REST detail: GET /api/agents/{slug}
