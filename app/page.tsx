@@ -26,6 +26,8 @@ import { TASK_CHIPS, TaskChips } from '@/components/TaskChips';
 import { TaskSearch, type TaskChoice } from '@/components/TaskSearch';
 import { OperatorBox, OperatorEvents } from '@/components/OperatorBox';
 import { EndpointLink } from '@/components/EndpointLink';
+import { CopyBlock } from '@/components/CopyBlock';
+import { AGENT_PROMPT } from '@/lib/agent-prompt';
 import { Highlights } from '@/components/Highlights';
 import { FeaturedAgentCard } from '@/components/FeaturedAgentCard';
 import { SponsoredSlot } from '@/components/SponsoredSlot';
@@ -251,6 +253,26 @@ export default async function HomePage() {
               />
             )}
             {weekStack && <StackCallout stack={weekStack} entries={weekEntries} className="mb-2" />}
+            <section
+              aria-labelledby="give-this-to-your-agent"
+              className="mb-2 border border-[var(--dir-ink)]! px-4 py-3"
+            >
+              <h2 id="give-this-to-your-agent" className="text-[16px] font-extrabold">
+                Give this to your agent
+              </h2>
+              <p className="text-[15px] text-[var(--dir-muted)]">
+                Paste it into Claude, ChatGPT, Cursor or any agent. It reads how to search the directory, with no key
+                or sign-up.
+              </p>
+              <CopyBlock
+                label="One line to paste"
+                text={AGENT_PROMPT}
+                what="the line for your agent"
+                event="agent_prompt_copy"
+                data={{ from: 'home' }}
+                prose
+              />
+            </section>
             <Link
               href="/for-agents#mcp"
               className="group flex flex-col gap-1 border border-[var(--dir-ink)]! px-4 py-3 text-[var(--dir-ink)] no-underline sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-4"
@@ -382,6 +404,15 @@ export default async function HomePage() {
             <div className="agent-accent text-base font-bold mb-1">agentswitchboard.dev</div>
             <div className="agent-dim text-xs">
               {agentCount} agents indexed · {providerCount} providers · {categories.length} categories · api+mcp+cli
+            </div>
+          </div>
+
+          <div className="mb-8">
+            <div className="agent-section-title">give this to your agent</div>
+            <div className="agent-row agent-row-stack">
+              <span className="agent-accent">{AGENT_PROMPT}</span>
+              <span className="agent-dim">one line a person pastes into any agent · /skill.md needs no key</span>
+              <span className="agent-dim" />
             </div>
           </div>
 

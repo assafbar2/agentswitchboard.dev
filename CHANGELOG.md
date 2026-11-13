@@ -4,7 +4,7 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
-## [2.9.3] - 2026-11-13 - What's new keeps up
+## [2.9.4] - 2026-11-13 - What's new keeps up
 
 ### Highlights
 - See every weekly drop on What's new beside the site's releases: what it added, updated and removed, and its stack of the week, each with a link to try it. The Nov 13 drop added 56 agents, and its stack ships a web app with your agent. [Try it](https://agentswitchboard.dev/whats-new#drop-2026-11-13)
@@ -18,6 +18,17 @@ Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes 
 - The [Nov 13 drop](https://agentswitchboard.dev/drops/2026-11-13): the weekly run added 56 listings, 14 of them Official, updated 2 and archived 1, with [Ship a web app with your agent](https://agentswitchboard.dev/stacks/ship-a-web-app-with-your-agent) as the stack of the week. With the same day's corrections below, the drop comes to 56 added, 6 updated and 2 archived. ([#395](https://github.com/assafbar2/agentswitchboard.dev/pull/395))
 - [elizaOS](https://agentswitchboard.dev/agents/eliza), [GPT Pilot](https://agentswitchboard.dev/agents/gpt-pilot) and [MobileBuildMCP](https://agentswitchboard.dev/agents/xcodebuild-mcp) go by their projects' own names. Corrected the same day, they count among the Nov 13 drop's updates. ([#390](https://github.com/assafbar2/agentswitchboard.dev/pull/390))
 - [Windsurf is Devin Desktop](https://agentswitchboard.dev/agents/codeium-windsurf) now, by Cognition AI, and its listing and comparison say "formerly Windsurf". ZCode is archived while a privacy report on it is unresolved. Both count in the Nov 13 drop. ([#398](https://github.com/assafbar2/agentswitchboard.dev/pull/398))
+
+## [2.9.3] - 2026-11-13 - One line for your agent
+
+### Highlights
+- Give your agent one line and it can search the whole directory, with no key or sign-up: copy it from the homepage or For Agents and paste it into any agent. [Try it](https://agentswitchboard.dev/for-agents#paste)
+
+### Added
+- The homepage and [/for-agents](https://agentswitchboard.dev/for-agents#paste) show one line to paste into any agent, with a copy button: "Read https://agentswitchboard.dev/skill.md and use Agent Switchboard to find the right agents and tools for my tasks." The agent reads the connector guide at /skill.md and searches the directory from there, with no key or sign-up. The homepage's text-only view shows the same line. ([#400](https://github.com/assafbar2/agentswitchboard.dev/pull/400))
+
+### Directory
+- [treg](https://agentswitchboard.dev/agents/treg) is listed: a pay-per-call gateway to 4,100+ data APIs over MCP, CLI and HTTP. ([#400](https://github.com/assafbar2/agentswitchboard.dev/pull/400))
 
 ## [2.9.2] - 2026-11-13 - A rate limit on the REST API
 

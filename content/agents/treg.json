@@ -1,0 +1,69 @@
+{
+  "id": "treg",
+  "name": "treg",
+  "slug": "treg",
+  "description": "Searches and calls 4,100+ paid data APIs (SEO, backlinks, work emails, company data, social posts, ads) through one token and MCP server, billed per call from a prepaid balance.",
+  "providerName": "Superdesign",
+  "providerUrl": "https://superdesign.dev",
+  "agentUrl": "https://treg.to",
+  "categories": [
+    "infrastructure",
+    "sales-marketing",
+    "data-analytics"
+  ],
+  "tags": [
+    "tool-gateway",
+    "pay-per-call",
+    "seo-data",
+    "lead-enrichment",
+    "backlinks",
+    "social-scraping",
+    "remote-mcp",
+    "credential-proxy"
+  ],
+  "skills": [
+    {
+      "id": "catalog-search",
+      "name": "Catalog search",
+      "description": "Searches the catalog by the job to be done and returns the tools that do it, with prices."
+    },
+    {
+      "id": "catalog-get",
+      "name": "Tool details",
+      "description": "Shows a tool's parameters, price and measured reliability, with a ready call line."
+    },
+    {
+      "id": "call",
+      "name": "Call a tool",
+      "description": "Calls a catalog tool or a team-registered API, with the credential injected on the server."
+    },
+    {
+      "id": "balance",
+      "name": "Balance",
+      "description": "Reports the team's prepaid balance."
+    },
+    {
+      "id": "catalog-request",
+      "name": "Request a tool",
+      "description": "Files a request for a job the catalog has no tool for yet."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://treg.to/mcp/",
+  "quickstartUrl": "https://treg.to/tutorial",
+  "apiBaseUrl": "https://treg.to/call/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-11-13T13:25:56.112Z",
+  "updatedAt": "2026-11-13T13:25:56.112Z"
+}
