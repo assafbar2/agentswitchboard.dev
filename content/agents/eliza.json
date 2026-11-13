@@ -1,6 +1,6 @@
 {
   "id": "NkiRDt06eyBc8dCvXLha8",
-  "name": "Eliza",
+  "name": "elizaOS",
   "slug": "eliza",
   "description": "Builds autonomous agents with a TypeScript framework and large plugin ecosystem, spanning chat, social, and onchain actions. Open-source agent OS by elizaOS.",
   "providerName": "elizaOS",
@@ -48,5 +48,5 @@
     "api"
   ],
   "createdAt": "2026-07-06T07:04:34.919Z",
-  "updatedAt": "2026-09-25T23:53:34.319Z"
+  "updatedAt": "2026-11-13T09:01:57.329Z"
 }
