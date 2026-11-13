@@ -16,12 +16,15 @@
 import { getEveryAgent, getRetiredListings } from '@/lib/catalog';
 import { bundleDecision } from '@/lib/decide';
 import { logConsumer } from '@/lib/log';
+import { restRateLimit } from '@/lib/rest-rate-limit';
 import { corsPreflight, jsonResponse } from '@/lib/public-api';
 import { requestedStackSlugs } from '@/lib/shared-stack';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET(req: Request): Promise<Response> {
+  const limited = restRateLimit('/api/bundle', req);
+  if (limited) return limited;
   const requested = requestedStackSlugs(new URL(req.url).searchParams.getAll('items'));
   logConsumer('/api/bundle', req, { items: requested.length });
 

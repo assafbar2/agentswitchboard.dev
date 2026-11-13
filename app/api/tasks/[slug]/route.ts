@@ -12,6 +12,7 @@
 
 import { getEveryAgent } from '@/lib/catalog';
 import { logConsumer } from '@/lib/log';
+import { restRateLimit } from '@/lib/rest-rate-limit';
 import { corsPreflight, detailTask, jsonResponse, unknownTaskMessage } from '@/lib/public-api';
 import { taskMatches } from '@/lib/search';
 import { getStacks, stacksInOrder } from '@/lib/stacks';
@@ -23,6 +24,8 @@ export async function GET(
   req: Request,
   context: { params: Promise<{ slug: string }> }
 ): Promise<Response> {
+  const limited = restRateLimit('/api/tasks/[slug]', req);
+  if (limited) return limited;
   const { slug } = await context.params;
   logConsumer('/api/tasks/[slug]', req, { slug });
 

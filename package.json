@@ -1,6 +1,6 @@
 {
   "name": "agentswitchboard.dev",
-  "version": "2.9.2",
+  "version": "2.9.4",
   "private": true,
   "scripts": {
     "dev": "next dev",

@@ -4,13 +4,26 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
-## [2.9.2] - 2026-11-13 - Missing-tool requests
+## [2.9.4] - 2026-11-13 - Missing-tool requests
 
 ### Added
-- An assistant can tell us the directory has nothing for a job: the MCP tool `request_missing_tool` and `POST /api/missing-tool` take the job in plain words (`need`), and optionally the search that found nothing, a category and the access it needs. The request is recorded privately for the weekly review, which uses it to decide what to look for and add; nothing is published, no issue is opened, and there is no reply. Email addresses and phone numbers are removed first, and each caller can send 10 an hour. The MCP server is version 1.9.0, with eight tools. ([#404](https://github.com/assafbar2/agentswitchboard.dev/pull/404))
+- An assistant can tell us the directory has nothing for a job: the MCP tool `request_missing_tool` and `POST /api/missing-tool` take the job in plain words (`need`), and optionally the search that found nothing, a category and the access it needs. The request is recorded privately for the weekly review, which uses it to decide what to look for and add; nothing is published, no issue is opened, and there is no reply. Email addresses and phone numbers are removed first, and each caller can send 10 an hour. The MCP server is version 1.9.0, with eight tools, and [/openapi.json](https://agentswitchboard.dev/openapi.json) is version 1.12.0. ([#404](https://github.com/assafbar2/agentswitchboard.dev/pull/404))
 
 ### Changed
 - A search that finds no listing at all, on [/browse](https://agentswitchboard.dev/browse), `GET /api/agents` or the MCP `search_agents` tool, is recorded with its words and filters, without the IP address, for the weekly review. [/privacy](https://agentswitchboard.dev/privacy) says so. Search results are unchanged. ([#404](https://github.com/assafbar2/agentswitchboard.dev/pull/404))
+
+## [2.9.3] - 2026-11-13 - One line for your agent
+
+### Added
+- The homepage and [/for-agents](https://agentswitchboard.dev/for-agents#paste) show one line to paste into any agent, with a copy button: "Read https://agentswitchboard.dev/skill.md and use Agent Switchboard to find the right agents and tools for my tasks." The agent reads the connector guide at /skill.md and searches the directory from there, with no key or sign-up. The homepage's text-only view shows the same line. ([#400](https://github.com/assafbar2/agentswitchboard.dev/pull/400))
+
+### Directory
+- [treg](https://agentswitchboard.dev/agents/treg) is listed: a pay-per-call gateway to 4,100+ data APIs over MCP, CLI and HTTP. ([#400](https://github.com/assafbar2/agentswitchboard.dev/pull/400))
+
+## [2.9.2] - 2026-11-13 - A rate limit on the REST API
+
+### Changed
+- The REST API (every `/api/` endpoint except `/api/mcp`) allows 120 requests per minute per IP. Past that it answers HTTP 429 with a `Retry-After` header and a JSON error (`{ "error": "rate_limited", "message", "retryAfterSeconds" }`) until the minute is up. Answers served from the CDN cache do not count, the static catalog pages (`/catalog/<n>.json`) are not limited, and the MCP server keeps its own limits. [docs/API.md](https://github.com/assafbar2/agentswitchboard.dev/blob/main/docs/API.md) and [/openapi.json](https://agentswitchboard.dev/openapi.json) (now version 1.11.0) describe the 429.
 
 ## [2.9.1] - 2026-11-13 - The catalog in pages
 

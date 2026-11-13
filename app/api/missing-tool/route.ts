@@ -13,6 +13,7 @@
 
 import { logConsumer } from '@/lib/log';
 import { missingToolSchema, requestMissingTool } from '@/lib/missing-tool';
+import { restRateLimit } from '@/lib/rest-rate-limit';
 
 const MAX_BODY_BYTES = 8 * 1024;
 
@@ -33,6 +34,8 @@ function invalid(message: string): Response {
 }
 
 export async function POST(req: Request): Promise<Response> {
+  const limited = restRateLimit('/api/missing-tool', req);
+  if (limited) return limited;
   logConsumer('/api/missing-tool', req);
 
   const text = await req.text();

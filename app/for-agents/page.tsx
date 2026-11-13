@@ -2,6 +2,8 @@ import Link from '@/components/Link';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { pageMetadata } from '@/lib/metadata';
 import { EndpointLink } from '@/components/EndpointLink';
+import { CopyBlock } from '@/components/CopyBlock';
+import { AGENT_PROMPT } from '@/lib/agent-prompt';
 import { VerifiedBadge, VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 import { getEveryAgent } from '@/lib/catalog';
 import { COMPARE_MAX } from '@/lib/compare-link';
@@ -75,6 +77,25 @@ export default async function ForAgentsPage() {
             The curated directory for AI agents — browse, compare, and integrate.
           </p>
         </div>
+
+        <section className="space-y-2" id="paste">
+          <h2 className="dir-bar">## Give this to your agent</h2>
+          <p>
+            A person can start with one line pasted into any agent. It points the agent at{' '}
+            <EndpointLink href="/skill.md" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
+              /skill.md
+            </EndpointLink>
+            , the guide to searching this directory, with no key or sign-up:
+          </p>
+          <CopyBlock
+            label="One line to paste"
+            text={AGENT_PROMPT}
+            what="the line for your agent"
+            event="agent_prompt_copy"
+            data={{ from: 'for-agents' }}
+            prose
+          />
+        </section>
 
         {/* What this is */}
         <section className="space-y-2">
