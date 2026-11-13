@@ -10,7 +10,7 @@ Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes 
 - Every task page and every Operator stack now ranks tools on how well they fit the job and nothing else: a Featured or Sponsored listing never moves up, even on a tie, the same as the MCP server and recommend answer. [Try it](https://agentswitchboard.dev/tasks)
 
 ### Changed
-- [/tasks](https://agentswitchboard.dev/tasks), each task page, [/operator](https://agentswitchboard.dev/operator) and their share cards rank best fit first and A→Z on a tie, instead of putting featured listings first among equals. `GET /api/tasks` and `GET /api/tasks/<slug>` list the same way as the pages. Sponsored slots stay where they were, set apart and labeled on the homepage and the latest weekly drop, as [/advertise](https://agentswitchboard.dev/advertise) describes.
+- [/tasks](https://agentswitchboard.dev/tasks), each task page, [/operator](https://agentswitchboard.dev/operator) and their share cards rank best fit first and A→Z on a tie, instead of putting featured listings first among equals. `GET /api/tasks` and `GET /api/tasks/<slug>` list the same way as the pages. Sponsored slots stay where they were, set apart and labeled on the homepage and the latest weekly drop, as [/advertise](https://agentswitchboard.dev/advertise) describes. ([#408](https://github.com/assafbar2/agentswitchboard.dev/pull/408))
 
 ## [2.9.5] - 2026-11-13 - Missing-tool requests
 
