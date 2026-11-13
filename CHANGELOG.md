@@ -7,10 +7,10 @@ Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes 
 ## [2.9.2] - 2026-11-13 - Missing-tool requests
 
 ### Added
-- An assistant can tell us the directory has nothing for a job: the MCP tool `request_missing_tool` and `POST /api/missing-tool` take the job in plain words (`need`), and optionally the search that found nothing, a category and the access it needs. The request is recorded privately for the weekly review, which uses it to decide what to look for and add; nothing is published, no issue is opened, and there is no reply. Email addresses and phone numbers are removed first, and each caller can send 10 an hour. The MCP server is version 1.9.0, with eight tools. ([#PR](https://github.com/assafbar2/agentswitchboard.dev/pull/PR))
+- An assistant can tell us the directory has nothing for a job: the MCP tool `request_missing_tool` and `POST /api/missing-tool` take the job in plain words (`need`), and optionally the search that found nothing, a category and the access it needs. The request is recorded privately for the weekly review, which uses it to decide what to look for and add; nothing is published, no issue is opened, and there is no reply. Email addresses and phone numbers are removed first, and each caller can send 10 an hour. The MCP server is version 1.9.0, with eight tools. ([#404](https://github.com/assafbar2/agentswitchboard.dev/pull/404))
 
 ### Changed
-- A search that finds no listing at all, on [/browse](https://agentswitchboard.dev/browse), `GET /api/agents` or the MCP `search_agents` tool, is recorded with its words and filters, without the IP address, for the weekly review. [/privacy](https://agentswitchboard.dev/privacy) says so. Search results are unchanged. ([#PR](https://github.com/assafbar2/agentswitchboard.dev/pull/PR))
+- A search that finds no listing at all, on [/browse](https://agentswitchboard.dev/browse), `GET /api/agents` or the MCP `search_agents` tool, is recorded with its words and filters, without the IP address, for the weekly review. [/privacy](https://agentswitchboard.dev/privacy) says so. Search results are unchanged. ([#404](https://github.com/assafbar2/agentswitchboard.dev/pull/404))
 
 ## [2.9.1] - 2026-11-13 - The catalog in pages
 
