@@ -24,6 +24,7 @@ import { cache } from 'react';
 import { pickHomepageAgents } from './homepage';
 import { iconPath, type IconRecord } from './icons';
 import { groupOfficialAgents, vendorForUrl, type OfficialGroup, type OfficialVendor } from './official';
+import { organicOrder } from './organic';
 import type { Agent, Category, ChangelogEntry, HomepageAgent, SiteSettings } from './types';
 
 const CONTENT_DIR = path.join(process.cwd(), 'content');
@@ -138,6 +139,15 @@ export const getEveryAgent = cache(
       );
   })
 );
+
+/**
+ * Every published agent A→Z, featured or not (lib/organic.ts). Task pages
+ * and the Operator rank from this, as the MCP server and recommend do, so
+ * no placement moves a listing up a task or into a stack, even on a tie.
+ */
+export async function getOrganicAgents(): Promise<Agent[]> {
+  return organicOrder(await getEveryAgent());
+}
 
 /**
  * Listings the directory had and no longer lists, slug → name: archived

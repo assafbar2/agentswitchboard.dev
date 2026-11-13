@@ -10,7 +10,7 @@
  * them. Read-only, no auth, open CORS.
  */
 
-import { getEveryAgent } from '@/lib/catalog';
+import { getOrganicAgents } from '@/lib/catalog';
 import { logConsumer } from '@/lib/log';
 import { restRateLimit } from '@/lib/rest-rate-limit';
 import { corsPreflight, jsonResponse, summarizeTask } from '@/lib/public-api';
@@ -24,7 +24,7 @@ export async function GET(req: Request): Promise<Response> {
   if (limited) return limited;
   logConsumer('/api/tasks', req);
   const tasks = getTasks();
-  const catalog = await getEveryAgent();
+  const catalog = await getOrganicAgents();
   return jsonResponse({
     total: tasks.length,
     tasks: tasks.map((t) => summarizeTask(t, taskMatches(catalog, t))),

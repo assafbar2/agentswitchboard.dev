@@ -204,7 +204,8 @@ curl "https://agentswitchboard.dev/api/tasks/query-a-database"
 ```
 
 `GET /api/tasks/{slug}` returns one task with the same fields plus `agents`
-(every listing that fits, best fit first: the REST search fields, `authType`,
+(every listing that fits, best fit first and A→Z on a tie, as on the task
+page, with no featured listing moved up: the REST search fields, `authType`,
 and `why`, the listing's own skill that does the job, or `null` when it fits
 by its name, description or tags), `relatedTasks` and `stacks` (slugs). An
 unknown slug returns `404` with `{ "error": "not_found", "message": "…" }`.

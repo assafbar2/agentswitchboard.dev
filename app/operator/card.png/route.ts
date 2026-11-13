@@ -1,5 +1,5 @@
 import type { NextRequest } from 'next/server';
-import { getEveryAgent } from '@/lib/catalog';
+import { getOrganicAgents } from '@/lib/catalog';
 import { renderOperatorCard } from '@/lib/og';
 import { putThrough } from '@/lib/operator';
 import { redirectToCanonicalCard } from '@/lib/card-route';
@@ -17,7 +17,7 @@ const CDN_CACHE = 'public, max-age=86400, s-maxage=31536000, immutable';
 /** The card of /operator with the same request, or without one of its example. */
 export async function GET(request: NextRequest) {
   const q = request.nextUrl.searchParams.get('q');
-  const operator = putThrough(q ?? OPERATOR_EXAMPLES[0], getTasks(), await getEveryAgent());
+  const operator = putThrough(q ?? OPERATOR_EXAMPLES[0], getTasks(), await getOrganicAgents());
   if (operator.stack.length === 0) return new Response('Not found', { status: 404 });
   const data = operatorCard(operator, q === null);
   const redirect = redirectToCanonicalCard(request, operatorCardImage(q === null ? null : cleanRequest(q).text, data).url);

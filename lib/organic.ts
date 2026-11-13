@@ -4,7 +4,8 @@
  * (4.C) and OpenAI's plugin guidelines (Advertising) reject connectors whose
  * tool results carry sponsored content or paid placements, so the MCP server,
  * WebMCP, and REST calls that ask for `order=organic` rank by the request
- * alone and leave the placement fields out.
+ * alone and leave the placement fields out. The site's task pages and the
+ * Operator rank this way too (lib/catalog.ts getOrganicAgents).
  *
  * Imports only types: WebMCP runs this in the browser.
  */
