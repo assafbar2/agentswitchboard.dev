@@ -7,10 +7,10 @@ Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes 
 ## [2.9.2] - 2026-11-13 - One line for your agent
 
 ### Added
-- The homepage and [/for-agents](https://agentswitchboard.dev/for-agents#paste) show one line to paste into any agent, with a copy button: "Read https://agentswitchboard.dev/skill.md and use Agent Switchboard to find the right agents and tools for my tasks." The agent reads the connector guide at /skill.md and searches the directory from there, with no key or sign-up. The homepage's text-only view shows the same line. ([#PR](https://github.com/assafbar2/agentswitchboard.dev/pull/PR))
+- The homepage and [/for-agents](https://agentswitchboard.dev/for-agents#paste) show one line to paste into any agent, with a copy button: "Read https://agentswitchboard.dev/skill.md and use Agent Switchboard to find the right agents and tools for my tasks." The agent reads the connector guide at /skill.md and searches the directory from there, with no key or sign-up. The homepage's text-only view shows the same line. ([#400](https://github.com/assafbar2/agentswitchboard.dev/pull/400))
 
 ### Directory
-- [treg](https://agentswitchboard.dev/agents/treg) is listed: a pay-per-call gateway to 4,100+ data APIs over MCP, CLI and HTTP. ([#PR](https://github.com/assafbar2/agentswitchboard.dev/pull/PR))
+- [treg](https://agentswitchboard.dev/agents/treg) is listed: a pay-per-call gateway to 4,100+ data APIs over MCP, CLI and HTTP. ([#400](https://github.com/assafbar2/agentswitchboard.dev/pull/400))
 
 ## [2.9.1] - 2026-11-13 - The catalog in pages
 
