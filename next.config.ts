@@ -28,7 +28,11 @@ const nextConfig: NextConfig = {
     ];
   },
   async rewrites() {
-    return [{ source: "/SKILL.md", destination: "/skill.md" }];
+    return [
+      { source: "/SKILL.md", destination: "/skill.md" },
+      // A task page's Markdown twin (app/tasks/[slug]/md/route.ts).
+      { source: "/tasks/:slug([a-z0-9-]+).md", destination: "/tasks/:slug/md" },
+    ];
   },
   async headers() {
     const cors = [

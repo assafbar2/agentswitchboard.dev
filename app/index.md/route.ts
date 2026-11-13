@@ -52,7 +52,7 @@ export async function GET() {
   const stackLine = `\n- [/stacks](${BASE_URL}/stacks) — tools that work together for one job, each with why it is there, and how to connect them all${
     weekStack ? `; the stack of the week is [/stacks/${weekStack.slug}](${BASE_URL}/stacks/${weekStack.slug})` : ''
   }. JSON: \`/api/stacks\`, each stack with its \`bundleUrl\`. To hand a user a stack of your own: \`/stack?items={slug},{slug}&title={title}\`, up to ${MY_STACK_MAX} listings in your order, as a page they can open, compare, connect and copy to [/my-stack](${BASE_URL}/my-stack).`;
-  const taskLine = `\n- [/tasks](${BASE_URL}/tasks) — ${getTasks().length} tasks, to start from the job ("query a database"): each lists the listings that fit it, best first, with why. JSON: \`/api/tasks\`; filter one with \`/api/agents?task={slug}\`.`;
+  const taskLine = `\n- [/tasks](${BASE_URL}/tasks) — ${getTasks().length} tasks, to start from the job ("query a database"): each lists the listings that fit it, best first, with why. Markdown: \`/tasks/{slug}.md\`; JSON: \`/api/tasks\`; filter one with \`/api/agents?task={slug}\`.`;
   const comparisons = curatedComparisons(agents);
   const compareLine = `\n- [/compare](${BASE_URL}/compare) — up to ${COMPARE_MAX} listings side by side at \`/compare?a={slug}&b={slug}&c={slug}\`: what each does, access, auth, how to connect it, skills. ${comparisons.length} curated comparisons${
     comparisons[0] ? `, such as [/compare/${comparisons[0].slug}](${BASE_URL}/compare/${comparisons[0].slug})` : ''

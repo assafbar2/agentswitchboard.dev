@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import { describe, expect, it } from 'vitest';
-import robots, { LINK_PREVIEW_BOTS, SEO_TOOL_BOTS } from '@/app/robots';
+import robots, { AI_SEARCH_BOTS, LINK_PREVIEW_BOTS, SEO_TOOL_BOTS } from '@/app/robots';
 import sitemap from '@/app/sitemap';
 import { compareHref } from '@/lib/compare-link';
 import { operatorHref } from '@/lib/request-parts';
@@ -87,6 +87,17 @@ describe('robots.txt', () => {
       for (const url of CARD_URLS) expect(allowed(bot, url), `${bot} ${url}`).toBe(true);
       expect(allowed(bot, '/_next/static/chunks/x.js'), bot).toBe(false);
     }
+  });
+
+  it('gives AI search crawlers the same rules as everyone, without the crawl delay', () => {
+    const everyone = groups().find((g) => list(g.userAgent).includes('*'))!;
+    for (const bot of AI_SEARCH_BOTS) {
+      const group = groupFor(bot) as Group & { crawlDelay?: number };
+      expect(list(group.userAgent), bot).toContain(bot);
+      expect(list(group.disallow), bot).toEqual(list(everyone.disallow));
+      expect(group.crawlDelay, bot).toBeUndefined();
+    }
+    for (const bot of ['GPTBot', 'ClaudeBot', 'Google-Extended', 'CCBot']) expect(groupFor(bot), bot).toEqual(everyone);
   });
 
   it('turns SEO-tool crawlers away from the whole site', () => {
