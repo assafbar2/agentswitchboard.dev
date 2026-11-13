@@ -203,13 +203,15 @@ test.describe('/advertise, the manual sponsor flow', () => {
     await expect(main.locator('section[aria-labelledby="qualifies"]')).toContainText('Verified checks');
   });
 
-  test('lists fixed packages, priced on request, with no way to pay on the page', async ({ page }) => {
+  test('lists fixed, priced packages, with no way to pay on the page', async ({ page }) => {
     await page.goto('/advertise');
     const packages = page.locator('main [data-sponsor-packages] > li');
     await expect(packages).toHaveCount(3);
     await expect(packages.getByRole('heading', { level: 3 })).toHaveText(['1 week', '4 weeks', '12 weeks']);
-    for (let i = 0; i < 3; i++) await expect(packages.nth(i)).toContainText('Contact for pricing');
-    await expect(page.locator('main')).not.toContainText('$');
+    for (const [i, price] of ['$29', '$99', '$249'].entries()) await expect(packages.nth(i)).toContainText(price);
+    const section = page.locator('main section[aria-labelledby="packages"]');
+    await expect(section).not.toContainText('Contact for pricing');
+    await expect(section).toContainText('come off the day the first paying sponsor goes live');
     expect(await page.locator('main a[href*="stripe"], main a[href*="buy."], main form, main button').count()).toBe(0);
   });
 
