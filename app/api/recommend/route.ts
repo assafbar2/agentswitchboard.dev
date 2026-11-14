@@ -3,7 +3,7 @@
  *
  *   GET /api/recommend?need=<the user's need, in a sentence>
  *   → { request, answer, recommendations: [ { need, task, pick, pickedBecause,
- *        why, unmet, nextStep: { how, label, url, server, note },
+ *        why, unmet, nextStep: { how, label, url, server, note }, limitations,
  *        alternatives, fits } ], unmatched, stackUrl, operatorUrl, basis, notes }
  *
  * The Operator's pick (lib/operator.ts) for each need the request names, from

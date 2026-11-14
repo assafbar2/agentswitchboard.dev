@@ -104,6 +104,12 @@ export default async function AboutPage() {
               Every entry is reviewed before it&rsquo;s listed, but not every listing carries the
               label: a listing without it hasn&rsquo;t passed the check yet, or no longer does.
             </p>
+            <p className="mt-3">
+              Beside the label, a listing says what it means and when it was last checked, such as
+              &ldquo;Verified: link and access path checked, Nov 2026&rdquo;. That month is the
+              listing&rsquo;s last update: a listing is added Verified only after its links and access path
+              are checked, and it is dated again each time it is reviewed and changed.
+            </p>
           </section>
 
           <section id="sponsored" className="scroll-mt-20">

@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/Badge';
 import { OfficialBadge } from '@/components/ui/OfficialBadge';
 import { SponsoredBadge } from '@/components/SponsoredBadge';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
+import { lastChecked } from '@/lib/verified';
 import { isNew } from '@/lib/freshness';
 import { ACCESS_METHOD_LABELS } from '@/lib/search';
 import type { Agent, Category } from '@/lib/types';
@@ -80,7 +81,7 @@ export function AgentCard({ agent, why, markNew = true }: { agent: AgentCardData
           {hasLabels && (
             <span className="dir-card-tags">
               {agent.sponsored && <SponsoredBadge />}
-              {agent.verified && <VerifiedBadge />}
+              {agent.verified && <VerifiedBadge checked={lastChecked(agent)} />}
               <OfficialBadge agent={agent} />
               {agent.featured && <Badge variant="amber">Featured</Badge>}
               {agent.tier === 'premium' && <Badge variant="amber">Premium</Badge>}

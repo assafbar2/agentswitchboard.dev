@@ -14,17 +14,20 @@ const linkClass =
 
 /**
  * Full-width black bar at the top of every page telling AI agents where the
- * text-only view is. Shown in both human and agent view.
+ * text-only view is. Shown in both human and agent view. On a phone the
+ * homepage puts it under the first answer instead (`below-answer`, with the
+ * rule in globals.css that hides the top one), so the answer comes first.
  *
  * Order: desktop (lg) is tag · sentence · button · links, as in the mock.
  * Below lg the tag and button share line one, and the sentence takes its own
  * line (after the links' line on tablet, before it on phones).
  */
-export function AgentBar() {
+export function AgentBar({ placement = 'top' }: { placement?: 'top' | 'below-answer' }) {
   return (
     <aside
       aria-label="For AI agents"
-      className="bg-[var(--dir-bar-bg)] text-[var(--dir-bar-fg)] font-[family-name:var(--font-display)]"
+      data-agent-bar={placement}
+      className={`bg-[var(--dir-bar-bg)] text-[var(--dir-bar-fg)] font-[family-name:var(--font-display)]${placement === 'below-answer' ? ' md:hidden' : ''}`}
     >
       <div className="flex min-h-[60px] flex-wrap items-center gap-x-3 gap-y-1 px-4 py-2 sm:gap-x-5 sm:px-6 lg:px-10">
         <span className="order-1 shrink-0 bg-[var(--dir-yellow)] px-2.5 py-1 text-[15px] font-extrabold leading-none tracking-[0.14em] text-[var(--dir-on-yellow)]">

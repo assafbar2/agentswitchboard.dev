@@ -1,5 +1,4 @@
 import Link from '@/components/Link';
-import { SearchBar } from '@/components/SearchBar';
 import {
   getHomepageAgents,
   getAllCategories,
@@ -14,7 +13,9 @@ import { dropAdditions, dropHighlights, getDropSchedule } from '@/lib/drops';
 import { isNew, NEW_DAYS, newSince } from '@/lib/freshness';
 import { sponsoredAgents } from '@/lib/homepage';
 import { inlineMarkdownToText } from '@/lib/inline-markdown';
-import { OPERATOR_EXAMPLES, operatorHref } from '@/lib/request-parts';
+import { OPERATOR_EXAMPLES, operatorHref, RECOMMEND_EXAMPLE } from '@/lib/request-parts';
+import { recommendDecision } from '@/lib/decide';
+import { organicOrder, withoutPlacement } from '@/lib/organic';
 import { taskMatches } from '@/lib/search';
 import { getStacks, stackEntries, stackOfTheWeek } from '@/lib/stacks';
 import { getTasks } from '@/lib/tasks';
@@ -23,8 +24,8 @@ import { formatDay, formatNumber, joinList, pluralize } from '@/lib/utils';
 import { IconCallout } from '@/components/IconCallout';
 import { StackCallout } from '@/components/StackCallout';
 import { TASK_CHIPS, TaskChips } from '@/components/TaskChips';
-import { TaskSearch, type TaskChoice } from '@/components/TaskSearch';
-import { OperatorBox, OperatorEvents } from '@/components/OperatorBox';
+import { RecommendBox } from '@/components/RecommendBox';
+import { AgentBar } from '@/components/AgentBar';
 import { EndpointLink } from '@/components/EndpointLink';
 import { CopyBlock } from '@/components/CopyBlock';
 import { AGENT_PROMPT } from '@/lib/agent-prompt';
@@ -77,12 +78,14 @@ export default async function HomePage() {
   const weekStack = stackOfTheWeek(getStacks());
   const weekEntries = weekStack ? stackEntries(weekStack, catalog) : [];
   const tasks = getTasks();
-  const taskChoices: TaskChoice[] = tasks.map((task) => ({
+  const taskChoices = tasks.map((task) => ({
     slug: task.slug,
     label: task.label,
-    keywords: task.keywords,
     count: taskMatches(catalog, task).length,
   }));
+  // A real answer, from the same code as GET /api/recommend: organic order, no placement field.
+  const exampleDecision = recommendDecision(RECOMMEND_EXAMPLE, tasks, organicOrder(catalog));
+  const example = exampleDecision.ok ? withoutPlacement(exampleDecision.body) : null;
 
   const homeSchema = [
     {
@@ -133,15 +136,15 @@ export default async function HomePage() {
         {/* ── Thumb-index rail (lg+): the agents' text-only tab first, then categories ── */}
         <CategoryRail categories={categories} className="absolute top-0 right-0" />
 
-        {/* ── Hero ──────────────────────────────────────────────────── */}
+        {/* ── Hero: the job in your own words, answered in place ─────── */}
         <section className="border-b border-[var(--dir-ink)]!">
-          <div className="container-wide flex flex-col gap-8 pt-8 pb-7 sm:pt-10 lg:flex-row lg:items-end lg:gap-12">
-            <div className="min-w-0 flex-1">
+          <div className="container-wide flex flex-col gap-6 pt-8 pb-8 sm:pt-10">
+            <div className="min-w-0">
               <p className="dir-label mb-2.5 text-[15px] font-bold uppercase tracking-[0.12em]">
                 {settings?.tagline || 'The directory for the agentic web'}
               </p>
 
-              <h1 className="mb-3.5 text-[40px] font-extrabold leading-[0.95] tracking-[-0.025em] sm:text-[56px] xl:text-[72px]">
+              <h1 className="mb-3.5 text-[36px] font-extrabold leading-[0.95] tracking-[-0.025em] sm:text-[52px] xl:text-[64px]">
                 Every AI Agent Worth Knowing, in One Place
               </h1>
 
@@ -166,51 +169,34 @@ export default async function HomePage() {
               </dl>
             </div>
 
-            <div className="w-full lg:w-[420px] lg:flex-none">
-              <SearchBar label="Look it up" />
-            </div>
+            <RecommendBox
+              example={example}
+              exampleNeed={RECOMMEND_EXAMPLE}
+              headingId="what-do-you-need"
+              links={
+                <nav aria-label="Other ways in" className="mt-2.5 flex flex-wrap gap-x-5 gap-y-1 text-[16px]">
+                  <Link href="/browse" className="inline-flex min-h-10 items-center font-bold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2">
+                    Search the catalog&nbsp;<span aria-hidden="true">→</span>
+                  </Link>
+                  <Link href="/operator" className="inline-flex min-h-10 items-center font-bold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2">
+                    Plan a multi-step job in the Operator&nbsp;<span aria-hidden="true">→</span>
+                  </Link>
+                </nav>
+              }
+            />
           </div>
         </section>
 
-        {/* ── I need an agent to…: the job in your own words, or a task ── */}
-        <section aria-labelledby="i-need-an-agent-to" className="border-b border-[var(--dir-ink)]!">
-          <div className="container-wide flex flex-col gap-3 py-6 lg:flex-row lg:gap-12">
-            <div className="w-full lg:w-[420px] lg:flex-none">
-              <TaskSearch tasks={taskChoices} headingId="i-need-an-agent-to" />
-            </div>
-            <div className="min-w-0 flex-1 lg:pt-[29px]">
-              <TaskChips tasks={tasks} from="home" />
-            </div>
-          </div>
-        </section>
+        {/* Phones only: the agent bar, after the first answer rather than above it. */}
+        <AgentBar placement="below-answer" />
 
-        {/* ── Ask the switchboard: a whole job, a tool for each part ── */}
-        <section aria-labelledby="ask-the-switchboard" className="border-b border-[var(--dir-ink)]!">
-          <div className="container-wide flex flex-col gap-3 py-6 lg:flex-row lg:gap-12">
-            <div className="w-full lg:w-[420px] lg:flex-none">
-              <OperatorBox tasks={taskChoices} label="Ask the switchboard" headingId="ask-the-switchboard" from="home" />
-            </div>
-            <div className="min-w-0 flex-1 lg:pt-[29px]">
-              <p className="text-[17px] font-bold leading-snug">
-                The operator takes the whole job and puts each part through to a tool, with one config to connect them all.
-              </p>
-              <p className="mt-1 text-[15px] text-[var(--dir-muted)]">Assembled from the directory&apos;s task map — no AI guesses.</p>
-              <OperatorEvents from="home">
-                <ul className="mt-2">
-                  {OPERATOR_EXAMPLES.slice(1).map((request, i) => (
-                    <li key={request}>
-                      <Link href={operatorHref(request)} data-example={i + 2} className="dir-row max-sm:items-end">
-                        <span className="dir-row-name max-sm:whitespace-normal">&ldquo;{request}&rdquo;</span>
-                        <span className="dir-row-leader" aria-hidden="true" />
-                        <span className="dir-row-meta" aria-hidden="true">
-                          →
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </OperatorEvents>
-            </div>
+        {/* ── Or start from a common job ── */}
+        <section aria-labelledby="common-jobs" className="border-b border-[var(--dir-ink)]!">
+          <div className="container-wide py-5">
+            <h2 id="common-jobs" className="dir-label mb-2 text-[15px] font-bold uppercase tracking-[0.12em]">
+              Or start from a common job
+            </h2>
+            <TaskChips tasks={tasks} from="home" oneRowOnPhones />
           </div>
         </section>
 

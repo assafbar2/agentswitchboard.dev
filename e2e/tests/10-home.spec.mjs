@@ -18,6 +18,21 @@ const AGENT_PROMPT = // lib/agent-prompt.ts
 
 const meta = (page, sel) => page.locator(sel).first().getAttribute('content');
 const human = (page) => page.locator('main .human-only');
+const EXAMPLE_NEED = 'read my Gmail and query Postgres'; // lib/request-parts.ts RECOMMEND_EXAMPLE
+const TASK_BOX = 'What do you need your agent to do?';
+const answers = (page) => human(page).locator('[data-recommendation]');
+const events = (page, name) =>
+  page.evaluate((n) => (window.vaq ?? []).filter(([kind, e]) => kind === 'event' && e.name === n).map(([, e]) => e.data), name);
+const recommend = async (page, need) => (await page.request.get(`/api/recommend?need=${encodeURIComponent(need)}`, { headers: UA })).json();
+
+/** Asks the homepage box, again until the page has hydrated and answers in place. */
+async function ask(page, need) {
+  await expect(async () => {
+    await page.getByRole('textbox', { name: TASK_BOX }).fill(need);
+    await page.getByRole('button', { name: 'Get my pick' }).click();
+    await expect(human(page).getByRole('heading', { name: /^Your answer/ })).toBeVisible({ timeout: 3000 });
+  }).toPass();
+}
 
 test.describe('homepage — head metadata', () => {
   test('has the site title and a meta description', async ({ page }) => {
@@ -83,25 +98,6 @@ test.describe('homepage — hero', () => {
     expect(shown).toBeLessThanOrEqual(providers.size);
   });
 
-  test('"Look it up" search submits to /browse with the query', async ({ page }) => {
-    await page.goto('/');
-    const box = page.getByRole('combobox', { name: 'Look it up' });
-    await expect(box).toBeVisible();
-    await box.fill('email agent');
-    await box.press('Enter');
-    await page.waitForURL(/\/browse\?q=email(\+|%20)agent/);
-    expect(new URL(page.url()).searchParams.get('q')).toBe('email agent');
-    await expect(page.getByRole('search').getByRole('combobox')).toHaveValue('email agent');
-  });
-
-  test('"Find" button also submits the search', async ({ page, blocked }) => {
-    await page.goto('/');
-    await page.getByRole('combobox', { name: 'Look it up' }).fill('mcp');
-    await page.getByRole('button', { name: 'Find' }).click();
-    await page.waitForURL(/\/browse\?q=mcp$/);
-    expect(blocked, 'search is a client navigation, not a write').toEqual([]);
-  });
-
   test('MCP callout links to the connect docs and the #mcp section exists', async ({ page }) => {
     await page.goto('/');
     const link = human(page).getByRole('link', { name: /this directory is an MCP server/ });
@@ -118,6 +114,69 @@ test.describe('homepage — hero', () => {
     await link.click();
     await page.waitForURL(/\/connect#grok-bot$/);
     await expect(page.locator('#grok-bot')).toBeVisible();
+  });
+});
+
+test.describe('homepage — what do you need your agent to do?', () => {
+  test('the one box, the catalog and the Operator as secondary links, and a worked example', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByRole('heading', { level: 2, name: TASK_BOX })).toBeVisible();
+    await expect(page.getByRole('textbox', { name: TASK_BOX })).toHaveAttribute('placeholder', `e.g. ${EXAMPLE_NEED}`);
+    const ways = human(page).getByRole('navigation', { name: 'Other ways in' });
+    await expect(ways.getByRole('link', { name: /Search the catalog/ })).toHaveAttribute('href', '/browse');
+    await expect(ways.getByRole('link', { name: /Operator/ })).toHaveAttribute('href', '/operator');
+    await expect(human(page).getByRole('heading', { name: `Example answer · “${EXAMPLE_NEED}”` })).toBeVisible();
+  });
+
+  test('the example is the real recommend answer: pick, why, next step, limitations and two alternatives', async ({ page }) => {
+    const api = await recommend(page, EXAMPLE_NEED);
+    await page.goto('/');
+    await expect(answers(page)).toHaveCount(api.recommendations.length);
+    for (const [i, r] of api.recommendations.entries()) {
+      const card = answers(page).nth(i);
+      await expect(card).toHaveAttribute('data-recommendation', r.pick.slug);
+      await expect(card.getByRole('link', { name: r.pick.name, exact: true })).toHaveAttribute('href', `/agents/${r.pick.slug}`);
+      await expect(card.getByText(r.pickedBecause)).toBeVisible();
+      await expect(card.getByRole('link', { name: r.nextStep.label })).toHaveAttribute('href', r.nextStep.url);
+      if (r.nextStep.server) await expect(card.locator('pre')).toContainText(`"${r.pick.slug}"`);
+      await expect(card.locator('[data-limitations]')).toContainText(r.limitations.length > 0 ? r.limitations[0].slice(1) : 'None in its listing');
+      expect(await card.locator('p', { hasText: /^Alternatives?/ }).getByRole('link').evaluateAll((els) => els.map((e) => e.getAttribute('href')))).toEqual(
+        r.alternatives.map((a) => `/agents/${a.slug}`)
+      );
+      if (r.pick.verified) {
+        await expect(card.getByRole('link', { name: /^link and access path checked, [A-Z][a-z]{2} \d{4}$/ })).toHaveAttribute('href', '/about#verification');
+      }
+      // Organic: no placement label in the answer.
+      await expect(card.getByText(/^(Sponsored|Featured|Editor's Pick)$/)).toHaveCount(0);
+    }
+  });
+
+  test('a job typed in the box is answered in place, as GET /api/recommend answers it, counted without the words', async ({ page }) => {
+    const need = 'query Postgres and send email';
+    const api = await recommend(page, need);
+    await page.goto('/');
+    await ask(page, need);
+    await expect(page).toHaveURL(/\/$/);
+    await expect(answers(page)).toHaveCount(api.recommendations.length);
+    expect(await answers(page).evaluateAll((els) => els.map((e) => e.dataset.recommendation))).toEqual(api.recommendations.map((r) => r.pick.slug));
+    await expect(human(page).getByRole('link', { name: /as one stack/ })).toHaveAttribute('href', new URL(api.stackUrl).pathname + new URL(api.stackUrl).search);
+    expect(await events(page, 'recommend_submit')).toEqual([{ from: 'home', picks: api.recommendations.length, unmatched: 0 }]);
+    expect(JSON.stringify(await page.evaluate(() => window.vaq ?? []))).not.toMatch(/Postgres/);
+  });
+
+  test('a job no task matches says so and offers the catalog search', async ({ page }) => {
+    await page.goto('/');
+    await ask(page, 'make me a sandwich');
+    await expect(human(page).getByText(/No task in the directory matches "make me a sandwich"/)).toBeVisible();
+    await expect(human(page).getByRole('link', { name: /Search the catalog for it/ })).toHaveAttribute('href', '/browse?q=make%20me%20a%20sandwich');
+    await expect(answers(page)).toHaveCount(0);
+  });
+
+  test('the Sponsored slot stays below the answer', async ({ page }) => {
+    await page.goto('/');
+    const answer = await answers(page).last().boundingBox();
+    const slot = await human(page).locator('[data-sponsored-slot]').first().boundingBox();
+    expect(slot.y).toBeGreaterThan(answer.y + answer.height);
   });
 });
 
@@ -317,6 +376,26 @@ test.describe('homepage — health', () => {
 
 test.describe('homepage — mobile (375)', () => {
   test.use({ viewport: { width: 375, height: 812 }, isMobile: true, hasTouch: true });
+
+  test('the first answer comes before the explanation of the agent-readable interface', async ({ page }) => {
+    await page.goto('/');
+    const answer = await answers(page).first().boundingBox();
+    const explain = await human(page).locator('section[aria-labelledby="give-this-to-your-agent"]').boundingBox();
+    expect(explain.y).toBeGreaterThan(answer.y + answer.height);
+    // The agent bar itself is unchanged; on a phone it sits under the answer, once.
+    const bar = page.getByRole('complementary', { name: 'For AI agents' });
+    await expect(bar).toHaveCount(1);
+    await expect(bar).toHaveAttribute('data-agent-bar', 'below-answer');
+    expect((await bar.boundingBox()).y).toBeGreaterThan(answer.y + answer.height);
+  });
+
+  test('the text-only view keeps the agent bar at the top', async ({ page }) => {
+    await page.addInitScript(() => { try { localStorage.setItem('viewMode', 'agent'); } catch {} });
+    await page.goto('/');
+    const bar = page.getByRole('complementary', { name: 'For AI agents' });
+    await expect(bar).toHaveCount(1);
+    await expect(bar).toHaveAttribute('data-agent-bar', 'top');
+  });
 
   test('rail is hidden and the page does not scroll sideways', async ({ page }) => {
     await page.goto('/');

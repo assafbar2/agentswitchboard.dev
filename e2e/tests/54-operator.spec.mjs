@@ -36,8 +36,6 @@ const tools = (n) => `${n} ${n === 1 ? 'tool' : 'tools'}`;
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 const human = (page) => page.locator('.human-only');
-const homeBlock = (page) => human(page).locator('section[aria-labelledby="ask-the-switchboard"]');
-const homeBox = (page) => homeBlock(page).getByLabel('Ask the switchboard');
 const pageBox = (page) => human(page).getByLabel('Your request');
 const hint = (scope) => scope.locator('form [aria-live="polite"]');
 const parts = (page) => human(page).locator('section[aria-labelledby="put-through"] ol > li');
@@ -118,43 +116,34 @@ test.describe('the way in', () => {
     await expect(page.locator('footer').getByRole('link', { name: 'The Operator', exact: true })).toHaveAttribute('href', '/operator');
   });
 
-  test('the homepage asks the switchboard: a box under its heading, how it is made, and requests to try', async ({ page }) => {
+  test('the homepage links the Operator as a secondary way in, and its box opens there without JavaScript', async ({ page }) => {
     await page.goto('/');
-    const block = homeBlock(page);
-    await expect(block.getByRole('heading', { level: 2 })).toHaveText('Ask the switchboard');
-    await expect(homeBox(page)).toHaveAttribute('placeholder', EXAMPLES[0]);
-    await expect(homeBox(page)).toHaveJSProperty('tagName', 'TEXTAREA');
-    await expect(block.getByRole('button', { name: 'Put me through', exact: true })).toBeVisible();
-    await expect(hint(block)).toHaveText(EMPTY_HINT);
-    await expect(block.getByText(HONEST, { exact: true })).toBeVisible();
-    const tries = block.locator('a[data-example]');
-    expect(await tries.evaluateAll((els) => els.map((e) => [e.getAttribute('href'), e.dataset.example]))).toEqual(
-      EXAMPLES.slice(1).map((request, i) => [href(request), String(i + 2)])
-    );
-    await expect(tries).toHaveText(EXAMPLES.slice(1).map((request) => `“${request}”→`));
-    // The hero's box stays the page's only search landmark.
-    await expect(page.getByRole('search')).toHaveCount(1);
+    const link = human(page).getByRole('navigation', { name: 'Other ways in' }).getByRole('link', { name: /Operator/ });
+    await expect(link).toHaveAttribute('href', '/operator');
+    await expect(human(page).locator('form[action="/operator"] input[name="q"]')).toHaveCount(1);
+    await expect(human(page).locator('section[aria-labelledby="ask-the-switchboard"]')).toHaveCount(0);
   });
 
   test('as you type, the line under the box names the parts and the task each goes to, as the page will', async ({ page }) => {
     const labels = await tasksOf(page, EXAMPLES[0]);
     expect(labels).toHaveLength(3);
-    await page.goto('/');
-    await say(homeBox(page), homeBlock(page), EXAMPLES[0]);
-    await expect(hint(homeBlock(page))).toHaveText(`→ 3 parts: ${labels.join(' · ')}`);
-    await say(homeBox(page), homeBlock(page), 'query Postgres, xyzzy plugh');
-    await expect(hint(homeBlock(page))).toContainText('· “xyzzy plugh”, no task yet');
-    await say(homeBox(page), homeBlock(page), 'please');
-    await expect(hint(homeBlock(page))).toHaveText('Say what to do: “query Postgres”, “ping me on Slack”.');
+    await page.goto('/operator');
+    const scope = human(page);
+    await say(pageBox(page), scope, EXAMPLES[0]);
+    await expect(hint(scope)).toHaveText(`→ 3 parts: ${labels.join(' · ')}`);
+    await say(pageBox(page), scope, 'query Postgres, xyzzy plugh');
+    await expect(hint(scope)).toContainText('· “xyzzy plugh”, no task yet');
+    await say(pageBox(page), scope, 'please');
+    await expect(hint(scope)).toHaveText('Say what to do: “query Postgres”, “ping me on Slack”.');
   });
 
   test('Enter puts the request through, counting its parts and tasks, never its words', async ({ page }) => {
-    await page.goto('/');
-    await say(homeBox(page), homeBlock(page), EXAMPLES[0]);
-    await homeBox(page).press('Enter');
+    await page.goto('/operator');
+    await say(pageBox(page), human(page), EXAMPLES[0]);
+    await pageBox(page).press('Enter');
     await page.waitForURL(new RegExp(`${escapeRe(href(EXAMPLES[0]))}$`));
     await expect(parts(page)).toHaveCount(3);
-    expect(await events(page, 'operator_submit')).toEqual([{ from: 'home', parts: 3, tasks: 3 }]);
+    expect(await events(page, 'operator_submit')).toEqual([{ from: 'operator', parts: 3, tasks: 3 }]);
     expect(JSON.stringify(await page.evaluate(() => window.vaq ?? []))).not.toMatch(/Notion|Linear|Slack/);
     // Page views and events carry the page's URL, so what the site hands analytics before sending keeps the page, not the words.
     const sent = await page.evaluate(() => {
@@ -165,32 +154,15 @@ test.describe('the way in', () => {
   });
 
   test('Shift+Enter starts a new line, which ends a part', async ({ page }) => {
-    await page.goto('/');
-    await say(homeBox(page), homeBlock(page), 'query Postgres');
-    await homeBox(page).press('Shift+Enter');
-    await homeBox(page).pressSequentially('send email');
-    await expect(hint(homeBlock(page))).toContainText('→ 2 parts:');
-    await expect(page).toHaveURL(/\/$/);
-    await homeBox(page).press('Enter');
+    await page.goto('/operator');
+    await say(pageBox(page), human(page), 'query Postgres');
+    await pageBox(page).press('Shift+Enter');
+    await pageBox(page).pressSequentially('send email');
+    await expect(hint(human(page))).toContainText('→ 2 parts:');
+    await expect(page).toHaveURL(/\/operator$/);
+    await pageBox(page).press('Enter');
     await page.waitForURL(new RegExp(`${escapeRe(href('query Postgres, send email'))}$`));
     await expect(parts(page)).toHaveCount(2);
-  });
-
-  test('a request to try opens on /operator, counted as that example', async ({ page }) => {
-    await openReady(page, '/');
-    await homeBlock(page).locator('a[data-example="2"]').click();
-    await page.waitForURL(new RegExp(`${escapeRe(href(EXAMPLES[1]))}$`));
-    expect(await events(page, 'operator_submit')).toEqual([{ from: 'home', example: 2 }]);
-  });
-
-  test('Put me through with nothing typed opens /operator', async ({ page }) => {
-    await page.goto('/');
-    await say(homeBox(page), homeBlock(page), 'x');
-    await homeBox(page).fill('');
-    await expect(hint(homeBlock(page))).toHaveText(EMPTY_HINT);
-    await homeBlock(page).getByRole('button', { name: 'Put me through', exact: true }).click();
-    await page.waitForURL(/\/operator$/);
-    expect(await events(page, 'operator_submit')).toEqual([]);
   });
 });
 
@@ -441,10 +413,10 @@ test.describe('without JavaScript', () => {
 test.describe('on a phone', () => {
   test.use({ viewport: { width: 375, height: 812 }, isMobile: true, hasTouch: true });
 
-  test('the homepage block and a put-through request fit without sideways scrolling', async ({ page }) => {
+  test('the box and a put-through request fit without sideways scrolling', async ({ page }) => {
     const fits = () => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth);
-    await page.goto('/');
-    await expect(homeBox(page)).toBeVisible();
+    await page.goto('/operator');
+    await expect(pageBox(page)).toBeVisible();
     expect(await fits()).toBe(true);
     await page.goto(href(EXAMPLES[0]));
     await expect(parts(page)).toHaveCount(3);

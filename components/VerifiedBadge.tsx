@@ -1,3 +1,5 @@
+import { verifiedNote } from '@/lib/verified';
+
 /**
  * The one definition of "Verified", used on /about#verification and in the
  * agent-facing docs and APIs so the site's core claim is never an unexplained
@@ -16,11 +18,15 @@ export const VERIFIED_TITLE = 'Verified: we checked it works. See About › How 
 /**
  * Square, ink-bordered directory tag (.verified-tag in globals.css, icon
  * included). Colours stay on the --verified-* tokens so the label keeps its
- * own AA-checked pair in both themes.
+ * own AA-checked pair in both themes. With `checked`, the hover text says
+ * what was checked and when.
  */
-export function VerifiedBadge({ size = 'sm' }: { size?: 'sm' | 'md' }) {
+export function VerifiedBadge({ size = 'sm', checked }: { size?: 'sm' | 'md'; checked?: string | null }) {
   return (
-    <span title={VERIFIED_TITLE} className={size === 'md' ? 'verified-tag verified-tag-md' : 'verified-tag'}>
+    <span
+      title={checked === undefined ? VERIFIED_TITLE : `${verifiedNote(checked)}. See About › How we verify`}
+      className={size === 'md' ? 'verified-tag verified-tag-md' : 'verified-tag'}
+    >
       Verified
     </span>
   );

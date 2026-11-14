@@ -3,7 +3,8 @@ import { Badge } from '@/components/ui/Badge';
 import { OfficialBadge } from '@/components/ui/OfficialBadge';
 import { AccessMethodBadges } from '@/components/ui/AccessMethodBadges';
 import { SponsoredBadge } from '@/components/SponsoredBadge';
-import { VerifiedBadge } from '@/components/VerifiedBadge';
+import { VerifiedNote } from '@/components/VerifiedNote';
+import { lastChecked } from '@/lib/verified';
 import { AgentCard } from '@/components/AgentCard';
 import { AgentIcon } from '@/components/AgentIcon';
 import { JsonLd } from '@/components/JsonLd';
@@ -157,7 +158,7 @@ export default async function AgentPage({
                 agent.tier === 'premium') && (
                 <div className="flex items-center gap-1.5 flex-wrap mt-3">
                   {agent.sponsored && <SponsoredBadge />}
-                  {agent.verified && <VerifiedBadge size="md" />}
+                  {agent.verified && <VerifiedNote size="md" checked={lastChecked(agent)} />}
                   <OfficialBadge agent={agent} />
                   {agent.featured && <Badge variant="amber">Featured</Badge>}
                   {agent.tier === 'premium' && <Badge variant="amber">Premium</Badge>}

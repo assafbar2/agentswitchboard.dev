@@ -30,6 +30,9 @@ export const OPERATOR_EXAMPLES = [
   'review my pull requests, deploy to Vercel',
 ];
 
+/** The need the homepage answers before the visitor types, as a worked example. */
+export const RECOMMEND_EXAMPLE = 'read my Gmail and query Postgres';
+
 export interface RequestPart<T extends TaskTerms> {
   /** The visitor's words for it. */
   text: string;

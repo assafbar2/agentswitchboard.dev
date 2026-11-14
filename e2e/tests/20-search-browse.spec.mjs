@@ -38,7 +38,7 @@ const events = (page) =>
   );
 
 /** Opens `path` and focuses the search box until it has loaded the suggestion index. */
-async function readyToSuggest(page, path = '/') {
+async function readyToSuggest(page, path = '/browse') {
   let requested = false;
   page.on('request', (r) => {
     if (new URL(r.url()).pathname === '/search-index.json') requested = true;
@@ -133,18 +133,21 @@ test.describe('search queries', () => {
 });
 
 test.describe('search box submission', () => {
-  test('homepage "Look it up" box submits with Enter to /browse?q=', async ({ page }) => {
+  test('the homepage links catalog search, which opens /browse', async ({ page }) => {
     await page.goto('/');
-    const box = page.getByLabel('Look it up');
-    await box.fill('agentmail');
-    await box.press('Enter');
+    const link = page.getByRole('navigation', { name: 'Other ways in' }).getByRole('link', { name: /Search the catalog/ });
+    await expect(link).toHaveAttribute('href', '/browse');
+    await link.click();
+    await expect(page).toHaveURL(/\/browse$/);
+    await searchBox(page).fill('agentmail');
+    await searchBox(page).press('Enter');
     await expect(page).toHaveURL(/\/browse\?q=agentmail$/);
     await expect(cardFor(page, 'agentmail')).toBeVisible();
   });
 
-  test('homepage Find button submits the query', async ({ page }) => {
-    await page.goto('/');
-    await page.getByLabel('Look it up').fill('postgres');
+  test('/browse Find button submits the query', async ({ page }) => {
+    await page.goto('/browse');
+    await searchBox(page).fill('postgres');
     await page.getByRole('search').getByRole('button', { name: 'Find' }).click();
     await expect(page).toHaveURL(/\/browse\?q=postgres$/);
     await expect(page.getByRole('heading', { level: 1 })).toContainText('Results for “postgres”');
@@ -171,9 +174,9 @@ test.describe('search box submission', () => {
   });
 
   test('search submits navigate without any blocked write', async ({ page, blocked }) => {
-    await page.goto('/');
-    await page.getByLabel('Look it up').fill('agentmail');
-    await page.getByLabel('Look it up').press('Enter');
+    await page.goto('/browse');
+    await searchBox(page).fill('agentmail');
+    await searchBox(page).press('Enter');
     await expect(page).toHaveURL(/\/browse\?q=agentmail$/);
     expect(blocked).toEqual([]);
   });
@@ -283,7 +286,7 @@ test.describe('search suggestions', () => {
     await searchBox(page).press('Enter');
     await expect(page).toHaveURL(/\/agents\/agentmail$/);
     const sent = await events(page);
-    expect(sent).toEqual([{ name: 'autocomplete_select', data: { kind: 'agent', position: 1, chars: 9, page: '/' } }]);
+    expect(sent).toEqual([{ name: 'autocomplete_select', data: { kind: 'agent', position: 1, chars: 9, page: '/browse' } }]);
     expect(JSON.stringify(sent)).not.toMatch(/agentmail/i);
   });
 

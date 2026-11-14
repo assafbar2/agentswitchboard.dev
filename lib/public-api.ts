@@ -15,6 +15,7 @@ import { BASE_URL } from './env';
 import { absoluteIconUrl } from './icons';
 import { ALL_ACCESS_METHODS, AUTH_TYPES } from './search';
 import { howToUseJson } from './use-it-now';
+import { lastChecked } from './verified';
 
 // ── Label definitions ───────────────────────────────────────────────
 // "Verified" is worded once, in components/VerifiedBadge.tsx
@@ -137,17 +138,23 @@ export const RECOMMEND_DESCRIPTION =
   'Picked by fixed matching rules, not a model, so the same need always gets the same answer. A need that matches no task is refused with the closest tasks. ' +
   'Never include names, email addresses or phone numbers.';
 
+export const LAST_CHECKED_DESCRIPTION =
+  'YYYY-MM-DD the Verified listing was last checked (its link and access path), from its last update; null when it is not Verified';
+
+export const LIMITATIONS_DESCRIPTION =
+  'What may stop or slow the user, read from the listing: the sign-in it needs, a server that runs only on their computer, no MCP config to copy yet, no MCP server, not Verified. Empty when the listing shows none';
+
 export const RECOMMEND_NEED_INPUT =
   "What the user needs, in a sentence or two, e.g. \"query Postgres and send email\" (up to 300 characters are read)";
 
 /**
- * A listing in a decision tool's answer: the search-result fields and its auth
- * type. The MCP server returns these too, and connector directories reject
+ * A listing in a decision tool's answer: the search-result fields, its auth
+ * type and, when Verified, the day it was last checked (lib/verified.ts). The MCP server returns these too, and connector directories reject
  * sponsored placements in tool output, so they never carry `sponsored`.
  */
 export function decisionAgent(a: Agent) {
   const { sponsored, ...card } = summarizeAgent(a);
-  return { ...card, authType: a.authType };
+  return { ...card, authType: a.authType, lastChecked: lastChecked(a) };
 }
 
 export const CORS_GET = {

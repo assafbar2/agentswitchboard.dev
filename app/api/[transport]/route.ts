@@ -38,6 +38,8 @@ import {
   COMPARE_AGENTS_DESCRIPTION,
   COMPARE_SLUGS_INPUT,
   CONNECT_BUNDLE_DESCRIPTION,
+  LAST_CHECKED_DESCRIPTION,
+  LIMITATIONS_DESCRIPTION,
   OFFICIAL_DEFINITION,
   RECOMMEND_DESCRIPTION,
   RECOMMEND_NEED_INPUT,
@@ -176,6 +178,7 @@ const decisionAgentShape = {
   verified: agentSummaryShape.verified,
   official: agentSummaryShape.official,
   authType: z.string(),
+  lastChecked: z.string().nullable().describe(LAST_CHECKED_DESCRIPTION),
 };
 
 const compareValueShape = z.union([
@@ -556,6 +559,7 @@ const handler = createMcpHandler(
                 server: mcpServerShape.nullable().describe('With how config: its entry for mcpServers'),
                 note: z.string().describe('How it connects'),
               }),
+              limitations: z.array(z.string()).describe(LIMITATIONS_DESCRIPTION),
               alternatives: z.array(z.object(decisionAgentShape)),
               fits: z.number().int().describe('How many listings do the task'),
             })
@@ -616,7 +620,7 @@ const handler = createMcpHandler(
     );
   },
   {
-    serverInfo: { name: 'agentswitchboard', version: '1.10.0' },
+    serverInfo: { name: 'agentswitchboard', version: '1.11.0' },
     instructions: INSTRUCTIONS,
   },
   {

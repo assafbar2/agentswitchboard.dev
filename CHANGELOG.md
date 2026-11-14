@@ -4,6 +4,22 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
+## [2.11.0] - 2026-11-14 - The homepage starts from the job
+
+### Highlights
+- Say what you need your agent to do in one box on the homepage and get one pick, why it fits, the next step with its config to copy, what may get in the way and two alternatives, right there. A worked example shows the answer before you type. [Try it](https://agentswitchboard.dev/)
+- See what Verified means and when it was last checked beside the badge, such as "Verified: link and access path checked, Nov 2026", on every listing page and in the homepage answer. [Try it](https://agentswitchboard.dev/agents/gmail-mcp)
+
+### Added
+- The homepage opens with one box, "What do you need your agent to do?", answered in place by the same code as `GET /api/recommend`: for each need, the pick, why, the next step (its MCP client config to copy, or its guide), its limitations and two alternatives, plus a link to connect them all as one stack and the same request in the Operator. Before you type it shows a real answer for "read my Gmail and query Postgres". The answer is organic: no Featured or Sponsored listing moves up and none is labeled; the Sponsored slot stays where it was, below the answer. Without JavaScript the box opens the request in the Operator.
+- `recommend` (REST, MCP and WebMCP) says each pick's `limitations`, read from its listing alone: the sign-in it needs, a server that runs only on your computer, no MCP config to copy yet, no MCP server, or not Verified; the answer line says them too. Every listing in a decision answer (recommend, compare, alternatives, bundle) carries `lastChecked`, the day a Verified listing was last checked.
+
+### Changed
+- Catalog search ([/browse](https://agentswitchboard.dev/browse)) and the multi-step [Operator](https://agentswitchboard.dev/operator) are links under the homepage box, and the common jobs are chips under it; the homepage's "Look it up", "I need an agent to…" and "Ask the switchboard" boxes are gone. Every URL works as before.
+- On a phone, the homepage's first answer comes before the agent bar (the text-only view and the /llms.txt, /index.md and /api/mcp links) and before "Give this to your agent"; both are unchanged, and the text-only view keeps the bar at the top.
+- The Verified badge says what it means and when it was last checked: beside it on listing pages and in the homepage answer, linking [How we verify](https://agentswitchboard.dev/about#verification), and in its hover text on cards and task comparisons. There is no separate log of the monthly recheck, so the date is the listing's last update: a listing is added Verified only after its links and access path are checked, and it is dated again each time it is reviewed and changed. /about says so.
+- The MCP server is version 1.11.0 and [/openapi.json](https://agentswitchboard.dev/openapi.json) version 1.15.0, with `limitations` and `lastChecked`; [docs/API.md](https://github.com/assafbar2/agentswitchboard.dev/blob/main/docs/API.md) describes them.
+
 ## [2.10.5] - 2026-11-13 - Task pages and the Operator rank on fit alone
 
 ### Highlights

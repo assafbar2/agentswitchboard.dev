@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Agent Switchboard Directory API",
-    "version": "1.14.0",
+    "version": "1.15.0",
     "summary": "Read-only catalog of AI agents, MCP servers, and agentic developer tools.",
     "description": "Agent Switchboard is a public discovery directory. Use this API to answer questions like 'is there an agent that does X?' or 'which listed products expose an MCP server?'. There is no authentication and no user account. The one write, POST /api/missing-tool, publishes nothing: it privately tells the maintainer that no listing does a job. The /api/ endpoints allow 120 requests per minute per IP and answer 429 with Retry-After past that; cached responses do not count, and /api/mcp has its own limits. This API does not proxy the underlying products — it only returns Switchboard listings. For interactive tool-shaped access, an MCP server is also available at /api/mcp. Listing data returned by this API is licensed CC BY-NC 4.0 (attribution required; commercial reuse needs a license: https://agentswitchboard.dev/contact). The API definition itself is MIT.",
     "contact": {
@@ -1081,17 +1081,23 @@
         }
       },
       "DecisionAgent": {
-        "description": "A listing in a comparison, an alternatives list or a bundle: the searchAgents fields except `sponsored`, and its auth type. These answers are the MCP tools' answers too, which never carry sponsorship.",
+        "description": "A listing in a comparison, an alternatives list or a bundle: the searchAgents fields except `sponsored`, its auth type and, when Verified, the day it was last checked. These answers are the MCP tools' answers too, which never carry sponsorship.",
         "allOf": [
           { "$ref": "#/components/schemas/AgentSummary" },
           {
             "type": "object",
-            "required": ["authType"],
+            "required": ["authType", "lastChecked"],
             "properties": {
               "authType": {
                 "type": "string",
                 "enum": ["apiKey", "oauth2", "bearer", "none"],
                 "description": "How the listed product authenticates. Not used by this API."
+              },
+              "lastChecked": {
+                "type": ["string", "null"],
+                "format": "date",
+                "description": "YYYY-MM-DD the Verified listing was last checked (its link and access path), from its last update; null when it is not Verified.",
+                "examples": ["2026-11-13"]
               }
             }
           }
@@ -1321,7 +1327,7 @@
       },
       "Recommendation": {
         "type": "object",
-        "required": ["need", "task", "pick", "pickedBecause", "why", "unmet", "nextStep", "alternatives", "fits"],
+        "required": ["need", "task", "pick", "pickedBecause", "why", "unmet", "nextStep", "limitations", "alternatives", "fits"],
         "properties": {
           "need": { "type": "string", "description": "The user's words for this need." },
           "task": { "$ref": "#/components/schemas/TaskRef" },
@@ -1339,6 +1345,12 @@
               "server": { "oneOf": [{ "$ref": "#/components/schemas/McpServer" }, { "type": "null" }], "description": "With how config: its entry for mcpServers." },
               "note": { "type": "string", "description": "How it connects." }
             }
+          },
+          "limitations": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "What may stop or slow the user, read from the listing: the sign-in it needs, a server that runs only on their computer, no MCP config to copy yet, no MCP server, not Verified. Empty when the listing shows none.",
+            "examples": [["needs a Google sign-in"]]
           },
           "alternatives": { "type": "array", "items": { "$ref": "#/components/schemas/DecisionAgent" } },
           "fits": { "type": "integer", "description": "How many listings do the task." }

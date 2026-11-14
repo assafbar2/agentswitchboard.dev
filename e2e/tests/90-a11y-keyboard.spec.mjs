@@ -240,14 +240,18 @@ test.describe('keyboard', () => {
     await expect(page.getByRole('button', { name: 'Switch to light mode' })).toBeFocused();
   });
 
-  test('homepage search is operable by keyboard: type and Enter opens /browse?q=', async ({ page }) => {
+  test('the homepage task box is operable by keyboard: type and Enter answers in place', async ({ page }) => {
     await open(page, '/');
-    const box = page.getByRole('combobox', { name: 'Look it up' });
-    await box.focus();
-    await page.keyboard.type('browser');
-    await page.keyboard.press('Enter');
-    await page.waitForURL(/\/browse\?.*q=browser/);
-    await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+    const box = page.getByRole('textbox', { name: 'What do you need your agent to do?' });
+    await expect(async () => {
+      await box.fill('');
+      await box.focus();
+      await page.keyboard.type('send email');
+      await page.keyboard.press('Enter');
+      await expect(page.locator('.human-only').getByRole('heading', { name: /^Your answer/ })).toBeVisible({ timeout: 3000 });
+    }).toPass();
+    await expect(page).toHaveURL(/\/$/);
+    await expect(page.locator('.human-only [data-recommendation]').first()).toBeVisible();
   });
 });
 
@@ -268,11 +272,11 @@ test.describe('mobile menu keyboard', () => {
 // ── Forms ──────────────────────────────────────────────────────────────
 
 test.describe('form labels', () => {
-  test('homepage search box is labelled "Look it up" inside a search landmark', async ({ page }) => {
+  test('the homepage task box is labelled by its question, its heading', async ({ page }) => {
     await open(page, '/');
-    const search = page.getByRole('search');
-    await expect(search).toHaveCount(1);
-    await expect(search.getByLabel('Look it up')).toHaveAttribute('type', 'search');
+    const heading = page.getByRole('heading', { level: 2, name: 'What do you need your agent to do?' });
+    await expect(heading.locator('label')).toHaveCount(1);
+    await expect(page.getByLabel('What do you need your agent to do?')).toHaveAttribute('type', 'text');
   });
 
   test('/browse search box has an accessible name', async ({ page }) => {
@@ -358,10 +362,10 @@ function contrastSuite(theme) {
       expect(c.ratio, JSON.stringify(c)).toBeGreaterThanOrEqual(4.5);
     });
 
-    test(`${theme}: yellow "Find" button text`, async ({ page }) => {
+    test(`${theme}: yellow "Get my pick" button text`, async ({ page }) => {
       await open(page, '/');
-      const c = await contrastOf(page.getByRole('button', { name: 'Find' }));
-      expect(c.bg, 'Find button is the yellow fill').toBe('rgb(255, 212, 0)');
+      const c = await contrastOf(page.getByRole('button', { name: 'Get my pick' }));
+      expect(c.bg, 'Get my pick is the yellow fill').toBe('rgb(255, 212, 0)');
       expect(c.ratio, JSON.stringify(c)).toBeGreaterThanOrEqual(4.5);
     });
 
