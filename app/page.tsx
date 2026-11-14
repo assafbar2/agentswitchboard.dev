@@ -169,21 +169,24 @@ export default async function HomePage() {
               </dl>
             </div>
 
-            <RecommendBox
-              example={example}
-              exampleNeed={RECOMMEND_EXAMPLE}
-              headingId="what-do-you-need"
-              links={
-                <nav aria-label="Other ways in" className="mt-2.5 flex flex-wrap gap-x-5 gap-y-1 text-[16px]">
-                  <Link href="/browse" className="inline-flex min-h-10 items-center font-bold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2">
-                    Search the catalog&nbsp;<span aria-hidden="true">→</span>
-                  </Link>
-                  <Link href="/operator" className="inline-flex min-h-10 items-center font-bold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2">
-                    Plan a multi-step job in the Operator&nbsp;<span aria-hidden="true">→</span>
-                  </Link>
-                </nav>
-              }
-            />
+            {/* Old release notes link /#i-need-an-agent-to; it opens the box that took over. */}
+            <div id="i-need-an-agent-to" className="scroll-mt-20">
+              <RecommendBox
+                example={example}
+                exampleNeed={RECOMMEND_EXAMPLE}
+                headingId="what-do-you-need"
+                links={
+                  <nav aria-label="Other ways in" className="mt-2.5 flex flex-wrap gap-x-5 gap-y-1 text-[16px]">
+                    <Link href="/browse" className="inline-flex min-h-10 items-center font-bold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2">
+                      Search the catalog&nbsp;<span aria-hidden="true">→</span>
+                    </Link>
+                    <Link href="/operator" className="inline-flex min-h-10 items-center font-bold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2">
+                      Plan a multi-step job in the Operator&nbsp;<span aria-hidden="true">→</span>
+                    </Link>
+                  </nav>
+                }
+              />
+            </div>
           </div>
         </section>
 
