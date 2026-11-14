@@ -121,7 +121,7 @@ export default async function AgentPage({
     ['push', agent.supportsPushNotifications ? 'true' : 'false'],
     ['verified', agent.verified ? 'true' : 'false'],
     ['official', agent.officialVendor ? `true · ${agent.officialVendor.name}` : 'false'],
-    ['sponsored', agent.sponsored ? 'true · paid placement, never changes ranking' : 'false'],
+    ['sponsored', agent.sponsored ? 'true · paid placement: first, labeled, in the website’s task answers; never changes search or API ranking' : 'false'],
     ['tags', agent.tags.join(', ') || '—'],
   ];
 
@@ -166,8 +166,8 @@ export default async function AgentPage({
               )}
               {agent.sponsored && (
                 <p className="text-sm text-[var(--dir-muted)] mt-2">
-                  Sponsored: a paid placement. It never changes where this listing ranks in search, tasks or
-                  alternatives.{' '}
+                  Sponsored: a paid placement. On this website it comes first, labeled, among the tools for
+                  each task it does; it never changes where it ranks in search or alternatives.{' '}
                   <Link
                     href="/about#sponsored"
                     className="font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2"

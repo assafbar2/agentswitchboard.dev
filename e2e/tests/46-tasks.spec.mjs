@@ -5,8 +5,12 @@
 // the homepage's "I need an agent to…" box (lib/task-match.ts) and task chips,
 // the chips atop /browse, and tasks in the search box's suggestions. Each page
 // is checked against GET /api/tasks/<slug>, and each why line against the
-// listing's own skills.
+// listing's own skills. The API is organic; the website puts the task's
+// Featured and Sponsored fits first, labeled (lib/promoted.ts), so pages are
+// checked against promotedFirst(the API's order).
 // Read-only: only GETs (via fetch at collection time, page.goto and page.request).
+import { readdirSync, readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { test, expect } from './fixtures.mjs';
 import { BASE } from '../target.mjs';
 
@@ -26,6 +30,21 @@ const API = await (await fetch(`${BASE}/api/tasks`, { headers: UA })).json();
 const TASKS = API.tasks;
 const SAMPLE = TASKS.find((t) => t.slug === 'query-a-database') ?? TASKS[0];
 const CATEGORIES = (await (await fetch(`${BASE}/api/categories`, { headers: UA })).json()).categories;
+
+// lib/promoted.ts promotion, from content/agents/*.json: a Sponsored slot, else a Featured placement through its last day.
+const REPO = fileURLToPath(new URL('../..', import.meta.url));
+const TODAY = new Date().toISOString().slice(0, 10);
+const PLACED = new Map(
+  readdirSync(`${REPO}/content/agents`)
+    .map((f) => JSON.parse(readFileSync(`${REPO}/content/agents/${f}`, 'utf8')))
+    .filter((a) => a.status === 'published')
+    .flatMap((a) => {
+      const label = a.sponsored ? 'Sponsored' : a.featured && (!a.featuredUntil || a.featuredUntil >= TODAY) ? 'Featured' : null;
+      return label ? [[a.slug, label]] : [];
+    })
+);
+/** lib/promoted.ts promotedFirst: the API's organic order with the promoted listings first, each group in order. */
+const promotedFirst = (agents) => [...agents.filter((a) => PLACED.has(a.slug)), ...agents.filter((a) => !PLACED.has(a.slug))];
 
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const human = (page) => page.locator('.human-only');
@@ -300,7 +319,8 @@ test.describe('/tasks index', () => {
 test.describe('every task page', () => {
   for (const task of TASKS) {
     test(`/tasks/${task.slug}: the job, its best fits in order with why, official listings, related tasks and stacks`, async ({ page, request }) => {
-      const { agents, relatedTasks, stacks } = await detail(request, task.slug);
+      const { agents: organic, relatedTasks, stacks } = await detail(request, task.slug);
+      const agents = promotedFirst(organic);
       const res = await page.goto(`/tasks/${task.slug}`);
       expect(res.status()).toBe(200);
       await expect(page.getByRole('heading', { level: 1 })).toHaveText(titleOf(task));
@@ -314,7 +334,9 @@ test.describe('every task page', () => {
       await expect(comparison(page).locator('#comparison')).toHaveText(`Compared · top ${compared.length}`);
       expect(await hrefs(comparison(page).locator('tbody tr td:first-child a'))).toEqual(compared.map((a) => `/agents/${a.slug}`));
       for (const [i, a] of compared.entries()) {
-        await expect(comparison(page).locator('tbody tr').nth(i).locator('td').nth(2)).toHaveText(SIGN_IN[a.authType]);
+        const row = comparison(page).locator('tbody tr').nth(i);
+        await expect(row.locator('td').nth(2)).toHaveText(SIGN_IN[a.authType]);
+        if (PLACED.has(a.slug)) await expect(row.locator('td').first().locator('.tag'), a.slug).toContainText([PLACED.get(a.slug)]);
       }
       expect(await hrefs(comparison(page).locator('a[href^="/compare"]'))).toHaveLength(1);
 
@@ -324,6 +346,7 @@ test.describe('every task page', () => {
       expect(await hrefs(fits)).toEqual(best.map((a) => `/agents/${a.slug}`));
       for (const [i, a] of best.entries()) {
         await expect(fits.nth(i).locator('h3')).toHaveText(a.name);
+        if (PLACED.has(a.slug)) await expect(fits.nth(i)).toContainText(PLACED.get(a.slug));
         const why = fits.nth(i).locator('p:has(> .dir-label)');
         if (a.why) await expect(why, a.slug).toHaveText(`Why ${a.why}`);
         else await expect(why, a.slug).toHaveCount(0);
@@ -370,7 +393,7 @@ test.describe('every task page', () => {
 
 test.describe('task page details', () => {
   test('counts task_to_listing_click when a best fit is opened', async ({ page, request }) => {
-    const item = (await detail(request, SAMPLE.slug)).agents[1];
+    const item = promotedFirst((await detail(request, SAMPLE.slug)).agents)[1];
     await openHydrated(page, `/tasks/${SAMPLE.slug}`);
     await bestFits(page).locator('ol > li > .cmp-card > a').nth(1).click();
     await expect(page).toHaveURL(new RegExp(`/agents/${item.slug}$`));
@@ -386,13 +409,28 @@ test.describe('task page details', () => {
     expect(await events(page, 'task_select')).toEqual([{ task: relatedTasks[0], from: 'task-page' }]);
   });
 
+  test("the answer names the task's promoted fits first with their label; the API and the Markdown twin stay organic", async ({ page, request }) => {
+    const task = TASKS.find((t) => t.slug === 'send-and-read-email') ?? SAMPLE;
+    const organic = (await detail(request, task.slug)).agents;
+    const placed = promotedFirst(organic).filter((a) => PLACED.has(a.slug));
+    test.skip(placed.length === 0, 'no promoted listing does this task');
+    await page.goto(`/tasks/${task.slug}`);
+    const lead = human(page).locator('section[aria-labelledby="answer"] > p').first();
+    await expect(lead).toContainText(`Featured and Sponsored first, then the best fits to ${task.label}`);
+    for (const a of placed.slice(0, 3)) await expect(lead).toContainText(`${a.name} (${PLACED.get(a.slug)})`);
+    await expect(human(page).locator('section[aria-labelledby="answer"]')).toContainText('Featured and Sponsored listings that do the job come first, labeled');
+    const twin = await (await request.get(`/tasks/${task.slug}.md`, { headers: UA })).text();
+    expect(twin).not.toMatch(/featured|sponsor/i);
+    expect(organic.map((a) => a.slug)).not.toEqual(promotedFirst(organic).map((a) => a.slug));
+  });
+
   test('a task page is a large share card', async ({ page }) => {
     await page.goto(`/tasks/${SAMPLE.slug}`);
     await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute('content', 'summary_large_image');
   });
 
   test('text-only view lists the best fits in order with why, and links the task as JSON', async ({ page, request }) => {
-    const best = (await detail(request, SAMPLE.slug)).agents.slice(0, PAGE_SIZE);
+    const best = promotedFirst((await detail(request, SAMPLE.slug)).agents).slice(0, PAGE_SIZE);
     await page.addInitScript(() => { try { localStorage.setItem('viewMode', 'agent'); } catch {} });
     await page.goto(`/tasks/${SAMPLE.slug}`);
     const agentView = page.locator('.agent-only');
@@ -418,8 +456,8 @@ test.describe('task page details', () => {
 });
 
 test.describe('/browse?task=', () => {
-  test('narrows the directory to the task, best fit first, under a banner that names it', async ({ page, request }) => {
-    const { agents } = await detail(request, SAMPLE.slug);
+  test('narrows the directory to the task, promoted fits first then best fit, under a banner that names it', async ({ page, request }) => {
+    const agents = promotedFirst((await detail(request, SAMPLE.slug)).agents);
     await page.goto(`/browse?task=${SAMPLE.slug}`);
     await expect(page).toHaveTitle(new RegExp(`^${escapeRe(titleOf(SAMPLE))} \\|`));
     await expect(banner(page)).toHaveAttribute('data-task', SAMPLE.slug);
@@ -439,7 +477,7 @@ test.describe('/browse?task=', () => {
     await page.goto(`/browse?task=${SAMPLE.slug}&access=mcp`);
     await expect(countBar(page)).toHaveText(fitLine(mcp.total));
     // The API answers at most 50; the page shows up to 60.
-    expect((await hrefs(cards(page))).slice(0, mcp.agents.length)).toEqual(mcp.agents.map((a) => `/agents/${a.slug}`));
+    expect((await hrefs(cards(page))).slice(0, mcp.agents.length)).toEqual(promotedFirst(mcp.agents).map((a) => `/agents/${a.slug}`));
     await expect(banner(page).getByRole('link', { name: 'Remove task' })).toHaveAttribute('href', '/browse?access=mcp');
 
     await human(page).getByRole('button', { name: 'Official' }).click();
@@ -447,7 +485,7 @@ test.describe('/browse?task=', () => {
     expect(new URL(page.url()).searchParams.get('task')).toBe(SAMPLE.slug);
     const official = await json(request, `/api/agents?task=${SAMPLE.slug}&access=mcp&official=true&limit=50`);
     await expect(countBar(page)).toHaveText(fitLine(official.total, true));
-    expect(await hrefs(cards(page))).toEqual(official.agents.map((a) => `/agents/${a.slug}`));
+    expect(await hrefs(cards(page))).toEqual(promotedFirst(official.agents).map((a) => `/agents/${a.slug}`));
 
     await sortMenu(page).selectOption('newest');
     await expect(page).toHaveURL(/[?&]sort=newest/);
@@ -486,7 +524,7 @@ test.describe('/browse?task=', () => {
   });
 
   test('counts task_to_listing_click when a listing is opened from a task view', async ({ page, request }) => {
-    const first = (await detail(request, SAMPLE.slug)).agents[0];
+    const first = promotedFirst((await detail(request, SAMPLE.slug)).agents)[0];
     await openHydrated(page, `/browse?task=${SAMPLE.slug}`);
     await cards(page).first().click();
     await expect(page).toHaveURL(new RegExp(`/agents/${first.slug}$`));

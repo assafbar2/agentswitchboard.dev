@@ -8,7 +8,7 @@ export function generateMetadata(_props: unknown, parent: ResolvingMetadata): Pr
     {
       title: 'Advertise',
       description:
-        'Sponsor a listing on Agent Switchboard: a Sponsored label and a spot in the Sponsored slot on the homepage and the weekly drop. It never changes search results or AI-assistant answers.',
+        'Sponsor a listing on Agent Switchboard: a Sponsored label and a spot in the Sponsored slot on the homepage and the weekly drop. It comes first, labeled, among the tools for each task it does on the website, and never changes search results or AI-assistant answers.',
       path: '/advertise',
     },
     parent
@@ -86,6 +86,10 @@ export default function AdvertisePage() {
               <li>
                 the same slot on the latest <Link href="/drops" className={LINK}>weekly drop</Link> page;
               </li>
+              <li>
+                first place, labeled, among the tools for each task it does: the homepage answer, the{' '}
+                <Link href="/tasks" className={LINK}>task pages</Link> and Browse by task;
+              </li>
               <li>its own page, its cards and compare, each with the Sponsored label, so readers always know it is paid.</li>
             </ul>
           </section>
@@ -95,10 +99,10 @@ export default function AdvertisePage() {
               What it never changes
             </h2>
             <ul className="list-disc space-y-1 pl-6">
-              <li>Search results or their order, tasks, alternatives, compare or the Operator.</li>
+              <li>Keyword search results or their order, alternatives, compare or the Operator.</li>
               <li>
                 Answers in AI assistants. Claude, ChatGPT and other assistants reach the directory through its MCP
-                server, and sponsorship never appears in those results: no label, no boost.
+                server, WebMCP and REST API, and sponsorship never appears in those results: no label, no boost.
               </li>
               <li>The Verified, Official and Featured labels. None of them can be bought.</li>
             </ul>

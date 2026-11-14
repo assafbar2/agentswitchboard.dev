@@ -21,7 +21,8 @@ import {
 } from './compare';
 import { COMPARE_MAX, compareHref } from './compare-link';
 import { BASE_URL } from './env';
-import { pickedBecause, putThrough } from './operator';
+import { pickedBecause, putThrough, type OperatorPart } from './operator';
+import type { Promotion } from './promoted';
 import { decisionAgent } from './public-api';
 import { alternativeWhy, getAlternatives, MAX_ALTERNATIVES, MIN_ALTERNATIVES } from './related';
 import { operatorHref, PARTS_MAX, REQUEST_MAX } from './request-parts';
@@ -184,6 +185,11 @@ export const RECOMMEND_BASIS =
   'then the listings for that task that mention what the need names come first (a product, a service), then Official ones, then the task’s best fits. ' +
   'Asking for an MCP server, a CLI, an API, a browser extension or Official narrows the pick. Paid placement never changes it.';
 
+/** RECOMMEND_BASIS as the website's homepage box answers: promoted listings first, labeled. */
+export const SITE_BASIS =
+  'Among the tools that do each need’s task, Featured and Sponsored ones that have what the need asks for come first, labeled; ' +
+  'then the directory’s own matching rules pick, the same for every visitor and with no model.';
+
 const NEXT_STEP_LABEL: Record<BundleHow, string> = {
   config: 'Add its MCP server to your MCP client',
   guide: 'Set up its MCP server from its guide',
@@ -213,21 +219,33 @@ export function limitations(agent: Agent): string[] {
   return out;
 }
 
+/** Why a promoted pick is first, said in its place on the website. */
+export function promotedBecause(label: Promotion): string {
+  return label === 'Sponsored'
+    ? 'Sponsored: a paid placement among the tools that do this, so it comes first.'
+    : 'Featured: featured tools that do this come first.';
+}
+
 const taskRef = (task: Task) => ({ slug: task.slug, label: task.label, url: `${BASE_URL}/tasks/${task.slug}` });
 
-function answerLine(r: RecommendBody['recommendations'][number]): string {
-  const alternatives = r.alternatives.length > 0 ? ` Alternatives: ${joinList(r.alternatives.map((a) => a.name))}.` : '';
-  const because = r.pickedBecause.startsWith('Picked') ? r.pickedBecause : 'The task’s best fit.';
+function answerLine(r: RecommendBody['recommendations'][number], placements: Record<string, Promotion> = {}): string {
+  const named = (a: { slug: string; name: string }) => (placements[a.slug] ? `${a.name} (${placements[a.slug]})` : a.name);
+  const alternatives = r.alternatives.length > 0 ? ` Alternatives: ${joinList(r.alternatives.map(named))}.` : '';
+  const because = r.pickedBecause.startsWith('Picked') || placements[r.pick.slug] ? r.pickedBecause : 'The task’s best fit.';
   const why = r.why ? ` ${r.why}${/[.!?]$/.test(r.why) ? '' : '.'}` : '';
   const limits = r.limitations.length > 0 ? ` Limitations: ${r.limitations.join('; ')}.` : '';
   return (
-    `For “${r.need}”: ${r.pick.name} (${r.pick.url}). ${because}${why} ` +
+    `For “${r.need}”: ${named(r.pick)} (${r.pick.url}). ${because}${why} ` +
     `Next step: ${r.nextStep.label}: ${r.nextStep.url}.${limits}${alternatives}`
   );
 }
 
-function recommendBody(need: unknown, tasks: Task[], catalog: Agent[]) {
-  const put = putThrough(need, tasks, catalog);
+function recommendBody(need: unknown, tasks: Task[], catalog: Agent[], promote?: (agent: Agent) => Promotion | null) {
+  const put = putThrough(need, tasks, catalog, promote && ((agent) => promote(agent) !== null));
+  const because = (part: OperatorPart & { pick: Agent }) => {
+    const label = part.promoted && promote?.(part.pick);
+    return label ? promotedBecause(label) : pickedBecause(part);
+  };
   const recommendations = put.parts.flatMap((part) =>
     part.task && part.pick
       ? [
@@ -235,7 +253,7 @@ function recommendBody(need: unknown, tasks: Task[], catalog: Agent[]) {
             need: part.text,
             task: taskRef(part.task),
             pick: decisionAgent(part.pick),
-            pickedBecause: pickedBecause(part),
+            pickedBecause: because({ ...part, pick: part.pick }),
             why: part.why,
             unmet: part.unmet,
             nextStep: nextStep(part.pick),
@@ -262,7 +280,14 @@ function recommendBody(need: unknown, tasks: Task[], catalog: Agent[]) {
     operatorUrl: `${BASE_URL}${operatorHref(put.request)}`,
     basis: RECOMMEND_BASIS,
     notes,
+    /** Website only (with `promote`): the label of each promoted listing in the answer, by slug. */
+    placements: undefined as Record<string, Promotion> | undefined,
   };
+  if (promote) {
+    const shown = put.parts.flatMap((part) => (part.pick ? [part.pick, ...part.alternatives] : []));
+    body.placements = Object.fromEntries(shown.flatMap((a) => (promote(a) ? [[a.slug, promote(a)!]] : [])));
+    body.basis = SITE_BASIS;
+  }
   return body;
 }
 
@@ -272,10 +297,18 @@ export type RecommendBody = ReturnType<typeof recommendBody>;
  * One pick for each need in `need` (the user's words: "query Postgres and
  * send email"), with why, the next step to start using it and two
  * alternatives, as the Operator puts it through. `catalog` must be in organic
- * order (lib/organic.ts): ties go to the catalog's order.
+ * order (lib/organic.ts): ties go to the catalog's order. `promote` is for
+ * the website alone (lib/promoted.ts promotion): the listings it labels go
+ * first and the body says their labels in `placements`. Assistants get the
+ * answer without it.
  */
-export function recommendDecision(need: unknown, tasks: Task[], catalog: Agent[]): Decision<RecommendBody> {
-  const body = recommendBody(need, tasks, catalog);
+export function recommendDecision(
+  need: unknown,
+  tasks: Task[],
+  catalog: Agent[],
+  promote?: (agent: Agent) => Promotion | null
+): Decision<RecommendBody> {
+  const body = recommendBody(need, tasks, catalog, promote);
   if (!body.request) {
     return {
       ok: false,
@@ -296,6 +329,6 @@ export function recommendDecision(need: unknown, tasks: Task[], catalog: Agent[]
     };
   }
   const left = body.unmatched.map((u) => `No pick for “${u.need}”: no task in the directory matches it.`);
-  body.answer = [...body.recommendations.map(answerLine), ...left].join('\n');
+  body.answer = [...body.recommendations.map((r) => answerLine(r, body.placements)), ...left].join('\n');
   return { ok: true, body };
 }

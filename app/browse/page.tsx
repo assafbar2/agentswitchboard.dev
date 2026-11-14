@@ -25,6 +25,7 @@ import { CatalogFilters } from '@/components/CatalogFilters';
 import { NoResults, NoResultsText } from '@/components/NoResults';
 import { SortSelect } from '@/components/SortSelect';
 import { TaskBanner } from '@/components/TaskBanner';
+import { promotion } from '@/lib/promoted';
 import { TaskChips } from '@/components/TaskChips';
 import { TaskEvents } from '@/components/TaskEvents';
 import type { Metadata, ResolvingMetadata } from 'next';
@@ -309,7 +310,7 @@ export default async function BrowsePage({
             )}
             {task && (
               <div className="agent-dim text-xs mt-1">
-                {taskTitle(task)}: {task.blurb} {taskExplanation(task, categoryName)} Best fits with why:{' '}
+                {taskTitle(task)}: {task.blurb} {taskExplanation(task, categoryName)} Featured and sponsored fits first, labeled. Best fits with why:{' '}
                 <Link href={`/tasks/${task.slug}`}>/tasks/{task.slug}</Link> · without the task:{' '}
                 <Link href={withoutTask}>{withoutTask}</Link>
               </div>
@@ -327,7 +328,10 @@ export default async function BrowsePage({
                 >
                   <span className="agent-accent">{agent.slug}</span>
                   <span className="agent-dim">{agent.categories[0]?.slug ?? '—'}</span>
-                  <span className="agent-dim">{agent.accessMethods.join('+') || '—'}</span>
+                  <span className="agent-dim">
+                    {agent.accessMethods.join('+') || '—'}
+                    {task && promotion(agent) && ` · ${promotion(agent)!.toLowerCase()}`}
+                  </span>
                 </Link>
               ))}
             </div>

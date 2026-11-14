@@ -5,7 +5,8 @@ import { taskTitle, type Task } from '@/lib/tasks';
 
 /**
  * The task a /browse view is narrowed to: the job, how its listings are
- * picked, a link to its page, and one click back to the view without it.
+ * picked and ordered (lib/search.ts browseMatches), a link to its page, and
+ * one click back to the view without it.
  */
 export function TaskBanner({ task, explanation, removeHref }: { task: Task; explanation: string; removeHref: string }) {
   return (
@@ -22,7 +23,7 @@ export function TaskBanner({ task, explanation, removeHref }: { task: Task; expl
       </div>
       <p className="mt-1 text-[16px] leading-snug">{task.blurb}</p>
       <p className="mt-1.5 text-[14px] leading-snug text-[var(--dir-muted)]">
-        {explanation}{' '}
+        {explanation} Featured and Sponsored ones come first, labeled.{' '}
         <Link href={`/tasks/${task.slug}`} className="font-bold whitespace-nowrap text-[var(--dir-ink)]">
           About this task →
         </Link>

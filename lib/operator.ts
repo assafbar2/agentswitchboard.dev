@@ -7,7 +7,9 @@
  * product's name ("Notion", "Linear"), or that most mention but few in their
  * names ("GitHub"), when only those count. Words that say what to do ("read",
  * "file") and the task's own words (the lowercase ones in its label) never
- * tell. A mention in a listing's name or its provider's counts twice one in
+ * tell, nor do the second halves of "agent-first" or "AI-native", where the
+ * first half then tells: "an agent-first mailbox" picks a tool named for
+ * agents. A mention in a listing's name or its provider's counts twice one in
  * its description, which counts twice one in its tags or skill names; among
  * equals, Official listings come first, then the task's own order. An access
  * method ("a Postgres MCP") or "official" in the part then narrows the pick,
@@ -37,6 +39,11 @@ const DOING = new Set([
 /** Words for any listing, which name no product: "a Postgres service" names Postgres. */
 const GENERIC = new Set(['app', 'apps', 'service', 'services', 'platform', 'platforms']);
 
+/** Second halves of "agent-first", "AI-native", "LLM-friendly": how a tool is built, not which it is. */
+const BUILT = new Set(['first', 'native', 'friendly', 'ready', 'powered', 'based', 'centric']);
+/** Who a tool can be built for, as in "agent-first": these then tell, though alone they are filler. */
+const BUILT_FOR = new Set(['agent', 'agents', 'ai', 'llm', 'llms']);
+
 export interface OperatorPart {
   /** The visitor's words for it. */
   text: string;
@@ -55,6 +62,8 @@ export interface OperatorPart {
   unmet: string[];
   /** Why the pick fits the task, from its skills (lib/tasks.ts whyItFits). */
   why: string | null;
+  /** The pick was placed first by `promote` (see putThrough), not by its fit. */
+  promoted?: boolean;
 }
 
 export interface Operator {
@@ -83,8 +92,11 @@ interface Telling {
 function tellingWords(text: string, task: Task): Telling[] {
   const own = ownWords(task);
   const seen = new Map<string, Telling>();
-  (text.match(WORD) ?? []).forEach((token, at) => {
-    const [word] = wordsOf(token);
+  const tokens = text.match(WORD) ?? [];
+  tokens.forEach((token, at) => {
+    // "agent" is filler ("I need an agent to…") but not in "agent-first": built for agents.
+    const builtFor = BUILT.has(tokens[at + 1]?.toLowerCase()) && BUILT_FOR.has(token.toLowerCase());
+    const [word] = builtFor ? [token.toLowerCase().replace(/s$/, '')] : wordsOf(token);
     if (word && !seen.has(word)) seen.set(word, { word, typed: token, at });
   });
   return [...seen.values()].filter(
@@ -92,6 +104,7 @@ function tellingWords(text: string, task: Task): Telling[] {
       !REQUEST_FILLER.has(word) &&
       !DOING.has(word) &&
       !GENERIC.has(word) &&
+      !BUILT.has(word) &&
       !accessAlias(word) &&
       word !== 'official' &&
       !own.some((w) => sameWord(w, word))
@@ -189,9 +202,17 @@ function narrowed(fits: Agent[], asks: Ask[], unmet: string[], already: boolean)
  * The request put through: each part with its task, pick and alternatives,
  * and the stack of picks. A pick mentions what its part names when one of
  * the task's tools does, then has what the part asks for that those can
- * have; the alternatives come from all of the task's tools.
+ * have; the alternatives come from all of the task's tools. With `promote`
+ * (the website's homepage box, lib/promoted.ts), the task's tools it marks
+ * that have what the part asks for go first, ahead of that pick; without it,
+ * as for assistants and the Operator, the order is organic.
  */
-export function putThrough(raw: unknown, tasks: Task[], catalog: Agent[]): Operator {
+export function putThrough(
+  raw: unknown,
+  tasks: Task[],
+  catalog: Agent[],
+  promote?: (agent: Agent) => boolean
+): Operator {
   const { text, parts, extra, cut } = requestParts(raw, tasks);
   const stack: Agent[] = [];
 
@@ -204,7 +225,10 @@ export function putThrough(raw: unknown, tasks: Task[], catalog: Agent[]): Opera
     const unmet: string[] = [];
     const named = mentioning > 0 ? ranked.slice(0, mentioning) : ranked;
     const { kept, met } = narrowed(named, asksOf(wordsOf(words)), unmet, named.length < ranked.length);
-    const pick = kept[0];
+    const has = (a: Agent) => met.every((ask) => ask.keeps(a));
+    const placed = promote ? ranked.filter((a) => promote(a) && has(a)) : [];
+    const order = [...new Set([...placed, kept[0], ...ranked.filter(has)])];
+    const pick = order[0];
     if (!stack.includes(pick)) stack.push(pick);
     return {
       text: words,
@@ -212,11 +236,12 @@ export function putThrough(raw: unknown, tasks: Task[], catalog: Agent[]): Opera
       nearest,
       fits: all.length,
       pick,
-      alternatives: ranked.filter((a) => a !== pick && met.every((ask) => ask.keeps(a))).slice(0, OPERATOR_ALTERNATIVES),
+      alternatives: order.slice(1, 1 + OPERATOR_ALTERNATIVES),
       named: namedBy(pick),
       met: met.map((ask) => ask.has),
       unmet,
       why: whyItFits(pick, task),
+      promoted: placed.includes(pick),
     };
   });
 

@@ -10,6 +10,7 @@ import { TaskComparison } from '@/components/TaskComparison';
 import { TaskRow } from '@/components/TaskRow';
 import { getAllCategories, getOrganicAgents } from '@/lib/catalog';
 import { pageMetadata } from '@/lib/metadata';
+import { PROMOTED_NOTE, promotedFirst, promotion, today } from '@/lib/promoted';
 import { taskMatches } from '@/lib/search';
 import { answerDate, taskAnswer } from '@/lib/task-answers';
 import { taskCard, taskCardImage } from '@/lib/share-cards';
@@ -73,17 +74,21 @@ export default async function TaskPage({ params }: Props) {
   const categories = await getAllCategories();
   const categoryName = (slug: string) => categories.find((c) => c.slug === slug)?.name ?? slug;
 
-  const best = fits.slice(0, TASK_PAGE_SIZE).map((agent) => ({ agent, why: whyItFits(agent, task) }));
+  // Featured and Sponsored fits first, labeled; /api/tasks and the Markdown twin stay organic.
+  const day = today();
+  const ordered = promotedFirst(fits, day);
+  const label = (agent: (typeof fits)[number]) => promotion(agent, day);
+  const best = ordered.slice(0, TASK_PAGE_SIZE).map((agent) => ({ agent, why: whyItFits(agent, task) }));
   const compared = best.slice(0, COMPARISON_SIZE).map(({ agent }) => agent);
   const comparedOn = comparedAsOf(compared);
-  const official = fits.filter((a) => a.official);
+  const official = ordered.filter((a) => a.official);
   const tasks = getTasks();
   const related = relatedTasks(task, tasks, catalog).map((t) => ({ task: t, fits: taskMatches(catalog, t) }));
   const stacks = relatedStacks(fits, stacksInOrder(getStacks()));
   const next = tasks[(tasks.findIndex((t) => t.slug === task.slug) + 1) % tasks.length];
   const browse = `/browse?task=${task.slug}`;
   const tools = `${fits.length} ${pluralize(fits.length, 'tool')}`;
-  const answer = taskAnswer(task, catalog);
+  const answer = taskAnswer(task, catalog, day);
 
   const listSchema = {
     '@context': 'https://schema.org',
@@ -144,13 +149,13 @@ export default async function TaskPage({ params }: Props) {
                 <Link href={`/drops/${answer.updated}`} className={inlineLink}>
                   weekly drop
                 </Link>
-                . Ranked by how well each listing matches the task, never by payment.
+                . {PROMOTED_NOTE}
               </p>
             )}
           </section>
 
           <TaskEvents task={task.slug} from="task-page">
-            <TaskComparison task={task} rows={best} />
+            <TaskComparison task={task} rows={best} day={day} />
 
             <section aria-labelledby="best-fits">
               <h2 id="best-fits" className="dir-bar">
@@ -295,6 +300,7 @@ export default async function TaskPage({ params }: Props) {
                 {agent.accessMethods.join('+')} · auth: {agent.authType}
                 {agent.official && ' · official'}
                 {agent.verified && ' · verified'}
+                {label(agent) && ` · ${label(agent)!.toLowerCase()}`}
               </span>
               <span className="agent-dim">updated {agent.updatedAt?.slice(0, 10) ?? '–'}</span>
             </Link>
@@ -304,7 +310,10 @@ export default async function TaskPage({ params }: Props) {
           {best.map(({ agent, why }) => (
             <Link key={agent.id} href={`/agents/${agent.slug}`} className="agent-row no-underline hover:underline">
               <span className="agent-accent">{agent.slug}</span>
-              <span className="agent-dim">{agent.accessMethods.join('+')}</span>
+              <span className="agent-dim">
+                {agent.accessMethods.join('+')}
+                {label(agent) && ` · ${label(agent)!.toLowerCase()}`}
+              </span>
               <span className="agent-dim">{why ?? agent.description}</span>
             </Link>
           ))}

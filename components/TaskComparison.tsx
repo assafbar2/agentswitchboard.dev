@@ -1,10 +1,12 @@
 import Link from '@/components/Link';
 import { AgentIcon } from '@/components/AgentIcon';
 import { CopyBlock } from '@/components/CopyBlock';
+import { PromotionBadge } from '@/components/PromotionBadge';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
 import { lastChecked } from '@/lib/verified';
 import { connectBundle } from '@/lib/bundle';
 import { compareHref } from '@/lib/compare-link';
+import { promotion } from '@/lib/promoted';
 import { BUNDLE_SIZE, COMPARISON_SIZE, bestFor, comparedAsOf, pickIf } from '@/lib/task-comparison';
 import type { Task } from '@/lib/tasks';
 import type { Agent } from '@/lib/types';
@@ -23,12 +25,15 @@ const SIGN_IN: Record<Agent['authType'], string> = {
   oauth2: 'Sign in (OAuth)',
 };
 
+/** The task's top fits side by side; with `day`, a row placed first (lib/promoted.ts) shows its label. */
 export function TaskComparison({
   task,
   rows,
+  day,
 }: {
   task: Task;
   rows: { agent: Agent; why: string | null }[];
+  day?: string;
 }) {
   const top = rows.slice(0, COMPARISON_SIZE);
   const asOf = comparedAsOf(top.map((r) => r.agent));
@@ -73,6 +78,7 @@ export function TaskComparison({
                     <AgentIcon name={agent.name} iconUrl={agent.iconUrl} />
                     {agent.name}
                   </Link>
+                  {day && <PromotionBadge label={promotion(agent, day)} className="mt-1" />}
                   <span className="mt-0.5 block text-[14px] leading-snug text-[var(--dir-muted)]">
                     {bestFor(why, agent)}. Pick it if {pickIf(agent)}.
                   </span>

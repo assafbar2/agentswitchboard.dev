@@ -2,8 +2,9 @@
 
 /**
  * The homepage's one box: "What do you need your agent to do?", answered in
- * place by GET /api/recommend (lib/decide.ts recommendDecision): one pick per
- * need, why, the next step and two alternatives. Before anything is typed it
+ * place by /home/answer (lib/decide.ts recommendDecision, with the task's
+ * Featured and Sponsored tools first and labeled): one pick per need, why,
+ * the next step and two alternatives. Before anything is typed it
  * shows `example`, a real answer rendered on the server. Without JavaScript
  * the form's own GET opens the same request in the Operator. Counts
  * `recommend_submit` with how many picks came back, never the words.
@@ -48,7 +49,7 @@ export function RecommendBox({
     const ticket = ++latest.current;
     setState({ kind: 'loading', need });
     try {
-      const res = await fetch(`/api/recommend?need=${encodeURIComponent(need)}`, { headers: { accept: 'application/json' } });
+      const res = await fetch(`/home/answer?need=${encodeURIComponent(need)}`, { headers: { accept: 'application/json' } });
       const data = await res.json();
       if (ticket !== latest.current) return;
       if (res.ok) {
@@ -116,7 +117,7 @@ export function RecommendBox({
         </h2>
         {state.kind === 'example' && (
           <p className="mb-3 text-[15px] text-[var(--dir-muted)]">
-            A real answer from the directory&apos;s recommend tool, the one agents call too. Type your own job above to get yours.
+            A real answer from the directory&apos;s matching rules. Type your own job above to get yours.
           </p>
         )}
         {state.kind === 'loading' && <p className="text-[16px] text-[var(--dir-muted)]">Putting it through…</p>}
