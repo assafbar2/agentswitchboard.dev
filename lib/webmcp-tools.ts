@@ -28,6 +28,8 @@ import {
   COMPARE_AGENTS_DESCRIPTION,
   COMPARE_SLUGS_INPUT,
   CONNECT_BUNDLE_DESCRIPTION,
+  LAST_CHECKED_DESCRIPTION,
+  LIMITATIONS_DESCRIPTION,
   MAX_LIMIT,
   OFFICIAL_DEFINITION,
   RECOMMEND_DESCRIPTION,
@@ -145,7 +147,11 @@ const summaryProps = {
 const stringList = { type: 'array', items: { type: 'string' } };
 
 // A listing in compare_agents, alternatives_to and connect_bundle (lib/public-api.ts decisionAgent).
-const decisionProps = { ...summaryProps, authType: { type: 'string' } };
+const decisionProps = {
+  ...summaryProps,
+  authType: { type: 'string' },
+  lastChecked: { type: ['string', 'null'], description: LAST_CHECKED_DESCRIPTION },
+};
 
 const leftOut = { ...stringList, description: 'Named listings that were left out, and why' };
 
@@ -527,6 +533,7 @@ export const WEBMCP_TOOLS: WebMcpTool[] = [
                 description:
                   'how (config: paste server into an MCP client; guide: an MCP server to set up from url; other: no MCP server, start from url), label, url, server, note',
               },
+              limitations: { ...stringList, description: LIMITATIONS_DESCRIPTION },
               alternatives: { type: 'array', items: { type: 'object', properties: decisionProps } },
               fits: { type: 'integer', description: 'How many listings do the task' },
             },

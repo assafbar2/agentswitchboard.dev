@@ -3,6 +3,7 @@ import { AgentIcon } from '@/components/AgentIcon';
 import { OfficialBadge } from '@/components/ui/OfficialBadge';
 import { SponsoredBadge } from '@/components/SponsoredBadge';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
+import { lastChecked } from '@/lib/verified';
 import { ACCESS_METHOD_LABELS } from '@/lib/search';
 import type { Agent, AgentLabel } from '@/lib/types';
 
@@ -51,7 +52,7 @@ export function FeaturedAgentCard({
           </span>
         )}
         {agent.sponsored && <SponsoredBadge />}
-        {agent.verified && <VerifiedBadge />}
+        {agent.verified && <VerifiedBadge checked={lastChecked(agent)} />}
         <OfficialBadge agent={agent} />
         <span>by {agent.providerName}</span>
       </span>

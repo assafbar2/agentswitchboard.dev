@@ -2,6 +2,7 @@ import Link from '@/components/Link';
 import { AgentIcon } from '@/components/AgentIcon';
 import { CopyBlock } from '@/components/CopyBlock';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
+import { lastChecked } from '@/lib/verified';
 import { connectBundle } from '@/lib/bundle';
 import { compareHref } from '@/lib/compare-link';
 import { BUNDLE_SIZE, COMPARISON_SIZE, bestFor, comparedAsOf, pickIf } from '@/lib/task-comparison';
@@ -84,7 +85,7 @@ export function TaskComparison({
                   <span className="block">{agent.officialVendor?.name ?? agent.providerName}</span>
                   {agent.official && <span className="block text-[13px] font-bold">Official</span>}
                 </td>
-                <td className="py-2.5 pr-3">{agent.verified ? <VerifiedBadge /> : '–'}</td>
+                <td className="py-2.5 pr-3">{agent.verified ? <VerifiedBadge checked={lastChecked(agent)} /> : '–'}</td>
                 <td className="py-2.5 whitespace-nowrap text-[14px] text-[var(--dir-muted)]">
                   {agent.updatedAt ? formatDay(agent.updatedAt) : '–'}
                 </td>

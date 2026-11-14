@@ -195,15 +195,34 @@ function nextStep(agent: Agent) {
   return { how: item.how, label: NEXT_STEP_LABEL[item.how], url: item.docsUrl, server: item.server, note: item.note };
 }
 
+/**
+ * What may stop or slow a user with this listing, read from its listing data
+ * alone: the sign-in it needs, a server that only runs on your computer, no
+ * config to paste yet, no MCP server, not Verified. Empty when it shows none.
+ */
+export function limitations(agent: Agent): string[] {
+  const item = bundleItem(agent);
+  const out: string[] = [];
+  if (agent.authType === 'oauth2') out.push(`needs a ${agent.providerName} sign-in`);
+  else if (agent.authType === 'apiKey') out.push(`needs an API key from ${agent.providerName}`);
+  else if (agent.authType === 'bearer') out.push(`needs a token from ${agent.providerName}`);
+  if (item.server && 'command' in item.server) out.push('runs only on your own computer, with no hosted server');
+  if (item.how === 'guide') out.push('no MCP config to copy yet, so set it up from its guide');
+  if (item.how === 'other') out.push('no MCP server');
+  if (!agent.verified) out.push('not Verified yet');
+  return out;
+}
+
 const taskRef = (task: Task) => ({ slug: task.slug, label: task.label, url: `${BASE_URL}/tasks/${task.slug}` });
 
 function answerLine(r: RecommendBody['recommendations'][number]): string {
   const alternatives = r.alternatives.length > 0 ? ` Alternatives: ${joinList(r.alternatives.map((a) => a.name))}.` : '';
   const because = r.pickedBecause.startsWith('Picked') ? r.pickedBecause : 'The task’s best fit.';
   const why = r.why ? ` ${r.why}${/[.!?]$/.test(r.why) ? '' : '.'}` : '';
+  const limits = r.limitations.length > 0 ? ` Limitations: ${r.limitations.join('; ')}.` : '';
   return (
     `For “${r.need}”: ${r.pick.name} (${r.pick.url}). ${because}${why} ` +
-    `Next step: ${r.nextStep.label}: ${r.nextStep.url}.${alternatives}`
+    `Next step: ${r.nextStep.label}: ${r.nextStep.url}.${limits}${alternatives}`
   );
 }
 
@@ -220,6 +239,7 @@ function recommendBody(need: unknown, tasks: Task[], catalog: Agent[]) {
             why: part.why,
             unmet: part.unmet,
             nextStep: nextStep(part.pick),
+            limitations: limitations(part.pick),
             alternatives: part.alternatives.map(decisionAgent),
             fits: part.fits,
           },

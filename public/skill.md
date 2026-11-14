@@ -39,7 +39,7 @@ Prefer REST. OpenAPI: https://agentswitchboard.dev/openapi.json
 6. `GET /api/compare?a={slug}&b={slug}` (add `&c={slug}` for a third) to put listings side by side: what sets each apart (`setsApart`), then one row per field with each listing's value by slug.
 7. `GET /api/agents/{slug}/alternatives` for listings that could stand in for one, strongest first, each with a `why` line.
 8. `GET /api/bundle?items={slug},{slug}` (up to 10) for one MCP client config to paste (`config`, `{"mcpServers": …}`), and how each listing connects (`items[].how` and `note`).
-9. `GET /api/recommend?need={the need, in a sentence}` when the user wants one tool for a job: one pick for each need it names (`recommendations[].pick`), why it fits, the next step to start using it (`nextStep`: the MCP config to paste when the vendor's docs give one, else its guide or docs) and two alternatives. `answer` says it in plain sentences. Write the need yourself from what the user said; never include names, emails or phone numbers. A need that matches no task is HTTP 404 `{ "error": "no_match" }` with the closest tasks.
+9. `GET /api/recommend?need={the need, in a sentence}` when the user wants one tool for a job: one pick for each need it names (`recommendations[].pick`), why it fits, the next step to start using it (`nextStep`: the MCP config to paste when the vendor's docs give one, else its guide or docs), its `limitations` (the sign-in it needs, local-only, no config yet, not Verified) and two alternatives. `answer` says it in plain sentences. Write the need yourself from what the user said; never include names, emails or phone numbers. A need that matches no task is HTTP 404 `{ "error": "no_match" }` with the closest tasks.
 
 Query notes:
 

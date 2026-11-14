@@ -6,7 +6,16 @@ agentic tools with real API, MCP, CLI, or browser-extension access. Live at
 
 A listing marked **Verified** is one we checked works: its URLs load and its
 declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the
-label drops if it stops working.
+label drops if it stops working. Beside the badge, listing pages and the
+homepage answer say "Verified: link and access path checked, <month>", dated by
+the listing's last update (there is no separate recheck log), linking the
+explanation on [/about](https://agentswitchboard.dev/about#verification).
+
+The homepage starts from the job: one box, "What do you need your agent to
+do?", answered in place by `recommend` (one pick, why, the next step with its
+config to copy, its limitations and two alternatives), with a worked example
+shown before you type. Catalog search ([/browse](https://agentswitchboard.dev/browse))
+and the multi-step [Operator](https://agentswitchboard.dev/operator) are links under it.
 
 ## 🔌 This directory is itself an MCP server
 

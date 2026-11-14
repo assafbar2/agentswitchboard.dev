@@ -408,12 +408,12 @@ curl "https://agentswitchboard.dev/api/recommend?need=read+my+Gmail+and+query+Po
 ```jsonc
 {
   "request": "read my Gmail and query Postgres",
-  "answer": "For “read my Gmail”: Gmail MCP (https://agentswitchboard.dev/agents/gmail-mcp). Picked because it mentions “Gmail”. … Next step: Add its MCP server to your MCP client: https://developers.google.com/… Alternatives: …\nFor “query Postgres”: …",
+  "answer": "For “read my Gmail”: Gmail MCP (https://agentswitchboard.dev/agents/gmail-mcp). Picked because it mentions “Gmail”. … Next step: Add its MCP server to your MCP client: https://developers.google.com/… Limitations: needs a Google sign-in. Alternatives: …\nFor “query Postgres”: …",
   "recommendations": [
     {
       "need": "read my Gmail",
       "task": { "slug": "send-and-read-email", "label": "send and read email", "url": "https://agentswitchboard.dev/tasks/send-and-read-email" },
-      "pick": { /* …REST search fields and authType */ },
+      "pick": { /* …REST search fields, authType and lastChecked */ },
       "pickedBecause": "Picked because it mentions “Gmail”.",
       "why": "…the pick's skill that does the task",
       "unmet": [],
@@ -424,6 +424,7 @@ curl "https://agentswitchboard.dev/api/recommend?need=read+my+Gmail+and+query+Po
         "server": { "url": "https://gmailmcp.googleapis.com/mcp/v1" },
         "note": "Hosted by Google. You sign in with Google when you first connect."
       },
+      "limitations": ["needs a Google sign-in"],
       "alternatives": [ /* two listings, as pick */ ],
       "fits": 24
     }
@@ -445,6 +446,14 @@ always gets the same answer, and placement never changes it: the catalog is read
 in organic order and the answer carries no placement field. No need is a `400`
 with `{ "error": "no_need" }`; a need that matches no task is a `404` with
 `{ "error": "no_match", "message", "unmatched" }`, naming the closest tasks.
+
+`limitations` says, from the pick's listing alone, what may stop or slow the
+user: the sign-in it needs, a server that runs only on their computer, no MCP
+config to copy yet, no MCP server, or not Verified; it is empty when the
+listing shows none. Every listing in a decision answer (`pick`, `alternatives`,
+and those of compare, alternatives and bundle) carries `lastChecked`: the
+`YYYY-MM-DD` a Verified listing was last checked, from its last update, or
+`null` when it is not Verified. The homepage shows the same answer.
 
 ## REST missing tool — `POST /api/missing-tool`
 
@@ -504,7 +513,7 @@ Stdio-only clients: `npx -y mcp-remote https://agentswitchboard.dev/api/mcp`
 | `compare_agents` | `slugs` (2 or 3, required) | as [`GET /api/compare`](#rest-compare--get-apicompare): `{ title, url, intro, agents[], rows[], notes }` |
 | `alternatives_to` | `slug` (required), `limit?` (1–8) | as [`GET /api/agents/{slug}/alternatives`](#rest-alternatives--get-apiagentsslugalternatives) |
 | `connect_bundle` | `slugs` (1 to 10, required) | as [`GET /api/bundle`](#rest-connect-bundle--get-apibundle): `{ summary, stackUrl, config, claudeCode, setupPrompt, items[], notes }` |
-| `recommend` | `need` (required) | as [`GET /api/recommend`](#rest-recommend--get-apirecommend): `{ request, answer, recommendations[], unmatched, stackUrl, operatorUrl, basis, notes }` |
+| `recommend` | `need` (required) | as [`GET /api/recommend`](#rest-recommend--get-apirecommend): `{ request, answer, recommendations[] (with limitations), unmatched, stackUrl, operatorUrl, basis, notes }` |
 | `submit_listing` | `name`, `url`, `description` (required); `access?`, `category?`, `contact_email?` | `{ status, message, issueUrl?, existingSlug? }` |
 | `request_missing_tool` | `need` (10–500 characters, required); `tried?`, `category?`, `access?` (enum[]) | `{ status, message }`, as [`POST /api/missing-tool`](#rest-missing-tool--post-apimissing-tool) |
 

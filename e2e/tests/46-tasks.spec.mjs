@@ -55,23 +55,12 @@ const BROWSE_PAGE = 60;
 const SIGN_IN = { none: 'None', apiKey: 'API key', bearer: 'Token', oauth2: 'Sign in (OAuth)' };
 const comparison = (page) => human(page).locator('section[aria-labelledby="comparison"]');
 
-// components/TaskChips.tsx TASK_CHIPS, components/TaskSearch.tsx
+// components/TaskChips.tsx TASK_CHIPS
 const CHIPS = 8;
-const EMPTY_HINT = 'Say it in your own words, or pick a task.';
-const homeBlock = (page) => human(page).locator('section[aria-labelledby="i-need-an-agent-to"]');
+const homeBlock = (page) => human(page).locator('section[aria-labelledby="common-jobs"]');
 const browseBlock = (page) => human(page).locator('section[aria-labelledby="browse-by-task"]');
 const chips = (block) => block.locator('li > a[href^="/browse?task="]');
-const taskBox = (page) => homeBlock(page).getByLabel('I need an agent to…');
-const hint = (page) => homeBlock(page).locator('[aria-live="polite"]');
 const chipHrefs = (query = '') => TASKS.slice(0, CHIPS).map((t) => `/browse?task=${t.slug}${query}`);
-
-/** Types `text` into the homepage box, again until the page has hydrated and the line under it follows. */
-async function say(page, text) {
-  await expect(async () => {
-    await taskBox(page).fill(text);
-    await expect(hint(page)).not.toHaveText(EMPTY_HINT, { timeout: 1000 });
-  }).toPass();
-}
 
 async function json(request, path, status = 200) {
   const res = await request.get(path, { headers: UA });
@@ -550,19 +539,15 @@ test.describe('/browse?task=', () => {
   });
 });
 
-test.describe('"I need an agent to…" on the homepage', () => {
-  test('a box labelled by its heading, the first tasks as chips and a link to all of them', async ({ page }) => {
+test.describe('common jobs on the homepage', () => {
+  test('the first tasks as chips under their heading, and a link to all of them', async ({ page }) => {
     await page.goto('/');
     const block = homeBlock(page);
-    await expect(block.getByRole('heading', { level: 2 })).toHaveText('I need an agent to…');
-    await expect(taskBox(page)).toHaveAttribute('placeholder', 'read my email');
-    await expect(block.getByRole('button', { name: 'Go', exact: true })).toBeVisible();
-    await expect(hint(page)).toHaveText(EMPTY_HINT);
+    await expect(block.getByRole('heading', { level: 2 })).toHaveText('Or start from a common job');
     expect(await hrefs(chips(block))).toEqual(chipHrefs());
     expect(await chips(block).allTextContents()).toEqual(TASKS.slice(0, CHIPS).map((t) => t.label));
     await expect(block.getByRole('link', { name: `All ${TASKS.length} tasks` })).toHaveAttribute('href', '/tasks');
-    // The hero's box stays the page's only search landmark.
-    await expect(page.getByRole('search')).toHaveCount(1);
+    await expect(human(page).locator('section[aria-labelledby="i-need-an-agent-to"]')).toHaveCount(0);
   });
 
   test('a chip opens its task on /browse, counted as picked on the homepage', async ({ page }) => {
@@ -572,72 +557,6 @@ test.describe('"I need an agent to…" on the homepage', () => {
     await page.waitForURL(new RegExp(`/browse\\?task=${task.slug}$`));
     await expect(banner(page)).toHaveAttribute('data-task', task.slug);
     expect(await events(page, 'task_select')).toEqual([{ task: task.slug, from: 'home' }]);
-  });
-
-  test('words that name a task go to it, and the line under the box says so first', async ({ page }) => {
-    const task = TASKS.find((t) => t.slug === 'send-and-read-email');
-    await page.goto('/');
-    await say(page, 'read my inbox please');
-    await expect(hint(page)).toContainText(`Task: ${task.label} · ${tools(task.count)}`);
-    await expect(hint(page).getByRole('link', { name: 'search the directory instead' })).toHaveAttribute(
-      'href',
-      '/browse?q=read+my+inbox+please'
-    );
-    await taskBox(page).press('Enter');
-    await page.waitForURL(new RegExp(`/browse\\?task=${task.slug}$`));
-    await expect(countBar(page)).toHaveText(fitLine(task.count));
-    expect(await events(page, 'task_search')).toEqual([{ matched: true, task: task.slug, words: 4 }]);
-    expect(JSON.stringify(await page.evaluate(() => window.vaq ?? []))).not.toMatch(/inbox|please/);
-  });
-
-  test('words that name no task run as a search, with the closest tasks offered', async ({ page }) => {
-    await page.goto('/');
-    await say(page, 'build an agent');
-    await expect(hint(page)).toContainText('Searches the directory for “build an agent”');
-    const close = hint(page).getByRole('link');
-    await expect(close).toHaveCount(2);
-    for (const link of await close.all()) {
-      const label = (await link.textContent()).trim();
-      const task = TASKS.find((t) => t.label === label);
-      expect(task, `"${label}" is a task`).toBeTruthy();
-      expect(label).toMatch(/\bbuild\b/);
-      await expect(link).toHaveAttribute('href', `/browse?task=${task.slug}`);
-    }
-    await homeBlock(page).getByRole('button', { name: 'Go', exact: true }).click();
-    await page.waitForURL(/\/browse\?q=build\+an\+agent$/);
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('Results for “build an agent”');
-    expect(await events(page, 'task_search')).toEqual([{ matched: false, words: 3 }]);
-  });
-
-  test('a task offered under the box opens it, counted as picked from the box', async ({ page }) => {
-    await page.goto('/');
-    await say(page, 'build an agent');
-    const link = hint(page).getByRole('link').first();
-    const label = (await link.textContent()).trim();
-    const task = TASKS.find((t) => t.label === label);
-    await link.click();
-    await page.waitForURL(new RegExp(`/browse\\?task=${task.slug}$`));
-    expect(await events(page, 'task_select')).toEqual([{ task: task.slug, from: 'task-search' }]);
-    expect(await events(page, 'task_search')).toEqual([]);
-  });
-
-  test('"search the directory instead" runs the words and counts the task it passed over', async ({ page }) => {
-    await page.goto('/');
-    await say(page, 'read my email');
-    await hint(page).getByRole('link', { name: 'search the directory instead' }).click();
-    await page.waitForURL(/\/browse\?q=read\+my\+email$/);
-    await expect(countBar(page)).toBeVisible();
-    expect(await events(page, 'task_search')).toEqual([{ matched: false, words: 3, declined: 'send-and-read-email' }]);
-  });
-
-  test('Go with nothing typed opens every task', async ({ page }) => {
-    await page.goto('/');
-    await say(page, 'x');
-    await taskBox(page).fill('');
-    await expect(hint(page)).toHaveText(EMPTY_HINT);
-    await homeBlock(page).getByRole('button', { name: 'Go', exact: true }).click();
-    await page.waitForURL(/\/tasks$/);
-    expect(await events(page, 'task_search')).toEqual([]);
   });
 
   test('the text-only view lists the same tasks with how many fit', async ({ page }) => {
@@ -690,8 +609,8 @@ test.describe('tasks in the search box suggestions', () => {
     page.on('request', (r) => {
       if (new URL(r.url()).pathname === '/search-index.json') requested = true;
     });
-    await page.goto('/');
-    const box = page.getByRole('combobox', { name: 'Look it up' });
+    await page.goto('/browse');
+    const box = human(page).getByRole('search').getByRole('combobox');
     await expect(async () => {
       await box.blur();
       await box.focus();
@@ -708,7 +627,7 @@ test.describe('tasks in the search box suggestions', () => {
     await page.waitForURL(new RegExp(`/browse\\?task=${SAMPLE.slug}$`));
     await expect(banner(page)).toHaveAttribute('data-task', SAMPLE.slug);
     await expect(human(page).getByRole('search').getByRole('combobox')).toHaveValue('');
-    expect(await events(page, 'autocomplete_select')).toEqual([{ kind: 'task', position, chars: 8, page: '/' }]);
+    expect(await events(page, 'autocomplete_select')).toEqual([{ kind: 'task', position, chars: 8, page: '/browse' }]);
     expect(await events(page, 'task_select')).toEqual([{ task: SAMPLE.slug, from: 'autocomplete' }]);
   });
 });

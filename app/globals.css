@@ -1112,3 +1112,10 @@ body {
   border-top: 1px solid var(--dir-rule);
   margin: 0;
 }
+
+/* Phones: on a page with the agent bar under its first answer (the homepage), the top one steps aside. */
+@media (width < 48rem) {
+  html:not([data-view="agent"]):has([data-agent-bar="below-answer"]) [data-agent-bar="top"] {
+    display: none;
+  }
+}

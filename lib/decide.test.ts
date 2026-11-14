@@ -3,7 +3,7 @@ import { bundleItem } from './bundle';
 import { getEveryAgent } from './catalog';
 import { compareRows, compareSuggestions, compareTitle, curatedComparisons, factLines, pairPath } from './compare';
 import { compareHref } from './compare-link';
-import { alternativesDecision, bundleDecision, compareDecision, RECOMMEND_BASIS, recommendDecision } from './decide';
+import { alternativesDecision, bundleDecision, compareDecision, limitations, RECOMMEND_BASIS, recommendDecision } from './decide';
 import { BASE_URL } from './env';
 import { putThrough } from './operator';
 import { organicOrder } from './organic';
@@ -299,5 +299,37 @@ describe('recommendDecision', () => {
     const none = recommendDecision('make me a sandwich', getTasks(), catalog);
     expect(none).toMatchObject({ ok: false, status: 404, error: 'no_match' });
     expect(!none.ok && none.message).toMatch(/^No task in the directory matches "make me a sandwich", so there is no pick\./);
+  });
+
+  it("says each pick's limitations and when a Verified listing was last checked, in the answer line too", async () => {
+    const catalog = await organic();
+    const answer = body(recommendDecision('read my Gmail and query Postgres', getTasks(), catalog));
+    for (const r of answer.recommendations) {
+      const pick = catalog.find((a) => a.slug === r.pick.slug)!;
+      expect(r.limitations).toEqual(limitations(pick));
+      expect(r.pick.lastChecked).toBe(pick.verified ? (pick.updatedAt ?? null)?.slice(0, 10) ?? null : null);
+      if (r.limitations.length > 0) expect(answer.answer).toContain(`Limitations: ${r.limitations.join('; ')}.`);
+    }
+  });
+});
+
+describe('limitations', () => {
+  it('reads the sign-in, where the server runs, the config and the label from the listing', () => {
+    expect(limitations(listing('hosted', { authType: 'none', verified: true, mcpEndpoint: 'https://example.com/mcp' }))).toEqual([]);
+    expect(limitations(listing('google', { authType: 'oauth2', providerName: 'Google', verified: true, mcpEndpoint: 'https://example.com/mcp' }))).toEqual([
+      'needs a Google sign-in',
+    ]);
+    expect(limitations(listing('local', { verified: true, mcpCommand: 'npx -y local-mcp' }))).toEqual([
+      'needs an API key from Example Inc',
+      'runs only on your own computer, with no hosted server',
+    ]);
+    expect(limitations(listing('guide', { authType: 'none' }))).toEqual([
+      'no MCP config to copy yet, so set it up from its guide',
+      'not Verified yet',
+    ]);
+    expect(limitations(listing('cli', { authType: 'bearer', verified: true, accessMethods: ['cli'] }))).toEqual([
+      'needs a token from Example Inc',
+      'no MCP server',
+    ]);
   });
 });

@@ -153,8 +153,8 @@ test.describe('mobile 375x812', () => {
       'text-only switch': page.getByRole('complementary', { name: 'For AI agents' }).getByRole('button', { name: /Switch to text-only view/ }),
       'menu toggle': page.getByRole('button', { name: 'Toggle menu' }),
       'theme toggle': page.getByRole('button', { name: /Switch to (dark|light) mode/ }),
-      'search box': page.getByRole('combobox', { name: 'Look it up' }),
-      'Find button': page.getByRole('button', { name: 'Find' }),
+      'task box': page.getByRole('textbox', { name: 'What do you need your agent to do?' }),
+      'Get my pick button': page.getByRole('button', { name: 'Get my pick' }),
       'fetch /llms.txt': page.getByRole('complementary', { name: 'For AI agents' }).getByRole('link', { name: '/llms.txt' }),
     };
     const short = [];
@@ -176,17 +176,18 @@ test.describe('mobile 375x812', () => {
     expect(blocked).toEqual([]);
   });
 
-  test('homepage search is usable on mobile and lands on browse results', async ({ page }) => {
+  test('the homepage task box is usable on mobile and answers in place', async ({ page }) => {
     await open(page, '/');
-    const box = page.getByRole('combobox', { name: 'Look it up' });
+    const box = page.getByRole('textbox', { name: 'What do you need your agent to do?' });
     const b = await box.boundingBox();
-    expect(b.width, 'search box width').toBeGreaterThanOrEqual(200);
-    await box.tap();
-    await box.fill('code');
-    await page.getByRole('button', { name: 'Find' }).tap();
-    await expect(page).toHaveURL(/\/browse\?q=code$/);
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('Results for');
-    await expect(page.locator('.human-only h2.dir-bar')).toContainText(/\d+ agents? matched/);
+    expect(b.width, 'task box width').toBeGreaterThanOrEqual(200);
+    await expect(async () => {
+      await box.tap();
+      await box.fill('write and fix code');
+      await page.getByRole('button', { name: 'Get my pick' }).tap();
+      await expect(page.locator('.human-only').getByRole('heading', { name: /^Your answer/ })).toBeVisible({ timeout: 3000 });
+    }).toPass();
+    await expect(page.locator('.human-only [data-recommendation]').first()).toBeVisible();
     const info = await overflowInfo(page);
     expect(info.scrollWidth, info.offenders.join(' | ')).toBeLessThanOrEqual(info.innerWidth);
   });
