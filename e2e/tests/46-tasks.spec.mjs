@@ -562,7 +562,8 @@ test.describe('common jobs on the homepage', () => {
   test('the text-only view lists the same tasks with how many fit', async ({ page }) => {
     await page.addInitScript(() => { try { localStorage.setItem('viewMode', 'agent'); } catch {} });
     await page.goto('/');
-    const rows = page.locator('.agent-only a.agent-row[href^="/browse?task="]');
+    // A release highlight above them may also try a task; its rows stack.
+    const rows = page.locator('.agent-only a.agent-row:not(.agent-row-stack)[href^="/browse?task="]');
     expect(await hrefs(rows)).toEqual(chipHrefs());
     for (const [i, t] of TASKS.slice(0, CHIPS).entries()) await expect(rows.nth(i)).toContainText(`${t.count} fit`);
   });

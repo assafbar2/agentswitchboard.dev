@@ -4,6 +4,17 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
+## [2.11.1] - 2026-11-14 - Browsing by task ranks on fit alone
+
+### Highlights
+- Browsing by task ranks tools on how well they fit the job and nothing else, in the same order as the task page: a Featured listing no longer moves up, even on a tie. [Try it](https://agentswitchboard.dev/browse?task=query-a-database)
+
+### Changed
+- [/browse?task=](https://agentswitchboard.dev/browse?task=query-a-database) and `GET /api/agents?task=` rank best fit first and A→Z on a tie, as each task page and `GET /api/tasks/<slug>` have since 2.10.5, instead of putting featured listings first among equals. Plain /browse and `GET /api/agents` without a task still list Featured first. ([#PR](https://github.com/assafbar2/agentswitchboard.dev/pull/PR))
+
+### Fixed
+- [/changelog](https://agentswitchboard.dev/changelog) names a listing that has since been archived without linking it, instead of linking a page that is gone, and the 2.10.1 notes no longer link GPT Pilot, archived in 2.9.6. ([#PR](https://github.com/assafbar2/agentswitchboard.dev/pull/PR))
+
 ## [2.11.0] - 2026-11-14 - The homepage starts from the job
 
 ### Highlights
@@ -72,7 +83,7 @@ Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes 
 
 ### Directory
 - The [Nov 13 drop](https://agentswitchboard.dev/drops/2026-11-13): the weekly run added 56 listings, 14 of them Official, updated 2 and archived 1, with [Ship a web app with your agent](https://agentswitchboard.dev/stacks/ship-a-web-app-with-your-agent) as the stack of the week. With the same day's corrections below, the drop comes to 56 added, 6 updated and 2 archived. ([#395](https://github.com/assafbar2/agentswitchboard.dev/pull/395))
-- [elizaOS](https://agentswitchboard.dev/agents/eliza), [GPT Pilot](https://agentswitchboard.dev/agents/gpt-pilot) and [MobileBuildMCP](https://agentswitchboard.dev/agents/xcodebuild-mcp) go by their projects' own names. Corrected the same day, they count among the Nov 13 drop's updates. ([#390](https://github.com/assafbar2/agentswitchboard.dev/pull/390))
+- [elizaOS](https://agentswitchboard.dev/agents/eliza), GPT Pilot and [MobileBuildMCP](https://agentswitchboard.dev/agents/xcodebuild-mcp) go by their projects' own names. Corrected the same day, they count among the Nov 13 drop's updates. ([#390](https://github.com/assafbar2/agentswitchboard.dev/pull/390))
 - [Windsurf is Devin Desktop](https://agentswitchboard.dev/agents/codeium-windsurf) now, by Cognition AI, and its listing and comparison say "formerly Windsurf". ZCode is archived while a privacy report on it is unresolved. Both count in the Nov 13 drop. ([#398](https://github.com/assafbar2/agentswitchboard.dev/pull/398))
 
 ## [2.10.0] - 2026-11-13 - Every task page compares its top tools

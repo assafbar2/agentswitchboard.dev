@@ -39,12 +39,13 @@ vi.mock('fs', async (importOriginal) => {
 });
 
 const { getEveryAgent, getOrganicAgents } = await import('@/lib/catalog');
-const { taskMatches } = await import('@/lib/search');
+const { browseMatches, taskMatches } = await import('@/lib/search');
 const { getTasks } = await import('@/lib/tasks');
 const { putThrough } = await import('@/lib/operator');
 const { OPERATOR_EXAMPLES } = await import('@/lib/request-parts');
 const tasksRoute = await import('@/app/api/tasks/route');
 const taskRoute = await import('@/app/api/tasks/[slug]/route');
+const agentsRoute = await import('@/app/api/agents/route');
 
 afterAll(() => {
   placement.on = false;
@@ -100,6 +101,31 @@ describe('task pages and the Operator rank organically', () => {
       return { list, one: { ...one, agents: slugs(one.agents) } };
     });
     expect(placed).toEqual(organic);
+  });
+
+  it('/browse?task= lists each task as its task page does, from the featured-first catalog, whatever is placed', async () => {
+    const browse = (t: ReturnType<typeof getTasks>[number], catalog: Awaited<ReturnType<typeof getEveryAgent>>) =>
+      slugs(browseMatches(catalog, { query: '', task: t, category: '', official: false, vendor: '', verified: false, auth: [], access: [] }));
+    const { organic, placed } = await both(async () => {
+      const catalog = await getEveryAgent();
+      return getTasks().map((t) => browse(t, catalog));
+    });
+    expect(placed).toEqual(organic);
+    const organicCatalog = await getOrganicAgents();
+    expect(organic).toEqual(getTasks().map((t) => slugs(taskMatches(organicCatalog, t))));
+  });
+
+  it('GET /api/agents?task= lists as GET /api/tasks/<slug> does, whatever is placed', async () => {
+    const slug = getTasks()[0].slug;
+    const { organic, placed } = await both(async () => {
+      const search = await (await agentsRoute.GET(new Request(`http://localhost/api/agents?task=${slug}&limit=50`))).json();
+      return slugs(search.agents);
+    });
+    expect(placed).toEqual(organic);
+    const one = await (
+      await taskRoute.GET(new Request(`http://localhost/api/tasks/${slug}`), { params: Promise.resolve({ slug }) })
+    ).json();
+    expect(organic).toEqual(slugs(one.agents).slice(0, 50));
   });
 
   it('the task pages, the Operator and their cards read the organic catalog', () => {
