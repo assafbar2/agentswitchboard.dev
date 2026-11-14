@@ -10,10 +10,10 @@ Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes 
 - Browsing by task ranks tools on how well they fit the job and nothing else, in the same order as the task page: a Featured listing no longer moves up, even on a tie. [Try it](https://agentswitchboard.dev/browse?task=query-a-database)
 
 ### Changed
-- [/browse?task=](https://agentswitchboard.dev/browse?task=query-a-database) and `GET /api/agents?task=` rank best fit first and A→Z on a tie, as each task page and `GET /api/tasks/<slug>` have since 2.10.5, instead of putting featured listings first among equals. Plain /browse and `GET /api/agents` without a task still list Featured first. ([#PR](https://github.com/assafbar2/agentswitchboard.dev/pull/PR))
+- [/browse?task=](https://agentswitchboard.dev/browse?task=query-a-database) and `GET /api/agents?task=` rank best fit first and A→Z on a tie, as each task page and `GET /api/tasks/<slug>` have since 2.10.5, instead of putting featured listings first among equals. Plain /browse and `GET /api/agents` without a task still list Featured first. ([#414](https://github.com/assafbar2/agentswitchboard.dev/pull/414))
 
 ### Fixed
-- [/changelog](https://agentswitchboard.dev/changelog) names a listing that has since been archived without linking it, instead of linking a page that is gone, and the 2.10.1 notes no longer link GPT Pilot, archived in 2.9.6. ([#PR](https://github.com/assafbar2/agentswitchboard.dev/pull/PR))
+- [/changelog](https://agentswitchboard.dev/changelog) names a listing that has since been archived without linking it, instead of linking a page that is gone, and the 2.10.1 notes no longer link GPT Pilot, archived in 2.9.6. ([#414](https://github.com/assafbar2/agentswitchboard.dev/pull/414))
 
 ## [2.11.0] - 2026-11-14 - The homepage starts from the job
 
