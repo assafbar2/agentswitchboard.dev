@@ -4,7 +4,7 @@ import Link from '@/components/Link';
 import { Suspense } from 'react';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { pageMetadata } from '@/lib/metadata';
-import { getAllCategories, getListingCategories } from '@/lib/catalog';
+import { getAllCategories, getEveryAgent, getListingCategories } from '@/lib/catalog';
 import { getReleases, releaseAnchor } from '@/lib/changelog';
 import { NEW_DAYS } from '@/lib/freshness';
 import { inlineMarkdownToText } from '@/lib/inline-markdown';
@@ -37,6 +37,8 @@ export default async function ChangelogPage() {
   const releases = getReleases();
   const listingCategories = await getListingCategories();
   const categoriesOf = (slug: string) => listingCategories.get(slug) ?? [];
+  // An archived listing has no page, so its older entries name it without a link.
+  const listed = new Set((await getEveryAgent()).map((a) => a.slug));
   const counts = logCounts(entries, categoriesOf);
   const categories = (await getAllCategories())
     .filter((c) => counts[c.slug])
@@ -142,7 +144,7 @@ export default async function ChangelogPage() {
                   data-cats={categoriesOf(e.slug).join(' ') || undefined}
                 >
                   <div className="log-row">
-                    {e.action === 'removed' ? (
+                    {e.action === 'removed' || !listed.has(e.slug) ? (
                       <span className="log-name">{e.name}</span>
                     ) : (
                       <Link href={`/agents/${e.slug}`} className="log-name">

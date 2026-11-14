@@ -454,9 +454,21 @@ describe('taskScore and taskMatches', () => {
 
   it('on /browse, picks the task listings first, then filters and searches them', () => {
     const slugs = (state: BrowseState) => browseMatches(agents, state).map((a) => a.slug);
-    expect(slugs({ ...none, task })).toEqual(['everywhere', 'named', 'named-too', 'in-category']);
+    expect(slugs({ ...none, task })).toEqual(['everywhere', 'named-too', 'named', 'in-category']);
     expect(slugs({ ...none, task, access: ['mcp'] })).toEqual(['in-category']);
     expect(slugs({ ...none, task, query: 'kit' })).toEqual(['named']);
+  });
+
+  it('on /browse, ranks a task A→Z on a tie, so a featured listing first in the catalog never moves up', () => {
+    const named = agents.find((a) => a.slug === 'named')!;
+    const featuredFirst = [{ ...named, featured: true }, ...agents.filter((a) => a !== named)];
+    expect(browseMatches(featuredFirst, { ...none, task }).map((a) => a.slug)).toEqual([
+      'everywhere',
+      'named-too',
+      'named',
+      'in-category',
+    ]);
+    expect(browseMatches(featuredFirst, none).map((a) => a.slug)[0]).toBe('named');
   });
 
   it('writes the task first in a /browse URL', () => {

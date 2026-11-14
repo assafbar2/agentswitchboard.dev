@@ -53,7 +53,7 @@ handshake (e.g. wiring into a connector platform).
 | Param | Type | Default | Notes |
 |---|---|---|---|
 | `q` | string | `""` | Free-text over name, description, skills, categories, tags, provider. Empty = list all (relevance falls back to catalog order). |
-| `task` | string | — | A task slug from [`GET /api/tasks`](#rest-tasks--get-apitasks), e.g. `query-a-database`: keeps only the listings that do that job. With no `q`, best fit first. An unknown slug is a `400` with `{ "error": "unknown_task", "message": "…" }`. |
+| `task` | string | — | A task slug from [`GET /api/tasks`](#rest-tasks--get-apitasks), e.g. `query-a-database`: keeps only the listings that do that job. With no `q`, best fit first and A→Z on a tie, as `GET /api/tasks/{slug}` lists them; featured never moves one up. An unknown slug is a `400` with `{ "error": "unknown_task", "message": "…" }`. |
 | `category` | string | — | Category slug, e.g. `content-media`. See `list_categories` / [`content/categories.json`](../content/categories.json). |
 | `access` | string | — | One or more of `api`, `mcp`, `cli`, `browser-extension` (`extension` is accepted as an alias). Comma-separate to **require all** (`access=api,mcp`). Unknown values are ignored, not rejected. |
 | `official` | boolean | `false` | `true` (or `1`) returns only [official listings](#official-listings): first-party products from major vendors. Combines with `category`, `access`, and `q`. |
