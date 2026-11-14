@@ -459,16 +459,18 @@ describe('taskScore and taskMatches', () => {
     expect(slugs({ ...none, task, query: 'kit' })).toEqual(['named']);
   });
 
-  it('on /browse, ranks a task A→Z on a tie, so a featured listing first in the catalog never moves up', () => {
+  it("on /browse, lists a task's live Featured and Sponsored fits first, then the rest by fit, A→Z on a tie", () => {
     const named = agents.find((a) => a.slug === 'named')!;
-    const featuredFirst = [{ ...named, featured: true }, ...agents.filter((a) => a !== named)];
-    expect(browseMatches(featuredFirst, { ...none, task }).map((a) => a.slug)).toEqual([
-      'everywhere',
-      'named-too',
-      'named',
-      'in-category',
-    ]);
-    expect(browseMatches(featuredFirst, none).map((a) => a.slug)[0]).toBe('named');
+    const inCategory = agents.find((a) => a.slug === 'in-category')!;
+    const placed = [
+      { ...named, featured: true, featuredUntil: '2026-12-31' },
+      { ...inCategory, sponsored: true },
+      ...agents.filter((a) => a !== named && a !== inCategory),
+    ];
+    const order = (day: string) => browseMatches(placed, { ...none, task }, day).map((a) => a.slug);
+    expect(order('2026-11-14')).toEqual(['named', 'in-category', 'everywhere', 'named-too']);
+    expect(order('2027-01-01')).toEqual(['in-category', 'everywhere', 'named-too', 'named']);
+    expect(browseMatches(placed, none, '2026-11-14').map((a) => a.slug)[0]).toBe('named');
   });
 
   it('writes the task first in a /browse URL', () => {

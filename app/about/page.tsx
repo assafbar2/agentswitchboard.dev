@@ -122,8 +122,8 @@ export default async function AboutPage() {
               Only a listing that already meets the acceptance rules can be sponsored, and each one is
               reviewed before the label goes on. The label shows wherever the listing does, so a paid
               placement is never mistaken for an editor&rsquo;s pick. The REST API and /agents.json carry{' '}
-              <code className="mono text-sm">sponsored: true</code> too; results in AI assistants, through the
-              MCP server, never mention sponsorship. To sponsor a
+              <code className="mono text-sm">sponsored: true</code> too, but never rank by it; results in AI
+              assistants, through the MCP server and WebMCP, never mention sponsorship. To sponsor a
               listing, see{' '}
               <Link href="/advertise" className="font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2">
                 Advertise

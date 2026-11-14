@@ -112,11 +112,11 @@ test.describe('drop pages', () => {
 
 test.describe('the label wherever the listing appears', () => {
   for (const { slug, name } of SPONSORED) {
-    test(`${name}'s page shows Sponsored and says it never changes ranking`, async ({ page }) => {
+    test(`${name}'s page shows Sponsored and says where it comes first and what it never changes`, async ({ page }) => {
       await page.goto(`/agents/${slug}`);
       const header = human(page).getByRole('heading', { level: 1 }).locator('..');
       await expect(header.getByText('Sponsored', { exact: true })).toBeVisible();
-      await expect(header.getByText(/never changes where this listing ranks/)).toBeVisible();
+      await expect(header.getByText(/comes first, labeled, among the tools for\s+each task it does; it never changes where it ranks in search/)).toBeVisible();
       await expect(header.getByText("Editor's Pick")).toHaveCount(0);
       await expect(page.locator('main .agent-only')).toContainText('true · paid placement');
     });
@@ -134,6 +134,15 @@ test.describe('the label wherever the listing appears', () => {
     await expect(card.getByText('Sponsored', { exact: true })).toBeVisible();
   });
 
+  test('in a task it does, it comes first, labeled: on /browse?task= and the task page', async ({ page }) => {
+    for (const path of ['/browse?task=send-and-read-email', '/tasks/send-and-read-email']) {
+      await page.goto(path);
+      const first = human(page).locator('.cmp-card').first();
+      await expect(first.locator('a[href="/agents/agentmail"]'), path).toHaveCount(1);
+      await expect(first.getByText('Sponsored', { exact: true }), path).toBeVisible();
+    }
+  });
+
   test('a compare column carries the label', async ({ page }) => {
     await page.goto(`/compare?a=agentmail&b=${UNPAID.slug}`);
     const heads = human(page).locator('table.cmp-table thead th');
@@ -145,7 +154,8 @@ test.describe('the label wherever the listing appears', () => {
     await page.goto('/about#sponsored');
     const section = page.locator('main section#sponsored');
     await expect(section.getByRole('heading', { level: 2 })).toHaveText('Sponsored');
-    await expect(section).toContainText('never changes search results or their order');
+    await expect(section).toContainText('comes first, labeled, among the tools for each task it does');
+    await expect(section).toContainText('never changes keyword search results or their order');
     await expect(section.getByRole('link', { name: 'Advertise' })).toHaveAttribute('href', '/advertise');
   });
 });
@@ -188,7 +198,7 @@ test.describe('machine surfaces expose the flag and nothing more', () => {
 });
 
 test.describe('/advertise, the manual sponsor flow', () => {
-  test('says where a slot shows, what it never changes, and that it never reaches AI assistants', async ({ page }) => {
+  test('says where a slot shows, including first place in task answers, what it never changes, and that it never reaches AI assistants', async ({ page }) => {
     await page.goto('/advertise');
     const main = page.locator('main');
     await expect(main.getByRole('heading', { level: 1 })).toHaveText('Advertise with Us');
@@ -196,8 +206,9 @@ test.describe('/advertise, the manual sponsor flow', () => {
     await expect(what.getByText('Sponsored', { exact: true })).toBeVisible();
     await expect(what.getByRole('link', { name: 'homepage' })).toHaveAttribute('href', '/');
     await expect(what.getByRole('link', { name: 'weekly drop' })).toHaveAttribute('href', '/drops');
+    await expect(what).toContainText('first place, labeled, among the tools for each task it does');
     const never = main.locator('section[aria-labelledby="never"]');
-    await expect(never).toContainText('Search results or their order, tasks, alternatives, compare or the Operator');
+    await expect(never).toContainText('Keyword search results or their order, alternatives, compare or the Operator');
     await expect(never).toContainText('sponsorship never appears in those results');
     await expect(never.getByRole('link', { name: 'What Sponsored means' })).toHaveAttribute('href', '/about#sponsored');
     await expect(main.locator('section[aria-labelledby="qualifies"]')).toContainText('Verified checks');

@@ -15,7 +15,8 @@ import { sponsoredAgents } from '@/lib/homepage';
 import { inlineMarkdownToText } from '@/lib/inline-markdown';
 import { OPERATOR_EXAMPLES, operatorHref, RECOMMEND_EXAMPLE } from '@/lib/request-parts';
 import { recommendDecision } from '@/lib/decide';
-import { organicOrder, withoutPlacement } from '@/lib/organic';
+import { organicOrder } from '@/lib/organic';
+import { promotion, today } from '@/lib/promoted';
 import { taskMatches } from '@/lib/search';
 import { getStacks, stackEntries, stackOfTheWeek } from '@/lib/stacks';
 import { getTasks } from '@/lib/tasks';
@@ -83,9 +84,10 @@ export default async function HomePage() {
     label: task.label,
     count: taskMatches(catalog, task).length,
   }));
-  // A real answer, from the same code as GET /api/recommend: organic order, no placement field.
-  const exampleDecision = recommendDecision(RECOMMEND_EXAMPLE, tasks, organicOrder(catalog));
-  const example = exampleDecision.ok ? withoutPlacement(exampleDecision.body) : null;
+  // A real answer, as the box's /home/answer gives it: promoted tools first, labeled.
+  const day = today();
+  const exampleDecision = recommendDecision(RECOMMEND_EXAMPLE, tasks, organicOrder(catalog), (a) => promotion(a, day));
+  const example = exampleDecision.ok ? exampleDecision.body : null;
 
   const homeSchema = [
     {

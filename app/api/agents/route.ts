@@ -12,8 +12,9 @@
  *                                          featured } ] }
  *
  * `task` (a slug from GET /api/tasks) keeps the listings that fit the task,
- * best fit first and A→Z on a tie, featured ignored, as /browse?task= and
- * GET /api/tasks/<slug> do; an unknown one is a 400.
+ * best fit first and A→Z on a tie, featured ignored, as GET /api/tasks/<slug>
+ * does (the website's /browse?task= puts Featured and Sponsored fits first,
+ * labeled; lib/promoted.ts); an unknown one is a 400.
  * `access` takes api | mcp | cli | browser-extension (comma-separate to require
  * several); `extension` is accepted as an alias of `browser-extension`.
  * `auth` takes none | apiKey | oauth2 | bearer (comma-separate to accept any).
@@ -117,7 +118,7 @@ export async function GET(req: Request): Promise<Response> {
   }
 
   const everyAgent = await getEveryAgent();
-  // A task ranks on fit alone, as GET /api/tasks/<slug> and the task page do.
+  // A task ranks on fit alone, as GET /api/tasks/<slug> does.
   const catalog = task || wantsOrganic(searchParams) ? organicOrder(everyAgent) : everyAgent;
   const agents = filterAgents(task ? taskMatches(catalog, task) : catalog, {
     category,

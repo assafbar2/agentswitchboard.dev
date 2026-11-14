@@ -4,6 +4,18 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
+## [2.12.0] - 2026-11-14 - Featured and Sponsored come first in task answers
+
+### Highlights
+- Ask the homepage box for a job, open a task page or browse by task, and the Featured and Sponsored tools that do that job come first, each labeled, then the rest by how well they fit. "I need an agent first mailbox" now answers AgentMail, labeled Sponsored. [Try it](https://agentswitchboard.dev/tasks/send-and-read-email)
+
+### Changed
+- On the website, the homepage box's pick and alternatives, each task page's dated answer, quick answers, comparison table and best fits, and [/browse?task=](https://agentswitchboard.dev/browse?task=send-and-read-email) list the task's listings that have a Sponsored slot or a live Featured placement first, each with its Sponsored or Featured label, then the rest in the organic order. The box answers from a site-only `/home/answer`, the same answer as `GET /api/recommend` with that order and a `placements` label per promoted listing. Where the site said paid placement never changes an answer, it now says how placement works: the homepage answer, task pages, Browse by task, [/advertise](https://agentswitchboard.dev/advertise), [/about](https://agentswitchboard.dev/about#sponsored), the README and docs/API.md. ([#PR](https://github.com/assafbar2/agentswitchboard.dev/pull/PR))
+- Unchanged and still organic, with no boost and no label: the MCP server and WebMCP (`recommend`, `search_agents` and the rest), the REST API (`/api/recommend`, `/api/tasks`, `/api/agents`, including `?task=`), each task page's Markdown twin and the [Operator](https://agentswitchboard.dev/operator). Tests check that every one of them answers the same whatever is placed. ([#PR](https://github.com/assafbar2/agentswitchboard.dev/pull/PR))
+
+### Fixed
+- Matching a need to a pick reads "agent-first", "AI-native" and the like as built for agents: "first" or "native" no longer re-ranks a task's tools as if it named a product, and "agent" then counts, so "I need an agent first mailbox" picks AgentMail on fit, not Forward Email MCP for mentioning "mailbox". AgentMail, an email inbox API, is also listed in Communication, like Resend Inboxes and Revdoku, which raises it from 8th to 6th of the 24 tools that send and read email. ([#PR](https://github.com/assafbar2/agentswitchboard.dev/pull/PR))
+
 ## [2.11.1] - 2026-11-14 - Browsing by task ranks on fit alone
 
 ### Highlights

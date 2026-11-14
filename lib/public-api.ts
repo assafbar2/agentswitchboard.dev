@@ -30,11 +30,13 @@ export const OFFICIAL_DEFINITION =
 /** What `featured: true` means, and how it affects result order. */
 export const FEATURED_DEFINITION =
   'Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order. ' +
-  'The MCP server and WebMCP ignore it: their results are organic and leave the flag out.';
+  'On the website, a featured listing that does a task also comes first, labeled, in that task’s answers: the homepage answer, the task page and Browse by task. ' +
+  'The MCP server, WebMCP, recommend and the task endpoints ignore it: their results are organic and leave the flag out.';
 
 /** What `sponsored: true` means. Mirrors /about#sponsored and CONTRIBUTING.md. */
 export const SPONSORED_DEFINITION =
-  'Sponsored: a paid placement, approved by the maintainer. It shows a Sponsored label and a spot in the Sponsored slot on the homepage and the latest drop page. It never changes search results or their order, tasks, alternatives, compare or the Operator, never appears in AI-assistant (MCP) results, and is separate from Featured, Official and Verified.';
+  'Sponsored: a paid placement, approved by the maintainer. It shows a Sponsored label and a spot in the Sponsored slot on the homepage and the latest drop page, and on the website the listing comes first, labeled, among the tools for each task it does: the homepage answer, the task page and Browse by task. ' +
+  'It never changes keyword search results or their order, alternatives, compare or the Operator, never changes or appears in what AI assistants get (the MCP server, WebMCP and the REST API’s rankings), and is separate from Featured, Official and Verified.';
 
 // ── Access-method input ─────────────────────────────────────────────
 

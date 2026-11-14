@@ -23,7 +23,10 @@ const TASK_BOX = 'What do you need your agent to do?';
 const answers = (page) => human(page).locator('[data-recommendation]');
 const events = (page, name) =>
   page.evaluate((n) => (window.vaq ?? []).filter(([kind, e]) => kind === 'event' && e.name === n).map(([, e]) => e.data), name);
-const recommend = async (page, need) => (await page.request.get(`/api/recommend?need=${encodeURIComponent(need)}`, { headers: UA })).json();
+// The box answers from the site-only /home/answer: GET /api/recommend with the task's promoted tools first, labeled.
+const recommend = async (page, need) => (await page.request.get(`/home/answer?need=${encodeURIComponent(need)}`, { headers: UA })).json();
+const organicRecommend = async (page, need) => (await page.request.get(`/api/recommend?need=${encodeURIComponent(need)}`, { headers: UA })).json();
+const MAILBOX_NEED = 'I need an agent first mailbox';
 
 /** Asks the homepage box, again until the page has hydrated and answers in place. */
 async function ask(page, need) {
@@ -128,7 +131,7 @@ test.describe('homepage — what do you need your agent to do?', () => {
     await expect(human(page).getByRole('heading', { name: `Example answer · “${EXAMPLE_NEED}”` })).toBeVisible();
   });
 
-  test('the example is the real recommend answer: pick, why, next step, limitations and two alternatives', async ({ page }) => {
+  test('the example is the real answer: pick, why, next step, limitations and two alternatives, promoted ones labeled', async ({ page }) => {
     const api = await recommend(page, EXAMPLE_NEED);
     await page.goto('/');
     await expect(answers(page)).toHaveCount(api.recommendations.length);
@@ -146,12 +149,32 @@ test.describe('homepage — what do you need your agent to do?', () => {
       if (r.pick.verified) {
         await expect(card.getByRole('link', { name: /^link and access path checked, [A-Z][a-z]{2} \d{4}$/ })).toHaveAttribute('href', '/about#verification');
       }
-      // Organic: no placement label in the answer.
-      await expect(card.getByText(/^(Sponsored|Featured|Editor's Pick)$/)).toHaveCount(0);
+      const placements = api.placements ?? {};
+      for (const a of [r.pick, ...r.alternatives].filter((x) => placements[x.slug])) {
+        await expect(card.getByText(placements[a.slug], { exact: true }).first(), a.slug).toBeVisible();
+      }
+      const labels = [r.pick, ...r.alternatives].filter((x) => placements[x.slug]).length;
+      await expect(card.getByText(/^(Sponsored|Featured)$/)).toHaveCount(labels);
+      await expect(card.getByText(/^Editor's Pick$/)).toHaveCount(0);
     }
+    await expect(human(page)).toContainText('Featured and Sponsored listings that do the job come first, labeled');
+    await expect(human(page)).not.toContainText('Paid placement never changes it');
   });
 
-  test('a job typed in the box is answered in place, as GET /api/recommend answers it, counted without the words', async ({ page }) => {
+  test(`"${MAILBOX_NEED}" answers AgentMail first, labeled Sponsored; GET /api/recommend stays organic`, async ({ page }) => {
+    await page.goto('/');
+    await ask(page, MAILBOX_NEED);
+    const card = answers(page).first();
+    await expect(card).toHaveAttribute('data-recommendation', 'agentmail');
+    await expect(card.getByText('Sponsored', { exact: true }).first()).toBeVisible();
+    await expect(card).toContainText('Sponsored: a paid placement among the tools that do this, so it comes first.');
+    const api = await organicRecommend(page, MAILBOX_NEED);
+    expect(api.recommendations[0].pick.slug).toBe('agentmail');
+    expect(api.recommendations[0].pickedBecause).toBe('Picked because it mentions “agent”.');
+    expect(JSON.stringify(api)).not.toMatch(/"(placements|featured|sponsored)"/);
+  });
+
+  test('a job typed in the box is answered in place, as /home/answer answers it, counted without the words', async ({ page }) => {
     const need = 'query Postgres and send email';
     const api = await recommend(page, need);
     await page.goto('/');

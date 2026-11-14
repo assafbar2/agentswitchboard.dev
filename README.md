@@ -67,10 +67,12 @@ twin of every task page at `/tasks/<slug>.md` (its dated answer and best fits), 
 
 **Full API reference: [docs/API.md](docs/API.md)** — REST search/detail/categories, compare, alternatives, the connect bundle, recommend and missing-tool requests, rate limits, MCP, WebMCP, and the catalog dump.
 
-**Ranked on fit alone.** The task pages (each opens with a dated answer and a table
-comparing its six best fits), the [Operator](https://agentswitchboard.dev/operator),
-`recommend` and the MCP server rank listings by how well they fit the job; Featured or
-Sponsored never moves one up there. The one paid placement is the labeled Sponsored slot on the
+**Placement on the website, fit alone for assistants.** On the website's task answers (the
+homepage box, each task page with its dated answer and comparison table, and Browse by task),
+listings that do the job and are Featured or Sponsored come first, each labeled; the rest are
+ranked by how well they fit. The [Operator](https://agentswitchboard.dev/operator) and everything
+AI assistants get (the MCP server, WebMCP and the REST API, `recommend` and `/api/tasks`
+included) rank on fit alone, with no boost and no label. A Sponsored slot also shows on the
 homepage and that week's drop page, from $29 a week ([/advertise](https://agentswitchboard.dev/advertise)).
 
 ## 🗂 Git-as-CMS

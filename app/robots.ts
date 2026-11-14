@@ -58,8 +58,8 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: '*',
         allow: '/',
         // Public catalog APIs must stay crawlable (Muse review fetches them),
-        // except /api/recommend: every need is another URL, as on a query page.
-        disallow: ['/_next/', ...QUERY_PAGES, '/api/recommend', ...SHARE_CARDS],
+        // except /api/recommend and the homepage box's /home/answer: every need is another URL, as on a query page.
+        disallow: ['/_next/', ...QUERY_PAGES, '/api/recommend', '/home/answer', ...SHARE_CARDS],
         crawlDelay: 5,
       },
       { userAgent: LINK_PREVIEW_BOTS, allow: '/', disallow: ['/_next/'] },

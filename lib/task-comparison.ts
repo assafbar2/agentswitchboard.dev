@@ -1,7 +1,7 @@
 /**
- * The comparison table atop each task page: the first COMPARISON_SIZE best
- * fits, in taskMatches order (organic: nothing featured or sponsored moves a
- * row), with a few facts each listing already carries.
+ * The comparison table atop each task page: the first COMPARISON_SIZE fits
+ * in the page's order (Featured and Sponsored first, labeled, then by fit;
+ * lib/promoted.ts), with a few facts each listing already carries.
  */
 
 import type { Agent } from './types';

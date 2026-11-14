@@ -221,6 +221,29 @@ describe('putThrough', () => {
     expect(slugs(once.stack)).toEqual(['combo']);
     expect(slugs(putThrough('send email with Gmail, query a database', tasks, catalog).stack)).toEqual(['gmail-sender', 'combo']);
   });
+
+  it('reads "agent-first" as built for agents: "agent" then tells, and "first" never does', () => {
+    const catalog = [listing('plain-mailer', 'Sends email.'), listing('first-mailer', 'Sends email first.'), listing('agent-mailer', 'Sends email.')];
+    expect(onePart('an agent-first email inbox', catalog)).toMatchObject({ pick: 'agent-mailer', named: ['agent'] });
+    expect(onePart('an AI native email inbox', catalog)).toMatchObject({ pick: 'plain-mailer', named: [] });
+    expect(onePart('I need an agent to send email', catalog)).toMatchObject({ pick: 'plain-mailer', named: [] });
+  });
+
+  it('with promote, puts the fits it marks first, then the organic pick and alternatives', () => {
+    const catalog = [listing('plain-mailer'), listing('described-mailer', 'Sends email through Gmail.'), listing('gmail-sender')];
+    const promote = (a: Agent) => a.slug === 'plain-mailer';
+    const { parts } = putThrough('send email with Gmail', tasks, catalog, promote);
+    expect(parts[0]).toMatchObject({ promoted: true, named: [] });
+    expect(slugs([parts[0].pick, ...parts[0].alternatives])).toEqual(['plain-mailer', 'gmail-sender', 'described-mailer']);
+    expect(putThrough('send email with Gmail', tasks, catalog).parts[0]).toMatchObject({ promoted: false });
+  });
+
+  it('with promote, places only the marked fits that have what the part asks for', () => {
+    const catalog = [listing('mcp-mailer'), listing('cli-mailer', undefined, { accessMethods: ['cli'] })];
+    const promote = (a: Agent) => a.slug === 'cli-mailer';
+    expect(slugs([putThrough('send email with an MCP', tasks, catalog, promote).parts[0].pick])).toEqual(['mcp-mailer']);
+    expect(slugs([putThrough('send email', tasks, catalog, promote).parts[0].pick])).toEqual(['cli-mailer']);
+  });
 });
 
 describe('pickedBecause', () => {

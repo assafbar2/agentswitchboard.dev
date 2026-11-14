@@ -1,12 +1,15 @@
 import Link from '@/components/Link';
 import { AgentIcon } from '@/components/AgentIcon';
 import { CopyBlock } from '@/components/CopyBlock';
+import { PromotionBadge } from '@/components/PromotionBadge';
 import { VerifiedNote } from '@/components/VerifiedNote';
 import type { RecommendBody } from '@/lib/decide';
+import { PROMOTED_NOTE, type Promotion } from '@/lib/promoted';
 import { joinList, pluralize } from '@/lib/utils';
 
 type Recommendation = RecommendBody['recommendations'][number];
 type Listed = Recommendation['pick'];
+type Placements = Record<string, Promotion>;
 
 const INLINE_LINK = 'font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2';
 const OFFICIAL_TAG =
@@ -26,7 +29,7 @@ function sentence(text: string): string {
   return /[.!?]$/.test(text) ? text : `${text}.`;
 }
 
-function Pick({ pick }: { pick: Listed }) {
+function Pick({ pick, label }: { pick: Listed; label?: Promotion }) {
   return (
     <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
       <Link
@@ -37,13 +40,14 @@ function Pick({ pick }: { pick: Listed }) {
         <span className="min-w-0 wrap-break-word">{pick.name}</span>
       </Link>
       <span className="text-[15px] text-[var(--dir-muted)]">by {pick.provider}</span>
+      <PromotionBadge label={label} />
       {pick.official && <span className={OFFICIAL_TAG}>Official</span>}
       {pick.verified && <VerifiedNote checked={pick.lastChecked} />}
     </div>
   );
 }
 
-function Alternatives({ alternatives }: { alternatives: Listed[] }) {
+function Alternatives({ alternatives, placements }: { alternatives: Listed[]; placements: Placements }) {
   if (alternatives.length === 0) return null;
   return (
     <p className="text-[15px] text-[var(--dir-muted)]">
@@ -56,13 +60,14 @@ function Alternatives({ alternatives }: { alternatives: Listed[] }) {
           <Link href={`/agents/${alt.slug}`} className={INLINE_LINK}>
             {alt.name}
           </Link>
+          {placements[alt.slug] && <PromotionBadge label={placements[alt.slug]} className="ml-1.5 align-middle" />}
         </span>
       ))}
     </p>
   );
 }
 
-function OneRecommendation({ r, from }: { r: Recommendation; from: string }) {
+function OneRecommendation({ r, from, placements }: { r: Recommendation; from: string; placements: Placements }) {
   const config = r.nextStep.server
     ? JSON.stringify({ mcpServers: { [r.pick.slug]: r.nextStep.server } }, null, 2)
     : null;
@@ -79,11 +84,11 @@ function OneRecommendation({ r, from }: { r: Recommendation; from: string }) {
         , {r.fits} {pluralize(r.fits, 'tool')} do it
       </p>
 
-      <Pick pick={r.pick} />
+      <Pick pick={r.pick} label={placements[r.pick.slug]} />
 
       <p className="text-[16px] leading-snug">
         <span className="dir-label mr-1.5 text-[13px]">Why</span>
-        {r.pickedBecause.startsWith('Picked') ? r.pickedBecause : 'The task’s best fit.'}
+        {r.pickedBecause.startsWith('Picked') || placements[r.pick.slug] ? r.pickedBecause : 'The task’s best fit.'}
         {r.why && ` ${sentence(r.why)}`}
       </p>
 
@@ -113,24 +118,26 @@ function OneRecommendation({ r, from }: { r: Recommendation; from: string }) {
           : 'None in its listing: no sign-in, a hosted server with a config to copy, and Verified.'}
       </p>
 
-      <Alternatives alternatives={r.alternatives} />
+      <Alternatives alternatives={r.alternatives} placements={placements} />
     </article>
   );
 }
 
 /**
- * The recommend answer (lib/decide.ts recommendDecision), as GET /api/recommend
- * returns it: for each need, the pick, why, the next step with its config to
- * copy, its limitations and two alternatives. Organic only: the body carries
- * no placement field and nothing here labels one.
+ * The recommend answer (lib/decide.ts recommendDecision), as the homepage
+ * box's /home/answer returns it: for each need, the pick, why, the next step
+ * with its config to copy, its limitations and two alternatives. A listing
+ * in `body.placements` was placed first and shows its Featured or Sponsored
+ * label wherever it is named.
  */
 export function RecommendAnswer({ body, from }: { body: RecommendBody; from: string }) {
   const nearest = body.unmatched.flatMap((u) => u.nearestTasks);
+  const placements = body.placements ?? {};
   return (
     <div className="flex flex-col gap-3">
       <div className={body.recommendations.length > 1 ? 'grid gap-3 lg:grid-cols-2' : 'grid gap-3'}>
         {body.recommendations.map((r, i) => (
-          <OneRecommendation key={`${r.pick.slug}-${i}`} r={r} from={from} />
+          <OneRecommendation key={`${r.pick.slug}-${i}`} r={r} from={from} placements={placements} />
         ))}
       </div>
       {body.unmatched.length > 0 && (
@@ -154,7 +161,12 @@ export function RecommendAnswer({ body, from }: { body: RecommendBody; from: str
         </p>
       )}
       <p className="flex flex-wrap gap-x-4 gap-y-1 text-[15px] text-[var(--dir-muted)]">
-        <span>Picked by fixed matching rules, not a model. Paid placement never changes it.</span>
+        <span>
+          {PROMOTED_NOTE} Picked by fixed rules, not a model.{' '}
+          <Link href="/about#sponsored" className={INLINE_LINK}>
+            How placement works
+          </Link>
+        </span>
         {body.stackUrl && (
           <Link href={sitePath(body.stackUrl)} className={INLINE_LINK}>
             Connect all {body.recommendations.length} as one stack →

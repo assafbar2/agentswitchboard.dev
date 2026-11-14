@@ -1,4 +1,5 @@
 import { organicOrder } from './organic';
+import { promotedFirst } from './promoted';
 import type { Agent } from './types';
 
 /** Canonical access method labels for display */
@@ -181,12 +182,14 @@ export interface BrowseState {
 /**
  * The listings a /browse view shows, before sorting. A task picks its
  * listings from all of `agents` before the filters apply, so a filter keeps
- * the same listings the breakdown line counted for it. A task ranks on fit
- * alone, in organic order (lib/organic.ts) as its task page does, so Featured
- * never moves a listing up it; without a task the catalog's order stands.
+ * the same listings the breakdown line counted for it. A task lists its
+ * Featured and Sponsored fits first, then the rest by fit in organic order
+ * (lib/promoted.ts), as its task page does; without a task the catalog's
+ * order stands. `day` (YYYY-MM-DD) decides which Featured placements are live.
  */
-export function browseMatches(agents: Agent[], state: BrowseState): Agent[] {
-  const narrowed = filterAgents(state.task ? taskMatches(organicOrder(agents), state.task) : agents, {
+export function browseMatches(agents: Agent[], state: BrowseState, day?: string): Agent[] {
+  const fits = state.task ? promotedFirst(taskMatches(organicOrder(agents), state.task), day) : agents;
+  const narrowed = filterAgents(fits, {
     category: state.category,
     official: state.official || !!state.vendor,
     vendor: state.vendor,

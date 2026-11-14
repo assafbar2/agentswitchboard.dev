@@ -208,8 +208,9 @@ curl "https://agentswitchboard.dev/api/tasks/query-a-database"
 ```
 
 `GET /api/tasks/{slug}` returns one task with the same fields plus `agents`
-(every listing that fits, best fit first and A→Z on a tie, as on the task
-page, with no featured listing moved up: the REST search fields, `authType`,
+(every listing that fits, best fit first and A→Z on a tie, with no featured
+or sponsored listing moved up, unlike the task page, which lists those first
+with their label: the REST search fields, `authType`,
 and `why`, the listing's own skill that does the job, or `null` when it fits
 by its name, description or tags), `relatedTasks` and `stacks` (slugs). An
 unknown slug returns `404` with `{ "error": "not_found", "message": "…" }`.
@@ -443,7 +444,9 @@ among the task's listings, those that mention what the need names come first,
 then Official ones, then the task's best fits. Saying MCP, CLI, API, browser
 extension or official in the need narrows the pick. No model, so the same need
 always gets the same answer, and placement never changes it: the catalog is read
-in organic order and the answer carries no placement field. No need is a `400`
+in organic order and the answer carries no placement field. (The website's
+homepage box puts a task's Featured and Sponsored tools first, labeled; this
+endpoint and the MCP and WebMCP `recommend` tools never do.) No need is a `400`
 with `{ "error": "no_need" }`; a need that matches no task is a `404` with
 `{ "error": "no_match", "message", "unmatched" }`, naming the closest tasks.
 
@@ -672,8 +675,8 @@ It is factual, not paid, and independent of the other flags:
 |---|---|---|
 | `verified` | Code-backed checks pass: URLs load, access method declared, linked repo live | monthly sweep |
 | `official` | First-party product of a vendor in [`content/official-vendors.json`](../content/official-vendors.json) | maintainers, with evidence; CI checks the `agentUrl` is on that vendor's official sources |
-| `featured` | Editorial placement; sorts first when there is no search text | maintainers only |
-| `sponsored` | Paid placement: a Sponsored label and a spot in the Sponsored slot on the homepage and the latest drop page. Never changes ranking, tasks, alternatives, compare or the Operator. In REST and `/agents.json` only, never in MCP or WebMCP results or the decision endpoints | maintainers only |
+| `featured` | Editorial placement; sorts first when there is no search text, and first, labeled, among a task's tools in the website's task answers (never in `/api/tasks`, `recommend` or a `task` search) | maintainers only |
+| `sponsored` | Paid placement: a Sponsored label, a spot in the Sponsored slot on the homepage and the latest drop page, and first place, labeled, among the tools for each task it does in the website's task answers (the homepage box, task pages, `/browse?task=`). Never changes any API ranking, keyword search, alternatives, compare or the Operator. In REST and `/agents.json` only, never in MCP or WebMCP results or the decision endpoints | maintainers only |
 
 On the website: the **Official** filter on [`/browse?official=1`](https://agentswitchboard.dev/browse?official=1)
 combines with **Verified**, **No auth needed**, categories and access methods.

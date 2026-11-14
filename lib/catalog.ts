@@ -141,9 +141,10 @@ export const getEveryAgent = cache(
 );
 
 /**
- * Every published agent A→Z, featured or not (lib/organic.ts). Task pages
- * and the Operator rank from this, as the MCP server and recommend do, so
- * no placement moves a listing up a task or into a stack, even on a tie.
+ * Every published agent A→Z, featured or not (lib/organic.ts). The task
+ * endpoints and the Operator rank from this, as the MCP server and recommend
+ * do, so no placement moves a listing up a task or into a stack, even on a
+ * tie. The site's task answers layer lib/promoted.ts on top.
  */
 export async function getOrganicAgents(): Promise<Agent[]> {
   return organicOrder(await getEveryAgent());
