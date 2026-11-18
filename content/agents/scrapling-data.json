@@ -1,0 +1,73 @@
+{
+  "id": "scrapling-data",
+  "name": "Scrapling Data",
+  "slug": "scrapling-data",
+  "description": "Serves live crypto, DeFi, stock and web data plus downloadable datasets to AI agents, paid per call with x402 USDC and with no API key required.",
+  "providerName": "Scrapling Data",
+  "providerUrl": "https://scraplingdata.xyz",
+  "version": "0.6.4",
+  "agentUrl": "https://scraplingdata.xyz",
+  "categories": [
+    "data-analytics",
+    "finance"
+  ],
+  "tags": [
+    "x402",
+    "crypto-data",
+    "defi",
+    "market-data",
+    "usdc",
+    "web-scraping",
+    "pay-per-call",
+    "datasets"
+  ],
+  "skills": [
+    {
+      "id": "list-and-preview-datasets",
+      "name": "List and Preview Datasets",
+      "description": "Lists the dataset catalog with prices and field names, and previews up to 10 real rows before purchase, via list_datasets and preview_dataset."
+    },
+    {
+      "id": "buy-datasets",
+      "name": "Buy Datasets",
+      "description": "Downloads every row of a chosen dataset in JSON, JSONL, CSV or Markdown after a USDC payment, via buy_dataset, at the price shown in list_datasets."
+    },
+    {
+      "id": "crypto-defi-lookups",
+      "name": "Crypto and DeFi Lookups",
+      "description": "Looks up coin prices, protocol TVL, pool stats and ranked DeFi yields via lookup_coin, lookup_protocol, lookup_pool and lookup_yields."
+    },
+    {
+      "id": "free-market-snapshots",
+      "name": "Free Market Snapshots",
+      "description": "Returns free top coin prices, DeFi yields, and perp funding and open interest via free_crypto_top10, free_defi_top_yields and free_perps_dashboard."
+    },
+    {
+      "id": "scrape-web-pages",
+      "name": "Scrape Web Pages",
+      "description": "Fetches a live web page and returns clean, LLM-ready Markdown with boilerplate stripped, via scrape_url, paid per page in USDC."
+    },
+    {
+      "id": "ecommerce-price-data",
+      "name": "E-commerce Price Data",
+      "description": "Returns a free e-commerce price and stock index teaser and paid live product lookups via free_ecom and ecom_product."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "mcpEndpoint": "https://scraplingdata.xyz/mcp",
+  "quickstartUrl": "https://scraplingdata.xyz/llms.txt",
+  "apiBaseUrl": "https://scraplingdata.xyz/v1",
+  "createdAt": "2026-11-18T21:57:00.000Z",
+  "updatedAt": "2026-11-18T21:57:00.000Z"
+}

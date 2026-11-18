@@ -1,5 +1,11 @@
 [
   {
+    "action": "added",
+    "slug": "scrapling-data",
+    "name": "Scrapling Data",
+    "date": "2026-11-18"
+  },
+  {
     "action": "updated",
     "slug": "arcade-dev",
     "name": "Arcade.dev",
