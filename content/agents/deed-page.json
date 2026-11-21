@@ -1,0 +1,71 @@
+{
+  "id": "deed-page",
+  "name": "deed.page",
+  "slug": "deed-page",
+  "description": "Publishes files to a permanent public URL at a slug the agent picks: static hosting for AI agents, with a native MCP server and no account required.",
+  "providerName": "Avatar 8 LLC",
+  "providerUrl": "https://deed.page",
+  "agentUrl": "https://deed.page",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "static-hosting",
+    "site-publishing",
+    "mcp-server",
+    "custom-domains",
+    "signed-manifests",
+    "webhooks",
+    "anonymous-publish"
+  ],
+  "skills": [
+    {
+      "id": "publish-site",
+      "name": "Publish a Site",
+      "description": "Publishes a folder or files to a live, permanent HTTPS URL with one PUT or POST, at a slug the agent chooses."
+    },
+    {
+      "id": "mcp-server",
+      "name": "Connect over MCP",
+      "description": "Connects agents to a native Streamable HTTP MCP server at /mcp to publish, update, and manage sites, including custom domains."
+    },
+    {
+      "id": "agent-readable-pages",
+      "name": "Serve Agent Markdown",
+      "description": "Stores a markdown copy of each HTML page at publish time and serves llms.txt so agents can read the site as markdown."
+    },
+    {
+      "id": "custom-domains",
+      "name": "Attach Custom Domains",
+      "description": "Attaches custom domains through the REST API and MCP and returns the DNS records to create, with no dashboard required."
+    },
+    {
+      "id": "version-rollback",
+      "name": "Restore Prior Versions",
+      "description": "Keeps version history and restore on every plan, including the first anonymous publish, with retention set by the plan."
+    },
+    {
+      "id": "signed-manifests",
+      "name": "Sign Site Manifests",
+      "description": "Signs each site version with an Ed25519 manifest of paths, hashes, and sizes, and publishes the public keys at a well-known URL."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://deed.page/mcp",
+  "quickstartUrl": "https://deed.page/docs",
+  "apiBaseUrl": "https://deed.page",
+  "status": "published",
+  "featured": false,
+  "verified": false,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-11-21T16:43:32.244Z",
+  "updatedAt": "2026-11-21T16:43:32.244Z"
+}
