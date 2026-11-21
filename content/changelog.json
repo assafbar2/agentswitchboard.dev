@@ -1,5 +1,11 @@
 [
   {
+    "action": "added",
+    "slug": "deed-page",
+    "name": "deed.page",
+    "date": "2026-11-21"
+  },
+  {
     "action": "removed",
     "slug": "northstar-trustrail-acceptance-checker",
     "name": "northstar-trustrail Acceptance Checker",
