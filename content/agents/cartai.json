@@ -48,5 +48,8 @@
     "mcp"
   ],
   "createdAt": "2026-07-25T16:22:45.424Z",
-  "updatedAt": "2026-07-25T16:22:45.424Z"
+  "updatedAt": "2026-11-28T15:50:00.000Z",
+  "mcpCommand": "npx -y cartai-mcp-server",
+  "quickstartUrl": "https://github.com/TheCartAI/cartai-mcp-server",
+  "apiBaseUrl": "https://api.cartai.ai"
 }

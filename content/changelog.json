@@ -1,5 +1,19 @@
 [
   {
+    "action": "updated",
+    "slug": "kling-ai",
+    "name": "Kling AI",
+    "note": "Added official Global MCP endpoint and npm CLI install",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "updated",
+    "slug": "cartai",
+    "name": "CartAI",
+    "note": "Added official stdio MCP command, GitHub setup guide and API base URL",
+    "date": "2026-11-28"
+  },
+  {
     "action": "added",
     "slug": "freevideo",
     "name": "FreeVideo",
