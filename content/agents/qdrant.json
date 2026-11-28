@@ -58,5 +58,9 @@
     "cli"
   ],
   "createdAt": "2026-04-08T07:17:15.486Z",
-  "updatedAt": "2026-07-10T21:06:57.812Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "install": {
+    "type": "docker",
+    "command": "docker run -p 6333:6333 qdrant/qdrant"
+  }
 }

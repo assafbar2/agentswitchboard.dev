@@ -61,5 +61,9 @@
     "cli"
   ],
   "createdAt": "2026-04-25T18:49:51.317Z",
-  "updatedAt": "2026-11-02T07:34:56.527Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "install": {
+    "type": "npm",
+    "command": "npm install -g wrangler"
+  }
 }

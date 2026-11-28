@@ -60,5 +60,11 @@
     "cli"
   ],
   "createdAt": "2026-10-04T17:55:56.135Z",
-  "updatedAt": "2026-10-04T17:55:56.135Z"
+  "updatedAt": "2026-11-28T15:53:57.114Z",
+  "install": {
+    "type": "pip",
+    "command": "pip install hindsight-api"
+  },
+  "apiBaseUrl": "https://api.hindsight.vectorize.io",
+  "mcpEndpoint": "https://api.hindsight.vectorize.io/mcp"
 }

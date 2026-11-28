@@ -55,5 +55,9 @@
     "cli"
   ],
   "createdAt": "2026-10-04T17:55:56.127Z",
-  "updatedAt": "2026-11-02T07:11:18.425Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "install": {
+    "type": "npm",
+    "command": "npm install -g skills"
+  }
 }

@@ -60,5 +60,6 @@
     "api"
   ],
   "createdAt": "2026-10-31T07:10:38.162Z",
-  "updatedAt": "2026-11-02T07:11:18.425Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpEndpoint": "https://mcp-canvas.mural.co/mcp"
 }

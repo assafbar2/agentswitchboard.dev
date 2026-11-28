@@ -49,5 +49,9 @@
     "cli"
   ],
   "createdAt": "2026-08-15T07:16:38.492Z",
-  "updatedAt": "2026-08-15T07:16:38.492Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "install": {
+    "type": "pip",
+    "command": "pip install mineru"
+  }
 }

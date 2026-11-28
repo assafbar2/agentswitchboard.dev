@@ -50,5 +50,9 @@
     "cli"
   ],
   "createdAt": "2026-07-06T07:04:36.084Z",
-  "updatedAt": "2026-11-28T14:46:41.090Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "install": {
+    "type": "pip",
+    "command": "pip install agent-framework"
+  }
 }

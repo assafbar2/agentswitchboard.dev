@@ -40,5 +40,9 @@
     "cli"
   ],
   "createdAt": "2026-11-20T17:42:21.695Z",
-  "updatedAt": "2026-11-20T17:42:21.695Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "install": {
+    "type": "brew",
+    "command": "brew install --cask skills-manager"
+  }
 }

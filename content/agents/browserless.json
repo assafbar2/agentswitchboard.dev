@@ -55,5 +55,10 @@
     "cli"
   ],
   "createdAt": "2026-09-25T22:20:34.456Z",
-  "updatedAt": "2026-09-25T22:20:34.456Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpEndpoint": "https://mcp.browserless.io/mcp",
+  "install": {
+    "type": "npm",
+    "command": "npm install -g @browserless.io/cli"
+  }
 }

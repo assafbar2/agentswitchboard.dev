@@ -55,5 +55,9 @@
     "cli"
   ],
   "createdAt": "2026-10-10T21:22:01.510Z",
-  "updatedAt": "2026-10-10T21:22:01.510Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "install": {
+    "type": "pip",
+    "command": "uv tool install terravision"
+  }
 }

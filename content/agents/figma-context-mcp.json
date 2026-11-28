@@ -48,5 +48,6 @@
     "mcp"
   ],
   "createdAt": "2026-05-13T16:56:39.597Z",
-  "updatedAt": "2026-08-02T05:28:11.992Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpCommand": "npx -y figma-developer-mcp --stdio"
 }

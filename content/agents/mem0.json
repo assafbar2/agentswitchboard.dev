@@ -58,5 +58,7 @@
     "mcp"
   ],
   "createdAt": "2026-04-08T07:17:01.136Z",
-  "updatedAt": "2026-07-10T21:06:37.895Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpEndpoint": "https://mcp.mem0.ai/mcp",
+  "apiBaseUrl": "https://api.mem0.ai/v1"
 }

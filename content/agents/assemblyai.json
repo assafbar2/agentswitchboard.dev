@@ -29,5 +29,7 @@
     "mcp"
   ],
   "createdAt": "2026-08-11T00:40:13.006Z",
-  "updatedAt": "2026-11-10T06:39:40.642Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpEndpoint": "https://mcp.assemblyai.com/mcp",
+  "apiBaseUrl": "https://api.assemblyai.com/v2"
 }

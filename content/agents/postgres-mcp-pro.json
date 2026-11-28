@@ -47,5 +47,6 @@
     "mcp"
   ],
   "createdAt": "2026-07-25T16:22:45.431Z",
-  "updatedAt": "2026-11-10T06:50:42.729Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpCommand": "uvx postgres-mcp --access-mode=unrestricted"
 }

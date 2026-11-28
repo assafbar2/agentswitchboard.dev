@@ -59,5 +59,7 @@
     "api"
   ],
   "createdAt": "2026-10-04T17:55:56.123Z",
-  "updatedAt": "2026-10-04T17:55:56.123Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpCommand": "npx -y @forwardemail/mcp-server",
+  "apiBaseUrl": "https://api.forwardemail.net/v1"
 }

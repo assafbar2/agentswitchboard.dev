@@ -30,5 +30,10 @@
     "cli"
   ],
   "createdAt": "2026-03-22T09:51:27.895Z",
-  "updatedAt": "2026-11-02T07:34:56.527Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "install": {
+    "type": "pip",
+    "command": "pip install deepl"
+  },
+  "apiBaseUrl": "https://api.deepl.com/v2"
 }

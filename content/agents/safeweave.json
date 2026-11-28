@@ -52,5 +52,6 @@
     "mcp"
   ],
   "createdAt": "2026-04-25T18:49:54.846Z",
-  "updatedAt": "2026-04-25T18:49:54.846Z"
+  "updatedAt": "2026-11-28T15:53:57.114Z",
+  "mcpCommand": "npx -y safeweave-mcp"
 }

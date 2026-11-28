@@ -49,5 +49,10 @@
     "mcp"
   ],
   "createdAt": "2026-09-02T07:21:11.743Z",
-  "updatedAt": "2026-09-02T07:21:11.743Z"
+  "updatedAt": "2026-11-28T15:53:57.114Z",
+  "install": {
+    "type": "npm",
+    "command": "npm install -g @lingo.dev/cli"
+  },
+  "mcpEndpoint": "https://mcp.lingo.dev/mcp"
 }

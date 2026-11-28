@@ -56,5 +56,6 @@
     "api"
   ],
   "createdAt": "2026-04-08T07:17:08.269Z",
-  "updatedAt": "2026-07-10T21:05:34.200Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "apiBaseUrl": "https://api.browserbase.com/v1"
 }

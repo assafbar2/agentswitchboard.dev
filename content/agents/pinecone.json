@@ -56,5 +56,6 @@
     "api"
   ],
   "createdAt": "2026-04-08T07:17:14.286Z",
-  "updatedAt": "2026-07-10T21:06:50.931Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "apiBaseUrl": "https://api.pinecone.io"
 }

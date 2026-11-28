@@ -59,5 +59,6 @@
     "mcp"
   ],
   "createdAt": "2026-04-08T07:17:25.622Z",
-  "updatedAt": "2026-11-17T15:30:32.000Z"
+  "updatedAt": "2026-11-28T15:53:57.114Z",
+  "mcpEndpoint": "https://connect.composio.dev/mcp"
 }

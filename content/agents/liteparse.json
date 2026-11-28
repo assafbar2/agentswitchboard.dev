@@ -60,5 +60,9 @@
     "api"
   ],
   "createdAt": "2026-10-04T17:55:56.133Z",
-  "updatedAt": "2026-10-04T17:55:56.133Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "install": {
+    "type": "npm",
+    "command": "npm install -g @llamaindex/liteparse"
+  }
 }

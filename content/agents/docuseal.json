@@ -44,5 +44,10 @@
     "cli"
   ],
   "createdAt": "2026-11-20T17:42:21.649Z",
-  "updatedAt": "2026-11-20T17:42:21.649Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpEndpoint": "https://mcp.docuseal.com/",
+  "install": {
+    "type": "npm",
+    "command": "npm install -g docuseal"
+  }
 }
