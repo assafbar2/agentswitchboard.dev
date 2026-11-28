@@ -12,8 +12,8 @@ import { siteCard, siteCardImage } from '@/lib/share-cards';
 import './globals.css';
 
 const AGENT_INSTRUCTIONS =
-  'For AI agents: the whole site as plain text is https://agentswitchboard.dev/llms.txt, and the home page as Markdown is https://agentswitchboard.dev/index.md. ' +
-  'Each task page (/tasks/<slug>) has a Markdown twin at the same URL with .md added. ' +
+  'For AI agents: the compact site guide is https://agentswitchboard.dev/llms.txt, the full organic reference is https://agentswitchboard.dev/llms-full.txt, and the home page as Markdown is https://agentswitchboard.dev/index.md. ' +
+  'Each listing (/agents/<slug>) and task (/tasks/<slug>) has an organic Markdown twin at the same URL with .md added. ' +
   'MCP server: https://agentswitchboard.dev/api/mcp (Streamable HTTP, no account or key), with tools such as search_agents and recommend. ' +
   "For one pick and the next step for your user's need: GET https://agentswitchboard.dev/api/recommend?need= followed by the need, URL-encoded. " +
   'Write the need yourself from what the user asked; never include names, email addresses or phone numbers.';

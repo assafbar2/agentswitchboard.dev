@@ -468,10 +468,20 @@ GET /api/tasks/<slug>
               </Link>
             </li>
             <li>
-              <span className="font-bold">→ Plain-language guide:</span>{' '}
+              <span className="font-bold">→ Plain-language guides:</span>{' '}
               <a href="/llms.txt" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
                 https://agentswitchboard.dev/llms.txt
-              </a>
+              </a>{' '}
+              (compact) and{' '}
+              <a href="/llms-full.txt" className="font-semibold underline decoration-1 underline-offset-2 hover:decoration-2">
+                https://agentswitchboard.dev/llms-full.txt
+              </a>{' '}
+              (full organic reference with tasks, categories, stacks and copy-ready Official MCPs)
+            </li>
+            <li>
+              <span className="font-bold">→ Per-listing Markdown:</span>{' '}
+              <code className="font-bold">https://agentswitchboard.dev/agents/&lt;slug&gt;.md</code>, organic Markdown
+              twin of every listing with verified access, copy-ready configs, auth, skills and limitations
             </li>
             <li>
               <span className="font-bold">→ MCP server manifest:</span>{' '}

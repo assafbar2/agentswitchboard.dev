@@ -32,6 +32,8 @@ const nextConfig: NextConfig = {
       { source: "/SKILL.md", destination: "/skill.md" },
       // A task page's Markdown twin (app/tasks/[slug]/md/route.ts).
       { source: "/tasks/:slug([a-z0-9-]+).md", destination: "/tasks/:slug/md" },
+      // A listing page's Markdown twin (app/agents/[slug]/md/route.ts).
+      { source: "/agents/:slug([a-z0-9-]+).md", destination: "/agents/:slug/md" },
     ];
   },
   async headers() {

@@ -81,7 +81,8 @@ On the website, the REST API and /agents.json, a \`sponsored\` flag also marks p
 - [/openapi.json](${BASE_URL}/openapi.json) — OpenAPI 3.1 description of the HTTP surface.
 - [/.well-known/mcp.json](${BASE_URL}/.well-known/mcp.json) — MCP server manifest.
 - [/agents.json](${BASE_URL}/agents.json) — index of the whole catalog, no auth: it links JSON pages of up to 50 listings (\`/catalog/1.json\` and on, each with \`next\`). Use them for bulk or offline work; search for everything else.
-- [/llms.txt](${BASE_URL}/llms.txt) — plain-language site guide.
+- [/llms.txt](${BASE_URL}/llms.txt) — compact plain-language site guide; [/llms-full.txt](${BASE_URL}/llms-full.txt) — full organic LLM reference (all tasks, categories, stacks, and copy-ready Official MCPs).
+- \`/agents/{slug}.md\` — Markdown twin of any listing page (access methods, copy-ready config, auth, skills, limitations, organic).
 - [/for-agents](${BASE_URL}/for-agents) — how to use all of the above.${dropLine}${newLine}${releaseLine}${stackLine}${taskLine}${compareLine}${boardLine}${operatorLine}
 
 ## When to use this site

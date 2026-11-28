@@ -84,6 +84,7 @@ export const config = {
   matcher: [
     '/',
     '/llms.txt',
+    '/llms-full.txt',
     '/agents.json',
     '/catalog/:file',
     '/index.md',
