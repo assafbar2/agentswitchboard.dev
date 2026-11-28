@@ -117,7 +117,7 @@
   {"slug": "kilo", "name": "Kilo Code", "basis": "subsidiary", "evidence": "Acquired by Anaconda (valued ~$1.5B, 2025), Jul 2026", "parent": "Anaconda", "sources": ["kilo.ai", "kilocode.ai", "github.com/kilo-org"]},
   {"slug": "klaviyo", "name": "Klaviyo", "basis": "public", "evidence": "NYSE: KVYO", "sources": ["klaviyo.com", "github.com/klaviyo"]},
   {"slug": "kong", "name": "Kong", "basis": "valuation", "evidence": "Valued $2B (Nov 2024 Series E)", "sources": ["konghq.com", "github.com/kong"]},
-  {"slug": "kuaishou", "name": "Kuaishou", "basis": "public", "evidence": "HKEX: 1024 (Kling AI)", "sources": ["kling.ai", "klingai.com", "kuaishou.com"]},
+  {"slug": "kuaishou", "name": "Kuaishou", "basis": "public", "evidence": "HKEX: 1024 (Kling AI)", "sources": ["kling.ai", "klingai.com", "kuaishou.com", "github.com/klingai-tech"]},
   {"slug": "langchain", "name": "LangChain", "basis": "valuation", "evidence": "Valued $1.25B (Oct 2025 Series B)", "sources": ["langchain.com", "langchain-ai.github.io", "github.com/langchain-ai"]},
   {"slug": "langfuse", "name": "Langfuse", "basis": "subsidiary", "evidence": "Acquired by ClickHouse (valued $15B), Jan 2026", "parent": "ClickHouse", "sources": ["langfuse.com", "github.com/langfuse"]},
   {"slug": "launchdarkly", "name": "LaunchDarkly", "basis": "valuation", "evidence": "Valued $3B (2021 Series D)", "sources": ["launchdarkly.com", "github.com/launchdarkly"]},
