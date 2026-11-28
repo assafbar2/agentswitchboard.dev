@@ -86,6 +86,18 @@ export default async function TasksPage() {
               </ul>
             </TaskEvents>
           </section>
+
+          <p className="mt-8 border-t-[3px] border-[var(--dir-ink)]! pt-4 text-[15px] text-[var(--dir-muted)]">
+            Need a job that isn&rsquo;t covered here?{' '}
+            <Link href="/request" className={inlineLink}>
+              Request a missing tool
+            </Link>
+            , or{' '}
+            <Link href="/submit" className={inlineLink}>
+              suggest a listing
+            </Link>
+            .
+          </p>
         </div>
       </div>
 

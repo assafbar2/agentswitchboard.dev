@@ -17,6 +17,7 @@ import { COMPARE_MAX } from './compare-link';
 import { stackEntries, stacksInOrder, type Stack } from './stacks';
 import { taskTitle, type Task } from './tasks';
 import { tryThis } from './try-this';
+import { DEPLOYMENT_LABELS, LIFECYCLE_LABELS, PRICING_LABELS } from './truth-fields';
 import type { Agent, Category } from './types';
 import { howToUse, INSTALL_LABELS } from './use-it-now';
 import { authTypeLabel } from './utils';
@@ -42,6 +43,25 @@ export function renderAgentMarkdown(agent: Agent, organicCatalog: Agent[]): stri
     ...(checked ? [`- **Last checked:** ${checked}`] : []),
     `- **Access methods:** ${agent.accessMethods.length > 0 ? agent.accessMethods.join(', ') : 'None listed'}`,
     `- **Auth:** ${authTypeLabel(agent.authType)} (\`${agent.authType}\`)`,
+    ...(agent.pricing || agent.pricingUrl
+      ? [
+          `- **Pricing:** ${agent.pricing ? PRICING_LABELS[agent.pricing] : 'See pricing'}${
+            agent.pricingUrl ? ` (${agent.pricingUrl})` : ''
+          }`,
+        ]
+      : []),
+    ...(agent.openSource !== undefined ? [`- **Open source:** ${agent.openSource ? 'Yes' : 'No'}`] : []),
+    ...(agent.license ? [`- **License:** ${agent.license}`] : []),
+    ...(agent.deployment && agent.deployment.length > 0
+      ? [`- **Hosting:** ${agent.deployment.map((d) => DEPLOYMENT_LABELS[d]).join(', ')}`]
+      : []),
+    ...(agent.lifecycle
+      ? [
+          `- **Lifecycle:** ${LIFECYCLE_LABELS[agent.lifecycle]}${
+            agent.lifecycleNote ? ` — ${cleanLine(agent.lifecycleNote)}` : ''
+          }`,
+        ]
+      : []),
     `- **Categories:** ${agent.categories.map((c) => `${c.name} (\`${c.slug}\`)`).join(', ') || 'None'}`,
     ...(agent.tags.length > 0 ? [`- **Tags:** ${agent.tags.join(', ')}`] : []),
     `- **Streaming:** ${agent.supportsStreaming ? 'Yes' : 'No'} · **Push notifications:** ${agent.supportsPushNotifications ? 'Yes' : 'No'}`,

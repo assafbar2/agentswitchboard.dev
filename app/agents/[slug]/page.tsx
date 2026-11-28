@@ -1,4 +1,10 @@
-import { getAgentBySlug, getEveryAgent } from '@/lib/catalog';
+import {
+  getAgentBySlug,
+  getAllRetiredListings,
+  getEveryAgent,
+  getOrganicAgents,
+  getRetiredListingBySlug,
+} from '@/lib/catalog';
 import { Badge } from '@/components/ui/Badge';
 import { OfficialBadge } from '@/components/ui/OfficialBadge';
 import { AccessMethodBadges } from '@/components/ui/AccessMethodBadges';
@@ -13,7 +19,23 @@ import { MyStackToggle } from '@/components/MyStackToggle';
 import { hasUseItNow, UseItNow } from '@/components/UseItNow';
 import { comparisonsWith, curatedComparisons } from '@/lib/compare';
 import { COMPARE_MAX, compareHref } from '@/lib/compare-link';
+import { limitations } from '@/lib/decide';
+import { listingFeedbackUrl } from '@/lib/feedback';
 import { alternativesPage, getRelatedAgents } from '@/lib/related';
+import { getTasks } from '@/lib/tasks';
+import {
+  DEFAULT_ARCHIVE_REASON,
+  formatArchiveDate,
+  tombstoneAlternatives,
+  type RetiredListing,
+} from '@/lib/tombstones';
+import {
+  DEPLOYMENT_LABELS,
+  isNotableLifecycle,
+  LIFECYCLE_DEFAULT_NOTES,
+  LIFECYCLE_LABELS,
+  PRICING_LABELS,
+} from '@/lib/truth-fields';
 import { tryThis } from '@/lib/try-this';
 import { howToUse, howToUseRows } from '@/lib/use-it-now';
 import { absoluteIconUrl } from '@/lib/icons';
@@ -23,6 +45,7 @@ import { ExternalLink } from 'lucide-react';
 import { authTypeLabel, pluralize } from '@/lib/utils';
 import Link from '@/components/Link';
 import type { Metadata } from 'next';
+import type { Agent } from '@/lib/types';
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.dev';
 
@@ -31,8 +54,17 @@ const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://agentswitchboard.de
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const agents = await getEveryAgent();
-  return agents.map((a) => ({ slug: a.slug }));
+  const [agents, retired] = await Promise.all([getEveryAgent(), getAllRetiredListings()]);
+  const seen = new Set<string>();
+  const params: { slug: string }[] = [];
+  for (const a of agents) {
+    seen.add(a.slug);
+    params.push({ slug: a.slug });
+  }
+  for (const r of retired) {
+    if (!seen.has(r.slug)) params.push({ slug: r.slug });
+  }
+  return params;
 }
 
 export async function generateMetadata({
@@ -42,31 +74,175 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const agent = await getAgentBySlug(slug);
-  if (!agent) return { title: 'Agent Not Found' };
+  if (agent) {
+    const url = `${BASE_URL}/agents/${slug}`;
+    const categoryNames = agent.categories.map((c) => c.name).join(', ');
+    const ogTitle = `${agent.name} — ${categoryNames} AI Agent`;
 
-  const url = `${BASE_URL}/agents/${slug}`;
-  const categoryNames = agent.categories.map((c) => c.name).join(', ');
-  const ogTitle = `${agent.name} — ${categoryNames} AI Agent`;
+    return {
+      title: agent.name,
+      description: agent.description,
+      alternates: { canonical: url, types: { 'text/markdown': `/agents/${slug}.md` } },
+      openGraph: {
+        title: ogTitle,
+        description: agent.description,
+        url,
+        type: 'website',
+        siteName: 'Agent Switchboard',
+        // twitter:image copies it.
+        images: [listingCardImage(slug, listingCard(agent))],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: ogTitle,
+        description: agent.description,
+      },
+    };
+  }
 
-  return {
-    title: agent.name,
-    description: agent.description,
-    alternates: { canonical: url, types: { 'text/markdown': `/agents/${slug}.md` } },
-    openGraph: {
-      title: ogTitle,
-      description: agent.description,
-      url,
-      type: 'website',
-      siteName: 'Agent Switchboard',
-      // twitter:image copies it.
-      images: [listingCardImage(slug, listingCard(agent))],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: ogTitle,
-      description: agent.description,
-    },
-  };
+  const retired = await getRetiredListingBySlug(slug);
+  if (retired) {
+    const reason = retired.reason ?? DEFAULT_ARCHIVE_REASON;
+    return {
+      title: `${retired.name} — Archived Listing`,
+      description: `${retired.name} is no longer listed on Agent Switchboard. ${reason}`,
+      robots: { index: false, follow: true },
+      alternates: { canonical: `${BASE_URL}/agents/${slug}` },
+    };
+  }
+
+  return { title: 'Agent Not Found' };
+}
+
+function RetiredAgentView({ retired, alternatives }: { retired: RetiredListing; alternatives: Agent[] }) {
+  const reason = retired.reason ?? DEFAULT_ARCHIVE_REASON;
+  const primaryCategory = retired.categories[0];
+
+  return (
+    <>
+      {/* ── Human view ─────────────────────────────────────────────── */}
+      <div className="human-only container-wide section font-[family-name:var(--font-display)] text-[var(--dir-ink)]">
+        <div className="max-w-3xl mx-auto">
+          <div className="mb-6 pb-5 border-b-[3px] border-[var(--dir-ink)]!">
+            <p className="dir-label mb-2 text-[var(--dir-muted)]">Archived listing</p>
+            <h1 className="text-4xl sm:text-5xl font-extrabold leading-[0.95] tracking-[-0.02em] wrap-break-word">
+              {retired.name}
+            </h1>
+            {retired.providerName && (
+              <p className="text-lg font-semibold text-[var(--dir-muted)] mt-2">by {retired.providerName}</p>
+            )}
+            <div className="flex items-center gap-2 flex-wrap mt-3">
+              <Badge variant="rose">Archived</Badge>
+              {retired.archivedAt && (
+                <span className="text-sm font-semibold text-[var(--dir-muted)]">
+                  Removed{' '}
+                  <time dateTime={retired.archivedAt}>{formatArchiveDate(retired.archivedAt)}</time>
+                </span>
+              )}
+            </div>
+          </div>
+
+          <section
+            aria-labelledby="tombstone-reason"
+            className="border-[3px] border-[var(--dir-ink)]! p-5 sm:p-6 mb-10"
+          >
+            <h2 id="tombstone-reason" className="dir-label mb-2">
+              Why this listing was removed
+            </h2>
+            <p className="text-lg leading-relaxed">{reason}</p>
+            {retired.description && (
+              <p className="text-[15px] leading-relaxed text-[var(--dir-muted)] mt-3">
+                Previously listed as: {retired.description}
+              </p>
+            )}
+            <p className="text-sm text-[var(--dir-muted)] mt-4">
+              See the{' '}
+              <Link href="/changelog" className="inline-link">
+                directory changelog
+              </Link>{' '}
+              for removal history, or{' '}
+              <Link href="/request" className="inline-link">
+                request a missing tool
+              </Link>{' '}
+              if you need an alternative we don&rsquo;t list yet.
+            </p>
+          </section>
+
+          {alternatives.length > 0 && (
+            <section aria-labelledby="tombstone-alternatives" className="mb-10">
+              <h2 id="tombstone-alternatives" className="dir-bar mb-1">
+                Active alternatives
+              </h2>
+              <p className="text-[15px] text-[var(--dir-muted)] mt-2 mb-2">
+                Organic live listings in the directory that cover similar work.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10">
+                {alternatives.map((alt) => (
+                  <AgentCard key={alt.id} agent={alt} />
+                ))}
+              </div>
+              {primaryCategory && (
+                <Link href={`/categories/${primaryCategory.slug}`} className="dir-row mt-2">
+                  <span className="dir-row-name">Browse all {primaryCategory.name} listings</span>
+                  <span className="dir-row-leader" aria-hidden="true" />
+                  <span className="dir-row-meta" aria-hidden="true">→</span>
+                </Link>
+              )}
+            </section>
+          )}
+
+          <div className="flex flex-wrap gap-4 border-t-[3px] border-[var(--dir-ink)]! pt-5 text-[16px] font-bold">
+            <Link href="/browse" className="inline-link">
+              Browse active directory
+            </Link>
+            <Link href="/tasks" className="inline-link">
+              Browse by task
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Agent view ─────────────────────────────────────────────── */}
+      <div className="agent-only">
+        <div className="container-wide py-10 max-w-3xl">
+          <div className="mb-6">
+            <div className="agent-accent text-base font-bold mb-1">{retired.slug} (archived)</div>
+            <div className="agent-dim text-xs leading-relaxed mt-1">{reason}</div>
+          </div>
+          <div className="agent-section-title">status</div>
+          <div className="agent-row">
+            <span className="agent-dim">status</span>
+            <span className="agent-accent">archived</span>
+            <span />
+          </div>
+          {retired.archivedAt && (
+            <div className="agent-row">
+              <span className="agent-dim">archived_at</span>
+              <span className="agent-accent">{retired.archivedAt}</span>
+              <span />
+            </div>
+          )}
+          <div className="agent-row">
+            <span className="agent-dim">reason</span>
+            <span className="agent-accent">{reason}</span>
+            <span />
+          </div>
+          {alternatives.length > 0 && (
+            <>
+              <div className="agent-section-title">active alternatives</div>
+              {alternatives.map((alt) => (
+                <Link key={alt.id} href={`/agents/${alt.slug}`} className="agent-row no-underline hover:underline">
+                  <span className="agent-accent">{alt.slug}</span>
+                  <span className="agent-dim">{alt.name}</span>
+                  <span className="agent-dim">{alt.accessMethods.join('+') || '—'}</span>
+                </Link>
+              ))}
+            </>
+          )}
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default async function AgentPage({
@@ -79,19 +255,28 @@ export default async function AgentPage({
     getAgentBySlug(slug),
     getEveryAgent(),
   ]);
-  if (!agent) notFound();
+
+  if (!agent) {
+    const retired = await getRetiredListingBySlug(slug);
+    if (!retired) notFound();
+    const organicCatalog = await getOrganicAgents();
+    const alternatives = tombstoneAlternatives(retired, organicCatalog, getTasks());
+    return <RetiredAgentView retired={retired} alternatives={alternatives} />;
+  }
 
   const related = getRelatedAgents(agent, allAgents);
   const alternatives = alternativesPage(agent, allAgents);
   const tryFirst = tryThis(agent);
   const use = howToUse(agent);
   const useRows = howToUseRows(use);
+  const agentLimitations = limitations(agent);
   const compareTop = related.slice(0, COMPARE_MAX - 1);
   const compareTopHref = compareHref([agent.slug, ...compareTop.map((a) => a.slug)]);
   const comparisons = comparisonsWith(agent.slug, curatedComparisons(allAgents));
+  const feedbackUrl = listingFeedbackUrl(agent);
 
-  // No `offers`: the catalog has no pricing data, and "no auth" does not mean
-  // free (paid products such as Midjourney list authType "none").
+  // No `offers`: structured pricing labels describe the model without a
+  // currency price, and "no auth" does not mean free.
   const agentSchema = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
@@ -109,6 +294,10 @@ export default async function AgentPage({
   };
 
   const skillCount = agent.skills.length;
+  const notableLifecycle = isNotableLifecycle(agent.lifecycle) ? agent.lifecycle : null;
+  const lifecycleMessage = notableLifecycle
+    ? agent.lifecycleNote ?? LIFECYCLE_DEFAULT_NOTES[notableLifecycle]
+    : null;
 
   const fields: [string, string][] = [
     ['name', agent.name],
@@ -117,6 +306,19 @@ export default async function AgentPage({
     ['categories', agent.categories.map((c) => c.slug).join(' · ') || '—'],
     ['access', agent.accessMethods.join(' · ') || '—'],
     ['auth', agent.authType],
+    ...(agent.pricing
+      ? [['pricing', `${PRICING_LABELS[agent.pricing]}${agent.pricingUrl ? ` (${agent.pricingUrl})` : ''}`] as [string, string]]
+      : agent.pricingUrl
+        ? [['pricing', agent.pricingUrl] as [string, string]]
+        : []),
+    ...(agent.openSource !== undefined ? [['open_source', agent.openSource ? 'true' : 'false'] as [string, string]] : []),
+    ...(agent.license ? [['license', agent.license] as [string, string]] : []),
+    ...(agent.deployment && agent.deployment.length > 0
+      ? [['hosting', agent.deployment.map((d) => DEPLOYMENT_LABELS[d]).join(' · ')] as [string, string]]
+      : []),
+    ...(agent.lifecycle
+      ? [['lifecycle', `${agent.lifecycle}${agent.lifecycleNote ? ` · ${agent.lifecycleNote}` : ''}`] as [string, string]]
+      : []),
     ['streaming', agent.supportsStreaming ? 'true' : 'false'],
     ['push', agent.supportsPushNotifications ? 'true' : 'false'],
     ['verified', agent.verified ? 'true' : 'false'],
@@ -131,6 +333,27 @@ export default async function AgentPage({
       <div className="human-only container-wide section font-[family-name:var(--font-display)] text-[var(--dir-ink)]">
         <JsonLd schema={agentSchema} />
         <div className="max-w-3xl mx-auto">
+          {/* Top notice banner for acquired / deprecated / beta lifecycle states */}
+          {notableLifecycle && lifecycleMessage && (
+            <aside
+              aria-label={`${LIFECYCLE_LABELS[notableLifecycle]} notice`}
+              className={`mb-6 border-[3px] p-4 ${
+                notableLifecycle === 'deprecated'
+                  ? 'border-[var(--rose)]!'
+                  : 'border-[var(--dir-ink)]!'
+              }`}
+            >
+              <div className="flex items-start gap-2.5 flex-wrap">
+                <Badge variant={notableLifecycle === 'deprecated' ? 'rose' : 'amber'}>
+                  {LIFECYCLE_LABELS[notableLifecycle]}
+                </Badge>
+                <p className="text-[15px] leading-snug font-semibold flex-1 min-w-[200px]">
+                  {lifecycleMessage}
+                </p>
+              </div>
+            </aside>
+          )}
+
           {/* Header: a directory entry. Name, provider, then the small labels,
               closed off by the heavy ink rule. */}
           <div className="flex items-start gap-4 mb-6 pb-5 border-b-[3px] border-[var(--dir-ink)]!">
@@ -199,10 +422,24 @@ export default async function AgentPage({
             <MyStackToggle agent={agent} className="mb-10" />
           )}
 
+          {/* Limitations right under Use it now */}
+          {agentLimitations.length > 0 && (
+            <section aria-labelledby="limitations" className="mb-10">
+              <h2 id="limitations" className="dir-bar mb-2">
+                Limitations
+              </h2>
+              <ul className="list-disc pl-5 space-y-1.5 text-[16px] leading-snug text-[var(--dir-muted)] marker:text-[var(--dir-ink)]">
+                {agentLimitations.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           <CompareWith agent={agent} top={compareTop} comparisons={comparisons} />
 
-          {/* Facts: how you reach it, how it authenticates, what it does, as a
-              ruled definition list (label, dotted leader, value). */}
+          {/* Facts: how you reach it, how it authenticates, pricing, hosting,
+              open source / license, skills, as a ruled definition list. */}
           <dl className="mb-10 border-t-[3px] border-[var(--dir-ink)]!">
             <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-1 border-b border-[var(--dir-rule)]! py-2.5">
               <dt className="flex min-w-0 flex-1 items-baseline gap-1.5">
@@ -224,6 +461,58 @@ export default async function AgentPage({
               </dt>
               <dd className="font-bold">{authTypeLabel(agent.authType)}</dd>
             </div>
+            {(agent.pricing || agent.pricingUrl) && (
+              <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-1 border-b border-[var(--dir-rule)]! py-2.5">
+                <dt className="flex min-w-0 flex-1 items-baseline gap-1.5">
+                  <span className="dir-label shrink-0">Pricing</span>
+                  <span aria-hidden="true" className="dir-row-leader" />
+                </dt>
+                <dd className="font-bold">
+                  {agent.pricingUrl ? (
+                    <a
+                      href={agent.pricingUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2"
+                    >
+                      {agent.pricing ? PRICING_LABELS[agent.pricing] : 'See pricing'}
+                      <ExternalLink aria-hidden="true" className="w-3.5 h-3.5" />
+                    </a>
+                  ) : (
+                    PRICING_LABELS[agent.pricing!]
+                  )}
+                </dd>
+              </div>
+            )}
+            {agent.openSource !== undefined && (
+              <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-1 border-b border-[var(--dir-rule)]! py-2.5">
+                <dt className="flex min-w-0 flex-1 items-baseline gap-1.5">
+                  <span className="dir-label shrink-0">Open source</span>
+                  <span aria-hidden="true" className="dir-row-leader" />
+                </dt>
+                <dd className="font-bold">{agent.openSource ? 'Yes' : 'No'}</dd>
+              </div>
+            )}
+            {agent.license && (
+              <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-1 border-b border-[var(--dir-rule)]! py-2.5">
+                <dt className="flex min-w-0 flex-1 items-baseline gap-1.5">
+                  <span className="dir-label shrink-0">License</span>
+                  <span aria-hidden="true" className="dir-row-leader" />
+                </dt>
+                <dd className="font-bold">{agent.license}</dd>
+              </div>
+            )}
+            {agent.deployment && agent.deployment.length > 0 && (
+              <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-1 border-b border-[var(--dir-rule)]! py-2.5">
+                <dt className="flex min-w-0 flex-1 items-baseline gap-1.5">
+                  <span className="dir-label shrink-0">Hosting</span>
+                  <span aria-hidden="true" className="dir-row-leader" />
+                </dt>
+                <dd className="font-bold">
+                  {agent.deployment.map((d) => DEPLOYMENT_LABELS[d]).join(' · ')}
+                </dd>
+              </div>
+            )}
             {skillCount > 0 && (
               <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-1 border-b border-[var(--dir-rule)]! py-2.5">
                 <dt className="flex min-w-0 flex-1 items-baseline gap-1.5">
@@ -262,15 +551,25 @@ export default async function AgentPage({
             ))}
           </div>
 
-          {/* Agent URL */}
-          <a
-            href={agent.agentUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-11 items-center gap-2 rounded-none border-2 border-[var(--dir-ink)]! bg-[var(--dir-yellow)] px-5 text-lg font-extrabold tracking-[0.02em] text-[var(--dir-on-yellow)] no-underline hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--dir-ink)]"
-          >
-            Visit Agent <ExternalLink aria-hidden="true" className="w-4 h-4" />
-          </a>
+          {/* Agent URL + understated correction / update link */}
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <a
+              href={agent.agentUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-11 items-center gap-2 rounded-none border-2 border-[var(--dir-ink)]! bg-[var(--dir-yellow)] px-5 text-lg font-extrabold tracking-[0.02em] text-[var(--dir-on-yellow)] no-underline hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--dir-ink)]"
+            >
+              Visit Agent <ExternalLink aria-hidden="true" className="w-4 h-4" />
+            </a>
+            <a
+              href={feedbackUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-semibold text-[var(--dir-muted)] underline decoration-1 underline-offset-2 hover:text-[var(--dir-ink)] hover:decoration-2"
+            >
+              Report an error or suggest an update
+            </a>
+          </div>
 
           {/* Related Agents */}
           {related.length > 0 && (
@@ -339,6 +638,19 @@ export default async function AgentPage({
             </>
           )}
 
+          {agentLimitations.length > 0 && (
+            <>
+              <div className="agent-section-title">limitations</div>
+              {agentLimitations.map((item) => (
+                <div key={item} className="agent-row">
+                  <span className="agent-accent">{item}</span>
+                  <span />
+                  <span />
+                </div>
+              ))}
+            </>
+          )}
+
           {/* Fields */}
           <div className="agent-section-title">fields</div>
           {fields.map(([key, value]) => (
@@ -399,7 +711,7 @@ export default async function AgentPage({
           )}
 
           {/* External link */}
-          <div className="mt-8">
+          <div className="mt-8 flex flex-wrap gap-6">
             <a
               href={agent.agentUrl}
               target="_blank"
@@ -407,6 +719,14 @@ export default async function AgentPage({
               className="agent-accent text-xs hover:opacity-80 transition-opacity"
             >
               → {agent.agentUrl}
+            </a>
+            <a
+              href={feedbackUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="agent-dim text-xs hover:opacity-80 transition-opacity"
+            >
+              report error / suggest update
             </a>
           </div>
 

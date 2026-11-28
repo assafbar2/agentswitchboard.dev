@@ -25,6 +25,7 @@ import { pickHomepageAgents } from './homepage';
 import { iconPath, type IconRecord } from './icons';
 import { groupOfficialAgents, vendorForUrl, type OfficialGroup, type OfficialVendor } from './official';
 import { organicOrder } from './organic';
+import type { RetiredListing } from './tombstones';
 import type { Agent, Category, ChangelogEntry, HomepageAgent, SiteSettings } from './types';
 
 const CONTENT_DIR = path.join(process.cwd(), 'content');
@@ -151,23 +152,63 @@ export async function getOrganicAgents(): Promise<Agent[]> {
 }
 
 /**
+ * Listings the directory had and no longer lists, with archive date, removal
+ * reason (from content/changelog.json), and hydrated archived metadata when
+ * the file still exists. Powers static tombstone pages at /agents/<slug>.
+ */
+export const getAllRetiredListings = cache(
+  once(async (): Promise<RetiredListing[]> => {
+    const [agents, raw] = await Promise.all([
+      loadAllAgentsRaw(),
+      fs.promises.readFile(path.join(CONTENT_DIR, 'changelog.json'), 'utf8'),
+    ]);
+    const listed = new Set(agents.filter((a) => a.status === 'published').map((a) => a.slug));
+    const archivedBySlug = new Map(agents.filter((a) => a.status === 'archived').map((a) => [a.slug, a]));
+    const removalBySlug = new Map<string, ChangelogEntry>();
+    for (const entry of JSON.parse(raw) as ChangelogEntry[]) {
+      if (entry.action !== 'removed' || listed.has(entry.slug)) continue;
+      const prev = removalBySlug.get(entry.slug);
+      if (!prev || entry.date > prev.date || (entry.date === prev.date && entry.note && !prev.note)) {
+        removalBySlug.set(entry.slug, entry);
+      }
+    }
+
+    const slugs = new Set<string>([...archivedBySlug.keys(), ...removalBySlug.keys()]);
+    const retired: RetiredListing[] = [];
+    for (const slug of slugs) {
+      if (listed.has(slug)) continue;
+      const archived = archivedBySlug.get(slug);
+      const removal = removalBySlug.get(slug);
+      const note = removal?.note?.trim() || null;
+      retired.push({
+        slug,
+        name: archived?.name ?? removal?.name ?? slug,
+        description: archived?.description,
+        providerName: archived?.providerName,
+        archivedAt: removal?.date ?? archived?.updatedAt?.slice(0, 10) ?? null,
+        reason: note,
+        categories: archived?.categories ?? [],
+        archivedAgent: archived,
+      });
+    }
+    return retired.sort((a, b) => a.slug.localeCompare(b.slug));
+  })
+);
+
+export async function getRetiredListingBySlug(slug: string): Promise<RetiredListing | null> {
+  const retired = await getAllRetiredListings();
+  return retired.find((r) => r.slug === slug) ?? null;
+}
+
+/**
  * Listings the directory had and no longer lists, slug → name: archived
  * files, and removals in content/changelog.json whose file is gone. Lets an
  * old link say what it pointed at.
  */
 export const getRetiredListings = cache(
   once(async (): Promise<Map<string, string>> => {
-    const [agents, raw] = await Promise.all([
-      loadAllAgentsRaw(),
-      fs.promises.readFile(path.join(CONTENT_DIR, 'changelog.json'), 'utf8'),
-    ]);
-    const listed = new Set(agents.filter((a) => a.status === 'published').map((a) => a.slug));
-    const retired = new Map<string, string>();
-    for (const a of agents) if (a.status === 'archived') retired.set(a.slug, a.name);
-    for (const e of JSON.parse(raw) as ChangelogEntry[]) {
-      if (e.action === 'removed' && !listed.has(e.slug) && !retired.has(e.slug)) retired.set(e.slug, e.name);
-    }
-    return retired;
+    const retired = await getAllRetiredListings();
+    return new Map(retired.map((r) => [r.slug, r.name]));
   })
 );
 

@@ -263,8 +263,12 @@ export default async function TaskPage({ params }: Props) {
           </nav>
           <p className="mt-6 text-[15px] text-[var(--dir-muted)]">
             Missing a tool that does this?{' '}
+            <Link href={`/request?tried=${encodeURIComponent(task.label)}`} className={inlineLink}>
+              Request a missing tool
+            </Link>
+            , or{' '}
             <Link href="/submit" className={inlineLink}>
-              Suggest a listing
+              suggest a listing
             </Link>
             .
           </p>

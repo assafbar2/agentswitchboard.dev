@@ -4,6 +4,22 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
+## [2.17.0] - 2026-11-28 - Structured truth fields, retired tombstones and missing-tool feedback
+
+### Highlights
+- Listings now carry optional structured facts for pricing, open-source status, license, hosting model, lifecycle notices (acquired, deprecated, beta) and authored limitations — live on Rye's Universal Checkout listing and across `/api/agents/[slug]`, MCP `get_agent` and `/agents/[slug].md`. [Try it](https://agentswitchboard.dev/agents/rye)
+- Retired slugs such as `/agents/gpt-pilot` and `/agents/zcode` now show a clean archived notice with the removal reason, archive date and organic active alternatives instead of a blank 404. [Try it](https://agentswitchboard.dev/agents/gpt-pilot)
+- Report an error or suggest a listing update in one click from any live listing page, or send a missing-tool need straight to the weekly review from `/request`. [Try it](https://agentswitchboard.dev/request)
+
+### Added
+- Optional structured truth fields in `AgentSchema` (`scripts/validate-content.ts`) and `lib/types.ts`: `pricing`, `pricingUrl`, `openSource`, `license`, `deployment`, `lifecycle`, `lifecycleNote`, and `limitations` (up to 4 short factual caveats, <=140 chars each), merged cleanly with mechanical limitations in `lib/decide.ts` (deduplicated and bounded).
+- Lifecycle notice banner (`acquired` / `deprecated` / `beta`), Limitations block right under `Use it now`, and Pricing / Open source / License / Hosting fact rows on `/agents/[slug]`, plus exposure across `GET /api/agents/[slug]`, MCP `get_agent`, WebMCP `get_agent`, `/agents/[slug].md`, and `public/openapi.json` (100% organic).
+- Static `noindex, follow` tombstone pages for retired listings (`lib/tombstones.ts`, `app/agents/[slug]/page.tsx`) showing removal reason, archive date, and 2–3 organic active alternatives while keeping retired slugs out of `sitemap.xml`, search, `recommend`, `/agents.json`, `/llms-full.txt`, and `/agents/<slug>.md`.
+- Zero-cost feedback loops: pre-filled GitHub issue "Report an error or suggest an update" link on every live `/agents/[slug]` page (`lib/feedback.ts`) and a lightweight human web form at `/request` (`components/MissingToolForm.tsx`, linked from empty `/browse` results, `/tasks`, `/tasks/[slug]`, and `/submit`) posting directly to `POST /api/missing-tool`.
+
+### Directory
+- Populated `content/agents/rye.json` as the first worked example with verified Jolly Labs acquisition notice (`lifecycle: "acquired"`), updated V2 docs/quickstart/API base URL (`docs.commerce.jolly.dev`, `api.commerce.jolly.dev/api/v1/`), `usage-based` pricing, `hosted` deployment, and documented API limitations.
+
 ## [2.16.0] - 2026-11-28 - Natural-language search, smarter recommendations and list_tasks
 
 ### Highlights

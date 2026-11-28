@@ -44,6 +44,7 @@ import { withoutPlacement } from '@/lib/organic';
 import { MAX_ALTERNATIVES } from '@/lib/related';
 import { AUTH_TYPES, SORT_ORDERS, invalidSinceMessage } from '@/lib/search';
 import { REQUESTED_MAX } from '@/lib/shared-stack';
+import { DEPLOYMENT_MODELS, LIFECYCLE_STATES, PRICING_MODELS } from '@/lib/types';
 
 export type ToolResult = {
   content: { type: 'text'; text: string }[];
@@ -281,6 +282,14 @@ export const WEBMCP_TOOLS: WebMcpTool[] = [
         supportsPushNotifications: { type: 'boolean' },
         createdAt: { type: ['string', 'null'] },
         updatedAt: { type: ['string', 'null'] },
+        pricing: { type: ['string', 'null'], enum: [...PRICING_MODELS, null] },
+        pricingUrl: { type: ['string', 'null'] },
+        openSource: { type: ['boolean', 'null'] },
+        license: { type: ['string', 'null'] },
+        deployment: { type: ['array', 'null'], items: { type: 'string', enum: [...DEPLOYMENT_MODELS] } },
+        lifecycle: { type: ['string', 'null'], enum: [...LIFECYCLE_STATES, null] },
+        lifecycleNote: { type: ['string', 'null'] },
+        limitations: { ...stringList, description: LIMITATIONS_DESCRIPTION },
         mcpEndpoint: { type: ['string', 'null'] },
         mcpCommand: { type: ['string', 'null'] },
         install: { type: ['object', 'null'], properties: { type: { type: 'string' }, command: { type: 'string' } } },

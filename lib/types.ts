@@ -27,6 +27,15 @@ export interface AgentInstall {
   command: string;
 }
 
+export const PRICING_MODELS = ['free', 'freemium', 'paid', 'usage-based', 'enterprise', 'open-source'] as const;
+export type PricingModel = (typeof PRICING_MODELS)[number];
+
+export const DEPLOYMENT_MODELS = ['hosted', 'self-hosted', 'local'] as const;
+export type DeploymentModel = (typeof DEPLOYMENT_MODELS)[number];
+
+export const LIFECYCLE_STATES = ['active', 'beta', 'acquired', 'deprecated'] as const;
+export type LifecycleState = (typeof LIFECYCLE_STATES)[number];
+
 export interface HomepageAgent {
   agent: Agent;
   label: AgentLabel;
@@ -66,6 +75,22 @@ export interface Agent {
   quickstartUrl?: string;
   /** Base URL of the vendor's public API. */
   apiBaseUrl?: string;
+  /** Structured pricing model when known. */
+  pricing?: PricingModel;
+  /** Official pricing page URL. */
+  pricingUrl?: string;
+  /** Whether the product's core source code is open source. */
+  openSource?: boolean;
+  /** Short license identifier, e.g. "MIT", "Apache-2.0". */
+  license?: string;
+  /** Where the product can run: hosted, self-hosted, and/or local. */
+  deployment?: DeploymentModel[];
+  /** Product lifecycle state when notable or explicitly verified. */
+  lifecycle?: LifecycleState;
+  /** Short factual note explaining an acquired, deprecated, or beta lifecycle state. */
+  lifecycleNote?: string;
+  /** Up to 4 short factual caveats (<=140 chars each) from the vendor's docs. */
+  limitations?: string[];
   /**
    * Site path of the listing's fetched icon (/icons/<slug>.png?v=…), from
    * content/icons.json; absent when it has none. See lib/icons.ts.
