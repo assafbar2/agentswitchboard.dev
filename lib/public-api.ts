@@ -14,6 +14,7 @@ import type { Agent, Category } from './types';
 import { BASE_URL } from './env';
 import { absoluteIconUrl } from './icons';
 import { ALL_ACCESS_METHODS, AUTH_TYPES } from './search';
+import { mergeLimitations, truthFields } from './truth-fields';
 import { howToUseJson } from './use-it-now';
 import { lastChecked } from './verified';
 
@@ -148,7 +149,7 @@ export const LAST_CHECKED_DESCRIPTION =
   'YYYY-MM-DD the Verified listing was last checked (its link and access path), from its last update; null when it is not Verified';
 
 export const LIMITATIONS_DESCRIPTION =
-  'What may stop or slow the user, read from the listing: the sign-in it needs, a server that runs only on their computer, no MCP config to copy yet, no MCP server, not Verified. Empty when the listing shows none';
+  'What may stop or slow the user: documented product caveats merged with access constraints (sign-in needed, local-only server, no MCP config to copy yet, no MCP server, not Verified). Empty when the listing shows none';
 
 export const RECOMMEND_NEED_INPUT =
   "What the user needs, in a sentence or two, e.g. \"query Postgres and send email\" (up to 300 characters are read)";
@@ -239,6 +240,8 @@ export function detailAgent(a: Agent) {
     tier: a.tier,
     createdAt: a.createdAt ?? null,
     updatedAt: a.updatedAt ?? null,
+    ...truthFields(a),
+    limitations: mergeLimitations(a),
     ...howToUseFields(a),
     useItNow: howToUseJson(a),
   };

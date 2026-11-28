@@ -59,6 +59,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/switchboard`, lastModified: newest([catalog, dropped]), changeFrequency: 'weekly', priority: 0.6 },
     { url: `${base}/operator`, changeFrequency: 'weekly', priority: 0.7 },
     { url: `${base}/submit`, changeFrequency: 'monthly', priority: 0.5 },
+    { url: `${base}/request`, changeFrequency: 'monthly', priority: 0.5 },
     { url: `${base}/for-agents`, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${base}/connect`, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${base}/about`, changeFrequency: 'monthly', priority: 0.5 },

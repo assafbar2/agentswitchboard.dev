@@ -296,6 +296,79 @@
               "null"
             ]
           },
+          "pricing": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "free",
+              "freemium",
+              "paid",
+              "usage-based",
+              "enterprise",
+              "open-source",
+              null
+            ]
+          },
+          "pricingUrl": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "openSource": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "license": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "deployment": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "string",
+              "enum": [
+                "hosted",
+                "self-hosted",
+                "local"
+              ]
+            }
+          },
+          "lifecycle": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "active",
+              "beta",
+              "acquired",
+              "deprecated",
+              null
+            ]
+          },
+          "lifecycleNote": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "What may stop or slow the user: documented product caveats merged with access constraints (sign-in needed, local-only server, no MCP config to copy yet, no MCP server, not Verified). Empty when the listing shows none"
+          },
           "mcpEndpoint": {
             "type": [
               "string",

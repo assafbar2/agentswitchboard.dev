@@ -132,13 +132,21 @@ export default function SubmitPage() {
         </div>
 
         {/* Path B: form */}
-        <div className="border-[3px] border-[var(--dir-ink)]! p-5 sm:p-6">
+        <div className="border-[3px] border-[var(--dir-ink)]! p-5 sm:p-6 mb-6">
           <h2 className="dir-bar mb-3">No GitHub? Use the form</h2>
           <p className="mb-4 leading-relaxed">
             Tell us what to list and how to reach you — we do the rest.
           </p>
           <SubmitForm />
         </div>
+
+        <p className="text-[15px] text-[var(--dir-muted)]">
+          Looking for a capability rather than a specific product?{' '}
+          <Link href="/request" className="inline-link">
+            Request a missing tool
+          </Link>{' '}
+          so we can research it for the next weekly drop.
+        </p>
       </div>
     </div>
   );

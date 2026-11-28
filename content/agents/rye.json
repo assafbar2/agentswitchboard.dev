@@ -5,7 +5,7 @@
   "description": "Universal Checkout API that turns any product URL into a completed order, handling price, tax, shipping and order placement so AI agents can buy from thousands of merchants.",
   "providerName": "Rye",
   "providerUrl": "https://rye.com",
-  "agentUrl": "https://rye.com/docs/",
+  "agentUrl": "https://docs.commerce.jolly.dev/api-v2/introduction",
   "categories": [
     "commerce-payments"
   ],
@@ -43,6 +43,22 @@
   "authType": "apiKey",
   "supportsStreaming": false,
   "supportsPushNotifications": false,
+  "quickstartUrl": "https://docs.commerce.jolly.dev/api-v2/example-flows/simple-checkout",
+  "apiBaseUrl": "https://api.commerce.jolly.dev/api/v1/",
+  "pricing": "usage-based",
+  "pricingUrl": "https://rye.com/pricing",
+  "openSource": false,
+  "deployment": [
+    "hosted"
+  ],
+  "lifecycle": "acquired",
+  "lifecycleNote": "Acquired by Jolly Labs (Sep 2026); Universal Checkout API continues under Jolly at docs.commerce.jolly.dev.",
+  "limitations": [
+    "US shipping addresses and physical products only",
+    "One product per checkout intent (no multi-product carts yet)",
+    "Guest checkout only; login-gated and anti-bot stores are unsupported",
+    "Default rate limit: 50 checkout intents/day and 10 concurrent agents"
+  ],
   "status": "published",
   "featured": false,
   "verified": false,
@@ -52,5 +68,5 @@
     "api"
   ],
   "createdAt": "2026-11-17T15:25:53.000Z",
-  "updatedAt": "2026-11-17T15:25:53.000Z"
+  "updatedAt": "2026-11-28T16:35:00.000Z"
 }

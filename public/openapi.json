@@ -736,6 +736,43 @@
               "tier": { "type": ["string", "null"] },
               "createdAt": { "type": ["string", "null"], "format": "date-time" },
               "updatedAt": { "type": ["string", "null"], "format": "date-time" },
+              "pricing": {
+                "type": ["string", "null"],
+                "enum": ["free", "freemium", "paid", "usage-based", "enterprise", "open-source", null],
+                "description": "Structured pricing model when known; null when not recorded."
+              },
+              "pricingUrl": {
+                "type": ["string", "null"],
+                "format": "uri",
+                "description": "Official pricing page URL; null when not recorded."
+              },
+              "openSource": {
+                "type": ["boolean", "null"],
+                "description": "Whether the product's core source code is open source; null when not recorded."
+              },
+              "license": {
+                "type": ["string", "null"],
+                "description": "Short license identifier such as MIT or Apache-2.0; null when not recorded."
+              },
+              "deployment": {
+                "type": ["array", "null"],
+                "items": { "type": "string", "enum": ["hosted", "self-hosted", "local"] },
+                "description": "Where the product can run (hosted, self-hosted, local); null when not recorded."
+              },
+              "lifecycle": {
+                "type": ["string", "null"],
+                "enum": ["active", "beta", "acquired", "deprecated", null],
+                "description": "Product lifecycle state when notable or explicitly verified; null when not recorded."
+              },
+              "lifecycleNote": {
+                "type": ["string", "null"],
+                "description": "Short factual note explaining an acquired, deprecated, or beta lifecycle state; null when not recorded."
+              },
+              "limitations": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "What may stop or slow the user: documented product caveats merged with access constraints (sign-in needed, local-only server, no MCP config to copy yet, no MCP server, not Verified). Empty when the listing shows none."
+              },
               "mcpEndpoint": {
                 "type": ["string", "null"],
                 "format": "uri",
@@ -1357,7 +1394,7 @@
           "limitations": {
             "type": "array",
             "items": { "type": "string" },
-            "description": "What may stop or slow the user, read from the listing: the sign-in it needs, a server that runs only on their computer, no MCP config to copy yet, no MCP server, not Verified. Empty when the listing shows none.",
+            "description": "What may stop or slow the user: documented product caveats merged with access constraints (sign-in needed, local-only server, no MCP config to copy yet, no MCP server, not Verified). Empty when the listing shows none.",
             "examples": [["needs a Google sign-in"]]
           },
           "alternatives": { "type": "array", "items": { "$ref": "#/components/schemas/DecisionAgent" } },

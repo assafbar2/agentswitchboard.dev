@@ -75,7 +75,8 @@ import {
 } from '@/lib/search';
 import { REQUESTED_MAX, requestedStackSlugs } from '@/lib/shared-stack';
 import { getTask, getTasks } from '@/lib/tasks';
-import type { Agent } from '@/lib/types';
+import { mergeLimitations, truthFields } from '@/lib/truth-fields';
+import { DEPLOYMENT_MODELS, LIFECYCLE_STATES, PRICING_MODELS, type Agent } from '@/lib/types';
 import { howToUseJson } from '@/lib/use-it-now';
 
 /**
@@ -351,6 +352,14 @@ const handler = createMcpHandler(
           supportsStreaming: z.boolean(),
           supportsPushNotifications: z.boolean(),
           addedAt: z.string().optional(),
+          pricing: z.enum(PRICING_MODELS).nullable().describe('Structured pricing model when known; null when not recorded'),
+          pricingUrl: z.string().nullable().describe('Official pricing page URL; null when not recorded'),
+          openSource: z.boolean().nullable().describe('Whether the product is open source; null when not recorded'),
+          license: z.string().nullable().describe('Short license identifier (e.g. MIT, Apache-2.0); null when not recorded'),
+          deployment: z.array(z.enum(DEPLOYMENT_MODELS)).nullable().describe('Where the product runs: hosted, self-hosted, and/or local; null when not recorded'),
+          lifecycle: z.enum(LIFECYCLE_STATES).nullable().describe('Product lifecycle state (active, beta, acquired, deprecated); null when not recorded'),
+          lifecycleNote: z.string().nullable().describe('Short factual note on lifecycle status (e.g. acquisition or deprecation); null when not recorded'),
+          limitations: z.array(z.string()).describe(LIMITATIONS_DESCRIPTION),
           mcpEndpoint: z.string().nullable().describe("The vendor's hosted MCP server address"),
           mcpCommand: z.string().nullable().describe('The command that runs its MCP server locally'),
           install: z.object({ type: z.string(), command: z.string() }).nullable().describe('The command that installs its CLI'),
@@ -377,6 +386,8 @@ const handler = createMcpHandler(
           supportsStreaming: agent.supportsStreaming,
           supportsPushNotifications: agent.supportsPushNotifications,
           addedAt: agent.createdAt,
+          ...truthFields(agent),
+          limitations: mergeLimitations(agent),
           ...howToUseFields(agent),
           useItNow: howToUseJson(agent),
         };

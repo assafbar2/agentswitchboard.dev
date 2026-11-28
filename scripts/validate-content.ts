@@ -27,6 +27,7 @@ import {
   stackProblems,
 } from '../lib/stacks';
 import { TASK_BLURB_MAX, TASK_LABEL_MAX, TASK_MAX_KEYWORDS, TASK_MIN_KEYWORDS, taskProblems } from '../lib/tasks';
+import { truthFieldsShape } from '../lib/truth-fields';
 import { INSTALL_TYPES, type Agent, type Category } from '../lib/types';
 import { USE_IT_COMMAND_MAX, howToUseProblems } from '../lib/use-it-now';
 
@@ -85,6 +86,7 @@ const AgentSchema = z
       .optional(),
     quickstartUrl: z.string().url().startsWith('https://').optional(),
     apiBaseUrl: z.string().url().startsWith('https://').optional(),
+    ...truthFieldsShape,
     iconUrl: z.string().url().optional(),
     status: z.enum(['published', 'draft', 'archived']),
     featured: z.boolean(),

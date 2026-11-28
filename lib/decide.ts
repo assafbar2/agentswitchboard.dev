@@ -31,6 +31,7 @@ import { listedAgents, sharedStack } from './shared-stack';
 import { stackHref } from './stack-link';
 import { wordsOf } from './task-match';
 import { WHY_MAX, type Task } from './tasks';
+import { mergeLimitations } from './truth-fields';
 import type { Agent, AgentSkill } from './types';
 import { joinList, pluralize, truncate } from './utils';
 
@@ -205,21 +206,13 @@ function nextStep(agent: Agent) {
 }
 
 /**
- * What may stop or slow a user with this listing, read from its listing data
- * alone: the sign-in it needs, a server that only runs on your computer, no
- * config to paste yet, no MCP server, not Verified. Empty when it shows none.
+ * What may stop or slow a user with this listing: authored factual caveats
+ * merged with mechanical constraints (the sign-in it needs, a server that only
+ * runs on your computer, no config to paste yet, no MCP server, not Verified),
+ * deduplicated and bounded. Empty when it shows none.
  */
 export function limitations(agent: Agent): string[] {
-  const item = bundleItem(agent);
-  const out: string[] = [];
-  if (agent.authType === 'oauth2') out.push(`needs a ${agent.providerName} sign-in`);
-  else if (agent.authType === 'apiKey') out.push(`needs an API key from ${agent.providerName}`);
-  else if (agent.authType === 'bearer') out.push(`needs a token from ${agent.providerName}`);
-  if (item.server && 'command' in item.server) out.push('runs only on your own computer, with no hosted server');
-  if (item.how === 'guide') out.push('no MCP config to copy yet, so set it up from its guide');
-  if (item.how === 'other') out.push('no MCP server');
-  if (!agent.verified) out.push('not Verified yet');
-  return out;
+  return mergeLimitations(agent);
 }
 
 /** Why a promoted pick is first, said in its place on the website. */

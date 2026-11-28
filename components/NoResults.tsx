@@ -3,6 +3,7 @@ import { X } from 'lucide-react';
 import { AgentCard } from '@/components/AgentCard';
 import { FILTER_BASE, FILTER_OFF } from '@/components/filter-chip';
 import { RecoveryEvents } from '@/components/RecoveryEvents';
+import { missingToolHref } from '@/lib/feedback';
 import { constraintLabel, type Preview, type Recovery } from '@/lib/recovery';
 import { browseStateHref, narrowingWords, type BrowseState, type SortOrder } from '@/lib/search';
 
@@ -124,11 +125,18 @@ export function NoResults({ state, recovery, sort, names }: Props) {
           ))}
         </p>
         <p className="text-[var(--dir-muted)]" data-recovery="submit">
-          Know a tool that should be here?{' '}
-          <Link href="/submit" className="font-bold text-[var(--dir-ink)]">
-            Suggest a listing
+          Couldn&rsquo;t find a tool for this job?{' '}
+          <Link
+            href={missingToolHref({ tried: state.query, category: state.category })}
+            className="font-bold text-[var(--dir-ink)]"
+          >
+            Request a missing tool
           </Link>
-          .
+          , or{' '}
+          <Link href="/submit" className="font-bold text-[var(--dir-ink)]">
+            suggest a listing
+          </Link>{' '}
+          if you already know the product.
         </p>
       </div>
     </RecoveryEvents>
