@@ -8,6 +8,7 @@ export const MCP_TOOL_NAMES: ReadonlySet<string> = new Set([
   'search_agents',
   'get_agent',
   'list_categories',
+  'list_tasks',
   'compare_agents',
   'alternatives_to',
   'connect_bundle',

@@ -1,7 +1,7 @@
 {
   "name": "io.github.assafbar2/agentswitchboard",
-  "description": "In-browser WebMCP tools for Agent Switchboard, registered on document.modelContext when the page loads. Same seven read tools as the remote MCP server at /api/mcp: search_agents, get_agent, list_categories, compare_agents, alternatives_to, connect_bundle and recommend. They call the public REST API (/api/agents, /api/agents/{slug}, /api/categories, /api/compare, /api/agents/{slug}/alternatives, /api/bundle, /api/recommend), so answers and their order are the same as the remote server's; result objects use the REST field names (see /openapi.json).",
-  "version": "1.11.0",
+  "description": "In-browser WebMCP tools for Agent Switchboard, registered on document.modelContext when the page loads. Same eight read tools as the remote MCP server at /api/mcp: search_agents, get_agent, list_categories, list_tasks, compare_agents, alternatives_to, connect_bundle and recommend. They call the public REST API (/api/agents, /api/agents/{slug}, /api/categories, /api/tasks, /api/compare, /api/agents/{slug}/alternatives, /api/bundle, /api/recommend), so answers and their order are the same as the remote server's; result objects use the REST field names (see /openapi.json).",
+  "version": "1.12.0",
   "websiteUrl": "https://agentswitchboard.dev",
   "surface": "document.modelContext",
   "polyfill": "@mcp-b/webmcp-polyfill",
@@ -25,7 +25,7 @@
           },
           "task": {
             "type": "string",
-            "description": "Task slug, e.g. \"query-a-database\": only the listings that do that job, best fit first. GET https://agentswitchboard.dev/api/tasks lists the tasks"
+            "description": "Task slug, e.g. \"query-a-database\": only the listings that do that job, best fit first. Call list_tasks or GET https://agentswitchboard.dev/api/tasks for valid slugs"
           },
           "category": {
             "type": "string",
@@ -547,6 +547,92 @@
       }
     },
     {
+      "name": "list_tasks",
+      "description": "All directory tasks (jobs such as \"query-a-database\") with live listing counts and Official counts. Slugs are valid inputs for search_agents.",
+      "annotations": {
+        "readOnlyHint": true
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "outputSchema": {
+        "type": "object",
+        "required": [
+          "total",
+          "tasks"
+        ],
+        "properties": {
+          "total": {
+            "type": "integer"
+          },
+          "tasks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "slug",
+                "label",
+                "blurb",
+                "keywords",
+                "categories",
+                "access",
+                "count",
+                "official",
+                "url",
+                "browseUrl",
+                "agentsUrl"
+              ],
+              "properties": {
+                "slug": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "blurb": {
+                  "type": "string"
+                },
+                "keywords": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "categories": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "access": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "count": {
+                  "type": "integer"
+                },
+                "official": {
+                  "type": "integer"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "browseUrl": {
+                  "type": "string"
+                },
+                "agentsUrl": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
       "name": "compare_agents",
       "description": "Put 2 or 3 listings side by side, as the site's /compare page does. For each listing: the facts that set it apart from the others (\"Only one with a CLI\", \"No auth required\", \"Most skills (12)\"). Then one row per field, with each listing's value by slug: what it is, provider, official vendor, verified, access, auth, MCP server, CLI install, API base URL, skills, streaming, push, categories, tags, listed since. A row where every listing agrees has same: true. Facts from the listings' own data, never a verdict. A curated comparison of the same listings adds its intro line. Unknown or repeated slugs, and any past 3, are left out with a note.",
       "annotations": {
@@ -1018,7 +1104,7 @@
     },
     {
       "name": "recommend",
-      "description": "One recommendation for what your user needs, and the next step to start using it, as the site's Operator (/operator) picks it. Pass the need in a sentence you write yourself, e.g. \"query Postgres and send email\": each need it names gets one pick, why it fits, the next step (the MCP client config to paste when the vendor's docs give one, else its setup guide or docs) and two alternatives; two or more picks also come with a /stack link. Name a product to prefer the listings that mention it; say MCP, CLI, API, browser extension or official to narrow the pick. Picked by fixed matching rules, not a model, so the same need always gets the same answer. A need that matches no task is refused with the closest tasks. Never include names, email addresses or phone numbers.",
+      "description": "One recommendation for what your user needs, and the next step to start using it, as the site's Operator (/operator) picks it. Pass the need in a sentence you write yourself, e.g. \"query Postgres and send email\": each need it names gets one pick, why it fits, the next step (the MCP client config to paste when the vendor's docs give one, else its setup guide or docs) and two alternatives; two or more picks also come with a /stack link. Name a product to prefer the listings that mention it; say MCP, CLI, API, browser extension or official to narrow the pick. Picked by fixed matching rules, not a model, so the same need always gets the same answer; when no dedicated task matches, catalog search picks the closest matching listing (with task: null and source: \"search_fallback\"). A need that matches neither a task nor any listing is refused with the closest tasks. Never include names, email addresses or phone numbers.",
       "annotations": {
         "readOnlyHint": true
       },
@@ -1066,8 +1152,19 @@
                   "description": "The user's words for this need"
                 },
                 "task": {
-                  "type": "object",
-                  "description": "The directory task it matched: slug, label, url"
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "description": "The directory task it matched (slug, label, url), or null when picked via catalog search fallback"
+                },
+                "source": {
+                  "type": "string",
+                  "enum": [
+                    "task",
+                    "search_fallback"
+                  ],
+                  "description": "Whether the pick came from a curated task or catalog search fallback"
                 },
                 "pick": {
                   "type": "object",

@@ -94,7 +94,10 @@ export const SORT_INPUT =
   'Result order. relevance (default): best match first with search text; without it, best fit first for a task, else featured then A→Z. newest: most recently added first. skills: most skills first. name: A→Z';
 
 export const TASK_INPUT =
-  'Task slug, e.g. "query-a-database": only the listings that do that job, best fit first. GET https://agentswitchboard.dev/api/tasks lists the tasks';
+  'Task slug, e.g. "query-a-database": only the listings that do that job, best fit first. Call list_tasks or GET https://agentswitchboard.dev/api/tasks for valid slugs';
+
+export const LIST_TASKS_DESCRIPTION =
+  'All directory tasks (jobs such as "query-a-database") with live listing counts and Official counts. Slugs are valid inputs for search_agents.';
 
 export const SINCE_INPUT =
   'Only listings added to the directory on or after this day: a date (YYYY-MM-DD), or a number of days back with today included ("7" is the last 7 days). Add sort "newest" to list the newest first';
@@ -137,7 +140,8 @@ export const RECOMMEND_DESCRIPTION =
   'Pass the need in a sentence you write yourself, e.g. "query Postgres and send email": each need it names gets one pick, why it fits, ' +
   'the next step (the MCP client config to paste when the vendor\'s docs give one, else its setup guide or docs) and two alternatives; ' +
   'two or more picks also come with a /stack link. Name a product to prefer the listings that mention it; say MCP, CLI, API, browser extension or official to narrow the pick. ' +
-  'Picked by fixed matching rules, not a model, so the same need always gets the same answer. A need that matches no task is refused with the closest tasks. ' +
+  'Picked by fixed matching rules, not a model, so the same need always gets the same answer; when no dedicated task matches, catalog search picks the closest matching listing (with task: null and source: "search_fallback"). ' +
+  'A need that matches neither a task nor any listing is refused with the closest tasks. ' +
   'Never include names, email addresses or phone numbers.';
 
 export const LAST_CHECKED_DESCRIPTION =

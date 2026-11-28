@@ -15,6 +15,7 @@ no account, API key or configuration. In approval prompts it appears as
 | `search_agents` | Find listings for a job: by query, task, category, access method (MCP, API, CLI, SDK and more), sign-in type, or official and verified status |
 | `get_agent` | One listing with its description, access methods, and MCP address or install command |
 | `list_categories` | The directory's categories, with how many listings each has |
+| `list_tasks` | The directory's tasks (jobs like `query-a-database`), with how many listings and Official listings fit each |
 | `compare_agents` | Two or three listings side by side |
 | `alternatives_to` | Listings that could stand in for one, with what each has in common |
 | `connect_bundle` | One MCP client config for up to 10 listings, and how to connect the rest |

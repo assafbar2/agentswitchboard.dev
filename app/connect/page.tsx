@@ -35,7 +35,7 @@ const XAI_API_EXAMPLE = `curl https://api.x.ai/v1/responses \\
       "server_url": "${MCP_URL}",
       "server_label": "agentswitchboard",
       "allowed_tools": [
-        "search_agents", "get_agent", "list_categories",
+        "search_agents", "get_agent", "list_categories", "list_tasks",
         "compare_agents", "alternatives_to", "connect_bundle",
         "recommend"
       ]
@@ -55,6 +55,7 @@ const TOOLS: { name: string; does: string }[] = [
   },
   { name: 'get_agent', does: 'Full detail for one listing: skills, auth, links, Verified and Official status, and how to start using it.' },
   { name: 'list_categories', does: 'Every category with its slug and live agent count.' },
+  { name: 'list_tasks', does: 'Every task (jobs like "query-a-database") with its slug, live listing count and Official count.' },
   {
     name: 'compare_agents',
     does: '2 or 3 listings side by side: what sets each apart, then access, auth, how to connect it and skills, field by field.',

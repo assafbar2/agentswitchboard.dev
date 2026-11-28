@@ -230,11 +230,12 @@ export function renderLlmsFull(
 - **Server manifest:** ${BASE_URL}/.well-known/mcp.json
 - **WebMCP (in-browser \`document.modelContext\`):** ${BASE_URL}/.well-known/webmcp.json
 
-MCP tools (9):
+MCP tools (10):
 - \`recommend\`: one pick, why it fits, next step (copy-ready config when available), limitations, and two alternatives for a plain-language need.
 - \`search_agents\`: search and filter by \`query\`, \`task\`, \`category\`, \`access\`, \`official\`, \`verified\`, \`auth\`, \`since\`, \`sort\`, \`limit\`, \`offset\`.
 - \`get_agent\`: full listing record by slug, including \`useItNow\` copy-ready client config, install command, API base URL, and skills.
 - \`list_categories\`: all ${categories.length} category slugs and live counts.
+- \`list_tasks\`: all ${tasks.length} task slugs with live listing counts and Official counts.
 - \`compare_agents\`: put 2 or 3 listings side by side with \`setsApart\` facts and field rows.
 - \`alternatives_to\`: strongest organic alternatives to a listing, with shared access and overlapping skills/tags.
 - \`connect_bundle\`: turn up to 10 listing slugs into one \`{"mcpServers": …}\` config, \`claude mcp add\` commands, and setup instructions for the rest.

@@ -1,10 +1,10 @@
 /**
  * The WebMCP tools that components/WebMcp.tsx registers on `document.modelContext`:
- * search_agents, get_agent, list_categories, compare_agents, alternatives_to,
- * connect_bundle and recommend.
+ * search_agents, get_agent, list_categories, list_tasks, compare_agents,
+ * alternatives_to, connect_bundle and recommend.
  *
  * Each tool calls the public REST API (/api/agents, /api/agents/{slug},
- * /api/categories, /api/compare, /api/agents/{slug}/alternatives,
+ * /api/categories, /api/tasks, /api/compare, /api/agents/{slug}/alternatives,
  * /api/bundle, /api/recommend). That runs the same code as the remote MCP server at /api/mcp,
  * so answers and their order are the same; search and listing objects use the
  * REST field names (see /openapi.json), which differ from the remote MCP's in
@@ -30,6 +30,7 @@ import {
   CONNECT_BUNDLE_DESCRIPTION,
   LAST_CHECKED_DESCRIPTION,
   LIMITATIONS_DESCRIPTION,
+  LIST_TASKS_DESCRIPTION,
   MAX_LIMIT,
   OFFICIAL_DEFINITION,
   RECOMMEND_DESCRIPTION,
@@ -340,6 +341,44 @@ export const WEBMCP_TOOLS: WebMcpTool[] = [
     }),
   },
   {
+    name: 'list_tasks',
+    description: LIST_TASKS_DESCRIPTION,
+    inputSchema: { type: 'object', properties: {} },
+    outputSchema: {
+      type: 'object',
+      required: ['total', 'tasks'],
+      properties: {
+        total: { type: 'integer' },
+        tasks: {
+          type: 'array',
+          items: {
+            type: 'object',
+            required: ['slug', 'label', 'blurb', 'keywords', 'categories', 'access', 'count', 'official', 'url', 'browseUrl', 'agentsUrl'],
+            properties: {
+              slug: { type: 'string' },
+              label: { type: 'string' },
+              blurb: { type: 'string' },
+              keywords: stringList,
+              categories: stringList,
+              access: stringList,
+              count: { type: 'integer' },
+              official: { type: 'integer' },
+              url: { type: 'string' },
+              browseUrl: { type: 'string' },
+              agentsUrl: { type: 'string' },
+            },
+          },
+        },
+      },
+    },
+    annotations: { readOnlyHint: true },
+    execute: tool('list_tasks', async () => {
+      const { status, body } = await getJson('/api/tasks');
+      if (status !== 200 || !body) return asError(`list_tasks failed (HTTP ${status}).`);
+      return asResult(body);
+    }),
+  },
+  {
     name: 'compare_agents',
     description: COMPARE_AGENTS_DESCRIPTION,
     inputSchema: {
@@ -523,7 +562,8 @@ export const WEBMCP_TOOLS: WebMcpTool[] = [
             type: 'object',
             properties: {
               need: { type: 'string', description: "The user's words for this need" },
-              task: { type: 'object', description: 'The directory task it matched: slug, label, url' },
+              task: { type: ['object', 'null'], description: 'The directory task it matched (slug, label, url), or null when picked via catalog search fallback' },
+              source: { type: 'string', enum: ['task', 'search_fallback'], description: 'Whether the pick came from a curated task or catalog search fallback' },
               pick: { type: 'object', properties: decisionProps },
               pickedBecause: { type: 'string' },
               why: { type: ['string', 'null'], description: 'The skill of the pick that does the task' },

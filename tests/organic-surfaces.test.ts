@@ -45,6 +45,7 @@ const agentsRoute = await import('@/app/api/agents/route');
 const agentRoute = await import('@/app/api/agents/[slug]/route');
 const alternativesRoute = await import('@/app/api/agents/[slug]/alternatives/route');
 const categoriesRoute = await import('@/app/api/categories/route');
+const tasksRoute = await import('@/app/api/tasks/route');
 const compareRoute = await import('@/app/api/compare/route');
 const bundleRoute = await import('@/app/api/bundle/route');
 const recommendRoute = await import('@/app/api/recommend/route');
@@ -65,6 +66,8 @@ const CALLS: [string, Record<string, unknown>][] = [
   ['search_agents', { limit: 50, offset: 50 }],
   ['search_agents', { query: 'browser', limit: 50 }],
   ['search_agents', { query: 'email', limit: 50 }],
+  ['search_agents', { query: 'email API for my agent', limit: 20 }],
+  ['search_agents', { query: 'agent wallet virtual card', limit: 20 }],
   ['search_agents', { task: 'query-a-database', limit: 50 }],
   ['search_agents', { access: ['mcp'], auth: ['none'], limit: 50 }],
   ['search_agents', { category: 'code-devtools', limit: 50 }],
@@ -74,6 +77,7 @@ const CALLS: [string, Record<string, unknown>][] = [
   ['get_agent', { slug: 'playwright-mcp' }],
   ['get_agent', { slug: 'barnir-hired' }],
   ['list_categories', {}],
+  ['list_tasks', {}],
   ['compare_agents', { slugs: ['github-copilot', 'cursor', 'codeium-windsurf'] }],
   ['compare_agents', { slugs: ['pinecone', 'qdrant'] }],
   ['alternatives_to', { slug: 'pinecone' }],
@@ -83,6 +87,9 @@ const CALLS: [string, Record<string, unknown>][] = [
   ['recommend', { need: 'query Postgres and send email' }],
   ['recommend', { need: 'write and fix code' }],
   ['recommend', { need: 'an official MCP to browse the web' }],
+  ['recommend', { need: 'generate music with AI' }],
+  ['recommend', { need: 'checkout on any e-commerce store' }],
+  ['recommend', { need: 'trade on prediction markets' }],
 ];
 
 let rpcId = 0;
@@ -122,6 +129,7 @@ async function restFetch(input: string | URL | Request): Promise<Response> {
   if ((m = /^\/api\/agents\/([^/]+)\/alternatives$/.exec(p))) return alternativesRoute.GET(req, slug(m[1]));
   if ((m = /^\/api\/agents\/([^/]+)$/.exec(p))) return agentRoute.GET(req, slug(m[1]));
   if (p === '/api/categories') return categoriesRoute.GET(req);
+  if (p === '/api/tasks') return tasksRoute.GET(req);
   if (p === '/api/compare') return compareRoute.GET(req);
   if (p === '/api/bundle') return bundleRoute.GET(req);
   if (p === '/api/recommend') return recommendRoute.GET(req);
@@ -179,7 +187,7 @@ describe('AI-assistant surfaces are organic', () => {
 
   it('the MCP tool list names no placement field and promises no placement order', async () => {
     const { result } = await rpc('tools/list');
-    expect(result.tools).toHaveLength(9);
+    expect(result.tools).toHaveLength(10);
     // The logger's allow-list of tool names (lib/mcp-tools.ts) matches what is registered.
     expect(result.tools.map((t: { name: string }) => t.name).sort()).toEqual([...MCP_TOOL_NAMES].sort());
     for (const tool of result.tools) {
@@ -192,7 +200,7 @@ describe('AI-assistant surfaces are organic', () => {
 
   it('the WebMCP tool declarations name no placement field and promise no placement order', () => {
     expect(WEBMCP_TOOLS.map((t) => t.name).sort()).toEqual(
-      ['alternatives_to', 'compare_agents', 'connect_bundle', 'get_agent', 'list_categories', 'recommend', 'search_agents']
+      ['alternatives_to', 'compare_agents', 'connect_bundle', 'get_agent', 'list_categories', 'list_tasks', 'recommend', 'search_agents']
     );
     for (const tool of WEBMCP_TOOLS) {
       expect(JSON.stringify(tool.outputSchema ?? {}), tool.name).not.toMatch(/"(featured|featuredUntil|sponsored|sponsorLabel|tier)"/);

@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
   "name": "io.github.assafbar2/agentswitchboard",
   "description": "Search a curated directory of AI agents, MCP servers, and agentic tools, suggest new listings, and say privately when nothing fits a job. Use it to find out whether an agent already exists for a job, which access methods it offers (API, MCP, CLI, browser extension), and where its homepage is.",
-  "version": "1.11.0",
+  "version": "1.12.0",
   "websiteUrl": "https://agentswitchboard.dev",
   "repository": {
     "url": "https://github.com/assafbar2/agentswitchboard.dev",
@@ -28,7 +28,7 @@
           },
           "task": {
             "type": "string",
-            "description": "Task slug, e.g. \"query-a-database\": only the listings that do that job, best fit first. GET https://agentswitchboard.dev/api/tasks lists the tasks"
+            "description": "Task slug, e.g. \"query-a-database\": only the listings that do that job, best fit first. Call list_tasks or GET https://agentswitchboard.dev/api/tasks for valid slugs"
           },
           "category": {
             "type": "string",
@@ -131,6 +131,16 @@
       }
     },
     {
+      "name": "list_tasks",
+      "title": "List Tasks",
+      "description": "All directory tasks (jobs such as \"query-a-database\") with live listing counts and Official counts. Slugs are valid inputs for search_agents.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
       "name": "compare_agents",
       "title": "Compare Agents",
       "description": "Put 2 or 3 listings side by side, as the site's /compare page does. For each listing: the facts that set it apart from the others (\"Only one with a CLI\", \"No auth required\", \"Most skills (12)\"). Then one row per field, with each listing's value by slug: what it is, provider, official vendor, verified, access, auth, MCP server, CLI install, API base URL, skills, streaming, push, categories, tags, listed since. A row where every listing agrees has same: true. Facts from the listings' own data, never a verdict. A curated comparison of the same listings adds its intro line. Unknown or repeated slugs, and any past 3, are left out with a note.",
@@ -206,7 +216,7 @@
     {
       "name": "recommend",
       "title": "Recommend",
-      "description": "One recommendation for what your user needs, and the next step to start using it, as the site's Operator (/operator) picks it. Pass the need in a sentence you write yourself, e.g. \"query Postgres and send email\": each need it names gets one pick, why it fits, the next step (the MCP client config to paste when the vendor's docs give one, else its setup guide or docs) and two alternatives; two or more picks also come with a /stack link. Name a product to prefer the listings that mention it; say MCP, CLI, API, browser extension or official to narrow the pick. Picked by fixed matching rules, not a model, so the same need always gets the same answer. A need that matches no task is refused with the closest tasks. Never include names, email addresses or phone numbers.",
+      "description": "One recommendation for what your user needs, and the next step to start using it, as the site's Operator (/operator) picks it. Pass the need in a sentence you write yourself, e.g. \"query Postgres and send email\": each need it names gets one pick, why it fits, the next step (the MCP client config to paste when the vendor's docs give one, else its setup guide or docs) and two alternatives; two or more picks also come with a /stack link. Name a product to prefer the listings that mention it; say MCP, CLI, API, browser extension or official to narrow the pick. Picked by fixed matching rules, not a model, so the same need always gets the same answer; when no dedicated task matches, catalog search picks the closest matching listing (with task: null and source: \"search_fallback\"). A need that matches neither a task nor any listing is refused with the closest tasks. Never include names, email addresses or phone numbers.",
       "inputSchema": {
         "type": "object",
         "properties": {

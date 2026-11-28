@@ -1,5 +1,6 @@
 import { organicOrder } from './organic';
 import { promotedFirst } from './promoted';
+import { stem, stemEqual } from './task-match';
 import type { Agent } from './types';
 
 /** Canonical access method labels for display */
@@ -265,10 +266,26 @@ export function accessAlias(word: string): AccessMethod | undefined {
   return Object.prototype.hasOwnProperty.call(ACCESS_ALIASES, word) ? ACCESS_ALIASES[word] : undefined;
 }
 
-/** Filler words in natural queries ("an mcp server for postgres"). */
+/** Filler words skipped between words of a task keyword ("text-to-speech"). */
 const STOPWORDS = new Set([
   'a', 'an', 'the', 'for', 'with', 'to', 'of', 'and',
   'server', 'servers', 'tool', 'tools',
+]);
+
+/**
+ * Filler words dropped from natural search queries ("email API for my agent",
+ * "best tool to scrape websites") whenever meaningful terms remain. A query
+ * of nothing but filler ("agent", "tools") still searches for those words.
+ */
+const SEARCH_STOPWORDS = new Set([
+  ...STOPWORDS,
+  'my', 'our', 'your', 'their', 'me', 'us', 'i', 'it', 'its',
+  'this', 'that', 'these', 'those', 'some', 'any', 'all',
+  'in', 'on', 'at', 'by', 'from', 'into', 'via', 'about', 'or',
+  'is', 'are', 'be', 'do', 'does', 'can', 'could', 'would', 'should',
+  'need', 'needs', 'want', 'wants', 'using', 'help', 'find', 'get',
+  'best', 'good', 'top', 'how', 'what', 'which',
+  'agent', 'agents', 'ai', 'bot', 'bots',
 ]);
 
 /** Each word in a group also matches listings that use another word in it. */
@@ -288,6 +305,7 @@ const SYNONYM_GROUPS = [
  */
 const EXPANSIONS: Record<string, string[]> = {
   sql: ['mysql', 'postgresql', 'sqlite', 'nosql', 'mssql'],
+  music: ['song'],
 };
 
 const SYNONYMS = new Map<string, string[]>(
@@ -301,14 +319,17 @@ for (const [word, more] of Object.entries(EXPANSIONS)) {
 // new RegExp so the 'u'-flag syntax isn't checked against the ES2017 target.
 const NOT_WORD = '[^\\p{L}\\p{N}]';
 const EDGE_JUNK = new RegExp('^[^\\p{L}\\p{N}]+|[^\\p{L}\\p{N}+#]+$', 'gu');
+const LETTERS_ONLY = new RegExp('^\\p{L}+$', 'u');
+const WORD_SPLIT = new RegExp(`${NOT_WORD}+`, 'u');
 
 /**
  * One spelling a query word can match. Words of 4+ letters match anywhere,
- * so "postgres" finds "PostgreSQL" and "mail" finds "email". Shorter words
- * need word boundaries, or "ts" would match "agents" and "pg" "upgrade":
- * 1–2 letters must be a whole word, 3 must start a word. Names are often
- * run together ("PaddleOCR", "AgentMail"), so in a name 3 letters may
- * match anywhere.
+ * so "postgres" finds "PostgreSQL" and "mail" finds "email", and also match
+ * word tokens that share a stem ("emails" ↔ "email", "generating" ↔ "generate",
+ * "trading" ↔ "trade"). Shorter words need word boundaries, or "ts" would
+ * match "agents" and "pg" "upgrade": 1–2 letters must be a whole word, 3
+ * must start a word. Names are often run together ("PaddleOCR", "AgentMail"),
+ * so in a name 3 letters may match anywhere.
  */
 interface Variant {
   word: string;
@@ -316,7 +337,21 @@ interface Variant {
 }
 
 function makeVariant(word: string): Variant {
-  if (word.length >= 4) return { word, test: (text) => text.includes(word) };
+  if (word.length >= 4) {
+    if (!LETTERS_ONLY.test(word)) return { word, test: (text) => text.includes(word) };
+    const s = stem(word);
+    // Cheap substring guard that every stem-equivalent token must contain
+    // (dropping trailing "e" for e-drop stems like trade/trading and "y" for library/libraries).
+    const guard = s.length >= 4 && (s.endsWith('e') || s.endsWith('y')) ? s.slice(0, -1) : s;
+    return {
+      word,
+      test: (text) => {
+        if (text.includes(word)) return true;
+        if (guard.length < 3 || !text.includes(guard)) return false;
+        return text.split(WORD_SPLIT).some((tok) => tok.length >= 3 && stemEqual(tok, word));
+      },
+    };
+  }
   const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const end = word.length <= 2 ? `(?=${NOT_WORD}|$)` : '';
   const re = new RegExp(`(?:^|${NOT_WORD})${escaped}${end}`, 'u');
@@ -367,10 +402,10 @@ function splitPhrase(phrase: string): string[] {
 
 /**
  * The words of `query` that narrow a search, lowercased, in order and once
- * each: access-method words and everything that is not a stopword.
+ * each: access-method words and everything that is not a search stopword.
  */
 export function narrowingWords(query: string): string[] {
-  return splitPhrase(query.toLowerCase()).filter((w) => accessAlias(w) || !STOPWORDS.has(w));
+  return splitPhrase(query.toLowerCase()).filter((w) => accessAlias(w) || !SEARCH_STOPWORDS.has(w));
 }
 
 function parseQuery(query: string): ParsedQuery {
@@ -386,7 +421,7 @@ function parseQuery(query: string): ParsedQuery {
       const seen = access.find((a) => a.method === method);
       if (seen) seen.inName.push(wholeWord(w));
       else access.push({ method, inName: [wholeWord(w)] });
-    } else if (STOPWORDS.has(w)) {
+    } else if (SEARCH_STOPWORDS.has(w)) {
       dropped.push(w);
     } else {
       kept.push(w);
@@ -470,9 +505,11 @@ function scoreTerm(h: Haystack, variants: Variant[]): number {
 /**
  * `chips` are the access filters picked in the UI and are strict: the
  * listing must have every one. Access words typed in the query are looser
- * (see ParsedQuery.access).
+ * (see ParsedQuery.access). `minTerms` defaults to all terms (strict AND);
+ * soft-AND fallback passes `ceil(N / 2)` when strict AND returns nothing on
+ * 3+ term queries.
  */
-function scoreParsed(agent: Agent, parsed: ParsedQuery, chips: string[]): number {
+function scoreParsed(agent: Agent, parsed: ParsedQuery, chips: string[], minTerms?: number): number {
   const methods: string[] = agent.accessMethods ?? [];
   if (!chips.every((m) => methods.includes(m))) return 0;
   if (parsed.access.length > 0) {
@@ -483,11 +520,22 @@ function scoreParsed(agent: Agent, parsed: ParsedQuery, chips: string[]): number
   if (parsed.terms.length === 0) return 1;
 
   const h = haystackOf(agent);
+  const required = minTerms ?? parsed.terms.length;
+  let matched = 0;
   let score = 0;
   for (const variants of parsed.terms) {
     const s = scoreTerm(h, variants);
-    if (s === 0) return 0; // every word must match somewhere
+    if (s === 0) {
+      if (required === parsed.terms.length) return 0;
+      continue;
+    }
+    matched += 1;
     score += s;
+  }
+  if (matched < required) return 0;
+
+  if (required < parsed.terms.length) {
+    score += matched * 1000;
   }
 
   // Multi-word queries: reward the whole phrase in the name ("postgres mcp pro").
@@ -505,11 +553,12 @@ function scoreParsed(agent: Agent, parsed: ParsedQuery, chips: string[]): number
  * The query is split into words. A word that names an access method
  * ("mcp", "api", "cli", "extension") is a filter: an agent scores 0 unless
  * it has that method or its name contains the word as a whole word.
- * Stopwords ("for", "server", "tools", ...) are dropped. Every remaining
- * word, or one of its synonyms (postgres/postgresql/pg, k8s/kubernetes,
- * gh/github, js/javascript, ts/typescript; "sql" also matches mysql,
- * postgresql, sqlite, nosql and mssql), must match some field; the score is
- * the sum of the per-word scores (see scoreTerm).
+ * Stopwords ("for", "my", "agent", "server", "tools", ...) are dropped when
+ * meaningful terms remain. Every remaining word, or one of its synonyms /
+ * stem equivalents (postgres/postgresql/pg, k8s/kubernetes, gh/github,
+ * js/javascript, ts/typescript; "sql" also matches mysql, postgresql, sqlite,
+ * nosql and mssql; "music" also matches song), must match some field; the
+ * score is the sum of the per-word scores (see scoreTerm).
  */
 export function scoreAgent(agent: Agent, query: string): number {
   if (!query.trim()) return 1;
@@ -546,8 +595,17 @@ export function searchAgents(
       : agents.filter((a) => scoreParsed(a, parsed, chips) > 0);
   }
 
-  return agents
+  const strict = agents
     .map((agent) => ({ agent, score: scoreParsed(agent, parsed, chips) }))
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => b.score - a.score)
+    .map(({ agent }) => agent);
+
+  if (strict.length > 0 || parsed.terms.length < 3) return strict;
+
+  const minTerms = Math.ceil(parsed.terms.length / 2);
+  return agents
+    .map((agent) => ({ agent, score: scoreParsed(agent, parsed, chips, minTerms) }))
     .filter(({ score }) => score > 0)
     .sort((a, b) => b.score - a.score)
     .map(({ agent }) => agent);
@@ -592,8 +650,6 @@ const TASK_POINTS = {
  * is left out.
  */
 export const TASK_MIN_SCORE = 170;
-
-const WORD_SPLIT = new RegExp(`${NOT_WORD}+`, 'u');
 
 /** Lowercased words of `text`, filler words left out unless there is nothing else. */
 function contentWords(text: string): string[] {

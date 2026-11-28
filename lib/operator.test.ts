@@ -292,4 +292,23 @@ describe('putThrough, against the directory', () => {
       );
     }
   });
+
+  it('breaks clear task ties ("checkout on any e-commerce store") while keeping ambiguous ties unmatched', async () => {
+    const catalog = await getEveryAgent();
+    const checkout = putThrough('checkout on any e-commerce store', getTasks(), catalog);
+    expect(checkout.parts[0].task?.slug).toBe('shop-and-check-out');
+    expect(checkout.parts[0].pick).toBeTruthy();
+
+    const ambiguous = putThrough('answer support calls, book meetings', getTasks(), catalog);
+    expect(ambiguous.parts[0].task).toBeNull();
+    expect(ambiguous.parts[0].nearest.map((t) => t.slug)).toEqual(['make-phone-calls', 'answer-customer-support']);
+  });
+
+  it('routes "trade on prediction markets" to prediction-market listings instead of stock brokerages', async () => {
+    const catalog = await getEveryAgent();
+    const res = putThrough('trade on prediction markets', getTasks(), catalog);
+    expect(res.parts[0].task?.slug).toBe('track-markets');
+    expect(res.parts[0].pick?.slug).not.toBe('interactive-brokers-mcp');
+    expect(['kalshi-api', 'manifold-markets', 'polymarket-mcp']).toContain(res.parts[0].pick?.slug);
+  });
 });

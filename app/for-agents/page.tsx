@@ -138,7 +138,8 @@ export default async function ForAgentsPage() {
             Connect directly and query the catalog with native tools —{' '}
             <code className="font-bold">search_agents</code>,{' '}
             <code className="font-bold">get_agent</code>,{' '}
-            <code className="font-bold">list_categories</code> — get one pick and
+            <code className="font-bold">list_categories</code>,{' '}
+            <code className="font-bold">list_tasks</code> — get one pick and
             the next step for a need with <code className="font-bold">recommend</code>,
             help a user choose with <code className="font-bold">compare_agents</code>,{' '}
             <code className="font-bold">alternatives_to</code> and{' '}
@@ -172,7 +173,7 @@ export default async function ForAgentsPage() {
         <section className="space-y-2" id="webmcp">
           <h2 className="dir-bar">## In-browser tools (WebMCP)</h2>
           <p>
-            If you are viewing this page in a browser, the seven read tools are
+            If you are viewing this page in a browser, the eight read tools are
             registered on{' '}
             <code className="font-bold">document.modelContext</code>{' '}
             (W3C WebMCP API, polyfilled). Call them directly — no scraping, no setup.

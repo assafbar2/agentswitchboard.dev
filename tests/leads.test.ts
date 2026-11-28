@@ -1,11 +1,14 @@
 import { afterEach, beforeEach, describe, expect, it, vi, type MockInstance } from 'vitest';
-import { leadLine, logZeroResults, withoutContactDetails } from '@/lib/leads';
+import { leadLine, logUnmatchedRecommend, logZeroResults, withoutContactDetails } from '@/lib/leads';
 import { requestMissingTool, type MissingToolInput } from '@/lib/missing-tool';
 import { fixedWindowLimiter } from '@/lib/rate-limit';
 
 const { POST: mcpPost } = await import('@/app/api/[transport]/route');
 const agentsRoute = await import('@/app/api/agents/route');
 const missingToolRoute = await import('@/app/api/missing-tool/route');
+const recommendRoute = await import('@/app/api/recommend/route');
+const homeAnswerRoute = await import('@/app/home/answer/route');
+const tasksRoute = await import('@/app/api/tasks/route');
 
 const UA = 'claude-user/1.0';
 
@@ -108,6 +111,54 @@ describe('zero-result searches', () => {
     const { result } = await rpc('tools/call', { name: 'search_agents', arguments: { query: 'zzqx-no-such-tool' } });
     expect(result.structuredContent.total).toBe(0);
     expect(leads()).toEqual([{ asb_lead: 'zero_results', surface: 'mcp', client: 'claude', q: 'zzqx-no-such-tool' }]);
+  });
+});
+
+describe('unmatched recommend leads and list_tasks', () => {
+  it('logs unmatched recommend needs across MCP, REST and site, stripping contact details', async () => {
+    logUnmatchedRecommend('rest', { 'user-agent': UA }, [{ need: 'order pizza for jo@acme.io' }]);
+    expect(leads()).toEqual([
+      { asb_lead: 'unmatched_recommend', surface: 'rest', client: 'claude', need: 'order pizza for [email removed]' },
+    ]);
+    logSpy.mockClear();
+
+    const mcpRes = await rpc('tools/call', { name: 'recommend', arguments: { need: 'make me a sandwich' } });
+    expect(mcpRes.result.isError).toBe(true);
+    expect(leads()).toEqual([
+      { asb_lead: 'unmatched_recommend', surface: 'mcp', client: 'claude', need: 'make me a sandwich' },
+    ]);
+    logSpy.mockClear();
+
+    const restRes = await recommendRoute.GET(
+      new Request('http://localhost/api/recommend?need=make+me+a+sandwich', { headers: { 'user-agent': UA } })
+    );
+    expect(restRes.status).toBe(404);
+    expect(leads()).toEqual([
+      { asb_lead: 'unmatched_recommend', surface: 'rest', client: 'claude', need: 'make me a sandwich' },
+    ]);
+    logSpy.mockClear();
+
+    const siteRes = await homeAnswerRoute.GET(
+      new Request('http://localhost/home/answer?need=make+me+a+sandwich', { headers: { 'user-agent': UA } })
+    );
+    expect(siteRes.status).toBe(404);
+    expect(leads()).toEqual([
+      { asb_lead: 'unmatched_recommend', surface: 'site', client: 'claude', need: 'make me a sandwich' },
+    ]);
+  });
+
+  it('does not log a lead when recommend matches via task or catalog fallback', async () => {
+    const matched = await rpc('tools/call', { name: 'recommend', arguments: { need: 'generate music with AI' } });
+    expect(matched.result.isError).toBeFalsy();
+    expect(leads()).toEqual([]);
+  });
+
+  it('MCP list_tasks returns the live tasks matching GET /api/tasks', async () => {
+    const mcpRes = await rpc('tools/call', { name: 'list_tasks', arguments: {} });
+    expect(mcpRes.result.isError).toBeFalsy();
+    const restRes = await (await tasksRoute.GET(new Request('http://localhost/api/tasks'))).json();
+    expect(mcpRes.result.structuredContent).toEqual(restRes);
+    expect(mcpRes.result.structuredContent.total).toBeGreaterThan(50);
   });
 });
 

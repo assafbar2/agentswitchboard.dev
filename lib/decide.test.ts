@@ -274,7 +274,7 @@ describe('recommendDecision', () => {
     expect(answer.recommendations.map((r) => r.alternatives.map((a) => a.slug))).toEqual(
       put.parts.map((p) => p.alternatives.map((a) => a.slug))
     );
-    expect(answer.recommendations.map((r) => r.task.slug)).toEqual(put.parts.map((p) => p.task!.slug));
+    expect(answer.recommendations.map((r) => r.task?.slug)).toEqual(put.parts.map((p) => p.task!.slug));
     expect(answer.stackUrl).toBe(`${BASE_URL}${stackHref(put.stack.map((a) => a.slug))}`);
     expect(answer.operatorUrl).toBe(`${BASE_URL}${operatorHref(need)}`);
     expect(answer.basis).toBe(RECOMMEND_BASIS);
@@ -310,6 +310,43 @@ describe('recommendDecision', () => {
       expect(r.pick.lastChecked).toBe(pick.verified ? (pick.updatedAt ?? null)?.slice(0, 10) ?? null : null);
       if (r.limitations.length > 0) expect(answer.answer).toContain(`Limitations: ${r.limitations.join('; ')}.`);
     }
+  });
+
+  it('falls back to catalog search for valid queries outside the hardcoded tasks ("generate music with AI")', async () => {
+    const catalog = await organic();
+    const answer = body(recommendDecision('generate music with AI', getTasks(), catalog));
+    expect(answer.recommendations).toHaveLength(1);
+    const [r] = answer.recommendations;
+    expect(r.source).toBe('search_fallback');
+    expect(r.task).toBeNull();
+    expect(r.fits).toBeGreaterThan(0);
+    expect([r.pick.slug, ...r.alternatives.map((a) => a.slug)]).toEqual(
+      expect.arrayContaining([expect.stringMatching(/minimax|suno|imaginevid/)])
+    );
+    expect(answer.unmatched).toEqual([]);
+  });
+
+  it('resolves "checkout on any e-commerce store" and "trade on prediction markets" cleanly', async () => {
+    const catalog = await organic();
+    const checkout = body(recommendDecision('checkout on any e-commerce store', getTasks(), catalog));
+    expect(checkout.recommendations[0].source).toBe('task');
+    expect(checkout.recommendations[0].task?.slug).toBe('shop-and-check-out');
+    expect(checkout.recommendations[0].pickedBecause).not.toContain('“e”');
+
+    const pm = body(recommendDecision('trade on prediction markets', getTasks(), catalog));
+    expect(pm.recommendations[0].task?.slug).toBe('track-markets');
+    expect(pm.recommendations[0].pick.slug).not.toBe('interactive-brokers-mcp');
+    expect(['kalshi-api', 'manifold-markets', 'polymarket-mcp']).toContain(pm.recommendations[0].pick.slug);
+  });
+
+  it('promotes matching Sponsored/Featured listings on fallback picks only when promote is passed', async () => {
+    const catalog = await organic();
+    const suno = catalog.find((a) => a.slug === 'suno-mcp');
+    if (!suno) return;
+    const promoted = body(recommendDecision('generate music with AI', getTasks(), catalog, (a) => (a.slug === 'suno-mcp' ? 'Sponsored' : null)));
+    expect(promoted.recommendations[0].pick.slug).toBe('suno-mcp');
+    expect(promoted.placements).toEqual({ 'suno-mcp': 'Sponsored' });
+    expect(promoted.recommendations[0].pickedBecause).toMatch(/^Sponsored:/);
   });
 });
 

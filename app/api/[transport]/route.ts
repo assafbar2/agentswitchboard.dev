@@ -22,7 +22,7 @@ import { COMPARE_QUERY_KEYS } from '@/lib/compare-link';
 import { alternativesDecision, bundleDecision, compareDecision, recommendDecision, type Decision } from '@/lib/decide';
 import { absoluteIconUrl } from '@/lib/icons';
 import { organicOrder, withoutPlacement } from '@/lib/organic';
-import { logZeroResults } from '@/lib/leads';
+import { logUnmatchedRecommend, logZeroResults } from '@/lib/leads';
 import { logConsumer } from '@/lib/log';
 import {
   SUBMIT_LISTING_DESCRIPTION,
@@ -40,6 +40,7 @@ import {
   CONNECT_BUNDLE_DESCRIPTION,
   LAST_CHECKED_DESCRIPTION,
   LIMITATIONS_DESCRIPTION,
+  LIST_TASKS_DESCRIPTION,
   OFFICIAL_DEFINITION,
   RECOMMEND_DESCRIPTION,
   RECOMMEND_NEED_INPUT,
@@ -47,6 +48,7 @@ import {
   TASK_INPUT,
   VERIFIED_INPUT,
   normalizeAccessMethods,
+  summarizeTask,
   unknownTaskMessage,
   howToUseFields,
 } from '@/lib/public-api';
@@ -105,7 +107,7 @@ const INSTRUCTIONS =
   'Agent Switchboard is a curated directory of AI agents, MCP servers, and agentic tools. ' +
   'When the user wants one tool for a job, recommend takes their need in a sentence and returns one pick, why, the next step to start using it and two alternatives. ' +
   'Use search_agents to find tools for a job (pick a task such as "query-a-database", or filter by category, access method, official, verified, or auth type; ' +
-  'since keeps what was added lately; sort by newest or most skills), get_agent for one listing, and list_categories for valid category slugs. ' +
+  'since keeps what was added lately; sort by newest or most skills), get_agent for one listing, list_categories for valid category slugs, and list_tasks for valid task slugs. ' +
   'To help a user choose: compare_agents puts 2 or 3 listings side by side, alternatives_to finds listings that could stand in for one, ' +
   'and connect_bundle turns up to 10 listings into one MCP client config to paste, with how to connect the rest. ' +
   'Each result\'s url is its listing page on the site. submit_listing only files a public suggestion for human review; ' +
@@ -421,6 +423,46 @@ const handler = createMcpHandler(
     );
 
     server.registerTool(
+      'list_tasks',
+      {
+        title: 'List Tasks',
+        description: LIST_TASKS_DESCRIPTION,
+        annotations: readOnly('List Tasks'),
+        inputSchema: {},
+        outputSchema: {
+          total: z.number().int(),
+          tasks: z.array(
+            z.object({
+              slug: z.string(),
+              label: z.string(),
+              blurb: z.string(),
+              keywords: z.array(z.string()),
+              categories: z.array(z.string()),
+              access: z.array(z.string()),
+              count: z.number().int(),
+              official: z.number().int(),
+              url: z.string(),
+              browseUrl: z.string(),
+              agentsUrl: z.string(),
+            })
+          ),
+        },
+      },
+      async () => {
+        const tasks = getTasks();
+        const catalog = await organicCatalog();
+        const structured = {
+          total: tasks.length,
+          tasks: tasks.map((t) => summarizeTask(t, taskMatches(catalog, t))),
+        };
+        return {
+          content: [{ type: 'text', text: JSON.stringify(structured) }],
+          structuredContent: structured,
+        };
+      }
+    );
+
+    server.registerTool(
       'compare_agents',
       {
         title: 'Compare Agents',
@@ -545,7 +587,13 @@ const handler = createMcpHandler(
           recommendations: z.array(
             z.object({
               need: z.string().describe("The user's words for this need"),
-              task: z.object({ slug: z.string(), label: z.string(), url: z.string() }).describe('The directory task it matched'),
+              task: z
+                .object({ slug: z.string(), label: z.string(), url: z.string() })
+                .nullable()
+                .describe('The directory task it matched; null when picked via catalog search fallback'),
+              source: z
+                .enum(['task', 'search_fallback'])
+                .describe('Whether the pick came from a curated task or catalog search fallback'),
               pick: z.object(decisionAgentShape),
               pickedBecause: z.string(),
               why: z.string().nullable().describe('The skill of the pick that does the task'),
@@ -561,7 +609,7 @@ const handler = createMcpHandler(
               }),
               limitations: z.array(z.string()).describe(LIMITATIONS_DESCRIPTION),
               alternatives: z.array(z.object(decisionAgentShape)),
-              fits: z.number().int().describe('How many listings do the task'),
+              fits: z.number().int().describe('How many listings match'),
             })
           ),
           unmatched: z
@@ -573,9 +621,16 @@ const handler = createMcpHandler(
           notes: z.array(z.string()),
         },
       },
-      async ({ need }) => {
+      async ({ need }, extra) => {
         const catalog = await organicCatalog();
-        return decisionResult(recommendDecision(need, getTasks(), catalog));
+        const decision = recommendDecision(need, getTasks(), catalog);
+        const unmatched = decision.ok
+          ? decision.body.unmatched
+          : decision.error === 'no_match' && Array.isArray(decision.extra?.unmatched)
+            ? (decision.extra.unmatched as { need: string }[])
+            : [];
+        logUnmatchedRecommend('mcp', extra.requestInfo?.headers ?? {}, unmatched);
+        return decisionResult(decision);
       }
     );
 
@@ -620,7 +675,7 @@ const handler = createMcpHandler(
     );
   },
   {
-    serverInfo: { name: 'agentswitchboard', version: '1.11.0' },
+    serverInfo: { name: 'agentswitchboard', version: '1.12.0' },
     instructions: INSTRUCTIONS,
   },
   {
