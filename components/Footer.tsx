@@ -27,6 +27,7 @@ const footerLinks = [
       { href: '/for-agents#mcp', label: 'MCP Server' },
       { href: '/connect', label: 'Use with Grok, Claude, ChatGPT' },
       { href: '/for-agents', label: 'For AI Agents' },
+      { href: '/stats', label: 'Directory Stats' },
       { href: '/whats-new', label: "What's New" },
       { href: '/changelog', label: 'Changelog' },
       { href: '/feed.xml', label: 'RSS Feed', endpoint: true },

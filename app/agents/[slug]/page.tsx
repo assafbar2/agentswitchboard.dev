@@ -9,6 +9,7 @@ import { AgentCard } from '@/components/AgentCard';
 import { AgentIcon } from '@/components/AgentIcon';
 import { JsonLd } from '@/components/JsonLd';
 import { CompareWith } from '@/components/CompareWith';
+import { EmbedBadge } from '@/components/EmbedBadge';
 import { MyStackToggle } from '@/components/MyStackToggle';
 import { hasUseItNow, UseItNow } from '@/components/UseItNow';
 import { comparisonsWith, curatedComparisons } from '@/lib/compare';
@@ -271,6 +272,9 @@ export default async function AgentPage({
           >
             Visit Agent <ExternalLink aria-hidden="true" className="w-4 h-4" />
           </a>
+
+          {/* Static SVG embed badge for maintainers */}
+          <EmbedBadge agent={agent} />
 
           {/* Related Agents */}
           {related.length > 0 && (

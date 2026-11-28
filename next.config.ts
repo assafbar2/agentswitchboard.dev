@@ -56,6 +56,17 @@ const nextConfig: NextConfig = {
       },
       { source: "/connector-icon.png", headers: cors },
       {
+        source: "/badges/:path*",
+        headers: [
+          ...cors,
+          { key: "Content-Type", value: "image/svg+xml; charset=utf-8" },
+          {
+            key: "Cache-Control",
+            value: "public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400",
+          },
+        ],
+      },
+      {
         // Every icon URL the site and its APIs hand out carries ?v=<content
         // hash> (lib/icons.ts), so a changed icon always has a new URL.
         source: "/icons/:path*",

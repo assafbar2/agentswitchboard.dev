@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="234" height="28" viewBox="0 0 234 28" role="img" aria-label="Official on Agent Switchboard">
+  <title>Official on Agent Switchboard</title>
+  <rect x="0.5" y="0.5" width="233" height="27" fill="#FFFFFF" stroke="#111111" stroke-width="1"/>
+  <rect x="1" y="1" width="153" height="26" fill="#111111"/>
+  <rect x="154" y="1" width="79" height="26" fill="#FFD400"/>
+  <line x1="154" y1="1" x2="154" y2="27" stroke="#111111" stroke-width="1"/>
+  <g transform="translate(8 7)">
+    <rect width="14" height="14" fill="#FFD400"/>
+    <circle cx="7" cy="7" r="1.5" fill="#111111"/>
+    <line x1="7" y1="2.2" x2="7" y2="5.5" stroke="#111111" stroke-width="1.3"/>
+    <line x1="7" y1="8.5" x2="7" y2="11.8" stroke="#111111" stroke-width="1.3"/>
+    <line x1="2.2" y1="7" x2="5.5" y2="7" stroke="#111111" stroke-width="1.3"/>
+    <line x1="8.5" y1="7" x2="11.8" y2="7" stroke="#111111" stroke-width="1.3"/>
+  </g>
+  <text x="28" y="18" fill="#FFFFFF" font-family="'Barlow Semi Condensed','Inter','Segoe UI',system-ui,-apple-system,sans-serif" font-size="11" font-weight="800" letter-spacing="0.8">AGENT SWITCHBOARD</text>
+  <g transform="translate(162 8)" fill="none" stroke="#111111" stroke-width="1.35" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M2.5 11V2h7v9M0.5 11h11M5 4.5h2M5 7h2"/>
+  </g>
+  <text x="178" y="18" fill="#111111" font-family="'Barlow Semi Condensed','Inter','Segoe UI',system-ui,-apple-system,sans-serif" font-size="11" font-weight="800" letter-spacing="0.8">OFFICIAL</text>
+</svg>
