@@ -1,0 +1,67 @@
+{
+  "id": "aimock",
+  "name": "aimock",
+  "slug": "aimock",
+  "description": "Mocks LLM APIs, MCP tools, A2A agents, AG-UI streams, and vector databases on one local port so AI app tests run offline and deterministically.",
+  "providerName": "CopilotKit",
+  "providerUrl": "https://www.copilotkit.ai",
+  "agentUrl": "https://github.com/CopilotKit/aimock",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "llm-mocking",
+    "test-fixtures",
+    "record-replay",
+    "mcp-testing",
+    "ci-testing",
+    "deterministic-tests",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "mock-llm-providers",
+      "name": "Mock LLM Providers",
+      "description": "Mocks OpenAI, Claude, Gemini, Bedrock, Azure, Vertex AI, Ollama, and other provider APIs from fixtures, streaming included."
+    },
+    {
+      "id": "record-and-replay",
+      "name": "Record and Replay",
+      "description": "Records real API traffic through a proxy, saves it as fixtures, and replays it deterministically with the recorded timing."
+    },
+    {
+      "id": "mock-mcp-servers",
+      "name": "Mock MCP Servers",
+      "description": "Mocks MCP tools, resources, and prompts with session management so MCP clients can be tested without real servers."
+    },
+    {
+      "id": "mock-a2a-and-ag-ui",
+      "name": "Mock A2A and AG-UI",
+      "description": "Mocks A2A agent-to-agent conversations with SSE streaming and AG-UI event streams for testing agent backends and frontends."
+    },
+    {
+      "id": "validate-fixtures",
+      "name": "Validate Fixtures",
+      "description": "Validates fixture files offline without starting a server and reports errors and warnings, with JSON output for CI."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npm install @copilotkit/aimock"
+  },
+  "quickstartUrl": "https://github.com/CopilotKit/aimock#quick-start",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-11-28T14:54:34.490Z",
+  "updatedAt": "2026-11-28T14:54:34.490Z"
+}

@@ -1,0 +1,68 @@
+{
+  "id": "microsoft-vally",
+  "name": "Vally",
+  "slug": "microsoft-vally",
+  "description": "Evaluates AI agents, MCP servers, skills and CLIs: lints specs, runs evals, grades full trajectories and compares runs with Microsoft's Vally CLI, for developers testing agents locally or in CI.",
+  "providerName": "Microsoft",
+  "providerUrl": "https://www.microsoft.com",
+  "agentUrl": "https://microsoft.github.io/vally/",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "agent-evals",
+    "llm-evaluation",
+    "trajectory-grading",
+    "eval-cli",
+    "ci-testing",
+    "mcp-testing",
+    "skill-linting"
+  ],
+  "skills": [
+    {
+      "id": "run-evals",
+      "name": "Run Evals",
+      "description": "Runs prompts and tasks against an agent, MCP server or CLI, records each trajectory of turns, tool calls and tokens, and grades it."
+    },
+    {
+      "id": "lint",
+      "name": "Lint Specs and Skills",
+      "description": "Checks SKILL.md files and eval specs statically for problems before anything runs, with no agent run required."
+    },
+    {
+      "id": "grade",
+      "name": "Re-grade Trajectories",
+      "description": "Re-grades saved trajectories without re-running the agent, and verifies graders against a golden patch with no agent run."
+    },
+    {
+      "id": "compare",
+      "name": "Compare and Experiment",
+      "description": "Compares a treatment run against a baseline with an LLM judge and runs multi-variant experiments to collect comparable results."
+    },
+    {
+      "id": "dashboard",
+      "name": "Results Dashboard",
+      "description": "Starts an analytics server and dashboard for eval results, and imports results into SQLite for historical tracking."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npm install -g @microsoft/vally-cli"
+  },
+  "quickstartUrl": "https://microsoft.github.io/vally/get-started/",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-11-28T14:54:34.444Z",
+  "updatedAt": "2026-11-28T14:54:34.444Z"
+}

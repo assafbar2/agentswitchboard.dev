@@ -1,0 +1,60 @@
+{
+  "id": "terminal-browser",
+  "name": "terminal-browser",
+  "slug": "terminal-browser",
+  "description": "Open a real Chromium browser inside your terminal, beside your coding agent, and let the agent drive open pages through an agent-browser compatible CLI, including over SSH.",
+  "providerName": "Zenbu Labs",
+  "providerUrl": "https://github.com/zenbu-labs",
+  "agentUrl": "https://terminal-browser.com",
+  "categories": [
+    "browser-computer",
+    "code-devtools"
+  ],
+  "tags": [
+    "terminal",
+    "chromium",
+    "browser-control",
+    "web-preview",
+    "ssh",
+    "split-pane"
+  ],
+  "skills": [
+    {
+      "id": "open-page",
+      "name": "Open Page",
+      "description": "Opens a URL in a Chromium browser rendered in the terminal, optionally in a split pane next to your coding agent."
+    },
+    {
+      "id": "drive-browser",
+      "name": "Drive Browser",
+      "description": "Interacts with open terminal browsers through the agent-browser compatible action subcommand, so agents can use the web."
+    },
+    {
+      "id": "browse-over-ssh",
+      "name": "Browse over SSH",
+      "description": "Routes all of the browser's network requests through a remote server over SSH to preview sites running on that machine."
+    },
+    {
+      "id": "list-browsers",
+      "name": "List Browsers",
+      "description": "Lists the terminal browsers that are currently open so an agent or a script can pick the one to act on."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "binary",
+    "command": "curl -fsSL https://terminal-browser.sh/install | bash"
+  },
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-11-28T14:54:34.555Z",
+  "updatedAt": "2026-11-28T14:54:34.555Z"
+}

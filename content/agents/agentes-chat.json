@@ -1,0 +1,62 @@
+{
+  "id": "agentes-chat",
+  "name": "agentes.chat",
+  "slug": "agentes-chat",
+  "description": "Run a self-hosted or cloud team chat where people and AI agents share channels, agents use MCP tools and their own computer, and Claude or Cursor send them tasks over MCP.",
+  "providerName": "agentes.chat",
+  "providerUrl": "https://agentes.chat",
+  "agentUrl": "https://agentes.chat",
+  "categories": [
+    "communication",
+    "orchestration"
+  ],
+  "tags": [
+    "team-chat",
+    "slack-alternative",
+    "self-hosted",
+    "human-approval",
+    "chatops",
+    "team-workspace"
+  ],
+  "skills": [
+    {
+      "id": "send-task-to-agent",
+      "name": "Send Task to Agent",
+      "description": "Sends a message from you to a workspace agent, privately or in a channel, and waits for its reply in your MCP app."
+    },
+    {
+      "id": "read-conversations",
+      "name": "Read Conversations",
+      "description": "Reads the recent messages of a channel, thread or task, and lists the agents and channels you can see."
+    },
+    {
+      "id": "list-recent-tasks",
+      "name": "List Recent Tasks",
+      "description": "Lists the tasks you sent from MCP apps and shows what each workspace agent is working on right now."
+    },
+    {
+      "id": "approve-sensitive-actions",
+      "name": "Approve Sensitive Actions",
+      "description": "Holds merges, deploys and sensitive connector actions as approval cards in the chat until the agent's owner or an admin decides."
+    },
+    {
+      "id": "run-routines",
+      "name": "Run Routines",
+      "description": "Runs an agent on a schedule or on an event such as a pull request or Sentry issue, delivering to a channel, DM or the Drive."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://agentes.chat/docs/ai-apps",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-28T14:54:34.550Z",
+  "updatedAt": "2026-11-28T14:54:34.550Z"
+}

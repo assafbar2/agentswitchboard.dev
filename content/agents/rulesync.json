@@ -1,0 +1,66 @@
+{
+  "id": "rulesync",
+  "name": "rulesync",
+  "slug": "rulesync",
+  "description": "Generates and syncs rules, MCP configs, commands, subagents, and skills for Claude Code, Cursor, Copilot, Codex, and other coding tools from one source.",
+  "providerName": "dyoshikawa",
+  "providerUrl": "https://github.com/dyoshikawa",
+  "agentUrl": "https://github.com/dyoshikawa/rulesync",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "agent-config",
+    "rules-sync",
+    "mcp-config",
+    "claude-code",
+    "cursor",
+    "github-copilot",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "generate-configs",
+      "name": "Generate Configs",
+      "description": "Generates rules, ignore files, MCP configs, commands, subagents, skills, and hooks for each target tool from .rulesync files."
+    },
+    {
+      "id": "import-configs",
+      "name": "Import Configs",
+      "description": "Imports existing configs such as CLAUDE.md, .cursorrules, or Copilot instructions into unified .rulesync source files."
+    },
+    {
+      "id": "convert-configs",
+      "name": "Convert Configs",
+      "description": "Converts configuration straight from one tool to another, such as Cursor rules to Copilot and Claude Code, in one command."
+    },
+    {
+      "id": "fetch-skills",
+      "name": "Fetch Skills",
+      "description": "Fetches and installs skills from a GitHub repository, such as the official rulesync skills, with the rulesync fetch command."
+    },
+    {
+      "id": "init-project",
+      "name": "Init Project",
+      "description": "Initializes a project with the needed directories, sample rule files, and a rulesync configuration file via rulesync init."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npm install -g rulesync"
+  },
+  "quickstartUrl": "https://github.com/dyoshikawa/rulesync#getting-started",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-11-28T14:54:34.497Z",
+  "updatedAt": "2026-11-28T14:54:34.497Z"
+}

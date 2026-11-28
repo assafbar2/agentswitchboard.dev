@@ -1,6 +1,6 @@
 {
   "id": "magic-mcp",
-  "name": "Magic MCP",
+  "name": "21st MCP",
   "slug": "magic-mcp",
   "description": "Generates React and Tailwind UI components inside Cursor, Claude Code and Windsurf over MCP, drawing on a library of thousands of production components.",
   "providerName": "21st.dev",
@@ -46,5 +46,5 @@
     "mcp"
   ],
   "createdAt": "2026-07-25T16:22:45.431Z",
-  "updatedAt": "2026-07-25T16:22:45.431Z"
+  "updatedAt": "2026-11-28T14:46:40.326Z"
 }

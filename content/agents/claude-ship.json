@@ -1,0 +1,60 @@
+{
+  "id": "claude-ship",
+  "name": "Claude Ship",
+  "slug": "claude-ship",
+  "description": "Reviews, fixes and policy-approves GitHub pull requests with Anthropic's Code Review, PR Steward and Approvals agents plus /ship in Claude Code, for Team and Enterprise plans.",
+  "providerName": "Anthropic",
+  "providerUrl": "https://www.anthropic.com",
+  "agentUrl": "https://code.claude.com/docs/en/claude-ship",
+  "categories": [
+    "code-devtools",
+    "autonomous-agents"
+  ],
+  "tags": [
+    "code-review",
+    "pull-requests",
+    "github",
+    "ci-fixes",
+    "merge-conflicts",
+    "approval-policy",
+    "claude-code",
+    "anthropic"
+  ],
+  "skills": [
+    {
+      "id": "code-review",
+      "name": "Code Review",
+      "description": "Reviews GitHub pull requests for logic errors, security vulnerabilities and broken edge cases, posting inline comments ranked by severity."
+    },
+    {
+      "id": "pr-steward",
+      "name": "PR Steward",
+      "description": "Pushes commits that fix failing checks, resolve merge conflicts and address review comments on your team's open GitHub pull requests."
+    },
+    {
+      "id": "claude-approvals",
+      "name": "Claude Approvals",
+      "description": "Checks pull requests against an approval policy file in your repository, reports who still has to approve, and can post an approving review."
+    },
+    {
+      "id": "ship-command",
+      "name": "/ship and /steward",
+      "description": "Opens a pull request from your Claude Code CLI session, reviews the change, then works on feedback and failing checks until it is ready to merge."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://code.claude.com/docs/en/claude-ship",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-11-28T14:54:34.425Z",
+  "updatedAt": "2026-11-28T14:54:34.425Z"
+}

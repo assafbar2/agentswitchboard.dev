@@ -1,0 +1,63 @@
+{
+  "id": "fff",
+  "name": "FFF",
+  "slug": "fff",
+  "description": "Searches files and code fast for coding agents through a local MCP server with typo-tolerant grep, file finding, and frecency ranking, plus Node and Python SDKs.",
+  "providerName": "Dmitriy Kovalenko",
+  "providerUrl": "https://github.com/dmtrKovalenko",
+  "agentUrl": "https://github.com/dmtrKovalenko/fff",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "file-search",
+    "code-search",
+    "grep",
+    "fuzzy-search",
+    "local-mcp-server",
+    "claude-code",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "grep-code",
+      "name": "Grep Code",
+      "description": "Searches file contents in smart-case, regex, or literal mode with path and glob filters, retrying as fuzzy when nothing matches."
+    },
+    {
+      "id": "find-files",
+      "name": "Find Files",
+      "description": "Finds files by path fragment or approximate filename, ranked by frecency so the files you open most come first."
+    },
+    {
+      "id": "multi-pattern-grep",
+      "name": "Multi-Pattern Grep",
+      "description": "Searches for several literal patterns at once across the indexed project in a single multi_grep tool call."
+    },
+    {
+      "id": "find-definitions",
+      "name": "Find Definitions",
+      "description": "Finds declarations first with definitions_only, then exact references and fuzzy matches, labeling each fallback."
+    },
+    {
+      "id": "git-aware-results",
+      "name": "Git-Aware Results",
+      "description": "Tags modified, untracked, and staged files in results so agents reach for the code you are actively changing."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://github.com/dmtrKovalenko/fff#one-line-install",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-11-28T14:54:34.492Z",
+  "updatedAt": "2026-11-28T14:54:34.492Z"
+}

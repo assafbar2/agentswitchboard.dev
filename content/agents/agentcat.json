@@ -1,0 +1,58 @@
+{
+  "id": "agentcat",
+  "name": "AgentCat",
+  "slug": "agentcat",
+  "description": "Track how AI agents use your MCP server with session replay, intent capture and error and hallucination tracking, and query the analytics over MCP, for MCP server builders.",
+  "providerName": "AgentCat",
+  "providerUrl": "https://agentcat.com",
+  "agentUrl": "https://agentcat.com",
+  "categories": [
+    "data-analytics",
+    "code-devtools"
+  ],
+  "tags": [
+    "mcp-analytics",
+    "session-replay",
+    "observability",
+    "error-tracking",
+    "opentelemetry",
+    "product-analytics"
+  ],
+  "skills": [
+    {
+      "id": "replay-sessions",
+      "name": "Replay Sessions",
+      "description": "Searches and replays agent sessions on your MCP server step by step, showing each tool call and why the agent made it."
+    },
+    {
+      "id": "track-issues",
+      "name": "Track Issues",
+      "description": "Finds the common errors and hallucinations agents hit on your MCP server and returns the details of each issue."
+    },
+    {
+      "id": "analyze-usage",
+      "name": "Analyze Usage",
+      "description": "Returns project overviews, metric trends and breakdowns by client, server, location and model for your MCP traffic."
+    },
+    {
+      "id": "forward-telemetry",
+      "name": "Forward Telemetry",
+      "description": "Forwards enriched MCP telemetry to Datadog, Sentry, PostHog or any OpenTelemetry collector over OTLP."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.agentcat.com/mcp",
+  "quickstartUrl": "https://docs.agentcat.com/quickstart",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-28T14:54:34.538Z",
+  "updatedAt": "2026-11-28T14:54:34.538Z"
+}

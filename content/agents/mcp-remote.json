@@ -1,0 +1,64 @@
+{
+  "id": "mcp-remote",
+  "name": "mcp-remote",
+  "slug": "mcp-remote",
+  "description": "Connects stdio-only MCP clients such as Claude Desktop to remote MCP servers, handling OAuth sign-in, custom auth headers, and transports.",
+  "providerName": "Frank Fiegel",
+  "providerUrl": "https://github.com/punkpeye",
+  "agentUrl": "https://github.com/punkpeye/mcp-remote",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "mcp-proxy",
+    "remote-mcp",
+    "stdio",
+    "oauth",
+    "claude-desktop",
+    "streamable-http",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "proxy-remote-server",
+      "name": "Proxy Remote Server",
+      "description": "Proxies a remote MCP server over stdio so clients that only launch local servers can use hosted MCP endpoints."
+    },
+    {
+      "id": "oauth-sign-in",
+      "name": "OAuth Sign-In",
+      "description": "Signs in to remote servers with OAuth in the browser, by device code, or with client credentials, and refreshes the tokens."
+    },
+    {
+      "id": "custom-headers",
+      "name": "Custom Headers",
+      "description": "Sends custom headers, such as an Authorization bearer token, on every request from --header flags or a header file."
+    },
+    {
+      "id": "transport-strategy",
+      "name": "Transport Strategy",
+      "description": "Chooses how to reach the server, such as SSE only or HTTP first, with the --transport flag for older and newer servers."
+    },
+    {
+      "id": "isolate-oauth-sessions",
+      "name": "Isolate OAuth Sessions",
+      "description": "Keeps separate OAuth sessions and tokens for several instances of one server, such as two Atlassian tenants, via --resource."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://github.com/punkpeye/mcp-remote#usage",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-11-28T14:54:34.484Z",
+  "updatedAt": "2026-11-28T14:54:34.484Z"
+}

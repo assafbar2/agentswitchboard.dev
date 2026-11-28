@@ -1,0 +1,62 @@
+{
+  "id": "jam-mcp",
+  "name": "Jam MCP",
+  "slug": "jam-mcp",
+  "description": "Gives coding agents a Jam bug report's video, console logs, network requests, and user events from a pasted Jam link, via Jam's hosted MCP server.",
+  "providerName": "Jam",
+  "providerUrl": "https://jam.dev",
+  "agentUrl": "https://jam.dev/mcp",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "bug-reports",
+    "console-logs",
+    "network-requests",
+    "screen-recording",
+    "debugging",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "read-console-logs",
+      "name": "Read Console Logs",
+      "description": "Gets the console logs captured in a Jam, filtered by log level and paged with a cursor to cut noise while debugging."
+    },
+    {
+      "id": "list-network-requests",
+      "name": "List Network Requests",
+      "description": "Lists every web request from a Jam with status code, content type, host, and method filters, plus error response bodies."
+    },
+    {
+      "id": "see-the-screen",
+      "name": "See the Screen",
+      "description": "Returns frames from a video Jam at chosen timestamps or as one overview grid, plus the reporter's spoken transcript."
+    },
+    {
+      "id": "search-jams",
+      "name": "Search Jams",
+      "description": "Searches Jams by text across titles, descriptions, comments, linked issues, and transcripts, filtered by author, folder, or date."
+    },
+    {
+      "id": "comment-on-jams",
+      "name": "Comment on Jams",
+      "description": "Adds Markdown comments and replies to a Jam, labeled with the agent's name, and can mention a teammate to notify them."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.jam.dev/mcp",
+  "quickstartUrl": "https://jam.dev/docs/jam-mcp",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-28T14:54:34.508Z",
+  "updatedAt": "2026-11-28T14:54:34.508Z"
+}

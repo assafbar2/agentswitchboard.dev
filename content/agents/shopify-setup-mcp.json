@@ -1,0 +1,65 @@
+{
+  "id": "shopify-setup-mcp",
+  "name": "Shopify connector (Shopify Setup MCP)",
+  "slug": "shopify-setup-mcp",
+  "description": "Creates and manages Shopify stores, products, orders, inventory and analytics from chat via Shopify's hosted MCP; works only in ChatGPT, Claude and Perplexity, for merchants.",
+  "providerName": "Shopify",
+  "providerUrl": "https://shopify.com",
+  "agentUrl": "https://help.shopify.com/en/manual/ai-powered-tools/connecting-ai-tools/shopify-connector-for-claude",
+  "categories": [
+    "commerce-payments"
+  ],
+  "tags": [
+    "shopify",
+    "store-management",
+    "ecommerce-admin",
+    "product-catalog",
+    "order-management",
+    "inventory",
+    "shopifyql",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "create-store",
+      "name": "Create a Store",
+      "description": "Creates a Shopify store preview from a description of your business, then helps you save it to a Shopify account you own."
+    },
+    {
+      "id": "products-collections",
+      "name": "Products and Collections",
+      "description": "Searches, creates and updates products and collections, including prices, descriptions and bulk status changes, in your store."
+    },
+    {
+      "id": "orders-customers",
+      "name": "Orders and Customers",
+      "description": "Lists and retrieves orders and customers from the connected store, within the data access you approve in Shopify admin."
+    },
+    {
+      "id": "inventory-discounts",
+      "name": "Inventory and Discounts",
+      "description": "Inspects inventory levels, sets quantities and creates percentage discount codes for the connected Shopify store."
+    },
+    {
+      "id": "store-analytics",
+      "name": "Store Analytics",
+      "description": "Runs ShopifyQL queries for sales, order and product-performance analysis on the connected Shopify store."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://setup.shopify.com/mcp",
+  "quickstartUrl": "https://help.shopify.com/en/manual/ai-powered-tools/connecting-ai-tools/shopify-connector-for-claude",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-28T14:54:34.454Z",
+  "updatedAt": "2026-11-28T14:54:34.454Z"
+}

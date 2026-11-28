@@ -1,0 +1,63 @@
+{
+  "id": "mailtrap-mcp",
+  "name": "Mailtrap MCP",
+  "slug": "mailtrap-mcp",
+  "description": "Sends transactional and bulk email, tests messages in a sandbox, and manages templates and sending stats in Mailtrap from AI assistants via MCP.",
+  "providerName": "Mailtrap",
+  "providerUrl": "https://mailtrap.io",
+  "agentUrl": "https://docs.mailtrap.io/for-ai-agents/tools/mcp-server",
+  "categories": [
+    "communication",
+    "code-devtools"
+  ],
+  "tags": [
+    "email-sending",
+    "transactional-email",
+    "email-testing",
+    "email-sandbox",
+    "email-templates",
+    "local-mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "send-email",
+      "name": "Send Email",
+      "description": "Sends a transactional email through the Mailtrap Email API, or batches of transactional and bulk emails in one request."
+    },
+    {
+      "id": "test-in-sandbox",
+      "name": "Test in Sandbox",
+      "description": "Sends test emails to a Mailtrap sandbox, then lists and shows the captured messages so you can check them before going live."
+    },
+    {
+      "id": "manage-templates",
+      "name": "Manage Templates",
+      "description": "Creates, lists, gets, updates, and deletes Mailtrap email templates, for example a new welcome email for onboarding."
+    },
+    {
+      "id": "read-email-logs",
+      "name": "Read Email Logs",
+      "description": "Lists email logs and gets the content of a logged message so an assistant can check exactly what was sent and to whom."
+    },
+    {
+      "id": "get-sending-stats",
+      "name": "Get Sending Stats",
+      "description": "Gets sending stats and email marketing campaign stats for a Mailtrap account so an assistant can report on email performance."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpCommand": "npx -y mcp-mailtrap",
+  "quickstartUrl": "https://docs.mailtrap.io/for-ai-agents/tools/mcp-server",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-28T14:54:34.510Z",
+  "updatedAt": "2026-11-28T14:54:34.510Z"
+}

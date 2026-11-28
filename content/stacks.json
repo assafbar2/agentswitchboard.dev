@@ -1,5 +1,37 @@
 [
   {
+    "slug": "build-and-ship-an-mcp-server",
+    "title": "Build, host and test your own MCP server",
+    "promise": "Write the server in TypeScript, host it over HTTP in your app, add inline UIs, test against mocks, and reach clients that only speak stdio.",
+    "week": "2026-11-28",
+    "items": [
+      {
+        "slug": "mcp-typescript-sdk",
+        "why": "Typed tool, resource and prompt primitives with stdio and streamable HTTP transports."
+      },
+      {
+        "slug": "mcp-handler",
+        "why": "Hosts the server over HTTP inside your JavaScript or TypeScript app."
+      },
+      {
+        "slug": "mcp-apps",
+        "why": "Adds interactive UIs that MCP clients render inline."
+      },
+      {
+        "slug": "aimock",
+        "why": "Answers LLM provider and MCP calls deterministically, so tests run without live services."
+      },
+      {
+        "slug": "mcporter",
+        "why": "Calls the configured server from a CLI or TypeScript to try each tool."
+      },
+      {
+        "slug": "mcp-remote",
+        "why": "Lets stdio-only MCP clients connect to the remote server, with OAuth."
+      }
+    ]
+  },
+  {
     "slug": "identity-and-payments-for-agents",
     "title": "Verify, pay and bill: identity and payments for your agent",
     "promise": "Give the agent scoped credentials and a verified owner, let it pay per call without API keys, then meter and charge for what your own agent does.",

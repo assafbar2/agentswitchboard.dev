@@ -1,0 +1,64 @@
+{
+  "id": "mcp-handler",
+  "name": "mcp-handler",
+  "slug": "mcp-handler",
+  "description": "Hosts MCP servers inside Next.js, Nuxt, SvelteKit, Hono, and other Fetch-based JavaScript apps with one Web-standard request handler.",
+  "providerName": "Vercel",
+  "providerUrl": "https://vercel.com",
+  "agentUrl": "https://github.com/vercel-labs/mcp-handler",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "mcp-server-framework",
+    "nextjs",
+    "typescript",
+    "streamable-http",
+    "mcp-auth",
+    "vercel",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "create-mcp-handler",
+      "name": "Create MCP Handler",
+      "description": "Turns an MCP server definition with registered tools, prompts, and resources into a Web-standard Request-to-Response handler."
+    },
+    {
+      "id": "serve-both-protocol-eras",
+      "name": "Serve Both Protocol Eras",
+      "description": "Serves the 2026-07-28 MCP specification natively and falls back to stateless Streamable HTTP for 2025-era clients."
+    },
+    {
+      "id": "verify-bearer-tokens",
+      "name": "Verify Bearer Tokens",
+      "description": "Verifies bearer tokens with withMcpAuth and answers 401 or 403 with RFC 9728 WWW-Authenticate challenges."
+    },
+    {
+      "id": "serve-resource-metadata",
+      "name": "Serve Resource Metadata",
+      "description": "Serves the RFC 9728 Protected Resource Metadata document that lists your MCP server's authorization servers."
+    },
+    {
+      "id": "trace-mcp-messages",
+      "name": "Trace MCP Messages",
+      "description": "Emits one OpenTelemetry span per MCP message, which Vercel's MCP observability reads to show server activity."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://github.com/vercel-labs/mcp-handler#quick-start-nextjs",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-11-28T14:54:34.482Z",
+  "updatedAt": "2026-11-28T14:54:34.482Z"
+}

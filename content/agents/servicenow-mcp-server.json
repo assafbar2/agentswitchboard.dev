@@ -1,0 +1,49 @@
+{
+  "id": "servicenow-mcp-server",
+  "name": "ServiceNow MCP Server Console",
+  "slug": "servicenow-mcp-server",
+  "description": "Serves ServiceNow instance skills and APIs to external MCP clients such as Claude and Microsoft Copilot through governed, OAuth-secured MCP servers, for ServiceNow admins.",
+  "providerName": "ServiceNow",
+  "providerUrl": "https://www.servicenow.com",
+  "agentUrl": "https://www.servicenow.com/docs/r/intelligent-experiences/mcp-platform-manager-landing.html",
+  "categories": [
+    "productivity",
+    "customer-support"
+  ],
+  "tags": [
+    "servicenow",
+    "itsm",
+    "remote-mcp",
+    "now-assist",
+    "enterprise-workflows",
+    "incident-management",
+    "oauth"
+  ],
+  "skills": [
+    {
+      "id": "configure-servers",
+      "name": "Configure MCP Servers",
+      "description": "Creates MCP servers on a ServiceNow instance and chooses which AI skills and Scripted REST API tools each one exposes to clients."
+    },
+    {
+      "id": "cross-instance-client",
+      "name": "Cross-Instance MCP Client",
+      "description": "Calls MCP servers on another ServiceNow instance from AI applications, through the ServiceNow Model Context Protocol Client."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://www.servicenow.com/docs/r/intelligent-experiences/configure-client-connect-server.html",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-28T14:54:34.457Z",
+  "updatedAt": "2026-11-28T14:54:34.457Z"
+}

@@ -1,0 +1,66 @@
+{
+  "id": "rocketreach-mcp",
+  "name": "RocketReach MCP",
+  "slug": "rocketreach-mcp",
+  "description": "Search professional profiles and companies, look up contact emails and phone numbers, and verify email addresses from AI assistants over MCP, for prospecting and lead research.",
+  "providerName": "RocketReach",
+  "providerUrl": "https://rocketreach.co",
+  "agentUrl": "https://rocketreach.co/resources/products/mcp/",
+  "categories": [
+    "sales-marketing",
+    "research"
+  ],
+  "tags": [
+    "contact-lookup",
+    "email-finder",
+    "email-verification",
+    "people-search",
+    "company-search",
+    "lead-enrichment",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "search-people",
+      "name": "Search People",
+      "description": "Searches professional profiles by name, title, employer, location or skills and returns the matching RocketReach profiles."
+    },
+    {
+      "id": "search-companies",
+      "name": "Search Companies",
+      "description": "Searches companies by name, domain, industry, size, funding or tech stack to build lists of target accounts."
+    },
+    {
+      "id": "lookup-contact",
+      "name": "Look Up Contact",
+      "description": "Retrieves a person's emails and phone numbers by profile ID, email, LinkedIn URL or name and employer, using lookup credits."
+    },
+    {
+      "id": "lookup-company",
+      "name": "Look Up Company",
+      "description": "Retrieves full company details by domain, company ID, name, ticker or LinkedIn URL and adds the company to your list."
+    },
+    {
+      "id": "verify-email",
+      "name": "Verify Email",
+      "description": "Verifies whether an email address can receive mail by checking its format, domain and mailbox, catch-all domains included."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.rocketreach.co/mcp",
+  "quickstartUrl": "https://docs.rocketreach.co/reference/mcp",
+  "apiBaseUrl": "https://api.rocketreach.co/api/v2",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-11-28T14:54:34.517Z",
+  "updatedAt": "2026-11-28T14:54:34.517Z"
+}

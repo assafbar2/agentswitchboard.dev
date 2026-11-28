@@ -1,0 +1,70 @@
+{
+  "id": "ruvector",
+  "name": "RuVector",
+  "slug": "ruvector",
+  "description": "Stores and recalls persistent agent memory with local embeddings, vector search, and graph relationships, and serves it to coding agents over MCP.",
+  "providerName": "ruvnet",
+  "providerUrl": "https://github.com/ruvnet",
+  "agentUrl": "https://ruv.io",
+  "categories": [
+    "vector-databases",
+    "memory-state"
+  ],
+  "tags": [
+    "vector-database",
+    "agent-memory",
+    "semantic-search",
+    "embeddings",
+    "graph-memory",
+    "rust",
+    "local-mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "remember-and-recall",
+      "name": "Remember and Recall",
+      "description": "Remembers decisions and facts, then recalls them by semantic similarity with npx ruvector hooks remember and recall."
+    },
+    {
+      "id": "vector-search",
+      "name": "Vector Search",
+      "description": "Searches stored vectors by similarity with metadata filters from the Node.js, Python, or Rust APIs of the RuVector store."
+    },
+    {
+      "id": "graph-memory",
+      "name": "Graph Memory",
+      "description": "Stores nodes, edges, and hyperedges and queries relationships as Cypher paths through the ruvector-graph component."
+    },
+    {
+      "id": "serve-memory-over-mcp",
+      "name": "Serve Memory over MCP",
+      "description": "Serves project memory to MCP clients such as Claude Code, starting from a read-only tool profile until writes are allowed."
+    },
+    {
+      "id": "local-embeddings",
+      "name": "Local Embeddings",
+      "description": "Embeds text locally with the all-MiniLM-L6-v2 ONNX model, so semantic memory works without a per-query API fee."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpCommand": "npx -y ruvector mcp start",
+  "install": {
+    "type": "npm",
+    "command": "npm install ruvector"
+  },
+  "quickstartUrl": "https://github.com/ruvnet/RuVector#quick-start-choose-your-track",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-11-28T14:54:34.494Z",
+  "updatedAt": "2026-11-28T14:54:34.494Z"
+}

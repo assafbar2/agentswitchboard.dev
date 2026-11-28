@@ -1,0 +1,58 @@
+{
+  "id": "storybook-mcp",
+  "name": "Storybook MCP",
+  "slug": "storybook-mcp",
+  "description": "Gives coding agents your Storybook's component docs, story instructions and test runs through a local MCP addon, for front-end teams that want generated UI to reuse their design system.",
+  "providerName": "Storybook",
+  "providerUrl": "https://storybook.js.org",
+  "agentUrl": "https://storybook.js.org/docs/ai/mcp",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "storybook",
+    "ui-components",
+    "design-system",
+    "component-docs",
+    "local-mcp",
+    "interaction-testing",
+    "accessibility-testing",
+    "frontend"
+  ],
+  "skills": [
+    {
+      "id": "component-docs",
+      "name": "Component Docs",
+      "description": "Lists documented components and returns each one's props, example stories and usage notes from your Storybook components manifest."
+    },
+    {
+      "id": "story-authoring",
+      "name": "Story Authoring",
+      "description": "Returns current instructions for writing stories and interaction tests, then previews the new stories in chat or links to them."
+    },
+    {
+      "id": "run-tests",
+      "name": "Run Component Tests",
+      "description": "Runs tests for specific stories, including accessibility checks when configured, and tells the agent how to resolve the failures."
+    },
+    {
+      "id": "find-stories",
+      "name": "Find Affected Stories",
+      "description": "Maps component source files to the stories that render them and lists the stories affected by your local file changes."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://storybook.js.org/docs/ai/mcp/overview",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-28T14:54:34.432Z",
+  "updatedAt": "2026-11-28T14:54:34.432Z"
+}

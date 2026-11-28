@@ -1,0 +1,63 @@
+{
+  "id": "lucidlink-mcp",
+  "name": "LucidLink MCP",
+  "slug": "lucidlink-mcp",
+  "description": "Reads, writes, searches, and locks files in LucidLink cloud filespaces so AI agents share one persistent data layer, via a local MCP server.",
+  "providerName": "LucidLink",
+  "providerUrl": "https://www.lucidlink.com",
+  "agentUrl": "https://developer.lucidlink.com/docs/mcp/overview",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "cloud-storage",
+    "filespaces",
+    "file-system",
+    "file-locking",
+    "shared-storage",
+    "audit-trail",
+    "local-mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "read-filespace-files",
+      "name": "Read Filespace Files",
+      "description": "Reads briefs, notes, documents, transcripts, and project files directly from a LucidLink filespace without moving the data first."
+    },
+    {
+      "id": "write-outputs-back",
+      "name": "Write Outputs Back",
+      "description": "Writes summaries, reports, checklists, and extracted data back to the filespace as normal files that the team can open."
+    },
+    {
+      "id": "search-filespace",
+      "name": "Search Filespace",
+      "description": "Finds files and searches their contents across the filespace with list, find, and grep tools instead of pasted context."
+    },
+    {
+      "id": "lock-before-editing",
+      "name": "Lock Before Editing",
+      "description": "Locks whole files or byte ranges with advisory locks so several agents and people can coordinate edits to shared files."
+    },
+    {
+      "id": "read-audit-trail",
+      "name": "Read Audit Trail",
+      "description": "Reads the audit trail of file activity, such as who changed what and when, once an admin has enabled audit for the filespace."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpCommand": "uvx lucidlink-mcp@latest",
+  "quickstartUrl": "https://developer.lucidlink.com/docs/mcp/overview",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-28T14:54:34.512Z",
+  "updatedAt": "2026-11-28T14:54:34.512Z"
+}

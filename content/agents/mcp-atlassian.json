@@ -1,0 +1,64 @@
+{
+  "id": "mcp-atlassian",
+  "name": "MCP Atlassian",
+  "slug": "mcp-atlassian",
+  "description": "Searches, creates, and updates Jira issues and Confluence pages from AI assistants via a community MCP server for Atlassian Cloud and Server/Data Center.",
+  "providerName": "Hyeonsoo Lee",
+  "providerUrl": "https://github.com/sooperset",
+  "agentUrl": "https://mcp-atlassian.soomiles.com",
+  "categories": [
+    "productivity",
+    "code-devtools"
+  ],
+  "tags": [
+    "jira",
+    "confluence",
+    "atlassian",
+    "issue-tracking",
+    "jql",
+    "local-mcp-server",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "search-jira",
+      "name": "Search Jira",
+      "description": "Searches Jira issues with JQL queries, for example finding every issue assigned to you in a given project."
+    },
+    {
+      "id": "create-jira-issues",
+      "name": "Create Jira Issues",
+      "description": "Creates Jira issues and updates their fields, for example filing a bug ticket for a login problem from a chat request."
+    },
+    {
+      "id": "transition-jira-issues",
+      "name": "Transition Jira Issues",
+      "description": "Transitions a Jira issue to a new status, such as moving PROJ-123 to Done, straight from a natural-language request."
+    },
+    {
+      "id": "search-confluence",
+      "name": "Search Confluence",
+      "description": "Searches Confluence with CQL queries and returns page content, for example finding your team's onboarding docs."
+    },
+    {
+      "id": "edit-confluence-pages",
+      "name": "Edit Confluence Pages",
+      "description": "Creates and updates Confluence pages and adds comments to them, so an assistant can write documentation in your wiki."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpCommand": "uvx mcp-atlassian",
+  "quickstartUrl": "https://mcp-atlassian.soomiles.com/docs/installation",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-28T14:54:34.502Z",
+  "updatedAt": "2026-11-28T14:54:34.502Z"
+}

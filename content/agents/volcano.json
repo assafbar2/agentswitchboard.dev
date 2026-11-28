@@ -1,0 +1,70 @@
+{
+  "id": "volcano",
+  "name": "Volcano",
+  "slug": "volcano",
+  "description": "Deploy functions, durable workflows, Postgres databases, sandboxes and frontends for agents and apps from one CLI and REST API, with a per-project MCP server, for developers.",
+  "providerName": "Kong",
+  "providerUrl": "https://konghq.com",
+  "agentUrl": "https://volcano.dev",
+  "categories": [
+    "infrastructure",
+    "orchestration"
+  ],
+  "tags": [
+    "serverless-functions",
+    "durable-workflows",
+    "postgres",
+    "code-sandboxes",
+    "frontend-hosting",
+    "deployment"
+  ],
+  "skills": [
+    {
+      "id": "deploy-functions",
+      "name": "Deploy Functions",
+      "description": "Deploys Node.js, Python or Ruby functions that run over HTTP or on a cron schedule, and lists their deployments."
+    },
+    {
+      "id": "run-durable-workflows",
+      "name": "Run Durable Workflows",
+      "description": "Runs durable functions that save each step and resume after waits, retries or human approval, and sends them messages."
+    },
+    {
+      "id": "provision-postgres",
+      "name": "Provision Postgres",
+      "description": "Provisions managed PostgreSQL databases with row-level security, branches and backups, with email, OAuth or anonymous sign-in."
+    },
+    {
+      "id": "run-sandboxes",
+      "name": "Run Sandboxes",
+      "description": "Runs untrusted commands in isolated sandbox sessions, reading and writing session files and suspending or ending sessions."
+    },
+    {
+      "id": "search-logs",
+      "name": "Search Logs",
+      "description": "Searches a project's logs and lists runtime errors and failed builds so an agent can debug a deployment."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://api.volcano.dev/mcp",
+  "install": {
+    "type": "npm",
+    "command": "npm install -g @volcano.dev/cli"
+  },
+  "quickstartUrl": "https://docs.volcano.dev/get-started/quickstart",
+  "apiBaseUrl": "https://api.volcano.dev",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-11-28T14:54:34.527Z",
+  "updatedAt": "2026-11-28T14:54:34.527Z"
+}

@@ -1,0 +1,70 @@
+{
+  "id": "wavespeed-mcp",
+  "name": "WaveSpeed MCP",
+  "slug": "wavespeed-mcp",
+  "description": "Generate and edit images and videos with WaveSpeed's live model catalog from Claude, ChatGPT, Cursor or any MCP client, with a price quote before each run, for creators and developers.",
+  "providerName": "WaveSpeedAI",
+  "providerUrl": "https://wavespeed.ai",
+  "agentUrl": "https://wavespeed.ai",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "image-generation",
+    "video-generation",
+    "image-editing",
+    "text-to-video",
+    "media-models",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "generate-image",
+      "name": "Generate Image",
+      "description": "Generates an image from a text prompt with WaveSpeed's /chat image models, sending reference images to the model's edit endpoint."
+    },
+    {
+      "id": "generate-video",
+      "name": "Generate Video",
+      "description": "Generates a video from a prompt, a first or last frame, or reference images, video and audio, with the /chat video models."
+    },
+    {
+      "id": "edit-media",
+      "name": "Edit Images and Video",
+      "description": "Edits, restyles or combines existing images, and edits an existing video or continues it with new footage, with the /chat models."
+    },
+    {
+      "id": "run-model",
+      "name": "Run Any Model",
+      "description": "Runs any model in WaveSpeed's live catalog after reading its input schema, uploading local @path files automatically."
+    },
+    {
+      "id": "quote-price",
+      "name": "Quote Price",
+      "description": "Estimates what a run will cost for the given inputs without charging, and reports the account's credit balance."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://api.wavespeed.ai/mcp",
+  "mcpCommand": "npx -y @wavespeed/mcp",
+  "install": {
+    "type": "npm",
+    "command": "npm install -g @wavespeed/cli"
+  },
+  "quickstartUrl": "https://wavespeed.ai/mcp",
+  "apiBaseUrl": "https://api.wavespeed.ai/api/v3",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-11-28T14:54:34.514Z",
+  "updatedAt": "2026-11-28T14:54:34.514Z"
+}

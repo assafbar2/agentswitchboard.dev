@@ -1,0 +1,64 @@
+{
+  "id": "firecms-mcp",
+  "name": "FireCMS MCP",
+  "slug": "firecms-mcp",
+  "description": "Browse and edit Firestore data, create and change FireCMS collections, infer schemas from existing documents and manage project users from Claude or Cursor, for Firebase teams.",
+  "providerName": "FireCMS",
+  "providerUrl": "https://firecms.co",
+  "agentUrl": "https://firecms.co/docs/cloud/mcp_server",
+  "categories": [
+    "code-devtools",
+    "content-media"
+  ],
+  "tags": [
+    "firestore",
+    "firebase",
+    "headless-cms",
+    "schema-inference",
+    "content-management",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "query-documents",
+      "name": "Query Documents",
+      "description": "Queries Firestore documents with filters, ordering and pagination, and creates, updates, deletes, counts or exports them."
+    },
+    {
+      "id": "infer-collections",
+      "name": "Infer Collections",
+      "description": "Infers collection schemas from sampled Firestore documents and saves them as FireCMS collections, skipping mapped paths."
+    },
+    {
+      "id": "edit-collection-schema",
+      "name": "Edit Collection Schema",
+      "description": "Creates or updates collection schemas and single properties, or generates and modifies a schema from a prompt."
+    },
+    {
+      "id": "manage-users",
+      "name": "Manage Users",
+      "description": "Lists project users and their roles, invites users, changes roles or removes users, with the admin role required."
+    },
+    {
+      "id": "connect-firebase-project",
+      "name": "Connect Firebase Project",
+      "description": "Connects an existing Firebase project to FireCMS; the local server can also enable its APIs and create the Firestore database."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://api.firecms.co/mcp",
+  "mcpCommand": "npx -y @firecms/mcp-server",
+  "quickstartUrl": "https://firecms.co/docs/cloud/mcp_server",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-28T14:54:34.519Z",
+  "updatedAt": "2026-11-28T14:54:34.519Z"
+}

@@ -1,0 +1,65 @@
+{
+  "id": "contextual-ai",
+  "name": "Contextual AI",
+  "slug": "contextual-ai",
+  "description": "Build enterprise RAG agents that answer from your documents with citations, and query them through a REST API, SDKs or a hosted MCP server, for teams with large knowledge bases.",
+  "providerName": "Contextual AI",
+  "providerUrl": "https://contextual.ai",
+  "agentUrl": "https://contextual.ai",
+  "categories": [
+    "research",
+    "memory-state"
+  ],
+  "tags": [
+    "rag",
+    "document-parsing",
+    "reranking",
+    "grounded-generation",
+    "knowledge-base",
+    "enterprise-search"
+  ],
+  "skills": [
+    {
+      "id": "query-agent",
+      "name": "Query Agent",
+      "description": "Queries a Contextual AI agent with a question and returns an answer grounded in your documents, with citations and attributions."
+    },
+    {
+      "id": "build-rag-agent",
+      "name": "Build RAG Agent",
+      "description": "Creates a datastore, ingests your documents into it and builds a specialized RAG agent on top, through the API or the GUI."
+    },
+    {
+      "id": "parse-documents",
+      "name": "Parse Documents",
+      "description": "Parses documents into structured text ready for retrieval with Contextual AI's Parse component, through the API."
+    },
+    {
+      "id": "rerank-results",
+      "name": "Rerank Results",
+      "description": "Reranks retrieved passages by their relevance to a query with Contextual AI's Rerank component, through the API."
+    },
+    {
+      "id": "evaluate-responses",
+      "name": "Evaluate Responses",
+      "description": "Scores model responses against natural-language unit tests with LMUnit to measure answer quality."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.app.contextual.ai/mcp",
+  "quickstartUrl": "https://docs.contextual.ai/quickstarts/getting-started",
+  "apiBaseUrl": "https://api.contextual.ai/v1",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-11-28T14:54:34.533Z",
+  "updatedAt": "2026-11-28T14:54:34.533Z"
+}

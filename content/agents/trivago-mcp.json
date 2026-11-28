@@ -1,0 +1,53 @@
+{
+  "id": "trivago-mcp",
+  "name": "trivago MCP",
+  "slug": "trivago-mcp",
+  "description": "Searches live hotel prices across booking sites by destination or landmark and forecasts monthly price trends via trivago's free, no-auth remote MCP server, for travelers and trip planners.",
+  "providerName": "trivago",
+  "providerUrl": "https://www.trivago.com",
+  "agentUrl": "https://mcp.trivago.com/docs",
+  "categories": [
+    "commerce-payments"
+  ],
+  "tags": [
+    "hotel-search",
+    "price-comparison",
+    "travel-planning",
+    "accommodation",
+    "hotel-prices",
+    "remote-mcp",
+    "trivago"
+  ],
+  "skills": [
+    {
+      "id": "accommodation-search",
+      "name": "Accommodation Search",
+      "description": "Searches live hotel and accommodation listings by destination, with prices, ratings, amenities and filters for stars and guest rating."
+    },
+    {
+      "id": "radius-search",
+      "name": "Radius Search",
+      "description": "Searches live hotel listings near specific coordinates such as a landmark, venue or neighborhood, with the same filters."
+    },
+    {
+      "id": "price-trends",
+      "name": "Destination Price Trends",
+      "description": "Forecasts average, minimum and maximum nightly hotel rates by month and star rating for a destination across a date window."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://mcp.trivago.com/docs",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-28T14:54:34.465Z",
+  "updatedAt": "2026-11-28T14:54:34.465Z"
+}

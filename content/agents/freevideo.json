@@ -1,0 +1,56 @@
+{
+  "id": "freevideo",
+  "name": "FreeVideo",
+  "slug": "freevideo",
+  "description": "Generate videos and pictures locally with MiniMax H3 on a consumer NVIDIA GPU or Apple silicon Mac, and let Claude Code or Codex create, edit and export them through its MCP server.",
+  "providerName": "FlashML",
+  "providerUrl": "https://github.com/FlashML-org",
+  "agentUrl": "https://github.com/FlashML-org/FreeVideo",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "video-generation",
+    "text-to-video",
+    "image-generation",
+    "local-inference",
+    "comfyui",
+    "video-editing",
+    "lora"
+  ],
+  "skills": [
+    {
+      "id": "generate-video",
+      "name": "Generate Video",
+      "description": "Generates a video of up to 60 seconds from an H3 prompt, optionally from first or last frames or image, video and audio references."
+    },
+    {
+      "id": "generate-image",
+      "name": "Generate Image",
+      "description": "Generates a picture from a prompt with MiniMax H3 Image, on its own or as a first frame, or changes and combines input pictures."
+    },
+    {
+      "id": "plan-job",
+      "name": "Plan Job",
+      "description": "Validates a generation job without running it and returns frames, sampling passes, warnings and a time estimate for this computer."
+    },
+    {
+      "id": "assemble-clips",
+      "name": "Assemble Clips",
+      "description": "Joins generated clips into one video, and imports your own footage into the editor to add subtitles and audio and export."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-28T14:54:34.557Z",
+  "updatedAt": "2026-11-28T14:54:34.557Z"
+}

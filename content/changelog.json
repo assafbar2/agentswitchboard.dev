@@ -1,5 +1,352 @@
 [
   {
+    "action": "added",
+    "slug": "freevideo",
+    "name": "FreeVideo",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "terminal-browser",
+    "name": "terminal-browser",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "agent-of-empires",
+    "name": "Agent of Empires",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "agentes-chat",
+    "name": "agentes.chat",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "pinky",
+    "name": "Pinky",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "openwhispr",
+    "name": "OpenWhispr",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "phonely",
+    "name": "Phonely",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "atxp",
+    "name": "ATXP",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "adloop",
+    "name": "AdLoop",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "agentcat",
+    "name": "AgentCat",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "speechmatics",
+    "name": "Speechmatics",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "contextual-ai",
+    "name": "Contextual AI",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "endform",
+    "name": "Endform",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "stackone",
+    "name": "StackOne",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "volcano",
+    "name": "Volcano",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "greptile",
+    "name": "Greptile",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "mcp1",
+    "name": "MCP1 by Appwrite",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "firecms-mcp",
+    "name": "FireCMS MCP",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "rocketreach-mcp",
+    "name": "RocketReach MCP",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "wavespeed-mcp",
+    "name": "WaveSpeed MCP",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "lucidlink-mcp",
+    "name": "LucidLink MCP",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "mailtrap-mcp",
+    "name": "Mailtrap MCP",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "jam-mcp",
+    "name": "Jam MCP",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "hostinger-mcp",
+    "name": "Hostinger API MCP Server",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "mcp-atlassian",
+    "name": "MCP Atlassian",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "ruler",
+    "name": "Ruler",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "rulesync",
+    "name": "rulesync",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "ruvector",
+    "name": "RuVector",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "fff",
+    "name": "FFF",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "aimock",
+    "name": "aimock",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "mcporter",
+    "name": "MCPorter",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "mcp-remote",
+    "name": "mcp-remote",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "mcp-handler",
+    "name": "mcp-handler",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "nestjs-observe",
+    "name": "NestJS Observe",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "jetbrains-mcp-server",
+    "name": "JetBrains IDE MCP Server",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "expo-simulators",
+    "name": "Expo Simulators",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "ovhcloud-ai-endpoints",
+    "name": "OVHcloud AI Endpoints",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "tencent-music-modus",
+    "name": "Modus",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "trivago-mcp",
+    "name": "trivago MCP",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "autodesk-fusion-mcp",
+    "name": "Autodesk Fusion MCP",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "workday-mcp",
+    "name": "Workday Agent Gateway MCP",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "servicenow-mcp-server",
+    "name": "ServiceNow MCP Server Console",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "shopify-setup-mcp",
+    "name": "Shopify connector (Shopify Setup MCP)",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "coinbase-x402-bazaar",
+    "name": "Coinbase x402 Bazaar",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "ag-ui",
+    "name": "AG-UI",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "microsoft-vally",
+    "name": "Vally",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "cli-anything",
+    "name": "CLI-Anything",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "chat-sdk",
+    "name": "Chat SDK",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "mcp-apps",
+    "name": "MCP Apps",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "storybook-mcp",
+    "name": "Storybook MCP",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "better-auth",
+    "name": "Better Auth",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "added",
+    "slug": "claude-ship",
+    "name": "Claude Ship",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "updated",
+    "slug": "microsoft-agent-framework",
+    "name": "Microsoft Agent Framework",
+    "note": "providerUrl updated",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "updated",
+    "slug": "microsoft-agent-framework",
+    "name": "Microsoft Agent Framework",
+    "note": "agentUrl updated",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "updated",
+    "slug": "magic-mcp",
+    "name": "21st MCP",
+    "note": "name updated",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "updated",
+    "slug": "langfuse",
+    "name": "Langfuse",
+    "note": "mcpEndpoint updated",
+    "date": "2026-11-28"
+  },
+  {
+    "action": "updated",
+    "slug": "langfuse",
+    "name": "Langfuse",
+    "note": "accessMethods updated",
+    "date": "2026-11-28"
+  },
+  {
     "action": "removed",
     "slug": "northstar-trustrail-acceptance-checker",
     "name": "northstar-trustrail Acceptance Checker",

@@ -1,0 +1,63 @@
+{
+  "id": "endform",
+  "name": "Endform",
+  "slug": "endform",
+  "description": "Run existing Playwright end-to-end suites in parallel on isolated cloud machines, and let coding agents query test history and rerun or debug tests over MCP, for QA teams.",
+  "providerName": "Endform",
+  "providerUrl": "https://endform.dev",
+  "agentUrl": "https://endform.dev",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "playwright",
+    "end-to-end-testing",
+    "flaky-tests",
+    "parallel-testing",
+    "test-debugging",
+    "ci"
+  ],
+  "skills": [
+    {
+      "id": "run-test-suite",
+      "name": "Run Test Suite",
+      "description": "Starts, checks and stops runs of a Playwright suite on Endform's remote machines from the CLI or an MCP tool call."
+    },
+    {
+      "id": "query-test-history",
+      "name": "Query Test History",
+      "description": "Queries historical test data to find flaky, failing and slow tests and to inspect past runs and traces."
+    },
+    {
+      "id": "debug-test-live",
+      "name": "Debug Test Live",
+      "description": "Starts a live session that runs a single Playwright test on Endform's remote infrastructure so an agent can debug it."
+    },
+    {
+      "id": "manage-quarantine",
+      "name": "Manage Quarantine",
+      "description": "Lists, creates, updates and deactivates quarantine rules so known flaky tests stop blocking the suite."
+    },
+    {
+      "id": "replay-test-attempt",
+      "name": "Replay Test Attempt",
+      "description": "Inspects a single test attempt and returns a replay link so you can step through what happened in that run."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpCommand": "npx -y endform@latest mcp",
+  "quickstartUrl": "https://endform.dev/docs/guides/getting-started",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "mcp"
+  ],
+  "createdAt": "2026-11-28T14:54:34.531Z",
+  "updatedAt": "2026-11-28T14:54:34.531Z"
+}
