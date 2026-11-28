@@ -39,6 +39,26 @@ fits a job). Streamable HTTP, no auth. Stdio-only clients:
 
 Setup for Grok, Grok Bot, the xAI API, Claude, and ChatGPT:
 [agentswitchboard.dev/connect](https://agentswitchboard.dev/connect).
+Also listed as a verified remote connector on [Glama](https://glama.ai/mcp/connectors/io.github.assafbar2/agentswitchboard).
+
+### Coding-agent skill & SDK cookbook
+
+Install the official Agent Skill straight from GitHub (Claude Code, Cursor, Codex, Windsurf, and any Agent Skills client):
+
+```bash
+npx skills add assafbar2/agentswitchboard.dev
+```
+
+Or add the remote MCP server directly in Claude Code:
+
+```bash
+claude mcp add --transport http agentswitchboard https://agentswitchboard.dev/api/mcp
+```
+
+Skill source: [`skills/agentswitchboard/SKILL.md`](skills/agentswitchboard/SKILL.md) ·
+Copy-paste `AGENTS.md` / `CLAUDE.md` rule snippets & SDK examples (Vercel AI SDK, OpenAI Agents SDK, Claude Agent SDK, `curl`):
+[`docs/COOKBOOK.md`](docs/COOKBOOK.md) ·
+Live directory stats & static vendor SVG badges: [agentswitchboard.dev/stats](https://agentswitchboard.dev/stats).
 
 Prefer plain HTTP? There's a REST search too:
 

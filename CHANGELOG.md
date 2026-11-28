@@ -4,6 +4,21 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
+## [2.17.0] - 2026-11-28 - Directory stats, static vendor badges and Agent Skill
+
+### Highlights
+- See live build-time catalog metrics at `/stats`: total listings, Official and Verified counts, access and auth breakdowns, copy-ready setup coverage, categories and top tasks, rendered as pure static HTML with zero runtime compute. [Try it](https://agentswitchboard.dev/stats)
+- Maintainers of listed tools can embed a crisp, zero-tracking static SVG badge (`Official`, `Verified`, or `Listed`) right from any listing page's "Embed badge" disclosure in Markdown or HTML. [Try it](https://agentswitchboard.dev/agents/firecrawl)
+- Equip coding agents in one command with `npx skills add assafbar2/agentswitchboard.dev`, copy-paste `AGENTS.md` / `CLAUDE.md` rules, and minimal SDK cookbook recipes for Vercel AI SDK, OpenAI Agents SDK, Claude Agent SDK and `curl`. [Try it](https://agentswitchboard.dev/for-agents#skill)
+
+### Added
+- `/stats` (`app/stats/page.tsx`, `lib/stats.ts`): pure static SSG snapshot page (`force-static`) with human and Agent views, wired into the footer, sitemap and `/for-agents`.
+- Static CDN SVG badges (`public/badges/official.svg`, `verified.svg`, `listed.svg`), `lib/badges.ts` tier/snippet helper, and the collapsible `EmbedBadge` disclosure on every `/agents/<slug>` listing page.
+- Official Agent Skill (`skills/agentswitchboard/SKILL.md`) covering all 10 organic MCP tools (`https://agentswitchboard.dev/api/mcp`) and SDK/rule cookbook (`docs/COOKBOOK.md`), surfaced on `/for-agents` and `README.md`.
+
+### Changed
+- Refreshed `DISTRIBUTION.md` to reflect `server.json` v1.12.0 (10 tools), live Glama Servers and Glama Connectors A ratings, and external awesome-list directory submissions.
+
 ## [2.16.0] - 2026-11-28 - Natural-language search, smarter recommendations and list_tasks
 
 ### Highlights
