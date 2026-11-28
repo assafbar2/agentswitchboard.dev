@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
   "name": "io.github.assafbar2/agentswitchboard",
   "description": "Search a curated directory of AI agents, MCP servers, and agentic tools, suggest new listings, and say privately when nothing fits a job. Use it to find out whether an agent already exists for a job, which access methods it offers (API, MCP, CLI, browser extension), and where its homepage is.",
-  "version": "1.12.0",
+  "version": "1.13.0",
   "websiteUrl": "https://agentswitchboard.dev",
   "repository": {
     "url": "https://github.com/assafbar2/agentswitchboard.dev",
@@ -19,12 +19,19 @@
       "name": "search_agents",
       "title": "Search Agents",
       "description": "Search the curated Agent Switchboard directory of AI agents, MCP servers, and agentic tools. Filter by task, category slug, access methods, official (first-party listings from major vendors), verified, and/or auth type; sort by relevance, newest, most skills, or name. Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working. Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified.",
+      "annotations": {
+        "title": "Search Agents",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
       "inputSchema": {
         "type": "object",
         "properties": {
           "query": {
             "type": "string",
-            "description": "Free-text search over name, description, skills, categories, tags, and provider"
+            "description": "Free-text search over name, description, skills, categories, tags, and provider (up to 200 characters; longer text is cut)"
           },
           "task": {
             "type": "string",
@@ -99,12 +106,120 @@
         },
         "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "description": "Total matches before paging"
+          },
+          "offset": {
+            "type": "integer"
+          },
+          "limit": {
+            "type": "integer"
+          },
+          "since": {
+            "type": "string",
+            "description": "With since: the first day kept (YYYY-MM-DD, UTC)"
+          },
+          "agents": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "slug": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string"
+                },
+                "categories": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "accessMethods": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "authType": {
+                  "type": "string"
+                },
+                "verified": {
+                  "type": "boolean",
+                  "description": "Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working."
+                },
+                "official": {
+                  "type": "boolean",
+                  "description": "Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified."
+                },
+                "officialVendor": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "url": {
+                  "type": "string"
+                },
+                "iconUrl": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "Absolute URL of the listing's 128px PNG icon, served by Agent Switchboard; null when it has none"
+                }
+              },
+              "required": [
+                "name",
+                "slug",
+                "description",
+                "provider",
+                "categories",
+                "accessMethods",
+                "authType",
+                "verified",
+                "official",
+                "officialVendor",
+                "url",
+                "iconUrl"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "total",
+          "offset",
+          "limit",
+          "agents"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
       }
     },
     {
       "name": "get_agent",
       "title": "Get Agent Details",
-      "description": "Full detail for one agent by slug: skills, auth, streaming/push support, tags, provider links, and useItNow: how to start using it (MCP client config, install command, API base URL, setup links). Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working. Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified.",
+      "description": "Full detail for one agent by slug: skills, auth, streaming/push support, tags, provider links, lastChecked, updatedAt, limitations, and useItNow: how to start using it (MCP client config, install command, API base URL, setup links). Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working. Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified.",
+      "annotations": {
+        "title": "Get Agent Details",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -118,32 +233,594 @@
         ],
         "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "provider": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "accessMethods": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "authType": {
+            "type": "string"
+          },
+          "verified": {
+            "type": "boolean",
+            "description": "Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working."
+          },
+          "official": {
+            "type": "boolean",
+            "description": "Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified."
+          },
+          "officialVendor": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "url": {
+            "type": "string"
+          },
+          "iconUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Absolute URL of the listing's 128px PNG icon, served by Agent Switchboard; null when it has none"
+          },
+          "agentUrl": {
+            "type": "string"
+          },
+          "providerUrl": {
+            "type": "string"
+          },
+          "skills": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "description"
+              ],
+              "additionalProperties": true
+            }
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "supportsStreaming": {
+            "type": "boolean"
+          },
+          "supportsPushNotifications": {
+            "type": "boolean"
+          },
+          "addedAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "ISO 8601 timestamp when the listing last changed; null if unset"
+          },
+          "lastChecked": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "YYYY-MM-DD the Verified listing was last checked (its link and access path), from its last update; null when it is not Verified"
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "What may stop or slow the user, read from the listing: the sign-in it needs, a server that runs only on their computer, no MCP config to copy yet, no MCP server, not Verified. Empty when the listing shows none"
+          },
+          "mcpEndpoint": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "The vendor's hosted MCP server address"
+          },
+          "mcpCommand": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "The command that runs its MCP server locally"
+          },
+          "install": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "command": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "type",
+                  "command"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The command that installs its CLI"
+          },
+          "quickstartUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "The vendor's setup or getting-started page"
+          },
+          "apiBaseUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Base URL of the vendor's public API"
+          },
+          "useItNow": {
+            "type": "object",
+            "properties": {
+              "tryThisFirst": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "lead": {
+                        "type": "string"
+                      },
+                      "prompts": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "skill": {
+                              "type": "string"
+                            },
+                            "text": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "skill",
+                            "text"
+                          ],
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    "required": [
+                      "lead",
+                      "prompts"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "mcp": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "endpoint": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "command": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "clientConfig": {
+                        "anyOf": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "mcpServers": {
+                                "type": "object",
+                                "additionalProperties": {}
+                              }
+                            },
+                            "required": [
+                              "mcpServers"
+                            ],
+                            "additionalProperties": false
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "cursorInstallUrl": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "claudeConnectorUrl": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "claudeCodeCommand": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "setupPrompt": {
+                        "type": "string"
+                      },
+                      "docsUrl": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "endpoint",
+                      "command",
+                      "clientConfig",
+                      "cursorInstallUrl",
+                      "claudeConnectorUrl",
+                      "claudeCodeCommand",
+                      "setupPrompt",
+                      "docsUrl"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "cli": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "install": {
+                        "anyOf": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string"
+                              },
+                              "command": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "command"
+                            ],
+                            "additionalProperties": false
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "docsUrl": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "install",
+                      "docsUrl"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "api": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "baseUrl": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "auth": {
+                        "type": "string"
+                      },
+                      "docsUrl": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "baseUrl",
+                      "auth",
+                      "docsUrl"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "extension": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "url": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "url"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "tryThisFirst",
+              "mcp",
+              "cli",
+              "api",
+              "extension"
+            ],
+            "additionalProperties": false,
+            "description": "How to start using it, per access method: client config and install links for MCP, the install command for a CLI, base URL and auth for an API. Commands and addresses come from the vendor's own docs; when there are none, docsUrl is where its instructions are."
+          }
+        },
+        "required": [
+          "name",
+          "slug",
+          "description",
+          "provider",
+          "categories",
+          "accessMethods",
+          "authType",
+          "verified",
+          "official",
+          "officialVendor",
+          "url",
+          "iconUrl",
+          "agentUrl",
+          "providerUrl",
+          "skills",
+          "tags",
+          "supportsStreaming",
+          "supportsPushNotifications",
+          "updatedAt",
+          "lastChecked",
+          "limitations",
+          "mcpEndpoint",
+          "mcpCommand",
+          "install",
+          "quickstartUrl",
+          "apiBaseUrl",
+          "useItNow"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
       }
     },
     {
       "name": "list_categories",
       "title": "List Categories",
       "description": "All directory categories with live agent counts. Slugs are valid inputs for search_agents.",
+      "annotations": {
+        "title": "List Categories",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
       "inputSchema": {
         "$schema": "http://json-schema.org/draft-07/schema#",
         "type": "object",
         "properties": {}
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "slug": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "agentCount": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "slug",
+                "name"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "categories"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
       }
     },
     {
       "name": "list_tasks",
       "title": "List Tasks",
       "description": "All directory tasks (jobs such as \"query-a-database\") with live listing counts and Official counts. Slugs are valid inputs for search_agents.",
+      "annotations": {
+        "title": "List Tasks",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
       "inputSchema": {
         "$schema": "http://json-schema.org/draft-07/schema#",
         "type": "object",
         "properties": {}
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer"
+          },
+          "tasks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "slug": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "blurb": {
+                  "type": "string"
+                },
+                "keywords": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "categories": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "access": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "count": {
+                  "type": "integer"
+                },
+                "official": {
+                  "type": "integer"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "browseUrl": {
+                  "type": "string"
+                },
+                "agentsUrl": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slug",
+                "label",
+                "blurb",
+                "keywords",
+                "categories",
+                "access",
+                "count",
+                "official",
+                "url",
+                "browseUrl",
+                "agentsUrl"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "total",
+          "tasks"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
       }
     },
     {
       "name": "compare_agents",
       "title": "Compare Agents",
       "description": "Put 2 or 3 listings side by side, as the site's /compare page does. For each listing: the facts that set it apart from the others (\"Only one with a CLI\", \"No auth required\", \"Most skills (12)\"). Then one row per field, with each listing's value by slug: what it is, provider, official vendor, verified, access, auth, MCP server, CLI install, API base URL, skills, streaming, push, categories, tags, listed since. A row where every listing agrees has same: true. Facts from the listings' own data, never a verdict. A curated comparison of the same listings adds its intro line. Unknown or repeated slugs, and any past 3, are left out with a note.",
+      "annotations": {
+        "title": "Compare Agents",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -162,12 +839,195 @@
         ],
         "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "description": "The comparison on the site"
+          },
+          "intro": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "A curated comparison's editorial line; null for any other mix"
+          },
+          "agents": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "slug": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "iconUrl": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "Absolute URL of the listing's 128px PNG icon, served by Agent Switchboard; null when it has none"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string"
+                },
+                "categories": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "accessMethods": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "verified": {
+                  "type": "boolean",
+                  "description": "Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working."
+                },
+                "official": {
+                  "type": "boolean",
+                  "description": "Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified."
+                },
+                "authType": {
+                  "type": "string"
+                },
+                "lastChecked": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "YYYY-MM-DD the Verified listing was last checked (its link and access path), from its last update; null when it is not Verified"
+                },
+                "setsApart": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "name",
+                "slug",
+                "url",
+                "iconUrl",
+                "description",
+                "provider",
+                "categories",
+                "accessMethods",
+                "verified",
+                "official",
+                "authType",
+                "lastChecked",
+                "setsApart"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "same": {
+                  "type": "boolean",
+                  "description": "Every listing has the same value"
+                },
+                "values": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "code": {
+                            "type": "string"
+                          },
+                          "note": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "code"
+                        ],
+                        "additionalProperties": false,
+                        "description": "A command or address from the listing's docs, with what it is"
+                      }
+                    ]
+                  },
+                  "description": "Each listing's value, by slug"
+                }
+              },
+              "required": [
+                "key",
+                "label",
+                "same",
+                "values"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Named listings that were left out, and why"
+          }
+        },
+        "required": [
+          "title",
+          "url",
+          "intro",
+          "agents",
+          "rows",
+          "notes"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
       }
     },
     {
       "name": "alternatives_to",
       "title": "Alternatives To",
       "description": "Listings that could stand in for one listing, strongest first, as on its /agents/<slug>/alternatives page. Each alternative is in the listing's main category, offers at least one of its access methods, and overlaps on what it does (shared skills and tags, rarer ones counting for more). Each comes with why: the access methods both offer and what they have in common. Up to 8. Fewer, or none, rather than a weak match. Also returns a link comparing the listing with its top two alternatives.",
+      "annotations": {
+        "title": "Alternatives To",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -187,12 +1047,207 @@
         ],
         "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "agent": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "slug": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              },
+              "iconUrl": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "Absolute URL of the listing's 128px PNG icon, served by Agent Switchboard; null when it has none"
+              },
+              "description": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "categories": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "accessMethods": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "verified": {
+                "type": "boolean",
+                "description": "Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working."
+              },
+              "official": {
+                "type": "boolean",
+                "description": "Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified."
+              },
+              "authType": {
+                "type": "string"
+              },
+              "lastChecked": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "YYYY-MM-DD the Verified listing was last checked (its link and access path), from its last update; null when it is not Verified"
+              }
+            },
+            "required": [
+              "name",
+              "slug",
+              "url",
+              "iconUrl",
+              "description",
+              "provider",
+              "categories",
+              "accessMethods",
+              "verified",
+              "official",
+              "authType",
+              "lastChecked"
+            ],
+            "additionalProperties": false
+          },
+          "total": {
+            "type": "integer",
+            "description": "How many alternatives it has, up to 8"
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Its alternatives page; null when it has too few for one"
+          },
+          "compareUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "The listing side by side with its top two alternatives"
+          },
+          "basis": {
+            "type": "string",
+            "description": "What every alternative has in common with the listing"
+          },
+          "alternatives": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "$ref": "#/properties/agent/properties/name"
+                },
+                "slug": {
+                  "$ref": "#/properties/agent/properties/slug"
+                },
+                "url": {
+                  "$ref": "#/properties/agent/properties/url"
+                },
+                "iconUrl": {
+                  "$ref": "#/properties/agent/properties/iconUrl"
+                },
+                "description": {
+                  "$ref": "#/properties/agent/properties/description"
+                },
+                "provider": {
+                  "$ref": "#/properties/agent/properties/provider"
+                },
+                "categories": {
+                  "$ref": "#/properties/agent/properties/categories"
+                },
+                "accessMethods": {
+                  "$ref": "#/properties/agent/properties/accessMethods"
+                },
+                "verified": {
+                  "$ref": "#/properties/agent/properties/verified"
+                },
+                "official": {
+                  "$ref": "#/properties/agent/properties/official"
+                },
+                "authType": {
+                  "$ref": "#/properties/agent/properties/authType"
+                },
+                "lastChecked": {
+                  "$ref": "#/properties/agent/properties/lastChecked"
+                },
+                "sharedAccess": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "Access methods both offer"
+                },
+                "inCommon": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "Skills and tags both have, rarest first"
+                },
+                "why": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name",
+                "slug",
+                "url",
+                "iconUrl",
+                "description",
+                "provider",
+                "categories",
+                "accessMethods",
+                "verified",
+                "official",
+                "authType",
+                "lastChecked",
+                "sharedAccess",
+                "inCommon",
+                "why"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "agent",
+          "total",
+          "url",
+          "compareUrl",
+          "basis",
+          "alternatives"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
       }
     },
     {
       "name": "connect_bundle",
       "title": "Connect Bundle",
       "description": "One MCP client config to paste ({\"mcpServers\": …}, as Cursor and other MCP clients read it) for up to 10 listings, and how each one connects. A listing is in the config when its own docs give a hosted server address or a local command. An MCP server whose docs give neither comes with its setup guide, and setupPrompt asks a coding agent to set all of those up. A listing without an MCP server comes with its CLI install command, API address or docs. Also returns a claude mcp add command for each server in the config, for Claude Code, and the /stack link for the listings. Nothing is guessed: every address and command is copied from the vendor's docs, as on the listing's page.",
+      "annotations": {
+        "title": "Connect Bundle",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -211,12 +1266,226 @@
         ],
         "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "summary": {
+            "type": "string",
+            "description": "How many are in the config, to set up from a guide, and without an MCP server"
+          },
+          "stackUrl": {
+            "type": "string",
+            "description": "These listings as a shared stack on the site"
+          },
+          "config": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "mcpServers": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "url": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "url"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "command": {
+                              "type": "string"
+                            },
+                            "args": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "required": [
+                            "command",
+                            "args"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "mcpServers"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The MCP client config to paste; null when no listing has an address or command to copy"
+          },
+          "claudeCode": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "A claude mcp add command for each server in the config"
+          },
+          "setupPrompt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "For a coding agent: set up each MCP server that has only a setup guide"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "slug": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "iconUrl": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "Absolute URL of the listing's 128px PNG icon, served by Agent Switchboard; null when it has none"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string"
+                },
+                "categories": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "accessMethods": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "verified": {
+                  "type": "boolean",
+                  "description": "Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working."
+                },
+                "official": {
+                  "type": "boolean",
+                  "description": "Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified."
+                },
+                "authType": {
+                  "type": "string"
+                },
+                "lastChecked": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "YYYY-MM-DD the Verified listing was last checked (its link and access path), from its last update; null when it is not Verified"
+                },
+                "how": {
+                  "type": "string",
+                  "enum": [
+                    "config",
+                    "guide",
+                    "other"
+                  ],
+                  "description": "config: in the config; guide: an MCP server to set up from its guide; other: no MCP server"
+                },
+                "server": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/properties/config/anyOf/0/properties/mcpServers/additionalProperties"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "Its entry in the config, under its slug"
+                },
+                "docsUrl": {
+                  "type": "string",
+                  "description": "Its setup instructions"
+                },
+                "note": {
+                  "type": "string",
+                  "description": "How it connects"
+                }
+              },
+              "required": [
+                "name",
+                "slug",
+                "url",
+                "iconUrl",
+                "description",
+                "provider",
+                "categories",
+                "accessMethods",
+                "verified",
+                "official",
+                "authType",
+                "lastChecked",
+                "how",
+                "server",
+                "docsUrl",
+                "note"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Named listings that were left out, and why"
+          }
+        },
+        "required": [
+          "summary",
+          "stackUrl",
+          "config",
+          "claudeCode",
+          "setupPrompt",
+          "items",
+          "notes"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
       }
     },
     {
       "name": "recommend",
       "title": "Recommend",
       "description": "One recommendation for what your user needs, and the next step to start using it, as the site's Operator (/operator) picks it. Pass the need in a sentence you write yourself, e.g. \"query Postgres and send email\": each need it names gets one pick, why it fits, the next step (the MCP client config to paste when the vendor's docs give one, else its setup guide or docs) and two alternatives; two or more picks also come with a /stack link. Name a product to prefer the listings that mention it; say MCP, CLI, API, browser extension or official to narrow the pick. Picked by fixed matching rules, not a model, so the same need always gets the same answer; when no dedicated task matches, catalog search picks the closest matching listing (with task: null and source: \"search_fallback\"). A need that matches neither a task nor any listing is refused with the closest tasks. Never include names, email addresses or phone numbers.",
+      "annotations": {
+        "title": "Recommend",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -231,12 +1500,402 @@
         ],
         "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The need as read"
+          },
+          "answer": {
+            "type": "string",
+            "description": "The recommendations in plain sentences, one line per need, ready to tell the user"
+          },
+          "recommendations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "need": {
+                  "type": "string",
+                  "description": "The user's words for this need"
+                },
+                "task": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "slug": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "url": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "slug",
+                        "label",
+                        "url"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "The directory task it matched; null when picked via catalog search fallback"
+                },
+                "source": {
+                  "type": "string",
+                  "enum": [
+                    "task",
+                    "search_fallback"
+                  ],
+                  "description": "Whether the pick came from a curated task or catalog search fallback"
+                },
+                "pick": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "slug": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "iconUrl": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "Absolute URL of the listing's 128px PNG icon, served by Agent Switchboard; null when it has none"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "provider": {
+                      "type": "string"
+                    },
+                    "categories": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "accessMethods": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "verified": {
+                      "type": "boolean",
+                      "description": "Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working."
+                    },
+                    "official": {
+                      "type": "boolean",
+                      "description": "Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified."
+                    },
+                    "authType": {
+                      "type": "string"
+                    },
+                    "lastChecked": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "YYYY-MM-DD the Verified listing was last checked (its link and access path), from its last update; null when it is not Verified"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "slug",
+                    "url",
+                    "iconUrl",
+                    "description",
+                    "provider",
+                    "categories",
+                    "accessMethods",
+                    "verified",
+                    "official",
+                    "authType",
+                    "lastChecked"
+                  ],
+                  "additionalProperties": false
+                },
+                "pickedBecause": {
+                  "type": "string"
+                },
+                "why": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "The skill of the pick that does the task"
+                },
+                "unmet": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "What the need asked for that no listing for the task has"
+                },
+                "nextStep": {
+                  "type": "object",
+                  "properties": {
+                    "how": {
+                      "type": "string",
+                      "enum": [
+                        "config",
+                        "guide",
+                        "other"
+                      ],
+                      "description": "config: paste server into an MCP client; guide: an MCP server to set up from url; other: no MCP server, start from url"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string",
+                      "description": "The vendor's setup instructions"
+                    },
+                    "server": {
+                      "anyOf": [
+                        {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "url": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "url"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "command": {
+                                  "type": "string"
+                                },
+                                "args": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                }
+                              },
+                              "required": [
+                                "command",
+                                "args"
+                              ],
+                              "additionalProperties": false
+                            }
+                          ]
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "description": "With how config: its entry for mcpServers"
+                    },
+                    "note": {
+                      "type": "string",
+                      "description": "How it connects"
+                    }
+                  },
+                  "required": [
+                    "how",
+                    "label",
+                    "url",
+                    "server",
+                    "note"
+                  ],
+                  "additionalProperties": false
+                },
+                "limitations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "What may stop or slow the user, read from the listing: the sign-in it needs, a server that runs only on their computer, no MCP config to copy yet, no MCP server, not Verified. Empty when the listing shows none"
+                },
+                "alternatives": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "$ref": "#/properties/recommendations/items/properties/pick/properties/name"
+                      },
+                      "slug": {
+                        "$ref": "#/properties/recommendations/items/properties/pick/properties/slug"
+                      },
+                      "url": {
+                        "$ref": "#/properties/recommendations/items/properties/pick/properties/url"
+                      },
+                      "iconUrl": {
+                        "$ref": "#/properties/recommendations/items/properties/pick/properties/iconUrl"
+                      },
+                      "description": {
+                        "$ref": "#/properties/recommendations/items/properties/pick/properties/description"
+                      },
+                      "provider": {
+                        "$ref": "#/properties/recommendations/items/properties/pick/properties/provider"
+                      },
+                      "categories": {
+                        "$ref": "#/properties/recommendations/items/properties/pick/properties/categories"
+                      },
+                      "accessMethods": {
+                        "$ref": "#/properties/recommendations/items/properties/pick/properties/accessMethods"
+                      },
+                      "verified": {
+                        "$ref": "#/properties/recommendations/items/properties/pick/properties/verified"
+                      },
+                      "official": {
+                        "$ref": "#/properties/recommendations/items/properties/pick/properties/official"
+                      },
+                      "authType": {
+                        "$ref": "#/properties/recommendations/items/properties/pick/properties/authType"
+                      },
+                      "lastChecked": {
+                        "$ref": "#/properties/recommendations/items/properties/pick/properties/lastChecked"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "slug",
+                      "url",
+                      "iconUrl",
+                      "description",
+                      "provider",
+                      "categories",
+                      "accessMethods",
+                      "verified",
+                      "official",
+                      "authType",
+                      "lastChecked"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "fits": {
+                  "type": "integer",
+                  "description": "How many listings match"
+                }
+              },
+              "required": [
+                "need",
+                "task",
+                "source",
+                "pick",
+                "pickedBecause",
+                "why",
+                "unmet",
+                "nextStep",
+                "limitations",
+                "alternatives",
+                "fits"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "unmatched": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "need": {
+                  "type": "string"
+                },
+                "nearestTasks": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "slug": {
+                        "type": "string"
+                      },
+                      "label": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "slug",
+                      "label",
+                      "url"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "need",
+                "nearestTasks"
+              ],
+              "additionalProperties": false
+            },
+            "description": "Needs with no pick, and the tasks closest to them"
+          },
+          "stackUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Two or more picks as a shared stack on the site"
+          },
+          "operatorUrl": {
+            "type": "string",
+            "description": "The same request on the site"
+          },
+          "basis": {
+            "type": "string",
+            "description": "How the pick is made"
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "request",
+          "answer",
+          "recommendations",
+          "unmatched",
+          "stackUrl",
+          "operatorUrl",
+          "basis",
+          "notes"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
       }
     },
     {
       "name": "submit_listing",
       "title": "Submit a Listing",
       "description": "Suggest a new listing for the Agent Switchboard directory. This opens a PUBLIC GitHub issue that the maintainer reviews by hand; it does not publish anything. Use it only when the user asks to submit or list a product, after you show them the name, URL, and description you will send and they agree. Call search_agents first: if the product is already listed, tell the user instead. Limited to 5 submissions per hour per caller and one per URL per day. Not safe to retry blindly: each call that returns status \"filed\" opens a new issue.",
+      "annotations": {
+        "title": "Submit a Listing",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -291,12 +1950,48 @@
         ],
         "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "filed",
+              "already_listed",
+              "rate_limited",
+              "unavailable"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "issueUrl": {
+            "type": "string"
+          },
+          "existingSlug": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "message"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
       }
     },
     {
       "name": "request_missing_tool",
       "title": "Request a Missing Tool",
       "description": "Tell the Agent Switchboard maintainer that the directory has nothing for a job. Use it after search_agents (and a task or category, if one fits) found nothing that does what the user needs. The request is recorded privately and read in the weekly review, which uses requests to decide what to look for and add; nothing is published, no issue is opened, and there is no reply. Describe the job, never the user: no names, emails, company details or conversation. Limited to 10 requests per hour per caller.",
+      "annotations": {
+        "title": "Request a Missing Tool",
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -333,6 +2028,27 @@
         },
         "required": [
           "need"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "recorded",
+              "rate_limited"
+            ]
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "message"
         ],
         "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"

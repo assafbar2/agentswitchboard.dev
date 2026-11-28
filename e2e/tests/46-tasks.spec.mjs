@@ -39,7 +39,12 @@ const PLACED = new Map(
     .map((f) => JSON.parse(readFileSync(`${REPO}/content/agents/${f}`, 'utf8')))
     .filter((a) => a.status === 'published')
     .flatMap((a) => {
-      const label = a.sponsored ? 'Sponsored' : a.featured && (!a.featuredUntil || a.featuredUntil >= TODAY) ? 'Featured' : null;
+      const label =
+        a.sponsored && (!a.sponsoredUntil || a.sponsoredUntil >= TODAY)
+          ? 'Sponsored'
+          : a.featured && (!a.featuredUntil || a.featuredUntil >= TODAY)
+            ? 'Featured'
+            : null;
       return label ? [[a.slug, label]] : [];
     })
 );

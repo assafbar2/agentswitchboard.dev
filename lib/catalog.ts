@@ -25,6 +25,7 @@ import { pickHomepageAgents } from './homepage';
 import { iconPath, type IconRecord } from './icons';
 import { groupOfficialAgents, vendorForUrl, type OfficialGroup, type OfficialVendor } from './official';
 import { organicOrder } from './organic';
+import { isFeaturedLive, today } from './promoted';
 import type { Agent, Category, ChangelogEntry, HomepageAgent, SiteSettings } from './types';
 
 const CONTENT_DIR = path.join(process.cwd(), 'content');
@@ -127,15 +128,16 @@ function once<T>(load: () => Promise<T>): () => Promise<T> {
 
 // ── Public API ──────────────────────────────────────────────────────
 
-/** Every published agent, featured first then A→Z (the canonical order). */
+/** Every published agent, live featured first then A→Z (the canonical order). */
 export const getEveryAgent = cache(
   once(async (): Promise<Agent[]> => {
     const agents = await loadAllAgentsRaw();
+    const day = today();
     return agents
       .filter((a) => a.status === 'published')
       .sort(
         (a, b) =>
-          Number(b.featured) - Number(a.featured) || a.name.localeCompare(b.name)
+          Number(isFeaturedLive(b, day)) - Number(isFeaturedLive(a, day)) || a.name.localeCompare(b.name)
       );
   })
 );
@@ -224,7 +226,7 @@ export async function getCategoryBySlug(
  */
 export async function getHomepageAgents(): Promise<HomepageAgent[]> {
   const [agents, settings] = await Promise.all([getEveryAgent(), getSiteSettings()]);
-  return pickHomepageAgents(agents, settings?.homepageFeatured, new Date().toISOString());
+  return pickHomepageAgents(agents, settings?.homepageFeatured, today());
 }
 
 /** Official listings grouped by vendor, largest vendor first. */

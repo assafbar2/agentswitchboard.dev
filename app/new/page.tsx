@@ -6,6 +6,7 @@ import { getEveryAgent } from '@/lib/catalog';
 import { getDropSchedule } from '@/lib/drops';
 import { NEW_DAYS, newListings, newSince } from '@/lib/freshness';
 import { pageMetadata } from '@/lib/metadata';
+import { isSponsoredLive } from '@/lib/promoted';
 import { newCard, newCardImage } from '@/lib/share-cards';
 import { formatDay, formatNumber, pluralize } from '@/lib/utils';
 
@@ -152,7 +153,7 @@ export default async function NewPage() {
                   <span className="agent-dim">
                     {agent.providerName}
                     {agent.official ? ' · official' : ''}
-                    {agent.sponsored ? ' · sponsored' : ''}
+                    {isSponsoredLive(agent) ? ' · sponsored' : ''}
                   </span>
                   <span className="agent-dim">{agent.createdAt?.slice(0, 10)}</span>
                 </Link>

@@ -21,11 +21,14 @@ import { logUnmatchedRecommend } from '@/lib/leads';
 import { logConsumer } from '@/lib/log';
 import { organicOrder, withoutPlacement } from '@/lib/organic';
 import { corsPreflight, jsonResponse } from '@/lib/public-api';
+import { restRateLimit } from '@/lib/rest-rate-limit';
 import { getTasks } from '@/lib/tasks';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET(req: Request): Promise<Response> {
+  const limited = restRateLimit('/api/recommend', req);
+  if (limited) return limited;
   const need = new URL(req.url).searchParams.get('need') ?? '';
   const decision = recommendDecision(need, getTasks(), organicOrder(await getEveryAgent()));
   logConsumer('/api/recommend', req, {

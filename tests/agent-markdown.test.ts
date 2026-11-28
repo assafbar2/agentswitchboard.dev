@@ -23,6 +23,7 @@ vi.mock('fs', async (importOriginal) => {
       featured: true,
       featuredUntil: '2999-01-01',
       sponsored: true,
+      sponsoredUntil: '2999-01-01',
       sponsorLabel: 'Sponsored',
       tier: 'premium',
     });

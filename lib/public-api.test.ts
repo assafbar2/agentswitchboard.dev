@@ -3,6 +3,7 @@ import {
   clampInt,
   normalizeAccessMethods,
   normalizeAuthTypes,
+  organicAgentSummary,
   summarizeAgent,
   detailAgent,
   decisionAgent,
@@ -106,14 +107,18 @@ describe('summarizeAgent', () => {
     expect(summarizeAgent(makeAgent()).iconUrl).toBeNull();
   });
 
-  it('says whether the listing is a paid placement, false when unset', () => {
+  it('says whether the listing is a live paid or featured placement, false when unset or expired', () => {
     expect(summarizeAgent(makeAgent()).sponsored).toBe(false);
     expect(summarizeAgent(makeAgent({ sponsored: true })).sponsored).toBe(true);
+    expect(summarizeAgent(makeAgent({ sponsored: true, sponsoredUntil: '2020-01-01' })).sponsored).toBe(false);
+    expect(summarizeAgent(makeAgent({ featured: true, featuredUntil: '2020-01-01' })).featured).toBe(false);
     expect(detailAgent(makeAgent({ sponsored: true })).sponsored).toBe(true);
   });
 
-  it('leaves the flag out of decision answers, which MCP tools return too', () => {
-    expect(decisionAgent(makeAgent({ sponsored: true }))).not.toHaveProperty('sponsored');
+  it('leaves featured and sponsored out of decision answers, which MCP tools return too', () => {
+    const card = decisionAgent(makeAgent({ featured: true, sponsored: true }));
+    expect(card).not.toHaveProperty('sponsored');
+    expect(card).not.toHaveProperty('featured');
   });
 });
 
@@ -212,12 +217,12 @@ describe('summarizeTask and detailTask', () => {
     });
   });
 
-  it('lists every fit best first with its auth type and why, and names related tasks and stacks by slug', () => {
+  it('lists every fit organically (no featured/sponsored) with its auth type and why, and names related tasks and stacks by slug', () => {
     const [agentmail, gmail] = fits;
     const detail = detailTask(
       task,
       [
-        { agent: agentmail, why: 'Inbox Management: Create and list inboxes.' },
+        { agent: { ...agentmail, sponsored: true }, why: 'Inbox Management: Create and list inboxes.' },
         { agent: gmail, why: null },
       ],
       [{ ...task, slug: 'manage-tickets' }],
@@ -225,9 +230,13 @@ describe('summarizeTask and detailTask', () => {
     );
     expect(detail).toMatchObject({ slug: 'send-and-read-email', count: 2, relatedTasks: ['manage-tickets'], stacks: ['email-agent'] });
     expect(detail.agents).toEqual([
-      { ...summarizeAgent(agentmail), authType: 'apiKey', why: 'Inbox Management: Create and list inboxes.' },
-      { ...summarizeAgent(gmail), authType: 'apiKey', why: null },
+      { ...organicAgentSummary(agentmail), authType: 'apiKey', why: 'Inbox Management: Create and list inboxes.' },
+      { ...organicAgentSummary(gmail), authType: 'apiKey', why: null },
     ]);
+    for (const a of detail.agents) {
+      expect(a).not.toHaveProperty('featured');
+      expect(a).not.toHaveProperty('sponsored');
+    }
   });
 
   it('points an unknown slug at the list of tasks', () => {

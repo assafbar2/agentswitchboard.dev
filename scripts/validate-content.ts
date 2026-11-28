@@ -39,6 +39,10 @@ const categoryBySlug = new Map(categories.map((c) => [c.slug, c]));
 
 const GENERIC_TAGS = new Set(['ai', 'tool', 'tools', 'automation', 'agent', 'agents']);
 const SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+const ISO_DAY = z
+  .string()
+  .regex(/^\d{4}-\d{2}-\d{2}$/, 'date must be YYYY-MM-DD')
+  .refine((d) => !Number.isNaN(Date.parse(d)), 'not a calendar date');
 
 const SkillSchema = z.object({
   id: z.string().regex(SLUG, 'skill id must be kebab-case'),
@@ -88,11 +92,12 @@ const AgentSchema = z
     iconUrl: z.string().url().optional(),
     status: z.enum(['published', 'draft', 'archived']),
     featured: z.boolean(),
-    featuredUntil: z.string().optional(),
+    featuredUntil: ISO_DAY.optional(),
     verified: z.boolean(),
     official: z.boolean().optional(),
     referralUrl: z.string().optional(),
     sponsored: z.boolean().optional(),
+    sponsoredUntil: ISO_DAY.optional(),
     tier: z.enum(['free', 'premium']),
     discoveredBy: z.enum(['manual', 'worker']),
     workerSource: z.string().optional(),

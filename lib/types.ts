@@ -73,6 +73,7 @@ export interface Agent {
   iconUrl?: string;
   status: 'published' | 'draft' | 'archived';
   featured: boolean;
+  /** YYYY-MM-DD (UTC) inclusive last day of the featured placement. */
   featuredUntil?: string;
   verified: boolean;
   /** First-party listing from a major vendor in content/official-vendors.json. */
@@ -81,11 +82,16 @@ export interface Agent {
   officialVendor?: { slug: string; name: string };
   referralUrl?: string;
   /**
-   * A paid placement, set only by the maintainer. It labels the listing
-   * Sponsored and puts it in the Sponsored slot on the homepage and the latest
-   * drop page; nothing that ranks or picks listings reads it.
+   * A paid placement, set only by the maintainer. Labels the listing Sponsored,
+   * puts it in the Sponsored slot on the homepage and the latest drop page, and
+   * places it first (labeled) among matching tools in the website's task
+   * answers (homepage box, task pages, Browse by task). Never changes keyword
+   * search, alternatives, compare, the Operator, REST API rankings, MCP, or
+   * WebMCP.
    */
   sponsored?: boolean;
+  /** YYYY-MM-DD (UTC) inclusive last day of the sponsored placement. */
+  sponsoredUntil?: string;
   tier: 'free' | 'premium';
   discoveredBy: 'manual' | 'worker';
   workerSource?: string;

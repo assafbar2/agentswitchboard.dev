@@ -63,7 +63,7 @@ whether they arrive by pull request, the submit form or the MCP
    arguments only). `install.type` is `npm`, `pip`, `brew`, `docker` or
    `binary` (an install script). Each needs the matching access method.
 3. Add a line to `content/changelog.json` (top of the array):
-   `{ "action": "added", "slug": "your-slug", "name": "Official Product Name" }`
+   `{ "action": "added", "slug": "your-slug", "name": "Official Product Name", "date": "2026-01-01" }`
 4. Run `npx tsx scripts/validate-content.ts` locally (CI runs it too)
 5. Open the PR — fill in the template
 
@@ -82,7 +82,7 @@ We are curators, not collectors. Listings need:
 - ✅ Genuine adoption or traction signals (stars, registry listings, funding, community discussion — or, for vendors submitting their own product, endpoints we can verify live)
 - ❌ No vaporware, GPT wrappers, dead links, or pure self-promo
 
-### Three rules for the close calls
+### Four rules for the close calls
 
 **Competitors are welcome.** This is not a one-per-category list. If five
 companies build agent email APIs, all five can list and compete on execution.
@@ -128,15 +128,18 @@ load, you declare an access method, and any linked GitHub repo is live (not
 archived, pushed within 12 months). It's re-checked monthly and drops if the
 product stops meeting that bar. `featured` is maintainer-only.
 
-`"sponsored": true` marks a **paid placement** and is maintainer-only, set
-after the maintainer approves the sponsor. The listing must already meet
-every rule above. It shows a **Sponsored** label wherever the listing appears
-and a spot in the Sponsored slot on the homepage and the latest drop page;
-it never changes search ranking, tasks, alternatives, compare or the Operator,
-it never appears in MCP or WebMCP tool results, and it is separate from `featured`,
-`official` and `verified`. It is the only paid label; the homepage's
-editor's picks (`homepageFeatured` in `content/site.json`) never include a
-sponsored listing, and CI enforces that.
+`"sponsored": true` (optionally paired with `"sponsoredUntil": "YYYY-MM-DD"`)
+marks a **paid placement** and is maintainer-only, set after the maintainer
+approves the sponsor. The listing must already meet every rule above. It shows
+a **Sponsored** label wherever the listing appears, a spot in the Sponsored
+slot on the homepage and the latest drop page, and on the website comes first
+(labeled) among the tools for each task it does in the homepage answer, task
+pages, and Browse by task. It never changes keyword search results or their
+order, alternatives, compare, the Operator, or any API ranking, never appears
+in MCP, WebMCP, decision endpoints, or `/api/tasks/{slug}`, and is separate
+from `featured`, `official` and `verified`. It is the only paid label; the
+homepage's editor's picks (`homepageFeatured` in `content/site.json`) never
+include a sponsored listing, and CI enforces that.
 
 Paid placement never reaches AI assistants. The MCP server and the WebMCP tools
 are always organic: they rank by relevance or A→Z and never return or rank by

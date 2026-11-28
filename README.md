@@ -53,7 +53,7 @@ curl -X POST "https://agentswitchboard.dev/api/missing-tool" -H 'content-type: a
   -d '{"need": "file expense reports in Expensify", "tried": "expensify"}'
 ```
 
-The REST API allows 120 requests a minute per IP, then answers HTTP 429 with
+The REST API allows 110 requests a minute per IP, then answers HTTP 429 with
 `Retry-After`; answers from the CDN cache, the static catalog pages and the MCP
 server don't count toward it.
 

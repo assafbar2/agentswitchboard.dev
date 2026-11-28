@@ -13,6 +13,7 @@ import type { Task } from './tasks';
 import type { Agent, Category } from './types';
 import { BASE_URL } from './env';
 import { absoluteIconUrl } from './icons';
+import { isFeaturedLive, isSponsoredLive, today } from './promoted';
 import { ALL_ACCESS_METHODS, AUTH_TYPES } from './search';
 import { howToUseJson } from './use-it-now';
 import { lastChecked } from './verified';
@@ -154,13 +155,13 @@ export const RECOMMEND_NEED_INPUT =
   "What the user needs, in a sentence or two, e.g. \"query Postgres and send email\" (up to 300 characters are read)";
 
 /**
- * A listing in a decision tool's answer: the search-result fields, its auth
- * type and, when Verified, the day it was last checked (lib/verified.ts). The MCP server returns these too, and connector directories reject
- * sponsored placements in tool output, so they never carry `sponsored`.
+ * A listing in a decision tool's answer: the organic search-result fields
+ * (never carrying `featured` or `sponsored`), its auth type and, when Verified,
+ * the day it was last checked (lib/verified.ts). The MCP server returns these
+ * too, and connector directories reject commercial placements in tool output.
  */
 export function decisionAgent(a: Agent) {
-  const { sponsored, ...card } = summarizeAgent(a);
-  return { ...card, authType: a.authType, lastChecked: lastChecked(a) };
+  return { ...organicAgentSummary(a), authType: a.authType, lastChecked: lastChecked(a) };
 }
 
 export const CORS_GET = {
@@ -201,8 +202,8 @@ export function clampInt(
   return Math.min(Math.max(n, min), max);
 }
 
-/** Search-result card. Same fields as GET /api/agents `agents[]`. */
-export function summarizeAgent(a: Agent) {
+/** Search-result card without commercial placement fields, for organic endpoints. */
+export function organicAgentSummary(a: Agent) {
   return {
     name: a.name,
     slug: a.slug,
@@ -214,9 +215,17 @@ export function summarizeAgent(a: Agent) {
     accessMethods: a.accessMethods,
     verified: a.verified,
     official: a.official,
+  };
+}
+
+/** Search-result card. Same fields as GET /api/agents `agents[]`. */
+export function summarizeAgent(a: Agent) {
+  const day = today();
+  return {
+    ...organicAgentSummary(a),
     // Featured listings sort first in the default order, so callers see why.
-    featured: a.featured === true,
-    sponsored: a.sponsored === true,
+    featured: isFeaturedLive(a, day),
+    sponsored: isSponsoredLive(a, day),
   };
 }
 
@@ -299,8 +308,9 @@ export function summarizeTask(task: Task, fits: Agent[]) {
 
 /**
  * One task for GET /api/tasks/{slug}: its summary, every listing that fits
- * best first with why (lib/tasks.ts whyItFits, or null), and the slugs of
- * related tasks and of stacks with its listings.
+ * best first (organic, no featured/sponsored flags) with why (lib/tasks.ts
+ * whyItFits, or null), and the slugs of related tasks and of stacks with its
+ * listings.
  */
 export function detailTask(
   task: Task,
@@ -310,7 +320,7 @@ export function detailTask(
 ) {
   return {
     ...summarizeTask(task, fits.map((f) => f.agent)),
-    agents: fits.map(({ agent, why }) => ({ ...summarizeAgent(agent), authType: agent.authType, why })),
+    agents: fits.map(({ agent, why }) => ({ ...organicAgentSummary(agent), authType: agent.authType, why })),
     relatedTasks: related.map((t) => t.slug),
     stacks: stacks.map((s) => s.slug),
   };

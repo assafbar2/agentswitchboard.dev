@@ -39,7 +39,8 @@ Prefer REST. OpenAPI: https://agentswitchboard.dev/openapi.json
 6. `GET /api/compare?a={slug}&b={slug}` (add `&c={slug}` for a third) to put listings side by side: what sets each apart (`setsApart`), then one row per field with each listing's value by slug.
 7. `GET /api/agents/{slug}/alternatives` for listings that could stand in for one, strongest first, each with a `why` line.
 8. `GET /api/bundle?items={slug},{slug}` (up to 10) for one MCP client config to paste (`config`, `{"mcpServers": …}`), and how each listing connects (`items[].how` and `note`).
-9. `GET /api/recommend?need={the need, in a sentence}` when the user wants one tool for a job: one pick for each need it names (`recommendations[].pick`), why it fits, the next step to start using it (`nextStep`: the MCP config to paste when the vendor's docs give one, else its guide or docs), its `limitations` (the sign-in it needs, local-only, no config yet, not Verified) and two alternatives. `answer` says it in plain sentences. Write the need yourself from what the user said; never include names, emails or phone numbers. A need that matches no task is HTTP 404 `{ "error": "no_match" }` with the closest tasks.
+9. `GET /api/recommend?need={the need, in a sentence}` when the user wants one tool for a job: one pick for each need it names (`recommendations[].pick`), why it fits, the next step to start using it (`nextStep`: the MCP config to paste when the vendor's docs give one, else its guide or docs), its `limitations` (the sign-in it needs, local-only, no config yet, not Verified) and two alternatives. `answer` says it in plain sentences. When no dedicated task matches, catalog search picks the closest matching listing (`task: null`, `source: "search_fallback"`). Write the need yourself from what the user said; never include names, emails or phone numbers. A need that matches neither a task nor any listing is HTTP 404 `{ "error": "no_match" }` with the closest tasks.
+10. `POST /api/missing-tool` (`{ "need": "…", "tried?": "…", "category?": "…", "access?": […] }`) when nothing in the directory does a job: records the missing need privately for the weekly review (HTTP 202 `{ "status": "recorded", "message" }`, limited to 10 per caller IP per hour). Publishes nothing and opens no issue; describe the job, never the user.
 
 Query notes:
 
@@ -55,7 +56,7 @@ Unknown slugs return HTTP 404 `{ "error": "not_found", "message": "…" }`. Sear
 
 Bulk dump: `GET /agents.json` is an index linking pages of up to 50 listings (`/catalog/1.json` and on, each with `next`). For plain-text/Markdown context, fetch `/llms.txt`, `/llms-full.txt`, `/agents/{slug}.md`, or `/tasks/{slug}.md`. Prefer search for user questions.
 
-Optional MCP (only if the client speaks MCP, not required): `POST https://agentswitchboard.dev/api/mcp` with tools `search_agents` (the same filters, `since` and `sort`), `get_agent`, `list_categories`, `list_tasks`, `compare_agents`, `alternatives_to`, `connect_bundle`, `recommend` (the same answers as the compare, alternatives, bundle and recommend endpoints), `submit_listing`, and `request_missing_tool`.
+Optional MCP (only if the client speaks MCP, not required): `POST https://agentswitchboard.dev/api/mcp` with 10 tools — eight read tools (`search_agents`, `get_agent`, `list_categories`, `list_tasks`, `compare_agents`, `alternatives_to`, `connect_bundle`, `recommend`), plus `submit_listing` (files a public GitHub issue for human review only after the user confirms the details) and `request_missing_tool` (privately records that no listing fits a job, matching `POST /api/missing-tool`).
 
 ## How to answer the user
 
@@ -67,15 +68,15 @@ Optional MCP (only if the client speaks MCP, not required): `POST https://agents
 - `authType` on a listing (`apiKey`, `oauth2`, `bearer`, `none`) is how **that product** authenticates — not Switchboard.
 - `verified: true` — Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working. It is Switchboard's own check, not a Meta or Muse certification.
 - `official: true` — Official: a first-party listing, published by the company behind the product under its own domain or GitHub org (e.g. Notion's own Notion MCP, not a community build), where that company is a major vendor (publicly traded, a frontier AI lab, or valued around $1B+). It records who publishes the product, not a paid placement, and is separate from Verified. Add `official=true` to search when the user wants the official tool.
-- `featured: true` — Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order. The MCP server and WebMCP ignore it: their results are organic and leave the flag out.
-- `sponsored: true` (REST and /agents.json only; MCP and WebMCP results never carry it) — Sponsored: a paid placement, approved by the maintainer. It shows a Sponsored label and a spot in the Sponsored slot on the homepage and the latest drop page. It never changes search results or their order, tasks, alternatives, compare or the Operator, never appears in AI-assistant (MCP) results, and is separate from Featured, Official and Verified.
+- `featured: true` — Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order. On the website, a live featured listing that does a task also comes first, labeled, in that task's answers. The MCP server, WebMCP, recommend and the task endpoints ignore it: their results are organic and leave the flag out.
+- `sponsored: true` (REST search/detail/stacks and /agents.json only; MCP, WebMCP, decision endpoints and `/api/tasks/{slug}` never carry it) — Sponsored: a paid placement, approved by the maintainer. It shows a Sponsored label and a spot in the Sponsored slot on the homepage and the latest drop page, and on the website the listing comes first, labeled, among the tools for each task it does: the homepage answer, the task page and Browse by task. It never changes keyword search results or their order, alternatives, compare or the Operator, never changes or appears in what AI assistants get (the MCP server, WebMCP and the REST API's rankings), and is separate from Featured, Official and Verified.
 
 ## Hard limits
 
-- Read-only. There is no write, purchase, or “connect this agent as the user” call on Switchboard. `/api/bundle` returns a config for the user to paste; it connects nothing.
+- No publishing or purchasing: the catalog endpoints are read-only, and the two feedback calls (`POST /api/missing-tool` / `request_missing_tool` and MCP `submit_listing`) publish nothing directly. `/api/bundle` returns a config for the user to paste; it connects nothing.
+- Rate limit: REST `/api/` endpoints allow **110 requests per minute per IP**, then answer HTTP 429 with `Retry-After` and JSON `{ "error": "rate_limited", "message", "retryAfterSeconds" }`. CDN-cached responses (~5 minutes), static catalog pages (`/catalog/{n}.json`), and `/api/mcp` (which has its own limits) do not count toward it.
 - Do not scrape HTML when these endpoints exist.
 - Do not pretend Switchboard hosts or proxies listed APIs.
-- Fair use: the API is cached (~5 minutes). Do not hammer it.
 
 ## Example prompts this should handle
 

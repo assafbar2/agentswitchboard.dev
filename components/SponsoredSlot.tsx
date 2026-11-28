@@ -23,7 +23,7 @@ export function SponsoredSlot({ agents, className = '' }: { agents: Agent[]; cla
       </h2>
       <div className="px-2.5 pb-2">
         <p className="mt-1.5 text-[15px] leading-snug text-[var(--dir-muted)]">
-          Paid placements, each reviewed first. They never change search results.{' '}
+          Paid placements, each reviewed first. They never change keyword search results.{' '}
           <Link
             href="/about#sponsored"
             className="font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2"

@@ -504,7 +504,7 @@ export default async function HomePage() {
 
           {sponsored.length > 0 && (
             <div className="mb-8" data-sponsored-slot="">
-              <div className="agent-section-title">sponsored · paid placements, never change search results</div>
+              <div className="agent-section-title">sponsored · paid placements, never change keyword search results</div>
               {sponsored.map((agent) => (
                 <Link key={agent.id} href={`/agents/${agent.slug}`} className="agent-row no-underline hover:underline">
                   <span className="agent-accent">

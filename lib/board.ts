@@ -11,6 +11,7 @@
  */
 
 import type { Drop } from './drops';
+import { isSponsoredLive } from './promoted';
 import type { Agent, Category } from './types';
 import { formatDay, formatNumber, pluralize } from './utils';
 
@@ -64,7 +65,7 @@ export function boardOf(catalog: readonly Agent[], categories: readonly Category
         access: agent.accessMethods,
         official: agent.official,
         lit: added.has(agent.slug),
-        ...(agent.sponsored ? { sponsored: true } : {}),
+        ...(isSponsoredLive(agent) ? { sponsored: true } : {}),
       }));
     return [{ slug: category.slug, name: category.name, jacks }];
   });

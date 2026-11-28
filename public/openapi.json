@@ -2,9 +2,9 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Agent Switchboard Directory API",
-    "version": "1.16.0",
+    "version": "1.17.0",
     "summary": "Read-only catalog of AI agents, MCP servers, and agentic developer tools.",
-    "description": "Agent Switchboard is a public discovery directory. Use this API to answer questions like 'is there an agent that does X?' or 'which listed products expose an MCP server?'. There is no authentication and no user account. The one write, POST /api/missing-tool, publishes nothing: it privately tells the maintainer that no listing does a job. The /api/ endpoints allow 120 requests per minute per IP and answer 429 with Retry-After past that; cached responses do not count, and /api/mcp has its own limits. This API does not proxy the underlying products — it only returns Switchboard listings. For interactive tool-shaped access, an MCP server is also available at /api/mcp. Listing data returned by this API is licensed CC BY-NC 4.0 (attribution required; commercial reuse needs a license: https://agentswitchboard.dev/contact). The API definition itself is MIT.",
+    "description": "Agent Switchboard is a public discovery directory. Use this API to answer questions like 'is there an agent that does X?' or 'which listed products expose an MCP server?'. There is no authentication and no user account. The one write, POST /api/missing-tool, publishes nothing: it privately tells the maintainer that no listing does a job. The /api/ endpoints allow 110 requests per minute per IP and answer 429 with Retry-After past that; cached responses do not count, and /api/mcp has its own limits. This API does not proxy the underlying products — it only returns Switchboard listings. For interactive tool-shaped access, an MCP server is also available at /api/mcp. Listing data returned by this API is licensed CC BY-NC 4.0 (attribution required; commercial reuse needs a license: https://agentswitchboard.dev/contact). The API definition itself is MIT.",
     "contact": {
       "name": "Barnir",
       "email": "barnir@agentmail.to",
@@ -355,7 +355,7 @@
       "get": {
         "operationId": "getTask",
         "summary": "Get one task by slug",
-        "description": "One task with every listing that does it, best fit first, each with the skill that does the job when it has one. Also the slugs of related tasks and of stacks that use its listings. Use a `slug` returned by listTasks. Unknown slugs return 404.",
+        "description": "One task with every listing that does it, best fit first (organic: no `featured` or `sponsored` boost or fields), each with the skill that does the job when it has one. Also the slugs of related tasks and of stacks that use its listings. Use a `slug` returned by listTasks. Unknown slugs return 404.",
         "tags": ["catalog"],
         "parameters": [
           {
@@ -471,6 +471,7 @@
           }
         ],
         "responses": {
+          "429": { "$ref": "#/components/responses/RateLimited" },
           "200": {
             "description": "The recommendations.",
             "content": {
@@ -488,7 +489,7 @@
             }
           },
           "404": {
-            "description": "No task in the directory matches the need (`error: \"no_match\"`); `unmatched` names the closest tasks.",
+            "description": "Neither a task nor any listing in the directory matches the need (`error: \"no_match\"`); `unmatched` names the closest tasks.",
             "content": {
               "application/json": {
                 "schema": { "$ref": "#/components/schemas/Error" }
@@ -590,7 +591,7 @@
       "post": {
         "operationId": "mcpTransport",
         "summary": "Model Context Protocol endpoint (streamable HTTP)",
-        "description": "Speaks MCP over streamable HTTP. Exposes nine tools: `search_agents`, `get_agent`, `list_categories`, `compare_agents`, `alternatives_to`, `connect_bundle`, `recommend`, `submit_listing`, which files a listing suggestion for human review, and `request_missing_tool`, which says privately that no listing does a job. This is a JSON-RPC transport, not a REST resource. REST clients should call /api/agents, /api/compare, /api/agents/{slug}/alternatives, /api/bundle and /api/recommend instead.",
+        "description": "Speaks MCP over streamable HTTP. Exposes ten tools: `search_agents`, `get_agent`, `list_categories`, `list_tasks`, `compare_agents`, `alternatives_to`, `connect_bundle`, `recommend`, `submit_listing`, which files a listing suggestion for human review, and `request_missing_tool`, which says privately that no listing does a job. This is a JSON-RPC transport, not a REST resource. REST clients should call /api/agents, /api/tasks, /api/compare, /api/agents/{slug}/alternatives, /api/bundle and /api/recommend instead.",
         "tags": ["mcp"],
         "requestBody": {
           "required": true,
@@ -622,7 +623,7 @@
   "components": {
     "responses": {
       "RateLimited": {
-        "description": "Over 120 requests per minute from this IP. Wait `Retry-After` seconds, then retry.",
+        "description": "Over 110 requests per minute from this IP. Wait `Retry-After` seconds, then retry.",
         "headers": {
           "Retry-After": {
             "description": "Seconds until the caller's window resets.",
@@ -634,7 +635,7 @@
             "schema": { "$ref": "#/components/schemas/RateLimitError" },
             "example": {
               "error": "rate_limited",
-              "message": "Rate limit exceeded: 120 requests per minute per IP. Retry after 42 seconds.",
+              "message": "Rate limit exceeded: 110 requests per minute per IP. Retry after 42 seconds.",
               "retryAfterSeconds": 42
             }
           }
@@ -661,6 +662,52 @@
           }
         }
       },
+      "OrganicAgentSummary": {
+        "type": "object",
+        "description": "A listing summary without commercial placement fields (`featured`, `sponsored`), used by organic endpoints (`/api/tasks/{slug}`, `/api/compare`, `/api/agents/{slug}/alternatives`, `/api/bundle`, `/api/recommend`).",
+        "required": [
+          "name",
+          "slug",
+          "url",
+          "iconUrl",
+          "description",
+          "provider",
+          "categories",
+          "accessMethods",
+          "verified",
+          "official"
+        ],
+        "properties": {
+          "name": { "type": "string" },
+          "slug": {
+            "type": "string",
+            "description": "Stable identifier. Pass to GET /api/agents/{slug}."
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Human listing page on Agent Switchboard."
+          },
+          "iconUrl": {
+            "type": ["string", "null"],
+            "format": "uri",
+            "description": "Absolute URL of the listing's 128px PNG icon, served by Agent Switchboard; null when it has none."
+          },
+          "description": { "type": "string" },
+          "provider": { "type": ["string", "null"] },
+          "categories": { "type": "array", "items": { "type": "string" } },
+          "accessMethods": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["api", "mcp", "cli", "browser-extension"]
+            },
+            "description": "How the listed product can be reached."
+          },
+          "verified": { "type": "boolean", "description": "Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working." },
+          "official": { "type": "boolean", "description": "First-party listing from a major vendor (publicly traded, frontier AI lab, or ~$1B+), published under the vendor's official domain or GitHub org. Factual, not paid; separate from verified and featured." }
+        }
+      },
       "AgentSummary": {
         "type": "object",
         "required": [
@@ -674,7 +721,8 @@
           "accessMethods",
           "verified",
           "official",
-          "featured"
+          "featured",
+          "sponsored"
         ],
         "properties": {
           "name": { "type": "string" },
@@ -705,8 +753,8 @@
           },
           "verified": { "type": "boolean", "description": "Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working." },
           "official": { "type": "boolean", "description": "First-party listing from a major vendor (publicly traded, frontier AI lab, or ~$1B+), published under the vendor's official domain or GitHub org. Factual, not paid; separate from verified and featured." },
-          "featured": { "type": "boolean", "description": "Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order." },
-          "sponsored": { "type": "boolean", "description": "Sponsored: a paid placement, approved by the maintainer. It shows a Sponsored label and a spot in the Sponsored slot on the homepage and the latest drop page. It never changes search results or their order, tasks, alternatives, compare or the Operator, never appears in AI-assistant (MCP) results, and is separate from Featured, Official and Verified." }
+          "featured": { "type": "boolean", "description": "Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order. On the website, a live featured listing that does a task also comes first, labeled, in that task's answers. The MCP server, WebMCP, recommend and the task endpoints ignore it." },
+          "sponsored": { "type": "boolean", "description": "Sponsored: a paid placement, approved by the maintainer. It shows a Sponsored label and a spot in the Sponsored slot on the homepage and the latest drop page, and on the website the listing comes first, labeled, among the tools for each task it does: the homepage answer, the task page and Browse by task. It never changes keyword search results or their order, alternatives, compare or the Operator, never changes or appears in what AI assistants get (the MCP server, WebMCP, decision endpoints and /api/tasks/{slug}), and is separate from Featured, Official and Verified." }
         }
       },
       "AgentDetail": {
@@ -956,8 +1004,9 @@
         ]
       },
       "TaskAgent": {
+        "description": "An organic listing that fits a task (no `featured` or `sponsored` fields), with its auth type and why it fits.",
         "allOf": [
-          { "$ref": "#/components/schemas/AgentSummary" },
+          { "$ref": "#/components/schemas/OrganicAgentSummary" },
           {
             "type": "object",
             "required": ["authType", "why"],
@@ -1068,8 +1117,8 @@
           "verified": { "type": "boolean", "description": "Verified: we checked it works — its URLs load and its declared access (API, MCP, CLI or extension) responds. Re-checked monthly; the label drops if it stops working." },
           "official": { "type": "boolean", "description": "First-party listing from a major vendor (publicly traded, frontier AI lab, or ~$1B+), published under the vendor's official domain or GitHub org. Factual, not paid; separate from verified and featured." },
           "officialVendor": { "type": ["string", "null"] },
-          "featured": { "type": "boolean", "description": "Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order." },
-          "sponsored": { "type": "boolean", "description": "Sponsored: a paid placement, approved by the maintainer. It shows a Sponsored label and a spot in the Sponsored slot on the homepage and the latest drop page. It never changes search results or their order, tasks, alternatives, compare or the Operator, never appears in AI-assistant (MCP) results, and is separate from Featured, Official and Verified." },
+          "featured": { "type": "boolean", "description": "Featured: set only by the maintainer. With no search text, results list featured listings first, then A→Z; with search text, results are ranked by relevance and equal scores keep that featured-first order. On the website, a live featured listing that does a task also comes first, labeled, in that task's answers. The MCP server, WebMCP, recommend and the task endpoints ignore it." },
+          "sponsored": { "type": "boolean", "description": "Sponsored: a paid placement, approved by the maintainer. It shows a Sponsored label and a spot in the Sponsored slot on the homepage and the latest drop page, and on the website the listing comes first, labeled, among the tools for each task it does: the homepage answer, the task page and Browse by task. It never changes keyword search results or their order, alternatives, compare or the Operator, never changes or appears in what AI assistants get (the MCP server, WebMCP, decision endpoints and /api/tasks/{slug}), and is separate from Featured, Official and Verified." },
           "tier": { "type": ["string", "null"] },
           "createdAt": { "type": ["string", "null"], "format": "date-time" },
           "updatedAt": { "type": ["string", "null"], "format": "date-time" },
@@ -1081,9 +1130,9 @@
         }
       },
       "DecisionAgent": {
-        "description": "A listing in a comparison, an alternatives list or a bundle: the searchAgents fields except `sponsored`, its auth type and, when Verified, the day it was last checked. These answers are the MCP tools' answers too, which never carry sponsorship.",
+        "description": "A listing in a comparison, an alternatives list, a bundle or a recommendation: the organic searchAgents fields (never carrying `featured` or `sponsored`), its auth type and, when Verified, the day it was last checked. These answers are the MCP tools' answers too, which never carry commercial placement.",
         "allOf": [
-          { "$ref": "#/components/schemas/AgentSummary" },
+          { "$ref": "#/components/schemas/OrganicAgentSummary" },
           {
             "type": "object",
             "required": ["authType", "lastChecked"],

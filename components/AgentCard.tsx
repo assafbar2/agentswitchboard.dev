@@ -6,6 +6,7 @@ import { SponsoredBadge } from '@/components/SponsoredBadge';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
 import { lastChecked } from '@/lib/verified';
 import { isNew } from '@/lib/freshness';
+import { isFeaturedLive, isSponsoredLive, today } from '@/lib/promoted';
 import { ACCESS_METHOD_LABELS } from '@/lib/search';
 import type { Agent, Category } from '@/lib/types';
 import { authTypeLabel, pluralize, truncate } from '@/lib/utils';
@@ -28,7 +29,9 @@ export type AgentCardData = Pick<
   | 'official'
   | 'officialVendor'
   | 'featured'
+  | 'featuredUntil'
   | 'sponsored'
+  | 'sponsoredUntil'
   | 'tier'
   | 'accessMethods'
   | 'authType'
@@ -54,11 +57,14 @@ export function AgentCard({ agent, why, markNew = true }: { agent: AgentCardData
   const access = agent.accessMethods.map((m) => ACCESS_METHOD_LABELS[m] ?? m).join(' · ');
   const categories = agent.categories.slice(0, 2).map((c) => c.name).join(', ');
   const fresh = markNew && isNew(agent.createdAt);
+  const day = today();
+  const featured = isFeaturedLive(agent, day);
+  const sponsored = isSponsoredLive(agent, day);
   const hasLabels =
-    agent.sponsored ||
+    sponsored ||
     agent.verified ||
     agent.official ||
-    agent.featured ||
+    featured ||
     agent.tier === 'premium' ||
     fresh;
 
@@ -80,10 +86,10 @@ export function AgentCard({ agent, why, markNew = true }: { agent: AgentCardData
         <div className="dir-card-meta">
           {hasLabels && (
             <span className="dir-card-tags">
-              {agent.sponsored && <SponsoredBadge />}
+              {sponsored && <SponsoredBadge />}
               {agent.verified && <VerifiedBadge checked={lastChecked(agent)} />}
               <OfficialBadge agent={agent} />
-              {agent.featured && <Badge variant="amber">Featured</Badge>}
+              {featured && <Badge variant="amber">Featured</Badge>}
               {agent.tier === 'premium' && <Badge variant="amber">Premium</Badge>}
               {fresh && <span className="new-tag">New</span>}
             </span>

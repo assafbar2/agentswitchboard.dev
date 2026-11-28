@@ -233,7 +233,7 @@ export function renderLlmsFull(
 MCP tools (10):
 - \`recommend\`: one pick, why it fits, next step (copy-ready config when available), limitations, and two alternatives for a plain-language need.
 - \`search_agents\`: search and filter by \`query\`, \`task\`, \`category\`, \`access\`, \`official\`, \`verified\`, \`auth\`, \`since\`, \`sort\`, \`limit\`, \`offset\`.
-- \`get_agent\`: full listing record by slug, including \`useItNow\` copy-ready client config, install command, API base URL, and skills.
+- \`get_agent\`: full listing record by slug, including \`lastChecked\`, \`updatedAt\`, \`limitations\`, \`useItNow\` copy-ready client config, install command, API base URL, and skills.
 - \`list_categories\`: all ${categories.length} category slugs and live counts.
 - \`list_tasks\`: all ${tasks.length} task slugs with live listing counts and Official counts.
 - \`compare_agents\`: put 2 or 3 listings side by side with \`setsApart\` facts and field rows.
@@ -242,7 +242,7 @@ MCP tools (10):
 - \`submit_listing\`: file a public GitHub issue proposing a new listing for human review (never publishes directly).
 - \`request_missing_tool\`: record privately that no listing fits a job, for weekly curation.
 
-REST API (120 req/min per IP, JSON 429 with \`Retry-After\`):
+REST API (110 req/min per IP, JSON 429 with \`Retry-After\`):
 - \`GET ${BASE_URL}/api/agents?q=&task=&category=&access=&official=&verified=&auth=&since=&sort=&limit=&offset=&page=&order=organic\`
 - \`GET ${BASE_URL}/api/agents/{slug}\`
 - \`GET ${BASE_URL}/api/agents/{slug}/alternatives\`

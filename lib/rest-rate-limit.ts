@@ -1,6 +1,8 @@
 /**
  * Per-IP request budget for the public REST API (every /api/ route except
- * /api/mcp, which keeps its own larger limits in app/api/[transport]/route.ts).
+ * /api/mcp, which keeps its own larger limits in app/api/[transport]/route.ts)
+ * and /home/answer. Set to 110/min so the app returns a structured JSON 429
+ * with Retry-After cleanly below Vercel WAF's 120/min ceiling.
  * Same in-memory fixed window as the MCP endpoint (lib/rate-limit.ts), so it
  * bounds one noisy client per instance rather than enforcing a global quota.
  * Responses served from the CDN cache never reach a route and are not counted.
@@ -10,7 +12,7 @@ import { logConsumer, isOwnTestTraffic } from './log';
 import { CORS_GET } from './public-api';
 import { clientIp, fixedWindowLimiter } from './rate-limit';
 
-export const REST_REQUESTS_PER_MINUTE = 120;
+export const REST_REQUESTS_PER_MINUTE = 110;
 /**
  * Our own e2e suite and audit scripts (isOwnTestTraffic) run several workers
  * from one IP. They get a separate, larger window, still bounded because the

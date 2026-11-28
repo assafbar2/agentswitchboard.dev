@@ -19,7 +19,14 @@ import { z } from 'zod';
 import { VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 import { getEveryAgent, getAllCategories, getRetiredListings } from '@/lib/catalog';
 import { COMPARE_QUERY_KEYS } from '@/lib/compare-link';
-import { alternativesDecision, bundleDecision, compareDecision, recommendDecision, type Decision } from '@/lib/decide';
+import {
+  alternativesDecision,
+  bundleDecision,
+  compareDecision,
+  limitations,
+  recommendDecision,
+  type Decision,
+} from '@/lib/decide';
 import { absoluteIconUrl } from '@/lib/icons';
 import { organicOrder, withoutPlacement } from '@/lib/organic';
 import { logUnmatchedRecommend, logZeroResults } from '@/lib/leads';
@@ -77,6 +84,7 @@ import { REQUESTED_MAX, requestedStackSlugs } from '@/lib/shared-stack';
 import { getTask, getTasks } from '@/lib/tasks';
 import type { Agent } from '@/lib/types';
 import { howToUseJson } from '@/lib/use-it-now';
+import { lastChecked } from '@/lib/verified';
 
 /**
  * Per-IP request budget. Assistant platforms call from shared server IPs, so
@@ -335,7 +343,7 @@ const handler = createMcpHandler(
         title: 'Get Agent Details',
         description:
           'Full detail for one agent by slug: skills, auth, streaming/push support, tags, provider links, ' +
-          'and useItNow: how to start using it (MCP client config, install command, API base URL, setup links). ' +
+          'lastChecked, updatedAt, limitations, and useItNow: how to start using it (MCP client config, install command, API base URL, setup links). ' +
           LABELS,
         annotations: readOnly('Get Agent Details'),
         inputSchema: {
@@ -351,6 +359,9 @@ const handler = createMcpHandler(
           supportsStreaming: z.boolean(),
           supportsPushNotifications: z.boolean(),
           addedAt: z.string().optional(),
+          updatedAt: z.string().nullable().describe('ISO 8601 timestamp when the listing last changed; null if unset'),
+          lastChecked: z.string().nullable().describe(LAST_CHECKED_DESCRIPTION),
+          limitations: z.array(z.string()).describe(LIMITATIONS_DESCRIPTION),
           mcpEndpoint: z.string().nullable().describe("The vendor's hosted MCP server address"),
           mcpCommand: z.string().nullable().describe('The command that runs its MCP server locally'),
           install: z.object({ type: z.string(), command: z.string() }).nullable().describe('The command that installs its CLI'),
@@ -377,6 +388,9 @@ const handler = createMcpHandler(
           supportsStreaming: agent.supportsStreaming,
           supportsPushNotifications: agent.supportsPushNotifications,
           addedAt: agent.createdAt,
+          updatedAt: agent.updatedAt ?? null,
+          lastChecked: lastChecked(agent),
+          limitations: limitations(agent),
           ...howToUseFields(agent),
           useItNow: howToUseJson(agent),
         };
@@ -675,7 +689,7 @@ const handler = createMcpHandler(
     );
   },
   {
-    serverInfo: { name: 'agentswitchboard', version: '1.12.0' },
+    serverInfo: { name: 'agentswitchboard', version: '1.13.0' },
     instructions: INSTRUCTIONS,
   },
   {

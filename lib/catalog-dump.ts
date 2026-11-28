@@ -1,6 +1,7 @@
 import { VERIFIED_DEFINITION } from '@/components/VerifiedBadge';
 import { BASE_URL } from '@/lib/env';
 import { absoluteIconUrl } from '@/lib/icons';
+import { isFeaturedLive, isSponsoredLive, today } from '@/lib/promoted';
 import { FEATURED_DEFINITION, OFFICIAL_DEFINITION, SPONSORED_DEFINITION, howToUseFields } from '@/lib/public-api';
 import type { Agent } from '@/lib/types';
 
@@ -58,8 +59,8 @@ export function catalogEntry(a: Agent) {
     official: a.official,
     officialVendor: a.officialVendor?.name ?? null,
     // Featured listings sort first in the catalog order, so callers see why.
-    featured: a.featured === true,
-    sponsored: a.sponsored === true,
+    featured: isFeaturedLive(a, today()),
+    sponsored: isSponsoredLive(a, today()),
     tier: a.tier,
     createdAt: a.createdAt ?? null,
     updatedAt: a.updatedAt ?? null,

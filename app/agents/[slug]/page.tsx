@@ -14,6 +14,7 @@ import { hasUseItNow, UseItNow } from '@/components/UseItNow';
 import { comparisonsWith, curatedComparisons } from '@/lib/compare';
 import { COMPARE_MAX, compareHref } from '@/lib/compare-link';
 import { alternativesPage, getRelatedAgents } from '@/lib/related';
+import { isFeaturedLive, isSponsoredLive, today } from '@/lib/promoted';
 import { tryThis } from '@/lib/try-this';
 import { howToUse, howToUseRows } from '@/lib/use-it-now';
 import { absoluteIconUrl } from '@/lib/icons';
@@ -109,6 +110,9 @@ export default async function AgentPage({
   };
 
   const skillCount = agent.skills.length;
+  const day = today();
+  const featured = isFeaturedLive(agent, day);
+  const sponsored = isSponsoredLive(agent, day);
 
   const fields: [string, string][] = [
     ['name', agent.name],
@@ -121,7 +125,7 @@ export default async function AgentPage({
     ['push', agent.supportsPushNotifications ? 'true' : 'false'],
     ['verified', agent.verified ? 'true' : 'false'],
     ['official', agent.officialVendor ? `true · ${agent.officialVendor.name}` : 'false'],
-    ['sponsored', agent.sponsored ? 'true · paid placement: first, labeled, in the website’s task answers; never changes search or API ranking' : 'false'],
+    ['sponsored', sponsored ? 'true · paid placement: first, labeled, in the website’s task answers; never changes keyword search or API ranking' : 'false'],
     ['tags', agent.tags.join(', ') || '—'],
   ];
 
@@ -151,23 +155,23 @@ export default async function AgentPage({
                 </a>
                 {agent.version && <span className="ml-2">v{agent.version}</span>}
               </p>
-              {(agent.sponsored ||
+              {(sponsored ||
                 agent.verified ||
                 agent.official ||
-                agent.featured ||
+                featured ||
                 agent.tier === 'premium') && (
                 <div className="flex items-center gap-1.5 flex-wrap mt-3">
-                  {agent.sponsored && <SponsoredBadge />}
+                  {sponsored && <SponsoredBadge />}
                   {agent.verified && <VerifiedNote size="md" checked={lastChecked(agent)} />}
                   <OfficialBadge agent={agent} />
-                  {agent.featured && <Badge variant="amber">Featured</Badge>}
+                  {featured && <Badge variant="amber">Featured</Badge>}
                   {agent.tier === 'premium' && <Badge variant="amber">Premium</Badge>}
                 </div>
               )}
-              {agent.sponsored && (
+              {sponsored && (
                 <p className="text-sm text-[var(--dir-muted)] mt-2">
                   Sponsored: a paid placement. On this website it comes first, labeled, among the tools for
-                  each task it does; it never changes where it ranks in search or alternatives.{' '}
+                  each task it does; it never changes where it ranks in keyword search or alternatives.{' '}
                   <Link
                     href="/about#sponsored"
                     className="font-semibold text-[var(--dir-ink)] underline decoration-1 underline-offset-2 hover:decoration-2"

@@ -21,7 +21,7 @@ describe('withoutPlacement', () => {
   it('drops placement fields at any depth and keeps the rest', () => {
     const body = {
       total: 1,
-      agents: [{ slug: 'a', featured: true, sponsored: true, sponsorLabel: 'Sponsored', tier: 'premium', official: false }],
+      agents: [{ slug: 'a', featured: true, sponsored: true, sponsoredUntil: '2026-12-31', sponsorLabel: 'Sponsored', tier: 'premium', official: false }],
       agent: { slug: 'b', featured: false, featuredUntil: '2026-12-31' },
     };
     expect(withoutPlacement(body)).toEqual({ total: 1, agents: [{ slug: 'a', official: false }], agent: { slug: 'b' } });

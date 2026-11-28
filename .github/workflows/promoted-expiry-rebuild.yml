@@ -1,0 +1,69 @@
+name: Promoted expiry rebuild
+
+on:
+  schedule:
+    - cron: '5 0 * * *' # Daily 00:05 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  check-and-rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for placements that expired yesterday (UTC)
+        id: expiry
+        run: |
+          node -e '
+          const fs = require("fs");
+          const path = require("path");
+          const d = new Date();
+          d.setUTCDate(d.getUTCDate() - 1);
+          const yesterday = d.toISOString().slice(0, 10);
+          const dir = path.join(process.cwd(), "content", "agents");
+          const expired = [];
+          for (const file of fs.readdirSync(dir)) {
+            if (!file.endsWith(".json")) continue;
+            const data = JSON.parse(fs.readFileSync(path.join(dir, file), "utf8"));
+            if (data.status !== "published") continue;
+            const reasons = [];
+            if (data.featured && data.featuredUntil === yesterday) reasons.push(`featuredUntil=${yesterday}`);
+            if (data.sponsored && data.sponsoredUntil === yesterday) reasons.push(`sponsoredUntil=${yesterday}`);
+            if (reasons.length > 0) expired.push(`${data.slug} (${reasons.join(", ")})`);
+          }
+          const out = process.env.GITHUB_OUTPUT;
+          const summary = process.env.GITHUB_STEP_SUMMARY;
+          fs.appendFileSync(out, `yesterday=${yesterday}\n`);
+          fs.appendFileSync(out, `expired_count=${expired.length}\n`);
+          fs.appendFileSync(out, `expired_list=${expired.join("; ")}\n`);
+          if (expired.length === 0) {
+            const msg = `No featuredUntil or sponsoredUntil expired yesterday (${yesterday} UTC). Skipping rebuild.`;
+            console.log(msg);
+            if (summary) fs.appendFileSync(summary, `${msg}\n`);
+          } else {
+            const msg = `Expired placements on ${yesterday} UTC (${expired.length}): ${expired.join(", ")}`;
+            console.log(msg);
+            if (summary) fs.appendFileSync(summary, `${msg}\n`);
+          }
+          '
+
+      - name: Trigger Vercel deploy hook
+        if: steps.expiry.outputs.expired_count != '0'
+        env:
+          VERCEL_DEPLOY_HOOK_URL: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+          YESTERDAY: ${{ steps.expiry.outputs.yesterday }}
+          EXPIRED_LIST: ${{ steps.expiry.outputs.expired_list }}
+        run: |
+          if [ -z "$VERCEL_DEPLOY_HOOK_URL" ]; then
+            msg="Placements expired on ${YESTERDAY} UTC (${EXPIRED_LIST}), but VERCEL_DEPLOY_HOOK_URL secret is not configured. Skipping rebuild."
+            echo "$msg"
+            echo "$msg" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          curl -fsS -X POST "$VERCEL_DEPLOY_HOOK_URL" > /dev/null
+          msg="Triggered Vercel rebuild for expired placements on ${YESTERDAY} UTC: ${EXPIRED_LIST}"
+          echo "$msg"
+          echo "$msg" >> "$GITHUB_STEP_SUMMARY"

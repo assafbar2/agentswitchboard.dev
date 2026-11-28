@@ -2,8 +2,9 @@
  * One task by slug, with every listing that fits it.
  *
  *   GET /api/tasks/<slug>
- *   → { the GET /api/tasks fields, agents: [ { the search-result fields,
- *       authType, why } ], relatedTasks: [slug], stacks: [slug] }
+ *   → { the GET /api/tasks fields, agents: [ { the organic search-result
+ *       fields (no featured/sponsored), authType, why } ],
+ *       relatedTasks: [slug], stacks: [slug] }
  *
  * `agents` is best fit first. `why` is the listing's skill that does the
  * task, or null when it fits by its name, description or tags. Read-only,

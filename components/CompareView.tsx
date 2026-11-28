@@ -13,6 +13,7 @@ import {
   type CuratedComparison,
 } from '@/lib/compare';
 import { COMPARE_MAX, compareHref } from '@/lib/compare-link';
+import { isSponsoredLive } from '@/lib/promoted';
 import type { Agent } from '@/lib/types';
 import { howToUse } from '@/lib/use-it-now';
 import { pluralize } from '@/lib/utils';
@@ -101,7 +102,7 @@ function CompareTable({ agents }: { agents: Agent[] }) {
                   <span className="min-w-0 text-[19px] font-extrabold leading-tight wrap-break-word group-hover:underline">{a.name}</span>
                 </Link>
                 <span className="mt-1 block text-[15px] font-semibold text-[var(--dir-muted)]">by {a.providerName}</span>
-                {a.sponsored && (
+                {isSponsoredLive(a) && (
                   <span className="mt-1 block">
                     <SponsoredBadge />
                   </span>

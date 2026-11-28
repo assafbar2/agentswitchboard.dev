@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { labeledName, promotedFirst, promotion } from './promoted';
+import { isFeaturedLive, isSponsoredLive, labeledName, promotedFirst, promotion } from './promoted';
 import type { Agent } from './types';
 
 const agent = (name: string, placement: Partial<Agent> = {}) =>
@@ -7,9 +7,26 @@ const agent = (name: string, placement: Partial<Agent> = {}) =>
 
 const DAY = '2026-11-14';
 
+describe('isFeaturedLive and isSponsoredLive', () => {
+  it('treats featuredUntil and sponsoredUntil as inclusive UTC YYYY-MM-DD bounds', () => {
+    expect(isFeaturedLive(agent('A', { featured: true }), DAY)).toBe(true);
+    expect(isFeaturedLive(agent('B', { featured: true, featuredUntil: DAY }), DAY)).toBe(true);
+    expect(isFeaturedLive(agent('C', { featured: true, featuredUntil: '2026-11-13' }), DAY)).toBe(false);
+    expect(isFeaturedLive(agent('D', { featured: false, featuredUntil: '2026-12-31' }), DAY)).toBe(false);
+
+    expect(isSponsoredLive(agent('E', { sponsored: true }), DAY)).toBe(true);
+    expect(isSponsoredLive(agent('F', { sponsored: true, sponsoredUntil: DAY }), DAY)).toBe(true);
+    expect(isSponsoredLive(agent('G', { sponsored: true, sponsoredUntil: '2026-11-13' }), DAY)).toBe(false);
+    expect(isSponsoredLive(agent('H', { sponsored: false, sponsoredUntil: '2026-12-31' }), DAY)).toBe(false);
+  });
+});
+
 describe('promotion', () => {
-  it('labels a Sponsored slot first, then a Featured placement through its last day', () => {
+  it('labels an active Sponsored slot first, then an active Featured placement through its last day', () => {
     expect(promotion(agent('A', { sponsored: true, featured: true }), DAY)).toBe('Sponsored');
+    expect(promotion(agent('A2', { sponsored: true, sponsoredUntil: DAY }), DAY)).toBe('Sponsored');
+    expect(promotion(agent('A3', { sponsored: true, sponsoredUntil: '2026-11-13', featured: true }), DAY)).toBe('Featured');
+    expect(promotion(agent('A4', { sponsored: true, sponsoredUntil: '2026-11-13' }), DAY)).toBeNull();
     expect(promotion(agent('B', { featured: true }), DAY)).toBe('Featured');
     expect(promotion(agent('C', { featured: true, featuredUntil: DAY }), DAY)).toBe('Featured');
     expect(promotion(agent('D', { featured: true, featuredUntil: '2026-11-13' }), DAY)).toBeNull();

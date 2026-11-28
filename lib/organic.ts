@@ -15,7 +15,7 @@
 import type { Agent } from './types';
 
 /** Fields that mark a commercial placement. Never in an organic result. */
-export const PLACEMENT_FIELDS = ['featured', 'featuredUntil', 'sponsored', 'sponsorLabel', 'tier'] as const;
+export const PLACEMENT_FIELDS = ['featured', 'featuredUntil', 'sponsored', 'sponsoredUntil', 'sponsorLabel', 'tier'] as const;
 
 const organicCache = new WeakMap<readonly Agent[], Agent[]>();
 

@@ -199,8 +199,8 @@ export default async function ForAgentsPage() {
         <section className="space-y-2" id="rest">
           <h2 className="dir-bar">## Plain REST search</h2>
           <p>
-            A simple parameterized GET for wiring tools that want plain HTTP
-            rather than an MCP handshake. Read-only, no auth, open CORS, up to 120
+            A simple parameterized HTTP API for wiring tools that want plain HTTP
+            rather than an MCP handshake. No auth, open CORS, up to 110
             requests a minute per IP (then HTTP 429 with <code className="font-bold">Retry-After</code>):
           </p>
           <pre className="rounded-none border-2 border-[var(--dir-ink)]! bg-[var(--dir-paper)] p-4 text-xs overflow-x-auto">
@@ -217,29 +217,36 @@ GET /api/stacks
 GET /api/stacks/<slug>
 GET /api/tasks
 GET /api/tasks/<slug>
+POST /api/missing-tool  { need, tried?, category?, access? }
 
 → search: { total, offset, limit, since?, next, agents: [
      { name, slug, url, iconUrl, description, provider, categories,
-       accessMethods, verified, official, featured }
+       accessMethods, verified, official, featured, sponsored }
    ] }
-→ compare: { title, url, intro, agents: [ { …the search fields,
-       authType, setsApart } ], rows: [ { key, label, same,
+→ compare: { title, url, intro, agents: [ { …organic search fields,
+       authType, lastChecked, setsApart } ], rows: [ { key, label, same,
        values: { <slug>: value } } ], notes }
 → alternatives: { agent, total, url, compareUrl, basis, alternatives: [
-     { …the search fields, authType, sharedAccess, inCommon, why } ] }
+     { …organic search fields, authType, lastChecked, sharedAccess,
+       inCommon, why } ] }
 → bundle: { summary, stackUrl, config: { mcpServers }, claudeCode,
-       setupPrompt, items: [ { …the search fields, authType, how,
-       server, docsUrl, note } ], notes }
+       setupPrompt, items: [ { …organic search fields, authType,
+       lastChecked, how, server, docsUrl, note } ], notes }
+→ recommend: { request, answer, recommendations: [ { need, task,
+       source, pick, pickedBecause, why, unmet, nextStep, limitations,
+       alternatives, fits } ], unmatched, stackUrl, operatorUrl, basis,
+       notes }
 → stacks: { total, stackOfTheWeek, stacks: [
-     { slug, title, promise, week, url,
+     { slug, title, promise, week, url, bundleUrl,
        items: [ { …the search fields, authType, why } ] }
    ] }
 → tasks: { total, tasks: [
      { slug, label, blurb, keywords, categories, access, count,
        official, url, browseUrl, agentsUrl }
    ] }
-→ task: { …the task fields, agents: [ { …the search fields, authType,
-       why } ], relatedTasks, stacks }`}
+→ task: { …the task fields, agents: [ { …organic search fields,
+       authType, why } ], relatedTasks, stacks }
+→ missing-tool: { status: "recorded" | "rate_limited", message }`}
           </pre>
           <ul className="space-y-1 pl-4">
             <li>

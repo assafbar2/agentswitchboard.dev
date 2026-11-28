@@ -3,6 +3,7 @@ import { getEveryAgent, getAllCategories } from '@/lib/catalog';
 import { getReleases } from '@/lib/changelog';
 import { curatedComparisons } from '@/lib/compare';
 import { getDropSchedule } from '@/lib/drops';
+import { isFeaturedLive } from '@/lib/promoted';
 import { alternativesPage } from '@/lib/related';
 import { taskMatches } from '@/lib/search';
 import { getStacks, stackEntries } from '@/lib/stacks';
@@ -75,7 +76,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${base}/agents/${agent.slug}`,
     lastModified: newest([changed(agent)]),
     changeFrequency: 'weekly' as const,
-    priority: agent.featured ? 0.9 : 0.7,
+    priority: isFeaturedLive(agent) ? 0.9 : 0.7,
   }));
 
   const alternativesPages: MetadataRoute.Sitemap = agents.flatMap((agent) => {

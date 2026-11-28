@@ -32,6 +32,7 @@ vi.mock('fs', async (importOriginal) => {
       featured: true,
       featuredUntil: '2999-01-01',
       sponsored: true,
+      sponsoredUntil: '2999-01-01',
       sponsorLabel: 'Sponsored',
       tier: 'premium',
     });
@@ -98,16 +99,17 @@ describe('the task endpoints and the Operator rank organically', () => {
     expect(placed).toEqual(organic);
   });
 
-  it('GET /api/tasks and /api/tasks/<slug> answer the same whatever is placed', async () => {
+  it('GET /api/tasks and /api/tasks/<slug> answer the same whatever is placed, with no placement field', async () => {
     const slug = getTasks()[0].slug;
     const { organic, placed } = await both(async () => {
       const list = await (await tasksRoute.GET(new Request('http://localhost/api/tasks'))).json();
       const one = await (
         await taskRoute.GET(new Request(`http://localhost/api/tasks/${slug}`), { params: Promise.resolve({ slug }) })
       ).json();
-      return { list, one: { ...one, agents: slugs(one.agents) } };
+      return { list, one };
     });
     expect(placed).toEqual(organic);
+    expect(JSON.stringify(placed.one)).not.toMatch(/"(placements|featured|featuredUntil|sponsored|sponsoredUntil|sponsorLabel|tier)"/);
   });
 
   it('GET /api/agents?task= lists as GET /api/tasks/<slug> does, whatever is placed', async () => {

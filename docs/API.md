@@ -25,13 +25,13 @@ The two exceptions are writes that publish nothing: a listing suggestion
 Base URL: `https://agentswitchboard.dev`
 
 **Rate limits.** The REST endpoints (every `/api/` route except `/api/mcp`)
-allow 120 requests per minute per IP. Past that they answer HTTP 429 with a
+allow 110 requests per minute per IP. Past that they answer HTTP 429 with a
 `Retry-After` header (seconds until the window resets) and a JSON body:
 
 ```jsonc
 {
   "error": "rate_limited",
-  "message": "Rate limit exceeded: 120 requests per minute per IP. Retry after 42 seconds.",
+  "message": "Rate limit exceeded: 110 requests per minute per IP. Retry after 42 seconds.",
   "retryAfterSeconds": 42
 }
 ```
@@ -70,23 +70,23 @@ handshake (e.g. wiring into a connector platform).
 
 ```jsonc
 {
-  "total": 568,      // full match count, before limit/offset
+  "total": 1260,     // full match count, before limit/offset
   "offset": 0,
   "limit": 10,
   "next": "https://agentswitchboard.dev/api/agents?limit=10&offset=10", // null on the last page
   "agents": [
     {
-      "name": "YouTube MCP",
-      "slug": "youtube-mcp",
-      "url": "https://agentswitchboard.dev/agents/youtube-mcp",
-      "iconUrl": "https://agentswitchboard.dev/icons/youtube-mcp.png?v=93bf5448",
-      "description": "Manages YouTube via MCP — search videos, retrieve statistics…",
-      "provider": "Smithery",
-      "categories": ["content-media"],
-      "accessMethods": ["mcp"],
-      "verified": false,
-      "official": false,
-      "featured": false,
+      "name": "Playwright MCP",
+      "slug": "playwright-mcp",
+      "url": "https://agentswitchboard.dev/agents/playwright-mcp",
+      "iconUrl": "https://agentswitchboard.dev/icons/playwright-mcp.png?v=…",
+      "description": "Official Microsoft MCP server for browser automation. Agents navigate pages and interact with elements via accessibility snapshots — no vision model required.",
+      "provider": "Microsoft",
+      "categories": ["browser-computer"],
+      "accessMethods": ["mcp", "cli"],
+      "verified": true,
+      "official": true,
+      "featured": true,
       "sponsored": false
     }
     // …
@@ -209,8 +209,9 @@ curl "https://agentswitchboard.dev/api/tasks/query-a-database"
 
 `GET /api/tasks/{slug}` returns one task with the same fields plus `agents`
 (every listing that fits, best fit first and A→Z on a tie, with no featured
-or sponsored listing moved up, unlike the task page, which lists those first
-with their label: the REST search fields, `authType`,
+or sponsored listing moved up and no `featured` or `sponsored` fields — unlike
+the task page, which lists those first with their label: the organic REST
+search fields, `authType`,
 and `why`, the listing's own skill that does the job, or `null` when it fits
 by its name, description or tags), `relatedTasks` and `stacks` (slugs). An
 unknown slug returns `404` with `{ "error": "not_found", "message": "…" }`.
@@ -232,7 +233,7 @@ curl "https://agentswitchboard.dev/api/stacks/research-analyst"
 
 ```jsonc
 {
-  "total": 6,
+  "total": 10,
   "stackOfTheWeek": "iphone-and-android-apps", // the newest stack tied to a weekly drop
   "stacks": [
     {
@@ -516,7 +517,7 @@ Stdio-only clients: `npx -y mcp-remote https://agentswitchboard.dev/api/mcp`
 | Tool | Input | Output |
 |---|---|---|
 | `search_agents` | `query?`, `task?`, `category?`, `access?` (enum[]), `official?` (boolean), `verified?` (boolean), `auth?` (enum[]), `since?` (day or days), `sort?` (enum), `limit?` (1–50), `offset?` | `{ total, offset, limit, since?, agents[] }` |
-| `get_agent` | `slug` (required) | full agent detail: skills, auth, streaming/push, tags, links, and `useItNow` (how to start using it) |
+| `get_agent` | `slug` (required) | full agent detail: skills, auth, streaming/push, tags, links, `lastChecked`, `updatedAt`, `limitations`, and `useItNow` (how to start using it) |
 | `list_categories` | — | `{ categories: [ { slug, name, description, agentCount } ] }` |
 | `list_tasks` | — | `{ total, tasks: [ { slug, label, blurb, keywords, categories, access, count, official, url, browseUrl, agentsUrl } ] }`, as [`GET /api/tasks`](#rest-tasks--get-apitasks) |
 | `compare_agents` | `slugs` (2 or 3, required) | as [`GET /api/compare`](#rest-compare--get-apicompare): `{ title, url, intro, agents[], rows[], notes }` |
@@ -592,11 +593,11 @@ returns the whole catalog: the listings are in static pages of at most 50 at
   "source": "Agent Switchboard — https://agentswitchboard.dev",
   "description": "…what the flags mean…",
   "schemaVersion": 2,          // 1 was the single-file dump (until 2.9.1)
-  "generated": "2026-11-13T12:00:00.000Z",
-  "total": 985,
+  "generated": "2026-11-28T12:00:00.000Z",
+  "total": 1260,
   "pageSize": 50,
-  "pageCount": 20,
-  "pages": ["https://agentswitchboard.dev/catalog/1.json", "…", "https://agentswitchboard.dev/catalog/20.json"],
+  "pageCount": 26,
+  "pages": ["https://agentswitchboard.dev/catalog/1.json", "…", "https://agentswitchboard.dev/catalog/26.json"],
   "search": {
     "rest": "https://agentswitchboard.dev/api/agents?limit=50&page=1",
     "mcp": "https://agentswitchboard.dev/api/mcp",
@@ -609,7 +610,7 @@ returns the whole catalog: the listings are in static pages of at most 50 at
 {
   "schemaVersion": 2,
   "index": "https://agentswitchboard.dev/agents.json",
-  "total": 985, "pageSize": 50, "page": 1, "pageCount": 20, "offset": 0,
+  "total": 1260, "pageSize": 50, "page": 1, "pageCount": 26, "offset": 0,
   "prev": null,
   "next": "https://agentswitchboard.dev/catalog/2.json", // null on the last page
   "agents": [ /* up to 50 listings */ ]
@@ -642,7 +643,7 @@ when the listing has no value:
 | `official` | boolean | See [Official listings](#official-listings). |
 | `officialVendor` | string \| null | The vendor's name when `official`. |
 | `featured` | boolean | Sorts first in the catalog order; set by the maintainer. |
-| `sponsored` | boolean | A paid placement; never changes the order. |
+| `sponsored` | boolean | A paid placement (see [Official listings](#official-listings) table below): never changes API or keyword-search order; placed first, labeled, in the website's task answers. |
 | `tier` | string | `free` or `premium`. |
 | `createdAt` | string \| null | When it was listed (ISO 8601). |
 | `updatedAt` | string \| null | When the listing last changed (ISO 8601). |

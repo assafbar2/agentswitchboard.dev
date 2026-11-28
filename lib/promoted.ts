@@ -13,15 +13,31 @@ import type { Agent } from './types';
 
 export type Promotion = 'Sponsored' | 'Featured';
 
-/** Today as YYYY-MM-DD (UTC), the form `featuredUntil` takes. */
+/** Today as YYYY-MM-DD (UTC), the form `featuredUntil` and `sponsoredUntil` take. */
 export function today(): string {
   return new Date().toISOString().slice(0, 10);
 }
 
-/** Why `agent` is placed first, or null: a Sponsored slot, else a Featured placement through `featuredUntil`. */
+/** True when `agent` has an active Featured placement on `day` (YYYY-MM-DD, inclusive). */
+export function isFeaturedLive(
+  agent: Pick<Agent, 'featured' | 'featuredUntil'>,
+  day: string = today()
+): boolean {
+  return agent.featured === true && (!agent.featuredUntil || agent.featuredUntil >= day);
+}
+
+/** True when `agent` has an active Sponsored placement on `day` (YYYY-MM-DD, inclusive). */
+export function isSponsoredLive(
+  agent: Pick<Agent, 'sponsored' | 'sponsoredUntil'>,
+  day: string = today()
+): boolean {
+  return agent.sponsored === true && (!agent.sponsoredUntil || agent.sponsoredUntil >= day);
+}
+
+/** Why `agent` is placed first, or null: an active Sponsored slot, else an active Featured placement. */
 export function promotion(agent: Agent, day: string = today()): Promotion | null {
-  if (agent.sponsored) return 'Sponsored';
-  if (agent.featured && (!agent.featuredUntil || agent.featuredUntil >= day)) return 'Featured';
+  if (isSponsoredLive(agent, day)) return 'Sponsored';
+  if (isFeaturedLive(agent, day)) return 'Featured';
   return null;
 }
 

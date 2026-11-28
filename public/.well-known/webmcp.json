@@ -1,7 +1,7 @@
 {
   "name": "io.github.assafbar2/agentswitchboard",
   "description": "In-browser WebMCP tools for Agent Switchboard, registered on document.modelContext when the page loads. Same eight read tools as the remote MCP server at /api/mcp: search_agents, get_agent, list_categories, list_tasks, compare_agents, alternatives_to, connect_bundle and recommend. They call the public REST API (/api/agents, /api/agents/{slug}, /api/categories, /api/tasks, /api/compare, /api/agents/{slug}/alternatives, /api/bundle, /api/recommend), so answers and their order are the same as the remote server's; result objects use the REST field names (see /openapi.json).",
-  "version": "1.12.0",
+  "version": "1.13.0",
   "websiteUrl": "https://agentswitchboard.dev",
   "surface": "document.modelContext",
   "polyfill": "@mcp-b/webmcp-polyfill",
@@ -300,33 +300,22 @@
             "type": [
               "string",
               "null"
-            ],
-            "format": "uri",
-            "description": "The vendor's hosted MCP server address, from its docs; null when they give none."
+            ]
           },
           "mcpCommand": {
             "type": [
               "string",
               "null"
-            ],
-            "description": "The command that runs its MCP server locally, e.g. `npx -y @playwright/mcp@latest`; null when its docs give none."
+            ]
           },
           "install": {
             "type": [
               "object",
               "null"
             ],
-            "description": "The command that installs its CLI, from the vendor's docs; null when they give none.",
             "properties": {
               "type": {
-                "type": "string",
-                "enum": [
-                  "npm",
-                  "pip",
-                  "brew",
-                  "docker",
-                  "binary"
-                ]
+                "type": "string"
               },
               "command": {
                 "type": "string"
@@ -337,162 +326,47 @@
             "type": [
               "string",
               "null"
-            ],
-            "format": "uri",
-            "description": "The vendor's setup or getting-started page."
+            ]
           },
           "apiBaseUrl": {
             "type": [
               "string",
               "null"
-            ],
-            "format": "uri",
-            "description": "Base URL of the vendor's public API."
+            ]
           },
           "useItNow": {
             "type": "object",
-            "description": "How to start using it, per access method, as the listing page's Use it now panel shows it. Commands and addresses come from the vendor's own docs; when there are none, docsUrl is where its instructions are.",
+            "description": "How to start using it, per access method (mcp, cli, api, extension; null when it lacks one), after its tryThisFirst prompts.",
             "properties": {
               "tryThisFirst": {
                 "type": [
                   "object",
                   "null"
-                ],
-                "properties": {
-                  "lead": {
-                    "type": "string"
-                  },
-                  "prompts": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "skill": {
-                          "type": "string"
-                        },
-                        "text": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
+                ]
               },
               "mcp": {
                 "type": [
                   "object",
                   "null"
-                ],
-                "properties": {
-                  "endpoint": {
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  },
-                  "command": {
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  },
-                  "clientConfig": {
-                    "type": [
-                      "object",
-                      "null"
-                    ],
-                    "description": "`{\"mcpServers\": {...}}` for Cursor and other MCP clients."
-                  },
-                  "cursorInstallUrl": {
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  },
-                  "claudeConnectorUrl": {
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  },
-                  "claudeCodeCommand": {
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  },
-                  "setupPrompt": {
-                    "type": "string"
-                  },
-                  "docsUrl": {
-                    "type": "string"
-                  }
-                }
+                ]
               },
               "cli": {
                 "type": [
                   "object",
                   "null"
-                ],
-                "properties": {
-                  "install": {
-                    "type": [
-                      "object",
-                      "null"
-                    ],
-                    "description": "The command that installs its CLI, from the vendor's docs; null when they give none.",
-                    "properties": {
-                      "type": {
-                        "type": "string",
-                        "enum": [
-                          "npm",
-                          "pip",
-                          "brew",
-                          "docker",
-                          "binary"
-                        ]
-                      },
-                      "command": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "docsUrl": {
-                    "type": "string"
-                  }
-                }
+                ]
               },
               "api": {
                 "type": [
                   "object",
                   "null"
-                ],
-                "properties": {
-                  "baseUrl": {
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  },
-                  "auth": {
-                    "type": "string",
-                    "description": "How the API authenticates, in plain words."
-                  },
-                  "docsUrl": {
-                    "type": "string"
-                  }
-                }
+                ]
               },
               "extension": {
                 "type": [
                   "object",
                   "null"
-                ],
-                "properties": {
-                  "url": {
-                    "type": "string"
-                  }
-                }
+                ]
               }
             }
           }
@@ -730,6 +604,13 @@
                 "authType": {
                   "type": "string"
                 },
+                "lastChecked": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "YYYY-MM-DD the Verified listing was last checked (its link and access path), from its last update; null when it is not Verified"
+                },
                 "setsApart": {
                   "type": "array",
                   "items": {
@@ -853,6 +734,13 @@
               },
               "authType": {
                 "type": "string"
+              },
+              "lastChecked": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "YYYY-MM-DD the Verified listing was last checked (its link and access path), from its last update; null when it is not Verified"
               }
             }
           },
@@ -927,6 +815,13 @@
                 },
                 "authType": {
                   "type": "string"
+                },
+                "lastChecked": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "YYYY-MM-DD the Verified listing was last checked (its link and access path), from its last update; null when it is not Verified"
                 },
                 "sharedAccess": {
                   "type": "array",
@@ -1064,6 +959,13 @@
                 },
                 "authType": {
                   "type": "string"
+                },
+                "lastChecked": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "YYYY-MM-DD the Verified listing was last checked (its link and access path), from its last update; null when it is not Verified"
                 },
                 "how": {
                   "type": "string",
@@ -1213,6 +1115,13 @@
                     },
                     "authType": {
                       "type": "string"
+                    },
+                    "lastChecked": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "YYYY-MM-DD the Verified listing was last checked (its link and access path), from its last update; null when it is not Verified"
                     }
                   }
                 },
@@ -1236,6 +1145,13 @@
                 "nextStep": {
                   "type": "object",
                   "description": "how (config: paste server into an MCP client; guide: an MCP server to set up from url; other: no MCP server, start from url), label, url, server, note"
+                },
+                "limitations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "What may stop or slow the user, read from the listing: the sign-in it needs, a server that runs only on their computer, no MCP config to copy yet, no MCP server, not Verified. Empty when the listing shows none"
                 },
                 "alternatives": {
                   "type": "array",
@@ -1286,6 +1202,13 @@
                       },
                       "authType": {
                         "type": "string"
+                      },
+                      "lastChecked": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "description": "YYYY-MM-DD the Verified listing was last checked (its link and access path), from its last update; null when it is not Verified"
                       }
                     }
                   }

@@ -33,7 +33,7 @@ const NO_MCP = pick(CATALOG.find((a) => !hasMcp(a)), 'without an MCP server');
 const BUNDLE = [GUIDED, HOSTED, NO_MCP, LOCAL];
 const compareQuery = (slugs) => slugs.map((slug, i) => `${'abc'[i]}=${slug}`).join('&');
 // MCP answers are organic: REST bodies minus paid-placement fields, ranked as ?order=organic ranks them.
-const PLACEMENT = new Set(['featured', 'featuredUntil', 'sponsored', 'sponsorLabel', 'tier']);
+const PLACEMENT = new Set(['featured', 'featuredUntil', 'sponsored', 'sponsoredUntil', 'sponsorLabel', 'tier']);
 const organic = (body) => JSON.parse(JSON.stringify(body, (key, value) => (PLACEMENT.has(key) ? undefined : value)));
 
 async function getJson(request, path) {

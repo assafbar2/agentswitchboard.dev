@@ -15,6 +15,7 @@ import { getOrganicAgents } from '@/lib/catalog';
 import { recommendDecision } from '@/lib/decide';
 import { logUnmatchedRecommend } from '@/lib/leads';
 import { promotion, today } from '@/lib/promoted';
+import { restRateLimit } from '@/lib/rest-rate-limit';
 import { getTasks } from '@/lib/tasks';
 
 export const dynamic = 'force-dynamic';
@@ -26,6 +27,8 @@ const HEADERS = {
 };
 
 export async function GET(req: Request): Promise<Response> {
+  const limited = restRateLimit('/home/answer', req);
+  if (limited) return limited;
   const need = new URL(req.url).searchParams.get('need') ?? '';
   const day = today();
   const decision = recommendDecision(need, getTasks(), await getOrganicAgents(), (a) => promotion(a, day));

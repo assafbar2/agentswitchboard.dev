@@ -31,6 +31,7 @@ vi.mock('fs', async (importOriginal) => {
       featured: true,
       featuredUntil: '2999-01-01',
       sponsored: true,
+      sponsoredUntil: '2999-01-01',
       sponsorLabel: 'Sponsored',
       tier: 'premium',
     });
@@ -50,7 +51,7 @@ const compareRoute = await import('@/app/api/compare/route');
 const bundleRoute = await import('@/app/api/bundle/route');
 const recommendRoute = await import('@/app/api/recommend/route');
 
-const PLACEMENT_KEY = /^(featured|featuredUntil|sponsored|sponsorLabel|tier|placements)$/;
+const PLACEMENT_KEY = /^(featured|featuredUntil|sponsored|sponsoredUntil|sponsorLabel|tier|placements)$/;
 
 function placementKeys(value: unknown, at = '$'): string[] {
   if (Array.isArray(value)) return value.flatMap((v, i) => placementKeys(v, `${at}[${i}]`));

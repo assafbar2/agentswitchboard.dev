@@ -17,6 +17,7 @@ import {
 } from '@/lib/drops';
 import { sponsoredAgents } from '@/lib/homepage';
 import { pageMetadata } from '@/lib/metadata';
+import { isSponsoredLive } from '@/lib/promoted';
 import { dropCard, dropCardImage } from '@/lib/share-cards';
 import { getStacks, stackEntries, stackForDrop } from '@/lib/stacks';
 import { formatDay, joinList } from '@/lib/utils';
@@ -219,7 +220,7 @@ export default async function DropPage({ params }: Props) {
                   <span className="agent-dim">
                     {agent.providerName}
                     {agent.official ? ' · official' : ''}
-                    {agent.sponsored ? ' · sponsored' : ''}
+                    {isSponsoredLive(agent) ? ' · sponsored' : ''}
                   </span>
                   <span className="agent-dim">{agent.accessMethods.join('+') || '—'}</span>
                 </Link>
@@ -243,7 +244,7 @@ export default async function DropPage({ params }: Props) {
 
           {sponsored.length > 0 && (
             <div data-sponsored-slot="">
-              <div className="agent-section-title">sponsored · paid placements, never change search results</div>
+              <div className="agent-section-title">sponsored · paid placements, never change keyword search results</div>
               {sponsored.map((agent) => (
                 <Link key={agent.slug} href={`/agents/${agent.slug}`} className="agent-row no-underline hover:underline">
                   <span className="agent-accent">{agent.slug}</span>

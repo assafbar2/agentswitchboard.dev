@@ -4,6 +4,27 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
+## [2.17.0] - 2026-11-28 - Rate-limit alignment, placement expiry, and manifest parity
+
+### Highlights
+- Every REST endpoint (including `/api/recommend` and `/home/answer`) now shares one 110 req/min per-IP budget that returns structured JSON `429` with `Retry-After` cleanly below Vercel's 120/min ceiling. [Try it](https://agentswitchboard.dev/for-agents#rest)
+- MCP `get_agent` now returns `lastChecked`, `updatedAt`, and `limitations` alongside `useItNow`, and `GET /api/tasks/<slug>` is strictly organic with no `featured` or `sponsored` fields. [Try it](https://agentswitchboard.dev/connect#tools)
+- `featuredUntil` and `sponsoredUntil` dates now expire consistently across every page and card under pure static generation, backed by a daily scheduled rebuild check. [Try it](https://agentswitchboard.dev/tasks/send-and-read-email)
+
+### Added
+- Optional `sponsoredUntil` (`YYYY-MM-DD`, UTC inclusive) on `AgentSchema` (`scripts/validate-content.ts`) and `lib/types.ts`, plus shared `isFeaturedLive()` and `isSponsoredLive()` helpers in `lib/promoted.ts`.
+- Daily scheduled GitHub Action (`.github/workflows/promoted-expiry-rebuild.yml`, 00:05 UTC) that checks `content/agents/*.json` for placements expiring yesterday and triggers `VERCEL_DEPLOY_HOOK_URL` only when a rebuild is needed (skipping cleanly when none expired or the secret is unset).
+- `lastChecked`, `updatedAt`, and `limitations` on MCP `get_agent` (`app/api/[transport]/route.ts`, MCP v1.13.0) and full `outputSchema` / `annotations` declarations in `public/.well-known/mcp.json`.
+- CI parity test suite (`tests/manifest-parity.test.ts`) locking `public/.well-known/webmcp.json` against `WEBMCP_TOOLS`, `public/.well-known/mcp.json` and `server.json` against the live `/api/mcp` tool registry, and `public/openapi.json` schemas against live REST route outputs.
+
+### Changed
+- `REST_REQUESTS_PER_MINUTE` set to `110` in `lib/rest-rate-limit.ts` and wired onto `app/api/recommend/route.ts` and `app/home/answer/route.ts`; OpenAPI bumped to `1.17.0` with `429` on `/api/recommend`, and all docs updated (`public/skill.md`, `docs/API.md`, `README.md`, `app/for-agents/page.tsx`, `lib/agent-markdown.ts`).
+- `GET /api/tasks/<slug>` (`detailTask`) and decision endpoints (`decisionAgent`: compare, alternatives, bundle, recommend) now emit organic listing cards without `featured` or `sponsored` (`OrganicAgentSummary` in `public/openapi.json`), matching MCP, WebMCP, and `README.md`. Website task answers (homepage box, task pages, `/browse?task=`) remain promoted-first and labeled.
+
+### Fixed
+- Off-by-1-day early expiry in `lib/homepage.ts` (comparing `YYYY-MM-DD` `featuredUntil` against a full ISO timestamp) and inconsistent `featuredUntil`/`sponsoredUntil` checks across `lib/catalog.ts`, `components/AgentCard.tsx`, `app/agents/[slug]/page.tsx`, and other views.
+- Documentation and manifest drift across `CONTRIBUTING.md`, `public/skill.md`, `public/openapi.json`, `public/.well-known/webmcp.json`, `public/.well-known/mcp.json`, `docs/API.md`, `components/SponsoredSlot.tsx`, `app/for-agents/page.tsx`, `app/page.tsx`, `app/drops/[date]/page.tsx`, and `lib/types.ts`.
+
 ## [2.16.0] - 2026-11-28 - Natural-language search, smarter recommendations and list_tasks
 
 ### Highlights
