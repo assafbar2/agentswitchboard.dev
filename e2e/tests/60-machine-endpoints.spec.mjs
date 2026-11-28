@@ -14,7 +14,7 @@ const REAL_SLUG = 'playwright-mcp';
 // status: "archived" in content/agents/*.json at HEAD
 const ARCHIVED_SLUGS = ['midjourney', 'blender-mcp', 'smithery', 'framelink', 'headlong'];
 const MCP_HEADERS = { ...H, 'content-type': 'application/json', accept: 'application/json, text/event-stream' };
-const READ_TOOLS = ['alternatives_to', 'compare_agents', 'connect_bundle', 'get_agent', 'list_categories', 'recommend', 'search_agents'];
+const READ_TOOLS = ['alternatives_to', 'compare_agents', 'connect_bundle', 'get_agent', 'list_categories', 'list_tasks', 'recommend', 'search_agents'];
 
 const content = (file) => JSON.parse(fs.readFileSync(new URL(`../../content/${file}`, import.meta.url), 'utf8'));
 const CATALOG = (await loadCatalog(BASE, H)).agents;
@@ -82,7 +82,7 @@ test.describe('text docs', () => {
     expect(body).toMatch(/^# Agent Switchboard/);
     expect(body).toContain('https://agentswitchboard.dev/api/mcp');
     expect(body).toContain(
-      'Tools: search_agents, get_agent, list_categories, compare_agents, alternatives_to, connect_bundle, recommend, submit_listing'
+      'Tools: search_agents, get_agent, list_categories, list_tasks, compare_agents, alternatives_to, connect_bundle, recommend, submit_listing'
     );
     expect(body).toContain('request_missing_tool');
   });
@@ -541,7 +541,7 @@ test.describe('crawler files', () => {
 });
 
 test.describe('manifests', () => {
-  test('/.well-known/mcp.json names the remote endpoint and the nine tools', async ({ request }) => {
+  test('/.well-known/mcp.json names the remote endpoint and the ten tools', async ({ request }) => {
     const { res, body } = await getJson(request, '/.well-known/mcp.json');
     expect(res.headers()['content-type']).toMatch(/json/);
     expect(body.remotes).toContainEqual({ type: 'streamable-http', url: 'https://agentswitchboard.dev/api/mcp' });
@@ -603,7 +603,7 @@ test.describe('MCP server /api/mcp', () => {
     expect(body.result.instructions).toContain('connect_bundle');
   });
 
-  test('tools/list lists the seven read tools, submit_listing and request_missing_tool', async ({ request }) => {
+  test('tools/list lists the eight read tools, submit_listing and request_missing_tool', async ({ request }) => {
     const body = await mcp(request, 'tools/list');
     expect(body.error).toBeUndefined();
     const names = body.result.tools.map((t) => t.name).sort();

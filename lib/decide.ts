@@ -21,16 +21,18 @@ import {
 } from './compare';
 import { COMPARE_MAX, compareHref } from './compare-link';
 import { BASE_URL } from './env';
-import { pickedBecause, putThrough, type OperatorPart } from './operator';
+import { asksOf, DOING, narrowed, OPERATOR_ALTERNATIVES, pickedBecause, putThrough, type OperatorPart } from './operator';
 import type { Promotion } from './promoted';
 import { decisionAgent } from './public-api';
 import { alternativeWhy, getAlternatives, MAX_ALTERNATIVES, MIN_ALTERNATIVES } from './related';
 import { operatorHref, PARTS_MAX, REQUEST_MAX } from './request-parts';
+import { accessAlias, keywordMatcher, narrowingWords, scoreAgent, searchAgents } from './search';
 import { listedAgents, sharedStack } from './shared-stack';
 import { stackHref } from './stack-link';
-import type { Task } from './tasks';
-import type { Agent } from './types';
-import { joinList, pluralize } from './utils';
+import { wordsOf } from './task-match';
+import { WHY_MAX, type Task } from './tasks';
+import type { Agent, AgentSkill } from './types';
+import { joinList, pluralize, truncate } from './utils';
 
 /** Why a decision tool has no answer: the HTTP status, an error code and a message, plus anything that helps the next call. */
 export interface Refusal {
@@ -182,12 +184,13 @@ export function bundleDecision(
 /** How a recommendation is picked, said with every answer. */
 export const RECOMMEND_BASIS =
   'Picked by the directory’s own matching rules, the same for every caller and with no model: each need is matched to one of the directory’s tasks, ' +
-  'then the listings for that task that mention what the need names come first (a product, a service), then Official ones, then the task’s best fits. ' +
+  'then the listings for that task that mention what the need names come first (a product, a service), then Official ones, then the task’s best fits; ' +
+  'when no dedicated task matches, the directory’s catalog search picks the closest matching listing. ' +
   'Asking for an MCP server, a CLI, an API, a browser extension or Official narrows the pick. Paid placement never changes it.';
 
 /** RECOMMEND_BASIS as the website's homepage box answers: promoted listings first, labeled. */
 export const SITE_BASIS =
-  'Among the tools that do each need’s task, Featured and Sponsored ones that have what the need asks for come first, labeled; ' +
+  'Among the tools that do each need, Featured and Sponsored ones that have what the need asks for come first, labeled; ' +
   'then the directory’s own matching rules pick, the same for every visitor and with no model.';
 
 const NEXT_STEP_LABEL: Record<BundleHow, string> = {
@@ -228,10 +231,98 @@ export function promotedBecause(label: Promotion): string {
 
 const taskRef = (task: Task) => ({ slug: task.slug, label: task.label, url: `${BASE_URL}/tasks/${task.slug}` });
 
+export type RecommendSource = 'task' | 'search_fallback';
+
+function whyItMatchesTerms(agent: Agent, terms: string[]): string | null {
+  if (terms.length === 0) return null;
+  const matchers = terms.map(keywordMatcher);
+  let best: AgentSkill | null = null;
+  let bestScore = 0;
+  for (const skill of agent.skills ?? []) {
+    if (!skill || typeof skill !== 'object' || !skill.name || !skill.description) continue;
+    const name = skill.name.toLowerCase();
+    const description = skill.description.toLowerCase();
+    const score = matchers.reduce((sum, m) => sum + (m.anywhere(name) ? 2 : 0) + (m.phrase(description) ? 1 : 0), 0);
+    if (score > bestScore) {
+      best = skill;
+      bestScore = score;
+    }
+  }
+  if (!best) return null;
+  const name = best.name.trim();
+  const description = best.description.trim();
+  const repeats = description.toLowerCase().startsWith(name.toLowerCase());
+  return truncate(repeats ? description : `${name}: ${description}`, WHY_MAX);
+}
+
+/**
+ * Fallback when no curated task matches a part: search the organic catalog
+ * using the part's meaningful terms, apply any access-method or Official asks,
+ * and (website only) place promoted matches first.
+ */
+function catalogFallback(
+  text: string,
+  catalog: Agent[],
+  promote?: (agent: Agent) => Promotion | null
+): {
+  pick: Agent;
+  alternatives: Agent[];
+  fits: number;
+  pickedBecause: string;
+  why: string | null;
+  unmet: string[];
+} | null {
+  const words = narrowingWords(text);
+  const contentTerms = words.filter((w) => !accessAlias(w) && w !== 'official');
+  if (contentTerms.length === 0) return null;
+
+  const rawMatches = searchAgents(catalog, contentTerms.join(' '));
+  if (rawMatches.length === 0) return null;
+
+  // Rank fallback matches by subject terms (excluding generic action verbs like "generate" or "make")
+  // so a product with "Generation" in its name doesn't outrank Official subject-focused tools.
+  const subjectTerms = contentTerms.filter((w) => !DOING.has(w));
+  const rankQuery = subjectTerms.length > 0 ? subjectTerms.join(' ') : contentTerms.join(' ');
+  const matches = [...rawMatches].sort(
+    (a, b) =>
+      scoreAgent(b, rankQuery) - scoreAgent(a, rankQuery) ||
+      Number(b.official) - Number(a.official) ||
+      Number((b.accessMethods ?? []).includes('mcp')) - Number((a.accessMethods ?? []).includes('mcp'))
+  );
+
+  const unmet: string[] = [];
+  const { kept, met } = narrowed(matches, asksOf(wordsOf(text)), unmet, false, 'matching this');
+  const has = (a: Agent) => met.every((ask) => ask.keeps(a));
+  const placed = promote ? matches.filter((a) => promote(a) !== null && has(a)) : [];
+  const order = [...new Set([...placed, kept[0], ...matches.filter(has)])];
+  const pick = order[0];
+  if (!pick) return null;
+
+  const promoLabel = placed.includes(pick) ? promote?.(pick) : null;
+  const metList = met.map((ask) => ask.has);
+  const pickedReason = promoLabel
+    ? promotedBecause(promoLabel)
+    : metList.length > 0
+      ? `Matched from the directory catalog because it ${joinList(metList)}.`
+      : 'Matched from the directory catalog (no dedicated task yet).';
+
+  return {
+    pick,
+    alternatives: order.slice(1, 1 + OPERATOR_ALTERNATIVES),
+    fits: matches.length,
+    pickedBecause: pickedReason,
+    why: whyItMatchesTerms(pick, contentTerms),
+    unmet,
+  };
+}
+
 function answerLine(r: RecommendBody['recommendations'][number], placements: Record<string, Promotion> = {}): string {
   const named = (a: { slug: string; name: string }) => (placements[a.slug] ? `${a.name} (${placements[a.slug]})` : a.name);
   const alternatives = r.alternatives.length > 0 ? ` Alternatives: ${joinList(r.alternatives.map(named))}.` : '';
-  const because = r.pickedBecause.startsWith('Picked') || placements[r.pick.slug] ? r.pickedBecause : 'The task’s best fit.';
+  const because =
+    r.pickedBecause.startsWith('Picked') || r.pickedBecause.startsWith('Matched') || placements[r.pick.slug]
+      ? r.pickedBecause
+      : 'The task’s best fit.';
   const why = r.why ? ` ${r.why}${/[.!?]$/.test(r.why) ? '' : '.'}` : '';
   const limits = r.limitations.length > 0 ? ` Limitations: ${r.limitations.join('; ')}.` : '';
   return (
@@ -246,27 +337,69 @@ function recommendBody(need: unknown, tasks: Task[], catalog: Agent[], promote?:
     const label = part.promoted && promote?.(part.pick);
     return label ? promotedBecause(label) : pickedBecause(part);
   };
-  const recommendations = put.parts.flatMap((part) =>
-    part.task && part.pick
-      ? [
-          {
-            need: part.text,
-            task: taskRef(part.task),
-            pick: decisionAgent(part.pick),
-            pickedBecause: because({ ...part, pick: part.pick }),
-            why: part.why,
-            unmet: part.unmet,
-            nextStep: nextStep(part.pick),
-            limitations: limitations(part.pick),
-            alternatives: part.alternatives.map(decisionAgent),
-            fits: part.fits,
-          },
-        ]
-      : []
-  );
-  const unmatched = put.parts
-    .filter((part) => !part.task || !part.pick)
-    .map((part) => ({ need: part.text, nearestTasks: (part.task ? [part.task] : part.nearest).map(taskRef) }));
+  const stack: Agent[] = [];
+  const shown: Agent[] = [];
+  const recommendations: {
+    need: string;
+    task: ReturnType<typeof taskRef> | null;
+    source: RecommendSource;
+    pick: ReturnType<typeof decisionAgent>;
+    pickedBecause: string;
+    why: string | null;
+    unmet: string[];
+    nextStep: ReturnType<typeof nextStep>;
+    limitations: string[];
+    alternatives: ReturnType<typeof decisionAgent>[];
+    fits: number;
+  }[] = [];
+  const unmatched: { need: string; nearestTasks: ReturnType<typeof taskRef>[] }[] = [];
+
+  for (const part of put.parts) {
+    if (part.task && part.pick) {
+      if (!stack.includes(part.pick)) stack.push(part.pick);
+      shown.push(part.pick, ...part.alternatives);
+      recommendations.push({
+        need: part.text,
+        task: taskRef(part.task),
+        source: 'task',
+        pick: decisionAgent(part.pick),
+        pickedBecause: because({ ...part, pick: part.pick }),
+        why: part.why,
+        unmet: part.unmet,
+        nextStep: nextStep(part.pick),
+        limitations: limitations(part.pick),
+        alternatives: part.alternatives.map(decisionAgent),
+        fits: part.fits,
+      });
+      continue;
+    }
+
+    const fallback = !part.task ? catalogFallback(part.text, catalog, promote) : null;
+    if (fallback) {
+      if (!stack.includes(fallback.pick)) stack.push(fallback.pick);
+      shown.push(fallback.pick, ...fallback.alternatives);
+      recommendations.push({
+        need: part.text,
+        task: null,
+        source: 'search_fallback',
+        pick: decisionAgent(fallback.pick),
+        pickedBecause: fallback.pickedBecause,
+        why: fallback.why,
+        unmet: fallback.unmet,
+        nextStep: nextStep(fallback.pick),
+        limitations: limitations(fallback.pick),
+        alternatives: fallback.alternatives.map(decisionAgent),
+        fits: fallback.fits,
+      });
+      continue;
+    }
+
+    unmatched.push({
+      need: part.text,
+      nearestTasks: (part.task ? [part.task] : part.nearest).map(taskRef),
+    });
+  }
+
   const notes = [
     ...(put.cut ? [`The request was cut at ${REQUEST_MAX} characters.`] : []),
     ...(put.extra > 0 ? [`Only the first ${PARTS_MAX} needs were read; ${put.extra} more were left out.`] : []),
@@ -276,7 +409,7 @@ function recommendBody(need: unknown, tasks: Task[], catalog: Agent[], promote?:
     answer: '',
     recommendations,
     unmatched,
-    stackUrl: put.stack.length > 1 ? `${BASE_URL}${stackHref(put.stack.map((a) => a.slug))}` : null,
+    stackUrl: stack.length > 1 ? `${BASE_URL}${stackHref(stack.map((a) => a.slug))}` : null,
     operatorUrl: `${BASE_URL}${operatorHref(put.request)}`,
     basis: RECOMMEND_BASIS,
     notes,
@@ -284,7 +417,6 @@ function recommendBody(need: unknown, tasks: Task[], catalog: Agent[], promote?:
     placements: undefined as Record<string, Promotion> | undefined,
   };
   if (promote) {
-    const shown = put.parts.flatMap((part) => (part.pick ? [part.pick, ...part.alternatives] : []));
     body.placements = Object.fromEntries(shown.flatMap((a) => (promote(a) ? [[a.slug, promote(a)!]] : [])));
     body.basis = SITE_BASIS;
   }

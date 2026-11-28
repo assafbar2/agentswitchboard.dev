@@ -4,6 +4,22 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
+## [2.16.0] - 2026-11-28 - Natural-language search, smarter recommendations and list_tasks
+
+### Highlights
+- Search in plain phrases like "email API for my agent" or "agent wallet virtual card": filler words are dropped when real terms remain, word endings match ("emails" finds "email"), and 3+ word queries fall back to ranked partial matches instead of zero results. [Try it](https://agentswitchboard.dev/browse?q=email+API+for+my+agent)
+- Ask the homepage box, REST or MCP `recommend` for jobs outside the 56 tasks (like "generate music with AI"), close task ties ("checkout on any e-commerce store"), or specific sub-domains ("trade on prediction markets") and get a grounded pick instead of a dead end or misroute. [Try it](https://agentswitchboard.dev/)
+- MCP and WebMCP clients can now call `list_tasks` to discover all 56 task slugs with live listing counts and Official counts without an extra HTTP fetch. [Try it](https://agentswitchboard.dev/connect#tools)
+
+### Added
+- `list_tasks` tool on the remote MCP server (`/api/mcp`, now v1.12.0, 10 tools) and WebMCP (`document.modelContext`, 8 read tools), returning the same live task list and counts as `GET /api/tasks`.
+- Catalog-search fallback in `recommend` (`lib/decide.ts`): when no curated task matches a need, organic catalog search picks the closest matching listing (`task: null`, `source: "search_fallback"`) with its next step, limitations and two alternatives; genuinely unmatchable needs still return 404 `no_match` and are logged as `asb_lead` (`unmatched_recommend`, with contact details stripped) for the weekly review.
+
+### Changed
+- `searchAgents()` (`lib/search.ts`) expands natural-language stopwords (dropped only when meaningful terms remain, so searching "agent" alone still works), applies stemming via `lib/task-match.ts` (`stem` / `stemEqual`), expands `music` to `song`, and adds a ranked soft-AND fallback (`>= ceil(N/2)` terms) for 3+ word queries when strict AND returns 0 results.
+- `putThrough()` (`lib/operator.ts`) breaks clear task ties using catalog fit density (resolving "checkout on any e-commerce store" to `shop-and-check-out`), checks categories and stemmed forms in `mentions()`, and ranks fits by matched telling-word count and rarity so specific qualifiers like "prediction" in "trade on prediction markets" outrank generic matches.
+- OpenAPI bumped to 1.16.0 and `/.well-known/mcp.json`, `/.well-known/webmcp.json`, and `server.json` bumped to 1.12.0; MCP, WebMCP, REST and the Operator remain 100% organic while the website's homepage answer continues to place matching Featured and Sponsored listings first, labeled.
+
 ## [2.15.0] - 2026-11-28 - Copy-ready configs, /llms-full.txt and listing Markdown
 
 ### Highlights

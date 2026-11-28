@@ -139,6 +139,29 @@ describe('natural-language queries', () => {
   it('rewards the whole phrase in the name', () => {
     expect(searchAgents(catalog, 'Postgres MCP Pro')[0].slug).toBe('postgres-mcp-pro');
   });
+
+  it('drops conversational and generic filler when meaningful terms remain, while still searching "agent" alone', () => {
+    expect(slugs(searchAgents(catalog, 'email API for my agent'))).toEqual(['agentmail']);
+    expect(searchAgents(catalog, 'agent').length).toBeGreaterThan(0);
+    expect(searchAgents(catalog, 'ai agent').length).toBeGreaterThan(0);
+  });
+
+  it('matches stemmed forms ("emails" -> "email", "trading" -> "trade", "generating" -> "generate")', () => {
+    expect(slugs(searchAgents(catalog, 'emails'))).toEqual(['agentmail']);
+    expect(slugs(searchAgents(catalog, 'trading'))).toEqual(['capital-com-mcp']);
+  });
+
+  it('falls back to soft-AND on 3+ word queries when strict AND returns 0, ranking more matched terms first', () => {
+    const walletTools = [
+      makeAgent({ slug: 'card-only', name: 'Card Co', description: 'Virtual cards for spending.' }),
+      makeAgent({ slug: 'wallet-only', name: 'Wallet Co', description: 'Crypto wallets.' }),
+      makeAgent({ slug: 'unrelated', name: 'Unrelated', description: 'Weather forecasts.' }),
+    ];
+    // 3 meaningful terms after dropping "agent": wallet, virtual, card; none has all 3, card-only has 2/3.
+    expect(slugs(searchAgents(walletTools, 'agent wallet virtual card'))).toEqual(['card-only']);
+    // Mostly-gibberish 3-word queries (only 1/3 matches) still return 0.
+    expect(searchAgents(walletTools, 'wallet zzqx1 zzqx2')).toEqual([]);
+  });
 });
 
 describe('access-method words', () => {
@@ -389,6 +412,22 @@ describe('against content/agents', () => {
   it('"sql" finds a listing that only mentions MySQL', () => {
     const results = searchAgents(agents, 'sql');
     expect(results.some((a) => /mysql/i.test(a.description) && !/sql/i.test(a.name))).toBe(true);
+  });
+
+  it('"email API for my agent" returns relevant email API listings instead of 0', () => {
+    const results = searchAgents(agents, 'email API for my agent');
+    expect(results.length).toBeGreaterThan(5);
+    expect(results.some((a) => a.slug === 'agentmail')).toBe(true);
+  });
+
+  it('"agent wallet virtual card" returns relevant wallet/virtual-card listings instead of 0', () => {
+    const results = searchAgents(agents, 'agent wallet virtual card');
+    expect(results.length).toBeGreaterThan(2);
+    expect(results.slice(0, 6).map((a) => a.slug)).toEqual(expect.arrayContaining(['agentcard', 'privy']));
+  });
+
+  it('"agent" alone still returns agent listings', () => {
+    expect(searchAgents(agents, 'agent').length).toBeGreaterThan(50);
   });
 
   it('truncated card descriptions end on a whole word', () => {

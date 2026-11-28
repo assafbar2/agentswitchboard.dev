@@ -68,18 +68,32 @@ export function wordsOf(text: string): string[] {
   return (text.toLowerCase().match(WORD) ?? []).map((w) => ALIASES.get(w) ?? w).filter((w) => !FILLER.has(w));
 }
 
-/** A word without its ending: "invoices" is "invoice", "scraping" "scrap", "libraries" "library", "planning" "plan". */
-function stem(word: string): string {
+/** A word without its ending: "invoices" is "invoice", "scraping" "scrap", "libraries" "library", "planning" "plan", "generation" "generat". */
+export function stem(word: string): string {
   if (word.length > 4 && word.endsWith('ies')) return `${word.slice(0, -3)}y`;
+  let base = word;
+  if (base.length >= 4 && base.endsWith('s') && !base.endsWith('ss')) {
+    base = base.slice(0, -1);
+  }
+  if (base.length >= 8 && base.endsWith('tion')) {
+    return base.slice(0, -3);
+  }
   for (const ending of ['ing', 'ed']) {
-    if (word.length >= ending.length + 3 && word.endsWith(ending)) {
-      const base = word.slice(0, -ending.length);
+    if (base.length >= ending.length + 3 && base.endsWith(ending)) {
+      const stripped = base.slice(0, -ending.length);
       // A doubled consonant before the ending is spelling ("planning"), but not in "billing" or "passed".
-      return /([bdgmnprt])\1$/.test(base) ? base.slice(0, -1) : base;
+      return /([bdgmnprt])\1$/.test(stripped) ? stripped.slice(0, -1) : stripped;
     }
   }
-  if (word.length >= 4 && word.endsWith('s') && !word.endsWith('ss')) return word.slice(0, -1);
-  return word;
+  return base;
+}
+
+/** True when two words share a stem (give or take a trailing "e": "emails" and "email", "trading" and "trade", "generation" and "generate"). */
+export function stemEqual(a: string, b: string): boolean {
+  if (a === b) return true;
+  const x = stem(a);
+  const y = stem(b);
+  return x === y || x === `${y}e` || y === `${x}e`;
 }
 
 /**
@@ -88,10 +102,7 @@ function stem(word: string): string {
  * share all but their last two letters (at least five).
  */
 export function sameWord(a: string, b: string): boolean {
-  if (a === b) return true;
-  const x = stem(a);
-  const y = stem(b);
-  if (x === y || x === `${y}e` || y === `${x}e`) return true;
+  if (stemEqual(a, b)) return true;
   let common = 0;
   while (common < a.length && a[common] === b[common]) common++;
   return common >= Math.max(5, Math.min(a.length, b.length) - 2);

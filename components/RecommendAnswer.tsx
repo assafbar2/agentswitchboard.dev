@@ -5,6 +5,7 @@ import { PromotionBadge } from '@/components/PromotionBadge';
 import { VerifiedNote } from '@/components/VerifiedNote';
 import type { RecommendBody } from '@/lib/decide';
 import { PROMOTED_NOTE, type Promotion } from '@/lib/promoted';
+import { browseHref } from '@/lib/search';
 import { joinList, pluralize } from '@/lib/utils';
 
 type Recommendation = RecommendBody['recommendations'][number];
@@ -78,17 +79,30 @@ function OneRecommendation({ r, from, placements }: { r: Recommendation; from: s
     >
       <p className="text-[15px] text-[var(--dir-muted)]">
         For &ldquo;<span className="font-semibold text-[var(--dir-ink)]">{r.need}</span>&rdquo; ·{' '}
-        <Link href={`/tasks/${r.task.slug}`} className={INLINE_LINK}>
-          {r.task.label}
-        </Link>
-        , {r.fits} {pluralize(r.fits, 'tool')} do it
+        {r.task ? (
+          <>
+            <Link href={`/tasks/${r.task.slug}`} className={INLINE_LINK}>
+              {r.task.label}
+            </Link>
+            , {r.fits} {pluralize(r.fits, 'tool')} do it
+          </>
+        ) : (
+          <>
+            <Link href={browseHref(r.need)} className={INLINE_LINK}>
+              catalog match
+            </Link>
+            , {r.fits} {pluralize(r.fits, 'tool')} match
+          </>
+        )}
       </p>
 
       <Pick pick={r.pick} label={placements[r.pick.slug]} />
 
       <p className="text-[16px] leading-snug">
         <span className="dir-label mr-1.5 text-[13px]">Why</span>
-        {r.pickedBecause.startsWith('Picked') || placements[r.pick.slug] ? r.pickedBecause : 'The task’s best fit.'}
+        {r.pickedBecause.startsWith('Picked') || r.pickedBecause.startsWith('Matched') || placements[r.pick.slug]
+          ? r.pickedBecause
+          : 'The task’s best fit.'}
         {r.why && ` ${sentence(r.why)}`}
       </p>
 

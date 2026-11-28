@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Agent Switchboard Directory API",
-    "version": "1.15.0",
+    "version": "1.16.0",
     "summary": "Read-only catalog of AI agents, MCP servers, and agentic developer tools.",
     "description": "Agent Switchboard is a public discovery directory. Use this API to answer questions like 'is there an agent that does X?' or 'which listed products expose an MCP server?'. There is no authentication and no user account. The one write, POST /api/missing-tool, publishes nothing: it privately tells the maintainer that no listing does a job. The /api/ endpoints allow 120 requests per minute per IP and answer 429 with Retry-After past that; cached responses do not count, and /api/mcp has its own limits. This API does not proxy the underlying products — it only returns Switchboard listings. For interactive tool-shaped access, an MCP server is also available at /api/mcp. Listing data returned by this API is licensed CC BY-NC 4.0 (attribution required; commercial reuse needs a license: https://agentswitchboard.dev/contact). The API definition itself is MIT.",
     "contact": {
@@ -459,7 +459,7 @@
       "get": {
         "operationId": "recommend",
         "summary": "One pick and the next step for what a user needs",
-        "description": "One recommendation for what a user needs, and the next step to start using it, as the site's Operator (/operator) picks it. Each need the request names gets one pick, why it fits, the next step (the MCP client config to paste when the vendor's docs give one, else its setup guide or docs) and two alternatives; two or more picks also come with a /stack link. Picked by fixed matching rules, not a model: each need is matched to a task, then the task's listings that mention what the need names come first, then Official ones, then the task's best fits. Saying MCP, CLI, API, browser extension or official in the need narrows the pick. The catalog is read in organic order and the answer carries no placement field. Write the need yourself; never include names, email addresses or phone numbers.",
+        "description": "One recommendation for what a user needs, and the next step to start using it, as the site's Operator (/operator) picks it. Each need the request names gets one pick, why it fits, the next step (the MCP client config to paste when the vendor's docs give one, else its setup guide or docs) and two alternatives; two or more picks also come with a /stack link. Picked by fixed matching rules, not a model: each need is matched to a task, then the task's listings that mention what the need names come first, then Official ones, then the task's best fits; when no dedicated task matches, catalog search picks the closest matching listing (with task: null and source: \"search_fallback\"). Saying MCP, CLI, API, browser extension or official in the need narrows the pick. The catalog is read in organic order and the answer carries no placement field. Write the need yourself; never include names, email addresses or phone numbers.",
         "tags": ["catalog"],
         "parameters": [
           {
@@ -1327,10 +1327,18 @@
       },
       "Recommendation": {
         "type": "object",
-        "required": ["need", "task", "pick", "pickedBecause", "why", "unmet", "nextStep", "limitations", "alternatives", "fits"],
+        "required": ["need", "task", "source", "pick", "pickedBecause", "why", "unmet", "nextStep", "limitations", "alternatives", "fits"],
         "properties": {
           "need": { "type": "string", "description": "The user's words for this need." },
-          "task": { "$ref": "#/components/schemas/TaskRef" },
+          "task": {
+            "oneOf": [{ "$ref": "#/components/schemas/TaskRef" }, { "type": "null" }],
+            "description": "The directory task it matched; null when picked via catalog search fallback."
+          },
+          "source": {
+            "type": "string",
+            "enum": ["task", "search_fallback"],
+            "description": "Whether the pick came from a curated task or catalog search fallback."
+          },
           "pick": { "$ref": "#/components/schemas/DecisionAgent" },
           "pickedBecause": { "type": "string", "examples": ["Picked because it mentions “Gmail”."] },
           "why": { "type": ["string", "null"], "description": "The pick's skill that does the task." },

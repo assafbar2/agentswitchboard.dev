@@ -32,7 +32,7 @@ const { tools } = await client.listTools();
 const names = tools.map((t) => t.name).sort();
 check(
   'tools/list',
-  names.join(',') === 'alternatives_to,compare_agents,connect_bundle,get_agent,list_categories,recommend,request_missing_tool,search_agents,submit_listing',
+  names.join(',') === 'alternatives_to,compare_agents,connect_bundle,get_agent,list_categories,list_tasks,recommend,request_missing_tool,search_agents,submit_listing',
   names.join(', ')
 );
 for (const t of tools) {
@@ -61,6 +61,10 @@ check(
 const cats = await client.callTool({ name: 'list_categories', arguments: {} });
 const categories = cats.structuredContent?.categories ?? [];
 check('list_categories', categories.length > 0, `${categories.length} categories`);
+
+const taskRes = await client.callTool({ name: 'list_tasks', arguments: {} });
+const listedTasks = taskRes.structuredContent?.tasks ?? [];
+check('list_tasks', listedTasks.length > 0 && taskRes.structuredContent?.total === listedTasks.length, `${listedTasks.length} tasks`);
 
 const search = await client.callTool({ name: 'search_agents', arguments: { query: 'browser automation', limit: 5 } });
 check('search_agents query', search.structuredContent?.agents?.length > 0, `total ${search.structuredContent?.total}`);

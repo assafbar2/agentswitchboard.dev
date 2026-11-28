@@ -414,6 +414,7 @@ curl "https://agentswitchboard.dev/api/recommend?need=read+my+Gmail+and+query+Po
     {
       "need": "read my Gmail",
       "task": { "slug": "send-and-read-email", "label": "send and read email", "url": "https://agentswitchboard.dev/tasks/send-and-read-email" },
+      "source": "task", // "task" | "search_fallback" (task is null on search_fallback)
       "pick": { /* …REST search fields, authType and lastChecked */ },
       "pickedBecause": "Picked because it mentions “Gmail”.",
       "why": "…the pick's skill that does the task",
@@ -441,14 +442,18 @@ curl "https://agentswitchboard.dev/api/recommend?need=read+my+Gmail+and+query+Po
 
 Each need is matched to one of the [tasks](https://agentswitchboard.dev/tasks);
 among the task's listings, those that mention what the need names come first,
-then Official ones, then the task's best fits. Saying MCP, CLI, API, browser
+then Official ones, then the task's best fits. When no dedicated task matches,
+catalog search picks the closest matching listing (`task: null`,
+`source: "search_fallback"`). Saying MCP, CLI, API, browser
 extension or official in the need narrows the pick. No model, so the same need
 always gets the same answer, and placement never changes it: the catalog is read
 in organic order and the answer carries no placement field. (The website's
-homepage box puts a task's Featured and Sponsored tools first, labeled; this
+homepage box puts matching Featured and Sponsored tools first, labeled; this
 endpoint and the MCP and WebMCP `recommend` tools never do.) No need is a `400`
-with `{ "error": "no_need" }`; a need that matches no task is a `404` with
+with `{ "error": "no_need" }`; a need that matches neither a task nor any listing is a `404` with
 `{ "error": "no_match", "message", "unmatched" }`, naming the closest tasks.
+Unmatched needs are recorded privately for the weekly review (`asb_lead`,
+contact details removed).
 
 `limitations` says, from the pick's listing alone, what may stop or slow the
 user: the sign-in it needs, a server that runs only on their computer, no MCP
@@ -513,14 +518,15 @@ Stdio-only clients: `npx -y mcp-remote https://agentswitchboard.dev/api/mcp`
 | `search_agents` | `query?`, `task?`, `category?`, `access?` (enum[]), `official?` (boolean), `verified?` (boolean), `auth?` (enum[]), `since?` (day or days), `sort?` (enum), `limit?` (1–50), `offset?` | `{ total, offset, limit, since?, agents[] }` |
 | `get_agent` | `slug` (required) | full agent detail: skills, auth, streaming/push, tags, links, and `useItNow` (how to start using it) |
 | `list_categories` | — | `{ categories: [ { slug, name, description, agentCount } ] }` |
+| `list_tasks` | — | `{ total, tasks: [ { slug, label, blurb, keywords, categories, access, count, official, url, browseUrl, agentsUrl } ] }`, as [`GET /api/tasks`](#rest-tasks--get-apitasks) |
 | `compare_agents` | `slugs` (2 or 3, required) | as [`GET /api/compare`](#rest-compare--get-apicompare): `{ title, url, intro, agents[], rows[], notes }` |
 | `alternatives_to` | `slug` (required), `limit?` (1–8) | as [`GET /api/agents/{slug}/alternatives`](#rest-alternatives--get-apiagentsslugalternatives) |
 | `connect_bundle` | `slugs` (1 to 10, required) | as [`GET /api/bundle`](#rest-connect-bundle--get-apibundle): `{ summary, stackUrl, config, claudeCode, setupPrompt, items[], notes }` |
-| `recommend` | `need` (required) | as [`GET /api/recommend`](#rest-recommend--get-apirecommend): `{ request, answer, recommendations[] (with limitations), unmatched, stackUrl, operatorUrl, basis, notes }` |
+| `recommend` | `need` (required) | as [`GET /api/recommend`](#rest-recommend--get-apirecommend): `{ request, answer, recommendations[] (with source and limitations), unmatched, stackUrl, operatorUrl, basis, notes }` |
 | `submit_listing` | `name`, `url`, `description` (required); `access?`, `category?`, `contact_email?` | `{ status, message, issueUrl?, existingSlug? }` |
 | `request_missing_tool` | `need` (10–500 characters, required); `tried?`, `category?`, `access?` (enum[]) | `{ status, message }`, as [`POST /api/missing-tool`](#rest-missing-tool--post-apimissing-tool) |
 
-All tools declare an `outputSchema` and return `structuredContent`. Results are organic: they never list featured listings first, and they leave out `featured` and any other placement field. The seven
+All tools declare an `outputSchema` and return `structuredContent`. Results are organic: they never list featured listings first, and they leave out `featured` and any other placement field. The eight
 read tools are annotated `readOnlyHint: true`, `destructiveHint: false`;
 `submit_listing` is `readOnlyHint: false`, `destructiveHint: true` (it posts a public
 issue the user can't take back), so clients ask before each call.
@@ -562,8 +568,8 @@ Discovery manifest: [`/.well-known/mcp.json`](https://agentswitchboard.dev/.well
 
 ## WebMCP — `document.modelContext`
 
-Every page registers the same seven read tools (`search_agents`, `get_agent`,
-`list_categories`, `compare_agents`, `alternatives_to`, `connect_bundle`,
+Every page registers the same eight read tools (`search_agents`, `get_agent`,
+`list_categories`, `list_tasks`, `compare_agents`, `alternatives_to`, `connect_bundle`,
 `recommend`) on
 the W3C WebMCP API (polyfilled), so an agent viewing the site in a browser can
 call them directly instead of scraping the DOM. They call the REST endpoints

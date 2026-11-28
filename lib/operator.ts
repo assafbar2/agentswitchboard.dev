@@ -19,7 +19,7 @@
 
 import { accessAlias, keywordMatcher, taskMatches } from './search';
 import { REQUEST_FILLER, requestParts } from './request-parts';
-import { ownWords, sameWord, wordsOf } from './task-match';
+import { ownWords, rankTasks, sameWord, TASK_MATCH_MIN, wordsOf } from './task-match';
 import { whyItFits, type Task } from './tasks';
 import type { Agent } from './types';
 import { joinList } from './utils';
@@ -28,7 +28,7 @@ import { joinList } from './utils';
 export const OPERATOR_ALTERNATIVES = 2;
 
 /** Words that say what to do with a tool rather than which tool: they never re-rank. */
-const DOING = new Set([
+export const DOING = new Set([
   'read', 'write', 'file', 'ping', 'send', 'post', 'put', 'make', 'open', 'find', 'get', 'use', 'run',
   'build', 'generate', 'manage', 'track', 'take', 'give', 'store', 'save', 'keep', 'check', 'set', 'add',
   'turn', 'answer', 'book', 'fix', 'test', 'watch', 'tell', 'show', 'update', 'edit', 'list', 'ask',
@@ -101,6 +101,7 @@ function tellingWords(text: string, task: Task): Telling[] {
   });
   return [...seen.values()].filter(
     ({ word }) =>
+      (word.length > 1 || word === 'x') &&
       !REQUEST_FILLER.has(word) &&
       !DOING.has(word) &&
       !GENERIC.has(word) &&
@@ -121,33 +122,42 @@ function phrases(words: Telling[]): string[] {
   return out;
 }
 
-/** 4 when the listing's name or provider has the word, 2 its description, 1 its tags or skill names, else 0. */
+/** 4 when the listing's name or provider has the word, 2 its description or categories, 1 its tags or skill names, else 0. */
 function mentions(agent: Agent, matcher: ReturnType<typeof keywordMatcher>): number {
   const lower = (s: unknown) => (typeof s === 'string' ? s.toLowerCase() : '');
   if ([agent.name, agent.providerName].some((t) => matcher.anywhere(lower(t), true))) return 4;
-  if (matcher.anywhere(lower(agent.description))) return 2;
+  const categories = (agent.categories ?? []).flatMap((c) => [c.name, c.slug]);
+  if ([agent.description, ...categories].some((t) => matcher.anywhere(lower(t)))) return 2;
   const skills = (agent.skills ?? []).filter((s) => s && typeof s === 'object').map((s) => s.name);
   return [...(agent.tags ?? []), ...skills].some((t) => matcher.anywhere(lower(t))) ? 1 : 0;
 }
 
-/** `fits` with those that mention the telling words first, and what of them their first one mentions. */
+/** `fits` with those that mention the telling words first (rarer words counting more), and what of them their first one mentions. */
 function rankFits(fits: Agent[], words: Telling[]) {
   const levels = words.map(({ word }) => {
     const matcher = keywordMatcher(word);
     return fits.map((agent) => mentions(agent, matcher));
   });
   // A word tells from the weakest mention that at most half of the fits reach.
+  // Rarer telling words (e.g. "prediction" among trading tools) carry more weight than common ones.
   const telling = levels.flatMap((row, i) => {
     const floor = [1, 2, 4].find((level) => {
       const reach = row.filter((l) => l >= level).length;
       return reach > 0 && reach <= fits.length / 2;
     });
-    return floor === undefined ? [] : [{ i, floor }];
+    if (floor === undefined) return [];
+    const reach = row.filter((l) => l >= floor).length;
+    const weight = Math.round((1 + Math.log2(fits.length / reach)) * 100);
+    return [{ i, floor, weight }];
   });
-  const counted = ({ i, floor }: { i: number; floor: number }, j: number) => (levels[i][j] >= floor ? levels[i][j] : 0);
+  const counted = ({ i, floor, weight }: { i: number; floor: number; weight: number }, j: number) =>
+    levels[i][j] >= floor ? levels[i][j] * weight : 0;
+  const matched = fits.map((_, j) => telling.filter((t) => counted(t, j) > 0).length);
   const score = fits.map((_, j) => telling.reduce((sum, t) => sum + counted(t, j), 0));
   const official = (j: number) => (score[j] > 0 && fits[j].official ? 1 : 0);
-  const order = fits.map((_, j) => j).sort((x, y) => score[y] - score[x] || official(y) - official(x) || x - y);
+  const order = fits
+    .map((_, j) => j)
+    .sort((x, y) => matched[y] - matched[x] || score[y] - score[x] || official(y) - official(x) || x - y);
   return {
     ranked: order.map((j) => fits[j]),
     /** How many of `ranked`, from the first, mention a telling word. */
@@ -159,17 +169,49 @@ function rankFits(fits: Agent[], words: Telling[]) {
   };
 }
 
+/**
+ * When multiple tasks tie on keyword/label score (>= TASK_MATCH_MIN), pick a
+ * winner if one task's fits match the part's words markedly more densely
+ * (e.g. "checkout on any e-commerce store" favors shop-and-check-out over
+ * take-payments). Genuinely close ties stay null so callers can disambiguate.
+ */
+function breakTaskTie(words: string, tasks: Task[], catalog: Agent[]): Task | null {
+  const ranked = rankTasks(words, tasks);
+  const topScore = ranked[0]?.score ?? 0;
+  if (topScore < TASK_MATCH_MIN) return null;
+  const tied = ranked.filter((r) => r.score === topScore).map((r) => r.task);
+  if (tied.length < 2) return null;
+
+  const terms = [...new Set(wordsOf(words).filter((w) => !REQUEST_FILLER.has(w) && !accessAlias(w) && w !== 'official' && w.length >= 2))];
+  if (terms.length === 0) return null;
+  const matchers = terms.map(keywordMatcher);
+
+  const scored = tied
+    .map((task) => {
+      const fits = taskMatches(catalog, task);
+      if (fits.length === 0) return { task, score: 0 };
+      const density =
+        matchers.reduce((sum, m) => sum + fits.filter((a) => mentions(a, m) > 0).length / fits.length, 0) /
+        matchers.length;
+      return { task, score: density };
+    })
+    .sort((a, b) => b.score - a.score);
+
+  const [first, second] = scored;
+  return first && first.score > 0 && (!second || first.score >= second.score * 1.35) ? first.task : null;
+}
+
 /** An access method as a sentence names it. */
 const AN: Record<string, string> = { api: 'an API', mcp: 'an MCP server', cli: 'a CLI', 'browser-extension': 'a browser extension' };
 
 /** What a part asks of its tool besides the task: an access method ("an mcp") or "official". */
-interface Ask {
+export interface Ask {
   keeps: (agent: Agent) => boolean;
   /** "has a CLI" */
   has: string;
 }
 
-function asksOf(words: string[]): Ask[] {
+export function asksOf(words: string[]): Ask[] {
   const asks: Ask[] = [...new Set(words.flatMap((w) => accessAlias(w) ?? []))].map((method) => ({
     keeps: (agent) => (agent.accessMethods ?? []).includes(method),
     has: `has ${AN[method]}`,
@@ -183,13 +225,19 @@ function asksOf(words: string[]): Ask[] {
  * left out, and `unmet` says so, "as well" when `fits` or an earlier ask
  * already left some of the task's tools out.
  */
-function narrowed(fits: Agent[], asks: Ask[], unmet: string[], already: boolean): { kept: Agent[]; met: Ask[] } {
+export function narrowed(
+  fits: Agent[],
+  asks: Ask[],
+  unmet: string[],
+  already: boolean,
+  subject = 'for this task'
+): { kept: Agent[]; met: Ask[] } {
   const met: Ask[] = [];
   let kept = fits;
   for (const ask of asks) {
     const left = kept.filter(ask.keeps);
     if (left.length === 0) {
-      unmet.push(`No tool for this task ${ask.has}${already || met.length > 0 ? ' as well' : ''}.`);
+      unmet.push(`No tool ${subject} ${ask.has}${already || met.length > 0 ? ' as well' : ''}.`);
       continue;
     }
     kept = left;
@@ -216,8 +264,9 @@ export function putThrough(
   const { text, parts, extra, cut } = requestParts(raw, tasks);
   const stack: Agent[] = [];
 
-  const put = parts.map(({ text: words, task, nearest }): OperatorPart => {
-    const none = { text: words, task, nearest, fits: 0, pick: null, alternatives: [], named: [], met: [], unmet: [], why: null };
+  const put = parts.map(({ text: words, task: matchedTask, nearest }): OperatorPart => {
+    const task = matchedTask ?? breakTaskTie(words, tasks, catalog);
+    const none = { text: words, task, nearest: task ? [] : nearest, fits: 0, pick: null, alternatives: [], named: [], met: [], unmet: [], why: null };
     if (!task) return none;
     const all = taskMatches(catalog, task);
     if (all.length === 0) return none;
@@ -233,7 +282,7 @@ export function putThrough(
     return {
       text: words,
       task,
-      nearest,
+      nearest: [],
       fits: all.length,
       pick,
       alternatives: order.slice(1, 1 + OPERATOR_ALTERNATIVES),

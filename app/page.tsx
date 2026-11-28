@@ -557,7 +557,7 @@ export default async function HomePage() {
             </div>
             <div className="agent-row">
               <span className="agent-accent">/api/mcp</span>
-              <span className="agent-dim">MCP server · search_agents, get_agent, list_categories, compare_agents, alternatives_to, connect_bundle, recommend</span>
+              <span className="agent-dim">MCP server · search_agents, get_agent, list_categories, list_tasks, compare_agents, alternatives_to, connect_bundle, recommend, submit_listing, request_missing_tool</span>
               <span className="agent-dim">streamable-http · no auth</span>
             </div>
             <div className="agent-row">

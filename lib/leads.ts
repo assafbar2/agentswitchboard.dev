@@ -11,7 +11,7 @@
 
 import { bucketClient, type ClientBucket } from './log';
 
-export type LeadKind = 'zero_results' | 'missing_tool';
+export type LeadKind = 'zero_results' | 'missing_tool' | 'unmatched_recommend';
 export type LeadSurface = 'site' | 'rest' | 'mcp';
 
 /** next/headers' read-only headers are not a Headers instance, but have get(). */
@@ -95,4 +95,16 @@ export function logZeroResults(
 ): void {
   if (total !== 0 || !wasSearch(data)) return;
   logLead('zero_results', surface, headers, data);
+}
+
+/** Logs needs that recommend could not match to any task or listing. */
+export function logUnmatchedRecommend(
+  surface: LeadSurface,
+  headers: HeaderSource,
+  unmatched: readonly { need: string }[]
+): void {
+  for (const { need } of unmatched) {
+    if (!need.trim()) continue;
+    logLead('unmatched_recommend', surface, headers, { need });
+  }
 }

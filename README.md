@@ -29,7 +29,7 @@ Point any MCP client at it and query the catalog with native tools:
 }
 ```
 
-Tools: `search_agents` · `get_agent` · `list_categories` · `compare_agents` ·
+Tools: `search_agents` · `get_agent` · `list_categories` · `list_tasks` · `compare_agents` ·
 `alternatives_to` · `connect_bundle` (one MCP client config for up to 10
 listings) · `recommend` (one pick and the next step for a need, in a sentence) ·
 `submit_listing` (files a public GitHub issue for review; publishes
