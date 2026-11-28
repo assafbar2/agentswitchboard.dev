@@ -1,0 +1,61 @@
+{
+  "id": "jetbrains-mcp-server",
+  "name": "JetBrains IDE MCP Server",
+  "slug": "jetbrains-mcp-server",
+  "description": "Connects Claude Code, Codex, Cursor, and other MCP clients to IntelliJ-based IDEs to build, lint, refactor, run, and search code with IDE tools.",
+  "providerName": "JetBrains",
+  "providerUrl": "https://www.jetbrains.com",
+  "agentUrl": "https://www.jetbrains.com/help/idea/mcp-server.html",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "intellij-idea",
+    "jetbrains-ide",
+    "ide-integration",
+    "code-inspections",
+    "refactoring",
+    "local-mcp-server"
+  ],
+  "skills": [
+    {
+      "id": "build-project",
+      "name": "Build Project",
+      "description": "Builds the whole project or chosen files in the IDE, waits for it to finish, and returns compilation errors and warnings."
+    },
+    {
+      "id": "lint-files",
+      "name": "Lint Files",
+      "description": "Analyzes project files with IntelliJ inspections and returns each problem with its severity, description, and line location."
+    },
+    {
+      "id": "rename-symbol",
+      "name": "Rename Symbol",
+      "description": "Renames a variable, function, or class and updates every reference across the project, unlike a text find-and-replace."
+    },
+    {
+      "id": "run-configuration",
+      "name": "Run Configuration",
+      "description": "Runs an existing IDE run configuration, or a temporary one created from a file and line, then waits for it to finish."
+    },
+    {
+      "id": "run-terminal-command",
+      "name": "Run Terminal Command",
+      "description": "Executes a shell command in the IDE's integrated terminal and returns its output, asking for confirmation unless brave mode is on."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://www.jetbrains.com/help/idea/mcp-server.html",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-28T14:54:34.476Z",
+  "updatedAt": "2026-11-28T14:54:34.476Z"
+}

@@ -1,0 +1,66 @@
+{
+  "id": "stackone",
+  "name": "StackOne",
+  "slug": "stackone",
+  "description": "Connect AI agents to Workday, Salesforce, SAP and hundreds more business systems through one MCP gateway, with field-level permissions, prompt-injection defense and audit logs, for IT teams.",
+  "providerName": "StackOne",
+  "providerUrl": "https://www.stackone.com",
+  "agentUrl": "https://www.stackone.com",
+  "categories": [
+    "infrastructure",
+    "agent-identity"
+  ],
+  "tags": [
+    "mcp-gateway",
+    "integrations",
+    "hris",
+    "prompt-injection",
+    "access-control",
+    "unified-api",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "call-actions",
+      "name": "Call Actions",
+      "description": "Calls pre-built actions in connected systems such as Workday, Salesforce and Slack for a linked account, over MCP or the SDK."
+    },
+    {
+      "id": "discover-tools",
+      "name": "Discover Tools",
+      "description": "Finds the relevant StackOne actions at runtime from a natural-language query instead of loading every tool up front."
+    },
+    {
+      "id": "deep-query",
+      "name": "Deep Query",
+      "description": "Filters, searches and aggregates synced business data over MCP, returning only the counts or fields a task needs."
+    },
+    {
+      "id": "control-agent-actions",
+      "name": "Control Agent Actions",
+      "description": "Checks every agent action before it runs and allows, asks, masks or blocks each call according to policy."
+    },
+    {
+      "id": "detect-prompt-injection",
+      "name": "Detect Prompt Injection",
+      "description": "Scans tool results for indirect prompt injection with StackOne Defender before the content reaches the model."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.stackone.com/mcp",
+  "quickstartUrl": "https://docs.stackone.com/gateway/quickstart",
+  "apiBaseUrl": "https://api.stackone.com",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-11-28T14:54:34.529Z",
+  "updatedAt": "2026-11-28T14:54:34.529Z"
+}

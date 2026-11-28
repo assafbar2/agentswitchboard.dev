@@ -1,0 +1,69 @@
+{
+  "id": "chat-sdk",
+  "name": "Chat SDK",
+  "slug": "chat-sdk",
+  "description": "Builds chat bots and AI agents that run on Slack, Microsoft Teams, Google Chat, Discord, Telegram and WhatsApp from one TypeScript codebase, for developers shipping multi-platform bots.",
+  "providerName": "Vercel",
+  "providerUrl": "https://vercel.com",
+  "agentUrl": "https://chat-sdk.dev",
+  "categories": [
+    "communication",
+    "orchestration"
+  ],
+  "tags": [
+    "chat-bots",
+    "slack-bot",
+    "microsoft-teams",
+    "discord-bot",
+    "telegram-bot",
+    "whatsapp",
+    "typescript-sdk",
+    "ai-streaming"
+  ],
+  "skills": [
+    {
+      "id": "platform-adapters",
+      "name": "Platform Adapters",
+      "description": "Connects one bot to Slack, Microsoft Teams, Google Chat, Discord, Telegram, WhatsApp and more through swappable platform adapters."
+    },
+    {
+      "id": "event-handlers",
+      "name": "Event Handlers",
+      "description": "Handles mentions, messages, reactions, slash commands and member joins with type-safe handlers that work across platforms."
+    },
+    {
+      "id": "ai-streaming",
+      "name": "AI Streaming",
+      "description": "Streams real-time text responses from AI models and other async sources into chat threads on each platform."
+    },
+    {
+      "id": "cards-modals",
+      "name": "Cards and Modals",
+      "description": "Sends interactive cards with buttons, fields and images, and opens modals that collect structured input with validation."
+    },
+    {
+      "id": "chat-approvals",
+      "name": "Chat Approvals",
+      "description": "Pauses a durable workflow until a person approves it in chat, then resumes the workflow with that person's decision."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npm create chat-sdk@latest my-bot"
+  },
+  "quickstartUrl": "https://chat-sdk.dev/docs/getting-started",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-11-28T14:54:34.440Z",
+  "updatedAt": "2026-11-28T14:54:34.440Z"
+}

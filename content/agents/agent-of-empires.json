@@ -1,0 +1,69 @@
+{
+  "id": "agent-of-empires",
+  "name": "Agent of Empires",
+  "slug": "agent-of-empires",
+  "description": "Run Claude Code and other coding agents in parallel tmux sessions with git worktrees and container sandboxes, controlled from a TUI, CLI, web dashboard or HTTP API, for developers.",
+  "providerName": "Agent of Empires",
+  "providerUrl": "https://www.agent-of-empires.com",
+  "agentUrl": "https://www.agent-of-empires.com/",
+  "categories": [
+    "orchestration",
+    "code-devtools"
+  ],
+  "tags": [
+    "session-manager",
+    "tmux",
+    "git-worktrees",
+    "parallel-sessions",
+    "docker-sandbox",
+    "terminal-ui",
+    "claude-code"
+  ],
+  "skills": [
+    {
+      "id": "create-session",
+      "name": "Create Session",
+      "description": "Creates a session running a coding agent in a repo, optionally on its own git worktree branch and inside a sandbox container."
+    },
+    {
+      "id": "send-prompt",
+      "name": "Send Prompt",
+      "description": "Sends a prompt to a running agent session and reads its terminal output or structured view to follow its progress."
+    },
+    {
+      "id": "list-sessions",
+      "name": "List Sessions",
+      "description": "Lists live or all sessions with their status, group and parent, so you can see which agents are working or waiting."
+    },
+    {
+      "id": "review-diffs",
+      "name": "Review Diffs",
+      "description": "Shows each session's changed files and diffs so you can review an agent's work from the web dashboard or the API."
+    },
+    {
+      "id": "sandbox-agents",
+      "name": "Sandbox Agents",
+      "description": "Runs agents inside Docker, Podman or Apple Containers sandboxes to keep them isolated from the host machine."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "brew",
+    "command": "brew install aoe"
+  },
+  "quickstartUrl": "https://www.agent-of-empires.com/docs/quick-start",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-11-28T14:54:34.553Z",
+  "updatedAt": "2026-11-28T14:54:34.553Z"
+}

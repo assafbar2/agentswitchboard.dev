@@ -1,0 +1,64 @@
+{
+  "id": "nestjs-observe",
+  "name": "NestJS Observe",
+  "slug": "nestjs-observe",
+  "description": "Queries NestJS app traces, errors, slow operations, and release regressions from coding agents through NestJS Observe's hosted MCP server.",
+  "providerName": "NestJS",
+  "providerUrl": "https://nestjs.com",
+  "agentUrl": "https://www.observe.nestjs.com",
+  "categories": [
+    "infrastructure",
+    "code-devtools"
+  ],
+  "tags": [
+    "nestjs",
+    "observability",
+    "apm",
+    "distributed-tracing",
+    "error-monitoring",
+    "release-regressions",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "find-regressions",
+      "name": "Find Regressions",
+      "description": "Finds regressions by comparing error rate and latency on either side of each release and names the release that made things worse."
+    },
+    {
+      "id": "diff-release",
+      "name": "Diff Release",
+      "description": "Shows what a release changed in the code, such as an N+1 query, a new outbound call, or a slower method."
+    },
+    {
+      "id": "get-trace",
+      "name": "Get Trace",
+      "description": "Resolves a trace ID into its waterfall of executions and span trees across services, plus every log line emitted under it."
+    },
+    {
+      "id": "investigate-errors",
+      "name": "Investigate Errors",
+      "description": "Lists a project's error groups and returns error details with the trace behind each failure, so agents can find the cause."
+    },
+    {
+      "id": "inspect-jobs",
+      "name": "Inspect Background Jobs",
+      "description": "Lists background jobs and returns job details and traces so agents can investigate failed or slow jobs in a NestJS app."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://observe-api.nestjs.com/mcp",
+  "quickstartUrl": "https://www.observe.nestjs.com/documentation/mcp",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-28T14:54:34.478Z",
+  "updatedAt": "2026-11-28T14:54:34.478Z"
+}

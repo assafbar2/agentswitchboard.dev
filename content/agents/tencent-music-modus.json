@@ -1,0 +1,61 @@
+{
+  "id": "tencent-music-modus",
+  "name": "Modus",
+  "slug": "tencent-music-modus",
+  "description": "Builds a reviewed, source-linked Markdown knowledge base of your codebase for Claude Code, Codex, Cursor and CodeBuddy, so coding agents find the code and tests behind business rules.",
+  "providerName": "Tencent Music Entertainment",
+  "providerUrl": "https://www.tencentmusic.com",
+  "agentUrl": "https://github.com/tencentmusic/modus",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "project-knowledge",
+    "codebase-documentation",
+    "context-engineering",
+    "coding-harness",
+    "claude-code",
+    "codex",
+    "cursor"
+  ],
+  "skills": [
+    {
+      "id": "modus-init",
+      "name": "Initialize Project Knowledge",
+      "description": "Builds traceable project knowledge from current source, tests, configs and attached requirements or design documents, with /modus-init."
+    },
+    {
+      "id": "modus-update-knowledge",
+      "name": "Update Knowledge",
+      "description": "Updates the project knowledge affected by new material or local facts, without rerunning repository-wide analysis."
+    },
+    {
+      "id": "modus-reinit",
+      "name": "Reorganize Knowledge",
+      "description": "Reviews and reorganizes existing project knowledge while keeping stable domain and module identities, with /modus-reinit."
+    },
+    {
+      "id": "connect-project",
+      "name": "Connect a Project",
+      "description": "Installs Modus skills and commands into a repository for Claude Code, Codex, Cursor or CodeBuddy with the modus init command."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "pip",
+    "command": "uv tool install openmodus"
+  },
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-11-28T14:54:34.468Z",
+  "updatedAt": "2026-11-28T14:54:34.468Z"
+}

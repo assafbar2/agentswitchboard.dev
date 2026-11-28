@@ -1,0 +1,68 @@
+{
+  "id": "ag-ui",
+  "name": "AG-UI",
+  "slug": "ag-ui",
+  "description": "Connects agent backends such as LangChain, CrewAI and Mastra to user-facing apps through an open event protocol and SDKs for streaming chat, shared state and human-in-the-loop UIs, for app developers.",
+  "providerName": "AG-UI Protocol",
+  "providerUrl": "https://ag-ui.com",
+  "agentUrl": "https://docs.ag-ui.com",
+  "categories": [
+    "orchestration",
+    "code-devtools"
+  ],
+  "tags": [
+    "agent-ui-protocol",
+    "event-streaming",
+    "generative-ui",
+    "human-in-the-loop",
+    "shared-state",
+    "frontend-integration",
+    "copilotkit"
+  ],
+  "skills": [
+    {
+      "id": "event-streaming",
+      "name": "Event Streaming",
+      "description": "Streams typed events for text, tool calls, reasoning, state and lifecycle from any agent backend to your app over SSE or WebSockets."
+    },
+    {
+      "id": "shared-state",
+      "name": "Shared State",
+      "description": "Synchronizes a typed state store between agent and app with streamed, event-sourced diffs for collaborative interfaces."
+    },
+    {
+      "id": "frontend-tools",
+      "name": "Frontend Tool Calls",
+      "description": "Hands tool calls from the agent to actions that run in the frontend, then returns their results back to the agent."
+    },
+    {
+      "id": "interrupts",
+      "name": "Interrupts",
+      "description": "Pauses an agent run so a user can approve, edit, retry or escalate mid-flow, then resumes the run without losing state."
+    },
+    {
+      "id": "scaffold-app",
+      "name": "Scaffold an App",
+      "description": "Scaffolds a new app wired to the agent framework you pick, with a CopilotKit Next.js frontend or a terminal client."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npx create-ag-ui-app@latest"
+  },
+  "quickstartUrl": "https://docs.ag-ui.com/quickstart/applications",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-11-28T14:54:34.449Z",
+  "updatedAt": "2026-11-28T14:54:34.449Z"
+}

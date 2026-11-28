@@ -1,0 +1,66 @@
+{
+  "id": "pinky",
+  "name": "Pinky",
+  "slug": "pinky",
+  "description": "Let Claude Code, Codex, Cursor or any MCP agent operate a real iPhone or Android phone, with risky taps held for your approval and every run recorded, for people automating phone tasks.",
+  "providerName": "DIYgod",
+  "providerUrl": "https://github.com/DIYgod",
+  "agentUrl": "https://github.com/DIYgod/pinky",
+  "categories": [
+    "browser-computer"
+  ],
+  "tags": [
+    "phone-control",
+    "android",
+    "iphone",
+    "mobile-control",
+    "human-approval",
+    "screen-recording"
+  ],
+  "skills": [
+    {
+      "id": "operate-phone",
+      "name": "Operate Phone",
+      "description": "Observes the phone's screen and taps, swipes, types and opens apps on a real iPhone or Android phone over MCP."
+    },
+    {
+      "id": "hold-for-approval",
+      "name": "Hold for Approval",
+      "description": "Holds payments, sends, deletions and other risky steps until you click Allow, and hides banking and password apps."
+    },
+    {
+      "id": "run-phone-task",
+      "name": "Run Phone Task",
+      "description": "Hands a whole task to Pinky's own model with phone_task_run, then follows, steers or cancels it until it ends."
+    },
+    {
+      "id": "record-runs",
+      "name": "Record Runs",
+      "description": "Records each step with screenshots and a screen recording, exportable as an HTML report for a bug report or review."
+    },
+    {
+      "id": "schedule-tasks",
+      "name": "Schedule Tasks",
+      "description": "Runs a phone task at set times or tells you when a condition holds, on the computer and on Android phones."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "brew",
+    "command": "brew install --cask diygod/tap/pinky"
+  },
+  "quickstartUrl": "https://github.com/DIYgod/pinky/blob/main/docs/mcp.md",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-11-28T14:54:34.548Z",
+  "updatedAt": "2026-11-28T14:54:34.548Z"
+}

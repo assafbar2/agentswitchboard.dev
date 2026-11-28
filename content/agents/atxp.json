@@ -1,0 +1,70 @@
+{
+  "id": "atxp",
+  "name": "ATXP",
+  "slug": "atxp",
+  "description": "Give AI agents a funded account with a wallet, an email address and pay-per-call tools for search, crawling and media, plus an OpenAI-compatible LLM gateway, for agent builders.",
+  "providerName": "Circuit & Chisel",
+  "providerUrl": "https://circuitandchisel.com",
+  "agentUrl": "https://atxp.ai",
+  "categories": [
+    "commerce-payments",
+    "agent-identity"
+  ],
+  "tags": [
+    "payments",
+    "crypto-wallet",
+    "pay-per-call",
+    "llm-gateway",
+    "mcp-monetization",
+    "x402",
+    "email-inbox"
+  ],
+  "skills": [
+    {
+      "id": "register-account",
+      "name": "Register Account",
+      "description": "Registers a funded ATXP account with credits, an Ethereum wallet and an email address from a single CLI command."
+    },
+    {
+      "id": "call-llm-gateway",
+      "name": "Call LLM Gateway",
+      "description": "Calls Claude, GPT, Gemini, Llama and other models through an OpenAI-compatible endpoint billed to the ATXP account."
+    },
+    {
+      "id": "pay-per-call-tools",
+      "name": "Pay-per-call Tools",
+      "description": "Calls paid MCP tools for web search, crawling, image, music and video generation and code execution, paying per call."
+    },
+    {
+      "id": "agent-email",
+      "name": "Agent Email",
+      "description": "Sends and receives email at the agent's own atxp.email address through ATXP's pay-per-call email tool."
+    },
+    {
+      "id": "monetize-mcp-server",
+      "name": "Monetize MCP Server",
+      "description": "Charges per tool call from your own MCP server with ATXP's server SDK, so other agents pay to use your tools."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npm install -g atxp"
+  },
+  "quickstartUrl": "https://docs.atxp.ai/agents/quickstart",
+  "apiBaseUrl": "https://llm.atxp.ai/v1",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-11-28T14:54:34.541Z",
+  "updatedAt": "2026-11-28T14:54:34.541Z"
+}

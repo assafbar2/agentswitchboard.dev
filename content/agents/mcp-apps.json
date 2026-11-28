@@ -1,0 +1,62 @@
+{
+  "id": "mcp-apps",
+  "name": "MCP Apps",
+  "slug": "mcp-apps",
+  "description": "Builds interactive UIs like charts, forms and dashboards that MCP tools render inline in Claude, ChatGPT and VS Code, with the official MCP Apps SDK, for MCP server developers.",
+  "providerName": "Model Context Protocol",
+  "providerUrl": "https://modelcontextprotocol.io",
+  "agentUrl": "https://apps.extensions.modelcontextprotocol.io/",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "mcp-apps",
+    "mcp-extension",
+    "interactive-ui",
+    "generative-ui",
+    "mcp-server-development",
+    "typescript-sdk",
+    "openai-apps-migration"
+  ],
+  "skills": [
+    {
+      "id": "tool-ui-resources",
+      "name": "Tool UI Resources",
+      "description": "Declares ui:// HTML resources on MCP tools so hosts render them in a sandboxed iframe and pass tool data to the view."
+    },
+    {
+      "id": "create-mcp-app",
+      "name": "Create an MCP App",
+      "description": "Scaffolds a new MCP App with an interactive UI from scratch when you ask your coding agent to create one."
+    },
+    {
+      "id": "migrate-oai-app",
+      "name": "Migrate an OpenAI App",
+      "description": "Converts an existing OpenAI Apps SDK app to MCP Apps so its interface renders in any compliant MCP host."
+    },
+    {
+      "id": "add-app-to-server",
+      "name": "Add UI to an MCP Server",
+      "description": "Adds interactive UI to the tools of an existing MCP server, so results show as views instead of plain text."
+    },
+    {
+      "id": "convert-web-app",
+      "name": "Convert a Web App",
+      "description": "Turns an existing web app into a hybrid web and MCP App that also renders inline inside MCP chat clients."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://apps.extensions.modelcontextprotocol.io/api/documents/quickstart.html",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-11-28T14:54:34.436Z",
+  "updatedAt": "2026-11-28T14:54:34.436Z"
+}

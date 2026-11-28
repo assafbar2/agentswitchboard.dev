@@ -1,0 +1,64 @@
+{
+  "id": "hostinger-mcp",
+  "name": "Hostinger API MCP Server",
+  "slug": "hostinger-mcp",
+  "description": "Manages Hostinger domains, DNS records, VPS, web hosting, WordPress, and email from AI assistants through Hostinger's hosted or local MCP server.",
+  "providerName": "Hostinger",
+  "providerUrl": "https://www.hostinger.com",
+  "agentUrl": "https://github.com/hostinger/api-mcp-server",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "web-hosting",
+    "dns-management",
+    "domain-registration",
+    "vps",
+    "wordpress",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "search-operations",
+      "name": "Search Operations",
+      "description": "Searches the Hostinger API operations by keyword and returns each match with its input schema, ready for the agent to call."
+    },
+    {
+      "id": "manage-dns-records",
+      "name": "Manage DNS Records",
+      "description": "Lists, updates, validates, deletes, and resets DNS records for a domain, checks propagation, and restores DNS snapshots."
+    },
+    {
+      "id": "manage-domains",
+      "name": "Manage Domains",
+      "description": "Checks domain availability, suggests names, buys domains, and manages forwarding, locks, privacy protection, and nameservers."
+    },
+    {
+      "id": "manage-vps",
+      "name": "Manage VPS",
+      "description": "Starts, stops, restarts, and recreates VPS instances and manages their firewalls, snapshots, backups, and Docker projects."
+    },
+    {
+      "id": "run-multi-step-operations",
+      "name": "Run Multi-Step Operations",
+      "description": "Runs up to 20 API operations in order with multi-execute, passing values from earlier steps and stopping at the first failure."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.hostinger.com",
+  "quickstartUrl": "https://github.com/hostinger/api-mcp-server#quick-start-hosted-remote-server",
+  "apiBaseUrl": "https://developers.hostinger.com",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-11-28T14:54:34.505Z",
+  "updatedAt": "2026-11-28T14:54:34.505Z"
+}

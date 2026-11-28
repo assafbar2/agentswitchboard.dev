@@ -1,0 +1,64 @@
+{
+  "id": "speechmatics",
+  "name": "Speechmatics",
+  "slug": "speechmatics",
+  "description": "Transcribe audio files and live streams, and give voice agents turn-based speech-to-text with speaker labels and turn detection, through REST and WebSocket APIs, for voice app builders.",
+  "providerName": "Speechmatics",
+  "providerUrl": "https://www.speechmatics.com",
+  "agentUrl": "https://www.speechmatics.com",
+  "categories": [
+    "voice-messaging",
+    "language"
+  ],
+  "tags": [
+    "speech-to-text",
+    "transcription",
+    "real-time-transcription",
+    "speaker-diarization",
+    "turn-detection",
+    "text-to-speech",
+    "translation"
+  ],
+  "skills": [
+    {
+      "id": "transcribe-files",
+      "name": "Transcribe Files",
+      "description": "Transcribes pre-recorded audio and video files through the Batch API, with speaker diarization and language identification."
+    },
+    {
+      "id": "transcribe-live-audio",
+      "name": "Transcribe Live Audio",
+      "description": "Transcribes streaming audio to text in real time over a WebSocket connection, with real-time speaker diarization."
+    },
+    {
+      "id": "agent-stt",
+      "name": "Agent STT",
+      "description": "Streams a conversation in and returns speaker-labelled, turn-based transcripts with turn detection, ready to pass to an LLM."
+    },
+    {
+      "id": "text-to-speech",
+      "name": "Text to Speech",
+      "description": "Converts text to speech with Speechmatics voices through the text-to-speech API, for voice agents and apps."
+    },
+    {
+      "id": "translate-audio",
+      "name": "Translate Audio",
+      "description": "Translates the speech in your audio into multiple languages with a single API call alongside the transcript."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://docs.speechmatics.com/get-started/quickstart",
+  "apiBaseUrl": "https://eu1.asr.api.speechmatics.com/v2",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-11-28T14:54:34.536Z",
+  "updatedAt": "2026-11-28T14:54:34.536Z"
+}

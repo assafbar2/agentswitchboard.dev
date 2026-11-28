@@ -1,0 +1,38 @@
+{
+  "id": "workday-mcp",
+  "name": "Workday Agent Gateway MCP",
+  "slug": "workday-mcp",
+  "description": "Connects external agents in Cursor, Copilot Studio or Bedrock AgentCore to Workday through its MCP server and Agent Gateway with OAuth, for Workday Extend Professional customers.",
+  "providerName": "Workday",
+  "providerUrl": "https://www.workday.com",
+  "agentUrl": "https://doc.workday.com/admin-guide/en-us/workday-ai/agents/external-agents/connect-an-external-agent-with-workday-mcp.html",
+  "categories": [
+    "productivity",
+    "finance"
+  ],
+  "tags": [
+    "workday",
+    "remote-mcp",
+    "agent-gateway",
+    "agent-system-of-record",
+    "workday-extend",
+    "oauth",
+    "enterprise-apps"
+  ],
+  "skills": [],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://doc.workday.com/admin-guide/en-us/workday-ai/agents/external-agents/connect-an-external-agent-with-workday-mcp.html",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-28T14:54:34.460Z",
+  "updatedAt": "2026-11-28T14:54:34.460Z"
+}

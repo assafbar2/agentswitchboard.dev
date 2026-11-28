@@ -1,0 +1,67 @@
+{
+  "id": "phonely",
+  "name": "Phonely",
+  "slug": "phonely",
+  "description": "Build and A/B-test AI phone agents that answer inbound calls and run outbound campaigns, and manage agents and calls through API v1 or MCP, for businesses taking customer calls.",
+  "providerName": "Phonely",
+  "providerUrl": "https://www.phonely.ai",
+  "agentUrl": "https://www.phonely.ai",
+  "categories": [
+    "voice-messaging",
+    "customer-support",
+    "sales-marketing"
+  ],
+  "tags": [
+    "phone-calls",
+    "call-center",
+    "outbound-calling",
+    "call-analytics",
+    "ab-testing",
+    "receptionist",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "review-calls",
+      "name": "Review Calls",
+      "description": "Lists, searches and counts calls by date, status, outcome, sentiment or words said, and reads their transcripts and recordings."
+    },
+    {
+      "id": "update-agent",
+      "name": "Update Agent",
+      "description": "Updates a phone agent's voice, guidelines, settings, call analysis and blocked numbers; changes apply from its next call."
+    },
+    {
+      "id": "manage-knowledge",
+      "name": "Manage Knowledge",
+      "description": "Adds text documents and files to a phone agent's knowledge and reads, updates or deletes its knowledge sources."
+    },
+    {
+      "id": "set-call-outcome",
+      "name": "Set Call Outcome",
+      "description": "Sets a call's post-call outcome to record business results that only become known after the call has ended."
+    },
+    {
+      "id": "duplicate-agent",
+      "name": "Duplicate Agent",
+      "description": "Copies a phone agent, together with its flows and knowledge, into the same organization to start a variant."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.phonely.ai/mcp",
+  "quickstartUrl": "https://docs.phonely.ai/get-started/quick-start",
+  "apiBaseUrl": "https://api.us.phonely.ai/v1",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api",
+    "mcp"
+  ],
+  "createdAt": "2026-11-28T14:54:34.544Z",
+  "updatedAt": "2026-11-28T14:54:34.544Z"
+}

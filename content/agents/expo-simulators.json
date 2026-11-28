@@ -1,0 +1,69 @@
+{
+  "id": "expo-simulators",
+  "name": "Expo Simulators",
+  "slug": "expo-simulators",
+  "description": "Runs remote iOS Simulators and Android Emulators that coding agents start, drive, and screenshot to test mobile apps, via the EAS CLI or REST API.",
+  "providerName": "Expo",
+  "providerUrl": "https://expo.dev",
+  "agentUrl": "https://docs.expo.dev/eas/simulators/introduction/",
+  "categories": [
+    "code-devtools",
+    "browser-computer"
+  ],
+  "tags": [
+    "ios-simulator",
+    "android-emulator",
+    "mobile-app-testing",
+    "react-native",
+    "expo",
+    "remote-devices",
+    "eas-cli"
+  ],
+  "skills": [
+    {
+      "id": "start-remote-device",
+      "name": "Start Remote Device",
+      "description": "Starts a remote iOS Simulator or Android Emulator session on Expo infrastructure with eas simulator:start or the REST API."
+    },
+    {
+      "id": "install-app-build",
+      "name": "Install App Build",
+      "description": "Installs an Expo Build, a build fingerprint match, an app archive URL, or Expo Go on the remote device for testing."
+    },
+    {
+      "id": "drive-device",
+      "name": "Drive the Device",
+      "description": "Controls the running app through agent-device, Argent, or Appium: opens apps, presses buttons, enters text, reads the UI tree."
+    },
+    {
+      "id": "capture-evidence",
+      "name": "Capture Evidence",
+      "description": "Captures screenshots, screen recordings, and logs from a remote simulator session to return as proof that a change works."
+    },
+    {
+      "id": "share-browser-preview",
+      "name": "Share Browser Preview",
+      "description": "Opens a live browser preview of the remote device session that teammates can open from a link or you can embed in a page."
+    }
+  ],
+  "authType": "bearer",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npm install -g eas-cli"
+  },
+  "quickstartUrl": "https://docs.expo.dev/eas/simulators/get-started/",
+  "apiBaseUrl": "https://api.expo.dev",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-11-28T14:54:34.473Z",
+  "updatedAt": "2026-11-28T14:54:34.473Z"
+}

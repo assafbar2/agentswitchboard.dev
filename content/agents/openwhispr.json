@@ -1,0 +1,70 @@
+{
+  "id": "openwhispr",
+  "name": "OpenWhispr",
+  "slug": "openwhispr",
+  "description": "Search, read and create OpenWhispr dictation notes, meeting transcripts, dictionary words and snippets from Claude or Cursor via MCP, REST API or CLI, for people who dictate.",
+  "providerName": "OpenWhispr",
+  "providerUrl": "https://openwhispr.com",
+  "agentUrl": "https://openwhispr.com",
+  "categories": [
+    "voice-messaging",
+    "productivity"
+  ],
+  "tags": [
+    "dictation",
+    "speech-to-text",
+    "meeting-notes",
+    "transcription",
+    "note-search",
+    "whisper"
+  ],
+  "skills": [
+    {
+      "id": "search-notes",
+      "name": "Search Notes",
+      "description": "Searches notes with hybrid semantic and full-text search, and lists, reads, creates, updates or deletes notes and folders."
+    },
+    {
+      "id": "read-transcripts",
+      "name": "Read Transcripts",
+      "description": "Gets transcriptions and note transcripts with speaker-attributed segments and timestamps, including SRT and VTT output."
+    },
+    {
+      "id": "manage-dictionary",
+      "name": "Manage Dictionary",
+      "description": "Lists, adds, updates and deletes custom dictionary words so names and jargon are spelled correctly in dictation."
+    },
+    {
+      "id": "manage-snippets",
+      "name": "Manage Snippets",
+      "description": "Creates, updates and deletes snippets, the trigger phrases that expand into longer text while you dictate."
+    },
+    {
+      "id": "transcribe-audio",
+      "name": "Transcribe Audio",
+      "description": "Transcribes a short audio clip with OpenWhispr Cloud and returns the transcript in the same request (beta)."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.openwhispr.com/mcp",
+  "install": {
+    "type": "npm",
+    "command": "npm install -g @openwhispr/cli"
+  },
+  "quickstartUrl": "https://docs.openwhispr.com/integrations/mcp",
+  "apiBaseUrl": "https://api.openwhispr.com/api/v1",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api",
+    "cli"
+  ],
+  "createdAt": "2026-11-28T14:54:34.545Z",
+  "updatedAt": "2026-11-28T14:54:34.545Z"
+}

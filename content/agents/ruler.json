@@ -1,0 +1,66 @@
+{
+  "id": "ruler",
+  "name": "Ruler",
+  "slug": "ruler",
+  "description": "Applies one .ruler folder of Markdown rules, MCP server settings, and skills to every coding assistant's config files, and reverts the changes on demand.",
+  "providerName": "Eleanor Berger",
+  "providerUrl": "https://github.com/intellectronica",
+  "agentUrl": "https://github.com/intellectronica/ruler",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "agent-config",
+    "rules-management",
+    "agents-md",
+    "mcp-config",
+    "claude-code",
+    "cursor",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "apply-rules",
+      "name": "Apply Rules",
+      "description": "Applies the Markdown rules in .ruler directories to the configuration files of every supported coding agent with ruler apply."
+    },
+    {
+      "id": "propagate-mcp-servers",
+      "name": "Propagate MCP Servers",
+      "description": "Distributes MCP server definitions from ruler.toml into each agent's MCP config, merging with or overwriting existing entries."
+    },
+    {
+      "id": "nested-rules",
+      "name": "Nested Rules",
+      "description": "Loads nested .ruler directories so different parts of a large project get their own context-specific agent instructions."
+    },
+    {
+      "id": "revert-changes",
+      "name": "Revert Changes",
+      "description": "Reverts every change made by ruler apply, restoring backups or removing generated files, for all agents or only chosen ones."
+    },
+    {
+      "id": "gitignore-generated-files",
+      "name": "Gitignore Generated Files",
+      "description": "Keeps generated agent config files out of version control by updating .gitignore or .git/info/exclude automatically."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npm install -g @intellectronica/ruler"
+  },
+  "quickstartUrl": "https://github.com/intellectronica/ruler#getting-started",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-11-28T14:54:34.500Z",
+  "updatedAt": "2026-11-28T14:54:34.500Z"
+}

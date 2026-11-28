@@ -1,0 +1,63 @@
+{
+  "id": "mcp1",
+  "name": "MCP1 by Appwrite",
+  "slug": "mcp1",
+  "description": "Put a team's MCP servers behind one gateway URL with OAuth sign-in, per-tool rules by role and group, and an audit log of every tool call, for teams rolling out MCP clients.",
+  "providerName": "Appwrite",
+  "providerUrl": "https://appwrite.io",
+  "agentUrl": "https://mcp1.com",
+  "categories": [
+    "infrastructure",
+    "security"
+  ],
+  "tags": [
+    "mcp-gateway",
+    "access-control",
+    "audit-log",
+    "oauth",
+    "role-based-access",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "create-gateway",
+      "name": "Create Gateway",
+      "description": "Bundles installed MCP servers behind one gateway URL and grants it to groups with full or read-only access."
+    },
+    {
+      "id": "set-tool-rules",
+      "name": "Set Tool Rules",
+      "description": "Limits servers and single tools to groups, sets a minimum role per tool, blocks or confirms destructive tools and rate-limits calls."
+    },
+    {
+      "id": "search-tools",
+      "name": "Search Tools",
+      "description": "Searches tools across a gateway's servers and runs them with mcp1__search_tools and mcp1__call_tool, keeping tool definitions small."
+    },
+    {
+      "id": "audit-tool-calls",
+      "name": "Audit Tool Calls",
+      "description": "Records every tool call with who made it, through which client and gateway, how long it took and whether it was allowed."
+    },
+    {
+      "id": "connect-servers",
+      "name": "Connect Servers",
+      "description": "Connects catalog MCP servers in one click with OAuth, or any remote server by URL, keeping their tokens encrypted and refreshed."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp1.com/mcp",
+  "quickstartUrl": "https://mcp1.com/docs",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-28T14:54:34.522Z",
+  "updatedAt": "2026-11-28T14:54:34.522Z"
+}

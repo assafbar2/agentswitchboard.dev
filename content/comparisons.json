@@ -1,5 +1,9 @@
 [
   {
+    "items": ["claude-ship", "coderabbit", "greptile"],
+    "intro": "Three AI reviewers for pull requests: Claude Ship's agents on GitHub for Team and Enterprise plans, CodeRabbit across four Git hosts, and Greptile on GitHub and GitLab with an MCP server."
+  },
+  {
     "items": ["docusign-mcp", "docuseal", "signnow-mcp"],
     "intro": "Three ways for an agent to send documents for e-signature: Docusign and SignNow through hosted OAuth MCP servers, and DocuSeal, open source, with a hosted MCP or self-hosting."
   },

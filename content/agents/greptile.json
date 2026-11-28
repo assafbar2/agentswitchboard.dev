@@ -1,0 +1,67 @@
+{
+  "id": "greptile",
+  "name": "Greptile",
+  "slug": "greptile",
+  "description": "Review GitHub and GitLab pull requests with full-codebase context, then fetch and fix review comments from Claude Code, Cursor or Codex via MCP or the CLI, for engineering teams.",
+  "providerName": "Greptile",
+  "providerUrl": "https://www.greptile.com",
+  "agentUrl": "https://www.greptile.com",
+  "categories": [
+    "code-devtools"
+  ],
+  "tags": [
+    "code-review",
+    "pull-requests",
+    "github",
+    "gitlab",
+    "coding-standards",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "review-pull-request",
+      "name": "Review Pull Request",
+      "description": "Triggers a Greptile code review on a GitHub or GitLab pull request, then returns the review once the analysis finishes."
+    },
+    {
+      "id": "fix-review-comments",
+      "name": "Fix Review Comments",
+      "description": "Fetches a pull request's unaddressed Greptile review comments so a coding agent can apply the suggested fixes."
+    },
+    {
+      "id": "search-review-comments",
+      "name": "Search Review Comments",
+      "description": "Searches past Greptile review comments across repositories to find recurring issues and earlier feedback."
+    },
+    {
+      "id": "manage-coding-standards",
+      "name": "Manage Coding Standards",
+      "description": "Views, searches and creates custom context, turning recurring review feedback into coding patterns Greptile enforces."
+    },
+    {
+      "id": "review-locally",
+      "name": "Review Locally",
+      "description": "Reviews local branches from the terminal with the Greptile CLI before you push, or in CI with an API key."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://api.greptile.com/mcp",
+  "install": {
+    "type": "npm",
+    "command": "npm i -g greptile@latest"
+  },
+  "quickstartUrl": "https://www.greptile.com/docs/quickstart",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "cli"
+  ],
+  "createdAt": "2026-11-28T14:54:34.524Z",
+  "updatedAt": "2026-11-28T14:54:34.524Z"
+}

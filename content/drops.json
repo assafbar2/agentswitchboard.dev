@@ -1,4 +1,7 @@
 {
+  "2026-11-28": {
+    "intro": "Anthropic's Claude Ship, Shopify's store-setup MCP and Coinbase's x402 Bazaar lead 52 additions, 11 of them Official, alongside Better Auth's OAuth provider for MCP servers."
+  },
   "2026-11-20": {
     "intro": "OpenAI's Codex Security, Vercel's eve framework and Microsoft's Agent Governance Toolkit lead 119 additions, 29 of them Official, with Suno's MCP server, Kling AI and Black Forest Labs' FLUX API for media."
   },

@@ -1,0 +1,68 @@
+{
+  "id": "mcporter",
+  "name": "MCPorter",
+  "slug": "mcporter",
+  "description": "Calls any MCP server from the terminal or TypeScript: lists and calls tools, handles OAuth, and generates standalone CLIs and typed clients.",
+  "providerName": "OpenClaw",
+  "providerUrl": "https://github.com/openclaw",
+  "agentUrl": "https://mcporter.sh",
+  "categories": [
+    "code-devtools",
+    "infrastructure"
+  ],
+  "tags": [
+    "mcp-client",
+    "mcp-cli",
+    "typescript",
+    "cli-generator",
+    "typed-clients",
+    "oauth",
+    "open-source"
+  ],
+  "skills": [
+    {
+      "id": "list-servers",
+      "name": "List Servers",
+      "description": "Lists configured MCP servers and their tools with TypeScript-style signatures, importing configs from Cursor, Claude, and Codex."
+    },
+    {
+      "id": "call-tool",
+      "name": "Call Tool",
+      "description": "Calls an MCP tool or reads a resource from the command line with colon flags or function-call syntax, with stable JSON output."
+    },
+    {
+      "id": "generate-cli",
+      "name": "Generate CLI",
+      "description": "Generates a standalone, ready-to-run CLI for any MCP server, with embedded schemas and optional bundling into one binary."
+    },
+    {
+      "id": "emit-typed-client",
+      "name": "Emit Typed Client",
+      "description": "Emits TypeScript .d.ts interfaces or a typed client so agents and tests call MCP tools like normal functions."
+    },
+    {
+      "id": "oauth-sign-in",
+      "name": "OAuth Sign-In",
+      "description": "Signs in to hosted MCP servers that need a browser login with mcporter auth, then caches and refreshes the OAuth tokens."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "npm",
+    "command": "npm install -g mcporter"
+  },
+  "quickstartUrl": "https://mcporter.sh/quickstart.html",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli",
+    "api"
+  ],
+  "createdAt": "2026-11-28T14:54:34.488Z",
+  "updatedAt": "2026-11-28T14:54:34.488Z"
+}

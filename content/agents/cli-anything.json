@@ -1,0 +1,67 @@
+{
+  "id": "cli-anything",
+  "name": "CLI-Anything",
+  "slug": "cli-anything",
+  "description": "Generates agent-usable CLIs for desktop apps, codebases and web APIs, and installs ready-made ones from the CLI-Hub registry, for developers who want agents to drive GUI software.",
+  "providerName": "Data Intelligence Lab@HKU",
+  "providerUrl": "https://github.com/HKUDS",
+  "agentUrl": "https://clianything.cc",
+  "categories": [
+    "code-devtools",
+    "browser-computer"
+  ],
+  "tags": [
+    "cli-generator",
+    "agent-native-cli",
+    "gui-automation",
+    "cli-registry",
+    "claude-code-plugin",
+    "agent-skills",
+    "desktop-apps"
+  ],
+  "skills": [
+    {
+      "id": "generate-cli",
+      "name": "Generate a CLI",
+      "description": "Generates a complete agent-native CLI for a desktop app, codebase or web API through a seven-phase build, test and publish pipeline."
+    },
+    {
+      "id": "refine-cli",
+      "name": "Refine a CLI",
+      "description": "Refines a generated CLI by analyzing gaps against the software's full capabilities, or by targeting one functionality area."
+    },
+    {
+      "id": "cli-hub",
+      "name": "CLI-Hub Package Manager",
+      "description": "Browses, searches, installs, updates and launches community-built and public CLIs from the CLI-Hub registry with one command."
+    },
+    {
+      "id": "cli-hub-meta-skill",
+      "name": "CLI-Hub Meta-Skill",
+      "description": "Finds and installs the right CLI from CLI-Hub for a task, through a skill for Claude Code, Codex and other SKILL-compatible agents."
+    },
+    {
+      "id": "skill-md-generation",
+      "name": "SKILL.md Generation",
+      "description": "Generates a SKILL.md for each built CLI with its command groups, usage examples and JSON output guidance for agents."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "install": {
+    "type": "pip",
+    "command": "pip install cli-anything-hub"
+  },
+  "quickstartUrl": "https://github.com/HKUDS/CLI-Anything#-quick-start",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "cli"
+  ],
+  "createdAt": "2026-11-28T14:54:34.442Z",
+  "updatedAt": "2026-11-28T14:54:34.442Z"
+}

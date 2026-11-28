@@ -1,0 +1,53 @@
+{
+  "id": "autodesk-fusion-mcp",
+  "name": "Autodesk Fusion MCP",
+  "slug": "autodesk-fusion-mcp",
+  "description": "Creates, modifies and inspects CAD geometry and runs Python scripts in a running Autodesk Fusion session from Claude Desktop, Cursor or other MCP clients, for Fusion users.",
+  "providerName": "Autodesk",
+  "providerUrl": "https://www.autodesk.com",
+  "agentUrl": "https://github.com/Autodesk/ai-integrations/tree/main/fusion/local-mcp-server",
+  "categories": [
+    "content-media"
+  ],
+  "tags": [
+    "autodesk-fusion",
+    "cad-modeling",
+    "3d-geometry",
+    "local-mcp",
+    "fusion-add-ins",
+    "python-scripting",
+    "claude-desktop"
+  ],
+  "skills": [
+    {
+      "id": "cad-geometry",
+      "name": "CAD Geometry",
+      "description": "Creates, modifies and inspects CAD geometry in your running Autodesk Fusion session from any MCP client, with everything kept local."
+    },
+    {
+      "id": "run-python",
+      "name": "Run Python in Fusion",
+      "description": "Runs Python scripts in the active Fusion session and inspects errors, so agents can test add-ins against your live design."
+    },
+    {
+      "id": "fusion-api-docs",
+      "name": "Fusion API Docs",
+      "description": "Queries current Fusion programming documentation so agents write scripts and add-ins against the up-to-date Fusion API."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://github.com/Autodesk/ai-integrations/tree/main/fusion/local-mcp-server#install",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-28T14:54:34.462Z",
+  "updatedAt": "2026-11-28T14:54:34.462Z"
+}

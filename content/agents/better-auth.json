@@ -1,0 +1,53 @@
+{
+  "id": "better-auth",
+  "name": "Better Auth",
+  "slug": "better-auth",
+  "description": "Turns your TypeScript app into an OAuth 2.1 authorization server for MCP clients; listed for Better Auth's MCP OAuth-provider and CIMD plugins, for developers securing MCP servers.",
+  "providerName": "Better Auth",
+  "providerUrl": "https://better-auth.com",
+  "agentUrl": "https://better-auth.com",
+  "categories": [
+    "agent-identity",
+    "security"
+  ],
+  "tags": [
+    "mcp-oauth",
+    "oauth-provider",
+    "authorization-server",
+    "cimd",
+    "mcp-server-auth",
+    "typescript-auth",
+    "dpop"
+  ],
+  "skills": [
+    {
+      "id": "mcp-oauth-provider",
+      "name": "MCP OAuth Provider",
+      "description": "Runs your app as an OAuth 2.1 authorization server and protected resource that MCP clients discover and sign in to with PKCE."
+    },
+    {
+      "id": "protect-mcp-routes",
+      "name": "Protect MCP Routes",
+      "description": "Verifies MCP access tokens on your routes, checking signature, issuer, audience, expiry, scopes and DPoP binding before tools run."
+    },
+    {
+      "id": "cimd-clients",
+      "name": "Client ID Metadata Documents",
+      "description": "Registers OAuth clients from HTTPS Client ID Metadata Documents, so MCP clients sign in without dynamic client registration."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://better-auth.com/docs/plugins/mcp",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-11-28T14:54:34.430Z",
+  "updatedAt": "2026-11-28T14:54:34.430Z"
+}

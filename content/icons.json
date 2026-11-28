@@ -35,6 +35,10 @@
     "v": "1f0724a6",
     "source": "https://www.google.com/s2/favicons?domain=ada.cx&sz=128"
   },
+  "adloop": {
+    "v": "7723d42d",
+    "source": "https://getadloop.com/favicon.svg"
+  },
   "adobe-analytics-mcp": {
     "v": "709942ad",
     "source": "https://github.com/AdobeDocs.png?size=256"
@@ -42,6 +46,10 @@
   "adobe-for-claude": {
     "v": "6d0ac476",
     "source": "https://www.google.com/s2/favicons?domain=adobe.com&sz=128"
+  },
+  "ag-ui": {
+    "v": "93f72a9d",
+    "source": "https://docs.ag-ui.com/mintlify-assets/_mintlify/favicons/tawkitai/17hLUYwUWrJRbY20/_generated/favicon/android-chrome-192x192.png"
   },
   "ag2": {
     "v": "bd9ddb2c",
@@ -66,6 +74,10 @@
   "agent-native": {
     "v": "0fa7d44d",
     "source": "https://www.agent-native.com/favicon.svg"
+  },
+  "agent-of-empires": {
+    "v": "db10b46d",
+    "source": "https://www.agent-of-empires.com/assets/logo.svg"
   },
   "agent-orchestrator": {
     "v": "e7b58f42",
@@ -111,9 +123,17 @@
     "v": "c601d30d",
     "source": "https://agentcash.dev/docs/mintlify-assets/_mintlify/favicons/meritsystems/kV-mNXs9haOvQak2/_generated/favicon/android-chrome-192x192.png"
   },
+  "agentcat": {
+    "v": "f252cbca",
+    "source": "https://agentcat.com/icon.svg?e2d7e218701704e2"
+  },
   "agentcouch": {
     "v": "3a0dc970",
     "source": "https://agentcouch.dev/icon.png?d0ceadbf0244ead6"
+  },
+  "agentes-chat": {
+    "v": "4df8bb92",
+    "source": "https://agentes.chat/icon-512.png"
   },
   "agentic-bug-hunter": {
     "v": "9de09db7",
@@ -199,6 +219,10 @@
   "aider": {
     "v": "f0c9ef33",
     "source": "https://aider.chat/assets/icons/android-chrome-384x384.png"
+  },
+  "aimock": {
+    "v": "2c9d35b1",
+    "source": "https://github.com/CopilotKit.png?size=256"
   },
   "aionui": {
     "v": "7b73b955",
@@ -392,6 +416,10 @@
     "v": "b4323c0e",
     "source": "https://atuin.sh/icon.png"
   },
+  "atxp": {
+    "v": "626bd659",
+    "source": "https://atxp.ai/favicons/favicon/apple-touch-icon.png"
+  },
   "augment-code": {
     "v": "ea4be5c5",
     "source": "https://docs.augmentcode.com/mintlify-assets/_mintlify/favicons/augment-mtje7p526w/MMO3uIP-KlW_55xJ/_generated/favicon/android-chrome-192x192.png"
@@ -403,6 +431,10 @@
   "auth0-token-vault": {
     "v": "297b812c",
     "source": "https://mintlify.s3.us-west-1.amazonaws.com/auth0/docs/images/logo/favicon.svg"
+  },
+  "autodesk-fusion-mcp": {
+    "v": "7f0be93a",
+    "source": "https://github.com/Autodesk.png?size=256"
   },
   "autogen": {
     "v": "b809713c",
@@ -504,6 +536,10 @@
   "bedrock-agentcore": {
     "v": "fd9c599f",
     "source": "https://aws.amazon.com/apple-touch-icon.png"
+  },
+  "better-auth": {
+    "v": "7133a5ca",
+    "source": "https://better-auth.com/favicon/apple-touch-icon.png"
   },
   "better-stack-mcp": {
     "v": "e7aaa67c",
@@ -674,6 +710,10 @@
     "v": "2c9d35b1",
     "source": "https://github.com/CopilotKit.png?size=256"
   },
+  "chat-sdk": {
+    "v": "6eb2005e",
+    "source": "https://chat-sdk.dev/favicon.ico?favicon.3fpu2ql9ns1a0.ico"
+  },
   "chatbase-mcp": {
     "v": "3178e79c",
     "source": "https://www.chatbase.co/docs/mintlify-assets/_mintlify/favicons/chatbase/sZYcuOsK-Dv6V9lc/_generated/favicon/android-chrome-192x192.png"
@@ -746,6 +786,10 @@
     "v": "4f299b83",
     "source": "https://cmem.ai/assets/cmem/cmem-mark.png"
   },
+  "claude-ship": {
+    "v": "e8f5faf0",
+    "source": "https://code.claude.com/docs/mintlify-assets/_mintlify/favicons/claude-code/pLsy-mRpNksna2sx/_generated/favicon/android-chrome-192x192.png"
+  },
   "claw-compactor": {
     "v": "36789b42",
     "source": "https://www.opencompress.ai/favicon.svg"
@@ -773,6 +817,10 @@
   "clerk-mcp": {
     "v": "dc05ce17",
     "source": "https://github.com/clerk.png?size=256"
+  },
+  "cli-anything": {
+    "v": "519726d5",
+    "source": "https://github.com/HKUDS.png?size=256"
   },
   "cli-printing-press": {
     "v": "808ce89a",
@@ -919,6 +967,10 @@
     "v": "981c7a95",
     "source": "https://docs.cdp.coinbase.com/mintlify-assets/_mintlify/favicons/coinbase-prod/c38WXP1QDRE4hnu6/_generated/favicon/android-chrome-192x192.png"
   },
+  "coinbase-x402-bazaar": {
+    "v": "981c7a95",
+    "source": "https://docs.cdp.coinbase.com/mintlify-assets/_mintlify/favicons/coinbase-prod/c38WXP1QDRE4hnu6/_generated/favicon/android-chrome-192x192.png"
+  },
   "colibri": {
     "v": "326bd367",
     "source": "https://github.com/JustVugg.png?size=256"
@@ -970,6 +1022,11 @@
   "context7": {
     "v": "8c7ced36",
     "source": "https://context7.com/favicon.ico"
+  },
+  "contextual-ai": {
+    "v": "ed0b5377",
+    "source": "https://contextual.ai/favicon.ico",
+    "px": 48
   },
   "continue-dev": {
     "v": "4ddea1de",
@@ -1320,6 +1377,10 @@
     "v": "e1b719ab",
     "source": "https://www.endara.ai/icon.svg?icon.0qpuvkj1lgf07.svg"
   },
+  "endform": {
+    "v": "c40f649a",
+    "source": "https://endform.dev/web-app-manifest-512x512.png"
+  },
   "engram": {
     "v": "b14bb5e1",
     "source": "https://engram.gentlemanprogramming.com/favicon-engram.svg"
@@ -1367,6 +1428,10 @@
   "explorium-agentsource-mcp": {
     "v": "26c9ed0e",
     "source": "https://developers.explorium.ai/mintlify-assets/_mintlify/favicons/explorium/k-N65x6civSVxwxG/_generated/favicon/android-chrome-192x192.png"
+  },
+  "expo-simulators": {
+    "v": "91161b47",
+    "source": "https://static.expo.dev/static/brand/app-icon-512x512.png"
   },
   "fabric-rti-mcp": {
     "v": "b809713c",
@@ -1431,6 +1496,10 @@
   "firebolt": {
     "v": "2a8c82e5",
     "source": "https://www.firebolt.io/icon-512.png"
+  },
+  "firecms-mcp": {
+    "v": "883c7415",
+    "source": "https://www.google.com/s2/favicons?domain=firecms.co&sz=128"
   },
   "firecrawl": {
     "v": "8c96d4cb",
@@ -1512,6 +1581,10 @@
   "freetoken": {
     "v": "a24bfd5f",
     "source": "https://www.flashml.ai/assets/f-icon.svg"
+  },
+  "freevideo": {
+    "v": "e79e8794",
+    "source": "https://github.com/FlashML-org.png?size=256"
   },
   "freshdesk-freddy": {
     "v": "ceb49832",
@@ -1741,6 +1814,10 @@
     "v": "7f9825f9",
     "source": "https://www.getzep.com/apple-touch-icon.png"
   },
+  "greptile": {
+    "v": "2c625fa4",
+    "source": "https://www.greptile.com/greptile-brand-mark.png"
+  },
   "griptape": {
     "v": "3937424a",
     "source": "https://cdn.prod.website-files.com/65d658559223871198e78bca/6995e1929b75bc0cd4eecdfa_griptape%20favicon2.png"
@@ -1876,6 +1953,10 @@
   "hootsuite-mcp": {
     "v": "0f180074",
     "source": "https://www.hootsuite.com/images/apple-touch-icon.png"
+  },
+  "hostinger-mcp": {
+    "v": "55d29753",
+    "source": "https://github.com/hostinger.png?size=256"
   },
   "hourtick": {
     "v": "49fd1930",
@@ -2015,6 +2096,10 @@
     "v": "7b93d18c",
     "source": "https://www.jackandjill.ai/icon-512.png"
   },
+  "jam-mcp": {
+    "v": "204d8ae7",
+    "source": "https://jam.dev/docs/mintlify-assets/_mintlify/favicons/jam-1eb4fd26/Plt66rpoQ3EQ04EP/_generated/favicon/android-chrome-192x192.png"
+  },
   "jan": {
     "v": "a8c129b1",
     "source": "https://jan.ai/favicon.ico",
@@ -2027,6 +2112,10 @@
   "jcode": {
     "v": "8f183740",
     "source": "https://jcode.sh/favicon.svg"
+  },
+  "jetbrains-mcp-server": {
+    "v": "4b78dbdd",
+    "source": "https://www.jetbrains.com/icon-512.png"
   },
   "jev-ultrafast": {
     "v": "43f8fd23",
@@ -2308,6 +2397,10 @@
     "v": "2b98ea6a",
     "source": "https://docs.lovable.dev/mintlify-assets/_mintlify/favicons/lovable-f9060f1e/AU_uVgnksniw8mje/_generated/favicon/android-chrome-192x192.png"
   },
+  "lucidlink-mcp": {
+    "v": "9dd43270",
+    "source": "https://developer.lucidlink.com/icon-512.png"
+  },
   "luma-ai-api": {
     "v": "808580bb",
     "source": "https://docs.lumalabs.ai/icon-512.png?v=9b849a0a6f2d"
@@ -2343,6 +2436,10 @@
   "mailflare": {
     "v": "4675be86",
     "source": "https://mailflare.co/icon-192.png"
+  },
+  "mailtrap-mcp": {
+    "v": "2531cc1a",
+    "source": "https://mailtrap.io/app/themes/mailtrap/images/favicon/favicon-192.png?v=3"
   },
   "make": {
     "v": "ee6f3ccd",
@@ -2396,9 +2493,21 @@
     "v": "74be65bb",
     "source": "https://lastmileai.dev/images/lm_favicon.png"
   },
+  "mcp-apps": {
+    "v": "8dcb6c62",
+    "source": "https://modelcontextprotocol.io/mintlify-assets/_mintlify/favicons/mcp/ebiVJzri-bsiCfVZ/_generated/favicon/android-chrome-192x192.png"
+  },
+  "mcp-atlassian": {
+    "v": "5a09b325",
+    "source": "https://mcp-atlassian.soomiles.com/mintlify-assets/_mintlify/favicons/personal-1d37018d/P8lOR-8WfTlUYbEq/_generated/favicon/android-chrome-192x192.png"
+  },
   "mcp-csharp-sdk": {
     "v": "8dcb6c62",
     "source": "https://modelcontextprotocol.io/mintlify-assets/_mintlify/favicons/mcp/ebiVJzri-bsiCfVZ/_generated/favicon/android-chrome-192x192.png"
+  },
+  "mcp-handler": {
+    "v": "ae7c0ace",
+    "source": "https://py8fhxnkzwtsqdo9.public.blob.vercel-storage.com/front/favicon/vercel/android-chrome-512x512.png"
   },
   "mcp-java-sdk": {
     "v": "8dcb6c62",
@@ -2420,9 +2529,17 @@
     "v": "56c4c9a5",
     "source": "https://manufact.com/web-app-manifest-512x512.png"
   },
+  "mcp1": {
+    "v": "b9e840a1",
+    "source": "https://mcp1.com/icon-512.png"
+  },
   "mcpjam": {
     "v": "53d45d85",
     "source": "https://github.com/MCPJam.png?size=256"
+  },
+  "mcporter": {
+    "v": "0b5205f9",
+    "source": "https://mcporter.sh/favicon.svg"
   },
   "mdzhb": {
     "v": "84fe2a00",
@@ -2487,6 +2604,10 @@
   "microsoft-ufo": {
     "v": "b809713c",
     "source": "https://www.microsoft.com/favicon.ico?v2"
+  },
+  "microsoft-vally": {
+    "v": "b1ba18c0",
+    "source": "https://microsoft.github.io/vally/favicon.svg"
   },
   "milvus": {
     "v": "d171887f",
@@ -2688,6 +2809,10 @@
   "nero-ai": {
     "v": "0ea62e3c",
     "source": "https://ai.nero.com/homeIcons/home_512.png"
+  },
+  "nestjs-observe": {
+    "v": "d5da01dd",
+    "source": "https://www.observe.nestjs.com/logo512.png"
   },
   "netdata": {
     "v": "9e3d868e",
@@ -3094,6 +3219,10 @@
     "v": "6697564f",
     "source": "https://res.gcloudcache.com/volc-fe/openviking/playground/static/svg/favicon-BXHrVgog.svg"
   },
+  "openwhispr": {
+    "v": "f1ca775e",
+    "source": "https://openwhispr.com/logo-legacy.svg"
+  },
   "openwiki": {
     "v": "4536470a",
     "source": "https://cdn.prod.website-files.com/65b8cd72835ceeacd4449a53/69a17e4f0c916c644f4de1cd_webclip%20lg.png"
@@ -3159,6 +3288,10 @@
     "v": "a669b8a4",
     "source": "https://www.outstand.so/favicon.ico?c53b0d104cca9d79",
     "px": 48
+  },
+  "ovhcloud-ai-endpoints": {
+    "v": "0f42d697",
+    "source": "https://www.ovhcloud.com/android-icon-512x512.png"
   },
   "owl-camel": {
     "v": "f5c0e790",
@@ -3263,6 +3396,10 @@
   "phone-harness": {
     "v": "1ef3b036",
     "source": "https://phone-harness.com/docs/mintlify-assets/_mintlify/favicons/phone-harness/858nNT0arFLNybM8/_generated/favicon/android-chrome-192x192.png"
+  },
+  "phonely": {
+    "v": "6b12e024",
+    "source": "https://cdn.prod.website-files.com/699e0d6ca1d7b56938b5753c/69a1dafbf1a526a35858f98c_Phonely%20Favicon%20Large.png"
   },
   "pi-agent-toolkit": {
     "v": "0113027f",
@@ -3656,6 +3793,10 @@
     "v": "4bfb4ca7",
     "source": "https://www.robylon.ai/assets/brand/touch-icon.png"
   },
+  "rocketreach-mcp": {
+    "v": "ef72cd4b",
+    "source": "https://www.google.com/s2/favicons?domain=rocketreach.co&sz=128"
+  },
   "roo-code": {
     "v": "537ab52d",
     "source": "https://roomote.dev/android-chrome-512x512.png"
@@ -3683,6 +3824,10 @@
   "runway-ml": {
     "v": "f29a8592",
     "source": "https://runway.com/icon.png?icon.35ps9bmugbe1e.png"
+  },
+  "ruvector": {
+    "v": "b6e7f265",
+    "source": "https://ruv.io/favicon.png"
   },
   "rye": {
     "v": "6a6329db",
@@ -3826,6 +3971,10 @@
     "v": "9c1ac502",
     "source": "https://serper.dev/apple-touch-icon.png"
   },
+  "servicenow-mcp-server": {
+    "v": "fc28ded7",
+    "source": "https://www.servicenow.com/docs/favicon.ico"
+  },
   "shannon": {
     "v": "9928eb05",
     "source": "https://keygraph.io/public/web-app-manifest-512x512.png?v=5"
@@ -3833,6 +3982,10 @@
   "shopify-agentic-storefronts": {
     "v": "60d6fc5b",
     "source": "https://cdn.shopify.com/b/shopify-brochure2-assets/c97c60ca19c64a8b5378d9f9e971f7bd.png"
+  },
+  "shopify-setup-mcp": {
+    "v": "850300f0",
+    "source": "https://help.shopify.com/favicon.ico"
   },
   "shopsavvy": {
     "v": "83813df7",
@@ -3962,6 +4115,10 @@
     "v": "c4164341",
     "source": "https://photon.codes/framer/images/USAoq7kC2cVRVRlromUpxkzPw.png"
   },
+  "speechmatics": {
+    "v": "d9478125",
+    "source": "https://www.speechmatics.com/apple-touch-icon.png"
+  },
   "speko": {
     "v": "a0b93298",
     "source": "https://speko.ai/icon.svg?icon.1h02y5pt3u61v.svg"
@@ -3981,6 +4138,10 @@
   "stack-overflow-for-agents": {
     "v": "92c31f0a",
     "source": "https://www.google.com/s2/favicons?domain=agents.stackoverflow.com&sz=128"
+  },
+  "stackone": {
+    "v": "2a79d2eb",
+    "source": "https://www.stackone.com/favicon.svg"
   },
   "stackql": {
     "v": "f681e53a",
@@ -4009,6 +4170,10 @@
   "storm": {
     "v": "a55e94f0",
     "source": "https://storm.genie.stanford.edu/favicon.ico"
+  },
+  "storybook-mcp": {
+    "v": "a6f075dc",
+    "source": "https://storybook.js.org/icon.svg"
   },
   "strands-agents": {
     "v": "20f0d104",
@@ -4186,6 +4351,10 @@
     "v": "a54ea957",
     "source": "https://hunyuan-blog-web-prod-1258344703.cos.ap-guangzhou.myqcloud.com/logo.svg"
   },
+  "tencent-music-modus": {
+    "v": "e85cd3a1",
+    "source": "https://www.tencentmusic.com/assets/img/favicon.1cde1235.ico"
+  },
   "tencentdb-agent-memory": {
     "v": "cfa20e9b",
     "source": "https://github.com/TencentCloud.png?size=256"
@@ -4201,6 +4370,10 @@
   "terminal-bench-science": {
     "v": "9dc4292c",
     "source": "https://www.terminal-bench-science.ai/favicon.svg?v=7"
+  },
+  "terminal-browser": {
+    "v": "ffed5fd7",
+    "source": "https://terminal-browser.com/icon.png?icon.17_52mlh8syte.png"
   },
   "terraform-mcp": {
     "v": "90a35ff8",
@@ -4305,6 +4478,10 @@
   "trigger-dev": {
     "v": "aceeedee",
     "source": "https://trigger.dev/docs/mintlify-assets/_mintlify/favicons/trigger/dAMCNvNG7r7-Ozw1/_generated/favicon/android-chrome-192x192.png"
+  },
+  "trivago-mcp": {
+    "v": "d72c1648",
+    "source": "https://www.google.com/s2/favicons?domain=trivago.com&sz=128"
   },
   "trueforge": {
     "v": "6cb2d3eb",
@@ -4495,6 +4672,10 @@
     "v": "499b84fa",
     "source": "https://cdn.prod.website-files.com/69d57891b4f6c4aff88c95ff/69f4fed2dabb7243b3791d38_svg%20logos.png"
   },
+  "volcano": {
+    "v": "cbd8750c",
+    "source": "https://volcano.dev/favicon.ico?c3678213fc0f7e1a"
+  },
   "volcengine-ark": {
     "v": "9d4d9e1b",
     "source": "https://portal.volccdn.com/obj/volcfe/misc/favicon.png"
@@ -4526,6 +4707,10 @@
   "watsonx-orchestrate": {
     "v": "f94d0e52",
     "source": "https://www.ibm.com/content/dam/adobe-cms/default-images/icon-512x512.png"
+  },
+  "wavespeed-mcp": {
+    "v": "d23bd249",
+    "source": "https://static.wavespeed.ai/api-dashboard/public/main-fb740b3191310a918bca9cbbcce5ebe594ad14ba/web-app-manifest-512x512.png"
   },
   "weave": {
     "v": "001b4843",
@@ -4591,6 +4776,10 @@
     "v": "b8f803a6",
     "source": "https://docs.workato.com/favicon.png",
     "px": 48
+  },
+  "workday-mcp": {
+    "v": "85354d40",
+    "source": "https://doc.workday.com/etc.clientlibs/ilx/clientlibs/clientlib-site/resources/images/favicon.svg"
   },
   "workos-pipes": {
     "v": "dd76d883",

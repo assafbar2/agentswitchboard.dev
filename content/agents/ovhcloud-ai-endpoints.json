@@ -1,0 +1,65 @@
+{
+  "id": "ovhcloud-ai-endpoints",
+  "name": "OVHcloud AI Endpoints",
+  "slug": "ovhcloud-ai-endpoints",
+  "description": "Calls hosted LLM, embedding, speech-to-text and image models through OpenAI-compatible serverless APIs hosted in Europe by OVHcloud, for developers who need EU data protection.",
+  "providerName": "OVHcloud",
+  "providerUrl": "https://www.ovhcloud.com",
+  "agentUrl": "https://www.ovhcloud.com/en/public-cloud/ai-endpoints/",
+  "categories": [
+    "infrastructure"
+  ],
+  "tags": [
+    "llm-inference",
+    "openai-compatible",
+    "serverless-inference",
+    "embeddings",
+    "speech-to-text",
+    "eu-data-sovereignty",
+    "function-calling",
+    "ovhcloud"
+  ],
+  "skills": [
+    {
+      "id": "chat-completions",
+      "name": "Chat and Responses",
+      "description": "Generates text, code and reasoning with hosted LLMs through OpenAI-compatible Chat Completions and Responses APIs."
+    },
+    {
+      "id": "speech-to-text",
+      "name": "Speech to Text",
+      "description": "Transcribes audio files to text with hosted speech recognition models through the OpenAI-compatible audio API."
+    },
+    {
+      "id": "structured-output",
+      "name": "Function Calling and Structured Output",
+      "description": "Calls developer-defined functions and returns JSON that matches a schema you set, using function calling and structured outputs."
+    },
+    {
+      "id": "batch-mode",
+      "name": "Batch Mode",
+      "description": "Runs large volumes of inference requests asynchronously through the OpenAI-compatible Batch API, with no infrastructure to manage."
+    },
+    {
+      "id": "catalog-api",
+      "name": "Catalog API",
+      "description": "Lists available AI Endpoints models with their supported features, pricing and metadata through the public Catalog API."
+    }
+  ],
+  "authType": "apiKey",
+  "supportsStreaming": true,
+  "supportsPushNotifications": false,
+  "quickstartUrl": "https://docs.ovhcloud.com/en/guides/public-cloud/ai-machine-learning/ai-endpoints-getting-started",
+  "apiBaseUrl": "https://oai.endpoints.kepler.ai.cloud.ovh.net/v1",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "api"
+  ],
+  "createdAt": "2026-11-28T14:54:34.471Z",
+  "updatedAt": "2026-11-28T14:54:34.471Z"
+}

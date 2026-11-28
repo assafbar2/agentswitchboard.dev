@@ -1,0 +1,65 @@
+{
+  "id": "adloop",
+  "name": "AdLoop",
+  "slug": "adloop",
+  "description": "Read and change Google Ads, Reddit Ads, GA4 and Tag Manager from Claude or ChatGPT, with every change shown as a preview before it applies, for marketers and PPC managers.",
+  "providerName": "AdLoop",
+  "providerUrl": "https://getadloop.com",
+  "agentUrl": "https://getadloop.com",
+  "categories": [
+    "sales-marketing",
+    "data-analytics"
+  ],
+  "tags": [
+    "google-ads",
+    "google-analytics",
+    "ga4",
+    "google-tag-manager",
+    "reddit-ads",
+    "ppc",
+    "conversion-tracking",
+    "remote-mcp"
+  ],
+  "skills": [
+    {
+      "id": "campaign-performance",
+      "name": "Campaign Performance",
+      "description": "Reports Google Ads campaign and ad performance, including impressions, clicks, cost, conversions, CPA and impression share."
+    },
+    {
+      "id": "run-ga4-report",
+      "name": "Run GA4 Report",
+      "description": "Runs custom and real-time GA4 reports on sessions, users, key events and pages, with filters and a comparison period."
+    },
+    {
+      "id": "check-attribution",
+      "name": "Check Attribution",
+      "description": "Compares Ads-reported conversions with GA4 events and diagnoses gaps from consent, attribution windows or broken tracking."
+    },
+    {
+      "id": "draft-campaign",
+      "name": "Draft Campaign",
+      "description": "Drafts Google Ads campaigns, ad groups and responsive search ads as paused previews that apply only after you approve."
+    },
+    {
+      "id": "reddit-ads-performance",
+      "name": "Reddit Ads Performance",
+      "description": "Reports Reddit Ads spend, clicks, CTR, CPC, conversions, CPA and ROAS by account, campaign, ad group or ad."
+    }
+  ],
+  "authType": "oauth2",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://mcp.getadloop.com/mcp",
+  "quickstartUrl": "https://docs.getadloop.com/quickstart/cloud",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp"
+  ],
+  "createdAt": "2026-11-28T14:54:34.540Z",
+  "updatedAt": "2026-11-28T14:54:34.540Z"
+}

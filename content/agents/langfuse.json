@@ -60,8 +60,10 @@
   "discoveredBy": "manual",
   "accessMethods": [
     "api",
-    "cli"
+    "cli",
+    "mcp"
   ],
   "createdAt": "2026-04-08T07:17:22.657Z",
-  "updatedAt": "2026-11-02T07:34:56.527Z"
+  "updatedAt": "2026-11-28T14:46:39.942Z",
+  "mcpEndpoint": "https://cloud.langfuse.com/api/public/mcp"
 }

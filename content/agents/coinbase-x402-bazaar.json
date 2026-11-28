@@ -1,0 +1,63 @@
+{
+  "id": "coinbase-x402-bazaar",
+  "name": "Coinbase x402 Bazaar",
+  "slug": "coinbase-x402-bazaar",
+  "description": "Searches Coinbase CDP's public x402 Bazaar catalog of pay-per-use APIs and calls them through a no-auth MCP server, REST API or SDK, for developers building agents that pay per call.",
+  "providerName": "Coinbase",
+  "providerUrl": "https://www.coinbase.com",
+  "agentUrl": "https://docs.cdp.coinbase.com/x402/buyer/discover-services",
+  "categories": [
+    "commerce-payments",
+    "infrastructure"
+  ],
+  "tags": [
+    "x402",
+    "pay-per-use",
+    "api-discovery",
+    "service-catalog",
+    "agent-payments",
+    "remote-mcp",
+    "coinbase-cdp",
+    "usdc"
+  ],
+  "skills": [
+    {
+      "id": "search-resources",
+      "name": "Search Resources",
+      "description": "Searches the Bazaar catalog by intent and filters results by network, asset, payment scheme, merchant address and maximum USD price."
+    },
+    {
+      "id": "proxy-tool-call",
+      "name": "Proxy Tool Call",
+      "description": "Calls a discovered x402 resource by tool name and arguments, returning a payment-required result when the service charges."
+    },
+    {
+      "id": "validate-endpoint",
+      "name": "Validate Endpoint",
+      "description": "Checks whether an x402 URL is reachable, returns 402 and advertises a valid discovery block, without making any payment."
+    },
+    {
+      "id": "browse-merchants",
+      "name": "Browse and Merchant Lookup",
+      "description": "Lists every active resource in the catalog with pagination, or all the resources that route payment to one merchant address."
+    }
+  ],
+  "authType": "none",
+  "supportsStreaming": false,
+  "supportsPushNotifications": false,
+  "mcpEndpoint": "https://api.cdp.coinbase.com/platform/v2/x402/discovery/mcp",
+  "quickstartUrl": "https://docs.cdp.coinbase.com/x402/buyer/discover-services",
+  "apiBaseUrl": "https://api.cdp.coinbase.com/platform",
+  "status": "published",
+  "featured": false,
+  "verified": true,
+  "official": true,
+  "tier": "free",
+  "discoveredBy": "manual",
+  "accessMethods": [
+    "mcp",
+    "api"
+  ],
+  "createdAt": "2026-11-28T14:54:34.451Z",
+  "updatedAt": "2026-11-28T14:54:34.451Z"
+}
