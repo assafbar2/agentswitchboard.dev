@@ -58,5 +58,6 @@
     "mcp"
   ],
   "createdAt": "2026-11-13T12:18:30.880Z",
-  "updatedAt": "2026-11-13T12:18:30.880Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpCommand": "npx -y @imgly/codesign-mcp@latest stdio"
 }

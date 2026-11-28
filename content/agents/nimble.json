@@ -60,5 +60,6 @@
     "cli"
   ],
   "createdAt": "2026-10-31T07:10:38.219Z",
-  "updatedAt": "2026-10-31T07:10:38.219Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpEndpoint": "https://mcp.nimbleway.com/mcp"
 }

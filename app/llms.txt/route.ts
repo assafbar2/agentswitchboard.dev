@@ -61,6 +61,8 @@ On the website, the REST API and /agents.json, a \`sponsored\` flag also marks p
 
 ## How to use this directory
 
+- Full LLM reference (all tasks, categories, stacks, and copy-ready Official MCPs in one plain-text file, organic): https://agentswitchboard.dev/llms-full.txt
+- Per-listing Markdown (verified access, copy-ready endpoints/install commands, auth, skills, limitations, organic): https://agentswitchboard.dev/agents/<slug>.md
 - Full agent context (for agents): https://agentswitchboard.dev/for-agents
 - Machine-readable catalog (JSON index, pages of 50): https://agentswitchboard.dev/agents.json
 - Browse by category: https://agentswitchboard.dev/categories

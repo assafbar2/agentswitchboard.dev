@@ -46,5 +46,9 @@
     "cli"
   ],
   "createdAt": "2026-11-13T12:18:30.858Z",
-  "updatedAt": "2026-11-13T12:18:30.858Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "install": {
+    "type": "pip",
+    "command": "uvx --from openoutfind outfind"
+  }
 }

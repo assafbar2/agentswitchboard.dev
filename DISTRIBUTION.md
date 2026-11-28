@@ -17,9 +17,9 @@ or a placement-dependent order reaches either surface.
 
 | Channel | Status | Listing | Notes |
 |---|---|---|---|
-| Official MCP registry | ✅ Active (v1.2.0 published 2026-10-31) | `io.github.assafbar2/agentswitchboard` v1.2.0 | The registry MCP clients query directly; PulseMCP ingests from it |
-| awesome-mcp-servers | ⏳ PR open | [punkpeye/awesome-mcp-servers#10771](https://github.com/punkpeye/awesome-mcp-servers/pull/10771) | Badge + Dockerfile requirements met; waits on Glama score + maintainer merge |
-| Glama servers | ⏳ Submitted 2026-07-23 | `glama.ai/mcp/servers/assafbar2/agentswitchboard.dev` | Checks build the repo Dockerfile: start + introspection |
+| Official MCP registry | ✅ Active (v1.2.0 live; `server.json` ready at v1.11.0) | `io.github.assafbar2/agentswitchboard` | The registry MCP clients query directly; PulseMCP ingests from it. Run `mcp-publisher login github && mcp-publisher publish` to push v1.11.0 |
+| awesome-mcp-servers | ◻ Closed without merge | [punkpeye/awesome-mcp-servers#10771](https://github.com/punkpeye/awesome-mcp-servers/pull/10771) | Prior PR closed 2026-09-08; re-open/submit via PR if desired |
+| Glama servers | ✅ Active | `glama.ai/mcp/servers/assafbar2/agentswitchboard.dev` | Live and indexed from repo Dockerfile |
 | Glama connectors | ◻ Not yet listed | glama.ai/mcp/connectors | Optional: submit the hosted endpoint URL |
 | Grok / Grok Bot | ◻ Not in Grok's connector list | — | Grok has a curated list of brand connectors (44 on 2026-11-02) with no public submission route; users add it by URL (grok.com/connectors → Custom, or ask a Bot); steps on /connect |
 | Claude Connectors Directory | ◻ Ready to submit | — | Assaf submits at claude.ai/directory/manage (paid Claude plan). Custom connector by URL works today; /connect has a prefilled install link |

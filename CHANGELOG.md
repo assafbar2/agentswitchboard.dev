@@ -4,6 +4,23 @@ Every release of [Agent Switchboard](https://agentswitchboard.dev), newest first
 
 Versions follow MAJOR.MINOR.PATCH: a minor version adds features, a patch fixes or adjusts. Versions before 2.2.0 were assigned afterwards, reconstructed from the git history. "Directory" lines summarize catalog changes since the previous release; the full log of every listing added, updated or removed is on [/changelog](https://agentswitchboard.dev/changelog), and batch by batch on [/drops](https://agentswitchboard.dev/drops). From 2.2.0 on, each minor release opens with its highlights, what you can do now with a link to try it, which [/whats-new](https://agentswitchboard.dev/whats-new) also shows.
 
+## [2.15.0] - 2026-11-28 - Copy-ready configs, /llms-full.txt and listing Markdown
+
+### Highlights
+- Read the full directory in one organic plain-text file at `/llms-full.txt`, or fetch any listing as clean Markdown at `/agents/<slug>.md` with its verified access methods, copy-ready setup config, auth, skills and limitations. [Try it](https://agentswitchboard.dev/for-agents)
+- Copy verified MCP client configs, CLI install commands and API base URLs straight from 116 more Official MCP and top-task listings, pushing top-task MCP coverage past 80%. [Try it](https://agentswitchboard.dev/agents/firecrawl)
+- Connect top tools for a job with fewer manual setup detours: Firecrawl, Prisma MCP, Resend Inboxes, Mem0, Browserless, Browser Use, trivago MCP, Mural MCP and Upwork MCP now carry verified setup configs. [Try it](https://agentswitchboard.dev/tasks/scrape-websites)
+
+### Added
+- [/llms-full.txt](https://agentswitchboard.dev/llms-full.txt): a static, strictly organic plain-text reference summarizing all 56 tasks (top 6 fits each), 23 categories, 10 stacks, MCP/REST endpoints, and copy-ready Official MCP servers, linked from [/llms.txt](https://agentswitchboard.dev/llms.txt), [/index.md](https://agentswitchboard.dev/index.md), [/for-agents](https://agentswitchboard.dev/for-agents), [/skill.md](https://agentswitchboard.dev/skill.md) and the `ai-agent-instructions` meta tag.
+- `/agents/<slug>.md`: an organic Markdown twin for every published listing, with verified access methods, copy-ready MCP config and `claude mcp add` command, CLI install command, API base URL, auth, skills, limitations, last-checked date, Official/Verified status and organic alternatives, linked as `rel="alternate" type="text/markdown"` from each listing page and carrying a `Link: rel="canonical"` header back to the HTML page.
+
+### Changed
+- `server.json` updated to version `1.11.0` (matching `/api/mcp` and `/.well-known/mcp.json`) and live catalog count (`1,260+` AI agents, MCP servers, and agentic tools); `DISTRIBUTION.md` refreshed to reflect Glama Servers active status and the pending Official MCP Registry publish.
+
+### Directory
+- Backfilled verified `Use it now` setup fields (`mcpEndpoint`, `mcpCommand`, `install`, `apiBaseUrl`) across 116 Official MCP and top-6 task listings, each confirmed from official vendor docs, official GitHub repos, npm/PyPI registries, the Official MCP Registry, or live MCP `initialize` / OAuth protected-resource probes. Copy-ready coverage rose to 83.3% on Official MCPs (mcp/install, 204/245; 73.9% MCP-only), 81.0% on top-6 task MCPs (175/216), and 85.6% on top-6 MCP/CLI task fits (244/285).
+
 ## [2.14.0] - 2026-11-21 - Model APIs, agent skills and token costs
 
 ### Highlights

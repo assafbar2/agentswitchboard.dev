@@ -47,5 +47,9 @@
     "cli"
   ],
   "createdAt": "2026-05-13T16:56:35.527Z",
-  "updatedAt": "2026-05-13T16:56:35.527Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "install": {
+    "type": "binary",
+    "command": "curl -LsSf https://aider.chat/install.sh | sh"
+  }
 }

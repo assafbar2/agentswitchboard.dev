@@ -58,5 +58,6 @@
     "mcp"
   ],
   "createdAt": "2026-04-13T21:38:26.414Z",
-  "updatedAt": "2026-11-02T07:11:18.425Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpCommand": "uvx awslabs.core-mcp-server@latest"
 }

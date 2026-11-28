@@ -32,5 +32,9 @@
     "cli"
   ],
   "createdAt": "2026-03-22T09:53:27.953Z",
-  "updatedAt": "2026-11-02T07:34:56.527Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "install": {
+    "type": "npm",
+    "command": "npm install -g twilio-cli"
+  }
 }

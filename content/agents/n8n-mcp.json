@@ -47,5 +47,6 @@
     "mcp"
   ],
   "createdAt": "2026-04-25T19:07:04.621Z",
-  "updatedAt": "2026-04-25T19:07:04.621Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpCommand": "npx -y n8n-mcp"
 }

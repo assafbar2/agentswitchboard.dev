@@ -59,5 +59,10 @@
     "mcp"
   ],
   "createdAt": "2026-10-04T17:55:56.145Z",
-  "updatedAt": "2026-10-04T17:55:56.145Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpCommand": "uvx code-review-graph serve",
+  "install": {
+    "type": "pip",
+    "command": "uv tool install code-review-graph"
+  }
 }

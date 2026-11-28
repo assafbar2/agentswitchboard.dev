@@ -52,5 +52,6 @@
     "mcp"
   ],
   "createdAt": "2026-11-20T17:42:21.667Z",
-  "updatedAt": "2026-11-20T17:42:21.667Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpCommand": "npx -y @open-pencil/mcp"
 }

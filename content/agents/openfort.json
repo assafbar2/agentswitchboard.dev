@@ -60,5 +60,6 @@
     "api"
   ],
   "createdAt": "2026-11-17T15:25:53.000Z",
-  "updatedAt": "2026-11-17T15:25:53.000Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpCommand": "npx -y @openfort/cli --mcp"
 }

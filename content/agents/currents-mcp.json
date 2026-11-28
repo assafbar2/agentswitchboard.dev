@@ -57,5 +57,6 @@
     "mcp"
   ],
   "createdAt": "2026-10-10T21:22:01.522Z",
-  "updatedAt": "2026-10-10T21:22:01.522Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpEndpoint": "https://mcp.currents.dev/mcp"
 }

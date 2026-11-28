@@ -343,6 +343,7 @@ describe('proxy', () => {
   it.each([
     '/',
     '/llms.txt',
+    '/llms-full.txt',
     '/agents.json',
     '/catalog/3.json',
     '/index.md',

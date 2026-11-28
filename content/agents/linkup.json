@@ -48,5 +48,8 @@
     "mcp"
   ],
   "createdAt": "2026-05-06T23:49:22.114Z",
-  "updatedAt": "2026-05-06T23:49:22.114Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpEndpoint": "https://mcp.linkup.so/mcp",
+  "mcpCommand": "npx -y linkup-mcp-server",
+  "apiBaseUrl": "https://api.linkup.so/v1"
 }

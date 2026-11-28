@@ -50,5 +50,9 @@
     "api"
   ],
   "createdAt": "2026-10-04T17:55:56.217Z",
-  "updatedAt": "2026-10-04T17:55:56.217Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "install": {
+    "type": "pip",
+    "command": "pip install chandra-ocr"
+  }
 }

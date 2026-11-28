@@ -49,5 +49,10 @@
     "cli"
   ],
   "createdAt": "2026-07-25T16:22:45.429Z",
-  "updatedAt": "2026-07-25T16:22:45.429Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpCommand": "uvx cognee-mcp",
+  "install": {
+    "type": "pip",
+    "command": "pip install cognee"
+  }
 }

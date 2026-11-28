@@ -48,5 +48,9 @@
     "cli"
   ],
   "createdAt": "2026-09-13T20:13:54.425Z",
-  "updatedAt": "2026-09-13T20:13:54.425Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "install": {
+    "type": "pip",
+    "command": "pip install futureagi"
+  }
 }

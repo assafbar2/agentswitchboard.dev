@@ -59,5 +59,11 @@
     "mcp"
   ],
   "createdAt": "2026-04-08T20:13:02.629Z",
-  "updatedAt": "2026-10-31T07:10:43.992Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpEndpoint": "https://api.browser-use.com/v3/mcp",
+  "mcpCommand": "uvx browser-use --cli-mcp",
+  "install": {
+    "type": "pip",
+    "command": "pip install browser-use"
+  }
 }

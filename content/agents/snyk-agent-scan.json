@@ -48,5 +48,9 @@
     "cli"
   ],
   "createdAt": "2026-05-07T00:58:32.917Z",
-  "updatedAt": "2026-11-02T07:11:18.425Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "install": {
+    "type": "pip",
+    "command": "uvx snyk-agent-scan@latest"
+  }
 }

@@ -58,5 +58,7 @@
     "mcp"
   ],
   "createdAt": "2026-10-17T09:03:45.920Z",
-  "updatedAt": "2026-10-17T09:03:45.920Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpEndpoint": "https://mcp.draw.io/mcp",
+  "mcpCommand": "npx -y @drawio/mcp"
 }

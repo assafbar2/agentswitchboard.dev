@@ -48,5 +48,10 @@
     "cli"
   ],
   "createdAt": "2026-09-02T07:21:11.731Z",
-  "updatedAt": "2026-09-02T07:21:11.731Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpEndpoint": "https://mcp.alpic.ai/mcp",
+  "install": {
+    "type": "npm",
+    "command": "npm install -g alpic"
+  }
 }

@@ -148,6 +148,30 @@ test.describe('text docs', () => {
     expect(upper.status()).toBe(200);
     expect(await upper.text()).toBe(await lower.text());
   });
+
+  test('/llms-full.txt returns plain text with tasks, categories, stacks and official MCPs', async ({ request }) => {
+    const res = await request.get('/llms-full.txt', { headers: H });
+    expect(res.status()).toBe(200);
+    expect(res.headers()['content-type']).toMatch(/^text\/plain/);
+    expect(res.headers()['access-control-allow-origin']).toBe('*');
+    const body = await res.text();
+    expect(body).toMatch(/^# Agent Switchboard — Full LLM Reference/);
+    expect(body).toContain('https://agentswitchboard.dev/api/mcp');
+    expect(body).toContain('## Tasks (');
+    expect(body).toContain('## Categories (');
+  });
+
+  test('/agents/<slug>.md returns organic markdown with canonical Link header', async ({ request }) => {
+    const res = await request.get(`/agents/${REAL_SLUG}.md`, { headers: H });
+    expect(res.status()).toBe(200);
+    expect(res.headers()['content-type']).toMatch(/^text\/markdown/);
+    expect(res.headers()['link']).toBe(`<${ORIGIN}/agents/${REAL_SLUG}>; rel="canonical"`);
+    expect(res.headers()['access-control-allow-origin']).toBe('*');
+    const body = await res.text();
+    expect(body).toContain('## Facts');
+    expect(body).toContain('## Use it now');
+    expect(body).not.toMatch(/<!DOCTYPE html/i);
+  });
 });
 
 test.describe('catalog JSON', () => {

@@ -33,5 +33,9 @@
     "api"
   ],
   "createdAt": "2026-11-20T17:42:21.574Z",
-  "updatedAt": "2026-11-20T17:42:21.574Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "install": {
+    "type": "npm",
+    "command": "npx @microsoft/agent-governance-copilot-cli install"
+  }
 }

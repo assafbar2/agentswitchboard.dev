@@ -48,5 +48,9 @@
     "cli"
   ],
   "createdAt": "2026-05-13T16:56:32.705Z",
-  "updatedAt": "2026-05-13T16:56:32.705Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "install": {
+    "type": "pip",
+    "command": "pip install litellm"
+  }
 }

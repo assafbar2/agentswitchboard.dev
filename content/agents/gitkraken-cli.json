@@ -48,5 +48,10 @@
     "mcp"
   ],
   "createdAt": "2026-10-17T09:03:45.945Z",
-  "updatedAt": "2026-10-17T09:03:45.945Z"
+  "updatedAt": "2026-11-28T15:54:30.084Z",
+  "install": {
+    "type": "npm",
+    "command": "npm install -g @gitkraken/gk"
+  },
+  "mcpCommand": "npx -y @gitkraken/gk mcp"
 }

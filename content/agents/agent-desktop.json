@@ -65,5 +65,6 @@
     "mcp"
   ],
   "createdAt": "2026-11-10T06:38:22.192Z",
-  "updatedAt": "2026-11-10T06:38:22.192Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpCommand": "npx -y agent-desktop mcp"
 }

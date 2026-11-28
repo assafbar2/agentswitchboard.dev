@@ -48,5 +48,7 @@
     "cli"
   ],
   "createdAt": "2026-05-07T00:58:31.061Z",
-  "updatedAt": "2026-05-07T00:58:31.061Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpEndpoint": "https://mcp.vennio.app/mcp",
+  "apiBaseUrl": "https://api.vennio.app"
 }

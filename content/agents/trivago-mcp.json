@@ -49,5 +49,6 @@
     "mcp"
   ],
   "createdAt": "2026-11-28T14:54:34.465Z",
-  "updatedAt": "2026-11-28T14:54:34.465Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpEndpoint": "https://mcp.trivago.com/mcp"
 }

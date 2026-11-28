@@ -59,5 +59,7 @@
     "cli"
   ],
   "createdAt": "2026-10-31T07:10:38.216Z",
-  "updatedAt": "2026-10-31T07:10:38.216Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpEndpoint": "https://mcp.heygen.com/mcp/v1",
+  "apiBaseUrl": "https://api.heygen.com/v2"
 }

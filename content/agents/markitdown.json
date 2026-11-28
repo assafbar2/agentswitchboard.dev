@@ -66,5 +66,6 @@
     "mcp"
   ],
   "createdAt": "2026-08-01T04:31:32.798Z",
-  "updatedAt": "2026-11-02T07:34:56.527Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpCommand": "uvx markitdown-mcp"
 }

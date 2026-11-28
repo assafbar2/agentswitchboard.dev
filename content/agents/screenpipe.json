@@ -50,5 +50,6 @@
     "mcp"
   ],
   "createdAt": "2026-07-25T16:22:45.416Z",
-  "updatedAt": "2026-11-10T07:10:48.144Z"
+  "updatedAt": "2026-11-28T15:52:16.217Z",
+  "mcpCommand": "npx -y screenpipe-mcp@latest"
 }

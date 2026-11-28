@@ -51,7 +51,7 @@ export async function generateMetadata({
   return {
     title: agent.name,
     description: agent.description,
-    alternates: { canonical: url },
+    alternates: { canonical: url, types: { 'text/markdown': `/agents/${slug}.md` } },
     openGraph: {
       title: ogTitle,
       description: agent.description,
@@ -301,6 +301,7 @@ export default async function AgentPage({
           <div className="mb-6">
             <div className="agent-accent text-base font-bold mb-1">{agent.slug}</div>
             <div className="agent-dim text-xs leading-relaxed mt-1">{agent.description}</div>
+            <div className="agent-dim text-xs mt-1">Markdown: /agents/{agent.slug}.md</div>
           </div>
 
           {tryFirst && (
